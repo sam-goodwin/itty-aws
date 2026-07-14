@@ -11,7 +11,7 @@ export interface GetReportingReportRunsInput {
   starting_after?: string;
 }
 export const GetReportingReportRunsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -101,7 +101,7 @@ export interface GetReportingReportRunsOutput {
   url: string;
 }
 export const GetReportingReportRunsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         created: Schema.Number,
@@ -199,9 +199,7 @@ export const GetReportingReportRunsOutput =
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetReportingReportRuns = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetReportingReportRunsInput,
-    outputSchema: GetReportingReportRunsOutput,
-  }),
-);
+export const GetReportingReportRuns = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetReportingReportRunsInput,
+  outputSchema: GetReportingReportRunsOutput,
+}));

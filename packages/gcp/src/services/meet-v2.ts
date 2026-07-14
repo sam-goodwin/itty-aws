@@ -38,7 +38,7 @@ export interface TranscriptEntry {
 }
 
 export const TranscriptEntry: Schema.Codec<TranscriptEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     participant: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export interface ListTranscriptEntriesResponse {
 }
 
 export const ListTranscriptEntriesResponse: Schema.Codec<ListTranscriptEntriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     transcriptEntries: Schema.optional(Schema.Array(TranscriptEntry)),
   }).annotate({ identifier: "ListTranscriptEntriesResponse" });
@@ -68,7 +68,7 @@ export interface GatewaySipAccess {
 }
 
 export const GatewaySipAccess: Schema.Codec<GatewaySipAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     sipAccessCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GatewaySipAccess" });
@@ -79,7 +79,7 @@ export interface PhoneUser {
 }
 
 export const PhoneUser: Schema.Codec<PhoneUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "PhoneUser" });
 
@@ -93,7 +93,7 @@ export interface ParticipantSession {
 }
 
 export const ParticipantSession: Schema.Codec<ParticipantSession> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -107,7 +107,7 @@ export interface DriveDestination {
 }
 
 export const DriveDestination: Schema.Codec<DriveDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     file: Schema.optional(Schema.String),
     exportUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "DriveDestination" });
@@ -126,7 +126,7 @@ export interface ConferenceRecord {
 }
 
 export const ConferenceRecord: Schema.Codec<ConferenceRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
@@ -144,7 +144,7 @@ export interface SmartNotesConfig {
 }
 
 export const SmartNotesConfig: Schema.Codec<SmartNotesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     autoSmartNotesGeneration: Schema.optional(Schema.String),
   }).annotate({ identifier: "SmartNotesConfig" });
 
@@ -156,7 +156,7 @@ export interface ListParticipantSessionsResponse {
 }
 
 export const ListParticipantSessionsResponse: Schema.Codec<ListParticipantSessionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     participantSessions: Schema.optional(Schema.Array(ParticipantSession)),
   }).annotate({ identifier: "ListParticipantSessionsResponse" });
@@ -180,7 +180,7 @@ export interface Recording {
 }
 
 export const Recording: Schema.Codec<Recording> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -196,7 +196,7 @@ export interface ListRecordingsResponse {
 }
 
 export const ListRecordingsResponse: Schema.Codec<ListRecordingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recordings: Schema.optional(Schema.Array(Recording)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListRecordingsResponse" });
@@ -211,7 +211,7 @@ export interface RecordingConfig {
 }
 
 export const RecordingConfig: Schema.Codec<RecordingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     autoRecordingGeneration: Schema.optional(Schema.String),
   }).annotate({ identifier: "RecordingConfig" });
 
@@ -225,7 +225,7 @@ export interface TranscriptionConfig {
 }
 
 export const TranscriptionConfig: Schema.Codec<TranscriptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     autoTranscriptionGeneration: Schema.optional(Schema.String),
   }).annotate({ identifier: "TranscriptionConfig" });
 
@@ -241,7 +241,7 @@ export interface PhoneAccess {
 }
 
 export const PhoneAccess: Schema.Codec<PhoneAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
     regionCode: Schema.optional(Schema.String),
@@ -254,7 +254,7 @@ export interface ActiveConference {
 }
 
 export const ActiveConference: Schema.Codec<ActiveConference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conferenceRecord: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActiveConference" });
 
@@ -286,7 +286,7 @@ export interface ModerationRestrictions {
 }
 
 export const ModerationRestrictions: Schema.Codec<ModerationRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reactionRestriction: Schema.optional(Schema.String),
     chatRestriction: Schema.optional(Schema.String),
     presentRestriction: Schema.optional(Schema.String),
@@ -303,7 +303,7 @@ export interface ArtifactConfig {
 }
 
 export const ArtifactConfig: Schema.Codec<ArtifactConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recordingConfig: Schema.optional(RecordingConfig),
     transcriptionConfig: Schema.optional(TranscriptionConfig),
     smartNotesConfig: Schema.optional(SmartNotesConfig),
@@ -338,7 +338,7 @@ export interface SpaceConfig {
 }
 
 export const SpaceConfig: Schema.Codec<SpaceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     moderationRestrictions: Schema.optional(ModerationRestrictions),
     moderation: Schema.optional(Schema.String),
     artifactConfig: Schema.optional(ArtifactConfig),
@@ -365,7 +365,7 @@ export interface Space {
 }
 
 export const Space: Schema.Codec<Space> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     gatewaySipAccess: Schema.optional(Schema.Array(GatewaySipAccess)),
     phoneAccess: Schema.optional(Schema.Array(PhoneAccess)),
@@ -378,7 +378,7 @@ export const Space: Schema.Codec<Space> =
 export interface EndActiveConferenceRequest {}
 
 export const EndActiveConferenceRequest: Schema.Codec<EndActiveConferenceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EndActiveConferenceRequest",
   });
 
@@ -390,7 +390,7 @@ export interface DocsDestination {
 }
 
 export const DocsDestination: Schema.Codec<DocsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     document: Schema.optional(Schema.String),
     exportUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "DocsDestination" });
@@ -414,7 +414,7 @@ export interface SmartNote {
 }
 
 export const SmartNote: Schema.Codec<SmartNote> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -428,7 +428,7 @@ export interface AnonymousUser {
 }
 
 export const AnonymousUser: Schema.Codec<AnonymousUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "AnonymousUser" });
 
@@ -440,7 +440,7 @@ export interface ListSmartNotesResponse {
 }
 
 export const ListSmartNotesResponse: Schema.Codec<ListSmartNotesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     smartNotes: Schema.optional(Schema.Array(SmartNote)),
   }).annotate({ identifier: "ListSmartNotesResponse" });
@@ -453,7 +453,7 @@ export interface ListConferenceRecordsResponse {
 }
 
 export const ListConferenceRecordsResponse: Schema.Codec<ListConferenceRecordsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     conferenceRecords: Schema.optional(Schema.Array(ConferenceRecord)),
   }).annotate({ identifier: "ListConferenceRecordsResponse" });
@@ -466,7 +466,7 @@ export interface SignedinUser {
 }
 
 export const SignedinUser: Schema.Codec<SignedinUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignedinUser" });
@@ -487,7 +487,7 @@ export interface Participant {
 }
 
 export const Participant: Schema.Codec<Participant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneUser: Schema.optional(PhoneUser),
     signedinUser: Schema.optional(SignedinUser),
     name: Schema.optional(Schema.String),
@@ -506,7 +506,7 @@ export interface ListParticipantsResponse {
 }
 
 export const ListParticipantsResponse: Schema.Codec<ListParticipantsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     participants: Schema.optional(Schema.Array(Participant)),
     totalSize: Schema.optional(Schema.Number),
     nextPageToken: Schema.optional(Schema.String),
@@ -531,7 +531,7 @@ export interface Transcript {
 }
 
 export const Transcript: Schema.Codec<Transcript> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -547,7 +547,7 @@ export interface ListTranscriptsResponse {
 }
 
 export const ListTranscriptsResponse: Schema.Codec<ListTranscriptsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transcripts: Schema.optional(Schema.Array(Transcript)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListTranscriptsResponse" });
@@ -555,7 +555,7 @@ export const ListTranscriptsResponse: Schema.Codec<ListTranscriptsResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -618,7 +618,7 @@ export interface CreateSpacesRequest {
   body?: Space;
 }
 
-export const CreateSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateSpacesRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(Space).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v2/spaces", hasBody: true }),
@@ -626,7 +626,7 @@ export const CreateSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreateSpacesRequest>;
 
 export type CreateSpacesResponse = Space;
-export const CreateSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
+export const CreateSpacesResponse = /*@__PURE__*/ Space;
 
 export type CreateSpacesError =
   | DefaultErrors
@@ -641,7 +641,7 @@ export const createSpaces: API.OperationMethod<
   CreateSpacesResponse,
   CreateSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSpacesRequest,
   output: CreateSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -655,7 +655,7 @@ export interface EndActiveConferenceSpacesRequest {
 }
 
 export const EndActiveConferenceSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EndActiveConferenceRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -668,8 +668,7 @@ export const EndActiveConferenceSpacesRequest =
   ) as unknown as Schema.Codec<EndActiveConferenceSpacesRequest>;
 
 export type EndActiveConferenceSpacesResponse = Empty;
-export const EndActiveConferenceSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const EndActiveConferenceSpacesResponse = /*@__PURE__*/ Empty;
 
 export type EndActiveConferenceSpacesError =
   | DefaultErrors
@@ -684,7 +683,7 @@ export const endActiveConferenceSpaces: API.OperationMethod<
   EndActiveConferenceSpacesResponse,
   EndActiveConferenceSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EndActiveConferenceSpacesRequest,
   output: EndActiveConferenceSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -695,7 +694,7 @@ export interface GetSpacesRequest {
   name: string;
 }
 
-export const GetSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSpacesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -703,7 +702,7 @@ export const GetSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetSpacesRequest>;
 
 export type GetSpacesResponse = Space;
-export const GetSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
+export const GetSpacesResponse = /*@__PURE__*/ Space;
 
 export type GetSpacesError = DefaultErrors | NotFound | Forbidden;
 
@@ -713,7 +712,7 @@ export const getSpaces: API.OperationMethod<
   GetSpacesResponse,
   GetSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpacesRequest,
   output: GetSpacesResponse,
   errors: [NotFound, Forbidden],
@@ -728,7 +727,7 @@ export interface PatchSpacesRequest {
   body?: Space;
 }
 
-export const PatchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchSpacesRequest = /*@__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(Space).pipe(T.HttpBody()),
@@ -738,7 +737,7 @@ export const PatchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchSpacesRequest>;
 
 export type PatchSpacesResponse = Space;
-export const PatchSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
+export const PatchSpacesResponse = /*@__PURE__*/ Space;
 
 export type PatchSpacesError =
   | DefaultErrors
@@ -753,7 +752,7 @@ export const patchSpaces: API.OperationMethod<
   PatchSpacesResponse,
   PatchSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSpacesRequest,
   output: PatchSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -765,7 +764,7 @@ export interface GetConferenceRecordsRequest {
 }
 
 export const GetConferenceRecordsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -773,8 +772,7 @@ export const GetConferenceRecordsRequest =
   ) as unknown as Schema.Codec<GetConferenceRecordsRequest>;
 
 export type GetConferenceRecordsResponse = ConferenceRecord;
-export const GetConferenceRecordsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConferenceRecord;
+export const GetConferenceRecordsResponse = /*@__PURE__*/ ConferenceRecord;
 
 export type GetConferenceRecordsError = DefaultErrors | NotFound | Forbidden;
 
@@ -784,7 +782,7 @@ export const getConferenceRecords: API.OperationMethod<
   GetConferenceRecordsResponse,
   GetConferenceRecordsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsRequest,
   output: GetConferenceRecordsResponse,
   errors: [NotFound, Forbidden],
@@ -800,7 +798,7 @@ export interface ListConferenceRecordsRequest {
 }
 
 export const ListConferenceRecordsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -811,7 +809,7 @@ export const ListConferenceRecordsRequest =
 
 export type ListConferenceRecordsResponse_Op = ListConferenceRecordsResponse;
 export const ListConferenceRecordsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListConferenceRecordsResponse;
+  /*@__PURE__*/ ListConferenceRecordsResponse;
 
 export type ListConferenceRecordsError = DefaultErrors | NotFound | Forbidden;
 
@@ -821,7 +819,7 @@ export const listConferenceRecords: API.PaginatedOperationMethod<
   ListConferenceRecordsResponse_Op,
   ListConferenceRecordsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsRequest,
   output: ListConferenceRecordsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -837,7 +835,7 @@ export interface GetConferenceRecordsTranscriptsRequest {
 }
 
 export const GetConferenceRecordsTranscriptsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -845,8 +843,7 @@ export const GetConferenceRecordsTranscriptsRequest =
   ) as unknown as Schema.Codec<GetConferenceRecordsTranscriptsRequest>;
 
 export type GetConferenceRecordsTranscriptsResponse = Transcript;
-export const GetConferenceRecordsTranscriptsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Transcript;
+export const GetConferenceRecordsTranscriptsResponse = /*@__PURE__*/ Transcript;
 
 export type GetConferenceRecordsTranscriptsError =
   | DefaultErrors
@@ -859,7 +856,7 @@ export const getConferenceRecordsTranscripts: API.OperationMethod<
   GetConferenceRecordsTranscriptsResponse,
   GetConferenceRecordsTranscriptsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsTranscriptsRequest,
   output: GetConferenceRecordsTranscriptsResponse,
   errors: [NotFound, Forbidden],
@@ -875,7 +872,7 @@ export interface ListConferenceRecordsTranscriptsRequest {
 }
 
 export const ListConferenceRecordsTranscriptsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -886,7 +883,7 @@ export const ListConferenceRecordsTranscriptsRequest =
 
 export type ListConferenceRecordsTranscriptsResponse = ListTranscriptsResponse;
 export const ListConferenceRecordsTranscriptsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListTranscriptsResponse;
+  /*@__PURE__*/ ListTranscriptsResponse;
 
 export type ListConferenceRecordsTranscriptsError =
   | DefaultErrors
@@ -899,7 +896,7 @@ export const listConferenceRecordsTranscripts: API.PaginatedOperationMethod<
   ListConferenceRecordsTranscriptsResponse,
   ListConferenceRecordsTranscriptsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsTranscriptsRequest,
   output: ListConferenceRecordsTranscriptsResponse,
   errors: [NotFound, Forbidden],
@@ -919,7 +916,7 @@ export interface ListConferenceRecordsTranscriptsEntriesRequest {
 }
 
 export const ListConferenceRecordsTranscriptsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -931,7 +928,7 @@ export const ListConferenceRecordsTranscriptsEntriesRequest =
 export type ListConferenceRecordsTranscriptsEntriesResponse =
   ListTranscriptEntriesResponse;
 export const ListConferenceRecordsTranscriptsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListTranscriptEntriesResponse;
+  /*@__PURE__*/ ListTranscriptEntriesResponse;
 
 export type ListConferenceRecordsTranscriptsEntriesError =
   | DefaultErrors
@@ -944,7 +941,7 @@ export const listConferenceRecordsTranscriptsEntries: API.PaginatedOperationMeth
   ListConferenceRecordsTranscriptsEntriesResponse,
   ListConferenceRecordsTranscriptsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsTranscriptsEntriesRequest,
   output: ListConferenceRecordsTranscriptsEntriesResponse,
   errors: [NotFound, Forbidden],
@@ -960,7 +957,7 @@ export interface GetConferenceRecordsTranscriptsEntriesRequest {
 }
 
 export const GetConferenceRecordsTranscriptsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -969,7 +966,7 @@ export const GetConferenceRecordsTranscriptsEntriesRequest =
 
 export type GetConferenceRecordsTranscriptsEntriesResponse = TranscriptEntry;
 export const GetConferenceRecordsTranscriptsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TranscriptEntry;
+  /*@__PURE__*/ TranscriptEntry;
 
 export type GetConferenceRecordsTranscriptsEntriesError =
   | DefaultErrors
@@ -982,7 +979,7 @@ export const getConferenceRecordsTranscriptsEntries: API.OperationMethod<
   GetConferenceRecordsTranscriptsEntriesResponse,
   GetConferenceRecordsTranscriptsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsTranscriptsEntriesRequest,
   output: GetConferenceRecordsTranscriptsEntriesResponse,
   errors: [NotFound, Forbidden],
@@ -1000,7 +997,7 @@ export interface ListConferenceRecordsParticipantsRequest {
 }
 
 export const ListConferenceRecordsParticipantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1013,7 +1010,7 @@ export const ListConferenceRecordsParticipantsRequest =
 export type ListConferenceRecordsParticipantsResponse =
   ListParticipantsResponse;
 export const ListConferenceRecordsParticipantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListParticipantsResponse;
+  /*@__PURE__*/ ListParticipantsResponse;
 
 export type ListConferenceRecordsParticipantsError =
   | DefaultErrors
@@ -1026,7 +1023,7 @@ export const listConferenceRecordsParticipants: API.PaginatedOperationMethod<
   ListConferenceRecordsParticipantsResponse,
   ListConferenceRecordsParticipantsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsParticipantsRequest,
   output: ListConferenceRecordsParticipantsResponse,
   errors: [NotFound, Forbidden],
@@ -1042,7 +1039,7 @@ export interface GetConferenceRecordsParticipantsRequest {
 }
 
 export const GetConferenceRecordsParticipantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -1051,7 +1048,7 @@ export const GetConferenceRecordsParticipantsRequest =
 
 export type GetConferenceRecordsParticipantsResponse = Participant;
 export const GetConferenceRecordsParticipantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Participant;
+  /*@__PURE__*/ Participant;
 
 export type GetConferenceRecordsParticipantsError =
   | DefaultErrors
@@ -1064,7 +1061,7 @@ export const getConferenceRecordsParticipants: API.OperationMethod<
   GetConferenceRecordsParticipantsResponse,
   GetConferenceRecordsParticipantsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsParticipantsRequest,
   output: GetConferenceRecordsParticipantsResponse,
   errors: [NotFound, Forbidden],
@@ -1076,7 +1073,7 @@ export interface GetConferenceRecordsParticipantsParticipantSessionsRequest {
 }
 
 export const GetConferenceRecordsParticipantsParticipantSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -1086,7 +1083,7 @@ export const GetConferenceRecordsParticipantsParticipantSessionsRequest =
 export type GetConferenceRecordsParticipantsParticipantSessionsResponse =
   ParticipantSession;
 export const GetConferenceRecordsParticipantsParticipantSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ParticipantSession;
+  /*@__PURE__*/ ParticipantSession;
 
 export type GetConferenceRecordsParticipantsParticipantSessionsError =
   | DefaultErrors
@@ -1099,7 +1096,7 @@ export const getConferenceRecordsParticipantsParticipantSessions: API.OperationM
   GetConferenceRecordsParticipantsParticipantSessionsResponse,
   GetConferenceRecordsParticipantsParticipantSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsParticipantsParticipantSessionsRequest,
   output: GetConferenceRecordsParticipantsParticipantSessionsResponse,
   errors: [NotFound, Forbidden],
@@ -1117,7 +1114,7 @@ export interface ListConferenceRecordsParticipantsParticipantSessionsRequest {
 }
 
 export const ListConferenceRecordsParticipantsParticipantSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1130,7 +1127,7 @@ export const ListConferenceRecordsParticipantsParticipantSessionsRequest =
 export type ListConferenceRecordsParticipantsParticipantSessionsResponse =
   ListParticipantSessionsResponse;
 export const ListConferenceRecordsParticipantsParticipantSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListParticipantSessionsResponse;
+  /*@__PURE__*/ ListParticipantSessionsResponse;
 
 export type ListConferenceRecordsParticipantsParticipantSessionsError =
   | DefaultErrors
@@ -1143,7 +1140,7 @@ export const listConferenceRecordsParticipantsParticipantSessions: API.Paginated
   ListConferenceRecordsParticipantsParticipantSessionsResponse,
   ListConferenceRecordsParticipantsParticipantSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsParticipantsParticipantSessionsRequest,
   output: ListConferenceRecordsParticipantsParticipantSessionsResponse,
   errors: [NotFound, Forbidden],
@@ -1163,7 +1160,7 @@ export interface ListConferenceRecordsRecordingsRequest {
 }
 
 export const ListConferenceRecordsRecordingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1174,7 +1171,7 @@ export const ListConferenceRecordsRecordingsRequest =
 
 export type ListConferenceRecordsRecordingsResponse = ListRecordingsResponse;
 export const ListConferenceRecordsRecordingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListRecordingsResponse;
+  /*@__PURE__*/ ListRecordingsResponse;
 
 export type ListConferenceRecordsRecordingsError =
   | DefaultErrors
@@ -1187,7 +1184,7 @@ export const listConferenceRecordsRecordings: API.PaginatedOperationMethod<
   ListConferenceRecordsRecordingsResponse,
   ListConferenceRecordsRecordingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsRecordingsRequest,
   output: ListConferenceRecordsRecordingsResponse,
   errors: [NotFound, Forbidden],
@@ -1203,7 +1200,7 @@ export interface GetConferenceRecordsRecordingsRequest {
 }
 
 export const GetConferenceRecordsRecordingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -1211,8 +1208,7 @@ export const GetConferenceRecordsRecordingsRequest =
   ) as unknown as Schema.Codec<GetConferenceRecordsRecordingsRequest>;
 
 export type GetConferenceRecordsRecordingsResponse = Recording;
-export const GetConferenceRecordsRecordingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Recording;
+export const GetConferenceRecordsRecordingsResponse = /*@__PURE__*/ Recording;
 
 export type GetConferenceRecordsRecordingsError =
   | DefaultErrors
@@ -1225,7 +1221,7 @@ export const getConferenceRecordsRecordings: API.OperationMethod<
   GetConferenceRecordsRecordingsResponse,
   GetConferenceRecordsRecordingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsRecordingsRequest,
   output: GetConferenceRecordsRecordingsResponse,
   errors: [NotFound, Forbidden],
@@ -1241,7 +1237,7 @@ export interface ListConferenceRecordsSmartNotesRequest {
 }
 
 export const ListConferenceRecordsSmartNotesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1252,7 +1248,7 @@ export const ListConferenceRecordsSmartNotesRequest =
 
 export type ListConferenceRecordsSmartNotesResponse = ListSmartNotesResponse;
 export const ListConferenceRecordsSmartNotesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSmartNotesResponse;
+  /*@__PURE__*/ ListSmartNotesResponse;
 
 export type ListConferenceRecordsSmartNotesError =
   | DefaultErrors
@@ -1265,7 +1261,7 @@ export const listConferenceRecordsSmartNotes: API.PaginatedOperationMethod<
   ListConferenceRecordsSmartNotesResponse,
   ListConferenceRecordsSmartNotesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsSmartNotesRequest,
   output: ListConferenceRecordsSmartNotesResponse,
   errors: [NotFound, Forbidden],
@@ -1281,7 +1277,7 @@ export interface GetConferenceRecordsSmartNotesRequest {
 }
 
 export const GetConferenceRecordsSmartNotesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -1289,8 +1285,7 @@ export const GetConferenceRecordsSmartNotesRequest =
   ) as unknown as Schema.Codec<GetConferenceRecordsSmartNotesRequest>;
 
 export type GetConferenceRecordsSmartNotesResponse = SmartNote;
-export const GetConferenceRecordsSmartNotesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SmartNote;
+export const GetConferenceRecordsSmartNotesResponse = /*@__PURE__*/ SmartNote;
 
 export type GetConferenceRecordsSmartNotesError =
   | DefaultErrors
@@ -1303,7 +1298,7 @@ export const getConferenceRecordsSmartNotes: API.OperationMethod<
   GetConferenceRecordsSmartNotesResponse,
   GetConferenceRecordsSmartNotesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsSmartNotesRequest,
   output: GetConferenceRecordsSmartNotesResponse,
   errors: [NotFound, Forbidden],

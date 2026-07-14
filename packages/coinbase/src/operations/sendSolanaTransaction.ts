@@ -9,7 +9,7 @@ export interface SendSolanaTransactionInput {
   useCdpSponsor?: boolean;
 }
 export const SendSolanaTransactionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     network: Schema.Literals(["solana", "solana-devnet"]),
     transaction: Schema.String,
     useCdpSponsor: Schema.optional(Schema.Boolean),
@@ -22,7 +22,7 @@ export interface SendSolanaTransactionOutput {
   transactionSignature: string;
 }
 export const SendSolanaTransactionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transactionSignature: Schema.String,
   }) as unknown as Schema.Codec<SendSolanaTransactionOutput>;
 
@@ -53,9 +53,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const sendSolanaTransaction = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SendSolanaTransactionInput,
-    outputSchema: SendSolanaTransactionOutput,
-  }),
-);
+export const sendSolanaTransaction = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SendSolanaTransactionInput,
+  outputSchema: SendSolanaTransactionOutput,
+}));

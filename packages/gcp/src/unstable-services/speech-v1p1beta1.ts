@@ -28,7 +28,7 @@ export interface TranscriptOutputConfig {
 }
 
 export const TranscriptOutputConfig: Schema.Codec<TranscriptOutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "TranscriptOutputConfig" });
 
@@ -48,7 +48,7 @@ export interface WordInfo {
 }
 
 export const WordInfo: Schema.Codec<WordInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     word: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -67,7 +67,7 @@ export interface SpeechRecognitionAlternative {
 }
 
 export const SpeechRecognitionAlternative: Schema.Codec<SpeechRecognitionAlternative> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transcript: Schema.optional(Schema.String),
     words: Schema.optional(Schema.Array(WordInfo)),
     confidence: Schema.optional(Schema.Number),
@@ -85,7 +85,7 @@ export interface SpeechRecognitionResult {
 }
 
 export const SpeechRecognitionResult: Schema.Codec<SpeechRecognitionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alternatives: Schema.optional(Schema.Array(SpeechRecognitionAlternative)),
     resultEndTime: Schema.optional(Schema.String),
     channelTag: Schema.optional(Schema.Number),
@@ -100,7 +100,7 @@ export interface SpeechAdaptationInfo {
 }
 
 export const SpeechAdaptationInfo: Schema.Codec<SpeechAdaptationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adaptationTimeout: Schema.optional(Schema.Boolean),
     timeoutMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "SpeechAdaptationInfo" });
@@ -154,7 +154,7 @@ export interface RecognitionMetadata {
 }
 
 export const RecognitionMetadata: Schema.Codec<RecognitionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalMediaType: Schema.optional(Schema.String),
     recordingDeviceName: Schema.optional(Schema.String),
     obfuscatedId: Schema.optional(Schema.String),
@@ -174,7 +174,7 @@ export interface RecognitionAudio {
 }
 
 export const RecognitionAudio: Schema.Codec<RecognitionAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "RecognitionAudio" });
@@ -187,7 +187,7 @@ export interface SpeechContext {
 }
 
 export const SpeechContext: Schema.Codec<SpeechContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phrases: Schema.optional(Schema.Array(Schema.String)),
     boost: Schema.optional(Schema.Number),
   }).annotate({ identifier: "SpeechContext" });
@@ -204,7 +204,7 @@ export interface SpeakerDiarizationConfig {
 }
 
 export const SpeakerDiarizationConfig: Schema.Codec<SpeakerDiarizationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableSpeakerDiarization: Schema.optional(Schema.Boolean),
     minSpeakerCount: Schema.optional(Schema.Number),
     maxSpeakerCount: Schema.optional(Schema.Number),
@@ -221,7 +221,7 @@ export interface Entry {
 }
 
 export const Entry: Schema.Codec<Entry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     search: Schema.optional(Schema.String),
     replace: Schema.optional(Schema.String),
     caseSensitive: Schema.optional(Schema.Boolean),
@@ -233,7 +233,7 @@ export interface TranscriptNormalization {
 }
 
 export const TranscriptNormalization: Schema.Codec<TranscriptNormalization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entries: Schema.optional(Schema.Array(Entry)),
   }).annotate({ identifier: "TranscriptNormalization" });
 
@@ -243,7 +243,7 @@ export interface ABNFGrammar {
 }
 
 export const ABNFGrammar: Schema.Codec<ABNFGrammar> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     abnfStrings: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ABNFGrammar" });
 
@@ -255,7 +255,7 @@ export interface Phrase {
 }
 
 export const Phrase: Schema.Codec<Phrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boost: Schema.optional(Schema.Number),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "Phrase" });
@@ -290,7 +290,7 @@ export interface PhraseSet {
 }
 
 export const PhraseSet: Schema.Codec<PhraseSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boost: Schema.optional(Schema.Number),
     kmsKeyName: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -312,7 +312,7 @@ export interface ClassItem {
 }
 
 export const ClassItem: Schema.Codec<ClassItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "ClassItem" });
 
@@ -346,7 +346,7 @@ export interface CustomClass {
 }
 
 export const CustomClass: Schema.Codec<CustomClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleteTime: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     kmsKeyName: Schema.optional(Schema.String),
@@ -374,7 +374,7 @@ export interface SpeechAdaptation {
 }
 
 export const SpeechAdaptation: Schema.Codec<SpeechAdaptation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phraseSetReferences: Schema.optional(Schema.Array(Schema.String)),
     abnfGrammar: Schema.optional(ABNFGrammar),
     phraseSets: Schema.optional(Schema.Array(PhraseSet)),
@@ -441,7 +441,7 @@ export interface RecognitionConfig {
 }
 
 export const RecognitionConfig: Schema.Codec<RecognitionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     speechContexts: Schema.optional(Schema.Array(SpeechContext)),
     audioChannelCount: Schema.optional(Schema.Number),
     alternativeLanguageCodes: Schema.optional(Schema.Array(Schema.String)),
@@ -476,7 +476,7 @@ export interface LongRunningRecognizeRequest {
 }
 
 export const LongRunningRecognizeRequest: Schema.Codec<LongRunningRecognizeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audio: Schema.optional(RecognitionAudio),
     outputConfig: Schema.optional(TranscriptOutputConfig),
     config: Schema.optional(RecognitionConfig),
@@ -492,7 +492,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -514,7 +514,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
@@ -532,7 +532,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(Operation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -554,7 +554,7 @@ export interface LongRunningRecognizeResponse {
 }
 
 export const LongRunningRecognizeResponse: Schema.Codec<LongRunningRecognizeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalBilledTime: Schema.optional(Schema.String),
     outputConfig: Schema.optional(TranscriptOutputConfig),
     results: Schema.optional(Schema.Array(SpeechRecognitionResult)),
@@ -571,7 +571,7 @@ export interface ListCustomClassesResponse {
 }
 
 export const ListCustomClassesResponse: Schema.Codec<ListCustomClassesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customClasses: Schema.optional(Schema.Array(CustomClass)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListCustomClassesResponse" });
@@ -590,7 +590,7 @@ export interface LongRunningRecognizeMetadata {
 }
 
 export const LongRunningRecognizeMetadata: Schema.Codec<LongRunningRecognizeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     progressPercent: Schema.optional(Schema.Number),
     startTime: Schema.optional(Schema.String),
     outputConfig: Schema.optional(TranscriptOutputConfig),
@@ -606,7 +606,7 @@ export interface RecognizeRequest {
 }
 
 export const RecognizeRequest: Schema.Codec<RecognizeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     config: Schema.optional(RecognitionConfig),
     audio: Schema.optional(RecognitionAudio),
   }).annotate({ identifier: "RecognizeRequest" });
@@ -619,7 +619,7 @@ export interface ListPhraseSetResponse {
 }
 
 export const ListPhraseSetResponse: Schema.Codec<ListPhraseSetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     phraseSets: Schema.optional(Schema.Array(PhraseSet)),
   }).annotate({ identifier: "ListPhraseSetResponse" });
@@ -632,7 +632,7 @@ export interface CreatePhraseSetRequest {
 }
 
 export const CreatePhraseSetRequest: Schema.Codec<CreatePhraseSetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phraseSetId: Schema.optional(Schema.String),
     phraseSet: Schema.optional(PhraseSet),
   }).annotate({ identifier: "CreatePhraseSetRequest" });
@@ -640,7 +640,7 @@ export const CreatePhraseSetRequest: Schema.Codec<CreatePhraseSetRequest> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -652,7 +652,7 @@ export interface CreateCustomClassRequest {
 }
 
 export const CreateCustomClassRequest: Schema.Codec<CreateCustomClassRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customClass: Schema.optional(CustomClass),
     customClassId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateCustomClassRequest" });
@@ -671,7 +671,7 @@ export interface RecognizeResponse {
 }
 
 export const RecognizeResponse: Schema.Codec<RecognizeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     usingLegacyModels: Schema.optional(Schema.Boolean),
     requestId: Schema.optional(Schema.String),
     totalBilledTime: Schema.optional(Schema.String),
@@ -746,7 +746,7 @@ export interface ListOperationsRequest {
   pageSize?: number;
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsRequest = /*@__PURE__*/ Schema.Struct({
   returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("returnPartialSuccess"),
   ),
@@ -760,8 +760,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
-export const ListOperationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+export const ListOperationsResponse_Op = /*@__PURE__*/ ListOperationsResponse;
 
 export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -771,7 +770,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse_Op,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -786,7 +785,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1p1beta1/operations/{+name}" }),
@@ -794,7 +793,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -804,7 +803,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -818,7 +817,7 @@ export interface CreateProjectsLocationsPhraseSetsRequest {
 }
 
 export const CreateProjectsLocationsPhraseSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreatePhraseSetRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -832,7 +831,7 @@ export const CreateProjectsLocationsPhraseSetsRequest =
 
 export type CreateProjectsLocationsPhraseSetsResponse = PhraseSet;
 export const CreateProjectsLocationsPhraseSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PhraseSet;
+  /*@__PURE__*/ PhraseSet;
 
 export type CreateProjectsLocationsPhraseSetsError =
   | DefaultErrors
@@ -847,7 +846,7 @@ export const createProjectsLocationsPhraseSets: API.OperationMethod<
   CreateProjectsLocationsPhraseSetsResponse,
   CreateProjectsLocationsPhraseSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPhraseSetsRequest,
   output: CreateProjectsLocationsPhraseSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -859,7 +858,7 @@ export interface GetProjectsLocationsPhraseSetsRequest {
 }
 
 export const GetProjectsLocationsPhraseSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1p1beta1/{+name}" }),
@@ -867,8 +866,7 @@ export const GetProjectsLocationsPhraseSetsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsPhraseSetsRequest>;
 
 export type GetProjectsLocationsPhraseSetsResponse = PhraseSet;
-export const GetProjectsLocationsPhraseSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PhraseSet;
+export const GetProjectsLocationsPhraseSetsResponse = /*@__PURE__*/ PhraseSet;
 
 export type GetProjectsLocationsPhraseSetsError =
   | DefaultErrors
@@ -881,7 +879,7 @@ export const getProjectsLocationsPhraseSets: API.OperationMethod<
   GetProjectsLocationsPhraseSetsResponse,
   GetProjectsLocationsPhraseSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPhraseSetsRequest,
   output: GetProjectsLocationsPhraseSetsResponse,
   errors: [NotFound, Forbidden],
@@ -897,7 +895,7 @@ export interface ListProjectsLocationsPhraseSetsRequest {
 }
 
 export const ListProjectsLocationsPhraseSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -908,7 +906,7 @@ export const ListProjectsLocationsPhraseSetsRequest =
 
 export type ListProjectsLocationsPhraseSetsResponse = ListPhraseSetResponse;
 export const ListProjectsLocationsPhraseSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPhraseSetResponse;
+  /*@__PURE__*/ ListPhraseSetResponse;
 
 export type ListProjectsLocationsPhraseSetsError =
   | DefaultErrors
@@ -921,7 +919,7 @@ export const listProjectsLocationsPhraseSets: API.PaginatedOperationMethod<
   ListProjectsLocationsPhraseSetsResponse,
   ListProjectsLocationsPhraseSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPhraseSetsRequest,
   output: ListProjectsLocationsPhraseSetsResponse,
   errors: [NotFound, Forbidden],
@@ -941,7 +939,7 @@ export interface PatchProjectsLocationsPhraseSetsRequest {
 }
 
 export const PatchProjectsLocationsPhraseSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(PhraseSet).pipe(T.HttpBody()),
@@ -951,8 +949,7 @@ export const PatchProjectsLocationsPhraseSetsRequest =
   ) as unknown as Schema.Codec<PatchProjectsLocationsPhraseSetsRequest>;
 
 export type PatchProjectsLocationsPhraseSetsResponse = PhraseSet;
-export const PatchProjectsLocationsPhraseSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PhraseSet;
+export const PatchProjectsLocationsPhraseSetsResponse = /*@__PURE__*/ PhraseSet;
 
 export type PatchProjectsLocationsPhraseSetsError =
   | DefaultErrors
@@ -967,7 +964,7 @@ export const patchProjectsLocationsPhraseSets: API.OperationMethod<
   PatchProjectsLocationsPhraseSetsResponse,
   PatchProjectsLocationsPhraseSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsPhraseSetsRequest,
   output: PatchProjectsLocationsPhraseSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -979,7 +976,7 @@ export interface DeleteProjectsLocationsPhraseSetsRequest {
 }
 
 export const DeleteProjectsLocationsPhraseSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1p1beta1/{+name}" }),
@@ -987,8 +984,7 @@ export const DeleteProjectsLocationsPhraseSetsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsPhraseSetsRequest>;
 
 export type DeleteProjectsLocationsPhraseSetsResponse = Empty;
-export const DeleteProjectsLocationsPhraseSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsPhraseSetsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsPhraseSetsError =
   | DefaultErrors
@@ -1003,7 +999,7 @@ export const deleteProjectsLocationsPhraseSets: API.OperationMethod<
   DeleteProjectsLocationsPhraseSetsResponse,
   DeleteProjectsLocationsPhraseSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPhraseSetsRequest,
   output: DeleteProjectsLocationsPhraseSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1015,7 +1011,7 @@ export interface DeleteProjectsLocationsCustomClassesRequest {
 }
 
 export const DeleteProjectsLocationsCustomClassesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1p1beta1/{+name}" }),
@@ -1023,8 +1019,7 @@ export const DeleteProjectsLocationsCustomClassesRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsCustomClassesRequest>;
 
 export type DeleteProjectsLocationsCustomClassesResponse = Empty;
-export const DeleteProjectsLocationsCustomClassesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsCustomClassesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsCustomClassesError =
   | DefaultErrors
@@ -1039,7 +1034,7 @@ export const deleteProjectsLocationsCustomClasses: API.OperationMethod<
   DeleteProjectsLocationsCustomClassesResponse,
   DeleteProjectsLocationsCustomClassesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCustomClassesRequest,
   output: DeleteProjectsLocationsCustomClassesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1051,7 +1046,7 @@ export interface GetProjectsLocationsCustomClassesRequest {
 }
 
 export const GetProjectsLocationsCustomClassesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1p1beta1/{+name}" }),
@@ -1060,7 +1055,7 @@ export const GetProjectsLocationsCustomClassesRequest =
 
 export type GetProjectsLocationsCustomClassesResponse = CustomClass;
 export const GetProjectsLocationsCustomClassesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CustomClass;
+  /*@__PURE__*/ CustomClass;
 
 export type GetProjectsLocationsCustomClassesError =
   | DefaultErrors
@@ -1073,7 +1068,7 @@ export const getProjectsLocationsCustomClasses: API.OperationMethod<
   GetProjectsLocationsCustomClassesResponse,
   GetProjectsLocationsCustomClassesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCustomClassesRequest,
   output: GetProjectsLocationsCustomClassesResponse,
   errors: [NotFound, Forbidden],
@@ -1089,7 +1084,7 @@ export interface ListProjectsLocationsCustomClassesRequest {
 }
 
 export const ListProjectsLocationsCustomClassesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1101,7 +1096,7 @@ export const ListProjectsLocationsCustomClassesRequest =
 export type ListProjectsLocationsCustomClassesResponse =
   ListCustomClassesResponse;
 export const ListProjectsLocationsCustomClassesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCustomClassesResponse;
+  /*@__PURE__*/ ListCustomClassesResponse;
 
 export type ListProjectsLocationsCustomClassesError =
   | DefaultErrors
@@ -1114,7 +1109,7 @@ export const listProjectsLocationsCustomClasses: API.PaginatedOperationMethod<
   ListProjectsLocationsCustomClassesResponse,
   ListProjectsLocationsCustomClassesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCustomClassesRequest,
   output: ListProjectsLocationsCustomClassesResponse,
   errors: [NotFound, Forbidden],
@@ -1134,7 +1129,7 @@ export interface PatchProjectsLocationsCustomClassesRequest {
 }
 
 export const PatchProjectsLocationsCustomClassesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(CustomClass).pipe(T.HttpBody()),
@@ -1145,7 +1140,7 @@ export const PatchProjectsLocationsCustomClassesRequest =
 
 export type PatchProjectsLocationsCustomClassesResponse = CustomClass;
 export const PatchProjectsLocationsCustomClassesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CustomClass;
+  /*@__PURE__*/ CustomClass;
 
 export type PatchProjectsLocationsCustomClassesError =
   | DefaultErrors
@@ -1160,7 +1155,7 @@ export const patchProjectsLocationsCustomClasses: API.OperationMethod<
   PatchProjectsLocationsCustomClassesResponse,
   PatchProjectsLocationsCustomClassesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCustomClassesRequest,
   output: PatchProjectsLocationsCustomClassesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1174,7 +1169,7 @@ export interface CreateProjectsLocationsCustomClassesRequest {
 }
 
 export const CreateProjectsLocationsCustomClassesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateCustomClassRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1188,7 +1183,7 @@ export const CreateProjectsLocationsCustomClassesRequest =
 
 export type CreateProjectsLocationsCustomClassesResponse = CustomClass;
 export const CreateProjectsLocationsCustomClassesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CustomClass;
+  /*@__PURE__*/ CustomClass;
 
 export type CreateProjectsLocationsCustomClassesError =
   | DefaultErrors
@@ -1203,7 +1198,7 @@ export const createProjectsLocationsCustomClasses: API.OperationMethod<
   CreateProjectsLocationsCustomClassesResponse,
   CreateProjectsLocationsCustomClassesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCustomClassesRequest,
   output: CreateProjectsLocationsCustomClassesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1214,18 +1209,15 @@ export interface RecognizeSpeechRequest {
   body?: RecognizeRequest;
 }
 
-export const RecognizeSpeechRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    body: Schema.optional(RecognizeRequest).pipe(T.HttpBody()),
-  },
-).pipe(
+export const RecognizeSpeechRequest = /*@__PURE__*/ Schema.Struct({
+  body: Schema.optional(RecognizeRequest).pipe(T.HttpBody()),
+}).pipe(
   T.Http({ method: "POST", path: "v1p1beta1/speech:recognize", hasBody: true }),
   svc,
 ) as unknown as Schema.Codec<RecognizeSpeechRequest>;
 
 export type RecognizeSpeechResponse = RecognizeResponse;
-export const RecognizeSpeechResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RecognizeResponse;
+export const RecognizeSpeechResponse = /*@__PURE__*/ RecognizeResponse;
 
 export type RecognizeSpeechError =
   | DefaultErrors
@@ -1240,7 +1232,7 @@ export const recognizeSpeech: API.OperationMethod<
   RecognizeSpeechResponse,
   RecognizeSpeechError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RecognizeSpeechRequest,
   output: RecognizeSpeechResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1252,7 +1244,7 @@ export interface LongrunningrecognizeSpeechRequest {
 }
 
 export const LongrunningrecognizeSpeechRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(LongRunningRecognizeRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -1264,8 +1256,7 @@ export const LongrunningrecognizeSpeechRequest =
   ) as unknown as Schema.Codec<LongrunningrecognizeSpeechRequest>;
 
 export type LongrunningrecognizeSpeechResponse = Operation;
-export const LongrunningrecognizeSpeechResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const LongrunningrecognizeSpeechResponse = /*@__PURE__*/ Operation;
 
 export type LongrunningrecognizeSpeechError =
   | DefaultErrors
@@ -1280,7 +1271,7 @@ export const longrunningrecognizeSpeech: API.OperationMethod<
   LongrunningrecognizeSpeechResponse,
   LongrunningrecognizeSpeechError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LongrunningrecognizeSpeechRequest,
   output: LongrunningrecognizeSpeechResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

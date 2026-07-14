@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface GetTransferByIdInput {
   transferId: string;
 }
-export const GetTransferByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTransferByIdInput = /*@__PURE__*/ Schema.Struct({
   transferId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/transfers/{transferId}" }),
@@ -106,7 +106,7 @@ export interface GetTransferByIdOutput {
     };
   };
 }
-export const GetTransferByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTransferByIdOutput = /*@__PURE__*/ Schema.Struct({
   transferId: Schema.optional(Schema.String),
   status: Schema.optional(
     Schema.Literals(["quoted", "processing", "completed", "failed"]),
@@ -268,7 +268,7 @@ export const GetTransferByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param transferId - The unique identifier of the transfer.
  */
-export const getTransferById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getTransferById = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetTransferByIdInput,
   outputSchema: GetTransferByIdOutput,
 }));

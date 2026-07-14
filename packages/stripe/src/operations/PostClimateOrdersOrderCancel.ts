@@ -8,7 +8,7 @@ export interface PostClimateOrdersOrderCancelInput {
   expand?: string[];
 }
 export const PostClimateOrdersOrderCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     order: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -108,7 +108,7 @@ export interface PostClimateOrdersOrderCancelOutput {
   status: "awaiting_funds" | "canceled" | "confirmed" | "delivered" | "open";
 }
 export const PostClimateOrdersOrderCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount_fees: Schema.Number,
     amount_subtotal: Schema.Number,
     amount_total: Schema.Number,
@@ -237,7 +237,7 @@ export const PostClimateOrdersOrderCancelOutput =
  * @param order - Unique identifier of the order.
  */
 export const PostClimateOrdersOrderCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostClimateOrdersOrderCancelInput,
     outputSchema: PostClimateOrdersOrderCancelOutput,
   }));

@@ -9,7 +9,7 @@ export interface DashboardTemplatesCopyBetweenProjectsCreateInput {
   source_template_id?: string;
 }
 export const DashboardTemplatesCopyBetweenProjectsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     source_template_id: Schema.optional(Schema.String),
   }).pipe(
@@ -63,7 +63,7 @@ export interface DashboardTemplatesCopyBetweenProjectsCreateOutput {
   };
 }
 export const DashboardTemplatesCopyBetweenProjectsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     template_name: Schema.optional(Schema.NullOr(Schema.String)),
     dashboard_description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -138,7 +138,7 @@ export const DashboardTemplatesCopyBetweenProjectsCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const dashboardTemplatesCopyBetweenProjectsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DashboardTemplatesCopyBetweenProjectsCreateInput,
     outputSchema: DashboardTemplatesCopyBetweenProjectsCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

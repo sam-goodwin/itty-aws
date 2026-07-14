@@ -21,7 +21,7 @@ export interface AuthorizationControllerListResourcesForMembershipInput {
   parent_resource_external_id?: string;
 }
 export const AuthorizationControllerListResourcesForMembershipInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface AuthorizationControllerListResourcesForMembershipOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const AuthorizationControllerListResourcesForMembershipOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -100,7 +100,7 @@ export const AuthorizationControllerListResourcesForMembershipOutput =
  * @param parent_resource_external_id - The application-specific external identifier of the parent resource. Must be provided together with `parent_resource_type_slug`. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`.
  */
 export const AuthorizationControllerListResourcesForMembership =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationControllerListResourcesForMembershipInput,
     outputSchema: AuthorizationControllerListResourcesForMembershipOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

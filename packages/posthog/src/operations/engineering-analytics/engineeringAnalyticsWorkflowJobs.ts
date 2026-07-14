@@ -11,7 +11,7 @@ export interface EngineeringAnalyticsWorkflowJobsInput {
   source_id?: string;
 }
 export const EngineeringAnalyticsWorkflowJobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     run_attempt: Schema.optional(Schema.Number),
     run_id: Schema.Number,
@@ -38,7 +38,7 @@ export type EngineeringAnalyticsWorkflowJobsOutput = {
   estimated_cost_usd: number | null;
 }[];
 export const EngineeringAnalyticsWorkflowJobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.Number,
       run_id: Schema.Number,
@@ -64,7 +64,7 @@ export const EngineeringAnalyticsWorkflowJobsOutput =
  * @param source_id - Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.
  */
 export const engineeringAnalyticsWorkflowJobs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EngineeringAnalyticsWorkflowJobsInput,
     outputSchema: EngineeringAnalyticsWorkflowJobsOutput,
     errors: [BadRequest] as const,

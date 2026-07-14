@@ -50,7 +50,7 @@ interface Topic {
   /** Description of the topic category. Must contain only printable ASCII characters. */
   topic: string;
 }
-const Topic = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Topic = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     label: Schema.String,
     topic: Schema.String,
@@ -66,13 +66,12 @@ export interface GetAiSecurityRequest {
   zoneId: string;
 }
 
-export const GetAiSecurityRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/zones/{zone_id}/ai-security/settings" }),
-    ),
+export const GetAiSecurityRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/ai-security/settings" }),
+  ),
 ) as unknown as Schema.Codec<GetAiSecurityRequest>;
 
 export interface GetAiSecurityResponse {
@@ -80,11 +79,10 @@ export interface GetAiSecurityResponse {
   enabled?: boolean | null;
 }
 
-export const GetAiSecurityResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const GetAiSecurityResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetAiSecurityResponse>;
 
 export type GetAiSecurityError =
@@ -98,7 +96,7 @@ export const getAiSecurity: API.OperationMethod<
   GetAiSecurityResponse,
   GetAiSecurityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAiSecurityRequest,
   output: GetAiSecurityResponse,
   errors: [AiSecurityNotEntitled, ZoneNotAuthorized, Forbidden],
@@ -111,14 +109,13 @@ export interface PutAiSecurityRequest {
   enabled?: boolean;
 }
 
-export const PutAiSecurityRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      enabled: Schema.optional(Schema.Boolean),
-    }).pipe(
-      T.Http({ method: "PUT", path: "/zones/{zone_id}/ai-security/settings" }),
-    ),
+export const PutAiSecurityRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    enabled: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({ method: "PUT", path: "/zones/{zone_id}/ai-security/settings" }),
+  ),
 ) as unknown as Schema.Codec<PutAiSecurityRequest>;
 
 export interface PutAiSecurityResponse {
@@ -126,11 +123,10 @@ export interface PutAiSecurityResponse {
   enabled?: boolean | null;
 }
 
-export const PutAiSecurityResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const PutAiSecurityResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutAiSecurityResponse>;
 
 export type PutAiSecurityError =
@@ -144,7 +140,7 @@ export const putAiSecurity: API.OperationMethod<
   PutAiSecurityResponse,
   PutAiSecurityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAiSecurityRequest,
   output: PutAiSecurityResponse,
   errors: [AiSecurityNotEntitled, ZoneNotAuthorized, Forbidden],
@@ -159,16 +155,15 @@ export interface GetCustomTopicRequest {
   zoneId: string;
 }
 
-export const GetCustomTopicRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/ai-security/custom-topics",
-      }),
-    ),
+export const GetCustomTopicRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/ai-security/custom-topics",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetCustomTopicRequest>;
 
 export interface GetCustomTopicResponse {
@@ -177,7 +172,7 @@ export interface GetCustomTopicResponse {
 }
 
 export const GetCustomTopicResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       topics: Schema.optional(Schema.Union([Schema.Array(Topic), Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -194,7 +189,7 @@ export const getCustomTopic: API.OperationMethod<
   GetCustomTopicResponse,
   GetCustomTopicError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomTopicRequest,
   output: GetCustomTopicResponse,
   errors: [AiSecurityNotEntitled, ZoneNotAuthorized, Forbidden],
@@ -207,17 +202,16 @@ export interface PutCustomTopicRequest {
   topics?: { label: string; topic: string }[];
 }
 
-export const PutCustomTopicRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      topics: Schema.optional(Schema.Array(Topic)),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/ai-security/custom-topics",
-      }),
-    ),
+export const PutCustomTopicRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    topics: Schema.optional(Schema.Array(Topic)),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/ai-security/custom-topics",
+    }),
+  ),
 ) as unknown as Schema.Codec<PutCustomTopicRequest>;
 
 export interface PutCustomTopicResponse {
@@ -226,7 +220,7 @@ export interface PutCustomTopicResponse {
 }
 
 export const PutCustomTopicResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       topics: Schema.optional(Schema.Union([Schema.Array(Topic), Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -243,7 +237,7 @@ export const putCustomTopic: API.OperationMethod<
   PutCustomTopicResponse,
   PutCustomTopicError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutCustomTopicRequest,
   output: PutCustomTopicResponse,
   errors: [AiSecurityNotEntitled, ZoneNotAuthorized, Forbidden],

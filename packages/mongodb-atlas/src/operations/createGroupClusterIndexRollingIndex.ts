@@ -11,7 +11,7 @@ export interface CreateGroupClusterIndexRollingIndexInput {
   pretty?: boolean;
 }
 export const CreateGroupClusterIndexRollingIndexInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const CreateGroupClusterIndexRollingIndexInput =
 // Output Schema
 export type CreateGroupClusterIndexRollingIndexOutput = void;
 export const CreateGroupClusterIndexRollingIndexOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterIndexRollingIndexOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterIndexRollingIndexOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const CreateGroupClusterIndexRollingIndexOutput =
  * @param clusterName - Human-readable label that identifies the cluster on which MongoDB Cloud creates an index.
  */
 export const createGroupClusterIndexRollingIndex =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupClusterIndexRollingIndexInput,
     outputSchema: CreateGroupClusterIndexRollingIndexOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

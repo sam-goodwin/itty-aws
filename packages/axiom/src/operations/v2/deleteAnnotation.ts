@@ -7,7 +7,7 @@ import { BadRequest, NotFound } from "../../errors.ts";
 export interface DeleteAnnotationInput {
   id: string;
 }
-export const DeleteAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteAnnotationInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/v2/annotations/{id}" }),
@@ -16,7 +16,7 @@ export const DeleteAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteAnnotationOutput = void;
 export const DeleteAnnotationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteAnnotationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteAnnotationOutput>;
 
 // The operation
 /**
@@ -24,7 +24,7 @@ export const DeleteAnnotationOutput =
  *
  * @param id - Unique ID of the annotation
  */
-export const deleteAnnotation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteAnnotation = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteAnnotationInput,
   outputSchema: DeleteAnnotationOutput,
   errors: [BadRequest, NotFound] as const,

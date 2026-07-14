@@ -9,7 +9,7 @@ export interface PostV1ProjectsByIdTransferInput {
   recipientAccessToken: string;
 }
 export const PostV1ProjectsByIdTransferInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     recipientAccessToken: Schema.String,
   }).pipe(
@@ -19,7 +19,7 @@ export const PostV1ProjectsByIdTransferInput =
 // Output Schema
 export type PostV1ProjectsByIdTransferOutput = void;
 export const PostV1ProjectsByIdTransferOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PostV1ProjectsByIdTransferOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PostV1ProjectsByIdTransferOutput>;
 
 // The operation
 /**
@@ -27,10 +27,8 @@ export const PostV1ProjectsByIdTransferOutput =
  *
  * Transfer the project with the given ID to the new owner's workspace
  */
-export const postV1ProjectsByIdTransfer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostV1ProjectsByIdTransferInput,
-    outputSchema: PostV1ProjectsByIdTransferOutput,
-    errors: [NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const postV1ProjectsByIdTransfer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostV1ProjectsByIdTransferInput,
+  outputSchema: PostV1ProjectsByIdTransferOutput,
+  errors: [NotFound, UnprocessableEntity] as const,
+}));

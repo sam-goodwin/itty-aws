@@ -10,7 +10,7 @@ export interface GetIdentityVerificationSessionsSessionInput {
   expand?: string;
 }
 export const GetIdentityVerificationSessionsSessionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -222,7 +222,7 @@ export interface GetIdentityVerificationSessionsSessionOutput {
   } | null;
 }
 export const GetIdentityVerificationSessionsSessionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_reference_id: Schema.NullOr(Schema.String),
     client_secret: SensitiveOutputNullableString,
     created: Schema.Number,
@@ -377,7 +377,7 @@ export const GetIdentityVerificationSessionsSessionOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetIdentityVerificationSessionsSession =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetIdentityVerificationSessionsSessionInput,
     outputSchema: GetIdentityVerificationSessionsSessionOutput,
   }));

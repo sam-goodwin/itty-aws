@@ -55,7 +55,7 @@ export interface CreateSchedulingV1PriorityClassInput {
   value?: number;
 }
 export const CreateSchedulingV1PriorityClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -159,7 +159,7 @@ export interface CreateSchedulingV1PriorityClassOutput {
   value?: number;
 }
 export const CreateSchedulingV1PriorityClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     globalDefault: Schema.optional(Schema.Boolean),
@@ -222,7 +222,7 @@ export const CreateSchedulingV1PriorityClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createSchedulingV1PriorityClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateSchedulingV1PriorityClassInput,
     outputSchema: CreateSchedulingV1PriorityClassOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -296,7 +296,7 @@ export interface CreateSchedulingV1alpha3NamespacedPodGroupInput {
   };
 }
 export const CreateSchedulingV1alpha3NamespacedPodGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -491,7 +491,7 @@ export interface CreateSchedulingV1alpha3NamespacedPodGroupOutput {
   };
 }
 export const CreateSchedulingV1alpha3NamespacedPodGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -623,7 +623,7 @@ export const CreateSchedulingV1alpha3NamespacedPodGroupOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createSchedulingV1alpha3NamespacedPodGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateSchedulingV1alpha3NamespacedPodGroupInput,
     outputSchema: CreateSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
@@ -686,7 +686,7 @@ export interface CreateSchedulingV1alpha3NamespacedWorkloadInput {
   };
 }
 export const CreateSchedulingV1alpha3NamespacedWorkloadInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -849,7 +849,7 @@ export interface CreateSchedulingV1alpha3NamespacedWorkloadOutput {
   };
 }
 export const CreateSchedulingV1alpha3NamespacedWorkloadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -959,7 +959,7 @@ export const CreateSchedulingV1alpha3NamespacedWorkloadOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createSchedulingV1alpha3NamespacedWorkload =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateSchedulingV1alpha3NamespacedWorkloadInput,
     outputSchema: CreateSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
@@ -985,7 +985,7 @@ export interface DeleteSchedulingV1CollectionPriorityClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteSchedulingV1CollectionPriorityClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1043,7 +1043,7 @@ export interface DeleteSchedulingV1CollectionPriorityClassOutput {
   status?: string;
 }
 export const DeleteSchedulingV1CollectionPriorityClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1145,7 +1145,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteSchedulingV1CollectionPriorityClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteSchedulingV1CollectionPriorityClassInput,
     outputSchema: DeleteSchedulingV1CollectionPriorityClassOutput,
   }));
@@ -1163,7 +1163,7 @@ export interface DeleteSchedulingV1PriorityClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteSchedulingV1PriorityClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1213,7 +1213,7 @@ export interface DeleteSchedulingV1PriorityClassOutput {
   status?: string;
 }
 export const DeleteSchedulingV1PriorityClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1266,7 +1266,7 @@ export const DeleteSchedulingV1PriorityClassOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteSchedulingV1PriorityClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteSchedulingV1PriorityClassInput,
     outputSchema: DeleteSchedulingV1PriorityClassOutput,
     errors: [NotFound, Conflict] as const,
@@ -1294,7 +1294,7 @@ export interface DeleteSchedulingV1alpha3CollectionNamespacedPodGroupInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteSchedulingV1alpha3CollectionNamespacedPodGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -1353,7 +1353,7 @@ export interface DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput {
   status?: string;
 }
 export const DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1456,7 +1456,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteSchedulingV1alpha3CollectionNamespacedPodGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteSchedulingV1alpha3CollectionNamespacedPodGroupInput,
     outputSchema: DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput,
   }));
@@ -1483,7 +1483,7 @@ export interface DeleteSchedulingV1alpha3CollectionNamespacedWorkloadInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteSchedulingV1alpha3CollectionNamespacedWorkloadInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -1542,7 +1542,7 @@ export interface DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput {
   status?: string;
 }
 export const DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1645,7 +1645,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteSchedulingV1alpha3CollectionNamespacedWorkload =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteSchedulingV1alpha3CollectionNamespacedWorkloadInput,
     outputSchema: DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput,
   }));
@@ -1664,7 +1664,7 @@ export interface DeleteSchedulingV1alpha3NamespacedPodGroupInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteSchedulingV1alpha3NamespacedPodGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1715,7 +1715,7 @@ export interface DeleteSchedulingV1alpha3NamespacedPodGroupOutput {
   status?: string;
 }
 export const DeleteSchedulingV1alpha3NamespacedPodGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1769,7 +1769,7 @@ export const DeleteSchedulingV1alpha3NamespacedPodGroupOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteSchedulingV1alpha3NamespacedPodGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteSchedulingV1alpha3NamespacedPodGroupInput,
     outputSchema: DeleteSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
@@ -1788,7 +1788,7 @@ export interface DeleteSchedulingV1alpha3NamespacedWorkloadInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteSchedulingV1alpha3NamespacedWorkloadInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1839,7 +1839,7 @@ export interface DeleteSchedulingV1alpha3NamespacedWorkloadOutput {
   status?: string;
 }
 export const DeleteSchedulingV1alpha3NamespacedWorkloadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1893,14 +1893,14 @@ export const DeleteSchedulingV1alpha3NamespacedWorkloadOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteSchedulingV1alpha3NamespacedWorkload =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteSchedulingV1alpha3NamespacedWorkloadInput,
     outputSchema: DeleteSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
 export interface GetSchedulingAPIGroupInput {}
 export const GetSchedulingAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/scheduling.k8s.io/" }),
   ) as unknown as Schema.Codec<GetSchedulingAPIGroupInput>;
 
@@ -1914,7 +1914,7 @@ export interface GetSchedulingAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetSchedulingAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -1944,16 +1944,14 @@ export const GetSchedulingAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getSchedulingAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetSchedulingAPIGroupInput,
-    outputSchema: GetSchedulingAPIGroupOutput,
-  }),
-);
+export const getSchedulingAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetSchedulingAPIGroupInput,
+  outputSchema: GetSchedulingAPIGroupOutput,
+}));
 // Input Schema
 export interface GetSchedulingV1APIResourcesInput {}
 export const GetSchedulingV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/scheduling.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetSchedulingV1APIResourcesInput>;
 
@@ -1976,7 +1974,7 @@ export interface GetSchedulingV1APIResourcesOutput {
   }[];
 }
 export const GetSchedulingV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -2000,16 +1998,14 @@ export const GetSchedulingV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getSchedulingV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetSchedulingV1APIResourcesInput,
-    outputSchema: GetSchedulingV1APIResourcesOutput,
-  }),
-);
+export const getSchedulingV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetSchedulingV1APIResourcesInput,
+  outputSchema: GetSchedulingV1APIResourcesOutput,
+}));
 // Input Schema
 export interface GetSchedulingV1alpha3APIResourcesInput {}
 export const GetSchedulingV1alpha3APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/scheduling.k8s.io/v1alpha3/" }),
   ) as unknown as Schema.Codec<GetSchedulingV1alpha3APIResourcesInput>;
 
@@ -2032,7 +2028,7 @@ export interface GetSchedulingV1alpha3APIResourcesOutput {
   }[];
 }
 export const GetSchedulingV1alpha3APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -2057,7 +2053,7 @@ export const GetSchedulingV1alpha3APIResourcesOutput =
  * get available resources
  */
 export const getSchedulingV1alpha3APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetSchedulingV1alpha3APIResourcesInput,
     outputSchema: GetSchedulingV1alpha3APIResourcesOutput,
   }));
@@ -2077,7 +2073,7 @@ export interface ListSchedulingV1PriorityClassInput {
   watch?: boolean;
 }
 export const ListSchedulingV1PriorityClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -2150,7 +2146,7 @@ export interface ListSchedulingV1PriorityClassOutput {
   };
 }
 export const ListSchedulingV1PriorityClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -2283,7 +2279,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listSchedulingV1PriorityClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListSchedulingV1PriorityClassInput,
     outputSchema: ListSchedulingV1PriorityClassOutput,
   }));
@@ -2304,7 +2300,7 @@ export interface ListSchedulingV1alpha3NamespacedPodGroupInput {
   watch?: boolean;
 }
 export const ListSchedulingV1alpha3NamespacedPodGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2400,7 +2396,7 @@ export interface ListSchedulingV1alpha3NamespacedPodGroupOutput {
   };
 }
 export const ListSchedulingV1alpha3NamespacedPodGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -2602,7 +2598,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listSchedulingV1alpha3NamespacedPodGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListSchedulingV1alpha3NamespacedPodGroupInput,
     outputSchema: ListSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
@@ -2623,7 +2619,7 @@ export interface ListSchedulingV1alpha3NamespacedWorkloadInput {
   watch?: boolean;
 }
 export const ListSchedulingV1alpha3NamespacedWorkloadInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2709,7 +2705,7 @@ export interface ListSchedulingV1alpha3NamespacedWorkloadOutput {
   };
 }
 export const ListSchedulingV1alpha3NamespacedWorkloadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -2889,7 +2885,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listSchedulingV1alpha3NamespacedWorkload =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListSchedulingV1alpha3NamespacedWorkloadInput,
     outputSchema: ListSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
@@ -2909,7 +2905,7 @@ export interface ListSchedulingV1alpha3PodGroupForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListSchedulingV1alpha3PodGroupForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -3004,7 +3000,7 @@ export interface ListSchedulingV1alpha3PodGroupForAllNamespacesOutput {
   };
 }
 export const ListSchedulingV1alpha3PodGroupForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -3205,7 +3201,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listSchedulingV1alpha3PodGroupForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListSchedulingV1alpha3PodGroupForAllNamespacesInput,
     outputSchema: ListSchedulingV1alpha3PodGroupForAllNamespacesOutput,
   }));
@@ -3225,7 +3221,7 @@ export interface ListSchedulingV1alpha3WorkloadForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListSchedulingV1alpha3WorkloadForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -3310,7 +3306,7 @@ export interface ListSchedulingV1alpha3WorkloadForAllNamespacesOutput {
   };
 }
 export const ListSchedulingV1alpha3WorkloadForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -3489,7 +3485,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listSchedulingV1alpha3WorkloadForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListSchedulingV1alpha3WorkloadForAllNamespacesInput,
     outputSchema: ListSchedulingV1alpha3WorkloadForAllNamespacesOutput,
   }));
@@ -3503,7 +3499,7 @@ export interface PatchSchedulingV1PriorityClassInput {
   force?: boolean;
 }
 export const PatchSchedulingV1PriorityClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -3559,7 +3555,7 @@ export interface PatchSchedulingV1PriorityClassOutput {
   value?: number;
 }
 export const PatchSchedulingV1PriorityClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     globalDefault: Schema.optional(Schema.Boolean),
@@ -3624,7 +3620,7 @@ export const PatchSchedulingV1PriorityClassOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchSchedulingV1PriorityClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchSchedulingV1PriorityClassInput,
     outputSchema: PatchSchedulingV1PriorityClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -3640,7 +3636,7 @@ export interface PatchSchedulingV1alpha3NamespacedPodGroupInput {
   force?: boolean;
 }
 export const PatchSchedulingV1alpha3NamespacedPodGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -3719,7 +3715,7 @@ export interface PatchSchedulingV1alpha3NamespacedPodGroupOutput {
   };
 }
 export const PatchSchedulingV1alpha3NamespacedPodGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3853,7 +3849,7 @@ export const PatchSchedulingV1alpha3NamespacedPodGroupOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchSchedulingV1alpha3NamespacedPodGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchSchedulingV1alpha3NamespacedPodGroupInput,
     outputSchema: PatchSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
@@ -3868,7 +3864,7 @@ export interface PatchSchedulingV1alpha3NamespacedPodGroupStatusInput {
   force?: boolean;
 }
 export const PatchSchedulingV1alpha3NamespacedPodGroupStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -3947,7 +3943,7 @@ export interface PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput {
   };
 }
 export const PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4081,7 +4077,7 @@ export const PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchSchedulingV1alpha3NamespacedPodGroupStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchSchedulingV1alpha3NamespacedPodGroupStatusInput,
     outputSchema: PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput,
   }));
@@ -4096,7 +4092,7 @@ export interface PatchSchedulingV1alpha3NamespacedWorkloadInput {
   force?: boolean;
 }
 export const PatchSchedulingV1alpha3NamespacedWorkloadInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -4165,7 +4161,7 @@ export interface PatchSchedulingV1alpha3NamespacedWorkloadOutput {
   };
 }
 export const PatchSchedulingV1alpha3NamespacedWorkloadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4277,7 +4273,7 @@ export const PatchSchedulingV1alpha3NamespacedWorkloadOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchSchedulingV1alpha3NamespacedWorkload =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchSchedulingV1alpha3NamespacedWorkloadInput,
     outputSchema: PatchSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
@@ -4287,7 +4283,7 @@ export interface ReadSchedulingV1PriorityClassInput {
   pretty?: string;
 }
 export const ReadSchedulingV1PriorityClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -4339,7 +4335,7 @@ export interface ReadSchedulingV1PriorityClassOutput {
   value?: number;
 }
 export const ReadSchedulingV1PriorityClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     globalDefault: Schema.optional(Schema.Boolean),
@@ -4400,7 +4396,7 @@ export const ReadSchedulingV1PriorityClassOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readSchedulingV1PriorityClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadSchedulingV1PriorityClassInput,
     outputSchema: ReadSchedulingV1PriorityClassOutput,
     errors: [NotFound] as const,
@@ -4412,7 +4408,7 @@ export interface ReadSchedulingV1alpha3NamespacedPodGroupInput {
   pretty?: string;
 }
 export const ReadSchedulingV1alpha3NamespacedPodGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -4487,7 +4483,7 @@ export interface ReadSchedulingV1alpha3NamespacedPodGroupOutput {
   };
 }
 export const ReadSchedulingV1alpha3NamespacedPodGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4617,7 +4613,7 @@ export const ReadSchedulingV1alpha3NamespacedPodGroupOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readSchedulingV1alpha3NamespacedPodGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadSchedulingV1alpha3NamespacedPodGroupInput,
     outputSchema: ReadSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
@@ -4628,7 +4624,7 @@ export interface ReadSchedulingV1alpha3NamespacedPodGroupStatusInput {
   pretty?: string;
 }
 export const ReadSchedulingV1alpha3NamespacedPodGroupStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -4703,7 +4699,7 @@ export interface ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput {
   };
 }
 export const ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4833,7 +4829,7 @@ export const ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readSchedulingV1alpha3NamespacedPodGroupStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadSchedulingV1alpha3NamespacedPodGroupStatusInput,
     outputSchema: ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput,
   }));
@@ -4844,7 +4840,7 @@ export interface ReadSchedulingV1alpha3NamespacedWorkloadInput {
   pretty?: string;
 }
 export const ReadSchedulingV1alpha3NamespacedWorkloadInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -4909,7 +4905,7 @@ export interface ReadSchedulingV1alpha3NamespacedWorkloadOutput {
   };
 }
 export const ReadSchedulingV1alpha3NamespacedWorkloadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5017,7 +5013,7 @@ export const ReadSchedulingV1alpha3NamespacedWorkloadOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readSchedulingV1alpha3NamespacedWorkload =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadSchedulingV1alpha3NamespacedWorkloadInput,
     outputSchema: ReadSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
@@ -5068,7 +5064,7 @@ export interface ReplaceSchedulingV1PriorityClassInput {
   value?: number;
 }
 export const ReplaceSchedulingV1PriorityClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -5173,7 +5169,7 @@ export interface ReplaceSchedulingV1PriorityClassOutput {
   value?: number;
 }
 export const ReplaceSchedulingV1PriorityClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     globalDefault: Schema.optional(Schema.Boolean),
@@ -5237,7 +5233,7 @@ export const ReplaceSchedulingV1PriorityClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceSchedulingV1PriorityClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceSchedulingV1PriorityClassInput,
     outputSchema: ReplaceSchedulingV1PriorityClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -5312,7 +5308,7 @@ export interface ReplaceSchedulingV1alpha3NamespacedPodGroupInput {
   };
 }
 export const ReplaceSchedulingV1alpha3NamespacedPodGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -5508,7 +5504,7 @@ export interface ReplaceSchedulingV1alpha3NamespacedPodGroupOutput {
   };
 }
 export const ReplaceSchedulingV1alpha3NamespacedPodGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5641,7 +5637,7 @@ export const ReplaceSchedulingV1alpha3NamespacedPodGroupOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceSchedulingV1alpha3NamespacedPodGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceSchedulingV1alpha3NamespacedPodGroupInput,
     outputSchema: ReplaceSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
@@ -5715,7 +5711,7 @@ export interface ReplaceSchedulingV1alpha3NamespacedPodGroupStatusInput {
   };
 }
 export const ReplaceSchedulingV1alpha3NamespacedPodGroupStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -5911,7 +5907,7 @@ export interface ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput {
   };
 }
 export const ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6044,7 +6040,7 @@ export const ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceSchedulingV1alpha3NamespacedPodGroupStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceSchedulingV1alpha3NamespacedPodGroupStatusInput,
     outputSchema: ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput,
   }));
@@ -6108,7 +6104,7 @@ export interface ReplaceSchedulingV1alpha3NamespacedWorkloadInput {
   };
 }
 export const ReplaceSchedulingV1alpha3NamespacedWorkloadInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -6272,7 +6268,7 @@ export interface ReplaceSchedulingV1alpha3NamespacedWorkloadOutput {
   };
 }
 export const ReplaceSchedulingV1alpha3NamespacedWorkloadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6383,7 +6379,7 @@ export const ReplaceSchedulingV1alpha3NamespacedWorkloadOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceSchedulingV1alpha3NamespacedWorkload =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceSchedulingV1alpha3NamespacedWorkloadInput,
     outputSchema: ReplaceSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
@@ -6404,7 +6400,7 @@ export interface WatchSchedulingV1PriorityClassInput {
   watch?: boolean;
 }
 export const WatchSchedulingV1PriorityClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -6431,7 +6427,7 @@ export interface WatchSchedulingV1PriorityClassOutput {
   type: string;
 }
 export const WatchSchedulingV1PriorityClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchSchedulingV1PriorityClassOutput>;
@@ -6496,7 +6492,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchSchedulingV1PriorityClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchSchedulingV1PriorityClassInput,
     outputSchema: WatchSchedulingV1PriorityClassOutput,
   }));
@@ -6516,7 +6512,7 @@ export interface WatchSchedulingV1PriorityClassListInput {
   watch?: boolean;
 }
 export const WatchSchedulingV1PriorityClassListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -6542,7 +6538,7 @@ export interface WatchSchedulingV1PriorityClassListOutput {
   type: string;
 }
 export const WatchSchedulingV1PriorityClassListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchSchedulingV1PriorityClassListOutput>;
@@ -6606,7 +6602,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchSchedulingV1PriorityClassList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchSchedulingV1PriorityClassListInput,
     outputSchema: WatchSchedulingV1PriorityClassListOutput,
   }));
@@ -6628,7 +6624,7 @@ export interface WatchSchedulingV1alpha3NamespacedPodGroupInput {
   watch?: boolean;
 }
 export const WatchSchedulingV1alpha3NamespacedPodGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -6656,7 +6652,7 @@ export interface WatchSchedulingV1alpha3NamespacedPodGroupOutput {
   type: string;
 }
 export const WatchSchedulingV1alpha3NamespacedPodGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedPodGroupOutput>;
@@ -6722,7 +6718,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchSchedulingV1alpha3NamespacedPodGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchSchedulingV1alpha3NamespacedPodGroupInput,
     outputSchema: WatchSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
@@ -6743,7 +6739,7 @@ export interface WatchSchedulingV1alpha3NamespacedPodGroupListInput {
   watch?: boolean;
 }
 export const WatchSchedulingV1alpha3NamespacedPodGroupListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -6770,7 +6766,7 @@ export interface WatchSchedulingV1alpha3NamespacedPodGroupListOutput {
   type: string;
 }
 export const WatchSchedulingV1alpha3NamespacedPodGroupListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedPodGroupListOutput>;
@@ -6835,7 +6831,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchSchedulingV1alpha3NamespacedPodGroupList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchSchedulingV1alpha3NamespacedPodGroupListInput,
     outputSchema: WatchSchedulingV1alpha3NamespacedPodGroupListOutput,
   }));
@@ -6857,7 +6853,7 @@ export interface WatchSchedulingV1alpha3NamespacedWorkloadInput {
   watch?: boolean;
 }
 export const WatchSchedulingV1alpha3NamespacedWorkloadInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -6885,7 +6881,7 @@ export interface WatchSchedulingV1alpha3NamespacedWorkloadOutput {
   type: string;
 }
 export const WatchSchedulingV1alpha3NamespacedWorkloadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedWorkloadOutput>;
@@ -6951,7 +6947,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchSchedulingV1alpha3NamespacedWorkload =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchSchedulingV1alpha3NamespacedWorkloadInput,
     outputSchema: WatchSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
@@ -6972,7 +6968,7 @@ export interface WatchSchedulingV1alpha3NamespacedWorkloadListInput {
   watch?: boolean;
 }
 export const WatchSchedulingV1alpha3NamespacedWorkloadListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -6999,7 +6995,7 @@ export interface WatchSchedulingV1alpha3NamespacedWorkloadListOutput {
   type: string;
 }
 export const WatchSchedulingV1alpha3NamespacedWorkloadListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedWorkloadListOutput>;
@@ -7064,7 +7060,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchSchedulingV1alpha3NamespacedWorkloadList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchSchedulingV1alpha3NamespacedWorkloadListInput,
     outputSchema: WatchSchedulingV1alpha3NamespacedWorkloadListOutput,
   }));
@@ -7084,7 +7080,7 @@ export interface WatchSchedulingV1alpha3PodGroupListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchSchedulingV1alpha3PodGroupListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -7110,7 +7106,7 @@ export interface WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput {
   type: string;
 }
 export const WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput>;
@@ -7174,7 +7170,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchSchedulingV1alpha3PodGroupListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchSchedulingV1alpha3PodGroupListForAllNamespacesInput,
     outputSchema: WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput,
   }));
@@ -7194,7 +7190,7 @@ export interface WatchSchedulingV1alpha3WorkloadListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchSchedulingV1alpha3WorkloadListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -7220,7 +7216,7 @@ export interface WatchSchedulingV1alpha3WorkloadListForAllNamespacesOutput {
   type: string;
 }
 export const WatchSchedulingV1alpha3WorkloadListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchSchedulingV1alpha3WorkloadListForAllNamespacesOutput>;
@@ -7284,7 +7280,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchSchedulingV1alpha3WorkloadListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchSchedulingV1alpha3WorkloadListForAllNamespacesInput,
     outputSchema: WatchSchedulingV1alpha3WorkloadListForAllNamespacesOutput,
   }));

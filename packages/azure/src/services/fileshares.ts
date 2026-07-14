@@ -14,7 +14,7 @@ export interface FileShareGetLimitsInput {
   location: string;
 }
 export const FileShareGetLimitsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -51,7 +51,7 @@ export interface FileShareGetLimitsOutput {
   };
 }
 export const FileShareGetLimitsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
       limits: Schema.Struct({
         maxFileShares: Schema.Number,
@@ -84,7 +84,7 @@ export const FileShareGetLimitsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const FileShareGetLimits = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileShareGetLimits = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileShareGetLimitsInput,
   outputSchema: FileShareGetLimitsOutput,
 }));
@@ -95,7 +95,7 @@ export interface FileShareGetProvisioningRecommendationInput {
   properties: { provisionedStorageGiB: number };
 }
 export const FileShareGetProvisioningRecommendationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
@@ -118,7 +118,7 @@ export interface FileShareGetProvisioningRecommendationOutput {
   };
 }
 export const FileShareGetProvisioningRecommendationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
       provisionedIOPerSec: Schema.Number,
       provisionedThroughputMiBPerSec: Schema.Number,
@@ -137,7 +137,7 @@ export const FileShareGetProvisioningRecommendationOutput =
  * @param location - The name of the Azure region.
  */
 export const FileShareGetProvisioningRecommendation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FileShareGetProvisioningRecommendationInput,
     outputSchema: FileShareGetProvisioningRecommendationOutput,
   }));
@@ -147,7 +147,7 @@ export interface FileShareGetUsageDataInput {
   location: string;
 }
 export const FileShareGetUsageDataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -163,7 +163,7 @@ export interface FileShareGetUsageDataOutput {
   properties: { liveShares: { fileShareCount: number } };
 }
 export const FileShareGetUsageDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
       liveShares: Schema.Struct({
         fileShareCount: Schema.Number,
@@ -179,12 +179,10 @@ export const FileShareGetUsageDataOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const FileShareGetUsageData = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FileShareGetUsageDataInput,
-    outputSchema: FileShareGetUsageDataOutput,
-  }),
-);
+export const FileShareGetUsageData = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileShareGetUsageDataInput,
+  outputSchema: FileShareGetUsageDataOutput,
+}));
 // Input Schema
 export interface FileSharesCheckNameAvailabilityInput {
   subscriptionId: string;
@@ -193,7 +191,7 @@ export interface FileSharesCheckNameAvailabilityInput {
   type?: string;
 }
 export const FileSharesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -213,7 +211,7 @@ export interface FileSharesCheckNameAvailabilityOutput {
   message?: string;
 }
 export const FileSharesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -230,7 +228,7 @@ export const FileSharesCheckNameAvailabilityOutput =
  * @param type - The resource type.
  */
 export const FileSharesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FileSharesCheckNameAvailabilityInput,
     outputSchema: FileSharesCheckNameAvailabilityOutput,
   }));
@@ -290,7 +288,7 @@ export interface FileSharesCreateOrUpdateInput {
   location: string;
 }
 export const FileSharesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -405,7 +403,7 @@ export interface FileSharesCreateOrUpdateOutput {
   };
 }
 export const FileSharesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -434,19 +432,17 @@ export const FileSharesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The resource name of the file share, as seen by the administrator through Azure Resource Manager.
  */
-export const FileSharesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FileSharesCreateOrUpdateInput,
-    outputSchema: FileSharesCreateOrUpdateOutput,
-  }),
-);
+export const FileSharesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileSharesCreateOrUpdateInput,
+  outputSchema: FileSharesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface FileSharesDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceName: string;
 }
-export const FileSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -461,7 +457,7 @@ export const FileSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type FileSharesDeleteOutput = void;
 export const FileSharesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileSharesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FileSharesDeleteOutput>;
 
 // The operation
 /**
@@ -472,7 +468,7 @@ export const FileSharesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The resource name of the file share, as seen by the administrator through Azure Resource Manager.
  */
-export const FileSharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesDeleteInput,
   outputSchema: FileSharesDeleteOutput,
 }));
@@ -482,7 +478,7 @@ export interface FileSharesGetInput {
   resourceGroupName: string;
   resourceName: string;
 }
-export const FileSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -508,7 +504,7 @@ export interface FileSharesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const FileSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -537,7 +533,7 @@ export const FileSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The resource name of the file share, as seen by the administrator through Azure Resource Manager.
  */
-export const FileSharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesGetInput,
   outputSchema: FileSharesGetOutput,
 }));
@@ -547,7 +543,7 @@ export interface FileSharesListByParentInput {
   resourceGroupName: string;
 }
 export const FileSharesListByParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -576,7 +572,7 @@ export interface FileSharesListByParentOutput {
   nextLink?: string;
 }
 export const FileSharesListByParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -619,18 +615,16 @@ export const FileSharesListByParentOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const FileSharesListByParent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FileSharesListByParentInput,
-    outputSchema: FileSharesListByParentOutput,
-  }),
-);
+export const FileSharesListByParent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileSharesListByParentInput,
+  outputSchema: FileSharesListByParentOutput,
+}));
 // Input Schema
 export interface FileSharesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const FileSharesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -658,7 +652,7 @@ export interface FileSharesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const FileSharesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -701,7 +695,7 @@ export const FileSharesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const FileSharesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FileSharesListBySubscriptionInput,
     outputSchema: FileSharesListBySubscriptionOutput,
   }));
@@ -718,7 +712,7 @@ export interface FileShareSnapshotCreateOrUpdateInput {
   };
 }
 export const FileShareSnapshotCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -741,7 +735,7 @@ export const FileShareSnapshotCreateOrUpdateInput =
 // Output Schema
 export type FileShareSnapshotCreateOrUpdateOutput = void;
 export const FileShareSnapshotCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileShareSnapshotCreateOrUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FileShareSnapshotCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -754,7 +748,7 @@ export const FileShareSnapshotCreateOrUpdateOutput =
  * @param name - The name of the FileShareSnapshot
  */
 export const FileShareSnapshotCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FileShareSnapshotCreateOrUpdateInput,
     outputSchema: FileShareSnapshotCreateOrUpdateOutput,
   }));
@@ -766,7 +760,7 @@ export interface FileShareSnapshotDeleteInput {
   name: string;
 }
 export const FileShareSnapshotDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -782,7 +776,7 @@ export const FileShareSnapshotDeleteInput =
 // Output Schema
 export type FileShareSnapshotDeleteOutput = void;
 export const FileShareSnapshotDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileShareSnapshotDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FileShareSnapshotDeleteOutput>;
 
 // The operation
 /**
@@ -794,12 +788,10 @@ export const FileShareSnapshotDeleteOutput =
  * @param resourceName - The resource name of the file share, as seen by the administrator through Azure Resource Manager.
  * @param name - The name of the FileShareSnapshot
  */
-export const FileShareSnapshotDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FileShareSnapshotDeleteInput,
-    outputSchema: FileShareSnapshotDeleteOutput,
-  }),
-);
+export const FileShareSnapshotDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileShareSnapshotDeleteInput,
+  outputSchema: FileShareSnapshotDeleteOutput,
+}));
 // Input Schema
 export interface FileShareSnapshotGetInput {
   subscriptionId: string;
@@ -808,7 +800,7 @@ export interface FileShareSnapshotGetInput {
   name: string;
 }
 export const FileShareSnapshotGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -836,7 +828,7 @@ export interface FileShareSnapshotGetOutput {
   };
 }
 export const FileShareSnapshotGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -866,12 +858,10 @@ export const FileShareSnapshotGetOutput =
  * @param resourceName - The resource name of the file share, as seen by the administrator through Azure Resource Manager.
  * @param name - The name of the FileShareSnapshot
  */
-export const FileShareSnapshotGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FileShareSnapshotGetInput,
-    outputSchema: FileShareSnapshotGetOutput,
-  }),
-);
+export const FileShareSnapshotGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileShareSnapshotGetInput,
+  outputSchema: FileShareSnapshotGetOutput,
+}));
 // Input Schema
 export interface FileShareSnapshotListInput {
   subscriptionId: string;
@@ -879,7 +869,7 @@ export interface FileShareSnapshotListInput {
   resourceName: string;
 }
 export const FileShareSnapshotListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -909,7 +899,7 @@ export interface FileShareSnapshotListOutput {
   nextLink?: string;
 }
 export const FileShareSnapshotListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -953,12 +943,10 @@ export const FileShareSnapshotListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The resource name of the file share, as seen by the administrator through Azure Resource Manager.
  */
-export const FileShareSnapshotList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FileShareSnapshotListInput,
-    outputSchema: FileShareSnapshotListOutput,
-  }),
-);
+export const FileShareSnapshotList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileShareSnapshotListInput,
+  outputSchema: FileShareSnapshotListOutput,
+}));
 // Input Schema
 export interface FileShareSnapshotUpdateInput {
   subscriptionId: string;
@@ -968,7 +956,7 @@ export interface FileShareSnapshotUpdateInput {
   properties?: { metadata?: Record<string, string> };
 }
 export const FileShareSnapshotUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1001,7 +989,7 @@ export interface FileShareSnapshotUpdateOutput {
   };
 }
 export const FileShareSnapshotUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1031,12 +1019,10 @@ export const FileShareSnapshotUpdateOutput =
  * @param resourceName - The resource name of the file share, as seen by the administrator through Azure Resource Manager.
  * @param name - The name of the FileShareSnapshot
  */
-export const FileShareSnapshotUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FileShareSnapshotUpdateInput,
-    outputSchema: FileShareSnapshotUpdateOutput,
-  }),
-);
+export const FileShareSnapshotUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileShareSnapshotUpdateInput,
+  outputSchema: FileShareSnapshotUpdateOutput,
+}));
 // Input Schema
 export interface FileSharesUpdateInput {
   subscriptionId: string;
@@ -1055,7 +1041,7 @@ export interface FileSharesUpdateInput {
     publicNetworkAccess?: "Enabled" | "Disabled";
   };
 }
-export const FileSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -1107,27 +1093,25 @@ export interface FileSharesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FileSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<FileSharesUpdateOutput>;
+export const FileSharesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<FileSharesUpdateOutput>;
 
 // The operation
 /**
@@ -1138,15 +1122,13 @@ export const FileSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The resource name of the file share, as seen by the administrator through Azure Resource Manager.
  */
-export const FileSharesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesUpdateInput,
   outputSchema: FileSharesUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.FileShares/operations",
@@ -1170,7 +1152,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1200,7 +1182,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1233,7 +1215,7 @@ export interface PrivateEndpointConnectionsCreateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1298,7 +1280,7 @@ export interface PrivateEndpointConnectionsCreateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1330,7 +1312,7 @@ export const PrivateEndpointConnectionsCreateOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateInput,
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
@@ -1342,7 +1324,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1358,7 +1340,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1371,7 +1353,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -1383,7 +1365,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1411,7 +1393,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1442,7 +1424,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -1453,7 +1435,7 @@ export interface PrivateEndpointConnectionsListByFileShareInput {
   resourceName: string;
 }
 export const PrivateEndpointConnectionsListByFileShareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1483,7 +1465,7 @@ export interface PrivateEndpointConnectionsListByFileShareOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListByFileShareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1528,7 +1510,7 @@ export const PrivateEndpointConnectionsListByFileShareOutput =
  * @param resourceName - The resource name of the file share, as seen by the administrator through Azure Resource Manager.
  */
 export const PrivateEndpointConnectionsListByFileShare =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByFileShareInput,
     outputSchema: PrivateEndpointConnectionsListByFileShareOutput,
   }));
@@ -1540,7 +1522,7 @@ export interface PrivateLinkResourcesGetInput {
   privateLinkResourceName: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1568,7 +1550,7 @@ export interface PrivateLinkResourcesGetOutput {
   };
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1598,12 +1580,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param resourceName - The resource name of the file share, as seen by the administrator through Azure Resource Manager.
  * @param privateLinkResourceName - The name of the private link resource.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListInput {
   subscriptionId: string;
@@ -1611,7 +1591,7 @@ export interface PrivateLinkResourcesListInput {
   resourceName: string;
 }
 export const PrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1641,7 +1621,7 @@ export interface PrivateLinkResourcesListOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1685,9 +1665,7 @@ export const PrivateLinkResourcesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The resource name of the file share, as seen by the administrator through Azure Resource Manager.
  */
-export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesListInput,
-    outputSchema: PrivateLinkResourcesListOutput,
-  }),
-);
+export const PrivateLinkResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesListInput,
+  outputSchema: PrivateLinkResourcesListOutput,
+}));

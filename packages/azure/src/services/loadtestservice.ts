@@ -42,7 +42,7 @@ export interface LoadTestsCreateOrUpdateInput {
   location: string;
 }
 export const LoadTestsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     loadTestName: Schema.String.pipe(T.PathParam()),
@@ -114,7 +114,7 @@ export interface LoadTestsCreateOrUpdateOutput {
   };
 }
 export const LoadTestsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -143,19 +143,17 @@ export const LoadTestsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param loadTestName - Load Test name
  */
-export const LoadTestsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LoadTestsCreateOrUpdateInput,
-    outputSchema: LoadTestsCreateOrUpdateOutput,
-  }),
-);
+export const LoadTestsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LoadTestsCreateOrUpdateInput,
+  outputSchema: LoadTestsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface LoadTestsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   loadTestName: string;
 }
-export const LoadTestsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LoadTestsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   loadTestName: Schema.String.pipe(T.PathParam()),
@@ -170,7 +168,7 @@ export const LoadTestsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type LoadTestsDeleteOutput = void;
 export const LoadTestsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LoadTestsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LoadTestsDeleteOutput>;
 
 // The operation
 /**
@@ -181,7 +179,7 @@ export const LoadTestsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param loadTestName - Load Test name
  */
-export const LoadTestsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LoadTestsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LoadTestsDeleteInput,
   outputSchema: LoadTestsDeleteOutput,
 }));
@@ -191,7 +189,7 @@ export interface LoadTestsGetInput {
   resourceGroupName: string;
   loadTestName: string;
 }
-export const LoadTestsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LoadTestsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   loadTestName: Schema.String.pipe(T.PathParam()),
@@ -217,7 +215,7 @@ export interface LoadTestsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const LoadTestsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LoadTestsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -246,7 +244,7 @@ export const LoadTestsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param loadTestName - Load Test name
  */
-export const LoadTestsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LoadTestsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LoadTestsGetInput,
   outputSchema: LoadTestsGetOutput,
 }));
@@ -256,7 +254,7 @@ export interface LoadTestsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const LoadTestsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -285,7 +283,7 @@ export interface LoadTestsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const LoadTestsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -329,7 +327,7 @@ export const LoadTestsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const LoadTestsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LoadTestsListByResourceGroupInput,
     outputSchema: LoadTestsListByResourceGroupOutput,
   }));
@@ -338,7 +336,7 @@ export interface LoadTestsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const LoadTestsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -366,7 +364,7 @@ export interface LoadTestsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const LoadTestsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -408,12 +406,10 @@ export const LoadTestsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const LoadTestsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LoadTestsListBySubscriptionInput,
-    outputSchema: LoadTestsListBySubscriptionOutput,
-  }),
-);
+export const LoadTestsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LoadTestsListBySubscriptionInput,
+  outputSchema: LoadTestsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface LoadTestsListOutboundNetworkDependenciesEndpointsInput {
   subscriptionId: string;
@@ -421,7 +417,7 @@ export interface LoadTestsListOutboundNetworkDependenciesEndpointsInput {
   loadTestName: string;
 }
 export const LoadTestsListOutboundNetworkDependenciesEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     loadTestName: Schema.String.pipe(T.PathParam()),
@@ -446,7 +442,7 @@ export interface LoadTestsListOutboundNetworkDependenciesEndpointsOutput {
   nextLink?: string;
 }
 export const LoadTestsListOutboundNetworkDependenciesEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         category: Schema.optional(Schema.String),
@@ -480,7 +476,7 @@ export const LoadTestsListOutboundNetworkDependenciesEndpointsOutput =
  * @param loadTestName - Load Test name
  */
 export const LoadTestsListOutboundNetworkDependenciesEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LoadTestsListOutboundNetworkDependenciesEndpointsInput,
     outputSchema: LoadTestsListOutboundNetworkDependenciesEndpointsOutput,
   }));
@@ -514,7 +510,7 @@ export interface LoadTestsUpdateInput {
     };
   };
 }
-export const LoadTestsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LoadTestsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   loadTestName: Schema.String.pipe(T.PathParam()),
@@ -580,7 +576,7 @@ export interface LoadTestsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const LoadTestsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LoadTestsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -609,15 +605,13 @@ export const LoadTestsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param loadTestName - Load Test name
  */
-export const LoadTestsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LoadTestsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LoadTestsUpdateInput,
   outputSchema: LoadTestsUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.LoadTestService/operations",
@@ -641,7 +635,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -671,7 +665,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -682,7 +676,7 @@ export interface PlaywrightQuotasGetInput {
   playwrightQuotaName: "ExecutionMinutes";
 }
 export const PlaywrightQuotasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     playwrightQuotaName: Schema.Literals(["ExecutionMinutes"]).pipe(
@@ -711,7 +705,7 @@ export interface PlaywrightQuotasGetOutput {
   };
 }
 export const PlaywrightQuotasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -740,7 +734,7 @@ export const PlaywrightQuotasGetOutput =
  * @param location - The name of the Azure region.
  * @param playwrightQuotaName - The name of the PlaywrightQuota
  */
-export const PlaywrightQuotasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PlaywrightQuotasGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PlaywrightQuotasGetInput,
   outputSchema: PlaywrightQuotasGetOutput,
 }));
@@ -750,7 +744,7 @@ export interface PlaywrightQuotasListBySubscriptionInput {
   location: string;
 }
 export const PlaywrightQuotasListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -779,7 +773,7 @@ export interface PlaywrightQuotasListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PlaywrightQuotasListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -823,7 +817,7 @@ export const PlaywrightQuotasListBySubscriptionOutput =
  * @param location - The name of the Azure region.
  */
 export const PlaywrightQuotasListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PlaywrightQuotasListBySubscriptionInput,
     outputSchema: PlaywrightQuotasListBySubscriptionOutput,
   }));
@@ -835,7 +829,7 @@ export interface PlaywrightWorkspaceQuotasGetInput {
   quotaName: "ExecutionMinutes";
 }
 export const PlaywrightWorkspaceQuotasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     playwrightWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -863,7 +857,7 @@ export interface PlaywrightWorkspaceQuotasGetOutput {
   };
 }
 export const PlaywrightWorkspaceQuotasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -894,7 +888,7 @@ export const PlaywrightWorkspaceQuotasGetOutput =
  * @param quotaName - The name of the PlaywrightWorkspaceQuota
  */
 export const PlaywrightWorkspaceQuotasGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PlaywrightWorkspaceQuotasGetInput,
     outputSchema: PlaywrightWorkspaceQuotasGetOutput,
   }));
@@ -905,7 +899,7 @@ export interface PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceInput {
   playwrightWorkspaceName: string;
 }
 export const PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     playwrightWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -935,7 +929,7 @@ export interface PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceOutput {
   nextLink?: string;
 }
 export const PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -980,7 +974,7 @@ export const PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceOutput =
  * @param playwrightWorkspaceName - The name of the PlaywrightWorkspace
  */
 export const PlaywrightWorkspaceQuotasListByPlaywrightWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceInput,
     outputSchema: PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceOutput,
   }));
@@ -991,7 +985,7 @@ export interface PlaywrightWorkspacesCheckNameAvailabilityInput {
   type?: string;
 }
 export const PlaywrightWorkspacesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1010,7 +1004,7 @@ export interface PlaywrightWorkspacesCheckNameAvailabilityOutput {
   message?: string;
 }
 export const PlaywrightWorkspacesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -1026,7 +1020,7 @@ export const PlaywrightWorkspacesCheckNameAvailabilityOutput =
  * @param type - The resource type.
  */
 export const PlaywrightWorkspacesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PlaywrightWorkspacesCheckNameAvailabilityInput,
     outputSchema: PlaywrightWorkspacesCheckNameAvailabilityOutput,
   }));
@@ -1052,7 +1046,7 @@ export interface PlaywrightWorkspacesCreateOrUpdateInput {
   location: string;
 }
 export const PlaywrightWorkspacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     playwrightWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1101,7 +1095,7 @@ export interface PlaywrightWorkspacesCreateOrUpdateOutput {
   };
 }
 export const PlaywrightWorkspacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1131,7 +1125,7 @@ export const PlaywrightWorkspacesCreateOrUpdateOutput =
  * @param playwrightWorkspaceName - The name of the PlaywrightWorkspace
  */
 export const PlaywrightWorkspacesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PlaywrightWorkspacesCreateOrUpdateInput,
     outputSchema: PlaywrightWorkspacesCreateOrUpdateOutput,
   }));
@@ -1142,7 +1136,7 @@ export interface PlaywrightWorkspacesDeleteInput {
   playwrightWorkspaceName: string;
 }
 export const PlaywrightWorkspacesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     playwrightWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1157,7 +1151,7 @@ export const PlaywrightWorkspacesDeleteInput =
 // Output Schema
 export type PlaywrightWorkspacesDeleteOutput = void;
 export const PlaywrightWorkspacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PlaywrightWorkspacesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PlaywrightWorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -1168,12 +1162,10 @@ export const PlaywrightWorkspacesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param playwrightWorkspaceName - The name of the PlaywrightWorkspace
  */
-export const PlaywrightWorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PlaywrightWorkspacesDeleteInput,
-    outputSchema: PlaywrightWorkspacesDeleteOutput,
-  }),
-);
+export const PlaywrightWorkspacesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PlaywrightWorkspacesDeleteInput,
+  outputSchema: PlaywrightWorkspacesDeleteOutput,
+}));
 // Input Schema
 export interface PlaywrightWorkspacesGetInput {
   subscriptionId: string;
@@ -1181,7 +1173,7 @@ export interface PlaywrightWorkspacesGetInput {
   playwrightWorkspaceName: string;
 }
 export const PlaywrightWorkspacesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     playwrightWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1208,7 +1200,7 @@ export interface PlaywrightWorkspacesGetOutput {
   };
 }
 export const PlaywrightWorkspacesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1237,19 +1229,17 @@ export const PlaywrightWorkspacesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param playwrightWorkspaceName - The name of the PlaywrightWorkspace
  */
-export const PlaywrightWorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PlaywrightWorkspacesGetInput,
-    outputSchema: PlaywrightWorkspacesGetOutput,
-  }),
-);
+export const PlaywrightWorkspacesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PlaywrightWorkspacesGetInput,
+  outputSchema: PlaywrightWorkspacesGetOutput,
+}));
 // Input Schema
 export interface PlaywrightWorkspacesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const PlaywrightWorkspacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1278,7 +1268,7 @@ export interface PlaywrightWorkspacesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const PlaywrightWorkspacesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1322,7 +1312,7 @@ export const PlaywrightWorkspacesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const PlaywrightWorkspacesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PlaywrightWorkspacesListByResourceGroupInput,
     outputSchema: PlaywrightWorkspacesListByResourceGroupOutput,
   }));
@@ -1331,7 +1321,7 @@ export interface PlaywrightWorkspacesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const PlaywrightWorkspacesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1359,7 +1349,7 @@ export interface PlaywrightWorkspacesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PlaywrightWorkspacesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1402,7 +1392,7 @@ export const PlaywrightWorkspacesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const PlaywrightWorkspacesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PlaywrightWorkspacesListBySubscriptionInput,
     outputSchema: PlaywrightWorkspacesListBySubscriptionOutput,
   }));
@@ -1418,7 +1408,7 @@ export interface PlaywrightWorkspacesUpdateInput {
   };
 }
 export const PlaywrightWorkspacesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     playwrightWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1454,7 +1444,7 @@ export interface PlaywrightWorkspacesUpdateOutput {
   };
 }
 export const PlaywrightWorkspacesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1483,12 +1473,10 @@ export const PlaywrightWorkspacesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param playwrightWorkspaceName - The name of the PlaywrightWorkspace
  */
-export const PlaywrightWorkspacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PlaywrightWorkspacesUpdateInput,
-    outputSchema: PlaywrightWorkspacesUpdateOutput,
-  }),
-);
+export const PlaywrightWorkspacesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PlaywrightWorkspacesUpdateInput,
+  outputSchema: PlaywrightWorkspacesUpdateOutput,
+}));
 // Input Schema
 export interface QuotasCheckAvailabilityInput {
   subscriptionId: string;
@@ -1502,7 +1490,7 @@ export interface QuotasCheckAvailabilityInput {
   };
 }
 export const QuotasCheckAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     quotaBucketName: Schema.String.pipe(T.PathParam()),
@@ -1543,7 +1531,7 @@ export interface QuotasCheckAvailabilityOutput {
   properties?: { isAvailable?: boolean; availabilityStatus?: string };
 }
 export const QuotasCheckAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     type: Schema.String,
     systemData: Schema.optional(
@@ -1578,19 +1566,17 @@ export const QuotasCheckAvailabilityOutput =
  * @param location - The name of the Azure region.
  * @param quotaBucketName - The quota name.
  */
-export const QuotasCheckAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: QuotasCheckAvailabilityInput,
-    outputSchema: QuotasCheckAvailabilityOutput,
-  }),
-);
+export const QuotasCheckAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QuotasCheckAvailabilityInput,
+  outputSchema: QuotasCheckAvailabilityOutput,
+}));
 // Input Schema
 export interface QuotasGetInput {
   subscriptionId: string;
   location: string;
   quotaBucketName: string;
 }
-export const QuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotasGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   quotaBucketName: Schema.String.pipe(T.PathParam()),
@@ -1616,7 +1602,7 @@ export interface QuotasGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const QuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotasGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1645,7 +1631,7 @@ export const QuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param location - The name of the Azure region.
  * @param quotaBucketName - The quota name.
  */
-export const QuotasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QuotasGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: QuotasGetInput,
   outputSchema: QuotasGetOutput,
 }));
@@ -1654,7 +1640,7 @@ export interface QuotasListInput {
   subscriptionId: string;
   location: string;
 }
-export const QuotasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotasListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1682,7 +1668,7 @@ export interface QuotasListOutput {
   }[];
   nextLink?: string;
 }
-export const QuotasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotasListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1715,7 +1701,7 @@ export const QuotasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const QuotasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QuotasList = /*@__PURE__*/ API.make(() => ({
   inputSchema: QuotasListInput,
   outputSchema: QuotasListOutput,
 }));

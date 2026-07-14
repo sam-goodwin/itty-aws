@@ -9,7 +9,7 @@ export interface V1DeleteProjectTpaIntegrationInput {
   tpa_id: string;
 }
 export const V1DeleteProjectTpaIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     tpa_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -32,7 +32,7 @@ export interface V1DeleteProjectTpaIntegrationOutput {
   resolved_at?: string | null;
 }
 export const V1DeleteProjectTpaIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     type: Schema.String,
     oidc_issuer_url: Schema.optional(Schema.NullOr(Schema.String)),
@@ -51,7 +51,7 @@ export const V1DeleteProjectTpaIntegrationOutput =
  * @param ref - Project ref
  */
 export const v1DeleteProjectTpaIntegration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1DeleteProjectTpaIntegrationInput,
     outputSchema: V1DeleteProjectTpaIntegrationOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

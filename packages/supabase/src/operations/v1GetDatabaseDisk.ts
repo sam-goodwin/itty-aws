@@ -7,11 +7,9 @@ import { BadRequest, Forbidden } from "../errors.ts";
 export interface V1GetDatabaseDiskInput {
   ref: string;
 }
-export const V1GetDatabaseDiskInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const V1GetDatabaseDiskInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({ method: "GET", path: "/v1/projects/{ref}/config/disk" }),
 ) as unknown as Schema.Codec<V1GetDatabaseDiskInput>;
 
@@ -23,7 +21,7 @@ export interface V1GetDatabaseDiskOutput {
   last_modified_at?: string;
 }
 export const V1GetDatabaseDiskOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attributes: Schema.Union([
       Schema.Struct({
         iops: Schema.Number,
@@ -46,7 +44,7 @@ export const V1GetDatabaseDiskOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetDatabaseDisk = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetDatabaseDisk = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetDatabaseDiskInput,
   outputSchema: V1GetDatabaseDiskOutput,
   errors: [BadRequest, Forbidden] as const,

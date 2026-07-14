@@ -11,7 +11,7 @@ import * as Redacted from "effect/Redacted";
 export interface GetAccountInput {
   expand?: string;
 }
-export const GetAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAccountInput = /*@__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -1033,7 +1033,7 @@ export interface GetAccountOutput {
   };
   type?: "custom" | "express" | "none" | "standard";
 }
-export const GetAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAccountOutput = /*@__PURE__*/ Schema.Struct({
   business_profile: Schema.optional(
     Schema.NullOr(
       Schema.Struct({
@@ -2443,7 +2443,7 @@ export const GetAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAccountInput,
   outputSchema: GetAccountOutput,
 }));

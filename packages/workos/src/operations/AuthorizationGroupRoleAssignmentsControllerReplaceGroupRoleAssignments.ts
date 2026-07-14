@@ -14,7 +14,7 @@ export interface AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssi
   }>;
 }
 export const AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     group_id: Schema.String.pipe(T.PathParam()),
     role_assignments: Schema.Array(
       Schema.Struct({
@@ -46,7 +46,7 @@ export interface AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssi
   list_metadata: { before: string | null; after: string | null };
 }
 export const AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     data: Schema.Array(
       Schema.Struct({
@@ -80,7 +80,7 @@ export const AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignme
  * @param group_id - The ID of the group.
  */
 export const AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsInput,
     outputSchema:

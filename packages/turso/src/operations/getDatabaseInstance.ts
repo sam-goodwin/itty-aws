@@ -10,7 +10,7 @@ export interface GetDatabaseInstanceInput {
   instanceName: string;
 }
 export const GetDatabaseInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -32,7 +32,7 @@ export interface GetDatabaseInstanceOutput {
   };
 }
 export const GetDatabaseInstanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instance: Schema.optional(
       Schema.Struct({
         uuid: Schema.optional(Schema.String),
@@ -54,7 +54,7 @@ export const GetDatabaseInstanceOutput =
  * @param databaseName - The name of the database.
  * @param instanceName - The name of the instance (location code).
  */
-export const getDatabaseInstance = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDatabaseInstance = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDatabaseInstanceInput,
   outputSchema: GetDatabaseInstanceOutput,
   errors: [NotFound] as const,

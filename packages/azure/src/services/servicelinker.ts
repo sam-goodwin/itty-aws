@@ -14,7 +14,7 @@ export interface ConfigurationNamesListInput {
   $skipToken?: string;
 }
 export const ConfigurationNamesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -75,7 +75,7 @@ export interface ConfigurationNamesListOutput {
   nextLink?: string;
 }
 export const ConfigurationNamesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -166,12 +166,10 @@ export const ConfigurationNamesListOutput =
  * @param $filter - OData filter options.
  * @param $skipToken - OData skipToken option for pagination.
  */
-export const ConfigurationNamesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationNamesListInput,
-    outputSchema: ConfigurationNamesListOutput,
-  }),
-);
+export const ConfigurationNamesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationNamesListInput,
+  outputSchema: ConfigurationNamesListOutput,
+}));
 // Input Schema
 export interface ConnectorCreateDryrunInput {
   subscriptionId: string;
@@ -192,7 +190,7 @@ export interface ConnectorCreateDryrunInput {
   };
 }
 export const ConnectorCreateDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -254,7 +252,7 @@ export interface ConnectorCreateDryrunOutput {
   };
 }
 export const ConnectorCreateDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -284,12 +282,10 @@ export const ConnectorCreateDryrunOutput =
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const ConnectorCreateDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectorCreateDryrunInput,
-    outputSchema: ConnectorCreateDryrunOutput,
-  }),
-);
+export const ConnectorCreateDryrun = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorCreateDryrunInput,
+  outputSchema: ConnectorCreateDryrunOutput,
+}));
 // Input Schema
 export interface ConnectorCreateOrUpdateInput {
   subscriptionId: string;
@@ -383,7 +379,7 @@ export interface ConnectorCreateOrUpdateInput {
   };
 }
 export const ConnectorCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -557,7 +553,7 @@ export interface ConnectorCreateOrUpdateOutput {
   };
 }
 export const ConnectorCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -587,12 +583,10 @@ export const ConnectorCreateOrUpdateOutput =
  * @param connectorName - The name of resource.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectorCreateOrUpdateInput,
-    outputSchema: ConnectorCreateOrUpdateOutput,
-  }),
-);
+export const ConnectorCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorCreateOrUpdateInput,
+  outputSchema: ConnectorCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ConnectorDeleteInput {
   subscriptionId: string;
@@ -600,7 +594,7 @@ export interface ConnectorDeleteInput {
   location: string;
   connectorName: string;
 }
-export const ConnectorDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -616,7 +610,7 @@ export const ConnectorDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ConnectorDeleteOutput = void;
 export const ConnectorDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorDeleteOutput>;
 
 // The operation
 /**
@@ -628,7 +622,7 @@ export const ConnectorDeleteOutput =
  * @param connectorName - The name of resource.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorDeleteInput,
   outputSchema: ConnectorDeleteOutput,
 }));
@@ -640,7 +634,7 @@ export interface ConnectorDeleteDryrunInput {
   dryrunName: string;
 }
 export const ConnectorDeleteDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -656,7 +650,7 @@ export const ConnectorDeleteDryrunInput =
 // Output Schema
 export type ConnectorDeleteDryrunOutput = void;
 export const ConnectorDeleteDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorDeleteDryrunOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorDeleteDryrunOutput>;
 
 // The operation
 /**
@@ -668,12 +662,10 @@ export const ConnectorDeleteDryrunOutput =
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const ConnectorDeleteDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectorDeleteDryrunInput,
-    outputSchema: ConnectorDeleteDryrunOutput,
-  }),
-);
+export const ConnectorDeleteDryrun = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorDeleteDryrunInput,
+  outputSchema: ConnectorDeleteDryrunOutput,
+}));
 // Input Schema
 export interface ConnectorGenerateConfigurationsInput {
   subscriptionId: string;
@@ -703,7 +695,7 @@ export interface ConnectorGenerateConfigurationsInput {
   configurationStore?: { appConfigurationId?: string | null };
 }
 export const ConnectorGenerateConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -768,7 +760,7 @@ export interface ConnectorGenerateConfigurationsOutput {
   }[];
 }
 export const ConnectorGenerateConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurations: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -797,7 +789,7 @@ export const ConnectorGenerateConfigurationsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConnectorGenerateConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectorGenerateConfigurationsInput,
     outputSchema: ConnectorGenerateConfigurationsOutput,
   }));
@@ -808,7 +800,7 @@ export interface ConnectorGetInput {
   location: string;
   connectorName: string;
 }
-export const ConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -835,7 +827,7 @@ export interface ConnectorGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -865,7 +857,7 @@ export const ConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param connectorName - The name of resource.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorGetInput,
   outputSchema: ConnectorGetOutput,
 }));
@@ -877,7 +869,7 @@ export interface ConnectorGetDryrunInput {
   dryrunName: string;
 }
 export const ConnectorGetDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -905,7 +897,7 @@ export interface ConnectorGetDryrunOutput {
   };
 }
 export const ConnectorGetDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -935,7 +927,7 @@ export const ConnectorGetDryrunOutput =
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const ConnectorGetDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorGetDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorGetDryrunInput,
   outputSchema: ConnectorGetDryrunOutput,
 }));
@@ -945,7 +937,7 @@ export interface ConnectorListInput {
   resourceGroupName: string;
   location: string;
 }
-export const ConnectorListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -974,7 +966,7 @@ export interface ConnectorListOutput {
     };
   }[];
 }
-export const ConnectorListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.NullOr(Schema.String)),
   value: Schema.optional(
     Schema.Array(
@@ -1020,7 +1012,7 @@ export const ConnectorListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorListInput,
   outputSchema: ConnectorListOutput,
 }));
@@ -1031,7 +1023,7 @@ export interface ConnectorListDryrunInput {
   location: string;
 }
 export const ConnectorListDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -1061,7 +1053,7 @@ export interface ConnectorListDryrunOutput {
   }[];
 }
 export const ConnectorListDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
       Schema.Array(
@@ -1107,7 +1099,7 @@ export const ConnectorListDryrunOutput =
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorListDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorListDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorListDryrunInput,
   outputSchema: ConnectorListDryrunOutput,
 }));
@@ -1195,7 +1187,7 @@ export interface ConnectorUpdateInput {
     };
   };
 }
-export const ConnectorUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -1356,7 +1348,7 @@ export interface ConnectorUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ConnectorUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1386,7 +1378,7 @@ export const ConnectorUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param connectorName - The name of resource.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorUpdateInput,
   outputSchema: ConnectorUpdateOutput,
 }));
@@ -1410,7 +1402,7 @@ export interface ConnectorUpdateDryrunInput {
   };
 }
 export const ConnectorUpdateDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -1472,7 +1464,7 @@ export interface ConnectorUpdateDryrunOutput {
   };
 }
 export const ConnectorUpdateDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1502,12 +1494,10 @@ export const ConnectorUpdateDryrunOutput =
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const ConnectorUpdateDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectorUpdateDryrunInput,
-    outputSchema: ConnectorUpdateDryrunOutput,
-  }),
-);
+export const ConnectorUpdateDryrun = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorUpdateDryrunInput,
+  outputSchema: ConnectorUpdateDryrunOutput,
+}));
 // Input Schema
 export interface ConnectorValidateInput {
   subscriptionId: string;
@@ -1515,14 +1505,12 @@ export interface ConnectorValidateInput {
   location: string;
   connectorName: string;
 }
-export const ConnectorValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-    connectorName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ConnectorValidateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  connectorName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}/validate",
@@ -1560,7 +1548,7 @@ export interface ConnectorValidateOutput {
   status?: string | null;
 }
 export const ConnectorValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         linkerName: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1612,7 +1600,7 @@ export const ConnectorValidateOutput =
  * @param connectorName - The name of resource.
  * @param api-version - The API version to use for this operation.
  */
-export const ConnectorValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorValidate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorValidateInput,
   outputSchema: ConnectorValidateOutput,
 }));
@@ -1707,7 +1695,7 @@ export interface LinkerCreateOrUpdateInput {
   };
 }
 export const LinkerCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     linkerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
@@ -1879,7 +1867,7 @@ export interface LinkerCreateOrUpdateOutput {
   };
 }
 export const LinkerCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1907,18 +1895,16 @@ export const LinkerCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param linkerName - The name Linker resource.
  */
-export const LinkerCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LinkerCreateOrUpdateInput,
-    outputSchema: LinkerCreateOrUpdateOutput,
-  }),
-);
+export const LinkerCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LinkerCreateOrUpdateInput,
+  outputSchema: LinkerCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface LinkerDeleteInput {
   resourceUri: string;
   linkerName: string;
 }
-export const LinkerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   linkerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1932,7 +1918,7 @@ export const LinkerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type LinkerDeleteOutput = void;
 export const LinkerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LinkerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LinkerDeleteOutput>;
 
 // The operation
 /**
@@ -1942,7 +1928,7 @@ export const LinkerDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param linkerName - The name Linker resource.
  */
-export const LinkerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkerDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkerDeleteInput,
   outputSchema: LinkerDeleteOutput,
 }));
@@ -1951,7 +1937,7 @@ export interface LinkerGetInput {
   resourceUri: string;
   linkerName: string;
 }
-export const LinkerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerGetInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   linkerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1976,7 +1962,7 @@ export interface LinkerGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const LinkerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2004,7 +1990,7 @@ export const LinkerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param linkerName - The name Linker resource.
  */
-export const LinkerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkerGetInput,
   outputSchema: LinkerGetOutput,
 }));
@@ -2012,7 +1998,7 @@ export const LinkerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface LinkerListInput {
   resourceUri: string;
 }
-export const LinkerListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerListInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2039,7 +2025,7 @@ export interface LinkerListOutput {
     };
   }[];
 }
-export const LinkerListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.NullOr(Schema.String)),
   value: Schema.optional(
     Schema.Array(
@@ -2083,7 +2069,7 @@ export const LinkerListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
  */
-export const LinkerList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkerList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkerListInput,
   outputSchema: LinkerListOutput,
 }));
@@ -2093,7 +2079,7 @@ export interface LinkerListConfigurationsInput {
   linkerName: string;
 }
 export const LinkerListConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     linkerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2115,7 +2101,7 @@ export interface LinkerListConfigurationsOutput {
   }[];
 }
 export const LinkerListConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurations: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2141,12 +2127,10 @@ export const LinkerListConfigurationsOutput =
  * @param api-version - The API version to use for this operation.
  * @param linkerName - The name Linker resource.
  */
-export const LinkerListConfigurations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LinkerListConfigurationsInput,
-    outputSchema: LinkerListConfigurationsOutput,
-  }),
-);
+export const LinkerListConfigurations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LinkerListConfigurationsInput,
+  outputSchema: LinkerListConfigurationsOutput,
+}));
 // Input Schema
 export interface LinkersCreateDryrunInput {
   resourceUri: string;
@@ -2165,7 +2149,7 @@ export interface LinkersCreateDryrunInput {
   };
 }
 export const LinkersCreateDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     dryrunName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -2225,7 +2209,7 @@ export interface LinkersCreateDryrunOutput {
   };
 }
 export const LinkersCreateDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2253,7 +2237,7 @@ export const LinkersCreateDryrunOutput =
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const LinkersCreateDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkersCreateDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkersCreateDryrunInput,
   outputSchema: LinkersCreateDryrunOutput,
 }));
@@ -2263,7 +2247,7 @@ export interface LinkersDeleteDryrunInput {
   dryrunName: string;
 }
 export const LinkersDeleteDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     dryrunName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2277,7 +2261,7 @@ export const LinkersDeleteDryrunInput =
 // Output Schema
 export type LinkersDeleteDryrunOutput = void;
 export const LinkersDeleteDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LinkersDeleteDryrunOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LinkersDeleteDryrunOutput>;
 
 // The operation
 /**
@@ -2287,7 +2271,7 @@ export const LinkersDeleteDryrunOutput =
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const LinkersDeleteDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkersDeleteDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkersDeleteDryrunInput,
   outputSchema: LinkersDeleteDryrunOutput,
 }));
@@ -2318,7 +2302,7 @@ export interface LinkersGenerateConfigurationsInput {
   configurationStore?: { appConfigurationId?: string | null };
 }
 export const LinkersGenerateConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     linkerName: Schema.String.pipe(T.PathParam()),
     deleteOrUpdateBehavior: Schema.optional(
@@ -2381,7 +2365,7 @@ export interface LinkersGenerateConfigurationsOutput {
   }[];
 }
 export const LinkersGenerateConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurations: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2408,7 +2392,7 @@ export const LinkersGenerateConfigurationsOutput =
  * @param linkerName - The name Linker resource.
  */
 export const LinkersGenerateConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LinkersGenerateConfigurationsInput,
     outputSchema: LinkersGenerateConfigurationsOutput,
   }));
@@ -2417,7 +2401,7 @@ export interface LinkersGetDryrunInput {
   resourceUri: string;
   dryrunName: string;
 }
-export const LinkersGetDryrunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkersGetDryrunInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   dryrunName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2442,27 +2426,25 @@ export interface LinkersGetDryrunOutput {
     lastModifiedAt?: string;
   };
 }
-export const LinkersGetDryrunOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<LinkersGetDryrunOutput>;
+export const LinkersGetDryrunOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<LinkersGetDryrunOutput>;
 
 // The operation
 /**
@@ -2472,7 +2454,7 @@ export const LinkersGetDryrunOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const LinkersGetDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkersGetDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkersGetDryrunInput,
   outputSchema: LinkersGetDryrunOutput,
 }));
@@ -2481,7 +2463,7 @@ export interface LinkersListDaprConfigurationsInput {
   resourceUri: string;
 }
 export const LinkersListDaprConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2525,7 +2507,7 @@ export interface LinkersListDaprConfigurationsOutput {
   nextLink?: string;
 }
 export const LinkersListDaprConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2587,7 +2569,7 @@ export const LinkersListDaprConfigurationsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const LinkersListDaprConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LinkersListDaprConfigurationsInput,
     outputSchema: LinkersListDaprConfigurationsOutput,
   }));
@@ -2595,11 +2577,9 @@ export const LinkersListDaprConfigurations =
 export interface LinkersListDryrunInput {
   resourceUri: string;
 }
-export const LinkersListDryrunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceUri: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const LinkersListDryrunInput = /*@__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns",
@@ -2625,7 +2605,7 @@ export interface LinkersListDryrunOutput {
   }[];
 }
 export const LinkersListDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
       Schema.Array(
@@ -2669,7 +2649,7 @@ export const LinkersListDryrunOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource to be connected.
  * @param api-version - The API version to use for this operation.
  */
-export const LinkersListDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkersListDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkersListDryrunInput,
   outputSchema: LinkersListDryrunOutput,
 }));
@@ -2691,7 +2671,7 @@ export interface LinkersUpdateDryrunInput {
   };
 }
 export const LinkersUpdateDryrunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     dryrunName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -2751,7 +2731,7 @@ export interface LinkersUpdateDryrunOutput {
   };
 }
 export const LinkersUpdateDryrunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2779,7 +2759,7 @@ export const LinkersUpdateDryrunOutput =
  * @param api-version - The API version to use for this operation.
  * @param dryrunName - The name of dryrun.
  */
-export const LinkersUpdateDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkersUpdateDryrun = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkersUpdateDryrunInput,
   outputSchema: LinkersUpdateDryrunOutput,
 }));
@@ -2865,7 +2845,7 @@ export interface LinkerUpdateInput {
     };
   };
 }
-export const LinkerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   linkerName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
@@ -3024,7 +3004,7 @@ export interface LinkerUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const LinkerUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3052,7 +3032,7 @@ export const LinkerUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param linkerName - The name Linker resource.
  */
-export const LinkerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkerUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkerUpdateInput,
   outputSchema: LinkerUpdateOutput,
 }));
@@ -3061,7 +3041,7 @@ export interface LinkerValidateInput {
   resourceUri: string;
   linkerName: string;
 }
-export const LinkerValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerValidateInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   linkerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3101,7 +3081,7 @@ export interface LinkerValidateOutput {
   resourceId?: string | null;
   status?: string | null;
 }
-export const LinkerValidateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkerValidateOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       linkerName: Schema.optional(Schema.NullOr(Schema.String)),
@@ -3149,15 +3129,13 @@ export const LinkerValidateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param linkerName - The name Linker resource.
  */
-export const LinkerValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkerValidate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkerValidateInput,
   outputSchema: LinkerValidateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ServiceLinker/operations",
@@ -3181,7 +3159,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3211,7 +3189,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

@@ -91,7 +91,7 @@ interface ListAdvancedTcpProtectionAllowlistsResponseResult {
   prefix: string;
 }
 const ListAdvancedTcpProtectionAllowlistsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       comment: Schema.String,
@@ -118,7 +118,7 @@ interface ListAdvancedTcpProtectionAllowlistsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListAdvancedTcpProtectionAllowlistsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -137,7 +137,7 @@ const ListAdvancedTcpProtectionAllowlistsResponseResultInfo =
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -149,7 +149,7 @@ interface Error2 {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -182,7 +182,7 @@ interface ListAdvancedTcpProtectionPrefixesResponseResult {
   prefix: string;
 }
 const ListAdvancedTcpProtectionPrefixesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       comment: Schema.String,
@@ -210,7 +210,7 @@ interface Body {
   /** The prefix to add in CIDR format. */
   prefix: string;
 }
-const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     comment: Schema.String,
     excluded: Schema.Boolean,
@@ -231,7 +231,7 @@ interface ListAdvancedTcpProtectionSynProtectionFiltersResponseResult {
   modifiedOn: string;
 }
 const ListAdvancedTcpProtectionSynProtectionFiltersResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
@@ -270,7 +270,7 @@ interface ListAdvancedTcpProtectionSynProtectionRulesResponseResult {
   scope: string;
 }
 const ListAdvancedTcpProtectionSynProtectionRulesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       burstSensitivity: Schema.String,
@@ -315,7 +315,7 @@ interface ListAdvancedTcpProtectionTcpFlowProtectionRulesResponseResult {
   scope: string;
 }
 const ListAdvancedTcpProtectionTcpFlowProtectionRulesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       burstSensitivity: Schema.String,
@@ -355,7 +355,7 @@ export interface ListAdvancedTcpProtectionAllowlistsRequest {
 }
 
 export const ListAdvancedTcpProtectionAllowlistsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -388,7 +388,7 @@ export interface ListAdvancedTcpProtectionAllowlistsResponse {
 }
 
 export const ListAdvancedTcpProtectionAllowlistsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAdvancedTcpProtectionAllowlistsResponseResult),
       resultInfo: Schema.optional(
@@ -410,7 +410,7 @@ export const listAdvancedTcpProtectionAllowlists: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionAllowlistsResponse,
   ListAdvancedTcpProtectionAllowlistsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvancedTcpProtectionAllowlistsRequest,
   output: ListAdvancedTcpProtectionAllowlistsResponse,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
@@ -435,7 +435,7 @@ export interface CreateAdvancedTcpProtectionAllowlistRequest {
 }
 
 export const CreateAdvancedTcpProtectionAllowlistRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       comment: Schema.String,
@@ -465,7 +465,7 @@ export interface CreateAdvancedTcpProtectionAllowlistResponse {
 }
 
 export const CreateAdvancedTcpProtectionAllowlistResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       comment: Schema.String,
@@ -497,7 +497,7 @@ export const createAdvancedTcpProtectionAllowlist: API.OperationMethod<
   CreateAdvancedTcpProtectionAllowlistResponse,
   CreateAdvancedTcpProtectionAllowlistError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAdvancedTcpProtectionAllowlistRequest,
   output: CreateAdvancedTcpProtectionAllowlistResponse,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
@@ -509,7 +509,7 @@ export interface BulkDeleteAdvancedTcpProtectionAllowlistsRequest {
 }
 
 export const BulkDeleteAdvancedTcpProtectionAllowlistsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -538,7 +538,7 @@ export interface BulkDeleteAdvancedTcpProtectionAllowlistsResponse {
 }
 
 export const BulkDeleteAdvancedTcpProtectionAllowlistsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -553,7 +553,7 @@ export const bulkDeleteAdvancedTcpProtectionAllowlists: API.OperationMethod<
   BulkDeleteAdvancedTcpProtectionAllowlistsResponse,
   BulkDeleteAdvancedTcpProtectionAllowlistsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteAdvancedTcpProtectionAllowlistsRequest,
   output: BulkDeleteAdvancedTcpProtectionAllowlistsResponse,
   errors: [],
@@ -570,7 +570,7 @@ export interface GetAdvancedTcpProtectionAllowlistItemRequest {
 }
 
 export const GetAdvancedTcpProtectionAllowlistItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -598,7 +598,7 @@ export interface GetAdvancedTcpProtectionAllowlistItemResponse {
 }
 
 export const GetAdvancedTcpProtectionAllowlistItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       comment: Schema.String,
@@ -631,7 +631,7 @@ export const getAdvancedTcpProtectionAllowlistItem: API.OperationMethod<
   GetAdvancedTcpProtectionAllowlistItemResponse,
   GetAdvancedTcpProtectionAllowlistItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdvancedTcpProtectionAllowlistItemRequest,
   output: GetAdvancedTcpProtectionAllowlistItemResponse,
   errors: [AllowlistEntryNotFound, AdvancedTcpProtectionNotEntitled, Forbidden],
@@ -648,7 +648,7 @@ export interface PatchAdvancedTcpProtectionAllowlistItemRequest {
 }
 
 export const PatchAdvancedTcpProtectionAllowlistItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -678,7 +678,7 @@ export interface PatchAdvancedTcpProtectionAllowlistItemResponse {
 }
 
 export const PatchAdvancedTcpProtectionAllowlistItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       comment: Schema.String,
@@ -711,7 +711,7 @@ export const patchAdvancedTcpProtectionAllowlistItem: API.OperationMethod<
   PatchAdvancedTcpProtectionAllowlistItemResponse,
   PatchAdvancedTcpProtectionAllowlistItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAdvancedTcpProtectionAllowlistItemRequest,
   output: PatchAdvancedTcpProtectionAllowlistItemResponse,
   errors: [AllowlistEntryNotFound, AdvancedTcpProtectionNotEntitled, Forbidden],
@@ -724,7 +724,7 @@ export interface DeleteAdvancedTcpProtectionAllowlistItemRequest {
 }
 
 export const DeleteAdvancedTcpProtectionAllowlistItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -754,7 +754,7 @@ export interface DeleteAdvancedTcpProtectionAllowlistItemResponse {
 }
 
 export const DeleteAdvancedTcpProtectionAllowlistItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -773,7 +773,7 @@ export const deleteAdvancedTcpProtectionAllowlistItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionAllowlistItemResponse,
   DeleteAdvancedTcpProtectionAllowlistItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionAllowlistItemRequest,
   output: DeleteAdvancedTcpProtectionAllowlistItemResponse,
   errors: [AllowlistEntryNotFound, AdvancedTcpProtectionNotEntitled, Forbidden],
@@ -795,7 +795,7 @@ export interface ListAdvancedTcpProtectionPrefixesRequest {
 }
 
 export const ListAdvancedTcpProtectionPrefixesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -828,7 +828,7 @@ export interface ListAdvancedTcpProtectionPrefixesResponse {
 }
 
 export const ListAdvancedTcpProtectionPrefixesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAdvancedTcpProtectionPrefixesResponseResult),
       resultInfo: Schema.optional(
@@ -847,7 +847,7 @@ export const listAdvancedTcpProtectionPrefixes: API.PaginatedOperationMethod<
   ListAdvancedTcpProtectionPrefixesResponse,
   ListAdvancedTcpProtectionPrefixesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvancedTcpProtectionPrefixesRequest,
   output: ListAdvancedTcpProtectionPrefixesResponse,
   errors: [],
@@ -872,7 +872,7 @@ export interface CreateAdvancedTcpProtectionPrefixRequest {
 }
 
 export const CreateAdvancedTcpProtectionPrefixRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       comment: Schema.String,
@@ -902,7 +902,7 @@ export interface CreateAdvancedTcpProtectionPrefixResponse {
 }
 
 export const CreateAdvancedTcpProtectionPrefixResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       comment: Schema.String,
@@ -931,7 +931,7 @@ export const createAdvancedTcpProtectionPrefix: API.OperationMethod<
   CreateAdvancedTcpProtectionPrefixResponse,
   CreateAdvancedTcpProtectionPrefixError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAdvancedTcpProtectionPrefixRequest,
   output: CreateAdvancedTcpProtectionPrefixResponse,
   errors: [],
@@ -945,7 +945,7 @@ export interface BulkCreateAdvancedTcpProtectionPrefixesRequest {
 }
 
 export const BulkCreateAdvancedTcpProtectionPrefixesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       body: Schema.Array(Body).pipe(T.HttpBody()),
@@ -969,7 +969,7 @@ export interface BulkCreateAdvancedTcpProtectionPrefixesResponse {
 }
 
 export const BulkCreateAdvancedTcpProtectionPrefixesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAdvancedTcpProtectionPrefixesResponseResult),
     }),
@@ -982,7 +982,7 @@ export const bulkCreateAdvancedTcpProtectionPrefixes: API.PaginatedOperationMeth
   BulkCreateAdvancedTcpProtectionPrefixesResponse,
   BulkCreateAdvancedTcpProtectionPrefixesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkCreateAdvancedTcpProtectionPrefixesRequest,
   output: BulkCreateAdvancedTcpProtectionPrefixesResponse,
   errors: [],
@@ -998,7 +998,7 @@ export interface BulkDeleteAdvancedTcpProtectionPrefixesRequest {
 }
 
 export const BulkDeleteAdvancedTcpProtectionPrefixesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -1027,7 +1027,7 @@ export interface BulkDeleteAdvancedTcpProtectionPrefixesResponse {
 }
 
 export const BulkDeleteAdvancedTcpProtectionPrefixesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -1042,7 +1042,7 @@ export const bulkDeleteAdvancedTcpProtectionPrefixes: API.OperationMethod<
   BulkDeleteAdvancedTcpProtectionPrefixesResponse,
   BulkDeleteAdvancedTcpProtectionPrefixesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteAdvancedTcpProtectionPrefixesRequest,
   output: BulkDeleteAdvancedTcpProtectionPrefixesResponse,
   errors: [],
@@ -1059,7 +1059,7 @@ export interface GetAdvancedTcpProtectionPrefixItemRequest {
 }
 
 export const GetAdvancedTcpProtectionPrefixItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1087,7 +1087,7 @@ export interface GetAdvancedTcpProtectionPrefixItemResponse {
 }
 
 export const GetAdvancedTcpProtectionPrefixItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       comment: Schema.String,
@@ -1116,7 +1116,7 @@ export const getAdvancedTcpProtectionPrefixItem: API.OperationMethod<
   GetAdvancedTcpProtectionPrefixItemResponse,
   GetAdvancedTcpProtectionPrefixItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdvancedTcpProtectionPrefixItemRequest,
   output: GetAdvancedTcpProtectionPrefixItemResponse,
   errors: [],
@@ -1133,7 +1133,7 @@ export interface PatchAdvancedTcpProtectionPrefixItemRequest {
 }
 
 export const PatchAdvancedTcpProtectionPrefixItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1163,7 +1163,7 @@ export interface PatchAdvancedTcpProtectionPrefixItemResponse {
 }
 
 export const PatchAdvancedTcpProtectionPrefixItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       comment: Schema.String,
@@ -1192,7 +1192,7 @@ export const patchAdvancedTcpProtectionPrefixItem: API.OperationMethod<
   PatchAdvancedTcpProtectionPrefixItemResponse,
   PatchAdvancedTcpProtectionPrefixItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAdvancedTcpProtectionPrefixItemRequest,
   output: PatchAdvancedTcpProtectionPrefixItemResponse,
   errors: [],
@@ -1205,7 +1205,7 @@ export interface DeleteAdvancedTcpProtectionPrefixItemRequest {
 }
 
 export const DeleteAdvancedTcpProtectionPrefixItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1235,7 +1235,7 @@ export interface DeleteAdvancedTcpProtectionPrefixItemResponse {
 }
 
 export const DeleteAdvancedTcpProtectionPrefixItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -1250,7 +1250,7 @@ export const deleteAdvancedTcpProtectionPrefixItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionPrefixItemResponse,
   DeleteAdvancedTcpProtectionPrefixItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionPrefixItemRequest,
   output: DeleteAdvancedTcpProtectionPrefixItemResponse,
   errors: [],
@@ -1266,7 +1266,7 @@ export interface GetAdvancedTcpProtectionStatusRequest {
 }
 
 export const GetAdvancedTcpProtectionStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -1282,7 +1282,7 @@ export interface GetAdvancedTcpProtectionStatusResponse {
 }
 
 export const GetAdvancedTcpProtectionStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       enabled: Schema.Boolean,
     }).pipe(T.ResponsePath("result")),
@@ -1295,7 +1295,7 @@ export const getAdvancedTcpProtectionStatus: API.OperationMethod<
   GetAdvancedTcpProtectionStatusResponse,
   GetAdvancedTcpProtectionStatusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdvancedTcpProtectionStatusRequest,
   output: GetAdvancedTcpProtectionStatusResponse,
   errors: [],
@@ -1309,7 +1309,7 @@ export interface PatchAdvancedTcpProtectionStatusRequest {
 }
 
 export const PatchAdvancedTcpProtectionStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       enabled: Schema.Boolean,
@@ -1326,7 +1326,7 @@ export interface PatchAdvancedTcpProtectionStatusResponse {
 }
 
 export const PatchAdvancedTcpProtectionStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       enabled: Schema.Boolean,
     }).pipe(T.ResponsePath("result")),
@@ -1339,7 +1339,7 @@ export const patchAdvancedTcpProtectionStatus: API.OperationMethod<
   PatchAdvancedTcpProtectionStatusResponse,
   PatchAdvancedTcpProtectionStatusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAdvancedTcpProtectionStatusRequest,
   output: PatchAdvancedTcpProtectionStatusResponse,
   errors: [],
@@ -1363,7 +1363,7 @@ export interface ListAdvancedTcpProtectionSynProtectionFiltersRequest {
 }
 
 export const ListAdvancedTcpProtectionSynProtectionFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -1396,7 +1396,7 @@ export interface ListAdvancedTcpProtectionSynProtectionFiltersResponse {
 }
 
 export const ListAdvancedTcpProtectionSynProtectionFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         ListAdvancedTcpProtectionSynProtectionFiltersResponseResult,
@@ -1420,7 +1420,7 @@ export const listAdvancedTcpProtectionSynProtectionFilters: API.PaginatedOperati
   ListAdvancedTcpProtectionSynProtectionFiltersResponse,
   ListAdvancedTcpProtectionSynProtectionFiltersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvancedTcpProtectionSynProtectionFiltersRequest,
   output: ListAdvancedTcpProtectionSynProtectionFiltersResponse,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
@@ -1443,7 +1443,7 @@ export interface CreateAdvancedTcpProtectionSynProtectionFilterRequest {
 }
 
 export const CreateAdvancedTcpProtectionSynProtectionFilterRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       expression: Schema.String,
@@ -1470,7 +1470,7 @@ export interface CreateAdvancedTcpProtectionSynProtectionFilterResponse {
 }
 
 export const CreateAdvancedTcpProtectionSynProtectionFilterResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
@@ -1500,7 +1500,7 @@ export const createAdvancedTcpProtectionSynProtectionFilter: API.OperationMethod
   CreateAdvancedTcpProtectionSynProtectionFilterResponse,
   CreateAdvancedTcpProtectionSynProtectionFilterError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAdvancedTcpProtectionSynProtectionFilterRequest,
   output: CreateAdvancedTcpProtectionSynProtectionFilterResponse,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
@@ -1512,7 +1512,7 @@ export interface BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest {
 }
 
 export const BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -1541,7 +1541,7 @@ export interface BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse {
 }
 
 export const BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -1557,7 +1557,7 @@ export const bulkDeleteAdvancedTcpProtectionSynProtectionFilters: API.OperationM
   BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse,
   BulkDeleteAdvancedTcpProtectionSynProtectionFiltersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest,
   output: BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse,
   errors: [],
@@ -1574,7 +1574,7 @@ export interface GetAdvancedTcpProtectionSynProtectionFilterItemRequest {
 }
 
 export const GetAdvancedTcpProtectionSynProtectionFilterItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       filterId: Schema.String.pipe(T.HttpPath("filterId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1600,7 +1600,7 @@ export interface GetAdvancedTcpProtectionSynProtectionFilterItemResponse {
 }
 
 export const GetAdvancedTcpProtectionSynProtectionFilterItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
@@ -1631,7 +1631,7 @@ export const getAdvancedTcpProtectionSynProtectionFilterItem: API.OperationMetho
   GetAdvancedTcpProtectionSynProtectionFilterItemResponse,
   GetAdvancedTcpProtectionSynProtectionFilterItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdvancedTcpProtectionSynProtectionFilterItemRequest,
   output: GetAdvancedTcpProtectionSynProtectionFilterItemResponse,
   errors: [
@@ -1652,7 +1652,7 @@ export interface PatchAdvancedTcpProtectionSynProtectionFilterItemRequest {
 }
 
 export const PatchAdvancedTcpProtectionSynProtectionFilterItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       filterId: Schema.String.pipe(T.HttpPath("filterId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1680,7 +1680,7 @@ export interface PatchAdvancedTcpProtectionSynProtectionFilterItemResponse {
 }
 
 export const PatchAdvancedTcpProtectionSynProtectionFilterItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
@@ -1711,7 +1711,7 @@ export const patchAdvancedTcpProtectionSynProtectionFilterItem: API.OperationMet
   PatchAdvancedTcpProtectionSynProtectionFilterItemResponse,
   PatchAdvancedTcpProtectionSynProtectionFilterItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAdvancedTcpProtectionSynProtectionFilterItemRequest,
   output: PatchAdvancedTcpProtectionSynProtectionFilterItemResponse,
   errors: [
@@ -1728,7 +1728,7 @@ export interface DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest {
 }
 
 export const DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       filterId: Schema.String.pipe(T.HttpPath("filterId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1758,7 +1758,7 @@ export interface DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse {
 }
 
 export const DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -1777,7 +1777,7 @@ export const deleteAdvancedTcpProtectionSynProtectionFilterItem: API.OperationMe
   DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse,
   DeleteAdvancedTcpProtectionSynProtectionFilterItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest,
   output: DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse,
   errors: [
@@ -1803,7 +1803,7 @@ export interface ListAdvancedTcpProtectionSynProtectionRulesRequest {
 }
 
 export const ListAdvancedTcpProtectionSynProtectionRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -1839,7 +1839,7 @@ export interface ListAdvancedTcpProtectionSynProtectionRulesResponse {
 }
 
 export const ListAdvancedTcpProtectionSynProtectionRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         ListAdvancedTcpProtectionSynProtectionRulesResponseResult,
@@ -1863,7 +1863,7 @@ export const listAdvancedTcpProtectionSynProtectionRules: API.PaginatedOperation
   ListAdvancedTcpProtectionSynProtectionRulesResponse,
   ListAdvancedTcpProtectionSynProtectionRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvancedTcpProtectionSynProtectionRulesRequest,
   output: ListAdvancedTcpProtectionSynProtectionRulesResponse,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
@@ -1894,7 +1894,7 @@ export interface CreateAdvancedTcpProtectionSynProtectionRuleRequest {
 }
 
 export const CreateAdvancedTcpProtectionSynProtectionRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       burstSensitivity: Schema.String,
@@ -1941,7 +1941,7 @@ export interface CreateAdvancedTcpProtectionSynProtectionRuleResponse {
 }
 
 export const CreateAdvancedTcpProtectionSynProtectionRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       burstSensitivity: Schema.String,
@@ -1979,7 +1979,7 @@ export const createAdvancedTcpProtectionSynProtectionRule: API.OperationMethod<
   CreateAdvancedTcpProtectionSynProtectionRuleResponse,
   CreateAdvancedTcpProtectionSynProtectionRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAdvancedTcpProtectionSynProtectionRuleRequest,
   output: CreateAdvancedTcpProtectionSynProtectionRuleResponse,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
@@ -1991,7 +1991,7 @@ export interface BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest {
 }
 
 export const BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -2020,7 +2020,7 @@ export interface BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse {
 }
 
 export const BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -2036,7 +2036,7 @@ export const bulkDeleteAdvancedTcpProtectionSynProtectionRules: API.OperationMet
   BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse,
   BulkDeleteAdvancedTcpProtectionSynProtectionRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest,
   output: BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse,
   errors: [],
@@ -2053,7 +2053,7 @@ export interface GetAdvancedTcpProtectionSynProtectionRuleItemRequest {
 }
 
 export const GetAdvancedTcpProtectionSynProtectionRuleItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2087,7 +2087,7 @@ export interface GetAdvancedTcpProtectionSynProtectionRuleItemResponse {
 }
 
 export const GetAdvancedTcpProtectionSynProtectionRuleItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       burstSensitivity: Schema.String,
@@ -2126,7 +2126,7 @@ export const getAdvancedTcpProtectionSynProtectionRuleItem: API.OperationMethod<
   GetAdvancedTcpProtectionSynProtectionRuleItemResponse,
   GetAdvancedTcpProtectionSynProtectionRuleItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdvancedTcpProtectionSynProtectionRuleItemRequest,
   output: GetAdvancedTcpProtectionSynProtectionRuleItemResponse,
   errors: [
@@ -2151,7 +2151,7 @@ export interface PatchAdvancedTcpProtectionSynProtectionRuleItemRequest {
 }
 
 export const PatchAdvancedTcpProtectionSynProtectionRuleItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2195,7 +2195,7 @@ export interface PatchAdvancedTcpProtectionSynProtectionRuleItemResponse {
 }
 
 export const PatchAdvancedTcpProtectionSynProtectionRuleItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       burstSensitivity: Schema.String,
@@ -2234,7 +2234,7 @@ export const patchAdvancedTcpProtectionSynProtectionRuleItem: API.OperationMetho
   PatchAdvancedTcpProtectionSynProtectionRuleItemResponse,
   PatchAdvancedTcpProtectionSynProtectionRuleItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAdvancedTcpProtectionSynProtectionRuleItemRequest,
   output: PatchAdvancedTcpProtectionSynProtectionRuleItemResponse,
   errors: [
@@ -2251,7 +2251,7 @@ export interface DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest {
 }
 
 export const DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2281,7 +2281,7 @@ export interface DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse {
 }
 
 export const DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -2300,7 +2300,7 @@ export const deleteAdvancedTcpProtectionSynProtectionRuleItem: API.OperationMeth
   DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse,
   DeleteAdvancedTcpProtectionSynProtectionRuleItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest,
   output: DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse,
   errors: [
@@ -2328,7 +2328,7 @@ export interface ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest {
 }
 
 export const ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -2361,7 +2361,7 @@ export interface ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse {
 }
 
 export const ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         ListAdvancedTcpProtectionSynProtectionFiltersResponseResult,
@@ -2385,7 +2385,7 @@ export const listAdvancedTcpProtectionTcpFlowProtectionFilters: API.PaginatedOpe
   ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse,
   ListAdvancedTcpProtectionTcpFlowProtectionFiltersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest,
   output: ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
@@ -2408,7 +2408,7 @@ export interface CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest {
 }
 
 export const CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       expression: Schema.String,
@@ -2435,7 +2435,7 @@ export interface CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse {
 }
 
 export const CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
@@ -2465,7 +2465,7 @@ export const createAdvancedTcpProtectionTcpFlowProtectionFilter: API.OperationMe
   CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse,
   CreateAdvancedTcpProtectionTcpFlowProtectionFilterError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest,
   output: CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
@@ -2477,7 +2477,7 @@ export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest 
 }
 
 export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -2506,7 +2506,7 @@ export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse
 }
 
 export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -2522,7 +2522,7 @@ export const bulkDeleteAdvancedTcpProtectionTcpFlowProtectionFilters: API.Operat
   BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse,
   BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest,
   output: BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse,
   errors: [],
@@ -2539,7 +2539,7 @@ export interface GetAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
 }
 
 export const GetAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       filterId: Schema.String.pipe(T.HttpPath("filterId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2565,7 +2565,7 @@ export interface GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {
 }
 
 export const GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
@@ -2596,7 +2596,7 @@ export const getAdvancedTcpProtectionTcpFlowProtectionFilterItem: API.OperationM
   GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse,
   GetAdvancedTcpProtectionTcpFlowProtectionFilterItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest,
   output: GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse,
   errors: [
@@ -2617,7 +2617,7 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
 }
 
 export const PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       filterId: Schema.String.pipe(T.HttpPath("filterId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2645,7 +2645,7 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {
 }
 
 export const PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
@@ -2676,7 +2676,7 @@ export const patchAdvancedTcpProtectionTcpFlowProtectionFilterItem: API.Operatio
   PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse,
   PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest,
   output: PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse,
   errors: [
@@ -2693,7 +2693,7 @@ export interface DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
 }
 
 export const DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       filterId: Schema.String.pipe(T.HttpPath("filterId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2723,7 +2723,7 @@ export interface DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse 
 }
 
 export const DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -2742,7 +2742,7 @@ export const deleteAdvancedTcpProtectionTcpFlowProtectionFilterItem: API.Operati
   DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse,
   DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest,
   output: DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse,
   errors: [
@@ -2768,7 +2768,7 @@ export interface ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest {
 }
 
 export const ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -2803,7 +2803,7 @@ export interface ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse {
 }
 
 export const ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         ListAdvancedTcpProtectionTcpFlowProtectionRulesResponseResult,
@@ -2827,7 +2827,7 @@ export const listAdvancedTcpProtectionTcpFlowProtectionRules: API.PaginatedOpera
   ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse,
   ListAdvancedTcpProtectionTcpFlowProtectionRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest,
   output: ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
@@ -2856,7 +2856,7 @@ export interface CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest {
 }
 
 export const CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       burstSensitivity: Schema.String,
@@ -2899,7 +2899,7 @@ export interface CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse {
 }
 
 export const CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       burstSensitivity: Schema.String,
@@ -2935,7 +2935,7 @@ export const createAdvancedTcpProtectionTcpFlowProtectionRule: API.OperationMeth
   CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse,
   CreateAdvancedTcpProtectionTcpFlowProtectionRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest,
   output: CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden],
@@ -2947,7 +2947,7 @@ export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest {
 }
 
 export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -2976,7 +2976,7 @@ export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse {
 }
 
 export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -2992,7 +2992,7 @@ export const bulkDeleteAdvancedTcpProtectionTcpFlowProtectionRules: API.Operatio
   BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse,
   BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest,
   output: BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse,
   errors: [],
@@ -3009,7 +3009,7 @@ export interface GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest {
 }
 
 export const GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3041,7 +3041,7 @@ export interface GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {
 }
 
 export const GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       burstSensitivity: Schema.String,
@@ -3078,7 +3078,7 @@ export const getAdvancedTcpProtectionTcpFlowProtectionRuleItem: API.OperationMet
   GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse,
   GetAdvancedTcpProtectionTcpFlowProtectionRuleItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest,
   output: GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse,
   errors: [
@@ -3101,7 +3101,7 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest {
 }
 
 export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3141,7 +3141,7 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {
 }
 
 export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       burstSensitivity: Schema.String,
@@ -3178,7 +3178,7 @@ export const patchAdvancedTcpProtectionTcpFlowProtectionRuleItem: API.OperationM
   PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse,
   PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest,
   output: PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse,
   errors: [
@@ -3195,7 +3195,7 @@ export interface DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest {
 }
 
 export const DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3225,7 +3225,7 @@ export interface DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {
 }
 
 export const DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -3244,7 +3244,7 @@ export const deleteAdvancedTcpProtectionTcpFlowProtectionRuleItem: API.Operation
   DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse,
   DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest,
   output: DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse,
   errors: [

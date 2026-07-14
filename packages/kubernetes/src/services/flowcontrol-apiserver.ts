@@ -81,7 +81,7 @@ export interface CreateFlowcontrolApiserverV1FlowSchemaInput {
   };
 }
 export const CreateFlowcontrolApiserverV1FlowSchemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -281,7 +281,7 @@ export interface CreateFlowcontrolApiserverV1FlowSchemaOutput {
   };
 }
 export const CreateFlowcontrolApiserverV1FlowSchemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -414,7 +414,7 @@ export const CreateFlowcontrolApiserverV1FlowSchemaOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createFlowcontrolApiserverV1FlowSchema =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateFlowcontrolApiserverV1FlowSchemaInput,
     outputSchema: CreateFlowcontrolApiserverV1FlowSchemaOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -487,7 +487,7 @@ export interface CreateFlowcontrolApiserverV1PriorityLevelConfigurationInput {
   };
 }
 export const CreateFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -654,7 +654,7 @@ export interface CreateFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
   };
 }
 export const CreateFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -758,7 +758,7 @@ export const CreateFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createFlowcontrolApiserverV1PriorityLevelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateFlowcontrolApiserverV1PriorityLevelConfigurationInput,
     outputSchema: CreateFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -785,7 +785,7 @@ export interface DeleteFlowcontrolApiserverV1CollectionFlowSchemaInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteFlowcontrolApiserverV1CollectionFlowSchemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -843,7 +843,7 @@ export interface DeleteFlowcontrolApiserverV1CollectionFlowSchemaOutput {
   status?: string;
 }
 export const DeleteFlowcontrolApiserverV1CollectionFlowSchemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -945,7 +945,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteFlowcontrolApiserverV1CollectionFlowSchema =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteFlowcontrolApiserverV1CollectionFlowSchemaInput,
     outputSchema: DeleteFlowcontrolApiserverV1CollectionFlowSchemaOutput,
   }));
@@ -971,7 +971,7 @@ export interface DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfiguratio
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1029,7 +1029,7 @@ export interface DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfiguratio
   status?: string;
 }
 export const DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1131,7 +1131,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteFlowcontrolApiserverV1CollectionPriorityLevelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationInput,
     outputSchema:
@@ -1151,7 +1151,7 @@ export interface DeleteFlowcontrolApiserverV1FlowSchemaInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteFlowcontrolApiserverV1FlowSchemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1201,7 +1201,7 @@ export interface DeleteFlowcontrolApiserverV1FlowSchemaOutput {
   status?: string;
 }
 export const DeleteFlowcontrolApiserverV1FlowSchemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1254,7 +1254,7 @@ export const DeleteFlowcontrolApiserverV1FlowSchemaOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteFlowcontrolApiserverV1FlowSchema =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteFlowcontrolApiserverV1FlowSchemaInput,
     outputSchema: DeleteFlowcontrolApiserverV1FlowSchemaOutput,
     errors: [NotFound, Conflict] as const,
@@ -1273,7 +1273,7 @@ export interface DeleteFlowcontrolApiserverV1PriorityLevelConfigurationInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1323,7 +1323,7 @@ export interface DeleteFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
   status?: string;
 }
 export const DeleteFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1376,7 +1376,7 @@ export const DeleteFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteFlowcontrolApiserverV1PriorityLevelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteFlowcontrolApiserverV1PriorityLevelConfigurationInput,
     outputSchema: DeleteFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
     errors: [NotFound, Conflict] as const,
@@ -1384,7 +1384,7 @@ export const deleteFlowcontrolApiserverV1PriorityLevelConfiguration =
 // Input Schema
 export interface GetFlowcontrolApiserverAPIGroupInput {}
 export const GetFlowcontrolApiserverAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/flowcontrol.apiserver.k8s.io/" }),
   ) as unknown as Schema.Codec<GetFlowcontrolApiserverAPIGroupInput>;
 
@@ -1398,7 +1398,7 @@ export interface GetFlowcontrolApiserverAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetFlowcontrolApiserverAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -1429,14 +1429,14 @@ export const GetFlowcontrolApiserverAPIGroupOutput =
  * get information of a group
  */
 export const getFlowcontrolApiserverAPIGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetFlowcontrolApiserverAPIGroupInput,
     outputSchema: GetFlowcontrolApiserverAPIGroupOutput,
   }));
 // Input Schema
 export interface GetFlowcontrolApiserverV1APIResourcesInput {}
 export const GetFlowcontrolApiserverV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/flowcontrol.apiserver.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetFlowcontrolApiserverV1APIResourcesInput>;
 
@@ -1459,7 +1459,7 @@ export interface GetFlowcontrolApiserverV1APIResourcesOutput {
   }[];
 }
 export const GetFlowcontrolApiserverV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -1484,7 +1484,7 @@ export const GetFlowcontrolApiserverV1APIResourcesOutput =
  * get available resources
  */
 export const getFlowcontrolApiserverV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetFlowcontrolApiserverV1APIResourcesInput,
     outputSchema: GetFlowcontrolApiserverV1APIResourcesOutput,
   }));
@@ -1504,7 +1504,7 @@ export interface ListFlowcontrolApiserverV1FlowSchemaInput {
   watch?: boolean;
 }
 export const ListFlowcontrolApiserverV1FlowSchemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -1603,7 +1603,7 @@ export interface ListFlowcontrolApiserverV1FlowSchemaOutput {
   };
 }
 export const ListFlowcontrolApiserverV1FlowSchemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1808,7 +1808,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listFlowcontrolApiserverV1FlowSchema =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListFlowcontrolApiserverV1FlowSchemaInput,
     outputSchema: ListFlowcontrolApiserverV1FlowSchemaOutput,
   }));
@@ -1828,7 +1828,7 @@ export interface ListFlowcontrolApiserverV1PriorityLevelConfigurationInput {
   watch?: boolean;
 }
 export const ListFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -1923,7 +1923,7 @@ export interface ListFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
   };
 }
 export const ListFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -2097,7 +2097,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listFlowcontrolApiserverV1PriorityLevelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListFlowcontrolApiserverV1PriorityLevelConfigurationInput,
     outputSchema: ListFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
   }));
@@ -2111,7 +2111,7 @@ export interface PatchFlowcontrolApiserverV1FlowSchemaInput {
   force?: boolean;
 }
 export const PatchFlowcontrolApiserverV1FlowSchemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2193,7 +2193,7 @@ export interface PatchFlowcontrolApiserverV1FlowSchemaOutput {
   };
 }
 export const PatchFlowcontrolApiserverV1FlowSchemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2328,7 +2328,7 @@ export const PatchFlowcontrolApiserverV1FlowSchemaOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchFlowcontrolApiserverV1FlowSchema =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchFlowcontrolApiserverV1FlowSchemaInput,
     outputSchema: PatchFlowcontrolApiserverV1FlowSchemaOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -2343,7 +2343,7 @@ export interface PatchFlowcontrolApiserverV1FlowSchemaStatusInput {
   force?: boolean;
 }
 export const PatchFlowcontrolApiserverV1FlowSchemaStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2425,7 +2425,7 @@ export interface PatchFlowcontrolApiserverV1FlowSchemaStatusOutput {
   };
 }
 export const PatchFlowcontrolApiserverV1FlowSchemaStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2560,7 +2560,7 @@ export const PatchFlowcontrolApiserverV1FlowSchemaStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchFlowcontrolApiserverV1FlowSchemaStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchFlowcontrolApiserverV1FlowSchemaStatusInput,
     outputSchema: PatchFlowcontrolApiserverV1FlowSchemaStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -2575,7 +2575,7 @@ export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationInput {
   force?: boolean;
 }
 export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2653,7 +2653,7 @@ export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
   };
 }
 export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2759,7 +2759,7 @@ export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchFlowcontrolApiserverV1PriorityLevelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchFlowcontrolApiserverV1PriorityLevelConfigurationInput,
     outputSchema: PatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -2774,7 +2774,7 @@ export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusInpu
   force?: boolean;
 }
 export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2852,7 +2852,7 @@ export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutp
   };
 }
 export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2958,7 +2958,7 @@ export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchFlowcontrolApiserverV1PriorityLevelConfigurationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput,
     outputSchema:
@@ -2971,7 +2971,7 @@ export interface ReadFlowcontrolApiserverV1FlowSchemaInput {
   pretty?: string;
 }
 export const ReadFlowcontrolApiserverV1FlowSchemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -3049,7 +3049,7 @@ export interface ReadFlowcontrolApiserverV1FlowSchemaOutput {
   };
 }
 export const ReadFlowcontrolApiserverV1FlowSchemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3180,7 +3180,7 @@ export const ReadFlowcontrolApiserverV1FlowSchemaOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readFlowcontrolApiserverV1FlowSchema =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadFlowcontrolApiserverV1FlowSchemaInput,
     outputSchema: ReadFlowcontrolApiserverV1FlowSchemaOutput,
     errors: [NotFound] as const,
@@ -3191,7 +3191,7 @@ export interface ReadFlowcontrolApiserverV1FlowSchemaStatusInput {
   pretty?: string;
 }
 export const ReadFlowcontrolApiserverV1FlowSchemaStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -3269,7 +3269,7 @@ export interface ReadFlowcontrolApiserverV1FlowSchemaStatusOutput {
   };
 }
 export const ReadFlowcontrolApiserverV1FlowSchemaStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3400,7 +3400,7 @@ export const ReadFlowcontrolApiserverV1FlowSchemaStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readFlowcontrolApiserverV1FlowSchemaStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadFlowcontrolApiserverV1FlowSchemaStatusInput,
     outputSchema: ReadFlowcontrolApiserverV1FlowSchemaStatusOutput,
     errors: [NotFound] as const,
@@ -3411,7 +3411,7 @@ export interface ReadFlowcontrolApiserverV1PriorityLevelConfigurationInput {
   pretty?: string;
 }
 export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -3485,7 +3485,7 @@ export interface ReadFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
   };
 }
 export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3587,7 +3587,7 @@ export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readFlowcontrolApiserverV1PriorityLevelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadFlowcontrolApiserverV1PriorityLevelConfigurationInput,
     outputSchema: ReadFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
     errors: [NotFound] as const,
@@ -3598,7 +3598,7 @@ export interface ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput
   pretty?: string;
 }
 export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -3672,7 +3672,7 @@ export interface ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutpu
   };
 }
 export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3774,7 +3774,7 @@ export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readFlowcontrolApiserverV1PriorityLevelConfigurationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput,
     outputSchema:
@@ -3854,7 +3854,7 @@ export interface ReplaceFlowcontrolApiserverV1FlowSchemaInput {
   };
 }
 export const ReplaceFlowcontrolApiserverV1FlowSchemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -4055,7 +4055,7 @@ export interface ReplaceFlowcontrolApiserverV1FlowSchemaOutput {
   };
 }
 export const ReplaceFlowcontrolApiserverV1FlowSchemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4189,7 +4189,7 @@ export const ReplaceFlowcontrolApiserverV1FlowSchemaOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceFlowcontrolApiserverV1FlowSchema =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceFlowcontrolApiserverV1FlowSchemaInput,
     outputSchema: ReplaceFlowcontrolApiserverV1FlowSchemaOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -4267,7 +4267,7 @@ export interface ReplaceFlowcontrolApiserverV1FlowSchemaStatusInput {
   };
 }
 export const ReplaceFlowcontrolApiserverV1FlowSchemaStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -4468,7 +4468,7 @@ export interface ReplaceFlowcontrolApiserverV1FlowSchemaStatusOutput {
   };
 }
 export const ReplaceFlowcontrolApiserverV1FlowSchemaStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4602,7 +4602,7 @@ export const ReplaceFlowcontrolApiserverV1FlowSchemaStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceFlowcontrolApiserverV1FlowSchemaStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceFlowcontrolApiserverV1FlowSchemaStatusInput,
     outputSchema: ReplaceFlowcontrolApiserverV1FlowSchemaStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -4676,7 +4676,7 @@ export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationInput {
   };
 }
 export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -4844,7 +4844,7 @@ export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
   };
 }
 export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4949,7 +4949,7 @@ export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceFlowcontrolApiserverV1PriorityLevelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationInput,
     outputSchema: ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -5023,7 +5023,7 @@ export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusIn
   };
 }
 export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -5191,7 +5191,7 @@ export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusOu
   };
 }
 export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5296,7 +5296,7 @@ export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceFlowcontrolApiserverV1PriorityLevelConfigurationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput,
     outputSchema:
@@ -5320,7 +5320,7 @@ export interface WatchFlowcontrolApiserverV1FlowSchemaInput {
   watch?: boolean;
 }
 export const WatchFlowcontrolApiserverV1FlowSchemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -5347,7 +5347,7 @@ export interface WatchFlowcontrolApiserverV1FlowSchemaOutput {
   type: string;
 }
 export const WatchFlowcontrolApiserverV1FlowSchemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchFlowcontrolApiserverV1FlowSchemaOutput>;
@@ -5412,7 +5412,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchFlowcontrolApiserverV1FlowSchema =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchFlowcontrolApiserverV1FlowSchemaInput,
     outputSchema: WatchFlowcontrolApiserverV1FlowSchemaOutput,
   }));
@@ -5432,7 +5432,7 @@ export interface WatchFlowcontrolApiserverV1FlowSchemaListInput {
   watch?: boolean;
 }
 export const WatchFlowcontrolApiserverV1FlowSchemaListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -5458,7 +5458,7 @@ export interface WatchFlowcontrolApiserverV1FlowSchemaListOutput {
   type: string;
 }
 export const WatchFlowcontrolApiserverV1FlowSchemaListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchFlowcontrolApiserverV1FlowSchemaListOutput>;
@@ -5522,7 +5522,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchFlowcontrolApiserverV1FlowSchemaList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchFlowcontrolApiserverV1FlowSchemaListInput,
     outputSchema: WatchFlowcontrolApiserverV1FlowSchemaListOutput,
   }));
@@ -5543,7 +5543,7 @@ export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationInput {
   watch?: boolean;
 }
 export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -5570,7 +5570,7 @@ export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
   type: string;
 }
 export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput>;
@@ -5635,7 +5635,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchFlowcontrolApiserverV1PriorityLevelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchFlowcontrolApiserverV1PriorityLevelConfigurationInput,
     outputSchema: WatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
   }));
@@ -5655,7 +5655,7 @@ export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationListInput 
   watch?: boolean;
 }
 export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -5681,7 +5681,7 @@ export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationListOutput
   type: string;
 }
 export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchFlowcontrolApiserverV1PriorityLevelConfigurationListOutput>;
@@ -5745,7 +5745,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchFlowcontrolApiserverV1PriorityLevelConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchFlowcontrolApiserverV1PriorityLevelConfigurationListInput,
     outputSchema:
       WatchFlowcontrolApiserverV1PriorityLevelConfigurationListOutput,

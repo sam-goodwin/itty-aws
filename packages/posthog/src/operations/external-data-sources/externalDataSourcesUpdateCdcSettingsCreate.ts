@@ -682,7 +682,7 @@ export interface ExternalDataSourcesUpdateCdcSettingsCreateInput {
   supports_column_selection?: boolean;
 }
 export const ExternalDataSourcesUpdateCdcSettingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     created_at: Schema.optional(Schema.String),
@@ -1378,7 +1378,7 @@ export const ExternalDataSourcesUpdateCdcSettingsCreateInput =
 // Output Schema
 export type ExternalDataSourcesUpdateCdcSettingsCreateOutput = void;
 export const ExternalDataSourcesUpdateCdcSettingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesUpdateCdcSettingsCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesUpdateCdcSettingsCreateOutput>;
 
 // The operation
 /**
@@ -1392,7 +1392,7 @@ export const ExternalDataSourcesUpdateCdcSettingsCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const externalDataSourcesUpdateCdcSettingsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesUpdateCdcSettingsCreateInput,
     outputSchema: ExternalDataSourcesUpdateCdcSettingsCreateOutput,
   }));

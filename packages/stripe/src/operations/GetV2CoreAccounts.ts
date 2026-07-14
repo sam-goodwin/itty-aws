@@ -8,13 +8,11 @@ export interface GetV2CoreAccountsInput {
   closed?: boolean;
   limit?: number;
 }
-export const GetV2CoreAccountsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    applied_configurations: Schema.optional(Schema.String),
-    closed: Schema.optional(Schema.Boolean),
-    limit: Schema.optional(Schema.Number),
-  },
-).pipe(
+export const GetV2CoreAccountsInput = /*@__PURE__*/ Schema.Struct({
+  applied_configurations: Schema.optional(Schema.String),
+  closed: Schema.optional(Schema.Boolean),
+  limit: Schema.optional(Schema.Number),
+}).pipe(
   T.Http({ method: "GET", path: "/v2/core/accounts" }),
 ) as unknown as Schema.Codec<GetV2CoreAccountsInput>;
 
@@ -1721,7 +1719,7 @@ export interface GetV2CoreAccountsOutput {
   previous_page_url: string | null;
 }
 export const GetV2CoreAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         applied_configurations: Schema.Array(
@@ -4529,7 +4527,7 @@ export const GetV2CoreAccountsOutput =
  * @param closed - Filter by whether the account is closed. If omitted, returns only Accounts that are not closed.
  * @param limit - The upper limit on the number of accounts returned by the List Account request.
  */
-export const GetV2CoreAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetV2CoreAccounts = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV2CoreAccountsInput,
   outputSchema: GetV2CoreAccountsOutput,
 }));

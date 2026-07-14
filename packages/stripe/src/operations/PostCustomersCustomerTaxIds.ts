@@ -131,7 +131,7 @@ export interface PostCustomersCustomerTaxIdsInput {
   value: string;
 }
 export const PostCustomersCustomerTaxIdsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     type: Schema.Literals([
@@ -405,7 +405,7 @@ export interface PostCustomersCustomerTaxIdsOutput {
   } | null;
 }
 export const PostCustomersCustomerTaxIdsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     country: Schema.NullOr(Schema.String),
     created: Schema.Number,
     customer: Schema.Unknown,
@@ -571,9 +571,7 @@ export const PostCustomersCustomerTaxIdsOutput =
  *
  * <p>Creates a new <code>tax_id</code> object for a customer.</p>
  */
-export const PostCustomersCustomerTaxIds = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostCustomersCustomerTaxIdsInput,
-    outputSchema: PostCustomersCustomerTaxIdsOutput,
-  }),
-);
+export const PostCustomersCustomerTaxIds = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostCustomersCustomerTaxIdsInput,
+  outputSchema: PostCustomersCustomerTaxIdsOutput,
+}));

@@ -13,7 +13,7 @@ export interface DashboardsStreamTilesRetrieveInput {
   variables_override?: string;
 }
 export const DashboardsStreamTilesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     filters_override: Schema.optional(Schema.String),
@@ -30,7 +30,7 @@ export const DashboardsStreamTilesRetrieveInput =
 // Output Schema
 export type DashboardsStreamTilesRetrieveOutput = void;
 export const DashboardsStreamTilesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardsStreamTilesRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardsStreamTilesRetrieveOutput>;
 
 // The operation
 /**
@@ -43,7 +43,7 @@ export const DashboardsStreamTilesRetrieveOutput =
  * @param variables_override - Object (or pre-encoded JSON string) to override dashboard variables for this request only (not persisted). Format: {"<variable_id>": {"code_name": "<code_name>", "variableId": "<variable_id>", "value": <new_value>}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `dashboard-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token.
  */
 export const dashboardsStreamTilesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DashboardsStreamTilesRetrieveInput,
     outputSchema: DashboardsStreamTilesRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

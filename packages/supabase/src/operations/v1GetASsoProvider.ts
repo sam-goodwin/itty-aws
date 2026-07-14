@@ -8,12 +8,10 @@ export interface V1GetASsoProviderInput {
   ref: string;
   provider_id: string;
 }
-export const V1GetASsoProviderInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-    provider_id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const V1GetASsoProviderInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  provider_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/v1/projects/{ref}/config/auth/sso/providers/{provider_id}",
@@ -55,7 +53,7 @@ export interface V1GetASsoProviderOutput {
   updated_at?: string;
 }
 export const V1GetASsoProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     saml: Schema.optional(
       Schema.Struct({
@@ -113,7 +111,7 @@ export const V1GetASsoProviderOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetASsoProvider = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetASsoProvider = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetASsoProviderInput,
   outputSchema: V1GetASsoProviderOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

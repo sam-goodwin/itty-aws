@@ -8,7 +8,7 @@ export interface DeleteV1SourceRepositoriesByIdInput {
   id: string;
 }
 export const DeleteV1SourceRepositoriesByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/source-repositories/{id}" }),
@@ -17,7 +17,7 @@ export const DeleteV1SourceRepositoriesByIdInput =
 // Output Schema
 export type DeleteV1SourceRepositoriesByIdOutput = void;
 export const DeleteV1SourceRepositoriesByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1SourceRepositoriesByIdOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1SourceRepositoriesByIdOutput>;
 
 // The operation
 /**
@@ -27,7 +27,7 @@ export const DeleteV1SourceRepositoriesByIdOutput =
  * Disconnects the source repository link. Existing branches and their attached resources are preserved.
  */
 export const deleteV1SourceRepositoriesById =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteV1SourceRepositoriesByIdInput,
     outputSchema: DeleteV1SourceRepositoriesByIdOutput,
     errors: [NotFound] as const,

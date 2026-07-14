@@ -8,7 +8,7 @@ export interface GetIssuingPhysicalBundlesPhysicalBundleInput {
   expand?: string;
 }
 export const GetIssuingPhysicalBundlesPhysicalBundleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     physical_bundle: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -34,7 +34,7 @@ export interface GetIssuingPhysicalBundlesPhysicalBundleOutput {
   type: "custom" | "standard";
 }
 export const GetIssuingPhysicalBundlesPhysicalBundleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     features: Schema.Struct({
       card_logo: Schema.Literals(["optional", "required", "unsupported"]),
       carrier_text: Schema.Literals(["optional", "required", "unsupported"]),
@@ -57,7 +57,7 @@ export const GetIssuingPhysicalBundlesPhysicalBundleOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetIssuingPhysicalBundlesPhysicalBundle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetIssuingPhysicalBundlesPhysicalBundleInput,
     outputSchema: GetIssuingPhysicalBundlesPhysicalBundleOutput,
   }));

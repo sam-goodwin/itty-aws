@@ -13,7 +13,7 @@ export interface V1GetAllProjectsForOrganizationInput {
   statuses?: string;
 }
 export const V1GetAllProjectsForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
     offset: Schema.optional(Schema.Number),
     limit: Schema.optional(Schema.Number),
@@ -99,7 +99,7 @@ export interface V1GetAllProjectsForOrganizationOutput {
   pagination: { count: number; limit: number; offset: number };
 }
 export const V1GetAllProjectsForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projects: Schema.Array(
       Schema.Struct({
         ref: Schema.String,
@@ -201,7 +201,7 @@ export const V1GetAllProjectsForOrganizationOutput =
 The following values are supported: `ACTIVE_HEALTHY`, `INACTIVE`.
  */
 export const v1GetAllProjectsForOrganization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1GetAllProjectsForOrganizationInput,
     outputSchema: V1GetAllProjectsForOrganizationOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -10,7 +10,7 @@ export interface ExperimentsMetricsRecalculationRetrieveInput {
   recalculation_id: string;
 }
 export const ExperimentsMetricsRecalculationRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     recalculation_id: Schema.String.pipe(T.PathParam()),
@@ -53,7 +53,7 @@ export interface ExperimentsMetricsRecalculationRetrieveOutput {
   }[];
 }
 export const ExperimentsMetricsRecalculationRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     experiment_id: Schema.Number,
     status: Schema.Literals(["pending", "in_progress", "completed", "failed"]),
@@ -98,7 +98,7 @@ export const ExperimentsMetricsRecalculationRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const experimentsMetricsRecalculationRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExperimentsMetricsRecalculationRetrieveInput,
     outputSchema: ExperimentsMetricsRecalculationRetrieveOutput,
     errors: [NotFound] as const,

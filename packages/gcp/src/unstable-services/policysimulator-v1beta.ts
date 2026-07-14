@@ -34,7 +34,7 @@ export interface GoogleTypeExpr {
 }
 
 export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -49,7 +49,7 @@ export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
 }
 
 export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues: Schema.Codec<GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deniedValues: Schema.optional(Schema.Array(Schema.String)),
     allowedValues: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -72,7 +72,7 @@ export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
 }
 
 export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule: Schema.Codec<GoogleCloudOrgpolicyV2PolicySpecPolicyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     denyAll: Schema.optional(Schema.Boolean),
     condition: Schema.optional(GoogleTypeExpr),
     enforce: Schema.optional(Schema.Boolean),
@@ -97,7 +97,7 @@ export interface GoogleCloudOrgpolicyV2PolicySpec {
 }
 
 export const GoogleCloudOrgpolicyV2PolicySpec: Schema.Codec<GoogleCloudOrgpolicyV2PolicySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     reset: Schema.optional(Schema.Boolean),
     inheritFromParent: Schema.optional(Schema.Boolean),
@@ -115,7 +115,7 @@ export interface GoogleCloudOrgpolicyV2AlternatePolicySpec {
 }
 
 export const GoogleCloudOrgpolicyV2AlternatePolicySpec: Schema.Codec<GoogleCloudOrgpolicyV2AlternatePolicySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     launch: Schema.optional(Schema.String),
     spec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
   }).annotate({ identifier: "GoogleCloudOrgpolicyV2AlternatePolicySpec" });
@@ -130,7 +130,7 @@ export interface GoogleCloudPolicysimulatorV1betaAccessTuple {
 }
 
 export const GoogleCloudPolicysimulatorV1betaAccessTuple: Schema.Codec<GoogleCloudPolicysimulatorV1betaAccessTuple> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principal: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.String),
     fullResourceName: Schema.optional(Schema.String),
@@ -158,7 +158,7 @@ export interface GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPrevie
 }
 
 export const GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata: Schema.Codec<GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     resourcesScanned: Schema.optional(Schema.Number),
@@ -180,7 +180,7 @@ export interface GoogleIamV1Binding {
 }
 
 export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(GoogleTypeExpr),
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -199,7 +199,7 @@ export interface GoogleIamV1AuditLogConfig {
 }
 
 export const GoogleIamV1AuditLogConfig: Schema.Codec<GoogleIamV1AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
     logType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
@@ -212,7 +212,7 @@ export interface GoogleIamV1AuditConfig {
 }
 
 export const GoogleIamV1AuditConfig: Schema.Codec<GoogleIamV1AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
   }).annotate({ identifier: "GoogleIamV1AuditConfig" });
@@ -229,7 +229,7 @@ export interface GoogleIamV1Policy {
 }
 
 export const GoogleIamV1Policy: Schema.Codec<GoogleIamV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
     version: Schema.optional(Schema.Number),
     auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
@@ -244,7 +244,7 @@ export interface GoogleCloudPolicysimulatorV1ReplayConfig {
 }
 
 export const GoogleCloudPolicysimulatorV1ReplayConfig: Schema.Codec<GoogleCloudPolicysimulatorV1ReplayConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logSource: Schema.optional(Schema.String),
     policyOverlay: Schema.optional(
       Schema.Record(Schema.String, GoogleIamV1Policy),
@@ -261,7 +261,7 @@ export interface GoogleTypeDate {
 }
 
 export const GoogleTypeDate: Schema.Codec<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
@@ -283,7 +283,7 @@ export interface GoogleCloudPolicysimulatorV1ReplayResultsSummary {
 }
 
 export const GoogleCloudPolicysimulatorV1ReplayResultsSummary: Schema.Codec<GoogleCloudPolicysimulatorV1ReplayResultsSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     differenceCount: Schema.optional(Schema.Number),
     errorCount: Schema.optional(Schema.Number),
     oldestDate: Schema.optional(GoogleTypeDate),
@@ -312,7 +312,7 @@ export interface GoogleCloudPolicysimulatorV1Replay {
 }
 
 export const GoogleCloudPolicysimulatorV1Replay: Schema.Codec<GoogleCloudPolicysimulatorV1Replay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     config: Schema.optional(GoogleCloudPolicysimulatorV1ReplayConfig),
     resultsSummary: Schema.optional(
       GoogleCloudPolicysimulatorV1ReplayResultsSummary,
@@ -335,7 +335,7 @@ export interface GoogleCloudOrgpolicyV2Policy {
 }
 
 export const GoogleCloudOrgpolicyV2Policy: Schema.Codec<GoogleCloudOrgpolicyV2Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
     name: Schema.optional(Schema.String),
     dryRunSpec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
@@ -351,7 +351,7 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay {
 }
 
 export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay: Schema.Codec<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(GoogleCloudOrgpolicyV2Policy),
     policyParent: Schema.optional(Schema.String),
   }).annotate({
@@ -386,7 +386,7 @@ export interface GoogleCloudOrgpolicyV2CustomConstraint {
 }
 
 export const GoogleCloudOrgpolicyV2CustomConstraint: Schema.Codec<GoogleCloudOrgpolicyV2CustomConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     methodTypes: Schema.optional(Schema.Array(Schema.String)),
     actionType: Schema.optional(Schema.String),
@@ -405,7 +405,7 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstrain
 }
 
 export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay: Schema.Codec<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customConstraint: Schema.optional(GoogleCloudOrgpolicyV2CustomConstraint),
     customConstraintParent: Schema.optional(Schema.String),
   }).annotate({
@@ -421,7 +421,7 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay {
 }
 
 export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay: Schema.Codec<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policies: Schema.optional(
       Schema.Array(
         GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay,
@@ -450,7 +450,7 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResou
 }
 
 export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts: Schema.Codec<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Number),
     scanned: Schema.optional(Schema.Number),
     noncompliant: Schema.optional(Schema.Number),
@@ -469,7 +469,7 @@ export interface GoogleCloudPolicysimulatorV1betaReplayConfig {
 }
 
 export const GoogleCloudPolicysimulatorV1betaReplayConfig: Schema.Codec<GoogleCloudPolicysimulatorV1betaReplayConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyOverlay: Schema.optional(
       Schema.Record(Schema.String, GoogleIamV1Policy),
     ),
@@ -492,7 +492,7 @@ export interface GoogleCloudPolicysimulatorV1betaReplayResultsSummary {
 }
 
 export const GoogleCloudPolicysimulatorV1betaReplayResultsSummary: Schema.Codec<GoogleCloudPolicysimulatorV1betaReplayResultsSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newestDate: Schema.optional(GoogleTypeDate),
     errorCount: Schema.optional(Schema.Number),
     oldestDate: Schema.optional(GoogleTypeDate),
@@ -521,7 +521,7 @@ export interface GoogleCloudPolicysimulatorV1betaReplay {
 }
 
 export const GoogleCloudPolicysimulatorV1betaReplay: Schema.Codec<GoogleCloudPolicysimulatorV1betaReplay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     config: Schema.optional(GoogleCloudPolicysimulatorV1betaReplayConfig),
@@ -540,7 +540,7 @@ export interface GoogleRpcStatus {
 }
 
 export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -566,7 +566,7 @@ export interface GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMemb
 }
 
 export const GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership: Schema.Codec<GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     membership: Schema.optional(Schema.String),
     relevance: Schema.optional(Schema.String),
   }).annotate({
@@ -614,7 +614,7 @@ export interface GoogleCloudPolicysimulatorV1betaBindingExplanation {
 }
 
 export const GoogleCloudPolicysimulatorV1betaBindingExplanation: Schema.Codec<GoogleCloudPolicysimulatorV1betaBindingExplanation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rolePermission: Schema.optional(Schema.String),
     rolePermissionRelevance: Schema.optional(Schema.String),
     condition: Schema.optional(GoogleTypeExpr),
@@ -655,7 +655,7 @@ export interface GoogleCloudPolicysimulatorV1betaExplainedPolicy {
 }
 
 export const GoogleCloudPolicysimulatorV1betaExplainedPolicy: Schema.Codec<GoogleCloudPolicysimulatorV1betaExplainedPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     relevance: Schema.optional(Schema.String),
     access: Schema.optional(Schema.String),
     policy: Schema.optional(GoogleIamV1Policy),
@@ -683,7 +683,7 @@ export interface GoogleCloudPolicysimulatorV1betaExplainedAccess {
 }
 
 export const GoogleCloudPolicysimulatorV1betaExplainedAccess: Schema.Codec<GoogleCloudPolicysimulatorV1betaExplainedAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessState: Schema.optional(Schema.String),
     errors: Schema.optional(Schema.Array(GoogleRpcStatus)),
     policies: Schema.optional(
@@ -715,7 +715,7 @@ export interface GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPrev
 }
 
 export const GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata: Schema.Codec<GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourcesScanned: Schema.optional(Schema.Number),
     requestTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -745,7 +745,7 @@ export interface GoogleCloudPolicysimulatorV1betaAccessStateDiff {
 }
 
 export const GoogleCloudPolicysimulatorV1betaAccessStateDiff: Schema.Codec<GoogleCloudPolicysimulatorV1betaAccessStateDiff> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     simulated: Schema.optional(GoogleCloudPolicysimulatorV1betaExplainedAccess),
     baseline: Schema.optional(GoogleCloudPolicysimulatorV1betaExplainedAccess),
     accessChange: Schema.optional(Schema.String),
@@ -759,7 +759,7 @@ export interface GoogleCloudPolicysimulatorV1betaReplayDiff {
 }
 
 export const GoogleCloudPolicysimulatorV1betaReplayDiff: Schema.Codec<GoogleCloudPolicysimulatorV1betaReplayDiff> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessDiff: Schema.optional(
       GoogleCloudPolicysimulatorV1betaAccessStateDiff,
     ),
@@ -781,7 +781,7 @@ export interface GoogleCloudPolicysimulatorV1betaReplayResult {
 }
 
 export const GoogleCloudPolicysimulatorV1betaReplayResult: Schema.Codec<GoogleCloudPolicysimulatorV1betaReplayResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessTuple: Schema.optional(GoogleCloudPolicysimulatorV1betaAccessTuple),
     diff: Schema.optional(GoogleCloudPolicysimulatorV1betaReplayDiff),
     parent: Schema.optional(Schema.String),
@@ -800,7 +800,7 @@ export interface GoogleCloudPolicysimulatorV1betaResourceContext {
 }
 
 export const GoogleCloudPolicysimulatorV1betaResourceContext: Schema.Codec<GoogleCloudPolicysimulatorV1betaResourceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     ancestors: Schema.optional(Schema.Array(Schema.String)),
     assetType: Schema.optional(Schema.String),
@@ -832,7 +832,7 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview {
 }
 
 export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview: Schema.Codec<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -860,7 +860,7 @@ export interface GoogleLongrunningOperation {
 }
 
 export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     error: Schema.optional(GoogleRpcStatus),
     name: Schema.optional(Schema.String),
@@ -878,7 +878,7 @@ export interface GoogleLongrunningListOperationsResponse {
 }
 
 export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -896,7 +896,7 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolation {
 }
 
 export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolation: Schema.Codec<GoogleCloudPolicysimulatorV1betaOrgPolicyViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(GoogleCloudPolicysimulatorV1betaResourceContext),
     customConstraint: Schema.optional(GoogleCloudOrgpolicyV2CustomConstraint),
     error: Schema.optional(GoogleRpcStatus),
@@ -913,7 +913,7 @@ export interface GoogleCloudPolicysimulatorV1betaListReplayResultsResponse {
 }
 
 export const GoogleCloudPolicysimulatorV1betaListReplayResultsResponse: Schema.Codec<GoogleCloudPolicysimulatorV1betaListReplayResultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     replayResults: Schema.optional(
       Schema.Array(GoogleCloudPolicysimulatorV1betaReplayResult),
     ),
@@ -928,7 +928,7 @@ export interface GoogleCloudPolicysimulatorV1ReplayOperationMetadata {
 }
 
 export const GoogleCloudPolicysimulatorV1ReplayOperationMetadata: Schema.Codec<GoogleCloudPolicysimulatorV1ReplayOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudPolicysimulatorV1ReplayOperationMetadata",
@@ -942,7 +942,7 @@ export interface GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviews
 }
 
 export const GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse: Schema.Codec<GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     orgPolicyViolationsPreviews: Schema.optional(
       Schema.Array(GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview),
@@ -960,7 +960,7 @@ export interface GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse
 }
 
 export const GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse: Schema.Codec<GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgPolicyViolations: Schema.optional(
       Schema.Array(GoogleCloudPolicysimulatorV1betaOrgPolicyViolation),
     ),
@@ -978,7 +978,7 @@ export interface GoogleCloudPolicysimulatorV1betaListReplaysResponse {
 }
 
 export const GoogleCloudPolicysimulatorV1betaListReplaysResponse: Schema.Codec<GoogleCloudPolicysimulatorV1betaListReplaysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     replays: Schema.optional(
       Schema.Array(GoogleCloudPolicysimulatorV1betaReplay),
     ),
@@ -1047,7 +1047,7 @@ export interface GetOrganizationsLocationsAccessPolicySimulationsOperationsReque
 }
 
 export const GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1057,7 +1057,7 @@ export const GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest =
 export type GetOrganizationsLocationsAccessPolicySimulationsOperationsResponse =
   GoogleLongrunningOperation;
 export const GetOrganizationsLocationsAccessPolicySimulationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetOrganizationsLocationsAccessPolicySimulationsOperationsError =
   | DefaultErrors
@@ -1070,7 +1070,7 @@ export const getOrganizationsLocationsAccessPolicySimulationsOperations: API.Ope
   GetOrganizationsLocationsAccessPolicySimulationsOperationsResponse,
   GetOrganizationsLocationsAccessPolicySimulationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest,
   output: GetOrganizationsLocationsAccessPolicySimulationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1086,7 +1086,7 @@ export interface ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest {
 }
 
 export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1101,7 +1101,7 @@ export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
 export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
   GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse;
 export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse;
+  /*@__PURE__*/ GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse;
 
 export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsError =
   | DefaultErrors
@@ -1114,7 +1114,7 @@ export const listOrganizationsLocationsOrgPolicyViolationsPreviews: API.Paginate
   ListOrganizationsLocationsOrgPolicyViolationsPreviewsResponse,
   ListOrganizationsLocationsOrgPolicyViolationsPreviewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
   output: ListOrganizationsLocationsOrgPolicyViolationsPreviewsResponse,
   errors: [NotFound, Forbidden],
@@ -1130,7 +1130,7 @@ export interface GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest {
 }
 
 export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1140,7 +1140,7 @@ export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
 export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
   GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview;
 export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview;
+  /*@__PURE__*/ GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview;
 
 export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsError =
   | DefaultErrors
@@ -1153,7 +1153,7 @@ export const getOrganizationsLocationsOrgPolicyViolationsPreviews: API.Operation
   GetOrganizationsLocationsOrgPolicyViolationsPreviewsResponse,
   GetOrganizationsLocationsOrgPolicyViolationsPreviewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
   output: GetOrganizationsLocationsOrgPolicyViolationsPreviewsResponse,
   errors: [NotFound, Forbidden],
@@ -1167,7 +1167,7 @@ export interface GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsReques
 }
 
 export const GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview,
@@ -1184,7 +1184,7 @@ export const GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
 export type GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
   GoogleLongrunningOperation;
 export const GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsError =
   | DefaultErrors
@@ -1199,7 +1199,7 @@ export const generateOrganizationsLocationsOrgPolicyViolationsPreviews: API.Oper
   GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse,
   GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
   output: GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1215,7 +1215,7 @@ export interface CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest 
 }
 
 export const CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     orgPolicyViolationsPreviewId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("orgPolicyViolationsPreviewId"),
@@ -1235,7 +1235,7 @@ export const CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
 export type CreateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
   GoogleLongrunningOperation;
 export const CreateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsLocationsOrgPolicyViolationsPreviewsError =
   | DefaultErrors
@@ -1250,7 +1250,7 @@ export const createOrganizationsLocationsOrgPolicyViolationsPreviews: API.Operat
   CreateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse,
   CreateOrganizationsLocationsOrgPolicyViolationsPreviewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
   output: CreateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1262,7 +1262,7 @@ export interface GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsR
 }
 
 export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1272,7 +1272,7 @@ export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsReque
 export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResponse =
   GoogleLongrunningOperation;
 export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsError =
   | DefaultErrors
@@ -1285,7 +1285,7 @@ export const getOrganizationsLocationsOrgPolicyViolationsPreviewsOperations: API
   GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResponse,
   GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest,
   output:
     GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResponse,
@@ -1302,7 +1302,7 @@ export interface ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyV
 }
 
 export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1314,7 +1314,7 @@ export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViola
 export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsResponse =
   GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse;
 export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse;
+  /*@__PURE__*/ GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse;
 
 export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsError =
   | DefaultErrors
@@ -1327,7 +1327,7 @@ export const listOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViola
   ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsResponse,
   ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest,
   output:
@@ -1347,7 +1347,7 @@ export interface CreateOrganizationsLocationsReplaysRequest {
 }
 
 export const CreateOrganizationsLocationsReplaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudPolicysimulatorV1betaReplay).pipe(
       T.HttpBody(),
@@ -1360,7 +1360,7 @@ export const CreateOrganizationsLocationsReplaysRequest =
 export type CreateOrganizationsLocationsReplaysResponse =
   GoogleLongrunningOperation;
 export const CreateOrganizationsLocationsReplaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsLocationsReplaysError =
   | DefaultErrors
@@ -1375,7 +1375,7 @@ export const createOrganizationsLocationsReplays: API.OperationMethod<
   CreateOrganizationsLocationsReplaysResponse,
   CreateOrganizationsLocationsReplaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsReplaysRequest,
   output: CreateOrganizationsLocationsReplaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1391,7 +1391,7 @@ export interface ListOrganizationsLocationsReplaysRequest {
 }
 
 export const ListOrganizationsLocationsReplaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1403,7 +1403,7 @@ export const ListOrganizationsLocationsReplaysRequest =
 export type ListOrganizationsLocationsReplaysResponse =
   GoogleCloudPolicysimulatorV1betaListReplaysResponse;
 export const ListOrganizationsLocationsReplaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplaysResponse;
+  /*@__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplaysResponse;
 
 export type ListOrganizationsLocationsReplaysError =
   | DefaultErrors
@@ -1416,7 +1416,7 @@ export const listOrganizationsLocationsReplays: API.PaginatedOperationMethod<
   ListOrganizationsLocationsReplaysResponse,
   ListOrganizationsLocationsReplaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsReplaysRequest,
   output: ListOrganizationsLocationsReplaysResponse,
   errors: [NotFound, Forbidden],
@@ -1432,7 +1432,7 @@ export interface GetOrganizationsLocationsReplaysRequest {
 }
 
 export const GetOrganizationsLocationsReplaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1442,7 +1442,7 @@ export const GetOrganizationsLocationsReplaysRequest =
 export type GetOrganizationsLocationsReplaysResponse =
   GoogleCloudPolicysimulatorV1betaReplay;
 export const GetOrganizationsLocationsReplaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaReplay;
+  /*@__PURE__*/ GoogleCloudPolicysimulatorV1betaReplay;
 
 export type GetOrganizationsLocationsReplaysError =
   | DefaultErrors
@@ -1455,7 +1455,7 @@ export const getOrganizationsLocationsReplays: API.OperationMethod<
   GetOrganizationsLocationsReplaysResponse,
   GetOrganizationsLocationsReplaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsReplaysRequest,
   output: GetOrganizationsLocationsReplaysResponse,
   errors: [NotFound, Forbidden],
@@ -1475,7 +1475,7 @@ export interface ListOrganizationsLocationsReplaysOperationsRequest {
 }
 
 export const ListOrganizationsLocationsReplaysOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     name: Schema.String.pipe(T.HttpPath("name")),
@@ -1491,7 +1491,7 @@ export const ListOrganizationsLocationsReplaysOperationsRequest =
 export type ListOrganizationsLocationsReplaysOperationsResponse =
   GoogleLongrunningListOperationsResponse;
 export const ListOrganizationsLocationsReplaysOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+  /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListOrganizationsLocationsReplaysOperationsError =
   | DefaultErrors
@@ -1504,7 +1504,7 @@ export const listOrganizationsLocationsReplaysOperations: API.PaginatedOperation
   ListOrganizationsLocationsReplaysOperationsResponse,
   ListOrganizationsLocationsReplaysOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsReplaysOperationsRequest,
   output: ListOrganizationsLocationsReplaysOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1520,7 +1520,7 @@ export interface GetOrganizationsLocationsReplaysOperationsRequest {
 }
 
 export const GetOrganizationsLocationsReplaysOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1530,7 +1530,7 @@ export const GetOrganizationsLocationsReplaysOperationsRequest =
 export type GetOrganizationsLocationsReplaysOperationsResponse =
   GoogleLongrunningOperation;
 export const GetOrganizationsLocationsReplaysOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetOrganizationsLocationsReplaysOperationsError =
   | DefaultErrors
@@ -1543,7 +1543,7 @@ export const getOrganizationsLocationsReplaysOperations: API.OperationMethod<
   GetOrganizationsLocationsReplaysOperationsResponse,
   GetOrganizationsLocationsReplaysOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsReplaysOperationsRequest,
   output: GetOrganizationsLocationsReplaysOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1559,7 +1559,7 @@ export interface ListOrganizationsLocationsReplaysResultsRequest {
 }
 
 export const ListOrganizationsLocationsReplaysResultsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1571,7 +1571,7 @@ export const ListOrganizationsLocationsReplaysResultsRequest =
 export type ListOrganizationsLocationsReplaysResultsResponse =
   GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
 export const ListOrganizationsLocationsReplaysResultsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
+  /*@__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
 
 export type ListOrganizationsLocationsReplaysResultsError =
   | DefaultErrors
@@ -1584,7 +1584,7 @@ export const listOrganizationsLocationsReplaysResults: API.PaginatedOperationMet
   ListOrganizationsLocationsReplaysResultsResponse,
   ListOrganizationsLocationsReplaysResultsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsReplaysResultsRequest,
   output: ListOrganizationsLocationsReplaysResultsResponse,
   errors: [NotFound, Forbidden],
@@ -1602,7 +1602,7 @@ export interface CreateProjectsLocationsReplaysRequest {
 }
 
 export const CreateProjectsLocationsReplaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudPolicysimulatorV1betaReplay).pipe(
       T.HttpBody(),
@@ -1614,7 +1614,7 @@ export const CreateProjectsLocationsReplaysRequest =
 
 export type CreateProjectsLocationsReplaysResponse = GoogleLongrunningOperation;
 export const CreateProjectsLocationsReplaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsReplaysError =
   | DefaultErrors
@@ -1629,7 +1629,7 @@ export const createProjectsLocationsReplays: API.OperationMethod<
   CreateProjectsLocationsReplaysResponse,
   CreateProjectsLocationsReplaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsReplaysRequest,
   output: CreateProjectsLocationsReplaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1645,7 +1645,7 @@ export interface ListProjectsLocationsReplaysRequest {
 }
 
 export const ListProjectsLocationsReplaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1657,7 +1657,7 @@ export const ListProjectsLocationsReplaysRequest =
 export type ListProjectsLocationsReplaysResponse =
   GoogleCloudPolicysimulatorV1betaListReplaysResponse;
 export const ListProjectsLocationsReplaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplaysResponse;
+  /*@__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplaysResponse;
 
 export type ListProjectsLocationsReplaysError =
   | DefaultErrors
@@ -1670,7 +1670,7 @@ export const listProjectsLocationsReplays: API.PaginatedOperationMethod<
   ListProjectsLocationsReplaysResponse,
   ListProjectsLocationsReplaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReplaysRequest,
   output: ListProjectsLocationsReplaysResponse,
   errors: [NotFound, Forbidden],
@@ -1686,7 +1686,7 @@ export interface GetProjectsLocationsReplaysRequest {
 }
 
 export const GetProjectsLocationsReplaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1696,7 +1696,7 @@ export const GetProjectsLocationsReplaysRequest =
 export type GetProjectsLocationsReplaysResponse =
   GoogleCloudPolicysimulatorV1betaReplay;
 export const GetProjectsLocationsReplaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaReplay;
+  /*@__PURE__*/ GoogleCloudPolicysimulatorV1betaReplay;
 
 export type GetProjectsLocationsReplaysError =
   | DefaultErrors
@@ -1709,7 +1709,7 @@ export const getProjectsLocationsReplays: API.OperationMethod<
   GetProjectsLocationsReplaysResponse,
   GetProjectsLocationsReplaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsReplaysRequest,
   output: GetProjectsLocationsReplaysResponse,
   errors: [NotFound, Forbidden],
@@ -1729,7 +1729,7 @@ export interface ListProjectsLocationsReplaysOperationsRequest {
 }
 
 export const ListProjectsLocationsReplaysOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
@@ -1745,7 +1745,7 @@ export const ListProjectsLocationsReplaysOperationsRequest =
 export type ListProjectsLocationsReplaysOperationsResponse =
   GoogleLongrunningListOperationsResponse;
 export const ListProjectsLocationsReplaysOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+  /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsReplaysOperationsError =
   | DefaultErrors
@@ -1758,7 +1758,7 @@ export const listProjectsLocationsReplaysOperations: API.PaginatedOperationMetho
   ListProjectsLocationsReplaysOperationsResponse,
   ListProjectsLocationsReplaysOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReplaysOperationsRequest,
   output: ListProjectsLocationsReplaysOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1774,7 +1774,7 @@ export interface GetProjectsLocationsReplaysOperationsRequest {
 }
 
 export const GetProjectsLocationsReplaysOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1784,7 +1784,7 @@ export const GetProjectsLocationsReplaysOperationsRequest =
 export type GetProjectsLocationsReplaysOperationsResponse =
   GoogleLongrunningOperation;
 export const GetProjectsLocationsReplaysOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsReplaysOperationsError =
   | DefaultErrors
@@ -1797,7 +1797,7 @@ export const getProjectsLocationsReplaysOperations: API.OperationMethod<
   GetProjectsLocationsReplaysOperationsResponse,
   GetProjectsLocationsReplaysOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsReplaysOperationsRequest,
   output: GetProjectsLocationsReplaysOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1813,7 +1813,7 @@ export interface ListProjectsLocationsReplaysResultsRequest {
 }
 
 export const ListProjectsLocationsReplaysResultsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1825,7 +1825,7 @@ export const ListProjectsLocationsReplaysResultsRequest =
 export type ListProjectsLocationsReplaysResultsResponse =
   GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
 export const ListProjectsLocationsReplaysResultsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
+  /*@__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
 
 export type ListProjectsLocationsReplaysResultsError =
   | DefaultErrors
@@ -1838,7 +1838,7 @@ export const listProjectsLocationsReplaysResults: API.PaginatedOperationMethod<
   ListProjectsLocationsReplaysResultsResponse,
   ListProjectsLocationsReplaysResultsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReplaysResultsRequest,
   output: ListProjectsLocationsReplaysResultsResponse,
   errors: [NotFound, Forbidden],
@@ -1854,7 +1854,7 @@ export interface GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsReques
 }
 
 export const GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1864,7 +1864,7 @@ export const GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest =
 export type GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsResponse =
   GoogleLongrunningOperation;
 export const GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsError =
   | DefaultErrors
@@ -1877,7 +1877,7 @@ export const getProjectsLocationsOrgPolicyViolationsPreviewsOperations: API.Oper
   GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsResponse,
   GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest,
   output: GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1889,7 +1889,7 @@ export interface GetProjectsLocationsAccessPolicySimulationsOperationsRequest {
 }
 
 export const GetProjectsLocationsAccessPolicySimulationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1899,7 +1899,7 @@ export const GetProjectsLocationsAccessPolicySimulationsOperationsRequest =
 export type GetProjectsLocationsAccessPolicySimulationsOperationsResponse =
   GoogleLongrunningOperation;
 export const GetProjectsLocationsAccessPolicySimulationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsAccessPolicySimulationsOperationsError =
   | DefaultErrors
@@ -1912,7 +1912,7 @@ export const getProjectsLocationsAccessPolicySimulationsOperations: API.Operatio
   GetProjectsLocationsAccessPolicySimulationsOperationsResponse,
   GetProjectsLocationsAccessPolicySimulationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAccessPolicySimulationsOperationsRequest,
   output: GetProjectsLocationsAccessPolicySimulationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1924,7 +1924,7 @@ export interface GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest
 }
 
 export const GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1934,7 +1934,7 @@ export const GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest =
 export type GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsResponse =
   GoogleLongrunningOperation;
 export const GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsError =
   | DefaultErrors
@@ -1947,7 +1947,7 @@ export const getFoldersLocationsOrgPolicyViolationsPreviewsOperations: API.Opera
   GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsResponse,
   GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest,
   output: GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1959,7 +1959,7 @@ export interface GetFoldersLocationsAccessPolicySimulationsOperationsRequest {
 }
 
 export const GetFoldersLocationsAccessPolicySimulationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1969,7 +1969,7 @@ export const GetFoldersLocationsAccessPolicySimulationsOperationsRequest =
 export type GetFoldersLocationsAccessPolicySimulationsOperationsResponse =
   GoogleLongrunningOperation;
 export const GetFoldersLocationsAccessPolicySimulationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetFoldersLocationsAccessPolicySimulationsOperationsError =
   | DefaultErrors
@@ -1982,7 +1982,7 @@ export const getFoldersLocationsAccessPolicySimulationsOperations: API.Operation
   GetFoldersLocationsAccessPolicySimulationsOperationsResponse,
   GetFoldersLocationsAccessPolicySimulationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsAccessPolicySimulationsOperationsRequest,
   output: GetFoldersLocationsAccessPolicySimulationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1996,7 +1996,7 @@ export interface CreateFoldersLocationsReplaysRequest {
 }
 
 export const CreateFoldersLocationsReplaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudPolicysimulatorV1betaReplay).pipe(
       T.HttpBody(),
@@ -2008,7 +2008,7 @@ export const CreateFoldersLocationsReplaysRequest =
 
 export type CreateFoldersLocationsReplaysResponse = GoogleLongrunningOperation;
 export const CreateFoldersLocationsReplaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateFoldersLocationsReplaysError =
   | DefaultErrors
@@ -2023,7 +2023,7 @@ export const createFoldersLocationsReplays: API.OperationMethod<
   CreateFoldersLocationsReplaysResponse,
   CreateFoldersLocationsReplaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFoldersLocationsReplaysRequest,
   output: CreateFoldersLocationsReplaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2039,7 +2039,7 @@ export interface ListFoldersLocationsReplaysRequest {
 }
 
 export const ListFoldersLocationsReplaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2051,7 +2051,7 @@ export const ListFoldersLocationsReplaysRequest =
 export type ListFoldersLocationsReplaysResponse =
   GoogleCloudPolicysimulatorV1betaListReplaysResponse;
 export const ListFoldersLocationsReplaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplaysResponse;
+  /*@__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplaysResponse;
 
 export type ListFoldersLocationsReplaysError =
   | DefaultErrors
@@ -2064,7 +2064,7 @@ export const listFoldersLocationsReplays: API.PaginatedOperationMethod<
   ListFoldersLocationsReplaysResponse,
   ListFoldersLocationsReplaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsReplaysRequest,
   output: ListFoldersLocationsReplaysResponse,
   errors: [NotFound, Forbidden],
@@ -2080,7 +2080,7 @@ export interface GetFoldersLocationsReplaysRequest {
 }
 
 export const GetFoldersLocationsReplaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -2090,7 +2090,7 @@ export const GetFoldersLocationsReplaysRequest =
 export type GetFoldersLocationsReplaysResponse =
   GoogleCloudPolicysimulatorV1betaReplay;
 export const GetFoldersLocationsReplaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaReplay;
+  /*@__PURE__*/ GoogleCloudPolicysimulatorV1betaReplay;
 
 export type GetFoldersLocationsReplaysError =
   | DefaultErrors
@@ -2103,7 +2103,7 @@ export const getFoldersLocationsReplays: API.OperationMethod<
   GetFoldersLocationsReplaysResponse,
   GetFoldersLocationsReplaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsReplaysRequest,
   output: GetFoldersLocationsReplaysResponse,
   errors: [NotFound, Forbidden],
@@ -2123,7 +2123,7 @@ export interface ListFoldersLocationsReplaysOperationsRequest {
 }
 
 export const ListFoldersLocationsReplaysOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
@@ -2139,7 +2139,7 @@ export const ListFoldersLocationsReplaysOperationsRequest =
 export type ListFoldersLocationsReplaysOperationsResponse =
   GoogleLongrunningListOperationsResponse;
 export const ListFoldersLocationsReplaysOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+  /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListFoldersLocationsReplaysOperationsError =
   | DefaultErrors
@@ -2152,7 +2152,7 @@ export const listFoldersLocationsReplaysOperations: API.PaginatedOperationMethod
   ListFoldersLocationsReplaysOperationsResponse,
   ListFoldersLocationsReplaysOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsReplaysOperationsRequest,
   output: ListFoldersLocationsReplaysOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2168,7 +2168,7 @@ export interface GetFoldersLocationsReplaysOperationsRequest {
 }
 
 export const GetFoldersLocationsReplaysOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -2178,7 +2178,7 @@ export const GetFoldersLocationsReplaysOperationsRequest =
 export type GetFoldersLocationsReplaysOperationsResponse =
   GoogleLongrunningOperation;
 export const GetFoldersLocationsReplaysOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetFoldersLocationsReplaysOperationsError =
   | DefaultErrors
@@ -2191,7 +2191,7 @@ export const getFoldersLocationsReplaysOperations: API.OperationMethod<
   GetFoldersLocationsReplaysOperationsResponse,
   GetFoldersLocationsReplaysOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsReplaysOperationsRequest,
   output: GetFoldersLocationsReplaysOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2207,7 +2207,7 @@ export interface ListFoldersLocationsReplaysResultsRequest {
 }
 
 export const ListFoldersLocationsReplaysResultsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2219,7 +2219,7 @@ export const ListFoldersLocationsReplaysResultsRequest =
 export type ListFoldersLocationsReplaysResultsResponse =
   GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
 export const ListFoldersLocationsReplaysResultsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
+  /*@__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
 
 export type ListFoldersLocationsReplaysResultsError =
   | DefaultErrors
@@ -2232,7 +2232,7 @@ export const listFoldersLocationsReplaysResults: API.PaginatedOperationMethod<
   ListFoldersLocationsReplaysResultsResponse,
   ListFoldersLocationsReplaysResultsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsReplaysResultsRequest,
   output: ListFoldersLocationsReplaysResultsResponse,
   errors: [NotFound, Forbidden],
@@ -2255,7 +2255,7 @@ export interface ListOperationsRequest {
   pageSize?: number;
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("returnPartialSuccess"),
@@ -2270,7 +2270,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type ListOperationsResponse = GoogleLongrunningListOperationsResponse;
 export const ListOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+  /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2280,7 +2280,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2295,7 +2295,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -2303,8 +2303,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = GoogleLongrunningOperation;
-export const GetOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+export const GetOperationsResponse = /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2314,7 +2313,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],

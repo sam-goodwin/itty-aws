@@ -32,14 +32,14 @@ export interface TranslationsResource {
 }
 
 export const TranslationsResource: Schema.Codec<TranslationsResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detectedSourceLanguage: Schema.optional(Schema.String),
     translatedText: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
   }).annotate({ identifier: "TranslationsResource" });
 
 export type DetectionsResource = unknown;
-export const DetectionsResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const DetectionsResource = /*@__PURE__*/ Schema.Unknown;
 
 export interface DetectionsListResponse {
   /** A detections contains detection results of several text */
@@ -47,7 +47,7 @@ export interface DetectionsListResponse {
 }
 
 export const DetectionsListResponse: Schema.Codec<DetectionsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detections: Schema.optional(Schema.Array(DetectionsResource)),
   }).annotate({ identifier: "DetectionsListResponse" });
 
@@ -59,7 +59,7 @@ export interface LanguagesResource {
 }
 
 export const LanguagesResource: Schema.Codec<LanguagesResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     language: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "LanguagesResource" });
@@ -70,7 +70,7 @@ export interface TranslationsListResponse {
 }
 
 export const TranslationsListResponse: Schema.Codec<TranslationsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     translations: Schema.optional(Schema.Array(TranslationsResource)),
   }).annotate({ identifier: "TranslationsListResponse" });
 
@@ -88,7 +88,7 @@ export interface TranslateTextRequest {
 }
 
 export const TranslateTextRequest: Schema.Codec<TranslateTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     model: Schema.optional(Schema.String),
     format: Schema.optional(Schema.String),
     source: Schema.optional(Schema.String),
@@ -102,7 +102,7 @@ export interface DetectLanguageRequest {
 }
 
 export const DetectLanguageRequest: Schema.Codec<DetectLanguageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     q: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DetectLanguageRequest" });
 
@@ -112,7 +112,7 @@ export interface LanguagesListResponse {
 }
 
 export const LanguagesListResponse: Schema.Codec<LanguagesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languages: Schema.optional(Schema.Array(LanguagesResource)),
   }).annotate({ identifier: "LanguagesListResponse" });
 
@@ -122,7 +122,7 @@ export interface GetSupportedLanguagesRequest {
 }
 
 export const GetSupportedLanguagesRequest: Schema.Codec<GetSupportedLanguagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
   }).annotate({ identifier: "GetSupportedLanguagesRequest" });
 
@@ -191,7 +191,7 @@ export interface ListLanguagesRequest {
   model?: string;
 }
 
-export const ListLanguagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListLanguagesRequest = /*@__PURE__*/ Schema.Struct({
   bearer_token: Schema.optional(Schema.String).pipe(
     T.HttpQuery("bearer_token"),
   ),
@@ -204,8 +204,7 @@ export const ListLanguagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListLanguagesRequest>;
 
 export type ListLanguagesResponse = LanguagesListResponse;
-export const ListLanguagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LanguagesListResponse;
+export const ListLanguagesResponse = /*@__PURE__*/ LanguagesListResponse;
 
 export type ListLanguagesError = DefaultErrors | NotFound | Forbidden;
 
@@ -215,7 +214,7 @@ export const listLanguages: API.OperationMethod<
   ListLanguagesResponse,
   ListLanguagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLanguagesRequest,
   output: ListLanguagesResponse,
   errors: [NotFound, Forbidden],
@@ -230,7 +229,7 @@ export interface ListDetectionsRequest {
   q: string[];
 }
 
-export const ListDetectionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDetectionsRequest = /*@__PURE__*/ Schema.Struct({
   bearer_token: Schema.optional(Schema.String).pipe(
     T.HttpQuery("bearer_token"),
   ),
@@ -242,8 +241,7 @@ export const ListDetectionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListDetectionsRequest>;
 
 export type ListDetectionsResponse = DetectionsListResponse;
-export const ListDetectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DetectionsListResponse;
+export const ListDetectionsResponse = /*@__PURE__*/ DetectionsListResponse;
 
 export type ListDetectionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -253,7 +251,7 @@ export const listDetections: API.OperationMethod<
   ListDetectionsResponse,
   ListDetectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDetectionsRequest,
   output: ListDetectionsResponse,
   errors: [NotFound, Forbidden],
@@ -269,7 +267,7 @@ export interface DetectDetectionsRequest {
 }
 
 export const DetectDetectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bearer_token: Schema.optional(Schema.String).pipe(
       T.HttpQuery("bearer_token"),
     ),
@@ -281,8 +279,7 @@ export const DetectDetectionsRequest =
   ) as unknown as Schema.Codec<DetectDetectionsRequest>;
 
 export type DetectDetectionsResponse = DetectionsListResponse;
-export const DetectDetectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DetectionsListResponse;
+export const DetectDetectionsResponse = /*@__PURE__*/ DetectionsListResponse;
 
 export type DetectDetectionsError =
   | DefaultErrors
@@ -297,7 +294,7 @@ export const detectDetections: API.OperationMethod<
   DetectDetectionsResponse,
   DetectDetectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectDetectionsRequest,
   output: DetectDetectionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -323,7 +320,7 @@ export interface ListTranslationsRequest {
 }
 
 export const ListTranslationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bearer_token: Schema.optional(Schema.String).pipe(
       T.HttpQuery("bearer_token"),
     ),
@@ -340,8 +337,7 @@ export const ListTranslationsRequest =
   ) as unknown as Schema.Codec<ListTranslationsRequest>;
 
 export type ListTranslationsResponse = TranslationsListResponse;
-export const ListTranslationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TranslationsListResponse;
+export const ListTranslationsResponse = /*@__PURE__*/ TranslationsListResponse;
 
 export type ListTranslationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -351,7 +347,7 @@ export const listTranslations: API.OperationMethod<
   ListTranslationsResponse,
   ListTranslationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTranslationsRequest,
   output: ListTranslationsResponse,
   errors: [NotFound, Forbidden],
@@ -367,7 +363,7 @@ export interface TranslateTranslationsRequest {
 }
 
 export const TranslateTranslationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bearer_token: Schema.optional(Schema.String).pipe(
       T.HttpQuery("bearer_token"),
     ),
@@ -380,7 +376,7 @@ export const TranslateTranslationsRequest =
 
 export type TranslateTranslationsResponse = TranslationsListResponse;
 export const TranslateTranslationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TranslationsListResponse;
+  /*@__PURE__*/ TranslationsListResponse;
 
 export type TranslateTranslationsError =
   | DefaultErrors
@@ -395,7 +391,7 @@ export const translateTranslations: API.OperationMethod<
   TranslateTranslationsResponse,
   TranslateTranslationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TranslateTranslationsRequest,
   output: TranslateTranslationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

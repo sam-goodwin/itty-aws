@@ -9,7 +9,7 @@ export interface UsersIntegrationsGithubStartCreateInput {
   connect_from?: string;
 }
 export const UsersIntegrationsGithubStartCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     team_id: Schema.optional(Schema.NullOr(Schema.Number)),
     connect_from: Schema.optional(Schema.String),
@@ -26,7 +26,7 @@ export interface UsersIntegrationsGithubStartCreateOutput {
   connect_flow: string;
 }
 export const UsersIntegrationsGithubStartCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     install_url: Schema.String,
     connect_flow: Schema.String,
   }) as unknown as Schema.Codec<UsersIntegrationsGithubStartCreateOutput>;
@@ -52,7 +52,7 @@ export const UsersIntegrationsGithubStartCreateOutput =
  * In both cases the response key is ``install_url`` for compatibility with callers.
  */
 export const usersIntegrationsGithubStartCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersIntegrationsGithubStartCreateInput,
     outputSchema: UsersIntegrationsGithubStartCreateOutput,
   }));

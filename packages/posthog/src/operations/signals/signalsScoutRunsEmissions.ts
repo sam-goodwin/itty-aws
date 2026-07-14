@@ -9,7 +9,7 @@ export interface SignalsScoutRunsEmissionsInput {
   run_id: string;
 }
 export const SignalsScoutRunsEmissionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     run_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -33,7 +33,7 @@ export type SignalsScoutRunsEmissionsOutput = {
   emitted_at: string;
 }[];
 export const SignalsScoutRunsEmissionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.String,
       run_id: Schema.String,
@@ -57,10 +57,8 @@ export const SignalsScoutRunsEmissionsOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param run_id - UUID of the `SignalScoutRun` bridge row.
  */
-export const signalsScoutRunsEmissions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalsScoutRunsEmissionsInput,
-    outputSchema: SignalsScoutRunsEmissionsOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const signalsScoutRunsEmissions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalsScoutRunsEmissionsInput,
+  outputSchema: SignalsScoutRunsEmissionsOutput,
+  errors: [NotFound] as const,
+}));

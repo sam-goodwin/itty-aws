@@ -9,7 +9,7 @@ export interface InvalidateGroupTokensInput {
   groupName: string;
 }
 export const InvalidateGroupTokensInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const InvalidateGroupTokensInput =
 // Output Schema
 export type InvalidateGroupTokensOutput = void;
 export const InvalidateGroupTokensOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InvalidateGroupTokensOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InvalidateGroupTokensOutput>;
 
 // The operation
 /**
@@ -33,10 +33,8 @@ export const InvalidateGroupTokensOutput =
  * @param organizationSlug - The slug of the organization or user account.
  * @param groupName - The name of the group.
  */
-export const invalidateGroupTokens = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InvalidateGroupTokensInput,
-    outputSchema: InvalidateGroupTokensOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const invalidateGroupTokens = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InvalidateGroupTokensInput,
+  outputSchema: InvalidateGroupTokensOutput,
+  errors: [NotFound] as const,
+}));

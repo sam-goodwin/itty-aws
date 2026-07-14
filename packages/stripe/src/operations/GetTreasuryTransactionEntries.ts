@@ -15,7 +15,7 @@ export interface GetTreasuryTransactionEntriesInput {
   transaction?: string;
 }
 export const GetTreasuryTransactionEntriesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
     effective_at: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
@@ -127,7 +127,7 @@ export interface GetTreasuryTransactionEntriesOutput {
   url: string;
 }
 export const GetTreasuryTransactionEntriesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         balance_impact: Schema.Struct({
@@ -246,7 +246,7 @@ export const GetTreasuryTransactionEntriesOutput =
  * @param transaction - Only return TransactionEntries associated with this Transaction.
  */
 export const GetTreasuryTransactionEntries =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTreasuryTransactionEntriesInput,
     outputSchema: GetTreasuryTransactionEntriesOutput,
   }));

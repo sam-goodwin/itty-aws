@@ -10,7 +10,7 @@ export interface SecretkeySetInput {
   type?: string;
   value?: number[];
 }
-export const SecretkeySetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretkeySetInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
   type: Schema.optional(Schema.String),
@@ -29,7 +29,7 @@ export interface SecretkeySetOutput {
   updated_at?: string;
   version?: number;
 }
-export const SecretkeySetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretkeySetOutput = /*@__PURE__*/ Schema.Struct({
   Version: Schema.optional(Schema.Number),
   created_at: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export const SecretkeySetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param app_name - Fly App Name
  * @param secret_name - Secret key name
  */
-export const SecretkeySet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretkeySet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretkeySetInput,
   outputSchema: SecretkeySetOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

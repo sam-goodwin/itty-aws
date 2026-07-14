@@ -110,35 +110,34 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.String, Value: S.String }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface AddTagsToResourceRequest {
   ResourceArn: string;
   TagList: Tag[];
 }
-export const AddTagsToResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.String, TagList: TagList }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const AddTagsToResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String, TagList: TagList }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "AddTagsToResourceRequest",
 }) as any as S.Schema<AddTagsToResourceRequest>;
 export interface AddTagsToResourceResponse {
   Status: string;
 }
-export const AddTagsToResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Status: S.String }),
+export const AddTagsToResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Status: S.String }),
 ).annotate({
   identifier: "AddTagsToResourceResponse",
 }) as any as S.Schema<AddTagsToResourceResponse>;
 export interface CreateHapgRequest {
   Label: string;
 }
-export const CreateHapgRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateHapgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Label: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -148,13 +147,13 @@ export const CreateHapgRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateHapgResponse {
   HapgArn?: string;
 }
-export const CreateHapgResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateHapgResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HapgArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateHapgResponse",
 }) as any as S.Schema<CreateHapgResponse>;
 export type SubscriptionType = "PRODUCTION" | (string & {});
-export const SubscriptionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SubscriptionType = /*@__PURE__*/ S.String;
 export interface CreateHsmRequest {
   SubnetId: string;
   SshKey: string;
@@ -165,7 +164,7 @@ export interface CreateHsmRequest {
   ClientToken?: string;
   SyslogIp?: string;
 }
-export const CreateHsmRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateHsmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubnetId: S.String.pipe(T.XmlName("SubnetId")),
     SshKey: S.String.pipe(T.XmlName("SshKey")),
@@ -192,7 +191,7 @@ export const CreateHsmRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateHsmResponse {
   HsmArn?: string;
 }
-export const CreateHsmResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateHsmResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HsmArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateHsmResponse",
@@ -201,26 +200,25 @@ export interface CreateLunaClientRequest {
   Label?: string;
   Certificate: string;
 }
-export const CreateLunaClientRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Label: S.optional(S.String), Certificate: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const CreateLunaClientRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Label: S.optional(S.String), Certificate: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "CreateLunaClientRequest",
 }) as any as S.Schema<CreateLunaClientRequest>;
 export interface CreateLunaClientResponse {
   ClientArn?: string;
 }
-export const CreateLunaClientResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ClientArn: S.optional(S.String) }),
+export const CreateLunaClientResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClientArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateLunaClientResponse",
 }) as any as S.Schema<CreateLunaClientResponse>;
 export interface DeleteHapgRequest {
   HapgArn: string;
 }
-export const DeleteHapgRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteHapgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HapgArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -230,7 +228,7 @@ export const DeleteHapgRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteHapgResponse {
   Status: string;
 }
-export const DeleteHapgResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteHapgResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.String }),
 ).annotate({
   identifier: "DeleteHapgResponse",
@@ -238,7 +236,7 @@ export const DeleteHapgResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteHsmRequest {
   HsmArn: string;
 }
-export const DeleteHsmRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteHsmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HsmArn: S.String.pipe(T.XmlName("HsmArn")) }).pipe(
     T.all(
       T.XmlName("DeleteHsmRequest"),
@@ -256,7 +254,7 @@ export const DeleteHsmRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteHsmResponse {
   Status: string;
 }
-export const DeleteHsmResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteHsmResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.String }),
 ).annotate({
   identifier: "DeleteHsmResponse",
@@ -264,26 +262,25 @@ export const DeleteHsmResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteLunaClientRequest {
   ClientArn: string;
 }
-export const DeleteLunaClientRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ClientArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DeleteLunaClientRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClientArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DeleteLunaClientRequest",
 }) as any as S.Schema<DeleteLunaClientRequest>;
 export interface DeleteLunaClientResponse {
   Status: string;
 }
-export const DeleteLunaClientResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Status: S.String }),
+export const DeleteLunaClientResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Status: S.String }),
 ).annotate({
   identifier: "DeleteLunaClientResponse",
 }) as any as S.Schema<DeleteLunaClientResponse>;
 export interface DescribeHapgRequest {
   HapgArn: string;
 }
-export const DescribeHapgRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeHapgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HapgArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -291,17 +288,15 @@ export const DescribeHapgRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DescribeHapgRequest",
 }) as any as S.Schema<DescribeHapgRequest>;
 export type HsmList = string[];
-export const HsmList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const HsmList = /*@__PURE__*/ S.Array(S.String);
 export type PartitionSerialList = string[];
-export const PartitionSerialList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const PartitionSerialList = /*@__PURE__*/ S.Array(S.String);
 export type CloudHsmObjectState =
   | "READY"
   | "UPDATING"
   | "DEGRADED"
   | (string & {});
-export const CloudHsmObjectState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CloudHsmObjectState = /*@__PURE__*/ S.String;
 export interface DescribeHapgResponse {
   HapgArn?: string;
   HapgSerial?: string;
@@ -313,7 +308,7 @@ export interface DescribeHapgResponse {
   PartitionSerialList?: string[];
   State?: CloudHsmObjectState;
 }
-export const DescribeHapgResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeHapgResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HapgArn: S.optional(S.String),
     HapgSerial: S.optional(S.String),
@@ -332,7 +327,7 @@ export interface DescribeHsmRequest {
   HsmArn?: string;
   HsmSerialNumber?: string;
 }
-export const DescribeHsmRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeHsmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HsmArn: S.optional(S.String),
     HsmSerialNumber: S.optional(S.String),
@@ -351,9 +346,9 @@ export type HsmStatus =
   | "TERMINATED"
   | "DEGRADED"
   | (string & {});
-export const HsmStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const HsmStatus = /*@__PURE__*/ S.String;
 export type PartitionList = string[];
-export const PartitionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const PartitionList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeHsmResponse {
   HsmArn?: string;
   Status?: HsmStatus;
@@ -377,7 +372,7 @@ export interface DescribeHsmResponse {
   ServerCertLastUpdated?: string;
   Partitions?: string[];
 }
-export const DescribeHsmResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeHsmResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HsmArn: S.optional(S.String),
     Status: S.optional(HsmStatus),
@@ -408,14 +403,13 @@ export interface DescribeLunaClientRequest {
   ClientArn?: string;
   CertificateFingerprint?: string;
 }
-export const DescribeLunaClientRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ClientArn: S.optional(S.String),
-      CertificateFingerprint: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DescribeLunaClientRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClientArn: S.optional(S.String),
+    CertificateFingerprint: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DescribeLunaClientRequest",
 }) as any as S.Schema<DescribeLunaClientRequest>;
@@ -426,28 +420,27 @@ export interface DescribeLunaClientResponse {
   LastModifiedTimestamp?: string;
   Label?: string;
 }
-export const DescribeLunaClientResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ClientArn: S.optional(S.String),
-      Certificate: S.optional(S.String),
-      CertificateFingerprint: S.optional(S.String),
-      LastModifiedTimestamp: S.optional(S.String),
-      Label: S.optional(S.String),
-    }),
+export const DescribeLunaClientResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClientArn: S.optional(S.String),
+    Certificate: S.optional(S.String),
+    CertificateFingerprint: S.optional(S.String),
+    LastModifiedTimestamp: S.optional(S.String),
+    Label: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DescribeLunaClientResponse",
 }) as any as S.Schema<DescribeLunaClientResponse>;
 export type ClientVersion = "5.1" | "5.3" | (string & {});
-export const ClientVersion = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ClientVersion = /*@__PURE__*/ S.String;
 export type HapgList = string[];
-export const HapgList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const HapgList = /*@__PURE__*/ S.Array(S.String);
 export interface GetConfigRequest {
   ClientArn: string;
   ClientVersion: ClientVersion;
   HapgList: string[];
 }
-export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientArn: S.String,
     ClientVersion: ClientVersion,
@@ -463,7 +456,7 @@ export interface GetConfigResponse {
   ConfigFile?: string;
   ConfigCred?: string;
 }
-export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConfigType: S.optional(S.String),
     ConfigFile: S.optional(S.String),
@@ -473,28 +466,27 @@ export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetConfigResponse",
 }) as any as S.Schema<GetConfigResponse>;
 export interface ListAvailableZonesRequest {}
-export const ListAvailableZonesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListAvailableZonesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListAvailableZonesRequest",
 }) as any as S.Schema<ListAvailableZonesRequest>;
 export type AZList = string[];
-export const AZList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AZList = /*@__PURE__*/ S.Array(S.String);
 export interface ListAvailableZonesResponse {
   AZList?: string[];
 }
-export const ListAvailableZonesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ AZList: S.optional(AZList) }),
+export const ListAvailableZonesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AZList: S.optional(AZList) }),
 ).annotate({
   identifier: "ListAvailableZonesResponse",
 }) as any as S.Schema<ListAvailableZonesResponse>;
 export interface ListHapgsRequest {
   NextToken?: string;
 }
-export const ListHapgsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListHapgsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -505,7 +497,7 @@ export interface ListHapgsResponse {
   HapgList: string[];
   NextToken?: string;
 }
-export const ListHapgsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListHapgsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HapgList: HapgList, NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListHapgsResponse",
@@ -513,7 +505,7 @@ export const ListHapgsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListHsmsRequest {
   NextToken?: string;
 }
-export const ListHsmsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListHsmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -524,7 +516,7 @@ export interface ListHsmsResponse {
   HsmList?: string[];
   NextToken?: string;
 }
-export const ListHsmsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListHsmsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HsmList: S.optional(HsmList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListHsmsResponse",
@@ -532,33 +524,31 @@ export const ListHsmsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListLunaClientsRequest {
   NextToken?: string;
 }
-export const ListLunaClientsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ NextToken: S.optional(S.String) }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListLunaClientsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ NextToken: S.optional(S.String) }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListLunaClientsRequest",
 }) as any as S.Schema<ListLunaClientsRequest>;
 export type ClientList = string[];
-export const ClientList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ClientList = /*@__PURE__*/ S.Array(S.String);
 export interface ListLunaClientsResponse {
   ClientList: string[];
   NextToken?: string;
 }
-export const ListLunaClientsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ClientList: ClientList, NextToken: S.optional(S.String) }),
+export const ListLunaClientsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClientList: ClientList, NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListLunaClientsResponse",
 }) as any as S.Schema<ListLunaClientsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -566,9 +556,7 @@ export interface ListTagsForResourceResponse {
   TagList: Tag[];
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ TagList: TagList }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ TagList: TagList })).annotate({
     identifier: "ListTagsForResourceResponse",
   }) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ModifyHapgRequest {
@@ -576,7 +564,7 @@ export interface ModifyHapgRequest {
   Label?: string;
   PartitionSerialList?: string[];
 }
-export const ModifyHapgRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ModifyHapgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HapgArn: S.String,
     Label: S.optional(S.String),
@@ -590,7 +578,7 @@ export const ModifyHapgRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ModifyHapgResponse {
   HapgArn?: string;
 }
-export const ModifyHapgResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ModifyHapgResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HapgArn: S.optional(S.String) }),
 ).annotate({
   identifier: "ModifyHapgResponse",
@@ -603,7 +591,7 @@ export interface ModifyHsmRequest {
   ExternalId?: string;
   SyslogIp?: string;
 }
-export const ModifyHsmRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ModifyHsmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HsmArn: S.String.pipe(T.XmlName("HsmArn")),
     SubnetId: S.optional(S.String).pipe(T.XmlName("SubnetId")),
@@ -628,7 +616,7 @@ export const ModifyHsmRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ModifyHsmResponse {
   HsmArn?: string;
 }
-export const ModifyHsmResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ModifyHsmResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HsmArn: S.optional(S.String) }),
 ).annotate({
   identifier: "ModifyHsmResponse",
@@ -637,30 +625,29 @@ export interface ModifyLunaClientRequest {
   ClientArn: string;
   Certificate: string;
 }
-export const ModifyLunaClientRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ClientArn: S.String, Certificate: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ModifyLunaClientRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClientArn: S.String, Certificate: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ModifyLunaClientRequest",
 }) as any as S.Schema<ModifyLunaClientRequest>;
 export interface ModifyLunaClientResponse {
   ClientArn?: string;
 }
-export const ModifyLunaClientResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ClientArn: S.optional(S.String) }),
+export const ModifyLunaClientResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClientArn: S.optional(S.String) }),
 ).annotate({
   identifier: "ModifyLunaClientResponse",
 }) as any as S.Schema<ModifyLunaClientResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface RemoveTagsFromResourceRequest {
   ResourceArn: string;
   TagKeyList: string[];
 }
 export const RemoveTagsFromResourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ResourceArn: S.String, TagKeyList: TagKeyList }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -671,9 +658,7 @@ export interface RemoveTagsFromResourceResponse {
   Status: string;
 }
 export const RemoveTagsFromResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Status: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ Status: S.String })).annotate({
     identifier: "RemoveTagsFromResourceResponse",
   }) as any as S.Schema<RemoveTagsFromResourceResponse>;
 
@@ -719,7 +704,7 @@ export const addTagsToResource: API.OperationMethod<
   AddTagsToResourceResponse,
   AddTagsToResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToResourceRequest,
   output: AddTagsToResourceResponse,
   errors: [
@@ -754,7 +739,7 @@ export const createHapg: API.OperationMethod<
   CreateHapgResponse,
   CreateHapgError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHapgRequest,
   output: CreateHapgResponse,
   errors: [
@@ -797,7 +782,7 @@ export const createHsm: API.OperationMethod<
   CreateHsmResponse,
   CreateHsmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHsmRequest,
   output: CreateHsmResponse,
   errors: [
@@ -831,7 +816,7 @@ export const createLunaClient: API.OperationMethod<
   CreateLunaClientResponse,
   CreateLunaClientError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLunaClientRequest,
   output: CreateLunaClientResponse,
   errors: [
@@ -865,7 +850,7 @@ export const deleteHapg: API.OperationMethod<
   DeleteHapgResponse,
   DeleteHapgError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHapgRequest,
   output: DeleteHapgResponse,
   errors: [
@@ -900,7 +885,7 @@ export const deleteHsm: API.OperationMethod<
   DeleteHsmResponse,
   DeleteHsmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHsmRequest,
   output: DeleteHsmResponse,
   errors: [
@@ -934,7 +919,7 @@ export const deleteLunaClient: API.OperationMethod<
   DeleteLunaClientResponse,
   DeleteLunaClientError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLunaClientRequest,
   output: DeleteLunaClientResponse,
   errors: [
@@ -968,7 +953,7 @@ export const describeHapg: API.OperationMethod<
   DescribeHapgResponse,
   DescribeHapgError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeHapgRequest,
   output: DescribeHapgResponse,
   errors: [
@@ -1003,7 +988,7 @@ export const describeHsm: API.OperationMethod<
   DescribeHsmResponse,
   DescribeHsmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeHsmRequest,
   output: DescribeHsmResponse,
   errors: [
@@ -1037,7 +1022,7 @@ export const describeLunaClient: API.OperationMethod<
   DescribeLunaClientResponse,
   DescribeLunaClientError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLunaClientRequest,
   output: DescribeLunaClientResponse,
   errors: [
@@ -1072,7 +1057,7 @@ export const getConfig: API.OperationMethod<
   GetConfigResponse,
   GetConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigRequest,
   output: GetConfigResponse,
   errors: [
@@ -1106,7 +1091,7 @@ export const listAvailableZones: API.OperationMethod<
   ListAvailableZonesResponse,
   ListAvailableZonesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAvailableZonesRequest,
   output: ListAvailableZonesResponse,
   errors: [
@@ -1145,7 +1130,7 @@ export const listHapgs: API.OperationMethod<
   ListHapgsResponse,
   ListHapgsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListHapgsRequest,
   output: ListHapgsResponse,
   errors: [
@@ -1185,7 +1170,7 @@ export const listHsms: API.OperationMethod<
   ListHsmsResponse,
   ListHsmsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListHsmsRequest,
   output: ListHsmsResponse,
   errors: [
@@ -1224,7 +1209,7 @@ export const listLunaClients: API.OperationMethod<
   ListLunaClientsResponse,
   ListLunaClientsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLunaClientsRequest,
   output: ListLunaClientsResponse,
   errors: [
@@ -1258,7 +1243,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1292,7 +1277,7 @@ export const modifyHapg: API.OperationMethod<
   ModifyHapgResponse,
   ModifyHapgError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyHapgRequest,
   output: ModifyHapgResponse,
   errors: [
@@ -1331,7 +1316,7 @@ export const modifyHsm: API.OperationMethod<
   ModifyHsmResponse,
   ModifyHsmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyHsmRequest,
   output: ModifyHsmResponse,
   errors: [
@@ -1364,7 +1349,7 @@ export const modifyLunaClient: API.OperationMethod<
   ModifyLunaClientResponse,
   ModifyLunaClientError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyLunaClientRequest,
   output: ModifyLunaClientResponse,
   errors: [CloudHsmServiceException],
@@ -1397,7 +1382,7 @@ export const removeTagsFromResource: API.OperationMethod<
   RemoveTagsFromResourceResponse,
   RemoveTagsFromResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromResourceRequest,
   output: RemoveTagsFromResourceResponse,
   errors: [

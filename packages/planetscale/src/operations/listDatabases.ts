@@ -10,7 +10,7 @@ export interface ListDatabasesInput {
   page?: number;
   per_page?: number;
 }
-export const ListDatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDatabasesInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   q: Schema.optional(Schema.String),
   page: Schema.optional(Schema.Number),
@@ -95,7 +95,7 @@ export interface ListDatabasesOutput {
     kind: "mysql" | "postgresql";
   }[];
 }
-export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDatabasesOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -191,16 +191,14 @@ export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listDatabases = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListDatabasesInput,
-    outputSchema: ListDatabasesOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listDatabases = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListDatabasesInput,
+  outputSchema: ListDatabasesOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

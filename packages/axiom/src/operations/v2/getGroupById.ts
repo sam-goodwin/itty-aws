@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface GetGroupByIdInput {
   id: string;
 }
-export const GetGroupByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupByIdInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/rbac/groups/{id}" }),
@@ -22,7 +22,7 @@ export interface GetGroupByIdOutput {
   roles?: ReadonlyArray<string>;
   id: string;
 }
-export const GetGroupByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupByIdOutput = /*@__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.String),
   isManaged: Schema.optional(Schema.Boolean),
   members: Schema.optional(Schema.Array(Schema.String)),
@@ -39,7 +39,7 @@ export const GetGroupByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param id - Unique identifier of the group to retrieve
  */
-export const getGroupById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupById = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupByIdInput,
   outputSchema: GetGroupByIdOutput,
   errors: [NotFound] as const,

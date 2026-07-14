@@ -10,7 +10,7 @@ export interface AgentApplicationsRevisionsSetEnvCreateInput {
   env: Record<string, string>;
 }
 export const AgentApplicationsRevisionsSetEnvCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -217,7 +217,7 @@ export interface AgentApplicationsRevisionsSetEnvCreateOutput {
   updated_at: string;
 }
 export const AgentApplicationsRevisionsSetEnvCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     application: Schema.String,
     parent_revision: Schema.optional(Schema.NullOr(Schema.String)),
@@ -559,7 +559,7 @@ export const AgentApplicationsRevisionsSetEnvCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const agentApplicationsRevisionsSetEnvCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsRevisionsSetEnvCreateInput,
     outputSchema: AgentApplicationsRevisionsSetEnvCreateOutput,
   }));

@@ -19,7 +19,7 @@ export interface GetInvoicePaymentsInput {
   status?: "canceled" | "open" | "paid";
 }
 export const GetInvoicePaymentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -105,7 +105,7 @@ export interface GetInvoicePaymentsOutput {
   url: string;
 }
 export const GetInvoicePaymentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amount_paid: Schema.NullOr(Schema.Number),
@@ -227,7 +227,7 @@ export const GetInvoicePaymentsOutput =
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param status - The status of the invoice payments to return.
  */
-export const GetInvoicePayments = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetInvoicePayments = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetInvoicePaymentsInput,
   outputSchema: GetInvoicePaymentsOutput,
 }));

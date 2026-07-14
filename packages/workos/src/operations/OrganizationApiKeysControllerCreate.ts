@@ -11,7 +11,7 @@ export interface OrganizationApiKeysControllerCreateInput {
   expires_at?: string;
 }
 export const OrganizationApiKeysControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     permissions: Schema.optional(Schema.Array(Schema.String)),
@@ -38,7 +38,7 @@ export interface OrganizationApiKeysControllerCreateOutput {
   value: string;
 }
 export const OrganizationApiKeysControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     owner: Schema.Struct({
@@ -64,7 +64,7 @@ export const OrganizationApiKeysControllerCreateOutput =
  * @param organizationId - Unique identifier of the Organization.
  */
 export const OrganizationApiKeysControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationApiKeysControllerCreateInput,
     outputSchema: OrganizationApiKeysControllerCreateOutput,
     errors: [NotFound, UnprocessableEntity] as const,

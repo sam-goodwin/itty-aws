@@ -30,7 +30,7 @@ export interface TruncatableString {
 }
 
 export const TruncatableString: Schema.Codec<TruncatableString> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     truncatedByteCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "TruncatableString" });
@@ -38,7 +38,7 @@ export const TruncatableString: Schema.Codec<TruncatableString> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -52,7 +52,7 @@ export interface AttributeValue {
 }
 
 export const AttributeValue: Schema.Codec<AttributeValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boolValue: Schema.optional(Schema.Boolean),
     stringValue: Schema.optional(TruncatableString),
     intValue: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export interface Attributes {
 }
 
 export const Attributes: Schema.Codec<Attributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attributeMap: Schema.optional(Schema.Record(Schema.String, AttributeValue)),
     droppedAttributesCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Attributes" });
@@ -87,7 +87,7 @@ export interface Link {
 }
 
 export const Link: Schema.Codec<Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     traceId: Schema.optional(Schema.String),
     spanId: Schema.optional(Schema.String),
     attributes: Schema.optional(Attributes),
@@ -102,7 +102,7 @@ export interface Links {
 }
 
 export const Links: Schema.Codec<Links> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     link: Schema.optional(Schema.Array(Link)),
     droppedLinksCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Links" });
@@ -115,7 +115,7 @@ export interface Module {
 }
 
 export const Module: Schema.Codec<Module> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     module: Schema.optional(TruncatableString),
     buildId: Schema.optional(TruncatableString),
   }).annotate({ identifier: "Module" });
@@ -138,7 +138,7 @@ export interface StackFrame {
 }
 
 export const StackFrame: Schema.Codec<StackFrame> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalFunctionName: Schema.optional(TruncatableString),
     fileName: Schema.optional(TruncatableString),
     loadModule: Schema.optional(Module),
@@ -156,7 +156,7 @@ export interface StackFrames {
 }
 
 export const StackFrames: Schema.Codec<StackFrames> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     frame: Schema.optional(Schema.Array(StackFrame)),
     droppedFramesCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "StackFrames" });
@@ -169,7 +169,7 @@ export interface StackTrace {
 }
 
 export const StackTrace: Schema.Codec<StackTrace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stackTraceHashId: Schema.optional(Schema.String),
     stackFrames: Schema.optional(StackFrames),
   }).annotate({ identifier: "StackTrace" });
@@ -186,7 +186,7 @@ export interface MessageEvent {
 }
 
 export const MessageEvent: Schema.Codec<MessageEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     compressedSizeBytes: Schema.optional(Schema.String),
@@ -201,7 +201,7 @@ export interface Annotation {
 }
 
 export const Annotation: Schema.Codec<Annotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(TruncatableString),
     attributes: Schema.optional(Attributes),
   }).annotate({ identifier: "Annotation" });
@@ -216,7 +216,7 @@ export interface TimeEvent {
 }
 
 export const TimeEvent: Schema.Codec<TimeEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messageEvent: Schema.optional(MessageEvent),
     time: Schema.optional(Schema.String),
     annotation: Schema.optional(Annotation),
@@ -232,7 +232,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -250,7 +250,7 @@ export interface TimeEvents {
 }
 
 export const TimeEvents: Schema.Codec<TimeEvents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     droppedAnnotationsCount: Schema.optional(Schema.Number),
     droppedMessageEventsCount: Schema.optional(Schema.Number),
     timeEvent: Schema.optional(Schema.Array(TimeEvent)),
@@ -295,7 +295,7 @@ export interface Span {
 }
 
 export const Span: Schema.Codec<Span> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     links: Schema.optional(Links),
     sameProcessAsParentSpan: Schema.optional(Schema.Boolean),
     stackTrace: Schema.optional(StackTrace),
@@ -318,7 +318,7 @@ export interface BatchWriteSpansRequest {
 }
 
 export const BatchWriteSpansRequest: Schema.Codec<BatchWriteSpansRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spans: Schema.optional(Schema.Array(Span)),
   }).annotate({ identifier: "BatchWriteSpansRequest" });
 
@@ -384,7 +384,7 @@ export interface BatchWriteProjectsTracesRequest {
 }
 
 export const BatchWriteProjectsTracesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(BatchWriteSpansRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -397,8 +397,7 @@ export const BatchWriteProjectsTracesRequest =
   ) as unknown as Schema.Codec<BatchWriteProjectsTracesRequest>;
 
 export type BatchWriteProjectsTracesResponse = Empty;
-export const BatchWriteProjectsTracesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const BatchWriteProjectsTracesResponse = /*@__PURE__*/ Empty;
 
 export type BatchWriteProjectsTracesError =
   | DefaultErrors
@@ -413,7 +412,7 @@ export const batchWriteProjectsTraces: API.OperationMethod<
   BatchWriteProjectsTracesResponse,
   BatchWriteProjectsTracesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchWriteProjectsTracesRequest,
   output: BatchWriteProjectsTracesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -427,7 +426,7 @@ export interface CreateSpanProjectsTracesSpansRequest {
 }
 
 export const CreateSpanProjectsTracesSpansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Span).pipe(T.HttpBody()),
   }).pipe(
@@ -436,8 +435,7 @@ export const CreateSpanProjectsTracesSpansRequest =
   ) as unknown as Schema.Codec<CreateSpanProjectsTracesSpansRequest>;
 
 export type CreateSpanProjectsTracesSpansResponse = Span;
-export const CreateSpanProjectsTracesSpansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Span;
+export const CreateSpanProjectsTracesSpansResponse = /*@__PURE__*/ Span;
 
 export type CreateSpanProjectsTracesSpansError =
   | DefaultErrors
@@ -452,7 +450,7 @@ export const createSpanProjectsTracesSpans: API.OperationMethod<
   CreateSpanProjectsTracesSpansResponse,
   CreateSpanProjectsTracesSpansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSpanProjectsTracesSpansRequest,
   output: CreateSpanProjectsTracesSpansResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

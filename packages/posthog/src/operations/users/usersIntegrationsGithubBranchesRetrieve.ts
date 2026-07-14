@@ -12,7 +12,7 @@ export interface UsersIntegrationsGithubBranchesRetrieveInput {
   search?: string;
 }
 export const UsersIntegrationsGithubBranchesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     installation_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -33,7 +33,7 @@ export interface UsersIntegrationsGithubBranchesRetrieveOutput {
   has_more?: boolean;
 }
 export const UsersIntegrationsGithubBranchesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branches: Schema.optional(Schema.Array(Schema.String)),
     default_branch: Schema.optional(Schema.NullOr(Schema.String)),
     has_more: Schema.optional(Schema.Boolean),
@@ -51,7 +51,7 @@ export const UsersIntegrationsGithubBranchesRetrieveOutput =
  * @param search - Optional case-insensitive branch name search query.
  */
 export const usersIntegrationsGithubBranchesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersIntegrationsGithubBranchesRetrieveInput,
     outputSchema: UsersIntegrationsGithubBranchesRetrieveOutput,
   }));

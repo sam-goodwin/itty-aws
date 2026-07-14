@@ -10,7 +10,7 @@ export interface GetOrgInvoiceCsvInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const GetOrgInvoiceCsvInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrgInvoiceCsvInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   invoiceId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -25,7 +25,7 @@ export const GetOrgInvoiceCsvInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetOrgInvoiceCsvOutput = void;
 export const GetOrgInvoiceCsvOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgInvoiceCsvOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgInvoiceCsvOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const GetOrgInvoiceCsvOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param invoiceId - Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
  */
-export const getOrgInvoiceCsv = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrgInvoiceCsv = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgInvoiceCsvInput,
   outputSchema: GetOrgInvoiceCsvOutput,
   errors: [Forbidden, NotFound] as const,

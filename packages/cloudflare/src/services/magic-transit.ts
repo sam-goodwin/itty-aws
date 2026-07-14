@@ -122,7 +122,7 @@ interface MagicAccountApp {
   /** Category of the app. */
   type?: string | null;
 }
-const MagicAccountApp = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MagicAccountApp = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountAppId: Schema.String,
     hostnames: Schema.optional(
@@ -162,7 +162,7 @@ interface MagicManagedApp {
   /** Category of the app. */
   type?: string | null;
 }
-const MagicManagedApp = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MagicManagedApp = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     managedAppId: Schema.String,
     hostnames: Schema.optional(
@@ -196,7 +196,7 @@ interface Cf1SiteLocation {
   /** Name of nearest town, city, or village. */
   name?: string | null;
 }
-const Cf1SiteLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Cf1SiteLocation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lat: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     long: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -219,25 +219,24 @@ interface ListCf1SitesResponseResult {
   } | null;
   modifiedOn?: string | null;
 }
-const ListCf1SitesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      location: Schema.optional(Schema.Union([Cf1SiteLocation, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        id: "id",
-        createdOn: "created_on",
-        description: "description",
-        location: "location",
-        modifiedOn: "modified_on",
-      }),
-    ),
+const ListCf1SitesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    location: Schema.optional(Schema.Union([Cf1SiteLocation, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      id: "id",
+      createdOn: "created_on",
+      description: "description",
+      location: "location",
+      modifiedOn: "modified_on",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListCf1SitesResponseResult>;
 
 interface Cf1SiteParam {
@@ -251,7 +250,7 @@ interface Cf1SiteParam {
     name?: string | null;
   } | null;
 }
-const Cf1SiteParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Cf1SiteParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -263,7 +262,7 @@ interface Gre {
   /** URL reference to the source network resource that this ramp is managed by. */
   managedBy?: string | null;
 }
-const Gre = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Gre = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     managedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(Schema.encodeKeys({ managedBy: "managed_by" })),
@@ -293,7 +292,7 @@ interface ListCf1SiteRampsResponseResult {
   mplsInterconnect?: { managedBy?: string | null } | null;
 }
 const ListCf1SiteRampsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
@@ -344,7 +343,7 @@ interface Body {
     | "ipsec"
     | (string & {});
 }
-const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     sourceRampId: Schema.String,
     type: Schema.Union([
@@ -364,7 +363,7 @@ interface Gre2 {
   /** The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect. */
   cloudflareEndpoint?: string | null;
 }
-const Gre2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Gre2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cloudflareEndpoint: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -378,7 +377,7 @@ interface MagicHealthCheckTarget {
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string | null;
 }
-const MagicHealthCheckTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MagicHealthCheckTarget = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     effective: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     saved: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -395,7 +394,7 @@ interface HealthCheck {
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
   type?: "reply" | "request" | (string & {}) | null;
 }
-const HealthCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const HealthCheck = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     rate: Schema.optional(
@@ -454,7 +453,7 @@ interface Interconnect {
   /** An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource. */
   virtualPortReservationId?: string | null;
 }
-const Interconnect = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Interconnect = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     automaticReturnRouting: Schema.optional(
@@ -500,7 +499,7 @@ interface MagicHealthCheckTarget2 {
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string | null;
 }
-const MagicHealthCheckTarget2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MagicHealthCheckTarget2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     saved: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -516,7 +515,7 @@ interface HealthCheckParam {
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
   type?: "reply" | "request" | (string & {}) | null;
 }
-const HealthCheckParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const HealthCheckParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     rate: Schema.optional(
@@ -545,7 +544,7 @@ interface Device {
   serialNumber?: string | null;
   type?: "MANAGED" | "LICENSED" | (string & {}) | null;
 }
-const Device = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Device = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -596,60 +595,57 @@ interface ListConnectorsResponseResult {
   licenseKey?: string | null;
   siteId?: string | null;
 }
-const ListConnectorsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      activated: Schema.Boolean,
-      interruptWindowDaysOfWeek: Schema.Array(
-        Schema.Union([
-          Schema.Literals([
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-          ]),
-          Schema.String,
+const ListConnectorsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    activated: Schema.Boolean,
+    interruptWindowDaysOfWeek: Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
         ]),
-      ),
-      interruptWindowDurationHours: Schema.Number,
-      interruptWindowEmbargoDates: Schema.Array(Schema.String),
-      interruptWindowHourOfDay: Schema.Number,
-      lastUpdated: Schema.String,
-      notes: Schema.String,
-      primary: Schema.Boolean,
-      timezone: Schema.String,
-      device: Schema.optional(Schema.Union([Device, Schema.Null])),
-      lastHeartbeat: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      lastSeenVersion: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      licenseKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        activated: "activated",
-        interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
-        interruptWindowDurationHours: "interrupt_window_duration_hours",
-        interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
-        interruptWindowHourOfDay: "interrupt_window_hour_of_day",
-        lastUpdated: "last_updated",
-        notes: "notes",
-        primary: "primary",
-        timezone: "timezone",
-        device: "device",
-        lastHeartbeat: "last_heartbeat",
-        lastSeenVersion: "last_seen_version",
-        licenseKey: "license_key",
-        siteId: "site_id",
-      }),
+        Schema.String,
+      ]),
     ),
+    interruptWindowDurationHours: Schema.Number,
+    interruptWindowEmbargoDates: Schema.Array(Schema.String),
+    interruptWindowHourOfDay: Schema.Number,
+    lastUpdated: Schema.String,
+    notes: Schema.String,
+    primary: Schema.Boolean,
+    timezone: Schema.String,
+    device: Schema.optional(Schema.Union([Device, Schema.Null])),
+    lastHeartbeat: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastSeenVersion: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    licenseKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      activated: "activated",
+      interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
+      interruptWindowDurationHours: "interrupt_window_duration_hours",
+      interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
+      interruptWindowHourOfDay: "interrupt_window_hour_of_day",
+      lastUpdated: "last_updated",
+      notes: "notes",
+      primary: "primary",
+      timezone: "timezone",
+      device: "device",
+      lastHeartbeat: "last_heartbeat",
+      lastSeenVersion: "last_seen_version",
+      licenseKey: "license_key",
+      siteId: "site_id",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListConnectorsResponseResult>;
 
 interface Device2 {
@@ -658,7 +654,7 @@ interface Device2 {
   provisionLicense?: boolean | null;
   serialNumber?: string | null;
 }
-const Device2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Device2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     provisionLicense: Schema.optional(
@@ -678,7 +674,7 @@ interface Init {
   /** Initialized process */
   k: "Init";
 }
-const Init = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Init = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("Init"),
   }),
@@ -688,7 +684,7 @@ interface Leave {
   /** Stopped process */
   k: "Leave";
 }
-const Leave = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Leave = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("Leave"),
   }),
@@ -698,7 +694,7 @@ interface StartAttestation {
   /** Started attestation */
   k: "StartAttestation";
 }
-const StartAttestation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StartAttestation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("StartAttestation"),
   }),
@@ -708,29 +704,27 @@ interface FinishAttestationSuccess {
   /** Finished attestation */
   k: "FinishAttestationSuccess";
 }
-const FinishAttestationSuccess = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      k: Schema.Literal("FinishAttestationSuccess"),
-    }),
+const FinishAttestationSuccess = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    k: Schema.Literal("FinishAttestationSuccess"),
+  }),
 ) as unknown as Schema.Codec<FinishAttestationSuccess>;
 
 interface FinishAttestationFailure {
   /** Failed attestation */
   k: "FinishAttestationFailure";
 }
-const FinishAttestationFailure = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      k: Schema.Literal("FinishAttestationFailure"),
-    }),
+const FinishAttestationFailure = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    k: Schema.Literal("FinishAttestationFailure"),
+  }),
 ) as unknown as Schema.Codec<FinishAttestationFailure>;
 
 interface StartRotateCryptKey {
   /** Started crypt key rotation */
   k: "StartRotateCryptKey";
 }
-const StartRotateCryptKey = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StartRotateCryptKey = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("StartRotateCryptKey"),
   }),
@@ -740,29 +734,27 @@ interface FinishRotateCryptKeySuccess {
   /** Finished crypt key rotation */
   k: "FinishRotateCryptKeySuccess";
 }
-const FinishRotateCryptKeySuccess = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      k: Schema.Literal("FinishRotateCryptKeySuccess"),
-    }),
+const FinishRotateCryptKeySuccess = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    k: Schema.Literal("FinishRotateCryptKeySuccess"),
+  }),
 ) as unknown as Schema.Codec<FinishRotateCryptKeySuccess>;
 
 interface FinishRotateCryptKeyFailure {
   /** Failed crypt key rotation */
   k: "FinishRotateCryptKeyFailure";
 }
-const FinishRotateCryptKeyFailure = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      k: Schema.Literal("FinishRotateCryptKeyFailure"),
-    }),
+const FinishRotateCryptKeyFailure = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    k: Schema.Literal("FinishRotateCryptKeyFailure"),
+  }),
 ) as unknown as Schema.Codec<FinishRotateCryptKeyFailure>;
 
 interface StartRotatePki {
   /** Started PKI rotation */
   k: "StartRotatePki";
 }
-const StartRotatePki = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StartRotatePki = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("StartRotatePki"),
   }),
@@ -772,7 +764,7 @@ interface FinishRotatePkiSuccess {
   /** Finished PKI rotation */
   k: "FinishRotatePkiSuccess";
 }
-const FinishRotatePkiSuccess = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FinishRotatePkiSuccess = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("FinishRotatePkiSuccess"),
   }),
@@ -782,7 +774,7 @@ interface FinishRotatePkiFailure {
   /** Failed PKI rotation */
   k: "FinishRotatePkiFailure";
 }
-const FinishRotatePkiFailure = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FinishRotatePkiFailure = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("FinishRotatePkiFailure"),
   }),
@@ -794,7 +786,7 @@ interface StartUpgrade {
   /** Location of upgrade bundle */
   url: string;
 }
-const StartUpgrade = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StartUpgrade = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("StartUpgrade"),
     url: Schema.String,
@@ -805,7 +797,7 @@ interface FinishUpgradeSuccess {
   /** Finished upgrade */
   k: "FinishUpgradeSuccess";
 }
-const FinishUpgradeSuccess = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FinishUpgradeSuccess = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("FinishUpgradeSuccess"),
   }),
@@ -815,7 +807,7 @@ interface FinishUpgradeFailure {
   /** Failed upgrade */
   k: "FinishUpgradeFailure";
 }
-const FinishUpgradeFailure = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FinishUpgradeFailure = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("FinishUpgradeFailure"),
   }),
@@ -825,7 +817,7 @@ interface Reconcile {
   /** Reconciled */
   k: "Reconcile";
 }
-const Reconcile = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Reconcile = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("Reconcile"),
   }),
@@ -835,11 +827,10 @@ interface ConfigureCloudflaredTunnel {
   /** Configured Cloudflared tunnel */
   k: "ConfigureCloudflaredTunnel";
 }
-const ConfigureCloudflaredTunnel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      k: Schema.Literal("ConfigureCloudflaredTunnel"),
-    }),
+const ConfigureCloudflaredTunnel = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    k: Schema.Literal("ConfigureCloudflaredTunnel"),
+  }),
 ) as unknown as Schema.Codec<ConfigureCloudflaredTunnel>;
 
 interface RekeyInstallBoth {
@@ -848,7 +839,7 @@ interface RekeyInstallBoth {
   /** Tunnel identifier */
   tunnelId: string;
 }
-const RekeyInstallBoth = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RekeyInstallBoth = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("RekeyInstallBoth"),
     tunnelId: Schema.String,
@@ -861,7 +852,7 @@ interface RekeyStart {
   /** Tunnel identifier */
   tunnelId: string;
 }
-const RekeyStart = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RekeyStart = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("RekeyStart"),
     tunnelId: Schema.String,
@@ -874,7 +865,7 @@ interface RekeyAdvance {
   /** Tunnel identifier */
   tunnelId: string;
 }
-const RekeyAdvance = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RekeyAdvance = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("RekeyAdvance"),
     tunnelId: Schema.String,
@@ -887,7 +878,7 @@ interface RekeyComplete {
   /** Tunnel identifier */
   tunnelId: string;
 }
-const RekeyComplete = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RekeyComplete = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("RekeyComplete"),
     tunnelId: Schema.String,
@@ -900,7 +891,7 @@ interface RekeyReset {
   /** Tunnel identifier */
   tunnelId: string;
 }
-const RekeyReset = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RekeyReset = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     k: Schema.Literal("RekeyReset"),
     tunnelId: Schema.String,
@@ -917,7 +908,7 @@ interface Item {
   /** Time the Event was recorded (seconds since the Unix epoch) */
   t: number;
 }
-const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Item = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     a: Schema.Number,
     k: Schema.String,
@@ -956,7 +947,7 @@ interface Item2 {
   /** Version */
   v?: string | null;
 }
-const Item2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Item2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     e: Schema.Union([
       StartUpgrade,
@@ -993,7 +984,7 @@ interface Bond {
   /** Current status of the network interface */
   status: string;
 }
-const Bond = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Bond = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     status: Schema.String,
@@ -1014,7 +1005,7 @@ interface Dhcplease {
   /** MAC Address of the device the IP Address was leased to */
   macAddress: string;
 }
-const Dhcplease = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dhcplease = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     clientId: Schema.String,
     expiryTime: Schema.Number,
@@ -1076,7 +1067,7 @@ interface Disk {
   /** Time spent flushing (milliseconds) */
   timeFlushingMs?: number | null;
 }
-const Disk = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Disk = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     inProgress: Schema.Number,
     major: Schema.Number,
@@ -1134,7 +1125,7 @@ interface Ipaddress {
   /** IP address of the network interface */
   ipAddress: string;
 }
-const Ipaddress = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ipaddress = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     interfaceName: Schema.String,
     ipAddress: Schema.String,
@@ -1155,7 +1146,7 @@ interface Interface {
   /** Speed of the network interface (bits per second) */
   speed?: number | null;
 }
-const Interface = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Interface = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     operstate: Schema.String,
@@ -1195,7 +1186,7 @@ interface Mount {
   /** Total inodes on filesystem */
   totalInodes?: number | null;
 }
-const Mount = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Mount = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fileSystem: Schema.String,
     kind: Schema.String,
@@ -1261,7 +1252,7 @@ interface Netdev {
   /** Total packets transmitted */
   sentPackets: number;
 }
-const Netdev = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Netdev = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     recvBytes: Schema.Number,
@@ -1313,7 +1304,7 @@ interface Thermal {
   /** Maximum temperature of the component (degrees Celsius) */
   maxCelcius?: number | null;
 }
-const Thermal = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Thermal = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     label: Schema.String,
     criticalCelcius: Schema.optional(
@@ -1347,7 +1338,7 @@ interface Tunnel {
   /** Number of recent unhealthy pings for this tunnel */
   recentUnhealthyPings?: number | null;
 }
-const Tunnel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Tunnel = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     healthState: Schema.String,
     healthValue: Schema.Number,
@@ -1379,7 +1370,7 @@ interface Item3 {
   /** Time the Snapshot was recorded (seconds since the Unix epoch) */
   t: number;
 }
-const Item3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Item3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     a: Schema.Number,
     t: Schema.Number,
@@ -1815,7 +1806,7 @@ interface Item4 {
   /** Uptime of the system, including time spent in suspend */
   uptimeTotalMs?: number | null;
 }
-const Item4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Item4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     countReclaimFailures: Schema.Number,
     countReclaimedPaths: Schema.Number,
@@ -2435,7 +2426,7 @@ interface Pskmetadata {
   /** The date and time the tunnel was last modified. */
   lastGeneratedOn?: string | null;
 }
-const Pskmetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Pskmetadata = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastGeneratedOn: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -2455,7 +2446,7 @@ interface Bgp {
   /** MD5 key to use for session authentication.  Note that _this is not a security measure_. MD5 is not a valid security mechanism, and the key is not treated as a secret value. This is _only_ supported fo */
   md5Key?: string | null;
 }
-const Bgp = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Bgp = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     customerAsn: Schema.Number,
     exportFilterId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2485,7 +2476,7 @@ interface Bgpstatus {
   customerSpeakerIp?: string | null;
   customerSpeakerPort?: number | null;
 }
-const Bgpstatus = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Bgpstatus = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     state: Schema.Union([
       Schema.Literals(["BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING"]),
@@ -2528,7 +2519,7 @@ interface HealthCheck2 {
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
   type?: "reply" | "request" | (string & {}) | null;
 }
-const HealthCheck2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const HealthCheck2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     direction: Schema.optional(
       Schema.Union([
@@ -2614,7 +2605,7 @@ interface Gretunnel {
   /** Time To Live (TTL) in number of hops of the GRE tunnel. */
   ttl?: number | null;
 }
-const Gretunnel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Gretunnel = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     cloudflareGreEndpoint: Schema.String,
@@ -2668,7 +2659,7 @@ interface HealthCheck3 {
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
   type?: "reply" | "request" | (string & {}) | null;
 }
-const HealthCheck3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const HealthCheck3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     direction: Schema.optional(
       Schema.Union([
@@ -2705,7 +2696,7 @@ interface CustomRemoteIdentities {
   /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The generated IKE IDs can still be used even if this custom value is specified.  Must be of the form `<custom label>.<accoun */
   fqdnId?: string | null;
 }
-const CustomRemoteIdentities = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CustomRemoteIdentities = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fqdnId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(Schema.encodeKeys({ fqdnId: "fqdn_id" })),
@@ -2767,7 +2758,7 @@ interface Ipsectunnel {
   /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
   replayProtection?: boolean | null;
 }
-const Ipsectunnel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ipsectunnel = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     cloudflareEndpoint: Schema.String,
@@ -2833,7 +2824,7 @@ interface Pcapfilter {
   /** The source port of the packet. */
   sourcePort?: number | null;
 }
-const Pcapfilter = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Pcapfilter = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     destinationAddress: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -2889,7 +2880,7 @@ interface Pcap {
   /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
   type?: "simple" | "full" | (string & {}) | null;
 }
-const Pcap = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Pcap = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     filterV1: Schema.optional(Schema.Union([Pcapfilter, Schema.Null])),
@@ -2982,7 +2973,7 @@ interface MagicVisibilityPCAPsPCAPsResponseFull {
   type?: "simple" | "full" | (string & {}) | null;
 }
 const MagicVisibilityPCAPsPCAPsResponseFull =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       byteLimit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -3061,7 +3052,7 @@ interface GetPcapOwnershipResponseResult {
   validated?: string | null;
 }
 const GetPcapOwnershipResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       destinationConf: Schema.String,
@@ -3090,7 +3081,7 @@ interface ScopeParam {
   /** List of colo regions for the ECMP scope. */
   coloRegions?: string[] | null;
 }
-const ScopeParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ScopeParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     coloNames: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -3119,7 +3110,7 @@ interface Route {
   /** Optional weight of the ECMP scope - if provided. */
   weight?: number | null;
 }
-const Route = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Route = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     nexthop: Schema.String,
@@ -3151,7 +3142,7 @@ interface ModifiedRoute {
   /** Optional weight of the ECMP scope - if provided. */
   weight?: number | null;
 }
-const ModifiedRoute = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ModifiedRoute = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     nexthop: Schema.String,
@@ -3183,7 +3174,7 @@ interface Psk {
   /** A randomly generated or provided string for use in the IPsec tunnel. */
   psk: string;
 }
-const Psk = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Psk = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     psk: Schema.String,
@@ -3196,7 +3187,7 @@ interface SiteLocation {
   /** Longitude */
   lon?: string | null;
 }
-const SiteLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SiteLocation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lat: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     lon: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3218,7 +3209,7 @@ interface ListSitesResponseResult {
   /** Magic Connector identifier tag. Used when high availability mode is on. */
   secondaryConnectorId?: string | null;
 }
-const ListSitesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListSitesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     connectorId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3254,7 +3245,7 @@ interface Aclconfiguration {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: string[] | null;
 }
-const Aclconfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Aclconfiguration = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lanId: Schema.String,
     lanName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3305,50 +3296,49 @@ interface ListSiteAclsResponseResult {
   /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not include */
   unidirectional?: boolean | null;
 }
-const ListSiteAclsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      forwardLocally: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      lan_1: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
-      lan_2: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      protocols: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals(["tcp", "udp", "icmp"]),
-              Schema.String,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      unidirectional: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        description: "description",
-        forwardLocally: "forward_locally",
-        lan_1: "lan_1",
-        lan_2: "lan_2",
-        name: "name",
-        protocols: "protocols",
-        unidirectional: "unidirectional",
-      }),
+const ListSiteAclsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    forwardLocally: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
     ),
+    lan_1: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
+    lan_2: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    protocols: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["tcp", "udp", "icmp"]),
+            Schema.String,
+          ]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    unidirectional: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      description: "description",
+      forwardLocally: "forward_locally",
+      lan_1: "lan_1",
+      lan_2: "lan_2",
+      name: "name",
+      protocols: "protocols",
+      unidirectional: "unidirectional",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSiteAclsResponseResult>;
 
 interface Nat {
   /** A valid CIDR notation representing an IP range. */
   staticPrefix?: string | null;
 }
-const Nat = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Nat = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     staticPrefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(Schema.encodeKeys({ staticPrefix: "static_prefix" })),
@@ -3361,7 +3351,7 @@ interface RoutedSubnet {
   prefix: string;
   nat?: { staticPrefix?: string | null } | null;
 }
-const RoutedSubnet = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RoutedSubnet = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     nextHop: Schema.String,
     prefix: Schema.String,
@@ -3375,7 +3365,7 @@ interface Dhcprelay {
   /** List of DHCP server IPs. */
   serverAddresses?: string[] | null;
 }
-const Dhcprelay = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dhcprelay = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     serverAddresses: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -3391,7 +3381,7 @@ interface Dhcpoption {
   /** The option value, interpreted according to the type field. */
   value: string;
 }
-const Dhcpoption = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dhcpoption = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     type: Schema.Union([
@@ -3428,7 +3418,7 @@ interface Dhcpserver {
   /** Mapping of MAC addresses to IP addresses */
   reservations?: Record<string, unknown> | null;
 }
-const Dhcpserver = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dhcpserver = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dhcpOptions: Schema.optional(
       Schema.Union([Schema.Array(Dhcpoption), Schema.Null]),
@@ -3484,7 +3474,7 @@ interface LanstaticAddressing {
   /** A valid CIDR notation representing an IP range. */
   virtualAddress?: string | null;
 }
-const LanstaticAddressing = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LanstaticAddressing = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     address: Schema.String,
     dhcpRelay: Schema.optional(Schema.Union([Dhcprelay, Schema.Null])),
@@ -3557,43 +3547,40 @@ interface ListSiteLansResponseResult {
   /** VLAN ID. Use zero for untagged. */
   vlanTag?: number | null;
 }
-const ListSiteLansResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isPrioritized: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      nat: Schema.optional(Schema.Union([Nat, Schema.Null])),
-      physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      routedSubnets: Schema.optional(
-        Schema.Union([Schema.Array(RoutedSubnet), Schema.Null]),
-      ),
-      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      staticAddressing: Schema.optional(
-        Schema.Union([LanstaticAddressing, Schema.Null]),
-      ),
-      vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        bondId: "bond_id",
-        haLink: "ha_link",
-        isBreakout: "is_breakout",
-        isPrioritized: "is_prioritized",
-        name: "name",
-        nat: "nat",
-        physport: "physport",
-        routedSubnets: "routed_subnets",
-        siteId: "site_id",
-        staticAddressing: "static_addressing",
-        vlanTag: "vlan_tag",
-      }),
+const ListSiteLansResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isPrioritized: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    nat: Schema.optional(Schema.Union([Nat, Schema.Null])),
+    physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    routedSubnets: Schema.optional(
+      Schema.Union([Schema.Array(RoutedSubnet), Schema.Null]),
     ),
+    siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    staticAddressing: Schema.optional(
+      Schema.Union([LanstaticAddressing, Schema.Null]),
+    ),
+    vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      bondId: "bond_id",
+      haLink: "ha_link",
+      isBreakout: "is_breakout",
+      isPrioritized: "is_prioritized",
+      name: "name",
+      nat: "nat",
+      physport: "physport",
+      routedSubnets: "routed_subnets",
+      siteId: "site_id",
+      staticAddressing: "static_addressing",
+      vlanTag: "vlan_tag",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSiteLansResponseResult>;
 
 interface WanstaticAddressing {
@@ -3604,7 +3591,7 @@ interface WanstaticAddressing {
   /** A valid CIDR notation representing an IP range. */
   secondaryAddress?: string | null;
 }
-const WanstaticAddressing = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WanstaticAddressing = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     address: Schema.String,
     gatewayAddress: Schema.String,
@@ -3640,39 +3627,35 @@ interface ListSiteWansResponseResult {
   /** VLAN ID. Use zero for untagged. */
   vlanTag?: number | null;
 }
-const ListSiteWansResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      healthCheckRate: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["low", "mid", "high"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      staticAddressing: Schema.optional(
-        Schema.Union([WanstaticAddressing, Schema.Null]),
-      ),
-      vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        healthCheckRate: "health_check_rate",
-        name: "name",
-        physport: "physport",
-        priority: "priority",
-        siteId: "site_id",
-        staticAddressing: "static_addressing",
-        vlanTag: "vlan_tag",
-      }),
+const ListSiteWansResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    healthCheckRate: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.String]),
+        Schema.Null,
+      ]),
     ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    staticAddressing: Schema.optional(
+      Schema.Union([WanstaticAddressing, Schema.Null]),
+    ),
+    vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      healthCheckRate: "health_check_rate",
+      name: "name",
+      physport: "physport",
+      priority: "priority",
+      siteId: "site_id",
+      staticAddressing: "static_addressing",
+      vlanTag: "vlan_tag",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSiteWansResponseResult>;
 
 // =============================================================================
@@ -3684,7 +3667,7 @@ export interface ListAppsRequest {
   accountId: string;
 }
 
-export const ListAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListAppsRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/magic/apps" })),
@@ -3711,7 +3694,7 @@ export interface ListAppsResponse {
   )[];
 }
 
-export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListAppsResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     result: Schema.Array(Schema.Union([MagicAccountApp, MagicManagedApp])),
   }),
@@ -3724,7 +3707,7 @@ export const listApps: API.PaginatedOperationMethod<
   ListAppsResponse,
   ListAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsRequest,
   output: ListAppsResponse,
   errors: [MagicWanUnauthorized, Forbidden],
@@ -3749,7 +3732,7 @@ export interface CreateAppRequest {
   sourceSubnets?: string[];
 }
 
-export const CreateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const CreateAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     name: Schema.String,
@@ -3784,33 +3767,32 @@ export interface CreateAppResponse {
   type?: string | null;
 }
 
-export const CreateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountAppId: Schema.String,
-      hostnames: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      ipSubnets: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceSubnets: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          accountAppId: "account_app_id",
-          hostnames: "hostnames",
-          ipSubnets: "ip_subnets",
-          name: "name",
-          sourceSubnets: "source_subnets",
-          type: "type",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateAppResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountAppId: Schema.String,
+    hostnames: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    ipSubnets: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sourceSubnets: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        accountAppId: "account_app_id",
+        hostnames: "hostnames",
+        ipSubnets: "ip_subnets",
+        name: "name",
+        sourceSubnets: "source_subnets",
+        type: "type",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateAppResponse>;
 
 export type CreateAppError = DefaultErrors | MagicWanUnauthorized | Forbidden;
@@ -3820,7 +3802,7 @@ export const createApp: API.OperationMethod<
   CreateAppResponse,
   CreateAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppRequest,
   output: CreateAppResponse,
   errors: [MagicWanUnauthorized, Forbidden],
@@ -3842,7 +3824,7 @@ export interface UpdateAppRequest {
   type?: string;
 }
 
-export const UpdateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const UpdateAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountAppId: Schema.String.pipe(T.HttpPath("accountAppId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3881,33 +3863,32 @@ export interface UpdateAppResponse {
   type?: string | null;
 }
 
-export const UpdateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountAppId: Schema.String,
-      hostnames: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      ipSubnets: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceSubnets: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          accountAppId: "account_app_id",
-          hostnames: "hostnames",
-          ipSubnets: "ip_subnets",
-          name: "name",
-          sourceSubnets: "source_subnets",
-          type: "type",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateAppResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountAppId: Schema.String,
+    hostnames: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    ipSubnets: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sourceSubnets: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        accountAppId: "account_app_id",
+        hostnames: "hostnames",
+        ipSubnets: "ip_subnets",
+        name: "name",
+        sourceSubnets: "source_subnets",
+        type: "type",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateAppResponse>;
 
 export type UpdateAppError =
@@ -3921,7 +3902,7 @@ export const updateApp: API.OperationMethod<
   UpdateAppResponse,
   UpdateAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppRequest,
   output: UpdateAppResponse,
   errors: [AppNotFound, MagicWanUnauthorized, Forbidden],
@@ -3943,7 +3924,7 @@ export interface PatchAppRequest {
   type?: string;
 }
 
-export const PatchAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PatchAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountAppId: Schema.String.pipe(T.HttpPath("accountAppId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3982,7 +3963,7 @@ export interface PatchAppResponse {
   type?: string | null;
 }
 
-export const PatchAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PatchAppResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountAppId: Schema.String,
     hostnames: Schema.optional(
@@ -4021,7 +4002,7 @@ export const patchApp: API.OperationMethod<
   PatchAppResponse,
   PatchAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAppRequest,
   output: PatchAppResponse,
   errors: [AppNotFound, MagicWanUnauthorized, Forbidden],
@@ -4033,7 +4014,7 @@ export interface DeleteAppRequest {
   accountId: string;
 }
 
-export const DeleteAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const DeleteAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountAppId: Schema.String.pipe(T.HttpPath("accountAppId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4060,33 +4041,32 @@ export interface DeleteAppResponse {
   type?: string | null;
 }
 
-export const DeleteAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountAppId: Schema.String,
-      hostnames: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      ipSubnets: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceSubnets: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          accountAppId: "account_app_id",
-          hostnames: "hostnames",
-          ipSubnets: "ip_subnets",
-          name: "name",
-          sourceSubnets: "source_subnets",
-          type: "type",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const DeleteAppResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountAppId: Schema.String,
+    hostnames: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    ipSubnets: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sourceSubnets: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        accountAppId: "account_app_id",
+        hostnames: "hostnames",
+        ipSubnets: "ip_subnets",
+        name: "name",
+        sourceSubnets: "source_subnets",
+        type: "type",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteAppResponse>;
 
 export type DeleteAppError =
@@ -4100,7 +4080,7 @@ export const deleteApp: API.OperationMethod<
   DeleteAppResponse,
   DeleteAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppRequest,
   output: DeleteAppResponse,
   errors: [AppNotFound, MagicWanUnauthorized, Forbidden],
@@ -4116,17 +4096,16 @@ export interface GetCf1SiteRequest {
   accountId: string;
 }
 
-export const GetCf1SiteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}",
-      }),
-    ),
+export const GetCf1SiteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetCf1SiteRequest>;
 
 export interface GetCf1SiteResponse {
@@ -4145,27 +4124,26 @@ export interface GetCf1SiteResponse {
   modifiedOn?: string | null;
 }
 
-export const GetCf1SiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      location: Schema.optional(Schema.Union([Cf1SiteLocation, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          name: "name",
-          id: "id",
-          createdOn: "created_on",
-          description: "description",
-          location: "location",
-          modifiedOn: "modified_on",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetCf1SiteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    location: Schema.optional(Schema.Union([Cf1SiteLocation, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        name: "name",
+        id: "id",
+        createdOn: "created_on",
+        description: "description",
+        location: "location",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetCf1SiteResponse>;
 
 export type GetCf1SiteError = DefaultErrors;
@@ -4175,7 +4153,7 @@ export const getCf1Site: API.OperationMethod<
   GetCf1SiteResponse,
   GetCf1SiteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCf1SiteRequest,
   output: GetCf1SiteResponse,
   errors: [],
@@ -4186,13 +4164,12 @@ export interface ListCf1SitesRequest {
   accountId: string;
 }
 
-export const ListCf1SitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/magic/cf1_sites" }),
-    ),
+export const ListCf1SitesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/magic/cf1_sites" }),
+  ),
 ) as unknown as Schema.Codec<ListCf1SitesRequest>;
 
 export interface ListCf1SitesResponse {
@@ -4210,11 +4187,10 @@ export interface ListCf1SitesResponse {
   }[];
 }
 
-export const ListCf1SitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListCf1SitesResponseResult),
-    }),
+export const ListCf1SitesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListCf1SitesResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListCf1SitesResponse>;
 
 export type ListCf1SitesError = DefaultErrors;
@@ -4224,7 +4200,7 @@ export const listCf1Sites: API.PaginatedOperationMethod<
   ListCf1SitesResponse,
   ListCf1SitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCf1SitesRequest,
   output: ListCf1SitesResponse,
   errors: [],
@@ -4245,17 +4221,16 @@ export interface CreateCf1SiteRequest {
   }[];
 }
 
-export const CreateCf1SiteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      body: Schema.Array(Cf1SiteParam).pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/magic/cf1_sites",
-      }),
-    ),
+export const CreateCf1SiteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    body: Schema.Array(Cf1SiteParam).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/magic/cf1_sites",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateCf1SiteRequest>;
 
 export interface CreateCf1SiteResponse {
@@ -4273,11 +4248,10 @@ export interface CreateCf1SiteResponse {
   }[];
 }
 
-export const CreateCf1SiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListCf1SitesResponseResult),
-    }),
+export const CreateCf1SiteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListCf1SitesResponseResult),
+  }),
 ) as unknown as Schema.Codec<CreateCf1SiteResponse>;
 
 export type CreateCf1SiteError = DefaultErrors;
@@ -4287,7 +4261,7 @@ export const createCf1Site: API.PaginatedOperationMethod<
   CreateCf1SiteResponse,
   CreateCf1SiteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: CreateCf1SiteRequest,
   output: CreateCf1SiteResponse,
   errors: [],
@@ -4309,20 +4283,19 @@ export interface PatchCf1SiteRequest {
   name?: string;
 }
 
-export const PatchCf1SiteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Cf1SiteLocation),
-      name: Schema.optional(Schema.String),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}",
-      }),
-    ),
+export const PatchCf1SiteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    description: Schema.optional(Schema.String),
+    location: Schema.optional(Cf1SiteLocation),
+    name: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchCf1SiteRequest>;
 
 export interface PatchCf1SiteResponse {
@@ -4341,27 +4314,26 @@ export interface PatchCf1SiteResponse {
   modifiedOn?: string | null;
 }
 
-export const PatchCf1SiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      location: Schema.optional(Schema.Union([Cf1SiteLocation, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          name: "name",
-          id: "id",
-          createdOn: "created_on",
-          description: "description",
-          location: "location",
-          modifiedOn: "modified_on",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PatchCf1SiteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    location: Schema.optional(Schema.Union([Cf1SiteLocation, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        name: "name",
+        id: "id",
+        createdOn: "created_on",
+        description: "description",
+        location: "location",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchCf1SiteResponse>;
 
 export type PatchCf1SiteError = DefaultErrors;
@@ -4371,7 +4343,7 @@ export const patchCf1Site: API.OperationMethod<
   PatchCf1SiteResponse,
   PatchCf1SiteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCf1SiteRequest,
   output: PatchCf1SiteResponse,
   errors: [],
@@ -4383,17 +4355,16 @@ export interface DeleteCf1SiteRequest {
   accountId: string;
 }
 
-export const DeleteCf1SiteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}",
-      }),
-    ),
+export const DeleteCf1SiteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteCf1SiteRequest>;
 
 export interface DeleteCf1SiteResponse {
@@ -4412,27 +4383,26 @@ export interface DeleteCf1SiteResponse {
   modifiedOn?: string | null;
 }
 
-export const DeleteCf1SiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      location: Schema.optional(Schema.Union([Cf1SiteLocation, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          name: "name",
-          id: "id",
-          createdOn: "created_on",
-          description: "description",
-          location: "location",
-          modifiedOn: "modified_on",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const DeleteCf1SiteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    location: Schema.optional(Schema.Union([Cf1SiteLocation, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        name: "name",
+        id: "id",
+        createdOn: "created_on",
+        description: "description",
+        location: "location",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteCf1SiteResponse>;
 
 export type DeleteCf1SiteError = DefaultErrors;
@@ -4442,7 +4412,7 @@ export const deleteCf1Site: API.OperationMethod<
   DeleteCf1SiteResponse,
   DeleteCf1SiteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCf1SiteRequest,
   output: DeleteCf1SiteResponse,
   errors: [],
@@ -4459,18 +4429,17 @@ export interface GetCf1SiteRampRequest {
   accountId: string;
 }
 
-export const GetCf1SiteRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
-      rampId: Schema.String.pipe(T.HttpPath("rampId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}/ramps/{rampId}",
-      }),
-    ),
+export const GetCf1SiteRampRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
+    rampId: Schema.String.pipe(T.HttpPath("rampId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/cf1_sites/{cf1SiteId}/ramps/{rampId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetCf1SiteRampRequest>;
 
 export interface GetCf1SiteRampResponse {
@@ -4498,7 +4467,7 @@ export interface GetCf1SiteRampResponse {
 }
 
 export const GetCf1SiteRampResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
@@ -4546,7 +4515,7 @@ export const getCf1SiteRamp: API.OperationMethod<
   GetCf1SiteRampResponse,
   GetCf1SiteRampError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCf1SiteRampRequest,
   output: GetCf1SiteRampResponse,
   errors: [],
@@ -4559,7 +4528,7 @@ export interface ListCf1SiteRampsRequest {
 }
 
 export const ListCf1SiteRampsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4594,7 +4563,7 @@ export interface ListCf1SiteRampsResponse {
 }
 
 export const ListCf1SiteRampsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListCf1SiteRampsResponseResult),
     }),
@@ -4607,7 +4576,7 @@ export const listCf1SiteRamps: API.PaginatedOperationMethod<
   ListCf1SiteRampsResponse,
   ListCf1SiteRampsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCf1SiteRampsRequest,
   output: ListCf1SiteRampsResponse,
   errors: [],
@@ -4635,7 +4604,7 @@ export interface CreateCf1SiteRampRequest {
 }
 
 export const CreateCf1SiteRampRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4671,7 +4640,7 @@ export interface CreateCf1SiteRampResponse {
 }
 
 export const CreateCf1SiteRampResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListCf1SiteRampsResponseResult),
     }),
@@ -4684,7 +4653,7 @@ export const createCf1SiteRamp: API.PaginatedOperationMethod<
   CreateCf1SiteRampResponse,
   CreateCf1SiteRampError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: CreateCf1SiteRampRequest,
   output: CreateCf1SiteRampResponse,
   errors: [],
@@ -4702,7 +4671,7 @@ export interface DeleteCf1SiteRampRequest {
 }
 
 export const DeleteCf1SiteRampRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cf1SiteId: Schema.String.pipe(T.HttpPath("cf1SiteId")),
       rampId: Schema.String.pipe(T.HttpPath("rampId")),
@@ -4740,7 +4709,7 @@ export interface DeleteCf1SiteRampResponse {
 }
 
 export const DeleteCf1SiteRampResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
@@ -4788,7 +4757,7 @@ export const deleteCf1SiteRamp: API.OperationMethod<
   DeleteCf1SiteRampResponse,
   DeleteCf1SiteRampError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCf1SiteRampRequest,
   output: DeleteCf1SiteRampResponse,
   errors: [],
@@ -4807,7 +4776,7 @@ export interface GetCfInterconnectRequest {
 }
 
 export const GetCfInterconnectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cfInterconnectId: Schema.String.pipe(T.HttpPath("cfInterconnectId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4849,7 +4818,7 @@ export interface GetCfInterconnectResponse {
 }
 
 export const GetCfInterconnectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       interconnect: Schema.optional(Schema.Union([Interconnect, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -4862,7 +4831,7 @@ export const getCfInterconnect: API.OperationMethod<
   GetCfInterconnectResponse,
   GetCfInterconnectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCfInterconnectRequest,
   output: GetCfInterconnectResponse,
   errors: [],
@@ -4876,7 +4845,7 @@ export interface ListCfInterconnectsRequest {
 }
 
 export const ListCfInterconnectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       xMagicNewHcTarget: Schema.optional(Schema.Boolean).pipe(
@@ -4919,7 +4888,7 @@ export interface ListCfInterconnectsResponse {
 }
 
 export const ListCfInterconnectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       interconnects: Schema.optional(
         Schema.Union([Schema.Array(Interconnect), Schema.Null]),
@@ -4934,7 +4903,7 @@ export const listCfInterconnects: API.OperationMethod<
   ListCfInterconnectsResponse,
   ListCfInterconnectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCfInterconnectsRequest,
   output: ListCfInterconnectsResponse,
   errors: [],
@@ -4970,7 +4939,7 @@ export interface PutCfInterconnectRequest {
 }
 
 export const PutCfInterconnectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cfInterconnectId: Schema.String.pipe(T.HttpPath("cfInterconnectId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -5031,7 +5000,7 @@ export interface PutCfInterconnectResponse {
 }
 
 export const PutCfInterconnectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       modified: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       modifiedInterconnect: Schema.optional(
@@ -5054,7 +5023,7 @@ export const putCfInterconnect: API.OperationMethod<
   PutCfInterconnectResponse,
   PutCfInterconnectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutCfInterconnectRequest,
   output: PutCfInterconnectResponse,
   errors: [],
@@ -5070,17 +5039,16 @@ export interface GetConnectorRequest {
   accountId: string;
 }
 
-export const GetConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/magic/connectors/{connectorId}",
-      }),
-    ),
+export const GetConnectorRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/connectors/{connectorId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetConnectorRequest>;
 
 export interface GetConnectorResponse {
@@ -5116,62 +5084,59 @@ export interface GetConnectorResponse {
   siteId?: string | null;
 }
 
-export const GetConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      activated: Schema.Boolean,
-      interruptWindowDaysOfWeek: Schema.Array(
-        Schema.Union([
-          Schema.Literals([
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-          ]),
-          Schema.String,
+export const GetConnectorResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    activated: Schema.Boolean,
+    interruptWindowDaysOfWeek: Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
         ]),
-      ),
-      interruptWindowDurationHours: Schema.Number,
-      interruptWindowEmbargoDates: Schema.Array(Schema.String),
-      interruptWindowHourOfDay: Schema.Number,
-      lastUpdated: Schema.String,
-      notes: Schema.String,
-      primary: Schema.Boolean,
-      timezone: Schema.String,
-      device: Schema.optional(Schema.Union([Device, Schema.Null])),
-      lastHeartbeat: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      lastSeenVersion: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      licenseKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          activated: "activated",
-          interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
-          interruptWindowDurationHours: "interrupt_window_duration_hours",
-          interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
-          interruptWindowHourOfDay: "interrupt_window_hour_of_day",
-          lastUpdated: "last_updated",
-          notes: "notes",
-          primary: "primary",
-          timezone: "timezone",
-          device: "device",
-          lastHeartbeat: "last_heartbeat",
-          lastSeenVersion: "last_seen_version",
-          licenseKey: "license_key",
-          siteId: "site_id",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.String,
+      ]),
+    ),
+    interruptWindowDurationHours: Schema.Number,
+    interruptWindowEmbargoDates: Schema.Array(Schema.String),
+    interruptWindowHourOfDay: Schema.Number,
+    lastUpdated: Schema.String,
+    notes: Schema.String,
+    primary: Schema.Boolean,
+    timezone: Schema.String,
+    device: Schema.optional(Schema.Union([Device, Schema.Null])),
+    lastHeartbeat: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastSeenVersion: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    licenseKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        activated: "activated",
+        interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
+        interruptWindowDurationHours: "interrupt_window_duration_hours",
+        interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
+        interruptWindowHourOfDay: "interrupt_window_hour_of_day",
+        lastUpdated: "last_updated",
+        notes: "notes",
+        primary: "primary",
+        timezone: "timezone",
+        device: "device",
+        lastHeartbeat: "last_heartbeat",
+        lastSeenVersion: "last_seen_version",
+        licenseKey: "license_key",
+        siteId: "site_id",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetConnectorResponse>;
 
 export type GetConnectorError = DefaultErrors;
@@ -5181,7 +5146,7 @@ export const getConnector: API.OperationMethod<
   GetConnectorResponse,
   GetConnectorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectorRequest,
   output: GetConnectorResponse,
   errors: [],
@@ -5194,19 +5159,18 @@ export interface ListConnectorsRequest {
   deviceType?: "MANAGED" | "LICENSED" | (string & {});
 }
 
-export const ListConnectorsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      deviceType: Schema.optional(
-        Schema.Union([Schema.Literals(["MANAGED", "LICENSED"]), Schema.String]),
-      ).pipe(T.HttpQuery("device_type")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/magic/connectors",
-      }),
-    ),
+export const ListConnectorsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    deviceType: Schema.optional(
+      Schema.Union([Schema.Literals(["MANAGED", "LICENSED"]), Schema.String]),
+    ).pipe(T.HttpQuery("device_type")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/connectors",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListConnectorsRequest>;
 
 export interface ListConnectorsResponse {
@@ -5243,7 +5207,7 @@ export interface ListConnectorsResponse {
 }
 
 export const ListConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListConnectorsResponseResult),
     }),
@@ -5256,7 +5220,7 @@ export const listConnectors: API.PaginatedOperationMethod<
   ListConnectorsResponse,
   ListConnectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [],
@@ -5301,7 +5265,7 @@ export interface CreateConnectorRequest {
 }
 
 export const CreateConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       device: Device2,
@@ -5383,7 +5347,7 @@ export interface CreateConnectorResponse {
 }
 
 export const CreateConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       activated: Schema.Boolean,
@@ -5447,7 +5411,7 @@ export const createConnector: API.OperationMethod<
   CreateConnectorResponse,
   CreateConnectorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectorRequest,
   output: CreateConnectorResponse,
   errors: [],
@@ -5489,7 +5453,7 @@ export interface UpdateConnectorRequest {
 }
 
 export const UpdateConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -5572,7 +5536,7 @@ export interface UpdateConnectorResponse {
 }
 
 export const UpdateConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       activated: Schema.Boolean,
@@ -5636,7 +5600,7 @@ export const updateConnector: API.OperationMethod<
   UpdateConnectorResponse,
   UpdateConnectorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectorRequest,
   output: UpdateConnectorResponse,
   errors: [],
@@ -5677,54 +5641,53 @@ export interface PatchConnectorRequest {
   timezone?: string;
 }
 
-export const PatchConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      activated: Schema.optional(Schema.Boolean),
-      interruptWindowDaysOfWeek: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "Sunday",
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday",
-            ]),
-            Schema.String,
+export const PatchConnectorRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    activated: Schema.optional(Schema.Boolean),
+    interruptWindowDaysOfWeek: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      interruptWindowDurationHours: Schema.optional(Schema.Number),
-      interruptWindowEmbargoDates: Schema.optional(Schema.Array(Schema.String)),
-      interruptWindowHourOfDay: Schema.optional(Schema.Number),
-      notes: Schema.optional(Schema.String),
-      primary: Schema.optional(Schema.Boolean),
-      provisionLicense: Schema.optional(Schema.Boolean),
-      siteId: Schema.optional(Schema.String),
-      timezone: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        activated: "activated",
-        interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
-        interruptWindowDurationHours: "interrupt_window_duration_hours",
-        interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
-        interruptWindowHourOfDay: "interrupt_window_hour_of_day",
-        notes: "notes",
-        primary: "primary",
-        provisionLicense: "provision_license",
-        siteId: "site_id",
-        timezone: "timezone",
-      }),
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/magic/connectors/{connectorId}",
-      }),
     ),
+    interruptWindowDurationHours: Schema.optional(Schema.Number),
+    interruptWindowEmbargoDates: Schema.optional(Schema.Array(Schema.String)),
+    interruptWindowHourOfDay: Schema.optional(Schema.Number),
+    notes: Schema.optional(Schema.String),
+    primary: Schema.optional(Schema.Boolean),
+    provisionLicense: Schema.optional(Schema.Boolean),
+    siteId: Schema.optional(Schema.String),
+    timezone: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      activated: "activated",
+      interruptWindowDaysOfWeek: "interrupt_window_days_of_week",
+      interruptWindowDurationHours: "interrupt_window_duration_hours",
+      interruptWindowEmbargoDates: "interrupt_window_embargo_dates",
+      interruptWindowHourOfDay: "interrupt_window_hour_of_day",
+      notes: "notes",
+      primary: "primary",
+      provisionLicense: "provision_license",
+      siteId: "site_id",
+      timezone: "timezone",
+    }),
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/magic/connectors/{connectorId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchConnectorRequest>;
 
 export interface PatchConnectorResponse {
@@ -5761,7 +5724,7 @@ export interface PatchConnectorResponse {
 }
 
 export const PatchConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       activated: Schema.Boolean,
@@ -5825,7 +5788,7 @@ export const patchConnector: API.OperationMethod<
   PatchConnectorResponse,
   PatchConnectorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchConnectorRequest,
   output: PatchConnectorResponse,
   errors: [],
@@ -5838,7 +5801,7 @@ export interface DeleteConnectorRequest {
 }
 
 export const DeleteConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -5884,7 +5847,7 @@ export interface DeleteConnectorResponse {
 }
 
 export const DeleteConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       activated: Schema.Boolean,
@@ -5948,7 +5911,7 @@ export const deleteConnector: API.OperationMethod<
   DeleteConnectorResponse,
   DeleteConnectorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectorRequest,
   output: DeleteConnectorResponse,
   errors: [],
@@ -5967,7 +5930,7 @@ export interface GetConnectorEventRequest {
 }
 
 export const GetConnectorEventRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
       eventT: Schema.Number.pipe(T.HttpPath("eventT")),
@@ -6013,7 +5976,7 @@ export interface GetConnectorEventResponse {
 }
 
 export const GetConnectorEventResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       e: Schema.Union([
         StartUpgrade,
@@ -6051,7 +6014,7 @@ export const getConnectorEvent: API.OperationMethod<
   GetConnectorEventResponse,
   GetConnectorEventError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectorEventRequest,
   output: GetConnectorEventResponse,
   errors: [],
@@ -6074,7 +6037,7 @@ export interface ListConnectorEventsRequest {
 }
 
 export const ListConnectorEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6098,7 +6061,7 @@ export interface ListConnectorEventsResponse {
 }
 
 export const ListConnectorEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.Number,
       items: Schema.Array(Item),
@@ -6113,7 +6076,7 @@ export const listConnectorEvents: API.OperationMethod<
   ListConnectorEventsResponse,
   ListConnectorEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListConnectorEventsRequest,
   output: ListConnectorEventsResponse,
   errors: [],
@@ -6130,7 +6093,7 @@ export interface ListConnectorEventLatestsRequest {
 }
 
 export const ListConnectorEventLatestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6174,7 +6137,7 @@ export interface ListConnectorEventLatestsResponse {
 }
 
 export const ListConnectorEventLatestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.Number,
       items: Schema.Array(Item2),
@@ -6188,7 +6151,7 @@ export const listConnectorEventLatests: API.OperationMethod<
   ListConnectorEventLatestsResponse,
   ListConnectorEventLatestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListConnectorEventLatestsRequest,
   output: ListConnectorEventLatestsResponse,
   errors: [],
@@ -6206,7 +6169,7 @@ export interface GetConnectorSnapshotRequest {
 }
 
 export const GetConnectorSnapshotRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
       snapshotT: Schema.Number.pipe(T.HttpPath("snapshotT")),
@@ -6650,7 +6613,7 @@ export interface GetConnectorSnapshotResponse {
 }
 
 export const GetConnectorSnapshotResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       countReclaimFailures: Schema.Number,
       countReclaimedPaths: Schema.Number,
@@ -7321,7 +7284,7 @@ export const getConnectorSnapshot: API.OperationMethod<
   GetConnectorSnapshotResponse,
   GetConnectorSnapshotError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectorSnapshotRequest,
   output: GetConnectorSnapshotResponse,
   errors: [],
@@ -7342,7 +7305,7 @@ export interface ListConnectorSnapshotsRequest {
 }
 
 export const ListConnectorSnapshotsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -7365,7 +7328,7 @@ export interface ListConnectorSnapshotsResponse {
 }
 
 export const ListConnectorSnapshotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.Number,
       items: Schema.Array(Item3),
@@ -7380,7 +7343,7 @@ export const listConnectorSnapshots: API.OperationMethod<
   ListConnectorSnapshotsResponse,
   ListConnectorSnapshotsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListConnectorSnapshotsRequest,
   output: ListConnectorSnapshotsResponse,
   errors: [],
@@ -7397,7 +7360,7 @@ export interface ListConnectorSnapshotLatestsRequest {
 }
 
 export const ListConnectorSnapshotLatestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -7678,7 +7641,7 @@ export interface ListConnectorSnapshotLatestsResponse {
 }
 
 export const ListConnectorSnapshotLatestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.Number,
       items: Schema.Array(Item4),
@@ -7692,7 +7655,7 @@ export const listConnectorSnapshotLatests: API.OperationMethod<
   ListConnectorSnapshotLatestsResponse,
   ListConnectorSnapshotLatestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListConnectorSnapshotLatestsRequest,
   output: ListConnectorSnapshotLatestsResponse,
   errors: [],
@@ -7711,7 +7674,7 @@ export interface PskGenerateIpsecTunnelRequest {
 }
 
 export const PskGenerateIpsecTunnelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ipsecTunnelId: Schema.String.pipe(T.HttpPath("ipsecTunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -7734,7 +7697,7 @@ export interface PskGenerateIpsecTunnelResponse {
 }
 
 export const PskGenerateIpsecTunnelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ipsecTunnelId: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -7759,7 +7722,7 @@ export const pskGenerateIpsecTunnel: API.OperationMethod<
   PskGenerateIpsecTunnelResponse,
   PskGenerateIpsecTunnelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PskGenerateIpsecTunnelRequest,
   output: PskGenerateIpsecTunnelResponse,
   errors: [],
@@ -7777,20 +7740,19 @@ export interface GetGreTunnelRequest {
   xMagicNewHcTarget?: boolean;
 }
 
-export const GetGreTunnelRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      greTunnelId: Schema.String.pipe(T.HttpPath("greTunnelId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      xMagicNewHcTarget: Schema.optional(Schema.Boolean).pipe(
-        T.HttpHeader("x-magic-new-hc-target"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/magic/gre_tunnels/{greTunnelId}",
-      }),
+export const GetGreTunnelRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    greTunnelId: Schema.String.pipe(T.HttpPath("greTunnelId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    xMagicNewHcTarget: Schema.optional(Schema.Boolean).pipe(
+      T.HttpHeader("x-magic-new-hc-target"),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/gre_tunnels/{greTunnelId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetGreTunnelRequest>;
 
 export interface GetGreTunnelResponse {
@@ -7837,13 +7799,12 @@ export interface GetGreTunnelResponse {
   } | null;
 }
 
-export const GetGreTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      greTunnel: Schema.optional(Schema.Union([Gretunnel, Schema.Null])),
-    })
-      .pipe(Schema.encodeKeys({ greTunnel: "gre_tunnel" }))
-      .pipe(T.ResponsePath("result")),
+export const GetGreTunnelResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    greTunnel: Schema.optional(Schema.Union([Gretunnel, Schema.Null])),
+  })
+    .pipe(Schema.encodeKeys({ greTunnel: "gre_tunnel" }))
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetGreTunnelResponse>;
 
 export type GetGreTunnelError =
@@ -7857,7 +7818,7 @@ export const getGreTunnel: API.OperationMethod<
   GetGreTunnelResponse,
   GetGreTunnelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGreTunnelRequest,
   output: GetGreTunnelResponse,
   errors: [GreTunnelNotFound, MagicTransitNotOnboarded, Forbidden],
@@ -7870,19 +7831,18 @@ export interface ListGreTunnelsRequest {
   xMagicNewHcTarget?: boolean;
 }
 
-export const ListGreTunnelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      xMagicNewHcTarget: Schema.optional(Schema.Boolean).pipe(
-        T.HttpHeader("x-magic-new-hc-target"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/magic/gre_tunnels",
-      }),
+export const ListGreTunnelsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    xMagicNewHcTarget: Schema.optional(Schema.Boolean).pipe(
+      T.HttpHeader("x-magic-new-hc-target"),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/gre_tunnels",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListGreTunnelsRequest>;
 
 export interface ListGreTunnelsResponse {
@@ -7932,7 +7892,7 @@ export interface ListGreTunnelsResponse {
 }
 
 export const ListGreTunnelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       greTunnels: Schema.optional(
         Schema.Union([Schema.Array(Gretunnel), Schema.Null]),
@@ -7952,7 +7912,7 @@ export const listGreTunnels: API.OperationMethod<
   ListGreTunnelsResponse,
   ListGreTunnelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGreTunnelsRequest,
   output: ListGreTunnelsResponse,
   errors: [MagicTransitNotOnboarded, Forbidden],
@@ -8000,7 +7960,7 @@ export interface CreateGreTunnelRequest {
 }
 
 export const CreateGreTunnelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       xMagicNewHcTarget: Schema.optional(Schema.Boolean).pipe(
@@ -8093,7 +8053,7 @@ export interface CreateGreTunnelResponse {
 }
 
 export const CreateGreTunnelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       cloudflareGreEndpoint: Schema.String,
@@ -8147,7 +8107,7 @@ export const createGreTunnel: API.OperationMethod<
   CreateGreTunnelResponse,
   CreateGreTunnelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGreTunnelRequest,
   output: CreateGreTunnelResponse,
   errors: [MagicTransitNotOnboarded, Forbidden],
@@ -8188,7 +8148,7 @@ export interface UpdateGreTunnelRequest {
 }
 
 export const UpdateGreTunnelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       greTunnelId: Schema.String.pipe(T.HttpPath("greTunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -8271,7 +8231,7 @@ export interface UpdateGreTunnelResponse {
 }
 
 export const UpdateGreTunnelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       modified: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       modifiedGreTunnel: Schema.optional(
@@ -8298,7 +8258,7 @@ export const updateGreTunnel: API.OperationMethod<
   UpdateGreTunnelResponse,
   UpdateGreTunnelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGreTunnelRequest,
   output: UpdateGreTunnelResponse,
   errors: [GreTunnelNotFound, MagicTransitNotOnboarded, Forbidden],
@@ -8313,7 +8273,7 @@ export interface DeleteGreTunnelRequest {
 }
 
 export const DeleteGreTunnelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       greTunnelId: Schema.String.pipe(T.HttpPath("greTunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -8374,7 +8334,7 @@ export interface DeleteGreTunnelResponse {
 }
 
 export const DeleteGreTunnelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deleted: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       deletedGreTunnel: Schema.optional(Schema.Union([Gretunnel, Schema.Null])),
@@ -8399,7 +8359,7 @@ export const deleteGreTunnel: API.OperationMethod<
   DeleteGreTunnelResponse,
   DeleteGreTunnelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGreTunnelRequest,
   output: DeleteGreTunnelResponse,
   errors: [GreTunnelNotFound, MagicTransitNotOnboarded, Forbidden],
@@ -8417,20 +8377,19 @@ export interface GetIpsecTunnelRequest {
   xMagicNewHcTarget?: boolean;
 }
 
-export const GetIpsecTunnelRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      ipsecTunnelId: Schema.String.pipe(T.HttpPath("ipsecTunnelId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      xMagicNewHcTarget: Schema.optional(Schema.Boolean).pipe(
-        T.HttpHeader("x-magic-new-hc-target"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsecTunnelId}",
-      }),
+export const GetIpsecTunnelRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    ipsecTunnelId: Schema.String.pipe(T.HttpPath("ipsecTunnelId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    xMagicNewHcTarget: Schema.optional(Schema.Boolean).pipe(
+      T.HttpHeader("x-magic-new-hc-target"),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsecTunnelId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetIpsecTunnelRequest>;
 
 export interface GetIpsecTunnelResponse {
@@ -8480,7 +8439,7 @@ export interface GetIpsecTunnelResponse {
 }
 
 export const GetIpsecTunnelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ipsecTunnel: Schema.optional(Schema.Union([Ipsectunnel, Schema.Null])),
     })
@@ -8499,7 +8458,7 @@ export const getIpsecTunnel: API.OperationMethod<
   GetIpsecTunnelResponse,
   GetIpsecTunnelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIpsecTunnelRequest,
   output: GetIpsecTunnelResponse,
   errors: [IpsecTunnelNotFound, MagicTransitNotOnboarded, Forbidden],
@@ -8513,7 +8472,7 @@ export interface ListIpsecTunnelsRequest {
 }
 
 export const ListIpsecTunnelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       xMagicNewHcTarget: Schema.optional(Schema.Boolean).pipe(
@@ -8576,7 +8535,7 @@ export interface ListIpsecTunnelsResponse {
 }
 
 export const ListIpsecTunnelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ipsecTunnels: Schema.optional(
         Schema.Union([Schema.Array(Ipsectunnel), Schema.Null]),
@@ -8596,7 +8555,7 @@ export const listIpsecTunnels: API.OperationMethod<
   ListIpsecTunnelsResponse,
   ListIpsecTunnelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListIpsecTunnelsRequest,
   output: ListIpsecTunnelsResponse,
   errors: [MagicTransitNotOnboarded, Forbidden],
@@ -8646,7 +8605,7 @@ export interface CreateIpsecTunnelRequest {
 }
 
 export const CreateIpsecTunnelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       xMagicNewHcTarget: Schema.optional(Schema.Boolean).pipe(
@@ -8744,7 +8703,7 @@ export interface CreateIpsecTunnelResponse {
 }
 
 export const CreateIpsecTunnelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       cloudflareEndpoint: Schema.String,
@@ -8810,7 +8769,7 @@ export const createIpsecTunnel: API.OperationMethod<
   CreateIpsecTunnelResponse,
   CreateIpsecTunnelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIpsecTunnelRequest,
   output: CreateIpsecTunnelResponse,
   errors: [MagicTransitNotOnboarded, Forbidden],
@@ -8861,7 +8820,7 @@ export interface UpdateIpsecTunnelRequest {
 }
 
 export const UpdateIpsecTunnelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ipsecTunnelId: Schema.String.pipe(T.HttpPath("ipsecTunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -8950,7 +8909,7 @@ export interface UpdateIpsecTunnelResponse {
 }
 
 export const UpdateIpsecTunnelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       modified: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       modifiedIpsecTunnel: Schema.optional(
@@ -8977,7 +8936,7 @@ export const updateIpsecTunnel: API.OperationMethod<
   UpdateIpsecTunnelResponse,
   UpdateIpsecTunnelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIpsecTunnelRequest,
   output: UpdateIpsecTunnelResponse,
   errors: [IpsecTunnelNotFound, MagicTransitNotOnboarded, Forbidden],
@@ -8992,7 +8951,7 @@ export interface DeleteIpsecTunnelRequest {
 }
 
 export const DeleteIpsecTunnelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ipsecTunnelId: Schema.String.pipe(T.HttpPath("ipsecTunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -9055,7 +9014,7 @@ export interface DeleteIpsecTunnelResponse {
 }
 
 export const DeleteIpsecTunnelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deleted: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       deletedIpsecTunnel: Schema.optional(
@@ -9082,7 +9041,7 @@ export const deleteIpsecTunnel: API.OperationMethod<
   DeleteIpsecTunnelResponse,
   DeleteIpsecTunnelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpsecTunnelRequest,
   output: DeleteIpsecTunnelResponse,
   errors: [IpsecTunnelNotFound, MagicTransitNotOnboarded, Forbidden],
@@ -9098,7 +9057,7 @@ export interface GetPcapRequest {
   accountId: string;
 }
 
-export const GetPcapRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetPcapRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pcapId: Schema.String.pipe(T.HttpPath("pcapId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -9166,7 +9125,7 @@ export type GetPcapResponse =
       type?: "simple" | "full" | (string & {}) | null;
     };
 
-export const GetPcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetPcapResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Union([Pcap, MagicVisibilityPCAPsPCAPsResponseFull]).pipe(
     T.ResponsePath("result"),
   ),
@@ -9179,7 +9138,7 @@ export const getPcap: API.OperationMethod<
   GetPcapResponse,
   GetPcapError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPcapRequest,
   output: GetPcapResponse,
   errors: [],
@@ -9190,7 +9149,7 @@ export interface ListPcapsRequest {
   accountId: string;
 }
 
-export const ListPcapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListPcapsRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/pcaps" })),
@@ -9258,13 +9217,12 @@ export interface ListPcapsResponse {
   )[];
 }
 
-export const ListPcapsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(
-        Schema.Union([Pcap, MagicVisibilityPCAPsPCAPsResponseFull]),
-      ),
-    }),
+export const ListPcapsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(
+      Schema.Union([Pcap, MagicVisibilityPCAPsPCAPsResponseFull]),
+    ),
+  }),
 ) as unknown as Schema.Codec<ListPcapsResponse>;
 
 export type ListPcapsError = DefaultErrors;
@@ -9274,7 +9232,7 @@ export const listPcaps: API.PaginatedOperationMethod<
   ListPcapsResponse,
   ListPcapsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPcapsRequest,
   output: ListPcapsResponse,
   errors: [],
@@ -9313,33 +9271,32 @@ export interface CreatePcapRequest {
   byteLimit?: number;
 }
 
-export const CreatePcapRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      packetLimit: Schema.optional(Schema.Number),
-      system: Schema.Literal("magic-transit"),
-      timeLimit: Schema.Number,
-      type: Schema.Union([Schema.Literals(["simple", "full"]), Schema.String]),
-      filterV1: Schema.optional(Pcapfilter),
-      offsetTime: Schema.optional(Schema.String),
-      coloName: Schema.optional(Schema.String),
-      destinationConf: Schema.optional(Schema.String),
-      byteLimit: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        packetLimit: "packet_limit",
-        system: "system",
-        timeLimit: "time_limit",
-        type: "type",
-        filterV1: "filter_v1",
-        offsetTime: "offset_time",
-        coloName: "colo_name",
-        destinationConf: "destination_conf",
-        byteLimit: "byte_limit",
-      }),
-      T.Http({ method: "POST", path: "/accounts/{account_id}/pcaps" }),
-    ),
+export const CreatePcapRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    packetLimit: Schema.optional(Schema.Number),
+    system: Schema.Literal("magic-transit"),
+    timeLimit: Schema.Number,
+    type: Schema.Union([Schema.Literals(["simple", "full"]), Schema.String]),
+    filterV1: Schema.optional(Pcapfilter),
+    offsetTime: Schema.optional(Schema.String),
+    coloName: Schema.optional(Schema.String),
+    destinationConf: Schema.optional(Schema.String),
+    byteLimit: Schema.optional(Schema.Number),
+  }).pipe(
+    Schema.encodeKeys({
+      packetLimit: "packet_limit",
+      system: "system",
+      timeLimit: "time_limit",
+      type: "type",
+      filterV1: "filter_v1",
+      offsetTime: "offset_time",
+      coloName: "colo_name",
+      destinationConf: "destination_conf",
+      byteLimit: "byte_limit",
+    }),
+    T.Http({ method: "POST", path: "/accounts/{account_id}/pcaps" }),
+  ),
 ) as unknown as Schema.Codec<CreatePcapRequest>;
 
 export type CreatePcapResponse =
@@ -9401,11 +9358,10 @@ export type CreatePcapResponse =
       type?: "simple" | "full" | (string & {}) | null;
     };
 
-export const CreatePcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([Pcap, MagicVisibilityPCAPsPCAPsResponseFull]).pipe(
-      T.ResponsePath("result"),
-    ),
+export const CreatePcapResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([Pcap, MagicVisibilityPCAPsPCAPsResponseFull]).pipe(
+    T.ResponsePath("result"),
+  ),
 ) as unknown as Schema.Codec<CreatePcapResponse>;
 
 export type CreatePcapError = DefaultErrors;
@@ -9415,7 +9371,7 @@ export const createPcap: API.OperationMethod<
   CreatePcapResponse,
   CreatePcapError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePcapRequest,
   output: CreatePcapResponse,
   errors: [],
@@ -9427,7 +9383,7 @@ export interface StopPcapRequest {
   accountId: string;
 }
 
-export const StopPcapRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const StopPcapRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pcapId: Schema.String.pipe(T.HttpPath("pcapId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -9441,7 +9397,7 @@ export const StopPcapRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 
 export type StopPcapResponse = unknown;
 
-export const StopPcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+export const StopPcapResponse = /*@__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
 ) as unknown as Schema.Codec<StopPcapResponse>;
 
@@ -9452,7 +9408,7 @@ export const stopPcap: API.OperationMethod<
   StopPcapResponse,
   StopPcapError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopPcapRequest,
   output: StopPcapResponse,
   errors: [],
@@ -9469,7 +9425,7 @@ export interface GetPcapDownloadRequest {
 }
 
 export const GetPcapDownloadRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       pcapId: Schema.String.pipe(T.HttpPath("pcapId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -9484,7 +9440,7 @@ export const GetPcapDownloadRequest =
 export type GetPcapDownloadResponse = unknown;
 
 export const GetPcapDownloadResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<GetPcapDownloadResponse>;
 
@@ -9495,7 +9451,7 @@ export const getPcapDownload: API.OperationMethod<
   GetPcapDownloadResponse,
   GetPcapDownloadError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPcapDownloadRequest,
   output: GetPcapDownloadResponse,
   errors: [],
@@ -9511,7 +9467,7 @@ export interface GetPcapOwnershipRequest {
 }
 
 export const GetPcapOwnershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -9531,7 +9487,7 @@ export interface GetPcapOwnershipResponse {
 }
 
 export const GetPcapOwnershipResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(GetPcapOwnershipResponseResult),
     }),
@@ -9544,7 +9500,7 @@ export const getPcapOwnership: API.PaginatedOperationMethod<
   GetPcapOwnershipResponse,
   GetPcapOwnershipError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPcapOwnershipRequest,
   output: GetPcapOwnershipResponse,
   errors: [],
@@ -9562,7 +9518,7 @@ export interface CreatePcapOwnershipRequest {
 }
 
 export const CreatePcapOwnershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       destinationConf: Schema.String,
@@ -9591,7 +9547,7 @@ export interface CreatePcapOwnershipResponse {
 }
 
 export const CreatePcapOwnershipResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       destinationConf: Schema.String,
@@ -9623,7 +9579,7 @@ export const createPcapOwnership: API.OperationMethod<
   CreatePcapOwnershipResponse,
   CreatePcapOwnershipError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePcapOwnershipRequest,
   output: CreatePcapOwnershipResponse,
   errors: [],
@@ -9636,7 +9592,7 @@ export interface DeletePcapOwnershipRequest {
 }
 
 export const DeletePcapOwnershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ownershipId: Schema.String.pipe(T.HttpPath("ownershipId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -9651,7 +9607,7 @@ export const DeletePcapOwnershipRequest =
 export type DeletePcapOwnershipResponse = unknown;
 
 export const DeletePcapOwnershipResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<DeletePcapOwnershipResponse>;
 
@@ -9662,7 +9618,7 @@ export const deletePcapOwnership: API.OperationMethod<
   DeletePcapOwnershipResponse,
   DeletePcapOwnershipError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePcapOwnershipRequest,
   output: DeletePcapOwnershipResponse,
   errors: [],
@@ -9678,7 +9634,7 @@ export interface ValidatePcapOwnershipRequest {
 }
 
 export const ValidatePcapOwnershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       destinationConf: Schema.String,
@@ -9711,7 +9667,7 @@ export interface ValidatePcapOwnershipResponse {
 }
 
 export const ValidatePcapOwnershipResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       destinationConf: Schema.String,
@@ -9743,7 +9699,7 @@ export const validatePcapOwnership: API.OperationMethod<
   ValidatePcapOwnershipResponse,
   ValidatePcapOwnershipError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidatePcapOwnershipRequest,
   output: ValidatePcapOwnershipResponse,
   errors: [],
@@ -9763,7 +9719,7 @@ export interface BulkPutCfInterconnectsRequest {
 }
 
 export const BulkPutCfInterconnectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       xMagicNewHcTarget: Schema.optional(Schema.Boolean).pipe(
@@ -9808,7 +9764,7 @@ export interface BulkPutCfInterconnectsResponse {
 }
 
 export const BulkPutCfInterconnectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       modified: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       modifiedInterconnects: Schema.optional(
@@ -9831,7 +9787,7 @@ export const bulkPutCfInterconnects: API.OperationMethod<
   BulkPutCfInterconnectsResponse,
   BulkPutCfInterconnectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkPutCfInterconnectsRequest,
   output: BulkPutCfInterconnectsResponse,
   errors: [],
@@ -9851,7 +9807,7 @@ export interface BulkPutGreTunnelsRequest {
 }
 
 export const BulkPutGreTunnelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       xMagicNewHcTarget: Schema.optional(Schema.Boolean).pipe(
@@ -9914,7 +9870,7 @@ export interface BulkPutGreTunnelsResponse {
 }
 
 export const BulkPutGreTunnelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       modified: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       modifiedGreTunnels: Schema.optional(
@@ -9937,7 +9893,7 @@ export const bulkPutGreTunnels: API.OperationMethod<
   BulkPutGreTunnelsResponse,
   BulkPutGreTunnelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkPutGreTunnelsRequest,
   output: BulkPutGreTunnelsResponse,
   errors: [],
@@ -9957,7 +9913,7 @@ export interface BulkPutIpsecTunnelsRequest {
 }
 
 export const BulkPutIpsecTunnelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       xMagicNewHcTarget: Schema.optional(Schema.Boolean).pipe(
@@ -10022,7 +9978,7 @@ export interface BulkPutIpsecTunnelsResponse {
 }
 
 export const BulkPutIpsecTunnelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       modified: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       modifiedIpsecTunnels: Schema.optional(
@@ -10045,7 +10001,7 @@ export const bulkPutIpsecTunnels: API.OperationMethod<
   BulkPutIpsecTunnelsResponse,
   BulkPutIpsecTunnelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkPutIpsecTunnelsRequest,
   output: BulkPutIpsecTunnelsResponse,
   errors: [],
@@ -10070,14 +10026,13 @@ export interface BulkPutRoutesRequest {
   }[];
 }
 
-export const BulkPutRoutesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      routes: Schema.Array(Route),
-    }).pipe(
-      T.Http({ method: "PUT", path: "/accounts/{account_id}/magic/routes" }),
-    ),
+export const BulkPutRoutesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    routes: Schema.Array(Route),
+  }).pipe(
+    T.Http({ method: "PUT", path: "/accounts/{account_id}/magic/routes" }),
+  ),
 ) as unknown as Schema.Codec<BulkPutRoutesRequest>;
 
 export interface BulkPutRoutesResponse {
@@ -10100,21 +10055,20 @@ export interface BulkPutRoutesResponse {
     | null;
 }
 
-export const BulkPutRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      modified: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedRoutes: Schema.optional(
-        Schema.Union([Schema.Array(ModifiedRoute), Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          modified: "modified",
-          modifiedRoutes: "modified_routes",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const BulkPutRoutesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    modified: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedRoutes: Schema.optional(
+      Schema.Union([Schema.Array(ModifiedRoute), Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        modified: "modified",
+        modifiedRoutes: "modified_routes",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<BulkPutRoutesResponse>;
 
 export type BulkPutRoutesError = DefaultErrors;
@@ -10124,7 +10078,7 @@ export const bulkPutRoutes: API.OperationMethod<
   BulkPutRoutesResponse,
   BulkPutRoutesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkPutRoutesRequest,
   output: BulkPutRoutesResponse,
   errors: [],
@@ -10140,7 +10094,7 @@ export interface GetRouteRequest {
   accountId: string;
 }
 
-export const GetRouteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRouteRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     routeId: Schema.String.pipe(T.HttpPath("routeId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -10169,7 +10123,7 @@ export interface GetRouteResponse {
   } | null;
 }
 
-export const GetRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRouteResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     route: Schema.optional(Schema.Union([ModifiedRoute, Schema.Null])),
   }).pipe(T.ResponsePath("result")),
@@ -10186,7 +10140,7 @@ export const getRoute: API.OperationMethod<
   GetRouteResponse,
   GetRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouteRequest,
   output: GetRouteResponse,
   errors: [RouteNotFound, MagicTransitNotOnboarded, Forbidden],
@@ -10197,13 +10151,12 @@ export interface ListRoutesRequest {
   accountId: string;
 }
 
-export const ListRoutesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/magic/routes" }),
-    ),
+export const ListRoutesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/magic/routes" }),
+  ),
 ) as unknown as Schema.Codec<ListRoutesRequest>;
 
 export interface ListRoutesResponse {
@@ -10225,13 +10178,12 @@ export interface ListRoutesResponse {
     | null;
 }
 
-export const ListRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      routes: Schema.optional(
-        Schema.Union([Schema.Array(ModifiedRoute), Schema.Null]),
-      ),
-    }).pipe(T.ResponsePath("result")),
+export const ListRoutesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    routes: Schema.optional(
+      Schema.Union([Schema.Array(ModifiedRoute), Schema.Null]),
+    ),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ListRoutesResponse>;
 
 export type ListRoutesError =
@@ -10244,7 +10196,7 @@ export const listRoutes: API.OperationMethod<
   ListRoutesResponse,
   ListRoutesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRoutesRequest,
   output: ListRoutesResponse,
   errors: [MagicTransitNotOnboarded, Forbidden],
@@ -10267,19 +10219,18 @@ export interface CreateRouteRequest {
   weight?: number;
 }
 
-export const CreateRouteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      nexthop: Schema.String,
-      prefix: Schema.String,
-      priority: Schema.Number,
-      description: Schema.optional(Schema.String),
-      scope: Schema.optional(ScopeParam),
-      weight: Schema.optional(Schema.Number),
-    }).pipe(
-      T.Http({ method: "POST", path: "/accounts/{account_id}/magic/routes" }),
-    ),
+export const CreateRouteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    nexthop: Schema.String,
+    prefix: Schema.String,
+    priority: Schema.Number,
+    description: Schema.optional(Schema.String),
+    scope: Schema.optional(ScopeParam),
+    weight: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({ method: "POST", path: "/accounts/{account_id}/magic/routes" }),
+  ),
 ) as unknown as Schema.Codec<CreateRouteRequest>;
 
 export interface CreateRouteResponse {
@@ -10303,33 +10254,32 @@ export interface CreateRouteResponse {
   weight?: number | null;
 }
 
-export const CreateRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      nexthop: Schema.String,
-      prefix: Schema.String,
-      priority: Schema.Number,
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      scope: Schema.optional(Schema.Union([ScopeParam, Schema.Null])),
-      weight: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          nexthop: "nexthop",
-          prefix: "prefix",
-          priority: "priority",
-          createdOn: "created_on",
-          description: "description",
-          modifiedOn: "modified_on",
-          scope: "scope",
-          weight: "weight",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateRouteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    nexthop: Schema.String,
+    prefix: Schema.String,
+    priority: Schema.Number,
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scope: Schema.optional(Schema.Union([ScopeParam, Schema.Null])),
+    weight: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        nexthop: "nexthop",
+        prefix: "prefix",
+        priority: "priority",
+        createdOn: "created_on",
+        description: "description",
+        modifiedOn: "modified_on",
+        scope: "scope",
+        weight: "weight",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateRouteResponse>;
 
 export type CreateRouteError =
@@ -10342,7 +10292,7 @@ export const createRoute: API.OperationMethod<
   CreateRouteResponse,
   CreateRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteRequest,
   output: CreateRouteResponse,
   errors: [MagicTransitNotOnboarded, Forbidden],
@@ -10366,23 +10316,22 @@ export interface UpdateRouteRequest {
   weight?: number;
 }
 
-export const UpdateRouteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      routeId: Schema.String.pipe(T.HttpPath("routeId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      nexthop: Schema.String,
-      prefix: Schema.String,
-      priority: Schema.Number,
-      description: Schema.optional(Schema.String),
-      scope: Schema.optional(ScopeParam),
-      weight: Schema.optional(Schema.Number),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/magic/routes/{routeId}",
-      }),
-    ),
+export const UpdateRouteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    routeId: Schema.String.pipe(T.HttpPath("routeId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    nexthop: Schema.String,
+    prefix: Schema.String,
+    priority: Schema.Number,
+    description: Schema.optional(Schema.String),
+    scope: Schema.optional(ScopeParam),
+    weight: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/magic/routes/{routeId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateRouteRequest>;
 
 export interface UpdateRouteResponse {
@@ -10403,21 +10352,18 @@ export interface UpdateRouteResponse {
   } | null;
 }
 
-export const UpdateRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      modified: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedRoute: Schema.optional(
-        Schema.Union([ModifiedRoute, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          modified: "modified",
-          modifiedRoute: "modified_route",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateRouteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    modified: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedRoute: Schema.optional(Schema.Union([ModifiedRoute, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        modified: "modified",
+        modifiedRoute: "modified_route",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateRouteResponse>;
 
 export type UpdateRouteError =
@@ -10431,7 +10377,7 @@ export const updateRoute: API.OperationMethod<
   UpdateRouteResponse,
   UpdateRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRouteRequest,
   output: UpdateRouteResponse,
   errors: [RouteNotFound, MagicTransitNotOnboarded, Forbidden],
@@ -10443,17 +10389,16 @@ export interface DeleteRouteRequest {
   accountId: string;
 }
 
-export const DeleteRouteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      routeId: Schema.String.pipe(T.HttpPath("routeId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/magic/routes/{routeId}",
-      }),
-    ),
+export const DeleteRouteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    routeId: Schema.String.pipe(T.HttpPath("routeId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/magic/routes/{routeId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteRouteRequest>;
 
 export interface DeleteRouteResponse {
@@ -10474,19 +10419,18 @@ export interface DeleteRouteResponse {
   } | null;
 }
 
-export const DeleteRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      deleted: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      deletedRoute: Schema.optional(Schema.Union([ModifiedRoute, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          deleted: "deleted",
-          deletedRoute: "deleted_route",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const DeleteRouteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    deleted: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    deletedRoute: Schema.optional(Schema.Union([ModifiedRoute, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        deleted: "deleted",
+        deletedRoute: "deleted_route",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteRouteResponse>;
 
 export type DeleteRouteError =
@@ -10500,7 +10444,7 @@ export const deleteRoute: API.OperationMethod<
   DeleteRouteResponse,
   DeleteRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteRequest,
   output: DeleteRouteResponse,
   errors: [RouteNotFound, MagicTransitNotOnboarded, Forbidden],
@@ -10511,13 +10455,12 @@ export interface EmptyRouteRequest {
   accountId: string;
 }
 
-export const EmptyRouteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({ method: "DELETE", path: "/accounts/{account_id}/magic/routes" }),
-    ),
+export const EmptyRouteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/accounts/{account_id}/magic/routes" }),
+  ),
 ) as unknown as Schema.Codec<EmptyRouteRequest>;
 
 export interface EmptyRouteResponse {
@@ -10540,21 +10483,20 @@ export interface EmptyRouteResponse {
     | null;
 }
 
-export const EmptyRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      deleted: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      deletedRoutes: Schema.optional(
-        Schema.Union([Schema.Array(ModifiedRoute), Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          deleted: "deleted",
-          deletedRoutes: "deleted_routes",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const EmptyRouteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    deleted: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    deletedRoutes: Schema.optional(
+      Schema.Union([Schema.Array(ModifiedRoute), Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        deleted: "deleted",
+        deletedRoutes: "deleted_routes",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<EmptyRouteResponse>;
 
 export type EmptyRouteError = DefaultErrors;
@@ -10564,7 +10506,7 @@ export const emptyRoute: API.OperationMethod<
   EmptyRouteResponse,
   EmptyRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EmptyRouteRequest,
   output: EmptyRouteResponse,
   errors: [],
@@ -10584,7 +10526,7 @@ export interface PskSetIpsecTunnelRequest {
 }
 
 export const PskSetIpsecTunnelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       validateOnly: Schema.optional(Schema.Boolean).pipe(
@@ -10607,7 +10549,7 @@ export interface PskSetIpsecTunnelResponse {
 }
 
 export const PskSetIpsecTunnelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       successfullyAppliedPsks: Schema.optional(
         Schema.Union([
@@ -10638,7 +10580,7 @@ export const pskSetIpsecTunnel: API.OperationMethod<
   PskSetIpsecTunnelResponse,
   PskSetIpsecTunnelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PskSetIpsecTunnelRequest,
   output: PskSetIpsecTunnelResponse,
   errors: [],
@@ -10656,7 +10598,7 @@ export interface GetSiteRequest {
   xMagicNewHcTarget?: boolean;
 }
 
-export const GetSiteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetSiteRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     siteId: Schema.String.pipe(T.HttpPath("siteId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -10687,7 +10629,7 @@ export interface GetSiteResponse {
   secondaryConnectorId?: string | null;
 }
 
-export const GetSiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetSiteResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     connectorId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -10724,7 +10666,7 @@ export const getSite: API.OperationMethod<
   GetSiteResponse,
   GetSiteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSiteRequest,
   output: GetSiteResponse,
   errors: [SiteNotFound, MagicWanUnauthorized, Forbidden],
@@ -10737,7 +10679,7 @@ export interface ListSitesRequest {
   connectorid?: string;
 }
 
-export const ListSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListSitesRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     connectorid: Schema.optional(Schema.String).pipe(
@@ -10760,11 +10702,10 @@ export interface ListSitesResponse {
   }[];
 }
 
-export const ListSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListSitesResponseResult),
-    }),
+export const ListSitesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListSitesResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListSitesResponse>;
 
 export type ListSitesError = DefaultErrors | MagicWanUnauthorized | Forbidden;
@@ -10774,7 +10715,7 @@ export const listSites: API.PaginatedOperationMethod<
   ListSitesResponse,
   ListSitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSitesRequest,
   output: ListSitesResponse,
   errors: [MagicWanUnauthorized, Forbidden],
@@ -10801,27 +10742,26 @@ export interface CreateSiteRequest {
   secondaryConnectorId?: string;
 }
 
-export const CreateSiteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.String,
-      connectorId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      haMode: Schema.optional(Schema.Boolean),
-      location: Schema.optional(SiteLocation),
-      secondaryConnectorId: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        connectorId: "connector_id",
-        description: "description",
-        haMode: "ha_mode",
-        location: "location",
-        secondaryConnectorId: "secondary_connector_id",
-      }),
-      T.Http({ method: "POST", path: "/accounts/{account_id}/magic/sites" }),
-    ),
+export const CreateSiteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String,
+    connectorId: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    haMode: Schema.optional(Schema.Boolean),
+    location: Schema.optional(SiteLocation),
+    secondaryConnectorId: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      connectorId: "connector_id",
+      description: "description",
+      haMode: "ha_mode",
+      location: "location",
+      secondaryConnectorId: "secondary_connector_id",
+    }),
+    T.Http({ method: "POST", path: "/accounts/{account_id}/magic/sites" }),
+  ),
 ) as unknown as Schema.Codec<CreateSiteRequest>;
 
 export interface CreateSiteResponse {
@@ -10840,31 +10780,30 @@ export interface CreateSiteResponse {
   secondaryConnectorId?: string | null;
 }
 
-export const CreateSiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      connectorId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      haMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      location: Schema.optional(Schema.Union([SiteLocation, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      secondaryConnectorId: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          connectorId: "connector_id",
-          description: "description",
-          haMode: "ha_mode",
-          location: "location",
-          name: "name",
-          secondaryConnectorId: "secondary_connector_id",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateSiteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    connectorId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    haMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    location: Schema.optional(Schema.Union([SiteLocation, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    secondaryConnectorId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        connectorId: "connector_id",
+        description: "description",
+        haMode: "ha_mode",
+        location: "location",
+        name: "name",
+        secondaryConnectorId: "secondary_connector_id",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateSiteResponse>;
 
 export type CreateSiteError = DefaultErrors | MagicWanUnauthorized | Forbidden;
@@ -10874,7 +10813,7 @@ export const createSite: API.OperationMethod<
   CreateSiteResponse,
   CreateSiteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSiteRequest,
   output: CreateSiteResponse,
   errors: [MagicWanUnauthorized, Forbidden],
@@ -10896,29 +10835,28 @@ export interface UpdateSiteRequest {
   secondaryConnectorId?: string;
 }
 
-export const UpdateSiteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      connectorId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(SiteLocation),
-      name: Schema.optional(Schema.String),
-      secondaryConnectorId: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        connectorId: "connector_id",
-        description: "description",
-        location: "location",
-        name: "name",
-        secondaryConnectorId: "secondary_connector_id",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/magic/sites/{siteId}",
-      }),
-    ),
+export const UpdateSiteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    connectorId: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    location: Schema.optional(SiteLocation),
+    name: Schema.optional(Schema.String),
+    secondaryConnectorId: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      connectorId: "connector_id",
+      description: "description",
+      location: "location",
+      name: "name",
+      secondaryConnectorId: "secondary_connector_id",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/magic/sites/{siteId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateSiteRequest>;
 
 export interface UpdateSiteResponse {
@@ -10937,31 +10875,30 @@ export interface UpdateSiteResponse {
   secondaryConnectorId?: string | null;
 }
 
-export const UpdateSiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      connectorId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      haMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      location: Schema.optional(Schema.Union([SiteLocation, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      secondaryConnectorId: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          connectorId: "connector_id",
-          description: "description",
-          haMode: "ha_mode",
-          location: "location",
-          name: "name",
-          secondaryConnectorId: "secondary_connector_id",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateSiteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    connectorId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    haMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    location: Schema.optional(Schema.Union([SiteLocation, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    secondaryConnectorId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        connectorId: "connector_id",
+        description: "description",
+        haMode: "ha_mode",
+        location: "location",
+        name: "name",
+        secondaryConnectorId: "secondary_connector_id",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateSiteResponse>;
 
 export type UpdateSiteError =
@@ -10975,7 +10912,7 @@ export const updateSite: API.OperationMethod<
   UpdateSiteResponse,
   UpdateSiteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSiteRequest,
   output: UpdateSiteResponse,
   errors: [SiteNotFound, MagicWanUnauthorized, Forbidden],
@@ -10997,7 +10934,7 @@ export interface PatchSiteRequest {
   secondaryConnectorId?: string;
 }
 
-export const PatchSiteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PatchSiteRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     siteId: Schema.String.pipe(T.HttpPath("siteId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -11037,31 +10974,30 @@ export interface PatchSiteResponse {
   secondaryConnectorId?: string | null;
 }
 
-export const PatchSiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      connectorId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      haMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      location: Schema.optional(Schema.Union([SiteLocation, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      secondaryConnectorId: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          connectorId: "connector_id",
-          description: "description",
-          haMode: "ha_mode",
-          location: "location",
-          name: "name",
-          secondaryConnectorId: "secondary_connector_id",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PatchSiteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    connectorId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    haMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    location: Schema.optional(Schema.Union([SiteLocation, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    secondaryConnectorId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        connectorId: "connector_id",
+        description: "description",
+        haMode: "ha_mode",
+        location: "location",
+        name: "name",
+        secondaryConnectorId: "secondary_connector_id",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchSiteResponse>;
 
 export type PatchSiteError =
@@ -11075,7 +11011,7 @@ export const patchSite: API.OperationMethod<
   PatchSiteResponse,
   PatchSiteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSiteRequest,
   output: PatchSiteResponse,
   errors: [SiteNotFound, MagicWanUnauthorized, Forbidden],
@@ -11087,17 +11023,16 @@ export interface DeleteSiteRequest {
   accountId: string;
 }
 
-export const DeleteSiteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/magic/sites/{siteId}",
-      }),
-    ),
+export const DeleteSiteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/magic/sites/{siteId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteSiteRequest>;
 
 export interface DeleteSiteResponse {
@@ -11116,31 +11051,30 @@ export interface DeleteSiteResponse {
   secondaryConnectorId?: string | null;
 }
 
-export const DeleteSiteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      connectorId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      haMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      location: Schema.optional(Schema.Union([SiteLocation, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      secondaryConnectorId: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          connectorId: "connector_id",
-          description: "description",
-          haMode: "ha_mode",
-          location: "location",
-          name: "name",
-          secondaryConnectorId: "secondary_connector_id",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const DeleteSiteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    connectorId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    haMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    location: Schema.optional(Schema.Union([SiteLocation, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    secondaryConnectorId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        connectorId: "connector_id",
+        description: "description",
+        haMode: "ha_mode",
+        location: "location",
+        name: "name",
+        secondaryConnectorId: "secondary_connector_id",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteSiteResponse>;
 
 export type DeleteSiteError =
@@ -11154,7 +11088,7 @@ export const deleteSite: API.OperationMethod<
   DeleteSiteResponse,
   DeleteSiteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSiteRequest,
   output: DeleteSiteResponse,
   errors: [SiteNotFound, MagicWanUnauthorized, Forbidden],
@@ -11171,18 +11105,17 @@ export interface GetSiteAclRequest {
   accountId: string;
 }
 
-export const GetSiteAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      aclId: Schema.String.pipe(T.HttpPath("aclId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/acls/{aclId}",
-      }),
-    ),
+export const GetSiteAclRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    aclId: Schema.String.pipe(T.HttpPath("aclId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/acls/{aclId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetSiteAclRequest>;
 
 export interface GetSiteAclResponse {
@@ -11213,45 +11146,44 @@ export interface GetSiteAclResponse {
   unidirectional?: boolean | null;
 }
 
-export const GetSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      forwardLocally: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      lan_1: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
-      lan_2: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      protocols: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals(["tcp", "udp", "icmp"]),
-              Schema.String,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      unidirectional: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          description: "description",
-          forwardLocally: "forward_locally",
-          lan_1: "lan_1",
-          lan_2: "lan_2",
-          name: "name",
-          protocols: "protocols",
-          unidirectional: "unidirectional",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetSiteAclResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    forwardLocally: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    lan_1: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
+    lan_2: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    protocols: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["tcp", "udp", "icmp"]),
+            Schema.String,
+          ]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    unidirectional: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        description: "description",
+        forwardLocally: "forward_locally",
+        lan_1: "lan_1",
+        lan_2: "lan_2",
+        name: "name",
+        protocols: "protocols",
+        unidirectional: "unidirectional",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetSiteAclResponse>;
 
 export type GetSiteAclError =
@@ -11265,7 +11197,7 @@ export const getSiteAcl: API.OperationMethod<
   GetSiteAclResponse,
   GetSiteAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSiteAclRequest,
   output: GetSiteAclResponse,
   errors: [SiteAclNotFound, MagicWanUnauthorized, Forbidden],
@@ -11277,17 +11209,16 @@ export interface ListSiteAclsRequest {
   accountId: string;
 }
 
-export const ListSiteAclsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/acls",
-      }),
-    ),
+export const ListSiteAclsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/acls",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSiteAclsRequest>;
 
 export interface ListSiteAclsResponse {
@@ -11315,11 +11246,10 @@ export interface ListSiteAclsResponse {
   }[];
 }
 
-export const ListSiteAclsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListSiteAclsResponseResult),
-    }),
+export const ListSiteAclsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListSiteAclsResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListSiteAclsResponse>;
 
 export type ListSiteAclsError =
@@ -11332,7 +11262,7 @@ export const listSiteAcls: API.PaginatedOperationMethod<
   ListSiteAclsResponse,
   ListSiteAclsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSiteAclsRequest,
   output: ListSiteAclsResponse,
   errors: [MagicWanUnauthorized, Forbidden],
@@ -11374,40 +11304,36 @@ export interface CreateSiteAclRequest {
   unidirectional?: boolean;
 }
 
-export const CreateSiteAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      lan_1: Aclconfiguration,
-      lan_2: Aclconfiguration,
-      name: Schema.String,
-      description: Schema.optional(Schema.String),
-      forwardLocally: Schema.optional(Schema.Boolean),
-      protocols: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["tcp", "udp", "icmp"]),
-            Schema.String,
-          ]),
-        ),
+export const CreateSiteAclRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    lan_1: Aclconfiguration,
+    lan_2: Aclconfiguration,
+    name: Schema.String,
+    description: Schema.optional(Schema.String),
+    forwardLocally: Schema.optional(Schema.Boolean),
+    protocols: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["tcp", "udp", "icmp"]), Schema.String]),
       ),
-      unidirectional: Schema.optional(Schema.Boolean),
-    }).pipe(
-      Schema.encodeKeys({
-        lan_1: "lan_1",
-        lan_2: "lan_2",
-        name: "name",
-        description: "description",
-        forwardLocally: "forward_locally",
-        protocols: "protocols",
-        unidirectional: "unidirectional",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/acls",
-      }),
     ),
+    unidirectional: Schema.optional(Schema.Boolean),
+  }).pipe(
+    Schema.encodeKeys({
+      lan_1: "lan_1",
+      lan_2: "lan_2",
+      name: "name",
+      description: "description",
+      forwardLocally: "forward_locally",
+      protocols: "protocols",
+      unidirectional: "unidirectional",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/acls",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateSiteAclRequest>;
 
 export interface CreateSiteAclResponse {
@@ -11438,45 +11364,44 @@ export interface CreateSiteAclResponse {
   unidirectional?: boolean | null;
 }
 
-export const CreateSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      forwardLocally: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      lan_1: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
-      lan_2: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      protocols: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals(["tcp", "udp", "icmp"]),
-              Schema.String,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      unidirectional: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          description: "description",
-          forwardLocally: "forward_locally",
-          lan_1: "lan_1",
-          lan_2: "lan_2",
-          name: "name",
-          protocols: "protocols",
-          unidirectional: "unidirectional",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateSiteAclResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    forwardLocally: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    lan_1: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
+    lan_2: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    protocols: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["tcp", "udp", "icmp"]),
+            Schema.String,
+          ]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    unidirectional: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        description: "description",
+        forwardLocally: "forward_locally",
+        lan_1: "lan_1",
+        lan_2: "lan_2",
+        name: "name",
+        protocols: "protocols",
+        unidirectional: "unidirectional",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateSiteAclResponse>;
 
 export type CreateSiteAclError =
@@ -11489,7 +11414,7 @@ export const createSiteAcl: API.OperationMethod<
   CreateSiteAclResponse,
   CreateSiteAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSiteAclRequest,
   output: CreateSiteAclResponse,
   errors: [MagicWanUnauthorized, Forbidden],
@@ -11528,41 +11453,37 @@ export interface UpdateSiteAclRequest {
   unidirectional?: boolean;
 }
 
-export const UpdateSiteAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      aclId: Schema.String.pipe(T.HttpPath("aclId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      description: Schema.optional(Schema.String),
-      forwardLocally: Schema.optional(Schema.Boolean),
-      lan_1: Schema.optional(Aclconfiguration),
-      lan_2: Schema.optional(Aclconfiguration),
-      name: Schema.optional(Schema.String),
-      protocols: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["tcp", "udp", "icmp"]),
-            Schema.String,
-          ]),
-        ),
+export const UpdateSiteAclRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    aclId: Schema.String.pipe(T.HttpPath("aclId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    description: Schema.optional(Schema.String),
+    forwardLocally: Schema.optional(Schema.Boolean),
+    lan_1: Schema.optional(Aclconfiguration),
+    lan_2: Schema.optional(Aclconfiguration),
+    name: Schema.optional(Schema.String),
+    protocols: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["tcp", "udp", "icmp"]), Schema.String]),
       ),
-      unidirectional: Schema.optional(Schema.Boolean),
-    }).pipe(
-      Schema.encodeKeys({
-        description: "description",
-        forwardLocally: "forward_locally",
-        lan_1: "lan_1",
-        lan_2: "lan_2",
-        name: "name",
-        protocols: "protocols",
-        unidirectional: "unidirectional",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/acls/{aclId}",
-      }),
     ),
+    unidirectional: Schema.optional(Schema.Boolean),
+  }).pipe(
+    Schema.encodeKeys({
+      description: "description",
+      forwardLocally: "forward_locally",
+      lan_1: "lan_1",
+      lan_2: "lan_2",
+      name: "name",
+      protocols: "protocols",
+      unidirectional: "unidirectional",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/acls/{aclId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateSiteAclRequest>;
 
 export interface UpdateSiteAclResponse {
@@ -11593,45 +11514,44 @@ export interface UpdateSiteAclResponse {
   unidirectional?: boolean | null;
 }
 
-export const UpdateSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      forwardLocally: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      lan_1: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
-      lan_2: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      protocols: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals(["tcp", "udp", "icmp"]),
-              Schema.String,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      unidirectional: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          description: "description",
-          forwardLocally: "forward_locally",
-          lan_1: "lan_1",
-          lan_2: "lan_2",
-          name: "name",
-          protocols: "protocols",
-          unidirectional: "unidirectional",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateSiteAclResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    forwardLocally: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    lan_1: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
+    lan_2: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    protocols: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["tcp", "udp", "icmp"]),
+            Schema.String,
+          ]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    unidirectional: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        description: "description",
+        forwardLocally: "forward_locally",
+        lan_1: "lan_1",
+        lan_2: "lan_2",
+        name: "name",
+        protocols: "protocols",
+        unidirectional: "unidirectional",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateSiteAclResponse>;
 
 export type UpdateSiteAclError =
@@ -11645,7 +11565,7 @@ export const updateSiteAcl: API.OperationMethod<
   UpdateSiteAclResponse,
   UpdateSiteAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSiteAclRequest,
   output: UpdateSiteAclResponse,
   errors: [SiteAclNotFound, MagicWanUnauthorized, Forbidden],
@@ -11684,41 +11604,37 @@ export interface PatchSiteAclRequest {
   unidirectional?: boolean;
 }
 
-export const PatchSiteAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      aclId: Schema.String.pipe(T.HttpPath("aclId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      description: Schema.optional(Schema.String),
-      forwardLocally: Schema.optional(Schema.Boolean),
-      lan_1: Schema.optional(Aclconfiguration),
-      lan_2: Schema.optional(Aclconfiguration),
-      name: Schema.optional(Schema.String),
-      protocols: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["tcp", "udp", "icmp"]),
-            Schema.String,
-          ]),
-        ),
+export const PatchSiteAclRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    aclId: Schema.String.pipe(T.HttpPath("aclId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    description: Schema.optional(Schema.String),
+    forwardLocally: Schema.optional(Schema.Boolean),
+    lan_1: Schema.optional(Aclconfiguration),
+    lan_2: Schema.optional(Aclconfiguration),
+    name: Schema.optional(Schema.String),
+    protocols: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["tcp", "udp", "icmp"]), Schema.String]),
       ),
-      unidirectional: Schema.optional(Schema.Boolean),
-    }).pipe(
-      Schema.encodeKeys({
-        description: "description",
-        forwardLocally: "forward_locally",
-        lan_1: "lan_1",
-        lan_2: "lan_2",
-        name: "name",
-        protocols: "protocols",
-        unidirectional: "unidirectional",
-      }),
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/acls/{aclId}",
-      }),
     ),
+    unidirectional: Schema.optional(Schema.Boolean),
+  }).pipe(
+    Schema.encodeKeys({
+      description: "description",
+      forwardLocally: "forward_locally",
+      lan_1: "lan_1",
+      lan_2: "lan_2",
+      name: "name",
+      protocols: "protocols",
+      unidirectional: "unidirectional",
+    }),
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/acls/{aclId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchSiteAclRequest>;
 
 export interface PatchSiteAclResponse {
@@ -11749,45 +11665,44 @@ export interface PatchSiteAclResponse {
   unidirectional?: boolean | null;
 }
 
-export const PatchSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      forwardLocally: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      lan_1: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
-      lan_2: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      protocols: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals(["tcp", "udp", "icmp"]),
-              Schema.String,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      unidirectional: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          description: "description",
-          forwardLocally: "forward_locally",
-          lan_1: "lan_1",
-          lan_2: "lan_2",
-          name: "name",
-          protocols: "protocols",
-          unidirectional: "unidirectional",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PatchSiteAclResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    forwardLocally: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    lan_1: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
+    lan_2: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    protocols: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["tcp", "udp", "icmp"]),
+            Schema.String,
+          ]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    unidirectional: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        description: "description",
+        forwardLocally: "forward_locally",
+        lan_1: "lan_1",
+        lan_2: "lan_2",
+        name: "name",
+        protocols: "protocols",
+        unidirectional: "unidirectional",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchSiteAclResponse>;
 
 export type PatchSiteAclError =
@@ -11801,7 +11716,7 @@ export const patchSiteAcl: API.OperationMethod<
   PatchSiteAclResponse,
   PatchSiteAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSiteAclRequest,
   output: PatchSiteAclResponse,
   errors: [SiteAclNotFound, MagicWanUnauthorized, Forbidden],
@@ -11814,18 +11729,17 @@ export interface DeleteSiteAclRequest {
   accountId: string;
 }
 
-export const DeleteSiteAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      aclId: Schema.String.pipe(T.HttpPath("aclId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/acls/{aclId}",
-      }),
-    ),
+export const DeleteSiteAclRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    aclId: Schema.String.pipe(T.HttpPath("aclId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/acls/{aclId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteSiteAclRequest>;
 
 export interface DeleteSiteAclResponse {
@@ -11856,45 +11770,44 @@ export interface DeleteSiteAclResponse {
   unidirectional?: boolean | null;
 }
 
-export const DeleteSiteAclResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      forwardLocally: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      lan_1: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
-      lan_2: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      protocols: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals(["tcp", "udp", "icmp"]),
-              Schema.String,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      unidirectional: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          description: "description",
-          forwardLocally: "forward_locally",
-          lan_1: "lan_1",
-          lan_2: "lan_2",
-          name: "name",
-          protocols: "protocols",
-          unidirectional: "unidirectional",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const DeleteSiteAclResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    forwardLocally: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    lan_1: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
+    lan_2: Schema.optional(Schema.Union([Aclconfiguration, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    protocols: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["tcp", "udp", "icmp"]),
+            Schema.String,
+          ]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    unidirectional: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        description: "description",
+        forwardLocally: "forward_locally",
+        lan_1: "lan_1",
+        lan_2: "lan_2",
+        name: "name",
+        protocols: "protocols",
+        unidirectional: "unidirectional",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteSiteAclResponse>;
 
 export type DeleteSiteAclError =
@@ -11908,7 +11821,7 @@ export const deleteSiteAcl: API.OperationMethod<
   DeleteSiteAclResponse,
   DeleteSiteAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSiteAclRequest,
   output: DeleteSiteAclResponse,
   errors: [SiteAclNotFound, MagicWanUnauthorized, Forbidden],
@@ -11925,18 +11838,17 @@ export interface GetSiteLanRequest {
   accountId: string;
 }
 
-export const GetSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      lanId: Schema.String.pipe(T.HttpPath("lanId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/lans/{lanId}",
-      }),
-    ),
+export const GetSiteLanRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    lanId: Schema.String.pipe(T.HttpPath("lanId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/lans/{lanId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetSiteLanRequest>;
 
 export interface GetSiteLanResponse {
@@ -11993,45 +11905,42 @@ export interface GetSiteLanResponse {
   vlanTag?: number | null;
 }
 
-export const GetSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isPrioritized: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      nat: Schema.optional(Schema.Union([Nat, Schema.Null])),
-      physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      routedSubnets: Schema.optional(
-        Schema.Union([Schema.Array(RoutedSubnet), Schema.Null]),
-      ),
-      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      staticAddressing: Schema.optional(
-        Schema.Union([LanstaticAddressing, Schema.Null]),
-      ),
-      vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          bondId: "bond_id",
-          haLink: "ha_link",
-          isBreakout: "is_breakout",
-          isPrioritized: "is_prioritized",
-          name: "name",
-          nat: "nat",
-          physport: "physport",
-          routedSubnets: "routed_subnets",
-          siteId: "site_id",
-          staticAddressing: "static_addressing",
-          vlanTag: "vlan_tag",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetSiteLanResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isPrioritized: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    nat: Schema.optional(Schema.Union([Nat, Schema.Null])),
+    physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    routedSubnets: Schema.optional(
+      Schema.Union([Schema.Array(RoutedSubnet), Schema.Null]),
+    ),
+    siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    staticAddressing: Schema.optional(
+      Schema.Union([LanstaticAddressing, Schema.Null]),
+    ),
+    vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        bondId: "bond_id",
+        haLink: "ha_link",
+        isBreakout: "is_breakout",
+        isPrioritized: "is_prioritized",
+        name: "name",
+        nat: "nat",
+        physport: "physport",
+        routedSubnets: "routed_subnets",
+        siteId: "site_id",
+        staticAddressing: "static_addressing",
+        vlanTag: "vlan_tag",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetSiteLanResponse>;
 
 export type GetSiteLanError =
@@ -12045,7 +11954,7 @@ export const getSiteLan: API.OperationMethod<
   GetSiteLanResponse,
   GetSiteLanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSiteLanRequest,
   output: GetSiteLanResponse,
   errors: [SiteLanNotFound, MagicWanUnauthorized, Forbidden],
@@ -12057,17 +11966,16 @@ export interface ListSiteLansRequest {
   accountId: string;
 }
 
-export const ListSiteLansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/lans",
-      }),
-    ),
+export const ListSiteLansRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/lans",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSiteLansRequest>;
 
 export interface ListSiteLansResponse {
@@ -12119,11 +12027,10 @@ export interface ListSiteLansResponse {
   }[];
 }
 
-export const ListSiteLansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListSiteLansResponseResult),
-    }),
+export const ListSiteLansResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListSiteLansResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListSiteLansResponse>;
 
 export type ListSiteLansError =
@@ -12136,7 +12043,7 @@ export const listSiteLans: API.PaginatedOperationMethod<
   ListSiteLansResponse,
   ListSiteLansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSiteLansRequest,
   output: ListSiteLansResponse,
   errors: [MagicWanUnauthorized, Forbidden],
@@ -12200,39 +12107,38 @@ export interface CreateSiteLanRequest {
   vlanTag?: number;
 }
 
-export const CreateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      bondId: Schema.optional(Schema.Number),
-      haLink: Schema.optional(Schema.Boolean),
-      isBreakout: Schema.optional(Schema.Boolean),
-      isPrioritized: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      nat: Schema.optional(Nat),
-      physport: Schema.optional(Schema.Number),
-      routedSubnets: Schema.optional(Schema.Array(RoutedSubnet)),
-      staticAddressing: Schema.optional(LanstaticAddressing),
-      vlanTag: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        bondId: "bond_id",
-        haLink: "ha_link",
-        isBreakout: "is_breakout",
-        isPrioritized: "is_prioritized",
-        name: "name",
-        nat: "nat",
-        physport: "physport",
-        routedSubnets: "routed_subnets",
-        staticAddressing: "static_addressing",
-        vlanTag: "vlan_tag",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/lans",
-      }),
-    ),
+export const CreateSiteLanRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    bondId: Schema.optional(Schema.Number),
+    haLink: Schema.optional(Schema.Boolean),
+    isBreakout: Schema.optional(Schema.Boolean),
+    isPrioritized: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    nat: Schema.optional(Nat),
+    physport: Schema.optional(Schema.Number),
+    routedSubnets: Schema.optional(Schema.Array(RoutedSubnet)),
+    staticAddressing: Schema.optional(LanstaticAddressing),
+    vlanTag: Schema.optional(Schema.Number),
+  }).pipe(
+    Schema.encodeKeys({
+      bondId: "bond_id",
+      haLink: "ha_link",
+      isBreakout: "is_breakout",
+      isPrioritized: "is_prioritized",
+      name: "name",
+      nat: "nat",
+      physport: "physport",
+      routedSubnets: "routed_subnets",
+      staticAddressing: "static_addressing",
+      vlanTag: "vlan_tag",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/lans",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateSiteLanRequest>;
 
 export interface CreateSiteLanResponse {
@@ -12284,11 +12190,10 @@ export interface CreateSiteLanResponse {
   }[];
 }
 
-export const CreateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListSiteLansResponseResult),
-    }),
+export const CreateSiteLanResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListSiteLansResponseResult),
+  }),
 ) as unknown as Schema.Codec<CreateSiteLanResponse>;
 
 export type CreateSiteLanError =
@@ -12301,7 +12206,7 @@ export const createSiteLan: API.PaginatedOperationMethod<
   CreateSiteLanResponse,
   CreateSiteLanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: CreateSiteLanRequest,
   output: CreateSiteLanResponse,
   errors: [MagicWanUnauthorized, Forbidden],
@@ -12364,38 +12269,37 @@ export interface UpdateSiteLanRequest {
   vlanTag?: number;
 }
 
-export const UpdateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      lanId: Schema.String.pipe(T.HttpPath("lanId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      bondId: Schema.optional(Schema.Number),
-      isBreakout: Schema.optional(Schema.Boolean),
-      isPrioritized: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      nat: Schema.optional(Nat),
-      physport: Schema.optional(Schema.Number),
-      routedSubnets: Schema.optional(Schema.Array(RoutedSubnet)),
-      staticAddressing: Schema.optional(LanstaticAddressing),
-      vlanTag: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        bondId: "bond_id",
-        isBreakout: "is_breakout",
-        isPrioritized: "is_prioritized",
-        name: "name",
-        nat: "nat",
-        physport: "physport",
-        routedSubnets: "routed_subnets",
-        staticAddressing: "static_addressing",
-        vlanTag: "vlan_tag",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/lans/{lanId}",
-      }),
-    ),
+export const UpdateSiteLanRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    lanId: Schema.String.pipe(T.HttpPath("lanId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    bondId: Schema.optional(Schema.Number),
+    isBreakout: Schema.optional(Schema.Boolean),
+    isPrioritized: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    nat: Schema.optional(Nat),
+    physport: Schema.optional(Schema.Number),
+    routedSubnets: Schema.optional(Schema.Array(RoutedSubnet)),
+    staticAddressing: Schema.optional(LanstaticAddressing),
+    vlanTag: Schema.optional(Schema.Number),
+  }).pipe(
+    Schema.encodeKeys({
+      bondId: "bond_id",
+      isBreakout: "is_breakout",
+      isPrioritized: "is_prioritized",
+      name: "name",
+      nat: "nat",
+      physport: "physport",
+      routedSubnets: "routed_subnets",
+      staticAddressing: "static_addressing",
+      vlanTag: "vlan_tag",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/lans/{lanId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateSiteLanRequest>;
 
 export interface UpdateSiteLanResponse {
@@ -12452,45 +12356,42 @@ export interface UpdateSiteLanResponse {
   vlanTag?: number | null;
 }
 
-export const UpdateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isPrioritized: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      nat: Schema.optional(Schema.Union([Nat, Schema.Null])),
-      physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      routedSubnets: Schema.optional(
-        Schema.Union([Schema.Array(RoutedSubnet), Schema.Null]),
-      ),
-      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      staticAddressing: Schema.optional(
-        Schema.Union([LanstaticAddressing, Schema.Null]),
-      ),
-      vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          bondId: "bond_id",
-          haLink: "ha_link",
-          isBreakout: "is_breakout",
-          isPrioritized: "is_prioritized",
-          name: "name",
-          nat: "nat",
-          physport: "physport",
-          routedSubnets: "routed_subnets",
-          siteId: "site_id",
-          staticAddressing: "static_addressing",
-          vlanTag: "vlan_tag",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateSiteLanResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isPrioritized: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    nat: Schema.optional(Schema.Union([Nat, Schema.Null])),
+    physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    routedSubnets: Schema.optional(
+      Schema.Union([Schema.Array(RoutedSubnet), Schema.Null]),
+    ),
+    siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    staticAddressing: Schema.optional(
+      Schema.Union([LanstaticAddressing, Schema.Null]),
+    ),
+    vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        bondId: "bond_id",
+        haLink: "ha_link",
+        isBreakout: "is_breakout",
+        isPrioritized: "is_prioritized",
+        name: "name",
+        nat: "nat",
+        physport: "physport",
+        routedSubnets: "routed_subnets",
+        siteId: "site_id",
+        staticAddressing: "static_addressing",
+        vlanTag: "vlan_tag",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateSiteLanResponse>;
 
 export type UpdateSiteLanError =
@@ -12504,7 +12405,7 @@ export const updateSiteLan: API.OperationMethod<
   UpdateSiteLanResponse,
   UpdateSiteLanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSiteLanRequest,
   output: UpdateSiteLanResponse,
   errors: [SiteLanNotFound, MagicWanUnauthorized, Forbidden],
@@ -12563,38 +12464,37 @@ export interface PatchSiteLanRequest {
   vlanTag?: number;
 }
 
-export const PatchSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      lanId: Schema.String.pipe(T.HttpPath("lanId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      bondId: Schema.optional(Schema.Number),
-      isBreakout: Schema.optional(Schema.Boolean),
-      isPrioritized: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      nat: Schema.optional(Nat),
-      physport: Schema.optional(Schema.Number),
-      routedSubnets: Schema.optional(Schema.Array(RoutedSubnet)),
-      staticAddressing: Schema.optional(LanstaticAddressing),
-      vlanTag: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        bondId: "bond_id",
-        isBreakout: "is_breakout",
-        isPrioritized: "is_prioritized",
-        name: "name",
-        nat: "nat",
-        physport: "physport",
-        routedSubnets: "routed_subnets",
-        staticAddressing: "static_addressing",
-        vlanTag: "vlan_tag",
-      }),
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/lans/{lanId}",
-      }),
-    ),
+export const PatchSiteLanRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    lanId: Schema.String.pipe(T.HttpPath("lanId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    bondId: Schema.optional(Schema.Number),
+    isBreakout: Schema.optional(Schema.Boolean),
+    isPrioritized: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    nat: Schema.optional(Nat),
+    physport: Schema.optional(Schema.Number),
+    routedSubnets: Schema.optional(Schema.Array(RoutedSubnet)),
+    staticAddressing: Schema.optional(LanstaticAddressing),
+    vlanTag: Schema.optional(Schema.Number),
+  }).pipe(
+    Schema.encodeKeys({
+      bondId: "bond_id",
+      isBreakout: "is_breakout",
+      isPrioritized: "is_prioritized",
+      name: "name",
+      nat: "nat",
+      physport: "physport",
+      routedSubnets: "routed_subnets",
+      staticAddressing: "static_addressing",
+      vlanTag: "vlan_tag",
+    }),
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/lans/{lanId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchSiteLanRequest>;
 
 export interface PatchSiteLanResponse {
@@ -12651,45 +12551,42 @@ export interface PatchSiteLanResponse {
   vlanTag?: number | null;
 }
 
-export const PatchSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isPrioritized: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      nat: Schema.optional(Schema.Union([Nat, Schema.Null])),
-      physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      routedSubnets: Schema.optional(
-        Schema.Union([Schema.Array(RoutedSubnet), Schema.Null]),
-      ),
-      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      staticAddressing: Schema.optional(
-        Schema.Union([LanstaticAddressing, Schema.Null]),
-      ),
-      vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          bondId: "bond_id",
-          haLink: "ha_link",
-          isBreakout: "is_breakout",
-          isPrioritized: "is_prioritized",
-          name: "name",
-          nat: "nat",
-          physport: "physport",
-          routedSubnets: "routed_subnets",
-          siteId: "site_id",
-          staticAddressing: "static_addressing",
-          vlanTag: "vlan_tag",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PatchSiteLanResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isPrioritized: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    nat: Schema.optional(Schema.Union([Nat, Schema.Null])),
+    physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    routedSubnets: Schema.optional(
+      Schema.Union([Schema.Array(RoutedSubnet), Schema.Null]),
+    ),
+    siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    staticAddressing: Schema.optional(
+      Schema.Union([LanstaticAddressing, Schema.Null]),
+    ),
+    vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        bondId: "bond_id",
+        haLink: "ha_link",
+        isBreakout: "is_breakout",
+        isPrioritized: "is_prioritized",
+        name: "name",
+        nat: "nat",
+        physport: "physport",
+        routedSubnets: "routed_subnets",
+        siteId: "site_id",
+        staticAddressing: "static_addressing",
+        vlanTag: "vlan_tag",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchSiteLanResponse>;
 
 export type PatchSiteLanError =
@@ -12703,7 +12600,7 @@ export const patchSiteLan: API.OperationMethod<
   PatchSiteLanResponse,
   PatchSiteLanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSiteLanRequest,
   output: PatchSiteLanResponse,
   errors: [SiteLanNotFound, MagicWanUnauthorized, Forbidden],
@@ -12716,18 +12613,17 @@ export interface DeleteSiteLanRequest {
   accountId: string;
 }
 
-export const DeleteSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      lanId: Schema.String.pipe(T.HttpPath("lanId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/lans/{lanId}",
-      }),
-    ),
+export const DeleteSiteLanRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    lanId: Schema.String.pipe(T.HttpPath("lanId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/lans/{lanId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteSiteLanRequest>;
 
 export interface DeleteSiteLanResponse {
@@ -12784,45 +12680,42 @@ export interface DeleteSiteLanResponse {
   vlanTag?: number | null;
 }
 
-export const DeleteSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isPrioritized: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      nat: Schema.optional(Schema.Union([Nat, Schema.Null])),
-      physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      routedSubnets: Schema.optional(
-        Schema.Union([Schema.Array(RoutedSubnet), Schema.Null]),
-      ),
-      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      staticAddressing: Schema.optional(
-        Schema.Union([LanstaticAddressing, Schema.Null]),
-      ),
-      vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          bondId: "bond_id",
-          haLink: "ha_link",
-          isBreakout: "is_breakout",
-          isPrioritized: "is_prioritized",
-          name: "name",
-          nat: "nat",
-          physport: "physport",
-          routedSubnets: "routed_subnets",
-          siteId: "site_id",
-          staticAddressing: "static_addressing",
-          vlanTag: "vlan_tag",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const DeleteSiteLanResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    bondId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    haLink: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isBreakout: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isPrioritized: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    nat: Schema.optional(Schema.Union([Nat, Schema.Null])),
+    physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    routedSubnets: Schema.optional(
+      Schema.Union([Schema.Array(RoutedSubnet), Schema.Null]),
+    ),
+    siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    staticAddressing: Schema.optional(
+      Schema.Union([LanstaticAddressing, Schema.Null]),
+    ),
+    vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        bondId: "bond_id",
+        haLink: "ha_link",
+        isBreakout: "is_breakout",
+        isPrioritized: "is_prioritized",
+        name: "name",
+        nat: "nat",
+        physport: "physport",
+        routedSubnets: "routed_subnets",
+        siteId: "site_id",
+        staticAddressing: "static_addressing",
+        vlanTag: "vlan_tag",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteSiteLanResponse>;
 
 export type DeleteSiteLanError =
@@ -12836,7 +12729,7 @@ export const deleteSiteLan: API.OperationMethod<
   DeleteSiteLanResponse,
   DeleteSiteLanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSiteLanRequest,
   output: DeleteSiteLanResponse,
   errors: [SiteLanNotFound, MagicWanUnauthorized, Forbidden],
@@ -12853,18 +12746,17 @@ export interface GetSiteWanRequest {
   accountId: string;
 }
 
-export const GetSiteWanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      wanId: Schema.String.pipe(T.HttpPath("wanId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/wans/{wanId}",
-      }),
-    ),
+export const GetSiteWanRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    wanId: Schema.String.pipe(T.HttpPath("wanId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/wans/{wanId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetSiteWanRequest>;
 
 export interface GetSiteWanResponse {
@@ -12888,41 +12780,37 @@ export interface GetSiteWanResponse {
   vlanTag?: number | null;
 }
 
-export const GetSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      healthCheckRate: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["low", "mid", "high"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      staticAddressing: Schema.optional(
-        Schema.Union([WanstaticAddressing, Schema.Null]),
-      ),
-      vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          healthCheckRate: "health_check_rate",
-          name: "name",
-          physport: "physport",
-          priority: "priority",
-          siteId: "site_id",
-          staticAddressing: "static_addressing",
-          vlanTag: "vlan_tag",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetSiteWanResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    healthCheckRate: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    staticAddressing: Schema.optional(
+      Schema.Union([WanstaticAddressing, Schema.Null]),
+    ),
+    vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        healthCheckRate: "health_check_rate",
+        name: "name",
+        physport: "physport",
+        priority: "priority",
+        siteId: "site_id",
+        staticAddressing: "static_addressing",
+        vlanTag: "vlan_tag",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetSiteWanResponse>;
 
 export type GetSiteWanError =
@@ -12936,7 +12824,7 @@ export const getSiteWan: API.OperationMethod<
   GetSiteWanResponse,
   GetSiteWanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSiteWanRequest,
   output: GetSiteWanResponse,
   errors: [SiteWanNotFound, MagicWanUnauthorized, Forbidden],
@@ -12948,17 +12836,16 @@ export interface ListSiteWansRequest {
   accountId: string;
 }
 
-export const ListSiteWansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/wans",
-      }),
-    ),
+export const ListSiteWansRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/wans",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSiteWansRequest>;
 
 export interface ListSiteWansResponse {
@@ -12978,11 +12865,10 @@ export interface ListSiteWansResponse {
   }[];
 }
 
-export const ListSiteWansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListSiteWansResponseResult),
-    }),
+export const ListSiteWansResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListSiteWansResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListSiteWansResponse>;
 
 export type ListSiteWansError =
@@ -12995,7 +12881,7 @@ export const listSiteWans: API.PaginatedOperationMethod<
   ListSiteWansResponse,
   ListSiteWansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSiteWansRequest,
   output: ListSiteWansResponse,
   errors: [MagicWanUnauthorized, Forbidden],
@@ -13025,29 +12911,28 @@ export interface CreateSiteWanRequest {
   vlanTag?: number;
 }
 
-export const CreateSiteWanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      physport: Schema.Number,
-      name: Schema.optional(Schema.String),
-      priority: Schema.optional(Schema.Number),
-      staticAddressing: Schema.optional(WanstaticAddressing),
-      vlanTag: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        physport: "physport",
-        name: "name",
-        priority: "priority",
-        staticAddressing: "static_addressing",
-        vlanTag: "vlan_tag",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/wans",
-      }),
-    ),
+export const CreateSiteWanRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    physport: Schema.Number,
+    name: Schema.optional(Schema.String),
+    priority: Schema.optional(Schema.Number),
+    staticAddressing: Schema.optional(WanstaticAddressing),
+    vlanTag: Schema.optional(Schema.Number),
+  }).pipe(
+    Schema.encodeKeys({
+      physport: "physport",
+      name: "name",
+      priority: "priority",
+      staticAddressing: "static_addressing",
+      vlanTag: "vlan_tag",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/wans",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateSiteWanRequest>;
 
 export interface CreateSiteWanResponse {
@@ -13067,11 +12952,10 @@ export interface CreateSiteWanResponse {
   }[];
 }
 
-export const CreateSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListSiteWansResponseResult),
-    }),
+export const CreateSiteWanResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListSiteWansResponseResult),
+  }),
 ) as unknown as Schema.Codec<CreateSiteWanResponse>;
 
 export type CreateSiteWanError =
@@ -13084,7 +12968,7 @@ export const createSiteWan: API.PaginatedOperationMethod<
   CreateSiteWanResponse,
   CreateSiteWanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: CreateSiteWanRequest,
   output: CreateSiteWanResponse,
   errors: [MagicWanUnauthorized, Forbidden],
@@ -13115,30 +12999,29 @@ export interface UpdateSiteWanRequest {
   vlanTag?: number;
 }
 
-export const UpdateSiteWanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      wanId: Schema.String.pipe(T.HttpPath("wanId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.optional(Schema.String),
-      physport: Schema.optional(Schema.Number),
-      priority: Schema.optional(Schema.Number),
-      staticAddressing: Schema.optional(WanstaticAddressing),
-      vlanTag: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        physport: "physport",
-        priority: "priority",
-        staticAddressing: "static_addressing",
-        vlanTag: "vlan_tag",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/wans/{wanId}",
-      }),
-    ),
+export const UpdateSiteWanRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    wanId: Schema.String.pipe(T.HttpPath("wanId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.optional(Schema.String),
+    physport: Schema.optional(Schema.Number),
+    priority: Schema.optional(Schema.Number),
+    staticAddressing: Schema.optional(WanstaticAddressing),
+    vlanTag: Schema.optional(Schema.Number),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      physport: "physport",
+      priority: "priority",
+      staticAddressing: "static_addressing",
+      vlanTag: "vlan_tag",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/wans/{wanId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateSiteWanRequest>;
 
 export interface UpdateSiteWanResponse {
@@ -13162,41 +13045,37 @@ export interface UpdateSiteWanResponse {
   vlanTag?: number | null;
 }
 
-export const UpdateSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      healthCheckRate: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["low", "mid", "high"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      staticAddressing: Schema.optional(
-        Schema.Union([WanstaticAddressing, Schema.Null]),
-      ),
-      vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          healthCheckRate: "health_check_rate",
-          name: "name",
-          physport: "physport",
-          priority: "priority",
-          siteId: "site_id",
-          staticAddressing: "static_addressing",
-          vlanTag: "vlan_tag",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateSiteWanResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    healthCheckRate: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    staticAddressing: Schema.optional(
+      Schema.Union([WanstaticAddressing, Schema.Null]),
+    ),
+    vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        healthCheckRate: "health_check_rate",
+        name: "name",
+        physport: "physport",
+        priority: "priority",
+        siteId: "site_id",
+        staticAddressing: "static_addressing",
+        vlanTag: "vlan_tag",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateSiteWanResponse>;
 
 export type UpdateSiteWanError =
@@ -13210,7 +13089,7 @@ export const updateSiteWan: API.OperationMethod<
   UpdateSiteWanResponse,
   UpdateSiteWanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSiteWanRequest,
   output: UpdateSiteWanResponse,
   errors: [SiteWanNotFound, MagicWanUnauthorized, Forbidden],
@@ -13237,30 +13116,29 @@ export interface PatchSiteWanRequest {
   vlanTag?: number;
 }
 
-export const PatchSiteWanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      wanId: Schema.String.pipe(T.HttpPath("wanId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.optional(Schema.String),
-      physport: Schema.optional(Schema.Number),
-      priority: Schema.optional(Schema.Number),
-      staticAddressing: Schema.optional(WanstaticAddressing),
-      vlanTag: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        physport: "physport",
-        priority: "priority",
-        staticAddressing: "static_addressing",
-        vlanTag: "vlan_tag",
-      }),
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/wans/{wanId}",
-      }),
-    ),
+export const PatchSiteWanRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    wanId: Schema.String.pipe(T.HttpPath("wanId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.optional(Schema.String),
+    physport: Schema.optional(Schema.Number),
+    priority: Schema.optional(Schema.Number),
+    staticAddressing: Schema.optional(WanstaticAddressing),
+    vlanTag: Schema.optional(Schema.Number),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      physport: "physport",
+      priority: "priority",
+      staticAddressing: "static_addressing",
+      vlanTag: "vlan_tag",
+    }),
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/wans/{wanId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchSiteWanRequest>;
 
 export interface PatchSiteWanResponse {
@@ -13284,41 +13162,37 @@ export interface PatchSiteWanResponse {
   vlanTag?: number | null;
 }
 
-export const PatchSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      healthCheckRate: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["low", "mid", "high"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      staticAddressing: Schema.optional(
-        Schema.Union([WanstaticAddressing, Schema.Null]),
-      ),
-      vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          healthCheckRate: "health_check_rate",
-          name: "name",
-          physport: "physport",
-          priority: "priority",
-          siteId: "site_id",
-          staticAddressing: "static_addressing",
-          vlanTag: "vlan_tag",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PatchSiteWanResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    healthCheckRate: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    staticAddressing: Schema.optional(
+      Schema.Union([WanstaticAddressing, Schema.Null]),
+    ),
+    vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        healthCheckRate: "health_check_rate",
+        name: "name",
+        physport: "physport",
+        priority: "priority",
+        siteId: "site_id",
+        staticAddressing: "static_addressing",
+        vlanTag: "vlan_tag",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchSiteWanResponse>;
 
 export type PatchSiteWanError =
@@ -13332,7 +13206,7 @@ export const patchSiteWan: API.OperationMethod<
   PatchSiteWanResponse,
   PatchSiteWanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSiteWanRequest,
   output: PatchSiteWanResponse,
   errors: [SiteWanNotFound, MagicWanUnauthorized, Forbidden],
@@ -13345,18 +13219,17 @@ export interface DeleteSiteWanRequest {
   accountId: string;
 }
 
-export const DeleteSiteWanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      wanId: Schema.String.pipe(T.HttpPath("wanId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/magic/sites/{siteId}/wans/{wanId}",
-      }),
-    ),
+export const DeleteSiteWanRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    wanId: Schema.String.pipe(T.HttpPath("wanId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/magic/sites/{siteId}/wans/{wanId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteSiteWanRequest>;
 
 export interface DeleteSiteWanResponse {
@@ -13380,41 +13253,37 @@ export interface DeleteSiteWanResponse {
   vlanTag?: number | null;
 }
 
-export const DeleteSiteWanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      healthCheckRate: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["low", "mid", "high"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      staticAddressing: Schema.optional(
-        Schema.Union([WanstaticAddressing, Schema.Null]),
-      ),
-      vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          healthCheckRate: "health_check_rate",
-          name: "name",
-          physport: "physport",
-          priority: "priority",
-          siteId: "site_id",
-          staticAddressing: "static_addressing",
-          vlanTag: "vlan_tag",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const DeleteSiteWanResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    healthCheckRate: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["low", "mid", "high"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    physport: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    siteId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    staticAddressing: Schema.optional(
+      Schema.Union([WanstaticAddressing, Schema.Null]),
+    ),
+    vlanTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        healthCheckRate: "health_check_rate",
+        name: "name",
+        physport: "physport",
+        priority: "priority",
+        siteId: "site_id",
+        staticAddressing: "static_addressing",
+        vlanTag: "vlan_tag",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteSiteWanResponse>;
 
 export type DeleteSiteWanError =
@@ -13428,7 +13297,7 @@ export const deleteSiteWan: API.OperationMethod<
   DeleteSiteWanResponse,
   DeleteSiteWanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSiteWanRequest,
   output: DeleteSiteWanResponse,
   errors: [SiteWanNotFound, MagicWanUnauthorized, Forbidden],

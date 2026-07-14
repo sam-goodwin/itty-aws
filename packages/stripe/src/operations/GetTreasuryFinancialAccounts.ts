@@ -12,7 +12,7 @@ export interface GetTreasuryFinancialAccountsInput {
   status?: "closed" | "open";
 }
 export const GetTreasuryFinancialAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -319,7 +319,7 @@ export interface GetTreasuryFinancialAccountsOutput {
   url: string;
 }
 export const GetTreasuryFinancialAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         active_features: Schema.optional(
@@ -775,7 +775,7 @@ export const GetTreasuryFinancialAccountsOutput =
  * @param status - Only return FinancialAccounts that have the given status: `open` or `closed`
  */
 export const GetTreasuryFinancialAccounts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTreasuryFinancialAccountsInput,
     outputSchema: GetTreasuryFinancialAccountsOutput,
   }));

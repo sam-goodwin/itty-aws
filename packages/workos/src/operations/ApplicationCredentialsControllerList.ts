@@ -8,7 +8,7 @@ export interface ApplicationCredentialsControllerListInput {
   id: string;
 }
 export const ApplicationCredentialsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -27,7 +27,7 @@ export type ApplicationCredentialsControllerListOutput = ReadonlyArray<{
   updated_at: string;
 }>;
 export const ApplicationCredentialsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       object: Schema.String,
       id: Schema.String,
@@ -47,7 +47,7 @@ export const ApplicationCredentialsControllerListOutput =
  * @param id - The application ID or client ID of the Connect Application.
  */
 export const ApplicationCredentialsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplicationCredentialsControllerListInput,
     outputSchema: ApplicationCredentialsControllerListOutput,
     errors: [NotFound] as const,

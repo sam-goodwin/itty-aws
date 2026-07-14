@@ -11,7 +11,7 @@ export interface DeleteTrafficBudgetInput {
   id: string;
 }
 export const DeleteTrafficBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export const DeleteTrafficBudgetInput =
 // Output Schema
 export type DeleteTrafficBudgetOutput = void;
 export const DeleteTrafficBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteTrafficBudgetOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteTrafficBudgetOutput>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const DeleteTrafficBudgetOutput =
  * @param branch - Branch name from `list_branches`. Example: `main`.
  * @param id - The ID of the traffic budget
  */
-export const deleteTrafficBudget = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteTrafficBudget = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteTrafficBudgetInput,
   outputSchema: DeleteTrafficBudgetOutput,
   errors: [Forbidden, NotFound] as const,

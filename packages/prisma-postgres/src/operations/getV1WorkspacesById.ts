@@ -8,7 +8,7 @@ export interface GetV1WorkspacesByIdInput {
   id: string;
 }
 export const GetV1WorkspacesByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/workspaces/{id}" }),
@@ -25,7 +25,7 @@ export interface GetV1WorkspacesByIdOutput {
   };
 }
 export const GetV1WorkspacesByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -41,7 +41,7 @@ export const GetV1WorkspacesByIdOutput =
  *
  * Returns the workspace with the given ID.
  */
-export const getV1WorkspacesById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getV1WorkspacesById = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV1WorkspacesByIdInput,
   outputSchema: GetV1WorkspacesByIdOutput,
   errors: [NotFound, UnprocessableEntity] as const,

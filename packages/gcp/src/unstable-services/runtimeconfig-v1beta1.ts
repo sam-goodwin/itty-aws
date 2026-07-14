@@ -36,7 +36,7 @@ export interface Variable {
 }
 
 export const Variable: Schema.Codec<Variable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export interface ListVariablesResponse {
 }
 
 export const ListVariablesResponse: Schema.Codec<ListVariablesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     variables: Schema.optional(Schema.Array(Variable)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListVariablesResponse" });
@@ -69,7 +69,7 @@ export interface Expr {
 }
 
 export const Expr: Schema.Codec<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -86,7 +86,7 @@ export interface Binding {
 }
 
 export const Binding: Schema.Codec<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
     condition: Schema.optional(Expr),
@@ -102,7 +102,7 @@ export interface Policy {
 }
 
 export const Policy: Schema.Codec<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(Binding)),
     version: Schema.optional(Schema.Number),
     etag: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export interface Cardinality {
 }
 
 export const Cardinality: Schema.Codec<Cardinality> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     number: Schema.optional(Schema.Number),
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "Cardinality" });
@@ -127,7 +127,7 @@ export interface EndCondition {
 }
 
 export const EndCondition: Schema.Codec<EndCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cardinality: Schema.optional(Cardinality),
   }).annotate({ identifier: "EndCondition" });
 
@@ -141,7 +141,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -167,7 +167,7 @@ export interface Waiter {
 }
 
 export const Waiter: Schema.Codec<Waiter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     success: Schema.optional(EndCondition),
     error: Schema.optional(Status),
@@ -185,7 +185,7 @@ export interface ListWaitersResponse {
 }
 
 export const ListWaitersResponse: Schema.Codec<ListWaitersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     waiters: Schema.optional(Schema.Array(Waiter)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListWaitersResponse" });
@@ -196,7 +196,7 @@ export interface SetIamPolicyRequest {
 }
 
 export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
 
@@ -206,7 +206,7 @@ export interface TestIamPermissionsResponse {
 }
 
 export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
@@ -216,7 +216,7 @@ export interface TestIamPermissionsRequest {
 }
 
 export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
@@ -228,7 +228,7 @@ export interface RuntimeConfig {
 }
 
 export const RuntimeConfig: Schema.Codec<RuntimeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "RuntimeConfig" });
@@ -247,7 +247,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -263,7 +263,7 @@ export interface ListConfigsResponse {
 }
 
 export const ListConfigsResponse: Schema.Codec<ListConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     configs: Schema.optional(Schema.Array(RuntimeConfig)),
   }).annotate({ identifier: "ListConfigsResponse" });
@@ -271,7 +271,7 @@ export const ListConfigsResponse: Schema.Codec<ListConfigsResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -281,7 +281,7 @@ export interface WatchVariableRequest {
 }
 
 export const WatchVariableRequest: Schema.Codec<WatchVariableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newerThan: Schema.optional(Schema.String),
   }).annotate({ identifier: "WatchVariableRequest" });
 
@@ -347,7 +347,7 @@ export interface SetIamPolicyProjectsConfigsRequest {
 }
 
 export const SetIamPolicyProjectsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -360,8 +360,7 @@ export const SetIamPolicyProjectsConfigsRequest =
   ) as unknown as Schema.Codec<SetIamPolicyProjectsConfigsRequest>;
 
 export type SetIamPolicyProjectsConfigsResponse = Policy;
-export const SetIamPolicyProjectsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const SetIamPolicyProjectsConfigsResponse = /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsConfigsError =
   | DefaultErrors
@@ -376,7 +375,7 @@ export const setIamPolicyProjectsConfigs: API.OperationMethod<
   SetIamPolicyProjectsConfigsResponse,
   SetIamPolicyProjectsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsConfigsRequest,
   output: SetIamPolicyProjectsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -392,7 +391,7 @@ export interface CreateProjectsConfigsRequest {
 }
 
 export const CreateProjectsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(RuntimeConfig).pipe(T.HttpBody()),
@@ -406,8 +405,7 @@ export const CreateProjectsConfigsRequest =
   ) as unknown as Schema.Codec<CreateProjectsConfigsRequest>;
 
 export type CreateProjectsConfigsResponse = RuntimeConfig;
-export const CreateProjectsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RuntimeConfig;
+export const CreateProjectsConfigsResponse = /*@__PURE__*/ RuntimeConfig;
 
 export type CreateProjectsConfigsError =
   | DefaultErrors
@@ -422,7 +420,7 @@ export const createProjectsConfigs: API.OperationMethod<
   CreateProjectsConfigsResponse,
   CreateProjectsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsConfigsRequest,
   output: CreateProjectsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -434,7 +432,7 @@ export interface GetProjectsConfigsRequest {
 }
 
 export const GetProjectsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -442,8 +440,7 @@ export const GetProjectsConfigsRequest =
   ) as unknown as Schema.Codec<GetProjectsConfigsRequest>;
 
 export type GetProjectsConfigsResponse = RuntimeConfig;
-export const GetProjectsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RuntimeConfig;
+export const GetProjectsConfigsResponse = /*@__PURE__*/ RuntimeConfig;
 
 export type GetProjectsConfigsError = DefaultErrors | NotFound | Forbidden;
 
@@ -453,7 +450,7 @@ export const getProjectsConfigs: API.OperationMethod<
   GetProjectsConfigsResponse,
   GetProjectsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsConfigsRequest,
   output: GetProjectsConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -467,7 +464,7 @@ export interface GetIamPolicyProjectsConfigsRequest {
 }
 
 export const GetIamPolicyProjectsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
@@ -478,8 +475,7 @@ export const GetIamPolicyProjectsConfigsRequest =
   ) as unknown as Schema.Codec<GetIamPolicyProjectsConfigsRequest>;
 
 export type GetIamPolicyProjectsConfigsResponse = Policy;
-export const GetIamPolicyProjectsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetIamPolicyProjectsConfigsResponse = /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsConfigsError =
   | DefaultErrors
@@ -492,7 +488,7 @@ export const getIamPolicyProjectsConfigs: API.OperationMethod<
   GetIamPolicyProjectsConfigsResponse,
   GetIamPolicyProjectsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsConfigsRequest,
   output: GetIamPolicyProjectsConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -506,7 +502,7 @@ export interface UpdateProjectsConfigsRequest {
 }
 
 export const UpdateProjectsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RuntimeConfig).pipe(T.HttpBody()),
   }).pipe(
@@ -515,8 +511,7 @@ export const UpdateProjectsConfigsRequest =
   ) as unknown as Schema.Codec<UpdateProjectsConfigsRequest>;
 
 export type UpdateProjectsConfigsResponse = RuntimeConfig;
-export const UpdateProjectsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RuntimeConfig;
+export const UpdateProjectsConfigsResponse = /*@__PURE__*/ RuntimeConfig;
 
 export type UpdateProjectsConfigsError =
   | DefaultErrors
@@ -531,7 +526,7 @@ export const updateProjectsConfigs: API.OperationMethod<
   UpdateProjectsConfigsResponse,
   UpdateProjectsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectsConfigsRequest,
   output: UpdateProjectsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -545,7 +540,7 @@ export interface TestIamPermissionsProjectsConfigsRequest {
 }
 
 export const TestIamPermissionsProjectsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -560,7 +555,7 @@ export const TestIamPermissionsProjectsConfigsRequest =
 export type TestIamPermissionsProjectsConfigsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsConfigsError =
   | DefaultErrors
@@ -575,7 +570,7 @@ export const testIamPermissionsProjectsConfigs: API.OperationMethod<
   TestIamPermissionsProjectsConfigsResponse,
   TestIamPermissionsProjectsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsConfigsRequest,
   output: TestIamPermissionsProjectsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -587,7 +582,7 @@ export interface DeleteProjectsConfigsRequest {
 }
 
 export const DeleteProjectsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
@@ -595,7 +590,7 @@ export const DeleteProjectsConfigsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsConfigsRequest>;
 
 export type DeleteProjectsConfigsResponse = Empty;
-export const DeleteProjectsConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsConfigsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsConfigsError =
   | DefaultErrors
@@ -610,7 +605,7 @@ export const deleteProjectsConfigs: API.OperationMethod<
   DeleteProjectsConfigsResponse,
   DeleteProjectsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsConfigsRequest,
   output: DeleteProjectsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -626,7 +621,7 @@ export interface ListProjectsConfigsRequest {
 }
 
 export const ListProjectsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -636,8 +631,7 @@ export const ListProjectsConfigsRequest =
   ) as unknown as Schema.Codec<ListProjectsConfigsRequest>;
 
 export type ListProjectsConfigsResponse = ListConfigsResponse;
-export const ListProjectsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListConfigsResponse;
+export const ListProjectsConfigsResponse = /*@__PURE__*/ ListConfigsResponse;
 
 export type ListProjectsConfigsError = DefaultErrors | NotFound | Forbidden;
 
@@ -647,7 +641,7 @@ export const listProjectsConfigs: API.PaginatedOperationMethod<
   ListProjectsConfigsResponse,
   ListProjectsConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigsRequest,
   output: ListProjectsConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -665,7 +659,7 @@ export interface TestIamPermissionsProjectsConfigsOperationsRequest {
 }
 
 export const TestIamPermissionsProjectsConfigsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -680,7 +674,7 @@ export const TestIamPermissionsProjectsConfigsOperationsRequest =
 export type TestIamPermissionsProjectsConfigsOperationsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsConfigsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsConfigsOperationsError =
   | DefaultErrors
@@ -695,7 +689,7 @@ export const testIamPermissionsProjectsConfigsOperations: API.OperationMethod<
   TestIamPermissionsProjectsConfigsOperationsResponse,
   TestIamPermissionsProjectsConfigsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsConfigsOperationsRequest,
   output: TestIamPermissionsProjectsConfigsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -707,7 +701,7 @@ export interface GetProjectsConfigsOperationsRequest {
 }
 
 export const GetProjectsConfigsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -715,8 +709,7 @@ export const GetProjectsConfigsOperationsRequest =
   ) as unknown as Schema.Codec<GetProjectsConfigsOperationsRequest>;
 
 export type GetProjectsConfigsOperationsResponse = Operation;
-export const GetProjectsConfigsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetProjectsConfigsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetProjectsConfigsOperationsError =
   | DefaultErrors
@@ -729,7 +722,7 @@ export const getProjectsConfigsOperations: API.OperationMethod<
   GetProjectsConfigsOperationsResponse,
   GetProjectsConfigsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsConfigsOperationsRequest,
   output: GetProjectsConfigsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -745,7 +738,7 @@ export interface CreateProjectsConfigsVariablesRequest {
 }
 
 export const CreateProjectsConfigsVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Variable).pipe(T.HttpBody()),
@@ -759,8 +752,7 @@ export const CreateProjectsConfigsVariablesRequest =
   ) as unknown as Schema.Codec<CreateProjectsConfigsVariablesRequest>;
 
 export type CreateProjectsConfigsVariablesResponse = Variable;
-export const CreateProjectsConfigsVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Variable;
+export const CreateProjectsConfigsVariablesResponse = /*@__PURE__*/ Variable;
 
 export type CreateProjectsConfigsVariablesError =
   | DefaultErrors
@@ -775,7 +767,7 @@ export const createProjectsConfigsVariables: API.OperationMethod<
   CreateProjectsConfigsVariablesResponse,
   CreateProjectsConfigsVariablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsConfigsVariablesRequest,
   output: CreateProjectsConfigsVariablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -795,7 +787,7 @@ export interface ListProjectsConfigsVariablesRequest {
 }
 
 export const ListProjectsConfigsVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     returnValues: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnValues"),
@@ -810,7 +802,7 @@ export const ListProjectsConfigsVariablesRequest =
 
 export type ListProjectsConfigsVariablesResponse = ListVariablesResponse;
 export const ListProjectsConfigsVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVariablesResponse;
+  /*@__PURE__*/ ListVariablesResponse;
 
 export type ListProjectsConfigsVariablesError =
   | DefaultErrors
@@ -823,7 +815,7 @@ export const listProjectsConfigsVariables: API.PaginatedOperationMethod<
   ListProjectsConfigsVariablesResponse,
   ListProjectsConfigsVariablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigsVariablesRequest,
   output: ListProjectsConfigsVariablesResponse,
   errors: [NotFound, Forbidden],
@@ -841,7 +833,7 @@ export interface DeleteProjectsConfigsVariablesRequest {
 }
 
 export const DeleteProjectsConfigsVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     recursive: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("recursive")),
   }).pipe(
@@ -850,8 +842,7 @@ export const DeleteProjectsConfigsVariablesRequest =
   ) as unknown as Schema.Codec<DeleteProjectsConfigsVariablesRequest>;
 
 export type DeleteProjectsConfigsVariablesResponse = Empty;
-export const DeleteProjectsConfigsVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsConfigsVariablesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsConfigsVariablesError =
   | DefaultErrors
@@ -866,7 +857,7 @@ export const deleteProjectsConfigsVariables: API.OperationMethod<
   DeleteProjectsConfigsVariablesResponse,
   DeleteProjectsConfigsVariablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsConfigsVariablesRequest,
   output: DeleteProjectsConfigsVariablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -878,7 +869,7 @@ export interface GetProjectsConfigsVariablesRequest {
 }
 
 export const GetProjectsConfigsVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -886,8 +877,7 @@ export const GetProjectsConfigsVariablesRequest =
   ) as unknown as Schema.Codec<GetProjectsConfigsVariablesRequest>;
 
 export type GetProjectsConfigsVariablesResponse = Variable;
-export const GetProjectsConfigsVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Variable;
+export const GetProjectsConfigsVariablesResponse = /*@__PURE__*/ Variable;
 
 export type GetProjectsConfigsVariablesError =
   | DefaultErrors
@@ -900,7 +890,7 @@ export const getProjectsConfigsVariables: API.OperationMethod<
   GetProjectsConfigsVariablesResponse,
   GetProjectsConfigsVariablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsConfigsVariablesRequest,
   output: GetProjectsConfigsVariablesResponse,
   errors: [NotFound, Forbidden],
@@ -914,7 +904,7 @@ export interface UpdateProjectsConfigsVariablesRequest {
 }
 
 export const UpdateProjectsConfigsVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Variable).pipe(T.HttpBody()),
   }).pipe(
@@ -923,8 +913,7 @@ export const UpdateProjectsConfigsVariablesRequest =
   ) as unknown as Schema.Codec<UpdateProjectsConfigsVariablesRequest>;
 
 export type UpdateProjectsConfigsVariablesResponse = Variable;
-export const UpdateProjectsConfigsVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Variable;
+export const UpdateProjectsConfigsVariablesResponse = /*@__PURE__*/ Variable;
 
 export type UpdateProjectsConfigsVariablesError =
   | DefaultErrors
@@ -939,7 +928,7 @@ export const updateProjectsConfigsVariables: API.OperationMethod<
   UpdateProjectsConfigsVariablesResponse,
   UpdateProjectsConfigsVariablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectsConfigsVariablesRequest,
   output: UpdateProjectsConfigsVariablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -953,7 +942,7 @@ export interface TestIamPermissionsProjectsConfigsVariablesRequest {
 }
 
 export const TestIamPermissionsProjectsConfigsVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -968,7 +957,7 @@ export const TestIamPermissionsProjectsConfigsVariablesRequest =
 export type TestIamPermissionsProjectsConfigsVariablesResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsConfigsVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsConfigsVariablesError =
   | DefaultErrors
@@ -983,7 +972,7 @@ export const testIamPermissionsProjectsConfigsVariables: API.OperationMethod<
   TestIamPermissionsProjectsConfigsVariablesResponse,
   TestIamPermissionsProjectsConfigsVariablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsConfigsVariablesRequest,
   output: TestIamPermissionsProjectsConfigsVariablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -997,7 +986,7 @@ export interface WatchProjectsConfigsVariablesRequest {
 }
 
 export const WatchProjectsConfigsVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(WatchVariableRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1006,8 +995,7 @@ export const WatchProjectsConfigsVariablesRequest =
   ) as unknown as Schema.Codec<WatchProjectsConfigsVariablesRequest>;
 
 export type WatchProjectsConfigsVariablesResponse = Variable;
-export const WatchProjectsConfigsVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Variable;
+export const WatchProjectsConfigsVariablesResponse = /*@__PURE__*/ Variable;
 
 export type WatchProjectsConfigsVariablesError =
   | DefaultErrors
@@ -1022,7 +1010,7 @@ export const watchProjectsConfigsVariables: API.OperationMethod<
   WatchProjectsConfigsVariablesResponse,
   WatchProjectsConfigsVariablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WatchProjectsConfigsVariablesRequest,
   output: WatchProjectsConfigsVariablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1036,7 +1024,7 @@ export interface TestIamPermissionsProjectsConfigsWaitersRequest {
 }
 
 export const TestIamPermissionsProjectsConfigsWaitersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1051,7 +1039,7 @@ export const TestIamPermissionsProjectsConfigsWaitersRequest =
 export type TestIamPermissionsProjectsConfigsWaitersResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsConfigsWaitersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsConfigsWaitersError =
   | DefaultErrors
@@ -1066,7 +1054,7 @@ export const testIamPermissionsProjectsConfigsWaiters: API.OperationMethod<
   TestIamPermissionsProjectsConfigsWaitersResponse,
   TestIamPermissionsProjectsConfigsWaitersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsConfigsWaitersRequest,
   output: TestIamPermissionsProjectsConfigsWaitersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1082,7 +1070,7 @@ export interface ListProjectsConfigsWaitersRequest {
 }
 
 export const ListProjectsConfigsWaitersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1093,7 +1081,7 @@ export const ListProjectsConfigsWaitersRequest =
 
 export type ListProjectsConfigsWaitersResponse = ListWaitersResponse;
 export const ListProjectsConfigsWaitersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListWaitersResponse;
+  /*@__PURE__*/ ListWaitersResponse;
 
 export type ListProjectsConfigsWaitersError =
   | DefaultErrors
@@ -1106,7 +1094,7 @@ export const listProjectsConfigsWaiters: API.PaginatedOperationMethod<
   ListProjectsConfigsWaitersResponse,
   ListProjectsConfigsWaitersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigsWaitersRequest,
   output: ListProjectsConfigsWaitersResponse,
   errors: [NotFound, Forbidden],
@@ -1126,7 +1114,7 @@ export interface CreateProjectsConfigsWaitersRequest {
 }
 
 export const CreateProjectsConfigsWaitersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Waiter).pipe(T.HttpBody()),
@@ -1140,8 +1128,7 @@ export const CreateProjectsConfigsWaitersRequest =
   ) as unknown as Schema.Codec<CreateProjectsConfigsWaitersRequest>;
 
 export type CreateProjectsConfigsWaitersResponse = Operation;
-export const CreateProjectsConfigsWaitersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateProjectsConfigsWaitersResponse = /*@__PURE__*/ Operation;
 
 export type CreateProjectsConfigsWaitersError =
   | DefaultErrors
@@ -1156,7 +1143,7 @@ export const createProjectsConfigsWaiters: API.OperationMethod<
   CreateProjectsConfigsWaitersResponse,
   CreateProjectsConfigsWaitersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsConfigsWaitersRequest,
   output: CreateProjectsConfigsWaitersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1168,7 +1155,7 @@ export interface DeleteProjectsConfigsWaitersRequest {
 }
 
 export const DeleteProjectsConfigsWaitersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
@@ -1176,8 +1163,7 @@ export const DeleteProjectsConfigsWaitersRequest =
   ) as unknown as Schema.Codec<DeleteProjectsConfigsWaitersRequest>;
 
 export type DeleteProjectsConfigsWaitersResponse = Empty;
-export const DeleteProjectsConfigsWaitersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsConfigsWaitersResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsConfigsWaitersError =
   | DefaultErrors
@@ -1192,7 +1178,7 @@ export const deleteProjectsConfigsWaiters: API.OperationMethod<
   DeleteProjectsConfigsWaitersResponse,
   DeleteProjectsConfigsWaitersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsConfigsWaitersRequest,
   output: DeleteProjectsConfigsWaitersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1204,7 +1190,7 @@ export interface GetProjectsConfigsWaitersRequest {
 }
 
 export const GetProjectsConfigsWaitersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1212,8 +1198,7 @@ export const GetProjectsConfigsWaitersRequest =
   ) as unknown as Schema.Codec<GetProjectsConfigsWaitersRequest>;
 
 export type GetProjectsConfigsWaitersResponse = Waiter;
-export const GetProjectsConfigsWaitersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Waiter;
+export const GetProjectsConfigsWaitersResponse = /*@__PURE__*/ Waiter;
 
 export type GetProjectsConfigsWaitersError =
   | DefaultErrors
@@ -1226,7 +1211,7 @@ export const getProjectsConfigsWaiters: API.OperationMethod<
   GetProjectsConfigsWaitersResponse,
   GetProjectsConfigsWaitersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsConfigsWaitersRequest,
   output: GetProjectsConfigsWaitersResponse,
   errors: [NotFound, Forbidden],

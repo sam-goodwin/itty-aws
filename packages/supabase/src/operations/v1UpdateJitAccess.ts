@@ -17,37 +17,35 @@ export interface V1UpdateJitAccessInput {
     branches_only?: boolean;
   }[];
 }
-export const V1UpdateJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-    user_id: Schema.String,
-    roles: Schema.Array(
-      Schema.Struct({
-        role: Schema.String,
-        expires_at: Schema.optional(Schema.Number),
-        allowed_networks: Schema.optional(
-          Schema.Struct({
-            allowed_cidrs: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  cidr: Schema.String,
-                }),
-              ),
+export const V1UpdateJitAccessInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  user_id: Schema.String,
+  roles: Schema.Array(
+    Schema.Struct({
+      role: Schema.String,
+      expires_at: Schema.optional(Schema.Number),
+      allowed_networks: Schema.optional(
+        Schema.Struct({
+          allowed_cidrs: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                cidr: Schema.String,
+              }),
             ),
-            allowed_cidrs_v6: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  cidr: Schema.String,
-                }),
-              ),
+          ),
+          allowed_cidrs_v6: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                cidr: Schema.String,
+              }),
             ),
-          }),
-        ),
-        branches_only: Schema.optional(Schema.Boolean),
-      }),
-    ),
-  },
-).pipe(
+          ),
+        }),
+      ),
+      branches_only: Schema.optional(Schema.Boolean),
+    }),
+  ),
+}).pipe(
   T.Http({ method: "PUT", path: "/v1/projects/{ref}/database/jit" }),
 ) as unknown as Schema.Codec<V1UpdateJitAccessInput>;
 
@@ -65,7 +63,7 @@ export interface V1UpdateJitAccessOutput {
   }[];
 }
 export const V1UpdateJitAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user_id: Schema.optional(Schema.String),
     user_roles: Schema.Array(
       Schema.Struct({
@@ -102,7 +100,7 @@ export const V1UpdateJitAccessOutput =
  *
  * @param ref - Project ref
  */
-export const v1UpdateJitAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1UpdateJitAccess = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1UpdateJitAccessInput,
   outputSchema: V1UpdateJitAccessOutput,
   errors: [BadRequest, Forbidden] as const,

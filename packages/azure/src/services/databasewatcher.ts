@@ -26,7 +26,7 @@ export interface AlertRuleResourcesCreateOrUpdateInput {
   };
 }
 export const AlertRuleResourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -69,7 +69,7 @@ export interface AlertRuleResourcesCreateOrUpdateOutput {
   };
 }
 export const AlertRuleResourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -100,7 +100,7 @@ export const AlertRuleResourcesCreateOrUpdateOutput =
  * @param alertRuleResourceName - The alert rule proxy resource name.
  */
 export const AlertRuleResourcesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AlertRuleResourcesCreateOrUpdateInput,
     outputSchema: AlertRuleResourcesCreateOrUpdateOutput,
   }));
@@ -112,7 +112,7 @@ export interface AlertRuleResourcesDeleteInput {
   alertRuleResourceName: string;
 }
 export const AlertRuleResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -128,7 +128,7 @@ export const AlertRuleResourcesDeleteInput =
 // Output Schema
 export type AlertRuleResourcesDeleteOutput = void;
 export const AlertRuleResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AlertRuleResourcesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AlertRuleResourcesDeleteOutput>;
 
 // The operation
 /**
@@ -140,12 +140,10 @@ export const AlertRuleResourcesDeleteOutput =
  * @param watcherName - The database watcher name.
  * @param alertRuleResourceName - The alert rule proxy resource name.
  */
-export const AlertRuleResourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertRuleResourcesDeleteInput,
-    outputSchema: AlertRuleResourcesDeleteOutput,
-  }),
-);
+export const AlertRuleResourcesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertRuleResourcesDeleteInput,
+  outputSchema: AlertRuleResourcesDeleteOutput,
+}));
 // Input Schema
 export interface AlertRuleResourcesGetInput {
   subscriptionId: string;
@@ -154,7 +152,7 @@ export interface AlertRuleResourcesGetInput {
   alertRuleResourceName: string;
 }
 export const AlertRuleResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -182,7 +180,7 @@ export interface AlertRuleResourcesGetOutput {
   };
 }
 export const AlertRuleResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -212,12 +210,10 @@ export const AlertRuleResourcesGetOutput =
  * @param watcherName - The database watcher name.
  * @param alertRuleResourceName - The alert rule proxy resource name.
  */
-export const AlertRuleResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertRuleResourcesGetInput,
-    outputSchema: AlertRuleResourcesGetOutput,
-  }),
-);
+export const AlertRuleResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertRuleResourcesGetInput,
+  outputSchema: AlertRuleResourcesGetOutput,
+}));
 // Input Schema
 export interface AlertRuleResourcesListByParentInput {
   subscriptionId: string;
@@ -225,7 +221,7 @@ export interface AlertRuleResourcesListByParentInput {
   watcherName: string;
 }
 export const AlertRuleResourcesListByParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -255,7 +251,7 @@ export interface AlertRuleResourcesListByParentOutput {
   nextLink?: string;
 }
 export const AlertRuleResourcesListByParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -300,7 +296,7 @@ export const AlertRuleResourcesListByParentOutput =
  * @param watcherName - The database watcher name.
  */
 export const AlertRuleResourcesListByParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AlertRuleResourcesListByParentInput,
     outputSchema: AlertRuleResourcesListByParentOutput,
   }));
@@ -312,7 +308,7 @@ export interface HealthValidationsGetInput {
   healthValidationName: string;
 }
 export const HealthValidationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -340,7 +336,7 @@ export interface HealthValidationsGetOutput {
   };
 }
 export const HealthValidationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -370,12 +366,10 @@ export const HealthValidationsGetOutput =
  * @param watcherName - The database watcher name.
  * @param healthValidationName - The health validation resource name.
  */
-export const HealthValidationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HealthValidationsGetInput,
-    outputSchema: HealthValidationsGetOutput,
-  }),
-);
+export const HealthValidationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HealthValidationsGetInput,
+  outputSchema: HealthValidationsGetOutput,
+}));
 // Input Schema
 export interface HealthValidationsListByParentInput {
   subscriptionId: string;
@@ -383,7 +377,7 @@ export interface HealthValidationsListByParentInput {
   watcherName: string;
 }
 export const HealthValidationsListByParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -413,7 +407,7 @@ export interface HealthValidationsListByParentOutput {
   nextLink?: string;
 }
 export const HealthValidationsListByParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -458,7 +452,7 @@ export const HealthValidationsListByParentOutput =
  * @param watcherName - The database watcher name.
  */
 export const HealthValidationsListByParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HealthValidationsListByParentInput,
     outputSchema: HealthValidationsListByParentOutput,
   }));
@@ -470,7 +464,7 @@ export interface HealthValidationsStartValidationInput {
   healthValidationName: string;
 }
 export const HealthValidationsStartValidationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -498,7 +492,7 @@ export interface HealthValidationsStartValidationOutput {
   };
 }
 export const HealthValidationsStartValidationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -529,15 +523,13 @@ export const HealthValidationsStartValidationOutput =
  * @param healthValidationName - The health validation resource name.
  */
 export const HealthValidationsStartValidation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HealthValidationsStartValidationInput,
     outputSchema: HealthValidationsStartValidationOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DatabaseWatcher/operations",
@@ -561,7 +553,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -591,7 +583,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -611,7 +603,7 @@ export interface SharedPrivateLinkResourcesCreateInput {
   };
 }
 export const SharedPrivateLinkResourcesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -653,7 +645,7 @@ export interface SharedPrivateLinkResourcesCreateOutput {
   };
 }
 export const SharedPrivateLinkResourcesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -684,7 +676,7 @@ export const SharedPrivateLinkResourcesCreateOutput =
  * @param sharedPrivateLinkResourceName - The Shared Private Link resource name.
  */
 export const SharedPrivateLinkResourcesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SharedPrivateLinkResourcesCreateInput,
     outputSchema: SharedPrivateLinkResourcesCreateOutput,
   }));
@@ -696,7 +688,7 @@ export interface SharedPrivateLinkResourcesDeleteInput {
   sharedPrivateLinkResourceName: string;
 }
 export const SharedPrivateLinkResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -712,7 +704,7 @@ export const SharedPrivateLinkResourcesDeleteInput =
 // Output Schema
 export type SharedPrivateLinkResourcesDeleteOutput = void;
 export const SharedPrivateLinkResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SharedPrivateLinkResourcesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SharedPrivateLinkResourcesDeleteOutput>;
 
 // The operation
 /**
@@ -725,7 +717,7 @@ export const SharedPrivateLinkResourcesDeleteOutput =
  * @param sharedPrivateLinkResourceName - The Shared Private Link resource name.
  */
 export const SharedPrivateLinkResourcesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SharedPrivateLinkResourcesDeleteInput,
     outputSchema: SharedPrivateLinkResourcesDeleteOutput,
   }));
@@ -737,7 +729,7 @@ export interface SharedPrivateLinkResourcesGetInput {
   sharedPrivateLinkResourceName: string;
 }
 export const SharedPrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -765,7 +757,7 @@ export interface SharedPrivateLinkResourcesGetOutput {
   };
 }
 export const SharedPrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -796,7 +788,7 @@ export const SharedPrivateLinkResourcesGetOutput =
  * @param sharedPrivateLinkResourceName - The Shared Private Link resource name.
  */
 export const SharedPrivateLinkResourcesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SharedPrivateLinkResourcesGetInput,
     outputSchema: SharedPrivateLinkResourcesGetOutput,
   }));
@@ -807,7 +799,7 @@ export interface SharedPrivateLinkResourcesListByWatcherInput {
   watcherName: string;
 }
 export const SharedPrivateLinkResourcesListByWatcherInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -837,7 +829,7 @@ export interface SharedPrivateLinkResourcesListByWatcherOutput {
   nextLink?: string;
 }
 export const SharedPrivateLinkResourcesListByWatcherOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -882,7 +874,7 @@ export const SharedPrivateLinkResourcesListByWatcherOutput =
  * @param watcherName - The database watcher name.
  */
 export const SharedPrivateLinkResourcesListByWatcher =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SharedPrivateLinkResourcesListByWatcherInput,
     outputSchema: SharedPrivateLinkResourcesListByWatcherOutput,
   }));
@@ -905,7 +897,7 @@ export interface TargetsCreateOrUpdateInput {
   };
 }
 export const TargetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -950,7 +942,7 @@ export interface TargetsCreateOrUpdateOutput {
   };
 }
 export const TargetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -980,12 +972,10 @@ export const TargetsCreateOrUpdateOutput =
  * @param watcherName - The database watcher name.
  * @param targetName - The target resource name.
  */
-export const TargetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TargetsCreateOrUpdateInput,
-    outputSchema: TargetsCreateOrUpdateOutput,
-  }),
-);
+export const TargetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TargetsCreateOrUpdateInput,
+  outputSchema: TargetsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface TargetsDeleteInput {
   subscriptionId: string;
@@ -993,7 +983,7 @@ export interface TargetsDeleteInput {
   watcherName: string;
   targetName: string;
 }
-export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -1009,7 +999,7 @@ export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TargetsDeleteOutput = void;
 export const TargetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TargetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TargetsDeleteOutput>;
 
 // The operation
 /**
@@ -1021,7 +1011,7 @@ export const TargetsDeleteOutput =
  * @param watcherName - The database watcher name.
  * @param targetName - The target resource name.
  */
-export const TargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TargetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TargetsDeleteInput,
   outputSchema: TargetsDeleteOutput,
 }));
@@ -1032,7 +1022,7 @@ export interface TargetsGetInput {
   watcherName: string;
   targetName: string;
 }
-export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -1059,7 +1049,7 @@ export interface TargetsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1089,7 +1079,7 @@ export const TargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param watcherName - The database watcher name.
  * @param targetName - The target resource name.
  */
-export const TargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TargetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TargetsGetInput,
   outputSchema: TargetsGetOutput,
 }));
@@ -1100,7 +1090,7 @@ export interface TargetsListByWatcherInput {
   watcherName: string;
 }
 export const TargetsListByWatcherInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -1130,7 +1120,7 @@ export interface TargetsListByWatcherOutput {
   nextLink?: string;
 }
 export const TargetsListByWatcherOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1174,12 +1164,10 @@ export const TargetsListByWatcherOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const TargetsListByWatcher = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TargetsListByWatcherInput,
-    outputSchema: TargetsListByWatcherOutput,
-  }),
-);
+export const TargetsListByWatcher = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TargetsListByWatcherInput,
+  outputSchema: TargetsListByWatcherOutput,
+}));
 // Input Schema
 export interface WatchersCreateOrUpdateInput {
   subscriptionId: string;
@@ -1216,7 +1204,7 @@ export interface WatchersCreateOrUpdateInput {
   location: string;
 }
 export const WatchersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
@@ -1294,7 +1282,7 @@ export interface WatchersCreateOrUpdateOutput {
   };
 }
 export const WatchersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1323,19 +1311,17 @@ export const WatchersCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const WatchersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchersCreateOrUpdateInput,
-    outputSchema: WatchersCreateOrUpdateOutput,
-  }),
-);
+export const WatchersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchersCreateOrUpdateInput,
+  outputSchema: WatchersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface WatchersDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   watcherName: string;
 }
-export const WatchersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -1350,7 +1336,7 @@ export const WatchersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WatchersDeleteOutput = void;
 export const WatchersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WatchersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WatchersDeleteOutput>;
 
 // The operation
 /**
@@ -1361,7 +1347,7 @@ export const WatchersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const WatchersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchersDeleteInput,
   outputSchema: WatchersDeleteOutput,
 }));
@@ -1371,7 +1357,7 @@ export interface WatchersGetInput {
   resourceGroupName: string;
   watcherName: string;
 }
-export const WatchersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -1397,7 +1383,7 @@ export interface WatchersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const WatchersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1426,7 +1412,7 @@ export const WatchersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const WatchersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchersGetInput,
   outputSchema: WatchersGetOutput,
 }));
@@ -1436,7 +1422,7 @@ export interface WatchersListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const WatchersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1465,7 +1451,7 @@ export interface WatchersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const WatchersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1508,18 +1494,16 @@ export const WatchersListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const WatchersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchersListByResourceGroupInput,
-    outputSchema: WatchersListByResourceGroupOutput,
-  }),
-);
+export const WatchersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchersListByResourceGroupInput,
+  outputSchema: WatchersListByResourceGroupOutput,
+}));
 // Input Schema
 export interface WatchersListBySubscriptionInput {
   subscriptionId: string;
 }
 export const WatchersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1547,7 +1531,7 @@ export interface WatchersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const WatchersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1589,19 +1573,17 @@ export const WatchersListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WatchersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchersListBySubscriptionInput,
-    outputSchema: WatchersListBySubscriptionOutput,
-  }),
-);
+export const WatchersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchersListBySubscriptionInput,
+  outputSchema: WatchersListBySubscriptionOutput,
+}));
 // Input Schema
 export interface WatchersStartInput {
   subscriptionId: string;
   resourceGroupName: string;
   watcherName: string;
 }
-export const WatchersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -1627,7 +1609,7 @@ export interface WatchersStartOutput {
     lastModifiedAt?: string;
   };
 }
-export const WatchersStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersStartOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1656,7 +1638,7 @@ export const WatchersStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const WatchersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchersStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchersStartInput,
   outputSchema: WatchersStartOutput,
 }));
@@ -1666,7 +1648,7 @@ export interface WatchersStopInput {
   resourceGroupName: string;
   watcherName: string;
 }
-export const WatchersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -1692,7 +1674,7 @@ export interface WatchersStopOutput {
     lastModifiedAt?: string;
   };
 }
-export const WatchersStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersStopOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1721,7 +1703,7 @@ export const WatchersStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const WatchersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchersStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchersStopInput,
   outputSchema: WatchersStopOutput,
 }));
@@ -1757,7 +1739,7 @@ export interface WatchersUpdateInput {
     defaultAlertRuleIdentityResourceId?: string;
   };
 }
-export const WatchersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
@@ -1823,7 +1805,7 @@ export interface WatchersUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const WatchersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1852,7 +1834,7 @@ export const WatchersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param watcherName - The database watcher name.
  */
-export const WatchersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchersUpdateInput,
   outputSchema: WatchersUpdateOutput,
 }));

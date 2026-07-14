@@ -6,7 +6,7 @@ import * as T from "../../traits.ts";
 export interface VacuumDatasetInput {
   dataset_id: string;
 }
-export const VacuumDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VacuumDatasetInput = /*@__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "POST", path: "/v2/datasets/{dataset_id}/vacuum" }),
@@ -15,10 +15,10 @@ export const VacuumDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type VacuumDatasetOutput = void;
 export const VacuumDatasetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VacuumDatasetOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VacuumDatasetOutput>;
 
 // The operation
-export const vacuumDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const vacuumDataset = /*@__PURE__*/ API.make(() => ({
   inputSchema: VacuumDatasetInput,
   outputSchema: VacuumDatasetOutput,
 }));

@@ -44,7 +44,7 @@ export interface ScheduledChangesCreateInput {
   timezone: string | null;
 }
 export const ScheduledChangesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.Number,
     team_id: Schema.Number,
@@ -141,7 +141,7 @@ export interface ScheduledChangesCreateOutput {
   timezone: string | null;
 }
 export const ScheduledChangesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number,
     team_id: Schema.Number,
     record_id: Schema.String,
@@ -197,9 +197,7 @@ export const ScheduledChangesCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const scheduledChangesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScheduledChangesCreateInput,
-    outputSchema: ScheduledChangesCreateOutput,
-  }),
-);
+export const scheduledChangesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduledChangesCreateInput,
+  outputSchema: ScheduledChangesCreateOutput,
+}));

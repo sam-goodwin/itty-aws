@@ -11,7 +11,7 @@ export interface SignalsScoutScratchpadRememberInput {
   run_id?: string | null;
 }
 export const SignalsScoutScratchpadRememberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     key: Schema.String,
     content: Schema.String,
@@ -34,7 +34,7 @@ export interface SignalsScoutScratchpadRememberOutput {
   created_by_run_url?: string | null;
 }
 export const SignalsScoutScratchpadRememberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.String,
     content: Schema.String,
     created_at: Schema.NullOr(Schema.String),
@@ -53,7 +53,7 @@ export const SignalsScoutScratchpadRememberOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const signalsScoutScratchpadRemember =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalsScoutScratchpadRememberInput,
     outputSchema: SignalsScoutScratchpadRememberOutput,
     errors: [BadRequest] as const,

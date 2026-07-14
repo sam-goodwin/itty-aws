@@ -14,7 +14,7 @@ export interface NotebooksListInput {
   offset?: number;
   user?: string;
 }
-export const NotebooksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NotebooksListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   contains: Schema.optional(Schema.String),
   created_by: Schema.optional(Schema.String),
@@ -85,7 +85,7 @@ export interface NotebooksListOutput {
     _create_in_folder?: string;
   }[];
 }
-export const NotebooksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NotebooksListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -186,7 +186,7 @@ export const NotebooksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param user - If any value is provided for this parameter, return notebooks created by the logged in user.
  */
-export const notebooksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const notebooksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: NotebooksListInput,
   outputSchema: NotebooksListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

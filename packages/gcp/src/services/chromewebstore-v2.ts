@@ -30,7 +30,7 @@ export interface DistributionChannel {
 }
 
 export const DistributionChannel: Schema.Codec<DistributionChannel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deployPercentage: Schema.optional(Schema.Number),
     crxVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "DistributionChannel" });
@@ -51,7 +51,7 @@ export interface ItemRevisionStatus {
 }
 
 export const ItemRevisionStatus: Schema.Codec<ItemRevisionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     distributionChannels: Schema.optional(Schema.Array(DistributionChannel)),
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "ItemRevisionStatus" });
@@ -59,7 +59,7 @@ export const ItemRevisionStatus: Schema.Codec<ItemRevisionStatus> =
 export interface CancelSubmissionRequest {}
 
 export const CancelSubmissionRequest: Schema.Codec<CancelSubmissionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelSubmissionRequest",
   });
 
@@ -69,7 +69,7 @@ export interface DeployInfo {
 }
 
 export const DeployInfo: Schema.Codec<DeployInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deployPercentage: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DeployInfo" });
 
@@ -99,7 +99,7 @@ export interface FetchItemStatusResponse {
 }
 
 export const FetchItemStatusResponse: Schema.Codec<FetchItemStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     warned: Schema.optional(Schema.Boolean),
     itemId: Schema.optional(Schema.String),
@@ -118,7 +118,7 @@ export interface Warning {
 }
 
 export const Warning: Schema.Codec<Warning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).annotate({ identifier: "Warning" });
@@ -129,7 +129,7 @@ export interface WarningsInfo {
 }
 
 export const WarningsInfo: Schema.Codec<WarningsInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     warnings: Schema.optional(Schema.Array(Warning)),
   }).annotate({ identifier: "WarningsInfo" });
 
@@ -153,7 +153,7 @@ export interface PublishItemResponse {
 }
 
 export const PublishItemResponse: Schema.Codec<PublishItemResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     itemId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -166,14 +166,14 @@ export interface SetPublishedDeployPercentageRequest {
 }
 
 export const SetPublishedDeployPercentageRequest: Schema.Codec<SetPublishedDeployPercentageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deployPercentage: Schema.optional(Schema.Number),
   }).annotate({ identifier: "SetPublishedDeployPercentageRequest" });
 
 export interface CancelSubmissionResponse {}
 
 export const CancelSubmissionResponse: Schema.Codec<CancelSubmissionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelSubmissionResponse",
   });
 
@@ -193,7 +193,7 @@ export interface PublishItemRequest {
 }
 
 export const PublishItemRequest: Schema.Codec<PublishItemRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skipReview: Schema.optional(Schema.Boolean),
     publishType: Schema.optional(Schema.String),
     deployInfos: Schema.optional(Schema.Array(DeployInfo)),
@@ -203,7 +203,7 @@ export const PublishItemRequest: Schema.Codec<PublishItemRequest> =
 export interface UploadItemPackageRequest {}
 
 export const UploadItemPackageRequest: Schema.Codec<UploadItemPackageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadItemPackageRequest",
   });
 
@@ -225,7 +225,7 @@ export interface UploadItemPackageResponse {
 }
 
 export const UploadItemPackageResponse: Schema.Codec<UploadItemPackageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     itemId: Schema.optional(Schema.String),
     crxVersion: Schema.optional(Schema.String),
@@ -235,7 +235,7 @@ export const UploadItemPackageResponse: Schema.Codec<UploadItemPackageResponse> 
 export interface SetPublishedDeployPercentageResponse {}
 
 export const SetPublishedDeployPercentageResponse: Schema.Codec<SetPublishedDeployPercentageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SetPublishedDeployPercentageResponse",
   });
 
@@ -300,7 +300,7 @@ export interface UploadMediaRequest {
   body?: UploadItemPackageRequest;
 }
 
-export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UploadMediaRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(UploadItemPackageRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -309,8 +309,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse = UploadItemPackageResponse;
-export const UploadMediaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UploadItemPackageResponse;
+export const UploadMediaResponse = /*@__PURE__*/ UploadItemPackageResponse;
 
 export type UploadMediaError =
   | DefaultErrors
@@ -325,7 +324,7 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaResponse,
   UploadMediaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -339,7 +338,7 @@ export interface PublishPublishersItemsRequest {
 }
 
 export const PublishPublishersItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PublishItemRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -348,8 +347,7 @@ export const PublishPublishersItemsRequest =
   ) as unknown as Schema.Codec<PublishPublishersItemsRequest>;
 
 export type PublishPublishersItemsResponse = PublishItemResponse;
-export const PublishPublishersItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PublishItemResponse;
+export const PublishPublishersItemsResponse = /*@__PURE__*/ PublishItemResponse;
 
 export type PublishPublishersItemsError =
   | DefaultErrors
@@ -364,7 +362,7 @@ export const publishPublishersItems: API.OperationMethod<
   PublishPublishersItemsResponse,
   PublishPublishersItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishPublishersItemsRequest,
   output: PublishPublishersItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -376,7 +374,7 @@ export interface FetchStatusPublishersItemsRequest {
 }
 
 export const FetchStatusPublishersItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}:fetchStatus" }),
@@ -385,7 +383,7 @@ export const FetchStatusPublishersItemsRequest =
 
 export type FetchStatusPublishersItemsResponse = FetchItemStatusResponse;
 export const FetchStatusPublishersItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FetchItemStatusResponse;
+  /*@__PURE__*/ FetchItemStatusResponse;
 
 export type FetchStatusPublishersItemsError =
   | DefaultErrors
@@ -398,7 +396,7 @@ export const fetchStatusPublishersItems: API.OperationMethod<
   FetchStatusPublishersItemsResponse,
   FetchStatusPublishersItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FetchStatusPublishersItemsRequest,
   output: FetchStatusPublishersItemsResponse,
   errors: [NotFound, Forbidden],
@@ -412,7 +410,7 @@ export interface SetPublishedDeployPercentagePublishersItemsRequest {
 }
 
 export const SetPublishedDeployPercentagePublishersItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SetPublishedDeployPercentageRequest).pipe(
       T.HttpBody(),
@@ -429,7 +427,7 @@ export const SetPublishedDeployPercentagePublishersItemsRequest =
 export type SetPublishedDeployPercentagePublishersItemsResponse =
   SetPublishedDeployPercentageResponse;
 export const SetPublishedDeployPercentagePublishersItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SetPublishedDeployPercentageResponse;
+  /*@__PURE__*/ SetPublishedDeployPercentageResponse;
 
 export type SetPublishedDeployPercentagePublishersItemsError =
   | DefaultErrors
@@ -444,7 +442,7 @@ export const setPublishedDeployPercentagePublishersItems: API.OperationMethod<
   SetPublishedDeployPercentagePublishersItemsResponse,
   SetPublishedDeployPercentagePublishersItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetPublishedDeployPercentagePublishersItemsRequest,
   output: SetPublishedDeployPercentagePublishersItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -458,7 +456,7 @@ export interface CancelSubmissionPublishersItemsRequest {
 }
 
 export const CancelSubmissionPublishersItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelSubmissionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -472,7 +470,7 @@ export const CancelSubmissionPublishersItemsRequest =
 
 export type CancelSubmissionPublishersItemsResponse = CancelSubmissionResponse;
 export const CancelSubmissionPublishersItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CancelSubmissionResponse;
+  /*@__PURE__*/ CancelSubmissionResponse;
 
 export type CancelSubmissionPublishersItemsError =
   | DefaultErrors
@@ -487,7 +485,7 @@ export const cancelSubmissionPublishersItems: API.OperationMethod<
   CancelSubmissionPublishersItemsResponse,
   CancelSubmissionPublishersItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelSubmissionPublishersItemsRequest,
   output: CancelSubmissionPublishersItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

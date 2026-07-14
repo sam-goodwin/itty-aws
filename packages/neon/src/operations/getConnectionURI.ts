@@ -12,7 +12,7 @@ export interface GetConnectionURIInput {
   role_name: string;
   pooled?: boolean;
 }
-export const GetConnectionURIInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetConnectionURIInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.optional(Schema.String),
   endpoint_id: Schema.optional(Schema.String),
@@ -27,11 +27,9 @@ export const GetConnectionURIInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface GetConnectionURIOutput {
   uri: string;
 }
-export const GetConnectionURIOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    uri: Schema.String,
-  },
-) as unknown as Schema.Codec<GetConnectionURIOutput>;
+export const GetConnectionURIOutput = /*@__PURE__*/ Schema.Struct({
+  uri: Schema.String,
+}) as unknown as Schema.Codec<GetConnectionURIOutput>;
 
 // The operation
 /**
@@ -47,7 +45,7 @@ export const GetConnectionURIOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param role_name - The role name
  * @param pooled - Adds the `-pooler` option to the connection URI when set to `true`, creating a pooled connection URI.
  */
-export const getConnectionURI = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getConnectionURI = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetConnectionURIInput,
   outputSchema: GetConnectionURIOutput,
   errors: [NotFound] as const,

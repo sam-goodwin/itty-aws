@@ -70,7 +70,7 @@ export interface ProductToursDraftPartialUpdateInput {
   creation_context?: "app" | "toolbar";
 }
 export const ProductToursDraftPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -256,7 +256,7 @@ export interface ProductToursDraftPartialUpdateOutput {
   search_match_type?: "exact" | "similar" | null;
 }
 export const ProductToursDraftPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -382,7 +382,7 @@ export const ProductToursDraftPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const productToursDraftPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductToursDraftPartialUpdateInput,
     outputSchema: ProductToursDraftPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

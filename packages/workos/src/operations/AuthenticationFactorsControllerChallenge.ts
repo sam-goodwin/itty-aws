@@ -9,7 +9,7 @@ export interface AuthenticationFactorsControllerChallengeInput {
   sms_template?: string;
 }
 export const AuthenticationFactorsControllerChallengeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     sms_template: Schema.optional(Schema.String),
   }).pipe(
@@ -27,7 +27,7 @@ export interface AuthenticationFactorsControllerChallengeOutput {
   updated_at?: string;
 }
 export const AuthenticationFactorsControllerChallengeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     expires_at: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export const AuthenticationFactorsControllerChallengeOutput =
  * @param id - The unique ID of the Authentication Factor to be challenged.
  */
 export const AuthenticationFactorsControllerChallenge =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthenticationFactorsControllerChallengeInput,
     outputSchema: AuthenticationFactorsControllerChallengeOutput,
     errors: [NotFound, UnprocessableEntity] as const,

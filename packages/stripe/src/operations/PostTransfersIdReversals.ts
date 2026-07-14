@@ -17,7 +17,7 @@ export interface PostTransfersIdReversalsInput {
   refund_application_fee?: boolean;
 }
 export const PostTransfersIdReversalsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     amount: Schema.optional(Schema.Number),
     description: Schema.optional(Schema.String),
@@ -327,7 +327,7 @@ export interface PostTransfersIdReversalsOutput {
       };
 }
 export const PostTransfersIdReversalsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.NullOr(
       Schema.Union([
@@ -434,9 +434,7 @@ export const PostTransfersIdReversalsOutput =
  * <p>When reversing transfers, you can optionally reverse part of the transfer. You can do so as many times as you wish until the entire transfer has been reversed.</p>
  * <p>Once entirely reversed, a transfer can’t be reversed again. This method will return an error when called on an already-reversed transfer, or when trying to reverse more money than is left on a transfer.</p>
  */
-export const PostTransfersIdReversals = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostTransfersIdReversalsInput,
-    outputSchema: PostTransfersIdReversalsOutput,
-  }),
-);
+export const PostTransfersIdReversals = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTransfersIdReversalsInput,
+  outputSchema: PostTransfersIdReversalsOutput,
+}));

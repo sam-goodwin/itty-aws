@@ -17,7 +17,7 @@ export interface SignalsReportsListInput {
   task_id?: string;
 }
 export const SignalsReportsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     has_implementation_pr: Schema.optional(Schema.Boolean),
     limit: Schema.optional(Schema.Number),
@@ -72,7 +72,7 @@ export interface SignalsReportsListOutput {
   }[];
 }
 export const SignalsReportsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.Number,
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -125,7 +125,7 @@ export const SignalsReportsListOutput =
  * @param suggested_reviewers - Comma-separated list of PostHog user UUIDs. Reports are kept if their suggested reviewers include any of the given users.
  * @param task_id - Only reports associated with this task (via the report's task associations).
  */
-export const signalsReportsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const signalsReportsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SignalsReportsListInput,
   outputSchema: SignalsReportsListOutput,
 }));

@@ -15,7 +15,7 @@ export interface AppsCheckNameAvailabilityInput {
   type?: string;
 }
 export const AppsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.optional(Schema.String),
@@ -34,7 +34,7 @@ export interface AppsCheckNameAvailabilityOutput {
   message?: string;
 }
 export const AppsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -47,12 +47,10 @@ export const AppsCheckNameAvailabilityOutput =
  * @param api-version - The version of the API.
  * @param subscriptionId - The subscription identifier.
  */
-export const AppsCheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppsCheckNameAvailabilityInput,
-    outputSchema: AppsCheckNameAvailabilityOutput,
-  }),
-);
+export const AppsCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppsCheckNameAvailabilityInput,
+  outputSchema: AppsCheckNameAvailabilityOutput,
+}));
 // Input Schema
 export interface AppsCheckSubdomainAvailabilityInput {
   subscriptionId: string;
@@ -60,7 +58,7 @@ export interface AppsCheckSubdomainAvailabilityInput {
   type?: string;
 }
 export const AppsCheckSubdomainAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.optional(Schema.String),
@@ -79,7 +77,7 @@ export interface AppsCheckSubdomainAvailabilityOutput {
   message?: string;
 }
 export const AppsCheckSubdomainAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -93,7 +91,7 @@ export const AppsCheckSubdomainAvailabilityOutput =
  * @param subscriptionId - The subscription identifier.
  */
 export const AppsCheckSubdomainAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppsCheckSubdomainAvailabilityInput,
     outputSchema: AppsCheckSubdomainAvailabilityOutput,
   }));
@@ -122,7 +120,7 @@ export interface AppsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const AppsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -167,7 +165,7 @@ export interface AppsCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const AppsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -184,7 +182,7 @@ export const AppsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group that contains the IoT Central application.
  * @param resourceName - The ARM resource name of the IoT Central application.
  */
-export const AppsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsCreateOrUpdateInput,
   outputSchema: AppsCreateOrUpdateOutput,
 }));
@@ -194,7 +192,7 @@ export interface AppsDeleteInput {
   resourceGroupName: string;
   resourceName: string;
 }
-export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -209,7 +207,7 @@ export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AppsDeleteOutput = void;
 export const AppsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AppsDeleteOutput>;
 
 // The operation
 /**
@@ -220,7 +218,7 @@ export const AppsDeleteOutput =
  * @param resourceGroupName - The name of the resource group that contains the IoT Central application.
  * @param resourceName - The ARM resource name of the IoT Central application.
  */
-export const AppsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsDeleteInput,
   outputSchema: AppsDeleteOutput,
 }));
@@ -230,7 +228,7 @@ export interface AppsGetInput {
   resourceGroupName: string;
   resourceName: string;
 }
-export const AppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -250,7 +248,7 @@ export interface AppsGetOutput {
   location: string;
   tags?: Record<string, string>;
 }
-export const AppsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -267,7 +265,7 @@ export const AppsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group that contains the IoT Central application.
  * @param resourceName - The ARM resource name of the IoT Central application.
  */
-export const AppsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsGetInput,
   outputSchema: AppsGetOutput,
 }));
@@ -277,7 +275,7 @@ export interface AppsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const AppsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -300,7 +298,7 @@ export interface AppsListByResourceGroupOutput {
   }[];
 }
 export const AppsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -323,18 +321,16 @@ export const AppsListByResourceGroupOutput =
  * @param subscriptionId - The subscription identifier.
  * @param resourceGroupName - The name of the resource group that contains the IoT Central application.
  */
-export const AppsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppsListByResourceGroupInput,
-    outputSchema: AppsListByResourceGroupOutput,
-  }),
-);
+export const AppsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppsListByResourceGroupInput,
+  outputSchema: AppsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface AppsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AppsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -356,7 +352,7 @@ export interface AppsListBySubscriptionOutput {
   }[];
 }
 export const AppsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -378,21 +374,17 @@ export const AppsListBySubscriptionOutput =
  * @param api-version - The version of the API.
  * @param subscriptionId - The subscription identifier.
  */
-export const AppsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppsListBySubscriptionInput,
-    outputSchema: AppsListBySubscriptionOutput,
-  }),
-);
+export const AppsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppsListBySubscriptionInput,
+  outputSchema: AppsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface AppsListTemplatesInput {
   subscriptionId: string;
 }
-export const AppsListTemplatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const AppsListTemplatesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/appTemplates",
@@ -415,7 +407,7 @@ export interface AppsListTemplatesOutput {
   }[];
 }
 export const AppsListTemplatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -447,7 +439,7 @@ export const AppsListTemplatesOutput =
  * @param api-version - The version of the API.
  * @param subscriptionId - The subscription identifier.
  */
-export const AppsListTemplates = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsListTemplates = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsListTemplatesInput,
   outputSchema: AppsListTemplatesOutput,
 }));
@@ -471,7 +463,7 @@ export interface AppsUpdateInput {
     type: "None" | "SystemAssigned";
   };
 }
-export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -513,7 +505,7 @@ export interface AppsUpdateOutput {
   location: string;
   tags?: Record<string, string>;
 }
-export const AppsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -530,15 +522,13 @@ export const AppsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group that contains the IoT Central application.
  * @param resourceName - The ARM resource name of the IoT Central application.
  */
-export const AppsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsUpdateInput,
   outputSchema: AppsUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.IoTCentral/operations",
@@ -561,7 +551,7 @@ export interface OperationsListOutput {
     properties?: unknown;
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -588,7 +578,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The version of the API.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

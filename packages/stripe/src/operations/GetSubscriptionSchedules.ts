@@ -22,7 +22,7 @@ export interface GetSubscriptionSchedulesInput {
   starting_after?: string;
 }
 export const GetSubscriptionSchedulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canceled_at: Schema.optional(Schema.String),
     completed_at: Schema.optional(Schema.String),
     created: Schema.optional(Schema.String),
@@ -1059,7 +1059,7 @@ export interface GetSubscriptionSchedulesOutput {
   url: string;
 }
 export const GetSubscriptionSchedulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         application: Schema.NullOr(
@@ -2279,9 +2279,7 @@ export const GetSubscriptionSchedulesOutput =
  * @param scheduled - Only return subscription schedules that have not started yet.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetSubscriptionSchedules = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetSubscriptionSchedulesInput,
-    outputSchema: GetSubscriptionSchedulesOutput,
-  }),
-);
+export const GetSubscriptionSchedules = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetSubscriptionSchedulesInput,
+  outputSchema: GetSubscriptionSchedulesOutput,
+}));

@@ -15,7 +15,7 @@ export interface DirectoryUsersControllerListInput {
   email?: string;
 }
 export const DirectoryUsersControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -70,7 +70,7 @@ export interface DirectoryUsersControllerListOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const DirectoryUsersControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -162,7 +162,7 @@ export const DirectoryUsersControllerListOutput =
  * @param email - Filter Directory Users by their primary email address. Requires the `directory` parameter to also be provided.
  */
 export const DirectoryUsersControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DirectoryUsersControllerListInput,
     outputSchema: DirectoryUsersControllerListOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

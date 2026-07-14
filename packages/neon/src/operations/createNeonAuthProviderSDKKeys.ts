@@ -8,7 +8,7 @@ export interface CreateNeonAuthProviderSDKKeysInput {
   auth_provider: "mock" | "stack" | "better_auth";
 }
 export const CreateNeonAuthProviderSDKKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String,
     auth_provider: Schema.Literals(["mock", "stack", "better_auth"]),
   }).pipe(
@@ -27,7 +27,7 @@ export interface CreateNeonAuthProviderSDKKeysOutput {
   base_url?: string;
 }
 export const CreateNeonAuthProviderSDKKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     auth_provider: Schema.Literals(["mock", "stack", "better_auth"]),
     auth_provider_project_id: Schema.String,
     pub_client_key: Schema.String,
@@ -46,7 +46,7 @@ export const CreateNeonAuthProviderSDKKeysOutput =
  * on the auth provider you're using, but are generally used for setting up the frontend and backend SDKs.
  */
 export const createNeonAuthProviderSDKKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateNeonAuthProviderSDKKeysInput,
     outputSchema: CreateNeonAuthProviderSDKKeysOutput,
   }));

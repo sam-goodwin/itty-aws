@@ -15,7 +15,7 @@ export interface CreateProjectBranchDatabaseInput {
   database: { name: string; owner_name: string };
 }
 export const CreateProjectBranchDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     database: Schema.Struct({
@@ -95,7 +95,7 @@ export interface CreateProjectBranchDatabaseOutput {
   }[];
 }
 export const CreateProjectBranchDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.Struct({
       id: Schema.Number,
       branch_id: Schema.String,
@@ -175,10 +175,8 @@ export const CreateProjectBranchDatabaseOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const createProjectBranchDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateProjectBranchDatabaseInput,
-    outputSchema: CreateProjectBranchDatabaseOutput,
-    errors: [BadRequest, NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createProjectBranchDatabase = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateProjectBranchDatabaseInput,
+  outputSchema: CreateProjectBranchDatabaseOutput,
+  errors: [BadRequest, NotFound, Conflict, UnprocessableEntity] as const,
+}));

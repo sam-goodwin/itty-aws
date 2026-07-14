@@ -8,7 +8,7 @@ export interface V1ListProjectAddonsInput {
   ref: string;
 }
 export const V1ListProjectAddonsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/billing/addons" }),
@@ -117,7 +117,7 @@ export interface V1ListProjectAddonsOutput {
   }[];
 }
 export const V1ListProjectAddonsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selected_addons: Schema.Array(
       Schema.Struct({
         type: Schema.Literals([
@@ -237,7 +237,7 @@ export const V1ListProjectAddonsOutput =
  *
  * @param ref - Project ref
  */
-export const v1ListProjectAddons = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ListProjectAddons = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ListProjectAddonsInput,
   outputSchema: V1ListProjectAddonsOutput,
   errors: [BadRequest, Forbidden] as const,

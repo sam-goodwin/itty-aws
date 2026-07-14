@@ -139,7 +139,7 @@ export interface AssociateUserToPermissionGroupRequest {
   clientToken?: string;
 }
 export const AssociateUserToPermissionGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       permissionGroupId: S.String.pipe(T.HttpLabel("permissionGroupId")),
       userId: S.String.pipe(T.HttpLabel("userId")),
@@ -164,20 +164,20 @@ export interface AssociateUserToPermissionGroupResponse {
   statusCode?: number;
 }
 export const AssociateUserToPermissionGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()) }),
   ).annotate({
     identifier: "AssociateUserToPermissionGroupResponse",
   }) as any as S.Schema<AssociateUserToPermissionGroupResponse>;
 export type ChangeType = "REPLACE" | "APPEND" | "MODIFY" | (string & {});
-export const ChangeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ChangeType = /*@__PURE__*/ S.String;
 export type SourceParams = { [key: string]: string | undefined };
-export const SourceParams = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const SourceParams = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export type FormatParams = { [key: string]: string | undefined };
-export const FormatParams = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const FormatParams = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -188,24 +188,23 @@ export interface CreateChangesetRequest {
   sourceParams: { [key: string]: string | undefined };
   formatParams: { [key: string]: string | undefined };
 }
-export const CreateChangesetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-      changeType: ChangeType,
-      sourceParams: SourceParams,
-      formatParams: FormatParams,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/datasets/{datasetId}/changesetsv2" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateChangesetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+    changeType: ChangeType,
+    sourceParams: SourceParams,
+    formatParams: FormatParams,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/datasets/{datasetId}/changesetsv2" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateChangesetRequest",
 }) as any as S.Schema<CreateChangesetRequest>;
@@ -213,23 +212,22 @@ export interface CreateChangesetResponse {
   datasetId?: string;
   changesetId?: string;
 }
-export const CreateChangesetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      datasetId: S.optional(S.String),
-      changesetId: S.optional(S.String),
-    }),
+export const CreateChangesetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetId: S.optional(S.String),
+    changesetId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CreateChangesetResponse",
 }) as any as S.Schema<CreateChangesetResponse>;
 export type DatasetKind = "TABULAR" | "NON_TABULAR" | (string & {});
-export const DatasetKind = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DatasetKind = /*@__PURE__*/ S.String;
 export interface DatasetOwnerInfo {
   name?: string;
   phoneNumber?: string;
   email?: string | redacted.Redacted<string>;
 }
-export const DatasetOwnerInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DatasetOwnerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     phoneNumber: S.optional(S.String),
@@ -241,19 +239,19 @@ export const DatasetOwnerInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ResourcePermission {
   permission?: string;
 }
-export const ResourcePermission = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourcePermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ permission: S.optional(S.String) }),
 ).annotate({
   identifier: "ResourcePermission",
 }) as any as S.Schema<ResourcePermission>;
 export type ResourcePermissionsList = ResourcePermission[];
 export const ResourcePermissionsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourcePermission);
+  /*@__PURE__*/ S.Array(ResourcePermission);
 export interface PermissionGroupParams {
   permissionGroupId?: string;
   datasetPermissions?: ResourcePermission[];
 }
-export const PermissionGroupParams = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PermissionGroupParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissionGroupId: S.optional(S.String),
     datasetPermissions: S.optional(ResourcePermissionsList),
@@ -275,13 +273,13 @@ export type ColumnDataType =
   | "BOOLEAN"
   | "BINARY"
   | (string & {});
-export const ColumnDataType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ColumnDataType = /*@__PURE__*/ S.String;
 export interface ColumnDefinition {
   dataType?: ColumnDataType;
   columnName?: string;
   columnDescription?: string;
 }
-export const ColumnDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ColumnDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataType: S.optional(ColumnDataType),
     columnName: S.optional(S.String),
@@ -291,14 +289,14 @@ export const ColumnDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ColumnDefinition",
 }) as any as S.Schema<ColumnDefinition>;
 export type ColumnList = ColumnDefinition[];
-export const ColumnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ColumnDefinition);
+export const ColumnList = /*@__PURE__*/ S.Array(ColumnDefinition);
 export type ColumnNameList = string[];
-export const ColumnNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ColumnNameList = /*@__PURE__*/ S.Array(S.String);
 export interface SchemaDefinition {
   columns?: ColumnDefinition[];
   primaryKeyColumns?: string[];
 }
-export const SchemaDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SchemaDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(ColumnList),
     primaryKeyColumns: S.optional(ColumnNameList),
@@ -309,7 +307,7 @@ export const SchemaDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface SchemaUnion {
   tabularSchemaConfig?: SchemaDefinition;
 }
-export const SchemaUnion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SchemaUnion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tabularSchemaConfig: S.optional(SchemaDefinition) }),
 ).annotate({ identifier: "SchemaUnion" }) as any as S.Schema<SchemaUnion>;
 export interface CreateDatasetRequest {
@@ -322,7 +320,7 @@ export interface CreateDatasetRequest {
   alias?: string;
   schemaDefinition?: SchemaUnion;
 }
-export const CreateDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     datasetTitle: S.String,
@@ -348,21 +346,19 @@ export const CreateDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateDatasetResponse {
   datasetId?: string;
 }
-export const CreateDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ datasetId: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateDatasetResponse",
 }) as any as S.Schema<CreateDatasetResponse>;
 export type SortColumnList = string[];
-export const SortColumnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SortColumnList = /*@__PURE__*/ S.Array(S.String);
 export type PartitionColumnList = string[];
-export const PartitionColumnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const PartitionColumnList = /*@__PURE__*/ S.Array(S.String);
 export type ExportFileFormat = "PARQUET" | "DELIMITED_TEXT" | (string & {});
-export const ExportFileFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExportFileFormat = /*@__PURE__*/ S.String;
 export type S3DestinationFormatOptions = { [key: string]: string | undefined };
-export const S3DestinationFormatOptions = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const S3DestinationFormatOptions = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -372,7 +368,7 @@ export interface DataViewDestinationTypeParams {
   s3DestinationExportFileFormatOptions?: { [key: string]: string | undefined };
 }
 export const DataViewDestinationTypeParams =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinationType: S.String,
       s3DestinationExportFileFormat: S.optional(ExportFileFormat),
@@ -392,7 +388,7 @@ export interface CreateDataViewRequest {
   asOfTimestamp?: number;
   destinationTypeParams: DataViewDestinationTypeParams;
 }
-export const CreateDataViewRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateDataViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     datasetId: S.String.pipe(T.HttpLabel("datasetId")),
@@ -418,12 +414,11 @@ export interface CreateDataViewResponse {
   datasetId?: string;
   dataViewId?: string;
 }
-export const CreateDataViewResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      datasetId: S.optional(S.String),
-      dataViewId: S.optional(S.String),
-    }),
+export const CreateDataViewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetId: S.optional(S.String),
+    dataViewId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CreateDataViewResponse",
 }) as any as S.Schema<CreateDataViewResponse>;
@@ -436,9 +431,9 @@ export type ApplicationPermission =
   | "AccessNotebooks"
   | "GetTemporaryCredentials"
   | (string & {});
-export const ApplicationPermission = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ApplicationPermission = /*@__PURE__*/ S.String;
 export type ApplicationPermissionList = ApplicationPermission[];
-export const ApplicationPermissionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ApplicationPermissionList = /*@__PURE__*/ S.Array(
   ApplicationPermission,
 );
 export interface CreatePermissionGroupRequest {
@@ -448,7 +443,7 @@ export interface CreatePermissionGroupRequest {
   clientToken?: string;
 }
 export const CreatePermissionGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: SensitiveString,
       description: S.optional(SensitiveString),
@@ -471,15 +466,15 @@ export interface CreatePermissionGroupResponse {
   permissionGroupId?: string;
 }
 export const CreatePermissionGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ permissionGroupId: S.optional(S.String) }),
   ).annotate({
     identifier: "CreatePermissionGroupResponse",
   }) as any as S.Schema<CreatePermissionGroupResponse>;
 export type UserType = "SUPER_USER" | "APP_USER" | (string & {});
-export const UserType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UserType = /*@__PURE__*/ S.String;
 export type ApiAccess = "ENABLED" | "DISABLED" | (string & {});
-export const ApiAccess = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ApiAccess = /*@__PURE__*/ S.String;
 export interface CreateUserRequest {
   emailAddress: string | redacted.Redacted<string>;
   type: UserType;
@@ -489,7 +484,7 @@ export interface CreateUserRequest {
   apiAccessPrincipalArn?: string;
   clientToken?: string;
 }
-export const CreateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailAddress: SensitiveString,
     type: UserType,
@@ -514,7 +509,7 @@ export const CreateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateUserResponse {
   userId?: string;
 }
-export const CreateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userId: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateUserResponse",
@@ -523,7 +518,7 @@ export interface DeleteDatasetRequest {
   clientToken?: string;
   datasetId: string;
 }
-export const DeleteDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(
       T.HttpQuery("clientToken"),
@@ -546,7 +541,7 @@ export const DeleteDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteDatasetResponse {
   datasetId?: string;
 }
-export const DeleteDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ datasetId: S.optional(S.String) }),
 ).annotate({
   identifier: "DeleteDatasetResponse",
@@ -556,7 +551,7 @@ export interface DeletePermissionGroupRequest {
   clientToken?: string;
 }
 export const DeletePermissionGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       permissionGroupId: S.String.pipe(T.HttpLabel("permissionGroupId")),
       clientToken: S.optional(S.String).pipe(
@@ -583,7 +578,7 @@ export interface DeletePermissionGroupResponse {
   permissionGroupId?: string;
 }
 export const DeletePermissionGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ permissionGroupId: S.optional(S.String) }),
   ).annotate({
     identifier: "DeletePermissionGroupResponse",
@@ -592,7 +587,7 @@ export interface DisableUserRequest {
   userId: string;
   clientToken?: string;
 }
-export const DisableUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DisableUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.HttpLabel("userId")),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -612,7 +607,7 @@ export const DisableUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DisableUserResponse {
   userId?: string;
 }
-export const DisableUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DisableUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userId: S.optional(S.String) }),
 ).annotate({
   identifier: "DisableUserResponse",
@@ -623,7 +618,7 @@ export interface DisassociateUserFromPermissionGroupRequest {
   clientToken?: string;
 }
 export const DisassociateUserFromPermissionGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       permissionGroupId: S.String.pipe(T.HttpLabel("permissionGroupId")),
       userId: S.String.pipe(T.HttpLabel("userId")),
@@ -651,7 +646,7 @@ export interface DisassociateUserFromPermissionGroupResponse {
   statusCode?: number;
 }
 export const DisassociateUserFromPermissionGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()) }),
   ).annotate({
     identifier: "DisassociateUserFromPermissionGroupResponse",
@@ -660,7 +655,7 @@ export interface EnableUserRequest {
   userId: string;
   clientToken?: string;
 }
-export const EnableUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EnableUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.HttpLabel("userId")),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -680,7 +675,7 @@ export const EnableUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface EnableUserResponse {
   userId?: string;
 }
-export const EnableUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EnableUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userId: S.optional(S.String) }),
 ).annotate({
   identifier: "EnableUserResponse",
@@ -689,7 +684,7 @@ export interface GetChangesetRequest {
   datasetId: string;
   changesetId: string;
 }
-export const GetChangesetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetChangesetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.HttpLabel("datasetId")),
     changesetId: S.String.pipe(T.HttpLabel("changesetId")),
@@ -716,7 +711,7 @@ export type IngestionStatus =
   | "RUNNING"
   | "STOP_REQUESTED"
   | (string & {});
-export const IngestionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const IngestionStatus = /*@__PURE__*/ S.String;
 export type ErrorCategory =
   | "VALIDATION"
   | "SERVICE_QUOTA_EXCEEDED"
@@ -727,12 +722,12 @@ export type ErrorCategory =
   | "CANCELLED"
   | "USER_RECOVERABLE"
   | (string & {});
-export const ErrorCategory = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ErrorCategory = /*@__PURE__*/ S.String;
 export interface ChangesetErrorInfo {
   errorMessage?: string;
   errorCategory?: ErrorCategory;
 }
-export const ChangesetErrorInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ChangesetErrorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorMessage: S.optional(S.String),
     errorCategory: S.optional(ErrorCategory),
@@ -755,7 +750,7 @@ export interface GetChangesetResponse {
   updatesChangesetId?: string;
   updatedByChangesetId?: string;
 }
-export const GetChangesetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetChangesetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changesetId: S.optional(S.String),
     changesetArn: S.optional(S.String),
@@ -777,7 +772,7 @@ export const GetChangesetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetDatasetRequest {
   datasetId: string;
 }
-export const GetDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ datasetId: S.String.pipe(T.HttpLabel("datasetId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/datasetsv2/{datasetId}" }),
@@ -797,7 +792,7 @@ export type DatasetStatus =
   | "SUCCESS"
   | "RUNNING"
   | (string & {});
-export const DatasetStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DatasetStatus = /*@__PURE__*/ S.String;
 export interface GetDatasetResponse {
   datasetId?: string;
   datasetArn?: string;
@@ -810,7 +805,7 @@ export interface GetDatasetResponse {
   alias?: string;
   status?: DatasetStatus;
 }
-export const GetDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.optional(S.String),
     datasetArn: S.optional(S.String),
@@ -830,7 +825,7 @@ export interface GetDataViewRequest {
   dataViewId: string;
   datasetId: string;
 }
-export const GetDataViewRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDataViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataViewId: S.String.pipe(T.HttpLabel("dataViewId")),
     datasetId: S.String.pipe(T.HttpLabel("datasetId")),
@@ -854,7 +849,7 @@ export interface DataViewErrorInfo {
   errorMessage?: string;
   errorCategory?: ErrorCategory;
 }
-export const DataViewErrorInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataViewErrorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorMessage: S.optional(S.String),
     errorCategory: S.optional(ErrorCategory),
@@ -872,7 +867,7 @@ export type DataViewStatus =
   | "PENDING"
   | "FAILED_CLEANUP_FAILED"
   | (string & {});
-export const DataViewStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DataViewStatus = /*@__PURE__*/ S.String;
 export interface GetDataViewResponse {
   autoUpdate?: boolean;
   partitionColumns?: string[];
@@ -887,7 +882,7 @@ export interface GetDataViewResponse {
   destinationTypeParams?: DataViewDestinationTypeParams;
   status?: DataViewStatus;
 }
-export const GetDataViewResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDataViewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoUpdate: S.optional(S.Boolean),
     partitionColumns: S.optional(PartitionColumnList),
@@ -910,7 +905,7 @@ export interface GetExternalDataViewAccessDetailsRequest {
   datasetId: string;
 }
 export const GetExternalDataViewAccessDetailsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataViewId: S.String.pipe(T.HttpLabel("dataViewId")),
       datasetId: S.String.pipe(T.HttpLabel("datasetId")),
@@ -936,7 +931,7 @@ export interface AwsCredentials {
   sessionToken?: string | redacted.Redacted<string>;
   expiration?: number;
 }
-export const AwsCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AwsCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessKeyId: S.optional(S.String),
     secretAccessKey: S.optional(SensitiveString),
@@ -948,7 +943,7 @@ export interface S3Location {
   bucket: string;
   key: string;
 }
-export const S3Location = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucket: S.String, key: S.String }),
 ).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
 export interface GetExternalDataViewAccessDetailsResponse {
@@ -956,7 +951,7 @@ export interface GetExternalDataViewAccessDetailsResponse {
   s3Location?: S3Location;
 }
 export const GetExternalDataViewAccessDetailsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       credentials: S.optional(AwsCredentials),
       s3Location: S.optional(S3Location),
@@ -967,20 +962,19 @@ export const GetExternalDataViewAccessDetailsResponse =
 export interface GetPermissionGroupRequest {
   permissionGroupId: string;
 }
-export const GetPermissionGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      permissionGroupId: S.String.pipe(T.HttpLabel("permissionGroupId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/permission-group/{permissionGroupId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetPermissionGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permissionGroupId: S.String.pipe(T.HttpLabel("permissionGroupId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/permission-group/{permissionGroupId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetPermissionGroupRequest",
 }) as any as S.Schema<GetPermissionGroupRequest>;
@@ -989,8 +983,7 @@ export type PermissionGroupMembershipStatus =
   | "ADDITION_SUCCESS"
   | "REMOVAL_IN_PROGRESS"
   | (string & {});
-export const PermissionGroupMembershipStatus =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PermissionGroupMembershipStatus = /*@__PURE__*/ S.String;
 export interface PermissionGroup {
   permissionGroupId?: string;
   name?: string | redacted.Redacted<string>;
@@ -1000,7 +993,7 @@ export interface PermissionGroup {
   lastModifiedTime?: number;
   membershipStatus?: PermissionGroupMembershipStatus;
 }
-export const PermissionGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PermissionGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissionGroupId: S.optional(S.String),
     name: S.optional(SensitiveString),
@@ -1016,8 +1009,8 @@ export const PermissionGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetPermissionGroupResponse {
   permissionGroup?: PermissionGroup;
 }
-export const GetPermissionGroupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ permissionGroup: S.optional(PermissionGroup) }),
+export const GetPermissionGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ permissionGroup: S.optional(PermissionGroup) }),
 ).annotate({
   identifier: "GetPermissionGroupResponse",
 }) as any as S.Schema<GetPermissionGroupResponse>;
@@ -1026,7 +1019,7 @@ export interface GetProgrammaticAccessCredentialsRequest {
   environmentId: string;
 }
 export const GetProgrammaticAccessCredentialsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       durationInMinutes: S.optional(S.Number).pipe(
         T.HttpQuery("durationInMinutes"),
@@ -1050,7 +1043,7 @@ export interface Credentials {
   secretAccessKey?: string;
   sessionToken?: string;
 }
-export const Credentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Credentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessKeyId: S.optional(S.String),
     secretAccessKey: S.optional(S.String),
@@ -1062,7 +1055,7 @@ export interface GetProgrammaticAccessCredentialsResponse {
   durationInMinutes?: number;
 }
 export const GetProgrammaticAccessCredentialsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       credentials: S.optional(Credentials),
       durationInMinutes: S.optional(S.Number),
@@ -1073,7 +1066,7 @@ export const GetProgrammaticAccessCredentialsResponse =
 export interface GetUserRequest {
   userId: string;
 }
-export const GetUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userId: S.String.pipe(T.HttpLabel("userId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/user/{userId}" }),
@@ -1086,7 +1079,7 @@ export const GetUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
 export type UserStatus = "CREATING" | "ENABLED" | "DISABLED" | (string & {});
-export const UserStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UserStatus = /*@__PURE__*/ S.String;
 export interface GetUserResponse {
   userId?: string;
   status?: UserStatus;
@@ -1102,7 +1095,7 @@ export interface GetUserResponse {
   lastModifiedTime?: number;
   lastLoginTime?: number;
 }
-export const GetUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
     status: S.optional(UserStatus),
@@ -1122,22 +1115,21 @@ export const GetUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetUserResponse",
 }) as any as S.Schema<GetUserResponse>;
 export type LocationType = "INGESTION" | "SAGEMAKER" | (string & {});
-export const LocationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LocationType = /*@__PURE__*/ S.String;
 export interface GetWorkingLocationRequest {
   locationType?: LocationType;
 }
-export const GetWorkingLocationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ locationType: S.optional(LocationType) }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/workingLocationV1" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetWorkingLocationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ locationType: S.optional(LocationType) }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/workingLocationV1" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetWorkingLocationRequest",
 }) as any as S.Schema<GetWorkingLocationRequest>;
@@ -1146,13 +1138,12 @@ export interface GetWorkingLocationResponse {
   s3Path?: string;
   s3Bucket?: string;
 }
-export const GetWorkingLocationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      s3Uri: S.optional(S.String),
-      s3Path: S.optional(S.String),
-      s3Bucket: S.optional(S.String),
-    }),
+export const GetWorkingLocationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    s3Uri: S.optional(S.String),
+    s3Path: S.optional(S.String),
+    s3Bucket: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetWorkingLocationResponse",
 }) as any as S.Schema<GetWorkingLocationResponse>;
@@ -1161,7 +1152,7 @@ export interface ListChangesetsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListChangesetsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListChangesetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.HttpLabel("datasetId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1194,7 +1185,7 @@ export interface ChangesetSummary {
   updatesChangesetId?: string;
   updatedByChangesetId?: string;
 }
-export const ChangesetSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ChangesetSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changesetId: S.optional(S.String),
     changesetArn: S.optional(S.String),
@@ -1214,18 +1205,16 @@ export const ChangesetSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ChangesetSummary",
 }) as any as S.Schema<ChangesetSummary>;
 export type ChangesetList = ChangesetSummary[];
-export const ChangesetList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ChangesetSummary);
+export const ChangesetList = /*@__PURE__*/ S.Array(ChangesetSummary);
 export interface ListChangesetsResponse {
   changesets?: ChangesetSummary[];
   nextToken?: string;
 }
-export const ListChangesetsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      changesets: S.optional(ChangesetList),
-      nextToken: S.optional(S.String),
-    }),
+export const ListChangesetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    changesets: S.optional(ChangesetList),
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListChangesetsResponse",
 }) as any as S.Schema<ListChangesetsResponse>;
@@ -1233,7 +1222,7 @@ export interface ListDatasetsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1262,7 +1251,7 @@ export interface Dataset {
   schemaDefinition?: SchemaUnion;
   alias?: string;
 }
-export const Dataset = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.optional(S.String),
     datasetArn: S.optional(S.String),
@@ -1277,12 +1266,12 @@ export const Dataset = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
 export type DatasetList = Dataset[];
-export const DatasetList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Dataset);
+export const DatasetList = /*@__PURE__*/ S.Array(Dataset);
 export interface ListDatasetsResponse {
   datasets?: Dataset[];
   nextToken?: string;
 }
-export const ListDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasets: S.optional(DatasetList),
     nextToken: S.optional(S.String),
@@ -1295,7 +1284,7 @@ export interface ListDataViewsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDataViewsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDataViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.HttpLabel("datasetId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1327,7 +1316,7 @@ export interface DataViewSummary {
   createTime?: number;
   lastModifiedTime?: number;
 }
-export const DataViewSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataViewSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataViewId: S.optional(S.String),
     dataViewArn: S.optional(S.String),
@@ -1346,13 +1335,12 @@ export const DataViewSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DataViewSummary",
 }) as any as S.Schema<DataViewSummary>;
 export type DataViewList = DataViewSummary[];
-export const DataViewList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataViewSummary);
+export const DataViewList = /*@__PURE__*/ S.Array(DataViewSummary);
 export interface ListDataViewsResponse {
   nextToken?: string;
   dataViews?: DataViewSummary[];
 }
-export const ListDataViewsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDataViewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     dataViews: S.optional(DataViewList),
@@ -1365,7 +1353,7 @@ export interface ListPermissionGroupsRequest {
   maxResults: number;
 }
 export const ListPermissionGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.Number.pipe(T.HttpQuery("maxResults")),
@@ -1383,14 +1371,13 @@ export const ListPermissionGroupsRequest =
     identifier: "ListPermissionGroupsRequest",
   }) as any as S.Schema<ListPermissionGroupsRequest>;
 export type PermissionGroupList = PermissionGroup[];
-export const PermissionGroupList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PermissionGroup);
+export const PermissionGroupList = /*@__PURE__*/ S.Array(PermissionGroup);
 export interface ListPermissionGroupsResponse {
   permissionGroups?: PermissionGroup[];
   nextToken?: string;
 }
 export const ListPermissionGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       permissionGroups: S.optional(PermissionGroupList),
       nextToken: S.optional(S.String),
@@ -1404,7 +1391,7 @@ export interface ListPermissionGroupsByUserRequest {
   maxResults: number;
 }
 export const ListPermissionGroupsByUserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       userId: S.String.pipe(T.HttpLabel("userId")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1427,7 +1414,7 @@ export interface PermissionGroupByUser {
   name?: string | redacted.Redacted<string>;
   membershipStatus?: PermissionGroupMembershipStatus;
 }
-export const PermissionGroupByUser = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PermissionGroupByUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissionGroupId: S.optional(S.String),
     name: S.optional(SensitiveString),
@@ -1437,7 +1424,7 @@ export const PermissionGroupByUser = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PermissionGroupByUser",
 }) as any as S.Schema<PermissionGroupByUser>;
 export type PermissionGroupByUserList = PermissionGroupByUser[];
-export const PermissionGroupByUserList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const PermissionGroupByUserList = /*@__PURE__*/ S.Array(
   PermissionGroupByUser,
 );
 export interface ListPermissionGroupsByUserResponse {
@@ -1445,7 +1432,7 @@ export interface ListPermissionGroupsByUserResponse {
   nextToken?: string;
 }
 export const ListPermissionGroupsByUserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       permissionGroups: S.optional(PermissionGroupByUserList),
       nextToken: S.optional(S.String),
@@ -1457,7 +1444,7 @@ export interface ListUsersRequest {
   nextToken?: string;
   maxResults: number;
 }
-export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.Number.pipe(T.HttpQuery("maxResults")),
@@ -1489,7 +1476,7 @@ export interface User {
   lastModifiedTime?: number;
   lastLoginTime?: number;
 }
-export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
     status: S.optional(UserStatus),
@@ -1507,12 +1494,12 @@ export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 export type UserList = User[];
-export const UserList = /*@__PURE__*/ /*#__PURE__*/ S.Array(User);
+export const UserList = /*@__PURE__*/ S.Array(User);
 export interface ListUsersResponse {
   users?: User[];
   nextToken?: string;
 }
-export const ListUsersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ users: S.optional(UserList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListUsersResponse",
@@ -1523,7 +1510,7 @@ export interface ListUsersByPermissionGroupRequest {
   maxResults: number;
 }
 export const ListUsersByPermissionGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       permissionGroupId: S.String.pipe(T.HttpLabel("permissionGroupId")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1555,7 +1542,7 @@ export interface UserByPermissionGroup {
   apiAccessPrincipalArn?: string;
   membershipStatus?: PermissionGroupMembershipStatus;
 }
-export const UserByPermissionGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UserByPermissionGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
     status: S.optional(UserStatus),
@@ -1571,7 +1558,7 @@ export const UserByPermissionGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UserByPermissionGroup",
 }) as any as S.Schema<UserByPermissionGroup>;
 export type UserByPermissionGroupList = UserByPermissionGroup[];
-export const UserByPermissionGroupList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const UserByPermissionGroupList = /*@__PURE__*/ S.Array(
   UserByPermissionGroup,
 );
 export interface ListUsersByPermissionGroupResponse {
@@ -1579,7 +1566,7 @@ export interface ListUsersByPermissionGroupResponse {
   nextToken?: string;
 }
 export const ListUsersByPermissionGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       users: S.optional(UserByPermissionGroupList),
       nextToken: S.optional(S.String),
@@ -1591,21 +1578,20 @@ export interface ResetUserPasswordRequest {
   userId: string;
   clientToken?: string;
 }
-export const ResetUserPasswordRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      userId: S.String.pipe(T.HttpLabel("userId")),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/user/{userId}/password" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ResetUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userId: S.String.pipe(T.HttpLabel("userId")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/user/{userId}/password" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ResetUserPasswordRequest",
 }) as any as S.Schema<ResetUserPasswordRequest>;
@@ -1613,12 +1599,11 @@ export interface ResetUserPasswordResponse {
   userId?: string;
   temporaryPassword?: string | redacted.Redacted<string>;
 }
-export const ResetUserPasswordResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      userId: S.optional(S.String),
-      temporaryPassword: S.optional(SensitiveString),
-    }),
+export const ResetUserPasswordResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userId: S.optional(S.String),
+    temporaryPassword: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "ResetUserPasswordResponse",
 }) as any as S.Schema<ResetUserPasswordResponse>;
@@ -1629,27 +1614,26 @@ export interface UpdateChangesetRequest {
   sourceParams: { [key: string]: string | undefined };
   formatParams: { [key: string]: string | undefined };
 }
-export const UpdateChangesetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-      changesetId: S.String.pipe(T.HttpLabel("changesetId")),
-      sourceParams: SourceParams,
-      formatParams: FormatParams,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/datasets/{datasetId}/changesetsv2/{changesetId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateChangesetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+    changesetId: S.String.pipe(T.HttpLabel("changesetId")),
+    sourceParams: SourceParams,
+    formatParams: FormatParams,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/datasets/{datasetId}/changesetsv2/{changesetId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateChangesetRequest",
 }) as any as S.Schema<UpdateChangesetRequest>;
@@ -1657,12 +1641,11 @@ export interface UpdateChangesetResponse {
   changesetId?: string;
   datasetId?: string;
 }
-export const UpdateChangesetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      changesetId: S.optional(S.String),
-      datasetId: S.optional(S.String),
-    }),
+export const UpdateChangesetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    changesetId: S.optional(S.String),
+    datasetId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "UpdateChangesetResponse",
 }) as any as S.Schema<UpdateChangesetResponse>;
@@ -1675,7 +1658,7 @@ export interface UpdateDatasetRequest {
   alias?: string;
   schemaDefinition?: SchemaUnion;
 }
-export const UpdateDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     datasetId: S.String.pipe(T.HttpLabel("datasetId")),
@@ -1700,7 +1683,7 @@ export const UpdateDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateDatasetResponse {
   datasetId?: string;
 }
-export const UpdateDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ datasetId: S.optional(S.String) }),
 ).annotate({
   identifier: "UpdateDatasetResponse",
@@ -1713,7 +1696,7 @@ export interface UpdatePermissionGroupRequest {
   clientToken?: string;
 }
 export const UpdatePermissionGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       permissionGroupId: S.String.pipe(T.HttpLabel("permissionGroupId")),
       name: S.optional(SensitiveString),
@@ -1737,7 +1720,7 @@ export interface UpdatePermissionGroupResponse {
   permissionGroupId?: string;
 }
 export const UpdatePermissionGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ permissionGroupId: S.optional(S.String) }),
   ).annotate({
     identifier: "UpdatePermissionGroupResponse",
@@ -1751,7 +1734,7 @@ export interface UpdateUserRequest {
   apiAccessPrincipalArn?: string;
   clientToken?: string;
 }
-export const UpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.HttpLabel("userId")),
     type: S.optional(UserType),
@@ -1776,7 +1759,7 @@ export const UpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateUserResponse {
   userId?: string;
 }
-export const UpdateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userId: S.optional(S.String) }),
 ).annotate({
   identifier: "UpdateUserResponse",
@@ -1829,7 +1812,7 @@ export const associateUserToPermissionGroup: API.OperationMethod<
   AssociateUserToPermissionGroupResponse,
   AssociateUserToPermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateUserToPermissionGroupRequest,
   output: AssociateUserToPermissionGroupResponse,
   errors: [
@@ -1859,7 +1842,7 @@ export const createChangeset: API.OperationMethod<
   CreateChangesetResponse,
   CreateChangesetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChangesetRequest,
   output: CreateChangesetResponse,
   errors: [
@@ -1890,7 +1873,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetResponse,
   CreateDatasetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
   errors: [
@@ -1920,7 +1903,7 @@ export const createDataView: API.OperationMethod<
   CreateDataViewResponse,
   CreateDataViewError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataViewRequest,
   output: CreateDataViewResponse,
   errors: [
@@ -1949,7 +1932,7 @@ export const createPermissionGroup: API.OperationMethod<
   CreatePermissionGroupResponse,
   CreatePermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePermissionGroupRequest,
   output: CreatePermissionGroupResponse,
   errors: [
@@ -1978,7 +1961,7 @@ export const createUser: API.OperationMethod<
   CreateUserResponse,
   CreateUserError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
   errors: [
@@ -2008,7 +1991,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetResponse,
   DeleteDatasetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
   errors: [
@@ -2039,7 +2022,7 @@ export const deletePermissionGroup: API.OperationMethod<
   DeletePermissionGroupResponse,
   DeletePermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePermissionGroupRequest,
   output: DeletePermissionGroupResponse,
   errors: [
@@ -2069,7 +2052,7 @@ export const disableUser: API.OperationMethod<
   DisableUserResponse,
   DisableUserError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableUserRequest,
   output: DisableUserResponse,
   errors: [
@@ -2098,7 +2081,7 @@ export const disassociateUserFromPermissionGroup: API.OperationMethod<
   DisassociateUserFromPermissionGroupResponse,
   DisassociateUserFromPermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateUserFromPermissionGroupRequest,
   output: DisassociateUserFromPermissionGroupResponse,
   errors: [
@@ -2128,7 +2111,7 @@ export const enableUser: API.OperationMethod<
   EnableUserResponse,
   EnableUserError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableUserRequest,
   output: EnableUserResponse,
   errors: [
@@ -2158,7 +2141,7 @@ export const getChangeset: API.OperationMethod<
   GetChangesetResponse,
   GetChangesetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChangesetRequest,
   output: GetChangesetResponse,
   errors: [
@@ -2187,7 +2170,7 @@ export const getDataset: API.OperationMethod<
   GetDatasetResponse,
   GetDatasetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDatasetRequest,
   output: GetDatasetResponse,
   errors: [
@@ -2215,7 +2198,7 @@ export const getDataView: API.OperationMethod<
   GetDataViewResponse,
   GetDataViewError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataViewRequest,
   output: GetDataViewResponse,
   errors: [
@@ -2246,7 +2229,7 @@ export const getExternalDataViewAccessDetails: API.OperationMethod<
   GetExternalDataViewAccessDetailsResponse,
   GetExternalDataViewAccessDetailsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExternalDataViewAccessDetailsRequest,
   output: GetExternalDataViewAccessDetailsResponse,
   errors: [
@@ -2273,7 +2256,7 @@ export const getPermissionGroup: API.OperationMethod<
   GetPermissionGroupResponse,
   GetPermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPermissionGroupRequest,
   output: GetPermissionGroupResponse,
   errors: [
@@ -2299,7 +2282,7 @@ export const getProgrammaticAccessCredentials: API.OperationMethod<
   GetProgrammaticAccessCredentialsResponse,
   GetProgrammaticAccessCredentialsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProgrammaticAccessCredentialsRequest,
   output: GetProgrammaticAccessCredentialsResponse,
   errors: [
@@ -2325,7 +2308,7 @@ export const getUser: API.OperationMethod<
   GetUserResponse,
   GetUserError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserRequest,
   output: GetUserResponse,
   errors: [
@@ -2352,7 +2335,7 @@ export const getWorkingLocation: API.OperationMethod<
   GetWorkingLocationResponse,
   GetWorkingLocationError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkingLocationRequest,
   output: GetWorkingLocationResponse,
   errors: [
@@ -2394,7 +2377,7 @@ export const listChangesets: API.OperationMethod<
     ListChangesetsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangesetsRequest,
   output: ListChangesetsResponse,
   errors: [
@@ -2443,7 +2426,7 @@ export const listDatasets: API.OperationMethod<
     ListDatasetsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [
@@ -2491,7 +2474,7 @@ export const listDataViews: API.OperationMethod<
     ListDataViewsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataViewsRequest,
   output: ListDataViewsResponse,
   errors: [
@@ -2538,7 +2521,7 @@ export const listPermissionGroups: API.OperationMethod<
     ListPermissionGroupsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionGroupsRequest,
   output: ListPermissionGroupsResponse,
   errors: [
@@ -2570,7 +2553,7 @@ export const listPermissionGroupsByUser: API.OperationMethod<
   ListPermissionGroupsByUserResponse,
   ListPermissionGroupsByUserError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPermissionGroupsByUserRequest,
   output: ListPermissionGroupsByUserResponse,
   errors: [
@@ -2611,7 +2594,7 @@ export const listUsers: API.OperationMethod<
     ListUsersError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -2643,7 +2626,7 @@ export const listUsersByPermissionGroup: API.OperationMethod<
   ListUsersByPermissionGroupResponse,
   ListUsersByPermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListUsersByPermissionGroupRequest,
   output: ListUsersByPermissionGroupResponse,
   errors: [
@@ -2671,7 +2654,7 @@ export const resetUserPassword: API.OperationMethod<
   ResetUserPasswordResponse,
   ResetUserPasswordError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetUserPasswordRequest,
   output: ResetUserPasswordResponse,
   errors: [
@@ -2700,7 +2683,7 @@ export const updateChangeset: API.OperationMethod<
   UpdateChangesetResponse,
   UpdateChangesetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChangesetRequest,
   output: UpdateChangesetResponse,
   errors: [
@@ -2729,7 +2712,7 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetResponse,
   UpdateDatasetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDatasetRequest,
   output: UpdateDatasetResponse,
   errors: [
@@ -2758,7 +2741,7 @@ export const updatePermissionGroup: API.OperationMethod<
   UpdatePermissionGroupResponse,
   UpdatePermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePermissionGroupRequest,
   output: UpdatePermissionGroupResponse,
   errors: [
@@ -2787,7 +2770,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserResponse,
   UpdateUserError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,
   errors: [

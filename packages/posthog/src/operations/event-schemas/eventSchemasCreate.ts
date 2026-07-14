@@ -52,7 +52,7 @@ export interface EventSchemasCreateInput {
   updated_at?: string;
 }
 export const EventSchemasCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     event_definition: Schema.optional(Schema.String),
@@ -186,7 +186,7 @@ export interface EventSchemasCreateOutput {
   updated_at?: string;
 }
 export const EventSchemasCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     event_definition: Schema.optional(Schema.String),
     property_group: Schema.optional(
@@ -271,7 +271,7 @@ export const EventSchemasCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const eventSchemasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const eventSchemasCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventSchemasCreateInput,
   outputSchema: EventSchemasCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

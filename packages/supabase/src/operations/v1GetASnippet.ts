@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 export interface V1GetASnippetInput {
   id: string;
 }
-export const V1GetASnippetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetASnippetInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v1/snippets/{id}" }),
@@ -28,7 +28,7 @@ export interface V1GetASnippetOutput {
   favorite: boolean;
   content: { favorite?: boolean; schema_version: string; sql: string };
 }
-export const V1GetASnippetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetASnippetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   inserted_at: Schema.String,
   updated_at: Schema.String,
@@ -60,7 +60,7 @@ export const V1GetASnippetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Gets a specific SQL snippet
  */
-export const v1GetASnippet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetASnippet = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetASnippetInput,
   outputSchema: V1GetASnippetOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

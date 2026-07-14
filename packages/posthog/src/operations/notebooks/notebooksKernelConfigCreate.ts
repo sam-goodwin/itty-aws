@@ -62,7 +62,7 @@ export interface NotebooksKernelConfigCreateInput {
   _create_in_folder?: string;
 }
 export const NotebooksKernelConfigCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     short_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
@@ -159,7 +159,7 @@ export const NotebooksKernelConfigCreateInput =
 // Output Schema
 export type NotebooksKernelConfigCreateOutput = void;
 export const NotebooksKernelConfigCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksKernelConfigCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksKernelConfigCreateOutput>;
 
 // The operation
 /**
@@ -167,10 +167,8 @@ export const NotebooksKernelConfigCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const notebooksKernelConfigCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotebooksKernelConfigCreateInput,
-    outputSchema: NotebooksKernelConfigCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const notebooksKernelConfigCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotebooksKernelConfigCreateInput,
+  outputSchema: NotebooksKernelConfigCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

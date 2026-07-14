@@ -8,7 +8,7 @@ export interface OrganizationsControllerFindInput {
   id: string;
 }
 export const OrganizationsControllerFindInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/organizations/{id}" }),
@@ -44,7 +44,7 @@ export interface OrganizationsControllerFindOutput {
   allow_profiles_outside_organization?: boolean;
 }
 export const OrganizationsControllerFindOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -90,10 +90,8 @@ export const OrganizationsControllerFindOutput =
  *
  * @param id - Unique identifier of the Organization.
  */
-export const OrganizationsControllerFind = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrganizationsControllerFindInput,
-    outputSchema: OrganizationsControllerFindOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const OrganizationsControllerFind = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationsControllerFindInput,
+  outputSchema: OrganizationsControllerFindOutput,
+  errors: [NotFound] as const,
+}));

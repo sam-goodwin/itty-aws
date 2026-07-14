@@ -8,7 +8,7 @@ export interface SignalsScoutRunsEmissionReportsBatchInput {
   run_ids: string[];
 }
 export const SignalsScoutRunsEmissionReportsBatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     run_ids: Schema.Array(Schema.String),
   }).pipe(
@@ -25,7 +25,7 @@ export type SignalsScoutRunsEmissionReportsBatchOutput = {
   report: { id: string; title: string | null; status: string } | null;
 }[];
 export const SignalsScoutRunsEmissionReportsBatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       finding_id: Schema.String,
       source_id: Schema.String,
@@ -48,7 +48,7 @@ export const SignalsScoutRunsEmissionReportsBatchOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const signalsScoutRunsEmissionReportsBatch =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalsScoutRunsEmissionReportsBatchInput,
     outputSchema: SignalsScoutRunsEmissionReportsBatchOutput,
   }));

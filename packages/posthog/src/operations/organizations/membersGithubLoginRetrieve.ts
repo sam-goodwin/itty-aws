@@ -8,7 +8,7 @@ export interface MembersGithubLoginRetrieveInput {
   user__uuid: string;
 }
 export const MembersGithubLoginRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     user__uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -23,7 +23,7 @@ export interface MembersGithubLoginRetrieveOutput {
   github_login: string | null;
 }
 export const MembersGithubLoginRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     github_login: Schema.NullOr(Schema.String),
   }) as unknown as Schema.Codec<MembersGithubLoginRetrieveOutput>;
 
@@ -32,9 +32,7 @@ export const MembersGithubLoginRetrieveOutput =
  *
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const membersGithubLoginRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MembersGithubLoginRetrieveInput,
-    outputSchema: MembersGithubLoginRetrieveOutput,
-  }),
-);
+export const membersGithubLoginRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MembersGithubLoginRetrieveInput,
+  outputSchema: MembersGithubLoginRetrieveOutput,
+}));

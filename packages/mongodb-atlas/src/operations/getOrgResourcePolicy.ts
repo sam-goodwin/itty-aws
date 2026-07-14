@@ -11,7 +11,7 @@ export interface GetOrgResourcePolicyInput {
   pretty?: boolean;
 }
 export const GetOrgResourcePolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     resourcePolicyId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GetOrgResourcePolicyInput =
 // Output Schema
 export type GetOrgResourcePolicyOutput = void;
 export const GetOrgResourcePolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgResourcePolicyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgResourcePolicyOutput>;
 
 // The operation
 /**
@@ -39,10 +39,8 @@ export const GetOrgResourcePolicyOutput =
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param resourcePolicyId - Unique 24-hexadecimal digit string that identifies an atlas resource policy.
  */
-export const getOrgResourcePolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetOrgResourcePolicyInput,
-    outputSchema: GetOrgResourcePolicyOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getOrgResourcePolicy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetOrgResourcePolicyInput,
+  outputSchema: GetOrgResourcePolicyOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

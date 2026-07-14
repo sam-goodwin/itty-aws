@@ -14,7 +14,7 @@ export interface VisualReviewReposQuarantineCreateInput {
   expires_at?: string | null;
 }
 export const VisualReviewReposQuarantineCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     run_type: Schema.String.pipe(T.PathParam()),
@@ -48,7 +48,7 @@ export interface VisualReviewReposQuarantineCreateOutput {
   updated_at?: string;
 }
 export const VisualReviewReposQuarantineCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created_by: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -85,7 +85,7 @@ export const VisualReviewReposQuarantineCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const visualReviewReposQuarantineCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VisualReviewReposQuarantineCreateInput,
     outputSchema: VisualReviewReposQuarantineCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

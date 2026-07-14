@@ -10,7 +10,7 @@ import {
 
 // Input Schema
 export const PostV1ComputeServicesByComputeServiceIdPromoteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     computeServiceId: Schema.String.pipe(T.PathParam()),
     versionId: Schema.String,
   }).pipe(
@@ -24,7 +24,7 @@ export type PostV1ComputeServicesByComputeServiceIdPromoteInput =
 
 // Output Schema
 export const PostV1ComputeServicesByComputeServiceIdPromoteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       serviceEndpointDomain: Schema.String,
     }),
@@ -40,7 +40,7 @@ export type PostV1ComputeServicesByComputeServiceIdPromoteOutput =
  * Promotes a compute version to be the active version behind the service's stable endpoint. The version must be running. Returns the service endpoint domain.
  */
 export const postV1ComputeServicesByComputeServiceIdPromote =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV1ComputeServicesByComputeServiceIdPromoteInput,
     outputSchema: PostV1ComputeServicesByComputeServiceIdPromoteOutput,
     errors: [Forbidden, NotFound, Conflict, UnprocessableEntity] as const,

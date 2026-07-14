@@ -13,7 +13,7 @@ export interface CreateBackupInput {
   retention_value?: number;
   emergency?: boolean;
 }
-export const CreateBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateBackupInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -89,7 +89,7 @@ export interface CreateBackupOutput {
     deleted_at: string | null;
   } | null;
 }
-export const CreateBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateBackupOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   state: Schema.Literals([
@@ -187,7 +187,7 @@ export const CreateBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param retention_value - Value between `1` and `1000` for the retention period of the backup (i.e retention_value `6` and retention_unit `hour` means 6 hours)
  * @param emergency - Whether the backup is an immediate backup that may affect database performance. Emergency backups are only supported for PostgreSQL databases.
  */
-export const createBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createBackup = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateBackupInput,
   outputSchema: CreateBackupOutput,
   errors: [Forbidden, NotFound] as const,

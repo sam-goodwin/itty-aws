@@ -16,7 +16,7 @@ export interface DashboardsGetInput {
   resourceGroupName: string;
   dashboardName: string;
 }
-export const DashboardsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DashboardsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dashboardName: Schema.String.pipe(T.PathParam()),
@@ -42,7 +42,7 @@ export interface DashboardsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DashboardsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DashboardsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export const DashboardsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dashboardName - The name of the Azure Managed Dashboard.
  */
-export const DashboardsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DashboardsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DashboardsGetInput,
   outputSchema: DashboardsGetOutput,
 }));
@@ -80,7 +80,7 @@ export interface DashboardsListInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
-export const DashboardsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DashboardsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -108,7 +108,7 @@ export interface DashboardsListOutput {
   }[];
   nextLink?: string;
 }
-export const DashboardsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DashboardsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -141,7 +141,7 @@ export const DashboardsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const DashboardsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DashboardsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DashboardsListInput,
   outputSchema: DashboardsListOutput,
 }));
@@ -150,7 +150,7 @@ export interface DashboardsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const DashboardsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -178,7 +178,7 @@ export interface DashboardsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const DashboardsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -221,7 +221,7 @@ export const DashboardsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const DashboardsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DashboardsListBySubscriptionInput,
     outputSchema: DashboardsListBySubscriptionOutput,
   }));
@@ -232,7 +232,7 @@ export interface GrafanaCheckEnterpriseDetailsInput {
   workspaceName: string;
 }
 export const GrafanaCheckEnterpriseDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -260,7 +260,7 @@ export interface GrafanaCheckEnterpriseDetailsOutput {
   };
 }
 export const GrafanaCheckEnterpriseDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     saasSubscriptionDetails: Schema.optional(
       Schema.Struct({
         planId: Schema.optional(Schema.String),
@@ -297,7 +297,7 @@ export const GrafanaCheckEnterpriseDetailsOutput =
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  */
 export const GrafanaCheckEnterpriseDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GrafanaCheckEnterpriseDetailsInput,
     outputSchema: GrafanaCheckEnterpriseDetailsOutput,
   }));
@@ -387,7 +387,7 @@ export interface GrafanaCreateInput {
     > | null;
   };
 }
-export const GrafanaCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GrafanaCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -582,7 +582,7 @@ export interface GrafanaCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const GrafanaCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GrafanaCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -611,7 +611,7 @@ export const GrafanaCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  */
-export const GrafanaCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GrafanaCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GrafanaCreateInput,
   outputSchema: GrafanaCreateOutput,
 }));
@@ -621,7 +621,7 @@ export interface GrafanaDeleteInput {
   resourceGroupName: string;
   workspaceName: string;
 }
-export const GrafanaDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GrafanaDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -636,7 +636,7 @@ export const GrafanaDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GrafanaDeleteOutput = void;
 export const GrafanaDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GrafanaDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GrafanaDeleteOutput>;
 
 // The operation
 /**
@@ -647,7 +647,7 @@ export const GrafanaDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  */
-export const GrafanaDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GrafanaDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GrafanaDeleteInput,
   outputSchema: GrafanaDeleteOutput,
 }));
@@ -658,7 +658,7 @@ export interface GrafanaFetchAvailablePluginsInput {
   workspaceName: string;
 }
 export const GrafanaFetchAvailablePluginsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -681,7 +681,7 @@ export interface GrafanaFetchAvailablePluginsOutput {
   nextLink?: string;
 }
 export const GrafanaFetchAvailablePluginsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -705,7 +705,7 @@ export const GrafanaFetchAvailablePluginsOutput =
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  */
 export const GrafanaFetchAvailablePlugins =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GrafanaFetchAvailablePluginsInput,
     outputSchema: GrafanaFetchAvailablePluginsOutput,
   }));
@@ -715,7 +715,7 @@ export interface GrafanaGetInput {
   resourceGroupName: string;
   workspaceName: string;
 }
-export const GrafanaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GrafanaGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -741,7 +741,7 @@ export interface GrafanaGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const GrafanaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GrafanaGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -770,7 +770,7 @@ export const GrafanaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  */
-export const GrafanaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GrafanaGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GrafanaGetInput,
   outputSchema: GrafanaGetOutput,
 }));
@@ -778,7 +778,7 @@ export const GrafanaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface GrafanaListInput {
   subscriptionId: string;
 }
-export const GrafanaListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GrafanaListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -805,7 +805,7 @@ export interface GrafanaListOutput {
   }[];
   nextLink?: string;
 }
-export const GrafanaListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GrafanaListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -837,7 +837,7 @@ export const GrafanaListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const GrafanaList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GrafanaList = /*@__PURE__*/ API.make(() => ({
   inputSchema: GrafanaListInput,
   outputSchema: GrafanaListOutput,
 }));
@@ -847,7 +847,7 @@ export interface GrafanaListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const GrafanaListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -876,7 +876,7 @@ export interface GrafanaListByResourceGroupOutput {
   nextLink?: string;
 }
 export const GrafanaListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -919,12 +919,10 @@ export const GrafanaListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const GrafanaListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GrafanaListByResourceGroupInput,
-    outputSchema: GrafanaListByResourceGroupOutput,
-  }),
-);
+export const GrafanaListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GrafanaListByResourceGroupInput,
+  outputSchema: GrafanaListByResourceGroupOutput,
+}));
 // Input Schema
 export interface GrafanaUpdateInput {
   subscriptionId: string;
@@ -983,7 +981,7 @@ export interface GrafanaUpdateInput {
     grafanaMajorVersion?: string;
   };
 }
-export const GrafanaUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GrafanaUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1125,7 +1123,7 @@ export interface GrafanaUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const GrafanaUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GrafanaUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1154,7 +1152,7 @@ export const GrafanaUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  */
-export const GrafanaUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GrafanaUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GrafanaUpdateInput,
   outputSchema: GrafanaUpdateOutput,
 }));
@@ -1183,7 +1181,7 @@ export interface IntegrationFabricsCreateInput {
   location: string;
 }
 export const IntegrationFabricsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1233,7 +1231,7 @@ export interface IntegrationFabricsCreateOutput {
   };
 }
 export const IntegrationFabricsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1263,12 +1261,10 @@ export const IntegrationFabricsCreateOutput =
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  * @param integrationFabricName - The integration fabric name of Azure Managed Grafana.
  */
-export const IntegrationFabricsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationFabricsCreateInput,
-    outputSchema: IntegrationFabricsCreateOutput,
-  }),
-);
+export const IntegrationFabricsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationFabricsCreateInput,
+  outputSchema: IntegrationFabricsCreateOutput,
+}));
 // Input Schema
 export interface IntegrationFabricsDeleteInput {
   subscriptionId: string;
@@ -1277,7 +1273,7 @@ export interface IntegrationFabricsDeleteInput {
   integrationFabricName: string;
 }
 export const IntegrationFabricsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1293,7 +1289,7 @@ export const IntegrationFabricsDeleteInput =
 // Output Schema
 export type IntegrationFabricsDeleteOutput = void;
 export const IntegrationFabricsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationFabricsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationFabricsDeleteOutput>;
 
 // The operation
 /**
@@ -1305,12 +1301,10 @@ export const IntegrationFabricsDeleteOutput =
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  * @param integrationFabricName - The integration fabric name of Azure Managed Grafana.
  */
-export const IntegrationFabricsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationFabricsDeleteInput,
-    outputSchema: IntegrationFabricsDeleteOutput,
-  }),
-);
+export const IntegrationFabricsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationFabricsDeleteInput,
+  outputSchema: IntegrationFabricsDeleteOutput,
+}));
 // Input Schema
 export interface IntegrationFabricsGetInput {
   subscriptionId: string;
@@ -1319,7 +1313,7 @@ export interface IntegrationFabricsGetInput {
   integrationFabricName: string;
 }
 export const IntegrationFabricsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1347,7 +1341,7 @@ export interface IntegrationFabricsGetOutput {
   };
 }
 export const IntegrationFabricsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1377,12 +1371,10 @@ export const IntegrationFabricsGetOutput =
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  * @param integrationFabricName - The integration fabric name of Azure Managed Grafana.
  */
-export const IntegrationFabricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationFabricsGetInput,
-    outputSchema: IntegrationFabricsGetOutput,
-  }),
-);
+export const IntegrationFabricsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationFabricsGetInput,
+  outputSchema: IntegrationFabricsGetOutput,
+}));
 // Input Schema
 export interface IntegrationFabricsListInput {
   subscriptionId: string;
@@ -1390,7 +1382,7 @@ export interface IntegrationFabricsListInput {
   workspaceName: string;
 }
 export const IntegrationFabricsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1420,7 +1412,7 @@ export interface IntegrationFabricsListOutput {
   nextLink?: string;
 }
 export const IntegrationFabricsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1464,12 +1456,10 @@ export const IntegrationFabricsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  */
-export const IntegrationFabricsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationFabricsListInput,
-    outputSchema: IntegrationFabricsListOutput,
-  }),
-);
+export const IntegrationFabricsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationFabricsListInput,
+  outputSchema: IntegrationFabricsListOutput,
+}));
 // Input Schema
 export interface IntegrationFabricsUpdateInput {
   subscriptionId: string;
@@ -1480,7 +1470,7 @@ export interface IntegrationFabricsUpdateInput {
   properties?: { scenarios?: string[] };
 }
 export const IntegrationFabricsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1514,7 +1504,7 @@ export interface IntegrationFabricsUpdateOutput {
   };
 }
 export const IntegrationFabricsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1544,12 +1534,10 @@ export const IntegrationFabricsUpdateOutput =
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  * @param integrationFabricName - The integration fabric name of Azure Managed Grafana.
  */
-export const IntegrationFabricsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationFabricsUpdateInput,
-    outputSchema: IntegrationFabricsUpdateOutput,
-  }),
-);
+export const IntegrationFabricsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationFabricsUpdateInput,
+  outputSchema: IntegrationFabricsUpdateOutput,
+}));
 // Input Schema
 export interface ManagedDashboardsCreateInput {
   subscriptionId: string;
@@ -1571,7 +1559,7 @@ export interface ManagedDashboardsCreateInput {
   location: string;
 }
 export const ManagedDashboardsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dashboardName: Schema.String.pipe(T.PathParam()),
@@ -1617,7 +1605,7 @@ export interface ManagedDashboardsCreateOutput {
   };
 }
 export const ManagedDashboardsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1646,12 +1634,10 @@ export const ManagedDashboardsCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dashboardName - The name of the Azure Managed Dashboard.
  */
-export const ManagedDashboardsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedDashboardsCreateInput,
-    outputSchema: ManagedDashboardsCreateOutput,
-  }),
-);
+export const ManagedDashboardsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedDashboardsCreateInput,
+  outputSchema: ManagedDashboardsCreateOutput,
+}));
 // Input Schema
 export interface ManagedDashboardsDeleteInput {
   subscriptionId: string;
@@ -1659,7 +1645,7 @@ export interface ManagedDashboardsDeleteInput {
   dashboardName: string;
 }
 export const ManagedDashboardsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dashboardName: Schema.String.pipe(T.PathParam()),
@@ -1674,7 +1660,7 @@ export const ManagedDashboardsDeleteInput =
 // Output Schema
 export type ManagedDashboardsDeleteOutput = void;
 export const ManagedDashboardsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedDashboardsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedDashboardsDeleteOutput>;
 
 // The operation
 /**
@@ -1685,12 +1671,10 @@ export const ManagedDashboardsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dashboardName - The name of the Azure Managed Dashboard.
  */
-export const ManagedDashboardsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedDashboardsDeleteInput,
-    outputSchema: ManagedDashboardsDeleteOutput,
-  }),
-);
+export const ManagedDashboardsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedDashboardsDeleteInput,
+  outputSchema: ManagedDashboardsDeleteOutput,
+}));
 // Input Schema
 export interface ManagedDashboardsUpdateInput {
   subscriptionId: string;
@@ -1699,7 +1683,7 @@ export interface ManagedDashboardsUpdateInput {
   tags?: Record<string, string>;
 }
 export const ManagedDashboardsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dashboardName: Schema.String.pipe(T.PathParam()),
@@ -1727,7 +1711,7 @@ export interface ManagedDashboardsUpdateOutput {
   };
 }
 export const ManagedDashboardsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1756,12 +1740,10 @@ export const ManagedDashboardsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dashboardName - The name of the Azure Managed Dashboard.
  */
-export const ManagedDashboardsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedDashboardsUpdateInput,
-    outputSchema: ManagedDashboardsUpdateOutput,
-  }),
-);
+export const ManagedDashboardsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedDashboardsUpdateInput,
+  outputSchema: ManagedDashboardsUpdateOutput,
+}));
 // Input Schema
 export interface ManagedPrivateEndpointsCreateInput {
   subscriptionId: string;
@@ -1794,7 +1776,7 @@ export interface ManagedPrivateEndpointsCreateInput {
   location: string;
 }
 export const ManagedPrivateEndpointsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1860,7 +1842,7 @@ export interface ManagedPrivateEndpointsCreateOutput {
   };
 }
 export const ManagedPrivateEndpointsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1891,7 +1873,7 @@ export const ManagedPrivateEndpointsCreateOutput =
  * @param managedPrivateEndpointName - The managed private endpoint name of Azure Managed Grafana.
  */
 export const ManagedPrivateEndpointsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedPrivateEndpointsCreateInput,
     outputSchema: ManagedPrivateEndpointsCreateOutput,
   }));
@@ -1903,7 +1885,7 @@ export interface ManagedPrivateEndpointsDeleteInput {
   managedPrivateEndpointName: string;
 }
 export const ManagedPrivateEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1919,7 +1901,7 @@ export const ManagedPrivateEndpointsDeleteInput =
 // Output Schema
 export type ManagedPrivateEndpointsDeleteOutput = void;
 export const ManagedPrivateEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedPrivateEndpointsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedPrivateEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -1932,7 +1914,7 @@ export const ManagedPrivateEndpointsDeleteOutput =
  * @param managedPrivateEndpointName - The managed private endpoint name of Azure Managed Grafana.
  */
 export const ManagedPrivateEndpointsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedPrivateEndpointsDeleteInput,
     outputSchema: ManagedPrivateEndpointsDeleteOutput,
   }));
@@ -1944,7 +1926,7 @@ export interface ManagedPrivateEndpointsGetInput {
   managedPrivateEndpointName: string;
 }
 export const ManagedPrivateEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1972,7 +1954,7 @@ export interface ManagedPrivateEndpointsGetOutput {
   };
 }
 export const ManagedPrivateEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2002,12 +1984,10 @@ export const ManagedPrivateEndpointsGetOutput =
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  * @param managedPrivateEndpointName - The managed private endpoint name of Azure Managed Grafana.
  */
-export const ManagedPrivateEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedPrivateEndpointsGetInput,
-    outputSchema: ManagedPrivateEndpointsGetOutput,
-  }),
-);
+export const ManagedPrivateEndpointsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedPrivateEndpointsGetInput,
+  outputSchema: ManagedPrivateEndpointsGetOutput,
+}));
 // Input Schema
 export interface ManagedPrivateEndpointsListInput {
   subscriptionId: string;
@@ -2015,7 +1995,7 @@ export interface ManagedPrivateEndpointsListInput {
   workspaceName: string;
 }
 export const ManagedPrivateEndpointsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2045,7 +2025,7 @@ export interface ManagedPrivateEndpointsListOutput {
   nextLink?: string;
 }
 export const ManagedPrivateEndpointsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2089,12 +2069,10 @@ export const ManagedPrivateEndpointsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  */
-export const ManagedPrivateEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedPrivateEndpointsListInput,
-    outputSchema: ManagedPrivateEndpointsListOutput,
-  }),
-);
+export const ManagedPrivateEndpointsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedPrivateEndpointsListInput,
+  outputSchema: ManagedPrivateEndpointsListOutput,
+}));
 // Input Schema
 export interface ManagedPrivateEndpointsRefreshInput {
   subscriptionId: string;
@@ -2102,7 +2080,7 @@ export interface ManagedPrivateEndpointsRefreshInput {
   workspaceName: string;
 }
 export const ManagedPrivateEndpointsRefreshInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2117,7 +2095,7 @@ export const ManagedPrivateEndpointsRefreshInput =
 // Output Schema
 export type ManagedPrivateEndpointsRefreshOutput = void;
 export const ManagedPrivateEndpointsRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedPrivateEndpointsRefreshOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedPrivateEndpointsRefreshOutput>;
 
 // The operation
 /**
@@ -2129,7 +2107,7 @@ export const ManagedPrivateEndpointsRefreshOutput =
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  */
 export const ManagedPrivateEndpointsRefresh =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedPrivateEndpointsRefreshInput,
     outputSchema: ManagedPrivateEndpointsRefreshOutput,
   }));
@@ -2142,7 +2120,7 @@ export interface ManagedPrivateEndpointsUpdateInput {
   tags?: Record<string, string>;
 }
 export const ManagedPrivateEndpointsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2171,7 +2149,7 @@ export interface ManagedPrivateEndpointsUpdateOutput {
   };
 }
 export const ManagedPrivateEndpointsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2202,15 +2180,13 @@ export const ManagedPrivateEndpointsUpdateOutput =
  * @param managedPrivateEndpointName - The managed private endpoint name of Azure Managed Grafana.
  */
 export const ManagedPrivateEndpointsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedPrivateEndpointsUpdateInput,
     outputSchema: ManagedPrivateEndpointsUpdateOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Dashboard/operations",
@@ -2234,7 +2210,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2264,7 +2240,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2286,7 +2262,7 @@ export interface PrivateEndpointConnectionsApproveInput {
   };
 }
 export const PrivateEndpointConnectionsApproveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2334,7 +2310,7 @@ export interface PrivateEndpointConnectionsApproveOutput {
   };
 }
 export const PrivateEndpointConnectionsApproveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2365,7 +2341,7 @@ export const PrivateEndpointConnectionsApproveOutput =
  * @param privateEndpointConnectionName - The private endpoint connection name of Azure Managed Grafana.
  */
 export const PrivateEndpointConnectionsApprove =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsApproveInput,
     outputSchema: PrivateEndpointConnectionsApproveOutput,
   }));
@@ -2377,7 +2353,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2393,7 +2369,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -2406,7 +2382,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The private endpoint connection name of Azure Managed Grafana.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -2418,7 +2394,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2446,7 +2422,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2477,7 +2453,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The private endpoint connection name of Azure Managed Grafana.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -2488,7 +2464,7 @@ export interface PrivateEndpointConnectionsListInput {
   workspaceName: string;
 }
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2518,7 +2494,7 @@ export interface PrivateEndpointConnectionsListOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2563,7 +2539,7 @@ export const PrivateEndpointConnectionsListOutput =
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  */
 export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListInput,
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
@@ -2575,7 +2551,7 @@ export interface PrivateLinkResourcesGetInput {
   privateLinkResourceName: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2603,7 +2579,7 @@ export interface PrivateLinkResourcesGetOutput {
   };
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2632,12 +2608,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListInput {
   subscriptionId: string;
@@ -2645,7 +2619,7 @@ export interface PrivateLinkResourcesListInput {
   workspaceName: string;
 }
 export const PrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2675,7 +2649,7 @@ export interface PrivateLinkResourcesListOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2719,9 +2693,7 @@ export const PrivateLinkResourcesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The workspace name of Azure Managed Grafana.
  */
-export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesListInput,
-    outputSchema: PrivateLinkResourcesListOutput,
-  }),
-);
+export const PrivateLinkResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesListInput,
+  outputSchema: PrivateLinkResourcesListOutput,
+}));

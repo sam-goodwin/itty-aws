@@ -21,7 +21,7 @@ export interface PostTestHelpersTreasuryOutboundTransfersOutboundTransferReturnI
   };
 }
 export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferReturnInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outbound_transfer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     returned_details: Schema.optional(
@@ -404,7 +404,7 @@ export interface PostTestHelpersTreasuryOutboundTransfersOutboundTransferReturnO
       };
 }
 export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferReturnOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -706,7 +706,7 @@ export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferReturnOutpu
  * <p>Transitions a test mode created OutboundTransfer to the <code>returned</code> status. The OutboundTransfer must already be in the <code>processing</code> state.</p>
  */
 export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferReturn =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PostTestHelpersTreasuryOutboundTransfersOutboundTransferReturnInput,
     outputSchema:

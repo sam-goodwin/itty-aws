@@ -8,7 +8,7 @@ export interface CimdVerificationTokensDestroyInput {
   organization_id: string;
 }
 export const CimdVerificationTokensDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const CimdVerificationTokensDestroyInput =
 // Output Schema
 export type CimdVerificationTokensDestroyOutput = void;
 export const CimdVerificationTokensDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CimdVerificationTokensDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CimdVerificationTokensDestroyOutput>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const CimdVerificationTokensDestroyOutput =
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const cimdVerificationTokensDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CimdVerificationTokensDestroyInput,
     outputSchema: CimdVerificationTokensDestroyOutput,
   }));

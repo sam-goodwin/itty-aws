@@ -36,7 +36,7 @@ export interface GetHostnameAssociationRequest {
 }
 
 export const GetHostnameAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       mtlsCertificateId: Schema.optional(Schema.String).pipe(
@@ -55,7 +55,7 @@ export interface GetHostnameAssociationResponse {
 }
 
 export const GetHostnameAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       hostnames: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -70,7 +70,7 @@ export const getHostnameAssociation: API.OperationMethod<
   GetHostnameAssociationResponse,
   GetHostnameAssociationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHostnameAssociationRequest,
   output: GetHostnameAssociationResponse,
   errors: [Forbidden],
@@ -86,7 +86,7 @@ export interface PutHostnameAssociationRequest {
 }
 
 export const PutHostnameAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       hostnames: Schema.optional(Schema.Array(Schema.String)),
@@ -108,7 +108,7 @@ export interface PutHostnameAssociationResponse {
 }
 
 export const PutHostnameAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       hostnames: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -123,7 +123,7 @@ export const putHostnameAssociation: API.OperationMethod<
   PutHostnameAssociationResponse,
   PutHostnameAssociationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutHostnameAssociationRequest,
   output: PutHostnameAssociationResponse,
   errors: [Forbidden],

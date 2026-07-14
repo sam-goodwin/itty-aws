@@ -154,7 +154,7 @@ export interface PostTerminalConfigurationsConfigurationInput {
     | "";
 }
 export const PostTerminalConfigurationsConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.String.pipe(T.PathParam()),
     bbpos_wisepad3: Schema.optional(
       Schema.Union([
@@ -320,7 +320,7 @@ export const PostTerminalConfigurationsConfigurationInput =
 // Output Schema
 export type PostTerminalConfigurationsConfigurationOutput = unknown;
 export const PostTerminalConfigurationsConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PostTerminalConfigurationsConfigurationOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PostTerminalConfigurationsConfigurationOutput>;
 
 // The operation
 /**
@@ -329,7 +329,7 @@ export const PostTerminalConfigurationsConfigurationOutput =
  * <p>Updates a new <code>Configuration</code> object.</p>
  */
 export const PostTerminalConfigurationsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTerminalConfigurationsConfigurationInput,
     outputSchema: PostTerminalConfigurationsConfigurationOutput,
   }));

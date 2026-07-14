@@ -15,7 +15,7 @@ export interface GetGroupMongoDbVersionsInput {
   pageNum?: number;
 }
 export const GetGroupMongoDbVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -36,7 +36,7 @@ export const GetGroupMongoDbVersionsInput =
 // Output Schema
 export type GetGroupMongoDbVersionsOutput = void;
 export const GetGroupMongoDbVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupMongoDbVersionsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupMongoDbVersionsOutput>;
 
 // The operation
 /**
@@ -55,10 +55,8 @@ export const GetGroupMongoDbVersionsOutput =
  * @param itemsPerPage - Number of items that the response returns per page.
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  */
-export const getGroupMongoDbVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupMongoDbVersionsInput,
-    outputSchema: GetGroupMongoDbVersionsOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const getGroupMongoDbVersions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupMongoDbVersionsInput,
+  outputSchema: GetGroupMongoDbVersionsOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

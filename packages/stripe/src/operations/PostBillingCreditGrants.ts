@@ -24,7 +24,7 @@ export interface PostBillingCreditGrantsInput {
   priority?: number;
 }
 export const PostBillingCreditGrantsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
       monetary: Schema.optional(
         Schema.Struct({
@@ -102,7 +102,7 @@ export interface PostBillingCreditGrantsOutput {
   voided_at: number | null;
 }
 export const PostBillingCreditGrantsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
       monetary: Schema.NullOr(
         Schema.Struct({
@@ -168,9 +168,7 @@ export const PostBillingCreditGrantsOutput =
  *
  * <p>Creates a credit grant.</p>
  */
-export const PostBillingCreditGrants = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostBillingCreditGrantsInput,
-    outputSchema: PostBillingCreditGrantsOutput,
-  }),
-);
+export const PostBillingCreditGrants = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostBillingCreditGrantsInput,
+  outputSchema: PostBillingCreditGrantsOutput,
+}));

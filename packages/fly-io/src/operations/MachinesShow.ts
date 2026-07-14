@@ -8,7 +8,7 @@ export interface MachinesShowInput {
   app_name: string;
   machine_id: string;
 }
-export const MachinesShowInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesShowInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -519,7 +519,7 @@ export interface MachinesShowOutput {
   state?: string;
   updated_at?: string;
 }
-export const MachinesShowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesShowOutput = /*@__PURE__*/ Schema.Struct({
   checks: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1466,7 +1466,7 @@ export const MachinesShowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesShow = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesShow = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesShowInput,
   outputSchema: MachinesShowOutput,
   errors: [Forbidden, NotFound] as const,

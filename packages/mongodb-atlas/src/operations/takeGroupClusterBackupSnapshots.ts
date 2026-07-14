@@ -11,7 +11,7 @@ export interface TakeGroupClusterBackupSnapshotsInput {
   pretty?: boolean;
 }
 export const TakeGroupClusterBackupSnapshotsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const TakeGroupClusterBackupSnapshotsInput =
 // Output Schema
 export type TakeGroupClusterBackupSnapshotsOutput = void;
 export const TakeGroupClusterBackupSnapshotsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TakeGroupClusterBackupSnapshotsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TakeGroupClusterBackupSnapshotsOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const TakeGroupClusterBackupSnapshotsOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  */
 export const takeGroupClusterBackupSnapshots =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TakeGroupClusterBackupSnapshotsInput,
     outputSchema: TakeGroupClusterBackupSnapshotsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

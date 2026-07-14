@@ -16,7 +16,7 @@ export interface TaskAutomationsCreateInput {
   enabled?: boolean;
 }
 export const TaskAutomationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     prompt: Schema.String,
@@ -53,7 +53,7 @@ export interface TaskAutomationsCreateOutput {
   updated_at: string;
 }
 export const TaskAutomationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     prompt: Schema.String,
@@ -78,10 +78,8 @@ export const TaskAutomationsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const taskAutomationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TaskAutomationsCreateInput,
-    outputSchema: TaskAutomationsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const taskAutomationsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TaskAutomationsCreateInput,
+  outputSchema: TaskAutomationsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

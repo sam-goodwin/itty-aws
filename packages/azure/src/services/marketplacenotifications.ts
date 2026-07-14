@@ -14,7 +14,7 @@ export interface NotificationGetInput {
   notification: string;
   principalId: string;
 }
-export const NotificationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NotificationGetInput = /*@__PURE__*/ Schema.Struct({
   subscription: Schema.String.pipe(T.PathParam()),
   notification: Schema.String.pipe(T.PathParam()),
   principalId: Schema.String,
@@ -32,7 +32,7 @@ export interface NotificationGetOutput {
   name?: string;
   type?: string;
 }
-export const NotificationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NotificationGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -46,14 +46,14 @@ export const NotificationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param principalId - user's principal id
  * @param api-version - The API version to use for the request.
  */
-export const NotificationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NotificationGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NotificationGetInput,
   outputSchema: NotificationGetOutput,
 }));
 // Input Schema
 export interface NotificationGetOperationsInput {}
 export const NotificationGetOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.MarketplaceNotifications/operations",
@@ -78,7 +78,7 @@ export interface NotificationGetOperationsOutput {
   nextLink?: string;
 }
 export const NotificationGetOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -105,23 +105,19 @@ export const NotificationGetOperationsOutput =
  *
  * @param api-version - The API version to use for the request.
  */
-export const NotificationGetOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotificationGetOperationsInput,
-    outputSchema: NotificationGetOperationsOutput,
-  }),
-);
+export const NotificationGetOperations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationGetOperationsInput,
+  outputSchema: NotificationGetOperationsOutput,
+}));
 // Input Schema
 export interface NotificationsListInput {
   subscription: string;
   principalId: string;
 }
-export const NotificationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscription: Schema.String.pipe(T.PathParam()),
-    principalId: Schema.String,
-  },
-).pipe(
+export const NotificationsListInput = /*@__PURE__*/ Schema.Struct({
+  subscription: Schema.String.pipe(T.PathParam()),
+  principalId: Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscription}/providers/Microsoft.MarketplaceNotifications/reviewsNotifications",
@@ -135,7 +131,7 @@ export interface NotificationsListOutput {
   nextLink?: string;
 }
 export const NotificationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -155,7 +151,7 @@ export const NotificationsListOutput =
  * @param principalId - user's principal id
  * @param api-version - The API version to use for the request.
  */
-export const NotificationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NotificationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: NotificationsListInput,
   outputSchema: NotificationsListOutput,
 }));

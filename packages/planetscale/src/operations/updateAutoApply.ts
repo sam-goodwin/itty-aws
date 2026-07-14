@@ -10,7 +10,7 @@ export interface UpdateAutoApplyInput {
   number: number;
   enable?: boolean;
 }
-export const UpdateAutoApplyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateAutoApplyInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   number: Schema.Number.pipe(T.PathParam()),
@@ -198,7 +198,7 @@ export interface UpdateAutoApplyOutput {
   closed_at: string | null;
   deployed_at: string | null;
 }
-export const UpdateAutoApplyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateAutoApplyOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   number: Schema.Number,
   actor: Schema.Struct({
@@ -443,7 +443,7 @@ export const UpdateAutoApplyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param number - The number of the deploy request
  * @param enable - Whether or not to enable auto-apply for the deploy request
  */
-export const updateAutoApply = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateAutoApply = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateAutoApplyInput,
   outputSchema: UpdateAutoApplyOutput,
   errors: [Forbidden, NotFound] as const,

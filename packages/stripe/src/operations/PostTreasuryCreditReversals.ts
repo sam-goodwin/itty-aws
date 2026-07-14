@@ -9,7 +9,7 @@ export interface PostTreasuryCreditReversalsInput {
   received_credit: string;
 }
 export const PostTreasuryCreditReversalsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     received_credit: Schema.String,
@@ -126,7 +126,7 @@ export interface PostTreasuryCreditReversalsOutput {
     | null;
 }
 export const PostTreasuryCreditReversalsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     created: Schema.Number,
     currency: Schema.String,
@@ -249,9 +249,7 @@ export const PostTreasuryCreditReversalsOutput =
  *
  * <p>Reverses a ReceivedCredit and creates a CreditReversal object.</p>
  */
-export const PostTreasuryCreditReversals = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostTreasuryCreditReversalsInput,
-    outputSchema: PostTreasuryCreditReversalsOutput,
-  }),
-);
+export const PostTreasuryCreditReversals = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTreasuryCreditReversalsInput,
+  outputSchema: PostTreasuryCreditReversalsOutput,
+}));

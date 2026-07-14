@@ -13,7 +13,7 @@ export interface DirectoryGroupsControllerListInput {
   user?: string;
 }
 export const DirectoryGroupsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -41,7 +41,7 @@ export interface DirectoryGroupsControllerListOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const DirectoryGroupsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -82,7 +82,7 @@ export const DirectoryGroupsControllerListOutput =
  * @param user - Unique identifier of the WorkOS Directory User. This value can be obtained from the WorkOS API.
  */
 export const DirectoryGroupsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DirectoryGroupsControllerListInput,
     outputSchema: DirectoryGroupsControllerListOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

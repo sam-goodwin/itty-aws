@@ -10,7 +10,7 @@ export interface UpdateOrganizationMembershipInput {
   role: string;
 }
 export const UpdateOrganizationMembershipInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     role: Schema.String,
@@ -50,7 +50,7 @@ export interface UpdateOrganizationMembershipOutput {
   updated_at: string;
 }
 export const UpdateOrganizationMembershipOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     user: Schema.Struct({
       id: Schema.String,
@@ -91,7 +91,7 @@ export const UpdateOrganizationMembershipOutput =
  * @param role - The role to assign to the member (e.g., 'admin', 'member'). Note: Cannot update your own role. Roles managed by IdP cannot be updated via API.
  */
 export const updateOrganizationMembership =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateOrganizationMembershipInput,
     outputSchema: UpdateOrganizationMembershipOutput,
     errors: [Forbidden, NotFound] as const,

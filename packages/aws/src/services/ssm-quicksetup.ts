@@ -88,7 +88,7 @@ export type IAMRoleArn = string;
 
 //# Schemas
 export type ConfigurationParametersMap = { [key: string]: string | undefined };
-export const ConfigurationParametersMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ConfigurationParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -100,7 +100,7 @@ export interface ConfigurationDefinitionInput {
   LocalDeploymentAdministrationRoleArn?: string;
 }
 export const ConfigurationDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Type: S.String,
       Parameters: ConfigurationParametersMap,
@@ -113,9 +113,9 @@ export const ConfigurationDefinitionInput =
   }) as any as S.Schema<ConfigurationDefinitionInput>;
 export type ConfigurationDefinitionsInputList = ConfigurationDefinitionInput[];
 export const ConfigurationDefinitionsInputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ConfigurationDefinitionInput);
+  /*@__PURE__*/ S.Array(ConfigurationDefinitionInput);
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -126,7 +126,7 @@ export interface CreateConfigurationManagerInput {
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateConfigurationManagerInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Name: S.optional(S.String),
       Description: S.optional(S.String),
@@ -149,16 +149,14 @@ export interface CreateConfigurationManagerOutput {
   ManagerArn: string;
 }
 export const CreateConfigurationManagerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ManagerArn: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ ManagerArn: S.String })).annotate({
     identifier: "CreateConfigurationManagerOutput",
   }) as any as S.Schema<CreateConfigurationManagerOutput>;
 export interface DeleteConfigurationManagerInput {
   ManagerArn: string;
 }
 export const DeleteConfigurationManagerInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")) }).pipe(
       T.all(
         T.Http({ method: "DELETE", uri: "/configurationManager/{ManagerArn}" }),
@@ -174,13 +172,13 @@ export const DeleteConfigurationManagerInput =
   }) as any as S.Schema<DeleteConfigurationManagerInput>;
 export interface DeleteConfigurationManagerResponse {}
 export const DeleteConfigurationManagerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteConfigurationManagerResponse",
   }) as any as S.Schema<DeleteConfigurationManagerResponse>;
 export interface GetConfigurationInput {
   ConfigurationId: string;
 }
-export const GetConfigurationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConfigurationId: S.String.pipe(T.HttpLabel("ConfigurationId")),
   }).pipe(
@@ -197,7 +195,7 @@ export const GetConfigurationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetConfigurationInput",
 }) as any as S.Schema<GetConfigurationInput>;
 export type StatusType = "Deployment" | "AsyncExecutions" | (string & {});
-export const StatusType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StatusType = /*@__PURE__*/ S.String;
 export type Status =
   | "INITIALIZING"
   | "DEPLOYING"
@@ -210,9 +208,9 @@ export type Status =
   | "STOP_FAILED"
   | "NONE"
   | (string & {});
-export const Status = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Status = /*@__PURE__*/ S.String;
 export type StatusDetails = { [key: string]: string | undefined };
-export const StatusDetails = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const StatusDetails = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -223,7 +221,7 @@ export interface StatusSummary {
   LastUpdatedAt: Date;
   StatusDetails?: { [key: string]: string | undefined };
 }
-export const StatusSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StatusSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StatusType: StatusType,
     Status: S.optional(Status),
@@ -233,8 +231,7 @@ export const StatusSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StatusSummary" }) as any as S.Schema<StatusSummary>;
 export type StatusSummariesList = StatusSummary[];
-export const StatusSummariesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(StatusSummary);
+export const StatusSummariesList = /*@__PURE__*/ S.Array(StatusSummary);
 export interface GetConfigurationOutput {
   Id?: string;
   ManagerArn?: string;
@@ -248,25 +245,24 @@ export interface GetConfigurationOutput {
   StatusSummaries?: StatusSummary[];
   Parameters?: { [key: string]: string | undefined };
 }
-export const GetConfigurationOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Id: S.optional(S.String),
-      ManagerArn: S.optional(S.String),
-      ConfigurationDefinitionId: S.optional(S.String),
-      Type: S.optional(S.String),
-      TypeVersion: S.optional(S.String),
-      Account: S.optional(S.String),
-      Region: S.optional(S.String),
-      CreatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      LastModifiedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      StatusSummaries: S.optional(StatusSummariesList),
-      Parameters: S.optional(ConfigurationParametersMap),
-    }),
+export const GetConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    ManagerArn: S.optional(S.String),
+    ConfigurationDefinitionId: S.optional(S.String),
+    Type: S.optional(S.String),
+    TypeVersion: S.optional(S.String),
+    Account: S.optional(S.String),
+    Region: S.optional(S.String),
+    CreatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    LastModifiedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    StatusSummaries: S.optional(StatusSummariesList),
+    Parameters: S.optional(ConfigurationParametersMap),
+  }),
 ).annotate({
   identifier: "GetConfigurationOutput",
 }) as any as S.Schema<GetConfigurationOutput>;
@@ -274,7 +270,7 @@ export interface GetConfigurationManagerInput {
   ManagerArn: string;
 }
 export const GetConfigurationManagerInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")) }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/configurationManager/{ManagerArn}" }),
@@ -296,21 +292,20 @@ export interface ConfigurationDefinition {
   LocalDeploymentAdministrationRoleArn?: string;
   Id?: string;
 }
-export const ConfigurationDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Type: S.String,
-      Parameters: ConfigurationParametersMap,
-      TypeVersion: S.optional(S.String),
-      LocalDeploymentExecutionRoleName: S.optional(S.String),
-      LocalDeploymentAdministrationRoleArn: S.optional(S.String),
-      Id: S.optional(S.String),
-    }),
+export const ConfigurationDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: S.String,
+    Parameters: ConfigurationParametersMap,
+    TypeVersion: S.optional(S.String),
+    LocalDeploymentExecutionRoleName: S.optional(S.String),
+    LocalDeploymentAdministrationRoleArn: S.optional(S.String),
+    Id: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ConfigurationDefinition",
 }) as any as S.Schema<ConfigurationDefinition>;
 export type ConfigurationDefinitionsList = ConfigurationDefinition[];
-export const ConfigurationDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ConfigurationDefinitionsList = /*@__PURE__*/ S.Array(
   ConfigurationDefinition,
 );
 export interface GetConfigurationManagerOutput {
@@ -324,7 +319,7 @@ export interface GetConfigurationManagerOutput {
   Tags?: { [key: string]: string | undefined };
 }
 export const GetConfigurationManagerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ManagerArn: S.String,
       Description: S.optional(S.String),
@@ -343,18 +338,17 @@ export const GetConfigurationManagerOutput =
     identifier: "GetConfigurationManagerOutput",
   }) as any as S.Schema<GetConfigurationManagerOutput>;
 export interface GetServiceSettingsRequest {}
-export const GetServiceSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetServiceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetServiceSettingsRequest",
 }) as any as S.Schema<GetServiceSettingsRequest>;
 export interface ServiceSettings {
   ExplorerEnablingRoleArn?: string;
 }
-export const ServiceSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ServiceSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ExplorerEnablingRoleArn: S.optional(S.String) }),
 ).annotate({
   identifier: "ServiceSettings",
@@ -362,29 +356,29 @@ export const ServiceSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetServiceSettingsOutput {
   ServiceSettings?: ServiceSettings;
 }
-export const GetServiceSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ServiceSettings: S.optional(ServiceSettings) }),
+export const GetServiceSettingsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ServiceSettings: S.optional(ServiceSettings) }),
 ).annotate({
   identifier: "GetServiceSettingsOutput",
 }) as any as S.Schema<GetServiceSettingsOutput>;
 export type FilterValues = string[];
-export const FilterValues = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const FilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
   Key: string;
   Values: string[];
 }
-export const Filter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.String, Values: FilterValues }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FiltersList = Filter[];
-export const FiltersList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Filter);
+export const FiltersList = /*@__PURE__*/ S.Array(Filter);
 export interface ListConfigurationManagersInput {
   StartingToken?: string;
   MaxItems?: number;
   Filters?: Filter[];
 }
 export const ListConfigurationManagersInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       StartingToken: S.optional(S.String),
       MaxItems: S.optional(S.Number),
@@ -409,7 +403,7 @@ export interface ConfigurationDefinitionSummary {
   FirstClassParameters?: { [key: string]: string | undefined };
 }
 export const ConfigurationDefinitionSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Id: S.optional(S.String),
       Type: S.optional(S.String),
@@ -422,7 +416,7 @@ export const ConfigurationDefinitionSummary =
 export type ConfigurationDefinitionSummariesList =
   ConfigurationDefinitionSummary[];
 export const ConfigurationDefinitionSummariesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ConfigurationDefinitionSummary);
+  /*@__PURE__*/ S.Array(ConfigurationDefinitionSummary);
 export interface ConfigurationManagerSummary {
   ManagerArn: string;
   Description?: string;
@@ -431,7 +425,7 @@ export interface ConfigurationManagerSummary {
   ConfigurationDefinitionSummaries?: ConfigurationDefinitionSummary[];
 }
 export const ConfigurationManagerSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ManagerArn: S.String,
       Description: S.optional(S.String),
@@ -445,7 +439,7 @@ export const ConfigurationManagerSummary =
     identifier: "ConfigurationManagerSummary",
   }) as any as S.Schema<ConfigurationManagerSummary>;
 export type ConfigurationManagerList = ConfigurationManagerSummary[];
-export const ConfigurationManagerList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ConfigurationManagerList = /*@__PURE__*/ S.Array(
   ConfigurationManagerSummary,
 );
 export interface ListConfigurationManagersOutput {
@@ -453,7 +447,7 @@ export interface ListConfigurationManagersOutput {
   NextToken?: string;
 }
 export const ListConfigurationManagersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ConfigurationManagersList: S.optional(ConfigurationManagerList),
       NextToken: S.optional(S.String),
@@ -468,24 +462,23 @@ export interface ListConfigurationsInput {
   ManagerArn?: string;
   ConfigurationDefinitionId?: string;
 }
-export const ListConfigurationsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      StartingToken: S.optional(S.String),
-      MaxItems: S.optional(S.Number),
-      Filters: S.optional(FiltersList),
-      ManagerArn: S.optional(S.String),
-      ConfigurationDefinitionId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/listConfigurations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListConfigurationsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StartingToken: S.optional(S.String),
+    MaxItems: S.optional(S.Number),
+    Filters: S.optional(FiltersList),
+    ManagerArn: S.optional(S.String),
+    ConfigurationDefinitionId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/listConfigurations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListConfigurationsInput",
 }) as any as S.Schema<ListConfigurationsInput>;
@@ -501,7 +494,7 @@ export interface ConfigurationSummary {
   FirstClassParameters?: { [key: string]: string | undefined };
   StatusSummaries?: StatusSummary[];
 }
-export const ConfigurationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConfigurationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     ManagerArn: S.optional(S.String),
@@ -520,27 +513,24 @@ export const ConfigurationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationSummary",
 }) as any as S.Schema<ConfigurationSummary>;
 export type ConfigurationsList = ConfigurationSummary[];
-export const ConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ConfigurationSummary);
+export const ConfigurationsList = /*@__PURE__*/ S.Array(ConfigurationSummary);
 export interface ListConfigurationsOutput {
   ConfigurationsList?: ConfigurationSummary[];
   NextToken?: string;
 }
-export const ListConfigurationsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ConfigurationsList: S.optional(ConfigurationsList),
-      NextToken: S.optional(S.String),
-    }),
+export const ListConfigurationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConfigurationsList: S.optional(ConfigurationsList),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListConfigurationsOutput",
 }) as any as S.Schema<ListConfigurationsOutput>;
 export interface ListQuickSetupTypesRequest {}
-export const ListQuickSetupTypesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListQuickSetupTypesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListQuickSetupTypesRequest",
 }) as any as S.Schema<ListQuickSetupTypesRequest>;
@@ -548,37 +538,35 @@ export interface QuickSetupTypeOutput {
   Type?: string;
   LatestVersion?: string;
 }
-export const QuickSetupTypeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const QuickSetupTypeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(S.String), LatestVersion: S.optional(S.String) }),
 ).annotate({
   identifier: "QuickSetupTypeOutput",
 }) as any as S.Schema<QuickSetupTypeOutput>;
 export type QuickSetupTypeList = QuickSetupTypeOutput[];
-export const QuickSetupTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(QuickSetupTypeOutput);
+export const QuickSetupTypeList = /*@__PURE__*/ S.Array(QuickSetupTypeOutput);
 export interface ListQuickSetupTypesOutput {
   QuickSetupTypeList?: QuickSetupTypeOutput[];
 }
-export const ListQuickSetupTypesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ QuickSetupTypeList: S.optional(QuickSetupTypeList) }),
+export const ListQuickSetupTypesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ QuickSetupTypeList: S.optional(QuickSetupTypeList) }),
 ).annotate({
   identifier: "ListQuickSetupTypesOutput",
 }) as any as S.Schema<ListQuickSetupTypesOutput>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -586,25 +574,23 @@ export interface TagEntry {
   Key?: string;
   Value?: string;
 }
-export const TagEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
 ).annotate({ identifier: "TagEntry" }) as any as S.Schema<TagEntry>;
 export type Tags = TagEntry[];
-export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Array(TagEntry);
+export const Tags = /*@__PURE__*/ S.Array(TagEntry);
 export interface ListTagsForResourceResponse {
   Tags?: TagEntry[];
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(Tags) }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ Tags: S.optional(Tags) })).annotate({
     identifier: "ListTagsForResourceResponse",
   }) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     Tags: TagsMap,
@@ -622,18 +608,18 @@ export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceInput",
 }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -651,7 +637,7 @@ export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceInput",
 }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -665,7 +651,7 @@ export interface UpdateConfigurationDefinitionInput {
   LocalDeploymentAdministrationRoleArn?: string;
 }
 export const UpdateConfigurationDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")),
       Id: S.String.pipe(T.HttpLabel("Id")),
@@ -691,7 +677,7 @@ export const UpdateConfigurationDefinitionInput =
   }) as any as S.Schema<UpdateConfigurationDefinitionInput>;
 export interface UpdateConfigurationDefinitionResponse {}
 export const UpdateConfigurationDefinitionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateConfigurationDefinitionResponse",
   }) as any as S.Schema<UpdateConfigurationDefinitionResponse>;
 export interface UpdateConfigurationManagerInput {
@@ -700,7 +686,7 @@ export interface UpdateConfigurationManagerInput {
   Description?: string;
 }
 export const UpdateConfigurationManagerInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")),
       Name: S.optional(S.String),
@@ -720,30 +706,29 @@ export const UpdateConfigurationManagerInput =
   }) as any as S.Schema<UpdateConfigurationManagerInput>;
 export interface UpdateConfigurationManagerResponse {}
 export const UpdateConfigurationManagerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateConfigurationManagerResponse",
   }) as any as S.Schema<UpdateConfigurationManagerResponse>;
 export interface UpdateServiceSettingsInput {
   ExplorerEnablingRoleArn?: string;
 }
-export const UpdateServiceSettingsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ExplorerEnablingRoleArn: S.optional(S.String) }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/serviceSettings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateServiceSettingsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExplorerEnablingRoleArn: S.optional(S.String) }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/serviceSettings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateServiceSettingsInput",
 }) as any as S.Schema<UpdateServiceSettingsInput>;
 export interface UpdateServiceSettingsResponse {}
 export const UpdateServiceSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateServiceSettingsResponse",
   }) as any as S.Schema<UpdateServiceSettingsResponse>;
 
@@ -793,7 +778,7 @@ export const createConfigurationManager: API.OperationMethod<
   CreateConfigurationManagerOutput,
   CreateConfigurationManagerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationManagerInput,
   output: CreateConfigurationManagerOutput,
   errors: [
@@ -821,7 +806,7 @@ export const deleteConfigurationManager: API.OperationMethod<
   DeleteConfigurationManagerResponse,
   DeleteConfigurationManagerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationManagerInput,
   output: DeleteConfigurationManagerResponse,
   errors: [
@@ -850,7 +835,7 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationOutput,
   GetConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationInput,
   output: GetConfigurationOutput,
   errors: [
@@ -879,7 +864,7 @@ export const getConfigurationManager: API.OperationMethod<
   GetConfigurationManagerOutput,
   GetConfigurationManagerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationManagerInput,
   output: GetConfigurationManagerOutput,
   errors: [
@@ -906,7 +891,7 @@ export const getServiceSettings: API.OperationMethod<
   GetServiceSettingsOutput,
   GetServiceSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceSettingsRequest,
   output: GetServiceSettingsOutput,
   errors: [
@@ -947,7 +932,7 @@ export const listConfigurationManagers: API.OperationMethod<
     ListConfigurationManagersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationManagersInput,
   output: ListConfigurationManagersOutput,
   errors: [
@@ -995,7 +980,7 @@ export const listConfigurations: API.OperationMethod<
     ListConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationsInput,
   output: ListConfigurationsOutput,
   errors: [
@@ -1027,7 +1012,7 @@ export const listQuickSetupTypes: API.OperationMethod<
   ListQuickSetupTypesOutput,
   ListQuickSetupTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListQuickSetupTypesRequest,
   output: ListQuickSetupTypesOutput,
   errors: [
@@ -1054,7 +1039,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1083,7 +1068,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [
@@ -1112,7 +1097,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [
@@ -1141,7 +1126,7 @@ export const updateConfigurationDefinition: API.OperationMethod<
   UpdateConfigurationDefinitionResponse,
   UpdateConfigurationDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationDefinitionInput,
   output: UpdateConfigurationDefinitionResponse,
   errors: [
@@ -1170,7 +1155,7 @@ export const updateConfigurationManager: API.OperationMethod<
   UpdateConfigurationManagerResponse,
   UpdateConfigurationManagerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationManagerInput,
   output: UpdateConfigurationManagerResponse,
   errors: [
@@ -1198,7 +1183,7 @@ export const updateServiceSettings: API.OperationMethod<
   UpdateServiceSettingsResponse,
   UpdateServiceSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceSettingsInput,
   output: UpdateServiceSettingsResponse,
   errors: [

@@ -730,7 +730,7 @@ export interface WarehouseTablesUpdateSchemaCreateInput {
   user_access_level?: string | null;
 }
 export const WarehouseTablesUpdateSchemaCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
@@ -1500,7 +1500,7 @@ export const WarehouseTablesUpdateSchemaCreateInput =
 // Output Schema
 export type WarehouseTablesUpdateSchemaCreateOutput = void;
 export const WarehouseTablesUpdateSchemaCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WarehouseTablesUpdateSchemaCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WarehouseTablesUpdateSchemaCreateOutput>;
 
 // The operation
 /**
@@ -1510,7 +1510,7 @@ export const WarehouseTablesUpdateSchemaCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const warehouseTablesUpdateSchemaCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WarehouseTablesUpdateSchemaCreateInput,
     outputSchema: WarehouseTablesUpdateSchemaCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

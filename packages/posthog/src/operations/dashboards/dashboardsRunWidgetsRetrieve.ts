@@ -10,7 +10,7 @@ export interface DashboardsRunWidgetsRetrieveInput {
   tile_ids: string;
 }
 export const DashboardsRunWidgetsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["json", "txt"])),
@@ -32,7 +32,7 @@ export interface DashboardsRunWidgetsRetrieveOutput {
   }[];
 }
 export const DashboardsRunWidgetsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         tile_id: Schema.Number,
@@ -51,7 +51,7 @@ export const DashboardsRunWidgetsRetrieveOutput =
  * @param tile_ids - Comma-separated dashboard tile IDs to run widgets for.
  */
 export const dashboardsRunWidgetsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DashboardsRunWidgetsRetrieveInput,
     outputSchema: DashboardsRunWidgetsRetrieveOutput,
   }));

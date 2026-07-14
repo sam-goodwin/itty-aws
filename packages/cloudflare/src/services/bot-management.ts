@@ -42,7 +42,7 @@ interface StaleZoneConfiguration {
   /** Indicates that the zone's session score tracking is disabled. */
   suppressSessionScore?: boolean | null;
 }
-const StaleZoneConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StaleZoneConfiguration = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     optimizeWordpress: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -106,66 +106,59 @@ interface BotFightModeConfiguration {
   /** A read-only field that indicates whether the zone currently is running the latest ML model. */
   usingLatestModel?: boolean | null;
 }
-const BotFightModeConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      aiBotsProtection: Schema.optional(
+const BotFightModeConfiguration = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    aiBotsProtection: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["block", "disabled", "only_on_ad_pages"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["block", "disabled", "only_on_ad_pages"]),
+          Schema.String,
         ]),
-      ),
-      cfRobotsVariant: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["off", "policy_only"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      contentBotsProtection: Schema.optional(
-        Schema.Union([
-          Schema.Union([Schema.Literals(["block", "disabled"]), Schema.String]),
-          Schema.Null,
-        ]),
-      ),
-      crawlerProtection: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["enabled", "disabled"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      fightMode: Schema.Boolean,
-      isRobotsTxtManaged: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      staleZoneConfiguration: Schema.optional(
-        Schema.Union([StaleZoneConfiguration, Schema.Null]),
-      ),
-      usingLatestModel: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        aiBotsProtection: "ai_bots_protection",
-        cfRobotsVariant: "cf_robots_variant",
-        contentBotsProtection: "content_bots_protection",
-        crawlerProtection: "crawler_protection",
-        enableJs: "enable_js",
-        fightMode: "fight_mode",
-        isRobotsTxtManaged: "is_robots_txt_managed",
-        staleZoneConfiguration: "stale_zone_configuration",
-        usingLatestModel: "using_latest_model",
-      }),
+        Schema.Null,
+      ]),
     ),
+    cfRobotsVariant: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    contentBotsProtection: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["block", "disabled"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    crawlerProtection: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    fightMode: Schema.Boolean,
+    isRobotsTxtManaged: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    staleZoneConfiguration: Schema.optional(
+      Schema.Union([StaleZoneConfiguration, Schema.Null]),
+    ),
+    usingLatestModel: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      aiBotsProtection: "ai_bots_protection",
+      cfRobotsVariant: "cf_robots_variant",
+      contentBotsProtection: "content_bots_protection",
+      crawlerProtection: "crawler_protection",
+      enableJs: "enable_js",
+      fightMode: "fight_mode",
+      isRobotsTxtManaged: "is_robots_txt_managed",
+      staleZoneConfiguration: "stale_zone_configuration",
+      usingLatestModel: "using_latest_model",
+    }),
+  ),
 ) as unknown as Schema.Codec<BotFightModeConfiguration>;
 
 interface StaleZoneConfiguration2 {
@@ -174,7 +167,7 @@ interface StaleZoneConfiguration2 {
   /** Indicates that the zone's likely automated requests are being blocked or challenged. */
   sbfmLikelyAutomated?: string | null;
 }
-const StaleZoneConfiguration2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StaleZoneConfiguration2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fightMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     sbfmLikelyAutomated: Schema.optional(
@@ -227,7 +220,7 @@ interface SuperBotFightModeDefinitelyConfiguration {
   usingLatestModel?: boolean | null;
 }
 const SuperBotFightModeDefinitelyConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aiBotsProtection: Schema.optional(
         Schema.Union([
@@ -310,7 +303,7 @@ interface StaleZoneConfiguration3 {
   /** Indicates that the zone's Bot Fight Mode is turned on. */
   fightMode?: boolean | null;
 }
-const StaleZoneConfiguration3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StaleZoneConfiguration3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fightMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   }).pipe(Schema.encodeKeys({ fightMode: "fight_mode" })),
@@ -359,7 +352,7 @@ interface SuperBotFightModeLikelyConfiguration {
   usingLatestModel?: boolean | null;
 }
 const SuperBotFightModeLikelyConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aiBotsProtection: Schema.optional(
         Schema.Union([
@@ -462,7 +455,7 @@ interface StaleZoneConfiguration4 {
   /** Indicates that the zone's verified bot requests are being blocked. */
   sbfmVerifiedBots?: string | null;
 }
-const StaleZoneConfiguration4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StaleZoneConfiguration4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fightMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     optimizeWordpress: Schema.optional(
@@ -528,76 +521,69 @@ interface SubscriptionConfiguration {
   /** A read-only field that indicates whether the zone currently is running the latest ML model. */
   usingLatestModel?: boolean | null;
 }
-const SubscriptionConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      aiBotsProtection: Schema.optional(
+const SubscriptionConfiguration = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    aiBotsProtection: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["block", "disabled", "only_on_ad_pages"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["block", "disabled", "only_on_ad_pages"]),
+          Schema.String,
         ]),
-      ),
-      autoUpdateModel: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      bmCookieEnabled: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      cfRobotsVariant: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["off", "policy_only"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      contentBotsProtection: Schema.optional(
-        Schema.Union([
-          Schema.Union([Schema.Literals(["block", "disabled"]), Schema.String]),
-          Schema.Null,
-        ]),
-      ),
-      crawlerProtection: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["enabled", "disabled"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isRobotsTxtManaged: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      staleZoneConfiguration: Schema.optional(
-        Schema.Union([StaleZoneConfiguration4, Schema.Null]),
-      ),
-      suppressSessionScore: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      usingLatestModel: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        aiBotsProtection: "ai_bots_protection",
-        autoUpdateModel: "auto_update_model",
-        bmCookieEnabled: "bm_cookie_enabled",
-        cfRobotsVariant: "cf_robots_variant",
-        contentBotsProtection: "content_bots_protection",
-        crawlerProtection: "crawler_protection",
-        enableJs: "enable_js",
-        isRobotsTxtManaged: "is_robots_txt_managed",
-        staleZoneConfiguration: "stale_zone_configuration",
-        suppressSessionScore: "suppress_session_score",
-        usingLatestModel: "using_latest_model",
-      }),
+        Schema.Null,
+      ]),
     ),
+    autoUpdateModel: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    bmCookieEnabled: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    cfRobotsVariant: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    contentBotsProtection: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["block", "disabled"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    crawlerProtection: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isRobotsTxtManaged: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    staleZoneConfiguration: Schema.optional(
+      Schema.Union([StaleZoneConfiguration4, Schema.Null]),
+    ),
+    suppressSessionScore: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    usingLatestModel: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      aiBotsProtection: "ai_bots_protection",
+      autoUpdateModel: "auto_update_model",
+      bmCookieEnabled: "bm_cookie_enabled",
+      cfRobotsVariant: "cf_robots_variant",
+      contentBotsProtection: "content_bots_protection",
+      crawlerProtection: "crawler_protection",
+      enableJs: "enable_js",
+      isRobotsTxtManaged: "is_robots_txt_managed",
+      staleZoneConfiguration: "stale_zone_configuration",
+      suppressSessionScore: "suppress_session_score",
+      usingLatestModel: "using_latest_model",
+    }),
+  ),
 ) as unknown as Schema.Codec<SubscriptionConfiguration>;
 
 // =============================================================================
@@ -610,7 +596,7 @@ export interface GetBotManagementRequest {
 }
 
 export const GetBotManagementRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/bot_management" })),
@@ -722,7 +708,7 @@ export type GetBotManagementResponse =
     };
 
 export const GetBotManagementResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       BotFightModeConfiguration,
       SuperBotFightModeDefinitelyConfiguration,
@@ -738,7 +724,7 @@ export const getBotManagement: API.OperationMethod<
   GetBotManagementResponse,
   GetBotManagementError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBotManagementRequest,
   output: GetBotManagementResponse,
   errors: [Forbidden],
@@ -784,7 +770,7 @@ export interface PutBotManagementRequest {
 }
 
 export const PutBotManagementRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       aiBotsProtection: Schema.optional(
@@ -953,7 +939,7 @@ export type PutBotManagementResponse =
     };
 
 export const PutBotManagementResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       BotFightModeConfiguration,
       SuperBotFightModeDefinitelyConfiguration,
@@ -969,7 +955,7 @@ export const putBotManagement: API.OperationMethod<
   PutBotManagementResponse,
   PutBotManagementError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutBotManagementRequest,
   output: PutBotManagementResponse,
   errors: [Forbidden],

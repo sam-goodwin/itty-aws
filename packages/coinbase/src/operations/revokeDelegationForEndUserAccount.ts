@@ -10,7 +10,7 @@ export interface RevokeDelegationForEndUserAccountInput {
   walletSecretId?: string;
 }
 export const RevokeDelegationForEndUserAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
     address: Schema.String.pipe(T.PathParam()),
     projectID: Schema.optional(Schema.String),
@@ -25,7 +25,7 @@ export const RevokeDelegationForEndUserAccountInput =
 // Output Schema
 export type RevokeDelegationForEndUserAccountOutput = void;
 export const RevokeDelegationForEndUserAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RevokeDelegationForEndUserAccountOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RevokeDelegationForEndUserAccountOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
  * @param projectID - The ID of the CDP Project. Required for end users authenticated using custom auth (i.e. a non-CDP JWT provider).
  */
 export const revokeDelegationForEndUserAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RevokeDelegationForEndUserAccountInput,
     outputSchema: RevokeDelegationForEndUserAccountOutput,
   }));

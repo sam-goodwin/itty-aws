@@ -8,7 +8,7 @@ export interface GetV1SourceRepositoriesByIdInput {
   id: string;
 }
 export const GetV1SourceRepositoriesByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/source-repositories/{id}" }),
@@ -33,7 +33,7 @@ export interface GetV1SourceRepositoriesByIdOutput {
   };
 }
 export const GetV1SourceRepositoriesByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -58,10 +58,8 @@ export const GetV1SourceRepositoriesByIdOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Returns a single source repository link by ID.
  */
-export const getV1SourceRepositoriesById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1SourceRepositoriesByIdInput,
-    outputSchema: GetV1SourceRepositoriesByIdOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const getV1SourceRepositoriesById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1SourceRepositoriesByIdInput,
+  outputSchema: GetV1SourceRepositoriesByIdOutput,
+  errors: [NotFound] as const,
+}));

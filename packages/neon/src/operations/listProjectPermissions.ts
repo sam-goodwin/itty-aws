@@ -8,7 +8,7 @@ export interface ListProjectPermissionsInput {
   project_id: string;
 }
 export const ListProjectPermissionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/projects/{project_id}/permissions" }),
@@ -24,7 +24,7 @@ export interface ListProjectPermissionsOutput {
   }[];
 }
 export const ListProjectPermissionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_permissions: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -41,10 +41,8 @@ export const ListProjectPermissionsOutput =
  *
  * Retrieves details about users who have access to the project, including the permission `id`, the granted-to email address, and the date project access was granted.
  */
-export const listProjectPermissions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListProjectPermissionsInput,
-    outputSchema: ListProjectPermissionsOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const listProjectPermissions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListProjectPermissionsInput,
+  outputSchema: ListProjectPermissionsOutput,
+  errors: [NotFound] as const,
+}));

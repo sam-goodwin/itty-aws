@@ -13,7 +13,7 @@ export interface PostTestHelpersRefundsRefundExpireInput {
   expand?: string[];
 }
 export const PostTestHelpersRefundsRefundExpireInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     refund: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -693,7 +693,7 @@ export interface PostTestHelpersRefundsRefundExpireOutput {
     | null;
 }
 export const PostTestHelpersRefundsRefundExpireOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.NullOr(
       Schema.Union([
@@ -1041,7 +1041,7 @@ export const PostTestHelpersRefundsRefundExpireOutput =
  * <p>Expire a refund with a status of <code>requires_action</code>.</p>
  */
 export const PostTestHelpersRefundsRefundExpire =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersRefundsRefundExpireInput,
     outputSchema: PostTestHelpersRefundsRefundExpireOutput,
   }));

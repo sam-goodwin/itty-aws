@@ -10,7 +10,7 @@ export interface ListGroupHostFtsMetricsInput {
   envelope?: boolean;
 }
 export const ListGroupHostFtsMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     processId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const ListGroupHostFtsMetricsInput =
 // Output Schema
 export type ListGroupHostFtsMetricsOutput = void;
 export const ListGroupHostFtsMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupHostFtsMetricsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupHostFtsMetricsOutput>;
 
 // The operation
 /**
@@ -38,10 +38,8 @@ export const ListGroupHostFtsMetricsOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  */
-export const listGroupHostFtsMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupHostFtsMetricsInput,
-    outputSchema: ListGroupHostFtsMetricsOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupHostFtsMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupHostFtsMetricsInput,
+  outputSchema: ListGroupHostFtsMetricsOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

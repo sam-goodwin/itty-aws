@@ -98,7 +98,7 @@ export interface SendSerialConsoleSSHPublicKeyRequest {
   SSHPublicKey: string;
 }
 export const SendSerialConsoleSSHPublicKeyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       InstanceId: S.String,
       SerialPort: S.optional(S.Number),
@@ -114,7 +114,7 @@ export interface SendSerialConsoleSSHPublicKeyResponse {
   Success?: boolean;
 }
 export const SendSerialConsoleSSHPublicKeyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       RequestId: S.optional(S.String),
       Success: S.optional(S.Boolean),
@@ -128,16 +128,15 @@ export interface SendSSHPublicKeyRequest {
   SSHPublicKey: string;
   AvailabilityZone?: string;
 }
-export const SendSSHPublicKeyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      InstanceId: S.String,
-      InstanceOSUser: S.String,
-      SSHPublicKey: S.String,
-      AvailabilityZone: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const SendSSHPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceId: S.String,
+    InstanceOSUser: S.String,
+    SSHPublicKey: S.String,
+    AvailabilityZone: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "SendSSHPublicKeyRequest",
 }) as any as S.Schema<SendSSHPublicKeyRequest>;
@@ -145,12 +144,11 @@ export interface SendSSHPublicKeyResponse {
   RequestId?: string;
   Success?: boolean;
 }
-export const SendSSHPublicKeyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      RequestId: S.optional(S.String),
-      Success: S.optional(S.Boolean),
-    }),
+export const SendSSHPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RequestId: S.optional(S.String),
+    Success: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "SendSSHPublicKeyResponse",
 }) as any as S.Schema<SendSSHPublicKeyResponse>;
@@ -255,7 +253,7 @@ export const sendSerialConsoleSSHPublicKey: API.OperationMethod<
   SendSerialConsoleSSHPublicKeyResponse,
   SendSerialConsoleSSHPublicKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendSerialConsoleSSHPublicKeyRequest,
   output: SendSerialConsoleSSHPublicKeyResponse,
   errors: [
@@ -294,7 +292,7 @@ export const sendSSHPublicKey: API.OperationMethod<
   SendSSHPublicKeyResponse,
   SendSSHPublicKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendSSHPublicKeyRequest,
   output: SendSSHPublicKeyResponse,
   errors: [

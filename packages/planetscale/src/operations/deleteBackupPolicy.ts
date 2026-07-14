@@ -10,7 +10,7 @@ export interface DeleteBackupPolicyInput {
   database: string;
 }
 export const DeleteBackupPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
@@ -24,7 +24,7 @@ export const DeleteBackupPolicyInput =
 // Output Schema
 export type DeleteBackupPolicyOutput = void;
 export const DeleteBackupPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBackupPolicyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBackupPolicyOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const DeleteBackupPolicyOutput =
  * @param organization - Organization name slug from `list_organizations`. Example: `acme`.
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  */
-export const deleteBackupPolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteBackupPolicy = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteBackupPolicyInput,
   outputSchema: DeleteBackupPolicyOutput,
   errors: [Forbidden, NotFound] as const,

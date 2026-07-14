@@ -8,7 +8,7 @@ export interface DeleteCustomersCustomerTaxIdsIdInput {
   id: string;
 }
 export const DeleteCustomersCustomerTaxIdsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -26,7 +26,7 @@ export interface DeleteCustomersCustomerTaxIdsIdOutput {
   object: "tax_id";
 }
 export const DeleteCustomersCustomerTaxIdsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["tax_id"]),
@@ -39,7 +39,7 @@ export const DeleteCustomersCustomerTaxIdsIdOutput =
  * <p>Deletes an existing <code>tax_id</code> object.</p>
  */
 export const DeleteCustomersCustomerTaxIdsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCustomersCustomerTaxIdsIdInput,
     outputSchema: DeleteCustomersCustomerTaxIdsIdOutput,
   }));

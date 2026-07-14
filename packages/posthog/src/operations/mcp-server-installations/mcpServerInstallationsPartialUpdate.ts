@@ -11,7 +11,7 @@ export interface McpServerInstallationsPartialUpdateInput {
   is_enabled?: boolean;
 }
 export const McpServerInstallationsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     display_name: Schema.optional(Schema.String),
@@ -43,7 +43,7 @@ export interface McpServerInstallationsPartialUpdateOutput {
   updated_at?: string | null;
 }
 export const McpServerInstallationsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     template_id: Schema.optional(Schema.NullOr(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -68,7 +68,7 @@ export const McpServerInstallationsPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const mcpServerInstallationsPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: McpServerInstallationsPartialUpdateInput,
     outputSchema: McpServerInstallationsPartialUpdateOutput,
   }));

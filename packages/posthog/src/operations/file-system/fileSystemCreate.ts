@@ -17,7 +17,7 @@ export interface FileSystemCreateInput {
   created_at?: string;
   last_viewed_at?: string | null;
 }
-export const FileSystemCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSystemCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   path: Schema.optional(Schema.String),
@@ -46,27 +46,25 @@ export interface FileSystemCreateOutput {
   created_at?: string;
   last_viewed_at?: string | null;
 }
-export const FileSystemCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    path: Schema.optional(Schema.String),
-    depth: Schema.optional(Schema.NullOr(Schema.Number)),
-    type: Schema.optional(Schema.String),
-    ref: Schema.optional(Schema.NullOr(Schema.String)),
-    href: Schema.optional(Schema.NullOr(Schema.String)),
-    meta: Schema.optional(Schema.Unknown),
-    shortcut: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    created_at: Schema.optional(Schema.String),
-    last_viewed_at: Schema.optional(Schema.NullOr(Schema.String)),
-  },
-) as unknown as Schema.Codec<FileSystemCreateOutput>;
+export const FileSystemCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  depth: Schema.optional(Schema.NullOr(Schema.Number)),
+  type: Schema.optional(Schema.String),
+  ref: Schema.optional(Schema.NullOr(Schema.String)),
+  href: Schema.optional(Schema.NullOr(Schema.String)),
+  meta: Schema.optional(Schema.Unknown),
+  shortcut: Schema.optional(Schema.NullOr(Schema.Boolean)),
+  created_at: Schema.optional(Schema.String),
+  last_viewed_at: Schema.optional(Schema.NullOr(Schema.String)),
+}) as unknown as Schema.Codec<FileSystemCreateOutput>;
 
 // The operation
 /**
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const fileSystemCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const fileSystemCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSystemCreateInput,
   outputSchema: FileSystemCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

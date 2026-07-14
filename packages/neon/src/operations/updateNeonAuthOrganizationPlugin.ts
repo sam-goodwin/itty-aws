@@ -13,7 +13,7 @@ export interface UpdateNeonAuthOrganizationPluginInput {
   send_invitation_email?: boolean;
 }
 export const UpdateNeonAuthOrganizationPluginInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     enabled: Schema.optional(Schema.Boolean),
@@ -37,7 +37,7 @@ export interface UpdateNeonAuthOrganizationPluginOutput {
   send_invitation_email: boolean;
 }
 export const UpdateNeonAuthOrganizationPluginOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     organization_limit: Schema.Number,
     membership_limit: Schema.Number,
@@ -56,7 +56,7 @@ export const UpdateNeonAuthOrganizationPluginOutput =
  * @param branch_id - The Neon branch ID
  */
 export const updateNeonAuthOrganizationPlugin =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateNeonAuthOrganizationPluginInput,
     outputSchema: UpdateNeonAuthOrganizationPluginOutput,
   }));

@@ -8,7 +8,7 @@ export interface GetIssuingTokensTokenInput {
   expand?: string;
 }
 export const GetIssuingTokensTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -98,7 +98,7 @@ export interface GetIssuingTokensTokenOutput {
   wallet_provider?: "apple_pay" | "google_pay" | "samsung_pay";
 }
 export const GetIssuingTokensTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card: Schema.Unknown,
     created: Schema.Number,
     device_fingerprint: Schema.NullOr(Schema.String),
@@ -209,9 +209,7 @@ export const GetIssuingTokensTokenOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetIssuingTokensToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetIssuingTokensTokenInput,
-    outputSchema: GetIssuingTokensTokenOutput,
-  }),
-);
+export const GetIssuingTokensToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetIssuingTokensTokenInput,
+  outputSchema: GetIssuingTokensTokenOutput,
+}));

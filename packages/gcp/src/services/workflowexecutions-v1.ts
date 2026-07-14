@@ -30,7 +30,7 @@ export interface Step {
 }
 
 export const Step: Schema.Codec<Step> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     routine: Schema.optional(Schema.String),
     step: Schema.optional(Schema.String),
   }).annotate({ identifier: "Step" });
@@ -41,7 +41,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentSteps: Schema.optional(Schema.Array(Step)),
   }).annotate({ identifier: "Status" });
 
@@ -59,7 +59,7 @@ export interface PubsubMessage {
 }
 
 export const PubsubMessage: Schema.Codec<PubsubMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orderingKey: Schema.optional(Schema.String),
     messageId: Schema.optional(Schema.String),
     publishTime: Schema.optional(Schema.String),
@@ -79,7 +79,7 @@ export interface TriggerPubsubExecutionRequest {
 }
 
 export const TriggerPubsubExecutionRequest: Schema.Codec<TriggerPubsubExecutionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(PubsubMessage),
     subscription: Schema.optional(Schema.String),
     GCPCloudEventsMode: Schema.optional(Schema.String),
@@ -96,7 +96,7 @@ export interface Position {
 }
 
 export const Position: Schema.Codec<Position> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     length: Schema.optional(Schema.String),
     line: Schema.optional(Schema.String),
     column: Schema.optional(Schema.String),
@@ -112,7 +112,7 @@ export interface StackTraceElement {
 }
 
 export const StackTraceElement: Schema.Codec<StackTraceElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     routine: Schema.optional(Schema.String),
     position: Schema.optional(Position),
     step: Schema.optional(Schema.String),
@@ -137,7 +137,7 @@ export interface StepEntryMetadata {
 }
 
 export const StepEntryMetadata: Schema.Codec<StepEntryMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expectedIteration: Schema.optional(Schema.String),
     threadId: Schema.optional(Schema.String),
     progressType: Schema.optional(Schema.String),
@@ -156,7 +156,7 @@ export interface NavigationInfo {
 }
 
 export const NavigationInfo: Schema.Codec<NavigationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     children: Schema.optional(Schema.Array(Schema.String)),
     parent: Schema.optional(Schema.String),
     next: Schema.optional(Schema.String),
@@ -166,7 +166,7 @@ export const NavigationInfo: Schema.Codec<NavigationInfo> =
 export interface DeleteExecutionHistoryRequest {}
 
 export const DeleteExecutionHistoryRequest: Schema.Codec<DeleteExecutionHistoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteExecutionHistoryRequest",
   });
 
@@ -182,7 +182,7 @@ export interface Callback {
 }
 
 export const Callback: Schema.Codec<Callback> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     availablePayloads: Schema.optional(Schema.Array(Schema.String)),
     waiters: Schema.optional(Schema.String),
@@ -197,7 +197,7 @@ export interface ListCallbacksResponse {
 }
 
 export const ListCallbacksResponse: Schema.Codec<ListCallbacksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     callbacks: Schema.optional(Schema.Array(Callback)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListCallbacksResponse" });
@@ -208,7 +208,7 @@ export interface StackTrace {
 }
 
 export const StackTrace: Schema.Codec<StackTrace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     elements: Schema.optional(Schema.Array(StackTraceElement)),
   }).annotate({ identifier: "StackTrace" });
 
@@ -222,7 +222,7 @@ export interface Workflowexecutions_Error {
 }
 
 export const Workflowexecutions_Error: Schema.Codec<Workflowexecutions_Error> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stackTrace: Schema.optional(StackTrace),
     payload: Schema.optional(Schema.String),
     context: Schema.optional(Schema.String),
@@ -236,7 +236,7 @@ export interface StateError {
 }
 
 export const StateError: Schema.Codec<StateError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     details: Schema.optional(Schema.String),
   }).annotate({ identifier: "StateError" });
@@ -294,7 +294,7 @@ export interface Execution {
 }
 
 export const Execution: Schema.Codec<Execution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Status),
     createTime: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -321,7 +321,7 @@ export interface ListExecutionsResponse {
 }
 
 export const ListExecutionsResponse: Schema.Codec<ListExecutionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     executions: Schema.optional(Schema.Array(Execution)),
   }).annotate({ identifier: "ListExecutionsResponse" });
@@ -332,7 +332,7 @@ export interface Exception {
 }
 
 export const Exception: Schema.Codec<Exception> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payload: Schema.optional(Schema.String),
   }).annotate({ identifier: "Exception" });
 
@@ -342,7 +342,7 @@ export interface VariableData {
 }
 
 export const VariableData: Schema.Codec<VariableData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "VariableData" });
 
@@ -401,7 +401,7 @@ export interface StepEntry {
 }
 
 export const StepEntry: Schema.Codec<StepEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stepEntryMetadata: Schema.optional(StepEntryMetadata),
     updateTime: Schema.optional(Schema.String),
     exception: Schema.optional(Exception),
@@ -419,7 +419,7 @@ export const StepEntry: Schema.Codec<StepEntry> =
 export interface CancelExecutionRequest {}
 
 export const CancelExecutionRequest: Schema.Codec<CancelExecutionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelExecutionRequest",
   });
 
@@ -433,7 +433,7 @@ export interface ListStepEntriesResponse {
 }
 
 export const ListStepEntriesResponse: Schema.Codec<ListStepEntriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalSize: Schema.optional(Schema.Number),
     stepEntries: Schema.optional(Schema.Array(StepEntry)),
     nextPageToken: Schema.optional(Schema.String),
@@ -445,14 +445,14 @@ export interface ExportDataResponse {
 }
 
 export const ExportDataResponse: Schema.Codec<ExportDataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExportDataResponse" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -518,7 +518,7 @@ export interface TriggerPubsubExecutionProjectsLocationsWorkflowsRequest {
 }
 
 export const TriggerPubsubExecutionProjectsLocationsWorkflowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workflow: Schema.String.pipe(T.HttpPath("workflow")),
     body: Schema.optional(TriggerPubsubExecutionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -533,7 +533,7 @@ export const TriggerPubsubExecutionProjectsLocationsWorkflowsRequest =
 export type TriggerPubsubExecutionProjectsLocationsWorkflowsResponse =
   Execution;
 export const TriggerPubsubExecutionProjectsLocationsWorkflowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Execution;
+  /*@__PURE__*/ Execution;
 
 export type TriggerPubsubExecutionProjectsLocationsWorkflowsError =
   | DefaultErrors
@@ -548,7 +548,7 @@ export const triggerPubsubExecutionProjectsLocationsWorkflows: API.OperationMeth
   TriggerPubsubExecutionProjectsLocationsWorkflowsResponse,
   TriggerPubsubExecutionProjectsLocationsWorkflowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TriggerPubsubExecutionProjectsLocationsWorkflowsRequest,
   output: TriggerPubsubExecutionProjectsLocationsWorkflowsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -570,7 +570,7 @@ export interface ListProjectsLocationsWorkflowsExecutionsRequest {
 }
 
 export const ListProjectsLocationsWorkflowsExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -585,7 +585,7 @@ export const ListProjectsLocationsWorkflowsExecutionsRequest =
 export type ListProjectsLocationsWorkflowsExecutionsResponse =
   ListExecutionsResponse;
 export const ListProjectsLocationsWorkflowsExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListExecutionsResponse;
+  /*@__PURE__*/ ListExecutionsResponse;
 
 export type ListProjectsLocationsWorkflowsExecutionsError =
   | DefaultErrors
@@ -598,7 +598,7 @@ export const listProjectsLocationsWorkflowsExecutions: API.PaginatedOperationMet
   ListProjectsLocationsWorkflowsExecutionsResponse,
   ListProjectsLocationsWorkflowsExecutionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkflowsExecutionsRequest,
   output: ListProjectsLocationsWorkflowsExecutionsResponse,
   errors: [NotFound, Forbidden],
@@ -616,7 +616,7 @@ export interface CancelProjectsLocationsWorkflowsExecutionsRequest {
 }
 
 export const CancelProjectsLocationsWorkflowsExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelExecutionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -626,7 +626,7 @@ export const CancelProjectsLocationsWorkflowsExecutionsRequest =
 
 export type CancelProjectsLocationsWorkflowsExecutionsResponse = Execution;
 export const CancelProjectsLocationsWorkflowsExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Execution;
+  /*@__PURE__*/ Execution;
 
 export type CancelProjectsLocationsWorkflowsExecutionsError =
   | DefaultErrors
@@ -641,7 +641,7 @@ export const cancelProjectsLocationsWorkflowsExecutions: API.OperationMethod<
   CancelProjectsLocationsWorkflowsExecutionsResponse,
   CancelProjectsLocationsWorkflowsExecutionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsWorkflowsExecutionsRequest,
   output: CancelProjectsLocationsWorkflowsExecutionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -655,7 +655,7 @@ export interface GetProjectsLocationsWorkflowsExecutionsRequest {
 }
 
 export const GetProjectsLocationsWorkflowsExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
@@ -665,7 +665,7 @@ export const GetProjectsLocationsWorkflowsExecutionsRequest =
 
 export type GetProjectsLocationsWorkflowsExecutionsResponse = Execution;
 export const GetProjectsLocationsWorkflowsExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Execution;
+  /*@__PURE__*/ Execution;
 
 export type GetProjectsLocationsWorkflowsExecutionsError =
   | DefaultErrors
@@ -678,7 +678,7 @@ export const getProjectsLocationsWorkflowsExecutions: API.OperationMethod<
   GetProjectsLocationsWorkflowsExecutionsResponse,
   GetProjectsLocationsWorkflowsExecutionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkflowsExecutionsRequest,
   output: GetProjectsLocationsWorkflowsExecutionsResponse,
   errors: [NotFound, Forbidden],
@@ -690,7 +690,7 @@ export interface ExportDataProjectsLocationsWorkflowsExecutionsRequest {
 }
 
 export const ExportDataProjectsLocationsWorkflowsExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:exportData" }),
@@ -700,7 +700,7 @@ export const ExportDataProjectsLocationsWorkflowsExecutionsRequest =
 export type ExportDataProjectsLocationsWorkflowsExecutionsResponse =
   ExportDataResponse;
 export const ExportDataProjectsLocationsWorkflowsExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExportDataResponse;
+  /*@__PURE__*/ ExportDataResponse;
 
 export type ExportDataProjectsLocationsWorkflowsExecutionsError =
   | DefaultErrors
@@ -713,7 +713,7 @@ export const exportDataProjectsLocationsWorkflowsExecutions: API.OperationMethod
   ExportDataProjectsLocationsWorkflowsExecutionsResponse,
   ExportDataProjectsLocationsWorkflowsExecutionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportDataProjectsLocationsWorkflowsExecutionsRequest,
   output: ExportDataProjectsLocationsWorkflowsExecutionsResponse,
   errors: [NotFound, Forbidden],
@@ -727,7 +727,7 @@ export interface DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsReque
 }
 
 export const DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeleteExecutionHistoryRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -742,7 +742,7 @@ export const DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest =
 export type DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsResponse =
   Empty;
 export const DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsError =
   | DefaultErrors
@@ -757,7 +757,7 @@ export const deleteExecutionHistoryProjectsLocationsWorkflowsExecutions: API.Ope
   DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsResponse,
   DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest,
   output: DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -771,7 +771,7 @@ export interface CreateProjectsLocationsWorkflowsExecutionsRequest {
 }
 
 export const CreateProjectsLocationsWorkflowsExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Execution).pipe(T.HttpBody()),
   }).pipe(
@@ -781,7 +781,7 @@ export const CreateProjectsLocationsWorkflowsExecutionsRequest =
 
 export type CreateProjectsLocationsWorkflowsExecutionsResponse = Execution;
 export const CreateProjectsLocationsWorkflowsExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Execution;
+  /*@__PURE__*/ Execution;
 
 export type CreateProjectsLocationsWorkflowsExecutionsError =
   | DefaultErrors
@@ -796,7 +796,7 @@ export const createProjectsLocationsWorkflowsExecutions: API.OperationMethod<
   CreateProjectsLocationsWorkflowsExecutionsResponse,
   CreateProjectsLocationsWorkflowsExecutionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsWorkflowsExecutionsRequest,
   output: CreateProjectsLocationsWorkflowsExecutionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -812,7 +812,7 @@ export interface ListProjectsLocationsWorkflowsExecutionsCallbacksRequest {
 }
 
 export const ListProjectsLocationsWorkflowsExecutionsCallbacksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -824,7 +824,7 @@ export const ListProjectsLocationsWorkflowsExecutionsCallbacksRequest =
 export type ListProjectsLocationsWorkflowsExecutionsCallbacksResponse =
   ListCallbacksResponse;
 export const ListProjectsLocationsWorkflowsExecutionsCallbacksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCallbacksResponse;
+  /*@__PURE__*/ ListCallbacksResponse;
 
 export type ListProjectsLocationsWorkflowsExecutionsCallbacksError =
   | DefaultErrors
@@ -837,7 +837,7 @@ export const listProjectsLocationsWorkflowsExecutionsCallbacks: API.PaginatedOpe
   ListProjectsLocationsWorkflowsExecutionsCallbacksResponse,
   ListProjectsLocationsWorkflowsExecutionsCallbacksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkflowsExecutionsCallbacksRequest,
   output: ListProjectsLocationsWorkflowsExecutionsCallbacksResponse,
   errors: [NotFound, Forbidden],
@@ -869,7 +869,7 @@ export interface ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest {
 }
 
 export const ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     skip: Schema.optional(Schema.Number).pipe(T.HttpQuery("skip")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -885,7 +885,7 @@ export const ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest =
 export type ListProjectsLocationsWorkflowsExecutionsStepEntriesResponse =
   ListStepEntriesResponse;
 export const ListProjectsLocationsWorkflowsExecutionsStepEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListStepEntriesResponse;
+  /*@__PURE__*/ ListStepEntriesResponse;
 
 export type ListProjectsLocationsWorkflowsExecutionsStepEntriesError =
   | DefaultErrors
@@ -898,7 +898,7 @@ export const listProjectsLocationsWorkflowsExecutionsStepEntries: API.PaginatedO
   ListProjectsLocationsWorkflowsExecutionsStepEntriesResponse,
   ListProjectsLocationsWorkflowsExecutionsStepEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest,
   output: ListProjectsLocationsWorkflowsExecutionsStepEntriesResponse,
   errors: [NotFound, Forbidden],
@@ -920,7 +920,7 @@ export interface GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest {
 }
 
 export const GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -931,7 +931,7 @@ export const GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest =
 export type GetProjectsLocationsWorkflowsExecutionsStepEntriesResponse =
   StepEntry;
 export const GetProjectsLocationsWorkflowsExecutionsStepEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ StepEntry;
+  /*@__PURE__*/ StepEntry;
 
 export type GetProjectsLocationsWorkflowsExecutionsStepEntriesError =
   | DefaultErrors
@@ -944,7 +944,7 @@ export const getProjectsLocationsWorkflowsExecutionsStepEntries: API.OperationMe
   GetProjectsLocationsWorkflowsExecutionsStepEntriesResponse,
   GetProjectsLocationsWorkflowsExecutionsStepEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest,
   output: GetProjectsLocationsWorkflowsExecutionsStepEntriesResponse,
   errors: [NotFound, Forbidden],

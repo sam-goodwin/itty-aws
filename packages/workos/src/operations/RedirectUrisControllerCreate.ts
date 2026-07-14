@@ -8,7 +8,7 @@ export interface RedirectUrisControllerCreateInput {
   uri?: string;
 }
 export const RedirectUrisControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "POST", path: "/user_management/redirect_uris" }),
@@ -24,7 +24,7 @@ export interface RedirectUrisControllerCreateOutput {
   updated_at?: string;
 }
 export const RedirectUrisControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export const RedirectUrisControllerCreateOutput =
  * Creates a new redirect URI for an application.
  */
 export const RedirectUrisControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RedirectUrisControllerCreateInput,
     outputSchema: RedirectUrisControllerCreateOutput,
     errors: [BadRequest, UnprocessableEntity] as const,

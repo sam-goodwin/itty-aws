@@ -13,7 +13,7 @@ export interface GetGroupProcessCollStatNamespacesInput {
   period?: string;
 }
 export const GetGroupProcessCollStatNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     processId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -30,7 +30,7 @@ export const GetGroupProcessCollStatNamespacesInput =
 // Output Schema
 export type GetGroupProcessCollStatNamespacesOutput = void;
 export const GetGroupProcessCollStatNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessCollStatNamespacesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessCollStatNamespacesOutput>;
 
 // The operation
 /**
@@ -48,7 +48,7 @@ export const GetGroupProcessCollStatNamespacesOutput =
  * @param period - Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
  */
 export const getGroupProcessCollStatNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupProcessCollStatNamespacesInput,
     outputSchema: GetGroupProcessCollStatNamespacesOutput,
     errors: [Forbidden, NotFound] as const,

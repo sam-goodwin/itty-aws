@@ -8,7 +8,7 @@ export interface VisualReviewReposBaselinesRetrieveInput {
   project_id: string;
 }
 export const VisualReviewReposBaselinesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -59,7 +59,7 @@ export interface VisualReviewReposBaselinesRetrieveOutput {
   generated_at: string;
 }
 export const VisualReviewReposBaselinesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entries: Schema.Array(
       Schema.Struct({
         quarantine: Schema.optional(
@@ -124,7 +124,7 @@ export const VisualReviewReposBaselinesRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const visualReviewReposBaselinesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VisualReviewReposBaselinesRetrieveInput,
     outputSchema: VisualReviewReposBaselinesRetrieveOutput,
   }));

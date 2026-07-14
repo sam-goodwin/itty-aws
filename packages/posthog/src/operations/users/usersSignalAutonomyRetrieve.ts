@@ -8,7 +8,7 @@ export interface UsersSignalAutonomyRetrieveInput {
   user_id: string;
 }
 export const UsersSignalAutonomyRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/api/users/{user_id}/signal_autonomy/" }),
@@ -39,7 +39,7 @@ export interface UsersSignalAutonomyRetrieveOutput {
   updated_at?: string;
 }
 export const UsersSignalAutonomyRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     user: Schema.optional(
       Schema.Struct({
@@ -81,10 +81,8 @@ export const UsersSignalAutonomyRetrieveOutput =
  * POST   /api/users/<id>/signal_autonomy/ → create or update
  * DELETE /api/users/<id>/signal_autonomy/ → remove (opt out)
  */
-export const usersSignalAutonomyRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsersSignalAutonomyRetrieveInput,
-    outputSchema: UsersSignalAutonomyRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const usersSignalAutonomyRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersSignalAutonomyRetrieveInput,
+  outputSchema: UsersSignalAutonomyRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -7,7 +7,7 @@ export interface RetrieveAnalyticsRulesInput {
   rule_tag?: string;
 }
 export const RetrieveAnalyticsRulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rule_tag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/analytics/rules" }),
@@ -31,7 +31,7 @@ export type RetrieveAnalyticsRulesOutput = {
   };
 }[];
 export const RetrieveAnalyticsRulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       name: Schema.String,
       type: Schema.Literals([
@@ -65,9 +65,7 @@ export const RetrieveAnalyticsRulesOutput =
  *
  * @param rule_tag - Filter rules by rule_tag
  */
-export const retrieveAnalyticsRules = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetrieveAnalyticsRulesInput,
-    outputSchema: RetrieveAnalyticsRulesOutput,
-  }),
-);
+export const retrieveAnalyticsRules = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetrieveAnalyticsRulesInput,
+  outputSchema: RetrieveAnalyticsRulesOutput,
+}));

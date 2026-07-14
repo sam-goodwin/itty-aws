@@ -15,7 +15,7 @@ export interface ListGroupHostFtsMetricMeasurementsInput {
   metrics: string;
 }
 export const ListGroupHostFtsMetricMeasurementsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     processId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     granularity: Schema.String,
@@ -34,7 +34,7 @@ export const ListGroupHostFtsMetricMeasurementsInput =
 // Output Schema
 export type ListGroupHostFtsMetricMeasurementsOutput = void;
 export const ListGroupHostFtsMetricMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupHostFtsMetricMeasurementsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupHostFtsMetricMeasurementsOutput>;
 
 // The operation
 /**
@@ -54,7 +54,7 @@ export const ListGroupHostFtsMetricMeasurementsOutput =
  * @param metrics - List that contains the metrics that you want MongoDB Atlas to report for the associated data series. If you don't set this parameter, this resource returns all hardware and status metrics for the associated data series.
  */
 export const listGroupHostFtsMetricMeasurements =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupHostFtsMetricMeasurementsInput,
     outputSchema: ListGroupHostFtsMetricMeasurementsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

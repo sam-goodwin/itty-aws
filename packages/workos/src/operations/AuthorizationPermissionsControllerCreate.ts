@@ -16,7 +16,7 @@ export interface AuthorizationPermissionsControllerCreateInput {
   resource_type_slug?: string;
 }
 export const AuthorizationPermissionsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -38,7 +38,7 @@ export interface AuthorizationPermissionsControllerCreateOutput {
   updated_at: string;
 }
 export const AuthorizationPermissionsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     slug: Schema.String,
@@ -57,7 +57,7 @@ export const AuthorizationPermissionsControllerCreateOutput =
  * Create a new permission in your WorkOS environment. The permission can then be assigned to environment roles and custom roles.
  */
 export const AuthorizationPermissionsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationPermissionsControllerCreateInput,
     outputSchema: AuthorizationPermissionsControllerCreateOutput,
     errors: [BadRequest, NotFound, Conflict, UnprocessableEntity] as const,

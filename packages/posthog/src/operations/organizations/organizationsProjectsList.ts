@@ -13,7 +13,7 @@ export interface OrganizationsProjectsListInput {
   search?: string;
 }
 export const OrganizationsProjectsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -642,7 +642,7 @@ export interface OrganizationsProjectsListOutput {
   }[];
 }
 export const OrganizationsProjectsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1274,10 +1274,8 @@ export const OrganizationsProjectsListOutput =
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  * @param search - A search term.
  */
-export const organizationsProjectsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrganizationsProjectsListInput,
-    outputSchema: OrganizationsProjectsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const organizationsProjectsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationsProjectsListInput,
+  outputSchema: OrganizationsProjectsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

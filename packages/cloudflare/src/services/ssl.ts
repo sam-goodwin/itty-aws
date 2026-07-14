@@ -47,7 +47,7 @@ export class Forbidden extends T.applyErrorMatchers(
 interface GeoRestrictions {
   label?: "us" | "eu" | "highest_security" | (string & {}) | null;
 }
-const GeoRestrictions = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GeoRestrictions = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     label: Schema.optional(
       Schema.Union([
@@ -89,7 +89,7 @@ interface Certificate {
   /** Identifier. */
   zoneId?: string | null;
 }
-const Certificate = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Certificate = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     hosts: Schema.Array(Schema.String),
@@ -141,7 +141,7 @@ interface DcvdelegationRecord {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-const DcvdelegationRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DcvdelegationRecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     cnameTarget: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -171,7 +171,7 @@ interface ValidationError {
   /** A domain validation error. */
   message?: string | null;
 }
-const ValidationError = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ValidationError = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     message: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -279,7 +279,7 @@ interface ListCertificatePacksResponseResult {
   validityDays?: number | null;
 }
 const ListCertificatePacksResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       certificates: Schema.Array(Certificate),
@@ -383,7 +383,7 @@ interface ListCertificatePacksResponseResultInfo {
   totalCount?: number | null;
 }
 const ListCertificatePacksResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -405,7 +405,7 @@ interface Advanced {
   /** Quantity Used. */
   used?: number | null;
 }
-const Advanced = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Advanced = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allocated: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     used: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -430,7 +430,7 @@ interface VerificationInfo {
     | (string & {})
     | null;
 }
-const VerificationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const VerificationInfo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     recordName: Schema.optional(
       Schema.Union([
@@ -509,7 +509,7 @@ interface Verification {
   /** Method of verification. */
   verificationType?: "cname" | "meta tag" | (string & {}) | null;
 }
-const Verification = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Verification = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     certificateStatus: Schema.Union([
       Schema.Literals([
@@ -582,30 +582,29 @@ export interface CreateAnalyzeRequest {
   certificate?: string;
 }
 
-export const CreateAnalyzeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      bundleMethod: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["ubiquitous", "optimal", "force"]),
-          Schema.String,
-        ]),
-      ),
-      certificate: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        bundleMethod: "bundle_method",
-        certificate: "certificate",
-      }),
-      T.Http({ method: "POST", path: "/zones/{zone_id}/ssl/analyze" }),
+export const CreateAnalyzeRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    bundleMethod: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["ubiquitous", "optimal", "force"]),
+        Schema.String,
+      ]),
     ),
+    certificate: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      bundleMethod: "bundle_method",
+      certificate: "certificate",
+    }),
+    T.Http({ method: "POST", path: "/zones/{zone_id}/ssl/analyze" }),
+  ),
 ) as unknown as Schema.Codec<CreateAnalyzeRequest>;
 
 export type CreateAnalyzeResponse = unknown;
 
-export const CreateAnalyzeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+export const CreateAnalyzeResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateAnalyzeResponse>;
 
 export type CreateAnalyzeError = DefaultErrors;
@@ -615,7 +614,7 @@ export const createAnalyze: API.OperationMethod<
   CreateAnalyzeResponse,
   CreateAnalyzeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAnalyzeRequest,
   output: CreateAnalyzeResponse,
   errors: [],
@@ -630,7 +629,7 @@ export interface GetAutoOriginTlsKexRequest {
 }
 
 export const GetAutoOriginTlsKexRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -650,7 +649,7 @@ export interface GetAutoOriginTlsKexResponse {
 }
 
 export const GetAutoOriginTlsKexResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       enabled: Schema.Boolean,
@@ -673,7 +672,7 @@ export const getAutoOriginTlsKex: API.OperationMethod<
   GetAutoOriginTlsKexResponse,
   GetAutoOriginTlsKexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutoOriginTlsKexRequest,
   output: GetAutoOriginTlsKexResponse,
   errors: [],
@@ -687,7 +686,7 @@ export interface PatchAutoOriginTlsKexRequest {
 }
 
 export const PatchAutoOriginTlsKexRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       enabled: Schema.Boolean,
@@ -708,7 +707,7 @@ export interface PatchAutoOriginTlsKexResponse {
 }
 
 export const PatchAutoOriginTlsKexResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       enabled: Schema.Boolean,
@@ -731,7 +730,7 @@ export const patchAutoOriginTlsKex: API.OperationMethod<
   PatchAutoOriginTlsKexResponse,
   PatchAutoOriginTlsKexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAutoOriginTlsKexRequest,
   output: PatchAutoOriginTlsKexResponse,
   errors: [],
@@ -748,7 +747,7 @@ export interface GetCertificatePackRequest {
 }
 
 export const GetCertificatePackRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificatePackId: Schema.String.pipe(T.HttpPath("certificatePackId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -863,7 +862,7 @@ export interface GetCertificatePackResponse {
 }
 
 export const GetCertificatePackResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       certificates: Schema.Array(Certificate),
@@ -972,7 +971,7 @@ export const getCertificatePack: API.OperationMethod<
   GetCertificatePackResponse,
   GetCertificatePackError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCertificatePackRequest,
   output: GetCertificatePackResponse,
   errors: [CertificatePackNotFound, Forbidden],
@@ -990,7 +989,7 @@ export interface ListCertificatePacksRequest {
 }
 
 export const ListCertificatePacksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -1107,7 +1106,7 @@ export interface ListCertificatePacksResponse {
 }
 
 export const ListCertificatePacksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListCertificatePacksResponseResult),
       resultInfo: Schema.optional(
@@ -1123,7 +1122,7 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
   ListCertificatePacksResponse,
   ListCertificatePacksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCertificatePacksRequest,
   output: ListCertificatePacksResponse,
   errors: [Forbidden],
@@ -1154,7 +1153,7 @@ export interface CreateCertificatePackRequest {
 }
 
 export const CreateCertificatePackRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       certificateAuthority: Schema.Union([
@@ -1288,7 +1287,7 @@ export interface CreateCertificatePackResponse {
 }
 
 export const CreateCertificatePackResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       certificates: Schema.Array(Certificate),
@@ -1397,7 +1396,7 @@ export const createCertificatePack: API.OperationMethod<
   CreateCertificatePackResponse,
   CreateCertificatePackError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCertificatePackRequest,
   output: CreateCertificatePackResponse,
   errors: [AdvancedCertificateManagerRequired, Forbidden],
@@ -1412,7 +1411,7 @@ export interface PatchCertificatePackRequest {
 }
 
 export const PatchCertificatePackRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificatePackId: Schema.String.pipe(T.HttpPath("certificatePackId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1529,7 +1528,7 @@ export interface PatchCertificatePackResponse {
 }
 
 export const PatchCertificatePackResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       certificates: Schema.Array(Certificate),
@@ -1638,7 +1637,7 @@ export const patchCertificatePack: API.OperationMethod<
   PatchCertificatePackResponse,
   PatchCertificatePackError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCertificatePackRequest,
   output: PatchCertificatePackResponse,
   errors: [CertificatePackNotFound, Forbidden],
@@ -1651,7 +1650,7 @@ export interface DeleteCertificatePackRequest {
 }
 
 export const DeleteCertificatePackRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificatePackId: Schema.String.pipe(T.HttpPath("certificatePackId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1669,7 +1668,7 @@ export interface DeleteCertificatePackResponse {
 }
 
 export const DeleteCertificatePackResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1685,7 +1684,7 @@ export const deleteCertificatePack: API.OperationMethod<
   DeleteCertificatePackResponse,
   DeleteCertificatePackError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCertificatePackRequest,
   output: DeleteCertificatePackResponse,
   errors: [CertificatePackNotFound, Forbidden],
@@ -1701,7 +1700,7 @@ export interface GetCertificatePackQuotaRequest {
 }
 
 export const GetCertificatePackQuotaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -1717,7 +1716,7 @@ export interface GetCertificatePackQuotaResponse {
 }
 
 export const GetCertificatePackQuotaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       advanced: Schema.optional(Schema.Union([Advanced, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1730,7 +1729,7 @@ export const getCertificatePackQuota: API.OperationMethod<
   GetCertificatePackQuotaResponse,
   GetCertificatePackQuotaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCertificatePackQuotaRequest,
   output: GetCertificatePackQuotaResponse,
   errors: [],
@@ -1746,7 +1745,7 @@ export interface GetUniversalSettingRequest {
 }
 
 export const GetUniversalSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -1763,7 +1762,7 @@ export interface GetUniversalSettingResponse {
 }
 
 export const GetUniversalSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1776,7 +1775,7 @@ export const getUniversalSetting: API.OperationMethod<
   GetUniversalSettingResponse,
   GetUniversalSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUniversalSettingRequest,
   output: GetUniversalSettingResponse,
   errors: [Forbidden],
@@ -1790,7 +1789,7 @@ export interface PatchUniversalSettingRequest {
 }
 
 export const PatchUniversalSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       enabled: Schema.optional(Schema.Boolean),
@@ -1808,7 +1807,7 @@ export interface PatchUniversalSettingResponse {
 }
 
 export const PatchUniversalSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1821,7 +1820,7 @@ export const patchUniversalSetting: API.OperationMethod<
   PatchUniversalSettingResponse,
   PatchUniversalSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchUniversalSettingRequest,
   output: PatchUniversalSettingResponse,
   errors: [Forbidden],
@@ -1839,7 +1838,7 @@ export interface GetVerificationRequest {
 }
 
 export const GetVerificationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       retry: Schema.optional(Schema.Literal(true)).pipe(T.HttpQuery("retry")),
@@ -1888,7 +1887,7 @@ export type GetVerificationResponse = {
 }[];
 
 export const GetVerificationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(Verification).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetVerificationResponse>;
 
@@ -1899,7 +1898,7 @@ export const getVerification: API.OperationMethod<
   GetVerificationResponse,
   GetVerificationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVerificationRequest,
   output: GetVerificationResponse,
   errors: [],
@@ -1914,7 +1913,7 @@ export interface PatchVerificationRequest {
 }
 
 export const PatchVerificationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificatePackId: Schema.String.pipe(T.HttpPath("certificatePackId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1939,7 +1938,7 @@ export interface PatchVerificationResponse {
 }
 
 export const PatchVerificationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       validationMethod: Schema.optional(
@@ -1968,7 +1967,7 @@ export const patchVerification: API.OperationMethod<
   PatchVerificationResponse,
   PatchVerificationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchVerificationRequest,
   output: PatchVerificationResponse,
   errors: [],

@@ -14,7 +14,7 @@ export interface MachinesOrgListInput {
   cursor?: string;
   limit?: number;
 }
-export const MachinesOrgListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesOrgListInput = /*@__PURE__*/ Schema.Struct({
   org_slug: Schema.String.pipe(T.PathParam()),
   include_deleted: Schema.optional(Schema.Boolean),
   region: Schema.optional(Schema.String),
@@ -60,7 +60,7 @@ export interface MachinesOrgListOutput {
   }[];
   next_cursor?: string;
 }
-export const MachinesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesOrgListOutput = /*@__PURE__*/ Schema.Struct({
   error_regions: Schema.optional(Schema.Array(Schema.String)),
   last_machine_id: Schema.optional(Schema.String),
   last_updated_at: Schema.optional(Schema.String),
@@ -121,7 +121,7 @@ export const MachinesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param cursor - Pagination cursor from previous response (takes precedence over updated_after). Note that there is no guarantee that all machines returned by this endpoint are sorted by their updated_at fields. Pagination may reveal machines older than the last updated_at.
  * @param limit - The number of machines to fetch (max of 1000). This limit is advisory. Responses may be shorter, or even empty, even when more machines remain. If omitted, the maximum is used
  */
-export const MachinesOrgList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesOrgList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesOrgListInput,
   outputSchema: MachinesOrgListOutput,
   errors: [Forbidden, NotFound] as const,

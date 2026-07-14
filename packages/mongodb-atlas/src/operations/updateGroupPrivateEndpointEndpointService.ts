@@ -11,7 +11,7 @@ export interface UpdateGroupPrivateEndpointEndpointServiceInput {
   pretty?: boolean;
 }
 export const UpdateGroupPrivateEndpointEndpointServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     endpointServiceId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const UpdateGroupPrivateEndpointEndpointServiceInput =
 // Output Schema
 export type UpdateGroupPrivateEndpointEndpointServiceOutput = void;
 export const UpdateGroupPrivateEndpointEndpointServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupPrivateEndpointEndpointServiceOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupPrivateEndpointEndpointServiceOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const UpdateGroupPrivateEndpointEndpointServiceOutput =
  * @param endpointServiceId - Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to update.
  */
 export const updateGroupPrivateEndpointEndpointService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupPrivateEndpointEndpointServiceInput,
     outputSchema: UpdateGroupPrivateEndpointEndpointServiceOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

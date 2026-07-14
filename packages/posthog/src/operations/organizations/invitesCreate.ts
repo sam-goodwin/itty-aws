@@ -40,7 +40,7 @@ export interface InvitesCreateInput {
   send_email?: boolean;
   combine_pending_invites?: boolean;
 }
-export const InvitesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvitesCreateInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   target_email: Schema.optional(Schema.String),
@@ -130,7 +130,7 @@ export interface InvitesCreateOutput {
   send_email?: boolean;
   combine_pending_invites?: boolean;
 }
-export const InvitesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvitesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   target_email: Schema.optional(Schema.String),
   first_name: Schema.optional(Schema.String),
@@ -183,7 +183,7 @@ export const InvitesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const invitesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const invitesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvitesCreateInput,
   outputSchema: InvitesCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

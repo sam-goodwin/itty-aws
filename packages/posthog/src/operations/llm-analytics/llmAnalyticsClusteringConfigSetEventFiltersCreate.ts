@@ -8,7 +8,7 @@ export interface LlmAnalyticsClusteringConfigSetEventFiltersCreateInput {
   event_filters: Record<string, unknown>[];
 }
 export const LlmAnalyticsClusteringConfigSetEventFiltersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     event_filters: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
   }).pipe(
@@ -25,7 +25,7 @@ export interface LlmAnalyticsClusteringConfigSetEventFiltersCreateOutput {
   updated_at: string;
 }
 export const LlmAnalyticsClusteringConfigSetEventFiltersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     event_filters: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     created_at: Schema.String,
     updated_at: Schema.String,
@@ -38,7 +38,7 @@ export const LlmAnalyticsClusteringConfigSetEventFiltersCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const llmAnalyticsClusteringConfigSetEventFiltersCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsClusteringConfigSetEventFiltersCreateInput,
     outputSchema: LlmAnalyticsClusteringConfigSetEventFiltersCreateOutput,
   }));

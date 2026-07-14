@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface CreateDepositDestinationInput {}
 export const CreateDepositDestinationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "POST", path: "/v2/deposit-destinations" }),
   ) as unknown as Schema.Codec<CreateDepositDestinationInput>;
 
@@ -35,7 +35,7 @@ export interface CreateDepositDestinationOutput {
   updatedAt: string;
 }
 export const CreateDepositDestinationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     depositDestinationId: Schema.String,
     accountId: Schema.String,
     type: Schema.Literals(["crypto"]),
@@ -77,9 +77,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const createDepositDestination = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateDepositDestinationInput,
-    outputSchema: CreateDepositDestinationOutput,
-  }),
-);
+export const createDepositDestination = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateDepositDestinationInput,
+  outputSchema: CreateDepositDestinationOutput,
+}));

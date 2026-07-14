@@ -12,7 +12,7 @@ export interface VisualReviewReposRunsListInput {
   search?: string;
 }
 export const VisualReviewReposRunsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     repo_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -61,7 +61,7 @@ export interface VisualReviewReposRunsListOutput {
   }[];
 }
 export const VisualReviewReposRunsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -123,9 +123,7 @@ export const VisualReviewReposRunsListOutput =
  * @param review_state - Filter by review state
  * @param search - Free-text search over branch, commit SHA, run type, and PR number
  */
-export const visualReviewReposRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VisualReviewReposRunsListInput,
-    outputSchema: VisualReviewReposRunsListOutput,
-  }),
-);
+export const visualReviewReposRunsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VisualReviewReposRunsListInput,
+  outputSchema: VisualReviewReposRunsListOutput,
+}));

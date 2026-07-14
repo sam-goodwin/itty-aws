@@ -12,7 +12,7 @@ export interface AlertsRetrieveInput {
   checks_limit?: number;
   checks_offset?: number;
 }
-export const AlertsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsRetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
   checks_date_from: Schema.optional(Schema.String),
@@ -314,7 +314,7 @@ export interface AlertsRetrieveOutput {
   investigation_inconclusive_action?: "notify" | "suppress";
   search_match_type?: "exact" | "similar" | null;
 }
-export const AlertsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsRetrieveOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   created_by: Schema.optional(
     Schema.NullOr(
@@ -510,7 +510,7 @@ export const AlertsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param id - A UUID string identifying this alert configuration.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const alertsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const alertsRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsRetrieveInput,
   outputSchema: AlertsRetrieveOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

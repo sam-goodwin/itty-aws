@@ -34,7 +34,7 @@ export interface PostTreasuryFinancialAccountsFinancialAccountInput {
   };
 }
 export const PostTreasuryFinancialAccountsFinancialAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     financial_account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     features: Schema.optional(
@@ -418,7 +418,7 @@ export interface PostTreasuryFinancialAccountsFinancialAccountOutput {
   supported_currencies: string[];
 }
 export const PostTreasuryFinancialAccountsFinancialAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active_features: Schema.optional(
       Schema.Array(
         Schema.Literals([
@@ -836,7 +836,7 @@ export const PostTreasuryFinancialAccountsFinancialAccountOutput =
  * <p>Updates the details of a FinancialAccount.</p>
  */
 export const PostTreasuryFinancialAccountsFinancialAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTreasuryFinancialAccountsFinancialAccountInput,
     outputSchema: PostTreasuryFinancialAccountsFinancialAccountOutput,
   }));

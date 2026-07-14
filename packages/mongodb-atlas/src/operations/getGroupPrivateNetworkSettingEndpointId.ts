@@ -11,7 +11,7 @@ export interface GetGroupPrivateNetworkSettingEndpointIdInput {
   pretty?: boolean;
 }
 export const GetGroupPrivateNetworkSettingEndpointIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     endpointId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GetGroupPrivateNetworkSettingEndpointIdInput =
 // Output Schema
 export type GetGroupPrivateNetworkSettingEndpointIdOutput = void;
 export const GetGroupPrivateNetworkSettingEndpointIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupPrivateNetworkSettingEndpointIdOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupPrivateNetworkSettingEndpointIdOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const GetGroupPrivateNetworkSettingEndpointIdOutput =
  * @param endpointId - Unique 22-character alphanumeric string that identifies the private endpoint to return. Atlas Data Federation supports AWS private endpoints using the AWS PrivateLink feature.
  */
 export const getGroupPrivateNetworkSettingEndpointId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupPrivateNetworkSettingEndpointIdInput,
     outputSchema: GetGroupPrivateNetworkSettingEndpointIdOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

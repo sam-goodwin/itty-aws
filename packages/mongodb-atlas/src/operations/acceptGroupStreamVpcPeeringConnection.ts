@@ -10,7 +10,7 @@ export interface AcceptGroupStreamVpcPeeringConnectionInput {
   envelope?: boolean;
 }
 export const AcceptGroupStreamVpcPeeringConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const AcceptGroupStreamVpcPeeringConnectionInput =
 // Output Schema
 export type AcceptGroupStreamVpcPeeringConnectionOutput = void;
 export const AcceptGroupStreamVpcPeeringConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AcceptGroupStreamVpcPeeringConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AcceptGroupStreamVpcPeeringConnectionOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const AcceptGroupStreamVpcPeeringConnectionOutput =
  * @param id - The VPC Peering Connection id.
  */
 export const acceptGroupStreamVpcPeeringConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AcceptGroupStreamVpcPeeringConnectionInput,
     outputSchema: AcceptGroupStreamVpcPeeringConnectionOutput,
     errors: [Forbidden, NotFound] as const,

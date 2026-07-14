@@ -10,7 +10,7 @@ export interface PostIdentityVerificationSessionsSessionCancelInput {
   expand?: string[];
 }
 export const PostIdentityVerificationSessionsSessionCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -222,7 +222,7 @@ export interface PostIdentityVerificationSessionsSessionCancelOutput {
   } | null;
 }
 export const PostIdentityVerificationSessionsSessionCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_reference_id: Schema.NullOr(Schema.String),
     client_secret: SensitiveOutputNullableString,
     created: Schema.Number,
@@ -374,7 +374,7 @@ export const PostIdentityVerificationSessionsSessionCancelOutput =
  * <p>Once canceled, future submission attempts are disabled. This cannot be undone. <a href="/docs/identity/verification-sessions#cancel">Learn more</a>.</p>
  */
 export const PostIdentityVerificationSessionsSessionCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostIdentityVerificationSessionsSessionCancelInput,
     outputSchema: PostIdentityVerificationSessionsSessionCancelOutput,
   }));

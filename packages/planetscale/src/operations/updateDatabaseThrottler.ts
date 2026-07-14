@@ -11,7 +11,7 @@ export interface UpdateDatabaseThrottlerInput {
   configurations?: string[];
 }
 export const UpdateDatabaseThrottlerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     ratio: Schema.optional(Schema.Number),
@@ -36,7 +36,7 @@ export interface UpdateDatabaseThrottlerOutput {
   configurations: { keyspace_name: string; ratio: number }[];
 }
 export const UpdateDatabaseThrottlerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyspaces: Schema.Array(Schema.String),
     configurable: Schema.Struct({
       id: Schema.String,
@@ -62,10 +62,8 @@ export const UpdateDatabaseThrottlerOutput =
  * @param ratio - A throttler ratio between 0 and 95 that will apply to all keyspaces in the database. 0 effectively disables throttler, while 95 drastically slows down deploy request migrations
  * @param configurations - If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace
  */
-export const updateDatabaseThrottler = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateDatabaseThrottlerInput,
-    outputSchema: UpdateDatabaseThrottlerOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const updateDatabaseThrottler = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateDatabaseThrottlerInput,
+  outputSchema: UpdateDatabaseThrottlerOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -12,7 +12,7 @@ export interface DeleteGroupDatabaseUserInput {
   pretty?: boolean;
 }
 export const DeleteGroupDatabaseUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     username: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const DeleteGroupDatabaseUserInput =
 // Output Schema
 export type DeleteGroupDatabaseUserOutput = void;
 export const DeleteGroupDatabaseUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupDatabaseUserOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupDatabaseUserOutput>;
 
 // The operation
 /**
@@ -57,10 +57,8 @@ export const DeleteGroupDatabaseUserOutput =
 | SCRAM-SHA | `awsIAMType`, `x509Type`, `ldapAuthType`, `oidcAuthType` | `NONE` | Alphanumeric string |
 
  */
-export const deleteGroupDatabaseUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupDatabaseUserInput,
-    outputSchema: DeleteGroupDatabaseUserOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const deleteGroupDatabaseUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupDatabaseUserInput,
+  outputSchema: DeleteGroupDatabaseUserOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

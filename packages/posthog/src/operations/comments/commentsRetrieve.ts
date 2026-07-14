@@ -8,7 +8,7 @@ export interface CommentsRetrieveInput {
   id: string;
   project_id: string;
 }
-export const CommentsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CommentsRetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -74,90 +74,88 @@ export interface CommentsRetrieveOutput {
   completed_at?: string | null;
   source_comment?: string | null;
 }
-export const CommentsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    created_by: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          uuid: Schema.optional(Schema.String),
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-          ),
-          role_at_organization: Schema.optional(
-            Schema.NullOr(
-              Schema.Union([
-                Schema.Literals([
-                  "engineering",
-                  "data",
-                  "product",
-                  "founder",
-                  "leadership",
-                  "marketing",
-                  "sales",
-                  "other",
-                ]),
-                Schema.Literals([""]),
+export const CommentsRetrieveOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  created_by: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
               ]),
-            ),
+              Schema.Literals([""]),
+            ]),
           ),
-        }),
-      ),
+        ),
+      }),
     ),
-    deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    mentions: Schema.optional(Schema.Array(Schema.Number)),
-    slug: Schema.optional(Schema.String),
-    is_task: Schema.optional(Schema.Boolean),
-    completed_by: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          uuid: Schema.optional(Schema.String),
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-          ),
-          role_at_organization: Schema.optional(
-            Schema.NullOr(
-              Schema.Union([
-                Schema.Literals([
-                  "engineering",
-                  "data",
-                  "product",
-                  "founder",
-                  "leadership",
-                  "marketing",
-                  "sales",
-                  "other",
-                ]),
-                Schema.Literals([""]),
+  ),
+  deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
+  mentions: Schema.optional(Schema.Array(Schema.Number)),
+  slug: Schema.optional(Schema.String),
+  is_task: Schema.optional(Schema.Boolean),
+  completed_by: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
               ]),
-            ),
+              Schema.Literals([""]),
+            ]),
           ),
-        }),
-      ),
+        ),
+      }),
     ),
-    content: Schema.optional(Schema.NullOr(Schema.String)),
-    rich_content: Schema.optional(Schema.Unknown),
-    version: Schema.optional(Schema.Number),
-    created_at: Schema.optional(Schema.String),
-    item_id: Schema.optional(Schema.NullOr(Schema.String)),
-    item_context: Schema.optional(Schema.Unknown),
-    scope: Schema.optional(Schema.String),
-    completed_at: Schema.optional(Schema.NullOr(Schema.String)),
-    source_comment: Schema.optional(Schema.NullOr(Schema.String)),
-  },
-) as unknown as Schema.Codec<CommentsRetrieveOutput>;
+  ),
+  content: Schema.optional(Schema.NullOr(Schema.String)),
+  rich_content: Schema.optional(Schema.Unknown),
+  version: Schema.optional(Schema.Number),
+  created_at: Schema.optional(Schema.String),
+  item_id: Schema.optional(Schema.NullOr(Schema.String)),
+  item_context: Schema.optional(Schema.Unknown),
+  scope: Schema.optional(Schema.String),
+  completed_at: Schema.optional(Schema.NullOr(Schema.String)),
+  source_comment: Schema.optional(Schema.NullOr(Schema.String)),
+}) as unknown as Schema.Codec<CommentsRetrieveOutput>;
 
 // The operation
 /**
@@ -165,7 +163,7 @@ export const CommentsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param id - A UUID string identifying this comment.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const commentsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const commentsRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: CommentsRetrieveInput,
   outputSchema: CommentsRetrieveOutput,
   errors: [Forbidden, NotFound] as const,

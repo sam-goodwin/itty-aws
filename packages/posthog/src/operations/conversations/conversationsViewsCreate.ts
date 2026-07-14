@@ -34,7 +34,7 @@ export interface ConversationsViewsCreateInput {
   } | null;
 }
 export const ConversationsViewsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     short_id: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface ConversationsViewsCreateOutput {
   } | null;
 }
 export const ConversationsViewsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     short_id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -157,10 +157,8 @@ export const ConversationsViewsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const conversationsViewsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConversationsViewsCreateInput,
-    outputSchema: ConversationsViewsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const conversationsViewsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConversationsViewsCreateInput,
+  outputSchema: ConversationsViewsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

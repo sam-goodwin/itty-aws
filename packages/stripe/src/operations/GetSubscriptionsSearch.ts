@@ -15,7 +15,7 @@ export interface GetSubscriptionsSearchInput {
   query: string;
 }
 export const GetSubscriptionsSearchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     page: Schema.optional(Schema.String),
@@ -789,7 +789,7 @@ export interface GetSubscriptionsSearchOutput {
   url: string;
 }
 export const GetSubscriptionsSearchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         application: Schema.NullOr(
@@ -1770,7 +1770,7 @@ export const GetSubscriptionsSearchOutput =
  * @param query - The search query string. See [search query language](https://docs.stripe.com/search#search-query-language) and the list of supported [query fields for subscriptions](https://docs.stripe.com/search#query-fields-for-subscriptions).
  */
 export const GetSubscriptionsSearch =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: GetSubscriptionsSearchInput,
     outputSchema: GetSubscriptionsSearchOutput,
     pagination: {

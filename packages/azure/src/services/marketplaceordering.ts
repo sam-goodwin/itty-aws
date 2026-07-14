@@ -16,7 +16,7 @@ export interface MarketplaceAgreementsCancelInput {
   planId: string;
 }
 export const MarketplaceAgreementsCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     publisherId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
@@ -36,7 +36,7 @@ export interface MarketplaceAgreementsCancelOutput {
   type?: string;
 }
 export const MarketplaceAgreementsCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -52,12 +52,10 @@ export const MarketplaceAgreementsCancelOutput =
  * @param offerId - Offer identifier string of image being deployed.
  * @param planId - Plan identifier string of image being deployed.
  */
-export const MarketplaceAgreementsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MarketplaceAgreementsCancelInput,
-    outputSchema: MarketplaceAgreementsCancelOutput,
-  }),
-);
+export const MarketplaceAgreementsCancel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MarketplaceAgreementsCancelInput,
+  outputSchema: MarketplaceAgreementsCancelOutput,
+}));
 // Input Schema
 export interface MarketplaceAgreementsCreateInput {
   offerType: "virtualmachine";
@@ -89,7 +87,7 @@ export interface MarketplaceAgreementsCreateInput {
   type?: string;
 }
 export const MarketplaceAgreementsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     offerType: Schema.Literals(["virtualmachine"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     publisherId: Schema.String.pipe(T.PathParam()),
@@ -140,7 +138,7 @@ export interface MarketplaceAgreementsCreateOutput {
   type?: string;
 }
 export const MarketplaceAgreementsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -157,12 +155,10 @@ export const MarketplaceAgreementsCreateOutput =
  * @param offerId - Offer identifier string of image being deployed.
  * @param planId - Plan identifier string of image being deployed.
  */
-export const MarketplaceAgreementsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MarketplaceAgreementsCreateInput,
-    outputSchema: MarketplaceAgreementsCreateOutput,
-  }),
-);
+export const MarketplaceAgreementsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MarketplaceAgreementsCreateInput,
+  outputSchema: MarketplaceAgreementsCreateOutput,
+}));
 // Input Schema
 export interface MarketplaceAgreementsGetInput {
   subscriptionId: string;
@@ -172,7 +168,7 @@ export interface MarketplaceAgreementsGetInput {
   planId: string;
 }
 export const MarketplaceAgreementsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     offerType: Schema.Literals(["virtualmachine"]).pipe(T.PathParam()),
     publisherId: Schema.String.pipe(T.PathParam()),
@@ -193,7 +189,7 @@ export interface MarketplaceAgreementsGetOutput {
   type?: string;
 }
 export const MarketplaceAgreementsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -210,12 +206,10 @@ export const MarketplaceAgreementsGetOutput =
  * @param offerId - Offer identifier string of image being deployed.
  * @param planId - Plan identifier string of image being deployed.
  */
-export const MarketplaceAgreementsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MarketplaceAgreementsGetInput,
-    outputSchema: MarketplaceAgreementsGetOutput,
-  }),
-);
+export const MarketplaceAgreementsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MarketplaceAgreementsGetInput,
+  outputSchema: MarketplaceAgreementsGetOutput,
+}));
 // Input Schema
 export interface MarketplaceAgreementsGetAgreementInput {
   subscriptionId: string;
@@ -224,7 +218,7 @@ export interface MarketplaceAgreementsGetAgreementInput {
   planId: string;
 }
 export const MarketplaceAgreementsGetAgreementInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     publisherId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
@@ -244,7 +238,7 @@ export interface MarketplaceAgreementsGetAgreementOutput {
   type?: string;
 }
 export const MarketplaceAgreementsGetAgreementOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -261,7 +255,7 @@ export const MarketplaceAgreementsGetAgreementOutput =
  * @param planId - Plan identifier string of image being deployed.
  */
 export const MarketplaceAgreementsGetAgreement =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceAgreementsGetAgreementInput,
     outputSchema: MarketplaceAgreementsGetAgreementOutput,
   }));
@@ -270,7 +264,7 @@ export interface MarketplaceAgreementsListInput {
   subscriptionId: string;
 }
 export const MarketplaceAgreementsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -285,7 +279,7 @@ export interface MarketplaceAgreementsListOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const MarketplaceAgreementsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -304,12 +298,10 @@ export const MarketplaceAgreementsListOutput =
  * @param api-version - The API version to use for the request.
  * @param subscriptionId - The subscription ID that identifies an Azure subscription.
  */
-export const MarketplaceAgreementsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MarketplaceAgreementsListInput,
-    outputSchema: MarketplaceAgreementsListOutput,
-  }),
-);
+export const MarketplaceAgreementsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MarketplaceAgreementsListInput,
+  outputSchema: MarketplaceAgreementsListOutput,
+}));
 // Input Schema
 export interface MarketplaceAgreementsSignInput {
   subscriptionId: string;
@@ -318,7 +310,7 @@ export interface MarketplaceAgreementsSignInput {
   planId: string;
 }
 export const MarketplaceAgreementsSignInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     publisherId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
@@ -338,7 +330,7 @@ export interface MarketplaceAgreementsSignOutput {
   type?: string;
 }
 export const MarketplaceAgreementsSignOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -354,17 +346,13 @@ export const MarketplaceAgreementsSignOutput =
  * @param offerId - Offer identifier string of image being deployed.
  * @param planId - Plan identifier string of image being deployed.
  */
-export const MarketplaceAgreementsSign = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MarketplaceAgreementsSignInput,
-    outputSchema: MarketplaceAgreementsSignOutput,
-  }),
-);
+export const MarketplaceAgreementsSign = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MarketplaceAgreementsSignInput,
+  outputSchema: MarketplaceAgreementsSignOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.MarketplaceOrdering/operations",
@@ -385,7 +373,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -410,7 +398,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for the request.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

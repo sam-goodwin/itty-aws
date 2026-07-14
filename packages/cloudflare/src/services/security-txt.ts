@@ -47,7 +47,7 @@ interface GetSecurityTxtResponse2 {
   policy?: string[] | null;
   preferredLanguages?: string | null;
 }
-const GetSecurityTxtResponse2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GetSecurityTxtResponse2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     acknowledgments: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -90,7 +90,7 @@ const GetSecurityTxtResponse2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -102,7 +102,7 @@ interface Error2 {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -129,16 +129,15 @@ export interface GetSecurityTxtRequest {
   zoneId: string;
 }
 
-export const GetSecurityTxtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/security-center/securitytxt",
-      }),
-    ),
+export const GetSecurityTxtRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/security-center/securitytxt",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetSecurityTxtRequest>;
 
 export type GetSecurityTxtResponse =
@@ -156,7 +155,7 @@ export type GetSecurityTxtResponse =
   | string;
 
 export const GetSecurityTxtResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([GetSecurityTxtResponse2, Schema.String]).pipe(
       T.ResponsePath("result"),
     ),
@@ -169,7 +168,7 @@ export const getSecurityTxt: API.OperationMethod<
   GetSecurityTxtResponse,
   GetSecurityTxtError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSecurityTxtRequest,
   output: GetSecurityTxtResponse,
   errors: [Forbidden],
@@ -198,36 +197,35 @@ export interface PutSecurityTxtRequest {
   preferredLanguages?: string;
 }
 
-export const PutSecurityTxtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      acknowledgments: Schema.optional(Schema.Array(Schema.String)),
-      canonical: Schema.optional(Schema.Array(Schema.String)),
-      contact: Schema.optional(Schema.Array(Schema.String)),
-      enabled: Schema.optional(Schema.Boolean),
-      encryption: Schema.optional(Schema.Array(Schema.String)),
-      expires: Schema.optional(Schema.String),
-      hiring: Schema.optional(Schema.Array(Schema.String)),
-      policy: Schema.optional(Schema.Array(Schema.String)),
-      preferredLanguages: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        acknowledgments: "acknowledgments",
-        canonical: "canonical",
-        contact: "contact",
-        enabled: "enabled",
-        encryption: "encryption",
-        expires: "expires",
-        hiring: "hiring",
-        policy: "policy",
-        preferredLanguages: "preferred_languages",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/security-center/securitytxt",
-      }),
-    ),
+export const PutSecurityTxtRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    acknowledgments: Schema.optional(Schema.Array(Schema.String)),
+    canonical: Schema.optional(Schema.Array(Schema.String)),
+    contact: Schema.optional(Schema.Array(Schema.String)),
+    enabled: Schema.optional(Schema.Boolean),
+    encryption: Schema.optional(Schema.Array(Schema.String)),
+    expires: Schema.optional(Schema.String),
+    hiring: Schema.optional(Schema.Array(Schema.String)),
+    policy: Schema.optional(Schema.Array(Schema.String)),
+    preferredLanguages: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      acknowledgments: "acknowledgments",
+      canonical: "canonical",
+      contact: "contact",
+      enabled: "enabled",
+      encryption: "encryption",
+      expires: "expires",
+      hiring: "hiring",
+      policy: "policy",
+      preferredLanguages: "preferred_languages",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/security-center/securitytxt",
+    }),
+  ),
 ) as unknown as Schema.Codec<PutSecurityTxtRequest>;
 
 export interface PutSecurityTxtResponse {
@@ -248,7 +246,7 @@ export interface PutSecurityTxtResponse {
 }
 
 export const PutSecurityTxtResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -266,7 +264,7 @@ export const putSecurityTxt: API.OperationMethod<
   PutSecurityTxtResponse,
   PutSecurityTxtError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSecurityTxtRequest,
   output: PutSecurityTxtResponse,
   errors: [Forbidden, SecurityTxtInvalid],
@@ -278,7 +276,7 @@ export interface DeleteSecurityTxtRequest {
 }
 
 export const DeleteSecurityTxtRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -307,7 +305,7 @@ export interface DeleteSecurityTxtResponse {
 }
 
 export const DeleteSecurityTxtResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -322,7 +320,7 @@ export const deleteSecurityTxt: API.OperationMethod<
   DeleteSecurityTxtResponse,
   DeleteSecurityTxtError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecurityTxtRequest,
   output: DeleteSecurityTxtResponse,
   errors: [Forbidden],

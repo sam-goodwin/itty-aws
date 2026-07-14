@@ -5,9 +5,7 @@ import { Forbidden } from "../errors.ts";
 
 // Input Schema
 export interface V1ListAllProjectsInput {}
-export const V1ListAllProjectsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const V1ListAllProjectsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v1/projects" }),
 ) as unknown as Schema.Codec<V1ListAllProjectsInput>;
 
@@ -43,7 +41,7 @@ export type V1ListAllProjectsOutput = {
     release_channel: string;
   };
 }[];
-export const V1ListAllProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const V1ListAllProjectsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
     ref: Schema.String,
@@ -84,7 +82,7 @@ export const V1ListAllProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  *
  * Returns a list of all projects you've previously created.
  */
-export const v1ListAllProjects = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ListAllProjects = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ListAllProjectsInput,
   outputSchema: V1ListAllProjectsOutput,
   errors: [Forbidden] as const,

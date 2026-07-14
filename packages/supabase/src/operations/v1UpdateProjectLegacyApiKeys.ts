@@ -9,7 +9,7 @@ export interface V1UpdateProjectLegacyApiKeysInput {
   enabled: boolean;
 }
 export const V1UpdateProjectLegacyApiKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     enabled: Schema.Boolean,
   }).pipe(
@@ -21,7 +21,7 @@ export interface V1UpdateProjectLegacyApiKeysOutput {
   enabled: boolean;
 }
 export const V1UpdateProjectLegacyApiKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
   }) as unknown as Schema.Codec<V1UpdateProjectLegacyApiKeysOutput>;
 
@@ -33,7 +33,7 @@ export const V1UpdateProjectLegacyApiKeysOutput =
  * @param enabled - Boolean string, true or false
  */
 export const v1UpdateProjectLegacyApiKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1UpdateProjectLegacyApiKeysInput,
     outputSchema: V1UpdateProjectLegacyApiKeysOutput,
     errors: [BadRequest, Forbidden] as const,

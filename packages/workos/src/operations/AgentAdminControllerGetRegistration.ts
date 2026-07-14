@@ -8,7 +8,7 @@ export interface AgentAdminControllerGetRegistrationInput {
   id: string;
 }
 export const AgentAdminControllerGetRegistrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/agents/registrations/{id}" }),
@@ -43,7 +43,7 @@ export interface AgentAdminControllerGetRegistrationOutput {
   updated_at: string;
 }
 export const AgentAdminControllerGetRegistrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     agent_identity: Schema.Struct({
       id: Schema.String,
@@ -84,7 +84,7 @@ export const AgentAdminControllerGetRegistrationOutput =
  * @param id - The unique ID of the agent registration.
  */
 export const AgentAdminControllerGetRegistration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentAdminControllerGetRegistrationInput,
     outputSchema: AgentAdminControllerGetRegistrationOutput,
     errors: [NotFound] as const,

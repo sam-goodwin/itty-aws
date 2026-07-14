@@ -25,7 +25,7 @@ const svc = T.Service({
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig {}
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig",
   });
 
@@ -47,7 +47,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOper
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatew
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -79,7 +79,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatew
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceOverride: Schema.optional(
       GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor,
     ),
@@ -94,7 +94,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery {
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiGateway: Schema.optional(
       GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway,
     ),
@@ -108,7 +108,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway {
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assignedIps: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway",
@@ -120,7 +120,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1Hub {
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1Hub: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1Hub> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     internetGateway: Schema.optional(
       GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway,
     ),
@@ -137,7 +137,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputType: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -155,7 +155,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputType: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -173,7 +173,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputType: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -197,7 +197,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceInfo: Schema.optional(
       GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo,
     ),
@@ -229,7 +229,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig {
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowedClientHeaders: Schema.optional(Schema.Array(Schema.String)),
     metadataHeaders: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -277,7 +277,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     serviceDiscovery: Schema.optional(
       GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery,
@@ -311,7 +311,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResp
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityGateways: Schema.optional(
       Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway),
     ),
@@ -330,7 +330,7 @@ export interface AllocatedConnection {
 }
 
 export const AllocatedConnection: Schema.Codec<AllocatedConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pscUri: Schema.optional(Schema.String),
     ingressPort: Schema.optional(Schema.Number),
   }).annotate({ identifier: "AllocatedConnection" });
@@ -372,7 +372,7 @@ export interface AppGateway {
 }
 
 export const AppGateway: Schema.Codec<AppGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     satisfiesPzs: Schema.optional(Schema.Boolean),
     displayName: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -398,7 +398,7 @@ export interface ListAppGatewaysResponse {
 }
 
 export const ListAppGatewaysResponse: Schema.Codec<ListAppGatewaysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appGateways: Schema.optional(Schema.Array(AppGateway)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -422,7 +422,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperatio
 }
 
 export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
@@ -453,7 +453,7 @@ export interface GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperat
 }
 
 export const GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
@@ -474,7 +474,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ports: Schema.optional(Schema.Array(Schema.Number)),
     hostname: Schema.optional(Schema.String),
   }).annotate({
@@ -487,7 +487,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoSe
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -500,7 +500,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(
       GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount,
     ),
@@ -528,7 +528,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -571,7 +571,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1AppConnector: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1AppConnector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     principalInfo: Schema.optional(
@@ -599,7 +599,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     appConnectors: Schema.optional(
       Schema.Array(GoogleCloudBeyondcorpAppconnectorsV1AppConnector),
@@ -615,7 +615,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwo
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -630,7 +630,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint {
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hostname: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
   }).annotate({
@@ -643,7 +643,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExter
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoints: Schema.optional(
       Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint),
     ),
@@ -658,7 +658,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy {
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy",
@@ -676,7 +676,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream {
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     network: Schema.optional(
       GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork,
     ),
@@ -715,7 +715,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1Application {
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1Application: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     endpointMatchers: Schema.optional(
@@ -734,7 +734,7 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1Application: Schema.Codec<Go
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -752,7 +752,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
 }
 
 export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     ingressPort: Schema.optional(Schema.Number),
     uri: Schema.optional(Schema.String),
@@ -770,7 +770,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEn
 }
 
 export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
   }).annotate({
@@ -815,7 +815,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
 }
 
 export const GoogleCloudBeyondcorpAppconnectionsV1AppConnection: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1AppConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gateway: Schema.optional(
       GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway,
     ),
@@ -845,7 +845,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsRespo
 }
 
 export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appConnection: Schema.optional(
       GoogleCloudBeyondcorpAppconnectionsV1AppConnection,
     ),
@@ -865,7 +865,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsRespo
 }
 
 export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appConnectionDetails: Schema.optional(
       Schema.Array(
         GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails,
@@ -891,7 +891,7 @@ export interface GoogleIamV1AuditLogConfig {
 }
 
 export const GoogleIamV1AuditLogConfig: Schema.Codec<GoogleIamV1AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
@@ -904,7 +904,7 @@ export interface GoogleIamV1AuditConfig {
 }
 
 export const GoogleIamV1AuditConfig: Schema.Codec<GoogleIamV1AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
   }).annotate({ identifier: "GoogleIamV1AuditConfig" });
@@ -921,7 +921,7 @@ export interface GoogleTypeExpr {
 }
 
 export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -938,7 +938,7 @@ export interface GoogleIamV1Binding {
 }
 
 export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
     condition: Schema.optional(GoogleTypeExpr),
@@ -956,7 +956,7 @@ export interface GoogleIamV1Policy {
 }
 
 export const GoogleIamV1Policy: Schema.Codec<GoogleIamV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
     auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
@@ -979,7 +979,7 @@ export interface CloudSecurityZerotrustApplinkAppConnectorProtoGateway {
 }
 
 export const CloudSecurityZerotrustApplinkAppConnectorProtoGateway: Schema.Codec<CloudSecurityZerotrustApplinkAppConnectorProtoGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     interface: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1004,7 +1004,7 @@ export interface GoogleCloudLocationLocation {
 }
 
 export const GoogleCloudLocationLocation: Schema.Codec<GoogleCloudLocationLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     name: Schema.optional(Schema.String),
@@ -1020,7 +1020,7 @@ export interface GoogleCloudLocationListLocationsResponse {
 }
 
 export const GoogleCloudLocationListLocationsResponse: Schema.Codec<GoogleCloudLocationListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudLocationListLocationsResponse" });
@@ -1033,7 +1033,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
 }
 
 export const GoogleIamV1SetIamPolicyRequest: Schema.Codec<GoogleIamV1SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     policy: Schema.optional(GoogleIamV1Policy),
   }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
@@ -1048,7 +1048,7 @@ export interface GoogleRpcStatus {
 }
 
 export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1070,7 +1070,7 @@ export interface GoogleLongrunningOperation {
 }
 
 export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1096,7 +1096,7 @@ export interface GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadat
 }
 
 export const GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
@@ -1115,7 +1115,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubS
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pubsubSubscription: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1140,7 +1140,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMeta
 }
 
 export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusMessage: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
@@ -1171,7 +1171,7 @@ export interface GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperati
 }
 
 export const GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusMessage: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
@@ -1190,7 +1190,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig {
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pubsubNotification: Schema.optional(
       GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig,
     ),
@@ -1206,7 +1206,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ImageConfig {
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1ImageConfig: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1ImageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stableImage: Schema.optional(Schema.String),
     targetImage: Schema.optional(Schema.String),
   }).annotate({
@@ -1225,7 +1225,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig 
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notificationConfig: Schema.optional(
       GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig,
     ),
@@ -1247,7 +1247,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigRespon
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instanceConfig: Schema.optional(
       GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig,
     ),
@@ -1268,7 +1268,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentConfigVersion: Schema.optional(Schema.String),
     extendedStatus: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -1288,7 +1288,7 @@ export interface Tunnelv1ProtoTunnelerError {
 }
 
 export const Tunnelv1ProtoTunnelerError: Schema.Codec<Tunnelv1ProtoTunnelerError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     retryable: Schema.optional(Schema.Boolean),
     err: Schema.optional(Schema.String),
   }).annotate({ identifier: "Tunnelv1ProtoTunnelerError" });
@@ -1311,7 +1311,7 @@ export interface CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig 
 }
 
 export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig: Schema.Codec<CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gateway: Schema.optional(
       Schema.Array(CloudSecurityZerotrustApplinkAppConnectorProtoGateway),
     ),
@@ -1340,7 +1340,7 @@ export interface Tunnelv1ProtoTunnelerInfo {
 }
 
 export const Tunnelv1ProtoTunnelerInfo: Schema.Codec<Tunnelv1ProtoTunnelerInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latestRetryTime: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     totalRetryCount: Schema.optional(Schema.Number),
@@ -1360,7 +1360,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails {
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentConfigVersion: Schema.optional(Schema.String),
     extendedStatus: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -1374,7 +1374,7 @@ export const GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails: Schema.
 export interface CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails {}
 
 export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails: Schema.Codec<CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails",
   });
@@ -1397,7 +1397,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetada
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
@@ -1428,7 +1428,7 @@ export interface GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetad
 }
 
 export const GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -1451,7 +1451,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse
 }
 
 export const GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appConnections: Schema.optional(
       Schema.Array(GoogleCloudBeyondcorpAppconnectionsV1AppConnection),
     ),
@@ -1472,7 +1472,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceInfo: Schema.optional(
       GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo,
     ),
@@ -1500,7 +1500,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationM
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -1519,7 +1519,7 @@ export interface GoogleIamV1TestIamPermissionsResponse {
 }
 
 export const GoogleIamV1TestIamPermissionsResponse: Schema.Codec<GoogleIamV1TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
 
@@ -1533,7 +1533,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applications: Schema.optional(
       Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1Application),
     ),
@@ -1562,7 +1562,7 @@ export interface AppGatewayOperationMetadata {
 }
 
 export const AppGatewayOperationMetadata: Schema.Codec<AppGatewayOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
@@ -1575,7 +1575,7 @@ export const AppGatewayOperationMetadata: Schema.Codec<AppGatewayOperationMetada
 export interface GoogleLongrunningCancelOperationRequest {}
 
 export const GoogleLongrunningCancelOperationRequest: Schema.Codec<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
   });
 
@@ -1585,28 +1585,28 @@ export interface GoogleIamV1TestIamPermissionsRequest {
 }
 
 export const GoogleIamV1TestIamPermissionsRequest: Schema.Codec<GoogleIamV1TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails {}
 
 export const GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails",
   });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails {}
 
 export const GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails",
   });
 
 export interface CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails {}
 
 export const CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails: Schema.Codec<CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails",
   });
 
@@ -1620,7 +1620,7 @@ export interface GoogleLongrunningListOperationsResponse {
 }
 
 export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
@@ -1644,7 +1644,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperation
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusMessage: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
@@ -1669,7 +1669,7 @@ export interface GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails {
 }
 
 export const GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails: Schema.Codec<GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentConfigVersion: Schema.optional(Schema.String),
     extendedStatus: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -1683,7 +1683,7 @@ export const GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails: Schem
 export interface GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails {}
 
 export const GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails: Schema.Codec<GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails",
   });
 
@@ -1705,7 +1705,7 @@ export interface GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetad
 }
 
 export const GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusMessage: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
@@ -1786,7 +1786,7 @@ export interface ListOrganizationsLocationsOperationsRequest {
 }
 
 export const ListOrganizationsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1802,7 +1802,7 @@ export const ListOrganizationsLocationsOperationsRequest =
 export type ListOrganizationsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
 export const ListOrganizationsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+  /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListOrganizationsLocationsOperationsError =
   | DefaultErrors
@@ -1815,7 +1815,7 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsOperationsResponse,
   ListOrganizationsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOperationsRequest,
   output: ListOrganizationsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1833,7 +1833,7 @@ export interface CancelOrganizationsLocationsOperationsRequest {
 }
 
 export const CancelOrganizationsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleLongrunningCancelOperationRequest).pipe(
       T.HttpBody(),
@@ -1845,7 +1845,7 @@ export const CancelOrganizationsLocationsOperationsRequest =
 
 export type CancelOrganizationsLocationsOperationsResponse = Empty;
 export const CancelOrganizationsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type CancelOrganizationsLocationsOperationsError =
   | DefaultErrors
@@ -1860,7 +1860,7 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsResponse,
   CancelOrganizationsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelOrganizationsLocationsOperationsRequest,
   output: CancelOrganizationsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1872,7 +1872,7 @@ export interface GetOrganizationsLocationsOperationsRequest {
 }
 
 export const GetOrganizationsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1882,7 +1882,7 @@ export const GetOrganizationsLocationsOperationsRequest =
 export type GetOrganizationsLocationsOperationsResponse =
   GoogleLongrunningOperation;
 export const GetOrganizationsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetOrganizationsLocationsOperationsError =
   | DefaultErrors
@@ -1895,7 +1895,7 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsResponse,
   GetOrganizationsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsOperationsRequest,
   output: GetOrganizationsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1907,7 +1907,7 @@ export interface DeleteOrganizationsLocationsOperationsRequest {
 }
 
 export const DeleteOrganizationsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -1916,7 +1916,7 @@ export const DeleteOrganizationsLocationsOperationsRequest =
 
 export type DeleteOrganizationsLocationsOperationsResponse = Empty;
 export const DeleteOrganizationsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteOrganizationsLocationsOperationsError =
   | DefaultErrors
@@ -1931,7 +1931,7 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   DeleteOrganizationsLocationsOperationsResponse,
   DeleteOrganizationsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsOperationsRequest,
   output: DeleteOrganizationsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1951,7 +1951,7 @@ export interface ListProjectsLocationsRequest {
 }
 
 export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
@@ -1967,7 +1967,7 @@ export const ListProjectsLocationsRequest =
 export type ListProjectsLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
 export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
+  /*@__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1977,7 +1977,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsResponse,
   ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1993,7 +1993,7 @@ export interface GetProjectsLocationsRequest {
 }
 
 export const GetProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -2002,7 +2002,7 @@ export const GetProjectsLocationsRequest =
 
 export type GetProjectsLocationsResponse = GoogleCloudLocationLocation;
 export const GetProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationLocation;
+  /*@__PURE__*/ GoogleCloudLocationLocation;
 
 export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2012,7 +2012,7 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsResponse,
   GetProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -2026,7 +2026,7 @@ export interface TestIamPermissionsProjectsLocationsAppConnectorsRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
       T.HttpBody(),
@@ -2043,7 +2043,7 @@ export const TestIamPermissionsProjectsLocationsAppConnectorsRequest =
 export type TestIamPermissionsProjectsLocationsAppConnectorsResponse =
   GoogleIamV1TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
+  /*@__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsAppConnectorsError =
   | DefaultErrors
@@ -2058,7 +2058,7 @@ export const testIamPermissionsProjectsLocationsAppConnectors: API.OperationMeth
   TestIamPermissionsProjectsLocationsAppConnectorsResponse,
   TestIamPermissionsProjectsLocationsAppConnectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsAppConnectorsRequest,
   output: TestIamPermissionsProjectsLocationsAppConnectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2078,7 +2078,7 @@ export interface CreateProjectsLocationsAppConnectorsRequest {
 }
 
 export const CreateProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appConnectorId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("appConnectorId"),
     ),
@@ -2102,7 +2102,7 @@ export const CreateProjectsLocationsAppConnectorsRequest =
 export type CreateProjectsLocationsAppConnectorsResponse =
   GoogleLongrunningOperation;
 export const CreateProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsAppConnectorsError =
   | DefaultErrors
@@ -2117,7 +2117,7 @@ export const createProjectsLocationsAppConnectors: API.OperationMethod<
   CreateProjectsLocationsAppConnectorsResponse,
   CreateProjectsLocationsAppConnectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppConnectorsRequest,
   output: CreateProjectsLocationsAppConnectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2129,7 +2129,7 @@ export interface GetProjectsLocationsAppConnectorsRequest {
 }
 
 export const GetProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -2139,7 +2139,7 @@ export const GetProjectsLocationsAppConnectorsRequest =
 export type GetProjectsLocationsAppConnectorsResponse =
   GoogleCloudBeyondcorpAppconnectorsV1AppConnector;
 export const GetProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1AppConnector;
+  /*@__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1AppConnector;
 
 export type GetProjectsLocationsAppConnectorsError =
   | DefaultErrors
@@ -2152,7 +2152,7 @@ export const getProjectsLocationsAppConnectors: API.OperationMethod<
   GetProjectsLocationsAppConnectorsResponse,
   GetProjectsLocationsAppConnectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppConnectorsRequest,
   output: GetProjectsLocationsAppConnectorsResponse,
   errors: [NotFound, Forbidden],
@@ -2166,7 +2166,7 @@ export interface ReportStatusProjectsLocationsAppConnectorsRequest {
 }
 
 export const ReportStatusProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appConnector: Schema.String.pipe(T.HttpPath("appConnector")),
     body: Schema.optional(
       GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest,
@@ -2183,7 +2183,7 @@ export const ReportStatusProjectsLocationsAppConnectorsRequest =
 export type ReportStatusProjectsLocationsAppConnectorsResponse =
   GoogleLongrunningOperation;
 export const ReportStatusProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ReportStatusProjectsLocationsAppConnectorsError =
   | DefaultErrors
@@ -2198,7 +2198,7 @@ export const reportStatusProjectsLocationsAppConnectors: API.OperationMethod<
   ReportStatusProjectsLocationsAppConnectorsResponse,
   ReportStatusProjectsLocationsAppConnectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReportStatusProjectsLocationsAppConnectorsRequest,
   output: ReportStatusProjectsLocationsAppConnectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2210,7 +2210,7 @@ export interface ResolveInstanceConfigProjectsLocationsAppConnectorsRequest {
 }
 
 export const ResolveInstanceConfigProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appConnector: Schema.String.pipe(T.HttpPath("appConnector")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+appConnector}:resolveInstanceConfig" }),
@@ -2220,7 +2220,7 @@ export const ResolveInstanceConfigProjectsLocationsAppConnectorsRequest =
 export type ResolveInstanceConfigProjectsLocationsAppConnectorsResponse =
   GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse;
 export const ResolveInstanceConfigProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse;
+  /*@__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse;
 
 export type ResolveInstanceConfigProjectsLocationsAppConnectorsError =
   | DefaultErrors
@@ -2233,7 +2233,7 @@ export const resolveInstanceConfigProjectsLocationsAppConnectors: API.OperationM
   ResolveInstanceConfigProjectsLocationsAppConnectorsResponse,
   ResolveInstanceConfigProjectsLocationsAppConnectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResolveInstanceConfigProjectsLocationsAppConnectorsRequest,
   output: ResolveInstanceConfigProjectsLocationsAppConnectorsResponse,
   errors: [NotFound, Forbidden],
@@ -2253,7 +2253,7 @@ export interface PatchProjectsLocationsAppConnectorsRequest {
 }
 
 export const PatchProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
@@ -2271,7 +2271,7 @@ export const PatchProjectsLocationsAppConnectorsRequest =
 export type PatchProjectsLocationsAppConnectorsResponse =
   GoogleLongrunningOperation;
 export const PatchProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchProjectsLocationsAppConnectorsError =
   | DefaultErrors
@@ -2286,7 +2286,7 @@ export const patchProjectsLocationsAppConnectors: API.OperationMethod<
   PatchProjectsLocationsAppConnectorsResponse,
   PatchProjectsLocationsAppConnectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppConnectorsRequest,
   output: PatchProjectsLocationsAppConnectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2302,7 +2302,7 @@ export interface DeleteProjectsLocationsAppConnectorsRequest {
 }
 
 export const DeleteProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
@@ -2316,7 +2316,7 @@ export const DeleteProjectsLocationsAppConnectorsRequest =
 export type DeleteProjectsLocationsAppConnectorsResponse =
   GoogleLongrunningOperation;
 export const DeleteProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsAppConnectorsError =
   | DefaultErrors
@@ -2331,7 +2331,7 @@ export const deleteProjectsLocationsAppConnectors: API.OperationMethod<
   DeleteProjectsLocationsAppConnectorsResponse,
   DeleteProjectsLocationsAppConnectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppConnectorsRequest,
   output: DeleteProjectsLocationsAppConnectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2345,7 +2345,7 @@ export interface GetIamPolicyProjectsLocationsAppConnectorsRequest {
 }
 
 export const GetIamPolicyProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -2358,7 +2358,7 @@ export const GetIamPolicyProjectsLocationsAppConnectorsRequest =
 export type GetIamPolicyProjectsLocationsAppConnectorsResponse =
   GoogleIamV1Policy;
 export const GetIamPolicyProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyProjectsLocationsAppConnectorsError =
   | DefaultErrors
@@ -2371,7 +2371,7 @@ export const getIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
   GetIamPolicyProjectsLocationsAppConnectorsResponse,
   GetIamPolicyProjectsLocationsAppConnectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsAppConnectorsRequest,
   output: GetIamPolicyProjectsLocationsAppConnectorsResponse,
   errors: [NotFound, Forbidden],
@@ -2391,7 +2391,7 @@ export interface ListProjectsLocationsAppConnectorsRequest {
 }
 
 export const ListProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -2405,7 +2405,7 @@ export const ListProjectsLocationsAppConnectorsRequest =
 export type ListProjectsLocationsAppConnectorsResponse =
   GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse;
 export const ListProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse;
+  /*@__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse;
 
 export type ListProjectsLocationsAppConnectorsError =
   | DefaultErrors
@@ -2418,7 +2418,7 @@ export const listProjectsLocationsAppConnectors: API.PaginatedOperationMethod<
   ListProjectsLocationsAppConnectorsResponse,
   ListProjectsLocationsAppConnectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppConnectorsRequest,
   output: ListProjectsLocationsAppConnectorsResponse,
   errors: [NotFound, Forbidden],
@@ -2436,7 +2436,7 @@ export interface SetIamPolicyProjectsLocationsAppConnectorsRequest {
 }
 
 export const SetIamPolicyProjectsLocationsAppConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2451,7 +2451,7 @@ export const SetIamPolicyProjectsLocationsAppConnectorsRequest =
 export type SetIamPolicyProjectsLocationsAppConnectorsResponse =
   GoogleIamV1Policy;
 export const SetIamPolicyProjectsLocationsAppConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyProjectsLocationsAppConnectorsError =
   | DefaultErrors
@@ -2466,7 +2466,7 @@ export const setIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
   SetIamPolicyProjectsLocationsAppConnectorsResponse,
   SetIamPolicyProjectsLocationsAppConnectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsAppConnectorsRequest,
   output: SetIamPolicyProjectsLocationsAppConnectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2486,7 +2486,7 @@ export interface CreateProjectsLocationsAppGatewaysRequest {
 }
 
 export const CreateProjectsLocationsAppGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     appGatewayId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("appGatewayId"),
@@ -2504,7 +2504,7 @@ export const CreateProjectsLocationsAppGatewaysRequest =
 export type CreateProjectsLocationsAppGatewaysResponse =
   GoogleLongrunningOperation;
 export const CreateProjectsLocationsAppGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsAppGatewaysError =
   | DefaultErrors
@@ -2519,7 +2519,7 @@ export const createProjectsLocationsAppGateways: API.OperationMethod<
   CreateProjectsLocationsAppGatewaysResponse,
   CreateProjectsLocationsAppGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppGatewaysRequest,
   output: CreateProjectsLocationsAppGatewaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2533,7 +2533,7 @@ export interface TestIamPermissionsProjectsLocationsAppGatewaysRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsAppGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
       T.HttpBody(),
@@ -2550,7 +2550,7 @@ export const TestIamPermissionsProjectsLocationsAppGatewaysRequest =
 export type TestIamPermissionsProjectsLocationsAppGatewaysResponse =
   GoogleIamV1TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsAppGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
+  /*@__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsAppGatewaysError =
   | DefaultErrors
@@ -2565,7 +2565,7 @@ export const testIamPermissionsProjectsLocationsAppGateways: API.OperationMethod
   TestIamPermissionsProjectsLocationsAppGatewaysResponse,
   TestIamPermissionsProjectsLocationsAppGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsAppGatewaysRequest,
   output: TestIamPermissionsProjectsLocationsAppGatewaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2585,7 +2585,7 @@ export interface ListProjectsLocationsAppGatewaysRequest {
 }
 
 export const ListProjectsLocationsAppGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -2598,7 +2598,7 @@ export const ListProjectsLocationsAppGatewaysRequest =
 
 export type ListProjectsLocationsAppGatewaysResponse = ListAppGatewaysResponse;
 export const ListProjectsLocationsAppGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAppGatewaysResponse;
+  /*@__PURE__*/ ListAppGatewaysResponse;
 
 export type ListProjectsLocationsAppGatewaysError =
   | DefaultErrors
@@ -2611,7 +2611,7 @@ export const listProjectsLocationsAppGateways: API.PaginatedOperationMethod<
   ListProjectsLocationsAppGatewaysResponse,
   ListProjectsLocationsAppGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppGatewaysRequest,
   output: ListProjectsLocationsAppGatewaysResponse,
   errors: [NotFound, Forbidden],
@@ -2629,7 +2629,7 @@ export interface SetIamPolicyProjectsLocationsAppGatewaysRequest {
 }
 
 export const SetIamPolicyProjectsLocationsAppGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2644,7 +2644,7 @@ export const SetIamPolicyProjectsLocationsAppGatewaysRequest =
 export type SetIamPolicyProjectsLocationsAppGatewaysResponse =
   GoogleIamV1Policy;
 export const SetIamPolicyProjectsLocationsAppGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyProjectsLocationsAppGatewaysError =
   | DefaultErrors
@@ -2659,7 +2659,7 @@ export const setIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
   SetIamPolicyProjectsLocationsAppGatewaysResponse,
   SetIamPolicyProjectsLocationsAppGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsAppGatewaysRequest,
   output: SetIamPolicyProjectsLocationsAppGatewaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2671,7 +2671,7 @@ export interface GetProjectsLocationsAppGatewaysRequest {
 }
 
 export const GetProjectsLocationsAppGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -2679,8 +2679,7 @@ export const GetProjectsLocationsAppGatewaysRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsAppGatewaysRequest>;
 
 export type GetProjectsLocationsAppGatewaysResponse = AppGateway;
-export const GetProjectsLocationsAppGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AppGateway;
+export const GetProjectsLocationsAppGatewaysResponse = /*@__PURE__*/ AppGateway;
 
 export type GetProjectsLocationsAppGatewaysError =
   | DefaultErrors
@@ -2693,7 +2692,7 @@ export const getProjectsLocationsAppGateways: API.OperationMethod<
   GetProjectsLocationsAppGatewaysResponse,
   GetProjectsLocationsAppGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppGatewaysRequest,
   output: GetProjectsLocationsAppGatewaysResponse,
   errors: [NotFound, Forbidden],
@@ -2709,7 +2708,7 @@ export interface DeleteProjectsLocationsAppGatewaysRequest {
 }
 
 export const DeleteProjectsLocationsAppGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
@@ -2723,7 +2722,7 @@ export const DeleteProjectsLocationsAppGatewaysRequest =
 export type DeleteProjectsLocationsAppGatewaysResponse =
   GoogleLongrunningOperation;
 export const DeleteProjectsLocationsAppGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsAppGatewaysError =
   | DefaultErrors
@@ -2738,7 +2737,7 @@ export const deleteProjectsLocationsAppGateways: API.OperationMethod<
   DeleteProjectsLocationsAppGatewaysResponse,
   DeleteProjectsLocationsAppGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppGatewaysRequest,
   output: DeleteProjectsLocationsAppGatewaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2752,7 +2751,7 @@ export interface GetIamPolicyProjectsLocationsAppGatewaysRequest {
 }
 
 export const GetIamPolicyProjectsLocationsAppGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -2765,7 +2764,7 @@ export const GetIamPolicyProjectsLocationsAppGatewaysRequest =
 export type GetIamPolicyProjectsLocationsAppGatewaysResponse =
   GoogleIamV1Policy;
 export const GetIamPolicyProjectsLocationsAppGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyProjectsLocationsAppGatewaysError =
   | DefaultErrors
@@ -2778,7 +2777,7 @@ export const getIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
   GetIamPolicyProjectsLocationsAppGatewaysResponse,
   GetIamPolicyProjectsLocationsAppGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsAppGatewaysRequest,
   output: GetIamPolicyProjectsLocationsAppGatewaysResponse,
   errors: [NotFound, Forbidden],
@@ -2792,7 +2791,7 @@ export interface CancelProjectsLocationsOperationsRequest {
 }
 
 export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleLongrunningCancelOperationRequest).pipe(
       T.HttpBody(),
@@ -2803,8 +2802,7 @@ export const CancelProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelProjectsLocationsOperationsError =
   | DefaultErrors
@@ -2819,7 +2817,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsResponse,
   CancelProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2839,7 +2837,7 @@ export interface ListProjectsLocationsOperationsRequest {
 }
 
 export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
@@ -2855,7 +2853,7 @@ export const ListProjectsLocationsOperationsRequest =
 export type ListProjectsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+  /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsOperationsError =
   | DefaultErrors
@@ -2868,7 +2866,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsResponse,
   ListProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2884,7 +2882,7 @@ export interface GetProjectsLocationsOperationsRequest {
 }
 
 export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -2893,7 +2891,7 @@ export const GetProjectsLocationsOperationsRequest =
 
 export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsOperationsError =
   | DefaultErrors
@@ -2906,7 +2904,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsResponse,
   GetProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2918,7 +2916,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
 }
 
 export const DeleteProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -2926,8 +2924,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsOperationsError =
   | DefaultErrors
@@ -2942,7 +2939,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsResponse,
   DeleteProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2962,7 +2959,7 @@ export interface ListProjectsLocationsSecurityGatewaysRequest {
 }
 
 export const ListProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2976,7 +2973,7 @@ export const ListProjectsLocationsSecurityGatewaysRequest =
 export type ListProjectsLocationsSecurityGatewaysResponse =
   GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse;
 export const ListProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse;
+  /*@__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse;
 
 export type ListProjectsLocationsSecurityGatewaysError =
   | DefaultErrors
@@ -2989,7 +2986,7 @@ export const listProjectsLocationsSecurityGateways: API.PaginatedOperationMethod
   ListProjectsLocationsSecurityGatewaysResponse,
   ListProjectsLocationsSecurityGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSecurityGatewaysRequest,
   output: ListProjectsLocationsSecurityGatewaysResponse,
   errors: [NotFound, Forbidden],
@@ -3007,7 +3004,7 @@ export interface SetIamPolicyProjectsLocationsSecurityGatewaysRequest {
 }
 
 export const SetIamPolicyProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3022,7 +3019,7 @@ export const SetIamPolicyProjectsLocationsSecurityGatewaysRequest =
 export type SetIamPolicyProjectsLocationsSecurityGatewaysResponse =
   GoogleIamV1Policy;
 export const SetIamPolicyProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyProjectsLocationsSecurityGatewaysError =
   | DefaultErrors
@@ -3037,7 +3034,7 @@ export const setIamPolicyProjectsLocationsSecurityGateways: API.OperationMethod<
   SetIamPolicyProjectsLocationsSecurityGatewaysResponse,
   SetIamPolicyProjectsLocationsSecurityGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsSecurityGatewaysRequest,
   output: SetIamPolicyProjectsLocationsSecurityGatewaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3051,7 +3048,7 @@ export interface GetIamPolicyProjectsLocationsSecurityGatewaysRequest {
 }
 
 export const GetIamPolicyProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -3064,7 +3061,7 @@ export const GetIamPolicyProjectsLocationsSecurityGatewaysRequest =
 export type GetIamPolicyProjectsLocationsSecurityGatewaysResponse =
   GoogleIamV1Policy;
 export const GetIamPolicyProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyProjectsLocationsSecurityGatewaysError =
   | DefaultErrors
@@ -3077,7 +3074,7 @@ export const getIamPolicyProjectsLocationsSecurityGateways: API.OperationMethod<
   GetIamPolicyProjectsLocationsSecurityGatewaysResponse,
   GetIamPolicyProjectsLocationsSecurityGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsSecurityGatewaysRequest,
   output: GetIamPolicyProjectsLocationsSecurityGatewaysResponse,
   errors: [NotFound, Forbidden],
@@ -3089,7 +3086,7 @@ export interface GetProjectsLocationsSecurityGatewaysRequest {
 }
 
 export const GetProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -3099,7 +3096,7 @@ export const GetProjectsLocationsSecurityGatewaysRequest =
 export type GetProjectsLocationsSecurityGatewaysResponse =
   GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway;
 export const GetProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway;
+  /*@__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway;
 
 export type GetProjectsLocationsSecurityGatewaysError =
   | DefaultErrors
@@ -3112,7 +3109,7 @@ export const getProjectsLocationsSecurityGateways: API.OperationMethod<
   GetProjectsLocationsSecurityGatewaysResponse,
   GetProjectsLocationsSecurityGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSecurityGatewaysRequest,
   output: GetProjectsLocationsSecurityGatewaysResponse,
   errors: [NotFound, Forbidden],
@@ -3128,7 +3125,7 @@ export interface DeleteProjectsLocationsSecurityGatewaysRequest {
 }
 
 export const DeleteProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
@@ -3142,7 +3139,7 @@ export const DeleteProjectsLocationsSecurityGatewaysRequest =
 export type DeleteProjectsLocationsSecurityGatewaysResponse =
   GoogleLongrunningOperation;
 export const DeleteProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsSecurityGatewaysError =
   | DefaultErrors
@@ -3157,7 +3154,7 @@ export const deleteProjectsLocationsSecurityGateways: API.OperationMethod<
   DeleteProjectsLocationsSecurityGatewaysResponse,
   DeleteProjectsLocationsSecurityGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSecurityGatewaysRequest,
   output: DeleteProjectsLocationsSecurityGatewaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3175,7 +3172,7 @@ export interface PatchProjectsLocationsSecurityGatewaysRequest {
 }
 
 export const PatchProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
@@ -3190,7 +3187,7 @@ export const PatchProjectsLocationsSecurityGatewaysRequest =
 export type PatchProjectsLocationsSecurityGatewaysResponse =
   GoogleLongrunningOperation;
 export const PatchProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchProjectsLocationsSecurityGatewaysError =
   | DefaultErrors
@@ -3205,7 +3202,7 @@ export const patchProjectsLocationsSecurityGateways: API.OperationMethod<
   PatchProjectsLocationsSecurityGatewaysResponse,
   PatchProjectsLocationsSecurityGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSecurityGatewaysRequest,
   output: PatchProjectsLocationsSecurityGatewaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3223,7 +3220,7 @@ export interface CreateProjectsLocationsSecurityGatewaysRequest {
 }
 
 export const CreateProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     securityGatewayId: Schema.optional(Schema.String).pipe(
@@ -3244,7 +3241,7 @@ export const CreateProjectsLocationsSecurityGatewaysRequest =
 export type CreateProjectsLocationsSecurityGatewaysResponse =
   GoogleLongrunningOperation;
 export const CreateProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsSecurityGatewaysError =
   | DefaultErrors
@@ -3259,7 +3256,7 @@ export const createProjectsLocationsSecurityGateways: API.OperationMethod<
   CreateProjectsLocationsSecurityGatewaysResponse,
   CreateProjectsLocationsSecurityGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSecurityGatewaysRequest,
   output: CreateProjectsLocationsSecurityGatewaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3273,7 +3270,7 @@ export interface TestIamPermissionsProjectsLocationsSecurityGatewaysRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsSecurityGatewaysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
       T.HttpBody(),
@@ -3290,7 +3287,7 @@ export const TestIamPermissionsProjectsLocationsSecurityGatewaysRequest =
 export type TestIamPermissionsProjectsLocationsSecurityGatewaysResponse =
   GoogleIamV1TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsSecurityGatewaysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
+  /*@__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsSecurityGatewaysError =
   | DefaultErrors
@@ -3305,7 +3302,7 @@ export const testIamPermissionsProjectsLocationsSecurityGateways: API.OperationM
   TestIamPermissionsProjectsLocationsSecurityGatewaysResponse,
   TestIamPermissionsProjectsLocationsSecurityGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsSecurityGatewaysRequest,
   output: TestIamPermissionsProjectsLocationsSecurityGatewaysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3323,7 +3320,7 @@ export interface CreateProjectsLocationsSecurityGatewaysApplicationsRequest {
 }
 
 export const CreateProjectsLocationsSecurityGatewaysApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     applicationId: Schema.optional(Schema.String).pipe(
@@ -3344,7 +3341,7 @@ export const CreateProjectsLocationsSecurityGatewaysApplicationsRequest =
 export type CreateProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleLongrunningOperation;
 export const CreateProjectsLocationsSecurityGatewaysApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsSecurityGatewaysApplicationsError =
   | DefaultErrors
@@ -3359,7 +3356,7 @@ export const createProjectsLocationsSecurityGatewaysApplications: API.OperationM
   CreateProjectsLocationsSecurityGatewaysApplicationsResponse,
   CreateProjectsLocationsSecurityGatewaysApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: CreateProjectsLocationsSecurityGatewaysApplicationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3377,7 +3374,7 @@ export interface PatchProjectsLocationsSecurityGatewaysApplicationsRequest {
 }
 
 export const PatchProjectsLocationsSecurityGatewaysApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
@@ -3392,7 +3389,7 @@ export const PatchProjectsLocationsSecurityGatewaysApplicationsRequest =
 export type PatchProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleLongrunningOperation;
 export const PatchProjectsLocationsSecurityGatewaysApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchProjectsLocationsSecurityGatewaysApplicationsError =
   | DefaultErrors
@@ -3407,7 +3404,7 @@ export const patchProjectsLocationsSecurityGatewaysApplications: API.OperationMe
   PatchProjectsLocationsSecurityGatewaysApplicationsResponse,
   PatchProjectsLocationsSecurityGatewaysApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: PatchProjectsLocationsSecurityGatewaysApplicationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3421,7 +3418,7 @@ export interface TestIamPermissionsProjectsLocationsSecurityGatewaysApplications
 }
 
 export const TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
       T.HttpBody(),
@@ -3438,7 +3435,7 @@ export const TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequ
 export type TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleIamV1TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
+  /*@__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsError =
   | DefaultErrors
@@ -3453,7 +3450,7 @@ export const testIamPermissionsProjectsLocationsSecurityGatewaysApplications: AP
   TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsResponse,
   TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest,
   output:
     TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsResponse,
@@ -3474,7 +3471,7 @@ export interface ListProjectsLocationsSecurityGatewaysApplicationsRequest {
 }
 
 export const ListProjectsLocationsSecurityGatewaysApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -3488,7 +3485,7 @@ export const ListProjectsLocationsSecurityGatewaysApplicationsRequest =
 export type ListProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse;
 export const ListProjectsLocationsSecurityGatewaysApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse;
+  /*@__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse;
 
 export type ListProjectsLocationsSecurityGatewaysApplicationsError =
   | DefaultErrors
@@ -3501,7 +3498,7 @@ export const listProjectsLocationsSecurityGatewaysApplications: API.PaginatedOpe
   ListProjectsLocationsSecurityGatewaysApplicationsResponse,
   ListProjectsLocationsSecurityGatewaysApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: ListProjectsLocationsSecurityGatewaysApplicationsResponse,
   errors: [NotFound, Forbidden],
@@ -3519,7 +3516,7 @@ export interface SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsReques
 }
 
 export const SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3534,7 +3531,7 @@ export const SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest =
 export type SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleIamV1Policy;
 export const SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsError =
   | DefaultErrors
@@ -3549,7 +3546,7 @@ export const setIamPolicyProjectsLocationsSecurityGatewaysApplications: API.Oper
   SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse,
   SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3561,7 +3558,7 @@ export interface GetProjectsLocationsSecurityGatewaysApplicationsRequest {
 }
 
 export const GetProjectsLocationsSecurityGatewaysApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -3571,7 +3568,7 @@ export const GetProjectsLocationsSecurityGatewaysApplicationsRequest =
 export type GetProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleCloudBeyondcorpSecuritygatewaysV1Application;
 export const GetProjectsLocationsSecurityGatewaysApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1Application;
+  /*@__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1Application;
 
 export type GetProjectsLocationsSecurityGatewaysApplicationsError =
   | DefaultErrors
@@ -3584,7 +3581,7 @@ export const getProjectsLocationsSecurityGatewaysApplications: API.OperationMeth
   GetProjectsLocationsSecurityGatewaysApplicationsResponse,
   GetProjectsLocationsSecurityGatewaysApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: GetProjectsLocationsSecurityGatewaysApplicationsResponse,
   errors: [NotFound, Forbidden],
@@ -3600,7 +3597,7 @@ export interface DeleteProjectsLocationsSecurityGatewaysApplicationsRequest {
 }
 
 export const DeleteProjectsLocationsSecurityGatewaysApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
@@ -3614,7 +3611,7 @@ export const DeleteProjectsLocationsSecurityGatewaysApplicationsRequest =
 export type DeleteProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleLongrunningOperation;
 export const DeleteProjectsLocationsSecurityGatewaysApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsSecurityGatewaysApplicationsError =
   | DefaultErrors
@@ -3629,7 +3626,7 @@ export const deleteProjectsLocationsSecurityGatewaysApplications: API.OperationM
   DeleteProjectsLocationsSecurityGatewaysApplicationsResponse,
   DeleteProjectsLocationsSecurityGatewaysApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: DeleteProjectsLocationsSecurityGatewaysApplicationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3643,7 +3640,7 @@ export interface GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsReques
 }
 
 export const GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -3656,7 +3653,7 @@ export const GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest =
 export type GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleIamV1Policy;
 export const GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsError =
   | DefaultErrors
@@ -3669,7 +3666,7 @@ export const getIamPolicyProjectsLocationsSecurityGatewaysApplications: API.Oper
   GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse,
   GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse,
   errors: [NotFound, Forbidden],
@@ -3681,7 +3678,7 @@ export interface GetProjectsLocationsAppConnectionsRequest {
 }
 
 export const GetProjectsLocationsAppConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -3691,7 +3688,7 @@ export const GetProjectsLocationsAppConnectionsRequest =
 export type GetProjectsLocationsAppConnectionsResponse =
   GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
 export const GetProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
+  /*@__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
 
 export type GetProjectsLocationsAppConnectionsError =
   | DefaultErrors
@@ -3704,7 +3701,7 @@ export const getProjectsLocationsAppConnections: API.OperationMethod<
   GetProjectsLocationsAppConnectionsResponse,
   GetProjectsLocationsAppConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppConnectionsRequest,
   output: GetProjectsLocationsAppConnectionsResponse,
   errors: [NotFound, Forbidden],
@@ -3718,7 +3715,7 @@ export interface TestIamPermissionsProjectsLocationsAppConnectionsRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsAppConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
       T.HttpBody(),
@@ -3735,7 +3732,7 @@ export const TestIamPermissionsProjectsLocationsAppConnectionsRequest =
 export type TestIamPermissionsProjectsLocationsAppConnectionsResponse =
   GoogleIamV1TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
+  /*@__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsAppConnectionsError =
   | DefaultErrors
@@ -3750,7 +3747,7 @@ export const testIamPermissionsProjectsLocationsAppConnections: API.OperationMet
   TestIamPermissionsProjectsLocationsAppConnectionsResponse,
   TestIamPermissionsProjectsLocationsAppConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsAppConnectionsRequest,
   output: TestIamPermissionsProjectsLocationsAppConnectionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3770,7 +3767,7 @@ export interface CreateProjectsLocationsAppConnectionsRequest {
 }
 
 export const CreateProjectsLocationsAppConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     appConnectionId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("appConnectionId"),
@@ -3794,7 +3791,7 @@ export const CreateProjectsLocationsAppConnectionsRequest =
 export type CreateProjectsLocationsAppConnectionsResponse =
   GoogleLongrunningOperation;
 export const CreateProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsAppConnectionsError =
   | DefaultErrors
@@ -3809,7 +3806,7 @@ export const createProjectsLocationsAppConnections: API.OperationMethod<
   CreateProjectsLocationsAppConnectionsResponse,
   CreateProjectsLocationsAppConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppConnectionsRequest,
   output: CreateProjectsLocationsAppConnectionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3825,7 +3822,7 @@ export interface DeleteProjectsLocationsAppConnectionsRequest {
 }
 
 export const DeleteProjectsLocationsAppConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
@@ -3839,7 +3836,7 @@ export const DeleteProjectsLocationsAppConnectionsRequest =
 export type DeleteProjectsLocationsAppConnectionsResponse =
   GoogleLongrunningOperation;
 export const DeleteProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsAppConnectionsError =
   | DefaultErrors
@@ -3854,7 +3851,7 @@ export const deleteProjectsLocationsAppConnections: API.OperationMethod<
   DeleteProjectsLocationsAppConnectionsResponse,
   DeleteProjectsLocationsAppConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppConnectionsRequest,
   output: DeleteProjectsLocationsAppConnectionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3868,7 +3865,7 @@ export interface GetIamPolicyProjectsLocationsAppConnectionsRequest {
 }
 
 export const GetIamPolicyProjectsLocationsAppConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -3881,7 +3878,7 @@ export const GetIamPolicyProjectsLocationsAppConnectionsRequest =
 export type GetIamPolicyProjectsLocationsAppConnectionsResponse =
   GoogleIamV1Policy;
 export const GetIamPolicyProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyProjectsLocationsAppConnectionsError =
   | DefaultErrors
@@ -3894,7 +3891,7 @@ export const getIamPolicyProjectsLocationsAppConnections: API.OperationMethod<
   GetIamPolicyProjectsLocationsAppConnectionsResponse,
   GetIamPolicyProjectsLocationsAppConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsAppConnectionsRequest,
   output: GetIamPolicyProjectsLocationsAppConnectionsResponse,
   errors: [NotFound, Forbidden],
@@ -3914,7 +3911,7 @@ export interface ListProjectsLocationsAppConnectionsRequest {
 }
 
 export const ListProjectsLocationsAppConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -3928,7 +3925,7 @@ export const ListProjectsLocationsAppConnectionsRequest =
 export type ListProjectsLocationsAppConnectionsResponse =
   GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse;
 export const ListProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse;
+  /*@__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse;
 
 export type ListProjectsLocationsAppConnectionsError =
   | DefaultErrors
@@ -3941,7 +3938,7 @@ export const listProjectsLocationsAppConnections: API.PaginatedOperationMethod<
   ListProjectsLocationsAppConnectionsResponse,
   ListProjectsLocationsAppConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppConnectionsRequest,
   output: ListProjectsLocationsAppConnectionsResponse,
   errors: [NotFound, Forbidden],
@@ -3959,7 +3956,7 @@ export interface SetIamPolicyProjectsLocationsAppConnectionsRequest {
 }
 
 export const SetIamPolicyProjectsLocationsAppConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3974,7 +3971,7 @@ export const SetIamPolicyProjectsLocationsAppConnectionsRequest =
 export type SetIamPolicyProjectsLocationsAppConnectionsResponse =
   GoogleIamV1Policy;
 export const SetIamPolicyProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyProjectsLocationsAppConnectionsError =
   | DefaultErrors
@@ -3989,7 +3986,7 @@ export const setIamPolicyProjectsLocationsAppConnections: API.OperationMethod<
   SetIamPolicyProjectsLocationsAppConnectionsResponse,
   SetIamPolicyProjectsLocationsAppConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsAppConnectionsRequest,
   output: SetIamPolicyProjectsLocationsAppConnectionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4007,7 +4004,7 @@ export interface ResolveProjectsLocationsAppConnectionsRequest {
 }
 
 export const ResolveProjectsLocationsAppConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appConnectorId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("appConnectorId"),
     ),
@@ -4022,7 +4019,7 @@ export const ResolveProjectsLocationsAppConnectionsRequest =
 export type ResolveProjectsLocationsAppConnectionsResponse =
   GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse;
 export const ResolveProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse;
+  /*@__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse;
 
 export type ResolveProjectsLocationsAppConnectionsError =
   | DefaultErrors
@@ -4035,7 +4032,7 @@ export const resolveProjectsLocationsAppConnections: API.PaginatedOperationMetho
   ResolveProjectsLocationsAppConnectionsResponse,
   ResolveProjectsLocationsAppConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ResolveProjectsLocationsAppConnectionsRequest,
   output: ResolveProjectsLocationsAppConnectionsResponse,
   errors: [NotFound, Forbidden],
@@ -4061,7 +4058,7 @@ export interface PatchProjectsLocationsAppConnectionsRequest {
 }
 
 export const PatchProjectsLocationsAppConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
     ),
@@ -4082,7 +4079,7 @@ export const PatchProjectsLocationsAppConnectionsRequest =
 export type PatchProjectsLocationsAppConnectionsResponse =
   GoogleLongrunningOperation;
 export const PatchProjectsLocationsAppConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchProjectsLocationsAppConnectionsError =
   | DefaultErrors
@@ -4097,7 +4094,7 @@ export const patchProjectsLocationsAppConnections: API.OperationMethod<
   PatchProjectsLocationsAppConnectionsResponse,
   PatchProjectsLocationsAppConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppConnectionsRequest,
   output: PatchProjectsLocationsAppConnectionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

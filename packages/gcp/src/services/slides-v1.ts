@@ -32,7 +32,7 @@ export interface RgbColor {
 }
 
 export const RgbColor: Schema.Codec<RgbColor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     red: Schema.optional(Schema.Number),
     blue: Schema.optional(Schema.Number),
     green: Schema.optional(Schema.Number),
@@ -64,7 +64,7 @@ export interface OpaqueColor {
 }
 
 export const OpaqueColor: Schema.Codec<OpaqueColor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     themeColor: Schema.optional(Schema.String),
     rgbColor: Schema.optional(RgbColor),
   }).annotate({ identifier: "OpaqueColor" });
@@ -77,7 +77,7 @@ export interface SolidFill {
 }
 
 export const SolidFill: Schema.Codec<SolidFill> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     color: Schema.optional(OpaqueColor),
     alpha: Schema.optional(Schema.Number),
   }).annotate({ identifier: "SolidFill" });
@@ -90,7 +90,7 @@ export interface Dimension {
 }
 
 export const Dimension: Schema.Codec<Dimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     magnitude: Schema.optional(Schema.Number),
     unit: Schema.optional(Schema.String),
   }).annotate({ identifier: "Dimension" });
@@ -103,7 +103,7 @@ export interface Size {
 }
 
 export const Size: Schema.Codec<Size> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     width: Schema.optional(Dimension),
     height: Schema.optional(Dimension),
   }).annotate({ identifier: "Size" });
@@ -116,7 +116,7 @@ export interface StretchedPictureFill {
 }
 
 export const StretchedPictureFill: Schema.Codec<StretchedPictureFill> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentUrl: Schema.optional(Schema.String),
     size: Schema.optional(Size),
   }).annotate({ identifier: "StretchedPictureFill" });
@@ -131,7 +131,7 @@ export interface PageBackgroundFill {
 }
 
 export const PageBackgroundFill: Schema.Codec<PageBackgroundFill> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     solidFill: Schema.optional(SolidFill),
     propertyState: Schema.optional(Schema.String),
     stretchedPictureFill: Schema.optional(StretchedPictureFill),
@@ -143,7 +143,7 @@ export interface OptionalColor {
 }
 
 export const OptionalColor: Schema.Codec<OptionalColor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     opaqueColor: Schema.optional(OpaqueColor),
   }).annotate({ identifier: "OptionalColor" });
 
@@ -165,7 +165,7 @@ export interface Link {
 }
 
 export const Link: Schema.Codec<Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slideIndex: Schema.optional(Schema.Number),
     url: Schema.optional(Schema.String),
     relativeLink: Schema.optional(Schema.String),
@@ -180,7 +180,7 @@ export interface WeightedFontFamily {
 }
 
 export const WeightedFontFamily: Schema.Codec<WeightedFontFamily> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.Number),
     fontFamily: Schema.optional(Schema.String),
   }).annotate({ identifier: "WeightedFontFamily" });
@@ -218,7 +218,7 @@ export interface TextStyle {
 }
 
 export const TextStyle: Schema.Codec<TextStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     foregroundColor: Schema.optional(OptionalColor),
     link: Schema.optional(Link),
     smallCaps: Schema.optional(Schema.Boolean),
@@ -243,7 +243,7 @@ export interface AutoText {
 }
 
 export const AutoText: Schema.Codec<AutoText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     style: Schema.optional(TextStyle),
     content: Schema.optional(Schema.String),
@@ -255,7 +255,7 @@ export interface OutlineFill {
 }
 
 export const OutlineFill: Schema.Codec<OutlineFill> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     solidFill: Schema.optional(SolidFill),
   }).annotate({ identifier: "OutlineFill" });
 
@@ -279,7 +279,7 @@ export interface Outline {
 }
 
 export const Outline: Schema.Codec<Outline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dashStyle: Schema.optional(Schema.String),
     weight: Schema.optional(Dimension),
     propertyState: Schema.optional(Schema.String),
@@ -300,7 +300,7 @@ export interface VideoProperties {
 }
 
 export const VideoProperties: Schema.Codec<VideoProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     autoPlay: Schema.optional(Schema.Boolean),
     mute: Schema.optional(Schema.Boolean),
     start: Schema.optional(Schema.Number),
@@ -316,7 +316,7 @@ export interface ShapeBackgroundFill {
 }
 
 export const ShapeBackgroundFill: Schema.Codec<ShapeBackgroundFill> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     propertyState: Schema.optional(Schema.String),
     solidFill: Schema.optional(SolidFill),
   }).annotate({ identifier: "ShapeBackgroundFill" });
@@ -331,7 +331,7 @@ export interface SubstringMatchCriteria {
 }
 
 export const SubstringMatchCriteria: Schema.Codec<SubstringMatchCriteria> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     matchCase: Schema.optional(Schema.Boolean),
     searchByRegex: Schema.optional(Schema.Boolean),
@@ -351,7 +351,7 @@ export interface ReplaceAllShapesWithSheetsChartRequest {
 }
 
 export const ReplaceAllShapesWithSheetsChartRequest: Schema.Codec<ReplaceAllShapesWithSheetsChartRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     chartId: Schema.optional(Schema.Number),
     containsText: Schema.optional(SubstringMatchCriteria),
     spreadsheetId: Schema.optional(Schema.String),
@@ -367,7 +367,7 @@ export interface TextRun {
 }
 
 export const TextRun: Schema.Codec<TextRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     style: Schema.optional(TextStyle),
   }).annotate({ identifier: "TextRun" });
@@ -408,7 +408,7 @@ export interface ParagraphStyle {
 }
 
 export const ParagraphStyle: Schema.Codec<ParagraphStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     indentEnd: Schema.optional(Dimension),
     alignment: Schema.optional(Schema.String),
     indentStart: Schema.optional(Dimension),
@@ -432,7 +432,7 @@ export interface Bullet {
 }
 
 export const Bullet: Schema.Codec<Bullet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     glyph: Schema.optional(Schema.String),
     bulletStyle: Schema.optional(TextStyle),
     nestingLevel: Schema.optional(Schema.Number),
@@ -447,7 +447,7 @@ export interface ParagraphMarker {
 }
 
 export const ParagraphMarker: Schema.Codec<ParagraphMarker> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     style: Schema.optional(ParagraphStyle),
     bullet: Schema.optional(Bullet),
   }).annotate({ identifier: "ParagraphMarker" });
@@ -466,7 +466,7 @@ export interface TextElement {
 }
 
 export const TextElement: Schema.Codec<TextElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startIndex: Schema.optional(Schema.Number),
     textRun: Schema.optional(TextRun),
     endIndex: Schema.optional(Schema.Number),
@@ -492,7 +492,7 @@ export interface AffineTransform {
 }
 
 export const AffineTransform: Schema.Codec<AffineTransform> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scaleY: Schema.optional(Schema.Number),
     shearX: Schema.optional(Schema.Number),
     translateX: Schema.optional(Schema.Number),
@@ -512,7 +512,7 @@ export interface PageElementProperties {
 }
 
 export const PageElementProperties: Schema.Codec<PageElementProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     size: Schema.optional(Size),
     transform: Schema.optional(AffineTransform),
     pageObjectId: Schema.optional(Schema.String),
@@ -526,7 +526,7 @@ export interface TableCellLocation {
 }
 
 export const TableCellLocation: Schema.Codec<TableCellLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rowIndex: Schema.optional(Schema.Number),
     columnIndex: Schema.optional(Schema.Number),
   }).annotate({ identifier: "TableCellLocation" });
@@ -539,7 +539,7 @@ export interface DeleteTableColumnRequest {
 }
 
 export const DeleteTableColumnRequest: Schema.Codec<DeleteTableColumnRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableObjectId: Schema.optional(Schema.String),
     cellLocation: Schema.optional(TableCellLocation),
   }).annotate({ identifier: "DeleteTableColumnRequest" });
@@ -550,7 +550,7 @@ export interface CreateSlideResponse {
 }
 
 export const CreateSlideResponse: Schema.Codec<CreateSlideResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateSlideResponse" });
 
@@ -562,7 +562,7 @@ export interface TableCellBackgroundFill {
 }
 
 export const TableCellBackgroundFill: Schema.Codec<TableCellBackgroundFill> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     propertyState: Schema.optional(Schema.String),
     solidFill: Schema.optional(SolidFill),
   }).annotate({ identifier: "TableCellBackgroundFill" });
@@ -581,7 +581,7 @@ export interface TableCellProperties {
 }
 
 export const TableCellProperties: Schema.Codec<TableCellProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableCellBackgroundFill: Schema.optional(TableCellBackgroundFill),
     contentAlignment: Schema.optional(Schema.String),
   }).annotate({ identifier: "TableCellProperties" });
@@ -601,7 +601,7 @@ export interface Autofit {
 }
 
 export const Autofit: Schema.Codec<Autofit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     autofitType: Schema.optional(Schema.String),
     lineSpacingReduction: Schema.optional(Schema.Number),
     fontScale: Schema.optional(Schema.Number),
@@ -638,7 +638,7 @@ export interface Shadow {
 }
 
 export const Shadow: Schema.Codec<Shadow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alignment: Schema.optional(Schema.String),
     propertyState: Schema.optional(Schema.String),
     transform: Schema.optional(AffineTransform),
@@ -671,7 +671,7 @@ export interface ShapeProperties {
 }
 
 export const ShapeProperties: Schema.Codec<ShapeProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shapeBackgroundFill: Schema.optional(ShapeBackgroundFill),
     autofit: Schema.optional(Autofit),
     outline: Schema.optional(Outline),
@@ -686,7 +686,7 @@ export interface DeleteObjectRequest {
 }
 
 export const DeleteObjectRequest: Schema.Codec<DeleteObjectRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteObjectRequest" });
 
@@ -700,7 +700,7 @@ export interface UpdatePageElementAltTextRequest {
 }
 
 export const UpdatePageElementAltTextRequest: Schema.Codec<UpdatePageElementAltTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     objectId: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -712,7 +712,7 @@ export interface CreateSheetsChartResponse {
 }
 
 export const CreateSheetsChartResponse: Schema.Codec<CreateSheetsChartResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateSheetsChartResponse" });
 
@@ -724,7 +724,7 @@ export interface SpeakerSpotlightProperties {
 }
 
 export const SpeakerSpotlightProperties: Schema.Codec<SpeakerSpotlightProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outline: Schema.optional(Outline),
     shadow: Schema.optional(Shadow),
   }).annotate({ identifier: "SpeakerSpotlightProperties" });
@@ -735,7 +735,7 @@ export interface SpeakerSpotlight {
 }
 
 export const SpeakerSpotlight: Schema.Codec<SpeakerSpotlight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     speakerSpotlightProperties: Schema.optional(SpeakerSpotlightProperties),
   }).annotate({ identifier: "SpeakerSpotlight" });
 
@@ -745,7 +745,7 @@ export interface WordArt {
 }
 
 export const WordArt: Schema.Codec<WordArt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     renderedText: Schema.optional(Schema.String),
   }).annotate({ identifier: "WordArt" });
 
@@ -763,7 +763,7 @@ export interface CropProperties {
 }
 
 export const CropProperties: Schema.Codec<CropProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     angle: Schema.optional(Schema.Number),
     rightOffset: Schema.optional(Schema.Number),
     bottomOffset: Schema.optional(Schema.Number),
@@ -781,7 +781,7 @@ export interface ColorStop {
 }
 
 export const ColorStop: Schema.Codec<ColorStop> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     position: Schema.optional(Schema.Number),
     color: Schema.optional(OpaqueColor),
     alpha: Schema.optional(Schema.Number),
@@ -821,7 +821,7 @@ export interface Recolor {
 }
 
 export const Recolor: Schema.Codec<Recolor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recolorStops: Schema.optional(Schema.Array(ColorStop)),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Recolor" });
@@ -846,7 +846,7 @@ export interface ImageProperties {
 }
 
 export const ImageProperties: Schema.Codec<ImageProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cropProperties: Schema.optional(CropProperties),
     transparency: Schema.optional(Schema.Number),
     contrast: Schema.optional(Schema.Number),
@@ -863,7 +863,7 @@ export interface SheetsChartProperties {
 }
 
 export const SheetsChartProperties: Schema.Codec<SheetsChartProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     chartImageProperties: Schema.optional(ImageProperties),
   }).annotate({ identifier: "SheetsChartProperties" });
 
@@ -879,7 +879,7 @@ export interface SheetsChart {
 }
 
 export const SheetsChart: Schema.Codec<SheetsChart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spreadsheetId: Schema.optional(Schema.String),
     chartId: Schema.optional(Schema.Number),
     contentUrl: Schema.optional(Schema.String),
@@ -892,7 +892,7 @@ export interface Group {
 }
 
 export const Group: Schema.Codec<Group> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       children: Schema.optional(Schema.Array(PageElement)),
     }),
@@ -904,7 +904,7 @@ export interface NestingLevel {
 }
 
 export const NestingLevel: Schema.Codec<NestingLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bulletStyle: Schema.optional(TextStyle),
   }).annotate({ identifier: "NestingLevel" });
 
@@ -916,7 +916,7 @@ export interface List {
 }
 
 export const List: Schema.Codec<List> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     listId: Schema.optional(Schema.String),
     nestingLevel: Schema.optional(Schema.Record(Schema.String, NestingLevel)),
   }).annotate({ identifier: "List" });
@@ -929,7 +929,7 @@ export interface TextContent {
 }
 
 export const TextContent: Schema.Codec<TextContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textElements: Schema.optional(Schema.Array(TextElement)),
     lists: Schema.optional(Schema.Record(Schema.String, List)),
   }).annotate({ identifier: "TextContent" });
@@ -962,7 +962,7 @@ export interface Placeholder {
 }
 
 export const Placeholder: Schema.Codec<Placeholder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     index: Schema.optional(Schema.Number),
     parentObjectId: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1124,7 +1124,7 @@ export interface Shape {
 }
 
 export const Shape: Schema.Codec<Shape> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(TextContent),
     shapeProperties: Schema.optional(ShapeProperties),
     shapeType: Schema.optional(Schema.String),
@@ -1143,7 +1143,7 @@ export interface Image {
 }
 
 export const Image: Schema.Codec<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentUrl: Schema.optional(Schema.String),
     imageProperties: Schema.optional(ImageProperties),
     placeholder: Schema.optional(Placeholder),
@@ -1162,7 +1162,7 @@ export interface Video {
 }
 
 export const Video: Schema.Codec<Video> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     videoProperties: Schema.optional(VideoProperties),
     url: Schema.optional(Schema.String),
@@ -1177,7 +1177,7 @@ export interface LineConnection {
 }
 
 export const LineConnection: Schema.Codec<LineConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedObjectId: Schema.optional(Schema.String),
     connectionSiteIndex: Schema.optional(Schema.Number),
   }).annotate({ identifier: "LineConnection" });
@@ -1188,7 +1188,7 @@ export interface LineFill {
 }
 
 export const LineFill: Schema.Codec<LineFill> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     solidFill: Schema.optional(SolidFill),
   }).annotate({ identifier: "LineFill" });
 
@@ -1244,7 +1244,7 @@ export interface LineProperties {
 }
 
 export const LineProperties: Schema.Codec<LineProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startArrow: Schema.optional(Schema.String),
     endConnection: Schema.optional(LineConnection),
     startConnection: Schema.optional(LineConnection),
@@ -1282,7 +1282,7 @@ export interface Line {
 }
 
 export const Line: Schema.Codec<Line> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lineProperties: Schema.optional(LineProperties),
     lineType: Schema.optional(Schema.String),
     lineCategory: Schema.optional(Schema.String),
@@ -1294,7 +1294,7 @@ export interface TableColumnProperties {
 }
 
 export const TableColumnProperties: Schema.Codec<TableColumnProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     columnWidth: Schema.optional(Dimension),
   }).annotate({ identifier: "TableColumnProperties" });
 
@@ -1304,7 +1304,7 @@ export interface TableBorderFill {
 }
 
 export const TableBorderFill: Schema.Codec<TableBorderFill> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     solidFill: Schema.optional(SolidFill),
   }).annotate({ identifier: "TableBorderFill" });
 
@@ -1326,7 +1326,7 @@ export interface TableBorderProperties {
 }
 
 export const TableBorderProperties: Schema.Codec<TableBorderProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableBorderFill: Schema.optional(TableBorderFill),
     weight: Schema.optional(Dimension),
     dashStyle: Schema.optional(Schema.String),
@@ -1340,7 +1340,7 @@ export interface TableBorderCell {
 }
 
 export const TableBorderCell: Schema.Codec<TableBorderCell> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(TableCellLocation),
     tableBorderProperties: Schema.optional(TableBorderProperties),
   }).annotate({ identifier: "TableBorderCell" });
@@ -1351,7 +1351,7 @@ export interface TableBorderRow {
 }
 
 export const TableBorderRow: Schema.Codec<TableBorderRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableBorderCells: Schema.optional(Schema.Array(TableBorderCell)),
   }).annotate({ identifier: "TableBorderRow" });
 
@@ -1361,7 +1361,7 @@ export interface TableRowProperties {
 }
 
 export const TableRowProperties: Schema.Codec<TableRowProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minRowHeight: Schema.optional(Dimension),
   }).annotate({ identifier: "TableRowProperties" });
 
@@ -1379,7 +1379,7 @@ export interface TableCell {
 }
 
 export const TableCell: Schema.Codec<TableCell> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rowSpan: Schema.optional(Schema.Number),
     tableCellProperties: Schema.optional(TableCellProperties),
     location: Schema.optional(TableCellLocation),
@@ -1397,7 +1397,7 @@ export interface TableRow {
 }
 
 export const TableRow: Schema.Codec<TableRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rowHeight: Schema.optional(Dimension),
     tableRowProperties: Schema.optional(TableRowProperties),
     tableCells: Schema.optional(Schema.Array(TableCell)),
@@ -1419,7 +1419,7 @@ export interface Table {
 }
 
 export const Table: Schema.Codec<Table> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rows: Schema.optional(Schema.Number),
     tableColumns: Schema.optional(Schema.Array(TableColumnProperties)),
     verticalBorderRows: Schema.optional(Schema.Array(TableBorderRow)),
@@ -1460,7 +1460,7 @@ export interface PageElement {
 }
 
 export const PageElement: Schema.Codec<PageElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       speakerSpotlight: Schema.optional(SpeakerSpotlight),
       transform: Schema.optional(AffineTransform),
@@ -1485,7 +1485,7 @@ export interface NotesProperties {
 }
 
 export const NotesProperties: Schema.Codec<NotesProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     speakerNotesObjectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "NotesProperties" });
 
@@ -1495,7 +1495,7 @@ export interface MasterProperties {
 }
 
 export const MasterProperties: Schema.Codec<MasterProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "MasterProperties" });
 
@@ -1509,7 +1509,7 @@ export interface LayoutProperties {
 }
 
 export const LayoutProperties: Schema.Codec<LayoutProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     masterObjectId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1541,7 +1541,7 @@ export interface ThemeColorPair {
 }
 
 export const ThemeColorPair: Schema.Codec<ThemeColorPair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     color: Schema.optional(RgbColor),
   }).annotate({ identifier: "ThemeColorPair" });
@@ -1552,7 +1552,7 @@ export interface ColorScheme {
 }
 
 export const ColorScheme: Schema.Codec<ColorScheme> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     colors: Schema.optional(Schema.Array(ThemeColorPair)),
   }).annotate({ identifier: "ColorScheme" });
 
@@ -1564,7 +1564,7 @@ export interface PageProperties {
 }
 
 export const PageProperties: Schema.Codec<PageProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageBackgroundFill: Schema.optional(PageBackgroundFill),
     colorScheme: Schema.optional(ColorScheme),
   }).annotate({ identifier: "PageProperties" });
@@ -1597,7 +1597,7 @@ export interface Page {
 }
 
 export const Page: Schema.Codec<Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       objectId: Schema.optional(Schema.String),
       pageElements: Schema.optional(Schema.Array(PageElement)),
@@ -1623,7 +1623,7 @@ export interface SlideProperties {
 }
 
 export const SlideProperties: Schema.Codec<SlideProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       masterObjectId: Schema.optional(Schema.String),
       notesPage: Schema.optional(Page),
@@ -1644,7 +1644,7 @@ export interface UpdateSlidePropertiesRequest {
 }
 
 export const UpdateSlidePropertiesRequest: Schema.Codec<UpdateSlidePropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slideProperties: Schema.optional(SlideProperties),
     fields: Schema.optional(Schema.String),
     objectId: Schema.optional(Schema.String),
@@ -1671,7 +1671,7 @@ export interface LayoutReference {
 }
 
 export const LayoutReference: Schema.Codec<LayoutReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     predefinedLayout: Schema.optional(Schema.String),
     layoutId: Schema.optional(Schema.String),
   }).annotate({ identifier: "LayoutReference" });
@@ -1686,7 +1686,7 @@ export interface TableRange {
 }
 
 export const TableRange: Schema.Codec<TableRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(TableCellLocation),
     rowSpan: Schema.optional(Schema.Number),
     columnSpan: Schema.optional(Schema.Number),
@@ -1700,7 +1700,7 @@ export interface MergeTableCellsRequest {
 }
 
 export const MergeTableCellsRequest: Schema.Codec<MergeTableCellsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableRange: Schema.optional(TableRange),
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "MergeTableCellsRequest" });
@@ -1715,7 +1715,7 @@ export interface LayoutPlaceholderIdMapping {
 }
 
 export const LayoutPlaceholderIdMapping: Schema.Codec<LayoutPlaceholderIdMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     layoutPlaceholderObjectId: Schema.optional(Schema.String),
     layoutPlaceholder: Schema.optional(Placeholder),
     objectId: Schema.optional(Schema.String),
@@ -1736,7 +1736,7 @@ export interface Range {
 }
 
 export const Range: Schema.Codec<Range> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     endIndex: Schema.optional(Schema.Number),
     startIndex: Schema.optional(Schema.Number),
@@ -1756,7 +1756,7 @@ export interface UpdateTextStyleRequest {
 }
 
 export const UpdateTextStyleRequest: Schema.Codec<UpdateTextStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cellLocation: Schema.optional(TableCellLocation),
     objectId: Schema.optional(Schema.String),
     textRange: Schema.optional(Range),
@@ -1770,7 +1770,7 @@ export interface ReplaceAllShapesWithImageResponse {
 }
 
 export const ReplaceAllShapesWithImageResponse: Schema.Codec<ReplaceAllShapesWithImageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     occurrencesChanged: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ReplaceAllShapesWithImageResponse" });
 
@@ -1782,7 +1782,7 @@ export interface UnmergeTableCellsRequest {
 }
 
 export const UnmergeTableCellsRequest: Schema.Codec<UnmergeTableCellsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableRange: Schema.optional(TableRange),
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "UnmergeTableCellsRequest" });
@@ -1801,7 +1801,7 @@ export interface UpdatePageElementTransformRequest {
 }
 
 export const UpdatePageElementTransformRequest: Schema.Codec<UpdatePageElementTransformRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     transform: Schema.optional(AffineTransform),
     applyMode: Schema.optional(Schema.String),
@@ -1819,7 +1819,7 @@ export interface InsertTableRowsRequest {
 }
 
 export const InsertTableRowsRequest: Schema.Codec<InsertTableRowsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cellLocation: Schema.optional(TableCellLocation),
     insertBelow: Schema.optional(Schema.Boolean),
     number: Schema.optional(Schema.Number),
@@ -1838,7 +1838,7 @@ export interface UpdateTableRowPropertiesRequest {
 }
 
 export const UpdateTableRowPropertiesRequest: Schema.Codec<UpdateTableRowPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableRowProperties: Schema.optional(TableRowProperties),
     objectId: Schema.optional(Schema.String),
     rowIndices: Schema.optional(Schema.Array(Schema.Number)),
@@ -1859,7 +1859,7 @@ export interface ReplaceImageRequest {
 }
 
 export const ReplaceImageRequest: Schema.Codec<ReplaceImageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     imageObjectId: Schema.optional(Schema.String),
     imageReplaceMethod: Schema.optional(Schema.String),
@@ -1875,7 +1875,7 @@ export interface DeleteTextRequest {
 }
 
 export const DeleteTextRequest: Schema.Codec<DeleteTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     cellLocation: Schema.optional(TableCellLocation),
     textRange: Schema.optional(Range),
@@ -1893,7 +1893,7 @@ export interface UpdateTableColumnPropertiesRequest {
 }
 
 export const UpdateTableColumnPropertiesRequest: Schema.Codec<UpdateTableColumnPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.String),
     objectId: Schema.optional(Schema.String),
     columnIndices: Schema.optional(Schema.Array(Schema.Number)),
@@ -1908,7 +1908,7 @@ export interface DuplicateObjectRequest {
 }
 
 export const DuplicateObjectRequest: Schema.Codec<DuplicateObjectRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     objectIds: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "DuplicateObjectRequest" });
@@ -1919,7 +1919,7 @@ export interface UngroupObjectsRequest {
 }
 
 export const UngroupObjectsRequest: Schema.Codec<UngroupObjectsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "UngroupObjectsRequest" });
 
@@ -1933,7 +1933,7 @@ export interface ReplaceAllTextRequest {
 }
 
 export const ReplaceAllTextRequest: Schema.Codec<ReplaceAllTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containsText: Schema.optional(SubstringMatchCriteria),
     replaceText: Schema.optional(Schema.String),
     pageObjectIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1949,7 +1949,7 @@ export interface DeleteParagraphBulletsRequest {
 }
 
 export const DeleteParagraphBulletsRequest: Schema.Codec<DeleteParagraphBulletsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cellLocation: Schema.optional(TableCellLocation),
     objectId: Schema.optional(Schema.String),
     textRange: Schema.optional(Range),
@@ -1969,7 +1969,7 @@ export interface UpdatePageElementsZOrderRequest {
 }
 
 export const UpdatePageElementsZOrderRequest: Schema.Codec<UpdatePageElementsZOrderRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     pageElementObjectIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "UpdatePageElementsZOrderRequest" });
@@ -1998,7 +1998,7 @@ export interface UpdateTableBorderPropertiesRequest {
 }
 
 export const UpdateTableBorderPropertiesRequest: Schema.Codec<UpdateTableBorderPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     borderPosition: Schema.optional(Schema.String),
     tableBorderProperties: Schema.optional(TableBorderProperties),
     fields: Schema.optional(Schema.String),
@@ -2018,7 +2018,7 @@ export interface InsertTextRequest {
 }
 
 export const InsertTextRequest: Schema.Codec<InsertTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cellLocation: Schema.optional(TableCellLocation),
     objectId: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
@@ -2179,7 +2179,7 @@ export interface CreateShapeRequest {
 }
 
 export const CreateShapeRequest: Schema.Codec<CreateShapeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     elementProperties: Schema.optional(PageElementProperties),
     shapeType: Schema.optional(Schema.String),
@@ -2195,7 +2195,7 @@ export interface UpdateImagePropertiesRequest {
 }
 
 export const UpdateImagePropertiesRequest: Schema.Codec<UpdateImagePropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageProperties: Schema.optional(ImageProperties),
     fields: Schema.optional(Schema.String),
     objectId: Schema.optional(Schema.String),
@@ -2219,7 +2219,7 @@ export interface ReplaceAllShapesWithImageRequest {
 }
 
 export const ReplaceAllShapesWithImageRequest: Schema.Codec<ReplaceAllShapesWithImageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containsText: Schema.optional(SubstringMatchCriteria),
     imageUrl: Schema.optional(Schema.String),
     pageObjectIds: Schema.optional(Schema.Array(Schema.String)),
@@ -2239,7 +2239,7 @@ export interface CreateSlideRequest {
 }
 
 export const CreateSlideRequest: Schema.Codec<CreateSlideRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     insertionIndex: Schema.optional(Schema.Number),
     placeholderIdMappings: Schema.optional(
       Schema.Array(LayoutPlaceholderIdMapping),
@@ -2258,7 +2258,7 @@ export interface UpdateLinePropertiesRequest {
 }
 
 export const UpdateLinePropertiesRequest: Schema.Codec<UpdateLinePropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.String),
     lineProperties: Schema.optional(LineProperties),
     objectId: Schema.optional(Schema.String),
@@ -2281,7 +2281,7 @@ export interface CreateLineRequest {
 }
 
 export const CreateLineRequest: Schema.Codec<CreateLineRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     elementProperties: Schema.optional(PageElementProperties),
     category: Schema.optional(Schema.String),
     objectId: Schema.optional(Schema.String),
@@ -2300,7 +2300,7 @@ export interface UpdateTableCellPropertiesRequest {
 }
 
 export const UpdateTableCellPropertiesRequest: Schema.Codec<UpdateTableCellPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     tableCellProperties: Schema.optional(TableCellProperties),
     fields: Schema.optional(Schema.String),
@@ -2321,7 +2321,7 @@ export interface UpdateParagraphStyleRequest {
 }
 
 export const UpdateParagraphStyleRequest: Schema.Codec<UpdateParagraphStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.String),
     style: Schema.optional(ParagraphStyle),
     textRange: Schema.optional(Range),
@@ -2341,7 +2341,7 @@ export interface CreateVideoRequest {
 }
 
 export const CreateVideoRequest: Schema.Codec<CreateVideoRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     elementProperties: Schema.optional(PageElementProperties),
     objectId: Schema.optional(Schema.String),
@@ -2362,7 +2362,7 @@ export interface CreateSheetsChartRequest {
 }
 
 export const CreateSheetsChartRequest: Schema.Codec<CreateSheetsChartRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     chartId: Schema.optional(Schema.Number),
     linkingMode: Schema.optional(Schema.String),
@@ -2378,7 +2378,7 @@ export interface UpdateSlidesPositionRequest {
 }
 
 export const UpdateSlidesPositionRequest: Schema.Codec<UpdateSlidesPositionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     insertionIndex: Schema.optional(Schema.Number),
     slideObjectIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "UpdateSlidesPositionRequest" });
@@ -2395,7 +2395,7 @@ export interface CreateTableRequest {
 }
 
 export const CreateTableRequest: Schema.Codec<CreateTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     rows: Schema.optional(Schema.Number),
     columns: Schema.optional(Schema.Number),
@@ -2412,7 +2412,7 @@ export interface UpdateShapePropertiesRequest {
 }
 
 export const UpdateShapePropertiesRequest: Schema.Codec<UpdateShapePropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.String),
     objectId: Schema.optional(Schema.String),
     shapeProperties: Schema.optional(ShapeProperties),
@@ -2431,7 +2431,7 @@ export interface UpdateLineCategoryRequest {
 }
 
 export const UpdateLineCategoryRequest: Schema.Codec<UpdateLineCategoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     lineCategory: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpdateLineCategoryRequest" });
@@ -2442,7 +2442,7 @@ export interface RefreshSheetsChartRequest {
 }
 
 export const RefreshSheetsChartRequest: Schema.Codec<RefreshSheetsChartRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RefreshSheetsChartRequest" });
 
@@ -2458,7 +2458,7 @@ export interface InsertTableColumnsRequest {
 }
 
 export const InsertTableColumnsRequest: Schema.Codec<InsertTableColumnsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableObjectId: Schema.optional(Schema.String),
     insertRight: Schema.optional(Schema.Boolean),
     cellLocation: Schema.optional(TableCellLocation),
@@ -2493,7 +2493,7 @@ export interface CreateParagraphBulletsRequest {
 }
 
 export const CreateParagraphBulletsRequest: Schema.Codec<CreateParagraphBulletsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textRange: Schema.optional(Range),
     bulletPreset: Schema.optional(Schema.String),
     cellLocation: Schema.optional(TableCellLocation),
@@ -2508,7 +2508,7 @@ export interface DeleteTableRowRequest {
 }
 
 export const DeleteTableRowRequest: Schema.Codec<DeleteTableRowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cellLocation: Schema.optional(TableCellLocation),
     tableObjectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteTableRowRequest" });
@@ -2519,7 +2519,7 @@ export interface RerouteLineRequest {
 }
 
 export const RerouteLineRequest: Schema.Codec<RerouteLineRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RerouteLineRequest" });
 
@@ -2533,7 +2533,7 @@ export interface UpdateVideoPropertiesRequest {
 }
 
 export const UpdateVideoPropertiesRequest: Schema.Codec<UpdateVideoPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     videoProperties: Schema.optional(VideoProperties),
     fields: Schema.optional(Schema.String),
     objectId: Schema.optional(Schema.String),
@@ -2549,7 +2549,7 @@ export interface CreateImageRequest {
 }
 
 export const CreateImageRequest: Schema.Codec<CreateImageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     objectId: Schema.optional(Schema.String),
     elementProperties: Schema.optional(PageElementProperties),
@@ -2563,7 +2563,7 @@ export interface GroupObjectsRequest {
 }
 
 export const GroupObjectsRequest: Schema.Codec<GroupObjectsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     childrenObjectIds: Schema.optional(Schema.Array(Schema.String)),
     groupObjectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GroupObjectsRequest" });
@@ -2578,7 +2578,7 @@ export interface UpdatePagePropertiesRequest {
 }
 
 export const UpdatePagePropertiesRequest: Schema.Codec<UpdatePagePropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.String),
     pageProperties: Schema.optional(PageProperties),
     objectId: Schema.optional(Schema.String),
@@ -2676,7 +2676,7 @@ export interface Request {
 }
 
 export const Request: Schema.Codec<Request> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     insertTableRows: Schema.optional(InsertTableRowsRequest),
     updateTableRowProperties: Schema.optional(UpdateTableRowPropertiesRequest),
     replaceImage: Schema.optional(ReplaceImageRequest),
@@ -2741,7 +2741,7 @@ export interface WriteControl {
 }
 
 export const WriteControl: Schema.Codec<WriteControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requiredRevisionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "WriteControl" });
 
@@ -2753,7 +2753,7 @@ export interface BatchUpdatePresentationRequest {
 }
 
 export const BatchUpdatePresentationRequest: Schema.Codec<BatchUpdatePresentationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     writeControl: Schema.optional(WriteControl),
     requests: Schema.optional(Schema.Array(Request)),
   }).annotate({ identifier: "BatchUpdatePresentationRequest" });
@@ -2768,7 +2768,7 @@ export interface Thumbnail {
 }
 
 export const Thumbnail: Schema.Codec<Thumbnail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentUrl: Schema.optional(Schema.String),
     width: Schema.optional(Schema.Number),
     height: Schema.optional(Schema.Number),
@@ -2780,7 +2780,7 @@ export interface DuplicateObjectResponse {
 }
 
 export const DuplicateObjectResponse: Schema.Codec<DuplicateObjectResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DuplicateObjectResponse" });
 
@@ -2790,7 +2790,7 @@ export interface CreateImageResponse {
 }
 
 export const CreateImageResponse: Schema.Codec<CreateImageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateImageResponse" });
 
@@ -2800,7 +2800,7 @@ export interface GroupObjectsResponse {
 }
 
 export const GroupObjectsResponse: Schema.Codec<GroupObjectsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GroupObjectsResponse" });
 
@@ -2810,7 +2810,7 @@ export interface CreateTableResponse {
 }
 
 export const CreateTableResponse: Schema.Codec<CreateTableResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateTableResponse" });
 
@@ -2820,7 +2820,7 @@ export interface ReplaceAllTextResponse {
 }
 
 export const ReplaceAllTextResponse: Schema.Codec<ReplaceAllTextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     occurrencesChanged: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ReplaceAllTextResponse" });
 
@@ -2830,7 +2830,7 @@ export interface CreateLineResponse {
 }
 
 export const CreateLineResponse: Schema.Codec<CreateLineResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateLineResponse" });
 
@@ -2840,7 +2840,7 @@ export interface ReplaceAllShapesWithSheetsChartResponse {
 }
 
 export const ReplaceAllShapesWithSheetsChartResponse: Schema.Codec<ReplaceAllShapesWithSheetsChartResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     occurrencesChanged: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ReplaceAllShapesWithSheetsChartResponse" });
 
@@ -2850,7 +2850,7 @@ export interface CreateVideoResponse {
 }
 
 export const CreateVideoResponse: Schema.Codec<CreateVideoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateVideoResponse" });
 
@@ -2860,7 +2860,7 @@ export interface CreateShapeResponse {
 }
 
 export const CreateShapeResponse: Schema.Codec<CreateShapeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateShapeResponse" });
 
@@ -2892,7 +2892,7 @@ export interface Response {
 }
 
 export const Response: Schema.Codec<Response> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createSheetsChart: Schema.optional(CreateSheetsChartResponse),
     duplicateObject: Schema.optional(DuplicateObjectResponse),
     replaceAllShapesWithImage: Schema.optional(
@@ -2921,7 +2921,7 @@ export interface BatchUpdatePresentationResponse {
 }
 
 export const BatchUpdatePresentationResponse: Schema.Codec<BatchUpdatePresentationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     replies: Schema.optional(Schema.Array(Response)),
     writeControl: Schema.optional(WriteControl),
     presentationId: Schema.optional(Schema.String),
@@ -2949,7 +2949,7 @@ export interface Presentation {
 }
 
 export const Presentation: Schema.Codec<Presentation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notesMaster: Schema.optional(Page),
     masters: Schema.optional(Schema.Array(Page)),
     revisionId: Schema.optional(Schema.String),
@@ -3021,7 +3021,7 @@ export interface GetPresentationsRequest {
 }
 
 export const GetPresentationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     presentationId: Schema.String.pipe(T.HttpPath("presentationId")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/presentations/{+presentationId}" }),
@@ -3029,8 +3029,7 @@ export const GetPresentationsRequest =
   ) as unknown as Schema.Codec<GetPresentationsRequest>;
 
 export type GetPresentationsResponse = Presentation;
-export const GetPresentationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Presentation;
+export const GetPresentationsResponse = /*@__PURE__*/ Presentation;
 
 export type GetPresentationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3040,7 +3039,7 @@ export const getPresentations: API.OperationMethod<
   GetPresentationsResponse,
   GetPresentationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPresentationsRequest,
   output: GetPresentationsResponse,
   errors: [NotFound, Forbidden],
@@ -3054,7 +3053,7 @@ export interface BatchUpdatePresentationsRequest {
 }
 
 export const BatchUpdatePresentationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     presentationId: Schema.String.pipe(T.HttpPath("presentationId")),
     body: Schema.optional(BatchUpdatePresentationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3068,7 +3067,7 @@ export const BatchUpdatePresentationsRequest =
 
 export type BatchUpdatePresentationsResponse = BatchUpdatePresentationResponse;
 export const BatchUpdatePresentationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchUpdatePresentationResponse;
+  /*@__PURE__*/ BatchUpdatePresentationResponse;
 
 export type BatchUpdatePresentationsError =
   | DefaultErrors
@@ -3083,7 +3082,7 @@ export const batchUpdatePresentations: API.OperationMethod<
   BatchUpdatePresentationsResponse,
   BatchUpdatePresentationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdatePresentationsRequest,
   output: BatchUpdatePresentationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3095,7 +3094,7 @@ export interface CreatePresentationsRequest {
 }
 
 export const CreatePresentationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(Presentation).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1/presentations", hasBody: true }),
@@ -3103,8 +3102,7 @@ export const CreatePresentationsRequest =
   ) as unknown as Schema.Codec<CreatePresentationsRequest>;
 
 export type CreatePresentationsResponse = Presentation;
-export const CreatePresentationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Presentation;
+export const CreatePresentationsResponse = /*@__PURE__*/ Presentation;
 
 export type CreatePresentationsError =
   | DefaultErrors
@@ -3119,7 +3117,7 @@ export const createPresentations: API.OperationMethod<
   CreatePresentationsResponse,
   CreatePresentationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePresentationsRequest,
   output: CreatePresentationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3133,7 +3131,7 @@ export interface GetPresentationsPagesRequest {
 }
 
 export const GetPresentationsPagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     presentationId: Schema.String.pipe(T.HttpPath("presentationId")),
     pageObjectId: Schema.String.pipe(T.HttpPath("pageObjectId")),
   }).pipe(
@@ -3145,7 +3143,7 @@ export const GetPresentationsPagesRequest =
   ) as unknown as Schema.Codec<GetPresentationsPagesRequest>;
 
 export type GetPresentationsPagesResponse = Page;
-export const GetPresentationsPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
+export const GetPresentationsPagesResponse = /*@__PURE__*/ Page;
 
 export type GetPresentationsPagesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3155,7 +3153,7 @@ export const getPresentationsPages: API.OperationMethod<
   GetPresentationsPagesResponse,
   GetPresentationsPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPresentationsPagesRequest,
   output: GetPresentationsPagesResponse,
   errors: [NotFound, Forbidden],
@@ -3179,7 +3177,7 @@ export interface GetThumbnailPresentationsPagesRequest {
 }
 
 export const GetThumbnailPresentationsPagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     presentationId: Schema.String.pipe(T.HttpPath("presentationId")),
     pageObjectId: Schema.String.pipe(T.HttpPath("pageObjectId")),
     "thumbnailProperties.mimeType": Schema.optional(Schema.String).pipe(
@@ -3197,8 +3195,7 @@ export const GetThumbnailPresentationsPagesRequest =
   ) as unknown as Schema.Codec<GetThumbnailPresentationsPagesRequest>;
 
 export type GetThumbnailPresentationsPagesResponse = Thumbnail;
-export const GetThumbnailPresentationsPagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Thumbnail;
+export const GetThumbnailPresentationsPagesResponse = /*@__PURE__*/ Thumbnail;
 
 export type GetThumbnailPresentationsPagesError =
   | DefaultErrors
@@ -3211,7 +3208,7 @@ export const getThumbnailPresentationsPages: API.OperationMethod<
   GetThumbnailPresentationsPagesResponse,
   GetThumbnailPresentationsPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThumbnailPresentationsPagesRequest,
   output: GetThumbnailPresentationsPagesResponse,
   errors: [NotFound, Forbidden],

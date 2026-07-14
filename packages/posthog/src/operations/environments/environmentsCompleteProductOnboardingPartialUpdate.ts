@@ -1092,7 +1092,7 @@ export interface EnvironmentsCompleteProductOnboardingPartialUpdateInput {
   events_retention_enforced?: boolean;
 }
 export const EnvironmentsCompleteProductOnboardingPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.optional(Schema.String),
@@ -2269,7 +2269,7 @@ export const EnvironmentsCompleteProductOnboardingPartialUpdateInput =
 // Output Schema
 export type EnvironmentsCompleteProductOnboardingPartialUpdateOutput = void;
 export const EnvironmentsCompleteProductOnboardingPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsCompleteProductOnboardingPartialUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsCompleteProductOnboardingPartialUpdateOutput>;
 
 // The operation
 /**
@@ -2279,7 +2279,7 @@ export const EnvironmentsCompleteProductOnboardingPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsCompleteProductOnboardingPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsCompleteProductOnboardingPartialUpdateInput,
     outputSchema: EnvironmentsCompleteProductOnboardingPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

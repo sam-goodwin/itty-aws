@@ -44,7 +44,7 @@ export interface V1CreateABranchInput {
   with_data?: boolean;
   notify_url?: string;
 }
-export const V1CreateABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1CreateABranchInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   branch_name: Schema.String,
   git_branch: Schema.optional(Schema.String),
@@ -134,7 +134,7 @@ export interface V1CreateABranchOutput {
     | "PAUSE_FAILED"
     | "RESIZING";
 }
-export const V1CreateABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1CreateABranchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   project_ref: Schema.String,
@@ -187,7 +187,7 @@ export const V1CreateABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param ref - Project ref
  */
-export const v1CreateABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1CreateABranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1CreateABranchInput,
   outputSchema: V1CreateABranchOutput,
   errors: [BadRequest, NotFound] as const,

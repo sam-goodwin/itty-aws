@@ -296,7 +296,7 @@ export interface PostTestHelpersConfirmationTokensInput {
   };
 }
 export const PostTestHelpersConfirmationTokensInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     payment_method: Schema.optional(Schema.String),
     payment_method_data: Schema.optional(
@@ -745,7 +745,7 @@ export interface PostTestHelpersConfirmationTokensOutput {
   use_stripe_sdk: boolean;
 }
 export const PostTestHelpersConfirmationTokensOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     expires_at: Schema.NullOr(Schema.Number),
     id: Schema.String,
@@ -821,7 +821,7 @@ export const PostTestHelpersConfirmationTokensOutput =
  * <p>Creates a test mode Confirmation Token server side for your integration tests.</p>
  */
 export const PostTestHelpersConfirmationTokens =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersConfirmationTokensInput,
     outputSchema: PostTestHelpersConfirmationTokensOutput,
   }));

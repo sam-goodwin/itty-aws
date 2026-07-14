@@ -13,7 +13,7 @@ export interface LlmSkillsResolveNameRetrieveInput {
   version_id?: string;
 }
 export const LlmSkillsResolveNameRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     skill_name: Schema.String.pipe(T.PathParam()),
     before_version: Schema.optional(Schema.Number),
@@ -102,7 +102,7 @@ export interface LlmSkillsResolveNameRetrieveOutput {
   has_more?: boolean;
 }
 export const LlmSkillsResolveNameRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skill: Schema.optional(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -232,7 +232,7 @@ export const LlmSkillsResolveNameRetrieveOutput =
  * @param version_id - Exact skill version UUID to resolve.
  */
 export const llmSkillsResolveNameRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmSkillsResolveNameRetrieveInput,
     outputSchema: LlmSkillsResolveNameRetrieveOutput,
   }));

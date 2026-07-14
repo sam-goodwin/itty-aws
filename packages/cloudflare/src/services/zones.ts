@@ -115,7 +115,7 @@ export class ZoneHoldsRequireEnterprise extends T.applyErrorMatchers(
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -127,7 +127,7 @@ interface Error2 {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -157,7 +157,7 @@ interface ResultInfo {
   /** The number of total pages in the entire result set. */
   totalPages?: number | null;
 }
-const ResultInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResultInfo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -179,7 +179,7 @@ interface ListCursor {
   after?: string | null;
   before?: string | null;
 }
-const ListCursor = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListCursor = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     before: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -195,7 +195,7 @@ interface Environment {
   version: number | null;
   httpApplicationId?: string | null;
 }
-const Environment = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Environment = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     expression: Schema.String,
     lockedOnDeployment: Schema.Union([Schema.Boolean, Schema.Null]),
@@ -247,7 +247,7 @@ interface ListPlansResponseResult {
   /** The amount you will be billed for this plan. */
   price?: number | null;
 }
-const ListPlansResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListPlansResponseResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     canSubscribe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -301,7 +301,7 @@ interface Component {
   /** The unit price of the addon. */
   unitPrice?: number | null;
 }
-const Component = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Component = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     default: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     name: Schema.optional(
@@ -360,26 +360,25 @@ interface GetRatePlanResponseResult {
   /** The plan name. */
   name?: string | null;
 }
-const GetRatePlanResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      components: Schema.optional(
-        Schema.Union([Schema.Array(Component), Schema.Null]),
-      ),
-      currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      frequency: Schema.optional(
+const GetRatePlanResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    components: Schema.optional(
+      Schema.Union([Schema.Array(Component), Schema.Null]),
+    ),
+    currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    frequency: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+          Schema.String,
         ]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+        Schema.Null,
+      ]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<GetRatePlanResponseResult>;
 
 interface ZeroRTT {
@@ -392,7 +391,7 @@ interface ZeroRTT {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZeroRTT = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZeroRTT = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("0rtt"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -418,7 +417,7 @@ interface AdvancedDDoS {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const AdvancedDDoS = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AdvancedDDoS = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("advanced_ddos"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -440,7 +439,7 @@ interface Value {
   /** Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin. */
   poolId?: string | null;
 }
-const Value = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Value = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     poolId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -455,7 +454,7 @@ interface ZonesCacheRulesAegis {
   /** Value of the zone setting. */
   value?: { enabled?: boolean | null; poolId?: string | null } | null;
 }
-const ZonesCacheRulesAegis = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesCacheRulesAegis = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("aegis"),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -475,7 +474,7 @@ interface AlwaysOnline {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const AlwaysOnline = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AlwaysOnline = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("always_online"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -501,21 +500,20 @@ interface ZonesSchemasAlwaysUseHTTPS {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSchemasAlwaysUseHTTPS = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Literal("always_use_https"),
-      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-      editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        value: "value",
-        editable: "editable",
-        modifiedOn: "modified_on",
-      }),
-    ),
+const ZonesSchemasAlwaysUseHTTPS = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Literal("always_use_https"),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
 ) as unknown as Schema.Codec<ZonesSchemasAlwaysUseHTTPS>;
 
 interface ZonesSchemasAutomaticHTTPSRewrites {
@@ -529,7 +527,7 @@ interface ZonesSchemasAutomaticHTTPSRewrites {
   modifiedOn?: string | null;
 }
 const ZonesSchemasAutomaticHTTPSRewrites =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("automatic_https_rewrites"),
       value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -555,7 +553,7 @@ interface Brotli {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const Brotli = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Brotli = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("brotli"),
     value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
@@ -581,21 +579,20 @@ interface ZonesSchemasBrowserCacheTTL {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSchemasBrowserCacheTTL = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Literal("browser_cache_ttl"),
-      value: Schema.Number,
-      editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        value: "value",
-        editable: "editable",
-        modifiedOn: "modified_on",
-      }),
-    ),
+const ZonesSchemasBrowserCacheTTL = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Literal("browser_cache_ttl"),
+    value: Schema.Number,
+    editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
 ) as unknown as Schema.Codec<ZonesSchemasBrowserCacheTTL>;
 
 interface ZonesSchemasBrowserCheck {
@@ -608,21 +605,20 @@ interface ZonesSchemasBrowserCheck {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSchemasBrowserCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Literal("browser_check"),
-      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-      editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        value: "value",
-        editable: "editable",
-        modifiedOn: "modified_on",
-      }),
-    ),
+const ZonesSchemasBrowserCheck = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Literal("browser_check"),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
 ) as unknown as Schema.Codec<ZonesSchemasBrowserCheck>;
 
 interface ZonesSchemasCacheLevel {
@@ -635,7 +631,7 @@ interface ZonesSchemasCacheLevel {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSchemasCacheLevel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesSchemasCacheLevel = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("cache_level"),
     value: Schema.Union([
@@ -679,7 +675,7 @@ interface ChallengeTTL {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ChallengeTTL = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ChallengeTTL = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("challenge_ttl"),
     value: Schema.Union([
@@ -723,21 +719,20 @@ interface ZonesChinaNetworkEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesChinaNetworkEnabled = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Literal("china_network_enabled"),
-      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-      editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        value: "value",
-        editable: "editable",
-        modifiedOn: "modified_on",
-      }),
-    ),
+const ZonesChinaNetworkEnabled = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Literal("china_network_enabled"),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
 ) as unknown as Schema.Codec<ZonesChinaNetworkEnabled>;
 
 interface ZonesContentConverter {
@@ -750,7 +745,7 @@ interface ZonesContentConverter {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesContentConverter = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesContentConverter = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("content_converter"),
     value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
@@ -776,7 +771,7 @@ interface Ciphers {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const Ciphers = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ciphers = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("ciphers"),
     value: Schema.Array(Schema.String),
@@ -802,7 +797,7 @@ interface ZonesCNAMEFlattening {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesCNAMEFlattening = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesCNAMEFlattening = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("cname_flattening"),
     value: Schema.Union([
@@ -833,7 +828,7 @@ interface DevelopmentMode {
   /** Value of the zone setting. Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been  */
   timeRemaining?: number | null;
 }
-const DevelopmentMode = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DevelopmentMode = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("development_mode"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -861,7 +856,7 @@ interface EarlyHints {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const EarlyHints = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const EarlyHints = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("early_hints"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -909,46 +904,45 @@ interface ZonesSchemasEdgeCacheTTL {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSchemasEdgeCacheTTL = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Literal("edge_cache_ttl"),
-      value: Schema.Union([
-        Schema.Literals([
-          "30",
-          "60",
-          "300",
-          "1200",
-          "1800",
-          "3600",
-          "7200",
-          "10800",
-          "14400",
-          "18000",
-          "28800",
-          "43200",
-          "57600",
-          "72000",
-          "86400",
-          "172800",
-          "259200",
-          "345600",
-          "432000",
-          "518400",
-          "604800",
-        ]),
-        Schema.String,
+const ZonesSchemasEdgeCacheTTL = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Literal("edge_cache_ttl"),
+    value: Schema.Union([
+      Schema.Literals([
+        "30",
+        "60",
+        "300",
+        "1200",
+        "1800",
+        "3600",
+        "7200",
+        "10800",
+        "14400",
+        "18000",
+        "28800",
+        "43200",
+        "57600",
+        "72000",
+        "86400",
+        "172800",
+        "259200",
+        "345600",
+        "432000",
+        "518400",
+        "604800",
       ]),
-      editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        value: "value",
-        editable: "editable",
-        modifiedOn: "modified_on",
-      }),
-    ),
+      Schema.String,
+    ]),
+    editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
 ) as unknown as Schema.Codec<ZonesSchemasEdgeCacheTTL>;
 
 interface ZonesSchemasEmailObfuscation {
@@ -961,21 +955,20 @@ interface ZonesSchemasEmailObfuscation {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSchemasEmailObfuscation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Literal("email_obfuscation"),
-      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-      editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        value: "value",
-        editable: "editable",
-        modifiedOn: "modified_on",
-      }),
-    ),
+const ZonesSchemasEmailObfuscation = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Literal("email_obfuscation"),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
 ) as unknown as Schema.Codec<ZonesSchemasEmailObfuscation>;
 
 interface H2Prioritization {
@@ -988,7 +981,7 @@ interface H2Prioritization {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const H2Prioritization = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const H2Prioritization = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("h2_prioritization"),
     value: Schema.Union([
@@ -1017,7 +1010,7 @@ interface HotlinkProtection {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const HotlinkProtection = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const HotlinkProtection = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("hotlink_protection"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1043,7 +1036,7 @@ interface Http2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const Http2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Http2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("http2"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1069,7 +1062,7 @@ interface Http3 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const Http3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Http3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("http3"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1095,7 +1088,7 @@ interface ImageResizing {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ImageResizing = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ImageResizing = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("image_resizing"),
     value: Schema.Union([
@@ -1124,21 +1117,20 @@ interface ZonesSchemasIPGeolocation {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSchemasIPGeolocation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Literal("ip_geolocation"),
-      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-      editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        value: "value",
-        editable: "editable",
-        modifiedOn: "modified_on",
-      }),
-    ),
+const ZonesSchemasIPGeolocation = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Literal("ip_geolocation"),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
 ) as unknown as Schema.Codec<ZonesSchemasIPGeolocation>;
 
 interface Ipv6 {
@@ -1151,7 +1143,7 @@ interface Ipv6 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const Ipv6 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ipv6 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("ipv6"),
     value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
@@ -1196,7 +1188,7 @@ interface ZonesMaxUpload {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesMaxUpload = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesMaxUpload = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("max_upload"),
     value: Schema.Union([
@@ -1244,7 +1236,7 @@ interface MinTLSVersion {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const MinTLSVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MinTLSVersion = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("min_tls_version"),
     value: Schema.Union([
@@ -1273,7 +1265,7 @@ interface ZonesSchemasMirage {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSchemasMirage = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesSchemasMirage = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("mirage"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1292,7 +1284,7 @@ const ZonesSchemasMirage = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Value2 {
   enabled?: boolean | null;
 }
-const Value2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Value2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   }),
@@ -1308,7 +1300,7 @@ interface Nel {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const Nel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Nel = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("nel"),
     value: Value2,
@@ -1335,7 +1327,7 @@ interface ZonesSchemasOpportunisticEncryption {
   modifiedOn?: string | null;
 }
 const ZonesSchemasOpportunisticEncryption =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("opportunistic_encryption"),
       value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1361,7 +1353,7 @@ interface OpportunisticOnion {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const OpportunisticOnion = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OpportunisticOnion = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("opportunistic_onion"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1387,7 +1379,7 @@ interface OrangeToOrange {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const OrangeToOrange = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OrangeToOrange = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("orange_to_orange"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1414,7 +1406,7 @@ interface ZonesSchemasOriginErrorPagePassThru {
   modifiedOn?: string | null;
 }
 const ZonesSchemasOriginErrorPagePassThru =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("origin_error_page_pass_thru"),
       value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1439,7 +1431,7 @@ interface ZonesCacheRulesOriginH2MaxStreams {
   value?: number | null;
 }
 const ZonesCacheRulesOriginH2MaxStreams =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("origin_h2_max_streams"),
       modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1462,7 +1454,7 @@ interface ZonesCacheRulesOriginMaxHTTPVersion {
   value?: "2" | "1" | (string & {}) | null;
 }
 const ZonesCacheRulesOriginMaxHTTPVersion =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("origin_max_http_version"),
       modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1491,7 +1483,7 @@ interface ZonesSchemasPolish {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSchemasPolish = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesSchemasPolish = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("polish"),
     value: Schema.Union([
@@ -1520,7 +1512,7 @@ interface PrefetchPreload {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const PrefetchPreload = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PrefetchPreload = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("prefetch_preload"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1546,7 +1538,7 @@ interface ZonesPrivacyPass {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesPrivacyPass = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesPrivacyPass = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("privacy_pass"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1572,7 +1564,7 @@ interface ProxyReadTimeout {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ProxyReadTimeout = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ProxyReadTimeout = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("proxy_read_timeout"),
     value: Schema.Number,
@@ -1598,7 +1590,7 @@ interface PseudoIPV4 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const PseudoIPV4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PseudoIPV4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("pseudo_ipv4"),
     value: Schema.Union([
@@ -1627,21 +1619,20 @@ interface ZonesRedirectsForAITraining {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesRedirectsForAITraining = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Literal("redirects_for_ai_training"),
-      value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
-      editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        value: "value",
-        editable: "editable",
-        modifiedOn: "modified_on",
-      }),
-    ),
+const ZonesRedirectsForAITraining = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Literal("redirects_for_ai_training"),
+    value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
+    editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
 ) as unknown as Schema.Codec<ZonesRedirectsForAITraining>;
 
 interface ZonesReplaceInsecureJS {
@@ -1654,7 +1645,7 @@ interface ZonesReplaceInsecureJS {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesReplaceInsecureJS = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesReplaceInsecureJS = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("replace_insecure_js"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1681,7 +1672,7 @@ interface ZonesSchemasResponseBuffering {
   modifiedOn?: string | null;
 }
 const ZonesSchemasResponseBuffering =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("response_buffering"),
       value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1707,21 +1698,20 @@ interface ZonesSchemasRocketLoader {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSchemasRocketLoader = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Literal("rocket_loader"),
-      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-      editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        value: "value",
-        editable: "editable",
-        modifiedOn: "modified_on",
-      }),
-    ),
+const ZonesSchemasRocketLoader = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Literal("rocket_loader"),
+    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
 ) as unknown as Schema.Codec<ZonesSchemasRocketLoader>;
 
 interface AutomaticPlatformOptimization {
@@ -1739,7 +1729,7 @@ interface AutomaticPlatformOptimization {
   wpPlugin: boolean;
 }
 const AutomaticPlatformOptimization =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cacheByDeviceType: Schema.Boolean,
       cf: Schema.Boolean,
@@ -1777,7 +1767,7 @@ interface ZonesSchemasAutomaticPlatformOptimization {
   modifiedOn?: string | null;
 }
 const ZonesSchemasAutomaticPlatformOptimization =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("automatic_platform_optimization"),
       value: AutomaticPlatformOptimization,
@@ -1803,7 +1793,7 @@ interface ZonesSearchForAgents {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSearchForAgents = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesSearchForAgents = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("search_for_agents"),
     value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
@@ -1831,7 +1821,7 @@ interface StrictTransportSecurity {
   /** Enable automatic preload of the HSTS configuration. */
   preload?: boolean | null;
 }
-const StrictTransportSecurity = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StrictTransportSecurity = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     includeSubdomains: Schema.optional(
@@ -1861,7 +1851,7 @@ interface Value3 {
     preload?: boolean | null;
   } | null;
 }
-const Value3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Value3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     strictTransportSecurity: Schema.optional(
       Schema.Union([StrictTransportSecurity, Schema.Null]),
@@ -1889,7 +1879,7 @@ interface SecurityHeaders {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const SecurityHeaders = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SecurityHeaders = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("security_header"),
     value: Value3,
@@ -1922,31 +1912,30 @@ interface ZonesSchemasSecurityLevel {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSchemasSecurityLevel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Literal("security_level"),
-      value: Schema.Union([
-        Schema.Literals([
-          "off",
-          "essentially_off",
-          "low",
-          "medium",
-          "high",
-          "under_attack",
-        ]),
-        Schema.String,
+const ZonesSchemasSecurityLevel = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Literal("security_level"),
+    value: Schema.Union([
+      Schema.Literals([
+        "off",
+        "essentially_off",
+        "low",
+        "medium",
+        "high",
+        "under_attack",
       ]),
-      editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        value: "value",
-        editable: "editable",
-        modifiedOn: "modified_on",
-      }),
-    ),
+      Schema.String,
+    ]),
+    editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      value: "value",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  ),
 ) as unknown as Schema.Codec<ZonesSchemasSecurityLevel>;
 
 interface ServerSideExcludes {
@@ -1959,7 +1948,7 @@ interface ServerSideExcludes {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ServerSideExcludes = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ServerSideExcludes = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("server_side_exclude"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1985,7 +1974,7 @@ interface ZonesSha1Support {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSha1Support = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesSha1Support = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("sha1_support"),
     value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
@@ -2012,7 +2001,7 @@ interface ZonesSchemasSortQueryStringForCache {
   modifiedOn?: string | null;
 }
 const ZonesSchemasSortQueryStringForCache =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("sort_query_string_for_cache"),
       value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -2038,7 +2027,7 @@ interface ZonesSchemasSSL {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSchemasSSL = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesSchemasSSL = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("ssl"),
     value: Schema.Union([
@@ -2063,7 +2052,7 @@ interface Sslrecommender {
   /** ssl-recommender enrollment setting. */
   enabled?: boolean | null;
 }
-const Sslrecommender = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Sslrecommender = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("ssl_recommender"), Schema.Null]),
@@ -2082,7 +2071,7 @@ interface ZonesTLS12Only {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesTLS12Only = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesTLS12Only = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("tls_1_2_only"),
     value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
@@ -2108,7 +2097,7 @@ interface Tls13 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const Tls13 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Tls13 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("tls_1_3"),
     value: Schema.Union([Schema.Literals(["on", "off", "zrt"]), Schema.String]),
@@ -2134,7 +2123,7 @@ interface TlsclientAuth {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const TlsclientAuth = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TlsclientAuth = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("tls_client_auth"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -2160,7 +2149,7 @@ interface ZonesTransformations {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesTransformations = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesTransformations = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("transformations"),
     value: Schema.Union([
@@ -2190,7 +2179,7 @@ interface ZonesTransformationsAllowedOrigins {
   modifiedOn?: string | null;
 }
 const ZonesTransformationsAllowedOrigins =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("transformations_allowed_origins"),
       value: Schema.String,
@@ -2217,7 +2206,7 @@ interface ZonesSchemasTrueClientIPHeader {
   modifiedOn?: string | null;
 }
 const ZonesSchemasTrueClientIPHeader =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("true_client_ip_header"),
       value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -2243,7 +2232,7 @@ interface ZonesSchemasWAF {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ZonesSchemasWAF = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZonesSchemasWAF = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("waf"),
     value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -2269,7 +2258,7 @@ interface WebP {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const WebP = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WebP = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("webp"),
     value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
@@ -2295,7 +2284,7 @@ interface Websocket {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const Websocket = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Websocket = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Literal("websockets"),
     value: Schema.Union([Schema.Literals(["off", "on"]), Schema.String]),
@@ -2339,7 +2328,7 @@ interface RatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: string[] | null;
 }
-const RatePlan = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RatePlan = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([
@@ -2390,7 +2379,7 @@ interface Account {
   /** The name of the account. */
   name?: string | null;
 }
-const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Account = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2412,7 +2401,7 @@ interface Meta {
   phishingDetected?: boolean | null;
   step?: number | null;
 }
-const Meta = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cdnOnly: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     customCertificateQuota: Schema.optional(
@@ -2446,7 +2435,7 @@ interface Owner {
   /** The type of owner. */
   type?: string | null;
 }
-const Owner = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Owner = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2476,7 +2465,7 @@ interface Plan {
   /** How much the customer is paying. */
   price?: number | null;
 }
-const Plan = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Plan = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     canSubscribe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -2512,7 +2501,7 @@ interface TenantUnit {
   /** Identifier */
   id?: string | null;
 }
-const TenantUnit = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TenantUnit = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -2591,7 +2580,7 @@ interface ListZonesResponseResult {
   /** Verification key for partial zone setup. */
   verificationKey?: string | null;
 }
-const ListZonesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListZonesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     account: Account,
@@ -2676,21 +2665,20 @@ interface ListZonesResponseResultInfo {
   perPage?: number | null;
   totalCount?: number | null;
 }
-const ListZonesResponseResultInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
-    ),
+const ListZonesResponseResultInfo = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      count: "count",
+      page: "page",
+      perPage: "per_page",
+      totalCount: "total_count",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListZonesResponseResultInfo>;
 
 // =============================================================================
@@ -2703,7 +2691,7 @@ export interface TriggerActivationCheckRequest {
 }
 
 export const TriggerActivationCheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -2717,7 +2705,7 @@ export interface TriggerActivationCheckResponse {
 }
 
 export const TriggerActivationCheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -2730,7 +2718,7 @@ export const triggerActivationCheck: API.OperationMethod<
   TriggerActivationCheckResponse,
   TriggerActivationCheckError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TriggerActivationCheckRequest,
   output: TriggerActivationCheckResponse,
   errors: [],
@@ -2745,11 +2733,10 @@ export interface GetCtAlertingRequest {
   zoneId: string;
 }
 
-export const GetCtAlertingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/ct/alerting" })),
+export const GetCtAlertingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/ct/alerting" })),
 ) as unknown as Schema.Codec<GetCtAlertingRequest>;
 
 export interface GetCtAlertingResponse {
@@ -2759,14 +2746,13 @@ export interface GetCtAlertingResponse {
   emails?: string[] | null;
 }
 
-export const GetCtAlertingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      enabled: Schema.Boolean,
-      emails: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-    }).pipe(T.ResponsePath("result")),
+export const GetCtAlertingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.Boolean,
+    emails: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetCtAlertingResponse>;
 
 export type GetCtAlertingError = DefaultErrors;
@@ -2776,7 +2762,7 @@ export const getCtAlerting: API.OperationMethod<
   GetCtAlertingResponse,
   GetCtAlertingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCtAlertingRequest,
   output: GetCtAlertingResponse,
   errors: [],
@@ -2792,7 +2778,7 @@ export interface PatchCtAlertingRequest {
 }
 
 export const PatchCtAlertingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       enabled: Schema.Boolean,
@@ -2808,7 +2794,7 @@ export interface PatchCtAlertingResponse {
 }
 
 export const PatchCtAlertingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       enabled: Schema.Boolean,
       emails: Schema.optional(
@@ -2824,7 +2810,7 @@ export const patchCtAlerting: API.OperationMethod<
   PatchCtAlertingResponse,
   PatchCtAlertingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCtAlertingRequest,
   output: PatchCtAlertingResponse,
   errors: [],
@@ -2840,7 +2826,7 @@ export interface GetCustomNameserverRequest {
 }
 
 export const GetCustomNameserverRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/custom_ns" })),
@@ -2879,7 +2865,7 @@ export interface GetCustomNameserverResponse {
 }
 
 export const GetCustomNameserverResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.optional(
         Schema.Union([Schema.Array(Error2), Schema.Null]),
@@ -2917,7 +2903,7 @@ export const getCustomNameserver: API.OperationMethod<
   GetCustomNameserverResponse,
   GetCustomNameserverError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomNameserverRequest,
   output: GetCustomNameserverResponse,
   errors: [InvalidZoneIdentifier, Forbidden],
@@ -2933,7 +2919,7 @@ export interface PutCustomNameserverRequest {
 }
 
 export const PutCustomNameserverRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       enabled: Schema.optional(Schema.Boolean),
@@ -2949,7 +2935,7 @@ export interface PutCustomNameserverResponse {
 }
 
 export const PutCustomNameserverResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Unknown,
     }),
@@ -2966,7 +2952,7 @@ export const putCustomNameserver: API.PaginatedOperationMethod<
   PutCustomNameserverResponse,
   PutCustomNameserverError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutCustomNameserverRequest,
   output: PutCustomNameserverResponse,
   errors: [InvalidZoneIdentifier, CustomNameserverSetNotFound, Forbidden],
@@ -2986,7 +2972,7 @@ export interface ListEnvironmentsRequest {
 }
 
 export const ListEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/environments" })),
@@ -3005,7 +2991,7 @@ export interface ListEnvironmentsResponse {
 }
 
 export const ListEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       environments: Schema.Array(Environment),
     }).pipe(T.ResponsePath("result")),
@@ -3018,7 +3004,7 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsResponse,
   ListEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [],
@@ -3040,7 +3026,7 @@ export interface CreateEnvironmentRequest {
 }
 
 export const CreateEnvironmentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       environments: Schema.Array(Environment),
@@ -3060,7 +3046,7 @@ export interface CreateEnvironmentResponse {
 }
 
 export const CreateEnvironmentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       environments: Schema.Array(Environment),
     }).pipe(T.ResponsePath("result")),
@@ -3073,7 +3059,7 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentResponse,
   CreateEnvironmentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentRequest,
   output: CreateEnvironmentResponse,
   errors: [],
@@ -3095,7 +3081,7 @@ export interface UpdateEnvironmentRequest {
 }
 
 export const UpdateEnvironmentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       environments: Schema.Array(Environment),
@@ -3115,7 +3101,7 @@ export interface UpdateEnvironmentResponse {
 }
 
 export const UpdateEnvironmentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       environments: Schema.Array(Environment),
     }).pipe(T.ResponsePath("result")),
@@ -3128,7 +3114,7 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentResponse,
   UpdateEnvironmentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentRequest,
   output: UpdateEnvironmentResponse,
   errors: [],
@@ -3150,7 +3136,7 @@ export interface PatchEnvironmentRequest {
 }
 
 export const PatchEnvironmentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       environments: Schema.Array(Environment),
@@ -3170,7 +3156,7 @@ export interface PatchEnvironmentResponse {
 }
 
 export const PatchEnvironmentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       environments: Schema.Array(Environment),
     }).pipe(T.ResponsePath("result")),
@@ -3183,7 +3169,7 @@ export const patchEnvironment: API.OperationMethod<
   PatchEnvironmentResponse,
   PatchEnvironmentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchEnvironmentRequest,
   output: PatchEnvironmentResponse,
   errors: [],
@@ -3196,7 +3182,7 @@ export interface DeleteEnvironmentRequest {
 }
 
 export const DeleteEnvironmentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       environmentId: Schema.String.pipe(T.HttpPath("environmentId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -3221,7 +3207,7 @@ export interface DeleteEnvironmentResponse {
 }
 
 export const DeleteEnvironmentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       environments: Schema.Array(Environment),
     }).pipe(T.ResponsePath("result")),
@@ -3234,7 +3220,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentResponse,
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResponse,
   errors: [],
@@ -3247,7 +3233,7 @@ export interface RollbackEnvironmentRequest {
 }
 
 export const RollbackEnvironmentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       environmentId: Schema.String.pipe(T.HttpPath("environmentId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -3272,7 +3258,7 @@ export interface RollbackEnvironmentResponse {
 }
 
 export const RollbackEnvironmentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       environments: Schema.Array(Environment),
     }).pipe(T.ResponsePath("result")),
@@ -3285,7 +3271,7 @@ export const rollbackEnvironment: API.OperationMethod<
   RollbackEnvironmentResponse,
   RollbackEnvironmentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollbackEnvironmentRequest,
   output: RollbackEnvironmentResponse,
   errors: [],
@@ -3300,7 +3286,7 @@ export interface GetHoldRequest {
   zoneId: string;
 }
 
-export const GetHoldRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetHoldRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/hold" })),
@@ -3312,7 +3298,7 @@ export interface GetHoldResponse {
   includeSubdomains?: unknown | null;
 }
 
-export const GetHoldResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetHoldResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     hold: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     holdAfter: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3337,7 +3323,7 @@ export const getHold: API.OperationMethod<
   GetHoldResponse,
   GetHoldError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHoldRequest,
   output: GetHoldResponse,
   errors: [InvalidZoneIdentifier, Forbidden],
@@ -3350,14 +3336,13 @@ export interface CreateHoldRequest {
   includeSubdomains?: boolean;
 }
 
-export const CreateHoldRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      includeSubdomains: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("include_subdomains"),
-      ),
-    }).pipe(T.Http({ method: "POST", path: "/zones/{zone_id}/hold" })),
+export const CreateHoldRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    includeSubdomains: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("include_subdomains"),
+    ),
+  }).pipe(T.Http({ method: "POST", path: "/zones/{zone_id}/hold" })),
 ) as unknown as Schema.Codec<CreateHoldRequest>;
 
 export interface CreateHoldResponse {
@@ -3366,23 +3351,22 @@ export interface CreateHoldResponse {
   includeSubdomains?: unknown | null;
 }
 
-export const CreateHoldResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      hold: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      holdAfter: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      includeSubdomains: Schema.optional(
-        Schema.Union([Schema.Unknown, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          hold: "hold",
-          holdAfter: "hold_after",
-          includeSubdomains: "include_subdomains",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateHoldResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    hold: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    holdAfter: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    includeSubdomains: Schema.optional(
+      Schema.Union([Schema.Unknown, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        hold: "hold",
+        holdAfter: "hold_after",
+        includeSubdomains: "include_subdomains",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateHoldResponse>;
 
 export type CreateHoldError =
@@ -3396,7 +3380,7 @@ export const createHold: API.OperationMethod<
   CreateHoldResponse,
   CreateHoldError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHoldRequest,
   output: CreateHoldResponse,
   errors: [ZoneHoldsRequireEnterprise, InvalidZoneIdentifier, Forbidden],
@@ -3411,7 +3395,7 @@ export interface PatchHoldRequest {
   includeSubdomains?: boolean;
 }
 
-export const PatchHoldRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PatchHoldRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     holdAfter: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3431,23 +3415,22 @@ export interface PatchHoldResponse {
   includeSubdomains?: unknown | null;
 }
 
-export const PatchHoldResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      hold: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      holdAfter: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      includeSubdomains: Schema.optional(
-        Schema.Union([Schema.Unknown, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          hold: "hold",
-          holdAfter: "hold_after",
-          includeSubdomains: "include_subdomains",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PatchHoldResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    hold: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    holdAfter: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    includeSubdomains: Schema.optional(
+      Schema.Union([Schema.Unknown, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        hold: "hold",
+        holdAfter: "hold_after",
+        includeSubdomains: "include_subdomains",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchHoldResponse>;
 
 export type PatchHoldError =
@@ -3462,7 +3445,7 @@ export const patchHold: API.OperationMethod<
   PatchHoldResponse,
   PatchHoldError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchHoldRequest,
   output: PatchHoldResponse,
   errors: [
@@ -3480,12 +3463,11 @@ export interface DeleteHoldRequest {
   holdAfter?: string;
 }
 
-export const DeleteHoldRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      holdAfter: Schema.optional(Schema.String).pipe(T.HttpQuery("hold_after")),
-    }).pipe(T.Http({ method: "DELETE", path: "/zones/{zone_id}/hold" })),
+export const DeleteHoldRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    holdAfter: Schema.optional(Schema.String).pipe(T.HttpQuery("hold_after")),
+  }).pipe(T.Http({ method: "DELETE", path: "/zones/{zone_id}/hold" })),
 ) as unknown as Schema.Codec<DeleteHoldRequest>;
 
 export interface DeleteHoldResponse {
@@ -3494,23 +3476,22 @@ export interface DeleteHoldResponse {
   includeSubdomains?: unknown | null;
 }
 
-export const DeleteHoldResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      hold: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      holdAfter: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      includeSubdomains: Schema.optional(
-        Schema.Union([Schema.Unknown, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          hold: "hold",
-          holdAfter: "hold_after",
-          includeSubdomains: "include_subdomains",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const DeleteHoldResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    hold: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    holdAfter: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    includeSubdomains: Schema.optional(
+      Schema.Union([Schema.Unknown, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        hold: "hold",
+        holdAfter: "hold_after",
+        includeSubdomains: "include_subdomains",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteHoldResponse>;
 
 export type DeleteHoldError = DefaultErrors | InvalidZoneIdentifier | Forbidden;
@@ -3520,7 +3501,7 @@ export const deleteHold: API.OperationMethod<
   DeleteHoldResponse,
   DeleteHoldError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHoldRequest,
   output: DeleteHoldResponse,
   errors: [InvalidZoneIdentifier, Forbidden],
@@ -3536,7 +3517,7 @@ export interface GetPlanRequest {
   zoneId: string;
 }
 
-export const GetPlanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetPlanRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     planIdentifier: Schema.String.pipe(T.HttpPath("planIdentifier")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -3577,7 +3558,7 @@ export interface GetPlanResponse {
   price?: number | null;
 }
 
-export const GetPlanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetPlanResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     canSubscribe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -3626,7 +3607,7 @@ export const getPlan: API.OperationMethod<
   GetPlanResponse,
   GetPlanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlanRequest,
   output: GetPlanResponse,
   errors: [],
@@ -3637,7 +3618,7 @@ export interface ListPlansRequest {
   zoneId: string;
 }
 
-export const ListPlansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListPlansRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/available_plans" })),
@@ -3664,11 +3645,10 @@ export interface ListPlansResponse {
   }[];
 }
 
-export const ListPlansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListPlansResponseResult),
-    }),
+export const ListPlansResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListPlansResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListPlansResponse>;
 
 export type ListPlansError = DefaultErrors;
@@ -3678,7 +3658,7 @@ export const listPlans: API.PaginatedOperationMethod<
   ListPlansResponse,
   ListPlansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlansRequest,
   output: ListPlansResponse,
   errors: [],
@@ -3697,13 +3677,12 @@ export interface GetRatePlanRequest {
   zoneId: string;
 }
 
-export const GetRatePlanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/zones/{zone_id}/available_rate_plans" }),
-    ),
+export const GetRatePlanRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/available_rate_plans" }),
+  ),
 ) as unknown as Schema.Codec<GetRatePlanRequest>;
 
 export interface GetRatePlanResponse {
@@ -3735,11 +3714,10 @@ export interface GetRatePlanResponse {
   }[];
 }
 
-export const GetRatePlanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(GetRatePlanResponseResult),
-    }),
+export const GetRatePlanResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(GetRatePlanResponseResult),
+  }),
 ) as unknown as Schema.Codec<GetRatePlanResponse>;
 
 export type GetRatePlanError = DefaultErrors;
@@ -3749,7 +3727,7 @@ export const getRatePlan: API.PaginatedOperationMethod<
   GetRatePlanResponse,
   GetRatePlanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRatePlanRequest,
   output: GetRatePlanResponse,
   errors: [],
@@ -3769,14 +3747,13 @@ export interface GetSettingRequest {
   zoneId: string;
 }
 
-export const GetSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      settingId: Schema.String.pipe(T.HttpPath("settingId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/zones/{zone_id}/settings/{settingId}" }),
-    ),
+export const GetSettingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    settingId: Schema.String.pipe(T.HttpPath("settingId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/settings/{settingId}" }),
+  ),
 ) as unknown as Schema.Codec<GetSettingRequest>;
 
 export type GetSettingResponse =
@@ -4230,73 +4207,72 @@ export type GetSettingResponse =
       modifiedOn?: string | null;
     };
 
-export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([
-      ZeroRTT,
-      AdvancedDDoS,
-      AlwaysOnline,
-      ZonesSchemasAlwaysUseHTTPS,
-      ZonesSchemasAutomaticHTTPSRewrites,
-      Brotli,
-      ZonesSchemasBrowserCacheTTL,
-      ZonesSchemasBrowserCheck,
-      ZonesSchemasCacheLevel,
-      ChallengeTTL,
-      ZonesChinaNetworkEnabled,
-      ZonesContentConverter,
-      Ciphers,
-      ZonesCNAMEFlattening,
-      DevelopmentMode,
-      EarlyHints,
-      ZonesSchemasEdgeCacheTTL,
-      ZonesSchemasEmailObfuscation,
-      H2Prioritization,
-      HotlinkProtection,
-      Http2,
-      Http3,
-      ImageResizing,
-      ZonesSchemasIPGeolocation,
-      Ipv6,
-      ZonesMaxUpload,
-      MinTLSVersion,
-      ZonesSchemasMirage,
-      Nel,
-      ZonesSchemasOpportunisticEncryption,
-      OpportunisticOnion,
-      OrangeToOrange,
-      ZonesSchemasOriginErrorPagePassThru,
-      ZonesSchemasPolish,
-      PrefetchPreload,
-      ZonesPrivacyPass,
-      ProxyReadTimeout,
-      PseudoIPV4,
-      ZonesRedirectsForAITraining,
-      ZonesReplaceInsecureJS,
-      ZonesSchemasResponseBuffering,
-      ZonesSchemasRocketLoader,
-      ZonesSchemasAutomaticPlatformOptimization,
-      ZonesSearchForAgents,
-      SecurityHeaders,
-      ZonesSchemasSecurityLevel,
-      ServerSideExcludes,
-      ZonesSha1Support,
-      ZonesSchemasSortQueryStringForCache,
-      ZonesSchemasSSL,
-      ZonesTLS12Only,
-      Tls13,
-      TlsclientAuth,
-      ZonesTransformations,
-      ZonesTransformationsAllowedOrigins,
-      ZonesSchemasTrueClientIPHeader,
-      ZonesSchemasWAF,
-      WebP,
-      Websocket,
-      ZonesCacheRulesAegis,
-      ZonesCacheRulesOriginH2MaxStreams,
-      ZonesCacheRulesOriginMaxHTTPVersion,
-      Sslrecommender,
-    ]).pipe(T.ResponsePath("result")),
+export const GetSettingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    ZeroRTT,
+    AdvancedDDoS,
+    AlwaysOnline,
+    ZonesSchemasAlwaysUseHTTPS,
+    ZonesSchemasAutomaticHTTPSRewrites,
+    Brotli,
+    ZonesSchemasBrowserCacheTTL,
+    ZonesSchemasBrowserCheck,
+    ZonesSchemasCacheLevel,
+    ChallengeTTL,
+    ZonesChinaNetworkEnabled,
+    ZonesContentConverter,
+    Ciphers,
+    ZonesCNAMEFlattening,
+    DevelopmentMode,
+    EarlyHints,
+    ZonesSchemasEdgeCacheTTL,
+    ZonesSchemasEmailObfuscation,
+    H2Prioritization,
+    HotlinkProtection,
+    Http2,
+    Http3,
+    ImageResizing,
+    ZonesSchemasIPGeolocation,
+    Ipv6,
+    ZonesMaxUpload,
+    MinTLSVersion,
+    ZonesSchemasMirage,
+    Nel,
+    ZonesSchemasOpportunisticEncryption,
+    OpportunisticOnion,
+    OrangeToOrange,
+    ZonesSchemasOriginErrorPagePassThru,
+    ZonesSchemasPolish,
+    PrefetchPreload,
+    ZonesPrivacyPass,
+    ProxyReadTimeout,
+    PseudoIPV4,
+    ZonesRedirectsForAITraining,
+    ZonesReplaceInsecureJS,
+    ZonesSchemasResponseBuffering,
+    ZonesSchemasRocketLoader,
+    ZonesSchemasAutomaticPlatformOptimization,
+    ZonesSearchForAgents,
+    SecurityHeaders,
+    ZonesSchemasSecurityLevel,
+    ServerSideExcludes,
+    ZonesSha1Support,
+    ZonesSchemasSortQueryStringForCache,
+    ZonesSchemasSSL,
+    ZonesTLS12Only,
+    Tls13,
+    TlsclientAuth,
+    ZonesTransformations,
+    ZonesTransformationsAllowedOrigins,
+    ZonesSchemasTrueClientIPHeader,
+    ZonesSchemasWAF,
+    WebP,
+    Websocket,
+    ZonesCacheRulesAegis,
+    ZonesCacheRulesOriginH2MaxStreams,
+    ZonesCacheRulesOriginMaxHTTPVersion,
+    Sslrecommender,
+  ]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetSettingResponse>;
 
 export type GetSettingError = DefaultErrors | InvalidZoneIdentifier | Forbidden;
@@ -4306,7 +4282,7 @@ export const getSetting: API.OperationMethod<
   GetSettingResponse,
   GetSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingRequest,
   output: GetSettingResponse,
   errors: [InvalidZoneIdentifier, Forbidden],
@@ -4322,19 +4298,18 @@ export interface PatchSettingRequest {
   value?: unknown;
 }
 
-export const PatchSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      settingId: Schema.String.pipe(T.HttpPath("settingId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      enabled: Schema.optional(Schema.Boolean),
-      value: Schema.optional(Schema.Unknown),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        path: "/zones/{zone_id}/settings/{settingId}",
-      }),
-    ),
+export const PatchSettingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    settingId: Schema.String.pipe(T.HttpPath("settingId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    enabled: Schema.optional(Schema.Boolean),
+    value: Schema.optional(Schema.Unknown),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/zones/{zone_id}/settings/{settingId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchSettingRequest>;
 
 export type PatchSettingResponse =
@@ -4788,73 +4763,72 @@ export type PatchSettingResponse =
       modifiedOn?: string | null;
     };
 
-export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([
-      ZeroRTT,
-      AdvancedDDoS,
-      AlwaysOnline,
-      ZonesSchemasAlwaysUseHTTPS,
-      ZonesSchemasAutomaticHTTPSRewrites,
-      Brotli,
-      ZonesSchemasBrowserCacheTTL,
-      ZonesSchemasBrowserCheck,
-      ZonesSchemasCacheLevel,
-      ChallengeTTL,
-      ZonesChinaNetworkEnabled,
-      ZonesContentConverter,
-      Ciphers,
-      ZonesCNAMEFlattening,
-      DevelopmentMode,
-      EarlyHints,
-      ZonesSchemasEdgeCacheTTL,
-      ZonesSchemasEmailObfuscation,
-      H2Prioritization,
-      HotlinkProtection,
-      Http2,
-      Http3,
-      ImageResizing,
-      ZonesSchemasIPGeolocation,
-      Ipv6,
-      ZonesMaxUpload,
-      MinTLSVersion,
-      ZonesSchemasMirage,
-      Nel,
-      ZonesSchemasOpportunisticEncryption,
-      OpportunisticOnion,
-      OrangeToOrange,
-      ZonesSchemasOriginErrorPagePassThru,
-      ZonesSchemasPolish,
-      PrefetchPreload,
-      ZonesPrivacyPass,
-      ProxyReadTimeout,
-      PseudoIPV4,
-      ZonesRedirectsForAITraining,
-      ZonesReplaceInsecureJS,
-      ZonesSchemasResponseBuffering,
-      ZonesSchemasRocketLoader,
-      ZonesSchemasAutomaticPlatformOptimization,
-      ZonesSearchForAgents,
-      SecurityHeaders,
-      ZonesSchemasSecurityLevel,
-      ServerSideExcludes,
-      ZonesSha1Support,
-      ZonesSchemasSortQueryStringForCache,
-      ZonesSchemasSSL,
-      ZonesTLS12Only,
-      Tls13,
-      TlsclientAuth,
-      ZonesTransformations,
-      ZonesTransformationsAllowedOrigins,
-      ZonesSchemasTrueClientIPHeader,
-      ZonesSchemasWAF,
-      WebP,
-      Websocket,
-      ZonesCacheRulesAegis,
-      ZonesCacheRulesOriginH2MaxStreams,
-      ZonesCacheRulesOriginMaxHTTPVersion,
-      Sslrecommender,
-    ]).pipe(T.ResponsePath("result")),
+export const PatchSettingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    ZeroRTT,
+    AdvancedDDoS,
+    AlwaysOnline,
+    ZonesSchemasAlwaysUseHTTPS,
+    ZonesSchemasAutomaticHTTPSRewrites,
+    Brotli,
+    ZonesSchemasBrowserCacheTTL,
+    ZonesSchemasBrowserCheck,
+    ZonesSchemasCacheLevel,
+    ChallengeTTL,
+    ZonesChinaNetworkEnabled,
+    ZonesContentConverter,
+    Ciphers,
+    ZonesCNAMEFlattening,
+    DevelopmentMode,
+    EarlyHints,
+    ZonesSchemasEdgeCacheTTL,
+    ZonesSchemasEmailObfuscation,
+    H2Prioritization,
+    HotlinkProtection,
+    Http2,
+    Http3,
+    ImageResizing,
+    ZonesSchemasIPGeolocation,
+    Ipv6,
+    ZonesMaxUpload,
+    MinTLSVersion,
+    ZonesSchemasMirage,
+    Nel,
+    ZonesSchemasOpportunisticEncryption,
+    OpportunisticOnion,
+    OrangeToOrange,
+    ZonesSchemasOriginErrorPagePassThru,
+    ZonesSchemasPolish,
+    PrefetchPreload,
+    ZonesPrivacyPass,
+    ProxyReadTimeout,
+    PseudoIPV4,
+    ZonesRedirectsForAITraining,
+    ZonesReplaceInsecureJS,
+    ZonesSchemasResponseBuffering,
+    ZonesSchemasRocketLoader,
+    ZonesSchemasAutomaticPlatformOptimization,
+    ZonesSearchForAgents,
+    SecurityHeaders,
+    ZonesSchemasSecurityLevel,
+    ServerSideExcludes,
+    ZonesSha1Support,
+    ZonesSchemasSortQueryStringForCache,
+    ZonesSchemasSSL,
+    ZonesTLS12Only,
+    Tls13,
+    TlsclientAuth,
+    ZonesTransformations,
+    ZonesTransformationsAllowedOrigins,
+    ZonesSchemasTrueClientIPHeader,
+    ZonesSchemasWAF,
+    WebP,
+    Websocket,
+    ZonesCacheRulesAegis,
+    ZonesCacheRulesOriginH2MaxStreams,
+    ZonesCacheRulesOriginMaxHTTPVersion,
+    Sslrecommender,
+  ]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchSettingResponse>;
 
 export type PatchSettingError =
@@ -4867,7 +4841,7 @@ export const patchSetting: API.OperationMethod<
   PatchSettingResponse,
   PatchSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingRequest,
   output: PatchSettingResponse,
   errors: [InvalidZoneIdentifier, Forbidden],
@@ -4883,7 +4857,7 @@ export interface GetSubscriptionRequest {
 }
 
 export const GetSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/subscription" })),
@@ -4945,7 +4919,7 @@ export interface GetSubscriptionResponse {
 }
 
 export const GetSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -5012,7 +4986,7 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionResponse,
   GetSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionRequest,
   output: GetSubscriptionResponse,
   errors: [],
@@ -5047,7 +5021,7 @@ export interface CreateSubscriptionRequest {
 }
 
 export const CreateSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       frequency: Schema.optional(
@@ -5119,7 +5093,7 @@ export interface CreateSubscriptionResponse {
 }
 
 export const CreateSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -5186,7 +5160,7 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionResponse,
   CreateSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionRequest,
   output: CreateSubscriptionResponse,
   errors: [],
@@ -5221,7 +5195,7 @@ export interface UpdateSubscriptionRequest {
 }
 
 export const UpdateSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       frequency: Schema.optional(
@@ -5293,7 +5267,7 @@ export interface UpdateSubscriptionResponse {
 }
 
 export const UpdateSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -5360,7 +5334,7 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionResponse,
   UpdateSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubscriptionRequest,
   output: UpdateSubscriptionResponse,
   errors: [],
@@ -5375,7 +5349,7 @@ export interface GetZoneRequest {
   zoneId: string;
 }
 
-export const GetZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetZoneRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}" })),
@@ -5455,7 +5429,7 @@ export interface GetZoneResponse {
   verificationKey?: string | null;
 }
 
-export const GetZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetZoneResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     account: Account,
@@ -5543,7 +5517,7 @@ export const getZone: API.OperationMethod<
   GetZoneResponse,
   GetZoneError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetZoneRequest,
   output: GetZoneResponse,
   errors: [InvalidZoneIdentifier],
@@ -5573,7 +5547,7 @@ export interface ListZonesRequest {
   type?: ("full" | "partial" | "secondary" | "internal" | (string & {}))[];
 }
 
-export const ListZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListZonesRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
     perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -5678,14 +5652,13 @@ export interface ListZonesResponse {
   } | null;
 }
 
-export const ListZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListZonesResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListZonesResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListZonesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListZonesResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListZonesResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListZonesResponse>;
 
 export type ListZonesError = DefaultErrors;
@@ -5695,7 +5668,7 @@ export const listZones: API.PaginatedOperationMethod<
   ListZonesResponse,
   ListZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZonesRequest,
   output: ListZonesResponse,
   errors: [],
@@ -5716,18 +5689,17 @@ export interface CreateZoneRequest {
   type?: "full" | "partial" | "secondary" | "internal" | (string & {});
 }
 
-export const CreateZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      account: TenantUnit,
-      name: Schema.String,
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["full", "partial", "secondary", "internal"]),
-          Schema.String,
-        ]),
-      ),
-    }).pipe(T.Http({ method: "POST", path: "/zones" })),
+export const CreateZoneRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    account: TenantUnit,
+    name: Schema.String,
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["full", "partial", "secondary", "internal"]),
+        Schema.String,
+      ]),
+    ),
+  }).pipe(T.Http({ method: "POST", path: "/zones" })),
 ) as unknown as Schema.Codec<CreateZoneRequest>;
 
 export interface CreateZoneResponse {
@@ -5804,86 +5776,85 @@ export interface CreateZoneResponse {
   verificationKey?: string | null;
 }
 
-export const CreateZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      account: Account,
-      activatedOn: Schema.Union([Schema.String, Schema.Null]),
-      createdOn: Schema.String,
-      developmentMode: Schema.Number,
-      meta: Meta,
-      modifiedOn: Schema.String,
-      name: Schema.String,
-      nameServers: Schema.Array(Schema.String),
-      originalDnshost: Schema.Union([Schema.String, Schema.Null]),
-      originalNameServers: Schema.Union([
-        Schema.Array(Schema.String),
+export const CreateZoneResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    account: Account,
+    activatedOn: Schema.Union([Schema.String, Schema.Null]),
+    createdOn: Schema.String,
+    developmentMode: Schema.Number,
+    meta: Meta,
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    nameServers: Schema.Array(Schema.String),
+    originalDnshost: Schema.Union([Schema.String, Schema.Null]),
+    originalNameServers: Schema.Union([
+      Schema.Array(Schema.String),
+      Schema.Null,
+    ]),
+    originalRegistrar: Schema.Union([Schema.String, Schema.Null]),
+    owner: Owner,
+    plan: Plan,
+    cnameSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    permissions: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["initializing", "pending", "active", "moved"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
-      originalRegistrar: Schema.Union([Schema.String, Schema.Null]),
-      owner: Owner,
-      plan: Plan,
-      cnameSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      permissions: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      status: Schema.optional(
+    ),
+    tenant: Schema.optional(Schema.Union([Account, Schema.Null])),
+    tenantUnit: Schema.optional(Schema.Union([TenantUnit, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["initializing", "pending", "active", "moved"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["full", "partial", "secondary", "internal"]),
+          Schema.String,
         ]),
-      ),
-      tenant: Schema.optional(Schema.Union([Account, Schema.Null])),
-      tenantUnit: Schema.optional(Schema.Union([TenantUnit, Schema.Null])),
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["full", "partial", "secondary", "internal"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      vanityNameServers: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      verificationKey: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          account: "account",
-          activatedOn: "activated_on",
-          createdOn: "created_on",
-          developmentMode: "development_mode",
-          meta: "meta",
-          modifiedOn: "modified_on",
-          name: "name",
-          nameServers: "name_servers",
-          originalDnshost: "original_dnshost",
-          originalNameServers: "original_name_servers",
-          originalRegistrar: "original_registrar",
-          owner: "owner",
-          plan: "plan",
-          cnameSuffix: "cname_suffix",
-          paused: "paused",
-          permissions: "permissions",
-          status: "status",
-          tenant: "tenant",
-          tenantUnit: "tenant_unit",
-          type: "type",
-          vanityNameServers: "vanity_name_servers",
-          verificationKey: "verification_key",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    vanityNameServers: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    verificationKey: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        account: "account",
+        activatedOn: "activated_on",
+        createdOn: "created_on",
+        developmentMode: "development_mode",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        name: "name",
+        nameServers: "name_servers",
+        originalDnshost: "original_dnshost",
+        originalNameServers: "original_name_servers",
+        originalRegistrar: "original_registrar",
+        owner: "owner",
+        plan: "plan",
+        cnameSuffix: "cname_suffix",
+        paused: "paused",
+        permissions: "permissions",
+        status: "status",
+        tenant: "tenant",
+        tenantUnit: "tenant_unit",
+        type: "type",
+        vanityNameServers: "vanity_name_servers",
+        verificationKey: "verification_key",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateZoneResponse>;
 
 export type CreateZoneError =
@@ -5899,7 +5870,7 @@ export const createZone: API.OperationMethod<
   CreateZoneResponse,
   CreateZoneError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateZoneRequest,
   output: CreateZoneResponse,
   errors: [
@@ -5922,7 +5893,7 @@ export interface PatchZoneRequest {
   vanityNameServers?: string[];
 }
 
-export const PatchZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PatchZoneRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     paused: Schema.optional(Schema.Boolean),
@@ -6017,86 +5988,85 @@ export interface PatchZoneResponse {
   verificationKey?: string | null;
 }
 
-export const PatchZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      account: Account,
-      activatedOn: Schema.Union([Schema.String, Schema.Null]),
-      createdOn: Schema.String,
-      developmentMode: Schema.Number,
-      meta: Meta,
-      modifiedOn: Schema.String,
-      name: Schema.String,
-      nameServers: Schema.Array(Schema.String),
-      originalDnshost: Schema.Union([Schema.String, Schema.Null]),
-      originalNameServers: Schema.Union([
-        Schema.Array(Schema.String),
+export const PatchZoneResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    account: Account,
+    activatedOn: Schema.Union([Schema.String, Schema.Null]),
+    createdOn: Schema.String,
+    developmentMode: Schema.Number,
+    meta: Meta,
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    nameServers: Schema.Array(Schema.String),
+    originalDnshost: Schema.Union([Schema.String, Schema.Null]),
+    originalNameServers: Schema.Union([
+      Schema.Array(Schema.String),
+      Schema.Null,
+    ]),
+    originalRegistrar: Schema.Union([Schema.String, Schema.Null]),
+    owner: Owner,
+    plan: Plan,
+    cnameSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    permissions: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["initializing", "pending", "active", "moved"]),
+          Schema.String,
+        ]),
         Schema.Null,
       ]),
-      originalRegistrar: Schema.Union([Schema.String, Schema.Null]),
-      owner: Owner,
-      plan: Plan,
-      cnameSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      permissions: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      status: Schema.optional(
+    ),
+    tenant: Schema.optional(Schema.Union([Account, Schema.Null])),
+    tenantUnit: Schema.optional(Schema.Union([TenantUnit, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["initializing", "pending", "active", "moved"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["full", "partial", "secondary", "internal"]),
+          Schema.String,
         ]),
-      ),
-      tenant: Schema.optional(Schema.Union([Account, Schema.Null])),
-      tenantUnit: Schema.optional(Schema.Union([TenantUnit, Schema.Null])),
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["full", "partial", "secondary", "internal"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      vanityNameServers: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      verificationKey: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          account: "account",
-          activatedOn: "activated_on",
-          createdOn: "created_on",
-          developmentMode: "development_mode",
-          meta: "meta",
-          modifiedOn: "modified_on",
-          name: "name",
-          nameServers: "name_servers",
-          originalDnshost: "original_dnshost",
-          originalNameServers: "original_name_servers",
-          originalRegistrar: "original_registrar",
-          owner: "owner",
-          plan: "plan",
-          cnameSuffix: "cname_suffix",
-          paused: "paused",
-          permissions: "permissions",
-          status: "status",
-          tenant: "tenant",
-          tenantUnit: "tenant_unit",
-          type: "type",
-          vanityNameServers: "vanity_name_servers",
-          verificationKey: "verification_key",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    vanityNameServers: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    verificationKey: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        account: "account",
+        activatedOn: "activated_on",
+        createdOn: "created_on",
+        developmentMode: "development_mode",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        name: "name",
+        nameServers: "name_servers",
+        originalDnshost: "original_dnshost",
+        originalNameServers: "original_name_servers",
+        originalRegistrar: "original_registrar",
+        owner: "owner",
+        plan: "plan",
+        cnameSuffix: "cname_suffix",
+        paused: "paused",
+        permissions: "permissions",
+        status: "status",
+        tenant: "tenant",
+        tenantUnit: "tenant_unit",
+        type: "type",
+        vanityNameServers: "vanity_name_servers",
+        verificationKey: "verification_key",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchZoneResponse>;
 
 export type PatchZoneError = DefaultErrors | InvalidZoneIdentifier;
@@ -6106,7 +6076,7 @@ export const patchZone: API.OperationMethod<
   PatchZoneResponse,
   PatchZoneError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchZoneRequest,
   output: PatchZoneResponse,
   errors: [InvalidZoneIdentifier],
@@ -6117,11 +6087,10 @@ export interface DeleteZoneRequest {
   zoneId: string;
 }
 
-export const DeleteZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(T.Http({ method: "DELETE", path: "/zones/{zone_id}" })),
+export const DeleteZoneRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(T.Http({ method: "DELETE", path: "/zones/{zone_id}" })),
 ) as unknown as Schema.Codec<DeleteZoneRequest>;
 
 export interface DeleteZoneResponse {
@@ -6129,11 +6098,10 @@ export interface DeleteZoneResponse {
   id: string;
 }
 
-export const DeleteZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-    }).pipe(T.ResponsePath("result")),
+export const DeleteZoneResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteZoneResponse>;
 
 export type DeleteZoneError = DefaultErrors | InvalidZoneIdentifier;
@@ -6143,7 +6111,7 @@ export const deleteZone: API.OperationMethod<
   DeleteZoneResponse,
   DeleteZoneError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteZoneRequest,
   output: DeleteZoneResponse,
   errors: [InvalidZoneIdentifier],

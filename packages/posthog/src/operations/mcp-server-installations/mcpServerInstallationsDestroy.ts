@@ -8,7 +8,7 @@ export interface McpServerInstallationsDestroyInput {
   project_id: string;
 }
 export const McpServerInstallationsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const McpServerInstallationsDestroyInput =
 // Output Schema
 export type McpServerInstallationsDestroyOutput = void;
 export const McpServerInstallationsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<McpServerInstallationsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<McpServerInstallationsDestroyOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const McpServerInstallationsDestroyOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const mcpServerInstallationsDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: McpServerInstallationsDestroyInput,
     outputSchema: McpServerInstallationsDestroyOutput,
   }));

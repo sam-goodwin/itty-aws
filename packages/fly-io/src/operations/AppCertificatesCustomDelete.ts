@@ -9,7 +9,7 @@ export interface AppCertificatesCustomDeleteInput {
   hostname: string;
 }
 export const AppCertificatesCustomDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     hostname: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -61,7 +61,7 @@ export interface AppCertificatesCustomDeleteOutput {
   warning?: string;
 }
 export const AppCertificatesCustomDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
     certificates: Schema.optional(
       Schema.Array(
@@ -142,10 +142,8 @@ export const AppCertificatesCustomDeleteOutput =
  * @param app_name - Fly App Name
  * @param hostname - Certificate Hostname
  */
-export const AppCertificatesCustomDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppCertificatesCustomDeleteInput,
-    outputSchema: AppCertificatesCustomDeleteOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const AppCertificatesCustomDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppCertificatesCustomDeleteInput,
+  outputSchema: AppCertificatesCustomDeleteOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

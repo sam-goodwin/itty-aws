@@ -23,7 +23,7 @@ export interface SignalsScoutEmitSignalInput {
   finding_id?: string | null;
 }
 export const SignalsScoutEmitSignalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     run_id: Schema.String.pipe(T.PathParam()),
     description: Schema.String,
@@ -65,7 +65,7 @@ export interface SignalsScoutEmitSignalOutput {
   skipped_reason: string | null;
 }
 export const SignalsScoutEmitSignalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finding_id: Schema.String,
     emitted: Schema.Boolean,
     skipped_reason: Schema.NullOr(Schema.String),
@@ -80,10 +80,8 @@ export const SignalsScoutEmitSignalOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param run_id - UUID of the `SignalScoutRun` bridge row.
  */
-export const signalsScoutEmitSignal = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalsScoutEmitSignalInput,
-    outputSchema: SignalsScoutEmitSignalOutput,
-    errors: [BadRequest, NotFound] as const,
-  }),
-);
+export const signalsScoutEmitSignal = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalsScoutEmitSignalInput,
+  outputSchema: SignalsScoutEmitSignalOutput,
+  errors: [BadRequest, NotFound] as const,
+}));

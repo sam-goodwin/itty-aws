@@ -9,7 +9,7 @@ export interface GetV1ScmInstallationsInput {
   workspaceId: string;
 }
 export const GetV1ScmInstallationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     workspaceId: Schema.String,
@@ -35,7 +35,7 @@ export interface GetV1ScmInstallationsOutput {
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
 export const GetV1ScmInstallationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -64,9 +64,7 @@ export const GetV1ScmInstallationsOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Lists active SCM installations connected to the given workspace.
  */
-export const getV1ScmInstallations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1ScmInstallationsInput,
-    outputSchema: GetV1ScmInstallationsOutput,
-  }),
-);
+export const getV1ScmInstallations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1ScmInstallationsInput,
+  outputSchema: GetV1ScmInstallationsOutput,
+}));

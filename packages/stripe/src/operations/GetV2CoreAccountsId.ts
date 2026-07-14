@@ -8,7 +8,7 @@ export interface GetV2CoreAccountsIdInput {
   include?: string;
 }
 export const GetV2CoreAccountsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     include: Schema.optional(Schema.String),
   }).pipe(
@@ -1700,7 +1700,7 @@ export interface GetV2CoreAccountsIdOutput {
   };
 }
 export const GetV2CoreAccountsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applied_configurations: Schema.Array(
       Schema.Literals(["customer", "merchant", "recipient"]),
     ),
@@ -4494,7 +4494,7 @@ export const GetV2CoreAccountsIdOutput =
  * @param id - The ID of the Account to retrieve.
  * @param include - Additional fields to include in the response.
  */
-export const GetV2CoreAccountsId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetV2CoreAccountsId = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV2CoreAccountsIdInput,
   outputSchema: GetV2CoreAccountsIdOutput,
 }));

@@ -11,7 +11,7 @@ export interface UpdateAutoDeleteBranchInput {
   enable?: boolean;
 }
 export const UpdateAutoDeleteBranchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -200,7 +200,7 @@ export interface UpdateAutoDeleteBranchOutput {
   deployed_at: string | null;
 }
 export const UpdateAutoDeleteBranchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     number: Schema.Number,
     actor: Schema.Struct({
@@ -445,10 +445,8 @@ export const UpdateAutoDeleteBranchOutput =
  * @param number - The number of the deploy request
  * @param enable - Whether or not to enable auto-delete branch for the deploy request
  */
-export const updateAutoDeleteBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateAutoDeleteBranchInput,
-    outputSchema: UpdateAutoDeleteBranchOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const updateAutoDeleteBranch = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateAutoDeleteBranchInput,
+  outputSchema: UpdateAutoDeleteBranchOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

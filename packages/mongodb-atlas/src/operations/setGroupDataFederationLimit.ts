@@ -15,7 +15,7 @@ export interface SetGroupDataFederationLimitInput {
   envelope?: boolean;
 }
 export const SetGroupDataFederationLimitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     limitName: Schema.Literals([
@@ -35,7 +35,7 @@ export const SetGroupDataFederationLimitInput =
 // Output Schema
 export type SetGroupDataFederationLimitOutput = void;
 export const SetGroupDataFederationLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SetGroupDataFederationLimitOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SetGroupDataFederationLimitOutput>;
 
 // The operation
 /**
@@ -58,10 +58,8 @@ export const SetGroupDataFederationLimitOutput =
 | `bytesProcessed.monthly` | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
 
  */
-export const setGroupDataFederationLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SetGroupDataFederationLimitInput,
-    outputSchema: SetGroupDataFederationLimitOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const setGroupDataFederationLimit = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SetGroupDataFederationLimitInput,
+  outputSchema: SetGroupDataFederationLimitOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

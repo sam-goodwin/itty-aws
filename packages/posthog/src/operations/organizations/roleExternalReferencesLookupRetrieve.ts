@@ -12,7 +12,7 @@ export interface RoleExternalReferencesLookupRetrieveInput {
   provider_role_slug?: string;
 }
 export const RoleExternalReferencesLookupRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     provider: Schema.String,
     provider_organization_id: Schema.String,
@@ -60,7 +60,7 @@ export interface RoleExternalReferencesLookupRetrieveOutput {
   } | null;
 }
 export const RoleExternalReferencesLookupRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reference: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -122,7 +122,7 @@ export const RoleExternalReferencesLookupRetrieveOutput =
  * @param provider_role_slug - Human-friendly provider role identifier.
  */
 export const roleExternalReferencesLookupRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RoleExternalReferencesLookupRetrieveInput,
     outputSchema: RoleExternalReferencesLookupRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

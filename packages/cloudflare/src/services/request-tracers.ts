@@ -25,7 +25,7 @@ interface Body {
   /** Request body as plain text */
   plainText?: string | null;
 }
-const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     base64: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     json: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
@@ -51,7 +51,7 @@ interface Geoloc {
   subdivision_2IsoCode?: string | null;
   timezone?: string | null;
 }
-const Geoloc = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Geoloc = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     city: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     continent: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -102,7 +102,7 @@ interface Context {
   /** Threat score used for evaluating tracing request processing */
   threatScore?: number | null;
 }
-const Context = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Context = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     botScore: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     geoloc: Schema.optional(Schema.Union([Geoloc, Schema.Null])),
@@ -139,7 +139,7 @@ interface TraceItem {
   /** Tracing step type */
   type?: string | null;
 }
-const TraceItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TraceItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     actionParameters: Schema.optional(
@@ -210,34 +210,33 @@ export interface CreateTraceRequest {
   skipResponse?: boolean;
 }
 
-export const CreateTraceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      method: Schema.String,
-      url: Schema.String,
-      body: Schema.optional(Body),
-      context: Schema.optional(Context),
-      cookies: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      headers: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      protocol: Schema.optional(Schema.String),
-      skipResponse: Schema.optional(Schema.Boolean),
-    }).pipe(
-      Schema.encodeKeys({
-        method: "method",
-        url: "url",
-        body: "body",
-        context: "context",
-        cookies: "cookies",
-        headers: "headers",
-        protocol: "protocol",
-        skipResponse: "skip_response",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/request-tracer/trace",
-      }),
-    ),
+export const CreateTraceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    method: Schema.String,
+    url: Schema.String,
+    body: Schema.optional(Body),
+    context: Schema.optional(Context),
+    cookies: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    headers: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    protocol: Schema.optional(Schema.String),
+    skipResponse: Schema.optional(Schema.Boolean),
+  }).pipe(
+    Schema.encodeKeys({
+      method: "method",
+      url: "url",
+      body: "body",
+      context: "context",
+      cookies: "cookies",
+      headers: "headers",
+      protocol: "protocol",
+      skipResponse: "skip_response",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/request-tracer/trace",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateTraceRequest>;
 
 export interface CreateTraceResponse {
@@ -259,16 +258,15 @@ export interface CreateTraceResponse {
     | null;
 }
 
-export const CreateTraceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      statusCode: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      trace: Schema.optional(
-        Schema.Union([Schema.Array(TraceItem), Schema.Null]),
-      ),
-    })
-      .pipe(Schema.encodeKeys({ statusCode: "status_code", trace: "trace" }))
-      .pipe(T.ResponsePath("result")),
+export const CreateTraceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    statusCode: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    trace: Schema.optional(
+      Schema.Union([Schema.Array(TraceItem), Schema.Null]),
+    ),
+  })
+    .pipe(Schema.encodeKeys({ statusCode: "status_code", trace: "trace" }))
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateTraceResponse>;
 
 export type CreateTraceError = DefaultErrors;
@@ -278,7 +276,7 @@ export const createTrace: API.OperationMethod<
   CreateTraceResponse,
   CreateTraceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTraceRequest,
   output: CreateTraceResponse,
   errors: [],

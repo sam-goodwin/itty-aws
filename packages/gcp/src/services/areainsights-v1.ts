@@ -34,7 +34,7 @@ export interface TypeFilter {
 }
 
 export const TypeFilter: Schema.Codec<TypeFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     excludedTypes: Schema.optional(Schema.Array(Schema.String)),
     includedTypes: Schema.optional(Schema.Array(Schema.String)),
     includedPrimaryTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -47,7 +47,7 @@ export interface PlaceInsight {
 }
 
 export const PlaceInsight: Schema.Codec<PlaceInsight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     place: Schema.optional(Schema.String),
   }).annotate({ identifier: "PlaceInsight" });
 
@@ -59,7 +59,7 @@ export interface LatLng {
 }
 
 export const LatLng: Schema.Codec<LatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     longitude: Schema.optional(Schema.Number),
     latitude: Schema.optional(Schema.Number),
   }).annotate({ identifier: "LatLng" });
@@ -70,7 +70,7 @@ export interface Polygon {
 }
 
 export const Polygon: Schema.Codec<Polygon> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     coordinates: Schema.optional(Schema.Array(LatLng)),
   }).annotate({ identifier: "Polygon" });
 
@@ -80,7 +80,7 @@ export interface CustomArea {
 }
 
 export const CustomArea: Schema.Codec<CustomArea> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     polygon: Schema.optional(Polygon),
   }).annotate({ identifier: "CustomArea" });
 
@@ -92,7 +92,7 @@ export interface RatingFilter {
 }
 
 export const RatingFilter: Schema.Codec<RatingFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minRating: Schema.optional(Schema.Number),
     maxRating: Schema.optional(Schema.Number),
   }).annotate({ identifier: "RatingFilter" });
@@ -107,7 +107,7 @@ export interface Circle {
 }
 
 export const Circle: Schema.Codec<Circle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
     radius: Schema.optional(Schema.Number),
     place: Schema.optional(Schema.String),
@@ -119,7 +119,7 @@ export interface Region {
 }
 
 export const Region: Schema.Codec<Region> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     place: Schema.optional(Schema.String),
   }).annotate({ identifier: "Region" });
 
@@ -133,7 +133,7 @@ export interface LocationFilter {
 }
 
 export const LocationFilter: Schema.Codec<LocationFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     circle: Schema.optional(Circle),
     customArea: Schema.optional(CustomArea),
     region: Schema.optional(Region),
@@ -167,7 +167,7 @@ export interface Filter {
 }
 
 export const Filter: Schema.Codec<Filter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ratingFilter: Schema.optional(RatingFilter),
     typeFilter: Schema.optional(TypeFilter),
     priceLevels: Schema.optional(Schema.Array(Schema.String)),
@@ -185,7 +185,7 @@ export interface ComputeInsightsRequest {
 }
 
 export const ComputeInsightsRequest: Schema.Codec<ComputeInsightsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     insights: Schema.optional(Schema.Array(Schema.String)),
     filter: Schema.optional(Filter),
   }).annotate({ identifier: "ComputeInsightsRequest" });
@@ -198,7 +198,7 @@ export interface ComputeInsightsResponse {
 }
 
 export const ComputeInsightsResponse: Schema.Codec<ComputeInsightsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
     placeInsights: Schema.optional(Schema.Array(PlaceInsight)),
   }).annotate({ identifier: "ComputeInsightsResponse" });
@@ -263,7 +263,7 @@ export interface ComputeInsightsV1Request {
 }
 
 export const ComputeInsightsV1Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(ComputeInsightsRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1:computeInsights", hasBody: true }),
@@ -271,8 +271,7 @@ export const ComputeInsightsV1Request =
   ) as unknown as Schema.Codec<ComputeInsightsV1Request>;
 
 export type ComputeInsightsV1Response = ComputeInsightsResponse;
-export const ComputeInsightsV1Response =
-  /*@__PURE__*/ /*#__PURE__*/ ComputeInsightsResponse;
+export const ComputeInsightsV1Response = /*@__PURE__*/ ComputeInsightsResponse;
 
 export type ComputeInsightsV1Error =
   | DefaultErrors
@@ -287,7 +286,7 @@ export const computeInsightsV1: API.OperationMethod<
   ComputeInsightsV1Response,
   ComputeInsightsV1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ComputeInsightsV1Request,
   output: ComputeInsightsV1Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

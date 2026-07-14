@@ -16,7 +16,7 @@ export interface ConnectCoreV1DeleteNamespacedPodProxyInput {
   path?: string;
 }
 export const ConnectCoreV1DeleteNamespacedPodProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
@@ -30,7 +30,7 @@ export const ConnectCoreV1DeleteNamespacedPodProxyInput =
 // Output Schema
 export type ConnectCoreV1DeleteNamespacedPodProxyOutput = string;
 export const ConnectCoreV1DeleteNamespacedPodProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1DeleteNamespacedPodProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1DeleteNamespacedPodProxyOutput>;
 
 // The operation
 /**
@@ -41,7 +41,7 @@ export const ConnectCoreV1DeleteNamespacedPodProxyOutput =
  * @param path - Path is the URL path to use for the current proxy request to pod.
  */
 export const connectCoreV1DeleteNamespacedPodProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1DeleteNamespacedPodProxyInput,
     outputSchema: ConnectCoreV1DeleteNamespacedPodProxyOutput,
   }));
@@ -52,7 +52,7 @@ export interface ConnectCoreV1DeleteNamespacedPodProxyWithPathInput {
   path: string;
 }
 export const ConnectCoreV1DeleteNamespacedPodProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
@@ -66,7 +66,7 @@ export const ConnectCoreV1DeleteNamespacedPodProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput = string;
 export const ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput>;
 
 // The operation
 /**
@@ -78,7 +78,7 @@ export const ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput =
  * @param path - Path is the URL path to use for the current proxy request to pod.
  */
 export const connectCoreV1DeleteNamespacedPodProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1DeleteNamespacedPodProxyWithPathInput,
     outputSchema: ConnectCoreV1DeleteNamespacedPodProxyWithPathOutput,
   }));
@@ -89,7 +89,7 @@ export interface ConnectCoreV1DeleteNamespacedServiceProxyInput {
   path?: string;
 }
 export const ConnectCoreV1DeleteNamespacedServiceProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
@@ -103,7 +103,7 @@ export const ConnectCoreV1DeleteNamespacedServiceProxyInput =
 // Output Schema
 export type ConnectCoreV1DeleteNamespacedServiceProxyOutput = string;
 export const ConnectCoreV1DeleteNamespacedServiceProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1DeleteNamespacedServiceProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1DeleteNamespacedServiceProxyOutput>;
 
 // The operation
 /**
@@ -114,7 +114,7 @@ export const ConnectCoreV1DeleteNamespacedServiceProxyOutput =
  * @param path - Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the current proxy request to service. For example, the whole request URL is http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
  */
 export const connectCoreV1DeleteNamespacedServiceProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1DeleteNamespacedServiceProxyInput,
     outputSchema: ConnectCoreV1DeleteNamespacedServiceProxyOutput,
   }));
@@ -125,7 +125,7 @@ export interface ConnectCoreV1DeleteNamespacedServiceProxyWithPathInput {
   path: string;
 }
 export const ConnectCoreV1DeleteNamespacedServiceProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
@@ -139,7 +139,7 @@ export const ConnectCoreV1DeleteNamespacedServiceProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput = string;
 export const ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput>;
 
 // The operation
 /**
@@ -151,7 +151,7 @@ export const ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput =
  * @param path - Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the current proxy request to service. For example, the whole request URL is http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
  */
 export const connectCoreV1DeleteNamespacedServiceProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1DeleteNamespacedServiceProxyWithPathInput,
     outputSchema: ConnectCoreV1DeleteNamespacedServiceProxyWithPathOutput,
   }));
@@ -161,7 +161,7 @@ export interface ConnectCoreV1DeleteNodeProxyInput {
   path?: string;
 }
 export const ConnectCoreV1DeleteNodeProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
   }).pipe(
@@ -171,7 +171,7 @@ export const ConnectCoreV1DeleteNodeProxyInput =
 // Output Schema
 export type ConnectCoreV1DeleteNodeProxyOutput = string;
 export const ConnectCoreV1DeleteNodeProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1DeleteNodeProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1DeleteNodeProxyOutput>;
 
 // The operation
 /**
@@ -181,7 +181,7 @@ export const ConnectCoreV1DeleteNodeProxyOutput =
  * @param path - Path is the URL path to use for the current proxy request to node.
  */
 export const connectCoreV1DeleteNodeProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1DeleteNodeProxyInput,
     outputSchema: ConnectCoreV1DeleteNodeProxyOutput,
   }));
@@ -191,7 +191,7 @@ export interface ConnectCoreV1DeleteNodeProxyWithPathInput {
   path: string;
 }
 export const ConnectCoreV1DeleteNodeProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -201,7 +201,7 @@ export const ConnectCoreV1DeleteNodeProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1DeleteNodeProxyWithPathOutput = string;
 export const ConnectCoreV1DeleteNodeProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1DeleteNodeProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1DeleteNodeProxyWithPathOutput>;
 
 // The operation
 /**
@@ -212,7 +212,7 @@ export const ConnectCoreV1DeleteNodeProxyWithPathOutput =
  * @param path - Path is the URL path to use for the current proxy request to node.
  */
 export const connectCoreV1DeleteNodeProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1DeleteNodeProxyWithPathInput,
     outputSchema: ConnectCoreV1DeleteNodeProxyWithPathOutput,
   }));
@@ -227,7 +227,7 @@ export interface ConnectCoreV1GetNamespacedPodAttachInput {
   tty?: boolean;
 }
 export const ConnectCoreV1GetNamespacedPodAttachInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     container: Schema.optional(Schema.String),
@@ -245,7 +245,7 @@ export const ConnectCoreV1GetNamespacedPodAttachInput =
 // Output Schema
 export type ConnectCoreV1GetNamespacedPodAttachOutput = string;
 export const ConnectCoreV1GetNamespacedPodAttachOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedPodAttachOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedPodAttachOutput>;
 
 // The operation
 /**
@@ -260,7 +260,7 @@ export const ConnectCoreV1GetNamespacedPodAttachOutput =
  * @param tty - TTY if true indicates that a tty will be allocated for the attach call. This is passed through the container runtime so the tty is allocated on the worker node by the container runtime. Defaults to false.
  */
 export const connectCoreV1GetNamespacedPodAttach =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedPodAttachInput,
     outputSchema: ConnectCoreV1GetNamespacedPodAttachOutput,
   }));
@@ -276,7 +276,7 @@ export interface ConnectCoreV1GetNamespacedPodExecInput {
   tty?: boolean;
 }
 export const ConnectCoreV1GetNamespacedPodExecInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     command: Schema.optional(Schema.String),
@@ -295,7 +295,7 @@ export const ConnectCoreV1GetNamespacedPodExecInput =
 // Output Schema
 export type ConnectCoreV1GetNamespacedPodExecOutput = string;
 export const ConnectCoreV1GetNamespacedPodExecOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedPodExecOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedPodExecOutput>;
 
 // The operation
 /**
@@ -311,7 +311,7 @@ export const ConnectCoreV1GetNamespacedPodExecOutput =
  * @param tty - TTY if true indicates that a tty will be allocated for the exec call. Defaults to false.
  */
 export const connectCoreV1GetNamespacedPodExec =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedPodExecInput,
     outputSchema: ConnectCoreV1GetNamespacedPodExecOutput,
   }));
@@ -322,7 +322,7 @@ export interface ConnectCoreV1GetNamespacedPodPortforwardInput {
   ports?: number;
 }
 export const ConnectCoreV1GetNamespacedPodPortforwardInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     ports: Schema.optional(Schema.Number),
@@ -336,7 +336,7 @@ export const ConnectCoreV1GetNamespacedPodPortforwardInput =
 // Output Schema
 export type ConnectCoreV1GetNamespacedPodPortforwardOutput = string;
 export const ConnectCoreV1GetNamespacedPodPortforwardOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedPodPortforwardOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedPodPortforwardOutput>;
 
 // The operation
 /**
@@ -347,7 +347,7 @@ export const ConnectCoreV1GetNamespacedPodPortforwardOutput =
  * @param ports - List of ports to forward Required when using WebSockets
  */
 export const connectCoreV1GetNamespacedPodPortforward =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedPodPortforwardInput,
     outputSchema: ConnectCoreV1GetNamespacedPodPortforwardOutput,
   }));
@@ -358,7 +358,7 @@ export interface ConnectCoreV1GetNamespacedPodProxyInput {
   path?: string;
 }
 export const ConnectCoreV1GetNamespacedPodProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
@@ -372,7 +372,7 @@ export const ConnectCoreV1GetNamespacedPodProxyInput =
 // Output Schema
 export type ConnectCoreV1GetNamespacedPodProxyOutput = string;
 export const ConnectCoreV1GetNamespacedPodProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedPodProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedPodProxyOutput>;
 
 // The operation
 /**
@@ -383,7 +383,7 @@ export const ConnectCoreV1GetNamespacedPodProxyOutput =
  * @param path - Path is the URL path to use for the current proxy request to pod.
  */
 export const connectCoreV1GetNamespacedPodProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedPodProxyInput,
     outputSchema: ConnectCoreV1GetNamespacedPodProxyOutput,
   }));
@@ -394,7 +394,7 @@ export interface ConnectCoreV1GetNamespacedPodProxyWithPathInput {
   path: string;
 }
 export const ConnectCoreV1GetNamespacedPodProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
@@ -408,7 +408,7 @@ export const ConnectCoreV1GetNamespacedPodProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1GetNamespacedPodProxyWithPathOutput = string;
 export const ConnectCoreV1GetNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedPodProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedPodProxyWithPathOutput>;
 
 // The operation
 /**
@@ -420,7 +420,7 @@ export const ConnectCoreV1GetNamespacedPodProxyWithPathOutput =
  * @param path - Path is the URL path to use for the current proxy request to pod.
  */
 export const connectCoreV1GetNamespacedPodProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedPodProxyWithPathInput,
     outputSchema: ConnectCoreV1GetNamespacedPodProxyWithPathOutput,
   }));
@@ -431,7 +431,7 @@ export interface ConnectCoreV1GetNamespacedServiceProxyInput {
   path?: string;
 }
 export const ConnectCoreV1GetNamespacedServiceProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
@@ -445,7 +445,7 @@ export const ConnectCoreV1GetNamespacedServiceProxyInput =
 // Output Schema
 export type ConnectCoreV1GetNamespacedServiceProxyOutput = string;
 export const ConnectCoreV1GetNamespacedServiceProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedServiceProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedServiceProxyOutput>;
 
 // The operation
 /**
@@ -456,7 +456,7 @@ export const ConnectCoreV1GetNamespacedServiceProxyOutput =
  * @param path - Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the current proxy request to service. For example, the whole request URL is http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
  */
 export const connectCoreV1GetNamespacedServiceProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedServiceProxyInput,
     outputSchema: ConnectCoreV1GetNamespacedServiceProxyOutput,
   }));
@@ -467,7 +467,7 @@ export interface ConnectCoreV1GetNamespacedServiceProxyWithPathInput {
   path: string;
 }
 export const ConnectCoreV1GetNamespacedServiceProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
@@ -481,7 +481,7 @@ export const ConnectCoreV1GetNamespacedServiceProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1GetNamespacedServiceProxyWithPathOutput = string;
 export const ConnectCoreV1GetNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedServiceProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNamespacedServiceProxyWithPathOutput>;
 
 // The operation
 /**
@@ -493,7 +493,7 @@ export const ConnectCoreV1GetNamespacedServiceProxyWithPathOutput =
  * @param path - Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the current proxy request to service. For example, the whole request URL is http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
  */
 export const connectCoreV1GetNamespacedServiceProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNamespacedServiceProxyWithPathInput,
     outputSchema: ConnectCoreV1GetNamespacedServiceProxyWithPathOutput,
   }));
@@ -503,7 +503,7 @@ export interface ConnectCoreV1GetNodeProxyInput {
   path?: string;
 }
 export const ConnectCoreV1GetNodeProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
   }).pipe(
@@ -513,7 +513,7 @@ export const ConnectCoreV1GetNodeProxyInput =
 // Output Schema
 export type ConnectCoreV1GetNodeProxyOutput = string;
 export const ConnectCoreV1GetNodeProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNodeProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNodeProxyOutput>;
 
 // The operation
 /**
@@ -522,19 +522,17 @@ export const ConnectCoreV1GetNodeProxyOutput =
  * @param name - name of the NodeProxyOptions
  * @param path - Path is the URL path to use for the current proxy request to node.
  */
-export const connectCoreV1GetNodeProxy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectCoreV1GetNodeProxyInput,
-    outputSchema: ConnectCoreV1GetNodeProxyOutput,
-  }),
-);
+export const connectCoreV1GetNodeProxy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectCoreV1GetNodeProxyInput,
+  outputSchema: ConnectCoreV1GetNodeProxyOutput,
+}));
 // Input Schema
 export interface ConnectCoreV1GetNodeProxyWithPathInput {
   name: string;
   path: string;
 }
 export const ConnectCoreV1GetNodeProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -544,7 +542,7 @@ export const ConnectCoreV1GetNodeProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1GetNodeProxyWithPathOutput = string;
 export const ConnectCoreV1GetNodeProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNodeProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1GetNodeProxyWithPathOutput>;
 
 // The operation
 /**
@@ -555,7 +553,7 @@ export const ConnectCoreV1GetNodeProxyWithPathOutput =
  * @param path - Path is the URL path to use for the current proxy request to node.
  */
 export const connectCoreV1GetNodeProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1GetNodeProxyWithPathInput,
     outputSchema: ConnectCoreV1GetNodeProxyWithPathOutput,
   }));
@@ -566,7 +564,7 @@ export interface ConnectCoreV1PatchNamespacedPodProxyInput {
   path?: string;
 }
 export const ConnectCoreV1PatchNamespacedPodProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
@@ -580,7 +578,7 @@ export const ConnectCoreV1PatchNamespacedPodProxyInput =
 // Output Schema
 export type ConnectCoreV1PatchNamespacedPodProxyOutput = string;
 export const ConnectCoreV1PatchNamespacedPodProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PatchNamespacedPodProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PatchNamespacedPodProxyOutput>;
 
 // The operation
 /**
@@ -591,7 +589,7 @@ export const ConnectCoreV1PatchNamespacedPodProxyOutput =
  * @param path - Path is the URL path to use for the current proxy request to pod.
  */
 export const connectCoreV1PatchNamespacedPodProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PatchNamespacedPodProxyInput,
     outputSchema: ConnectCoreV1PatchNamespacedPodProxyOutput,
   }));
@@ -602,7 +600,7 @@ export interface ConnectCoreV1PatchNamespacedPodProxyWithPathInput {
   path: string;
 }
 export const ConnectCoreV1PatchNamespacedPodProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
@@ -616,7 +614,7 @@ export const ConnectCoreV1PatchNamespacedPodProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1PatchNamespacedPodProxyWithPathOutput = string;
 export const ConnectCoreV1PatchNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PatchNamespacedPodProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PatchNamespacedPodProxyWithPathOutput>;
 
 // The operation
 /**
@@ -628,7 +626,7 @@ export const ConnectCoreV1PatchNamespacedPodProxyWithPathOutput =
  * @param path - Path is the URL path to use for the current proxy request to pod.
  */
 export const connectCoreV1PatchNamespacedPodProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PatchNamespacedPodProxyWithPathInput,
     outputSchema: ConnectCoreV1PatchNamespacedPodProxyWithPathOutput,
   }));
@@ -639,7 +637,7 @@ export interface ConnectCoreV1PatchNamespacedServiceProxyInput {
   path?: string;
 }
 export const ConnectCoreV1PatchNamespacedServiceProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
@@ -653,7 +651,7 @@ export const ConnectCoreV1PatchNamespacedServiceProxyInput =
 // Output Schema
 export type ConnectCoreV1PatchNamespacedServiceProxyOutput = string;
 export const ConnectCoreV1PatchNamespacedServiceProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PatchNamespacedServiceProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PatchNamespacedServiceProxyOutput>;
 
 // The operation
 /**
@@ -664,7 +662,7 @@ export const ConnectCoreV1PatchNamespacedServiceProxyOutput =
  * @param path - Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the current proxy request to service. For example, the whole request URL is http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
  */
 export const connectCoreV1PatchNamespacedServiceProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PatchNamespacedServiceProxyInput,
     outputSchema: ConnectCoreV1PatchNamespacedServiceProxyOutput,
   }));
@@ -675,7 +673,7 @@ export interface ConnectCoreV1PatchNamespacedServiceProxyWithPathInput {
   path: string;
 }
 export const ConnectCoreV1PatchNamespacedServiceProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
@@ -689,7 +687,7 @@ export const ConnectCoreV1PatchNamespacedServiceProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput = string;
 export const ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput>;
 
 // The operation
 /**
@@ -701,7 +699,7 @@ export const ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput =
  * @param path - Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the current proxy request to service. For example, the whole request URL is http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
  */
 export const connectCoreV1PatchNamespacedServiceProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PatchNamespacedServiceProxyWithPathInput,
     outputSchema: ConnectCoreV1PatchNamespacedServiceProxyWithPathOutput,
   }));
@@ -711,7 +709,7 @@ export interface ConnectCoreV1PatchNodeProxyInput {
   path?: string;
 }
 export const ConnectCoreV1PatchNodeProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
   }).pipe(
@@ -721,7 +719,7 @@ export const ConnectCoreV1PatchNodeProxyInput =
 // Output Schema
 export type ConnectCoreV1PatchNodeProxyOutput = string;
 export const ConnectCoreV1PatchNodeProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PatchNodeProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PatchNodeProxyOutput>;
 
 // The operation
 /**
@@ -730,19 +728,17 @@ export const ConnectCoreV1PatchNodeProxyOutput =
  * @param name - name of the NodeProxyOptions
  * @param path - Path is the URL path to use for the current proxy request to node.
  */
-export const connectCoreV1PatchNodeProxy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectCoreV1PatchNodeProxyInput,
-    outputSchema: ConnectCoreV1PatchNodeProxyOutput,
-  }),
-);
+export const connectCoreV1PatchNodeProxy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectCoreV1PatchNodeProxyInput,
+  outputSchema: ConnectCoreV1PatchNodeProxyOutput,
+}));
 // Input Schema
 export interface ConnectCoreV1PatchNodeProxyWithPathInput {
   name: string;
   path: string;
 }
 export const ConnectCoreV1PatchNodeProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -752,7 +748,7 @@ export const ConnectCoreV1PatchNodeProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1PatchNodeProxyWithPathOutput = string;
 export const ConnectCoreV1PatchNodeProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PatchNodeProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PatchNodeProxyWithPathOutput>;
 
 // The operation
 /**
@@ -763,7 +759,7 @@ export const ConnectCoreV1PatchNodeProxyWithPathOutput =
  * @param path - Path is the URL path to use for the current proxy request to node.
  */
 export const connectCoreV1PatchNodeProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PatchNodeProxyWithPathInput,
     outputSchema: ConnectCoreV1PatchNodeProxyWithPathOutput,
   }));
@@ -778,7 +774,7 @@ export interface ConnectCoreV1PostNamespacedPodAttachInput {
   tty?: boolean;
 }
 export const ConnectCoreV1PostNamespacedPodAttachInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     container: Schema.optional(Schema.String),
@@ -796,7 +792,7 @@ export const ConnectCoreV1PostNamespacedPodAttachInput =
 // Output Schema
 export type ConnectCoreV1PostNamespacedPodAttachOutput = string;
 export const ConnectCoreV1PostNamespacedPodAttachOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedPodAttachOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedPodAttachOutput>;
 
 // The operation
 /**
@@ -811,7 +807,7 @@ export const ConnectCoreV1PostNamespacedPodAttachOutput =
  * @param tty - TTY if true indicates that a tty will be allocated for the attach call. This is passed through the container runtime so the tty is allocated on the worker node by the container runtime. Defaults to false.
  */
 export const connectCoreV1PostNamespacedPodAttach =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedPodAttachInput,
     outputSchema: ConnectCoreV1PostNamespacedPodAttachOutput,
   }));
@@ -827,7 +823,7 @@ export interface ConnectCoreV1PostNamespacedPodExecInput {
   tty?: boolean;
 }
 export const ConnectCoreV1PostNamespacedPodExecInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     command: Schema.optional(Schema.String),
@@ -846,7 +842,7 @@ export const ConnectCoreV1PostNamespacedPodExecInput =
 // Output Schema
 export type ConnectCoreV1PostNamespacedPodExecOutput = string;
 export const ConnectCoreV1PostNamespacedPodExecOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedPodExecOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedPodExecOutput>;
 
 // The operation
 /**
@@ -862,7 +858,7 @@ export const ConnectCoreV1PostNamespacedPodExecOutput =
  * @param tty - TTY if true indicates that a tty will be allocated for the exec call. Defaults to false.
  */
 export const connectCoreV1PostNamespacedPodExec =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedPodExecInput,
     outputSchema: ConnectCoreV1PostNamespacedPodExecOutput,
   }));
@@ -873,7 +869,7 @@ export interface ConnectCoreV1PostNamespacedPodPortforwardInput {
   ports?: number;
 }
 export const ConnectCoreV1PostNamespacedPodPortforwardInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     ports: Schema.optional(Schema.Number),
@@ -887,7 +883,7 @@ export const ConnectCoreV1PostNamespacedPodPortforwardInput =
 // Output Schema
 export type ConnectCoreV1PostNamespacedPodPortforwardOutput = string;
 export const ConnectCoreV1PostNamespacedPodPortforwardOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedPodPortforwardOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedPodPortforwardOutput>;
 
 // The operation
 /**
@@ -898,7 +894,7 @@ export const ConnectCoreV1PostNamespacedPodPortforwardOutput =
  * @param ports - List of ports to forward Required when using WebSockets
  */
 export const connectCoreV1PostNamespacedPodPortforward =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedPodPortforwardInput,
     outputSchema: ConnectCoreV1PostNamespacedPodPortforwardOutput,
   }));
@@ -909,7 +905,7 @@ export interface ConnectCoreV1PostNamespacedPodProxyInput {
   path?: string;
 }
 export const ConnectCoreV1PostNamespacedPodProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
@@ -923,7 +919,7 @@ export const ConnectCoreV1PostNamespacedPodProxyInput =
 // Output Schema
 export type ConnectCoreV1PostNamespacedPodProxyOutput = string;
 export const ConnectCoreV1PostNamespacedPodProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedPodProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedPodProxyOutput>;
 
 // The operation
 /**
@@ -934,7 +930,7 @@ export const ConnectCoreV1PostNamespacedPodProxyOutput =
  * @param path - Path is the URL path to use for the current proxy request to pod.
  */
 export const connectCoreV1PostNamespacedPodProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedPodProxyInput,
     outputSchema: ConnectCoreV1PostNamespacedPodProxyOutput,
   }));
@@ -945,7 +941,7 @@ export interface ConnectCoreV1PostNamespacedPodProxyWithPathInput {
   path: string;
 }
 export const ConnectCoreV1PostNamespacedPodProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
@@ -959,7 +955,7 @@ export const ConnectCoreV1PostNamespacedPodProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1PostNamespacedPodProxyWithPathOutput = string;
 export const ConnectCoreV1PostNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedPodProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedPodProxyWithPathOutput>;
 
 // The operation
 /**
@@ -971,7 +967,7 @@ export const ConnectCoreV1PostNamespacedPodProxyWithPathOutput =
  * @param path - Path is the URL path to use for the current proxy request to pod.
  */
 export const connectCoreV1PostNamespacedPodProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedPodProxyWithPathInput,
     outputSchema: ConnectCoreV1PostNamespacedPodProxyWithPathOutput,
   }));
@@ -982,7 +978,7 @@ export interface ConnectCoreV1PostNamespacedServiceProxyInput {
   path?: string;
 }
 export const ConnectCoreV1PostNamespacedServiceProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
@@ -996,7 +992,7 @@ export const ConnectCoreV1PostNamespacedServiceProxyInput =
 // Output Schema
 export type ConnectCoreV1PostNamespacedServiceProxyOutput = string;
 export const ConnectCoreV1PostNamespacedServiceProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedServiceProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedServiceProxyOutput>;
 
 // The operation
 /**
@@ -1007,7 +1003,7 @@ export const ConnectCoreV1PostNamespacedServiceProxyOutput =
  * @param path - Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the current proxy request to service. For example, the whole request URL is http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
  */
 export const connectCoreV1PostNamespacedServiceProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedServiceProxyInput,
     outputSchema: ConnectCoreV1PostNamespacedServiceProxyOutput,
   }));
@@ -1018,7 +1014,7 @@ export interface ConnectCoreV1PostNamespacedServiceProxyWithPathInput {
   path: string;
 }
 export const ConnectCoreV1PostNamespacedServiceProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
@@ -1032,7 +1028,7 @@ export const ConnectCoreV1PostNamespacedServiceProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1PostNamespacedServiceProxyWithPathOutput = string;
 export const ConnectCoreV1PostNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedServiceProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNamespacedServiceProxyWithPathOutput>;
 
 // The operation
 /**
@@ -1044,7 +1040,7 @@ export const ConnectCoreV1PostNamespacedServiceProxyWithPathOutput =
  * @param path - Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the current proxy request to service. For example, the whole request URL is http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
  */
 export const connectCoreV1PostNamespacedServiceProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNamespacedServiceProxyWithPathInput,
     outputSchema: ConnectCoreV1PostNamespacedServiceProxyWithPathOutput,
   }));
@@ -1054,7 +1050,7 @@ export interface ConnectCoreV1PostNodeProxyInput {
   path?: string;
 }
 export const ConnectCoreV1PostNodeProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
   }).pipe(
@@ -1064,7 +1060,7 @@ export const ConnectCoreV1PostNodeProxyInput =
 // Output Schema
 export type ConnectCoreV1PostNodeProxyOutput = string;
 export const ConnectCoreV1PostNodeProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNodeProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNodeProxyOutput>;
 
 // The operation
 /**
@@ -1073,19 +1069,17 @@ export const ConnectCoreV1PostNodeProxyOutput =
  * @param name - name of the NodeProxyOptions
  * @param path - Path is the URL path to use for the current proxy request to node.
  */
-export const connectCoreV1PostNodeProxy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectCoreV1PostNodeProxyInput,
-    outputSchema: ConnectCoreV1PostNodeProxyOutput,
-  }),
-);
+export const connectCoreV1PostNodeProxy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectCoreV1PostNodeProxyInput,
+  outputSchema: ConnectCoreV1PostNodeProxyOutput,
+}));
 // Input Schema
 export interface ConnectCoreV1PostNodeProxyWithPathInput {
   name: string;
   path: string;
 }
 export const ConnectCoreV1PostNodeProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1095,7 +1089,7 @@ export const ConnectCoreV1PostNodeProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1PostNodeProxyWithPathOutput = string;
 export const ConnectCoreV1PostNodeProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNodeProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PostNodeProxyWithPathOutput>;
 
 // The operation
 /**
@@ -1106,7 +1100,7 @@ export const ConnectCoreV1PostNodeProxyWithPathOutput =
  * @param path - Path is the URL path to use for the current proxy request to node.
  */
 export const connectCoreV1PostNodeProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PostNodeProxyWithPathInput,
     outputSchema: ConnectCoreV1PostNodeProxyWithPathOutput,
   }));
@@ -1117,7 +1111,7 @@ export interface ConnectCoreV1PutNamespacedPodProxyInput {
   path?: string;
 }
 export const ConnectCoreV1PutNamespacedPodProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
@@ -1131,7 +1125,7 @@ export const ConnectCoreV1PutNamespacedPodProxyInput =
 // Output Schema
 export type ConnectCoreV1PutNamespacedPodProxyOutput = string;
 export const ConnectCoreV1PutNamespacedPodProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PutNamespacedPodProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PutNamespacedPodProxyOutput>;
 
 // The operation
 /**
@@ -1142,7 +1136,7 @@ export const ConnectCoreV1PutNamespacedPodProxyOutput =
  * @param path - Path is the URL path to use for the current proxy request to pod.
  */
 export const connectCoreV1PutNamespacedPodProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PutNamespacedPodProxyInput,
     outputSchema: ConnectCoreV1PutNamespacedPodProxyOutput,
   }));
@@ -1153,7 +1147,7 @@ export interface ConnectCoreV1PutNamespacedPodProxyWithPathInput {
   path: string;
 }
 export const ConnectCoreV1PutNamespacedPodProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
@@ -1167,7 +1161,7 @@ export const ConnectCoreV1PutNamespacedPodProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1PutNamespacedPodProxyWithPathOutput = string;
 export const ConnectCoreV1PutNamespacedPodProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PutNamespacedPodProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PutNamespacedPodProxyWithPathOutput>;
 
 // The operation
 /**
@@ -1179,7 +1173,7 @@ export const ConnectCoreV1PutNamespacedPodProxyWithPathOutput =
  * @param path - Path is the URL path to use for the current proxy request to pod.
  */
 export const connectCoreV1PutNamespacedPodProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PutNamespacedPodProxyWithPathInput,
     outputSchema: ConnectCoreV1PutNamespacedPodProxyWithPathOutput,
   }));
@@ -1190,7 +1184,7 @@ export interface ConnectCoreV1PutNamespacedServiceProxyInput {
   path?: string;
 }
 export const ConnectCoreV1PutNamespacedServiceProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
@@ -1204,7 +1198,7 @@ export const ConnectCoreV1PutNamespacedServiceProxyInput =
 // Output Schema
 export type ConnectCoreV1PutNamespacedServiceProxyOutput = string;
 export const ConnectCoreV1PutNamespacedServiceProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PutNamespacedServiceProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PutNamespacedServiceProxyOutput>;
 
 // The operation
 /**
@@ -1215,7 +1209,7 @@ export const ConnectCoreV1PutNamespacedServiceProxyOutput =
  * @param path - Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the current proxy request to service. For example, the whole request URL is http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
  */
 export const connectCoreV1PutNamespacedServiceProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PutNamespacedServiceProxyInput,
     outputSchema: ConnectCoreV1PutNamespacedServiceProxyOutput,
   }));
@@ -1226,7 +1220,7 @@ export interface ConnectCoreV1PutNamespacedServiceProxyWithPathInput {
   path: string;
 }
 export const ConnectCoreV1PutNamespacedServiceProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
@@ -1240,7 +1234,7 @@ export const ConnectCoreV1PutNamespacedServiceProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1PutNamespacedServiceProxyWithPathOutput = string;
 export const ConnectCoreV1PutNamespacedServiceProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PutNamespacedServiceProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PutNamespacedServiceProxyWithPathOutput>;
 
 // The operation
 /**
@@ -1252,7 +1246,7 @@ export const ConnectCoreV1PutNamespacedServiceProxyWithPathOutput =
  * @param path - Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the current proxy request to service. For example, the whole request URL is http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
  */
 export const connectCoreV1PutNamespacedServiceProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PutNamespacedServiceProxyWithPathInput,
     outputSchema: ConnectCoreV1PutNamespacedServiceProxyWithPathOutput,
   }));
@@ -1262,7 +1256,7 @@ export interface ConnectCoreV1PutNodeProxyInput {
   path?: string;
 }
 export const ConnectCoreV1PutNodeProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
   }).pipe(
@@ -1272,7 +1266,7 @@ export const ConnectCoreV1PutNodeProxyInput =
 // Output Schema
 export type ConnectCoreV1PutNodeProxyOutput = string;
 export const ConnectCoreV1PutNodeProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PutNodeProxyOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PutNodeProxyOutput>;
 
 // The operation
 /**
@@ -1281,19 +1275,17 @@ export const ConnectCoreV1PutNodeProxyOutput =
  * @param name - name of the NodeProxyOptions
  * @param path - Path is the URL path to use for the current proxy request to node.
  */
-export const connectCoreV1PutNodeProxy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectCoreV1PutNodeProxyInput,
-    outputSchema: ConnectCoreV1PutNodeProxyOutput,
-  }),
-);
+export const connectCoreV1PutNodeProxy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectCoreV1PutNodeProxyInput,
+  outputSchema: ConnectCoreV1PutNodeProxyOutput,
+}));
 // Input Schema
 export interface ConnectCoreV1PutNodeProxyWithPathInput {
   name: string;
   path: string;
 }
 export const ConnectCoreV1PutNodeProxyWithPathInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     path: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1303,7 +1295,7 @@ export const ConnectCoreV1PutNodeProxyWithPathInput =
 // Output Schema
 export type ConnectCoreV1PutNodeProxyWithPathOutput = string;
 export const ConnectCoreV1PutNodeProxyWithPathOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PutNodeProxyWithPathOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ConnectCoreV1PutNodeProxyWithPathOutput>;
 
 // The operation
 /**
@@ -1314,7 +1306,7 @@ export const ConnectCoreV1PutNodeProxyWithPathOutput =
  * @param path - Path is the URL path to use for the current proxy request to node.
  */
 export const connectCoreV1PutNodeProxyWithPath =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectCoreV1PutNodeProxyWithPathInput,
     outputSchema: ConnectCoreV1PutNodeProxyWithPathOutput,
   }));
@@ -1371,7 +1363,7 @@ export interface CreateCoreV1NamespaceInput {
   };
 }
 export const CreateCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -1496,7 +1488,7 @@ export interface CreateCoreV1NamespaceOutput {
   };
 }
 export const CreateCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1575,13 +1567,11 @@ export const CreateCoreV1NamespaceOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateCoreV1NamespaceInput,
-    outputSchema: CreateCoreV1NamespaceOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateCoreV1NamespaceInput,
+  outputSchema: CreateCoreV1NamespaceOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface CreateCoreV1NamespacedBindingInput {
   namespace: string;
@@ -1634,7 +1624,7 @@ export interface CreateCoreV1NamespacedBindingInput {
   };
 }
 export const CreateCoreV1NamespacedBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -1746,7 +1736,7 @@ export interface CreateCoreV1NamespacedBindingOutput {
   };
 }
 export const CreateCoreV1NamespacedBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1815,7 +1805,7 @@ export const CreateCoreV1NamespacedBindingOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const createCoreV1NamespacedBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedBindingInput,
     outputSchema: CreateCoreV1NamespacedBindingOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -1866,7 +1856,7 @@ export interface CreateCoreV1NamespacedConfigMapInput {
   };
 }
 export const CreateCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1969,7 +1959,7 @@ export interface CreateCoreV1NamespacedConfigMapOutput {
   };
 }
 export const CreateCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     binaryData: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -2032,7 +2022,7 @@ export const CreateCoreV1NamespacedConfigMapOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedConfigMapInput,
     outputSchema: CreateCoreV1NamespacedConfigMapOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -2116,7 +2106,7 @@ export interface CreateCoreV1NamespacedEndpointsInput {
   }[];
 }
 export const CreateCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2305,7 +2295,7 @@ export interface CreateCoreV1NamespacedEndpointsOutput {
   }[];
 }
 export const CreateCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2421,7 +2411,7 @@ export const CreateCoreV1NamespacedEndpointsOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedEndpointsInput,
     outputSchema: CreateCoreV1NamespacedEndpointsOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -2499,7 +2489,7 @@ export interface CreateCoreV1NamespacedEventInput {
   type?: string;
 }
 export const CreateCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2661,7 +2651,7 @@ export interface CreateCoreV1NamespacedEventOutput {
   type?: string;
 }
 export const CreateCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
@@ -2758,13 +2748,11 @@ export const CreateCoreV1NamespacedEventOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateCoreV1NamespacedEventInput,
-    outputSchema: CreateCoreV1NamespacedEventOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createCoreV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateCoreV1NamespacedEventInput,
+  outputSchema: CreateCoreV1NamespacedEventOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface CreateCoreV1NamespacedLimitRangeInput {
   namespace: string;
@@ -2818,7 +2806,7 @@ export interface CreateCoreV1NamespacedLimitRangeInput {
   };
 }
 export const CreateCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2945,7 +2933,7 @@ export interface CreateCoreV1NamespacedLimitRangeOutput {
   };
 }
 export const CreateCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3025,7 +3013,7 @@ export const CreateCoreV1NamespacedLimitRangeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedLimitRangeInput,
     outputSchema: CreateCoreV1NamespacedLimitRangeOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -3115,7 +3103,7 @@ export interface CreateCoreV1NamespacedPersistentVolumeClaimInput {
   };
 }
 export const CreateCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -3336,7 +3324,7 @@ export interface CreateCoreV1NamespacedPersistentVolumeClaimOutput {
   };
 }
 export const CreateCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3478,7 +3466,7 @@ export const CreateCoreV1NamespacedPersistentVolumeClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: CreateCoreV1NamespacedPersistentVolumeClaimOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -4750,7 +4738,7 @@ export interface CreateCoreV1NamespacedPodInput {
   };
 }
 export const CreateCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -8815,7 +8803,7 @@ export interface CreateCoreV1NamespacedPodOutput {
   };
 }
 export const CreateCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -11621,13 +11609,11 @@ export const CreateCoreV1NamespacedPodOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateCoreV1NamespacedPodInput,
-    outputSchema: CreateCoreV1NamespacedPodOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateCoreV1NamespacedPodInput,
+  outputSchema: CreateCoreV1NamespacedPodOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface CreateCoreV1NamespacedPodBindingInput {
   name: string;
@@ -11681,7 +11667,7 @@ export interface CreateCoreV1NamespacedPodBindingInput {
   };
 }
 export const CreateCoreV1NamespacedPodBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     dryRun: Schema.optional(Schema.String),
@@ -11797,7 +11783,7 @@ export interface CreateCoreV1NamespacedPodBindingOutput {
   };
 }
 export const CreateCoreV1NamespacedPodBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -11867,7 +11853,7 @@ export const CreateCoreV1NamespacedPodBindingOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const createCoreV1NamespacedPodBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedPodBindingInput,
     outputSchema: CreateCoreV1NamespacedPodBindingOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -11926,7 +11912,7 @@ export interface CreateCoreV1NamespacedPodEvictionInput {
   };
 }
 export const CreateCoreV1NamespacedPodEvictionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     dryRun: Schema.optional(Schema.String),
@@ -12053,7 +12039,7 @@ export interface CreateCoreV1NamespacedPodEvictionOutput {
   };
 }
 export const CreateCoreV1NamespacedPodEvictionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     deleteOptions: Schema.optional(
       Schema.Struct({
@@ -12133,7 +12119,7 @@ export const CreateCoreV1NamespacedPodEvictionOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const createCoreV1NamespacedPodEviction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedPodEvictionInput,
     outputSchema: CreateCoreV1NamespacedPodEvictionOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -13244,7 +13230,7 @@ export interface CreateCoreV1NamespacedPodTemplateInput {
   };
 }
 export const CreateCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -16763,7 +16749,7 @@ export interface CreateCoreV1NamespacedPodTemplateOutput {
   };
 }
 export const CreateCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -19182,7 +19168,7 @@ export const CreateCoreV1NamespacedPodTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedPodTemplateInput,
     outputSchema: CreateCoreV1NamespacedPodTemplateOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -20316,7 +20302,7 @@ export interface CreateCoreV1NamespacedReplicationControllerInput {
   };
 }
 export const CreateCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -23991,7 +23977,7 @@ export interface CreateCoreV1NamespacedReplicationControllerOutput {
   };
 }
 export const CreateCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -26543,7 +26529,7 @@ export const CreateCoreV1NamespacedReplicationControllerOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedReplicationControllerInput,
     outputSchema: CreateCoreV1NamespacedReplicationControllerOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -26603,7 +26589,7 @@ export interface CreateCoreV1NamespacedResourceQuotaInput {
   status?: { hard?: Record<string, string>; used?: Record<string, string> };
 }
 export const CreateCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -26737,7 +26723,7 @@ export interface CreateCoreV1NamespacedResourceQuotaOutput {
   status?: { hard?: Record<string, string>; used?: Record<string, string> };
 }
 export const CreateCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -26822,7 +26808,7 @@ export const CreateCoreV1NamespacedResourceQuotaOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedResourceQuotaInput,
     outputSchema: CreateCoreV1NamespacedResourceQuotaOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -26874,7 +26860,7 @@ export interface CreateCoreV1NamespacedSecretInput {
   type?: string;
 }
 export const CreateCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -26976,7 +26962,7 @@ export interface CreateCoreV1NamespacedSecretOutput {
   type?: string;
 }
 export const CreateCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     immutable: Schema.optional(Schema.Boolean),
@@ -27040,7 +27026,7 @@ export const CreateCoreV1NamespacedSecretOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedSecretInput,
     outputSchema: CreateCoreV1NamespacedSecretOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -27135,7 +27121,7 @@ export interface CreateCoreV1NamespacedServiceInput {
   };
 }
 export const CreateCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -27357,7 +27343,7 @@ export interface CreateCoreV1NamespacedServiceOutput {
   };
 }
 export const CreateCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -27498,7 +27484,7 @@ export const CreateCoreV1NamespacedServiceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedServiceInput,
     outputSchema: CreateCoreV1NamespacedServiceOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -27557,7 +27543,7 @@ export interface CreateCoreV1NamespacedServiceAccountInput {
   }[];
 }
 export const CreateCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -27686,7 +27672,7 @@ export interface CreateCoreV1NamespacedServiceAccountOutput {
   }[];
 }
 export const CreateCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     automountServiceAccountToken: Schema.optional(Schema.Boolean),
     imagePullSecrets: Schema.optional(
@@ -27767,7 +27753,7 @@ export const CreateCoreV1NamespacedServiceAccountOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedServiceAccountInput,
     outputSchema: CreateCoreV1NamespacedServiceAccountOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -27827,7 +27813,7 @@ export interface CreateCoreV1NamespacedServiceAccountTokenInput {
   status?: { expirationTimestamp?: string; token?: string };
 }
 export const CreateCoreV1NamespacedServiceAccountTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     dryRun: Schema.optional(Schema.String),
@@ -27956,7 +27942,7 @@ export interface CreateCoreV1NamespacedServiceAccountTokenOutput {
   status?: { expirationTimestamp?: string; token?: string };
 }
 export const CreateCoreV1NamespacedServiceAccountTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -28037,7 +28023,7 @@ export const CreateCoreV1NamespacedServiceAccountTokenOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const createCoreV1NamespacedServiceAccountToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedServiceAccountTokenInput,
     outputSchema: CreateCoreV1NamespacedServiceAccountTokenOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -28175,7 +28161,7 @@ export interface CreateCoreV1NodeInput {
     volumesInUse?: string[];
   };
 }
-export const CreateCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({
   pretty: Schema.optional(Schema.String),
   dryRun: Schema.optional(Schema.String),
   fieldManager: Schema.optional(Schema.String),
@@ -28524,225 +28510,219 @@ export interface CreateCoreV1NodeOutput {
     volumesInUse?: string[];
   };
 }
-export const CreateCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+export const CreateCoreV1NodeOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
         ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
         ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  spec: Schema.optional(
+    Schema.Struct({
+      configSource: Schema.optional(
+        Schema.Struct({
+          configMap: Schema.optional(
             Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
+              kubeletConfigKey: Schema.String,
               name: Schema.String,
-              uid: Schema.String,
+              namespace: Schema.String,
+              resourceVersion: Schema.optional(Schema.String),
+              uid: Schema.optional(Schema.String),
             }),
           ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.optional(
-      Schema.Struct({
-        configSource: Schema.optional(
+        }),
+      ),
+      externalID: Schema.optional(Schema.String),
+      podCIDR: Schema.optional(Schema.String),
+      podCIDRs: Schema.optional(Schema.Array(Schema.String)),
+      providerID: Schema.optional(Schema.String),
+      taints: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            configMap: Schema.optional(
-              Schema.Struct({
-                kubeletConfigKey: Schema.String,
-                name: Schema.String,
-                namespace: Schema.String,
-                resourceVersion: Schema.optional(Schema.String),
-                uid: Schema.optional(Schema.String),
-              }),
-            ),
+            effect: Schema.String,
+            key: Schema.String,
+            timeAdded: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
           }),
         ),
-        externalID: Schema.optional(Schema.String),
-        podCIDR: Schema.optional(Schema.String),
-        podCIDRs: Schema.optional(Schema.Array(Schema.String)),
-        providerID: Schema.optional(Schema.String),
-        taints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              effect: Schema.String,
-              key: Schema.String,
-              timeAdded: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        unschedulable: Schema.optional(Schema.Boolean),
-      }),
-    ),
-    status: Schema.optional(
-      Schema.Struct({
-        addresses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              address: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        allocatable: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        capacity: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastHeartbeatTime: Schema.optional(Schema.String),
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        config: Schema.optional(
+      ),
+      unschedulable: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  status: Schema.optional(
+    Schema.Struct({
+      addresses: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            active: Schema.optional(
-              Schema.Struct({
-                configMap: Schema.optional(
-                  Schema.Struct({
-                    kubeletConfigKey: Schema.String,
-                    name: Schema.String,
-                    namespace: Schema.String,
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            assigned: Schema.optional(
-              Schema.Struct({
-                configMap: Schema.optional(
-                  Schema.Struct({
-                    kubeletConfigKey: Schema.String,
-                    name: Schema.String,
-                    namespace: Schema.String,
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            error: Schema.optional(Schema.String),
-            lastKnownGood: Schema.optional(
-              Schema.Struct({
-                configMap: Schema.optional(
-                  Schema.Struct({
-                    kubeletConfigKey: Schema.String,
-                    name: Schema.String,
-                    namespace: Schema.String,
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
+            address: Schema.String,
+            type: Schema.String,
           }),
         ),
-        daemonEndpoints: Schema.optional(
+      ),
+      allocatable: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      capacity: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      conditions: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            kubeletEndpoint: Schema.optional(
-              Schema.Struct({
-                Port: Schema.Number,
-              }),
-            ),
+            lastHeartbeatTime: Schema.optional(Schema.String),
+            lastTransitionTime: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            reason: Schema.optional(Schema.String),
+            status: Schema.String,
+            type: Schema.String,
           }),
         ),
-        declaredFeatures: Schema.optional(Schema.Array(Schema.String)),
-        features: Schema.optional(
-          Schema.Struct({
-            supplementalGroupsPolicy: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        images: Schema.optional(
-          Schema.Array(
+      ),
+      config: Schema.optional(
+        Schema.Struct({
+          active: Schema.optional(
             Schema.Struct({
-              names: Schema.optional(Schema.Array(Schema.String)),
-              sizeBytes: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        nodeInfo: Schema.optional(
-          Schema.Struct({
-            architecture: Schema.String,
-            bootID: Schema.String,
-            containerRuntimeVersion: Schema.String,
-            kernelVersion: Schema.String,
-            kubeProxyVersion: Schema.String,
-            kubeletVersion: Schema.String,
-            machineID: Schema.String,
-            operatingSystem: Schema.String,
-            osImage: Schema.String,
-            swap: Schema.optional(
-              Schema.Struct({
-                capacity: Schema.optional(Schema.Number),
-              }),
-            ),
-            systemUUID: Schema.String,
-          }),
-        ),
-        phase: Schema.optional(Schema.String),
-        runtimeHandlers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              features: Schema.optional(
+              configMap: Schema.optional(
                 Schema.Struct({
-                  recursiveReadOnlyMounts: Schema.optional(Schema.Boolean),
-                  userNamespaces: Schema.optional(Schema.Boolean),
+                  kubeletConfigKey: Schema.String,
+                  name: Schema.String,
+                  namespace: Schema.String,
+                  resourceVersion: Schema.optional(Schema.String),
+                  uid: Schema.optional(Schema.String),
                 }),
               ),
-              name: Schema.optional(Schema.String),
             }),
           ),
-        ),
-        volumesAttached: Schema.optional(
-          Schema.Array(
+          assigned: Schema.optional(
             Schema.Struct({
-              devicePath: Schema.String,
-              name: Schema.String,
+              configMap: Schema.optional(
+                Schema.Struct({
+                  kubeletConfigKey: Schema.String,
+                  name: Schema.String,
+                  namespace: Schema.String,
+                  resourceVersion: Schema.optional(Schema.String),
+                  uid: Schema.optional(Schema.String),
+                }),
+              ),
             }),
           ),
+          error: Schema.optional(Schema.String),
+          lastKnownGood: Schema.optional(
+            Schema.Struct({
+              configMap: Schema.optional(
+                Schema.Struct({
+                  kubeletConfigKey: Schema.String,
+                  name: Schema.String,
+                  namespace: Schema.String,
+                  resourceVersion: Schema.optional(Schema.String),
+                  uid: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+      daemonEndpoints: Schema.optional(
+        Schema.Struct({
+          kubeletEndpoint: Schema.optional(
+            Schema.Struct({
+              Port: Schema.Number,
+            }),
+          ),
+        }),
+      ),
+      declaredFeatures: Schema.optional(Schema.Array(Schema.String)),
+      features: Schema.optional(
+        Schema.Struct({
+          supplementalGroupsPolicy: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      images: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            names: Schema.optional(Schema.Array(Schema.String)),
+            sizeBytes: Schema.optional(Schema.Number),
+          }),
         ),
-        volumesInUse: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<CreateCoreV1NodeOutput>;
+      ),
+      nodeInfo: Schema.optional(
+        Schema.Struct({
+          architecture: Schema.String,
+          bootID: Schema.String,
+          containerRuntimeVersion: Schema.String,
+          kernelVersion: Schema.String,
+          kubeProxyVersion: Schema.String,
+          kubeletVersion: Schema.String,
+          machineID: Schema.String,
+          operatingSystem: Schema.String,
+          osImage: Schema.String,
+          swap: Schema.optional(
+            Schema.Struct({
+              capacity: Schema.optional(Schema.Number),
+            }),
+          ),
+          systemUUID: Schema.String,
+        }),
+      ),
+      phase: Schema.optional(Schema.String),
+      runtimeHandlers: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            features: Schema.optional(
+              Schema.Struct({
+                recursiveReadOnlyMounts: Schema.optional(Schema.Boolean),
+                userNamespaces: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            name: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      volumesAttached: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            devicePath: Schema.String,
+            name: Schema.String,
+          }),
+        ),
+      ),
+      volumesInUse: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+}) as unknown as Schema.Codec<CreateCoreV1NodeOutput>;
 
 // The operation
 /**
@@ -28753,7 +28733,7 @@ export const CreateCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateCoreV1NodeInput,
   outputSchema: CreateCoreV1NodeOutput,
   errors: [Conflict, UnprocessableEntity] as const,
@@ -28978,7 +28958,7 @@ export interface CreateCoreV1PersistentVolumeInput {
   };
 }
 export const CreateCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -29574,7 +29554,7 @@ export interface CreateCoreV1PersistentVolumeOutput {
   };
 }
 export const CreateCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -29958,7 +29938,7 @@ export const CreateCoreV1PersistentVolumeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoreV1PersistentVolume =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1PersistentVolumeInput,
     outputSchema: CreateCoreV1PersistentVolumeOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -29986,7 +29966,7 @@ export interface DeleteCoreV1CollectionNamespacedConfigMapInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionNamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -30045,7 +30025,7 @@ export interface DeleteCoreV1CollectionNamespacedConfigMapOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionNamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -30148,7 +30128,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoreV1CollectionNamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedConfigMapInput,
     outputSchema: DeleteCoreV1CollectionNamespacedConfigMapOutput,
   }));
@@ -30175,7 +30155,7 @@ export interface DeleteCoreV1CollectionNamespacedEndpointsInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionNamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -30234,7 +30214,7 @@ export interface DeleteCoreV1CollectionNamespacedEndpointsOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionNamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -30337,7 +30317,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoreV1CollectionNamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedEndpointsInput,
     outputSchema: DeleteCoreV1CollectionNamespacedEndpointsOutput,
   }));
@@ -30364,7 +30344,7 @@ export interface DeleteCoreV1CollectionNamespacedEventInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionNamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -30420,7 +30400,7 @@ export interface DeleteCoreV1CollectionNamespacedEventOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionNamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -30523,7 +30503,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoreV1CollectionNamespacedEvent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedEventInput,
     outputSchema: DeleteCoreV1CollectionNamespacedEventOutput,
   }));
@@ -30550,7 +30530,7 @@ export interface DeleteCoreV1CollectionNamespacedLimitRangeInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionNamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -30609,7 +30589,7 @@ export interface DeleteCoreV1CollectionNamespacedLimitRangeOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionNamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -30712,7 +30692,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoreV1CollectionNamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedLimitRangeInput,
     outputSchema: DeleteCoreV1CollectionNamespacedLimitRangeOutput,
   }));
@@ -30739,7 +30719,7 @@ export interface DeleteCoreV1CollectionNamespacedPersistentVolumeClaimInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionNamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -30798,7 +30778,7 @@ export interface DeleteCoreV1CollectionNamespacedPersistentVolumeClaimOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionNamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -30901,7 +30881,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoreV1CollectionNamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedPersistentVolumeClaimInput,
     outputSchema: DeleteCoreV1CollectionNamespacedPersistentVolumeClaimOutput,
   }));
@@ -30928,7 +30908,7 @@ export interface DeleteCoreV1CollectionNamespacedPodInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionNamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -30984,7 +30964,7 @@ export interface DeleteCoreV1CollectionNamespacedPodOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionNamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -31087,7 +31067,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoreV1CollectionNamespacedPod =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedPodInput,
     outputSchema: DeleteCoreV1CollectionNamespacedPodOutput,
   }));
@@ -31114,7 +31094,7 @@ export interface DeleteCoreV1CollectionNamespacedPodTemplateInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionNamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -31173,7 +31153,7 @@ export interface DeleteCoreV1CollectionNamespacedPodTemplateOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionNamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -31276,7 +31256,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoreV1CollectionNamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedPodTemplateInput,
     outputSchema: DeleteCoreV1CollectionNamespacedPodTemplateOutput,
   }));
@@ -31303,7 +31283,7 @@ export interface DeleteCoreV1CollectionNamespacedReplicationControllerInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionNamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -31362,7 +31342,7 @@ export interface DeleteCoreV1CollectionNamespacedReplicationControllerOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionNamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -31465,7 +31445,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoreV1CollectionNamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedReplicationControllerInput,
     outputSchema: DeleteCoreV1CollectionNamespacedReplicationControllerOutput,
   }));
@@ -31492,7 +31472,7 @@ export interface DeleteCoreV1CollectionNamespacedResourceQuotaInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionNamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -31551,7 +31531,7 @@ export interface DeleteCoreV1CollectionNamespacedResourceQuotaOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionNamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -31654,7 +31634,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoreV1CollectionNamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedResourceQuotaInput,
     outputSchema: DeleteCoreV1CollectionNamespacedResourceQuotaOutput,
   }));
@@ -31681,7 +31661,7 @@ export interface DeleteCoreV1CollectionNamespacedSecretInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionNamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -31740,7 +31720,7 @@ export interface DeleteCoreV1CollectionNamespacedSecretOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionNamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -31843,7 +31823,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoreV1CollectionNamespacedSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedSecretInput,
     outputSchema: DeleteCoreV1CollectionNamespacedSecretOutput,
   }));
@@ -31870,7 +31850,7 @@ export interface DeleteCoreV1CollectionNamespacedServiceInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionNamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -31929,7 +31909,7 @@ export interface DeleteCoreV1CollectionNamespacedServiceOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionNamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -32032,7 +32012,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoreV1CollectionNamespacedService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedServiceInput,
     outputSchema: DeleteCoreV1CollectionNamespacedServiceOutput,
   }));
@@ -32059,7 +32039,7 @@ export interface DeleteCoreV1CollectionNamespacedServiceAccountInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionNamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -32118,7 +32098,7 @@ export interface DeleteCoreV1CollectionNamespacedServiceAccountOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionNamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -32221,7 +32201,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoreV1CollectionNamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionNamespacedServiceAccountInput,
     outputSchema: DeleteCoreV1CollectionNamespacedServiceAccountOutput,
   }));
@@ -32247,7 +32227,7 @@ export interface DeleteCoreV1CollectionNodeInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionNodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -32302,7 +32282,7 @@ export interface DeleteCoreV1CollectionNodeOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionNodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -32403,12 +32383,10 @@ Examples:
 This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
-export const deleteCoreV1CollectionNode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteCoreV1CollectionNodeInput,
-    outputSchema: DeleteCoreV1CollectionNodeOutput,
-  }),
-);
+export const deleteCoreV1CollectionNode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteCoreV1CollectionNodeInput,
+  outputSchema: DeleteCoreV1CollectionNodeOutput,
+}));
 // Input Schema
 export interface DeleteCoreV1CollectionPersistentVolumeInput {
   pretty?: string;
@@ -32431,7 +32409,7 @@ export interface DeleteCoreV1CollectionPersistentVolumeInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1CollectionPersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -32486,7 +32464,7 @@ export interface DeleteCoreV1CollectionPersistentVolumeOutput {
   status?: string;
 }
 export const DeleteCoreV1CollectionPersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -32588,7 +32566,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoreV1CollectionPersistentVolume =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1CollectionPersistentVolumeInput,
     outputSchema: DeleteCoreV1CollectionPersistentVolumeOutput,
   }));
@@ -32606,7 +32584,7 @@ export interface DeleteCoreV1NamespaceInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -32653,7 +32631,7 @@ export interface DeleteCoreV1NamespaceOutput {
   status?: string;
 }
 export const DeleteCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -32705,13 +32683,11 @@ export const DeleteCoreV1NamespaceOutput =
  * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
-export const deleteCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteCoreV1NamespaceInput,
-    outputSchema: DeleteCoreV1NamespaceOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteCoreV1NamespaceInput,
+  outputSchema: DeleteCoreV1NamespaceOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export interface DeleteCoreV1NamespacedConfigMapInput {
   name: string;
@@ -32727,7 +32703,7 @@ export interface DeleteCoreV1NamespacedConfigMapInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -32778,7 +32754,7 @@ export interface DeleteCoreV1NamespacedConfigMapOutput {
   status?: string;
 }
 export const DeleteCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -32832,7 +32808,7 @@ export const DeleteCoreV1NamespacedConfigMapOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedConfigMapInput,
     outputSchema: DeleteCoreV1NamespacedConfigMapOutput,
     errors: [NotFound, Conflict] as const,
@@ -32852,7 +32828,7 @@ export interface DeleteCoreV1NamespacedEndpointsInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -32903,7 +32879,7 @@ export interface DeleteCoreV1NamespacedEndpointsOutput {
   status?: string;
 }
 export const DeleteCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -32957,7 +32933,7 @@ export const DeleteCoreV1NamespacedEndpointsOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedEndpointsInput,
     outputSchema: DeleteCoreV1NamespacedEndpointsOutput,
     errors: [NotFound, Conflict] as const,
@@ -32977,7 +32953,7 @@ export interface DeleteCoreV1NamespacedEventInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -33028,7 +33004,7 @@ export interface DeleteCoreV1NamespacedEventOutput {
   status?: string;
 }
 export const DeleteCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -33081,13 +33057,11 @@ export const DeleteCoreV1NamespacedEventOutput =
  * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
-export const deleteCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteCoreV1NamespacedEventInput,
-    outputSchema: DeleteCoreV1NamespacedEventOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteCoreV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteCoreV1NamespacedEventInput,
+  outputSchema: DeleteCoreV1NamespacedEventOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export interface DeleteCoreV1NamespacedLimitRangeInput {
   name: string;
@@ -33103,7 +33077,7 @@ export interface DeleteCoreV1NamespacedLimitRangeInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -33154,7 +33128,7 @@ export interface DeleteCoreV1NamespacedLimitRangeOutput {
   status?: string;
 }
 export const DeleteCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -33208,7 +33182,7 @@ export const DeleteCoreV1NamespacedLimitRangeOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedLimitRangeInput,
     outputSchema: DeleteCoreV1NamespacedLimitRangeOutput,
     errors: [NotFound, Conflict] as const,
@@ -33228,7 +33202,7 @@ export interface DeleteCoreV1NamespacedPersistentVolumeClaimInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -33334,7 +33308,7 @@ export interface DeleteCoreV1NamespacedPersistentVolumeClaimOutput {
   };
 }
 export const DeleteCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -33479,7 +33453,7 @@ export const DeleteCoreV1NamespacedPersistentVolumeClaimOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: DeleteCoreV1NamespacedPersistentVolumeClaimOutput,
     errors: [NotFound, Conflict] as const,
@@ -33499,7 +33473,7 @@ export interface DeleteCoreV1NamespacedPodInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -34787,7 +34761,7 @@ export interface DeleteCoreV1NamespacedPodOutput {
   };
 }
 export const DeleteCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -37596,13 +37570,11 @@ export const DeleteCoreV1NamespacedPodOutput =
  * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
-export const deleteCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteCoreV1NamespacedPodInput,
-    outputSchema: DeleteCoreV1NamespacedPodOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteCoreV1NamespacedPodInput,
+  outputSchema: DeleteCoreV1NamespacedPodOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export interface DeleteCoreV1NamespacedPodTemplateInput {
   name: string;
@@ -37618,7 +37590,7 @@ export interface DeleteCoreV1NamespacedPodTemplateInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -38745,7 +38717,7 @@ export interface DeleteCoreV1NamespacedPodTemplateOutput {
   };
 }
 export const DeleteCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -41167,7 +41139,7 @@ export const DeleteCoreV1NamespacedPodTemplateOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedPodTemplateInput,
     outputSchema: DeleteCoreV1NamespacedPodTemplateOutput,
     errors: [NotFound, Conflict] as const,
@@ -41187,7 +41159,7 @@ export interface DeleteCoreV1NamespacedReplicationControllerInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -41238,7 +41210,7 @@ export interface DeleteCoreV1NamespacedReplicationControllerOutput {
   status?: string;
 }
 export const DeleteCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -41292,7 +41264,7 @@ export const DeleteCoreV1NamespacedReplicationControllerOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedReplicationControllerInput,
     outputSchema: DeleteCoreV1NamespacedReplicationControllerOutput,
     errors: [NotFound, Conflict] as const,
@@ -41312,7 +41284,7 @@ export interface DeleteCoreV1NamespacedResourceQuotaInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -41388,7 +41360,7 @@ export interface DeleteCoreV1NamespacedResourceQuotaOutput {
   status?: { hard?: Record<string, string>; used?: Record<string, string> };
 }
 export const DeleteCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -41476,7 +41448,7 @@ export const DeleteCoreV1NamespacedResourceQuotaOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedResourceQuotaInput,
     outputSchema: DeleteCoreV1NamespacedResourceQuotaOutput,
     errors: [NotFound, Conflict] as const,
@@ -41496,7 +41468,7 @@ export interface DeleteCoreV1NamespacedSecretInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -41547,7 +41519,7 @@ export interface DeleteCoreV1NamespacedSecretOutput {
   status?: string;
 }
 export const DeleteCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -41601,7 +41573,7 @@ export const DeleteCoreV1NamespacedSecretOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoreV1NamespacedSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedSecretInput,
     outputSchema: DeleteCoreV1NamespacedSecretOutput,
     errors: [NotFound, Conflict] as const,
@@ -41621,7 +41593,7 @@ export interface DeleteCoreV1NamespacedServiceInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -41732,7 +41704,7 @@ export interface DeleteCoreV1NamespacedServiceOutput {
   };
 }
 export const DeleteCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -41876,7 +41848,7 @@ export const DeleteCoreV1NamespacedServiceOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoreV1NamespacedService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedServiceInput,
     outputSchema: DeleteCoreV1NamespacedServiceOutput,
     errors: [NotFound, Conflict] as const,
@@ -41896,7 +41868,7 @@ export interface DeleteCoreV1NamespacedServiceAccountInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -41971,7 +41943,7 @@ export interface DeleteCoreV1NamespacedServiceAccountOutput {
   }[];
 }
 export const DeleteCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     automountServiceAccountToken: Schema.optional(Schema.Boolean),
     imagePullSecrets: Schema.optional(
@@ -42055,7 +42027,7 @@ export const DeleteCoreV1NamespacedServiceAccountOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedServiceAccountInput,
     outputSchema: DeleteCoreV1NamespacedServiceAccountOutput,
     errors: [NotFound, Conflict] as const,
@@ -42073,7 +42045,7 @@ export interface DeleteCoreV1NodeInput {
   kind?: string;
   preconditions?: { resourceVersion?: string; uid?: string };
 }
-export const DeleteCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.PathParam()),
   pretty: Schema.optional(Schema.String),
   dryRun: Schema.optional(Schema.String),
@@ -42119,47 +42091,45 @@ export interface DeleteCoreV1NodeOutput {
   reason?: string;
   status?: string;
 }
-export const DeleteCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    apiVersion: Schema.optional(Schema.String),
-    code: Schema.optional(Schema.Number),
-    details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    kind: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
+export const DeleteCoreV1NodeOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Struct({
+      causes: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            selector: Schema.String,
+            field: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            reason: Schema.optional(Schema.String),
           }),
         ),
-      }),
-    ),
-    reason: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<DeleteCoreV1NodeOutput>;
+      ),
+      group: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      retryAfterSeconds: Schema.optional(Schema.Number),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  kind: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      continue: Schema.optional(Schema.String),
+      remainingItemCount: Schema.optional(Schema.Number),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      shardInfo: Schema.optional(
+        Schema.Struct({
+          selector: Schema.String,
+        }),
+      ),
+    }),
+  ),
+  reason: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<DeleteCoreV1NodeOutput>;
 
 // The operation
 /**
@@ -42173,7 +42143,7 @@ export const DeleteCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
-export const deleteCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteCoreV1NodeInput,
   outputSchema: DeleteCoreV1NodeOutput,
   errors: [NotFound, Conflict] as const,
@@ -42192,7 +42162,7 @@ export interface DeleteCoreV1PersistentVolumeInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -42430,7 +42400,7 @@ export interface DeleteCoreV1PersistentVolumeOutput {
   };
 }
 export const DeleteCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -42817,16 +42787,14 @@ export const DeleteCoreV1PersistentVolumeOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoreV1PersistentVolume =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1PersistentVolumeInput,
     outputSchema: DeleteCoreV1PersistentVolumeOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export interface GetAPIVersionsInput {}
-export const GetAPIVersionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetAPIVersionsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/apis/" }),
 ) as unknown as Schema.Codec<GetAPIVersionsInput>;
 
@@ -42846,7 +42814,7 @@ export interface GetAPIVersionsOutput {
   }[];
   kind?: string;
 }
-export const GetAPIVersionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAPIVersionsOutput = /*@__PURE__*/ Schema.Struct({
   apiVersion: Schema.optional(Schema.String),
   groups: Schema.Array(
     Schema.Struct({
@@ -42882,15 +42850,13 @@ export const GetAPIVersionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * get available API versions
  */
-export const getAPIVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAPIVersions = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAPIVersionsInput,
   outputSchema: GetAPIVersionsOutput,
 }));
 // Input Schema
 export interface GetCodeVersionInput {}
-export const GetCodeVersionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetCodeVersionInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/version/" }),
 ) as unknown as Schema.Codec<GetCodeVersionInput>;
 
@@ -42910,7 +42876,7 @@ export interface GetCodeVersionOutput {
   minor: string;
   platform: string;
 }
-export const GetCodeVersionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCodeVersionOutput = /*@__PURE__*/ Schema.Struct({
   buildDate: Schema.String,
   compiler: Schema.String,
   emulationMajor: Schema.optional(Schema.String),
@@ -42930,14 +42896,14 @@ export const GetCodeVersionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * get the version information for this server
  */
-export const getCodeVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getCodeVersion = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCodeVersionInput,
   outputSchema: GetCodeVersionOutput,
 }));
 // Input Schema
 export interface GetCoreAPIVersionsInput {}
 export const GetCoreAPIVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/" }),
   ) as unknown as Schema.Codec<GetCoreAPIVersionsInput>;
 
@@ -42949,7 +42915,7 @@ export interface GetCoreAPIVersionsOutput {
   versions: string[];
 }
 export const GetCoreAPIVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     serverAddressByClientCIDRs: Schema.Array(
@@ -42965,14 +42931,14 @@ export const GetCoreAPIVersionsOutput =
 /**
  * get available API versions
  */
-export const getCoreAPIVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getCoreAPIVersions = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCoreAPIVersionsInput,
   outputSchema: GetCoreAPIVersionsOutput,
 }));
 // Input Schema
 export interface GetCoreV1APIResourcesInput {}
 export const GetCoreV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/v1/" }),
   ) as unknown as Schema.Codec<GetCoreV1APIResourcesInput>;
 
@@ -42995,7 +42961,7 @@ export interface GetCoreV1APIResourcesOutput {
   }[];
 }
 export const GetCoreV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -43019,51 +42985,49 @@ export const GetCoreV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getCoreV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetCoreV1APIResourcesInput,
-    outputSchema: GetCoreV1APIResourcesOutput,
-  }),
-);
+export const getCoreV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCoreV1APIResourcesInput,
+  outputSchema: GetCoreV1APIResourcesOutput,
+}));
 // Input Schema
 export interface GetServiceAccountIssuerOpenIDConfigurationInput {}
 export const GetServiceAccountIssuerOpenIDConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/.well-known/openid-configuration/" }),
   ) as unknown as Schema.Codec<GetServiceAccountIssuerOpenIDConfigurationInput>;
 
 // Output Schema
 export type GetServiceAccountIssuerOpenIDConfigurationOutput = string;
 export const GetServiceAccountIssuerOpenIDConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<GetServiceAccountIssuerOpenIDConfigurationOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<GetServiceAccountIssuerOpenIDConfigurationOutput>;
 
 // The operation
 /**
  * get service account issuer OpenID configuration, also known as the 'OIDC discovery doc'
  */
 export const getServiceAccountIssuerOpenIDConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetServiceAccountIssuerOpenIDConfigurationInput,
     outputSchema: GetServiceAccountIssuerOpenIDConfigurationOutput,
   }));
 // Input Schema
 export interface GetServiceAccountIssuerOpenIDKeysetInput {}
 export const GetServiceAccountIssuerOpenIDKeysetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/openid/v1/jwks/" }),
   ) as unknown as Schema.Codec<GetServiceAccountIssuerOpenIDKeysetInput>;
 
 // Output Schema
 export type GetServiceAccountIssuerOpenIDKeysetOutput = string;
 export const GetServiceAccountIssuerOpenIDKeysetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<GetServiceAccountIssuerOpenIDKeysetOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<GetServiceAccountIssuerOpenIDKeysetOutput>;
 
 // The operation
 /**
  * get service account issuer OpenID JSON Web Key Set (contains public token verification keys)
  */
 export const getServiceAccountIssuerOpenIDKeyset =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetServiceAccountIssuerOpenIDKeysetInput,
     outputSchema: GetServiceAccountIssuerOpenIDKeysetOutput,
   }));
@@ -43083,7 +43047,7 @@ export interface ListCoreV1ComponentStatusInput {
   watch?: boolean;
 }
 export const ListCoreV1ComponentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -43155,7 +43119,7 @@ export interface ListCoreV1ComponentStatusOutput {
   };
 }
 export const ListCoreV1ComponentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -43293,12 +43257,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listCoreV1ComponentStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListCoreV1ComponentStatusInput,
-    outputSchema: ListCoreV1ComponentStatusOutput,
-  }),
-);
+export const listCoreV1ComponentStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCoreV1ComponentStatusInput,
+  outputSchema: ListCoreV1ComponentStatusOutput,
+}));
 // Input Schema
 export interface ListCoreV1ConfigMapForAllNamespacesInput {
   allowWatchBookmarks?: boolean;
@@ -43315,7 +43277,7 @@ export interface ListCoreV1ConfigMapForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoreV1ConfigMapForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -43384,7 +43346,7 @@ export interface ListCoreV1ConfigMapForAllNamespacesOutput {
   };
 }
 export const ListCoreV1ConfigMapForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -43518,7 +43480,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1ConfigMapForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1ConfigMapForAllNamespacesInput,
     outputSchema: ListCoreV1ConfigMapForAllNamespacesOutput,
   }));
@@ -43538,7 +43500,7 @@ export interface ListCoreV1EndpointsForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoreV1EndpointsForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -43640,7 +43602,7 @@ export interface ListCoreV1EndpointsForAllNamespacesOutput {
   };
 }
 export const ListCoreV1EndpointsForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -43825,7 +43787,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1EndpointsForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1EndpointsForAllNamespacesInput,
     outputSchema: ListCoreV1EndpointsForAllNamespacesOutput,
   }));
@@ -43845,7 +43807,7 @@ export interface ListCoreV1EventForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoreV1EventForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -43941,7 +43903,7 @@ export interface ListCoreV1EventForAllNamespacesOutput {
   };
 }
 export const ListCoreV1EventForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -44108,7 +44070,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1EventForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1EventForAllNamespacesInput,
     outputSchema: ListCoreV1EventForAllNamespacesOutput,
   }));
@@ -44128,7 +44090,7 @@ export interface ListCoreV1LimitRangeForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoreV1LimitRangeForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -44204,7 +44166,7 @@ export interface ListCoreV1LimitRangeForAllNamespacesOutput {
   };
 }
 export const ListCoreV1LimitRangeForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -44357,7 +44319,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1LimitRangeForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1LimitRangeForAllNamespacesInput,
     outputSchema: ListCoreV1LimitRangeForAllNamespacesOutput,
   }));
@@ -44377,7 +44339,7 @@ export interface ListCoreV1NamespaceInput {
   watch?: boolean;
 }
 export const ListCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -44454,7 +44416,7 @@ export interface ListCoreV1NamespaceOutput {
   };
 }
 export const ListCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -44603,7 +44565,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListCoreV1NamespaceInput,
   outputSchema: ListCoreV1NamespaceOutput,
 }));
@@ -44624,7 +44586,7 @@ export interface ListCoreV1NamespacedConfigMapInput {
   watch?: boolean;
 }
 export const ListCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -44697,7 +44659,7 @@ export interface ListCoreV1NamespacedConfigMapOutput {
   };
 }
 export const ListCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -44832,7 +44794,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedConfigMapInput,
     outputSchema: ListCoreV1NamespacedConfigMapOutput,
   }));
@@ -44853,7 +44815,7 @@ export interface ListCoreV1NamespacedEndpointsInput {
   watch?: boolean;
 }
 export const ListCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -44956,7 +44918,7 @@ export interface ListCoreV1NamespacedEndpointsOutput {
   };
 }
 export const ListCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -45142,7 +45104,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedEndpointsInput,
     outputSchema: ListCoreV1NamespacedEndpointsOutput,
   }));
@@ -45163,7 +45125,7 @@ export interface ListCoreV1NamespacedEventInput {
   watch?: boolean;
 }
 export const ListCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -45260,7 +45222,7 @@ export interface ListCoreV1NamespacedEventOutput {
   };
 }
 export const ListCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -45427,12 +45389,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListCoreV1NamespacedEventInput,
-    outputSchema: ListCoreV1NamespacedEventOutput,
-  }),
-);
+export const listCoreV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCoreV1NamespacedEventInput,
+  outputSchema: ListCoreV1NamespacedEventOutput,
+}));
 // Input Schema
 export interface ListCoreV1NamespacedLimitRangeInput {
   namespace: string;
@@ -45450,7 +45410,7 @@ export interface ListCoreV1NamespacedLimitRangeInput {
   watch?: boolean;
 }
 export const ListCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -45530,7 +45490,7 @@ export interface ListCoreV1NamespacedLimitRangeOutput {
   };
 }
 export const ListCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -45684,7 +45644,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedLimitRangeInput,
     outputSchema: ListCoreV1NamespacedLimitRangeOutput,
   }));
@@ -45705,7 +45665,7 @@ export interface ListCoreV1NamespacedPersistentVolumeClaimInput {
   watch?: boolean;
 }
 export const ListCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -45821,7 +45781,7 @@ export interface ListCoreV1NamespacedPersistentVolumeClaimOutput {
   };
 }
 export const ListCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -46035,7 +45995,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: ListCoreV1NamespacedPersistentVolumeClaimOutput,
   }));
@@ -46056,7 +46016,7 @@ export interface ListCoreV1NamespacedPodInput {
   watch?: boolean;
 }
 export const ListCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -47375,7 +47335,7 @@ export interface ListCoreV1NamespacedPodOutput {
   };
 }
 export const ListCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -50309,12 +50269,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListCoreV1NamespacedPodInput,
-    outputSchema: ListCoreV1NamespacedPodOutput,
-  }),
-);
+export const listCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCoreV1NamespacedPodInput,
+  outputSchema: ListCoreV1NamespacedPodOutput,
+}));
 // Input Schema
 export interface ListCoreV1NamespacedPodTemplateInput {
   namespace: string;
@@ -50332,7 +50290,7 @@ export interface ListCoreV1NamespacedPodTemplateInput {
   watch?: boolean;
 }
 export const ListCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -51469,7 +51427,7 @@ export interface ListCoreV1NamespacedPodTemplateOutput {
   };
 }
 export const ListCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -54064,7 +54022,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedPodTemplateInput,
     outputSchema: ListCoreV1NamespacedPodTemplateOutput,
   }));
@@ -54085,7 +54043,7 @@ export interface ListCoreV1NamespacedReplicationControllerInput {
   watch?: boolean;
 }
 export const ListCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -55257,7 +55215,7 @@ export interface ListCoreV1NamespacedReplicationControllerOutput {
   };
 }
 export const ListCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -58013,7 +57971,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedReplicationControllerInput,
     outputSchema: ListCoreV1NamespacedReplicationControllerOutput,
   }));
@@ -58034,7 +57992,7 @@ export interface ListCoreV1NamespacedResourceQuotaInput {
   watch?: boolean;
 }
 export const ListCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -58116,7 +58074,7 @@ export interface ListCoreV1NamespacedResourceQuotaOutput {
   };
 }
 export const ListCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -58271,7 +58229,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedResourceQuotaInput,
     outputSchema: ListCoreV1NamespacedResourceQuotaOutput,
   }));
@@ -58292,7 +58250,7 @@ export interface ListCoreV1NamespacedSecretInput {
   watch?: boolean;
 }
 export const ListCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -58363,7 +58321,7 @@ export interface ListCoreV1NamespacedSecretOutput {
   };
 }
 export const ListCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -58498,12 +58456,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listCoreV1NamespacedSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListCoreV1NamespacedSecretInput,
-    outputSchema: ListCoreV1NamespacedSecretOutput,
-  }),
-);
+export const listCoreV1NamespacedSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCoreV1NamespacedSecretInput,
+  outputSchema: ListCoreV1NamespacedSecretOutput,
+}));
 // Input Schema
 export interface ListCoreV1NamespacedServiceInput {
   namespace: string;
@@ -58521,7 +58477,7 @@ export interface ListCoreV1NamespacedServiceInput {
   watch?: boolean;
 }
 export const ListCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -58635,7 +58591,7 @@ export interface ListCoreV1NamespacedServiceOutput {
   };
 }
 export const ListCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -58849,12 +58805,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listCoreV1NamespacedService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListCoreV1NamespacedServiceInput,
-    outputSchema: ListCoreV1NamespacedServiceOutput,
-  }),
-);
+export const listCoreV1NamespacedService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCoreV1NamespacedServiceInput,
+  outputSchema: ListCoreV1NamespacedServiceOutput,
+}));
 // Input Schema
 export interface ListCoreV1NamespacedServiceAccountInput {
   namespace: string;
@@ -58872,7 +58826,7 @@ export interface ListCoreV1NamespacedServiceAccountInput {
   watch?: boolean;
 }
 export const ListCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -58953,7 +58907,7 @@ export interface ListCoreV1NamespacedServiceAccountOutput {
   };
 }
 export const ListCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -59104,7 +59058,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1NamespacedServiceAccountInput,
     outputSchema: ListCoreV1NamespacedServiceAccountOutput,
   }));
@@ -59123,7 +59077,7 @@ export interface ListCoreV1NodeInput {
   timeoutSeconds?: number;
   watch?: boolean;
 }
-export const ListCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({
   pretty: Schema.optional(Schema.String),
   allowWatchBookmarks: Schema.optional(Schema.Boolean),
   continue: Schema.optional(Schema.String),
@@ -59280,7 +59234,7 @@ export interface ListCoreV1NodeOutput {
     shardInfo?: { selector: string };
   };
 }
-export const ListCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListCoreV1NodeOutput = /*@__PURE__*/ Schema.Struct({
   apiVersion: Schema.optional(Schema.String),
   items: Schema.Array(
     Schema.Struct({
@@ -59577,7 +59531,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListCoreV1NodeInput,
   outputSchema: ListCoreV1NodeOutput,
 }));
@@ -59597,7 +59551,7 @@ export interface ListCoreV1PersistentVolumeInput {
   watch?: boolean;
 }
 export const ListCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -59849,7 +59803,7 @@ export interface ListCoreV1PersistentVolumeOutput {
   };
 }
 export const ListCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -60308,12 +60262,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listCoreV1PersistentVolume = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListCoreV1PersistentVolumeInput,
-    outputSchema: ListCoreV1PersistentVolumeOutput,
-  }),
-);
+export const listCoreV1PersistentVolume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListCoreV1PersistentVolumeInput,
+  outputSchema: ListCoreV1PersistentVolumeOutput,
+}));
 // Input Schema
 export interface ListCoreV1PersistentVolumeClaimForAllNamespacesInput {
   allowWatchBookmarks?: boolean;
@@ -60330,7 +60282,7 @@ export interface ListCoreV1PersistentVolumeClaimForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoreV1PersistentVolumeClaimForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -60442,7 +60394,7 @@ export interface ListCoreV1PersistentVolumeClaimForAllNamespacesOutput {
   };
 }
 export const ListCoreV1PersistentVolumeClaimForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -60655,7 +60607,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1PersistentVolumeClaimForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1PersistentVolumeClaimForAllNamespacesInput,
     outputSchema: ListCoreV1PersistentVolumeClaimForAllNamespacesOutput,
   }));
@@ -60675,7 +60627,7 @@ export interface ListCoreV1PodForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoreV1PodForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -61993,7 +61945,7 @@ export interface ListCoreV1PodForAllNamespacesOutput {
   };
 }
 export const ListCoreV1PodForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -64927,7 +64879,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1PodForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1PodForAllNamespacesInput,
     outputSchema: ListCoreV1PodForAllNamespacesOutput,
   }));
@@ -64947,7 +64899,7 @@ export interface ListCoreV1PodTemplateForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoreV1PodTemplateForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -66080,7 +66032,7 @@ export interface ListCoreV1PodTemplateForAllNamespacesOutput {
   };
 }
 export const ListCoreV1PodTemplateForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -68674,7 +68626,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1PodTemplateForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1PodTemplateForAllNamespacesInput,
     outputSchema: ListCoreV1PodTemplateForAllNamespacesOutput,
   }));
@@ -68694,7 +68646,7 @@ export interface ListCoreV1ReplicationControllerForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoreV1ReplicationControllerForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -69862,7 +69814,7 @@ export interface ListCoreV1ReplicationControllerForAllNamespacesOutput {
   };
 }
 export const ListCoreV1ReplicationControllerForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -72617,7 +72569,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1ReplicationControllerForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1ReplicationControllerForAllNamespacesInput,
     outputSchema: ListCoreV1ReplicationControllerForAllNamespacesOutput,
   }));
@@ -72637,7 +72589,7 @@ export interface ListCoreV1ResourceQuotaForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoreV1ResourceQuotaForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -72715,7 +72667,7 @@ export interface ListCoreV1ResourceQuotaForAllNamespacesOutput {
   };
 }
 export const ListCoreV1ResourceQuotaForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -72869,7 +72821,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1ResourceQuotaForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1ResourceQuotaForAllNamespacesInput,
     outputSchema: ListCoreV1ResourceQuotaForAllNamespacesOutput,
   }));
@@ -72889,7 +72841,7 @@ export interface ListCoreV1SecretForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoreV1SecretForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -72959,7 +72911,7 @@ export interface ListCoreV1SecretForAllNamespacesOutput {
   };
 }
 export const ListCoreV1SecretForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -73094,7 +73046,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1SecretForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1SecretForAllNamespacesInput,
     outputSchema: ListCoreV1SecretForAllNamespacesOutput,
   }));
@@ -73114,7 +73066,7 @@ export interface ListCoreV1ServiceAccountForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoreV1ServiceAccountForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -73191,7 +73143,7 @@ export interface ListCoreV1ServiceAccountForAllNamespacesOutput {
   };
 }
 export const ListCoreV1ServiceAccountForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -73341,7 +73293,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1ServiceAccountForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1ServiceAccountForAllNamespacesInput,
     outputSchema: ListCoreV1ServiceAccountForAllNamespacesOutput,
   }));
@@ -73361,7 +73313,7 @@ export interface ListCoreV1ServiceForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoreV1ServiceForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -73474,7 +73426,7 @@ export interface ListCoreV1ServiceForAllNamespacesOutput {
   };
 }
 export const ListCoreV1ServiceForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -73688,7 +73640,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoreV1ServiceForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoreV1ServiceForAllNamespacesInput,
     outputSchema: ListCoreV1ServiceForAllNamespacesOutput,
   }));
@@ -73696,7 +73648,7 @@ export const listCoreV1ServiceForAllNamespaces =
 export interface LogFileHandlerInput {
   logpath: string;
 }
-export const LogFileHandlerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LogFileHandlerInput = /*@__PURE__*/ Schema.Struct({
   logpath: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/logs/{logpath}" }),
@@ -73705,31 +73657,31 @@ export const LogFileHandlerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type LogFileHandlerOutput = void;
 export const LogFileHandlerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LogFileHandlerOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LogFileHandlerOutput>;
 
 // The operation
 /**
  *
  * @param logpath - path to the log
  */
-export const logFileHandler = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const logFileHandler = /*@__PURE__*/ API.make(() => ({
   inputSchema: LogFileHandlerInput,
   outputSchema: LogFileHandlerOutput,
 }));
 // Input Schema
 export interface LogFileListHandlerInput {}
 export const LogFileListHandlerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/logs/" }),
   ) as unknown as Schema.Codec<LogFileListHandlerInput>;
 
 // Output Schema
 export type LogFileListHandlerOutput = void;
 export const LogFileListHandlerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LogFileListHandlerOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LogFileListHandlerOutput>;
 
 // The operation
-export const logFileListHandler = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const logFileListHandler = /*@__PURE__*/ API.make(() => ({
   inputSchema: LogFileListHandlerInput,
   outputSchema: LogFileListHandlerOutput,
 }));
@@ -73743,7 +73695,7 @@ export interface PatchCoreV1NamespaceInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -73803,7 +73755,7 @@ export interface PatchCoreV1NamespaceOutput {
   };
 }
 export const PatchCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -73884,13 +73836,11 @@ export const PatchCoreV1NamespaceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1NamespaceInput,
-    outputSchema: PatchCoreV1NamespaceOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1NamespaceInput,
+  outputSchema: PatchCoreV1NamespaceOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface PatchCoreV1NamespaceStatusInput {
   name: string;
@@ -73901,7 +73851,7 @@ export interface PatchCoreV1NamespaceStatusInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespaceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -73961,7 +73911,7 @@ export interface PatchCoreV1NamespaceStatusOutput {
   };
 }
 export const PatchCoreV1NamespaceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -74042,13 +73992,11 @@ export const PatchCoreV1NamespaceStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchCoreV1NamespaceStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1NamespaceStatusInput,
-    outputSchema: PatchCoreV1NamespaceStatusOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1NamespaceStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1NamespaceStatusInput,
+  outputSchema: PatchCoreV1NamespaceStatusOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface PatchCoreV1NamespacedConfigMapInput {
   name: string;
@@ -74060,7 +74008,7 @@ export interface PatchCoreV1NamespacedConfigMapInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -74116,7 +74064,7 @@ export interface PatchCoreV1NamespacedConfigMapOutput {
   };
 }
 export const PatchCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     binaryData: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -74181,7 +74129,7 @@ export const PatchCoreV1NamespacedConfigMapOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedConfigMapInput,
     outputSchema: PatchCoreV1NamespacedConfigMapOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -74197,7 +74145,7 @@ export interface PatchCoreV1NamespacedEndpointsInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -74286,7 +74234,7 @@ export interface PatchCoreV1NamespacedEndpointsOutput {
   }[];
 }
 export const PatchCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -74404,7 +74352,7 @@ export const PatchCoreV1NamespacedEndpointsOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedEndpointsInput,
     outputSchema: PatchCoreV1NamespacedEndpointsOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -74420,7 +74368,7 @@ export interface PatchCoreV1NamespacedEventInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -74503,7 +74451,7 @@ export interface PatchCoreV1NamespacedEventOutput {
   type?: string;
 }
 export const PatchCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
@@ -74602,13 +74550,11 @@ export const PatchCoreV1NamespacedEventOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1NamespacedEventInput,
-    outputSchema: PatchCoreV1NamespacedEventOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1NamespacedEventInput,
+  outputSchema: PatchCoreV1NamespacedEventOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface PatchCoreV1NamespacedLimitRangeInput {
   name: string;
@@ -74620,7 +74566,7 @@ export interface PatchCoreV1NamespacedLimitRangeInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -74683,7 +74629,7 @@ export interface PatchCoreV1NamespacedLimitRangeOutput {
   };
 }
 export const PatchCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -74765,7 +74711,7 @@ export const PatchCoreV1NamespacedLimitRangeOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedLimitRangeInput,
     outputSchema: PatchCoreV1NamespacedLimitRangeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -74781,7 +74727,7 @@ export interface PatchCoreV1NamespacedPersistentVolumeClaimInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -74876,7 +74822,7 @@ export interface PatchCoreV1NamespacedPersistentVolumeClaimOutput {
   };
 }
 export const PatchCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -75020,7 +74966,7 @@ export const PatchCoreV1NamespacedPersistentVolumeClaimOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: PatchCoreV1NamespacedPersistentVolumeClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -75036,7 +74982,7 @@ export interface PatchCoreV1NamespacedPersistentVolumeClaimStatusInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedPersistentVolumeClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -75131,7 +75077,7 @@ export interface PatchCoreV1NamespacedPersistentVolumeClaimStatusOutput {
   };
 }
 export const PatchCoreV1NamespacedPersistentVolumeClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -75275,7 +75221,7 @@ export const PatchCoreV1NamespacedPersistentVolumeClaimStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedPersistentVolumeClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPersistentVolumeClaimStatusInput,
     outputSchema: PatchCoreV1NamespacedPersistentVolumeClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -75291,7 +75237,7 @@ export interface PatchCoreV1NamespacedPodInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -76568,7 +76514,7 @@ export interface PatchCoreV1NamespacedPodOutput {
   };
 }
 export const PatchCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -79376,13 +79322,11 @@ export const PatchCoreV1NamespacedPodOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1NamespacedPodInput,
-    outputSchema: PatchCoreV1NamespacedPodOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1NamespacedPodInput,
+  outputSchema: PatchCoreV1NamespacedPodOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface PatchCoreV1NamespacedPodEphemeralcontainersInput {
   name: string;
@@ -79394,7 +79338,7 @@ export interface PatchCoreV1NamespacedPodEphemeralcontainersInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedPodEphemeralcontainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -80671,7 +80615,7 @@ export interface PatchCoreV1NamespacedPodEphemeralcontainersOutput {
   };
 }
 export const PatchCoreV1NamespacedPodEphemeralcontainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -83480,7 +83424,7 @@ export const PatchCoreV1NamespacedPodEphemeralcontainersOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedPodEphemeralcontainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPodEphemeralcontainersInput,
     outputSchema: PatchCoreV1NamespacedPodEphemeralcontainersOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -83496,7 +83440,7 @@ export interface PatchCoreV1NamespacedPodResizeInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedPodResizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -84773,7 +84717,7 @@ export interface PatchCoreV1NamespacedPodResizeOutput {
   };
 }
 export const PatchCoreV1NamespacedPodResizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -87582,7 +87526,7 @@ export const PatchCoreV1NamespacedPodResizeOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedPodResize =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPodResizeInput,
     outputSchema: PatchCoreV1NamespacedPodResizeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -87598,7 +87542,7 @@ export interface PatchCoreV1NamespacedPodStatusInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedPodStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -88875,7 +88819,7 @@ export interface PatchCoreV1NamespacedPodStatusOutput {
   };
 }
 export const PatchCoreV1NamespacedPodStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -91684,7 +91628,7 @@ export const PatchCoreV1NamespacedPodStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedPodStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPodStatusInput,
     outputSchema: PatchCoreV1NamespacedPodStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -91700,7 +91644,7 @@ export interface PatchCoreV1NamespacedPodTemplateInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -92816,7 +92760,7 @@ export interface PatchCoreV1NamespacedPodTemplateOutput {
   };
 }
 export const PatchCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -95237,7 +95181,7 @@ export const PatchCoreV1NamespacedPodTemplateOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPodTemplateInput,
     outputSchema: PatchCoreV1NamespacedPodTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -95253,7 +95197,7 @@ export interface PatchCoreV1NamespacedReplicationControllerInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -96392,7 +96336,7 @@ export interface PatchCoreV1NamespacedReplicationControllerOutput {
   };
 }
 export const PatchCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -98946,7 +98890,7 @@ export const PatchCoreV1NamespacedReplicationControllerOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedReplicationControllerInput,
     outputSchema: PatchCoreV1NamespacedReplicationControllerOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -98962,7 +98906,7 @@ export interface PatchCoreV1NamespacedReplicationControllerScaleInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedReplicationControllerScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -99017,7 +98961,7 @@ export interface PatchCoreV1NamespacedReplicationControllerScaleOutput {
   status?: { replicas: number; selector?: string };
 }
 export const PatchCoreV1NamespacedReplicationControllerScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -99090,7 +99034,7 @@ export const PatchCoreV1NamespacedReplicationControllerScaleOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedReplicationControllerScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedReplicationControllerScaleInput,
     outputSchema: PatchCoreV1NamespacedReplicationControllerScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -99106,7 +99050,7 @@ export interface PatchCoreV1NamespacedReplicationControllerStatusInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedReplicationControllerStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -100245,7 +100189,7 @@ export interface PatchCoreV1NamespacedReplicationControllerStatusOutput {
   };
 }
 export const PatchCoreV1NamespacedReplicationControllerStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -102799,7 +102743,7 @@ export const PatchCoreV1NamespacedReplicationControllerStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedReplicationControllerStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedReplicationControllerStatusInput,
     outputSchema: PatchCoreV1NamespacedReplicationControllerStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -102815,7 +102759,7 @@ export interface PatchCoreV1NamespacedResourceQuotaInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -102880,7 +102824,7 @@ export interface PatchCoreV1NamespacedResourceQuotaOutput {
   status?: { hard?: Record<string, string>; used?: Record<string, string> };
 }
 export const PatchCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -102967,7 +102911,7 @@ export const PatchCoreV1NamespacedResourceQuotaOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedResourceQuotaInput,
     outputSchema: PatchCoreV1NamespacedResourceQuotaOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -102983,7 +102927,7 @@ export interface PatchCoreV1NamespacedResourceQuotaStatusInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedResourceQuotaStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -103048,7 +102992,7 @@ export interface PatchCoreV1NamespacedResourceQuotaStatusOutput {
   status?: { hard?: Record<string, string>; used?: Record<string, string> };
 }
 export const PatchCoreV1NamespacedResourceQuotaStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -103135,7 +103079,7 @@ export const PatchCoreV1NamespacedResourceQuotaStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedResourceQuotaStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedResourceQuotaStatusInput,
     outputSchema: PatchCoreV1NamespacedResourceQuotaStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -103151,7 +103095,7 @@ export interface PatchCoreV1NamespacedSecretInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -103208,7 +103152,7 @@ export interface PatchCoreV1NamespacedSecretOutput {
   type?: string;
 }
 export const PatchCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     immutable: Schema.optional(Schema.Boolean),
@@ -103273,13 +103217,11 @@ export const PatchCoreV1NamespacedSecretOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchCoreV1NamespacedSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1NamespacedSecretInput,
-    outputSchema: PatchCoreV1NamespacedSecretOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1NamespacedSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1NamespacedSecretInput,
+  outputSchema: PatchCoreV1NamespacedSecretOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface PatchCoreV1NamespacedServiceInput {
   name: string;
@@ -103291,7 +103233,7 @@ export interface PatchCoreV1NamespacedServiceInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -103391,7 +103333,7 @@ export interface PatchCoreV1NamespacedServiceOutput {
   };
 }
 export const PatchCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -103534,7 +103476,7 @@ export const PatchCoreV1NamespacedServiceOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedServiceInput,
     outputSchema: PatchCoreV1NamespacedServiceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -103550,7 +103492,7 @@ export interface PatchCoreV1NamespacedServiceAccountInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -103614,7 +103556,7 @@ export interface PatchCoreV1NamespacedServiceAccountOutput {
   }[];
 }
 export const PatchCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     automountServiceAccountToken: Schema.optional(Schema.Boolean),
     imagePullSecrets: Schema.optional(
@@ -103697,7 +103639,7 @@ export const PatchCoreV1NamespacedServiceAccountOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedServiceAccountInput,
     outputSchema: PatchCoreV1NamespacedServiceAccountOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -103713,7 +103655,7 @@ export interface PatchCoreV1NamespacedServiceStatusInput {
   force?: boolean;
 }
 export const PatchCoreV1NamespacedServiceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -103813,7 +103755,7 @@ export interface PatchCoreV1NamespacedServiceStatusOutput {
   };
 }
 export const PatchCoreV1NamespacedServiceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -103956,7 +103898,7 @@ export const PatchCoreV1NamespacedServiceStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1NamespacedServiceStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedServiceStatusInput,
     outputSchema: PatchCoreV1NamespacedServiceStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -103970,7 +103912,7 @@ export interface PatchCoreV1NodeInput {
   fieldValidation?: string;
   force?: boolean;
 }
-export const PatchCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.PathParam()),
   pretty: Schema.optional(Schema.String),
   dryRun: Schema.optional(Schema.String),
@@ -104110,7 +104052,7 @@ export interface PatchCoreV1NodeOutput {
     volumesInUse?: string[];
   };
 }
-export const PatchCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchCoreV1NodeOutput = /*@__PURE__*/ Schema.Struct({
   apiVersion: Schema.optional(Schema.String),
   kind: Schema.optional(Schema.String),
   metadata: Schema.optional(
@@ -104335,7 +104277,7 @@ export const PatchCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const patchCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: PatchCoreV1NodeInput,
   outputSchema: PatchCoreV1NodeOutput,
   errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -104350,7 +104292,7 @@ export interface PatchCoreV1NodeStatusInput {
   force?: boolean;
 }
 export const PatchCoreV1NodeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -104491,7 +104433,7 @@ export interface PatchCoreV1NodeStatusOutput {
   };
 }
 export const PatchCoreV1NodeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -104720,13 +104662,11 @@ export const PatchCoreV1NodeStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchCoreV1NodeStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1NodeStatusInput,
-    outputSchema: PatchCoreV1NodeStatusOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1NodeStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1NodeStatusInput,
+  outputSchema: PatchCoreV1NodeStatusOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface PatchCoreV1PersistentVolumeInput {
   name: string;
@@ -104737,7 +104677,7 @@ export interface PatchCoreV1PersistentVolumeInput {
   force?: boolean;
 }
 export const PatchCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -104964,7 +104904,7 @@ export interface PatchCoreV1PersistentVolumeOutput {
   };
 }
 export const PatchCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -105349,13 +105289,11 @@ export const PatchCoreV1PersistentVolumeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchCoreV1PersistentVolume = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchCoreV1PersistentVolumeInput,
-    outputSchema: PatchCoreV1PersistentVolumeOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchCoreV1PersistentVolume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchCoreV1PersistentVolumeInput,
+  outputSchema: PatchCoreV1PersistentVolumeOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface PatchCoreV1PersistentVolumeStatusInput {
   name: string;
@@ -105366,7 +105304,7 @@ export interface PatchCoreV1PersistentVolumeStatusInput {
   force?: boolean;
 }
 export const PatchCoreV1PersistentVolumeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -105596,7 +105534,7 @@ export interface PatchCoreV1PersistentVolumeStatusOutput {
   };
 }
 export const PatchCoreV1PersistentVolumeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -105982,7 +105920,7 @@ export const PatchCoreV1PersistentVolumeStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoreV1PersistentVolumeStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1PersistentVolumeStatusInput,
     outputSchema: PatchCoreV1PersistentVolumeStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -105993,7 +105931,7 @@ export interface ReadCoreV1ComponentStatusInput {
   pretty?: string;
 }
 export const ReadCoreV1ComponentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -106044,7 +105982,7 @@ export interface ReadCoreV1ComponentStatusOutput {
   };
 }
 export const ReadCoreV1ComponentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     conditions: Schema.optional(
       Schema.Array(
@@ -106110,20 +106048,18 @@ export const ReadCoreV1ComponentStatusOutput =
  * @param name - name of the ComponentStatus
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readCoreV1ComponentStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1ComponentStatusInput,
-    outputSchema: ReadCoreV1ComponentStatusOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1ComponentStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1ComponentStatusInput,
+  outputSchema: ReadCoreV1ComponentStatusOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadCoreV1NamespaceInput {
   name: string;
   pretty?: string;
 }
 export const ReadCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -106179,7 +106115,7 @@ export interface ReadCoreV1NamespaceOutput {
   };
 }
 export const ReadCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -106256,7 +106192,7 @@ export const ReadCoreV1NamespaceOutput =
  * @param name - name of the Namespace
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const readCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReadCoreV1NamespaceInput,
   outputSchema: ReadCoreV1NamespaceOutput,
   errors: [NotFound] as const,
@@ -106267,7 +106203,7 @@ export interface ReadCoreV1NamespaceStatusInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespaceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -106323,7 +106259,7 @@ export interface ReadCoreV1NamespaceStatusOutput {
   };
 }
 export const ReadCoreV1NamespaceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -106400,13 +106336,11 @@ export const ReadCoreV1NamespaceStatusOutput =
  * @param name - name of the Namespace
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readCoreV1NamespaceStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NamespaceStatusInput,
-    outputSchema: ReadCoreV1NamespaceStatusOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NamespaceStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NamespaceStatusInput,
+  outputSchema: ReadCoreV1NamespaceStatusOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadCoreV1NamespacedConfigMapInput {
   name: string;
@@ -106414,7 +106348,7 @@ export interface ReadCoreV1NamespacedConfigMapInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -106466,7 +106400,7 @@ export interface ReadCoreV1NamespacedConfigMapOutput {
   };
 }
 export const ReadCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     binaryData: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -106527,7 +106461,7 @@ export const ReadCoreV1NamespacedConfigMapOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedConfigMapInput,
     outputSchema: ReadCoreV1NamespacedConfigMapOutput,
     errors: [NotFound] as const,
@@ -106539,7 +106473,7 @@ export interface ReadCoreV1NamespacedEndpointsInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -106624,7 +106558,7 @@ export interface ReadCoreV1NamespacedEndpointsOutput {
   }[];
 }
 export const ReadCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -106738,7 +106672,7 @@ export const ReadCoreV1NamespacedEndpointsOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedEndpointsInput,
     outputSchema: ReadCoreV1NamespacedEndpointsOutput,
     errors: [NotFound] as const,
@@ -106750,7 +106684,7 @@ export interface ReadCoreV1NamespacedEventInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -106829,7 +106763,7 @@ export interface ReadCoreV1NamespacedEventOutput {
   type?: string;
 }
 export const ReadCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
@@ -106924,13 +106858,11 @@ export const ReadCoreV1NamespacedEventOutput =
  * @param namespace - object name and auth scope, such as for teams and projects
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NamespacedEventInput,
-    outputSchema: ReadCoreV1NamespacedEventOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NamespacedEventInput,
+  outputSchema: ReadCoreV1NamespacedEventOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadCoreV1NamespacedLimitRangeInput {
   name: string;
@@ -106938,7 +106870,7 @@ export interface ReadCoreV1NamespacedLimitRangeInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -106997,7 +106929,7 @@ export interface ReadCoreV1NamespacedLimitRangeOutput {
   };
 }
 export const ReadCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -107075,7 +107007,7 @@ export const ReadCoreV1NamespacedLimitRangeOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedLimitRangeInput,
     outputSchema: ReadCoreV1NamespacedLimitRangeOutput,
     errors: [NotFound] as const,
@@ -107087,7 +107019,7 @@ export interface ReadCoreV1NamespacedPersistentVolumeClaimInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -107178,7 +107110,7 @@ export interface ReadCoreV1NamespacedPersistentVolumeClaimOutput {
   };
 }
 export const ReadCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -107318,7 +107250,7 @@ export const ReadCoreV1NamespacedPersistentVolumeClaimOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: ReadCoreV1NamespacedPersistentVolumeClaimOutput,
     errors: [NotFound] as const,
@@ -107330,7 +107262,7 @@ export interface ReadCoreV1NamespacedPersistentVolumeClaimStatusInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedPersistentVolumeClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -107421,7 +107353,7 @@ export interface ReadCoreV1NamespacedPersistentVolumeClaimStatusOutput {
   };
 }
 export const ReadCoreV1NamespacedPersistentVolumeClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -107561,7 +107493,7 @@ export const ReadCoreV1NamespacedPersistentVolumeClaimStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedPersistentVolumeClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPersistentVolumeClaimStatusInput,
     outputSchema: ReadCoreV1NamespacedPersistentVolumeClaimStatusOutput,
     errors: [NotFound] as const,
@@ -107573,7 +107505,7 @@ export interface ReadCoreV1NamespacedPodInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -108846,7 +108778,7 @@ export interface ReadCoreV1NamespacedPodOutput {
   };
 }
 export const ReadCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -111650,13 +111582,11 @@ export const ReadCoreV1NamespacedPodOutput =
  * @param namespace - object name and auth scope, such as for teams and projects
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NamespacedPodInput,
-    outputSchema: ReadCoreV1NamespacedPodOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NamespacedPodInput,
+  outputSchema: ReadCoreV1NamespacedPodOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadCoreV1NamespacedPodEphemeralcontainersInput {
   name: string;
@@ -111664,7 +111594,7 @@ export interface ReadCoreV1NamespacedPodEphemeralcontainersInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedPodEphemeralcontainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -112937,7 +112867,7 @@ export interface ReadCoreV1NamespacedPodEphemeralcontainersOutput {
   };
 }
 export const ReadCoreV1NamespacedPodEphemeralcontainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -115742,7 +115672,7 @@ export const ReadCoreV1NamespacedPodEphemeralcontainersOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedPodEphemeralcontainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPodEphemeralcontainersInput,
     outputSchema: ReadCoreV1NamespacedPodEphemeralcontainersOutput,
     errors: [NotFound] as const,
@@ -115763,7 +115693,7 @@ export interface ReadCoreV1NamespacedPodLogInput {
   timestamps?: boolean;
 }
 export const ReadCoreV1NamespacedPodLogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     container: Schema.optional(Schema.String),
@@ -115786,7 +115716,7 @@ export const ReadCoreV1NamespacedPodLogInput =
 // Output Schema
 export type ReadCoreV1NamespacedPodLogOutput = string;
 export const ReadCoreV1NamespacedPodLogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ReadCoreV1NamespacedPodLogOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ReadCoreV1NamespacedPodLogOutput>;
 
 // The operation
 /**
@@ -115805,13 +115735,11 @@ export const ReadCoreV1NamespacedPodLogOutput =
  * @param tailLines - If set, the number of lines from the end of the logs to show. If not specified, logs are shown from the creation of the container or sinceSeconds or sinceTime. Note that when "TailLines" is specified, "Stream" can only be set to nil or "All".
  * @param timestamps - If true, add an RFC3339 or RFC3339Nano timestamp at the beginning of every line of log output. Defaults to false.
  */
-export const readCoreV1NamespacedPodLog = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NamespacedPodLogInput,
-    outputSchema: ReadCoreV1NamespacedPodLogOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NamespacedPodLog = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NamespacedPodLogInput,
+  outputSchema: ReadCoreV1NamespacedPodLogOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadCoreV1NamespacedPodResizeInput {
   name: string;
@@ -115819,7 +115747,7 @@ export interface ReadCoreV1NamespacedPodResizeInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedPodResizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -117092,7 +117020,7 @@ export interface ReadCoreV1NamespacedPodResizeOutput {
   };
 }
 export const ReadCoreV1NamespacedPodResizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -119897,7 +119825,7 @@ export const ReadCoreV1NamespacedPodResizeOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedPodResize =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPodResizeInput,
     outputSchema: ReadCoreV1NamespacedPodResizeOutput,
     errors: [NotFound] as const,
@@ -119909,7 +119837,7 @@ export interface ReadCoreV1NamespacedPodStatusInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedPodStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -121182,7 +121110,7 @@ export interface ReadCoreV1NamespacedPodStatusOutput {
   };
 }
 export const ReadCoreV1NamespacedPodStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -123987,7 +123915,7 @@ export const ReadCoreV1NamespacedPodStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedPodStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPodStatusInput,
     outputSchema: ReadCoreV1NamespacedPodStatusOutput,
     errors: [NotFound] as const,
@@ -123999,7 +123927,7 @@ export interface ReadCoreV1NamespacedPodTemplateInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -125111,7 +125039,7 @@ export interface ReadCoreV1NamespacedPodTemplateOutput {
   };
 }
 export const ReadCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -127528,7 +127456,7 @@ export const ReadCoreV1NamespacedPodTemplateOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPodTemplateInput,
     outputSchema: ReadCoreV1NamespacedPodTemplateOutput,
     errors: [NotFound] as const,
@@ -127540,7 +127468,7 @@ export interface ReadCoreV1NamespacedReplicationControllerInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -128675,7 +128603,7 @@ export interface ReadCoreV1NamespacedReplicationControllerOutput {
   };
 }
 export const ReadCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -131225,7 +131153,7 @@ export const ReadCoreV1NamespacedReplicationControllerOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedReplicationControllerInput,
     outputSchema: ReadCoreV1NamespacedReplicationControllerOutput,
     errors: [NotFound] as const,
@@ -131237,7 +131165,7 @@ export interface ReadCoreV1NamespacedReplicationControllerScaleInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedReplicationControllerScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -131288,7 +131216,7 @@ export interface ReadCoreV1NamespacedReplicationControllerScaleOutput {
   status?: { replicas: number; selector?: string };
 }
 export const ReadCoreV1NamespacedReplicationControllerScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -131357,7 +131285,7 @@ export const ReadCoreV1NamespacedReplicationControllerScaleOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedReplicationControllerScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedReplicationControllerScaleInput,
     outputSchema: ReadCoreV1NamespacedReplicationControllerScaleOutput,
     errors: [NotFound] as const,
@@ -131369,7 +131297,7 @@ export interface ReadCoreV1NamespacedReplicationControllerStatusInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedReplicationControllerStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -132504,7 +132432,7 @@ export interface ReadCoreV1NamespacedReplicationControllerStatusOutput {
   };
 }
 export const ReadCoreV1NamespacedReplicationControllerStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -135054,7 +134982,7 @@ export const ReadCoreV1NamespacedReplicationControllerStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedReplicationControllerStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedReplicationControllerStatusInput,
     outputSchema: ReadCoreV1NamespacedReplicationControllerStatusOutput,
     errors: [NotFound] as const,
@@ -135066,7 +134994,7 @@ export interface ReadCoreV1NamespacedResourceQuotaInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -135127,7 +135055,7 @@ export interface ReadCoreV1NamespacedResourceQuotaOutput {
   status?: { hard?: Record<string, string>; used?: Record<string, string> };
 }
 export const ReadCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -135210,7 +135138,7 @@ export const ReadCoreV1NamespacedResourceQuotaOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedResourceQuotaInput,
     outputSchema: ReadCoreV1NamespacedResourceQuotaOutput,
     errors: [NotFound] as const,
@@ -135222,7 +135150,7 @@ export interface ReadCoreV1NamespacedResourceQuotaStatusInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedResourceQuotaStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -135283,7 +135211,7 @@ export interface ReadCoreV1NamespacedResourceQuotaStatusOutput {
   status?: { hard?: Record<string, string>; used?: Record<string, string> };
 }
 export const ReadCoreV1NamespacedResourceQuotaStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -135366,7 +135294,7 @@ export const ReadCoreV1NamespacedResourceQuotaStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedResourceQuotaStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedResourceQuotaStatusInput,
     outputSchema: ReadCoreV1NamespacedResourceQuotaStatusOutput,
     errors: [NotFound] as const,
@@ -135378,7 +135306,7 @@ export interface ReadCoreV1NamespacedSecretInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -135431,7 +135359,7 @@ export interface ReadCoreV1NamespacedSecretOutput {
   type?: string;
 }
 export const ReadCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     immutable: Schema.optional(Schema.Boolean),
@@ -135492,13 +135420,11 @@ export const ReadCoreV1NamespacedSecretOutput =
  * @param namespace - object name and auth scope, such as for teams and projects
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readCoreV1NamespacedSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NamespacedSecretInput,
-    outputSchema: ReadCoreV1NamespacedSecretOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NamespacedSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NamespacedSecretInput,
+  outputSchema: ReadCoreV1NamespacedSecretOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadCoreV1NamespacedServiceInput {
   name: string;
@@ -135506,7 +135432,7 @@ export interface ReadCoreV1NamespacedServiceInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -135602,7 +135528,7 @@ export interface ReadCoreV1NamespacedServiceOutput {
   };
 }
 export const ReadCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -135740,13 +135666,11 @@ export const ReadCoreV1NamespacedServiceOutput =
  * @param namespace - object name and auth scope, such as for teams and projects
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readCoreV1NamespacedService = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NamespacedServiceInput,
-    outputSchema: ReadCoreV1NamespacedServiceOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NamespacedService = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NamespacedServiceInput,
+  outputSchema: ReadCoreV1NamespacedServiceOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadCoreV1NamespacedServiceAccountInput {
   name: string;
@@ -135754,7 +135678,7 @@ export interface ReadCoreV1NamespacedServiceAccountInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -135814,7 +135738,7 @@ export interface ReadCoreV1NamespacedServiceAccountOutput {
   }[];
 }
 export const ReadCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     automountServiceAccountToken: Schema.optional(Schema.Boolean),
     imagePullSecrets: Schema.optional(
@@ -135893,7 +135817,7 @@ export const ReadCoreV1NamespacedServiceAccountOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedServiceAccountInput,
     outputSchema: ReadCoreV1NamespacedServiceAccountOutput,
     errors: [NotFound] as const,
@@ -135905,7 +135829,7 @@ export interface ReadCoreV1NamespacedServiceStatusInput {
   pretty?: string;
 }
 export const ReadCoreV1NamespacedServiceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -136001,7 +135925,7 @@ export interface ReadCoreV1NamespacedServiceStatusOutput {
   };
 }
 export const ReadCoreV1NamespacedServiceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -136140,7 +136064,7 @@ export const ReadCoreV1NamespacedServiceStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1NamespacedServiceStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedServiceStatusInput,
     outputSchema: ReadCoreV1NamespacedServiceStatusOutput,
     errors: [NotFound] as const,
@@ -136150,7 +136074,7 @@ export interface ReadCoreV1NodeInput {
   name: string;
   pretty?: string;
 }
-export const ReadCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReadCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.PathParam()),
   pretty: Schema.optional(Schema.String),
 }).pipe(
@@ -136286,7 +136210,7 @@ export interface ReadCoreV1NodeOutput {
     volumesInUse?: string[];
   };
 }
-export const ReadCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReadCoreV1NodeOutput = /*@__PURE__*/ Schema.Struct({
   apiVersion: Schema.optional(Schema.String),
   kind: Schema.optional(Schema.String),
   metadata: Schema.optional(
@@ -136507,7 +136431,7 @@ export const ReadCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - name of the Node
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const readCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReadCoreV1NodeInput,
   outputSchema: ReadCoreV1NodeOutput,
   errors: [NotFound] as const,
@@ -136518,7 +136442,7 @@ export interface ReadCoreV1NodeStatusInput {
   pretty?: string;
 }
 export const ReadCoreV1NodeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -136655,7 +136579,7 @@ export interface ReadCoreV1NodeStatusOutput {
   };
 }
 export const ReadCoreV1NodeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -136880,20 +136804,18 @@ export const ReadCoreV1NodeStatusOutput =
  * @param name - name of the Node
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readCoreV1NodeStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1NodeStatusInput,
-    outputSchema: ReadCoreV1NodeStatusOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1NodeStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1NodeStatusInput,
+  outputSchema: ReadCoreV1NodeStatusOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadCoreV1PersistentVolumeInput {
   name: string;
   pretty?: string;
 }
 export const ReadCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -137116,7 +137038,7 @@ export interface ReadCoreV1PersistentVolumeOutput {
   };
 }
 export const ReadCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -137497,20 +137419,18 @@ export const ReadCoreV1PersistentVolumeOutput =
  * @param name - name of the PersistentVolume
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readCoreV1PersistentVolume = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadCoreV1PersistentVolumeInput,
-    outputSchema: ReadCoreV1PersistentVolumeOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readCoreV1PersistentVolume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadCoreV1PersistentVolumeInput,
+  outputSchema: ReadCoreV1PersistentVolumeOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadCoreV1PersistentVolumeStatusInput {
   name: string;
   pretty?: string;
 }
 export const ReadCoreV1PersistentVolumeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -137733,7 +137653,7 @@ export interface ReadCoreV1PersistentVolumeStatusOutput {
   };
 }
 export const ReadCoreV1PersistentVolumeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -138115,7 +138035,7 @@ export const ReadCoreV1PersistentVolumeStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoreV1PersistentVolumeStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1PersistentVolumeStatusInput,
     outputSchema: ReadCoreV1PersistentVolumeStatusOutput,
     errors: [NotFound] as const,
@@ -138174,7 +138094,7 @@ export interface ReplaceCoreV1NamespaceInput {
   };
 }
 export const ReplaceCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -138300,7 +138220,7 @@ export interface ReplaceCoreV1NamespaceOutput {
   };
 }
 export const ReplaceCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -138380,13 +138300,11 @@ export const ReplaceCoreV1NamespaceOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplaceCoreV1NamespaceInput,
-    outputSchema: ReplaceCoreV1NamespaceOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const replaceCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceCoreV1NamespaceInput,
+  outputSchema: ReplaceCoreV1NamespaceOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface ReplaceCoreV1NamespaceFinalizeInput {
   name: string;
@@ -138441,7 +138359,7 @@ export interface ReplaceCoreV1NamespaceFinalizeInput {
   };
 }
 export const ReplaceCoreV1NamespaceFinalizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -138567,7 +138485,7 @@ export interface ReplaceCoreV1NamespaceFinalizeOutput {
   };
 }
 export const ReplaceCoreV1NamespaceFinalizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -138648,7 +138566,7 @@ export const ReplaceCoreV1NamespaceFinalizeOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const replaceCoreV1NamespaceFinalize =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespaceFinalizeInput,
     outputSchema: ReplaceCoreV1NamespaceFinalizeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -138707,7 +138625,7 @@ export interface ReplaceCoreV1NamespaceStatusInput {
   };
 }
 export const ReplaceCoreV1NamespaceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -138833,7 +138751,7 @@ export interface ReplaceCoreV1NamespaceStatusOutput {
   };
 }
 export const ReplaceCoreV1NamespaceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -138914,7 +138832,7 @@ export const ReplaceCoreV1NamespaceStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespaceStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespaceStatusInput,
     outputSchema: ReplaceCoreV1NamespaceStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -138966,7 +138884,7 @@ export interface ReplaceCoreV1NamespacedConfigMapInput {
   };
 }
 export const ReplaceCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -139070,7 +138988,7 @@ export interface ReplaceCoreV1NamespacedConfigMapOutput {
   };
 }
 export const ReplaceCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     binaryData: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -139134,7 +139052,7 @@ export const ReplaceCoreV1NamespacedConfigMapOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedConfigMapInput,
     outputSchema: ReplaceCoreV1NamespacedConfigMapOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -139219,7 +139137,7 @@ export interface ReplaceCoreV1NamespacedEndpointsInput {
   }[];
 }
 export const ReplaceCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -139409,7 +139327,7 @@ export interface ReplaceCoreV1NamespacedEndpointsOutput {
   }[];
 }
 export const ReplaceCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -139526,7 +139444,7 @@ export const ReplaceCoreV1NamespacedEndpointsOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedEndpointsInput,
     outputSchema: ReplaceCoreV1NamespacedEndpointsOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -139605,7 +139523,7 @@ export interface ReplaceCoreV1NamespacedEventInput {
   type?: string;
 }
 export const ReplaceCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -139771,7 +139689,7 @@ export interface ReplaceCoreV1NamespacedEventOutput {
   type?: string;
 }
 export const ReplaceCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
@@ -139870,7 +139788,7 @@ export const ReplaceCoreV1NamespacedEventOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedEvent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedEventInput,
     outputSchema: ReplaceCoreV1NamespacedEventOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -139929,7 +139847,7 @@ export interface ReplaceCoreV1NamespacedLimitRangeInput {
   };
 }
 export const ReplaceCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -140057,7 +139975,7 @@ export interface ReplaceCoreV1NamespacedLimitRangeOutput {
   };
 }
 export const ReplaceCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -140138,7 +140056,7 @@ export const ReplaceCoreV1NamespacedLimitRangeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedLimitRangeInput,
     outputSchema: ReplaceCoreV1NamespacedLimitRangeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -140229,7 +140147,7 @@ export interface ReplaceCoreV1NamespacedPersistentVolumeClaimInput {
   };
 }
 export const ReplaceCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -140451,7 +140369,7 @@ export interface ReplaceCoreV1NamespacedPersistentVolumeClaimOutput {
   };
 }
 export const ReplaceCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -140594,7 +140512,7 @@ export const ReplaceCoreV1NamespacedPersistentVolumeClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: ReplaceCoreV1NamespacedPersistentVolumeClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -140685,7 +140603,7 @@ export interface ReplaceCoreV1NamespacedPersistentVolumeClaimStatusInput {
   };
 }
 export const ReplaceCoreV1NamespacedPersistentVolumeClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -140907,7 +140825,7 @@ export interface ReplaceCoreV1NamespacedPersistentVolumeClaimStatusOutput {
   };
 }
 export const ReplaceCoreV1NamespacedPersistentVolumeClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -141050,7 +140968,7 @@ export const ReplaceCoreV1NamespacedPersistentVolumeClaimStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedPersistentVolumeClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPersistentVolumeClaimStatusInput,
     outputSchema: ReplaceCoreV1NamespacedPersistentVolumeClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -142323,7 +142241,7 @@ export interface ReplaceCoreV1NamespacedPodInput {
   };
 }
 export const ReplaceCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -146392,7 +146310,7 @@ export interface ReplaceCoreV1NamespacedPodOutput {
   };
 }
 export const ReplaceCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -149199,13 +149117,11 @@ export const ReplaceCoreV1NamespacedPodOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplaceCoreV1NamespacedPodInput,
-    outputSchema: ReplaceCoreV1NamespacedPodOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const replaceCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceCoreV1NamespacedPodInput,
+  outputSchema: ReplaceCoreV1NamespacedPodOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface ReplaceCoreV1NamespacedPodEphemeralcontainersInput {
   name: string;
@@ -150474,7 +150390,7 @@ export interface ReplaceCoreV1NamespacedPodEphemeralcontainersInput {
   };
 }
 export const ReplaceCoreV1NamespacedPodEphemeralcontainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -154543,7 +154459,7 @@ export interface ReplaceCoreV1NamespacedPodEphemeralcontainersOutput {
   };
 }
 export const ReplaceCoreV1NamespacedPodEphemeralcontainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -157351,7 +157267,7 @@ export const ReplaceCoreV1NamespacedPodEphemeralcontainersOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedPodEphemeralcontainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPodEphemeralcontainersInput,
     outputSchema: ReplaceCoreV1NamespacedPodEphemeralcontainersOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -158624,7 +158540,7 @@ export interface ReplaceCoreV1NamespacedPodResizeInput {
   };
 }
 export const ReplaceCoreV1NamespacedPodResizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -162693,7 +162609,7 @@ export interface ReplaceCoreV1NamespacedPodResizeOutput {
   };
 }
 export const ReplaceCoreV1NamespacedPodResizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -165501,7 +165417,7 @@ export const ReplaceCoreV1NamespacedPodResizeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedPodResize =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPodResizeInput,
     outputSchema: ReplaceCoreV1NamespacedPodResizeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -166774,7 +166690,7 @@ export interface ReplaceCoreV1NamespacedPodStatusInput {
   };
 }
 export const ReplaceCoreV1NamespacedPodStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -170843,7 +170759,7 @@ export interface ReplaceCoreV1NamespacedPodStatusOutput {
   };
 }
 export const ReplaceCoreV1NamespacedPodStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -173651,7 +173567,7 @@ export const ReplaceCoreV1NamespacedPodStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedPodStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPodStatusInput,
     outputSchema: ReplaceCoreV1NamespacedPodStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -174763,7 +174679,7 @@ export interface ReplaceCoreV1NamespacedPodTemplateInput {
   };
 }
 export const ReplaceCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -178283,7 +178199,7 @@ export interface ReplaceCoreV1NamespacedPodTemplateOutput {
   };
 }
 export const ReplaceCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -180703,7 +180619,7 @@ export const ReplaceCoreV1NamespacedPodTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPodTemplateInput,
     outputSchema: ReplaceCoreV1NamespacedPodTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -181838,7 +181754,7 @@ export interface ReplaceCoreV1NamespacedReplicationControllerInput {
   };
 }
 export const ReplaceCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -185514,7 +185430,7 @@ export interface ReplaceCoreV1NamespacedReplicationControllerOutput {
   };
 }
 export const ReplaceCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -188067,7 +187983,7 @@ export const ReplaceCoreV1NamespacedReplicationControllerOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedReplicationControllerInput,
     outputSchema: ReplaceCoreV1NamespacedReplicationControllerOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -188118,7 +188034,7 @@ export interface ReplaceCoreV1NamespacedReplicationControllerScaleInput {
   status?: { replicas: number; selector?: string };
 }
 export const ReplaceCoreV1NamespacedReplicationControllerScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -188229,7 +188145,7 @@ export interface ReplaceCoreV1NamespacedReplicationControllerScaleOutput {
   status?: { replicas: number; selector?: string };
 }
 export const ReplaceCoreV1NamespacedReplicationControllerScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -188301,7 +188217,7 @@ export const ReplaceCoreV1NamespacedReplicationControllerScaleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedReplicationControllerScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedReplicationControllerScaleInput,
     outputSchema: ReplaceCoreV1NamespacedReplicationControllerScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -189436,7 +189352,7 @@ export interface ReplaceCoreV1NamespacedReplicationControllerStatusInput {
   };
 }
 export const ReplaceCoreV1NamespacedReplicationControllerStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -193112,7 +193028,7 @@ export interface ReplaceCoreV1NamespacedReplicationControllerStatusOutput {
   };
 }
 export const ReplaceCoreV1NamespacedReplicationControllerStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -195665,7 +195581,7 @@ export const ReplaceCoreV1NamespacedReplicationControllerStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedReplicationControllerStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedReplicationControllerStatusInput,
     outputSchema: ReplaceCoreV1NamespacedReplicationControllerStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -195726,7 +195642,7 @@ export interface ReplaceCoreV1NamespacedResourceQuotaInput {
   status?: { hard?: Record<string, string>; used?: Record<string, string> };
 }
 export const ReplaceCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -195861,7 +195777,7 @@ export interface ReplaceCoreV1NamespacedResourceQuotaOutput {
   status?: { hard?: Record<string, string>; used?: Record<string, string> };
 }
 export const ReplaceCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -195947,7 +195863,7 @@ export const ReplaceCoreV1NamespacedResourceQuotaOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedResourceQuotaInput,
     outputSchema: ReplaceCoreV1NamespacedResourceQuotaOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -196008,7 +195924,7 @@ export interface ReplaceCoreV1NamespacedResourceQuotaStatusInput {
   status?: { hard?: Record<string, string>; used?: Record<string, string> };
 }
 export const ReplaceCoreV1NamespacedResourceQuotaStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -196143,7 +196059,7 @@ export interface ReplaceCoreV1NamespacedResourceQuotaStatusOutput {
   status?: { hard?: Record<string, string>; used?: Record<string, string> };
 }
 export const ReplaceCoreV1NamespacedResourceQuotaStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -196229,7 +196145,7 @@ export const ReplaceCoreV1NamespacedResourceQuotaStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedResourceQuotaStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedResourceQuotaStatusInput,
     outputSchema: ReplaceCoreV1NamespacedResourceQuotaStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -196282,7 +196198,7 @@ export interface ReplaceCoreV1NamespacedSecretInput {
   type?: string;
 }
 export const ReplaceCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -196388,7 +196304,7 @@ export interface ReplaceCoreV1NamespacedSecretOutput {
   type?: string;
 }
 export const ReplaceCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     immutable: Schema.optional(Schema.Boolean),
@@ -196453,7 +196369,7 @@ export const ReplaceCoreV1NamespacedSecretOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedSecretInput,
     outputSchema: ReplaceCoreV1NamespacedSecretOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -196549,7 +196465,7 @@ export interface ReplaceCoreV1NamespacedServiceInput {
   };
 }
 export const ReplaceCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -196775,7 +196691,7 @@ export interface ReplaceCoreV1NamespacedServiceOutput {
   };
 }
 export const ReplaceCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -196917,7 +196833,7 @@ export const ReplaceCoreV1NamespacedServiceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedServiceInput,
     outputSchema: ReplaceCoreV1NamespacedServiceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -196977,7 +196893,7 @@ export interface ReplaceCoreV1NamespacedServiceAccountInput {
   }[];
 }
 export const ReplaceCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -197107,7 +197023,7 @@ export interface ReplaceCoreV1NamespacedServiceAccountOutput {
   }[];
 }
 export const ReplaceCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     automountServiceAccountToken: Schema.optional(Schema.Boolean),
     imagePullSecrets: Schema.optional(
@@ -197189,7 +197105,7 @@ export const ReplaceCoreV1NamespacedServiceAccountOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedServiceAccountInput,
     outputSchema: ReplaceCoreV1NamespacedServiceAccountOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -197285,7 +197201,7 @@ export interface ReplaceCoreV1NamespacedServiceStatusInput {
   };
 }
 export const ReplaceCoreV1NamespacedServiceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -197511,7 +197427,7 @@ export interface ReplaceCoreV1NamespacedServiceStatusOutput {
   };
 }
 export const ReplaceCoreV1NamespacedServiceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -197653,7 +197569,7 @@ export const ReplaceCoreV1NamespacedServiceStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1NamespacedServiceStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedServiceStatusInput,
     outputSchema: ReplaceCoreV1NamespacedServiceStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -197792,230 +197708,224 @@ export interface ReplaceCoreV1NodeInput {
     volumesInUse?: string[];
   };
 }
-export const ReplaceCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String.pipe(T.PathParam()),
-    pretty: Schema.optional(Schema.String),
-    dryRun: Schema.optional(Schema.String),
-    fieldManager: Schema.optional(Schema.String),
-    fieldValidation: Schema.optional(Schema.String),
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+export const ReplaceCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.PathParam()),
+  pretty: Schema.optional(Schema.String),
+  dryRun: Schema.optional(Schema.String),
+  fieldManager: Schema.optional(Schema.String),
+  fieldValidation: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
         ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
         ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+  ),
+  spec: Schema.optional(
+    Schema.Struct({
+      configSource: Schema.optional(
+        Schema.Struct({
+          configMap: Schema.optional(
             Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
+              kubeletConfigKey: Schema.String,
               name: Schema.String,
-              uid: Schema.String,
+              namespace: Schema.String,
+              resourceVersion: Schema.optional(Schema.String),
+              uid: Schema.optional(Schema.String),
             }),
           ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.optional(
-      Schema.Struct({
-        configSource: Schema.optional(
+        }),
+      ),
+      externalID: Schema.optional(Schema.String),
+      podCIDR: Schema.optional(Schema.String),
+      podCIDRs: Schema.optional(Schema.Array(Schema.String)),
+      providerID: Schema.optional(Schema.String),
+      taints: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            configMap: Schema.optional(
-              Schema.Struct({
-                kubeletConfigKey: Schema.String,
-                name: Schema.String,
-                namespace: Schema.String,
-                resourceVersion: Schema.optional(Schema.String),
-                uid: Schema.optional(Schema.String),
-              }),
-            ),
+            effect: Schema.String,
+            key: Schema.String,
+            timeAdded: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
           }),
         ),
-        externalID: Schema.optional(Schema.String),
-        podCIDR: Schema.optional(Schema.String),
-        podCIDRs: Schema.optional(Schema.Array(Schema.String)),
-        providerID: Schema.optional(Schema.String),
-        taints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              effect: Schema.String,
-              key: Schema.String,
-              timeAdded: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        unschedulable: Schema.optional(Schema.Boolean),
-      }),
-    ),
-    status: Schema.optional(
-      Schema.Struct({
-        addresses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              address: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        allocatable: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        capacity: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastHeartbeatTime: Schema.optional(Schema.String),
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        config: Schema.optional(
+      ),
+      unschedulable: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  status: Schema.optional(
+    Schema.Struct({
+      addresses: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            active: Schema.optional(
-              Schema.Struct({
-                configMap: Schema.optional(
-                  Schema.Struct({
-                    kubeletConfigKey: Schema.String,
-                    name: Schema.String,
-                    namespace: Schema.String,
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            assigned: Schema.optional(
-              Schema.Struct({
-                configMap: Schema.optional(
-                  Schema.Struct({
-                    kubeletConfigKey: Schema.String,
-                    name: Schema.String,
-                    namespace: Schema.String,
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            error: Schema.optional(Schema.String),
-            lastKnownGood: Schema.optional(
-              Schema.Struct({
-                configMap: Schema.optional(
-                  Schema.Struct({
-                    kubeletConfigKey: Schema.String,
-                    name: Schema.String,
-                    namespace: Schema.String,
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
+            address: Schema.String,
+            type: Schema.String,
           }),
         ),
-        daemonEndpoints: Schema.optional(
+      ),
+      allocatable: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      capacity: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      conditions: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            kubeletEndpoint: Schema.optional(
-              Schema.Struct({
-                Port: Schema.Number,
-              }),
-            ),
+            lastHeartbeatTime: Schema.optional(Schema.String),
+            lastTransitionTime: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            reason: Schema.optional(Schema.String),
+            status: Schema.String,
+            type: Schema.String,
           }),
         ),
-        declaredFeatures: Schema.optional(Schema.Array(Schema.String)),
-        features: Schema.optional(
-          Schema.Struct({
-            supplementalGroupsPolicy: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        images: Schema.optional(
-          Schema.Array(
+      ),
+      config: Schema.optional(
+        Schema.Struct({
+          active: Schema.optional(
             Schema.Struct({
-              names: Schema.optional(Schema.Array(Schema.String)),
-              sizeBytes: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        nodeInfo: Schema.optional(
-          Schema.Struct({
-            architecture: Schema.String,
-            bootID: Schema.String,
-            containerRuntimeVersion: Schema.String,
-            kernelVersion: Schema.String,
-            kubeProxyVersion: Schema.String,
-            kubeletVersion: Schema.String,
-            machineID: Schema.String,
-            operatingSystem: Schema.String,
-            osImage: Schema.String,
-            swap: Schema.optional(
-              Schema.Struct({
-                capacity: Schema.optional(Schema.Number),
-              }),
-            ),
-            systemUUID: Schema.String,
-          }),
-        ),
-        phase: Schema.optional(Schema.String),
-        runtimeHandlers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              features: Schema.optional(
+              configMap: Schema.optional(
                 Schema.Struct({
-                  recursiveReadOnlyMounts: Schema.optional(Schema.Boolean),
-                  userNamespaces: Schema.optional(Schema.Boolean),
+                  kubeletConfigKey: Schema.String,
+                  name: Schema.String,
+                  namespace: Schema.String,
+                  resourceVersion: Schema.optional(Schema.String),
+                  uid: Schema.optional(Schema.String),
                 }),
               ),
-              name: Schema.optional(Schema.String),
             }),
           ),
-        ),
-        volumesAttached: Schema.optional(
-          Schema.Array(
+          assigned: Schema.optional(
             Schema.Struct({
-              devicePath: Schema.String,
-              name: Schema.String,
+              configMap: Schema.optional(
+                Schema.Struct({
+                  kubeletConfigKey: Schema.String,
+                  name: Schema.String,
+                  namespace: Schema.String,
+                  resourceVersion: Schema.optional(Schema.String),
+                  uid: Schema.optional(Schema.String),
+                }),
+              ),
             }),
           ),
+          error: Schema.optional(Schema.String),
+          lastKnownGood: Schema.optional(
+            Schema.Struct({
+              configMap: Schema.optional(
+                Schema.Struct({
+                  kubeletConfigKey: Schema.String,
+                  name: Schema.String,
+                  namespace: Schema.String,
+                  resourceVersion: Schema.optional(Schema.String),
+                  uid: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+      daemonEndpoints: Schema.optional(
+        Schema.Struct({
+          kubeletEndpoint: Schema.optional(
+            Schema.Struct({
+              Port: Schema.Number,
+            }),
+          ),
+        }),
+      ),
+      declaredFeatures: Schema.optional(Schema.Array(Schema.String)),
+      features: Schema.optional(
+        Schema.Struct({
+          supplementalGroupsPolicy: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      images: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            names: Schema.optional(Schema.Array(Schema.String)),
+            sizeBytes: Schema.optional(Schema.Number),
+          }),
         ),
-        volumesInUse: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-  },
-).pipe(
+      ),
+      nodeInfo: Schema.optional(
+        Schema.Struct({
+          architecture: Schema.String,
+          bootID: Schema.String,
+          containerRuntimeVersion: Schema.String,
+          kernelVersion: Schema.String,
+          kubeProxyVersion: Schema.String,
+          kubeletVersion: Schema.String,
+          machineID: Schema.String,
+          operatingSystem: Schema.String,
+          osImage: Schema.String,
+          swap: Schema.optional(
+            Schema.Struct({
+              capacity: Schema.optional(Schema.Number),
+            }),
+          ),
+          systemUUID: Schema.String,
+        }),
+      ),
+      phase: Schema.optional(Schema.String),
+      runtimeHandlers: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            features: Schema.optional(
+              Schema.Struct({
+                recursiveReadOnlyMounts: Schema.optional(Schema.Boolean),
+                userNamespaces: Schema.optional(Schema.Boolean),
+              }),
+            ),
+            name: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      volumesAttached: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            devicePath: Schema.String,
+            name: Schema.String,
+          }),
+        ),
+      ),
+      volumesInUse: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+}).pipe(
   T.Http({ method: "PUT", path: "/api/v1/nodes/{name}" }),
 ) as unknown as Schema.Codec<ReplaceCoreV1NodeInput>;
 
@@ -198149,7 +198059,7 @@ export interface ReplaceCoreV1NodeOutput {
   };
 }
 export const ReplaceCoreV1NodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -198377,7 +198287,7 @@ export const ReplaceCoreV1NodeOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const replaceCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplaceCoreV1NodeInput,
   outputSchema: ReplaceCoreV1NodeOutput,
   errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -198517,7 +198427,7 @@ export interface ReplaceCoreV1NodeStatusInput {
   };
 }
 export const ReplaceCoreV1NodeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -198872,7 +198782,7 @@ export interface ReplaceCoreV1NodeStatusOutput {
   };
 }
 export const ReplaceCoreV1NodeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -199100,13 +199010,11 @@ export const ReplaceCoreV1NodeStatusOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceCoreV1NodeStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplaceCoreV1NodeStatusInput,
-    outputSchema: ReplaceCoreV1NodeStatusOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const replaceCoreV1NodeStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceCoreV1NodeStatusInput,
+  outputSchema: ReplaceCoreV1NodeStatusOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface ReplaceCoreV1PersistentVolumeInput {
   name: string;
@@ -199328,7 +199236,7 @@ export interface ReplaceCoreV1PersistentVolumeInput {
   };
 }
 export const ReplaceCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -199925,7 +199833,7 @@ export interface ReplaceCoreV1PersistentVolumeOutput {
   };
 }
 export const ReplaceCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -200310,7 +200218,7 @@ export const ReplaceCoreV1PersistentVolumeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1PersistentVolume =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1PersistentVolumeInput,
     outputSchema: ReplaceCoreV1PersistentVolumeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -200536,7 +200444,7 @@ export interface ReplaceCoreV1PersistentVolumeStatusInput {
   };
 }
 export const ReplaceCoreV1PersistentVolumeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -201133,7 +201041,7 @@ export interface ReplaceCoreV1PersistentVolumeStatusOutput {
   };
 }
 export const ReplaceCoreV1PersistentVolumeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -201518,7 +201426,7 @@ export const ReplaceCoreV1PersistentVolumeStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoreV1PersistentVolumeStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1PersistentVolumeStatusInput,
     outputSchema: ReplaceCoreV1PersistentVolumeStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -201539,7 +201447,7 @@ export interface WatchCoreV1ConfigMapListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchCoreV1ConfigMapListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -201562,7 +201470,7 @@ export interface WatchCoreV1ConfigMapListForAllNamespacesOutput {
   type: string;
 }
 export const WatchCoreV1ConfigMapListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1ConfigMapListForAllNamespacesOutput>;
@@ -201626,7 +201534,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1ConfigMapListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1ConfigMapListForAllNamespacesInput,
     outputSchema: WatchCoreV1ConfigMapListForAllNamespacesOutput,
   }));
@@ -201646,7 +201554,7 @@ export interface WatchCoreV1EndpointsListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchCoreV1EndpointsListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -201669,7 +201577,7 @@ export interface WatchCoreV1EndpointsListForAllNamespacesOutput {
   type: string;
 }
 export const WatchCoreV1EndpointsListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1EndpointsListForAllNamespacesOutput>;
@@ -201733,7 +201641,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1EndpointsListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1EndpointsListForAllNamespacesInput,
     outputSchema: WatchCoreV1EndpointsListForAllNamespacesOutput,
   }));
@@ -201753,7 +201661,7 @@ export interface WatchCoreV1EventListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchCoreV1EventListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -201776,7 +201684,7 @@ export interface WatchCoreV1EventListForAllNamespacesOutput {
   type: string;
 }
 export const WatchCoreV1EventListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1EventListForAllNamespacesOutput>;
@@ -201840,7 +201748,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1EventListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1EventListForAllNamespacesInput,
     outputSchema: WatchCoreV1EventListForAllNamespacesOutput,
   }));
@@ -201860,7 +201768,7 @@ export interface WatchCoreV1LimitRangeListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchCoreV1LimitRangeListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -201883,7 +201791,7 @@ export interface WatchCoreV1LimitRangeListForAllNamespacesOutput {
   type: string;
 }
 export const WatchCoreV1LimitRangeListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1LimitRangeListForAllNamespacesOutput>;
@@ -201947,7 +201855,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1LimitRangeListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1LimitRangeListForAllNamespacesInput,
     outputSchema: WatchCoreV1LimitRangeListForAllNamespacesOutput,
   }));
@@ -201968,7 +201876,7 @@ export interface WatchCoreV1NamespaceInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -201992,7 +201900,7 @@ export interface WatchCoreV1NamespaceOutput {
   type: string;
 }
 export const WatchCoreV1NamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespaceOutput>;
@@ -202056,12 +201964,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchCoreV1NamespaceInput,
-    outputSchema: WatchCoreV1NamespaceOutput,
-  }),
-);
+export const watchCoreV1Namespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchCoreV1NamespaceInput,
+  outputSchema: WatchCoreV1NamespaceOutput,
+}));
 // Input Schema
 export interface WatchCoreV1NamespaceListInput {
   allowWatchBookmarks?: boolean;
@@ -202078,7 +201984,7 @@ export interface WatchCoreV1NamespaceListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespaceListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -202101,7 +202007,7 @@ export interface WatchCoreV1NamespaceListOutput {
   type: string;
 }
 export const WatchCoreV1NamespaceListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespaceListOutput>;
@@ -202164,12 +202070,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchCoreV1NamespaceList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchCoreV1NamespaceListInput,
-    outputSchema: WatchCoreV1NamespaceListOutput,
-  }),
-);
+export const watchCoreV1NamespaceList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchCoreV1NamespaceListInput,
+  outputSchema: WatchCoreV1NamespaceListOutput,
+}));
 // Input Schema
 export interface WatchCoreV1NamespacedConfigMapInput {
   name: string;
@@ -202188,7 +202092,7 @@ export interface WatchCoreV1NamespacedConfigMapInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedConfigMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -202216,7 +202120,7 @@ export interface WatchCoreV1NamespacedConfigMapOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedConfigMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedConfigMapOutput>;
@@ -202282,7 +202186,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedConfigMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedConfigMapInput,
     outputSchema: WatchCoreV1NamespacedConfigMapOutput,
   }));
@@ -202303,7 +202207,7 @@ export interface WatchCoreV1NamespacedConfigMapListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedConfigMapListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -202330,7 +202234,7 @@ export interface WatchCoreV1NamespacedConfigMapListOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedConfigMapListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedConfigMapListOutput>;
@@ -202395,7 +202299,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedConfigMapList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedConfigMapListInput,
     outputSchema: WatchCoreV1NamespacedConfigMapListOutput,
   }));
@@ -202417,7 +202321,7 @@ export interface WatchCoreV1NamespacedEndpointsInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -202445,7 +202349,7 @@ export interface WatchCoreV1NamespacedEndpointsOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedEndpointsOutput>;
@@ -202511,7 +202415,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedEndpointsInput,
     outputSchema: WatchCoreV1NamespacedEndpointsOutput,
   }));
@@ -202532,7 +202436,7 @@ export interface WatchCoreV1NamespacedEndpointsListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedEndpointsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -202559,7 +202463,7 @@ export interface WatchCoreV1NamespacedEndpointsListOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedEndpointsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedEndpointsListOutput>;
@@ -202624,7 +202528,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedEndpointsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedEndpointsListInput,
     outputSchema: WatchCoreV1NamespacedEndpointsListOutput,
   }));
@@ -202646,7 +202550,7 @@ export interface WatchCoreV1NamespacedEventInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -202674,7 +202578,7 @@ export interface WatchCoreV1NamespacedEventOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedEventOutput>;
@@ -202739,12 +202643,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchCoreV1NamespacedEventInput,
-    outputSchema: WatchCoreV1NamespacedEventOutput,
-  }),
-);
+export const watchCoreV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchCoreV1NamespacedEventInput,
+  outputSchema: WatchCoreV1NamespacedEventOutput,
+}));
 // Input Schema
 export interface WatchCoreV1NamespacedEventListInput {
   namespace: string;
@@ -202762,7 +202664,7 @@ export interface WatchCoreV1NamespacedEventListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedEventListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -202789,7 +202691,7 @@ export interface WatchCoreV1NamespacedEventListOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedEventListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedEventListOutput>;
@@ -202854,7 +202756,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedEventList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedEventListInput,
     outputSchema: WatchCoreV1NamespacedEventListOutput,
   }));
@@ -202876,7 +202778,7 @@ export interface WatchCoreV1NamespacedLimitRangeInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedLimitRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -202904,7 +202806,7 @@ export interface WatchCoreV1NamespacedLimitRangeOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedLimitRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedLimitRangeOutput>;
@@ -202970,7 +202872,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedLimitRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedLimitRangeInput,
     outputSchema: WatchCoreV1NamespacedLimitRangeOutput,
   }));
@@ -202991,7 +202893,7 @@ export interface WatchCoreV1NamespacedLimitRangeListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedLimitRangeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -203018,7 +202920,7 @@ export interface WatchCoreV1NamespacedLimitRangeListOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedLimitRangeListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedLimitRangeListOutput>;
@@ -203083,7 +202985,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedLimitRangeList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedLimitRangeListInput,
     outputSchema: WatchCoreV1NamespacedLimitRangeListOutput,
   }));
@@ -203105,7 +203007,7 @@ export interface WatchCoreV1NamespacedPersistentVolumeClaimInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedPersistentVolumeClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -203133,7 +203035,7 @@ export interface WatchCoreV1NamespacedPersistentVolumeClaimOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedPersistentVolumeClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedPersistentVolumeClaimOutput>;
@@ -203199,7 +203101,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedPersistentVolumeClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: WatchCoreV1NamespacedPersistentVolumeClaimOutput,
   }));
@@ -203220,7 +203122,7 @@ export interface WatchCoreV1NamespacedPersistentVolumeClaimListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedPersistentVolumeClaimListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -203247,7 +203149,7 @@ export interface WatchCoreV1NamespacedPersistentVolumeClaimListOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedPersistentVolumeClaimListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedPersistentVolumeClaimListOutput>;
@@ -203312,7 +203214,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedPersistentVolumeClaimList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedPersistentVolumeClaimListInput,
     outputSchema: WatchCoreV1NamespacedPersistentVolumeClaimListOutput,
   }));
@@ -203334,7 +203236,7 @@ export interface WatchCoreV1NamespacedPodInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedPodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -203362,7 +203264,7 @@ export interface WatchCoreV1NamespacedPodOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedPodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedPodOutput>;
@@ -203427,12 +203329,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchCoreV1NamespacedPodInput,
-    outputSchema: WatchCoreV1NamespacedPodOutput,
-  }),
-);
+export const watchCoreV1NamespacedPod = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchCoreV1NamespacedPodInput,
+  outputSchema: WatchCoreV1NamespacedPodOutput,
+}));
 // Input Schema
 export interface WatchCoreV1NamespacedPodListInput {
   namespace: string;
@@ -203450,7 +203350,7 @@ export interface WatchCoreV1NamespacedPodListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedPodListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -203477,7 +203377,7 @@ export interface WatchCoreV1NamespacedPodListOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedPodListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedPodListOutput>;
@@ -203542,7 +203442,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedPodList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedPodListInput,
     outputSchema: WatchCoreV1NamespacedPodListOutput,
   }));
@@ -203564,7 +203464,7 @@ export interface WatchCoreV1NamespacedPodTemplateInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedPodTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -203592,7 +203492,7 @@ export interface WatchCoreV1NamespacedPodTemplateOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedPodTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedPodTemplateOutput>;
@@ -203658,7 +203558,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedPodTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedPodTemplateInput,
     outputSchema: WatchCoreV1NamespacedPodTemplateOutput,
   }));
@@ -203679,7 +203579,7 @@ export interface WatchCoreV1NamespacedPodTemplateListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedPodTemplateListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -203706,7 +203606,7 @@ export interface WatchCoreV1NamespacedPodTemplateListOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedPodTemplateListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedPodTemplateListOutput>;
@@ -203771,7 +203671,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedPodTemplateList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedPodTemplateListInput,
     outputSchema: WatchCoreV1NamespacedPodTemplateListOutput,
   }));
@@ -203793,7 +203693,7 @@ export interface WatchCoreV1NamespacedReplicationControllerInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedReplicationControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -203821,7 +203721,7 @@ export interface WatchCoreV1NamespacedReplicationControllerOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedReplicationControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedReplicationControllerOutput>;
@@ -203887,7 +203787,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedReplicationController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedReplicationControllerInput,
     outputSchema: WatchCoreV1NamespacedReplicationControllerOutput,
   }));
@@ -203908,7 +203808,7 @@ export interface WatchCoreV1NamespacedReplicationControllerListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedReplicationControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -203935,7 +203835,7 @@ export interface WatchCoreV1NamespacedReplicationControllerListOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedReplicationControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedReplicationControllerListOutput>;
@@ -204000,7 +203900,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedReplicationControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedReplicationControllerListInput,
     outputSchema: WatchCoreV1NamespacedReplicationControllerListOutput,
   }));
@@ -204022,7 +203922,7 @@ export interface WatchCoreV1NamespacedResourceQuotaInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedResourceQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -204050,7 +203950,7 @@ export interface WatchCoreV1NamespacedResourceQuotaOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedResourceQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedResourceQuotaOutput>;
@@ -204116,7 +204016,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedResourceQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedResourceQuotaInput,
     outputSchema: WatchCoreV1NamespacedResourceQuotaOutput,
   }));
@@ -204137,7 +204037,7 @@ export interface WatchCoreV1NamespacedResourceQuotaListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedResourceQuotaListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -204164,7 +204064,7 @@ export interface WatchCoreV1NamespacedResourceQuotaListOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedResourceQuotaListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedResourceQuotaListOutput>;
@@ -204229,7 +204129,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedResourceQuotaList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedResourceQuotaListInput,
     outputSchema: WatchCoreV1NamespacedResourceQuotaListOutput,
   }));
@@ -204251,7 +204151,7 @@ export interface WatchCoreV1NamespacedSecretInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -204279,7 +204179,7 @@ export interface WatchCoreV1NamespacedSecretOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedSecretOutput>;
@@ -204344,12 +204244,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchCoreV1NamespacedSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchCoreV1NamespacedSecretInput,
-    outputSchema: WatchCoreV1NamespacedSecretOutput,
-  }),
-);
+export const watchCoreV1NamespacedSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchCoreV1NamespacedSecretInput,
+  outputSchema: WatchCoreV1NamespacedSecretOutput,
+}));
 // Input Schema
 export interface WatchCoreV1NamespacedSecretListInput {
   namespace: string;
@@ -204367,7 +204265,7 @@ export interface WatchCoreV1NamespacedSecretListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedSecretListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -204394,7 +204292,7 @@ export interface WatchCoreV1NamespacedSecretListOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedSecretListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedSecretListOutput>;
@@ -204459,7 +204357,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedSecretList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedSecretListInput,
     outputSchema: WatchCoreV1NamespacedSecretListOutput,
   }));
@@ -204481,7 +204379,7 @@ export interface WatchCoreV1NamespacedServiceInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -204509,7 +204407,7 @@ export interface WatchCoreV1NamespacedServiceOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedServiceOutput>;
@@ -204575,7 +204473,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedServiceInput,
     outputSchema: WatchCoreV1NamespacedServiceOutput,
   }));
@@ -204597,7 +204495,7 @@ export interface WatchCoreV1NamespacedServiceAccountInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -204625,7 +204523,7 @@ export interface WatchCoreV1NamespacedServiceAccountOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedServiceAccountOutput>;
@@ -204691,7 +204589,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedServiceAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedServiceAccountInput,
     outputSchema: WatchCoreV1NamespacedServiceAccountOutput,
   }));
@@ -204712,7 +204610,7 @@ export interface WatchCoreV1NamespacedServiceAccountListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedServiceAccountListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -204739,7 +204637,7 @@ export interface WatchCoreV1NamespacedServiceAccountListOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedServiceAccountListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedServiceAccountListOutput>;
@@ -204804,7 +204702,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedServiceAccountList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedServiceAccountListInput,
     outputSchema: WatchCoreV1NamespacedServiceAccountListOutput,
   }));
@@ -204825,7 +204723,7 @@ export interface WatchCoreV1NamespacedServiceListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NamespacedServiceListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -204852,7 +204750,7 @@ export interface WatchCoreV1NamespacedServiceListOutput {
   type: string;
 }
 export const WatchCoreV1NamespacedServiceListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NamespacedServiceListOutput>;
@@ -204917,7 +204815,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1NamespacedServiceList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1NamespacedServiceListInput,
     outputSchema: WatchCoreV1NamespacedServiceListOutput,
   }));
@@ -204937,7 +204835,7 @@ export interface WatchCoreV1NodeInput {
   timeoutSeconds?: number;
   watch?: boolean;
 }
-export const WatchCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchCoreV1NodeInput = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.PathParam()),
   allowWatchBookmarks: Schema.optional(Schema.Boolean),
   continue: Schema.optional(Schema.String),
@@ -204960,7 +204858,7 @@ export interface WatchCoreV1NodeOutput {
   object: unknown;
   type: string;
 }
-export const WatchCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchCoreV1NodeOutput = /*@__PURE__*/ Schema.Struct({
   object: Schema.Unknown,
   type: Schema.String,
 }) as unknown as Schema.Codec<WatchCoreV1NodeOutput>;
@@ -205024,7 +204922,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const watchCoreV1Node = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchCoreV1NodeInput,
   outputSchema: WatchCoreV1NodeOutput,
 }));
@@ -205044,7 +204942,7 @@ export interface WatchCoreV1NodeListInput {
   watch?: boolean;
 }
 export const WatchCoreV1NodeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -205067,7 +204965,7 @@ export interface WatchCoreV1NodeListOutput {
   type: string;
 }
 export const WatchCoreV1NodeListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1NodeListOutput>;
@@ -205130,7 +205028,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchCoreV1NodeList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const watchCoreV1NodeList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchCoreV1NodeListInput,
   outputSchema: WatchCoreV1NodeListOutput,
 }));
@@ -205151,7 +205049,7 @@ export interface WatchCoreV1PersistentVolumeInput {
   watch?: boolean;
 }
 export const WatchCoreV1PersistentVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -205175,7 +205073,7 @@ export interface WatchCoreV1PersistentVolumeOutput {
   type: string;
 }
 export const WatchCoreV1PersistentVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1PersistentVolumeOutput>;
@@ -205239,12 +205137,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchCoreV1PersistentVolume = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchCoreV1PersistentVolumeInput,
-    outputSchema: WatchCoreV1PersistentVolumeOutput,
-  }),
-);
+export const watchCoreV1PersistentVolume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchCoreV1PersistentVolumeInput,
+  outputSchema: WatchCoreV1PersistentVolumeOutput,
+}));
 // Input Schema
 export interface WatchCoreV1PersistentVolumeClaimListForAllNamespacesInput {
   allowWatchBookmarks?: boolean;
@@ -205261,7 +205157,7 @@ export interface WatchCoreV1PersistentVolumeClaimListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchCoreV1PersistentVolumeClaimListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -205284,7 +205180,7 @@ export interface WatchCoreV1PersistentVolumeClaimListForAllNamespacesOutput {
   type: string;
 }
 export const WatchCoreV1PersistentVolumeClaimListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1PersistentVolumeClaimListForAllNamespacesOutput>;
@@ -205348,7 +205244,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1PersistentVolumeClaimListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1PersistentVolumeClaimListForAllNamespacesInput,
     outputSchema: WatchCoreV1PersistentVolumeClaimListForAllNamespacesOutput,
   }));
@@ -205368,7 +205264,7 @@ export interface WatchCoreV1PersistentVolumeListInput {
   watch?: boolean;
 }
 export const WatchCoreV1PersistentVolumeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -205391,7 +205287,7 @@ export interface WatchCoreV1PersistentVolumeListOutput {
   type: string;
 }
 export const WatchCoreV1PersistentVolumeListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1PersistentVolumeListOutput>;
@@ -205455,7 +205351,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1PersistentVolumeList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1PersistentVolumeListInput,
     outputSchema: WatchCoreV1PersistentVolumeListOutput,
   }));
@@ -205475,7 +205371,7 @@ export interface WatchCoreV1PodListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchCoreV1PodListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -205498,7 +205394,7 @@ export interface WatchCoreV1PodListForAllNamespacesOutput {
   type: string;
 }
 export const WatchCoreV1PodListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1PodListForAllNamespacesOutput>;
@@ -205562,7 +205458,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1PodListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1PodListForAllNamespacesInput,
     outputSchema: WatchCoreV1PodListForAllNamespacesOutput,
   }));
@@ -205582,7 +205478,7 @@ export interface WatchCoreV1PodTemplateListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchCoreV1PodTemplateListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -205605,7 +205501,7 @@ export interface WatchCoreV1PodTemplateListForAllNamespacesOutput {
   type: string;
 }
 export const WatchCoreV1PodTemplateListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1PodTemplateListForAllNamespacesOutput>;
@@ -205669,7 +205565,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1PodTemplateListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1PodTemplateListForAllNamespacesInput,
     outputSchema: WatchCoreV1PodTemplateListForAllNamespacesOutput,
   }));
@@ -205689,7 +205585,7 @@ export interface WatchCoreV1ReplicationControllerListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchCoreV1ReplicationControllerListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -205712,7 +205608,7 @@ export interface WatchCoreV1ReplicationControllerListForAllNamespacesOutput {
   type: string;
 }
 export const WatchCoreV1ReplicationControllerListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1ReplicationControllerListForAllNamespacesOutput>;
@@ -205776,7 +205672,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1ReplicationControllerListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1ReplicationControllerListForAllNamespacesInput,
     outputSchema: WatchCoreV1ReplicationControllerListForAllNamespacesOutput,
   }));
@@ -205796,7 +205692,7 @@ export interface WatchCoreV1ResourceQuotaListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchCoreV1ResourceQuotaListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -205819,7 +205715,7 @@ export interface WatchCoreV1ResourceQuotaListForAllNamespacesOutput {
   type: string;
 }
 export const WatchCoreV1ResourceQuotaListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1ResourceQuotaListForAllNamespacesOutput>;
@@ -205883,7 +205779,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1ResourceQuotaListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1ResourceQuotaListForAllNamespacesInput,
     outputSchema: WatchCoreV1ResourceQuotaListForAllNamespacesOutput,
   }));
@@ -205903,7 +205799,7 @@ export interface WatchCoreV1SecretListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchCoreV1SecretListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -205926,7 +205822,7 @@ export interface WatchCoreV1SecretListForAllNamespacesOutput {
   type: string;
 }
 export const WatchCoreV1SecretListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1SecretListForAllNamespacesOutput>;
@@ -205990,7 +205886,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1SecretListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1SecretListForAllNamespacesInput,
     outputSchema: WatchCoreV1SecretListForAllNamespacesOutput,
   }));
@@ -206010,7 +205906,7 @@ export interface WatchCoreV1ServiceAccountListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchCoreV1ServiceAccountListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -206033,7 +205929,7 @@ export interface WatchCoreV1ServiceAccountListForAllNamespacesOutput {
   type: string;
 }
 export const WatchCoreV1ServiceAccountListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1ServiceAccountListForAllNamespacesOutput>;
@@ -206097,7 +205993,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1ServiceAccountListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1ServiceAccountListForAllNamespacesInput,
     outputSchema: WatchCoreV1ServiceAccountListForAllNamespacesOutput,
   }));
@@ -206117,7 +206013,7 @@ export interface WatchCoreV1ServiceListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchCoreV1ServiceListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -206140,7 +206036,7 @@ export interface WatchCoreV1ServiceListForAllNamespacesOutput {
   type: string;
 }
 export const WatchCoreV1ServiceListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoreV1ServiceListForAllNamespacesOutput>;
@@ -206204,7 +206100,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoreV1ServiceListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoreV1ServiceListForAllNamespacesInput,
     outputSchema: WatchCoreV1ServiceListForAllNamespacesOutput,
   }));

@@ -13,7 +13,7 @@ export interface ListGroupStreamVpcPeeringConnectionsInput {
   pretty?: boolean;
 }
 export const ListGroupStreamVpcPeeringConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     requesterAccountId: Schema.String,
     envelope: Schema.optional(Schema.Boolean),
@@ -30,7 +30,7 @@ export const ListGroupStreamVpcPeeringConnectionsInput =
 // Output Schema
 export type ListGroupStreamVpcPeeringConnectionsOutput = void;
 export const ListGroupStreamVpcPeeringConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupStreamVpcPeeringConnectionsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupStreamVpcPeeringConnectionsOutput>;
 
 // The operation
 /**
@@ -48,7 +48,7 @@ export const ListGroupStreamVpcPeeringConnectionsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const listGroupStreamVpcPeeringConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupStreamVpcPeeringConnectionsInput,
     outputSchema: ListGroupStreamVpcPeeringConnectionsOutput,
     errors: [Forbidden, NotFound] as const,

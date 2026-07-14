@@ -17,7 +17,7 @@ export interface MachinesStopInput {
     | "SIGTERM";
   timeout?: string;
 }
-export const MachinesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesStopInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
   signal: Schema.optional(
@@ -42,7 +42,7 @@ export const MachinesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type MachinesStopOutput = void;
 export const MachinesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesStopOutput>;
 
 // The operation
 /**
@@ -53,7 +53,7 @@ export const MachinesStopOutput =
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesStopInput,
   outputSchema: MachinesStopOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -11,7 +11,7 @@ export interface TasksRunsAppendLogCreateInput {
   entries?: Record<string, unknown>[];
 }
 export const TasksRunsAppendLogCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     task_id: Schema.String.pipe(T.PathParam()),
@@ -63,7 +63,7 @@ export interface TasksRunsAppendLogCreateOutput {
   completed_at?: string | null;
 }
 export const TasksRunsAppendLogCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     task: Schema.String,
     stage: Schema.NullOr(Schema.String),
@@ -123,10 +123,8 @@ export const TasksRunsAppendLogCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tasksRunsAppendLogCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TasksRunsAppendLogCreateInput,
-    outputSchema: TasksRunsAppendLogCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const tasksRunsAppendLogCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TasksRunsAppendLogCreateInput,
+  outputSchema: TasksRunsAppendLogCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

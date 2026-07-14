@@ -4,9 +4,7 @@ import * as T from "../../traits.ts";
 
 // Input Schema
 export interface GetCurrentUserInput {}
-export const GetCurrentUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetCurrentUserInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v2/user" }),
 ) as unknown as Schema.Codec<GetCurrentUserInput>;
 
@@ -17,7 +15,7 @@ export interface GetCurrentUserOutput {
   name: string;
   role?: { id: string; name: string };
 }
-export const GetCurrentUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCurrentUserOutput = /*@__PURE__*/ Schema.Struct({
   email: Schema.String,
   id: Schema.String,
   name: Schema.String,
@@ -33,7 +31,7 @@ export const GetCurrentUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Get current user
  */
-export const getCurrentUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getCurrentUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCurrentUserInput,
   outputSchema: GetCurrentUserOutput,
 }));

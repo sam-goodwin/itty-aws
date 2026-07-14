@@ -73,7 +73,7 @@ export interface GetCustomersCustomerPaymentMethodsInput {
     | "zip";
 }
 export const GetCustomersCustomerPaymentMethodsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     allow_redisplay: Schema.optional(
       Schema.Literals(["always", "limited", "unspecified"]),
@@ -703,7 +703,7 @@ export interface GetCustomersCustomerPaymentMethodsOutput {
   url: string;
 }
 export const GetCustomersCustomerPaymentMethodsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         acss_debit: Schema.optional(
@@ -1474,7 +1474,7 @@ export const GetCustomersCustomerPaymentMethodsOutput =
  * @param type - An optional filter on the list, based on the object `type` field. Without the filter, the list includes all current and future payment method types. If your integration expects only one type of payment method in the response, make sure to provide a type value in the request.
  */
 export const GetCustomersCustomerPaymentMethods =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetCustomersCustomerPaymentMethodsInput,
     outputSchema: GetCustomersCustomerPaymentMethodsOutput,
   }));

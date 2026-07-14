@@ -65,7 +65,7 @@ export interface GetRecordsInput {
   shardIterator: string;
   maxResults?: number;
 }
-export const GetRecordsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRecordsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ shardIterator: S.String, maxResults: S.optional(S.Number) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -73,12 +73,12 @@ export const GetRecordsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetRecordsInput",
 }) as any as S.Schema<GetRecordsInput>;
 export type OriginType = "USER" | "REPLICATION" | "TTL" | (string & {});
-export const OriginType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OriginType = /*@__PURE__*/ S.String;
 export interface KeyspacesMetadata {
   expirationTime?: string;
   writeTime?: string;
 }
-export const KeyspacesMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const KeyspacesMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationTime: S.optional(S.String),
     writeTime: S.optional(S.String),
@@ -90,7 +90,7 @@ export interface KeyspacesCell {
   value?: KeyspacesCellValue;
   metadata?: KeyspacesMetadata;
 }
-export const KeyspacesCell = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const KeyspacesCell = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(
       S.suspend(() => KeyspacesCellValue).annotate({
@@ -101,7 +101,7 @@ export const KeyspacesCell = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyspacesCell" }) as any as S.Schema<KeyspacesCell>;
 export type KeyspacesCellList = KeyspacesCell[];
-export const KeyspacesCellList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const KeyspacesCellList = /*@__PURE__*/ S.Array(
   S.suspend((): S.Schema<KeyspacesCell> => KeyspacesCell).annotate({
     identifier: "KeyspacesCell",
   }),
@@ -111,32 +111,31 @@ export interface KeyspacesCellMapDefinition {
   value?: KeyspacesCellValue;
   metadata?: KeyspacesMetadata;
 }
-export const KeyspacesCellMapDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(
-        S.suspend(() => KeyspacesCellValue).annotate({
-          identifier: "KeyspacesCellValue",
-        }),
-      ),
-      value: S.optional(
-        S.suspend(() => KeyspacesCellValue).annotate({
-          identifier: "KeyspacesCellValue",
-        }),
-      ),
-      metadata: S.optional(KeyspacesMetadata),
-    }),
+export const KeyspacesCellMapDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(
+      S.suspend(() => KeyspacesCellValue).annotate({
+        identifier: "KeyspacesCellValue",
+      }),
+    ),
+    value: S.optional(
+      S.suspend(() => KeyspacesCellValue).annotate({
+        identifier: "KeyspacesCellValue",
+      }),
+    ),
+    metadata: S.optional(KeyspacesMetadata),
+  }),
 ).annotate({
   identifier: "KeyspacesCellMapDefinition",
 }) as any as S.Schema<KeyspacesCellMapDefinition>;
 export type KeyspacesCellMap = KeyspacesCellMapDefinition[];
-export const KeyspacesCellMap = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const KeyspacesCellMap = /*@__PURE__*/ S.Array(
   S.suspend(
     (): S.Schema<KeyspacesCellMapDefinition> => KeyspacesCellMapDefinition,
   ).annotate({ identifier: "KeyspacesCellMapDefinition" }),
 ) as any as S.Schema<KeyspacesCellMap>;
 export type KeyspacesUdtMap = { [key: string]: KeyspacesCell | undefined };
-export const KeyspacesUdtMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const KeyspacesUdtMap = /*@__PURE__*/ S.Record(
   S.String,
   S.suspend((): S.Schema<KeyspacesCell> => KeyspacesCell)
     .annotate({ identifier: "KeyspacesCell" })
@@ -871,7 +870,7 @@ export type KeyspacesCellValue =
       varintT?: never;
       udtT: { [key: string]: KeyspacesCell | undefined };
     };
-export const KeyspacesCellValue = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const KeyspacesCellValue = /*@__PURE__*/ S.Union([
   S.Struct({ asciiT: S.String }),
   S.Struct({ bigintT: S.String }),
   S.Struct({ blobT: T.Blob }),
@@ -922,14 +921,14 @@ export const KeyspacesCellValue = /*@__PURE__*/ /*#__PURE__*/ S.Union([
 export type KeyspacesKeysMap = {
   [key: string]: KeyspacesCellValue | undefined;
 };
-export const KeyspacesKeysMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const KeyspacesKeysMap = /*@__PURE__*/ S.Record(
   S.String,
   S.suspend(() => KeyspacesCellValue)
     .annotate({ identifier: "KeyspacesCellValue" })
     .pipe(S.optional),
 );
 export type KeyspacesCells = { [key: string]: KeyspacesCell | undefined };
-export const KeyspacesCells = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const KeyspacesCells = /*@__PURE__*/ S.Record(
   S.String,
   S.suspend((): S.Schema<KeyspacesCell> => KeyspacesCell)
     .annotate({ identifier: "KeyspacesCell" })
@@ -940,7 +939,7 @@ export interface KeyspacesRow {
   staticCells?: { [key: string]: KeyspacesCell | undefined };
   rowMetadata?: KeyspacesMetadata;
 }
-export const KeyspacesRow = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const KeyspacesRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valueCells: S.optional(KeyspacesCells),
     staticCells: S.optional(KeyspacesCells),
@@ -957,7 +956,7 @@ export interface Record {
   oldImage?: KeyspacesRow;
   sequenceNumber?: string;
 }
-export const Record = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Record = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventVersion: S.optional(S.String),
     createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -970,13 +969,13 @@ export const Record = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
 export type RecordList = Record[];
-export const RecordList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Record);
+export const RecordList = /*@__PURE__*/ S.Array(Record);
 export type IteratorPosition = "AT_TIP" | "BEHIND_TIP" | (string & {});
-export const IteratorPosition = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const IteratorPosition = /*@__PURE__*/ S.String;
 export interface IteratorDescription {
   iteratorPosition?: IteratorPosition;
 }
-export const IteratorDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IteratorDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ iteratorPosition: S.optional(IteratorPosition) }),
 ).annotate({
   identifier: "IteratorDescription",
@@ -986,7 +985,7 @@ export interface GetRecordsOutput {
   nextShardIterator?: string;
   iteratorDescription?: IteratorDescription;
 }
-export const GetRecordsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRecordsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changeRecords: S.optional(RecordList),
     nextShardIterator: S.optional(S.String),
@@ -1001,21 +1000,21 @@ export type ValidationExceptionType =
   | "ExpiredIterator"
   | "ExpiredNextToken"
   | (string & {});
-export const ValidationExceptionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionType = /*@__PURE__*/ S.String;
 export type ShardIteratorType =
   | "TRIM_HORIZON"
   | "LATEST"
   | "AT_SEQUENCE_NUMBER"
   | "AFTER_SEQUENCE_NUMBER"
   | (string & {});
-export const ShardIteratorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ShardIteratorType = /*@__PURE__*/ S.String;
 export interface GetShardIteratorInput {
   streamArn: string;
   shardId: string;
   shardIteratorType: ShardIteratorType;
   sequenceNumber?: string;
 }
-export const GetShardIteratorInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetShardIteratorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamArn: S.String,
     shardId: S.String,
@@ -1030,18 +1029,18 @@ export const GetShardIteratorInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetShardIteratorOutput {
   shardIterator?: string;
 }
-export const GetShardIteratorOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ shardIterator: S.optional(S.String) }),
+export const GetShardIteratorOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ shardIterator: S.optional(S.String) }),
 ).annotate({
   identifier: "GetShardIteratorOutput",
 }) as any as S.Schema<GetShardIteratorOutput>;
 export type ShardFilterType = "CHILD_SHARDS" | (string & {});
-export const ShardFilterType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ShardFilterType = /*@__PURE__*/ S.String;
 export interface ShardFilter {
   type?: ShardFilterType;
   shardId?: string;
 }
-export const ShardFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ShardFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ShardFilterType),
     shardId: S.optional(S.String),
@@ -1053,7 +1052,7 @@ export interface GetStreamInput {
   shardFilter?: ShardFilter;
   nextToken?: string;
 }
-export const GetStreamInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamArn: S.String,
     maxResults: S.optional(S.Number),
@@ -1069,19 +1068,19 @@ export type StreamStatus =
   | "DISABLING"
   | "DISABLED"
   | (string & {});
-export const StreamStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StreamStatus = /*@__PURE__*/ S.String;
 export type StreamViewType =
   | "NEW_IMAGE"
   | "OLD_IMAGE"
   | "NEW_AND_OLD_IMAGES"
   | "KEYS_ONLY"
   | (string & {});
-export const StreamViewType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StreamViewType = /*@__PURE__*/ S.String;
 export interface SequenceNumberRange {
   startingSequenceNumber?: string;
   endingSequenceNumber?: string;
 }
-export const SequenceNumberRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SequenceNumberRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startingSequenceNumber: S.optional(S.String),
     endingSequenceNumber: S.optional(S.String),
@@ -1090,13 +1089,13 @@ export const SequenceNumberRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "SequenceNumberRange",
 }) as any as S.Schema<SequenceNumberRange>;
 export type ShardIdList = string[];
-export const ShardIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ShardIdList = /*@__PURE__*/ S.Array(S.String);
 export interface Shard {
   shardId?: string;
   sequenceNumberRange?: SequenceNumberRange;
   parentShardIds?: string[];
 }
-export const Shard = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Shard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shardId: S.optional(S.String),
     sequenceNumberRange: S.optional(SequenceNumberRange),
@@ -1104,7 +1103,7 @@ export const Shard = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Shard" }) as any as S.Schema<Shard>;
 export type ShardDescriptionList = Shard[];
-export const ShardDescriptionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Shard);
+export const ShardDescriptionList = /*@__PURE__*/ S.Array(Shard);
 export interface GetStreamOutput {
   streamArn: string;
   streamLabel: string;
@@ -1116,7 +1115,7 @@ export interface GetStreamOutput {
   shards?: Shard[];
   nextToken?: string;
 }
-export const GetStreamOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetStreamOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamArn: S.String,
     streamLabel: S.String,
@@ -1137,7 +1136,7 @@ export interface ListStreamsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListStreamsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListStreamsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyspaceName: S.optional(S.String),
     tableName: S.optional(S.String),
@@ -1155,7 +1154,7 @@ export interface Stream {
   tableName: string;
   streamLabel: string;
 }
-export const Stream = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Stream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamArn: S.String,
     keyspaceName: S.String,
@@ -1164,12 +1163,12 @@ export const Stream = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Stream" }) as any as S.Schema<Stream>;
 export type StreamList = Stream[];
-export const StreamList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Stream);
+export const StreamList = /*@__PURE__*/ S.Array(Stream);
 export interface ListStreamsOutput {
   streams?: Stream[];
   nextToken?: string;
 }
-export const ListStreamsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListStreamsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streams: S.optional(StreamList),
     nextToken: S.optional(S.String),
@@ -1224,7 +1223,7 @@ export const getRecords: API.OperationMethod<
   GetRecordsOutput,
   GetRecordsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecordsInput,
   output: GetRecordsOutput,
   errors: [
@@ -1251,7 +1250,7 @@ export const getShardIterator: API.OperationMethod<
   GetShardIteratorOutput,
   GetShardIteratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetShardIteratorInput,
   output: GetShardIteratorOutput,
   errors: [
@@ -1293,7 +1292,7 @@ export const getStream: API.OperationMethod<
     GetStreamError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetStreamInput,
   output: GetStreamOutput,
   errors: [
@@ -1341,7 +1340,7 @@ export const listStreams: API.OperationMethod<
     ListStreamsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsInput,
   output: ListStreamsOutput,
   errors: [

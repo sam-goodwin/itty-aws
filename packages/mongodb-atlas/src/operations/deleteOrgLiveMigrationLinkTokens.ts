@@ -9,7 +9,7 @@ export interface DeleteOrgLiveMigrationLinkTokensInput {
   envelope?: boolean;
 }
 export const DeleteOrgLiveMigrationLinkTokensInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -22,7 +22,7 @@ export const DeleteOrgLiveMigrationLinkTokensInput =
 // Output Schema
 export type DeleteOrgLiveMigrationLinkTokensOutput = void;
 export const DeleteOrgLiveMigrationLinkTokensOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgLiveMigrationLinkTokensOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgLiveMigrationLinkTokensOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const DeleteOrgLiveMigrationLinkTokensOutput =
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  */
 export const deleteOrgLiveMigrationLinkTokens =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteOrgLiveMigrationLinkTokensInput,
     outputSchema: DeleteOrgLiveMigrationLinkTokensOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

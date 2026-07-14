@@ -16,7 +16,7 @@ export interface TenantGroupFlexClusterUpgradeInput {
   pretty?: boolean;
 }
 export const TenantGroupFlexClusterUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -30,7 +30,7 @@ export const TenantGroupFlexClusterUpgradeInput =
 // Output Schema
 export type TenantGroupFlexClusterUpgradeOutput = void;
 export const TenantGroupFlexClusterUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TenantGroupFlexClusterUpgradeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TenantGroupFlexClusterUpgradeOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const TenantGroupFlexClusterUpgradeOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const tenantGroupFlexClusterUpgrade =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TenantGroupFlexClusterUpgradeInput,
     outputSchema: TenantGroupFlexClusterUpgradeOutput,
     errors: [

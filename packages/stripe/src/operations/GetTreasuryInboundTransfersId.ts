@@ -8,7 +8,7 @@ export interface GetTreasuryInboundTransfersIdInput {
   expand?: string;
 }
 export const GetTreasuryInboundTransfersIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -280,7 +280,7 @@ export interface GetTreasuryInboundTransfersIdOutput {
     | null;
 }
 export const GetTreasuryInboundTransfersIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -466,7 +466,7 @@ export const GetTreasuryInboundTransfersIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTreasuryInboundTransfersId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTreasuryInboundTransfersIdInput,
     outputSchema: GetTreasuryInboundTransfersIdOutput,
   }));

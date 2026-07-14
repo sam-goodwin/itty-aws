@@ -19,7 +19,7 @@ export interface AutoScaleVCoresCreateInput {
   location: string;
 }
 export const AutoScaleVCoresCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcoreName: Schema.String.pipe(T.PathParam()),
@@ -58,7 +58,7 @@ export interface AutoScaleVCoresCreateOutput {
   };
 }
 export const AutoScaleVCoresCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -87,12 +87,10 @@ export const AutoScaleVCoresCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vcoreName - The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const AutoScaleVCoresCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoScaleVCoresCreateInput,
-    outputSchema: AutoScaleVCoresCreateOutput,
-  }),
-);
+export const AutoScaleVCoresCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoScaleVCoresCreateInput,
+  outputSchema: AutoScaleVCoresCreateOutput,
+}));
 // Input Schema
 export interface AutoScaleVCoresDeleteInput {
   subscriptionId: string;
@@ -100,7 +98,7 @@ export interface AutoScaleVCoresDeleteInput {
   vcoreName: string;
 }
 export const AutoScaleVCoresDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcoreName: Schema.String.pipe(T.PathParam()),
@@ -115,7 +113,7 @@ export const AutoScaleVCoresDeleteInput =
 // Output Schema
 export type AutoScaleVCoresDeleteOutput = void;
 export const AutoScaleVCoresDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AutoScaleVCoresDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AutoScaleVCoresDeleteOutput>;
 
 // The operation
 /**
@@ -126,12 +124,10 @@ export const AutoScaleVCoresDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vcoreName - The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const AutoScaleVCoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoScaleVCoresDeleteInput,
-    outputSchema: AutoScaleVCoresDeleteOutput,
-  }),
-);
+export const AutoScaleVCoresDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoScaleVCoresDeleteInput,
+  outputSchema: AutoScaleVCoresDeleteOutput,
+}));
 // Input Schema
 export interface AutoScaleVCoresGetInput {
   subscriptionId: string;
@@ -139,7 +135,7 @@ export interface AutoScaleVCoresGetInput {
   vcoreName: string;
 }
 export const AutoScaleVCoresGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcoreName: Schema.String.pipe(T.PathParam()),
@@ -166,7 +162,7 @@ export interface AutoScaleVCoresGetOutput {
   };
 }
 export const AutoScaleVCoresGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -195,7 +191,7 @@ export const AutoScaleVCoresGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vcoreName - The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const AutoScaleVCoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AutoScaleVCoresGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AutoScaleVCoresGetInput,
   outputSchema: AutoScaleVCoresGetOutput,
 }));
@@ -205,7 +201,7 @@ export interface AutoScaleVCoresListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const AutoScaleVCoresListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -234,7 +230,7 @@ export interface AutoScaleVCoresListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AutoScaleVCoresListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -278,7 +274,7 @@ export const AutoScaleVCoresListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AutoScaleVCoresListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AutoScaleVCoresListByResourceGroupInput,
     outputSchema: AutoScaleVCoresListByResourceGroupOutput,
   }));
@@ -287,7 +283,7 @@ export interface AutoScaleVCoresListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AutoScaleVCoresListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -315,7 +311,7 @@ export interface AutoScaleVCoresListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AutoScaleVCoresListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -358,7 +354,7 @@ export const AutoScaleVCoresListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const AutoScaleVCoresListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AutoScaleVCoresListBySubscriptionInput,
     outputSchema: AutoScaleVCoresListBySubscriptionOutput,
   }));
@@ -372,7 +368,7 @@ export interface AutoScaleVCoresUpdateInput {
   properties?: { capacityLimit?: number };
 }
 export const AutoScaleVCoresUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcoreName: Schema.String.pipe(T.PathParam()),
@@ -412,7 +408,7 @@ export interface AutoScaleVCoresUpdateOutput {
   };
 }
 export const AutoScaleVCoresUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -441,12 +437,10 @@ export const AutoScaleVCoresUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vcoreName - The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const AutoScaleVCoresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoScaleVCoresUpdateInput,
-    outputSchema: AutoScaleVCoresUpdateOutput,
-  }),
-);
+export const AutoScaleVCoresUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoScaleVCoresUpdateInput,
+  outputSchema: AutoScaleVCoresUpdateOutput,
+}));
 // Input Schema
 export interface CapacitiesCheckNameAvailabilityInput {
   subscriptionId: string;
@@ -455,7 +449,7 @@ export interface CapacitiesCheckNameAvailabilityInput {
   type?: string;
 }
 export const CapacitiesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -475,7 +469,7 @@ export interface CapacitiesCheckNameAvailabilityOutput {
   message?: string;
 }
 export const CapacitiesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -490,7 +484,7 @@ export const CapacitiesCheckNameAvailabilityOutput =
  * @param location - The name of Azure region.
  */
 export const CapacitiesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CapacitiesCheckNameAvailabilityInput,
     outputSchema: CapacitiesCheckNameAvailabilityOutput,
   }));
@@ -513,7 +507,7 @@ export interface CapacitiesCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const CapacitiesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapacitiesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
@@ -560,27 +554,25 @@ export interface CapacitiesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const CapacitiesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<CapacitiesCreateOutput>;
+export const CapacitiesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<CapacitiesCreateOutput>;
 
 // The operation
 /**
@@ -591,7 +583,7 @@ export const CapacitiesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const CapacitiesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesCreateInput,
   outputSchema: CapacitiesCreateOutput,
 }));
@@ -601,7 +593,7 @@ export interface CapacitiesDeleteInput {
   resourceGroupName: string;
   dedicatedCapacityName: string;
 }
-export const CapacitiesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapacitiesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
@@ -616,7 +608,7 @@ export const CapacitiesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CapacitiesDeleteOutput = void;
 export const CapacitiesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CapacitiesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CapacitiesDeleteOutput>;
 
 // The operation
 /**
@@ -627,7 +619,7 @@ export const CapacitiesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const CapacitiesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesDeleteInput,
   outputSchema: CapacitiesDeleteOutput,
 }));
@@ -638,7 +630,7 @@ export interface CapacitiesGetDetailsInput {
   dedicatedCapacityName: string;
 }
 export const CapacitiesGetDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
@@ -665,7 +657,7 @@ export interface CapacitiesGetDetailsOutput {
   };
 }
 export const CapacitiesGetDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -694,17 +686,15 @@ export const CapacitiesGetDetailsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const CapacitiesGetDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CapacitiesGetDetailsInput,
-    outputSchema: CapacitiesGetDetailsOutput,
-  }),
-);
+export const CapacitiesGetDetails = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapacitiesGetDetailsInput,
+  outputSchema: CapacitiesGetDetailsOutput,
+}));
 // Input Schema
 export interface CapacitiesListInput {
   subscriptionId: string;
 }
-export const CapacitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapacitiesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -731,7 +721,7 @@ export interface CapacitiesListOutput {
   }[];
   nextLink?: string;
 }
-export const CapacitiesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapacitiesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -763,7 +753,7 @@ export const CapacitiesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const CapacitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesListInput,
   outputSchema: CapacitiesListOutput,
 }));
@@ -773,7 +763,7 @@ export interface CapacitiesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const CapacitiesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -802,7 +792,7 @@ export interface CapacitiesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const CapacitiesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -846,7 +836,7 @@ export const CapacitiesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const CapacitiesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CapacitiesListByResourceGroupInput,
     outputSchema: CapacitiesListByResourceGroupOutput,
   }));
@@ -855,7 +845,7 @@ export interface CapacitiesListSkusInput {
   subscriptionId: string;
 }
 export const CapacitiesListSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -874,7 +864,7 @@ export interface CapacitiesListSkusOutput {
   }[];
 }
 export const CapacitiesListSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -895,7 +885,7 @@ export const CapacitiesListSkusOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const CapacitiesListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesListSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesListSkusInput,
   outputSchema: CapacitiesListSkusOutput,
 }));
@@ -906,7 +896,7 @@ export interface CapacitiesListSkusForCapacityInput {
   dedicatedCapacityName: string;
 }
 export const CapacitiesListSkusForCapacityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
@@ -930,7 +920,7 @@ export interface CapacitiesListSkusForCapacityOutput {
   }[];
 }
 export const CapacitiesListSkusForCapacityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -959,7 +949,7 @@ export const CapacitiesListSkusForCapacityOutput =
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
 export const CapacitiesListSkusForCapacity =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CapacitiesListSkusForCapacityInput,
     outputSchema: CapacitiesListSkusForCapacityOutput,
   }));
@@ -969,7 +959,7 @@ export interface CapacitiesResumeInput {
   resourceGroupName: string;
   dedicatedCapacityName: string;
 }
-export const CapacitiesResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapacitiesResumeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
@@ -984,7 +974,7 @@ export const CapacitiesResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CapacitiesResumeOutput = void;
 export const CapacitiesResumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CapacitiesResumeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CapacitiesResumeOutput>;
 
 // The operation
 /**
@@ -995,7 +985,7 @@ export const CapacitiesResumeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const CapacitiesResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesResume = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesResumeInput,
   outputSchema: CapacitiesResumeOutput,
 }));
@@ -1005,13 +995,11 @@ export interface CapacitiesSuspendInput {
   resourceGroupName: string;
   dedicatedCapacityName: string;
 }
-export const CapacitiesSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const CapacitiesSuspendInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/suspend",
@@ -1022,7 +1010,7 @@ export const CapacitiesSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type CapacitiesSuspendOutput = void;
 export const CapacitiesSuspendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CapacitiesSuspendOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CapacitiesSuspendOutput>;
 
 // The operation
 /**
@@ -1033,7 +1021,7 @@ export const CapacitiesSuspendOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const CapacitiesSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesSuspend = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesSuspendInput,
   outputSchema: CapacitiesSuspendOutput,
 }));
@@ -1055,7 +1043,7 @@ export interface CapacitiesUpdateInput {
     friendlyName?: string;
   };
 }
-export const CapacitiesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapacitiesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
@@ -1103,27 +1091,25 @@ export interface CapacitiesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const CapacitiesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<CapacitiesUpdateOutput>;
+export const CapacitiesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<CapacitiesUpdateOutput>;
 
 // The operation
 /**
@@ -1134,15 +1120,13 @@ export const CapacitiesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dedicatedCapacityName - The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const CapacitiesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapacitiesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapacitiesUpdateInput,
   outputSchema: CapacitiesUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.PowerBIDedicated/operations",
@@ -1182,7 +1166,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1245,7 +1229,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

@@ -12,7 +12,7 @@ export interface GetGroupDatabaseUserInput {
   pretty?: boolean;
 }
 export const GetGroupDatabaseUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     username: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const GetGroupDatabaseUserInput =
 // Output Schema
 export type GetGroupDatabaseUserOutput = void;
 export const GetGroupDatabaseUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupDatabaseUserOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupDatabaseUserOutput>;
 
 // The operation
 /**
@@ -57,10 +57,8 @@ export const GetGroupDatabaseUserOutput =
 | SCRAM-SHA | `awsIAMType`, `x509Type`, `ldapAuthType`, `oidcAuthType` | `NONE` | Alphanumeric string |
 
  */
-export const getGroupDatabaseUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupDatabaseUserInput,
-    outputSchema: GetGroupDatabaseUserOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupDatabaseUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupDatabaseUserInput,
+  outputSchema: GetGroupDatabaseUserOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

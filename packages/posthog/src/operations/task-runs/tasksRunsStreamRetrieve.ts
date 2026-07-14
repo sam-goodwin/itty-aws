@@ -11,7 +11,7 @@ export interface TasksRunsStreamRetrieveInput {
   start?: string;
 }
 export const TasksRunsStreamRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     task_id: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export const TasksRunsStreamRetrieveInput =
 // Output Schema
 export type TasksRunsStreamRetrieveOutput = void;
 export const TasksRunsStreamRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksRunsStreamRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksRunsStreamRetrieveOutput>;
 
 // The operation
 /**
@@ -39,10 +39,8 @@ export const TasksRunsStreamRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param start - Set to `latest` to skip the event backlog and only receive events published after connecting.
  */
-export const tasksRunsStreamRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TasksRunsStreamRetrieveInput,
-    outputSchema: TasksRunsStreamRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const tasksRunsStreamRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TasksRunsStreamRetrieveInput,
+  outputSchema: TasksRunsStreamRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

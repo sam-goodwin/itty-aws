@@ -15,7 +15,7 @@ export interface GetPaymentIntentsSearchInput {
   query: string;
 }
 export const GetPaymentIntentsSearchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     page: Schema.optional(Schema.String),
@@ -296,7 +296,7 @@ export interface GetPaymentIntentsSearchOutput {
   url: string;
 }
 export const GetPaymentIntentsSearchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amount: Schema.Number,
@@ -710,7 +710,7 @@ export const GetPaymentIntentsSearchOutput =
  * @param query - The search query string. See [search query language](https://docs.stripe.com/search#search-query-language) and the list of supported [query fields for payment intents](https://docs.stripe.com/search#query-fields-for-paymentintents).
  */
 export const GetPaymentIntentsSearch =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: GetPaymentIntentsSearchInput,
     outputSchema: GetPaymentIntentsSearchOutput,
     pagination: {

@@ -14,7 +14,7 @@ export interface PersonsListInput {
   properties?: string;
   search?: string;
 }
-export const PersonsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PersonsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   distinct_id: Schema.optional(Schema.String),
   email: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface PersonsListOutput {
     last_seen_at?: string | null;
   }[];
 }
-export const PersonsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PersonsListOutput = /*@__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
   count: Schema.optional(Schema.Number),
@@ -73,7 +73,7 @@ export const PersonsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param properties - Filter Persons by person properties.
  * @param search - Search persons, either by email (full text search) or distinct_id (exact match).
  */
-export const personsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const personsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PersonsListInput,
   outputSchema: PersonsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -15,7 +15,7 @@ export interface UpdateNeonAuthEmailAndPasswordConfigInput {
   disable_sign_up?: boolean;
 }
 export const UpdateNeonAuthEmailAndPasswordConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     enabled: Schema.optional(Schema.Boolean),
@@ -45,7 +45,7 @@ export interface UpdateNeonAuthEmailAndPasswordConfigOutput {
   disable_sign_up: boolean;
 }
 export const UpdateNeonAuthEmailAndPasswordConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     email_verification_method: Schema.Literals(["link", "otp"]),
     require_email_verification: Schema.Boolean,
@@ -66,7 +66,7 @@ export const UpdateNeonAuthEmailAndPasswordConfigOutput =
  * @param branch_id - The Neon branch ID
  */
 export const updateNeonAuthEmailAndPasswordConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateNeonAuthEmailAndPasswordConfigInput,
     outputSchema: UpdateNeonAuthEmailAndPasswordConfigOutput,
   }));

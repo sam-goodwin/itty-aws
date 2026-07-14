@@ -11,7 +11,7 @@ export interface RemoveOrganizationMemberInput {
   delete_service_tokens?: boolean;
 }
 export const RemoveOrganizationMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     delete_passwords: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const RemoveOrganizationMemberInput =
 // Output Schema
 export type RemoveOrganizationMemberOutput = void;
 export const RemoveOrganizationMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveOrganizationMemberOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveOrganizationMemberOutput>;
 
 // The operation
 /**
@@ -37,10 +37,8 @@ export const RemoveOrganizationMemberOutput =
  * @param delete_passwords - Whether to delete all passwords associated with the member. Only available when removing other members (not yourself).
  * @param delete_service_tokens - Whether to delete all service tokens associated with the member. Only available when removing other members (not yourself).
  */
-export const removeOrganizationMember = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RemoveOrganizationMemberInput,
-    outputSchema: RemoveOrganizationMemberOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const removeOrganizationMember = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RemoveOrganizationMemberInput,
+  outputSchema: RemoveOrganizationMemberOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

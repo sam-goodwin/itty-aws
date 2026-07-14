@@ -9,7 +9,7 @@ export interface UpdateOrganizationInput {
   require_mfa?: boolean;
 }
 export const UpdateOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     overages: Schema.optional(Schema.Boolean),
     require_mfa: Schema.optional(Schema.Boolean),
@@ -33,7 +33,7 @@ export interface UpdateOrganizationOutput {
   };
 }
 export const UpdateOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export const UpdateOrganizationOutput =
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const updateOrganization = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateOrganization = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateOrganizationInput,
   outputSchema: UpdateOrganizationOutput,
 }));

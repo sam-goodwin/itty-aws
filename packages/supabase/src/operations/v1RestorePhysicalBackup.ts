@@ -9,7 +9,7 @@ export interface V1RestorePhysicalBackupInput {
   id: number;
 }
 export const V1RestorePhysicalBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     id: Schema.Number,
   }).pipe(
@@ -22,7 +22,7 @@ export const V1RestorePhysicalBackupInput =
 // Output Schema
 export type V1RestorePhysicalBackupOutput = void;
 export const V1RestorePhysicalBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RestorePhysicalBackupOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RestorePhysicalBackupOutput>;
 
 // The operation
 /**
@@ -30,10 +30,8 @@ export const V1RestorePhysicalBackupOutput =
  *
  * @param ref - Project ref
  */
-export const v1RestorePhysicalBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1RestorePhysicalBackupInput,
-    outputSchema: V1RestorePhysicalBackupOutput,
-    errors: [Forbidden] as const,
-  }),
-);
+export const v1RestorePhysicalBackup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1RestorePhysicalBackupInput,
+  outputSchema: V1RestorePhysicalBackupOutput,
+  errors: [Forbidden] as const,
+}));

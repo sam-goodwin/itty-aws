@@ -8,7 +8,7 @@ export interface SingleSessionSummariesRetrieveInput {
   session_id: string;
 }
 export const SingleSessionSummariesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     session_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -53,7 +53,7 @@ export interface SingleSessionSummariesRetrieveOutput {
   } | null;
 }
 export const SingleSessionSummariesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     session_id: Schema.String,
     distinct_id: Schema.NullOr(Schema.String),
@@ -108,7 +108,7 @@ export const SingleSessionSummariesRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const singleSessionSummariesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SingleSessionSummariesRetrieveInput,
     outputSchema: SingleSessionSummariesRetrieveOutput,
   }));

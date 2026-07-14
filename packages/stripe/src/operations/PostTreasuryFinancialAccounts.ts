@@ -29,7 +29,7 @@ export interface PostTreasuryFinancialAccountsInput {
   supported_currencies: string[];
 }
 export const PostTreasuryFinancialAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     features: Schema.optional(
       Schema.Struct({
@@ -406,7 +406,7 @@ export interface PostTreasuryFinancialAccountsOutput {
   supported_currencies: string[];
 }
 export const PostTreasuryFinancialAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active_features: Schema.optional(
       Schema.Array(
         Schema.Literals([
@@ -824,7 +824,7 @@ export const PostTreasuryFinancialAccountsOutput =
  * <p>Creates a new FinancialAccount. Each connected account can have up to three FinancialAccounts by default.</p>
  */
 export const PostTreasuryFinancialAccounts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTreasuryFinancialAccountsInput,
     outputSchema: PostTreasuryFinancialAccountsOutput,
   }));

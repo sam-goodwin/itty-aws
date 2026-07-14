@@ -10,7 +10,7 @@ export interface AddLocationToGroupInput {
   location: string;
 }
 export const AddLocationToGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -33,7 +33,7 @@ export interface AddLocationToGroupOutput {
   };
 }
 export const AddLocationToGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     group: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export const AddLocationToGroupOutput =
  * @param groupName - The name of the group.
  * @param location - The location code to add to the group.
  */
-export const addLocationToGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const addLocationToGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddLocationToGroupInput,
   outputSchema: AddLocationToGroupOutput,
   errors: [BadRequest, NotFound] as const,

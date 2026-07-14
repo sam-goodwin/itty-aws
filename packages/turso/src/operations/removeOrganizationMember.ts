@@ -9,7 +9,7 @@ export interface RemoveOrganizationMemberInput {
   username: string;
 }
 export const RemoveOrganizationMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     username: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -24,7 +24,7 @@ export interface RemoveOrganizationMemberOutput {
   member?: string;
 }
 export const RemoveOrganizationMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     member: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<RemoveOrganizationMemberOutput>;
 
@@ -37,10 +37,8 @@ export const RemoveOrganizationMemberOutput =
  * @param organizationSlug - The slug of the organization or user account.
  * @param username - The username of a Turso user or organization member.
  */
-export const removeOrganizationMember = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RemoveOrganizationMemberInput,
-    outputSchema: RemoveOrganizationMemberOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const removeOrganizationMember = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RemoveOrganizationMemberInput,
+  outputSchema: RemoveOrganizationMemberOutput,
+  errors: [NotFound] as const,
+}));

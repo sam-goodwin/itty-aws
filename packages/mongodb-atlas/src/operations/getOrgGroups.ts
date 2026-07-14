@@ -13,7 +13,7 @@ export interface GetOrgGroupsInput {
   pretty?: boolean;
   name?: string;
 }
-export const GetOrgGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrgGroupsInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
@@ -28,7 +28,7 @@ export const GetOrgGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetOrgGroupsOutput = void;
 export const GetOrgGroupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgGroupsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgGroupsOutput>;
 
 // The operation
 /**
@@ -48,7 +48,7 @@ export const GetOrgGroupsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param name - Human-readable label of the project to use to filter the returned list. Performs a case-insensitive search for a project within the organization which is prefixed by the specified name.
  */
-export const getOrgGroups = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrgGroups = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgGroupsInput,
   outputSchema: GetOrgGroupsOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

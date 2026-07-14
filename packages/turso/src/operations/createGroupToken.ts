@@ -11,7 +11,7 @@ export interface CreateGroupTokenInput {
   authorization?: "full-access" | "read-only";
   permissions?: { read_attach?: { databases?: string[] } };
 }
-export const CreateGroupTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateGroupTokenInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   expiration: Schema.optional(Schema.String),
@@ -36,11 +36,9 @@ export const CreateGroupTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface CreateGroupTokenOutput {
   jwt?: string;
 }
-export const CreateGroupTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    jwt: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<CreateGroupTokenOutput>;
+export const CreateGroupTokenOutput = /*@__PURE__*/ Schema.Struct({
+  jwt: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<CreateGroupTokenOutput>;
 
 // The operation
 /**
@@ -53,7 +51,7 @@ export const CreateGroupTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param expiration - Expiration time for the token (e.g., 2w1d30m).
  * @param authorization - Authorization level for the token (full-access or read-only).
  */
-export const createGroupToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createGroupToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateGroupTokenInput,
   outputSchema: CreateGroupTokenOutput,
   errors: [BadRequest, NotFound] as const,

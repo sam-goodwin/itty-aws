@@ -14,7 +14,7 @@ export interface CheckNameAvailabilityInput {
   type?: "Microsoft.Management/managementGroups";
 }
 export const CheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(
       Schema.Literals(["Microsoft.Management/managementGroups"]),
@@ -34,7 +34,7 @@ export interface CheckNameAvailabilityOutput {
   message?: string;
 }
 export const CheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -46,12 +46,10 @@ export const CheckNameAvailabilityOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const CheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CheckNameAvailabilityInput,
-    outputSchema: CheckNameAvailabilityOutput,
-  }),
-);
+export const CheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CheckNameAvailabilityInput,
+  outputSchema: CheckNameAvailabilityOutput,
+}));
 // Input Schema
 export interface EntitiesListInput {
   $skiptoken?: string;
@@ -68,7 +66,7 @@ export interface EntitiesListInput {
   $view?: "FullHierarchy" | "GroupsOnly" | "SubscriptionsOnly" | "Audit";
   groupName?: string;
 }
-export const EntitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EntitiesListInput = /*@__PURE__*/ Schema.Struct({
   $skiptoken: Schema.optional(Schema.String),
   $skip: Schema.optional(Schema.Number),
   $top: Schema.optional(Schema.Number),
@@ -122,7 +120,7 @@ export interface EntitiesListOutput {
   nextLink?: string;
   count?: number;
 }
-export const EntitiesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EntitiesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -181,7 +179,7 @@ With $search=ChildrenOnly the API will return only the first level of children o
  * @param groupName - A filter which allows the get entities call to focus on a particular group (i.e. "$filter=name eq 'groupName'")
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
-export const EntitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EntitiesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: EntitiesListInput,
   outputSchema: EntitiesListOutput,
 }));
@@ -194,7 +192,7 @@ export interface HierarchySettingsCreateOrUpdateInput {
   };
 }
 export const HierarchySettingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -225,7 +223,7 @@ export interface HierarchySettingsCreateOrUpdateOutput {
   };
 }
 export const HierarchySettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -253,7 +251,7 @@ export const HierarchySettingsCreateOrUpdateOutput =
  * @param groupId - Management Group ID.
  */
 export const HierarchySettingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HierarchySettingsCreateOrUpdateInput,
     outputSchema: HierarchySettingsCreateOrUpdateOutput,
   }));
@@ -262,7 +260,7 @@ export interface HierarchySettingsDeleteInput {
   groupId: string;
 }
 export const HierarchySettingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -275,7 +273,7 @@ export const HierarchySettingsDeleteInput =
 // Output Schema
 export type HierarchySettingsDeleteOutput = void;
 export const HierarchySettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HierarchySettingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HierarchySettingsDeleteOutput>;
 
 // The operation
 /**
@@ -284,18 +282,16 @@ export const HierarchySettingsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param groupId - Management Group ID.
  */
-export const HierarchySettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HierarchySettingsDeleteInput,
-    outputSchema: HierarchySettingsDeleteOutput,
-  }),
-);
+export const HierarchySettingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HierarchySettingsDeleteInput,
+  outputSchema: HierarchySettingsDeleteOutput,
+}));
 // Input Schema
 export interface HierarchySettingsGetInput {
   groupId: string;
 }
 export const HierarchySettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -320,7 +316,7 @@ export interface HierarchySettingsGetOutput {
   };
 }
 export const HierarchySettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -347,18 +343,16 @@ export const HierarchySettingsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param groupId - Management Group ID.
  */
-export const HierarchySettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HierarchySettingsGetInput,
-    outputSchema: HierarchySettingsGetOutput,
-  }),
-);
+export const HierarchySettingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HierarchySettingsGetInput,
+  outputSchema: HierarchySettingsGetOutput,
+}));
 // Input Schema
 export interface HierarchySettingsListInput {
   groupId: string;
 }
 export const HierarchySettingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -383,7 +377,7 @@ export interface HierarchySettingsListOutput {
   "@nextLink"?: string;
 }
 export const HierarchySettingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -412,12 +406,10 @@ export const HierarchySettingsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param groupId - Management Group ID.
  */
-export const HierarchySettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HierarchySettingsListInput,
-    outputSchema: HierarchySettingsListOutput,
-  }),
-);
+export const HierarchySettingsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HierarchySettingsListInput,
+  outputSchema: HierarchySettingsListOutput,
+}));
 // Input Schema
 export interface HierarchySettingsUpdateInput {
   groupId: string;
@@ -427,7 +419,7 @@ export interface HierarchySettingsUpdateInput {
   };
 }
 export const HierarchySettingsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -458,7 +450,7 @@ export interface HierarchySettingsUpdateOutput {
   };
 }
 export const HierarchySettingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -485,12 +477,10 @@ export const HierarchySettingsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param groupId - Management Group ID.
  */
-export const HierarchySettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HierarchySettingsUpdateInput,
-    outputSchema: HierarchySettingsUpdateOutput,
-  }),
-);
+export const HierarchySettingsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HierarchySettingsUpdateInput,
+  outputSchema: HierarchySettingsUpdateOutput,
+}));
 // Input Schema
 export interface ManagementGroupsCreateOrUpdateInput {
   groupId: string;
@@ -518,7 +508,7 @@ export interface ManagementGroupsCreateOrUpdateInput {
   };
 }
 export const ManagementGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -584,7 +574,7 @@ export interface ManagementGroupsCreateOrUpdateOutput {
   };
 }
 export const ManagementGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -614,7 +604,7 @@ export const ManagementGroupsCreateOrUpdateOutput =
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
 export const ManagementGroupsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagementGroupsCreateOrUpdateInput,
     outputSchema: ManagementGroupsCreateOrUpdateOutput,
   }));
@@ -623,7 +613,7 @@ export interface ManagementGroupsDeleteInput {
   groupId: string;
 }
 export const ManagementGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -636,7 +626,7 @@ export const ManagementGroupsDeleteInput =
 // Output Schema
 export type ManagementGroupsDeleteOutput = void;
 export const ManagementGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagementGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagementGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -647,12 +637,10 @@ export const ManagementGroupsDeleteOutput =
  * @param groupId - Management Group ID.
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
-export const ManagementGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagementGroupsDeleteInput,
-    outputSchema: ManagementGroupsDeleteOutput,
-  }),
-);
+export const ManagementGroupsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementGroupsDeleteInput,
+  outputSchema: ManagementGroupsDeleteOutput,
+}));
 // Input Schema
 export interface ManagementGroupsGetInput {
   groupId: string;
@@ -661,7 +649,7 @@ export interface ManagementGroupsGetInput {
   $filter?: string;
 }
 export const ManagementGroupsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(
       Schema.Literals(["children", "path", "ancestors"]),
@@ -691,7 +679,7 @@ export interface ManagementGroupsGetOutput {
   };
 }
 export const ManagementGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -722,7 +710,7 @@ export const ManagementGroupsGetOutput =
  * @param $filter - A filter which allows the exclusion of subscriptions from results (i.e. '$filter=children.childType ne Subscription')
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
-export const ManagementGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ManagementGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ManagementGroupsGetInput,
   outputSchema: ManagementGroupsGetOutput,
 }));
@@ -733,7 +721,7 @@ export interface ManagementGroupsGetDescendantsInput {
   $top?: number;
 }
 export const ManagementGroupsGetDescendantsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     $skiptoken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -756,7 +744,7 @@ export interface ManagementGroupsGetDescendantsOutput {
   nextLink?: string;
 }
 export const ManagementGroupsGetDescendantsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -788,7 +776,7 @@ If a previous response contains a nextLink element, the value of the nextLink el
  * @param $top - Number of elements to return when retrieving results. Passing this in will override $skipToken.
  */
 export const ManagementGroupsGetDescendants =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagementGroupsGetDescendantsInput,
     outputSchema: ManagementGroupsGetDescendantsOutput,
   }));
@@ -797,7 +785,7 @@ export interface ManagementGroupsListInput {
   $skiptoken?: string;
 }
 export const ManagementGroupsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -818,7 +806,7 @@ export interface ManagementGroupsListOutput {
   "@nextLink"?: string;
 }
 export const ManagementGroupsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -846,19 +834,17 @@ export const ManagementGroupsListOutput =
  * @param $skiptoken - Page continuation token is only used if a previous operation returned a partial result.
 If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls.
  */
-export const ManagementGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagementGroupsListInput,
-    outputSchema: ManagementGroupsListOutput,
-  }),
-);
+export const ManagementGroupsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementGroupsListInput,
+  outputSchema: ManagementGroupsListOutput,
+}));
 // Input Schema
 export interface ManagementGroupSubscriptionsCreateInput {
   groupId: string;
   subscriptionId: string;
 }
 export const ManagementGroupSubscriptionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -884,7 +870,7 @@ export interface ManagementGroupSubscriptionsCreateOutput {
   };
 }
 export const ManagementGroupSubscriptionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -914,7 +900,7 @@ export const ManagementGroupSubscriptionsCreateOutput =
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
 export const ManagementGroupSubscriptionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagementGroupSubscriptionsCreateInput,
     outputSchema: ManagementGroupSubscriptionsCreateOutput,
   }));
@@ -924,7 +910,7 @@ export interface ManagementGroupSubscriptionsDeleteInput {
   subscriptionId: string;
 }
 export const ManagementGroupSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -938,7 +924,7 @@ export const ManagementGroupSubscriptionsDeleteInput =
 // Output Schema
 export type ManagementGroupSubscriptionsDeleteOutput = void;
 export const ManagementGroupSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagementGroupSubscriptionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagementGroupSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -950,7 +936,7 @@ export const ManagementGroupSubscriptionsDeleteOutput =
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
 export const ManagementGroupSubscriptionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagementGroupSubscriptionsDeleteInput,
     outputSchema: ManagementGroupSubscriptionsDeleteOutput,
   }));
@@ -960,7 +946,7 @@ export interface ManagementGroupSubscriptionsGetSubscriptionInput {
   subscriptionId: string;
 }
 export const ManagementGroupSubscriptionsGetSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -986,7 +972,7 @@ export interface ManagementGroupSubscriptionsGetSubscriptionOutput {
   };
 }
 export const ManagementGroupSubscriptionsGetSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1016,7 +1002,7 @@ export const ManagementGroupSubscriptionsGetSubscriptionOutput =
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
 export const ManagementGroupSubscriptionsGetSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagementGroupSubscriptionsGetSubscriptionInput,
     outputSchema: ManagementGroupSubscriptionsGetSubscriptionOutput,
   }));
@@ -1026,7 +1012,7 @@ export interface ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGrou
   $skiptoken?: string;
 }
 export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
@@ -1055,7 +1041,7 @@ export interface ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGrou
   nextLink?: string;
 }
 export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1100,7 +1086,7 @@ export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupOut
 If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls.
  */
 export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInput,
     outputSchema:
@@ -1113,7 +1099,7 @@ export interface ManagementGroupsUpdateInput {
   parentGroupId?: string;
 }
 export const ManagementGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     displayName: Schema.optional(Schema.String),
     parentGroupId: Schema.optional(Schema.String),
@@ -1140,7 +1126,7 @@ export interface ManagementGroupsUpdateOutput {
   };
 }
 export const ManagementGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1168,17 +1154,13 @@ export const ManagementGroupsUpdateOutput =
  * @param groupId - Management Group ID.
  * @param Cache-Control - Indicates whether the request should utilize any caches. Populate the header with 'no-cache' value to bypass existing caches.
  */
-export const ManagementGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagementGroupsUpdateInput,
-    outputSchema: ManagementGroupsUpdateOutput,
-  }),
-);
+export const ManagementGroupsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementGroupsUpdateInput,
+  outputSchema: ManagementGroupsUpdateOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Management/operations",
@@ -1202,7 +1184,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1232,14 +1214,14 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export interface StartTenantBackfillInput {}
 export const StartTenantBackfillInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Management/startTenantBackfill",
@@ -1259,7 +1241,7 @@ export interface StartTenantBackfillOutput {
     | "Completed";
 }
 export const StartTenantBackfillOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tenantId: Schema.optional(Schema.String),
     status: Schema.optional(
       Schema.Literals([
@@ -1279,14 +1261,14 @@ export const StartTenantBackfillOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const StartTenantBackfill = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StartTenantBackfill = /*@__PURE__*/ API.make(() => ({
   inputSchema: StartTenantBackfillInput,
   outputSchema: StartTenantBackfillOutput,
 }));
 // Input Schema
 export interface TenantBackfillStatusInput {}
 export const TenantBackfillStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Management/tenantBackfillStatus",
@@ -1306,7 +1288,7 @@ export interface TenantBackfillStatusOutput {
     | "Completed";
 }
 export const TenantBackfillStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tenantId: Schema.optional(Schema.String),
     status: Schema.optional(
       Schema.Literals([
@@ -1326,9 +1308,7 @@ export const TenantBackfillStatusOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const TenantBackfillStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TenantBackfillStatusInput,
-    outputSchema: TenantBackfillStatusOutput,
-  }),
-);
+export const TenantBackfillStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TenantBackfillStatusInput,
+  outputSchema: TenantBackfillStatusOutput,
+}));

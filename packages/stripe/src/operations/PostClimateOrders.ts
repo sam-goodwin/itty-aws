@@ -12,21 +12,19 @@ export interface PostClimateOrdersInput {
   metric_tons?: string;
   product: string;
 }
-export const PostClimateOrdersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    amount: Schema.optional(Schema.Number),
-    beneficiary: Schema.optional(
-      Schema.Struct({
-        public_name: Schema.String,
-      }),
-    ),
-    currency: Schema.optional(Schema.String),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    metric_tons: Schema.optional(Schema.String),
-    product: Schema.String,
-  },
-).pipe(
+export const PostClimateOrdersInput = /*@__PURE__*/ Schema.Struct({
+  amount: Schema.optional(Schema.Number),
+  beneficiary: Schema.optional(
+    Schema.Struct({
+      public_name: Schema.String,
+    }),
+  ),
+  currency: Schema.optional(Schema.String),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metric_tons: Schema.optional(Schema.String),
+  product: Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v1/climate/orders",
@@ -123,7 +121,7 @@ export interface PostClimateOrdersOutput {
   status: "awaiting_funds" | "canceled" | "confirmed" | "delivered" | "open";
 }
 export const PostClimateOrdersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount_fees: Schema.Number,
     amount_subtotal: Schema.Number,
     amount_total: Schema.Number,
@@ -247,7 +245,7 @@ export const PostClimateOrdersOutput =
  * <p>Creates a Climate order object for a given Climate product. The order will be processed immediately
  * after creation and payment will be deducted your Stripe balance.</p>
  */
-export const PostClimateOrders = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostClimateOrders = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostClimateOrdersInput,
   outputSchema: PostClimateOrdersOutput,
 }));

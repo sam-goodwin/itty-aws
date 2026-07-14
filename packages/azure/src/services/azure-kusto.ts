@@ -17,7 +17,7 @@ export interface AttachedDatabaseConfigurationsCheckNameAvailabilityInput {
   type: "Microsoft.Kusto/clusters/attachedDatabaseConfigurations";
 }
 export const AttachedDatabaseConfigurationsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -41,7 +41,7 @@ export interface AttachedDatabaseConfigurationsCheckNameAvailabilityOutput {
   reason?: "Invalid" | "AlreadyExists";
 }
 export const AttachedDatabaseConfigurationsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export const AttachedDatabaseConfigurationsCheckNameAvailabilityOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const AttachedDatabaseConfigurationsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AttachedDatabaseConfigurationsCheckNameAvailabilityInput,
     outputSchema: AttachedDatabaseConfigurationsCheckNameAvailabilityOutput,
   }));
@@ -97,7 +97,7 @@ export interface AttachedDatabaseConfigurationsCreateOrUpdateInput {
   location?: string;
 }
 export const AttachedDatabaseConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -171,7 +171,7 @@ export interface AttachedDatabaseConfigurationsCreateOrUpdateOutput {
   };
 }
 export const AttachedDatabaseConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -202,7 +202,7 @@ export const AttachedDatabaseConfigurationsCreateOrUpdateOutput =
  * @param attachedDatabaseConfigurationName - The name of the attached database configuration.
  */
 export const AttachedDatabaseConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AttachedDatabaseConfigurationsCreateOrUpdateInput,
     outputSchema: AttachedDatabaseConfigurationsCreateOrUpdateOutput,
   }));
@@ -214,7 +214,7 @@ export interface AttachedDatabaseConfigurationsDeleteInput {
   attachedDatabaseConfigurationName: string;
 }
 export const AttachedDatabaseConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -230,7 +230,7 @@ export const AttachedDatabaseConfigurationsDeleteInput =
 // Output Schema
 export type AttachedDatabaseConfigurationsDeleteOutput = void;
 export const AttachedDatabaseConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AttachedDatabaseConfigurationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AttachedDatabaseConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -243,7 +243,7 @@ export const AttachedDatabaseConfigurationsDeleteOutput =
  * @param attachedDatabaseConfigurationName - The name of the attached database configuration.
  */
 export const AttachedDatabaseConfigurationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AttachedDatabaseConfigurationsDeleteInput,
     outputSchema: AttachedDatabaseConfigurationsDeleteOutput,
   }));
@@ -255,7 +255,7 @@ export interface AttachedDatabaseConfigurationsGetInput {
   attachedDatabaseConfigurationName: string;
 }
 export const AttachedDatabaseConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -283,7 +283,7 @@ export interface AttachedDatabaseConfigurationsGetOutput {
   };
 }
 export const AttachedDatabaseConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -314,7 +314,7 @@ export const AttachedDatabaseConfigurationsGetOutput =
  * @param attachedDatabaseConfigurationName - The name of the attached database configuration.
  */
 export const AttachedDatabaseConfigurationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AttachedDatabaseConfigurationsGetInput,
     outputSchema: AttachedDatabaseConfigurationsGetOutput,
   }));
@@ -325,7 +325,7 @@ export interface AttachedDatabaseConfigurationsListByClusterInput {
   clusterName: string;
 }
 export const AttachedDatabaseConfigurationsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -355,7 +355,7 @@ export interface AttachedDatabaseConfigurationsListByClusterOutput {
   nextLink?: string;
 }
 export const AttachedDatabaseConfigurationsListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -402,7 +402,7 @@ export const AttachedDatabaseConfigurationsListByClusterOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const AttachedDatabaseConfigurationsListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AttachedDatabaseConfigurationsListByClusterInput,
     outputSchema: AttachedDatabaseConfigurationsListByClusterOutput,
   }));
@@ -415,7 +415,7 @@ export interface ClusterPrincipalAssignmentsCheckNameAvailabilityInput {
   type: "Microsoft.Kusto/clusters/principalAssignments";
 }
 export const ClusterPrincipalAssignmentsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -437,7 +437,7 @@ export interface ClusterPrincipalAssignmentsCheckNameAvailabilityOutput {
   reason?: "Invalid" | "AlreadyExists";
 }
 export const ClusterPrincipalAssignmentsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -454,7 +454,7 @@ export const ClusterPrincipalAssignmentsCheckNameAvailabilityOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const ClusterPrincipalAssignmentsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClusterPrincipalAssignmentsCheckNameAvailabilityInput,
     outputSchema: ClusterPrincipalAssignmentsCheckNameAvailabilityOutput,
   }));
@@ -483,7 +483,7 @@ export interface ClusterPrincipalAssignmentsCreateOrUpdateInput {
   };
 }
 export const ClusterPrincipalAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -537,7 +537,7 @@ export interface ClusterPrincipalAssignmentsCreateOrUpdateOutput {
   };
 }
 export const ClusterPrincipalAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -568,7 +568,7 @@ export const ClusterPrincipalAssignmentsCreateOrUpdateOutput =
  * @param principalAssignmentName - The name of the Kusto principalAssignment.
  */
 export const ClusterPrincipalAssignmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClusterPrincipalAssignmentsCreateOrUpdateInput,
     outputSchema: ClusterPrincipalAssignmentsCreateOrUpdateOutput,
   }));
@@ -580,7 +580,7 @@ export interface ClusterPrincipalAssignmentsDeleteInput {
   principalAssignmentName: string;
 }
 export const ClusterPrincipalAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -596,7 +596,7 @@ export const ClusterPrincipalAssignmentsDeleteInput =
 // Output Schema
 export type ClusterPrincipalAssignmentsDeleteOutput = void;
 export const ClusterPrincipalAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClusterPrincipalAssignmentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClusterPrincipalAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -609,7 +609,7 @@ export const ClusterPrincipalAssignmentsDeleteOutput =
  * @param principalAssignmentName - The name of the Kusto principalAssignment.
  */
 export const ClusterPrincipalAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClusterPrincipalAssignmentsDeleteInput,
     outputSchema: ClusterPrincipalAssignmentsDeleteOutput,
   }));
@@ -621,7 +621,7 @@ export interface ClusterPrincipalAssignmentsGetInput {
   principalAssignmentName: string;
 }
 export const ClusterPrincipalAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -649,7 +649,7 @@ export interface ClusterPrincipalAssignmentsGetOutput {
   };
 }
 export const ClusterPrincipalAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -680,7 +680,7 @@ export const ClusterPrincipalAssignmentsGetOutput =
  * @param principalAssignmentName - The name of the Kusto principalAssignment.
  */
 export const ClusterPrincipalAssignmentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClusterPrincipalAssignmentsGetInput,
     outputSchema: ClusterPrincipalAssignmentsGetOutput,
   }));
@@ -691,7 +691,7 @@ export interface ClusterPrincipalAssignmentsListInput {
   clusterName: string;
 }
 export const ClusterPrincipalAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -721,7 +721,7 @@ export interface ClusterPrincipalAssignmentsListOutput {
   nextLink?: string;
 }
 export const ClusterPrincipalAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -768,7 +768,7 @@ export const ClusterPrincipalAssignmentsListOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const ClusterPrincipalAssignmentsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClusterPrincipalAssignmentsListInput,
     outputSchema: ClusterPrincipalAssignmentsListOutput,
   }));
@@ -797,7 +797,7 @@ export interface ClustersAddCalloutPoliciesInput {
   nextLink?: string;
 }
 export const ClustersAddCalloutPoliciesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -835,7 +835,7 @@ export const ClustersAddCalloutPoliciesInput =
 // Output Schema
 export type ClustersAddCalloutPoliciesOutput = void;
 export const ClustersAddCalloutPoliciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersAddCalloutPoliciesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersAddCalloutPoliciesOutput>;
 
 // The operation
 /**
@@ -846,12 +846,10 @@ export const ClustersAddCalloutPoliciesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kusto cluster.
  */
-export const ClustersAddCalloutPolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersAddCalloutPoliciesInput,
-    outputSchema: ClustersAddCalloutPoliciesOutput,
-  }),
-);
+export const ClustersAddCalloutPolicies = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersAddCalloutPoliciesInput,
+  outputSchema: ClustersAddCalloutPoliciesOutput,
+}));
 // Input Schema
 export interface ClustersAddLanguageExtensionsInput {
   subscriptionId: string;
@@ -872,7 +870,7 @@ export interface ClustersAddLanguageExtensionsInput {
   nextLink?: string;
 }
 export const ClustersAddLanguageExtensionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -909,7 +907,7 @@ export const ClustersAddLanguageExtensionsInput =
 // Output Schema
 export type ClustersAddLanguageExtensionsOutput = void;
 export const ClustersAddLanguageExtensionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersAddLanguageExtensionsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersAddLanguageExtensionsOutput>;
 
 // The operation
 /**
@@ -921,7 +919,7 @@ export const ClustersAddLanguageExtensionsOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersAddLanguageExtensions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersAddLanguageExtensionsInput,
     outputSchema: ClustersAddLanguageExtensionsOutput,
   }));
@@ -933,7 +931,7 @@ export interface ClustersCheckNameAvailabilityInput {
   type: "Microsoft.Kusto/clusters";
 }
 export const ClustersCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
@@ -954,7 +952,7 @@ export interface ClustersCheckNameAvailabilityOutput {
   reason?: "Invalid" | "AlreadyExists";
 }
 export const ClustersCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -970,7 +968,7 @@ export const ClustersCheckNameAvailabilityOutput =
  * @param location - The name of Azure region.
  */
 export const ClustersCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersCheckNameAvailabilityInput,
     outputSchema: ClustersCheckNameAvailabilityOutput,
   }));
@@ -1176,7 +1174,7 @@ export interface ClustersCreateOrUpdateInput {
   location: string;
 }
 export const ClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1483,7 +1481,7 @@ export interface ClustersCreateOrUpdateOutput {
   };
 }
 export const ClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1514,19 +1512,17 @@ export const ClustersCreateOrUpdateOutput =
  * @param If-Match - The ETag of the cluster. Omit this value to always overwrite the current cluster. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new cluster to be created, but to prevent updating an existing cluster. Other values will result in a 412 Pre-condition Failed response.
  */
-export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersCreateOrUpdateInput,
-    outputSchema: ClustersCreateOrUpdateOutput,
-  }),
-);
+export const ClustersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersCreateOrUpdateInput,
+  outputSchema: ClustersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ClustersDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1541,7 +1537,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersDeleteOutput = void;
 export const ClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -1552,7 +1548,7 @@ export const ClustersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kusto cluster.
  */
-export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
@@ -1577,7 +1573,7 @@ export interface ClustersDetachFollowerDatabasesInput {
   databaseShareOrigin?: "Direct" | "DataShare" | "Other";
 }
 export const ClustersDetachFollowerDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1614,7 +1610,7 @@ export const ClustersDetachFollowerDatabasesInput =
 // Output Schema
 export type ClustersDetachFollowerDatabasesOutput = void;
 export const ClustersDetachFollowerDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDetachFollowerDatabasesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDetachFollowerDatabasesOutput>;
 
 // The operation
 /**
@@ -1626,7 +1622,7 @@ export const ClustersDetachFollowerDatabasesOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersDetachFollowerDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersDetachFollowerDatabasesInput,
     outputSchema: ClustersDetachFollowerDatabasesOutput,
   }));
@@ -1637,7 +1633,7 @@ export interface ClustersDiagnoseVirtualNetworkInput {
   clusterName: string;
 }
 export const ClustersDiagnoseVirtualNetworkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1654,7 +1650,7 @@ export interface ClustersDiagnoseVirtualNetworkOutput {
   findings?: string[];
 }
 export const ClustersDiagnoseVirtualNetworkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     findings: Schema.optional(Schema.Array(Schema.String)),
   }) as unknown as Schema.Codec<ClustersDiagnoseVirtualNetworkOutput>;
 
@@ -1668,7 +1664,7 @@ export const ClustersDiagnoseVirtualNetworkOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersDiagnoseVirtualNetwork =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersDiagnoseVirtualNetworkInput,
     outputSchema: ClustersDiagnoseVirtualNetworkOutput,
   }));
@@ -1678,7 +1674,7 @@ export interface ClustersGetInput {
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1704,7 +1700,7 @@ export interface ClustersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1733,7 +1729,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kusto cluster.
  */
-export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
@@ -1741,7 +1737,7 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ClustersListInput {
   subscriptionId: string;
 }
-export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1768,7 +1764,7 @@ export interface ClustersListOutput {
   }[];
   nextLink?: string;
 }
-export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1812,7 +1808,7 @@ export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersListInput,
   outputSchema: ClustersListOutput,
 }));
@@ -1822,7 +1818,7 @@ export interface ClustersListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const ClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1851,7 +1847,7 @@ export interface ClustersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1896,12 +1892,10 @@ export const ClustersListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListByResourceGroupInput,
-    outputSchema: ClustersListByResourceGroupOutput,
-  }),
-);
+export const ClustersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListByResourceGroupInput,
+  outputSchema: ClustersListByResourceGroupOutput,
+}));
 // Input Schema
 export interface ClustersListCalloutPoliciesInput {
   subscriptionId: string;
@@ -1909,7 +1903,7 @@ export interface ClustersListCalloutPoliciesInput {
   clusterName: string;
 }
 export const ClustersListCalloutPoliciesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1943,7 +1937,7 @@ export interface ClustersListCalloutPoliciesOutput {
   nextLink?: string;
 }
 export const ClustersListCalloutPoliciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         calloutUriRegex: Schema.optional(Schema.String),
@@ -1978,12 +1972,10 @@ export const ClustersListCalloutPoliciesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kusto cluster.
  */
-export const ClustersListCalloutPolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListCalloutPoliciesInput,
-    outputSchema: ClustersListCalloutPoliciesOutput,
-  }),
-);
+export const ClustersListCalloutPolicies = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListCalloutPoliciesInput,
+  outputSchema: ClustersListCalloutPoliciesOutput,
+}));
 // Input Schema
 export interface ClustersListFollowerDatabasesInput {
   subscriptionId: string;
@@ -1991,7 +1983,7 @@ export interface ClustersListFollowerDatabasesInput {
   clusterName: string;
 }
 export const ClustersListFollowerDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2024,7 +2016,7 @@ export interface ClustersListFollowerDatabasesOutput {
   nextLink?: string;
 }
 export const ClustersListFollowerDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2070,7 +2062,7 @@ export const ClustersListFollowerDatabasesOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersListFollowerDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersListFollowerDatabasesInput,
     outputSchema: ClustersListFollowerDatabasesOutput,
   }));
@@ -2081,7 +2073,7 @@ export interface ClustersListFollowerDatabasesGetInput {
   clusterName: string;
 }
 export const ClustersListFollowerDatabasesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2116,7 +2108,7 @@ export interface ClustersListFollowerDatabasesGetOutput {
   nextLink?: string;
 }
 export const ClustersListFollowerDatabasesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         properties: Schema.optional(
@@ -2168,7 +2160,7 @@ export const ClustersListFollowerDatabasesGetOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersListFollowerDatabasesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersListFollowerDatabasesGetInput,
     outputSchema: ClustersListFollowerDatabasesGetOutput,
   }));
@@ -2179,7 +2171,7 @@ export interface ClustersListLanguageExtensionsInput {
   clusterName: string;
 }
 export const ClustersListLanguageExtensionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2208,7 +2200,7 @@ export interface ClustersListLanguageExtensionsOutput {
   nextLink?: string;
 }
 export const ClustersListLanguageExtensionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2243,7 +2235,7 @@ export const ClustersListLanguageExtensionsOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersListLanguageExtensions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersListLanguageExtensionsInput,
     outputSchema: ClustersListLanguageExtensionsOutput,
   }));
@@ -2254,7 +2246,7 @@ export interface ClustersListOutboundNetworkDependenciesEndpointsInput {
   clusterName: string;
 }
 export const ClustersListOutboundNetworkDependenciesEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2284,7 +2276,7 @@ export interface ClustersListOutboundNetworkDependenciesEndpointsOutput {
   nextLink?: string;
 }
 export const ClustersListOutboundNetworkDependenciesEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2329,7 +2321,7 @@ export const ClustersListOutboundNetworkDependenciesEndpointsOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersListOutboundNetworkDependenciesEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersListOutboundNetworkDependenciesEndpointsInput,
     outputSchema: ClustersListOutboundNetworkDependenciesEndpointsOutput,
   }));
@@ -2337,7 +2329,7 @@ export const ClustersListOutboundNetworkDependenciesEndpoints =
 export interface ClustersListSkusInput {
   subscriptionId: string;
 }
-export const ClustersListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListSkusInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2366,45 +2358,43 @@ export interface ClustersListSkusOutput {
   }[];
   nextLink?: string;
 }
-export const ClustersListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          tier: Schema.optional(Schema.String),
-          locations: Schema.optional(Schema.Array(Schema.String)),
-          locationInfo: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                location: Schema.String,
-                zones: Schema.optional(Schema.Array(Schema.String)),
-                zoneDetails: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.Array(Schema.String)),
-                      capabilities: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                          }),
-                        ),
+export const ClustersListSkusOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        resourceType: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        locations: Schema.optional(Schema.Array(Schema.String)),
+        locationInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              location: Schema.String,
+              zones: Schema.optional(Schema.Array(Schema.String)),
+              zoneDetails: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.Array(Schema.String)),
+                    capabilities: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          value: Schema.optional(Schema.String),
+                        }),
                       ),
-                    }),
-                  ),
+                    ),
+                  }),
                 ),
-              }),
-            ),
+              ),
+            }),
           ),
-          restrictions: Schema.optional(Schema.Array(Schema.Unknown)),
-        }),
-      ),
+        ),
+        restrictions: Schema.optional(Schema.Array(Schema.Unknown)),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<ClustersListSkusOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ClustersListSkusOutput>;
 
 // The operation
 /**
@@ -2413,7 +2403,7 @@ export const ClustersListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ClustersListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersListSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersListSkusInput,
   outputSchema: ClustersListSkusOutput,
 }));
@@ -2424,7 +2414,7 @@ export interface ClustersListSkusByResourceInput {
   clusterName: string;
 }
 export const ClustersListSkusByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2519,7 +2509,7 @@ export interface ClustersListSkusByResourceOutput {
   nextLink?: string;
 }
 export const ClustersListSkusByResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2619,12 +2609,10 @@ export const ClustersListSkusByResourceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kusto cluster.
  */
-export const ClustersListSkusByResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListSkusByResourceInput,
-    outputSchema: ClustersListSkusByResourceOutput,
-  }),
-);
+export const ClustersListSkusByResource = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListSkusByResourceInput,
+  outputSchema: ClustersListSkusByResourceOutput,
+}));
 // Input Schema
 export interface ClustersMigrateInput {
   subscriptionId: string;
@@ -2632,7 +2620,7 @@ export interface ClustersMigrateInput {
   clusterName: string;
   clusterResourceId: string;
 }
-export const ClustersMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersMigrateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -2648,7 +2636,7 @@ export const ClustersMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersMigrateOutput = void;
 export const ClustersMigrateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersMigrateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersMigrateOutput>;
 
 // The operation
 /**
@@ -2659,7 +2647,7 @@ export const ClustersMigrateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kusto cluster.
  */
-export const ClustersMigrate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersMigrate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersMigrateInput,
   outputSchema: ClustersMigrateOutput,
 }));
@@ -2671,7 +2659,7 @@ export interface ClustersRemoveCalloutPolicyInput {
   calloutId?: string;
 }
 export const ClustersRemoveCalloutPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2687,7 +2675,7 @@ export const ClustersRemoveCalloutPolicyInput =
 // Output Schema
 export type ClustersRemoveCalloutPolicyOutput = void;
 export const ClustersRemoveCalloutPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersRemoveCalloutPolicyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersRemoveCalloutPolicyOutput>;
 
 // The operation
 /**
@@ -2698,12 +2686,10 @@ export const ClustersRemoveCalloutPolicyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kusto cluster.
  */
-export const ClustersRemoveCalloutPolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersRemoveCalloutPolicyInput,
-    outputSchema: ClustersRemoveCalloutPolicyOutput,
-  }),
-);
+export const ClustersRemoveCalloutPolicy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersRemoveCalloutPolicyInput,
+  outputSchema: ClustersRemoveCalloutPolicyOutput,
+}));
 // Input Schema
 export interface ClustersRemoveLanguageExtensionsInput {
   subscriptionId: string;
@@ -2724,7 +2710,7 @@ export interface ClustersRemoveLanguageExtensionsInput {
   nextLink?: string;
 }
 export const ClustersRemoveLanguageExtensionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2761,7 +2747,7 @@ export const ClustersRemoveLanguageExtensionsInput =
 // Output Schema
 export type ClustersRemoveLanguageExtensionsOutput = void;
 export const ClustersRemoveLanguageExtensionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersRemoveLanguageExtensionsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersRemoveLanguageExtensionsOutput>;
 
 // The operation
 /**
@@ -2773,7 +2759,7 @@ export const ClustersRemoveLanguageExtensionsOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersRemoveLanguageExtensions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersRemoveLanguageExtensionsInput,
     outputSchema: ClustersRemoveLanguageExtensionsOutput,
   }));
@@ -2783,7 +2769,7 @@ export interface ClustersStartInput {
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -2798,7 +2784,7 @@ export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersStartOutput = void;
 export const ClustersStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersStartOutput>;
 
 // The operation
 /**
@@ -2809,7 +2795,7 @@ export const ClustersStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kusto cluster.
  */
-export const ClustersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersStartInput,
   outputSchema: ClustersStartOutput,
 }));
@@ -2819,7 +2805,7 @@ export interface ClustersStopInput {
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -2834,7 +2820,7 @@ export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersStopOutput = void;
 export const ClustersStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersStopOutput>;
 
 // The operation
 /**
@@ -2845,7 +2831,7 @@ export const ClustersStopOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kusto cluster.
  */
-export const ClustersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersStopInput,
   outputSchema: ClustersStopOutput,
 }));
@@ -3060,7 +3046,7 @@ export interface ClustersUpdateInput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -3382,7 +3368,7 @@ export interface ClustersUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3412,7 +3398,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterName - The name of the Kusto cluster.
  * @param If-Match - The ETag of the cluster. Omit this value to always overwrite the current cluster. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  */
-export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
@@ -3435,7 +3421,7 @@ export interface DatabaseInviteFollowerInput {
   };
 }
 export const DatabaseInviteFollowerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3470,7 +3456,7 @@ export interface DatabaseInviteFollowerOutput {
   generatedInvitation?: string;
 }
 export const DatabaseInviteFollowerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     generatedInvitation: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DatabaseInviteFollowerOutput>;
 
@@ -3484,12 +3470,10 @@ export const DatabaseInviteFollowerOutput =
  * @param clusterName - The name of the Kusto cluster.
  * @param databaseName - The name of the database in the Kusto cluster.
  */
-export const DatabaseInviteFollower = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseInviteFollowerInput,
-    outputSchema: DatabaseInviteFollowerOutput,
-  }),
-);
+export const DatabaseInviteFollower = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseInviteFollowerInput,
+  outputSchema: DatabaseInviteFollowerOutput,
+}));
 // Input Schema
 export interface DatabasePrincipalAssignmentsCheckNameAvailabilityInput {
   subscriptionId: string;
@@ -3500,7 +3484,7 @@ export interface DatabasePrincipalAssignmentsCheckNameAvailabilityInput {
   type: "Microsoft.Kusto/clusters/databases/principalAssignments";
 }
 export const DatabasePrincipalAssignmentsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3525,7 +3509,7 @@ export interface DatabasePrincipalAssignmentsCheckNameAvailabilityOutput {
   reason?: "Invalid" | "AlreadyExists";
 }
 export const DatabasePrincipalAssignmentsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -3543,7 +3527,7 @@ export const DatabasePrincipalAssignmentsCheckNameAvailabilityOutput =
  * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DatabasePrincipalAssignmentsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabasePrincipalAssignmentsCheckNameAvailabilityInput,
     outputSchema: DatabasePrincipalAssignmentsCheckNameAvailabilityOutput,
   }));
@@ -3579,7 +3563,7 @@ export interface DatabasePrincipalAssignmentsCreateOrUpdateInput {
   };
 }
 export const DatabasePrincipalAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3637,7 +3621,7 @@ export interface DatabasePrincipalAssignmentsCreateOrUpdateOutput {
   };
 }
 export const DatabasePrincipalAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3669,7 +3653,7 @@ export const DatabasePrincipalAssignmentsCreateOrUpdateOutput =
  * @param principalAssignmentName - The name of the Kusto principalAssignment.
  */
 export const DatabasePrincipalAssignmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabasePrincipalAssignmentsCreateOrUpdateInput,
     outputSchema: DatabasePrincipalAssignmentsCreateOrUpdateOutput,
   }));
@@ -3682,7 +3666,7 @@ export interface DatabasePrincipalAssignmentsDeleteInput {
   principalAssignmentName: string;
 }
 export const DatabasePrincipalAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3699,7 +3683,7 @@ export const DatabasePrincipalAssignmentsDeleteInput =
 // Output Schema
 export type DatabasePrincipalAssignmentsDeleteOutput = void;
 export const DatabasePrincipalAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasePrincipalAssignmentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasePrincipalAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -3713,7 +3697,7 @@ export const DatabasePrincipalAssignmentsDeleteOutput =
  * @param principalAssignmentName - The name of the Kusto principalAssignment.
  */
 export const DatabasePrincipalAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabasePrincipalAssignmentsDeleteInput,
     outputSchema: DatabasePrincipalAssignmentsDeleteOutput,
   }));
@@ -3726,7 +3710,7 @@ export interface DatabasePrincipalAssignmentsGetInput {
   principalAssignmentName: string;
 }
 export const DatabasePrincipalAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3755,7 +3739,7 @@ export interface DatabasePrincipalAssignmentsGetOutput {
   };
 }
 export const DatabasePrincipalAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3787,7 +3771,7 @@ export const DatabasePrincipalAssignmentsGetOutput =
  * @param principalAssignmentName - The name of the Kusto principalAssignment.
  */
 export const DatabasePrincipalAssignmentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabasePrincipalAssignmentsGetInput,
     outputSchema: DatabasePrincipalAssignmentsGetOutput,
   }));
@@ -3799,7 +3783,7 @@ export interface DatabasePrincipalAssignmentsListInput {
   databaseName: string;
 }
 export const DatabasePrincipalAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3830,7 +3814,7 @@ export interface DatabasePrincipalAssignmentsListOutput {
   nextLink?: string;
 }
 export const DatabasePrincipalAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3878,7 +3862,7 @@ export const DatabasePrincipalAssignmentsListOutput =
  * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DatabasePrincipalAssignmentsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabasePrincipalAssignmentsListInput,
     outputSchema: DatabasePrincipalAssignmentsListOutput,
   }));
@@ -3905,7 +3889,7 @@ export interface DatabasesAddPrincipalsInput {
   }[];
 }
 export const DatabasesAddPrincipalsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3958,7 +3942,7 @@ export interface DatabasesAddPrincipalsOutput {
   nextLink?: string;
 }
 export const DatabasesAddPrincipalsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3992,12 +3976,10 @@ export const DatabasesAddPrincipalsOutput =
  * @param clusterName - The name of the Kusto cluster.
  * @param databaseName - The name of the database in the Kusto cluster.
  */
-export const DatabasesAddPrincipals = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabasesAddPrincipalsInput,
-    outputSchema: DatabasesAddPrincipalsOutput,
-  }),
-);
+export const DatabasesAddPrincipals = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabasesAddPrincipalsInput,
+  outputSchema: DatabasesAddPrincipalsOutput,
+}));
 // Input Schema
 export interface DatabasesCheckNameAvailabilityInput {
   subscriptionId: string;
@@ -4009,7 +3991,7 @@ export interface DatabasesCheckNameAvailabilityInput {
     | "Microsoft.Kusto/clusters/attachedDatabaseConfigurations";
 }
 export const DatabasesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4034,7 +4016,7 @@ export interface DatabasesCheckNameAvailabilityOutput {
   reason?: "Invalid" | "AlreadyExists";
 }
 export const DatabasesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -4051,7 +4033,7 @@ export const DatabasesCheckNameAvailabilityOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const DatabasesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabasesCheckNameAvailabilityInput,
     outputSchema: DatabasesCheckNameAvailabilityOutput,
   }));
@@ -4066,7 +4048,7 @@ export interface DatabasesCreateOrUpdateInput {
   kind: "ReadWrite" | "ReadOnlyFollowing";
 }
 export const DatabasesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4097,7 +4079,7 @@ export interface DatabasesCreateOrUpdateOutput {
   };
 }
 export const DatabasesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4128,12 +4110,10 @@ export const DatabasesCreateOrUpdateOutput =
  * @param databaseName - The name of the database in the Kusto cluster.
  * @param callerRole - By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list.
  */
-export const DatabasesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabasesCreateOrUpdateInput,
-    outputSchema: DatabasesCreateOrUpdateOutput,
-  }),
-);
+export const DatabasesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabasesCreateOrUpdateInput,
+  outputSchema: DatabasesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DatabasesDeleteInput {
   subscriptionId: string;
@@ -4141,7 +4121,7 @@ export interface DatabasesDeleteInput {
   clusterName: string;
   databaseName: string;
 }
-export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -4157,7 +4137,7 @@ export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DatabasesDeleteOutput = void;
 export const DatabasesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesDeleteOutput>;
 
 // The operation
 /**
@@ -4169,7 +4149,7 @@ export const DatabasesDeleteOutput =
  * @param clusterName - The name of the Kusto cluster.
  * @param databaseName - The name of the database in the Kusto cluster.
  */
-export const DatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesDeleteInput,
   outputSchema: DatabasesDeleteOutput,
 }));
@@ -4180,7 +4160,7 @@ export interface DatabasesGetInput {
   clusterName: string;
   databaseName: string;
 }
-export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -4207,7 +4187,7 @@ export interface DatabasesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4237,7 +4217,7 @@ export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterName - The name of the Kusto cluster.
  * @param databaseName - The name of the database in the Kusto cluster.
  */
-export const DatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesGetInput,
   outputSchema: DatabasesGetOutput,
 }));
@@ -4250,7 +4230,7 @@ export interface DatabasesListByClusterInput {
   $skiptoken?: string;
 }
 export const DatabasesListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4282,7 +4262,7 @@ export interface DatabasesListByClusterOutput {
   nextLink?: string;
 }
 export const DatabasesListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4328,12 +4308,10 @@ export const DatabasesListByClusterOutput =
  * @param $top - limit the number of results
  * @param $skiptoken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
-export const DatabasesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabasesListByClusterInput,
-    outputSchema: DatabasesListByClusterOutput,
-  }),
-);
+export const DatabasesListByCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabasesListByClusterInput,
+  outputSchema: DatabasesListByClusterOutput,
+}));
 // Input Schema
 export interface DatabasesListPrincipalsInput {
   subscriptionId: string;
@@ -4342,7 +4320,7 @@ export interface DatabasesListPrincipalsInput {
   databaseName: string;
 }
 export const DatabasesListPrincipalsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4375,7 +4353,7 @@ export interface DatabasesListPrincipalsOutput {
   nextLink?: string;
 }
 export const DatabasesListPrincipalsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4409,12 +4387,10 @@ export const DatabasesListPrincipalsOutput =
  * @param clusterName - The name of the Kusto cluster.
  * @param databaseName - The name of the database in the Kusto cluster.
  */
-export const DatabasesListPrincipals = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabasesListPrincipalsInput,
-    outputSchema: DatabasesListPrincipalsOutput,
-  }),
-);
+export const DatabasesListPrincipals = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabasesListPrincipalsInput,
+  outputSchema: DatabasesListPrincipalsOutput,
+}));
 // Input Schema
 export interface DatabasesRemovePrincipalsInput {
   subscriptionId: string;
@@ -4438,7 +4414,7 @@ export interface DatabasesRemovePrincipalsInput {
   }[];
 }
 export const DatabasesRemovePrincipalsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4491,7 +4467,7 @@ export interface DatabasesRemovePrincipalsOutput {
   nextLink?: string;
 }
 export const DatabasesRemovePrincipalsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4525,12 +4501,10 @@ export const DatabasesRemovePrincipalsOutput =
  * @param clusterName - The name of the Kusto cluster.
  * @param databaseName - The name of the database in the Kusto cluster.
  */
-export const DatabasesRemovePrincipals = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabasesRemovePrincipalsInput,
-    outputSchema: DatabasesRemovePrincipalsOutput,
-  }),
-);
+export const DatabasesRemovePrincipals = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabasesRemovePrincipalsInput,
+  outputSchema: DatabasesRemovePrincipalsOutput,
+}));
 // Input Schema
 export interface DatabasesUpdateInput {
   subscriptionId: string;
@@ -4541,7 +4515,7 @@ export interface DatabasesUpdateInput {
   location?: string;
   kind: "ReadWrite" | "ReadOnlyFollowing";
 }
-export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -4571,7 +4545,7 @@ export interface DatabasesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const DatabasesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4602,7 +4576,7 @@ export const DatabasesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param databaseName - The name of the database in the Kusto cluster.
  * @param callerRole - By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list.
  */
-export const DatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesUpdateInput,
   outputSchema: DatabasesUpdateOutput,
 }));
@@ -4616,7 +4590,7 @@ export interface DataConnectionsCheckNameAvailabilityInput {
   type: "Microsoft.Kusto/clusters/databases/dataConnections";
 }
 export const DataConnectionsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4641,7 +4615,7 @@ export interface DataConnectionsCheckNameAvailabilityOutput {
   reason?: "Invalid" | "AlreadyExists";
 }
 export const DataConnectionsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -4659,7 +4633,7 @@ export const DataConnectionsCheckNameAvailabilityOutput =
  * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DataConnectionsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataConnectionsCheckNameAvailabilityInput,
     outputSchema: DataConnectionsCheckNameAvailabilityOutput,
   }));
@@ -4680,7 +4654,7 @@ export interface DataConnectionsCreateOrUpdateInput {
     | "EventGridWithManagedIdentity";
 }
 export const DataConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4718,7 +4692,7 @@ export interface DataConnectionsCreateOrUpdateOutput {
   };
 }
 export const DataConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4750,7 +4724,7 @@ export const DataConnectionsCreateOrUpdateOutput =
  * @param dataConnectionName - The name of the data connection.
  */
 export const DataConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataConnectionsCreateOrUpdateInput,
     outputSchema: DataConnectionsCreateOrUpdateOutput,
   }));
@@ -4776,7 +4750,7 @@ export interface DataConnectionsDataConnectionValidationInput {
   };
 }
 export const DataConnectionsDataConnectionValidationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4826,7 +4800,7 @@ export interface DataConnectionsDataConnectionValidationOutput {
   value?: { errorMessage?: string }[];
 }
 export const DataConnectionsDataConnectionValidationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4847,7 +4821,7 @@ export const DataConnectionsDataConnectionValidationOutput =
  * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DataConnectionsDataConnectionValidation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataConnectionsDataConnectionValidationInput,
     outputSchema: DataConnectionsDataConnectionValidationOutput,
   }));
@@ -4860,7 +4834,7 @@ export interface DataConnectionsDeleteInput {
   dataConnectionName: string;
 }
 export const DataConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4877,7 +4851,7 @@ export const DataConnectionsDeleteInput =
 // Output Schema
 export type DataConnectionsDeleteOutput = void;
 export const DataConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -4890,12 +4864,10 @@ export const DataConnectionsDeleteOutput =
  * @param databaseName - The name of the database in the Kusto cluster.
  * @param dataConnectionName - The name of the data connection.
  */
-export const DataConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataConnectionsDeleteInput,
-    outputSchema: DataConnectionsDeleteOutput,
-  }),
-);
+export const DataConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataConnectionsDeleteInput,
+  outputSchema: DataConnectionsDeleteOutput,
+}));
 // Input Schema
 export interface DataConnectionsGetInput {
   subscriptionId: string;
@@ -4905,7 +4877,7 @@ export interface DataConnectionsGetInput {
   dataConnectionName: string;
 }
 export const DataConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4934,7 +4906,7 @@ export interface DataConnectionsGetOutput {
   };
 }
 export const DataConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4965,7 +4937,7 @@ export const DataConnectionsGetOutput =
  * @param databaseName - The name of the database in the Kusto cluster.
  * @param dataConnectionName - The name of the data connection.
  */
-export const DataConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataConnectionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataConnectionsGetInput,
   outputSchema: DataConnectionsGetOutput,
 }));
@@ -4977,7 +4949,7 @@ export interface DataConnectionsListByDatabaseInput {
   databaseName: string;
 }
 export const DataConnectionsListByDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5008,7 +4980,7 @@ export interface DataConnectionsListByDatabaseOutput {
   nextLink?: string;
 }
 export const DataConnectionsListByDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5056,7 +5028,7 @@ export const DataConnectionsListByDatabaseOutput =
  * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DataConnectionsListByDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataConnectionsListByDatabaseInput,
     outputSchema: DataConnectionsListByDatabaseOutput,
   }));
@@ -5077,7 +5049,7 @@ export interface DataConnectionsUpdateInput {
     | "EventGridWithManagedIdentity";
 }
 export const DataConnectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5115,7 +5087,7 @@ export interface DataConnectionsUpdateOutput {
   };
 }
 export const DataConnectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5146,12 +5118,10 @@ export const DataConnectionsUpdateOutput =
  * @param databaseName - The name of the database in the Kusto cluster.
  * @param dataConnectionName - The name of the data connection.
  */
-export const DataConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataConnectionsUpdateInput,
-    outputSchema: DataConnectionsUpdateOutput,
-  }),
-);
+export const DataConnectionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataConnectionsUpdateInput,
+  outputSchema: DataConnectionsUpdateOutput,
+}));
 // Input Schema
 export interface ManagedPrivateEndpointsCheckNameAvailabilityInput {
   subscriptionId: string;
@@ -5161,7 +5131,7 @@ export interface ManagedPrivateEndpointsCheckNameAvailabilityInput {
   type: "Microsoft.Kusto/clusters/managedPrivateEndpoints";
 }
 export const ManagedPrivateEndpointsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5183,7 +5153,7 @@ export interface ManagedPrivateEndpointsCheckNameAvailabilityOutput {
   reason?: "Invalid" | "AlreadyExists";
 }
 export const ManagedPrivateEndpointsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -5200,7 +5170,7 @@ export const ManagedPrivateEndpointsCheckNameAvailabilityOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const ManagedPrivateEndpointsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedPrivateEndpointsCheckNameAvailabilityInput,
     outputSchema: ManagedPrivateEndpointsCheckNameAvailabilityOutput,
   }));
@@ -5226,7 +5196,7 @@ export interface ManagedPrivateEndpointsCreateOrUpdateInput {
   };
 }
 export const ManagedPrivateEndpointsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5273,7 +5243,7 @@ export interface ManagedPrivateEndpointsCreateOrUpdateOutput {
   };
 }
 export const ManagedPrivateEndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5304,7 +5274,7 @@ export const ManagedPrivateEndpointsCreateOrUpdateOutput =
  * @param managedPrivateEndpointName - The name of the managed private endpoint.
  */
 export const ManagedPrivateEndpointsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedPrivateEndpointsCreateOrUpdateInput,
     outputSchema: ManagedPrivateEndpointsCreateOrUpdateOutput,
   }));
@@ -5316,7 +5286,7 @@ export interface ManagedPrivateEndpointsDeleteInput {
   managedPrivateEndpointName: string;
 }
 export const ManagedPrivateEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5332,7 +5302,7 @@ export const ManagedPrivateEndpointsDeleteInput =
 // Output Schema
 export type ManagedPrivateEndpointsDeleteOutput = void;
 export const ManagedPrivateEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedPrivateEndpointsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedPrivateEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -5345,7 +5315,7 @@ export const ManagedPrivateEndpointsDeleteOutput =
  * @param managedPrivateEndpointName - The name of the managed private endpoint.
  */
 export const ManagedPrivateEndpointsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedPrivateEndpointsDeleteInput,
     outputSchema: ManagedPrivateEndpointsDeleteOutput,
   }));
@@ -5357,7 +5327,7 @@ export interface ManagedPrivateEndpointsGetInput {
   managedPrivateEndpointName: string;
 }
 export const ManagedPrivateEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5385,7 +5355,7 @@ export interface ManagedPrivateEndpointsGetOutput {
   };
 }
 export const ManagedPrivateEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5415,12 +5385,10 @@ export const ManagedPrivateEndpointsGetOutput =
  * @param clusterName - The name of the Kusto cluster.
  * @param managedPrivateEndpointName - The name of the managed private endpoint.
  */
-export const ManagedPrivateEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedPrivateEndpointsGetInput,
-    outputSchema: ManagedPrivateEndpointsGetOutput,
-  }),
-);
+export const ManagedPrivateEndpointsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedPrivateEndpointsGetInput,
+  outputSchema: ManagedPrivateEndpointsGetOutput,
+}));
 // Input Schema
 export interface ManagedPrivateEndpointsListInput {
   subscriptionId: string;
@@ -5428,7 +5396,7 @@ export interface ManagedPrivateEndpointsListInput {
   clusterName: string;
 }
 export const ManagedPrivateEndpointsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5458,7 +5426,7 @@ export interface ManagedPrivateEndpointsListOutput {
   nextLink?: string;
 }
 export const ManagedPrivateEndpointsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5504,12 +5472,10 @@ export const ManagedPrivateEndpointsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kusto cluster.
  */
-export const ManagedPrivateEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedPrivateEndpointsListInput,
-    outputSchema: ManagedPrivateEndpointsListOutput,
-  }),
-);
+export const ManagedPrivateEndpointsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedPrivateEndpointsListInput,
+  outputSchema: ManagedPrivateEndpointsListOutput,
+}));
 // Input Schema
 export interface ManagedPrivateEndpointsUpdateInput {
   subscriptionId: string;
@@ -5532,7 +5498,7 @@ export interface ManagedPrivateEndpointsUpdateInput {
   };
 }
 export const ManagedPrivateEndpointsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5579,7 +5545,7 @@ export interface ManagedPrivateEndpointsUpdateOutput {
   };
 }
 export const ManagedPrivateEndpointsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5610,15 +5576,13 @@ export const ManagedPrivateEndpointsUpdateOutput =
  * @param managedPrivateEndpointName - The name of the managed private endpoint.
  */
 export const ManagedPrivateEndpointsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedPrivateEndpointsUpdateInput,
     outputSchema: ManagedPrivateEndpointsUpdateOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Kusto/operations",
@@ -5641,7 +5605,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -5668,7 +5632,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -5679,7 +5643,7 @@ export interface OperationsResultsGetInput {
   operationId: string;
 }
 export const OperationsResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
@@ -5714,7 +5678,7 @@ export interface OperationsResultsGetOutput {
   error?: { code?: string; message?: string };
 }
 export const OperationsResultsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(
@@ -5757,12 +5721,10 @@ export const OperationsResultsGetOutput =
  * @param location - The name of Azure region.
  * @param operationId - The ID of an ongoing async operation.
  */
-export const OperationsResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OperationsResultsGetInput,
-    outputSchema: OperationsResultsGetOutput,
-  }),
-);
+export const OperationsResultsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OperationsResultsGetInput,
+  outputSchema: OperationsResultsGetOutput,
+}));
 // Input Schema
 export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   subscriptionId: string;
@@ -5781,7 +5743,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5825,7 +5787,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5856,7 +5818,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
@@ -5868,7 +5830,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5884,7 +5846,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -5897,7 +5859,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -5909,7 +5871,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5937,7 +5899,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5968,7 +5930,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -5979,7 +5941,7 @@ export interface PrivateEndpointConnectionsListInput {
   clusterName: string;
 }
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6009,7 +5971,7 @@ export interface PrivateEndpointConnectionsListOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6056,7 +6018,7 @@ export const PrivateEndpointConnectionsListOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListInput,
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
@@ -6068,7 +6030,7 @@ export interface PrivateLinkResourcesGetInput {
   privateLinkResourceName: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6096,7 +6058,7 @@ export interface PrivateLinkResourcesGetOutput {
   };
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6126,12 +6088,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param clusterName - The name of the Kusto cluster.
  * @param privateLinkResourceName - The name of the private link resource.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListInput {
   subscriptionId: string;
@@ -6139,7 +6099,7 @@ export interface PrivateLinkResourcesListInput {
   clusterName: string;
 }
 export const PrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6169,7 +6129,7 @@ export interface PrivateLinkResourcesListOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6215,12 +6175,10 @@ export const PrivateLinkResourcesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kusto cluster.
  */
-export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesListInput,
-    outputSchema: PrivateLinkResourcesListOutput,
-  }),
-);
+export const PrivateLinkResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesListInput,
+  outputSchema: PrivateLinkResourcesListOutput,
+}));
 // Input Schema
 export interface SandboxCustomImagesCheckNameAvailabilityInput {
   subscriptionId: string;
@@ -6230,7 +6188,7 @@ export interface SandboxCustomImagesCheckNameAvailabilityInput {
   type: "Microsoft.Kusto/clusters/sandboxCustomImages";
 }
 export const SandboxCustomImagesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6252,7 +6210,7 @@ export interface SandboxCustomImagesCheckNameAvailabilityOutput {
   reason?: "Invalid" | "AlreadyExists";
 }
 export const SandboxCustomImagesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -6269,7 +6227,7 @@ export const SandboxCustomImagesCheckNameAvailabilityOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const SandboxCustomImagesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SandboxCustomImagesCheckNameAvailabilityInput,
     outputSchema: SandboxCustomImagesCheckNameAvailabilityOutput,
   }));
@@ -6295,7 +6253,7 @@ export interface SandboxCustomImagesCreateOrUpdateInput {
   };
 }
 export const SandboxCustomImagesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6342,7 +6300,7 @@ export interface SandboxCustomImagesCreateOrUpdateOutput {
   };
 }
 export const SandboxCustomImagesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6373,7 +6331,7 @@ export const SandboxCustomImagesCreateOrUpdateOutput =
  * @param sandboxCustomImageName - The name of the sandbox custom image.
  */
 export const SandboxCustomImagesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SandboxCustomImagesCreateOrUpdateInput,
     outputSchema: SandboxCustomImagesCreateOrUpdateOutput,
   }));
@@ -6385,7 +6343,7 @@ export interface SandboxCustomImagesDeleteInput {
   sandboxCustomImageName: string;
 }
 export const SandboxCustomImagesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6401,7 +6359,7 @@ export const SandboxCustomImagesDeleteInput =
 // Output Schema
 export type SandboxCustomImagesDeleteOutput = void;
 export const SandboxCustomImagesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SandboxCustomImagesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SandboxCustomImagesDeleteOutput>;
 
 // The operation
 /**
@@ -6413,12 +6371,10 @@ export const SandboxCustomImagesDeleteOutput =
  * @param clusterName - The name of the Kusto cluster.
  * @param sandboxCustomImageName - The name of the sandbox custom image.
  */
-export const SandboxCustomImagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SandboxCustomImagesDeleteInput,
-    outputSchema: SandboxCustomImagesDeleteOutput,
-  }),
-);
+export const SandboxCustomImagesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SandboxCustomImagesDeleteInput,
+  outputSchema: SandboxCustomImagesDeleteOutput,
+}));
 // Input Schema
 export interface SandboxCustomImagesGetInput {
   subscriptionId: string;
@@ -6427,7 +6383,7 @@ export interface SandboxCustomImagesGetInput {
   sandboxCustomImageName: string;
 }
 export const SandboxCustomImagesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6455,7 +6411,7 @@ export interface SandboxCustomImagesGetOutput {
   };
 }
 export const SandboxCustomImagesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6485,12 +6441,10 @@ export const SandboxCustomImagesGetOutput =
  * @param clusterName - The name of the Kusto cluster.
  * @param sandboxCustomImageName - The name of the sandbox custom image.
  */
-export const SandboxCustomImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SandboxCustomImagesGetInput,
-    outputSchema: SandboxCustomImagesGetOutput,
-  }),
-);
+export const SandboxCustomImagesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SandboxCustomImagesGetInput,
+  outputSchema: SandboxCustomImagesGetOutput,
+}));
 // Input Schema
 export interface SandboxCustomImagesListByClusterInput {
   subscriptionId: string;
@@ -6498,7 +6452,7 @@ export interface SandboxCustomImagesListByClusterInput {
   clusterName: string;
 }
 export const SandboxCustomImagesListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6528,7 +6482,7 @@ export interface SandboxCustomImagesListByClusterOutput {
   nextLink?: string;
 }
 export const SandboxCustomImagesListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6573,7 +6527,7 @@ export const SandboxCustomImagesListByClusterOutput =
  * @param clusterName - The name of the Kusto cluster.
  */
 export const SandboxCustomImagesListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SandboxCustomImagesListByClusterInput,
     outputSchema: SandboxCustomImagesListByClusterOutput,
   }));
@@ -6599,7 +6553,7 @@ export interface SandboxCustomImagesUpdateInput {
   };
 }
 export const SandboxCustomImagesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6646,7 +6600,7 @@ export interface SandboxCustomImagesUpdateOutput {
   };
 }
 export const SandboxCustomImagesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6676,12 +6630,10 @@ export const SandboxCustomImagesUpdateOutput =
  * @param clusterName - The name of the Kusto cluster.
  * @param sandboxCustomImageName - The name of the sandbox custom image.
  */
-export const SandboxCustomImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SandboxCustomImagesUpdateInput,
-    outputSchema: SandboxCustomImagesUpdateOutput,
-  }),
-);
+export const SandboxCustomImagesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SandboxCustomImagesUpdateInput,
+  outputSchema: SandboxCustomImagesUpdateOutput,
+}));
 // Input Schema
 export interface ScriptsCheckNameAvailabilityInput {
   subscriptionId: string;
@@ -6692,7 +6644,7 @@ export interface ScriptsCheckNameAvailabilityInput {
   type: "Microsoft.Kusto/clusters/databases/scripts";
 }
 export const ScriptsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6715,7 +6667,7 @@ export interface ScriptsCheckNameAvailabilityOutput {
   reason?: "Invalid" | "AlreadyExists";
 }
 export const ScriptsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -6733,7 +6685,7 @@ export const ScriptsCheckNameAvailabilityOutput =
  * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const ScriptsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScriptsCheckNameAvailabilityInput,
     outputSchema: ScriptsCheckNameAvailabilityOutput,
   }));
@@ -6766,7 +6718,7 @@ export interface ScriptsCreateOrUpdateInput {
   };
 }
 export const ScriptsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6823,7 +6775,7 @@ export interface ScriptsCreateOrUpdateOutput {
   };
 }
 export const ScriptsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6854,12 +6806,10 @@ export const ScriptsCreateOrUpdateOutput =
  * @param databaseName - The name of the database in the Kusto cluster.
  * @param scriptName - The name of the Kusto database script.
  */
-export const ScriptsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScriptsCreateOrUpdateInput,
-    outputSchema: ScriptsCreateOrUpdateOutput,
-  }),
-);
+export const ScriptsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScriptsCreateOrUpdateInput,
+  outputSchema: ScriptsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ScriptsDeleteInput {
   subscriptionId: string;
@@ -6868,7 +6818,7 @@ export interface ScriptsDeleteInput {
   databaseName: string;
   scriptName: string;
 }
-export const ScriptsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScriptsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -6885,7 +6835,7 @@ export const ScriptsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ScriptsDeleteOutput = void;
 export const ScriptsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScriptsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ScriptsDeleteOutput>;
 
 // The operation
 /**
@@ -6898,7 +6848,7 @@ export const ScriptsDeleteOutput =
  * @param databaseName - The name of the database in the Kusto cluster.
  * @param scriptName - The name of the Kusto database script.
  */
-export const ScriptsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptsDeleteInput,
   outputSchema: ScriptsDeleteOutput,
 }));
@@ -6910,7 +6860,7 @@ export interface ScriptsGetInput {
   databaseName: string;
   scriptName: string;
 }
-export const ScriptsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScriptsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -6938,7 +6888,7 @@ export interface ScriptsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ScriptsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScriptsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6969,7 +6919,7 @@ export const ScriptsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param databaseName - The name of the database in the Kusto cluster.
  * @param scriptName - The name of the Kusto database script.
  */
-export const ScriptsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptsGetInput,
   outputSchema: ScriptsGetOutput,
 }));
@@ -6981,7 +6931,7 @@ export interface ScriptsListByDatabaseInput {
   databaseName: string;
 }
 export const ScriptsListByDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -7012,7 +6962,7 @@ export interface ScriptsListByDatabaseOutput {
   nextLink?: string;
 }
 export const ScriptsListByDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7059,12 +7009,10 @@ export const ScriptsListByDatabaseOutput =
  * @param clusterName - The name of the Kusto cluster.
  * @param databaseName - The name of the database in the Kusto cluster.
  */
-export const ScriptsListByDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScriptsListByDatabaseInput,
-    outputSchema: ScriptsListByDatabaseOutput,
-  }),
-);
+export const ScriptsListByDatabase = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScriptsListByDatabaseInput,
+  outputSchema: ScriptsListByDatabaseOutput,
+}));
 // Input Schema
 export interface ScriptsUpdateInput {
   subscriptionId: string;
@@ -7093,7 +7041,7 @@ export interface ScriptsUpdateInput {
     managedIdentityResourceId?: string;
   };
 }
-export const ScriptsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScriptsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -7149,7 +7097,7 @@ export interface ScriptsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ScriptsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScriptsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7180,7 +7128,7 @@ export const ScriptsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param databaseName - The name of the database in the Kusto cluster.
  * @param scriptName - The name of the Kusto database script.
  */
-export const ScriptsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptsUpdateInput,
   outputSchema: ScriptsUpdateOutput,
 }));
@@ -7189,7 +7137,7 @@ export interface SkusListInput {
   subscriptionId: string;
   location: string;
 }
-export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -7219,7 +7167,7 @@ export interface SkusListOutput {
   }[];
   nextLink?: string;
 }
-export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -7265,7 +7213,7 @@ export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SkusListInput,
   outputSchema: SkusListOutput,
 }));

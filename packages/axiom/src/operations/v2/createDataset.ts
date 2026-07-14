@@ -17,7 +17,7 @@ export interface CreateDatasetInput {
   retentionDays?: number;
   useRetentionPeriod?: boolean;
 }
-export const CreateDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDatasetInput = /*@__PURE__*/ Schema.Struct({
   referrer: Schema.optional(Schema.String),
   description: Schema.optional(Schema.String),
   edgeDeployment: Schema.optional(Schema.String),
@@ -57,7 +57,7 @@ export interface CreateDatasetOutput {
   useRetentionPeriod?: boolean;
   who: string;
 }
-export const CreateDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDatasetOutput = /*@__PURE__*/ Schema.Struct({
   canWrite: Schema.optional(Schema.Boolean),
   created: Schema.String,
   description: Schema.String,
@@ -85,7 +85,7 @@ export const CreateDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param referrer - Referrer slug
  */
-export const createDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createDataset = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateDatasetInput,
   outputSchema: CreateDatasetOutput,
   errors: [BadRequest, Forbidden, UnprocessableEntity] as const,

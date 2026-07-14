@@ -14,7 +14,7 @@ export interface ListGroupStreamConnectionFailoverConnectionsInput {
   pageNum?: number;
 }
 export const ListGroupStreamConnectionFailoverConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -32,7 +32,7 @@ export const ListGroupStreamConnectionFailoverConnectionsInput =
 // Output Schema
 export type ListGroupStreamConnectionFailoverConnectionsOutput = void;
 export const ListGroupStreamConnectionFailoverConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupStreamConnectionFailoverConnectionsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupStreamConnectionFailoverConnectionsOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ export const ListGroupStreamConnectionFailoverConnectionsOutput =
  * @param connectionName - Label that identifies the stream connection.
  */
 export const listGroupStreamConnectionFailoverConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupStreamConnectionFailoverConnectionsInput,
     outputSchema: ListGroupStreamConnectionFailoverConnectionsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface GetViewInput {
   id: string;
 }
-export const GetViewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetViewInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/views/{id}" }),
@@ -22,7 +22,7 @@ export interface GetViewOutput {
   sharedByOrg?: string;
   sharedByOrgName?: string;
 }
-export const GetViewOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetViewOutput = /*@__PURE__*/ Schema.Struct({
   aplQuery: Schema.String,
   datasets: Schema.optional(Schema.Array(Schema.String)),
   description: Schema.optional(Schema.String),
@@ -32,7 +32,7 @@ export const GetViewOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }) as unknown as Schema.Codec<GetViewOutput>;
 
 // The operation
-export const getView = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getView = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetViewInput,
   outputSchema: GetViewOutput,
   errors: [NotFound] as const,

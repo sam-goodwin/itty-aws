@@ -17,7 +17,7 @@ export interface ExperimentsEndCreateInput {
   conclusion_comment?: string | null;
 }
 export const ExperimentsEndCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     conclusion: Schema.optional(
@@ -316,7 +316,7 @@ export interface ExperimentsEndCreateOutput {
   user_access_level?: string | null;
 }
 export const ExperimentsEndCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -821,10 +821,8 @@ export const ExperimentsEndCreateOutput =
  * @param id - A unique integer value identifying this experiment.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const experimentsEndCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExperimentsEndCreateInput,
-    outputSchema: ExperimentsEndCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const experimentsEndCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExperimentsEndCreateInput,
+  outputSchema: ExperimentsEndCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

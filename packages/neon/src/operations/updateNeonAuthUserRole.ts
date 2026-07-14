@@ -10,7 +10,7 @@ export interface UpdateNeonAuthUserRoleInput {
   roles: string[];
 }
 export const UpdateNeonAuthUserRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     auth_user_id: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export interface UpdateNeonAuthUserRoleOutput {
   id: string;
 }
 export const UpdateNeonAuthUserRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
   }) as unknown as Schema.Codec<UpdateNeonAuthUserRoleOutput>;
 
@@ -42,9 +42,7 @@ export const UpdateNeonAuthUserRoleOutput =
  * @param branch_id - The Neon branch ID
  * @param auth_user_id - The Neon user ID
  */
-export const updateNeonAuthUserRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateNeonAuthUserRoleInput,
-    outputSchema: UpdateNeonAuthUserRoleOutput,
-  }),
-);
+export const updateNeonAuthUserRole = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateNeonAuthUserRoleInput,
+  outputSchema: UpdateNeonAuthUserRoleOutput,
+}));

@@ -11,7 +11,7 @@ export interface GetBranchSchemaInput {
   keyspace?: string;
   namespace?: string;
 }
-export const GetBranchSchemaInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBranchSchemaInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const GetBranchSchemaInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface GetBranchSchemaOutput {
   data: { name: string; html: string; raw: string }[];
 }
-export const GetBranchSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBranchSchemaOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       name: Schema.String,
@@ -48,7 +48,7 @@ export const GetBranchSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param keyspace - Return the schema for a single Vitess keyspace
  * @param namespace - Return the schema for a PostgreSQL catalog namespace in `<database>.<schema>` format (e.g. public.schema1)
  */
-export const getBranchSchema = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getBranchSchema = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBranchSchemaInput,
   outputSchema: GetBranchSchemaOutput,
   errors: [Forbidden, NotFound] as const,

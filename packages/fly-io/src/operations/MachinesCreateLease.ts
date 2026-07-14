@@ -11,7 +11,7 @@ export interface MachinesCreateLeaseInput {
   ttl?: number;
 }
 export const MachinesCreateLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     machine_id: Schema.String.pipe(T.PathParam()),
     description: Schema.optional(Schema.String),
@@ -32,7 +32,7 @@ export interface MachinesCreateLeaseOutput {
   version?: string;
 }
 export const MachinesCreateLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     expires_at: Schema.optional(Schema.Number),
     nonce: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export const MachinesCreateLeaseOutput =
  * @param machine_id - Machine ID
  * @param fly-machine-lease-nonce - Existing lease nonce to refresh by ttl, empty or non-existent to create a new lease
  */
-export const MachinesCreateLease = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesCreateLease = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesCreateLeaseInput,
   outputSchema: MachinesCreateLeaseOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

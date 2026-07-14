@@ -9,7 +9,7 @@ export interface FinalizeRestoreBranchInput {
   name?: string;
 }
 export const FinalizeRestoreBranchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -78,7 +78,7 @@ export interface FinalizeRestoreBranchOutput {
   }[];
 }
 export const FinalizeRestoreBranchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -155,9 +155,7 @@ export const FinalizeRestoreBranchOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const finalizeRestoreBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FinalizeRestoreBranchInput,
-    outputSchema: FinalizeRestoreBranchOutput,
-  }),
-);
+export const finalizeRestoreBranch = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FinalizeRestoreBranchInput,
+  outputSchema: FinalizeRestoreBranchOutput,
+}));

@@ -16,7 +16,7 @@ export interface UpdateDatabaseConfigurationInput {
   allowed_aws_vpc_ids?: string[];
 }
 export const UpdateDatabaseConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     size_limit: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export interface UpdateDatabaseConfigurationOutput {
   allowed_aws_vpc_ids?: string[];
 }
 export const UpdateDatabaseConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     size_limit: Schema.optional(Schema.String),
     allow_attach: Schema.optional(Schema.Boolean),
     block_reads: Schema.optional(Schema.Boolean),
@@ -63,10 +63,8 @@ export const UpdateDatabaseConfigurationOutput =
  * @param organizationSlug - The slug of the organization or user account.
  * @param databaseName - The name of the database.
  */
-export const updateDatabaseConfiguration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateDatabaseConfigurationInput,
-    outputSchema: UpdateDatabaseConfigurationOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const updateDatabaseConfiguration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateDatabaseConfigurationInput,
+  outputSchema: UpdateDatabaseConfigurationOutput,
+  errors: [NotFound] as const,
+}));

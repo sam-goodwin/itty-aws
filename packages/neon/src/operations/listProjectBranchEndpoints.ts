@@ -9,7 +9,7 @@ export interface ListProjectBranchEndpointsInput {
   branch_id: string;
 }
 export const ListProjectBranchEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -58,7 +58,7 @@ export interface ListProjectBranchEndpointsOutput {
   }[];
 }
 export const ListProjectBranchEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoints: Schema.Array(
       Schema.Struct({
         host: Schema.String,
@@ -117,10 +117,8 @@ export const ListProjectBranchEndpointsOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const listProjectBranchEndpoints = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListProjectBranchEndpointsInput,
-    outputSchema: ListProjectBranchEndpointsOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const listProjectBranchEndpoints = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListProjectBranchEndpointsInput,
+  outputSchema: ListProjectBranchEndpointsOutput,
+  errors: [NotFound] as const,
+}));

@@ -11,7 +11,7 @@ export interface V1UpsertAMigrationInput {
   rollback?: string;
 }
 export const V1UpsertAMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     query: Schema.String,
     name: Schema.optional(Schema.String),
@@ -23,7 +23,7 @@ export const V1UpsertAMigrationInput =
 // Output Schema
 export type V1UpsertAMigrationOutput = void;
 export const V1UpsertAMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1UpsertAMigrationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1UpsertAMigrationOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const V1UpsertAMigrationOutput =
  * @param ref - Project ref
  * @param Idempotency-Key - A unique key to ensure the same migration is tracked only once.
  */
-export const v1UpsertAMigration = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1UpsertAMigration = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1UpsertAMigrationInput,
   outputSchema: V1UpsertAMigrationOutput,
   errors: [BadRequest, Forbidden] as const,

@@ -8,7 +8,7 @@ export interface QueryRetrieveInput {
   id: string;
   project_id: string;
 }
-export const QueryRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryRetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -42,7 +42,7 @@ export interface QueryRetrieveOutput {
     team_id?: number;
   };
 }
-export const QueryRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryRetrieveOutput = /*@__PURE__*/ Schema.Struct({
   query_status: Schema.optional(
     Schema.Struct({
       complete: Schema.optional(Schema.NullOr(Schema.Boolean)),
@@ -81,7 +81,7 @@ export const QueryRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const queryRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const queryRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryRetrieveInput,
   outputSchema: QueryRetrieveOutput,
   errors: [Forbidden, NotFound] as const,

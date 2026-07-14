@@ -10,14 +10,12 @@ export interface RemoveGroupApiKeyInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const RemoveGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    groupId: Schema.String.pipe(T.PathParam()),
-    apiUserId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  },
-).pipe(
+export const RemoveGroupApiKeyInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  apiUserId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}",
@@ -27,7 +25,7 @@ export const RemoveGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type RemoveGroupApiKeyOutput = void;
 export const RemoveGroupApiKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveGroupApiKeyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveGroupApiKeyOutput>;
 
 // The operation
 /**
@@ -42,7 +40,7 @@ export const RemoveGroupApiKeyOutput =
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key that you want to unassign from one project.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const removeGroupApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const removeGroupApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemoveGroupApiKeyInput,
   outputSchema: RemoveGroupApiKeyOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

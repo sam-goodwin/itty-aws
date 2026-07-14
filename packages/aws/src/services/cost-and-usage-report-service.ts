@@ -101,7 +101,7 @@ export interface DeleteReportDefinitionRequest {
   ReportName: string;
 }
 export const DeleteReportDefinitionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ReportName: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -112,7 +112,7 @@ export interface DeleteReportDefinitionResponse {
   ResponseMessage?: string;
 }
 export const DeleteReportDefinitionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ResponseMessage: S.optional(S.String) }),
   ).annotate({
     identifier: "DeleteReportDefinitionResponse",
@@ -122,7 +122,7 @@ export interface DescribeReportDefinitionsRequest {
   NextToken?: string;
 }
 export const DescribeReportDefinitionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       MaxResults: S.optional(S.Number),
       NextToken: S.optional(S.String),
@@ -133,20 +133,19 @@ export const DescribeReportDefinitionsRequest =
     identifier: "DescribeReportDefinitionsRequest",
   }) as any as S.Schema<DescribeReportDefinitionsRequest>;
 export type TimeUnit = "HOURLY" | "DAILY" | "MONTHLY" | (string & {});
-export const TimeUnit = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TimeUnit = /*@__PURE__*/ S.String;
 export type ReportFormat = "textORcsv" | "Parquet" | (string & {});
-export const ReportFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ReportFormat = /*@__PURE__*/ S.String;
 export type CompressionFormat = "ZIP" | "GZIP" | "Parquet" | (string & {});
-export const CompressionFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CompressionFormat = /*@__PURE__*/ S.String;
 export type SchemaElement =
   | "RESOURCES"
   | "SPLIT_COST_ALLOCATION_DATA"
   | "MANUAL_DISCOUNT_COMPATIBILITY"
   | (string & {});
-export const SchemaElement = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SchemaElement = /*@__PURE__*/ S.String;
 export type SchemaElementList = SchemaElement[];
-export const SchemaElementList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SchemaElement);
+export const SchemaElementList = /*@__PURE__*/ S.Array(SchemaElement);
 export type AWSRegion =
   | "af-south-1"
   | "ap-east-1"
@@ -177,32 +176,31 @@ export type AWSRegion =
   | "cn-north-1"
   | "cn-northwest-1"
   | (string & {});
-export const AWSRegion = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AWSRegion = /*@__PURE__*/ S.String;
 export type AdditionalArtifact =
   | "REDSHIFT"
   | "QUICKSIGHT"
   | "ATHENA"
   | (string & {});
-export const AdditionalArtifact = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AdditionalArtifact = /*@__PURE__*/ S.String;
 export type AdditionalArtifactList = AdditionalArtifact[];
-export const AdditionalArtifactList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AdditionalArtifact);
+export const AdditionalArtifactList = /*@__PURE__*/ S.Array(AdditionalArtifact);
 export type ReportVersioning =
   | "CREATE_NEW_REPORT"
   | "OVERWRITE_REPORT"
   | (string & {});
-export const ReportVersioning = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ReportVersioning = /*@__PURE__*/ S.String;
 export type LastStatus =
   | "SUCCESS"
   | "ERROR_PERMISSIONS"
   | "ERROR_NO_BUCKET"
   | (string & {});
-export const LastStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LastStatus = /*@__PURE__*/ S.String;
 export interface ReportStatus {
   lastDelivery?: string;
   lastStatus?: LastStatus;
 }
-export const ReportStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReportStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastDelivery: S.optional(S.String),
     lastStatus: S.optional(LastStatus),
@@ -223,7 +221,7 @@ export interface ReportDefinition {
   BillingViewArn?: string;
   ReportStatus?: ReportStatus;
 }
-export const ReportDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReportDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ReportName: S.String,
     TimeUnit: TimeUnit,
@@ -243,14 +241,13 @@ export const ReportDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ReportDefinition",
 }) as any as S.Schema<ReportDefinition>;
 export type ReportDefinitionList = ReportDefinition[];
-export const ReportDefinitionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ReportDefinition);
+export const ReportDefinitionList = /*@__PURE__*/ S.Array(ReportDefinition);
 export interface DescribeReportDefinitionsResponse {
   ReportDefinitions?: ReportDefinition[];
   NextToken?: string;
 }
 export const DescribeReportDefinitionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ReportDefinitions: S.optional(ReportDefinitionList),
       NextToken: S.optional(S.String),
@@ -261,11 +258,10 @@ export const DescribeReportDefinitionsResponse =
 export interface ListTagsForResourceRequest {
   ReportName: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ReportName: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReportName: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -273,16 +269,16 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.String, Value: S.String }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Tags: S.optional(TagList) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -292,7 +288,7 @@ export interface ModifyReportDefinitionRequest {
   ReportDefinition: ReportDefinition;
 }
 export const ModifyReportDefinitionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ReportName: S.String, ReportDefinition: ReportDefinition }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -301,34 +297,33 @@ export const ModifyReportDefinitionRequest =
   }) as any as S.Schema<ModifyReportDefinitionRequest>;
 export interface ModifyReportDefinitionResponse {}
 export const ModifyReportDefinitionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "ModifyReportDefinitionResponse",
   }) as any as S.Schema<ModifyReportDefinitionResponse>;
 export interface PutReportDefinitionRequest {
   ReportDefinition: ReportDefinition;
   Tags?: Tag[];
 }
-export const PutReportDefinitionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ReportDefinition: ReportDefinition,
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const PutReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReportDefinition: ReportDefinition,
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "PutReportDefinitionRequest",
 }) as any as S.Schema<PutReportDefinitionRequest>;
 export interface PutReportDefinitionResponse {}
 export const PutReportDefinitionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutReportDefinitionResponse",
   }) as any as S.Schema<PutReportDefinitionResponse>;
 export interface TagResourceRequest {
   ReportName: string;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ReportName: S.String, Tags: TagList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -336,18 +331,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   ReportName: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ReportName: S.String, TagKeys: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -355,7 +350,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -397,7 +392,7 @@ export const deleteReportDefinition: API.OperationMethod<
   DeleteReportDefinitionResponse,
   DeleteReportDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReportDefinitionRequest,
   output: DeleteReportDefinitionResponse,
   errors: [InternalErrorException, ValidationException],
@@ -429,7 +424,7 @@ export const describeReportDefinitions: API.OperationMethod<
     DescribeReportDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReportDefinitionsRequest,
   output: DescribeReportDefinitionsResponse,
   errors: [InternalErrorException],
@@ -453,7 +448,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -475,7 +470,7 @@ export const modifyReportDefinition: API.OperationMethod<
   ModifyReportDefinitionResponse,
   ModifyReportDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyReportDefinitionRequest,
   output: ModifyReportDefinitionResponse,
   errors: [InternalErrorException, ValidationException],
@@ -496,7 +491,7 @@ export const putReportDefinition: API.OperationMethod<
   PutReportDefinitionResponse,
   PutReportDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutReportDefinitionRequest,
   output: PutReportDefinitionResponse,
   errors: [
@@ -521,7 +516,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -544,7 +539,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [

@@ -10,7 +10,7 @@ export interface VerifyGroupUserSecurityLdapInput {
   pretty?: boolean;
 }
 export const VerifyGroupUserSecurityLdapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const VerifyGroupUserSecurityLdapInput =
 // Output Schema
 export type VerifyGroupUserSecurityLdapOutput = void;
 export const VerifyGroupUserSecurityLdapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VerifyGroupUserSecurityLdapOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VerifyGroupUserSecurityLdapOutput>;
 
 // The operation
 /**
@@ -38,10 +38,8 @@ export const VerifyGroupUserSecurityLdapOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const verifyGroupUserSecurityLdap = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VerifyGroupUserSecurityLdapInput,
-    outputSchema: VerifyGroupUserSecurityLdapOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const verifyGroupUserSecurityLdap = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VerifyGroupUserSecurityLdapInput,
+  outputSchema: VerifyGroupUserSecurityLdapOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

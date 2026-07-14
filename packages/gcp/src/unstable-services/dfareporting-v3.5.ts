@@ -36,7 +36,7 @@ export interface Size {
 }
 
 export const Size: Schema.Codec<Size> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iab: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export interface OffsetPosition {
 }
 
 export const OffsetPosition: Schema.Codec<OffsetPosition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     top: Schema.optional(Schema.Number),
     left: Schema.optional(Schema.Number),
   }).annotate({ identifier: "OffsetPosition" });
@@ -67,7 +67,7 @@ export interface CreativeClickThroughUrl {
 }
 
 export const CreativeClickThroughUrl: Schema.Codec<CreativeClickThroughUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     computedClickThroughUrl: Schema.optional(Schema.String),
     landingPageId: Schema.optional(Schema.String),
     customClickThroughUrl: Schema.optional(Schema.String),
@@ -83,7 +83,7 @@ export interface ClickTag {
 }
 
 export const ClickTag: Schema.Codec<ClickTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     eventName: Schema.optional(Schema.String),
     clickThroughUrl: Schema.optional(CreativeClickThroughUrl),
@@ -110,7 +110,7 @@ export interface DimensionValue {
 }
 
 export const DimensionValue: Schema.Codec<DimensionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     dimensionName: Schema.optional(Schema.String),
     matchType: Schema.optional(Schema.String),
@@ -141,7 +141,7 @@ export interface PopupWindowProperties {
 }
 
 export const PopupWindowProperties: Schema.Codec<PopupWindowProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     showAddressBar: Schema.optional(Schema.Boolean),
     positionType: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -192,7 +192,7 @@ export interface CreativeCustomEvent {
 }
 
 export const CreativeCustomEvent: Schema.Codec<CreativeCustomEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     popupWindowProperties: Schema.optional(PopupWindowProperties),
     videoReportingId: Schema.optional(Schema.String),
     artworkType: Schema.optional(Schema.String),
@@ -220,7 +220,7 @@ export interface CreativeAssetId {
 }
 
 export const CreativeAssetId: Schema.Codec<CreativeAssetId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreativeAssetId" });
@@ -347,7 +347,7 @@ export interface CreativeAssetMetadata {
 }
 
 export const CreativeAssetMetadata: Schema.Codec<CreativeAssetMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clickTags: Schema.optional(Schema.Array(ClickTag)),
     detectedFeatures: Schema.optional(Schema.Array(Schema.String)),
     timerCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
@@ -424,7 +424,7 @@ export interface UploadMediaRequest {
   body?: CreativeAssetMetadata;
 }
 
-export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UploadMediaRequest = /*@__PURE__*/ Schema.Struct({
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
   advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
   body: Schema.optional(CreativeAssetMetadata).pipe(T.HttpBody()),
@@ -438,8 +438,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse = CreativeAssetMetadata;
-export const UploadMediaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CreativeAssetMetadata;
+export const UploadMediaResponse = /*@__PURE__*/ CreativeAssetMetadata;
 
 export type UploadMediaError =
   | DefaultErrors
@@ -454,7 +453,7 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaResponse,
   UploadMediaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

@@ -37,7 +37,7 @@ export interface CreateMonitorInput {
   type: "Threshold" | "MatchEvent" | "AnomalyDetection";
   updatedAt?: string;
 }
-export const CreateMonitorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateMonitorInput = /*@__PURE__*/ Schema.Struct({
   alertOnNoData: Schema.optional(Schema.Boolean),
   aplQuery: Schema.optional(Schema.String),
   columnName: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface CreateMonitorOutput {
   updatedAt?: string;
   id: string;
 }
-export const CreateMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateMonitorOutput = /*@__PURE__*/ Schema.Struct({
   alertOnNoData: Schema.optional(Schema.Boolean),
   aplQuery: Schema.optional(Schema.String),
   columnName: Schema.optional(Schema.String),
@@ -153,7 +153,7 @@ export const CreateMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Create monitor
  */
-export const createMonitor = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createMonitor = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateMonitorInput,
   outputSchema: CreateMonitorOutput,
   errors: [UnprocessableEntity] as const,

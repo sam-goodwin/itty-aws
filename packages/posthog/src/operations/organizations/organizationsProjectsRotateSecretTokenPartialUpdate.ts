@@ -1100,7 +1100,7 @@ export interface OrganizationsProjectsRotateSecretTokenPartialUpdateInput {
   events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
     organization: Schema.optional(Schema.String),
@@ -3380,7 +3380,7 @@ export interface OrganizationsProjectsRotateSecretTokenPartialUpdateOutput {
   events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     organization: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4568,7 +4568,7 @@ export const OrganizationsProjectsRotateSecretTokenPartialUpdateOutput =
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const organizationsProjectsRotateSecretTokenPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationsProjectsRotateSecretTokenPartialUpdateInput,
     outputSchema: OrganizationsProjectsRotateSecretTokenPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

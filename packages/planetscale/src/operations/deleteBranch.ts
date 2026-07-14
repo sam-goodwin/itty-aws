@@ -10,7 +10,7 @@ export interface DeleteBranchInput {
   branch: string;
   delete_descendants?: boolean;
 }
-export const DeleteBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteBranchInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -25,7 +25,7 @@ export const DeleteBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteBranchOutput = void;
 export const DeleteBranchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBranchOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBranchOutput>;
 
 // The operation
 /**
@@ -36,7 +36,7 @@ export const DeleteBranchOutput =
  * @param branch - The name of the branch
  * @param delete_descendants - If true, recursively delete all descendant branches along with this branch
  */
-export const deleteBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteBranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteBranchInput,
   outputSchema: DeleteBranchOutput,
   errors: [Forbidden, NotFound, UnprocessableEntity] as const,

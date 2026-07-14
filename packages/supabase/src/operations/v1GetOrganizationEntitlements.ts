@@ -8,7 +8,7 @@ export interface V1GetOrganizationEntitlementsInput {
   slug: string;
 }
 export const V1GetOrganizationEntitlementsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/organizations/{slug}/entitlements" }),
@@ -92,7 +92,7 @@ export interface V1GetOrganizationEntitlementsOutput {
   }[];
 }
 export const V1GetOrganizationEntitlementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlements: Schema.Array(
       Schema.Struct({
         feature: Schema.Struct({
@@ -192,7 +192,7 @@ export const V1GetOrganizationEntitlementsOutput =
  * @param slug - Organization slug
  */
 export const v1GetOrganizationEntitlements =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1GetOrganizationEntitlementsInput,
     outputSchema: V1GetOrganizationEntitlementsOutput,
     errors: [Forbidden] as const,

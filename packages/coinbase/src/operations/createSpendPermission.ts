@@ -25,7 +25,7 @@ export interface CreateSpendPermissionInput {
   paymasterUrl?: string;
 }
 export const CreateSpendPermissionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     network: Schema.Literals([
       "base",
@@ -91,7 +91,7 @@ export interface CreateSpendPermissionOutput {
   expiresAt?: string;
 }
 export const CreateSpendPermissionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     network: Schema.Literals([
       "base-sepolia",
       "base",
@@ -157,9 +157,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The address of the Smart Account to create the spend permission for.
  */
-export const createSpendPermission = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateSpendPermissionInput,
-    outputSchema: CreateSpendPermissionOutput,
-  }),
-);
+export const createSpendPermission = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateSpendPermissionInput,
+  outputSchema: CreateSpendPermissionOutput,
+}));

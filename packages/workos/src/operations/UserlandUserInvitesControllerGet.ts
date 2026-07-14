@@ -8,7 +8,7 @@ export interface UserlandUserInvitesControllerGetInput {
   id: string;
 }
 export const UserlandUserInvitesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/user_management/invitations/{id}" }),
@@ -33,7 +33,7 @@ export interface UserlandUserInvitesControllerGetOutput {
   accept_invitation_url?: string;
 }
 export const UserlandUserInvitesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export const UserlandUserInvitesControllerGetOutput =
  * @param id - The unique ID of the invitation.
  */
 export const UserlandUserInvitesControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserInvitesControllerGetInput,
     outputSchema: UserlandUserInvitesControllerGetOutput,
     errors: [NotFound] as const,

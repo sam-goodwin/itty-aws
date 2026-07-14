@@ -7,7 +7,7 @@ export interface ToggleSlowRequestLogInput {
   "log-slow-requests-time-ms": number;
 }
 export const ToggleSlowRequestLogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "log-slow-requests-time-ms": Schema.Number,
   }).pipe(
     T.Http({ method: "POST", path: "/config" }),
@@ -18,7 +18,7 @@ export interface ToggleSlowRequestLogOutput {
   success: boolean;
 }
 export const ToggleSlowRequestLogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     success: Schema.Boolean,
   }) as unknown as Schema.Codec<ToggleSlowRequestLogOutput>;
 
@@ -28,9 +28,7 @@ export const ToggleSlowRequestLogOutput =
  *
  * Enable logging of requests that take over a defined threshold of time. Default is `-1` which disables slow request logging. Slow requests are logged to the primary log file, with the prefix SLOW REQUEST.
  */
-export const toggleSlowRequestLog = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ToggleSlowRequestLogInput,
-    outputSchema: ToggleSlowRequestLogOutput,
-  }),
-);
+export const toggleSlowRequestLog = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ToggleSlowRequestLogInput,
+  outputSchema: ToggleSlowRequestLogOutput,
+}));

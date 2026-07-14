@@ -42,7 +42,7 @@ export interface PostBalanceSettingsInput {
   };
 }
 export const PostBalanceSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     payments: Schema.optional(
       Schema.Struct({
@@ -167,7 +167,7 @@ export interface PostBalanceSettingsOutput {
   };
 }
 export const PostBalanceSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Literals(["balance_settings"]),
     payments: Schema.Struct({
       debit_negative_balances: Schema.NullOr(Schema.Boolean),
@@ -235,7 +235,7 @@ export const PostBalanceSettingsOutput =
  * <p>Updates balance settings for a given connected account.
  * Related guide: <a href="/connect/authentication">Making API calls for connected accounts</a></p>
  */
-export const PostBalanceSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostBalanceSettings = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostBalanceSettingsInput,
   outputSchema: PostBalanceSettingsOutput,
 }));

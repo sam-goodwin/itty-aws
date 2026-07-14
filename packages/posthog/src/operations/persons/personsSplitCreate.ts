@@ -12,7 +12,7 @@ export interface PersonsSplitCreateInput {
   distinct_ids_to_split?: string[] | null;
 }
 export const PersonsSplitCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
@@ -32,7 +32,7 @@ export interface PersonsSplitCreateOutput {
   success: boolean;
 }
 export const PersonsSplitCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     success: Schema.Boolean,
   }) as unknown as Schema.Codec<PersonsSplitCreateOutput>;
 
@@ -47,7 +47,7 @@ export const PersonsSplitCreateOutput =
  * @param id - A unique value identifying this person. Accepts both numeric ID and UUID.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsSplitCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const personsSplitCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PersonsSplitCreateInput,
   outputSchema: PersonsSplitCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

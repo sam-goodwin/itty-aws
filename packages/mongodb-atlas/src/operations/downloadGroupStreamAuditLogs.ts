@@ -13,7 +13,7 @@ export interface DownloadGroupStreamAuditLogsInput {
   spName?: string;
 }
 export const DownloadGroupStreamAuditLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -30,7 +30,7 @@ export const DownloadGroupStreamAuditLogsInput =
 // Output Schema
 export type DownloadGroupStreamAuditLogsOutput = void;
 export const DownloadGroupStreamAuditLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupStreamAuditLogsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupStreamAuditLogsOutput>;
 
 // The operation
 /**
@@ -48,7 +48,7 @@ export const DownloadGroupStreamAuditLogsOutput =
  * @param tenantName - Label that identifies the stream workspace.
  */
 export const downloadGroupStreamAuditLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DownloadGroupStreamAuditLogsInput,
     outputSchema: DownloadGroupStreamAuditLogsOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

@@ -21,7 +21,7 @@ export interface PostChargesChargeCaptureInput {
   transfer_group?: string;
 }
 export const PostChargesChargeCaptureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     charge: Schema.String.pipe(T.PathParam()),
     amount: Schema.optional(Schema.Number),
     application_fee: Schema.optional(Schema.Number),
@@ -1621,7 +1621,7 @@ export interface PostChargesChargeCaptureOutput {
   transfer_group: string | null;
 }
 export const PostChargesChargeCaptureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_captured: Schema.Number,
     amount_refunded: Schema.Number,
@@ -2364,9 +2364,7 @@ export const PostChargesChargeCaptureOutput =
  * <p>Uncaptured payments expire a set number of days after they are created (<a href="/docs/charges/placing-a-hold">7 by default</a>), after which they are marked as refunded and capture attempts will fail.</p>
  * <p>Don’t use this method to capture a PaymentIntent-initiated charge. Use <a href="/docs/api/payment_intents/capture">Capture a PaymentIntent</a>.</p>
  */
-export const PostChargesChargeCapture = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostChargesChargeCaptureInput,
-    outputSchema: PostChargesChargeCaptureOutput,
-  }),
-);
+export const PostChargesChargeCapture = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostChargesChargeCaptureInput,
+  outputSchema: PostChargesChargeCaptureOutput,
+}));

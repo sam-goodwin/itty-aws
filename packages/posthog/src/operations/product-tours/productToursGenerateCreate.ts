@@ -12,7 +12,7 @@ export interface ProductToursGenerateCreateInput {
   steps?: Record<string, unknown>[];
 }
 export const ProductToursGenerateCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     title: Schema.optional(Schema.String),
@@ -32,7 +32,7 @@ export interface ProductToursGenerateCreateOutput {
   steps?: { step_id?: string; title?: string; description?: string }[];
 }
 export const ProductToursGenerateCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     steps: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -51,10 +51,8 @@ export const ProductToursGenerateCreateOutput =
  * @param id - A UUID string identifying this product tour.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const productToursGenerateCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductToursGenerateCreateInput,
-    outputSchema: ProductToursGenerateCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const productToursGenerateCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductToursGenerateCreateInput,
+  outputSchema: ProductToursGenerateCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

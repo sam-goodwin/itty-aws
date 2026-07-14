@@ -34,7 +34,7 @@ export interface MediaPlanner {
 }
 
 export const MediaPlanner: Schema.Codec<MediaPlanner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export interface StringTargetingDimension {
 }
 
 export const StringTargetingDimension: Schema.Codec<StringTargetingDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selectionType: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "StringTargetingDimension" });
@@ -74,7 +74,7 @@ export interface AdSize {
 }
 
 export const AdSize: Schema.Codec<AdSize> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     height: Schema.optional(Schema.String),
     width: Schema.optional(Schema.String),
@@ -99,7 +99,7 @@ export interface VideoPlcmtTargeting {
 }
 
 export const VideoPlcmtTargeting: Schema.Codec<VideoPlcmtTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selectionType: Schema.optional(Schema.String),
     videoPlcmtTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "VideoPlcmtTargeting" });
@@ -112,7 +112,7 @@ export interface VideoPlayerSizeTargeting {
 }
 
 export const VideoPlayerSizeTargeting: Schema.Codec<VideoPlayerSizeTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minimumHeight: Schema.optional(Schema.String),
     minimumWidth: Schema.optional(Schema.String),
   }).annotate({ identifier: "VideoPlayerSizeTargeting" });
@@ -170,7 +170,7 @@ export interface PackageVideoTargeting {
 }
 
 export const PackageVideoTargeting: Schema.Codec<PackageVideoTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minimumPredictedCompletionRatePercentage: Schema.optional(Schema.String),
     includedPositionTypes: Schema.optional(Schema.Array(Schema.String)),
     plcmtTargeting: Schema.optional(VideoPlcmtTargeting),
@@ -191,7 +191,7 @@ export interface PackagePlacementTargeting {
 }
 
 export const PackagePlacementTargeting: Schema.Codec<PackagePlacementTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uriTargeting: Schema.optional(StringTargetingDimension),
     mobileAppTargeting: Schema.optional(StringTargetingDimension),
     includedMobileAppCategoryTargeting: Schema.optional(
@@ -207,7 +207,7 @@ export interface CriteriaTargeting {
 }
 
 export const CriteriaTargeting: Schema.Codec<CriteriaTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     excludedCriteriaIds: Schema.optional(Schema.Array(Schema.String)),
     targetedCriteriaIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CriteriaTargeting" });
@@ -220,7 +220,7 @@ export interface TaxonomyTargeting {
 }
 
 export const TaxonomyTargeting: Schema.Codec<TaxonomyTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetedTaxonomyIds: Schema.optional(Schema.Array(Schema.String)),
     excludedTaxonomyIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TaxonomyTargeting" });
@@ -235,7 +235,7 @@ export interface PackagePublisherProvidedSignalsTargeting {
 }
 
 export const PackagePublisherProvidedSignalsTargeting: Schema.Codec<PackagePublisherProvidedSignalsTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentTargeting: Schema.optional(TaxonomyTargeting),
     audienceTargeting: Schema.optional(TaxonomyTargeting),
     videoAndAudioSignalsTargeting: Schema.optional(StringTargetingDimension),
@@ -329,7 +329,7 @@ export interface PackageTargeting {
 }
 
 export const PackageTargeting: Schema.Codec<PackageTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includedRewardedType: Schema.optional(Schema.String),
     includedDataSegments: Schema.optional(Schema.Array(Schema.String)),
     minimumPredictedViewabilityPercentage: Schema.optional(Schema.String),
@@ -368,7 +368,7 @@ export interface Money {
 }
 
 export const Money: Schema.Codec<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     units: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -380,7 +380,7 @@ export interface AccessControlSettings {
 }
 
 export const AccessControlSettings: Schema.Codec<AccessControlSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowlistedMediaPlanners: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AccessControlSettings" });
 
@@ -408,7 +408,7 @@ export interface CuratedPackage {
 }
 
 export const CuratedPackage: Schema.Codec<CuratedPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     targeting: Schema.optional(PackageTargeting),
@@ -429,7 +429,7 @@ export interface ListCuratedPackagesResponse {
 }
 
 export const ListCuratedPackagesResponse: Schema.Codec<ListCuratedPackagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     curatedPackages: Schema.optional(Schema.Array(CuratedPackage)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListCuratedPackagesResponse" });
@@ -442,7 +442,7 @@ export interface ListMediaPlannersResponse {
 }
 
 export const ListMediaPlannersResponse: Schema.Codec<ListMediaPlannersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mediaPlanners: Schema.optional(Schema.Array(MediaPlanner)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListMediaPlannersResponse" });
@@ -461,7 +461,7 @@ export interface DataSegment {
 }
 
 export const DataSegment: Schema.Codec<DataSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -472,28 +472,28 @@ export const DataSegment: Schema.Codec<DataSegment> =
 export interface DeactivateDataSegmentRequest {}
 
 export const DeactivateDataSegmentRequest: Schema.Codec<DeactivateDataSegmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeactivateDataSegmentRequest",
   });
 
 export interface ActivateCuratedPackageRequest {}
 
 export const ActivateCuratedPackageRequest: Schema.Codec<ActivateCuratedPackageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ActivateCuratedPackageRequest",
   });
 
 export interface DeactivateCuratedPackageRequest {}
 
 export const DeactivateCuratedPackageRequest: Schema.Codec<DeactivateCuratedPackageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeactivateCuratedPackageRequest",
   });
 
 export interface ActivateDataSegmentRequest {}
 
 export const ActivateDataSegmentRequest: Schema.Codec<ActivateDataSegmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ActivateDataSegmentRequest",
   });
 
@@ -505,7 +505,7 @@ export interface ListDataSegmentsResponse {
 }
 
 export const ListDataSegmentsResponse: Schema.Codec<ListDataSegmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataSegments: Schema.optional(Schema.Array(DataSegment)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListDataSegmentsResponse" });
@@ -572,7 +572,7 @@ export interface DeactivateCuratorsCuratedPackagesRequest {
 }
 
 export const DeactivateCuratorsCuratedPackagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeactivateCuratedPackageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -586,7 +586,7 @@ export const DeactivateCuratorsCuratedPackagesRequest =
 
 export type DeactivateCuratorsCuratedPackagesResponse = CuratedPackage;
 export const DeactivateCuratorsCuratedPackagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
+  /*@__PURE__*/ CuratedPackage;
 
 export type DeactivateCuratorsCuratedPackagesError =
   | DefaultErrors
@@ -601,7 +601,7 @@ export const deactivateCuratorsCuratedPackages: API.OperationMethod<
   DeactivateCuratorsCuratedPackagesResponse,
   DeactivateCuratorsCuratedPackagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeactivateCuratorsCuratedPackagesRequest,
   output: DeactivateCuratorsCuratedPackagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -619,7 +619,7 @@ export interface ListCuratorsCuratedPackagesRequest {
 }
 
 export const ListCuratorsCuratedPackagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -631,7 +631,7 @@ export const ListCuratorsCuratedPackagesRequest =
 
 export type ListCuratorsCuratedPackagesResponse = ListCuratedPackagesResponse;
 export const ListCuratorsCuratedPackagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCuratedPackagesResponse;
+  /*@__PURE__*/ ListCuratedPackagesResponse;
 
 export type ListCuratorsCuratedPackagesError =
   | DefaultErrors
@@ -644,7 +644,7 @@ export const listCuratorsCuratedPackages: API.PaginatedOperationMethod<
   ListCuratorsCuratedPackagesResponse,
   ListCuratorsCuratedPackagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCuratorsCuratedPackagesRequest,
   output: ListCuratorsCuratedPackagesResponse,
   errors: [NotFound, Forbidden],
@@ -662,7 +662,7 @@ export interface CreateCuratorsCuratedPackagesRequest {
 }
 
 export const CreateCuratorsCuratedPackagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CuratedPackage).pipe(T.HttpBody()),
   }).pipe(
@@ -676,7 +676,7 @@ export const CreateCuratorsCuratedPackagesRequest =
 
 export type CreateCuratorsCuratedPackagesResponse = CuratedPackage;
 export const CreateCuratorsCuratedPackagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
+  /*@__PURE__*/ CuratedPackage;
 
 export type CreateCuratorsCuratedPackagesError =
   | DefaultErrors
@@ -691,7 +691,7 @@ export const createCuratorsCuratedPackages: API.OperationMethod<
   CreateCuratorsCuratedPackagesResponse,
   CreateCuratorsCuratedPackagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCuratorsCuratedPackagesRequest,
   output: CreateCuratorsCuratedPackagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -703,7 +703,7 @@ export interface GetCuratorsCuratedPackagesRequest {
 }
 
 export const GetCuratorsCuratedPackagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -711,8 +711,7 @@ export const GetCuratorsCuratedPackagesRequest =
   ) as unknown as Schema.Codec<GetCuratorsCuratedPackagesRequest>;
 
 export type GetCuratorsCuratedPackagesResponse = CuratedPackage;
-export const GetCuratorsCuratedPackagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
+export const GetCuratorsCuratedPackagesResponse = /*@__PURE__*/ CuratedPackage;
 
 export type GetCuratorsCuratedPackagesError =
   | DefaultErrors
@@ -725,7 +724,7 @@ export const getCuratorsCuratedPackages: API.OperationMethod<
   GetCuratorsCuratedPackagesResponse,
   GetCuratorsCuratedPackagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCuratorsCuratedPackagesRequest,
   output: GetCuratorsCuratedPackagesResponse,
   errors: [NotFound, Forbidden],
@@ -739,7 +738,7 @@ export interface ActivateCuratorsCuratedPackagesRequest {
 }
 
 export const ActivateCuratorsCuratedPackagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ActivateCuratedPackageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -749,7 +748,7 @@ export const ActivateCuratorsCuratedPackagesRequest =
 
 export type ActivateCuratorsCuratedPackagesResponse = CuratedPackage;
 export const ActivateCuratorsCuratedPackagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
+  /*@__PURE__*/ CuratedPackage;
 
 export type ActivateCuratorsCuratedPackagesError =
   | DefaultErrors
@@ -764,7 +763,7 @@ export const activateCuratorsCuratedPackages: API.OperationMethod<
   ActivateCuratorsCuratedPackagesResponse,
   ActivateCuratorsCuratedPackagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivateCuratorsCuratedPackagesRequest,
   output: ActivateCuratorsCuratedPackagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -780,7 +779,7 @@ export interface PatchCuratorsCuratedPackagesRequest {
 }
 
 export const PatchCuratorsCuratedPackagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CuratedPackage).pipe(T.HttpBody()),
@@ -791,7 +790,7 @@ export const PatchCuratorsCuratedPackagesRequest =
 
 export type PatchCuratorsCuratedPackagesResponse = CuratedPackage;
 export const PatchCuratorsCuratedPackagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
+  /*@__PURE__*/ CuratedPackage;
 
 export type PatchCuratorsCuratedPackagesError =
   | DefaultErrors
@@ -806,7 +805,7 @@ export const patchCuratorsCuratedPackages: API.OperationMethod<
   PatchCuratorsCuratedPackagesResponse,
   PatchCuratorsCuratedPackagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCuratorsCuratedPackagesRequest,
   output: PatchCuratorsCuratedPackagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -818,7 +817,7 @@ export interface GetCuratorsDataSegmentsRequest {
 }
 
 export const GetCuratorsDataSegmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -826,8 +825,7 @@ export const GetCuratorsDataSegmentsRequest =
   ) as unknown as Schema.Codec<GetCuratorsDataSegmentsRequest>;
 
 export type GetCuratorsDataSegmentsResponse = DataSegment;
-export const GetCuratorsDataSegmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSegment;
+export const GetCuratorsDataSegmentsResponse = /*@__PURE__*/ DataSegment;
 
 export type GetCuratorsDataSegmentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -837,7 +835,7 @@ export const getCuratorsDataSegments: API.OperationMethod<
   GetCuratorsDataSegmentsResponse,
   GetCuratorsDataSegmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCuratorsDataSegmentsRequest,
   output: GetCuratorsDataSegmentsResponse,
   errors: [NotFound, Forbidden],
@@ -851,7 +849,7 @@ export interface ActivateCuratorsDataSegmentsRequest {
 }
 
 export const ActivateCuratorsDataSegmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ActivateDataSegmentRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -860,8 +858,7 @@ export const ActivateCuratorsDataSegmentsRequest =
   ) as unknown as Schema.Codec<ActivateCuratorsDataSegmentsRequest>;
 
 export type ActivateCuratorsDataSegmentsResponse = DataSegment;
-export const ActivateCuratorsDataSegmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSegment;
+export const ActivateCuratorsDataSegmentsResponse = /*@__PURE__*/ DataSegment;
 
 export type ActivateCuratorsDataSegmentsError =
   | DefaultErrors
@@ -876,7 +873,7 @@ export const activateCuratorsDataSegments: API.OperationMethod<
   ActivateCuratorsDataSegmentsResponse,
   ActivateCuratorsDataSegmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivateCuratorsDataSegmentsRequest,
   output: ActivateCuratorsDataSegmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -890,7 +887,7 @@ export interface CreateCuratorsDataSegmentsRequest {
 }
 
 export const CreateCuratorsDataSegmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(DataSegment).pipe(T.HttpBody()),
   }).pipe(
@@ -903,8 +900,7 @@ export const CreateCuratorsDataSegmentsRequest =
   ) as unknown as Schema.Codec<CreateCuratorsDataSegmentsRequest>;
 
 export type CreateCuratorsDataSegmentsResponse = DataSegment;
-export const CreateCuratorsDataSegmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSegment;
+export const CreateCuratorsDataSegmentsResponse = /*@__PURE__*/ DataSegment;
 
 export type CreateCuratorsDataSegmentsError =
   | DefaultErrors
@@ -919,7 +915,7 @@ export const createCuratorsDataSegments: API.OperationMethod<
   CreateCuratorsDataSegmentsResponse,
   CreateCuratorsDataSegmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCuratorsDataSegmentsRequest,
   output: CreateCuratorsDataSegmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -935,7 +931,7 @@ export interface ListCuratorsDataSegmentsRequest {
 }
 
 export const ListCuratorsDataSegmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -946,7 +942,7 @@ export const ListCuratorsDataSegmentsRequest =
 
 export type ListCuratorsDataSegmentsResponse = ListDataSegmentsResponse;
 export const ListCuratorsDataSegmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDataSegmentsResponse;
+  /*@__PURE__*/ ListDataSegmentsResponse;
 
 export type ListCuratorsDataSegmentsError =
   | DefaultErrors
@@ -959,7 +955,7 @@ export const listCuratorsDataSegments: API.PaginatedOperationMethod<
   ListCuratorsDataSegmentsResponse,
   ListCuratorsDataSegmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCuratorsDataSegmentsRequest,
   output: ListCuratorsDataSegmentsResponse,
   errors: [NotFound, Forbidden],
@@ -977,7 +973,7 @@ export interface DeactivateCuratorsDataSegmentsRequest {
 }
 
 export const DeactivateCuratorsDataSegmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeactivateDataSegmentRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -990,8 +986,7 @@ export const DeactivateCuratorsDataSegmentsRequest =
   ) as unknown as Schema.Codec<DeactivateCuratorsDataSegmentsRequest>;
 
 export type DeactivateCuratorsDataSegmentsResponse = DataSegment;
-export const DeactivateCuratorsDataSegmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSegment;
+export const DeactivateCuratorsDataSegmentsResponse = /*@__PURE__*/ DataSegment;
 
 export type DeactivateCuratorsDataSegmentsError =
   | DefaultErrors
@@ -1006,7 +1001,7 @@ export const deactivateCuratorsDataSegments: API.OperationMethod<
   DeactivateCuratorsDataSegmentsResponse,
   DeactivateCuratorsDataSegmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeactivateCuratorsDataSegmentsRequest,
   output: DeactivateCuratorsDataSegmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1022,7 +1017,7 @@ export interface PatchCuratorsDataSegmentsRequest {
 }
 
 export const PatchCuratorsDataSegmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(DataSegment).pipe(T.HttpBody()),
@@ -1032,8 +1027,7 @@ export const PatchCuratorsDataSegmentsRequest =
   ) as unknown as Schema.Codec<PatchCuratorsDataSegmentsRequest>;
 
 export type PatchCuratorsDataSegmentsResponse = DataSegment;
-export const PatchCuratorsDataSegmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSegment;
+export const PatchCuratorsDataSegmentsResponse = /*@__PURE__*/ DataSegment;
 
 export type PatchCuratorsDataSegmentsError =
   | DefaultErrors
@@ -1048,7 +1042,7 @@ export const patchCuratorsDataSegments: API.OperationMethod<
   PatchCuratorsDataSegmentsResponse,
   PatchCuratorsDataSegmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCuratorsDataSegmentsRequest,
   output: PatchCuratorsDataSegmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1064,7 +1058,7 @@ export interface ListMediaPlannersRequest {
 }
 
 export const ListMediaPlannersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1075,7 +1069,7 @@ export const ListMediaPlannersRequest =
 
 export type ListMediaPlannersResponse_Op = ListMediaPlannersResponse;
 export const ListMediaPlannersResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListMediaPlannersResponse;
+  /*@__PURE__*/ ListMediaPlannersResponse;
 
 export type ListMediaPlannersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1085,7 +1079,7 @@ export const listMediaPlanners: API.PaginatedOperationMethod<
   ListMediaPlannersResponse_Op,
   ListMediaPlannersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMediaPlannersRequest,
   output: ListMediaPlannersResponse_Op,
   errors: [NotFound, Forbidden],

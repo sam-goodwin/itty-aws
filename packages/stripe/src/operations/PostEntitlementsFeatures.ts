@@ -10,7 +10,7 @@ export interface PostEntitlementsFeaturesInput {
   name: string;
 }
 export const PostEntitlementsFeaturesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     lookup_key: Schema.String,
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -34,7 +34,7 @@ export interface PostEntitlementsFeaturesOutput {
   object: "entitlements.feature";
 }
 export const PostEntitlementsFeaturesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     id: Schema.String,
     livemode: Schema.Boolean,
@@ -50,9 +50,7 @@ export const PostEntitlementsFeaturesOutput =
  *
  * <p>Creates a feature</p>
  */
-export const PostEntitlementsFeatures = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostEntitlementsFeaturesInput,
-    outputSchema: PostEntitlementsFeaturesOutput,
-  }),
-);
+export const PostEntitlementsFeatures = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostEntitlementsFeaturesInput,
+  outputSchema: PostEntitlementsFeaturesOutput,
+}));

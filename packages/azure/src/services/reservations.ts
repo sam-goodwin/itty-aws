@@ -83,7 +83,7 @@ export interface CalculateExchangePostInput {
   };
 }
 export const CalculateExchangePostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         reservationsToPurchase: Schema.optional(
@@ -324,7 +324,7 @@ export interface CalculateExchangePostOutput {
   error?: { code?: string; message?: string };
 }
 export const CalculateExchangePostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(
@@ -561,12 +561,10 @@ export const CalculateExchangePostOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const CalculateExchangePost = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CalculateExchangePostInput,
-    outputSchema: CalculateExchangePostOutput,
-  }),
-);
+export const CalculateExchangePost = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CalculateExchangePostInput,
+  outputSchema: CalculateExchangePostOutput,
+}));
 // Input Schema
 export interface CalculateRefundPostInput {
   reservationOrderId: string;
@@ -577,7 +575,7 @@ export interface CalculateRefundPostInput {
   };
 }
 export const CalculateRefundPostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -695,7 +693,7 @@ export interface CalculateRefundPostOutput {
   };
 }
 export const CalculateRefundPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
@@ -842,7 +840,7 @@ export const CalculateRefundPostOutput =
  * @param api-version - The API version to use for this operation.
  * @param reservationOrderId - Order Id of the reservation
  */
-export const CalculateRefundPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CalculateRefundPost = /*@__PURE__*/ API.make(() => ({
   inputSchema: CalculateRefundPostInput,
   outputSchema: CalculateRefundPostOutput,
 }));
@@ -850,7 +848,7 @@ export const CalculateRefundPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ExchangePostInput {
   properties?: { sessionId?: string };
 }
-export const ExchangePostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExchangePostInput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       sessionId: Schema.optional(Schema.String),
@@ -983,7 +981,7 @@ export interface ExchangePostOutput {
   };
   error?: { code?: string; message?: string };
 }
-export const ExchangePostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExchangePostOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   status: Schema.optional(
@@ -1229,7 +1227,7 @@ export const ExchangePostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ExchangePost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExchangePost = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExchangePostInput,
   outputSchema: ExchangePostOutput,
 }));
@@ -1238,7 +1236,7 @@ export interface GetAppliedReservationListInput {
   subscriptionId: string;
 }
 export const GetAppliedReservationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1258,7 +1256,7 @@ export interface GetAppliedReservationListOutput {
   };
 }
 export const GetAppliedReservationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1283,12 +1281,10 @@ export const GetAppliedReservationListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GetAppliedReservationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetAppliedReservationListInput,
-    outputSchema: GetAppliedReservationListOutput,
-  }),
-);
+export const GetAppliedReservationList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAppliedReservationListInput,
+  outputSchema: GetAppliedReservationListOutput,
+}));
 // Input Schema
 export interface GetCatalogInput {
   subscriptionId: string;
@@ -1301,7 +1297,7 @@ export interface GetCatalogInput {
   $skip?: number;
   $take?: number;
 }
-export const GetCatalogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCatalogInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   reservedResourceType: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
@@ -1341,7 +1337,7 @@ export interface GetCatalogOutput {
   nextLink?: string;
   totalItems?: number;
 }
-export const GetCatalogOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCatalogOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       resourceType: Schema.optional(Schema.String),
@@ -1426,15 +1422,13 @@ export const GetCatalogOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $skip - The number of reservations to skip from the list before returning results
  * @param $take - To number of reservations to return
  */
-export const GetCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetCatalog = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCatalogInput,
   outputSchema: GetCatalogOutput,
 }));
 // Input Schema
 export interface OperationListInput {}
-export const OperationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Capacity/operations",
@@ -1458,7 +1452,7 @@ export interface OperationListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1488,7 +1482,7 @@ export const OperationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationListInput,
   outputSchema: OperationListOutput,
 }));
@@ -1498,7 +1492,7 @@ export interface ReservationArchiveInput {
   reservationId: string;
 }
 export const ReservationArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1512,7 +1506,7 @@ export const ReservationArchiveInput =
 // Output Schema
 export type ReservationArchiveOutput = void;
 export const ReservationArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReservationArchiveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReservationArchiveOutput>;
 
 // The operation
 /**
@@ -1524,7 +1518,7 @@ export const ReservationArchiveOutput =
  * @param reservationOrderId - Order Id of the reservation
  * @param reservationId - Id of the reservation item
  */
-export const ReservationArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationArchive = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationArchiveInput,
   outputSchema: ReservationArchiveOutput,
 }));
@@ -1535,7 +1529,7 @@ export interface ReservationAvailableScopesInput {
   properties?: { scopes?: string[] };
 }
 export const ReservationAvailableScopesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1556,7 +1550,7 @@ export interface ReservationAvailableScopesOutput {
   properties?: { scopes?: { scope?: string; valid?: boolean }[] };
 }
 export const ReservationAvailableScopesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         scopes: Schema.optional(
@@ -1581,19 +1575,17 @@ export const ReservationAvailableScopesOutput =
  * @param reservationOrderId - Order Id of the reservation
  * @param reservationId - Id of the reservation item
  */
-export const ReservationAvailableScopes = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationAvailableScopesInput,
-    outputSchema: ReservationAvailableScopesOutput,
-  }),
-);
+export const ReservationAvailableScopes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationAvailableScopesInput,
+  outputSchema: ReservationAvailableScopesOutput,
+}));
 // Input Schema
 export interface ReservationGetInput {
   reservationOrderId: string;
   reservationId: string;
   $expand?: string;
 }
-export const ReservationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReservationGetInput = /*@__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   reservationId: Schema.String.pipe(T.PathParam()),
   $expand: Schema.optional(Schema.String),
@@ -1619,7 +1611,7 @@ export interface ReservationGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ReservationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReservationGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1650,7 +1642,7 @@ export const ReservationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param reservationId - Id of the reservation item
  * @param $expand - Supported value of this query is renewProperties
  */
-export const ReservationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationGetInput,
   outputSchema: ReservationGetOutput,
 }));
@@ -1658,7 +1650,7 @@ export const ReservationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ReservationListInput {
   reservationOrderId: string;
 }
-export const ReservationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReservationListInput = /*@__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1685,7 +1677,7 @@ export interface ReservationListOutput {
   }[];
   nextLink?: string;
 }
-export const ReservationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReservationListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1719,7 +1711,7 @@ export const ReservationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param reservationOrderId - Order Id of the reservation
  */
-export const ReservationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationListInput,
   outputSchema: ReservationListOutput,
 }));
@@ -1733,7 +1725,7 @@ export interface ReservationListAllInput {
   take?: number;
 }
 export const ReservationListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
     refreshSummary: Schema.optional(Schema.String),
@@ -1777,7 +1769,7 @@ export interface ReservationListAllOutput {
   };
 }
 export const ReservationListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1839,7 +1831,7 @@ export const ReservationListAllOutput =
  * @param selectedState - The selected provisioning state
  * @param take - To number of reservations to return
  */
-export const ReservationListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationListAll = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationListAllInput,
   outputSchema: ReservationListAllOutput,
 }));
@@ -1849,7 +1841,7 @@ export interface ReservationListRevisionsInput {
   reservationId: string;
 }
 export const ReservationListRevisionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1878,7 +1870,7 @@ export interface ReservationListRevisionsOutput {
   nextLink?: string;
 }
 export const ReservationListRevisionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1923,18 +1915,16 @@ export const ReservationListRevisionsOutput =
  * @param reservationOrderId - Order Id of the reservation
  * @param reservationId - Id of the reservation item
  */
-export const ReservationListRevisions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationListRevisionsInput,
-    outputSchema: ReservationListRevisionsOutput,
-  }),
-);
+export const ReservationListRevisions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationListRevisionsInput,
+  outputSchema: ReservationListRevisionsOutput,
+}));
 // Input Schema
 export interface ReservationMergeInput {
   reservationOrderId: string;
   properties?: { sources?: string[] };
 }
-export const ReservationMergeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReservationMergeInput = /*@__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -1963,7 +1953,7 @@ export type ReservationMergeOutput = {
     lastModifiedAt?: string;
   };
 }[];
-export const ReservationMergeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ReservationMergeOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1994,7 +1984,7 @@ export const ReservationMergeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  * @param api-version - The API version to use for this operation.
  * @param reservationOrderId - Order Id of the reservation
  */
-export const ReservationMerge = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationMerge = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationMergeInput,
   outputSchema: ReservationMergeOutput,
 }));
@@ -2050,7 +2040,7 @@ export interface ReservationOrderCalculateInput {
   };
 }
 export const ReservationOrderCalculateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sku: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -2164,7 +2154,7 @@ export interface ReservationOrderCalculateOutput {
   };
 }
 export const ReservationOrderCalculateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         billingCurrencyTotal: Schema.optional(
@@ -2247,19 +2237,17 @@ export const ReservationOrderCalculateOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ReservationOrderCalculate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationOrderCalculateInput,
-    outputSchema: ReservationOrderCalculateOutput,
-  }),
-);
+export const ReservationOrderCalculate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationOrderCalculateInput,
+  outputSchema: ReservationOrderCalculateOutput,
+}));
 // Input Schema
 export interface ReservationOrderChangeDirectoryInput {
   reservationOrderId: string;
   destinationTenantId?: string;
 }
 export const ReservationOrderChangeDirectoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     destinationTenantId: Schema.optional(Schema.String),
   }).pipe(
@@ -2286,7 +2274,7 @@ export interface ReservationOrderChangeDirectoryOutput {
   }[];
 }
 export const ReservationOrderChangeDirectoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrder: Schema.optional(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2317,7 +2305,7 @@ export const ReservationOrderChangeDirectoryOutput =
  * @param reservationOrderId - Order Id of the reservation
  */
 export const ReservationOrderChangeDirectory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationOrderChangeDirectoryInput,
     outputSchema: ReservationOrderChangeDirectoryOutput,
   }));
@@ -2327,7 +2315,7 @@ export interface ReservationOrderGetInput {
   $expand?: string;
 }
 export const ReservationOrderGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
   }).pipe(
@@ -2353,7 +2341,7 @@ export interface ReservationOrderGetOutput {
   };
 }
 export const ReservationOrderGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2383,14 +2371,14 @@ export const ReservationOrderGetOutput =
  * @param reservationOrderId - Order Id of the reservation
  * @param $expand - May be used to expand the planInformation.
  */
-export const ReservationOrderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationOrderGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationOrderGetInput,
   outputSchema: ReservationOrderGetOutput,
 }));
 // Input Schema
 export interface ReservationOrderListInput {}
 export const ReservationOrderListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Capacity/reservationOrders",
@@ -2416,7 +2404,7 @@ export interface ReservationOrderListOutput {
   nextLink?: string;
 }
 export const ReservationOrderListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2459,12 +2447,10 @@ export const ReservationOrderListOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ReservationOrderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationOrderListInput,
-    outputSchema: ReservationOrderListOutput,
-  }),
-);
+export const ReservationOrderList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationOrderListInput,
+  outputSchema: ReservationOrderListOutput,
+}));
 // Input Schema
 export interface ReservationOrderPurchaseInput {
   reservationOrderId: string;
@@ -2518,7 +2504,7 @@ export interface ReservationOrderPurchaseInput {
   };
 }
 export const ReservationOrderPurchaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     sku: Schema.optional(
       Schema.Struct({
@@ -2610,7 +2596,7 @@ export interface ReservationOrderPurchaseOutput {
   };
 }
 export const ReservationOrderPurchaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2639,18 +2625,16 @@ export const ReservationOrderPurchaseOutput =
  * @param api-version - The API version to use for this operation.
  * @param reservationOrderId - Order Id of the reservation
  */
-export const ReservationOrderPurchase = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationOrderPurchaseInput,
-    outputSchema: ReservationOrderPurchaseOutput,
-  }),
-);
+export const ReservationOrderPurchase = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationOrderPurchaseInput,
+  outputSchema: ReservationOrderPurchaseOutput,
+}));
 // Input Schema
 export interface ReservationSplitInput {
   reservationOrderId: string;
   properties?: { quantities?: number[]; reservationId?: string };
 }
-export const ReservationSplitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReservationSplitInput = /*@__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -2680,7 +2664,7 @@ export type ReservationSplitOutput = {
     lastModifiedAt?: string;
   };
 }[];
-export const ReservationSplitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ReservationSplitOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2711,7 +2695,7 @@ export const ReservationSplitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  * @param api-version - The API version to use for this operation.
  * @param reservationOrderId - Order Id of the reservation
  */
-export const ReservationSplit = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationSplit = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationSplitInput,
   outputSchema: ReservationSplitOutput,
 }));
@@ -2721,7 +2705,7 @@ export interface ReservationUnarchiveInput {
   reservationId: string;
 }
 export const ReservationUnarchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2735,7 +2719,7 @@ export const ReservationUnarchiveInput =
 // Output Schema
 export type ReservationUnarchiveOutput = void;
 export const ReservationUnarchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReservationUnarchiveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReservationUnarchiveOutput>;
 
 // The operation
 /**
@@ -2747,12 +2731,10 @@ export const ReservationUnarchiveOutput =
  * @param reservationOrderId - Order Id of the reservation
  * @param reservationId - Id of the reservation item
  */
-export const ReservationUnarchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationUnarchiveInput,
-    outputSchema: ReservationUnarchiveOutput,
-  }),
-);
+export const ReservationUnarchive = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationUnarchiveInput,
+  outputSchema: ReservationUnarchiveOutput,
+}));
 // Input Schema
 export interface ReservationUpdateInput {
   reservationOrderId: string;
@@ -2825,112 +2807,108 @@ export interface ReservationUpdateInput {
     reviewDateTime?: string;
   };
 }
-export const ReservationUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    reservationOrderId: Schema.String.pipe(T.PathParam()),
-    reservationId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        appliedScopeType: Schema.optional(
-          Schema.Literals(["Single", "Shared", "ManagementGroup"]),
-        ),
-        appliedScopes: Schema.optional(Schema.Array(Schema.String)),
-        appliedScopeProperties: Schema.optional(
-          Schema.Struct({
-            tenantId: Schema.optional(Schema.String),
-            managementGroupId: Schema.optional(Schema.String),
-            subscriptionId: Schema.optional(Schema.String),
-            resourceGroupId: Schema.optional(Schema.String),
-            displayName: Schema.optional(Schema.String),
-          }),
-        ),
-        instanceFlexibility: Schema.optional(Schema.Literals(["On", "Off"])),
-        name: Schema.optional(Schema.String),
-        renew: Schema.optional(Schema.Boolean),
-        renewProperties: Schema.optional(
-          Schema.Struct({
-            purchaseProperties: Schema.optional(
-              Schema.Struct({
-                sku: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                  }),
-                ),
-                location: Schema.optional(Schema.String),
-                properties: Schema.optional(
-                  Schema.Struct({
-                    reservedResourceType: Schema.optional(
-                      Schema.Literals([
-                        "VirtualMachines",
-                        "SqlDatabases",
-                        "SuseLinux",
-                        "CosmosDb",
-                        "RedHat",
-                        "SqlDataWarehouse",
-                        "VMwareCloudSimple",
-                        "RedHatOsa",
-                        "Databricks",
-                        "AppService",
-                        "ManagedDisk",
-                        "BlockBlob",
-                        "RedisCache",
-                        "AzureDataExplorer",
-                        "MySql",
-                        "MariaDb",
-                        "PostgreSql",
-                        "DedicatedHost",
-                        "SapHana",
-                        "SqlAzureHybridBenefit",
-                        "AVS",
-                        "DataFactory",
-                        "NetAppStorage",
-                        "AzureFiles",
-                        "SqlEdge",
-                        "VirtualMachineSoftware",
-                      ]),
-                    ),
-                    billingScopeId: Schema.optional(Schema.String),
-                    term: Schema.optional(
-                      Schema.Literals(["P1Y", "P3Y", "P5Y"]),
-                    ),
-                    billingPlan: Schema.optional(
-                      Schema.Literals(["Upfront", "Monthly"]),
-                    ),
-                    quantity: Schema.optional(Schema.Number),
-                    displayName: Schema.optional(Schema.String),
-                    appliedScopeType: Schema.optional(
-                      Schema.Literals(["Single", "Shared", "ManagementGroup"]),
-                    ),
-                    appliedScopes: Schema.optional(Schema.Array(Schema.String)),
-                    appliedScopeProperties: Schema.optional(
-                      Schema.Struct({
-                        tenantId: Schema.optional(Schema.String),
-                        managementGroupId: Schema.optional(Schema.String),
-                        subscriptionId: Schema.optional(Schema.String),
-                        resourceGroupId: Schema.optional(Schema.String),
-                        displayName: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    renew: Schema.optional(Schema.Boolean),
-                    reservedResourceProperties: Schema.optional(
-                      Schema.Struct({
-                        instanceFlexibility: Schema.optional(
-                          Schema.Literals(["On", "Off"]),
-                        ),
-                      }),
-                    ),
-                    reviewDateTime: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        reviewDateTime: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-).pipe(
+export const ReservationUpdateInput = /*@__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  reservationId: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      appliedScopeType: Schema.optional(
+        Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+      ),
+      appliedScopes: Schema.optional(Schema.Array(Schema.String)),
+      appliedScopeProperties: Schema.optional(
+        Schema.Struct({
+          tenantId: Schema.optional(Schema.String),
+          managementGroupId: Schema.optional(Schema.String),
+          subscriptionId: Schema.optional(Schema.String),
+          resourceGroupId: Schema.optional(Schema.String),
+          displayName: Schema.optional(Schema.String),
+        }),
+      ),
+      instanceFlexibility: Schema.optional(Schema.Literals(["On", "Off"])),
+      name: Schema.optional(Schema.String),
+      renew: Schema.optional(Schema.Boolean),
+      renewProperties: Schema.optional(
+        Schema.Struct({
+          purchaseProperties: Schema.optional(
+            Schema.Struct({
+              sku: Schema.optional(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                }),
+              ),
+              location: Schema.optional(Schema.String),
+              properties: Schema.optional(
+                Schema.Struct({
+                  reservedResourceType: Schema.optional(
+                    Schema.Literals([
+                      "VirtualMachines",
+                      "SqlDatabases",
+                      "SuseLinux",
+                      "CosmosDb",
+                      "RedHat",
+                      "SqlDataWarehouse",
+                      "VMwareCloudSimple",
+                      "RedHatOsa",
+                      "Databricks",
+                      "AppService",
+                      "ManagedDisk",
+                      "BlockBlob",
+                      "RedisCache",
+                      "AzureDataExplorer",
+                      "MySql",
+                      "MariaDb",
+                      "PostgreSql",
+                      "DedicatedHost",
+                      "SapHana",
+                      "SqlAzureHybridBenefit",
+                      "AVS",
+                      "DataFactory",
+                      "NetAppStorage",
+                      "AzureFiles",
+                      "SqlEdge",
+                      "VirtualMachineSoftware",
+                    ]),
+                  ),
+                  billingScopeId: Schema.optional(Schema.String),
+                  term: Schema.optional(Schema.Literals(["P1Y", "P3Y", "P5Y"])),
+                  billingPlan: Schema.optional(
+                    Schema.Literals(["Upfront", "Monthly"]),
+                  ),
+                  quantity: Schema.optional(Schema.Number),
+                  displayName: Schema.optional(Schema.String),
+                  appliedScopeType: Schema.optional(
+                    Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+                  ),
+                  appliedScopes: Schema.optional(Schema.Array(Schema.String)),
+                  appliedScopeProperties: Schema.optional(
+                    Schema.Struct({
+                      tenantId: Schema.optional(Schema.String),
+                      managementGroupId: Schema.optional(Schema.String),
+                      subscriptionId: Schema.optional(Schema.String),
+                      resourceGroupId: Schema.optional(Schema.String),
+                      displayName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  renew: Schema.optional(Schema.Boolean),
+                  reservedResourceProperties: Schema.optional(
+                    Schema.Struct({
+                      instanceFlexibility: Schema.optional(
+                        Schema.Literals(["On", "Off"]),
+                      ),
+                    }),
+                  ),
+                  reviewDateTime: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+      reviewDateTime: Schema.optional(Schema.String),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
@@ -2953,7 +2931,7 @@ export interface ReservationUpdateOutput {
   };
 }
 export const ReservationUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2983,7 +2961,7 @@ export const ReservationUpdateOutput =
  * @param reservationOrderId - Order Id of the reservation
  * @param reservationId - Id of the reservation item
  */
-export const ReservationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReservationUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReservationUpdateInput,
   outputSchema: ReservationUpdateOutput,
 }));
@@ -2997,7 +2975,7 @@ export interface ReturnPostInput {
     returnReason?: string;
   };
 }
-export const ReturnPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReturnPostInput = /*@__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -3034,7 +3012,7 @@ export interface ReturnPostOutput {
     lastModifiedAt?: string;
   };
 }
-export const ReturnPostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReturnPostOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3063,7 +3041,7 @@ export const ReturnPostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param reservationOrderId - Order Id of the reservation
  */
-export const ReturnPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReturnPost = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReturnPostInput,
   outputSchema: ReturnPostOutput,
 }));

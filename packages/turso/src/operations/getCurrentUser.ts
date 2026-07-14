@@ -4,9 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface GetCurrentUserInput {}
-export const GetCurrentUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetCurrentUserInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v1/user" }),
 ) as unknown as Schema.Codec<GetCurrentUserInput>;
 
@@ -22,7 +20,7 @@ export interface GetCurrentUserOutput {
     has_pending_invites?: boolean;
   };
 }
-export const GetCurrentUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCurrentUserOutput = /*@__PURE__*/ Schema.Struct({
   user: Schema.optional(
     Schema.Struct({
       username: Schema.optional(Schema.String),
@@ -42,7 +40,7 @@ export const GetCurrentUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Returns information about the currently authenticated user.
  */
-export const getCurrentUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getCurrentUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCurrentUserInput,
   outputSchema: GetCurrentUserOutput,
 }));

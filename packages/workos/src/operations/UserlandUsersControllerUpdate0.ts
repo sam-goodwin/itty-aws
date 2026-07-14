@@ -16,7 +16,7 @@ export interface UserlandUsersControllerUpdate0Input {
   locale?: string | null;
 }
 export const UserlandUsersControllerUpdate0Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     email: Schema.optional(Schema.String),
     first_name: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface UserlandUsersControllerUpdate0Output {
   updated_at?: string;
 }
 export const UserlandUsersControllerUpdate0Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -76,7 +76,7 @@ export const UserlandUsersControllerUpdate0Output =
  * @param id - The unique ID of the user.
  */
 export const UserlandUsersControllerUpdate0 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerUpdate0Input,
     outputSchema: UserlandUsersControllerUpdate0Output,
     errors: [BadRequest, UnprocessableEntity] as const,

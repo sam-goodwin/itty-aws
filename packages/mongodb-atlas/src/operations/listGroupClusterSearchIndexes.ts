@@ -11,7 +11,7 @@ export interface ListGroupClusterSearchIndexesInput {
   pretty?: boolean;
 }
 export const ListGroupClusterSearchIndexesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const ListGroupClusterSearchIndexesInput =
 // Output Schema
 export type ListGroupClusterSearchIndexesOutput = void;
 export const ListGroupClusterSearchIndexesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterSearchIndexesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterSearchIndexesOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const ListGroupClusterSearchIndexesOutput =
  * @param clusterName - Name of the cluster that contains the collection with one or more Atlas Search indexes.
  */
 export const listGroupClusterSearchIndexes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupClusterSearchIndexesInput,
     outputSchema: ListGroupClusterSearchIndexesOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

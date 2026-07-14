@@ -16,7 +16,7 @@ export interface PostCustomersCustomerSourcesInput {
   validate?: boolean;
 }
 export const PostCustomersCustomerSourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -33,7 +33,7 @@ export const PostCustomersCustomerSourcesInput =
 // Output Schema
 export type PostCustomersCustomerSourcesOutput = unknown;
 export const PostCustomersCustomerSourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PostCustomersCustomerSourcesOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PostCustomersCustomerSourcesOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const PostCustomersCustomerSourcesOutput =
  * To change the default, you should <a href="/api/customers/update">update the customer</a> to have a new <code>default_source</code>.</p>
  */
 export const PostCustomersCustomerSources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostCustomersCustomerSourcesInput,
     outputSchema: PostCustomersCustomerSourcesOutput,
   }));

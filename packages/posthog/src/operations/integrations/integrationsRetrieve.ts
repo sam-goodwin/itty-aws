@@ -9,7 +9,7 @@ export interface IntegrationsRetrieveInput {
   project_id: string;
 }
 export const IntegrationsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -89,7 +89,7 @@ export interface IntegrationsRetrieveOutput {
   display_name?: string;
 }
 export const IntegrationsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     kind: Schema.optional(
       Schema.Literals([
@@ -179,10 +179,8 @@ export const IntegrationsRetrieveOutput =
  * @param id - A unique integer value identifying this integration.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const integrationsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationsRetrieveInput,
-    outputSchema: IntegrationsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const integrationsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationsRetrieveInput,
+  outputSchema: IntegrationsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

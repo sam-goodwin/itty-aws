@@ -55,7 +55,7 @@ export interface ProductChange {
 }
 
 export const ProductChange: Schema.Codec<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(Schema.String),
     reportingContext: Schema.optional(Schema.String),
     regionCode: Schema.optional(Schema.String),
@@ -88,7 +88,7 @@ export interface ProductStatusChangeMessage {
 }
 
 export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     changes: Schema.optional(Schema.Array(ProductChange)),
     resourceId: Schema.optional(Schema.String),
     eventTime: Schema.optional(Schema.String),
@@ -112,7 +112,7 @@ export interface MethodDetails {
 }
 
 export const MethodDetails: Schema.Codec<MethodDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     method: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
     subapi: Schema.optional(Schema.String),
@@ -133,7 +133,7 @@ export interface QuotaGroup {
 }
 
 export const QuotaGroup: Schema.Codec<QuotaGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quotaUsage: Schema.optional(Schema.String),
     quotaLimit: Schema.optional(Schema.String),
     methodDetails: Schema.optional(Schema.Array(MethodDetails)),
@@ -149,7 +149,7 @@ export interface ListQuotaGroupsResponse {
 }
 
 export const ListQuotaGroupsResponse: Schema.Codec<ListQuotaGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quotaGroups: Schema.optional(Schema.Array(QuotaGroup)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListQuotaGroupsResponse" });
@@ -195,7 +195,7 @@ export interface ListAccountsQuotasRequest {
 }
 
 export const ListAccountsQuotasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -205,8 +205,7 @@ export const ListAccountsQuotasRequest =
   ) as unknown as Schema.Codec<ListAccountsQuotasRequest>;
 
 export type ListAccountsQuotasResponse = ListQuotaGroupsResponse;
-export const ListAccountsQuotasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListQuotaGroupsResponse;
+export const ListAccountsQuotasResponse = /*@__PURE__*/ ListQuotaGroupsResponse;
 
 export type ListAccountsQuotasError = DefaultErrors | NotFound | Forbidden;
 
@@ -216,7 +215,7 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
   ListAccountsQuotasResponse,
   ListAccountsQuotasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsQuotasRequest,
   output: ListAccountsQuotasResponse,
   errors: [NotFound, Forbidden],

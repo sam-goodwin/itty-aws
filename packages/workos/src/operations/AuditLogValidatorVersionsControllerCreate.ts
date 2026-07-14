@@ -11,7 +11,7 @@ export interface AuditLogValidatorVersionsControllerCreateInput {
   metadata?: unknown;
 }
 export const AuditLogValidatorVersionsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actionName: Schema.String.pipe(T.PathParam()),
     actor: Schema.optional(
       Schema.Struct({
@@ -44,7 +44,7 @@ export interface AuditLogValidatorVersionsControllerCreateOutput {
   created_at?: string;
 }
 export const AuditLogValidatorVersionsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
     actor: Schema.optional(
@@ -75,7 +75,7 @@ export const AuditLogValidatorVersionsControllerCreateOutput =
  * @param actionName - The name of the Audit Log action.
  */
 export const AuditLogValidatorVersionsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuditLogValidatorVersionsControllerCreateInput,
     outputSchema: AuditLogValidatorVersionsControllerCreateOutput,
     errors: [UnprocessableEntity] as const,

@@ -11,7 +11,7 @@ export interface GetGroupStreamAccountDetailsInput {
   regionName: string;
 }
 export const GetGroupStreamAccountDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     cloudProvider: Schema.String,
@@ -26,7 +26,7 @@ export const GetGroupStreamAccountDetailsInput =
 // Output Schema
 export type GetGroupStreamAccountDetailsOutput = void;
 export const GetGroupStreamAccountDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupStreamAccountDetailsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupStreamAccountDetailsOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const GetGroupStreamAccountDetailsOutput =
  * @param regionName - The cloud provider specific region name, i.e. "US_EAST_1" for cloud provider "aws".
  */
 export const getGroupStreamAccountDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupStreamAccountDetailsInput,
     outputSchema: GetGroupStreamAccountDetailsOutput,
     errors: [Forbidden, NotFound] as const,

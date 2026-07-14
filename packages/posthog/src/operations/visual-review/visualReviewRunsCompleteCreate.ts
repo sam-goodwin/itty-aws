@@ -9,7 +9,7 @@ export interface VisualReviewRunsCompleteCreateInput {
   project_id: string;
 }
 export const VisualReviewRunsCompleteCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -49,7 +49,7 @@ export interface VisualReviewRunsCompleteCreateOutput {
   metadata?: Record<string, unknown>;
 }
 export const VisualReviewRunsCompleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     approved_by: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -97,7 +97,7 @@ export const VisualReviewRunsCompleteCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const visualReviewRunsCompleteCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VisualReviewRunsCompleteCreateInput,
     outputSchema: VisualReviewRunsCompleteCreateOutput,
     errors: [Forbidden, NotFound] as const,

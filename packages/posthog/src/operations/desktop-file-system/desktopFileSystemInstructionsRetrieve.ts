@@ -8,7 +8,7 @@ export interface DesktopFileSystemInstructionsRetrieveInput {
   project_id: string;
 }
 export const DesktopFileSystemInstructionsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -49,7 +49,7 @@ export interface DesktopFileSystemInstructionsRetrieveOutput {
   updated_at: string;
 }
 export const DesktopFileSystemInstructionsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     content: Schema.String,
     version: Schema.Number,
@@ -95,7 +95,7 @@ export const DesktopFileSystemInstructionsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const desktopFileSystemInstructionsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DesktopFileSystemInstructionsRetrieveInput,
     outputSchema: DesktopFileSystemInstructionsRetrieveOutput,
   }));

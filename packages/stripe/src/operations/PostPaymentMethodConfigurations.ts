@@ -85,7 +85,7 @@ export interface PostPaymentMethodConfigurationsInput {
   zip?: { display_preference?: { preference?: "none" | "off" | "on" } };
 }
 export const PostPaymentMethodConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acss_debit: Schema.optional(
       Schema.Struct({
         display_preference: Schema.optional(
@@ -1113,7 +1113,7 @@ export interface PostPaymentMethodConfigurationsOutput {
   };
 }
 export const PostPaymentMethodConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acss_debit: Schema.optional(
       Schema.Struct({
         available: Schema.Boolean,
@@ -1711,7 +1711,7 @@ export const PostPaymentMethodConfigurationsOutput =
  * <p>Creates a payment method configuration</p>
  */
 export const PostPaymentMethodConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentMethodConfigurationsInput,
     outputSchema: PostPaymentMethodConfigurationsOutput,
   }));

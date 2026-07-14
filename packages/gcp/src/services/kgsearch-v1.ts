@@ -32,7 +32,7 @@ export interface SearchResponse {
 }
 
 export const SearchResponse: Schema.Codec<SearchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "@type": Schema.optional(Schema.Unknown),
     itemListElement: Schema.optional(Schema.Array(Schema.Unknown)),
     "@context": Schema.optional(Schema.Unknown),
@@ -86,7 +86,7 @@ export interface SearchEntitiesRequest {
   indent?: boolean;
 }
 
-export const SearchEntitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SearchEntitiesRequest = /*@__PURE__*/ Schema.Struct({
   query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
   limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
   ids: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("ids")),
@@ -104,8 +104,7 @@ export const SearchEntitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<SearchEntitiesRequest>;
 
 export type SearchEntitiesResponse = SearchResponse;
-export const SearchEntitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SearchResponse;
+export const SearchEntitiesResponse = /*@__PURE__*/ SearchResponse;
 
 export type SearchEntitiesError = DefaultErrors | NotFound | Forbidden;
 
@@ -115,7 +114,7 @@ export const searchEntities: API.OperationMethod<
   SearchEntitiesResponse,
   SearchEntitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchEntitiesRequest,
   output: SearchEntitiesResponse,
   errors: [NotFound, Forbidden],

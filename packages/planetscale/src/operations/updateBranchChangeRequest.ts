@@ -13,7 +13,7 @@ export interface UpdateBranchChangeRequestInput {
   parameters?: Record<string, unknown>;
 }
 export const UpdateBranchChangeRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -63,7 +63,7 @@ export interface UpdateBranchChangeRequestOutput {
   previous_storage_throughput_mibs: number;
 }
 export const UpdateBranchChangeRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     restart: Schema.Array(Schema.Number),
     state: Schema.Literals([
@@ -119,10 +119,8 @@ export const UpdateBranchChangeRequestOutput =
  * @param replicas - The total number of replicas
  * @param parameters - Cluster configuration parameters nested by namespace (e.g., {"pgconf": {"max_connections": "200"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Supported namespaces include 'patroni', 'pgconf', and 'pgbouncer'.
  */
-export const updateBranchChangeRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateBranchChangeRequestInput,
-    outputSchema: UpdateBranchChangeRequestOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const updateBranchChangeRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateBranchChangeRequestInput,
+  outputSchema: UpdateBranchChangeRequestOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

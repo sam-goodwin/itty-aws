@@ -9,7 +9,7 @@ export interface UpdateSolanaAccountInput {
   accountPolicy?: string;
 }
 export const UpdateSolanaAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     accountPolicy: Schema.optional(Schema.String),
@@ -26,7 +26,7 @@ export interface UpdateSolanaAccountOutput {
   updatedAt?: string;
 }
 export const UpdateSolanaAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String,
     name: Schema.optional(Schema.String),
     policies: Schema.optional(Schema.Array(Schema.String)),
@@ -46,7 +46,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The base58 encoded address of the Solana account.
  */
-export const updateSolanaAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateSolanaAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateSolanaAccountInput,
   outputSchema: UpdateSolanaAccountOutput,
 }));

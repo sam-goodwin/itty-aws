@@ -11,7 +11,7 @@ export interface RestartGroupClusterPrimariesInput {
   pretty?: boolean;
 }
 export const RestartGroupClusterPrimariesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const RestartGroupClusterPrimariesInput =
 // Output Schema
 export type RestartGroupClusterPrimariesOutput = void;
 export const RestartGroupClusterPrimariesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RestartGroupClusterPrimariesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RestartGroupClusterPrimariesOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const RestartGroupClusterPrimariesOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  */
 export const restartGroupClusterPrimaries =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestartGroupClusterPrimariesInput,
     outputSchema: RestartGroupClusterPrimariesOutput,
     errors: [Forbidden, NotFound] as const,

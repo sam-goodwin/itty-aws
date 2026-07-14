@@ -8,7 +8,7 @@ export interface AgentMemoryListTablesInput {
   project_id: string;
 }
 export const AgentMemoryListTablesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -24,7 +24,7 @@ export interface AgentMemoryListTablesOutput {
   tables: { name: string; size: number }[];
 }
 export const AgentMemoryListTablesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.Number,
     tables: Schema.Array(
       Schema.Struct({
@@ -40,9 +40,7 @@ export const AgentMemoryListTablesOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const agentMemoryListTables = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentMemoryListTablesInput,
-    outputSchema: AgentMemoryListTablesOutput,
-  }),
-);
+export const agentMemoryListTables = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentMemoryListTablesInput,
+  outputSchema: AgentMemoryListTablesOutput,
+}));

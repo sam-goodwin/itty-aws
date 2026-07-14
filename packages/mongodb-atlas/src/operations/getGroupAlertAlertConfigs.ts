@@ -14,7 +14,7 @@ export interface GetGroupAlertAlertConfigsInput {
   pageNum?: number;
 }
 export const GetGroupAlertAlertConfigsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     alertId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const GetGroupAlertAlertConfigsInput =
 // Output Schema
 export type GetGroupAlertAlertConfigsOutput = void;
 export const GetGroupAlertAlertConfigsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAlertAlertConfigsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAlertAlertConfigsOutput>;
 
 // The operation
 /**
@@ -51,10 +51,8 @@ export const GetGroupAlertAlertConfigsOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param alertId - Unique 24-hexadecimal digit string that identifies the alert.
  */
-export const getGroupAlertAlertConfigs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupAlertAlertConfigsInput,
-    outputSchema: GetGroupAlertAlertConfigsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupAlertAlertConfigs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupAlertAlertConfigsInput,
+  outputSchema: GetGroupAlertAlertConfigsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

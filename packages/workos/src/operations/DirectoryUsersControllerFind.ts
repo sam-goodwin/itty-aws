@@ -8,7 +8,7 @@ export interface DirectoryUsersControllerFindInput {
   id: string;
 }
 export const DirectoryUsersControllerFindInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/directory_users/{id}" }),
@@ -52,7 +52,7 @@ export interface DirectoryUsersControllerFindOutput {
   }>;
 }
 export const DirectoryUsersControllerFindOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     directory_id: Schema.optional(Schema.String),
@@ -124,7 +124,7 @@ export const DirectoryUsersControllerFindOutput =
  * @param id - Unique identifier for the Directory User.
  */
 export const DirectoryUsersControllerFind =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DirectoryUsersControllerFindInput,
     outputSchema: DirectoryUsersControllerFindOutput,
     errors: [Forbidden, NotFound] as const,

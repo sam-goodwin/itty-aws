@@ -18,7 +18,7 @@ export interface CreateTrafficBudgetInput {
   rules?: string[];
 }
 export const CreateTrafficBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -68,7 +68,7 @@ export interface CreateTrafficBudgetOutput {
   updated_at: string;
 }
 export const CreateTrafficBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     mode: Schema.Literals(["enforce", "warn", "off"]),
@@ -126,7 +126,7 @@ export const CreateTrafficBudgetOutput =
  * @param warning_threshold - A percentage of capacity, burst, or concurrency thresholds to emit warnings for enforced budgets (0-100).
  * @param rules - Array of traffic rules to apply to the budget
  */
-export const createTrafficBudget = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createTrafficBudget = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateTrafficBudgetInput,
   outputSchema: CreateTrafficBudgetOutput,
   errors: [Forbidden, NotFound] as const,

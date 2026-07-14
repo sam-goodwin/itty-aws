@@ -19,7 +19,7 @@ export interface EventsListInput {
   select?: string;
   where?: string;
 }
-export const EventsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EventsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   after: Schema.optional(Schema.String),
   before: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export interface EventsListOutput {
     elements_chain?: string;
   }[];
 }
-export const EventsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EventsListOutput = /*@__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   results: Schema.optional(
     Schema.Array(
@@ -122,7 +122,7 @@ export const EventsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param select - (Experimental) JSON-serialized array of HogQL expressions to return
  * @param where - (Experimental) JSON-serialized array of HogQL expressions that must pass
  */
-export const eventsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const eventsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventsListInput,
   outputSchema: EventsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

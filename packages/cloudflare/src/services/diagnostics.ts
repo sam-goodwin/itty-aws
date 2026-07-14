@@ -55,7 +55,7 @@ interface ListEndpointHealthchecksResponse2 {
   name?: string | null;
 }
 const ListEndpointHealthchecksResponse2 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       checkType: Schema.Literal("icmp"),
       endpoint: Schema.String,
@@ -74,7 +74,7 @@ const ListEndpointHealthchecksResponse2 =
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -86,7 +86,7 @@ interface Error2 {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -123,7 +123,7 @@ interface Options {
   /** Set the time (in seconds) to wait for a response to a probe. */
   waitTime?: number | null;
 }
-const Options = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Options = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     maxTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     packetType: Schema.optional(
@@ -155,7 +155,7 @@ interface Colo {
   /** Source colo name. */
   name?: string | null;
 }
-const Colo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Colo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     city: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -182,7 +182,7 @@ interface Node {
   /** Standard deviation of the RTTs in ms. */
   stdDevRttMs?: number | null;
 }
-const Node = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Node = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -232,7 +232,7 @@ interface Hop {
   /** The time to live (TTL). */
   packetsTtl?: number | null;
 }
-const Hop = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Hop = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     nodes: Schema.optional(Schema.Union([Schema.Array(Node), Schema.Null])),
     packetsLost: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -284,7 +284,7 @@ interface Colo2 {
   /** Total time of traceroute in ms. */
   tracerouteTimeMs?: number | null;
 }
-const Colo2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Colo2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     colo: Schema.optional(Schema.Union([Colo, Schema.Null])),
     error: Schema.optional(
@@ -358,7 +358,7 @@ interface CreateTracerouteResponseResult {
   target?: string | null;
 }
 const CreateTracerouteResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       colos: Schema.optional(Schema.Union([Schema.Array(Colo2), Schema.Null])),
       target: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -376,7 +376,7 @@ export interface GetEndpointHealthcheckRequest {
 }
 
 export const GetEndpointHealthcheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -400,7 +400,7 @@ export interface GetEndpointHealthcheckResponse {
 }
 
 export const GetEndpointHealthcheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       checkType: Schema.Literal("icmp"),
       endpoint: Schema.String,
@@ -428,7 +428,7 @@ export const getEndpointHealthcheck: API.OperationMethod<
   GetEndpointHealthcheckResponse,
   GetEndpointHealthcheckError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEndpointHealthcheckRequest,
   output: GetEndpointHealthcheckResponse,
   errors: [EndpointHealthcheckNotFound, Forbidden],
@@ -440,7 +440,7 @@ export interface ListEndpointHealthchecksRequest {
 }
 
 export const ListEndpointHealthchecksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -459,7 +459,7 @@ export type ListEndpointHealthchecksResponse = {
 }[];
 
 export const ListEndpointHealthchecksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(ListEndpointHealthchecksResponse2).pipe(
       T.ResponsePath("result"),
     ),
@@ -472,7 +472,7 @@ export const listEndpointHealthchecks: API.OperationMethod<
   ListEndpointHealthchecksResponse,
   ListEndpointHealthchecksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEndpointHealthchecksRequest,
   output: ListEndpointHealthchecksResponse,
   errors: [Forbidden],
@@ -490,7 +490,7 @@ export interface CreateEndpointHealthcheckRequest {
 }
 
 export const CreateEndpointHealthcheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       checkType: Schema.Literal("icmp"),
@@ -521,7 +521,7 @@ export interface CreateEndpointHealthcheckResponse {
 }
 
 export const CreateEndpointHealthcheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       checkType: Schema.Literal("icmp"),
       endpoint: Schema.String,
@@ -549,7 +549,7 @@ export const createEndpointHealthcheck: API.OperationMethod<
   CreateEndpointHealthcheckResponse,
   CreateEndpointHealthcheckError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEndpointHealthcheckRequest,
   output: CreateEndpointHealthcheckResponse,
   errors: [InvalidHealthcheckEndpoint, Forbidden],
@@ -568,7 +568,7 @@ export interface UpdateEndpointHealthcheckRequest {
 }
 
 export const UpdateEndpointHealthcheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -600,7 +600,7 @@ export interface UpdateEndpointHealthcheckResponse {
 }
 
 export const UpdateEndpointHealthcheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       checkType: Schema.Literal("icmp"),
       endpoint: Schema.String,
@@ -629,7 +629,7 @@ export const updateEndpointHealthcheck: API.OperationMethod<
   UpdateEndpointHealthcheckResponse,
   UpdateEndpointHealthcheckError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEndpointHealthcheckRequest,
   output: UpdateEndpointHealthcheckResponse,
   errors: [EndpointHealthcheckNotFound, InvalidHealthcheckEndpoint, Forbidden],
@@ -642,7 +642,7 @@ export interface DeleteEndpointHealthcheckRequest {
 }
 
 export const DeleteEndpointHealthcheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -672,7 +672,7 @@ export interface DeleteEndpointHealthcheckResponse {
 }
 
 export const DeleteEndpointHealthcheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -690,7 +690,7 @@ export const deleteEndpointHealthcheck: API.OperationMethod<
   DeleteEndpointHealthcheckResponse,
   DeleteEndpointHealthcheckError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointHealthcheckRequest,
   output: DeleteEndpointHealthcheckResponse,
   errors: [EndpointHealthcheckNotFound, Forbidden],
@@ -718,7 +718,7 @@ export interface CreateTracerouteRequest {
 }
 
 export const CreateTracerouteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       targets: Schema.Array(Schema.String),
@@ -774,7 +774,7 @@ export interface CreateTracerouteResponse {
 }
 
 export const CreateTracerouteResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(CreateTracerouteResponseResult),
     }),
@@ -787,7 +787,7 @@ export const createTraceroute: API.PaginatedOperationMethod<
   CreateTracerouteResponse,
   CreateTracerouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: CreateTracerouteRequest,
   output: CreateTracerouteResponse,
   errors: [],

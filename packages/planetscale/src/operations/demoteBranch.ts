@@ -9,7 +9,7 @@ export interface DemoteBranchInput {
   database: string;
   branch: string;
 }
-export const DemoteBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DemoteBranchInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -76,7 +76,7 @@ export interface DemoteBranchOutput {
   vtgate_options?: Record<string, unknown>;
   cluster_architecture?: string;
 }
-export const DemoteBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DemoteBranchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   created_at: Schema.String,
@@ -156,7 +156,7 @@ export const DemoteBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param database - The name of the database the branch belongs to
  * @param branch - The name of the branch
  */
-export const demoteBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const demoteBranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: DemoteBranchInput,
   outputSchema: DemoteBranchOutput,
   errors: [Forbidden, NotFound] as const,

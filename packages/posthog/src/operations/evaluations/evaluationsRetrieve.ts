@@ -8,7 +8,7 @@ export interface EvaluationsRetrieveInput {
   project_id: string;
 }
 export const EvaluationsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -89,7 +89,7 @@ export interface EvaluationsRetrieveOutput {
   deleted?: boolean;
 }
 export const EvaluationsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -209,7 +209,7 @@ export const EvaluationsRetrieveOutput =
  * @param id - A UUID string identifying this evaluation.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const evaluationsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const evaluationsRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: EvaluationsRetrieveInput,
   outputSchema: EvaluationsRetrieveOutput,
 }));

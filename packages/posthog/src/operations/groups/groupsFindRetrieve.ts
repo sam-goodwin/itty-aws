@@ -11,7 +11,7 @@ export interface GroupsFindRetrieveInput {
   skip_create_notebook?: boolean;
 }
 export const GroupsFindRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     group_key: Schema.String,
     group_type_index: Schema.Number,
@@ -23,7 +23,7 @@ export const GroupsFindRetrieveInput =
 // Output Schema
 export type GroupsFindRetrieveOutput = void;
 export const GroupsFindRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsFindRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsFindRetrieveOutput>;
 
 // The operation
 /**
@@ -33,7 +33,7 @@ export const GroupsFindRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param skip_create_notebook - When true, do not lazily create the group's CRM notebook. Use for read-only lookups (e.g. resolving a group's display name) that should not have side effects.
  */
-export const groupsFindRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const groupsFindRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupsFindRetrieveInput,
   outputSchema: GroupsFindRetrieveOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

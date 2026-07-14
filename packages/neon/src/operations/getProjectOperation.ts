@@ -9,7 +9,7 @@ export interface GetProjectOperationInput {
   operation_id: string;
 }
 export const GetProjectOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     operation_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -77,7 +77,7 @@ export interface GetProjectOperationOutput {
   };
 }
 export const GetProjectOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.Struct({
       id: Schema.String,
       project_id: Schema.String,
@@ -146,7 +146,7 @@ export const GetProjectOperationOutput =
  * @param project_id - The Neon project ID
  * @param operation_id - The operation ID
  */
-export const getProjectOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getProjectOperation = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetProjectOperationInput,
   outputSchema: GetProjectOperationOutput,
   errors: [NotFound] as const,

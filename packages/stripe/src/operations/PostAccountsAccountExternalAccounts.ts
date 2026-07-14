@@ -16,7 +16,7 @@ export interface PostAccountsAccountExternalAccountsInput {
   metadata?: Record<string, string>;
 }
 export const PostAccountsAccountExternalAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     default_for_currency: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -90,7 +90,7 @@ export type PostAccountsAccountExternalAccountsOutput =
       tokenization_method: string | null;
     };
 export const PostAccountsAccountExternalAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       account: Schema.optional(Schema.Unknown),
       account_holder_name: Schema.NullOr(Schema.String),
@@ -171,7 +171,7 @@ export const PostAccountsAccountExternalAccountsOutput =
  * <p>Create an external account for a given account.</p>
  */
 export const PostAccountsAccountExternalAccounts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostAccountsAccountExternalAccountsInput,
     outputSchema: PostAccountsAccountExternalAccountsOutput,
   }));

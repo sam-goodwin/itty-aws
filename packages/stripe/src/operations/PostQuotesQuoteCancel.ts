@@ -13,7 +13,7 @@ export interface PostQuotesQuoteCancelInput {
   expand?: string[];
 }
 export const PostQuotesQuoteCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quote: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -961,7 +961,7 @@ export interface PostQuotesQuoteCancelOutput {
   } | null;
 }
 export const PostQuotesQuoteCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount_subtotal: Schema.Number,
     amount_total: Schema.Number,
     application: Schema.NullOr(
@@ -2013,9 +2013,7 @@ export const PostQuotesQuoteCancelOutput =
  *
  * <p>Cancels the quote.</p>
  */
-export const PostQuotesQuoteCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostQuotesQuoteCancelInput,
-    outputSchema: PostQuotesQuoteCancelOutput,
-  }),
-);
+export const PostQuotesQuoteCancel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostQuotesQuoteCancelInput,
+  outputSchema: PostQuotesQuoteCancelOutput,
+}));

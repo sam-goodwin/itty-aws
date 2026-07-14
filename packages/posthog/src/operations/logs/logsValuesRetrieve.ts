@@ -14,7 +14,7 @@ export interface LogsValuesRetrieveInput {
   value?: string;
 }
 export const LogsValuesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     attribute_type: Schema.optional(Schema.Literals(["log", "resource"])),
     dateRange: Schema.optional(Schema.String),
@@ -32,7 +32,7 @@ export interface LogsValuesRetrieveOutput {
   refreshing?: boolean;
 }
 export const LogsValuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -59,7 +59,7 @@ export const LogsValuesRetrieveOutput =
  * @param serviceNames - Filter values to those appearing in logs from these services.
  * @param value - Search filter for attribute values
  */
-export const logsValuesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const logsValuesRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: LogsValuesRetrieveInput,
   outputSchema: LogsValuesRetrieveOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

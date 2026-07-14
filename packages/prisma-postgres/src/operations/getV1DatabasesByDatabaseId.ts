@@ -8,7 +8,7 @@ export interface GetV1DatabasesByDatabaseIdInput {
   databaseId: string;
 }
 export const GetV1DatabasesByDatabaseIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/databases/{databaseId}" }),
@@ -51,7 +51,7 @@ export interface GetV1DatabasesByDatabaseIdOutput {
   };
 }
 export const GetV1DatabasesByDatabaseIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -147,10 +147,8 @@ export const GetV1DatabasesByDatabaseIdOutput =
  *
  * Returns the database with the given ID.
  */
-export const getV1DatabasesByDatabaseId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1DatabasesByDatabaseIdInput,
-    outputSchema: GetV1DatabasesByDatabaseIdOutput,
-    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const getV1DatabasesByDatabaseId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1DatabasesByDatabaseIdInput,
+  outputSchema: GetV1DatabasesByDatabaseIdOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
+}));

@@ -10,7 +10,7 @@ export interface InviteOrganizationMemberV2Input {
   role?: "admin" | "member" | "viewer";
 }
 export const InviteOrganizationMemberV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     email: Schema.optional(Schema.String),
     username: Schema.optional(Schema.String),
@@ -31,7 +31,7 @@ export interface InviteOrganizationMemberV2Output {
   };
 }
 export const InviteOrganizationMemberV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invited: Schema.optional(
       Schema.Struct({
         email: Schema.optional(Schema.String),
@@ -49,9 +49,7 @@ export const InviteOrganizationMemberV2Output =
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const inviteOrganizationMemberV2 = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InviteOrganizationMemberV2Input,
-    outputSchema: InviteOrganizationMemberV2Output,
-  }),
-);
+export const inviteOrganizationMemberV2 = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InviteOrganizationMemberV2Input,
+  outputSchema: InviteOrganizationMemberV2Output,
+}));

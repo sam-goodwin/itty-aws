@@ -13,7 +13,7 @@ export interface PostFinancialConnectionsAccountsAccountDisconnectInput {
   expand?: string[];
 }
 export const PostFinancialConnectionsAccountsAccountDisconnectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -116,7 +116,7 @@ export interface PostFinancialConnectionsAccountsAccountDisconnectOutput {
   } | null;
 }
 export const PostFinancialConnectionsAccountsAccountDisconnectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.NullOr(
       Schema.Struct({
         account: Schema.optional(Schema.Unknown),
@@ -265,7 +265,7 @@ export const PostFinancialConnectionsAccountsAccountDisconnectOutput =
  * <p>Disables your access to a Financial Connections <code>Account</code>. You will no longer be able to access data associated with the account (e.g. balances, transactions).</p>
  */
 export const PostFinancialConnectionsAccountsAccountDisconnect =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostFinancialConnectionsAccountsAccountDisconnectInput,
     outputSchema: PostFinancialConnectionsAccountsAccountDisconnectOutput,
   }));

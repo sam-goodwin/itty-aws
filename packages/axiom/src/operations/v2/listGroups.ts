@@ -4,9 +4,7 @@ import * as T from "../../traits.ts";
 
 // Input Schema
 export interface ListGroupsInput {}
-export const ListGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListGroupsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v2/rbac/groups" }),
 ) as unknown as Schema.Codec<ListGroupsInput>;
 
@@ -19,7 +17,7 @@ export type ListGroupsOutput = ReadonlyArray<{
   roles?: ReadonlyArray<string>;
   id: string;
 }>;
-export const ListGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ListGroupsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     description: Schema.optional(Schema.String),
     isManaged: Schema.optional(Schema.Boolean),
@@ -36,7 +34,7 @@ export const ListGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  *
  * Retrieves all groups in the organization.
  */
-export const listGroups = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroups = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupsInput,
   outputSchema: ListGroupsOutput,
 }));

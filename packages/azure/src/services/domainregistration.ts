@@ -11,7 +11,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface DomainRegistrationProviderListOperationsInput {}
 export const DomainRegistrationProviderListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.DomainRegistration/operations",
@@ -69,7 +69,7 @@ export interface DomainRegistrationProviderListOperationsOutput {
   nextLink?: string;
 }
 export const DomainRegistrationProviderListOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -162,7 +162,7 @@ export const DomainRegistrationProviderListOperationsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const DomainRegistrationProviderListOperations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainRegistrationProviderListOperationsInput,
     outputSchema: DomainRegistrationProviderListOperationsOutput,
   }));
@@ -172,7 +172,7 @@ export interface DomainsCheckAvailabilityInput {
   name?: string;
 }
 export const DomainsCheckAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
   }).pipe(
@@ -190,7 +190,7 @@ export interface DomainsCheckAvailabilityOutput {
   domainType?: "Regular" | "SoftDeleted";
 }
 export const DomainsCheckAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     available: Schema.optional(Schema.Boolean),
     domainType: Schema.optional(Schema.Literals(["Regular", "SoftDeleted"])),
@@ -205,12 +205,10 @@ export const DomainsCheckAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DomainsCheckAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsCheckAvailabilityInput,
-    outputSchema: DomainsCheckAvailabilityOutput,
-  }),
-);
+export const DomainsCheckAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsCheckAvailabilityInput,
+  outputSchema: DomainsCheckAvailabilityOutput,
+}));
 // Input Schema
 export interface DomainsCreateOrUpdateInput {
   subscriptionId: string;
@@ -348,7 +346,7 @@ export interface DomainsCreateOrUpdateInput {
   location: string;
 }
 export const DomainsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -543,7 +541,7 @@ export interface DomainsCreateOrUpdateOutput {
   };
 }
 export const DomainsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -574,12 +572,10 @@ export const DomainsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param domainName - Name of the domain.
  */
-export const DomainsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsCreateOrUpdateInput,
-    outputSchema: DomainsCreateOrUpdateOutput,
-  }),
-);
+export const DomainsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsCreateOrUpdateInput,
+  outputSchema: DomainsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DomainsCreateOrUpdateOwnershipIdentifierInput {
   subscriptionId: string;
@@ -590,7 +586,7 @@ export interface DomainsCreateOrUpdateOwnershipIdentifierInput {
   kind?: string;
 }
 export const DomainsCreateOrUpdateOwnershipIdentifierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -624,7 +620,7 @@ export interface DomainsCreateOrUpdateOwnershipIdentifierOutput {
   };
 }
 export const DomainsCreateOrUpdateOwnershipIdentifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -657,7 +653,7 @@ export const DomainsCreateOrUpdateOwnershipIdentifierOutput =
  * @param name - Name of identifier.
  */
 export const DomainsCreateOrUpdateOwnershipIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainsCreateOrUpdateOwnershipIdentifierInput,
     outputSchema: DomainsCreateOrUpdateOwnershipIdentifierOutput,
   }));
@@ -668,7 +664,7 @@ export interface DomainsDeleteInput {
   domainName: string;
   forceHardDeleteDomain?: boolean;
 }
-export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
@@ -684,7 +680,7 @@ export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DomainsDeleteOutput = void;
 export const DomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsDeleteOutput>;
 
 // The operation
 /**
@@ -698,7 +694,7 @@ export const DomainsDeleteOutput =
  * @param domainName - Name of the domain.
  * @param forceHardDeleteDomain - Specify <code>true</code> to delete the domain immediately. The default is <code>false</code> which deletes the domain after 24 hours.
  */
-export const DomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsDeleteInput,
   outputSchema: DomainsDeleteOutput,
 }));
@@ -710,7 +706,7 @@ export interface DomainsDeleteOwnershipIdentifierInput {
   name: string;
 }
 export const DomainsDeleteOwnershipIdentifierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -726,7 +722,7 @@ export const DomainsDeleteOwnershipIdentifierInput =
 // Output Schema
 export type DomainsDeleteOwnershipIdentifierOutput = void;
 export const DomainsDeleteOwnershipIdentifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsDeleteOwnershipIdentifierOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsDeleteOwnershipIdentifierOutput>;
 
 // The operation
 /**
@@ -741,7 +737,7 @@ export const DomainsDeleteOwnershipIdentifierOutput =
  * @param name - Name of identifier.
  */
 export const DomainsDeleteOwnershipIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainsDeleteOwnershipIdentifierInput,
     outputSchema: DomainsDeleteOwnershipIdentifierOutput,
   }));
@@ -751,7 +747,7 @@ export interface DomainsGetInput {
   resourceGroupName: string;
   domainName: string;
 }
-export const DomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
@@ -777,7 +773,7 @@ export interface DomainsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -808,7 +804,7 @@ export const DomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param domainName - Name of the domain.
  */
-export const DomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsGetInput,
   outputSchema: DomainsGetOutput,
 }));
@@ -817,7 +813,7 @@ export interface DomainsGetControlCenterSsoRequestInput {
   subscriptionId: string;
 }
 export const DomainsGetControlCenterSsoRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -834,7 +830,7 @@ export interface DomainsGetControlCenterSsoRequestOutput {
   postParameterValue?: string;
 }
 export const DomainsGetControlCenterSsoRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     postParameterKey: Schema.optional(Schema.String),
     postParameterValue: Schema.optional(Schema.String),
@@ -850,7 +846,7 @@ export const DomainsGetControlCenterSsoRequestOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const DomainsGetControlCenterSsoRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainsGetControlCenterSsoRequestInput,
     outputSchema: DomainsGetControlCenterSsoRequestOutput,
   }));
@@ -862,7 +858,7 @@ export interface DomainsGetOwnershipIdentifierInput {
   name: string;
 }
 export const DomainsGetOwnershipIdentifierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -890,7 +886,7 @@ export interface DomainsGetOwnershipIdentifierOutput {
   };
 }
 export const DomainsGetOwnershipIdentifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -923,7 +919,7 @@ export const DomainsGetOwnershipIdentifierOutput =
  * @param name - Name of identifier.
  */
 export const DomainsGetOwnershipIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainsGetOwnershipIdentifierInput,
     outputSchema: DomainsGetOwnershipIdentifierOutput,
   }));
@@ -931,7 +927,7 @@ export const DomainsGetOwnershipIdentifier =
 export interface DomainsListInput {
   subscriptionId: string;
 }
-export const DomainsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -958,7 +954,7 @@ export interface DomainsListOutput {
   }[];
   nextLink?: string;
 }
-export const DomainsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -992,7 +988,7 @@ export const DomainsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsListInput,
   outputSchema: DomainsListOutput,
 }));
@@ -1002,7 +998,7 @@ export interface DomainsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const DomainsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1031,7 +1027,7 @@ export interface DomainsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DomainsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1076,12 +1072,10 @@ export const DomainsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const DomainsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsListByResourceGroupInput,
-    outputSchema: DomainsListByResourceGroupOutput,
-  }),
-);
+export const DomainsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsListByResourceGroupInput,
+  outputSchema: DomainsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface DomainsListOwnershipIdentifiersInput {
   subscriptionId: string;
@@ -1089,7 +1083,7 @@ export interface DomainsListOwnershipIdentifiersInput {
   domainName: string;
 }
 export const DomainsListOwnershipIdentifiersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -1119,7 +1113,7 @@ export interface DomainsListOwnershipIdentifiersOutput {
   nextLink?: string;
 }
 export const DomainsListOwnershipIdentifiersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1166,7 +1160,7 @@ export const DomainsListOwnershipIdentifiersOutput =
  * @param domainName - Name of the domain.
  */
 export const DomainsListOwnershipIdentifiers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainsListOwnershipIdentifiersInput,
     outputSchema: DomainsListOwnershipIdentifiersOutput,
   }));
@@ -1177,7 +1171,7 @@ export interface DomainsListRecommendationsInput {
   maxDomainRecommendations?: number;
 }
 export const DomainsListRecommendationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     keywords: Schema.optional(Schema.String),
     maxDomainRecommendations: Schema.optional(Schema.Number),
@@ -1195,7 +1189,7 @@ export interface DomainsListRecommendationsOutput {
   nextLink?: string;
 }
 export const DomainsListRecommendationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -1213,19 +1207,17 @@ export const DomainsListRecommendationsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DomainsListRecommendations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsListRecommendationsInput,
-    outputSchema: DomainsListRecommendationsOutput,
-  }),
-);
+export const DomainsListRecommendations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsListRecommendationsInput,
+  outputSchema: DomainsListRecommendationsOutput,
+}));
 // Input Schema
 export interface DomainsRenewInput {
   subscriptionId: string;
   resourceGroupName: string;
   domainName: string;
 }
-export const DomainsRenewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsRenewInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
@@ -1240,7 +1232,7 @@ export const DomainsRenewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DomainsRenewOutput = void;
 export const DomainsRenewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsRenewOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsRenewOutput>;
 
 // The operation
 /**
@@ -1253,7 +1245,7 @@ export const DomainsRenewOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param domainName - Name of the domain.
  */
-export const DomainsRenew = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsRenew = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsRenewInput,
   outputSchema: DomainsRenewOutput,
 }));
@@ -1264,7 +1256,7 @@ export interface DomainsTransferOutInput {
   domainName: string;
 }
 export const DomainsTransferOutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -1291,7 +1283,7 @@ export interface DomainsTransferOutOutput {
   };
 }
 export const DomainsTransferOutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1320,7 +1312,7 @@ export const DomainsTransferOutOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param domainName - Name of the domain.
  */
-export const DomainsTransferOut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsTransferOut = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsTransferOutInput,
   outputSchema: DomainsTransferOutOutput,
 }));
@@ -1461,7 +1453,7 @@ export interface DomainsUpdateInput {
   kind?: string;
   type?: string;
 }
-export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
@@ -1656,7 +1648,7 @@ export interface DomainsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const DomainsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1687,7 +1679,7 @@ export const DomainsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param domainName - Name of the domain.
  */
-export const DomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsUpdateInput,
   outputSchema: DomainsUpdateOutput,
 }));
@@ -1701,7 +1693,7 @@ export interface DomainsUpdateOwnershipIdentifierInput {
   kind?: string;
 }
 export const DomainsUpdateOwnershipIdentifierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -1735,7 +1727,7 @@ export interface DomainsUpdateOwnershipIdentifierOutput {
   };
 }
 export const DomainsUpdateOwnershipIdentifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1768,7 +1760,7 @@ export const DomainsUpdateOwnershipIdentifierOutput =
  * @param name - Name of identifier.
  */
 export const DomainsUpdateOwnershipIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainsUpdateOwnershipIdentifierInput,
     outputSchema: DomainsUpdateOwnershipIdentifierOutput,
   }));
@@ -1778,7 +1770,7 @@ export interface TopLevelDomainsGetInput {
   name: string;
 }
 export const TopLevelDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1804,7 +1796,7 @@ export interface TopLevelDomainsGetOutput {
   };
 }
 export const TopLevelDomainsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1834,7 +1826,7 @@ export const TopLevelDomainsGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param name - Name of the top-level domain.
  */
-export const TopLevelDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopLevelDomainsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopLevelDomainsGetInput,
   outputSchema: TopLevelDomainsGetOutput,
 }));
@@ -1843,7 +1835,7 @@ export interface TopLevelDomainsListInput {
   subscriptionId: string;
 }
 export const TopLevelDomainsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1871,7 +1863,7 @@ export interface TopLevelDomainsListOutput {
   nextLink?: string;
 }
 export const TopLevelDomainsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1915,7 +1907,7 @@ export const TopLevelDomainsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const TopLevelDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopLevelDomainsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopLevelDomainsListInput,
   outputSchema: TopLevelDomainsListOutput,
 }));
@@ -1927,7 +1919,7 @@ export interface TopLevelDomainsListAgreementsInput {
   forTransfer?: boolean;
 }
 export const TopLevelDomainsListAgreementsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     includePrivacy: Schema.optional(Schema.Boolean),
@@ -1951,7 +1943,7 @@ export interface TopLevelDomainsListAgreementsOutput {
   nextLink?: string;
 }
 export const TopLevelDomainsListAgreementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         agreementKey: Schema.String,
@@ -1974,7 +1966,7 @@ export const TopLevelDomainsListAgreementsOutput =
  * @param name - Name of the top-level domain.
  */
 export const TopLevelDomainsListAgreements =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TopLevelDomainsListAgreementsInput,
     outputSchema: TopLevelDomainsListAgreementsOutput,
   }));

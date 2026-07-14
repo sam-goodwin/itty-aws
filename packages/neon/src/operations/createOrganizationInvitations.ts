@@ -11,7 +11,7 @@ export interface CreateOrganizationInvitationsInput {
   }[];
 }
 export const CreateOrganizationInvitationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
     invitations: Schema.Array(
       Schema.Struct({
@@ -41,7 +41,7 @@ export interface CreateOrganizationInvitationsOutput {
   }[];
 }
 export const CreateOrganizationInvitationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invitations: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -72,7 +72,7 @@ export const CreateOrganizationInvitationsOutput =
  * @param org_id - The Neon organization ID
  */
 export const createOrganizationInvitations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateOrganizationInvitationsInput,
     outputSchema: CreateOrganizationInvitationsOutput,
   }));

@@ -8,7 +8,7 @@ export interface DeleteAnalyticsRuleInput {
   ruleName: string;
 }
 export const DeleteAnalyticsRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ruleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/analytics/rules/{ruleName}" }),
@@ -32,7 +32,7 @@ export interface DeleteAnalyticsRuleOutput {
   };
 }
 export const DeleteAnalyticsRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String,
     type: Schema.Literals([
       "popular_queries",
@@ -64,7 +64,7 @@ export const DeleteAnalyticsRuleOutput =
  *
  * @param ruleName - The name of the analytics rule to delete
  */
-export const deleteAnalyticsRule = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteAnalyticsRule = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteAnalyticsRuleInput,
   outputSchema: DeleteAnalyticsRuleOutput,
   errors: [NotFound] as const,

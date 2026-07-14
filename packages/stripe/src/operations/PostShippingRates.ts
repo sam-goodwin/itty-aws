@@ -32,63 +32,61 @@ export interface PostShippingRatesInput {
   tax_code?: string;
   type?: "fixed_amount";
 }
-export const PostShippingRatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    delivery_estimate: Schema.optional(
-      Schema.Struct({
-        maximum: Schema.optional(
+export const PostShippingRatesInput = /*@__PURE__*/ Schema.Struct({
+  delivery_estimate: Schema.optional(
+    Schema.Struct({
+      maximum: Schema.optional(
+        Schema.Struct({
+          unit: Schema.Literals([
+            "business_day",
+            "day",
+            "hour",
+            "month",
+            "week",
+          ]),
+          value: Schema.Number,
+        }),
+      ),
+      minimum: Schema.optional(
+        Schema.Struct({
+          unit: Schema.Literals([
+            "business_day",
+            "day",
+            "hour",
+            "month",
+            "week",
+          ]),
+          value: Schema.Number,
+        }),
+      ),
+    }),
+  ),
+  display_name: Schema.String,
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  fixed_amount: Schema.optional(
+    Schema.Struct({
+      amount: Schema.Number,
+      currency: Schema.String,
+      currency_options: Schema.optional(
+        Schema.Record(
+          Schema.String,
           Schema.Struct({
-            unit: Schema.Literals([
-              "business_day",
-              "day",
-              "hour",
-              "month",
-              "week",
-            ]),
-            value: Schema.Number,
+            amount: Schema.Number,
+            tax_behavior: Schema.optional(
+              Schema.Literals(["exclusive", "inclusive", "unspecified"]),
+            ),
           }),
         ),
-        minimum: Schema.optional(
-          Schema.Struct({
-            unit: Schema.Literals([
-              "business_day",
-              "day",
-              "hour",
-              "month",
-              "week",
-            ]),
-            value: Schema.Number,
-          }),
-        ),
-      }),
-    ),
-    display_name: Schema.String,
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    fixed_amount: Schema.optional(
-      Schema.Struct({
-        amount: Schema.Number,
-        currency: Schema.String,
-        currency_options: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              amount: Schema.Number,
-              tax_behavior: Schema.optional(
-                Schema.Literals(["exclusive", "inclusive", "unspecified"]),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    tax_behavior: Schema.optional(
-      Schema.Literals(["exclusive", "inclusive", "unspecified"]),
-    ),
-    tax_code: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.Literals(["fixed_amount"])),
-  },
-).pipe(
+      ),
+    }),
+  ),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  tax_behavior: Schema.optional(
+    Schema.Literals(["exclusive", "inclusive", "unspecified"]),
+  ),
+  tax_code: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.Literals(["fixed_amount"])),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v1/shipping_rates",
@@ -134,7 +132,7 @@ export interface PostShippingRatesOutput {
   type: "fixed_amount";
 }
 export const PostShippingRatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     created: Schema.Number,
     delivery_estimate: Schema.NullOr(
@@ -212,7 +210,7 @@ export const PostShippingRatesOutput =
  *
  * <p>Creates a new shipping rate object.</p>
  */
-export const PostShippingRates = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostShippingRates = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostShippingRatesInput,
   outputSchema: PostShippingRatesOutput,
 }));

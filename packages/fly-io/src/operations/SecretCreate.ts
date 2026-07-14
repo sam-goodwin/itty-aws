@@ -9,7 +9,7 @@ export interface SecretCreateInput {
   secret_name: string;
   value?: string;
 }
-export const SecretCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretCreateInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
   value: Schema.optional(Schema.String),
@@ -27,7 +27,7 @@ export interface SecretCreateOutput {
   value?: string;
   version?: number;
 }
-export const SecretCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretCreateOutput = /*@__PURE__*/ Schema.Struct({
   Version: Schema.optional(Schema.Number),
   created_at: Schema.optional(Schema.String),
   digest: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export const SecretCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param app_name - Fly App Name
  * @param secret_name - App secret name
  */
-export const SecretCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretCreateInput,
   outputSchema: SecretCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

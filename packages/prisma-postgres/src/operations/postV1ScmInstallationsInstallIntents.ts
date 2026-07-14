@@ -9,7 +9,7 @@ export interface PostV1ScmInstallationsInstallIntentsInput {
   workspaceId: string;
 }
 export const PostV1ScmInstallationsInstallIntentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     provider: Schema.Literals(["github"]),
     workspaceId: Schema.String,
   }).pipe(
@@ -26,7 +26,7 @@ export interface PostV1ScmInstallationsInstallIntentsOutput {
   };
 }
 export const PostV1ScmInstallationsInstallIntentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       type: Schema.String,
       provider: Schema.Literals(["github"]),
@@ -43,7 +43,7 @@ export const PostV1ScmInstallationsInstallIntentsOutput =
  * Creates an installation intent for the given workspace and returns a provider-specific URL that the user opens to install the SCM app. Currently only `github` is supported.
  */
 export const postV1ScmInstallationsInstallIntents =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV1ScmInstallationsInstallIntentsInput,
     outputSchema: PostV1ScmInstallationsInstallIntentsOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

@@ -124,7 +124,7 @@ export interface PostSubscriptionSchedulesScheduleInput {
   proration_behavior?: "always_invoice" | "create_prorations" | "none";
 }
 export const PostSubscriptionSchedulesScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schedule: Schema.String.pipe(T.PathParam()),
     default_settings: Schema.optional(
       Schema.Struct({
@@ -1624,7 +1624,7 @@ export interface PostSubscriptionSchedulesScheduleOutput {
     | null;
 }
 export const PostSubscriptionSchedulesScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -2900,7 +2900,7 @@ export const PostSubscriptionSchedulesScheduleOutput =
  * <p>Updates an existing subscription schedule.</p>
  */
 export const PostSubscriptionSchedulesSchedule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostSubscriptionSchedulesScheduleInput,
     outputSchema: PostSubscriptionSchedulesScheduleOutput,
   }));

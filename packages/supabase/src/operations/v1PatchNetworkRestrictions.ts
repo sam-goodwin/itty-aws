@@ -10,7 +10,7 @@ export interface V1PatchNetworkRestrictionsInput {
   remove?: { dbAllowedCidrs?: string[]; dbAllowedCidrsV6?: string[] };
 }
 export const V1PatchNetworkRestrictionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     add: Schema.optional(
       Schema.Struct({
@@ -41,7 +41,7 @@ export interface V1PatchNetworkRestrictionsOutput {
   status: "stored" | "applied";
 }
 export const V1PatchNetworkRestrictionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlement: Schema.Literals(["disallowed", "allowed"]),
     config: Schema.Struct({
       dbAllowedCidrs: Schema.optional(
@@ -76,10 +76,8 @@ export const V1PatchNetworkRestrictionsOutput =
  *
  * @param ref - Project ref
  */
-export const v1PatchNetworkRestrictions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1PatchNetworkRestrictionsInput,
-    outputSchema: V1PatchNetworkRestrictionsOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1PatchNetworkRestrictions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1PatchNetworkRestrictionsInput,
+  outputSchema: V1PatchNetworkRestrictionsOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

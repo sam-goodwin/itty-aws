@@ -13,7 +13,7 @@ export interface SignalsScoutEditReportInput {
   append_note?: string | null;
 }
 export const SignalsScoutEditReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     run_id: Schema.String.pipe(T.PathParam()),
     report_id: Schema.String,
@@ -34,7 +34,7 @@ export interface SignalsScoutEditReportOutput {
   note_appended: boolean;
 }
 export const SignalsScoutEditReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     report_id: Schema.String,
     updated_fields: Schema.Array(Schema.String),
     note_appended: Schema.Boolean,
@@ -49,10 +49,8 @@ export const SignalsScoutEditReportOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param run_id - UUID of the `SignalScoutRun` bridge row.
  */
-export const signalsScoutEditReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalsScoutEditReportInput,
-    outputSchema: SignalsScoutEditReportOutput,
-    errors: [BadRequest, NotFound] as const,
-  }),
-);
+export const signalsScoutEditReport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalsScoutEditReportInput,
+  outputSchema: SignalsScoutEditReportOutput,
+  errors: [BadRequest, NotFound] as const,
+}));

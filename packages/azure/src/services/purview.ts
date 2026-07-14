@@ -16,7 +16,7 @@ export interface AccountsAddRootCollectionAdminInput {
   objectId?: string;
 }
 export const AccountsAddRootCollectionAdminInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -32,7 +32,7 @@ export const AccountsAddRootCollectionAdminInput =
 // Output Schema
 export type AccountsAddRootCollectionAdminOutput = void;
 export const AccountsAddRootCollectionAdminOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsAddRootCollectionAdminOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsAddRootCollectionAdminOutput>;
 
 // The operation
 /**
@@ -46,7 +46,7 @@ export const AccountsAddRootCollectionAdminOutput =
  * @param api-version - The api version to use.
  */
 export const AccountsAddRootCollectionAdmin =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccountsAddRootCollectionAdminInput,
     outputSchema: AccountsAddRootCollectionAdminOutput,
   }));
@@ -57,7 +57,7 @@ export interface AccountsCheckNameAvailabilityInput {
   type?: string;
 }
 export const AccountsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -76,7 +76,7 @@ export interface AccountsCheckNameAvailabilityOutput {
   reason?: "Invalid" | "AlreadyExists";
 }
 export const AccountsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
@@ -92,7 +92,7 @@ export const AccountsCheckNameAvailabilityOutput =
  * @param api-version - The api version to use.
  */
 export const AccountsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccountsCheckNameAvailabilityInput,
     outputSchema: AccountsCheckNameAvailabilityOutput,
   }));
@@ -188,7 +188,7 @@ export interface AccountsCreateOrUpdateInput {
   type?: string;
 }
 export const AccountsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -378,7 +378,7 @@ export interface AccountsCreateOrUpdateOutput {
   type?: string;
 }
 export const AccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     identity: Schema.optional(
       Schema.Struct({
@@ -429,19 +429,17 @@ export const AccountsCreateOrUpdateOutput =
  * @param accountName - The name of the account.
  * @param api-version - The api version to use.
  */
-export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsCreateOrUpdateInput,
-    outputSchema: AccountsCreateOrUpdateOutput,
-  }),
-);
+export const AccountsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsCreateOrUpdateInput,
+  outputSchema: AccountsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface AccountsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -456,7 +454,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AccountsDeleteOutput = void;
 export const AccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
 
 // The operation
 /**
@@ -469,7 +467,7 @@ export const AccountsDeleteOutput =
  * @param accountName - The name of the account.
  * @param api-version - The api version to use.
  */
-export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
@@ -479,7 +477,7 @@ export interface AccountsGetInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -516,7 +514,7 @@ export interface AccountsGetOutput {
   tags?: Record<string, string>;
   type?: string;
 }
-export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   identity: Schema.optional(
     Schema.Struct({
@@ -567,7 +565,7 @@ export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the account.
  * @param api-version - The api version to use.
  */
-export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
   outputSchema: AccountsGetOutput,
 }));
@@ -578,7 +576,7 @@ export interface AccountsListByResourceGroupInput {
   $skipToken?: string;
 }
 export const AccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
@@ -620,7 +618,7 @@ export interface AccountsListByResourceGroupOutput {
   }[];
 }
 export const AccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
@@ -687,19 +685,17 @@ export const AccountsListByResourceGroupOutput =
  * @param api-version - The api version to use.
  * @param $skipToken - The skip token.
  */
-export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListByResourceGroupInput,
-    outputSchema: AccountsListByResourceGroupOutput,
-  }),
-);
+export const AccountsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListByResourceGroupInput,
+  outputSchema: AccountsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface AccountsListBySubscriptionInput {
   subscriptionId: string;
   $skipToken?: string;
 }
 export const AccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -740,7 +736,7 @@ export interface AccountsListBySubscriptionOutput {
   }[];
 }
 export const AccountsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
@@ -806,19 +802,17 @@ export const AccountsListBySubscriptionOutput =
  * @param api-version - The api version to use.
  * @param $skipToken - The skip token.
  */
-export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListBySubscriptionInput,
-    outputSchema: AccountsListBySubscriptionOutput,
-  }),
-);
+export const AccountsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListBySubscriptionInput,
+  outputSchema: AccountsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface AccountsListKeysInput {
   subscriptionId: string;
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsListKeysInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -835,12 +829,10 @@ export interface AccountsListKeysOutput {
   atlasKafkaPrimaryEndpoint?: string;
   atlasKafkaSecondaryEndpoint?: string;
 }
-export const AccountsListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    atlasKafkaPrimaryEndpoint: Schema.optional(Schema.String),
-    atlasKafkaSecondaryEndpoint: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<AccountsListKeysOutput>;
+export const AccountsListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  atlasKafkaPrimaryEndpoint: Schema.optional(Schema.String),
+  atlasKafkaSecondaryEndpoint: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<AccountsListKeysOutput>;
 
 // The operation
 /**
@@ -853,7 +845,7 @@ export const AccountsListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param accountName - The name of the account.
  * @param api-version - The api version to use.
  */
-export const AccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsListKeysInput,
   outputSchema: AccountsListKeysOutput,
 }));
@@ -935,7 +927,7 @@ export interface AccountsUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1100,7 +1092,7 @@ export interface AccountsUpdateOutput {
   tags?: Record<string, string>;
   type?: string;
 }
-export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   identity: Schema.optional(
     Schema.Struct({
@@ -1151,7 +1143,7 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the account.
  * @param api-version - The api version to use.
  */
-export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));
@@ -1162,7 +1154,7 @@ export interface DefaultAccountsGetInput {
   scope?: string;
 }
 export const DefaultAccountsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scopeTenantId: Schema.String,
     scopeType: Schema.Literals(["Tenant", "Subscription"]),
     scope: Schema.optional(Schema.String),
@@ -1184,7 +1176,7 @@ export interface DefaultAccountsGetOutput {
   subscriptionId?: string;
 }
 export const DefaultAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountName: Schema.optional(Schema.String),
     resourceGroupName: Schema.optional(Schema.String),
     scope: Schema.optional(Schema.String),
@@ -1204,7 +1196,7 @@ export const DefaultAccountsGetOutput =
  * @param scope - The Id of the scope object, for example if the scope is "Subscription" then it is the ID of that subscription.
  * @param api-version - The api version to use.
  */
-export const DefaultAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DefaultAccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DefaultAccountsGetInput,
   outputSchema: DefaultAccountsGetOutput,
 }));
@@ -1215,7 +1207,7 @@ export interface DefaultAccountsRemoveInput {
   scope?: string;
 }
 export const DefaultAccountsRemoveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scopeTenantId: Schema.String,
     scopeType: Schema.Literals(["Tenant", "Subscription"]),
     scope: Schema.optional(Schema.String),
@@ -1230,7 +1222,7 @@ export const DefaultAccountsRemoveInput =
 // Output Schema
 export type DefaultAccountsRemoveOutput = void;
 export const DefaultAccountsRemoveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DefaultAccountsRemoveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DefaultAccountsRemoveOutput>;
 
 // The operation
 /**
@@ -1241,12 +1233,10 @@ export const DefaultAccountsRemoveOutput =
  * @param scope - The Id of the scope object, for example if the scope is "Subscription" then it is the ID of that subscription.
  * @param api-version - The api version to use.
  */
-export const DefaultAccountsRemove = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DefaultAccountsRemoveInput,
-    outputSchema: DefaultAccountsRemoveOutput,
-  }),
-);
+export const DefaultAccountsRemove = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DefaultAccountsRemoveInput,
+  outputSchema: DefaultAccountsRemoveOutput,
+}));
 // Input Schema
 export interface DefaultAccountsSetInput {
   accountName?: string;
@@ -1257,7 +1247,7 @@ export interface DefaultAccountsSetInput {
   subscriptionId?: string;
 }
 export const DefaultAccountsSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountName: Schema.optional(Schema.String),
     resourceGroupName: Schema.optional(Schema.String),
     scope: Schema.optional(Schema.String),
@@ -1282,7 +1272,7 @@ export interface DefaultAccountsSetOutput {
   subscriptionId?: string;
 }
 export const DefaultAccountsSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountName: Schema.optional(Schema.String),
     resourceGroupName: Schema.optional(Schema.String),
     scope: Schema.optional(Schema.String),
@@ -1297,7 +1287,7 @@ export const DefaultAccountsSetOutput =
  *
  * @param api-version - The api version to use.
  */
-export const DefaultAccountsSet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DefaultAccountsSet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DefaultAccountsSetInput,
   outputSchema: DefaultAccountsSetOutput,
 }));
@@ -1309,7 +1299,7 @@ export interface FeaturesAccountGetInput {
   features?: string[];
 }
 export const FeaturesAccountGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1327,7 +1317,7 @@ export interface FeaturesAccountGetOutput {
   features?: Record<string, boolean>;
 }
 export const FeaturesAccountGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     features: Schema.optional(Schema.Record(Schema.String, Schema.Boolean)),
   }) as unknown as Schema.Codec<FeaturesAccountGetOutput>;
 
@@ -1344,7 +1334,7 @@ Features that don't exist will be excluded from the results.
  * @param accountName - The name of the account.
  * @param api-version - The api version to use.
  */
-export const FeaturesAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FeaturesAccountGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FeaturesAccountGetInput,
   outputSchema: FeaturesAccountGetOutput,
 }));
@@ -1355,7 +1345,7 @@ export interface FeaturesSubscriptionGetInput {
   features?: string[];
 }
 export const FeaturesSubscriptionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locations: Schema.String.pipe(T.PathParam()),
     features: Schema.optional(Schema.Array(Schema.String)),
@@ -1372,7 +1362,7 @@ export interface FeaturesSubscriptionGetOutput {
   features?: Record<string, boolean>;
 }
 export const FeaturesSubscriptionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     features: Schema.optional(Schema.Record(Schema.String, Schema.Boolean)),
   }) as unknown as Schema.Codec<FeaturesSubscriptionGetOutput>;
 
@@ -1388,12 +1378,10 @@ Features that don't exist will be excluded from the results.
  * @param locations - Location of feature.
  * @param api-version - The api version to use.
  */
-export const FeaturesSubscriptionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FeaturesSubscriptionGetInput,
-    outputSchema: FeaturesSubscriptionGetOutput,
-  }),
-);
+export const FeaturesSubscriptionGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FeaturesSubscriptionGetInput,
+  outputSchema: FeaturesSubscriptionGetOutput,
+}));
 // Input Schema
 export interface KafkaConfigurationsCreateOrUpdateInput {
   subscriptionId: string;
@@ -1425,7 +1413,7 @@ export interface KafkaConfigurationsCreateOrUpdateInput {
   type?: string;
 }
 export const KafkaConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1494,7 +1482,7 @@ export interface KafkaConfigurationsCreateOrUpdateOutput {
   type?: string;
 }
 export const KafkaConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -1527,7 +1515,7 @@ export const KafkaConfigurationsCreateOrUpdateOutput =
  * @param api-version - The api version to use.
  */
 export const KafkaConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KafkaConfigurationsCreateOrUpdateInput,
     outputSchema: KafkaConfigurationsCreateOrUpdateOutput,
   }));
@@ -1539,7 +1527,7 @@ export interface KafkaConfigurationsDeleteInput {
   kafkaConfigurationName: string;
 }
 export const KafkaConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1555,7 +1543,7 @@ export const KafkaConfigurationsDeleteInput =
 // Output Schema
 export type KafkaConfigurationsDeleteOutput = void;
 export const KafkaConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KafkaConfigurationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<KafkaConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -1569,12 +1557,10 @@ export const KafkaConfigurationsDeleteOutput =
  * @param kafkaConfigurationName - Name of kafka configuration.
  * @param api-version - The api version to use.
  */
-export const KafkaConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KafkaConfigurationsDeleteInput,
-    outputSchema: KafkaConfigurationsDeleteOutput,
-  }),
-);
+export const KafkaConfigurationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KafkaConfigurationsDeleteInput,
+  outputSchema: KafkaConfigurationsDeleteOutput,
+}));
 // Input Schema
 export interface KafkaConfigurationsGetInput {
   subscriptionId: string;
@@ -1583,7 +1569,7 @@ export interface KafkaConfigurationsGetInput {
   kafkaConfigurationName: string;
 }
 export const KafkaConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1611,7 +1597,7 @@ export interface KafkaConfigurationsGetOutput {
   type?: string;
 }
 export const KafkaConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -1643,12 +1629,10 @@ export const KafkaConfigurationsGetOutput =
  * @param kafkaConfigurationName - Name of kafka configuration.
  * @param api-version - The api version to use.
  */
-export const KafkaConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KafkaConfigurationsGetInput,
-    outputSchema: KafkaConfigurationsGetOutput,
-  }),
-);
+export const KafkaConfigurationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KafkaConfigurationsGetInput,
+  outputSchema: KafkaConfigurationsGetOutput,
+}));
 // Input Schema
 export interface KafkaConfigurationsListByAccountInput {
   subscriptionId: string;
@@ -1657,7 +1641,7 @@ export interface KafkaConfigurationsListByAccountInput {
   $skipToken?: string;
 }
 export const KafkaConfigurationsListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1688,7 +1672,7 @@ export interface KafkaConfigurationsListByAccountOutput {
   }[];
 }
 export const KafkaConfigurationsListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -1736,15 +1720,13 @@ export const KafkaConfigurationsListByAccountOutput =
  * @param $skipToken - The skip token.
  */
 export const KafkaConfigurationsListByAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KafkaConfigurationsListByAccountInput,
     outputSchema: KafkaConfigurationsListByAccountOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Purview/operations",
@@ -1794,7 +1776,7 @@ export interface OperationsListOutput {
     };
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -1872,7 +1854,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The api version to use.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1904,7 +1886,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   type?: string;
 }
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1974,7 +1956,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -2007,7 +1989,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param api-version - The api version to use.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
@@ -2019,7 +2001,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2035,7 +2017,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -2050,7 +2032,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param api-version - The api version to use.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -2062,7 +2044,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2090,7 +2072,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -2123,7 +2105,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param api-version - The api version to use.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -2135,7 +2117,7 @@ export interface PrivateEndpointConnectionsListByAccountInput {
   $skipToken?: string;
 }
 export const PrivateEndpointConnectionsListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2166,7 +2148,7 @@ export interface PrivateEndpointConnectionsListByAccountOutput {
   }[];
 }
 export const PrivateEndpointConnectionsListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -2214,7 +2196,7 @@ export const PrivateEndpointConnectionsListByAccountOutput =
  * @param $skipToken - The skip token.
  */
 export const PrivateEndpointConnectionsListByAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByAccountInput,
     outputSchema: PrivateEndpointConnectionsListByAccountOutput,
   }));
@@ -2226,7 +2208,7 @@ export interface PrivateLinkResourcesGetByGroupIdInput {
   groupId: string;
 }
 export const PrivateLinkResourcesGetByGroupIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2251,7 +2233,7 @@ export interface PrivateLinkResourcesGetByGroupIdOutput {
   type?: string;
 }
 export const PrivateLinkResourcesGetByGroupIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -2277,7 +2259,7 @@ export const PrivateLinkResourcesGetByGroupIdOutput =
  * @param api-version - The api version to use.
  */
 export const PrivateLinkResourcesGetByGroupId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesGetByGroupIdInput,
     outputSchema: PrivateLinkResourcesGetByGroupIdOutput,
   }));
@@ -2288,7 +2270,7 @@ export interface PrivateLinkResourcesListByAccountInput {
   accountName: string;
 }
 export const PrivateLinkResourcesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2315,7 +2297,7 @@ export interface PrivateLinkResourcesListByAccountOutput {
   }[];
 }
 export const PrivateLinkResourcesListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -2345,7 +2327,7 @@ export const PrivateLinkResourcesListByAccountOutput =
  * @param api-version - The api version to use.
  */
 export const PrivateLinkResourcesListByAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByAccountInput,
     outputSchema: PrivateLinkResourcesListByAccountOutput,
   }));
@@ -2355,7 +2337,7 @@ export interface UsagesGetInput {
   location: string;
   $filter?: string;
 }
-export const UsagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
@@ -2378,7 +2360,7 @@ export interface UsagesGetOutput {
   }[];
   nextLink?: string;
 }
-export const UsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesGetOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2408,7 +2390,7 @@ export const UsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param location - The region.
  * @param api-version - The api version to use.
  */
-export const UsagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsagesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsagesGetInput,
   outputSchema: UsagesGetOutput,
 }));

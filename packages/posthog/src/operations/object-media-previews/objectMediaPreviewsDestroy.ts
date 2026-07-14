@@ -9,7 +9,7 @@ export interface ObjectMediaPreviewsDestroyInput {
   project_id: string;
 }
 export const ObjectMediaPreviewsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const ObjectMediaPreviewsDestroyInput =
 // Output Schema
 export type ObjectMediaPreviewsDestroyOutput = void;
 export const ObjectMediaPreviewsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ObjectMediaPreviewsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ObjectMediaPreviewsDestroyOutput>;
 
 // The operation
 /**
@@ -30,10 +30,8 @@ export const ObjectMediaPreviewsDestroyOutput =
  * @param id - A UUID string identifying this object media preview.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const objectMediaPreviewsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ObjectMediaPreviewsDestroyInput,
-    outputSchema: ObjectMediaPreviewsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const objectMediaPreviewsDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ObjectMediaPreviewsDestroyInput,
+  outputSchema: ObjectMediaPreviewsDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -12,7 +12,7 @@ export interface SurveysSummarizeResponsesCreateInput {
   force_refresh?: boolean;
 }
 export const SurveysSummarizeResponsesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     question_id: Schema.optional(Schema.String),
@@ -28,7 +28,7 @@ export const SurveysSummarizeResponsesCreateInput =
 // Output Schema
 export type SurveysSummarizeResponsesCreateOutput = void;
 export const SurveysSummarizeResponsesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SurveysSummarizeResponsesCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SurveysSummarizeResponsesCreateOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ export const SurveysSummarizeResponsesCreateOutput =
  * @param question_index - Zero-based question index. Omit to get the survey-wide headline instead.
  */
 export const surveysSummarizeResponsesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SurveysSummarizeResponsesCreateInput,
     outputSchema: SurveysSummarizeResponsesCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

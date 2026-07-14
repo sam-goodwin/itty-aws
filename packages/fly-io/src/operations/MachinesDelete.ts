@@ -9,7 +9,7 @@ export interface MachinesDeleteInput {
   machine_id: string;
   force?: boolean;
 }
-export const MachinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesDeleteInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export const MachinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type MachinesDeleteOutput = void;
 export const MachinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesDeleteOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const MachinesDeleteOutput =
  * @param machine_id - Machine ID
  * @param force - Force kill the machine if it's running
  */
-export const MachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesDeleteInput,
   outputSchema: MachinesDeleteOutput,
   errors: [Forbidden, NotFound] as const,

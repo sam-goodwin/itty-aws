@@ -8,7 +8,7 @@ export interface GetDatabaseInput {
   organizationSlug: string;
   databaseName: string;
 }
-export const GetDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatabaseInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -33,7 +33,7 @@ export interface GetDatabaseOutput {
     parent?: { id?: string; name?: string; branched_at?: string } | null;
   };
 }
-export const GetDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatabaseOutput = /*@__PURE__*/ Schema.Struct({
   database: Schema.optional(
     Schema.Struct({
       Name: Schema.optional(Schema.String),
@@ -67,7 +67,7 @@ export const GetDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param organizationSlug - The slug of the organization or user account.
  * @param databaseName - The name of the database.
  */
-export const getDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDatabase = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDatabaseInput,
   outputSchema: GetDatabaseOutput,
   errors: [NotFound] as const,

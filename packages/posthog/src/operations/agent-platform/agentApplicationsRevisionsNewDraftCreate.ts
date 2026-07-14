@@ -9,7 +9,7 @@ export interface AgentApplicationsRevisionsNewDraftCreateInput {
   source_revision_id: string;
 }
 export const AgentApplicationsRevisionsNewDraftCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     source_revision_id: Schema.String,
@@ -215,7 +215,7 @@ export interface AgentApplicationsRevisionsNewDraftCreateOutput {
   updated_at: string;
 }
 export const AgentApplicationsRevisionsNewDraftCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     application: Schema.String,
     parent_revision: Schema.optional(Schema.NullOr(Schema.String)),
@@ -554,7 +554,7 @@ export const AgentApplicationsRevisionsNewDraftCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const agentApplicationsRevisionsNewDraftCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsRevisionsNewDraftCreateInput,
     outputSchema: AgentApplicationsRevisionsNewDraftCreateOutput,
   }));

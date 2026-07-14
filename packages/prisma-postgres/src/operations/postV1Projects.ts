@@ -20,7 +20,7 @@ export interface PostV1ProjectsInput {
     | "ap-northeast-1"
     | "ap-southeast-1";
 }
-export const PostV1ProjectsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostV1ProjectsInput = /*@__PURE__*/ Schema.Struct({
   createDatabase: Schema.optional(Schema.Boolean),
   name: Schema.optional(Schema.String),
   region: Schema.optional(
@@ -110,7 +110,7 @@ export interface PostV1ProjectsOutput {
     } | null;
   };
 }
-export const PostV1ProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostV1ProjectsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Struct({
     id: Schema.String,
     type: Schema.String,
@@ -260,7 +260,7 @@ export const PostV1ProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Creates a new project with a postgres database.
  */
-export const postV1Projects = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const postV1Projects = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostV1ProjectsInput,
   outputSchema: PostV1ProjectsOutput,
   errors: [UnprocessableEntity] as const,

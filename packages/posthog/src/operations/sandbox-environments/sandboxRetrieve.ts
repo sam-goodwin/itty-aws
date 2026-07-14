@@ -8,7 +8,7 @@ export interface SandboxRetrieveInput {
   id: string;
   project_id: string;
 }
-export const SandboxRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SandboxRetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -41,7 +41,7 @@ export interface SandboxRetrieveOutput {
   created_at?: string | null;
   updated_at?: string | null;
 }
-export const SandboxRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SandboxRetrieveOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   network_access_level: Schema.String,
@@ -76,7 +76,7 @@ export const SandboxRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const sandboxRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const sandboxRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: SandboxRetrieveInput,
   outputSchema: SandboxRetrieveOutput,
   errors: [Forbidden, NotFound] as const,

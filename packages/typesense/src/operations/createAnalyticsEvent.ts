@@ -16,7 +16,7 @@ export interface CreateAnalyticsEventInput {
   };
 }
 export const CreateAnalyticsEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String,
     event_type: Schema.String,
     data: Schema.Struct({
@@ -35,7 +35,7 @@ export interface CreateAnalyticsEventOutput {
   ok: boolean;
 }
 export const CreateAnalyticsEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ok: Schema.Boolean,
   }) as unknown as Schema.Codec<CreateAnalyticsEventOutput>;
 
@@ -45,10 +45,8 @@ export const CreateAnalyticsEventOutput =
  *
  * Submit a single analytics event. The event must correspond to an existing analytics rule by name.
  */
-export const createAnalyticsEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateAnalyticsEventInput,
-    outputSchema: CreateAnalyticsEventOutput,
-    errors: [BadRequest] as const,
-  }),
-);
+export const createAnalyticsEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateAnalyticsEventInput,
+  outputSchema: CreateAnalyticsEventOutput,
+  errors: [BadRequest] as const,
+}));

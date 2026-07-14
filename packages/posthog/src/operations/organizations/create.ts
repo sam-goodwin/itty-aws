@@ -37,7 +37,7 @@ export interface CreateInput {
   is_not_active_reason?: string | null;
   is_pending_deletion?: boolean | null;
 }
-export const CreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   slug: Schema.optional(Schema.String),
@@ -122,7 +122,7 @@ export interface CreateOutput {
   is_not_active_reason?: string | null;
   is_pending_deletion?: boolean | null;
 }
-export const CreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   slug: Schema.optional(Schema.String),
@@ -172,7 +172,7 @@ export const CreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }) as unknown as Schema.Codec<CreateOutput>;
 
 // The operation
-export const create = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const create = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateInput,
   outputSchema: CreateOutput,
   errors: [BadRequest, Forbidden] as const,

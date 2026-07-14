@@ -6,7 +6,7 @@ import { NotFound } from "../errors.ts";
 // Input Schema
 export interface JwtTemplatesControllerGetJwtTemplateInput {}
 export const JwtTemplatesControllerGetJwtTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/user_management/jwt_template" }),
   ) as unknown as Schema.Codec<JwtTemplatesControllerGetJwtTemplateInput>;
 
@@ -18,7 +18,7 @@ export interface JwtTemplatesControllerGetJwtTemplateOutput {
   updated_at: string;
 }
 export const JwtTemplatesControllerGetJwtTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     content: Schema.String,
     created_at: Schema.String,
@@ -32,7 +32,7 @@ export const JwtTemplatesControllerGetJwtTemplateOutput =
  * Get the JWT template for the current environment.
  */
 export const JwtTemplatesControllerGetJwtTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: JwtTemplatesControllerGetJwtTemplateInput,
     outputSchema: JwtTemplatesControllerGetJwtTemplateOutput,
     errors: [NotFound] as const,

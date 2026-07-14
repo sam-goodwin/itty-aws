@@ -13,7 +13,7 @@ export interface PostCreditNotesIdVoidInput {
   expand?: string[];
 }
 export const PostCreditNotesIdVoidInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -1227,7 +1227,7 @@ export interface PostCreditNotesIdVoidOutput {
   voided_at: number | null;
 }
 export const PostCreditNotesIdVoidOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_shipping: Schema.Number,
     created: Schema.Number,
@@ -2064,9 +2064,7 @@ export const PostCreditNotesIdVoidOutput =
  *
  * <p>Marks a credit note as void. Learn more about <a href="/docs/billing/invoices/credit-notes#voiding">voiding credit notes</a>.</p>
  */
-export const PostCreditNotesIdVoid = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostCreditNotesIdVoidInput,
-    outputSchema: PostCreditNotesIdVoidOutput,
-  }),
-);
+export const PostCreditNotesIdVoid = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostCreditNotesIdVoidInput,
+  outputSchema: PostCreditNotesIdVoidOutput,
+}));

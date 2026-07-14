@@ -61,7 +61,7 @@ export interface WarehouseSavedQueriesCreateInput {
   user_access_level?: string | null;
 }
 export const WarehouseSavedQueriesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
@@ -217,7 +217,7 @@ export interface WarehouseSavedQueriesCreateOutput {
   user_access_level?: string | null;
 }
 export const WarehouseSavedQueriesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
     name: Schema.optional(Schema.String),
@@ -316,10 +316,8 @@ export const WarehouseSavedQueriesCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const warehouseSavedQueriesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WarehouseSavedQueriesCreateInput,
-    outputSchema: WarehouseSavedQueriesCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const warehouseSavedQueriesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WarehouseSavedQueriesCreateInput,
+  outputSchema: WarehouseSavedQueriesCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

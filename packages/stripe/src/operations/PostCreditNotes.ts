@@ -46,7 +46,7 @@ export interface PostCreditNotesInput {
   }[];
   shipping_cost?: { shipping_rate?: string };
 }
-export const PostCreditNotesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostCreditNotesInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.optional(Schema.Number),
   credit_amount: Schema.optional(Schema.Number),
   effective_at: Schema.optional(Schema.Number),
@@ -1326,7 +1326,7 @@ export interface PostCreditNotesOutput {
   type: "mixed" | "post_payment" | "pre_payment";
   voided_at: number | null;
 }
-export const PostCreditNotesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostCreditNotesOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   amount_shipping: Schema.Number,
   created: Schema.Number,
@@ -2171,7 +2171,7 @@ export const PostCreditNotesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * <code>post_payment_credit_notes_amount</code>, or both, depending on the invoice’s <code>amount_remaining</code> at the time of credit note creation.</p>
  * <p>For invoices that also have refunds created through the <a href="/docs/api/refunds">Refund API</a>, the credit note API subtracts those refund amounts from the maximum creditable amount. This prevents the combined credit notes and refunds from exceeding the invoice amount. If you use both, ensure the combined total does not exceed the invoice’s paid amount.</p>
  */
-export const PostCreditNotes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostCreditNotes = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostCreditNotesInput,
   outputSchema: PostCreditNotesOutput,
 }));

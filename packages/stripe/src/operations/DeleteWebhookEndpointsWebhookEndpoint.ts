@@ -7,7 +7,7 @@ export interface DeleteWebhookEndpointsWebhookEndpointInput {
   webhook_endpoint: string;
 }
 export const DeleteWebhookEndpointsWebhookEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webhook_endpoint: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -24,7 +24,7 @@ export interface DeleteWebhookEndpointsWebhookEndpointOutput {
   object: "webhook_endpoint";
 }
 export const DeleteWebhookEndpointsWebhookEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["webhook_endpoint"]),
@@ -37,7 +37,7 @@ export const DeleteWebhookEndpointsWebhookEndpointOutput =
  * <p>You can also delete webhook endpoints via the <a href="https://dashboard.stripe.com/account/webhooks">webhook endpoint management</a> page of the Stripe dashboard.</p>
  */
 export const DeleteWebhookEndpointsWebhookEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteWebhookEndpointsWebhookEndpointInput,
     outputSchema: DeleteWebhookEndpointsWebhookEndpointOutput,
   }));

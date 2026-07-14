@@ -46,7 +46,7 @@ export interface WorkbooksCreateOrUpdateInput {
   location: string;
 }
 export const WorkbooksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -116,7 +116,7 @@ export interface WorkbooksCreateOrUpdateOutput {
   };
 }
 export const WorkbooksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -146,19 +146,17 @@ export const WorkbooksCreateOrUpdateOutput =
  * @param resourceName - The name of the workbook resource. The value must be an UUID.
  * @param sourceId - Azure Resource Id that will fetch all linked workbooks.
  */
-export const WorkbooksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkbooksCreateOrUpdateInput,
-    outputSchema: WorkbooksCreateOrUpdateOutput,
-  }),
-);
+export const WorkbooksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkbooksCreateOrUpdateInput,
+  outputSchema: WorkbooksCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface WorkbooksDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceName: string;
 }
-export const WorkbooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkbooksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -173,7 +171,7 @@ export const WorkbooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WorkbooksDeleteOutput = void;
 export const WorkbooksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkbooksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkbooksDeleteOutput>;
 
 // The operation
 /**
@@ -184,7 +182,7 @@ export const WorkbooksDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the workbook resource. The value must be an UUID.
  */
-export const WorkbooksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkbooksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkbooksDeleteInput,
   outputSchema: WorkbooksDeleteOutput,
 }));
@@ -195,7 +193,7 @@ export interface WorkbooksGetInput {
   resourceName: string;
   canFetchContent?: boolean;
 }
-export const WorkbooksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkbooksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -222,7 +220,7 @@ export interface WorkbooksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const WorkbooksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkbooksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -252,7 +250,7 @@ export const WorkbooksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceName - The name of the workbook resource. The value must be an UUID.
  * @param canFetchContent - Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks.
  */
-export const WorkbooksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkbooksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkbooksGetInput,
   outputSchema: WorkbooksGetOutput,
 }));
@@ -266,7 +264,7 @@ export interface WorkbooksListByResourceGroupInput {
   canFetchContent?: boolean;
 }
 export const WorkbooksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     category: Schema.Literals(["workbook", "TSG", "performance", "retention"]),
@@ -299,7 +297,7 @@ export interface WorkbooksListByResourceGroupOutput {
   nextLink?: string;
 }
 export const WorkbooksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -349,7 +347,7 @@ export const WorkbooksListByResourceGroupOutput =
  * @param canFetchContent - Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks.
  */
 export const WorkbooksListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkbooksListByResourceGroupInput,
     outputSchema: WorkbooksListByResourceGroupOutput,
   }));
@@ -361,7 +359,7 @@ export interface WorkbooksListBySubscriptionInput {
   canFetchContent?: boolean;
 }
 export const WorkbooksListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     category: Schema.Literals(["workbook", "TSG", "performance", "retention"]),
     tags: Schema.optional(Schema.String),
@@ -392,7 +390,7 @@ export interface WorkbooksListBySubscriptionOutput {
   nextLink?: string;
 }
 export const WorkbooksListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -439,12 +437,10 @@ export const WorkbooksListBySubscriptionOutput =
  * @param tags - Tags presents on each workbook returned.
  * @param canFetchContent - Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks.
  */
-export const WorkbooksListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkbooksListBySubscriptionInput,
-    outputSchema: WorkbooksListBySubscriptionOutput,
-  }),
-);
+export const WorkbooksListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkbooksListBySubscriptionInput,
+  outputSchema: WorkbooksListBySubscriptionOutput,
+}));
 // Input Schema
 export interface WorkbooksRevisionGetInput {
   subscriptionId: string;
@@ -453,7 +449,7 @@ export interface WorkbooksRevisionGetInput {
   revisionId: string;
 }
 export const WorkbooksRevisionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -481,7 +477,7 @@ export interface WorkbooksRevisionGetOutput {
   };
 }
 export const WorkbooksRevisionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -511,12 +507,10 @@ export const WorkbooksRevisionGetOutput =
  * @param resourceName - The name of the workbook resource. The value must be an UUID.
  * @param revisionId - The id of the workbook's revision.
  */
-export const WorkbooksRevisionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkbooksRevisionGetInput,
-    outputSchema: WorkbooksRevisionGetOutput,
-  }),
-);
+export const WorkbooksRevisionGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkbooksRevisionGetInput,
+  outputSchema: WorkbooksRevisionGetOutput,
+}));
 // Input Schema
 export interface WorkbooksRevisionsListInput {
   subscriptionId: string;
@@ -524,7 +518,7 @@ export interface WorkbooksRevisionsListInput {
   resourceName: string;
 }
 export const WorkbooksRevisionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -554,7 +548,7 @@ export interface WorkbooksRevisionsListOutput {
   nextLink?: string;
 }
 export const WorkbooksRevisionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -600,12 +594,10 @@ export const WorkbooksRevisionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the workbook resource. The value must be an UUID.
  */
-export const WorkbooksRevisionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkbooksRevisionsListInput,
-    outputSchema: WorkbooksRevisionsListOutput,
-  }),
-);
+export const WorkbooksRevisionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkbooksRevisionsListInput,
+  outputSchema: WorkbooksRevisionsListOutput,
+}));
 // Input Schema
 export interface WorkbooksUpdateInput {
   subscriptionId: string;
@@ -623,7 +615,7 @@ export interface WorkbooksUpdateInput {
     revision?: string | null;
   };
 }
-export const WorkbooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkbooksUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -662,7 +654,7 @@ export interface WorkbooksUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const WorkbooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkbooksUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -692,7 +684,7 @@ export const WorkbooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceName - The name of the workbook resource. The value must be an UUID.
  * @param sourceId - Azure Resource Id that will fetch all linked workbooks.
  */
-export const WorkbooksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkbooksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkbooksUpdateInput,
   outputSchema: WorkbooksUpdateOutput,
 }));

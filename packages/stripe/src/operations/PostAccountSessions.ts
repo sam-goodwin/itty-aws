@@ -135,7 +135,7 @@ export interface PostAccountSessionsInput {
   expand?: string[];
 }
 export const PostAccountSessionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String,
     components: Schema.Struct({
       account_management: Schema.optional(
@@ -522,7 +522,7 @@ export interface PostAccountSessionsOutput {
   object: "account_session";
 }
 export const PostAccountSessionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String,
     client_secret: SensitiveOutputString,
     components: Schema.Struct({
@@ -684,7 +684,7 @@ export const PostAccountSessionsOutput =
  *
  * <p>Creates a AccountSession object that includes a single-use token that the platform can use on their front-end to grant client-side API access.</p>
  */
-export const PostAccountSessions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostAccountSessions = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostAccountSessionsInput,
   outputSchema: PostAccountSessionsOutput,
 }));

@@ -8,7 +8,7 @@ export interface GetCustomersCustomerCashBalanceInput {
   expand?: string;
 }
 export const GetCustomersCustomerCashBalanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -32,7 +32,7 @@ export interface GetCustomersCustomerCashBalanceOutput {
   };
 }
 export const GetCustomersCustomerCashBalanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     available: Schema.NullOr(Schema.Record(Schema.String, Schema.Number)),
     customer: Schema.String,
     customer_account: Schema.NullOr(Schema.String),
@@ -53,7 +53,7 @@ export const GetCustomersCustomerCashBalanceOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetCustomersCustomerCashBalance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetCustomersCustomerCashBalanceInput,
     outputSchema: GetCustomersCustomerCashBalanceOutput,
   }));

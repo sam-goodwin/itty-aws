@@ -10,7 +10,7 @@ export interface GetOrgInvoiceInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const GetOrgInvoiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrgInvoiceInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   invoiceId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -25,7 +25,7 @@ export const GetOrgInvoiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetOrgInvoiceOutput = void;
 export const GetOrgInvoiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgInvoiceOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgInvoiceOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const GetOrgInvoiceOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param invoiceId - Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
  */
-export const getOrgInvoice = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrgInvoice = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgInvoiceInput,
   outputSchema: GetOrgInvoiceOutput,
   errors: [Forbidden, NotFound] as const,

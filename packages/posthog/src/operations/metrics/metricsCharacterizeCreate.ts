@@ -31,7 +31,7 @@ export interface MetricsCharacterizeCreateInput {
   };
 }
 export const MetricsCharacterizeCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     query: Schema.Struct({
       metricName: Schema.String,
@@ -107,7 +107,7 @@ export interface MetricsCharacterizeCreateOutput {
   };
 }
 export const MetricsCharacterizeCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metric_name: Schema.String,
     aggregation: Schema.String,
     interval: Schema.String,
@@ -151,9 +151,7 @@ export const MetricsCharacterizeCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const metricsCharacterizeCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MetricsCharacterizeCreateInput,
-    outputSchema: MetricsCharacterizeCreateOutput,
-  }),
-);
+export const metricsCharacterizeCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MetricsCharacterizeCreateInput,
+  outputSchema: MetricsCharacterizeCreateOutput,
+}));

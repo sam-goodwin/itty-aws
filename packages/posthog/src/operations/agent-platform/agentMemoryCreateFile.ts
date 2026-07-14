@@ -12,7 +12,7 @@ export interface AgentMemoryCreateFileInput {
   tags?: string[];
 }
 export const AgentMemoryCreateFileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     path: Schema.String,
@@ -31,7 +31,7 @@ export interface AgentMemoryCreateFileOutput {
   content: string;
 }
 export const AgentMemoryCreateFileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.String,
   }) as unknown as Schema.Codec<AgentMemoryCreateFileOutput>;
 
@@ -41,9 +41,7 @@ export const AgentMemoryCreateFileOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const agentMemoryCreateFile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentMemoryCreateFileInput,
-    outputSchema: AgentMemoryCreateFileOutput,
-  }),
-);
+export const agentMemoryCreateFile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentMemoryCreateFileInput,
+  outputSchema: AgentMemoryCreateFileOutput,
+}));

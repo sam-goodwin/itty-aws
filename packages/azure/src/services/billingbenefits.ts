@@ -10,9 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.BillingBenefits/operations",
@@ -36,7 +34,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -68,7 +66,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The api-version to be used by the service
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -135,7 +133,7 @@ export interface ReservationOrderAliasCreateInput {
   };
 }
 export const ReservationOrderAliasCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderAliasName: Schema.String.pipe(T.PathParam()),
     sku: Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -241,7 +239,7 @@ export interface ReservationOrderAliasCreateOutput {
   };
 }
 export const ReservationOrderAliasCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -268,18 +266,16 @@ export const ReservationOrderAliasCreateOutput =
  * @param reservationOrderAliasName - Name of the reservation order alias
  * @param api-version - The api-version to be used by the service
  */
-export const ReservationOrderAliasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationOrderAliasCreateInput,
-    outputSchema: ReservationOrderAliasCreateOutput,
-  }),
-);
+export const ReservationOrderAliasCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationOrderAliasCreateInput,
+  outputSchema: ReservationOrderAliasCreateOutput,
+}));
 // Input Schema
 export interface ReservationOrderAliasGetInput {
   reservationOrderAliasName: string;
 }
 export const ReservationOrderAliasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderAliasName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -304,7 +300,7 @@ export interface ReservationOrderAliasGetOutput {
   };
 }
 export const ReservationOrderAliasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -331,19 +327,17 @@ export const ReservationOrderAliasGetOutput =
  * @param reservationOrderAliasName - Name of the reservation order alias
  * @param api-version - The api-version to be used by the service
  */
-export const ReservationOrderAliasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationOrderAliasGetInput,
-    outputSchema: ReservationOrderAliasGetOutput,
-  }),
-);
+export const ReservationOrderAliasGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationOrderAliasGetInput,
+  outputSchema: ReservationOrderAliasGetOutput,
+}));
 // Input Schema
 export interface SavingsPlanGetInput {
   savingsPlanOrderId: string;
   savingsPlanId: string;
   $expand?: string;
 }
-export const SavingsPlanGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SavingsPlanGetInput = /*@__PURE__*/ Schema.Struct({
   savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
   savingsPlanId: Schema.String.pipe(T.PathParam()),
   $expand: Schema.optional(Schema.String),
@@ -369,7 +363,7 @@ export interface SavingsPlanGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SavingsPlanGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SavingsPlanGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -398,7 +392,7 @@ export const SavingsPlanGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The api-version to be used by the service
  * @param $expand - May be used to expand the detail information of some properties.
  */
-export const SavingsPlanGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SavingsPlanGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanGetInput,
   outputSchema: SavingsPlanGetOutput,
 }));
@@ -406,7 +400,7 @@ export const SavingsPlanGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface SavingsPlanListInput {
   savingsPlanOrderId: string;
 }
-export const SavingsPlanListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SavingsPlanListInput = /*@__PURE__*/ Schema.Struct({
   savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -433,7 +427,7 @@ export interface SavingsPlanListOutput {
   }[];
   nextLink?: string;
 }
-export const SavingsPlanListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SavingsPlanListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -477,7 +471,7 @@ export const SavingsPlanListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param savingsPlanOrderId - Order ID of the savings plan
  * @param api-version - The api-version to be used by the service
  */
-export const SavingsPlanList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SavingsPlanList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanListInput,
   outputSchema: SavingsPlanListOutput,
 }));
@@ -491,7 +485,7 @@ export interface SavingsPlanListAllInput {
   take?: number;
 }
 export const SavingsPlanListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
     refreshSummary: Schema.optional(Schema.String),
@@ -538,7 +532,7 @@ export interface SavingsPlanListAllOutput {
   }[];
 }
 export const SavingsPlanListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -607,7 +601,7 @@ export const SavingsPlanListAllOutput =
  * @param selectedState - The selected provisioning state
  * @param take - To number of savings plans to return
  */
-export const SavingsPlanListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SavingsPlanListAll = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanListAllInput,
   outputSchema: SavingsPlanListAllOutput,
 }));
@@ -655,7 +649,7 @@ export interface SavingsPlanOrderAliasCreateInput {
   };
 }
 export const SavingsPlanOrderAliasCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     savingsPlanOrderAliasName: Schema.String.pipe(T.PathParam()),
     sku: Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -741,7 +735,7 @@ export interface SavingsPlanOrderAliasCreateOutput {
   };
 }
 export const SavingsPlanOrderAliasCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -768,18 +762,16 @@ export const SavingsPlanOrderAliasCreateOutput =
  * @param savingsPlanOrderAliasName - Name of the savings plan order alias
  * @param api-version - The api-version to be used by the service
  */
-export const SavingsPlanOrderAliasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SavingsPlanOrderAliasCreateInput,
-    outputSchema: SavingsPlanOrderAliasCreateOutput,
-  }),
-);
+export const SavingsPlanOrderAliasCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SavingsPlanOrderAliasCreateInput,
+  outputSchema: SavingsPlanOrderAliasCreateOutput,
+}));
 // Input Schema
 export interface SavingsPlanOrderAliasGetInput {
   savingsPlanOrderAliasName: string;
 }
 export const SavingsPlanOrderAliasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     savingsPlanOrderAliasName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -804,7 +796,7 @@ export interface SavingsPlanOrderAliasGetOutput {
   };
 }
 export const SavingsPlanOrderAliasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -831,18 +823,16 @@ export const SavingsPlanOrderAliasGetOutput =
  * @param savingsPlanOrderAliasName - Name of the savings plan order alias
  * @param api-version - The api-version to be used by the service
  */
-export const SavingsPlanOrderAliasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SavingsPlanOrderAliasGetInput,
-    outputSchema: SavingsPlanOrderAliasGetOutput,
-  }),
-);
+export const SavingsPlanOrderAliasGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SavingsPlanOrderAliasGetInput,
+  outputSchema: SavingsPlanOrderAliasGetOutput,
+}));
 // Input Schema
 export interface SavingsPlanOrderElevateInput {
   savingsPlanOrderId: string;
 }
 export const SavingsPlanOrderElevateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -863,7 +853,7 @@ export interface SavingsPlanOrderElevateOutput {
   };
 }
 export const SavingsPlanOrderElevateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -882,19 +872,17 @@ export const SavingsPlanOrderElevateOutput =
  * @param savingsPlanOrderId - Order ID of the savings plan
  * @param api-version - The api-version to be used by the service
  */
-export const SavingsPlanOrderElevate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SavingsPlanOrderElevateInput,
-    outputSchema: SavingsPlanOrderElevateOutput,
-  }),
-);
+export const SavingsPlanOrderElevate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SavingsPlanOrderElevateInput,
+  outputSchema: SavingsPlanOrderElevateOutput,
+}));
 // Input Schema
 export interface SavingsPlanOrderGetInput {
   savingsPlanOrderId: string;
   $expand?: string;
 }
 export const SavingsPlanOrderGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
   }).pipe(
@@ -920,7 +908,7 @@ export interface SavingsPlanOrderGetOutput {
   };
 }
 export const SavingsPlanOrderGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -948,14 +936,14 @@ export const SavingsPlanOrderGetOutput =
  * @param api-version - The api-version to be used by the service
  * @param $expand - May be used to expand the detail information of some properties.
  */
-export const SavingsPlanOrderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SavingsPlanOrderGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanOrderGetInput,
   outputSchema: SavingsPlanOrderGetOutput,
 }));
 // Input Schema
 export interface SavingsPlanOrderListInput {}
 export const SavingsPlanOrderListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders",
@@ -981,7 +969,7 @@ export interface SavingsPlanOrderListOutput {
   nextLink?: string;
 }
 export const SavingsPlanOrderListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1024,12 +1012,10 @@ export const SavingsPlanOrderListOutput =
  *
  * @param api-version - The api-version to be used by the service
  */
-export const SavingsPlanOrderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SavingsPlanOrderListInput,
-    outputSchema: SavingsPlanOrderListOutput,
-  }),
-);
+export const SavingsPlanOrderList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SavingsPlanOrderListInput,
+  outputSchema: SavingsPlanOrderListOutput,
+}));
 // Input Schema
 export interface SavingsPlanUpdateInput {
   savingsPlanOrderId: string;
@@ -1069,73 +1055,69 @@ export interface SavingsPlanUpdateInput {
     };
   };
 }
-export const SavingsPlanUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
-    savingsPlanId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        appliedScopeType: Schema.optional(
-          Schema.Literals(["Single", "Shared", "ManagementGroup"]),
-        ),
-        appliedScopeProperties: Schema.optional(
-          Schema.Struct({
-            tenantId: Schema.optional(Schema.String),
-            managementGroupId: Schema.optional(Schema.String),
-            subscriptionId: Schema.optional(Schema.String),
-            resourceGroupId: Schema.optional(Schema.String),
-            displayName: Schema.optional(Schema.String),
-          }),
-        ),
-        renew: Schema.optional(Schema.Boolean),
-        renewProperties: Schema.optional(
-          Schema.Struct({
-            purchaseProperties: Schema.optional(
-              Schema.Struct({
-                sku: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                  }),
-                ),
-                properties: Schema.optional(
-                  Schema.Struct({
-                    displayName: Schema.optional(Schema.String),
-                    billingScopeId: Schema.optional(Schema.String),
-                    term: Schema.optional(
-                      Schema.Literals(["P1Y", "P3Y", "P5Y"]),
-                    ),
-                    billingPlan: Schema.optional(Schema.Literals(["P1M"])),
-                    appliedScopeType: Schema.optional(
-                      Schema.Literals(["Single", "Shared", "ManagementGroup"]),
-                    ),
-                    commitment: Schema.optional(
-                      Schema.Struct({
-                        currencyCode: Schema.optional(Schema.String),
-                        amount: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                    effectiveDateTime: Schema.optional(Schema.String),
-                    renew: Schema.optional(Schema.Boolean),
-                    appliedScopeProperties: Schema.optional(
-                      Schema.Struct({
-                        tenantId: Schema.optional(Schema.String),
-                        managementGroupId: Schema.optional(Schema.String),
-                        subscriptionId: Schema.optional(Schema.String),
-                        resourceGroupId: Schema.optional(Schema.String),
-                        displayName: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
-  },
-).pipe(
+export const SavingsPlanUpdateInput = /*@__PURE__*/ Schema.Struct({
+  savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
+  savingsPlanId: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      displayName: Schema.optional(Schema.String),
+      appliedScopeType: Schema.optional(
+        Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+      ),
+      appliedScopeProperties: Schema.optional(
+        Schema.Struct({
+          tenantId: Schema.optional(Schema.String),
+          managementGroupId: Schema.optional(Schema.String),
+          subscriptionId: Schema.optional(Schema.String),
+          resourceGroupId: Schema.optional(Schema.String),
+          displayName: Schema.optional(Schema.String),
+        }),
+      ),
+      renew: Schema.optional(Schema.Boolean),
+      renewProperties: Schema.optional(
+        Schema.Struct({
+          purchaseProperties: Schema.optional(
+            Schema.Struct({
+              sku: Schema.optional(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                }),
+              ),
+              properties: Schema.optional(
+                Schema.Struct({
+                  displayName: Schema.optional(Schema.String),
+                  billingScopeId: Schema.optional(Schema.String),
+                  term: Schema.optional(Schema.Literals(["P1Y", "P3Y", "P5Y"])),
+                  billingPlan: Schema.optional(Schema.Literals(["P1M"])),
+                  appliedScopeType: Schema.optional(
+                    Schema.Literals(["Single", "Shared", "ManagementGroup"]),
+                  ),
+                  commitment: Schema.optional(
+                    Schema.Struct({
+                      currencyCode: Schema.optional(Schema.String),
+                      amount: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  effectiveDateTime: Schema.optional(Schema.String),
+                  renew: Schema.optional(Schema.Boolean),
+                  appliedScopeProperties: Schema.optional(
+                    Schema.Struct({
+                      tenantId: Schema.optional(Schema.String),
+                      managementGroupId: Schema.optional(Schema.String),
+                      subscriptionId: Schema.optional(Schema.String),
+                      resourceGroupId: Schema.optional(Schema.String),
+                      displayName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}",
@@ -1158,7 +1140,7 @@ export interface SavingsPlanUpdateOutput {
   };
 }
 export const SavingsPlanUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1186,7 +1168,7 @@ export const SavingsPlanUpdateOutput =
  * @param savingsPlanId - ID of the savings plan
  * @param api-version - The api-version to be used by the service
  */
-export const SavingsPlanUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SavingsPlanUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavingsPlanUpdateInput,
   outputSchema: SavingsPlanUpdateOutput,
 }));
@@ -1230,7 +1212,7 @@ export interface SavingsPlanValidateUpdateInput {
   }[];
 }
 export const SavingsPlanValidateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     savingsPlanId: Schema.String.pipe(T.PathParam()),
     benefits: Schema.optional(
@@ -1314,7 +1296,7 @@ export interface SavingsPlanValidateUpdateOutput {
   nextLink?: string;
 }
 export const SavingsPlanValidateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     benefits: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1335,12 +1317,10 @@ export const SavingsPlanValidateUpdateOutput =
  * @param savingsPlanId - ID of the savings plan
  * @param api-version - The api-version to be used by the service
  */
-export const SavingsPlanValidateUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SavingsPlanValidateUpdateInput,
-    outputSchema: SavingsPlanValidateUpdateOutput,
-  }),
-);
+export const SavingsPlanValidateUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SavingsPlanValidateUpdateInput,
+  outputSchema: SavingsPlanValidateUpdateOutput,
+}));
 // Input Schema
 export interface ValidatePurchaseInput {
   benefits?: {
@@ -1357,7 +1337,7 @@ export interface ValidatePurchaseInput {
     };
   }[];
 }
-export const ValidatePurchaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ValidatePurchaseInput = /*@__PURE__*/ Schema.Struct({
   benefits: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1404,20 +1384,18 @@ export interface ValidatePurchaseOutput {
   benefits?: { valid?: boolean; reasonCode?: string; reason?: string }[];
   nextLink?: string;
 }
-export const ValidatePurchaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    benefits: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          valid: Schema.optional(Schema.Boolean),
-          reasonCode: Schema.optional(Schema.String),
-          reason: Schema.optional(Schema.String),
-        }),
-      ),
+export const ValidatePurchaseOutput = /*@__PURE__*/ Schema.Struct({
+  benefits: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        valid: Schema.optional(Schema.Boolean),
+        reasonCode: Schema.optional(Schema.String),
+        reason: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<ValidatePurchaseOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ValidatePurchaseOutput>;
 
 // The operation
 /**
@@ -1425,7 +1403,7 @@ export const ValidatePurchaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  *
  * @param api-version - The api-version to be used by the service
  */
-export const ValidatePurchase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ValidatePurchase = /*@__PURE__*/ API.make(() => ({
   inputSchema: ValidatePurchaseInput,
   outputSchema: ValidatePurchaseOutput,
 }));

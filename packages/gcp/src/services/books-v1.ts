@@ -50,7 +50,7 @@ export interface DownloadAccessRestriction {
 }
 
 export const DownloadAccessRestriction: Schema.Codec<DownloadAccessRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     justAcquired: Schema.optional(Schema.Boolean),
     restricted: Schema.optional(Schema.Boolean),
@@ -91,7 +91,7 @@ export interface ConcurrentAccessRestriction {
 }
 
 export const ConcurrentAccessRestriction: Schema.Codec<ConcurrentAccessRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     restricted: Schema.optional(Schema.Boolean),
     source: Schema.optional(Schema.String),
     timeWindowSeconds: Schema.optional(Schema.Number),
@@ -115,7 +115,7 @@ export interface RequestAccessData {
 }
 
 export const RequestAccessData: Schema.Codec<RequestAccessData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     downloadAccess: Schema.optional(DownloadAccessRestriction),
     concurrentAccess: Schema.optional(ConcurrentAccessRestriction),
     kind: Schema.optional(Schema.String),
@@ -129,7 +129,7 @@ export interface BooksCloudloadingResource {
 }
 
 export const BooksCloudloadingResource: Schema.Codec<BooksCloudloadingResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     volumeId: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     author: Schema.optional(Schema.String),
@@ -150,7 +150,7 @@ export interface Metadata {
 }
 
 export const Metadata: Schema.Codec<Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(
       Schema.Array(
@@ -180,7 +180,7 @@ export interface Usersettings {
 }
 
 export const Usersettings: Schema.Codec<Usersettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     notesExport: Schema.optional(
       Schema.Struct({
@@ -221,7 +221,7 @@ export interface BooksAnnotationsRange {
 }
 
 export const BooksAnnotationsRange: Schema.Codec<BooksAnnotationsRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startOffset: Schema.optional(Schema.String),
     endPosition: Schema.optional(Schema.String),
     startPosition: Schema.optional(Schema.String),
@@ -265,7 +265,7 @@ export interface Volumeannotation {
 }
 
 export const Volumeannotation: Schema.Codec<Volumeannotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     volumeId: Schema.optional(Schema.String),
     updated: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -307,7 +307,7 @@ export interface ReadingPosition {
 }
 
 export const ReadingPosition: Schema.Codec<ReadingPosition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     volumeId: Schema.optional(Schema.String),
     gbImagePosition: Schema.optional(Schema.String),
     updated: Schema.optional(Schema.String),
@@ -341,7 +341,7 @@ export interface Review {
 }
 
 export const Review: Schema.Codec<Review> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date: Schema.optional(Schema.String),
     rating: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -381,7 +381,7 @@ export interface Volumeseriesinfo {
 }
 
 export const Volumeseriesinfo: Schema.Codec<Volumeseriesinfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     volumeSeries: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -543,7 +543,7 @@ export interface Volume {
 }
 
 export const Volume: Schema.Codec<Volume> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     recommendedInfo: Schema.optional(
       Schema.Struct({ explanation: Schema.optional(Schema.String) }),
@@ -764,7 +764,7 @@ export interface Volumes {
 }
 
 export const Volumes: Schema.Codec<Volumes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Volume)),
     totalItems: Schema.optional(Schema.Number),
@@ -782,7 +782,7 @@ export interface AnnotationsSummary {
 }
 
 export const AnnotationsSummary: Schema.Codec<AnnotationsSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     layers: Schema.optional(
       Schema.Array(
@@ -819,7 +819,7 @@ export interface Discoveryclusters {
 }
 
 export const Discoveryclusters: Schema.Codec<Discoveryclusters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalClusters: Schema.optional(Schema.Number),
     kind: Schema.optional(Schema.String),
     clusters: Schema.optional(
@@ -884,7 +884,7 @@ export interface Dictlayerdata {
 }
 
 export const Dictlayerdata: Schema.Codec<Dictlayerdata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     dict: Schema.optional(
       Schema.Struct({
@@ -927,7 +927,7 @@ export interface Volume2 {
 }
 
 export const Volume2: Schema.Codec<Volume2> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Volume)),
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -955,7 +955,7 @@ export interface Notification {
 }
 
 export const Notification: Schema.Codec<Notification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iconUrl: Schema.optional(Schema.String),
     crmExperimentIds: Schema.optional(Schema.Array(Schema.String)),
     title: Schema.optional(Schema.String),
@@ -1004,7 +1004,7 @@ export interface Layersummary {
 }
 
 export const Layersummary: Schema.Codec<Layersummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     contentVersion: Schema.optional(Schema.String),
     updated: Schema.optional(Schema.String),
@@ -1040,7 +1040,7 @@ export interface Offers {
 }
 
 export const Offers: Schema.Codec<Offers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(
       Schema.Array(
@@ -1073,7 +1073,7 @@ export interface Seriesmembership {
 }
 
 export const Seriesmembership: Schema.Codec<Seriesmembership> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     member: Schema.optional(Schema.Array(Volume)),
     kind: Schema.optional(Schema.String),
@@ -1087,7 +1087,7 @@ export interface DownloadAccesses {
 }
 
 export const DownloadAccesses: Schema.Codec<DownloadAccesses> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     downloadAccessList: Schema.optional(
       Schema.Array(DownloadAccessRestriction),
     ),
@@ -1099,7 +1099,7 @@ export interface BooksVolumesRecommendedRateResponse {
 }
 
 export const BooksVolumesRecommendedRateResponse: Schema.Codec<BooksVolumesRecommendedRateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consistency_token: Schema.optional(Schema.String),
   }).annotate({ identifier: "BooksVolumesRecommendedRateResponse" });
 
@@ -1128,7 +1128,7 @@ export interface Geolayerdata {
 }
 
 export const Geolayerdata: Schema.Codec<Geolayerdata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     geo: Schema.optional(
       Schema.Struct({
@@ -1190,7 +1190,7 @@ export interface GeoAnnotationdata {
 }
 
 export const GeoAnnotationdata: Schema.Codec<GeoAnnotationdata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     layerId: Schema.optional(Schema.String),
     encodedData: Schema.optional(Schema.String),
@@ -1216,7 +1216,7 @@ export interface FamilyInfo {
 }
 
 export const FamilyInfo: Schema.Codec<FamilyInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     membership: Schema.optional(
       Schema.Struct({
@@ -1239,7 +1239,7 @@ export interface Layersummaries {
 }
 
 export const Layersummaries: Schema.Codec<Layersummaries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Layersummary)),
     totalItems: Schema.optional(Schema.Number),
     kind: Schema.optional(Schema.String),
@@ -1257,7 +1257,7 @@ export interface Annotationsdata {
 }
 
 export const Annotationsdata: Schema.Codec<Annotationsdata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(GeoAnnotationdata)),
     totalItems: Schema.optional(Schema.Number),
     nextPageToken: Schema.optional(Schema.String),
@@ -1286,7 +1286,7 @@ export interface DictionaryAnnotationdata {
 }
 
 export const DictionaryAnnotationdata: Schema.Codec<DictionaryAnnotationdata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     data: Schema.optional(Dictlayerdata),
     id: Schema.optional(Schema.String),
@@ -1301,7 +1301,7 @@ export const DictionaryAnnotationdata: Schema.Codec<DictionaryAnnotationdata> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -1329,7 +1329,7 @@ export interface Bookshelf {
 }
 
 export const Bookshelf: Schema.Codec<Bookshelf> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     access: Schema.optional(Schema.String),
     updated: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1354,7 +1354,7 @@ export interface Category {
 }
 
 export const Category: Schema.Codec<Category> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(
       Schema.Array(
@@ -1420,7 +1420,7 @@ export interface Annotation {
 }
 
 export const Annotation: Schema.Codec<Annotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     created: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -1474,7 +1474,7 @@ export interface Annotations {
 }
 
 export const Annotations: Schema.Codec<Annotations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Annotation)),
     totalItems: Schema.optional(Schema.Number),
     nextPageToken: Schema.optional(Schema.String),
@@ -1489,7 +1489,7 @@ export interface Bookshelves {
 }
 
 export const Bookshelves: Schema.Codec<Bookshelves> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Bookshelf)),
   }).annotate({ identifier: "Bookshelves" });
@@ -1527,7 +1527,7 @@ export interface Series {
 }
 
 export const Series: Schema.Codec<Series> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     series: Schema.optional(
       Schema.Array(
@@ -1582,7 +1582,7 @@ export interface Volumeannotations {
 }
 
 export const Volumeannotations: Schema.Codec<Volumeannotations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Volumeannotation)),
     totalItems: Schema.optional(Schema.Number),
     nextPageToken: Schema.optional(Schema.String),
@@ -1658,7 +1658,7 @@ export interface InsertMylibraryAnnotationsRequest {
 }
 
 export const InsertMylibraryAnnotationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     country: Schema.optional(Schema.String).pipe(T.HttpQuery("country")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     showOnlySummaryInResponse: Schema.optional(Schema.Boolean).pipe(
@@ -1678,8 +1678,7 @@ export const InsertMylibraryAnnotationsRequest =
   ) as unknown as Schema.Codec<InsertMylibraryAnnotationsRequest>;
 
 export type InsertMylibraryAnnotationsResponse = Annotation;
-export const InsertMylibraryAnnotationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Annotation;
+export const InsertMylibraryAnnotationsResponse = /*@__PURE__*/ Annotation;
 
 export type InsertMylibraryAnnotationsError =
   | DefaultErrors
@@ -1694,7 +1693,7 @@ export const insertMylibraryAnnotations: API.OperationMethod<
   InsertMylibraryAnnotationsResponse,
   InsertMylibraryAnnotationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertMylibraryAnnotationsRequest,
   output: InsertMylibraryAnnotationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1708,7 +1707,7 @@ export interface DeleteMylibraryAnnotationsRequest {
 }
 
 export const DeleteMylibraryAnnotationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     annotationId: Schema.String.pipe(T.HttpPath("annotationId")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
   }).pipe(
@@ -1720,8 +1719,7 @@ export const DeleteMylibraryAnnotationsRequest =
   ) as unknown as Schema.Codec<DeleteMylibraryAnnotationsRequest>;
 
 export type DeleteMylibraryAnnotationsResponse = Empty;
-export const DeleteMylibraryAnnotationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteMylibraryAnnotationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteMylibraryAnnotationsError =
   | DefaultErrors
@@ -1736,7 +1734,7 @@ export const deleteMylibraryAnnotations: API.OperationMethod<
   DeleteMylibraryAnnotationsResponse,
   DeleteMylibraryAnnotationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMylibraryAnnotationsRequest,
   output: DeleteMylibraryAnnotationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1752,7 +1750,7 @@ export interface SummaryMylibraryAnnotationsRequest {
 }
 
 export const SummaryMylibraryAnnotationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     layerIds: Schema.Array(Schema.String).pipe(T.HttpQuery("layerIds")),
     volumeId: Schema.String.pipe(T.HttpQuery("volumeId")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
@@ -1767,7 +1765,7 @@ export const SummaryMylibraryAnnotationsRequest =
 
 export type SummaryMylibraryAnnotationsResponse = AnnotationsSummary;
 export const SummaryMylibraryAnnotationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AnnotationsSummary;
+  /*@__PURE__*/ AnnotationsSummary;
 
 export type SummaryMylibraryAnnotationsError =
   | DefaultErrors
@@ -1782,7 +1780,7 @@ export const summaryMylibraryAnnotations: API.OperationMethod<
   SummaryMylibraryAnnotationsResponse,
   SummaryMylibraryAnnotationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryMylibraryAnnotationsRequest,
   output: SummaryMylibraryAnnotationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1812,7 +1810,7 @@ export interface ListMylibraryAnnotationsRequest {
 }
 
 export const ListMylibraryAnnotationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     showDeleted: Schema.optional(Schema.Boolean).pipe(
@@ -1835,8 +1833,7 @@ export const ListMylibraryAnnotationsRequest =
   ) as unknown as Schema.Codec<ListMylibraryAnnotationsRequest>;
 
 export type ListMylibraryAnnotationsResponse = Annotations;
-export const ListMylibraryAnnotationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Annotations;
+export const ListMylibraryAnnotationsResponse = /*@__PURE__*/ Annotations;
 
 export type ListMylibraryAnnotationsError =
   | DefaultErrors
@@ -1849,7 +1846,7 @@ export const listMylibraryAnnotations: API.PaginatedOperationMethod<
   ListMylibraryAnnotationsResponse,
   ListMylibraryAnnotationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMylibraryAnnotationsRequest,
   output: ListMylibraryAnnotationsResponse,
   errors: [NotFound, Forbidden],
@@ -1870,7 +1867,7 @@ export interface UpdateMylibraryAnnotationsRequest {
 }
 
 export const UpdateMylibraryAnnotationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     annotationId: Schema.String.pipe(T.HttpPath("annotationId")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     body: Schema.optional(Annotation).pipe(T.HttpBody()),
@@ -1884,8 +1881,7 @@ export const UpdateMylibraryAnnotationsRequest =
   ) as unknown as Schema.Codec<UpdateMylibraryAnnotationsRequest>;
 
 export type UpdateMylibraryAnnotationsResponse = Annotation;
-export const UpdateMylibraryAnnotationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Annotation;
+export const UpdateMylibraryAnnotationsResponse = /*@__PURE__*/ Annotation;
 
 export type UpdateMylibraryAnnotationsError =
   | DefaultErrors
@@ -1900,7 +1896,7 @@ export const updateMylibraryAnnotations: API.OperationMethod<
   UpdateMylibraryAnnotationsResponse,
   UpdateMylibraryAnnotationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMylibraryAnnotationsRequest,
   output: UpdateMylibraryAnnotationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1918,7 +1914,7 @@ export interface RemoveVolumeMylibraryBookshelvesRequest {
 }
 
 export const RemoveVolumeMylibraryBookshelvesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String).pipe(T.HttpQuery("reason")),
     shelf: Schema.String.pipe(T.HttpPath("shelf")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
@@ -1933,8 +1929,7 @@ export const RemoveVolumeMylibraryBookshelvesRequest =
   ) as unknown as Schema.Codec<RemoveVolumeMylibraryBookshelvesRequest>;
 
 export type RemoveVolumeMylibraryBookshelvesResponse = Empty;
-export const RemoveVolumeMylibraryBookshelvesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const RemoveVolumeMylibraryBookshelvesResponse = /*@__PURE__*/ Empty;
 
 export type RemoveVolumeMylibraryBookshelvesError =
   | DefaultErrors
@@ -1949,7 +1944,7 @@ export const removeVolumeMylibraryBookshelves: API.OperationMethod<
   RemoveVolumeMylibraryBookshelvesResponse,
   RemoveVolumeMylibraryBookshelvesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveVolumeMylibraryBookshelvesRequest,
   output: RemoveVolumeMylibraryBookshelvesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1963,7 +1958,7 @@ export interface ClearVolumesMylibraryBookshelvesRequest {
 }
 
 export const ClearVolumesMylibraryBookshelvesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     shelf: Schema.String.pipe(T.HttpPath("shelf")),
   }).pipe(
@@ -1976,8 +1971,7 @@ export const ClearVolumesMylibraryBookshelvesRequest =
   ) as unknown as Schema.Codec<ClearVolumesMylibraryBookshelvesRequest>;
 
 export type ClearVolumesMylibraryBookshelvesResponse = Empty;
-export const ClearVolumesMylibraryBookshelvesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const ClearVolumesMylibraryBookshelvesResponse = /*@__PURE__*/ Empty;
 
 export type ClearVolumesMylibraryBookshelvesError =
   | DefaultErrors
@@ -1992,7 +1986,7 @@ export const clearVolumesMylibraryBookshelves: API.OperationMethod<
   ClearVolumesMylibraryBookshelvesResponse,
   ClearVolumesMylibraryBookshelvesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClearVolumesMylibraryBookshelvesRequest,
   output: ClearVolumesMylibraryBookshelvesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2010,7 +2004,7 @@ export interface MoveVolumeMylibraryBookshelvesRequest {
 }
 
 export const MoveVolumeMylibraryBookshelvesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     volumeId: Schema.String.pipe(T.HttpQuery("volumeId")),
     shelf: Schema.String.pipe(T.HttpPath("shelf")),
@@ -2025,8 +2019,7 @@ export const MoveVolumeMylibraryBookshelvesRequest =
   ) as unknown as Schema.Codec<MoveVolumeMylibraryBookshelvesRequest>;
 
 export type MoveVolumeMylibraryBookshelvesResponse = Empty;
-export const MoveVolumeMylibraryBookshelvesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const MoveVolumeMylibraryBookshelvesResponse = /*@__PURE__*/ Empty;
 
 export type MoveVolumeMylibraryBookshelvesError =
   | DefaultErrors
@@ -2041,7 +2034,7 @@ export const moveVolumeMylibraryBookshelves: API.OperationMethod<
   MoveVolumeMylibraryBookshelvesResponse,
   MoveVolumeMylibraryBookshelvesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveVolumeMylibraryBookshelvesRequest,
   output: MoveVolumeMylibraryBookshelvesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2053,7 +2046,7 @@ export interface ListMylibraryBookshelvesRequest {
 }
 
 export const ListMylibraryBookshelvesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/mylibrary/bookshelves" }),
@@ -2061,8 +2054,7 @@ export const ListMylibraryBookshelvesRequest =
   ) as unknown as Schema.Codec<ListMylibraryBookshelvesRequest>;
 
 export type ListMylibraryBookshelvesResponse = Bookshelves;
-export const ListMylibraryBookshelvesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Bookshelves;
+export const ListMylibraryBookshelvesResponse = /*@__PURE__*/ Bookshelves;
 
 export type ListMylibraryBookshelvesError =
   | DefaultErrors
@@ -2075,7 +2067,7 @@ export const listMylibraryBookshelves: API.OperationMethod<
   ListMylibraryBookshelvesResponse,
   ListMylibraryBookshelvesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListMylibraryBookshelvesRequest,
   output: ListMylibraryBookshelvesResponse,
   errors: [NotFound, Forbidden],
@@ -2098,7 +2090,7 @@ export interface AddVolumeMylibraryBookshelvesRequest {
 }
 
 export const AddVolumeMylibraryBookshelvesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String).pipe(T.HttpQuery("reason")),
     shelf: Schema.String.pipe(T.HttpPath("shelf")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
@@ -2113,8 +2105,7 @@ export const AddVolumeMylibraryBookshelvesRequest =
   ) as unknown as Schema.Codec<AddVolumeMylibraryBookshelvesRequest>;
 
 export type AddVolumeMylibraryBookshelvesResponse = Empty;
-export const AddVolumeMylibraryBookshelvesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const AddVolumeMylibraryBookshelvesResponse = /*@__PURE__*/ Empty;
 
 export type AddVolumeMylibraryBookshelvesError =
   | DefaultErrors
@@ -2129,7 +2120,7 @@ export const addVolumeMylibraryBookshelves: API.OperationMethod<
   AddVolumeMylibraryBookshelvesResponse,
   AddVolumeMylibraryBookshelvesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddVolumeMylibraryBookshelvesRequest,
   output: AddVolumeMylibraryBookshelvesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2143,7 +2134,7 @@ export interface GetMylibraryBookshelvesRequest {
 }
 
 export const GetMylibraryBookshelvesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     shelf: Schema.String.pipe(T.HttpPath("shelf")),
   }).pipe(
@@ -2152,8 +2143,7 @@ export const GetMylibraryBookshelvesRequest =
   ) as unknown as Schema.Codec<GetMylibraryBookshelvesRequest>;
 
 export type GetMylibraryBookshelvesResponse = Bookshelf;
-export const GetMylibraryBookshelvesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Bookshelf;
+export const GetMylibraryBookshelvesResponse = /*@__PURE__*/ Bookshelf;
 
 export type GetMylibraryBookshelvesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2163,7 +2153,7 @@ export const getMylibraryBookshelves: API.OperationMethod<
   GetMylibraryBookshelvesResponse,
   GetMylibraryBookshelvesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMylibraryBookshelvesRequest,
   output: GetMylibraryBookshelvesResponse,
   errors: [NotFound, Forbidden],
@@ -2189,7 +2179,7 @@ export interface ListMylibraryBookshelvesVolumesRequest {
 }
 
 export const ListMylibraryBookshelvesVolumesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     shelf: Schema.String.pipe(T.HttpPath("shelf")),
@@ -2209,8 +2199,7 @@ export const ListMylibraryBookshelvesVolumesRequest =
   ) as unknown as Schema.Codec<ListMylibraryBookshelvesVolumesRequest>;
 
 export type ListMylibraryBookshelvesVolumesResponse = Volumes;
-export const ListMylibraryBookshelvesVolumesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Volumes;
+export const ListMylibraryBookshelvesVolumesResponse = /*@__PURE__*/ Volumes;
 
 export type ListMylibraryBookshelvesVolumesError =
   | DefaultErrors
@@ -2223,7 +2212,7 @@ export const listMylibraryBookshelvesVolumes: API.OperationMethod<
   ListMylibraryBookshelvesVolumesResponse,
   ListMylibraryBookshelvesVolumesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListMylibraryBookshelvesVolumesRequest,
   output: ListMylibraryBookshelvesVolumesResponse,
   errors: [NotFound, Forbidden],
@@ -2239,7 +2228,7 @@ export interface GetMylibraryReadingpositionsRequest {
 }
 
 export const GetMylibraryReadingpositionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentVersion: Schema.optional(Schema.String).pipe(
       T.HttpQuery("contentVersion"),
     ),
@@ -2255,7 +2244,7 @@ export const GetMylibraryReadingpositionsRequest =
 
 export type GetMylibraryReadingpositionsResponse = ReadingPosition;
 export const GetMylibraryReadingpositionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReadingPosition;
+  /*@__PURE__*/ ReadingPosition;
 
 export type GetMylibraryReadingpositionsError =
   | DefaultErrors
@@ -2268,7 +2257,7 @@ export const getMylibraryReadingpositions: API.OperationMethod<
   GetMylibraryReadingpositionsResponse,
   GetMylibraryReadingpositionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMylibraryReadingpositionsRequest,
   output: GetMylibraryReadingpositionsResponse,
   errors: [NotFound, Forbidden],
@@ -2300,7 +2289,7 @@ export interface SetPositionMylibraryReadingpositionsRequest {
 }
 
 export const SetPositionMylibraryReadingpositionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     position: Schema.String.pipe(T.HttpQuery("position")),
     volumeId: Schema.String.pipe(T.HttpPath("volumeId")),
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
@@ -2322,8 +2311,7 @@ export const SetPositionMylibraryReadingpositionsRequest =
   ) as unknown as Schema.Codec<SetPositionMylibraryReadingpositionsRequest>;
 
 export type SetPositionMylibraryReadingpositionsResponse = Empty;
-export const SetPositionMylibraryReadingpositionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const SetPositionMylibraryReadingpositionsResponse = /*@__PURE__*/ Empty;
 
 export type SetPositionMylibraryReadingpositionsError =
   | DefaultErrors
@@ -2338,7 +2326,7 @@ export const setPositionMylibraryReadingpositions: API.OperationMethod<
   SetPositionMylibraryReadingpositionsResponse,
   SetPositionMylibraryReadingpositionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetPositionMylibraryReadingpositionsRequest,
   output: SetPositionMylibraryReadingpositionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2356,7 +2344,7 @@ export interface AddBookCloudloadingRequest {
 }
 
 export const AddBookCloudloadingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mime_type: Schema.optional(Schema.String).pipe(T.HttpQuery("mime_type")),
     drive_document_id: Schema.optional(Schema.String).pipe(
       T.HttpQuery("drive_document_id"),
@@ -2376,7 +2364,7 @@ export const AddBookCloudloadingRequest =
 
 export type AddBookCloudloadingResponse = BooksCloudloadingResource;
 export const AddBookCloudloadingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BooksCloudloadingResource;
+  /*@__PURE__*/ BooksCloudloadingResource;
 
 export type AddBookCloudloadingError =
   | DefaultErrors
@@ -2391,7 +2379,7 @@ export const addBookCloudloading: API.OperationMethod<
   AddBookCloudloadingResponse,
   AddBookCloudloadingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddBookCloudloadingRequest,
   output: AddBookCloudloadingResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2403,7 +2391,7 @@ export interface DeleteBookCloudloadingRequest {
 }
 
 export const DeleteBookCloudloadingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     volumeId: Schema.String.pipe(T.HttpQuery("volumeId")),
   }).pipe(
     T.Http({
@@ -2415,7 +2403,7 @@ export const DeleteBookCloudloadingRequest =
   ) as unknown as Schema.Codec<DeleteBookCloudloadingRequest>;
 
 export type DeleteBookCloudloadingResponse = Empty;
-export const DeleteBookCloudloadingResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteBookCloudloadingResponse = /*@__PURE__*/ Empty;
 
 export type DeleteBookCloudloadingError =
   | DefaultErrors
@@ -2430,7 +2418,7 @@ export const deleteBookCloudloading: API.OperationMethod<
   DeleteBookCloudloadingResponse,
   DeleteBookCloudloadingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBookCloudloadingRequest,
   output: DeleteBookCloudloadingResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2442,7 +2430,7 @@ export interface UpdateBookCloudloadingRequest {
 }
 
 export const UpdateBookCloudloadingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(BooksCloudloadingResource).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -2455,7 +2443,7 @@ export const UpdateBookCloudloadingRequest =
 
 export type UpdateBookCloudloadingResponse = BooksCloudloadingResource;
 export const UpdateBookCloudloadingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BooksCloudloadingResource;
+  /*@__PURE__*/ BooksCloudloadingResource;
 
 export type UpdateBookCloudloadingError =
   | DefaultErrors
@@ -2470,7 +2458,7 @@ export const updateBookCloudloading: API.OperationMethod<
   UpdateBookCloudloadingResponse,
   UpdateBookCloudloadingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBookCloudloadingRequest,
   output: UpdateBookCloudloadingResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2496,7 +2484,7 @@ export interface SyncVolumeLicensesMyconfigRequest {
 }
 
 export const SyncVolumeLicensesMyconfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locale: Schema.optional(Schema.String).pipe(T.HttpQuery("locale")),
     volumeIds: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("volumeIds"),
@@ -2523,8 +2511,7 @@ export const SyncVolumeLicensesMyconfigRequest =
   ) as unknown as Schema.Codec<SyncVolumeLicensesMyconfigRequest>;
 
 export type SyncVolumeLicensesMyconfigResponse = Volumes;
-export const SyncVolumeLicensesMyconfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Volumes;
+export const SyncVolumeLicensesMyconfigResponse = /*@__PURE__*/ Volumes;
 
 export type SyncVolumeLicensesMyconfigError =
   | DefaultErrors
@@ -2539,7 +2526,7 @@ export const syncVolumeLicensesMyconfig: API.OperationMethod<
   SyncVolumeLicensesMyconfigResponse,
   SyncVolumeLicensesMyconfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SyncVolumeLicensesMyconfigRequest,
   output: SyncVolumeLicensesMyconfigResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2566,7 +2553,7 @@ export interface RequestAccessMyconfigRequest {
 }
 
 export const RequestAccessMyconfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cpksver: Schema.String.pipe(T.HttpQuery("cpksver")),
     nonce: Schema.String.pipe(T.HttpQuery("nonce")),
     source: Schema.String.pipe(T.HttpQuery("source")),
@@ -2585,8 +2572,7 @@ export const RequestAccessMyconfigRequest =
   ) as unknown as Schema.Codec<RequestAccessMyconfigRequest>;
 
 export type RequestAccessMyconfigResponse = RequestAccessData;
-export const RequestAccessMyconfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RequestAccessData;
+export const RequestAccessMyconfigResponse = /*@__PURE__*/ RequestAccessData;
 
 export type RequestAccessMyconfigError =
   | DefaultErrors
@@ -2601,7 +2587,7 @@ export const requestAccessMyconfig: API.OperationMethod<
   RequestAccessMyconfigResponse,
   RequestAccessMyconfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestAccessMyconfigRequest,
   output: RequestAccessMyconfigResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2619,7 +2605,7 @@ export interface ReleaseDownloadAccessMyconfigRequest {
 }
 
 export const ReleaseDownloadAccessMyconfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locale: Schema.optional(Schema.String).pipe(T.HttpQuery("locale")),
     volumeIds: Schema.Array(Schema.String).pipe(T.HttpQuery("volumeIds")),
     cpksver: Schema.String.pipe(T.HttpQuery("cpksver")),
@@ -2635,7 +2621,7 @@ export const ReleaseDownloadAccessMyconfigRequest =
 
 export type ReleaseDownloadAccessMyconfigResponse = DownloadAccesses;
 export const ReleaseDownloadAccessMyconfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DownloadAccesses;
+  /*@__PURE__*/ DownloadAccesses;
 
 export type ReleaseDownloadAccessMyconfigError =
   | DefaultErrors
@@ -2650,7 +2636,7 @@ export const releaseDownloadAccessMyconfig: API.OperationMethod<
   ReleaseDownloadAccessMyconfigResponse,
   ReleaseDownloadAccessMyconfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReleaseDownloadAccessMyconfigRequest,
   output: ReleaseDownloadAccessMyconfigResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2662,7 +2648,7 @@ export interface UpdateUserSettingsMyconfigRequest {
 }
 
 export const UpdateUserSettingsMyconfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(Usersettings).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -2674,8 +2660,7 @@ export const UpdateUserSettingsMyconfigRequest =
   ) as unknown as Schema.Codec<UpdateUserSettingsMyconfigRequest>;
 
 export type UpdateUserSettingsMyconfigResponse = Usersettings;
-export const UpdateUserSettingsMyconfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Usersettings;
+export const UpdateUserSettingsMyconfigResponse = /*@__PURE__*/ Usersettings;
 
 export type UpdateUserSettingsMyconfigError =
   | DefaultErrors
@@ -2690,7 +2675,7 @@ export const updateUserSettingsMyconfig: API.OperationMethod<
   UpdateUserSettingsMyconfigResponse,
   UpdateUserSettingsMyconfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserSettingsMyconfigRequest,
   output: UpdateUserSettingsMyconfigResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2702,7 +2687,7 @@ export interface GetUserSettingsMyconfigRequest {
 }
 
 export const GetUserSettingsMyconfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     country: Schema.optional(Schema.String).pipe(T.HttpQuery("country")),
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/myconfig/getUserSettings" }),
@@ -2710,8 +2695,7 @@ export const GetUserSettingsMyconfigRequest =
   ) as unknown as Schema.Codec<GetUserSettingsMyconfigRequest>;
 
 export type GetUserSettingsMyconfigResponse = Usersettings;
-export const GetUserSettingsMyconfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Usersettings;
+export const GetUserSettingsMyconfigResponse = /*@__PURE__*/ Usersettings;
 
 export type GetUserSettingsMyconfigError = DefaultErrors | NotFound | Forbidden;
 
@@ -2721,7 +2705,7 @@ export const getUserSettingsMyconfig: API.OperationMethod<
   GetUserSettingsMyconfigResponse,
   GetUserSettingsMyconfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserSettingsMyconfigRequest,
   output: GetUserSettingsMyconfigResponse,
   errors: [NotFound, Forbidden],
@@ -2743,7 +2727,7 @@ export interface GetVolumesRequest {
   projection?: "PROJECTION_UNDEFINED" | "FULL" | "LITE" | (string & {});
 }
 
-export const GetVolumesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetVolumesRequest = /*@__PURE__*/ Schema.Struct({
   country: Schema.optional(Schema.String).pipe(T.HttpQuery("country")),
   volumeId: Schema.String.pipe(T.HttpPath("volumeId")),
   source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
@@ -2761,7 +2745,7 @@ export const GetVolumesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetVolumesRequest>;
 
 export type GetVolumesResponse = Volume;
-export const GetVolumesResponse = /*@__PURE__*/ /*#__PURE__*/ Volume;
+export const GetVolumesResponse = /*@__PURE__*/ Volume;
 
 export type GetVolumesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2771,7 +2755,7 @@ export const getVolumes: API.OperationMethod<
   GetVolumesResponse,
   GetVolumesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVolumesRequest,
   output: GetVolumesResponse,
   errors: [NotFound, Forbidden],
@@ -2828,7 +2812,7 @@ export interface ListVolumesRequest {
   partner?: string;
 }
 
-export const ListVolumesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListVolumesRequest = /*@__PURE__*/ Schema.Struct({
   source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
   projection: Schema.optional(Schema.String).pipe(T.HttpQuery("projection")),
   showPreorders: Schema.optional(Schema.Boolean).pipe(
@@ -2857,7 +2841,7 @@ export const ListVolumesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListVolumesRequest>;
 
 export type ListVolumesResponse = Volumes;
-export const ListVolumesResponse = /*@__PURE__*/ /*#__PURE__*/ Volumes;
+export const ListVolumesResponse = /*@__PURE__*/ Volumes;
 
 export type ListVolumesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2867,7 +2851,7 @@ export const listVolumes: API.OperationMethod<
   ListVolumesResponse,
   ListVolumesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVolumesRequest,
   output: ListVolumesResponse,
   errors: [NotFound, Forbidden],
@@ -2896,7 +2880,7 @@ export interface ListVolumesAssociatedRequest {
 }
 
 export const ListVolumesAssociatedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     association: Schema.optional(Schema.String).pipe(
       T.HttpQuery("association"),
     ),
@@ -2912,8 +2896,7 @@ export const ListVolumesAssociatedRequest =
   ) as unknown as Schema.Codec<ListVolumesAssociatedRequest>;
 
 export type ListVolumesAssociatedResponse = Volumes;
-export const ListVolumesAssociatedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Volumes;
+export const ListVolumesAssociatedResponse = /*@__PURE__*/ Volumes;
 
 export type ListVolumesAssociatedError = DefaultErrors | NotFound | Forbidden;
 
@@ -2923,7 +2906,7 @@ export const listVolumesAssociated: API.OperationMethod<
   ListVolumesAssociatedResponse,
   ListVolumesAssociatedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVolumesAssociatedRequest,
   output: ListVolumesAssociatedResponse,
   errors: [NotFound, Forbidden],
@@ -2962,7 +2945,7 @@ export interface ListVolumesMybooksRequest {
 }
 
 export const ListVolumesMybooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     acquireMethod: Schema.optional(Schema.Array(Schema.String)).pipe(
@@ -2980,7 +2963,7 @@ export const ListVolumesMybooksRequest =
   ) as unknown as Schema.Codec<ListVolumesMybooksRequest>;
 
 export type ListVolumesMybooksResponse = Volumes;
-export const ListVolumesMybooksResponse = /*@__PURE__*/ /*#__PURE__*/ Volumes;
+export const ListVolumesMybooksResponse = /*@__PURE__*/ Volumes;
 
 export type ListVolumesMybooksError = DefaultErrors | NotFound | Forbidden;
 
@@ -2990,7 +2973,7 @@ export const listVolumesMybooks: API.OperationMethod<
   ListVolumesMybooksResponse,
   ListVolumesMybooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVolumesMybooksRequest,
   output: ListVolumesMybooksResponse,
   errors: [NotFound, Forbidden],
@@ -3017,7 +3000,7 @@ export interface ListVolumesUseruploadedRequest {
 }
 
 export const ListVolumesUseruploadedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locale: Schema.optional(Schema.String).pipe(T.HttpQuery("locale")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
@@ -3034,8 +3017,7 @@ export const ListVolumesUseruploadedRequest =
   ) as unknown as Schema.Codec<ListVolumesUseruploadedRequest>;
 
 export type ListVolumesUseruploadedResponse = Volumes;
-export const ListVolumesUseruploadedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Volumes;
+export const ListVolumesUseruploadedResponse = /*@__PURE__*/ Volumes;
 
 export type ListVolumesUseruploadedError = DefaultErrors | NotFound | Forbidden;
 
@@ -3045,7 +3027,7 @@ export const listVolumesUseruploaded: API.OperationMethod<
   ListVolumesUseruploadedResponse,
   ListVolumesUseruploadedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVolumesUseruploadedRequest,
   output: ListVolumesUseruploadedResponse,
   errors: [NotFound, Forbidden],
@@ -3065,7 +3047,7 @@ export interface ListVolumesRecommendedRequest {
 }
 
 export const ListVolumesRecommendedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locale: Schema.optional(Schema.String).pipe(T.HttpQuery("locale")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     maxAllowedMaturityRating: Schema.optional(Schema.String).pipe(
@@ -3077,8 +3059,7 @@ export const ListVolumesRecommendedRequest =
   ) as unknown as Schema.Codec<ListVolumesRecommendedRequest>;
 
 export type ListVolumesRecommendedResponse = Volumes;
-export const ListVolumesRecommendedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Volumes;
+export const ListVolumesRecommendedResponse = /*@__PURE__*/ Volumes;
 
 export type ListVolumesRecommendedError = DefaultErrors | NotFound | Forbidden;
 
@@ -3088,7 +3069,7 @@ export const listVolumesRecommended: API.OperationMethod<
   ListVolumesRecommendedResponse,
   ListVolumesRecommendedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVolumesRecommendedRequest,
   output: ListVolumesRecommendedResponse,
   errors: [NotFound, Forbidden],
@@ -3106,7 +3087,7 @@ export interface RateVolumesRecommendedRequest {
 }
 
 export const RateVolumesRecommendedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locale: Schema.optional(Schema.String).pipe(T.HttpQuery("locale")),
     rating: Schema.String.pipe(T.HttpQuery("rating")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
@@ -3123,7 +3104,7 @@ export const RateVolumesRecommendedRequest =
 export type RateVolumesRecommendedResponse =
   BooksVolumesRecommendedRateResponse;
 export const RateVolumesRecommendedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BooksVolumesRecommendedRateResponse;
+  /*@__PURE__*/ BooksVolumesRecommendedRateResponse;
 
 export type RateVolumesRecommendedError =
   | DefaultErrors
@@ -3138,7 +3119,7 @@ export const rateVolumesRecommended: API.OperationMethod<
   RateVolumesRecommendedResponse,
   RateVolumesRecommendedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RateVolumesRecommendedRequest,
   output: RateVolumesRecommendedResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3150,7 +3131,7 @@ export interface GetFamilyInfoFamilysharingRequest {
 }
 
 export const GetFamilyInfoFamilysharingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/familysharing/getFamilyInfo" }),
@@ -3158,8 +3139,7 @@ export const GetFamilyInfoFamilysharingRequest =
   ) as unknown as Schema.Codec<GetFamilyInfoFamilysharingRequest>;
 
 export type GetFamilyInfoFamilysharingResponse = FamilyInfo;
-export const GetFamilyInfoFamilysharingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FamilyInfo;
+export const GetFamilyInfoFamilysharingResponse = /*@__PURE__*/ FamilyInfo;
 
 export type GetFamilyInfoFamilysharingError =
   | DefaultErrors
@@ -3172,7 +3152,7 @@ export const getFamilyInfoFamilysharing: API.OperationMethod<
   GetFamilyInfoFamilysharingResponse,
   GetFamilyInfoFamilysharingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFamilyInfoFamilysharingRequest,
   output: GetFamilyInfoFamilysharingResponse,
   errors: [NotFound, Forbidden],
@@ -3188,7 +3168,7 @@ export interface ShareFamilysharingRequest {
 }
 
 export const ShareFamilysharingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     docId: Schema.optional(Schema.String).pipe(T.HttpQuery("docId")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     volumeId: Schema.optional(Schema.String).pipe(T.HttpQuery("volumeId")),
@@ -3202,7 +3182,7 @@ export const ShareFamilysharingRequest =
   ) as unknown as Schema.Codec<ShareFamilysharingRequest>;
 
 export type ShareFamilysharingResponse = Empty;
-export const ShareFamilysharingResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const ShareFamilysharingResponse = /*@__PURE__*/ Empty;
 
 export type ShareFamilysharingError =
   | DefaultErrors
@@ -3217,7 +3197,7 @@ export const shareFamilysharing: API.OperationMethod<
   ShareFamilysharingResponse,
   ShareFamilysharingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ShareFamilysharingRequest,
   output: ShareFamilysharingResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3233,7 +3213,7 @@ export interface UnshareFamilysharingRequest {
 }
 
 export const UnshareFamilysharingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     docId: Schema.optional(Schema.String).pipe(T.HttpQuery("docId")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     volumeId: Schema.optional(Schema.String).pipe(T.HttpQuery("volumeId")),
@@ -3247,7 +3227,7 @@ export const UnshareFamilysharingRequest =
   ) as unknown as Schema.Codec<UnshareFamilysharingRequest>;
 
 export type UnshareFamilysharingResponse = Empty;
-export const UnshareFamilysharingResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const UnshareFamilysharingResponse = /*@__PURE__*/ Empty;
 
 export type UnshareFamilysharingError =
   | DefaultErrors
@@ -3262,7 +3242,7 @@ export const unshareFamilysharing: API.OperationMethod<
   UnshareFamilysharingResponse,
   UnshareFamilysharingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnshareFamilysharingRequest,
   output: UnshareFamilysharingResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3274,7 +3254,7 @@ export interface ListCategoriesOnboardingRequest {
 }
 
 export const ListCategoriesOnboardingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locale: Schema.optional(Schema.String).pipe(T.HttpQuery("locale")),
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/onboarding/listCategories" }),
@@ -3282,8 +3262,7 @@ export const ListCategoriesOnboardingRequest =
   ) as unknown as Schema.Codec<ListCategoriesOnboardingRequest>;
 
 export type ListCategoriesOnboardingResponse = Category;
-export const ListCategoriesOnboardingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Category;
+export const ListCategoriesOnboardingResponse = /*@__PURE__*/ Category;
 
 export type ListCategoriesOnboardingError =
   | DefaultErrors
@@ -3296,7 +3275,7 @@ export const listCategoriesOnboarding: API.OperationMethod<
   ListCategoriesOnboardingResponse,
   ListCategoriesOnboardingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCategoriesOnboardingRequest,
   output: ListCategoriesOnboardingResponse,
   errors: [NotFound, Forbidden],
@@ -3320,7 +3299,7 @@ export interface ListCategoryVolumesOnboardingRequest {
 }
 
 export const ListCategoryVolumesOnboardingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     categoryId: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("categoryId"),
@@ -3336,8 +3315,7 @@ export const ListCategoryVolumesOnboardingRequest =
   ) as unknown as Schema.Codec<ListCategoryVolumesOnboardingRequest>;
 
 export type ListCategoryVolumesOnboardingResponse = Volume2;
-export const ListCategoryVolumesOnboardingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Volume2;
+export const ListCategoryVolumesOnboardingResponse = /*@__PURE__*/ Volume2;
 
 export type ListCategoryVolumesOnboardingError =
   | DefaultErrors
@@ -3350,7 +3328,7 @@ export const listCategoryVolumesOnboarding: API.PaginatedOperationMethod<
   ListCategoryVolumesOnboardingResponse,
   ListCategoryVolumesOnboardingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCategoryVolumesOnboardingRequest,
   output: ListCategoryVolumesOnboardingResponse,
   errors: [NotFound, Forbidden],
@@ -3374,7 +3352,7 @@ export interface ListLayersRequest {
   source?: string;
 }
 
-export const ListLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListLayersRequest = /*@__PURE__*/ Schema.Struct({
   contentVersion: Schema.optional(Schema.String).pipe(
     T.HttpQuery("contentVersion"),
   ),
@@ -3388,7 +3366,7 @@ export const ListLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListLayersRequest>;
 
 export type ListLayersResponse = Layersummaries;
-export const ListLayersResponse = /*@__PURE__*/ /*#__PURE__*/ Layersummaries;
+export const ListLayersResponse = /*@__PURE__*/ Layersummaries;
 
 export type ListLayersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3398,7 +3376,7 @@ export const listLayers: API.OperationMethod<
   ListLayersResponse,
   ListLayersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLayersRequest,
   output: ListLayersResponse,
   errors: [NotFound, Forbidden],
@@ -3415,7 +3393,7 @@ export interface GetLayersRequest {
   contentVersion?: string;
 }
 
-export const GetLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetLayersRequest = /*@__PURE__*/ Schema.Struct({
   volumeId: Schema.String.pipe(T.HttpPath("volumeId")),
   source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
   summaryId: Schema.String.pipe(T.HttpPath("summaryId")),
@@ -3431,7 +3409,7 @@ export const GetLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetLayersRequest>;
 
 export type GetLayersResponse = Layersummary;
-export const GetLayersResponse = /*@__PURE__*/ /*#__PURE__*/ Layersummary;
+export const GetLayersResponse = /*@__PURE__*/ Layersummary;
 
 export type GetLayersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3441,7 +3419,7 @@ export const getLayers: API.OperationMethod<
   GetLayersResponse,
   GetLayersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLayersRequest,
   output: GetLayersResponse,
   errors: [NotFound, Forbidden],
@@ -3477,7 +3455,7 @@ export interface ListLayersAnnotationDataRequest {
 }
 
 export const ListLayersAnnotationDataRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     h: Schema.optional(Schema.Number).pipe(T.HttpQuery("h")),
     layerId: Schema.String.pipe(T.HttpPath("layerId")),
     scale: Schema.optional(Schema.Number).pipe(T.HttpQuery("scale")),
@@ -3502,8 +3480,7 @@ export const ListLayersAnnotationDataRequest =
   ) as unknown as Schema.Codec<ListLayersAnnotationDataRequest>;
 
 export type ListLayersAnnotationDataResponse = Annotationsdata;
-export const ListLayersAnnotationDataResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Annotationsdata;
+export const ListLayersAnnotationDataResponse = /*@__PURE__*/ Annotationsdata;
 
 export type ListLayersAnnotationDataError =
   | DefaultErrors
@@ -3516,7 +3493,7 @@ export const listLayersAnnotationData: API.PaginatedOperationMethod<
   ListLayersAnnotationDataResponse,
   ListLayersAnnotationDataError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLayersAnnotationDataRequest,
   output: ListLayersAnnotationDataResponse,
   errors: [NotFound, Forbidden],
@@ -3551,7 +3528,7 @@ export interface GetLayersAnnotationDataRequest {
 }
 
 export const GetLayersAnnotationDataRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     annotationDataId: Schema.String.pipe(T.HttpPath("annotationDataId")),
     allowWebDefinitions: Schema.optional(Schema.Boolean).pipe(
@@ -3574,7 +3551,7 @@ export const GetLayersAnnotationDataRequest =
 
 export type GetLayersAnnotationDataResponse = DictionaryAnnotationdata;
 export const GetLayersAnnotationDataResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DictionaryAnnotationdata;
+  /*@__PURE__*/ DictionaryAnnotationdata;
 
 export type GetLayersAnnotationDataError = DefaultErrors | NotFound | Forbidden;
 
@@ -3584,7 +3561,7 @@ export const getLayersAnnotationData: API.OperationMethod<
   GetLayersAnnotationDataResponse,
   GetLayersAnnotationDataError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLayersAnnotationDataRequest,
   output: GetLayersAnnotationDataResponse,
   errors: [NotFound, Forbidden],
@@ -3604,7 +3581,7 @@ export interface GetLayersVolumeAnnotationsRequest {
 }
 
 export const GetLayersVolumeAnnotationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     volumeId: Schema.String.pipe(T.HttpPath("volumeId")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
     locale: Schema.optional(Schema.String).pipe(T.HttpQuery("locale")),
@@ -3620,7 +3597,7 @@ export const GetLayersVolumeAnnotationsRequest =
 
 export type GetLayersVolumeAnnotationsResponse = Volumeannotation;
 export const GetLayersVolumeAnnotationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Volumeannotation;
+  /*@__PURE__*/ Volumeannotation;
 
 export type GetLayersVolumeAnnotationsError =
   | DefaultErrors
@@ -3633,7 +3610,7 @@ export const getLayersVolumeAnnotations: API.OperationMethod<
   GetLayersVolumeAnnotationsResponse,
   GetLayersVolumeAnnotationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLayersVolumeAnnotationsRequest,
   output: GetLayersVolumeAnnotationsResponse,
   errors: [NotFound, Forbidden],
@@ -3673,7 +3650,7 @@ export interface ListLayersVolumeAnnotationsRequest {
 }
 
 export const ListLayersVolumeAnnotationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     updatedMax: Schema.optional(Schema.String).pipe(T.HttpQuery("updatedMax")),
     endPosition: Schema.optional(Schema.String).pipe(
@@ -3709,7 +3686,7 @@ export const ListLayersVolumeAnnotationsRequest =
 
 export type ListLayersVolumeAnnotationsResponse = Volumeannotations;
 export const ListLayersVolumeAnnotationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Volumeannotations;
+  /*@__PURE__*/ Volumeannotations;
 
 export type ListLayersVolumeAnnotationsError =
   | DefaultErrors
@@ -3722,7 +3699,7 @@ export const listLayersVolumeAnnotations: API.PaginatedOperationMethod<
   ListLayersVolumeAnnotationsResponse,
   ListLayersVolumeAnnotationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLayersVolumeAnnotationsRequest,
   output: ListLayersVolumeAnnotationsResponse,
   errors: [NotFound, Forbidden],
@@ -3740,18 +3717,16 @@ export interface ListBookshelvesRequest {
   source?: string;
 }
 
-export const ListBookshelvesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    userId: Schema.String.pipe(T.HttpPath("userId")),
-    source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
-  },
-).pipe(
+export const ListBookshelvesRequest = /*@__PURE__*/ Schema.Struct({
+  userId: Schema.String.pipe(T.HttpPath("userId")),
+  source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
+}).pipe(
   T.Http({ method: "GET", path: "books/v1/users/{userId}/bookshelves" }),
   svc,
 ) as unknown as Schema.Codec<ListBookshelvesRequest>;
 
 export type ListBookshelvesResponse = Bookshelves;
-export const ListBookshelvesResponse = /*@__PURE__*/ /*#__PURE__*/ Bookshelves;
+export const ListBookshelvesResponse = /*@__PURE__*/ Bookshelves;
 
 export type ListBookshelvesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3761,7 +3736,7 @@ export const listBookshelves: API.OperationMethod<
   ListBookshelvesResponse,
   ListBookshelvesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListBookshelvesRequest,
   output: ListBookshelvesResponse,
   errors: [NotFound, Forbidden],
@@ -3776,7 +3751,7 @@ export interface GetBookshelvesRequest {
   source?: string;
 }
 
-export const GetBookshelvesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBookshelvesRequest = /*@__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.HttpPath("userId")),
   shelf: Schema.String.pipe(T.HttpPath("shelf")),
   source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
@@ -3789,7 +3764,7 @@ export const GetBookshelvesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetBookshelvesRequest>;
 
 export type GetBookshelvesResponse = Bookshelf;
-export const GetBookshelvesResponse = /*@__PURE__*/ /*#__PURE__*/ Bookshelf;
+export const GetBookshelvesResponse = /*@__PURE__*/ Bookshelf;
 
 export type GetBookshelvesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3799,7 +3774,7 @@ export const getBookshelves: API.OperationMethod<
   GetBookshelvesResponse,
   GetBookshelvesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBookshelvesRequest,
   output: GetBookshelvesResponse,
   errors: [NotFound, Forbidden],
@@ -3821,7 +3796,7 @@ export interface ListBookshelvesVolumesRequest {
 }
 
 export const ListBookshelvesVolumesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startIndex: Schema.optional(Schema.Number).pipe(T.HttpQuery("startIndex")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     showPreorders: Schema.optional(Schema.Boolean).pipe(
@@ -3839,8 +3814,7 @@ export const ListBookshelvesVolumesRequest =
   ) as unknown as Schema.Codec<ListBookshelvesVolumesRequest>;
 
 export type ListBookshelvesVolumesResponse = Volumes;
-export const ListBookshelvesVolumesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Volumes;
+export const ListBookshelvesVolumesResponse = /*@__PURE__*/ Volumes;
 
 export type ListBookshelvesVolumesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3850,7 +3824,7 @@ export const listBookshelvesVolumes: API.OperationMethod<
   ListBookshelvesVolumesResponse,
   ListBookshelvesVolumesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListBookshelvesVolumesRequest,
   output: ListBookshelvesVolumesResponse,
   errors: [NotFound, Forbidden],
@@ -3865,19 +3839,17 @@ export interface GetNotificationRequest {
   locale?: string;
 }
 
-export const GetNotificationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
-    notification_id: Schema.String.pipe(T.HttpQuery("notification_id")),
-    locale: Schema.optional(Schema.String).pipe(T.HttpQuery("locale")),
-  },
-).pipe(
+export const GetNotificationRequest = /*@__PURE__*/ Schema.Struct({
+  source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
+  notification_id: Schema.String.pipe(T.HttpQuery("notification_id")),
+  locale: Schema.optional(Schema.String).pipe(T.HttpQuery("locale")),
+}).pipe(
   T.Http({ method: "GET", path: "books/v1/notification/get" }),
   svc,
 ) as unknown as Schema.Codec<GetNotificationRequest>;
 
 export type GetNotificationResponse = Notification;
-export const GetNotificationResponse = /*@__PURE__*/ /*#__PURE__*/ Notification;
+export const GetNotificationResponse = /*@__PURE__*/ Notification;
 
 export type GetNotificationError = DefaultErrors | NotFound | Forbidden;
 
@@ -3887,7 +3859,7 @@ export const getNotification: API.OperationMethod<
   GetNotificationResponse,
   GetNotificationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationRequest,
   output: GetNotificationResponse,
   errors: [NotFound, Forbidden],
@@ -3912,7 +3884,7 @@ export interface AcceptPromoofferRequest {
 }
 
 export const AcceptPromoofferRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     model: Schema.optional(Schema.String).pipe(T.HttpQuery("model")),
     androidId: Schema.optional(Schema.String).pipe(T.HttpQuery("androidId")),
     serial: Schema.optional(Schema.String).pipe(T.HttpQuery("serial")),
@@ -3933,7 +3905,7 @@ export const AcceptPromoofferRequest =
   ) as unknown as Schema.Codec<AcceptPromoofferRequest>;
 
 export type AcceptPromoofferResponse = Empty;
-export const AcceptPromoofferResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const AcceptPromoofferResponse = /*@__PURE__*/ Empty;
 
 export type AcceptPromoofferError =
   | DefaultErrors
@@ -3948,7 +3920,7 @@ export const acceptPromooffer: API.OperationMethod<
   AcceptPromoofferResponse,
   AcceptPromoofferError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptPromoofferRequest,
   output: AcceptPromoofferResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3972,7 +3944,7 @@ export interface DismissPromoofferRequest {
 }
 
 export const DismissPromoofferRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     product: Schema.optional(Schema.String).pipe(T.HttpQuery("product")),
     device: Schema.optional(Schema.String).pipe(T.HttpQuery("device")),
     manufacturer: Schema.optional(Schema.String).pipe(
@@ -3992,7 +3964,7 @@ export const DismissPromoofferRequest =
   ) as unknown as Schema.Codec<DismissPromoofferRequest>;
 
 export type DismissPromoofferResponse = Empty;
-export const DismissPromoofferResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DismissPromoofferResponse = /*@__PURE__*/ Empty;
 
 export type DismissPromoofferError =
   | DefaultErrors
@@ -4007,7 +3979,7 @@ export const dismissPromooffer: API.OperationMethod<
   DismissPromoofferResponse,
   DismissPromoofferError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DismissPromoofferRequest,
   output: DismissPromoofferResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4028,7 +4000,7 @@ export interface GetPromoofferRequest {
   product?: string;
 }
 
-export const GetPromoofferRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPromoofferRequest = /*@__PURE__*/ Schema.Struct({
   androidId: Schema.optional(Schema.String).pipe(T.HttpQuery("androidId")),
   serial: Schema.optional(Schema.String).pipe(T.HttpQuery("serial")),
   model: Schema.optional(Schema.String).pipe(T.HttpQuery("model")),
@@ -4043,7 +4015,7 @@ export const GetPromoofferRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetPromoofferRequest>;
 
 export type GetPromoofferResponse = Offers;
-export const GetPromoofferResponse = /*@__PURE__*/ /*#__PURE__*/ Offers;
+export const GetPromoofferResponse = /*@__PURE__*/ Offers;
 
 export type GetPromoofferError = DefaultErrors | NotFound | Forbidden;
 
@@ -4053,7 +4025,7 @@ export const getPromooffer: API.OperationMethod<
   GetPromoofferResponse,
   GetPromoofferError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPromoofferRequest,
   output: GetPromoofferResponse,
   errors: [NotFound, Forbidden],
@@ -4073,7 +4045,7 @@ export interface GetPersonalizedstreamRequest {
 }
 
 export const GetPersonalizedstreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxAllowedMaturityRating: Schema.optional(Schema.String).pipe(
       T.HttpQuery("maxAllowedMaturityRating"),
     ),
@@ -4085,8 +4057,7 @@ export const GetPersonalizedstreamRequest =
   ) as unknown as Schema.Codec<GetPersonalizedstreamRequest>;
 
 export type GetPersonalizedstreamResponse = Discoveryclusters;
-export const GetPersonalizedstreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Discoveryclusters;
+export const GetPersonalizedstreamResponse = /*@__PURE__*/ Discoveryclusters;
 
 export type GetPersonalizedstreamError = DefaultErrors | NotFound | Forbidden;
 
@@ -4096,7 +4067,7 @@ export const getPersonalizedstream: API.OperationMethod<
   GetPersonalizedstreamResponse,
   GetPersonalizedstreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPersonalizedstreamRequest,
   output: GetPersonalizedstreamResponse,
   errors: [NotFound, Forbidden],
@@ -4108,7 +4079,7 @@ export interface ListOfflineMetadataDictionaryRequest {
 }
 
 export const ListOfflineMetadataDictionaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cpksver: Schema.String.pipe(T.HttpQuery("cpksver")),
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/dictionary/listOfflineMetadata" }),
@@ -4116,8 +4087,7 @@ export const ListOfflineMetadataDictionaryRequest =
   ) as unknown as Schema.Codec<ListOfflineMetadataDictionaryRequest>;
 
 export type ListOfflineMetadataDictionaryResponse = Metadata;
-export const ListOfflineMetadataDictionaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Metadata;
+export const ListOfflineMetadataDictionaryResponse = /*@__PURE__*/ Metadata;
 
 export type ListOfflineMetadataDictionaryError =
   | DefaultErrors
@@ -4130,7 +4100,7 @@ export const listOfflineMetadataDictionary: API.OperationMethod<
   ListOfflineMetadataDictionaryResponse,
   ListOfflineMetadataDictionaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOfflineMetadataDictionaryRequest,
   output: ListOfflineMetadataDictionaryResponse,
   errors: [NotFound, Forbidden],
@@ -4141,7 +4111,7 @@ export interface GetSeriesRequest {
   series_id: string[];
 }
 
-export const GetSeriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSeriesRequest = /*@__PURE__*/ Schema.Struct({
   series_id: Schema.Array(Schema.String).pipe(T.HttpQuery("series_id")),
 }).pipe(
   T.Http({ method: "GET", path: "books/v1/series/get" }),
@@ -4149,7 +4119,7 @@ export const GetSeriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetSeriesRequest>;
 
 export type GetSeriesResponse = Series;
-export const GetSeriesResponse = /*@__PURE__*/ /*#__PURE__*/ Series;
+export const GetSeriesResponse = /*@__PURE__*/ Series;
 
 export type GetSeriesError = DefaultErrors | NotFound | Forbidden;
 
@@ -4159,7 +4129,7 @@ export const getSeries: API.OperationMethod<
   GetSeriesResponse,
   GetSeriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSeriesRequest,
   output: GetSeriesResponse,
   errors: [NotFound, Forbidden],
@@ -4175,7 +4145,7 @@ export interface GetSeriesMembershipRequest {
 }
 
 export const GetSeriesMembershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     page_size: Schema.optional(Schema.Number).pipe(T.HttpQuery("page_size")),
     series_id: Schema.String.pipe(T.HttpQuery("series_id")),
     page_token: Schema.optional(Schema.String).pipe(T.HttpQuery("page_token")),
@@ -4185,8 +4155,7 @@ export const GetSeriesMembershipRequest =
   ) as unknown as Schema.Codec<GetSeriesMembershipRequest>;
 
 export type GetSeriesMembershipResponse = Seriesmembership;
-export const GetSeriesMembershipResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Seriesmembership;
+export const GetSeriesMembershipResponse = /*@__PURE__*/ Seriesmembership;
 
 export type GetSeriesMembershipError = DefaultErrors | NotFound | Forbidden;
 
@@ -4196,7 +4165,7 @@ export const getSeriesMembership: API.OperationMethod<
   GetSeriesMembershipResponse,
   GetSeriesMembershipError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSeriesMembershipRequest,
   output: GetSeriesMembershipResponse,
   errors: [NotFound, Forbidden],

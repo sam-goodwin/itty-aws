@@ -10,7 +10,7 @@ export interface AgentApplicationsRevisionsSkillRefsUpdateInput {
   skill_refs: { from_template: string; alias: string; version?: number }[];
 }
 export const AgentApplicationsRevisionsSkillRefsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -223,7 +223,7 @@ export interface AgentApplicationsRevisionsSkillRefsUpdateOutput {
   updated_at: string;
 }
 export const AgentApplicationsRevisionsSkillRefsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     application: Schema.String,
     parent_revision: Schema.optional(Schema.NullOr(Schema.String)),
@@ -563,7 +563,7 @@ export const AgentApplicationsRevisionsSkillRefsUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const agentApplicationsRevisionsSkillRefsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsRevisionsSkillRefsUpdateInput,
     outputSchema: AgentApplicationsRevisionsSkillRefsUpdateOutput,
   }));

@@ -152,7 +152,7 @@ interface ChatCompletionsInstanceRequestMessageContent {
   type: "text";
 }
 const ChatCompletionsInstanceRequestMessageContent =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       text: Schema.String,
       type: Schema.Literal("text"),
@@ -162,7 +162,7 @@ const ChatCompletionsInstanceRequestMessageContent =
 interface ImageURL {
   url: string;
 }
-const ImageURL = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ImageURL = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     url: Schema.String,
   }),
@@ -173,7 +173,7 @@ interface ChatCompletionsInstanceRequestMessageContent1 {
   type: "image_url";
 }
 const ChatCompletionsInstanceRequestMessageContent1 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       imageUrl: ImageURL,
       type: Schema.Literal("image_url"),
@@ -190,7 +190,7 @@ interface Message {
     | null;
   role: "system" | "developer" | "user" | "assistant" | "tool" | (string & {});
 }
-const Message = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Message = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     content: Schema.Union([
       Schema.String,
@@ -219,7 +219,7 @@ interface Cache {
     | null;
   enabled?: boolean | null;
 }
-const Cache = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Cache = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cacheThreshold: Schema.optional(
       Schema.Union([
@@ -281,7 +281,7 @@ interface QueryRewrite {
     | null;
   rewritePrompt?: string | null;
 }
-const QueryRewrite = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const QueryRewrite = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     model: Schema.optional(
@@ -339,7 +339,7 @@ interface Reranking {
   matchThreshold?: number | null;
   model?: "@cf/baai/bge-reranker-base" | "" | (string & {}) | null;
 }
-const Reranking = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Reranking = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     matchThreshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -367,7 +367,7 @@ interface BoostBy {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the fi */
   direction?: "asc" | "desc" | "exists" | "not_exists" | (string & {}) | null;
 }
-const BoostBy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BoostBy = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     field: Schema.String,
     direction: Schema.optional(
@@ -406,7 +406,7 @@ interface Retrieval {
   retrievalType?: "vector" | "keyword" | "hybrid" | (string & {}) | null;
   returnOnFailure?: boolean | null;
 }
-const Retrieval = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Retrieval = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     boostBy: Schema.optional(
       Schema.Union([Schema.Array(BoostBy), Schema.Null]),
@@ -534,7 +534,7 @@ interface AisearchOptions {
     returnOnFailure?: boolean | null;
   } | null;
 }
-const AisearchOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AisearchOptions = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cache: Schema.optional(Schema.Union([Cache, Schema.Null])),
     queryRewrite: Schema.optional(Schema.Union([QueryRewrite, Schema.Null])),
@@ -569,7 +569,7 @@ interface Choice {
   };
   index?: number | null;
 }
-const Choice = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Choice = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     message: Message,
     index: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -581,7 +581,7 @@ interface Item {
   metadata?: Record<string, unknown> | null;
   timestamp?: number | null;
 }
-const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Item = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     key: Schema.String,
     metadata: Schema.optional(
@@ -599,7 +599,7 @@ interface ScoringDetails {
   vectorRank?: number | null;
   vectorScore?: number | null;
 }
-const ScoringDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ScoringDetails = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fusionMethod: Schema.optional(
       Schema.Union([
@@ -643,7 +643,7 @@ interface Chunk {
     vectorScore?: number | null;
   } | null;
 }
-const Chunk = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Chunk = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     score: Schema.Number,
@@ -742,7 +742,7 @@ interface AisearchOptions2 {
     returnOnFailure?: boolean | null;
   } | null;
 }
-const AisearchOptions2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AisearchOptions2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     instanceIds: Schema.Array(Schema.String),
     cache: Schema.optional(Schema.Union([Cache, Schema.Null])),
@@ -780,7 +780,7 @@ interface Chunk2 {
     vectorScore?: number | null;
   } | null;
 }
-const Chunk2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Chunk2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     instanceId: Schema.String,
@@ -808,7 +808,7 @@ interface Error2 {
   instanceId: string;
   message: string;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     instanceId: Schema.String,
     message: Schema.String,
@@ -819,7 +819,7 @@ interface CustomMetadata {
   dataType: "text" | "number" | "boolean" | "datetime" | (string & {});
   fieldName: string;
 }
-const CustomMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CustomMetadata = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dataType: Schema.Union([
       Schema.Literals(["text", "number", "boolean", "datetime"]),
@@ -837,7 +837,7 @@ interface IndexMethod {
   /** Enable vector (embedding) storage backend. */
   vector: boolean;
 }
-const IndexMethod = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const IndexMethod = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     keyword: Schema.Boolean,
     vector: Schema.Boolean,
@@ -848,7 +848,7 @@ interface IndexingOptions {
   /** Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good f */
   keywordTokenizer?: "porter" | "trigram" | (string & {}) | null;
 }
-const IndexingOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const IndexingOptions = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     keywordTokenizer: Schema.optional(
       Schema.Union([
@@ -863,7 +863,7 @@ interface Metadata {
   createdFromAisearchWizard?: boolean | null;
   workerDomain?: string | null;
 }
-const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Metadata = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     createdFromAisearchWizard: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -881,7 +881,7 @@ interface ChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
   disabled?: boolean | null;
 }
-const ChatCompletionsEndpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ChatCompletionsEndpoint = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   }),
@@ -892,7 +892,7 @@ interface Mcp {
   /** Disable MCP endpoint for this public endpoint */
   disabled?: boolean | null;
 }
-const Mcp = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Mcp = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -904,7 +904,7 @@ interface RateLimit {
   requests?: number | null;
   technique?: "fixed" | "sliding" | (string & {}) | null;
 }
-const RateLimit = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RateLimit = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     periodMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     requests: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -935,7 +935,7 @@ interface PublicEndpointParams {
   } | null;
   searchEndpoint?: { disabled?: boolean | null } | null;
 }
-const PublicEndpointParams = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PublicEndpointParams = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     authorizedHosts: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -978,7 +978,7 @@ interface RetrievalOptions {
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 re */
   keywordMatchMode?: "and" | "or" | (string & {}) | null;
 }
-const RetrievalOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RetrievalOptions = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     boostBy: Schema.optional(
       Schema.Union([Schema.Array(BoostBy), Schema.Null]),
@@ -1003,7 +1003,7 @@ interface ContentSelector {
   /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \). Must target a single element; if multiple elements match, the selector  */
   selector: string;
 }
-const ContentSelector = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ContentSelector = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     path: Schema.String,
     selector: Schema.String,
@@ -1020,7 +1020,7 @@ interface ParseOptions {
   specificSitemaps?: string[] | null;
   useBrowserRendering?: boolean | null;
 }
-const ParseOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ParseOptions = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     contentSelector: Schema.optional(
       Schema.Union([Schema.Array(ContentSelector), Schema.Null]),
@@ -1056,7 +1056,7 @@ interface WebCrawler {
   } | null;
   parseType?: "sitemap" | "crawl" | (string & {}) | null;
 }
-const WebCrawler = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WebCrawler = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     parseOptions: Schema.optional(Schema.Union([ParseOptions, Schema.Null])),
     parseType: Schema.optional(
@@ -1091,7 +1091,7 @@ interface SourceParams {
     parseType?: "sitemap" | "crawl" | (string & {}) | null;
   } | null;
 }
-const SourceParams = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SourceParams = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     excludeItems: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -1287,218 +1287,209 @@ interface ListInstancesResponseResult {
   tokenId?: string | null;
   type?: "r2" | "web-crawler" | null;
 }
-const ListInstancesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      aiGatewayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      aiSearchModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
-          Schema.Literal("@cf/zai-org/glm-4.7-flash"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
-          Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
-          Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
-          Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
-          Schema.Literal("@cf/google/gemma-3-12b-it"),
-          Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
-          Schema.Literal("@cf/moonshotai/kimi-k2.5"),
-          Schema.Literal("anthropic/claude-3-7-sonnet"),
-          Schema.Literal("anthropic/claude-sonnet-4"),
-          Schema.Literal("anthropic/claude-opus-4"),
-          Schema.Literal("anthropic/claude-3-5-haiku"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
-          Schema.Literal("cerebras/llama-3.3-70b"),
-          Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
-          Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("cerebras/gpt-oss-120b"),
-          Schema.Literal("google-ai-studio/gemini-2.5-flash"),
-          Schema.Literal("google-ai-studio/gemini-2.5-pro"),
-          Schema.Literal("grok/grok-4"),
-          Schema.Literal("groq/llama-3.3-70b-versatile"),
-          Schema.Literal("groq/llama-3.1-8b-instant"),
-          Schema.Literal("openai/gpt-5"),
-          Schema.Literal("openai/gpt-5-mini"),
-          Schema.Literal("openai/gpt-5-nano"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      cache: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      cacheThreshold: Schema.optional(
-        Schema.Union([
-          Schema.Literal("super_strict_match"),
-          Schema.Literal("close_enough"),
-          Schema.Literal("flexible_friend"),
-          Schema.Literal("anything_goes"),
-          Schema.Null,
-        ]),
-      ),
-      cacheTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      chunkOverlap: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      chunkSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      customMetadata: Schema.optional(
-        Schema.Union([Schema.Array(CustomMetadata), Schema.Null]),
-      ),
-      embeddingModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
-          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
-          Schema.Literal("@cf/baai/bge-m3"),
-          Schema.Literal("@cf/baai/bge-large-en-v1.5"),
-          Schema.Literal("@cf/google/embeddinggemma-300m"),
-          Schema.Literal("google-ai-studio/gemini-embedding-001"),
-          Schema.Literal("google-ai-studio/gemini-embedding-2-preview"),
-          Schema.Literal("openai/text-embedding-3-small"),
-          Schema.Literal("openai/text-embedding-3-large"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      engineVersion: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      fusionMethod: Schema.optional(
-        Schema.Union([
-          Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
-          Schema.Null,
-        ]),
-      ),
-      hybridSearchEnabled: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      indexMethod: Schema.optional(Schema.Union([IndexMethod, Schema.Null])),
-      indexingOptions: Schema.optional(
-        Schema.Union([IndexingOptions, Schema.Null]),
-      ),
-      lastActivity: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      maxNumResults: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
-      modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      namespace: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      publicEndpointId: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      publicEndpointParams: Schema.optional(
-        Schema.Union([PublicEndpointParams, Schema.Null]),
-      ),
-      reranking: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      rerankingModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/baai/bge-reranker-base"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      retrievalOptions: Schema.optional(
-        Schema.Union([RetrievalOptions, Schema.Null]),
-      ),
-      rewriteModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
-          Schema.Literal("@cf/zai-org/glm-4.7-flash"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
-          Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
-          Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
-          Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
-          Schema.Literal("@cf/google/gemma-3-12b-it"),
-          Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
-          Schema.Literal("@cf/moonshotai/kimi-k2.5"),
-          Schema.Literal("anthropic/claude-3-7-sonnet"),
-          Schema.Literal("anthropic/claude-sonnet-4"),
-          Schema.Literal("anthropic/claude-opus-4"),
-          Schema.Literal("anthropic/claude-3-5-haiku"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
-          Schema.Literal("cerebras/llama-3.3-70b"),
-          Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
-          Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("cerebras/gpt-oss-120b"),
-          Schema.Literal("google-ai-studio/gemini-2.5-flash"),
-          Schema.Literal("google-ai-studio/gemini-2.5-pro"),
-          Schema.Literal("grok/grok-4"),
-          Schema.Literal("groq/llama-3.3-70b-versatile"),
-          Schema.Literal("groq/llama-3.1-8b-instant"),
-          Schema.Literal("openai/gpt-5"),
-          Schema.Literal("openai/gpt-5-mini"),
-          Schema.Literal("openai/gpt-5-nano"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      rewriteQuery: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      scoreThreshold: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
-      status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literal("r2"),
-          Schema.Literal("web-crawler"),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        modifiedAt: "modified_at",
-        aiGatewayId: "ai_gateway_id",
-        aiSearchModel: "ai_search_model",
-        cache: "cache",
-        cacheThreshold: "cache_threshold",
-        cacheTtl: "cache_ttl",
-        chunkOverlap: "chunk_overlap",
-        chunkSize: "chunk_size",
-        createdBy: "created_by",
-        customMetadata: "custom_metadata",
-        embeddingModel: "embedding_model",
-        enable: "enable",
-        engineVersion: "engine_version",
-        fusionMethod: "fusion_method",
-        hybridSearchEnabled: "hybrid_search_enabled",
-        indexMethod: "index_method",
-        indexingOptions: "indexing_options",
-        lastActivity: "last_activity",
-        maxNumResults: "max_num_results",
-        metadata: "metadata",
-        modifiedBy: "modified_by",
-        namespace: "namespace",
-        paused: "paused",
-        publicEndpointId: "public_endpoint_id",
-        publicEndpointParams: "public_endpoint_params",
-        reranking: "reranking",
-        rerankingModel: "reranking_model",
-        retrievalOptions: "retrieval_options",
-        rewriteModel: "rewrite_model",
-        rewriteQuery: "rewrite_query",
-        scoreThreshold: "score_threshold",
-        source: "source",
-        sourceParams: "source_params",
-        status: "status",
-        syncInterval: "sync_interval",
-        tokenId: "token_id",
-        type: "type",
-      }),
+const ListInstancesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    aiGatewayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    aiSearchModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
+        Schema.Literal("@cf/zai-org/glm-4.7-flash"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
+        Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
+        Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
+        Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
+        Schema.Literal("@cf/google/gemma-3-12b-it"),
+        Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
+        Schema.Literal("@cf/moonshotai/kimi-k2.5"),
+        Schema.Literal("anthropic/claude-3-7-sonnet"),
+        Schema.Literal("anthropic/claude-sonnet-4"),
+        Schema.Literal("anthropic/claude-opus-4"),
+        Schema.Literal("anthropic/claude-3-5-haiku"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
+        Schema.Literal("cerebras/llama-3.3-70b"),
+        Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
+        Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("cerebras/gpt-oss-120b"),
+        Schema.Literal("google-ai-studio/gemini-2.5-flash"),
+        Schema.Literal("google-ai-studio/gemini-2.5-pro"),
+        Schema.Literal("grok/grok-4"),
+        Schema.Literal("groq/llama-3.3-70b-versatile"),
+        Schema.Literal("groq/llama-3.1-8b-instant"),
+        Schema.Literal("openai/gpt-5"),
+        Schema.Literal("openai/gpt-5-mini"),
+        Schema.Literal("openai/gpt-5-nano"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
     ),
+    cache: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    cacheThreshold: Schema.optional(
+      Schema.Union([
+        Schema.Literal("super_strict_match"),
+        Schema.Literal("close_enough"),
+        Schema.Literal("flexible_friend"),
+        Schema.Literal("anything_goes"),
+        Schema.Null,
+      ]),
+    ),
+    cacheTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    chunkOverlap: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    chunkSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    customMetadata: Schema.optional(
+      Schema.Union([Schema.Array(CustomMetadata), Schema.Null]),
+    ),
+    embeddingModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+        Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
+        Schema.Literal("@cf/baai/bge-m3"),
+        Schema.Literal("@cf/baai/bge-large-en-v1.5"),
+        Schema.Literal("@cf/google/embeddinggemma-300m"),
+        Schema.Literal("google-ai-studio/gemini-embedding-001"),
+        Schema.Literal("google-ai-studio/gemini-embedding-2-preview"),
+        Schema.Literal("openai/text-embedding-3-small"),
+        Schema.Literal("openai/text-embedding-3-large"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    engineVersion: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    fusionMethod: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    hybridSearchEnabled: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    indexMethod: Schema.optional(Schema.Union([IndexMethod, Schema.Null])),
+    indexingOptions: Schema.optional(
+      Schema.Union([IndexingOptions, Schema.Null]),
+    ),
+    lastActivity: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    maxNumResults: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
+    modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    namespace: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    publicEndpointId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    publicEndpointParams: Schema.optional(
+      Schema.Union([PublicEndpointParams, Schema.Null]),
+    ),
+    reranking: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    rerankingModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/baai/bge-reranker-base"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    retrievalOptions: Schema.optional(
+      Schema.Union([RetrievalOptions, Schema.Null]),
+    ),
+    rewriteModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
+        Schema.Literal("@cf/zai-org/glm-4.7-flash"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
+        Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
+        Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
+        Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
+        Schema.Literal("@cf/google/gemma-3-12b-it"),
+        Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
+        Schema.Literal("@cf/moonshotai/kimi-k2.5"),
+        Schema.Literal("anthropic/claude-3-7-sonnet"),
+        Schema.Literal("anthropic/claude-sonnet-4"),
+        Schema.Literal("anthropic/claude-opus-4"),
+        Schema.Literal("anthropic/claude-3-5-haiku"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
+        Schema.Literal("cerebras/llama-3.3-70b"),
+        Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
+        Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("cerebras/gpt-oss-120b"),
+        Schema.Literal("google-ai-studio/gemini-2.5-flash"),
+        Schema.Literal("google-ai-studio/gemini-2.5-pro"),
+        Schema.Literal("grok/grok-4"),
+        Schema.Literal("groq/llama-3.3-70b-versatile"),
+        Schema.Literal("groq/llama-3.1-8b-instant"),
+        Schema.Literal("openai/gpt-5"),
+        Schema.Literal("openai/gpt-5-mini"),
+        Schema.Literal("openai/gpt-5-nano"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    rewriteQuery: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    scoreThreshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
+    status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Literal("r2"),
+        Schema.Literal("web-crawler"),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      modifiedAt: "modified_at",
+      aiGatewayId: "ai_gateway_id",
+      aiSearchModel: "ai_search_model",
+      cache: "cache",
+      cacheThreshold: "cache_threshold",
+      cacheTtl: "cache_ttl",
+      chunkOverlap: "chunk_overlap",
+      chunkSize: "chunk_size",
+      createdBy: "created_by",
+      customMetadata: "custom_metadata",
+      embeddingModel: "embedding_model",
+      enable: "enable",
+      engineVersion: "engine_version",
+      fusionMethod: "fusion_method",
+      hybridSearchEnabled: "hybrid_search_enabled",
+      indexMethod: "index_method",
+      indexingOptions: "indexing_options",
+      lastActivity: "last_activity",
+      maxNumResults: "max_num_results",
+      metadata: "metadata",
+      modifiedBy: "modified_by",
+      namespace: "namespace",
+      paused: "paused",
+      publicEndpointId: "public_endpoint_id",
+      publicEndpointParams: "public_endpoint_params",
+      reranking: "reranking",
+      rerankingModel: "reranking_model",
+      retrievalOptions: "retrieval_options",
+      rewriteModel: "rewrite_model",
+      rewriteQuery: "rewrite_query",
+      scoreThreshold: "score_threshold",
+      source: "source",
+      sourceParams: "source_params",
+      status: "status",
+      syncInterval: "sync_interval",
+      tokenId: "token_id",
+      type: "type",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListInstancesResponseResult>;
 
 interface ListInstancesResponseResultInfo {
@@ -1508,7 +1499,7 @@ interface ListInstancesResponseResultInfo {
   totalCount?: number | null;
 }
 const ListInstancesResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1532,7 +1523,7 @@ interface CreateInstanceRequestSourceParamsWebCrawlerCrawlOptions {
   source?: "all" | "sitemaps" | "links" | (string & {}) | null;
 }
 const CreateInstanceRequestSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       depth: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       includeExternalLinks: Schema.optional(
@@ -1568,7 +1559,7 @@ interface CreateInstanceRequestSourceParamsWebCrawlerStoreOptions {
   storageType?: string | null;
 }
 const CreateInstanceRequestSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       storageId: Schema.String,
       r2Jurisdiction: Schema.optional(
@@ -1606,7 +1597,7 @@ interface WebCrawler2 {
     storageType?: string | null;
   } | null;
 }
-const WebCrawler2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WebCrawler2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     parseOptions: Schema.optional(Schema.Union([ParseOptions, Schema.Null])),
     parseType: Schema.optional(
@@ -1670,7 +1661,7 @@ interface SourceParams2 {
     } | null;
   } | null;
 }
-const SourceParams2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SourceParams2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     excludeItems: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -1697,7 +1688,7 @@ interface R2 {
   objectCount: number;
   payloadSizeBytes: number;
 }
-const R2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const R2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     metadataSizeBytes: Schema.Number,
     objectCount: Schema.Number,
@@ -1709,7 +1700,7 @@ interface Vectorize {
   dimensions: number;
   vectorsCount: number;
 }
-const Vectorize = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Vectorize = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dimensions: Schema.Number,
     vectorsCount: Schema.Number,
@@ -1726,7 +1717,7 @@ interface Engine {
   /** Vectorize index metadata (dimensions, vector count). */
   vectorize?: { dimensions: number; vectorsCount: number } | null;
 }
-const Engine = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Engine = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     r2: Schema.optional(Schema.Union([R2, Schema.Null])),
     vectorize: Schema.optional(Schema.Union([Vectorize, Schema.Null])),
@@ -1743,7 +1734,7 @@ interface ListInstanceJobsResponseResult {
   startedAt?: string | null;
 }
 const ListInstanceJobsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       source: Schema.Union([
@@ -1774,7 +1765,7 @@ interface JobLogsResponseItem {
   message: string;
   messageType: number;
 }
-const JobLogsResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const JobLogsResponseItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Number,
     createdAt: Schema.Number,
@@ -1796,19 +1787,18 @@ interface ListNamespacesResponseResult {
   /** Optional description for the namespace. Max 256 characters. */
   description?: string | null;
 }
-const ListNamespacesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      createdAt: Schema.String,
-      name: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        createdAt: "created_at",
-        name: "name",
-        description: "description",
-      }),
-    ),
+const ListNamespacesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    createdAt: Schema.String,
+    name: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      createdAt: "created_at",
+      name: "name",
+      description: "description",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListNamespacesResponseResult>;
 
 interface ListNamespaceInstanceItemsResponseResult {
@@ -1834,7 +1824,7 @@ interface ListNamespaceInstanceItemsResponseResult {
   error?: string | null;
 }
 const ListNamespaceInstanceItemsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       checksum: Schema.String,
@@ -1888,7 +1878,7 @@ interface File2 {
   /** Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a qu */
   waitForCompletion?: boolean | null;
 }
-const File2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const File2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     file: UploadableSchema.pipe(T.HttpFormDataFile()),
     metadata: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1915,7 +1905,7 @@ interface ItemChunksResponseItem {
   endByte?: number | null;
   startByte?: number | null;
 }
-const ItemChunksResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ItemChunksResponseItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     item: Item,
@@ -1942,7 +1932,7 @@ interface ItemLogsResponseItem {
   processingTimeMs: number | null;
   timestamp: string;
 }
-const ItemLogsResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ItemLogsResponseItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.String,
     chunkCount: Schema.Union([Schema.Number, Schema.Null]),
@@ -1965,31 +1955,30 @@ interface ListTokensResponseResult {
   legacy?: boolean | null;
   modifiedBy?: string | null;
 }
-const ListTokensResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      cfApiId: Schema.String,
-      createdAt: Schema.String,
-      modifiedAt: Schema.String,
-      name: Schema.String,
-      createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      legacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        cfApiId: "cf_api_id",
-        createdAt: "created_at",
-        modifiedAt: "modified_at",
-        name: "name",
-        createdBy: "created_by",
-        enabled: "enabled",
-        legacy: "legacy",
-        modifiedBy: "modified_by",
-      }),
-    ),
+const ListTokensResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    cfApiId: Schema.String,
+    createdAt: Schema.String,
+    modifiedAt: Schema.String,
+    name: Schema.String,
+    createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    legacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      cfApiId: "cf_api_id",
+      createdAt: "created_at",
+      modifiedAt: "modified_at",
+      name: "name",
+      createdBy: "created_by",
+      enabled: "enabled",
+      legacy: "legacy",
+      modifiedBy: "modified_by",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListTokensResponseResult>;
 
 // =============================================================================
@@ -2122,7 +2111,7 @@ export interface ChatCompletionsInstanceRequest {
 }
 
 export const ChatCompletionsInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2225,7 +2214,7 @@ export interface ChatCompletionsInstanceResponse {
 }
 
 export const ChatCompletionsInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       choices: Schema.Array(Choice),
       chunks: Schema.Array(Chunk),
@@ -2242,7 +2231,7 @@ export const chatCompletionsInstance: API.OperationMethod<
   ChatCompletionsInstanceResponse,
   ChatCompletionsInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChatCompletionsInstanceRequest,
   output: ChatCompletionsInstanceResponse,
   errors: [],
@@ -2379,7 +2368,7 @@ export interface ChatCompletionsNamespaceRequest {
 }
 
 export const ChatCompletionsNamespaceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2484,7 +2473,7 @@ export interface ChatCompletionsNamespaceResponse {
 }
 
 export const ChatCompletionsNamespaceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       choices: Schema.Array(Choice),
       chunks: Schema.Array(Chunk2),
@@ -2504,7 +2493,7 @@ export const chatCompletionsNamespace: API.OperationMethod<
   ChatCompletionsNamespaceResponse,
   ChatCompletionsNamespaceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChatCompletionsNamespaceRequest,
   output: ChatCompletionsNamespaceResponse,
   errors: [],
@@ -2641,7 +2630,7 @@ export interface ChatCompletionsNamespaceInstanceRequest {
 }
 
 export const ChatCompletionsNamespaceInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -2745,7 +2734,7 @@ export interface ChatCompletionsNamespaceInstanceResponse {
 }
 
 export const ChatCompletionsNamespaceInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       choices: Schema.Array(Choice),
       chunks: Schema.Array(Chunk),
@@ -2762,7 +2751,7 @@ export const chatCompletionsNamespaceInstance: API.OperationMethod<
   ChatCompletionsNamespaceInstanceResponse,
   ChatCompletionsNamespaceInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChatCompletionsNamespaceInstanceRequest,
   output: ChatCompletionsNamespaceInstanceResponse,
   errors: [],
@@ -2787,26 +2776,25 @@ export interface ListInstancesRequest {
   search?: string;
 }
 
-export const ListInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      namespace: Schema.optional(Schema.String).pipe(T.HttpQuery("namespace")),
-      orderBy: Schema.optional(Schema.Literal("created_at")).pipe(
-        T.HttpQuery("order_by"),
-      ),
-      orderByDirection: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ).pipe(T.HttpQuery("order_by_direction")),
-      search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/ai-search/instances",
-      }),
+export const ListInstancesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    namespace: Schema.optional(Schema.String).pipe(T.HttpQuery("namespace")),
+    orderBy: Schema.optional(Schema.Literal("created_at")).pipe(
+      T.HttpQuery("order_by"),
     ),
+    orderByDirection: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("order_by_direction")),
+    search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/ai-search/instances",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListInstancesRequest>;
 
 export interface ListInstancesResponse {
@@ -2987,14 +2975,13 @@ export interface ListInstancesResponse {
   } | null;
 }
 
-export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListInstancesResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListInstancesResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListInstancesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListInstancesResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListInstancesResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListInstancesResponse>;
 
 export type ListInstancesError = DefaultErrors | InvalidRoute | Forbidden;
@@ -3004,7 +2991,7 @@ export const listInstances: API.PaginatedOperationMethod<
   ListInstancesResponse,
   ListInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [InvalidRoute, Forbidden],
@@ -3207,186 +3194,185 @@ export interface CreateInstanceRequest {
   type?: "r2" | "web-crawler" | null;
 }
 
-export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      id: Schema.String,
-      aiGatewayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      aiSearchModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
-          Schema.Literal("@cf/zai-org/glm-4.7-flash"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
-          Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
-          Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
-          Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
-          Schema.Literal("@cf/google/gemma-3-12b-it"),
-          Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
-          Schema.Literal("@cf/moonshotai/kimi-k2.5"),
-          Schema.Literal("anthropic/claude-3-7-sonnet"),
-          Schema.Literal("anthropic/claude-sonnet-4"),
-          Schema.Literal("anthropic/claude-opus-4"),
-          Schema.Literal("anthropic/claude-3-5-haiku"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
-          Schema.Literal("cerebras/llama-3.3-70b"),
-          Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
-          Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("cerebras/gpt-oss-120b"),
-          Schema.Literal("google-ai-studio/gemini-2.5-flash"),
-          Schema.Literal("google-ai-studio/gemini-2.5-pro"),
-          Schema.Literal("grok/grok-4"),
-          Schema.Literal("groq/llama-3.3-70b-versatile"),
-          Schema.Literal("groq/llama-3.1-8b-instant"),
-          Schema.Literal("openai/gpt-5"),
-          Schema.Literal("openai/gpt-5-mini"),
-          Schema.Literal("openai/gpt-5-nano"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      cache: Schema.optional(Schema.Boolean),
-      cacheThreshold: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "super_strict_match",
-            "close_enough",
-            "flexible_friend",
-            "anything_goes",
-          ]),
-          Schema.String,
-        ]),
-      ),
-      cacheTtl: Schema.optional(Schema.Number),
-      chunk: Schema.optional(Schema.Boolean),
-      chunkOverlap: Schema.optional(Schema.Number),
-      chunkSize: Schema.optional(Schema.Number),
-      customMetadata: Schema.optional(Schema.Array(CustomMetadata)),
-      embeddingModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
-          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
-          Schema.Literal("@cf/baai/bge-m3"),
-          Schema.Literal("@cf/baai/bge-large-en-v1.5"),
-          Schema.Literal("@cf/google/embeddinggemma-300m"),
-          Schema.Literal("google-ai-studio/gemini-embedding-001"),
-          Schema.Literal("google-ai-studio/gemini-embedding-2-preview"),
-          Schema.Literal("openai/text-embedding-3-small"),
-          Schema.Literal("openai/text-embedding-3-large"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      fusionMethod: Schema.optional(
-        Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
-      ),
-      hybridSearchEnabled: Schema.optional(Schema.Boolean),
-      indexMethod: Schema.optional(IndexMethod),
-      indexingOptions: Schema.optional(
-        Schema.Union([IndexingOptions, Schema.Null]),
-      ),
-      maxNumResults: Schema.optional(Schema.Number),
-      metadata: Schema.optional(Metadata),
-      publicEndpointParams: Schema.optional(PublicEndpointParams),
-      reranking: Schema.optional(Schema.Boolean),
-      rerankingModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/baai/bge-reranker-base"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      retrievalOptions: Schema.optional(
-        Schema.Union([RetrievalOptions, Schema.Null]),
-      ),
-      rewriteModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
-          Schema.Literal("@cf/zai-org/glm-4.7-flash"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
-          Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
-          Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
-          Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
-          Schema.Literal("@cf/google/gemma-3-12b-it"),
-          Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
-          Schema.Literal("@cf/moonshotai/kimi-k2.5"),
-          Schema.Literal("anthropic/claude-3-7-sonnet"),
-          Schema.Literal("anthropic/claude-sonnet-4"),
-          Schema.Literal("anthropic/claude-opus-4"),
-          Schema.Literal("anthropic/claude-3-5-haiku"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
-          Schema.Literal("cerebras/llama-3.3-70b"),
-          Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
-          Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("cerebras/gpt-oss-120b"),
-          Schema.Literal("google-ai-studio/gemini-2.5-flash"),
-          Schema.Literal("google-ai-studio/gemini-2.5-pro"),
-          Schema.Literal("grok/grok-4"),
-          Schema.Literal("groq/llama-3.3-70b-versatile"),
-          Schema.Literal("groq/llama-3.1-8b-instant"),
-          Schema.Literal("openai/gpt-5"),
-          Schema.Literal("openai/gpt-5-mini"),
-          Schema.Literal("openai/gpt-5-nano"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      rewriteQuery: Schema.optional(Schema.Boolean),
-      scoreThreshold: Schema.optional(Schema.Number),
-      source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
-      syncInterval: Schema.optional(Schema.Number),
-      tokenId: Schema.optional(Schema.String),
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literal("r2"),
-          Schema.Literal("web-crawler"),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        aiGatewayId: "ai_gateway_id",
-        aiSearchModel: "ai_search_model",
-        cache: "cache",
-        cacheThreshold: "cache_threshold",
-        cacheTtl: "cache_ttl",
-        chunk: "chunk",
-        chunkOverlap: "chunk_overlap",
-        chunkSize: "chunk_size",
-        customMetadata: "custom_metadata",
-        embeddingModel: "embedding_model",
-        fusionMethod: "fusion_method",
-        hybridSearchEnabled: "hybrid_search_enabled",
-        indexMethod: "index_method",
-        indexingOptions: "indexing_options",
-        maxNumResults: "max_num_results",
-        metadata: "metadata",
-        publicEndpointParams: "public_endpoint_params",
-        reranking: "reranking",
-        rerankingModel: "reranking_model",
-        retrievalOptions: "retrieval_options",
-        rewriteModel: "rewrite_model",
-        rewriteQuery: "rewrite_query",
-        scoreThreshold: "score_threshold",
-        source: "source",
-        sourceParams: "source_params",
-        syncInterval: "sync_interval",
-        tokenId: "token_id",
-        type: "type",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/ai-search/instances",
-      }),
+export const CreateInstanceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    id: Schema.String,
+    aiGatewayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    aiSearchModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
+        Schema.Literal("@cf/zai-org/glm-4.7-flash"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
+        Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
+        Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
+        Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
+        Schema.Literal("@cf/google/gemma-3-12b-it"),
+        Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
+        Schema.Literal("@cf/moonshotai/kimi-k2.5"),
+        Schema.Literal("anthropic/claude-3-7-sonnet"),
+        Schema.Literal("anthropic/claude-sonnet-4"),
+        Schema.Literal("anthropic/claude-opus-4"),
+        Schema.Literal("anthropic/claude-3-5-haiku"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
+        Schema.Literal("cerebras/llama-3.3-70b"),
+        Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
+        Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("cerebras/gpt-oss-120b"),
+        Schema.Literal("google-ai-studio/gemini-2.5-flash"),
+        Schema.Literal("google-ai-studio/gemini-2.5-pro"),
+        Schema.Literal("grok/grok-4"),
+        Schema.Literal("groq/llama-3.3-70b-versatile"),
+        Schema.Literal("groq/llama-3.1-8b-instant"),
+        Schema.Literal("openai/gpt-5"),
+        Schema.Literal("openai/gpt-5-mini"),
+        Schema.Literal("openai/gpt-5-nano"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
     ),
+    cache: Schema.optional(Schema.Boolean),
+    cacheThreshold: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "super_strict_match",
+          "close_enough",
+          "flexible_friend",
+          "anything_goes",
+        ]),
+        Schema.String,
+      ]),
+    ),
+    cacheTtl: Schema.optional(Schema.Number),
+    chunk: Schema.optional(Schema.Boolean),
+    chunkOverlap: Schema.optional(Schema.Number),
+    chunkSize: Schema.optional(Schema.Number),
+    customMetadata: Schema.optional(Schema.Array(CustomMetadata)),
+    embeddingModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+        Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
+        Schema.Literal("@cf/baai/bge-m3"),
+        Schema.Literal("@cf/baai/bge-large-en-v1.5"),
+        Schema.Literal("@cf/google/embeddinggemma-300m"),
+        Schema.Literal("google-ai-studio/gemini-embedding-001"),
+        Schema.Literal("google-ai-studio/gemini-embedding-2-preview"),
+        Schema.Literal("openai/text-embedding-3-small"),
+        Schema.Literal("openai/text-embedding-3-large"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    fusionMethod: Schema.optional(
+      Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+    ),
+    hybridSearchEnabled: Schema.optional(Schema.Boolean),
+    indexMethod: Schema.optional(IndexMethod),
+    indexingOptions: Schema.optional(
+      Schema.Union([IndexingOptions, Schema.Null]),
+    ),
+    maxNumResults: Schema.optional(Schema.Number),
+    metadata: Schema.optional(Metadata),
+    publicEndpointParams: Schema.optional(PublicEndpointParams),
+    reranking: Schema.optional(Schema.Boolean),
+    rerankingModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/baai/bge-reranker-base"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    retrievalOptions: Schema.optional(
+      Schema.Union([RetrievalOptions, Schema.Null]),
+    ),
+    rewriteModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
+        Schema.Literal("@cf/zai-org/glm-4.7-flash"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
+        Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
+        Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
+        Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
+        Schema.Literal("@cf/google/gemma-3-12b-it"),
+        Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
+        Schema.Literal("@cf/moonshotai/kimi-k2.5"),
+        Schema.Literal("anthropic/claude-3-7-sonnet"),
+        Schema.Literal("anthropic/claude-sonnet-4"),
+        Schema.Literal("anthropic/claude-opus-4"),
+        Schema.Literal("anthropic/claude-3-5-haiku"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
+        Schema.Literal("cerebras/llama-3.3-70b"),
+        Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
+        Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("cerebras/gpt-oss-120b"),
+        Schema.Literal("google-ai-studio/gemini-2.5-flash"),
+        Schema.Literal("google-ai-studio/gemini-2.5-pro"),
+        Schema.Literal("grok/grok-4"),
+        Schema.Literal("groq/llama-3.3-70b-versatile"),
+        Schema.Literal("groq/llama-3.1-8b-instant"),
+        Schema.Literal("openai/gpt-5"),
+        Schema.Literal("openai/gpt-5-mini"),
+        Schema.Literal("openai/gpt-5-nano"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    rewriteQuery: Schema.optional(Schema.Boolean),
+    scoreThreshold: Schema.optional(Schema.Number),
+    source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
+    syncInterval: Schema.optional(Schema.Number),
+    tokenId: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Literal("r2"),
+        Schema.Literal("web-crawler"),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      aiGatewayId: "ai_gateway_id",
+      aiSearchModel: "ai_search_model",
+      cache: "cache",
+      cacheThreshold: "cache_threshold",
+      cacheTtl: "cache_ttl",
+      chunk: "chunk",
+      chunkOverlap: "chunk_overlap",
+      chunkSize: "chunk_size",
+      customMetadata: "custom_metadata",
+      embeddingModel: "embedding_model",
+      fusionMethod: "fusion_method",
+      hybridSearchEnabled: "hybrid_search_enabled",
+      indexMethod: "index_method",
+      indexingOptions: "indexing_options",
+      maxNumResults: "max_num_results",
+      metadata: "metadata",
+      publicEndpointParams: "public_endpoint_params",
+      reranking: "reranking",
+      rerankingModel: "reranking_model",
+      retrievalOptions: "retrieval_options",
+      rewriteModel: "rewrite_model",
+      rewriteQuery: "rewrite_query",
+      scoreThreshold: "score_threshold",
+      source: "source",
+      sourceParams: "source_params",
+      syncInterval: "sync_interval",
+      tokenId: "token_id",
+      type: "type",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/ai-search/instances",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateInstanceRequest>;
 
 export interface CreateInstanceResponse {
@@ -3577,7 +3563,7 @@ export interface CreateInstanceResponse {
 }
 
 export const CreateInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3806,7 +3792,7 @@ export const createInstance: API.OperationMethod<
   CreateInstanceResponse,
   CreateInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceRequest,
   output: CreateInstanceResponse,
   errors: [
@@ -4047,227 +4033,226 @@ export interface UpdateInstanceRequest {
   tokenId?: string;
 }
 
-export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String.pipe(T.HttpPath("id")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      aiGatewayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      aiSearchModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
-          Schema.Literal("@cf/zai-org/glm-4.7-flash"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
-          Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
-          Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
-          Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
-          Schema.Literal("@cf/google/gemma-3-12b-it"),
-          Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
-          Schema.Literal("@cf/moonshotai/kimi-k2.5"),
-          Schema.Literal("anthropic/claude-3-7-sonnet"),
-          Schema.Literal("anthropic/claude-sonnet-4"),
-          Schema.Literal("anthropic/claude-opus-4"),
-          Schema.Literal("anthropic/claude-3-5-haiku"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
-          Schema.Literal("cerebras/llama-3.3-70b"),
-          Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
-          Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("cerebras/gpt-oss-120b"),
-          Schema.Literal("google-ai-studio/gemini-2.5-flash"),
-          Schema.Literal("google-ai-studio/gemini-2.5-pro"),
-          Schema.Literal("grok/grok-4"),
-          Schema.Literal("groq/llama-3.3-70b-versatile"),
-          Schema.Literal("groq/llama-3.1-8b-instant"),
-          Schema.Literal("openai/gpt-5"),
-          Schema.Literal("openai/gpt-5-mini"),
-          Schema.Literal("openai/gpt-5-nano"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      cache: Schema.optional(Schema.Boolean),
-      cacheThreshold: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "super_strict_match",
-            "close_enough",
-            "flexible_friend",
-            "anything_goes",
-          ]),
-          Schema.String,
-        ]),
-      ),
-      cacheTtl: Schema.optional(Schema.Number),
-      chunk: Schema.optional(Schema.Boolean),
-      chunkOverlap: Schema.optional(Schema.Number),
-      chunkSize: Schema.optional(Schema.Number),
-      customMetadata: Schema.optional(Schema.Array(CustomMetadata)),
-      embeddingModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
-          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
-          Schema.Literal("@cf/baai/bge-m3"),
-          Schema.Literal("@cf/baai/bge-large-en-v1.5"),
-          Schema.Literal("@cf/google/embeddinggemma-300m"),
-          Schema.Literal("google-ai-studio/gemini-embedding-001"),
-          Schema.Literal("google-ai-studio/gemini-embedding-2-preview"),
-          Schema.Literal("openai/text-embedding-3-small"),
-          Schema.Literal("openai/text-embedding-3-large"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      fusionMethod: Schema.optional(
-        Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
-      ),
-      indexMethod: Schema.optional(IndexMethod),
-      indexingOptions: Schema.optional(
-        Schema.Union([IndexingOptions, Schema.Null]),
-      ),
-      maxNumResults: Schema.optional(Schema.Number),
-      metadata: Schema.optional(Metadata),
-      paused: Schema.optional(Schema.Boolean),
-      publicEndpointParams: Schema.optional(PublicEndpointParams),
-      reranking: Schema.optional(Schema.Boolean),
-      rerankingModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/baai/bge-reranker-base"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      retrievalOptions: Schema.optional(
-        Schema.Union([RetrievalOptions, Schema.Null]),
-      ),
-      rewriteModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
-          Schema.Literal("@cf/zai-org/glm-4.7-flash"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
-          Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
-          Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
-          Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
-          Schema.Literal("@cf/google/gemma-3-12b-it"),
-          Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
-          Schema.Literal("@cf/moonshotai/kimi-k2.5"),
-          Schema.Literal("anthropic/claude-3-7-sonnet"),
-          Schema.Literal("anthropic/claude-sonnet-4"),
-          Schema.Literal("anthropic/claude-opus-4"),
-          Schema.Literal("anthropic/claude-3-5-haiku"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
-          Schema.Literal("cerebras/llama-3.3-70b"),
-          Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
-          Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("cerebras/gpt-oss-120b"),
-          Schema.Literal("google-ai-studio/gemini-2.5-flash"),
-          Schema.Literal("google-ai-studio/gemini-2.5-pro"),
-          Schema.Literal("grok/grok-4"),
-          Schema.Literal("groq/llama-3.3-70b-versatile"),
-          Schema.Literal("groq/llama-3.1-8b-instant"),
-          Schema.Literal("openai/gpt-5"),
-          Schema.Literal("openai/gpt-5-mini"),
-          Schema.Literal("openai/gpt-5-nano"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      rewriteQuery: Schema.optional(Schema.Boolean),
-      scoreThreshold: Schema.optional(Schema.Number),
-      source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
-      summarization: Schema.optional(Schema.Boolean),
-      summarizationModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
-          Schema.Literal("@cf/zai-org/glm-4.7-flash"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
-          Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
-          Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
-          Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
-          Schema.Literal("@cf/google/gemma-3-12b-it"),
-          Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
-          Schema.Literal("@cf/moonshotai/kimi-k2.5"),
-          Schema.Literal("anthropic/claude-3-7-sonnet"),
-          Schema.Literal("anthropic/claude-sonnet-4"),
-          Schema.Literal("anthropic/claude-opus-4"),
-          Schema.Literal("anthropic/claude-3-5-haiku"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
-          Schema.Literal("cerebras/llama-3.3-70b"),
-          Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
-          Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("cerebras/gpt-oss-120b"),
-          Schema.Literal("google-ai-studio/gemini-2.5-flash"),
-          Schema.Literal("google-ai-studio/gemini-2.5-pro"),
-          Schema.Literal("grok/grok-4"),
-          Schema.Literal("groq/llama-3.3-70b-versatile"),
-          Schema.Literal("groq/llama-3.1-8b-instant"),
-          Schema.Literal("openai/gpt-5"),
-          Schema.Literal("openai/gpt-5-mini"),
-          Schema.Literal("openai/gpt-5-nano"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      syncInterval: Schema.optional(Schema.Number),
-      systemPromptAiSearch: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      systemPromptIndexSummarization: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      systemPromptRewriteQuery: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      tokenId: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        aiGatewayId: "ai_gateway_id",
-        aiSearchModel: "ai_search_model",
-        cache: "cache",
-        cacheThreshold: "cache_threshold",
-        cacheTtl: "cache_ttl",
-        chunk: "chunk",
-        chunkOverlap: "chunk_overlap",
-        chunkSize: "chunk_size",
-        customMetadata: "custom_metadata",
-        embeddingModel: "embedding_model",
-        fusionMethod: "fusion_method",
-        indexMethod: "index_method",
-        indexingOptions: "indexing_options",
-        maxNumResults: "max_num_results",
-        metadata: "metadata",
-        paused: "paused",
-        publicEndpointParams: "public_endpoint_params",
-        reranking: "reranking",
-        rerankingModel: "reranking_model",
-        retrievalOptions: "retrieval_options",
-        rewriteModel: "rewrite_model",
-        rewriteQuery: "rewrite_query",
-        scoreThreshold: "score_threshold",
-        source: "source",
-        sourceParams: "source_params",
-        summarization: "summarization",
-        summarizationModel: "summarization_model",
-        syncInterval: "sync_interval",
-        systemPromptAiSearch: "system_prompt_ai_search",
-        systemPromptIndexSummarization: "system_prompt_index_summarization",
-        systemPromptRewriteQuery: "system_prompt_rewrite_query",
-        tokenId: "token_id",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/ai-search/instances/{id}",
-      }),
+export const UpdateInstanceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String.pipe(T.HttpPath("id")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    aiGatewayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    aiSearchModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
+        Schema.Literal("@cf/zai-org/glm-4.7-flash"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
+        Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
+        Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
+        Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
+        Schema.Literal("@cf/google/gemma-3-12b-it"),
+        Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
+        Schema.Literal("@cf/moonshotai/kimi-k2.5"),
+        Schema.Literal("anthropic/claude-3-7-sonnet"),
+        Schema.Literal("anthropic/claude-sonnet-4"),
+        Schema.Literal("anthropic/claude-opus-4"),
+        Schema.Literal("anthropic/claude-3-5-haiku"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
+        Schema.Literal("cerebras/llama-3.3-70b"),
+        Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
+        Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("cerebras/gpt-oss-120b"),
+        Schema.Literal("google-ai-studio/gemini-2.5-flash"),
+        Schema.Literal("google-ai-studio/gemini-2.5-pro"),
+        Schema.Literal("grok/grok-4"),
+        Schema.Literal("groq/llama-3.3-70b-versatile"),
+        Schema.Literal("groq/llama-3.1-8b-instant"),
+        Schema.Literal("openai/gpt-5"),
+        Schema.Literal("openai/gpt-5-mini"),
+        Schema.Literal("openai/gpt-5-nano"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
     ),
+    cache: Schema.optional(Schema.Boolean),
+    cacheThreshold: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "super_strict_match",
+          "close_enough",
+          "flexible_friend",
+          "anything_goes",
+        ]),
+        Schema.String,
+      ]),
+    ),
+    cacheTtl: Schema.optional(Schema.Number),
+    chunk: Schema.optional(Schema.Boolean),
+    chunkOverlap: Schema.optional(Schema.Number),
+    chunkSize: Schema.optional(Schema.Number),
+    customMetadata: Schema.optional(Schema.Array(CustomMetadata)),
+    embeddingModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+        Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
+        Schema.Literal("@cf/baai/bge-m3"),
+        Schema.Literal("@cf/baai/bge-large-en-v1.5"),
+        Schema.Literal("@cf/google/embeddinggemma-300m"),
+        Schema.Literal("google-ai-studio/gemini-embedding-001"),
+        Schema.Literal("google-ai-studio/gemini-embedding-2-preview"),
+        Schema.Literal("openai/text-embedding-3-small"),
+        Schema.Literal("openai/text-embedding-3-large"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    fusionMethod: Schema.optional(
+      Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+    ),
+    indexMethod: Schema.optional(IndexMethod),
+    indexingOptions: Schema.optional(
+      Schema.Union([IndexingOptions, Schema.Null]),
+    ),
+    maxNumResults: Schema.optional(Schema.Number),
+    metadata: Schema.optional(Metadata),
+    paused: Schema.optional(Schema.Boolean),
+    publicEndpointParams: Schema.optional(PublicEndpointParams),
+    reranking: Schema.optional(Schema.Boolean),
+    rerankingModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/baai/bge-reranker-base"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    retrievalOptions: Schema.optional(
+      Schema.Union([RetrievalOptions, Schema.Null]),
+    ),
+    rewriteModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
+        Schema.Literal("@cf/zai-org/glm-4.7-flash"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
+        Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
+        Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
+        Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
+        Schema.Literal("@cf/google/gemma-3-12b-it"),
+        Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
+        Schema.Literal("@cf/moonshotai/kimi-k2.5"),
+        Schema.Literal("anthropic/claude-3-7-sonnet"),
+        Schema.Literal("anthropic/claude-sonnet-4"),
+        Schema.Literal("anthropic/claude-opus-4"),
+        Schema.Literal("anthropic/claude-3-5-haiku"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
+        Schema.Literal("cerebras/llama-3.3-70b"),
+        Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
+        Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("cerebras/gpt-oss-120b"),
+        Schema.Literal("google-ai-studio/gemini-2.5-flash"),
+        Schema.Literal("google-ai-studio/gemini-2.5-pro"),
+        Schema.Literal("grok/grok-4"),
+        Schema.Literal("groq/llama-3.3-70b-versatile"),
+        Schema.Literal("groq/llama-3.1-8b-instant"),
+        Schema.Literal("openai/gpt-5"),
+        Schema.Literal("openai/gpt-5-mini"),
+        Schema.Literal("openai/gpt-5-nano"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    rewriteQuery: Schema.optional(Schema.Boolean),
+    scoreThreshold: Schema.optional(Schema.Number),
+    source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
+    summarization: Schema.optional(Schema.Boolean),
+    summarizationModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
+        Schema.Literal("@cf/zai-org/glm-4.7-flash"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
+        Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
+        Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
+        Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
+        Schema.Literal("@cf/google/gemma-3-12b-it"),
+        Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
+        Schema.Literal("@cf/moonshotai/kimi-k2.5"),
+        Schema.Literal("anthropic/claude-3-7-sonnet"),
+        Schema.Literal("anthropic/claude-sonnet-4"),
+        Schema.Literal("anthropic/claude-opus-4"),
+        Schema.Literal("anthropic/claude-3-5-haiku"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
+        Schema.Literal("cerebras/llama-3.3-70b"),
+        Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
+        Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("cerebras/gpt-oss-120b"),
+        Schema.Literal("google-ai-studio/gemini-2.5-flash"),
+        Schema.Literal("google-ai-studio/gemini-2.5-pro"),
+        Schema.Literal("grok/grok-4"),
+        Schema.Literal("groq/llama-3.3-70b-versatile"),
+        Schema.Literal("groq/llama-3.1-8b-instant"),
+        Schema.Literal("openai/gpt-5"),
+        Schema.Literal("openai/gpt-5-mini"),
+        Schema.Literal("openai/gpt-5-nano"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    syncInterval: Schema.optional(Schema.Number),
+    systemPromptAiSearch: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    systemPromptIndexSummarization: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    systemPromptRewriteQuery: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    tokenId: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      aiGatewayId: "ai_gateway_id",
+      aiSearchModel: "ai_search_model",
+      cache: "cache",
+      cacheThreshold: "cache_threshold",
+      cacheTtl: "cache_ttl",
+      chunk: "chunk",
+      chunkOverlap: "chunk_overlap",
+      chunkSize: "chunk_size",
+      customMetadata: "custom_metadata",
+      embeddingModel: "embedding_model",
+      fusionMethod: "fusion_method",
+      indexMethod: "index_method",
+      indexingOptions: "indexing_options",
+      maxNumResults: "max_num_results",
+      metadata: "metadata",
+      paused: "paused",
+      publicEndpointParams: "public_endpoint_params",
+      reranking: "reranking",
+      rerankingModel: "reranking_model",
+      retrievalOptions: "retrieval_options",
+      rewriteModel: "rewrite_model",
+      rewriteQuery: "rewrite_query",
+      scoreThreshold: "score_threshold",
+      source: "source",
+      sourceParams: "source_params",
+      summarization: "summarization",
+      summarizationModel: "summarization_model",
+      syncInterval: "sync_interval",
+      systemPromptAiSearch: "system_prompt_ai_search",
+      systemPromptIndexSummarization: "system_prompt_index_summarization",
+      systemPromptRewriteQuery: "system_prompt_rewrite_query",
+      tokenId: "token_id",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/ai-search/instances/{id}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateInstanceRequest>;
 
 export interface UpdateInstanceResponse {
@@ -4458,7 +4443,7 @@ export interface UpdateInstanceResponse {
 }
 
 export const UpdateInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -4686,7 +4671,7 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceResponse,
   UpdateInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInstanceRequest,
   output: UpdateInstanceResponse,
   errors: [
@@ -4703,17 +4688,16 @@ export interface DeleteInstanceRequest {
   accountId: string;
 }
 
-export const DeleteInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String.pipe(T.HttpPath("id")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/ai-search/instances/{id}",
-      }),
-    ),
+export const DeleteInstanceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String.pipe(T.HttpPath("id")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/ai-search/instances/{id}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {
@@ -4904,7 +4888,7 @@ export interface DeleteInstanceResponse {
 }
 
 export const DeleteInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -5131,7 +5115,7 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceResponse,
   DeleteInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceRequest,
   output: DeleteInstanceResponse,
   errors: [ValidationError, NotFound, InvalidRoute, Forbidden],
@@ -5142,17 +5126,16 @@ export interface ReadInstanceRequest {
   accountId: string;
 }
 
-export const ReadInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String.pipe(T.HttpPath("id")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/ai-search/instances/{id}",
-      }),
-    ),
+export const ReadInstanceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String.pipe(T.HttpPath("id")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/ai-search/instances/{id}",
+    }),
+  ),
 ) as unknown as Schema.Codec<ReadInstanceRequest>;
 
 export interface ReadInstanceResponse {
@@ -5342,220 +5325,211 @@ export interface ReadInstanceResponse {
   type?: "r2" | "web-crawler" | null;
 }
 
-export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      aiGatewayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      aiSearchModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
-          Schema.Literal("@cf/zai-org/glm-4.7-flash"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
-          Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
-          Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
-          Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
-          Schema.Literal("@cf/google/gemma-3-12b-it"),
-          Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
-          Schema.Literal("@cf/moonshotai/kimi-k2.5"),
-          Schema.Literal("anthropic/claude-3-7-sonnet"),
-          Schema.Literal("anthropic/claude-sonnet-4"),
-          Schema.Literal("anthropic/claude-opus-4"),
-          Schema.Literal("anthropic/claude-3-5-haiku"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
-          Schema.Literal("cerebras/llama-3.3-70b"),
-          Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
-          Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("cerebras/gpt-oss-120b"),
-          Schema.Literal("google-ai-studio/gemini-2.5-flash"),
-          Schema.Literal("google-ai-studio/gemini-2.5-pro"),
-          Schema.Literal("grok/grok-4"),
-          Schema.Literal("groq/llama-3.3-70b-versatile"),
-          Schema.Literal("groq/llama-3.1-8b-instant"),
-          Schema.Literal("openai/gpt-5"),
-          Schema.Literal("openai/gpt-5-mini"),
-          Schema.Literal("openai/gpt-5-nano"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      cache: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      cacheThreshold: Schema.optional(
-        Schema.Union([
-          Schema.Literal("super_strict_match"),
-          Schema.Literal("close_enough"),
-          Schema.Literal("flexible_friend"),
-          Schema.Literal("anything_goes"),
-          Schema.Null,
-        ]),
-      ),
-      cacheTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      chunkOverlap: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      chunkSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      customMetadata: Schema.optional(
-        Schema.Union([Schema.Array(CustomMetadata), Schema.Null]),
-      ),
-      embeddingModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
-          Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
-          Schema.Literal("@cf/baai/bge-m3"),
-          Schema.Literal("@cf/baai/bge-large-en-v1.5"),
-          Schema.Literal("@cf/google/embeddinggemma-300m"),
-          Schema.Literal("google-ai-studio/gemini-embedding-001"),
-          Schema.Literal("google-ai-studio/gemini-embedding-2-preview"),
-          Schema.Literal("openai/text-embedding-3-small"),
-          Schema.Literal("openai/text-embedding-3-large"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      engineVersion: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      fusionMethod: Schema.optional(
-        Schema.Union([
-          Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
-          Schema.Null,
-        ]),
-      ),
-      hybridSearchEnabled: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      indexMethod: Schema.optional(Schema.Union([IndexMethod, Schema.Null])),
-      indexingOptions: Schema.optional(
-        Schema.Union([IndexingOptions, Schema.Null]),
-      ),
-      lastActivity: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      maxNumResults: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
-      modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      namespace: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      publicEndpointId: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      publicEndpointParams: Schema.optional(
-        Schema.Union([PublicEndpointParams, Schema.Null]),
-      ),
-      reranking: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      rerankingModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/baai/bge-reranker-base"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      retrievalOptions: Schema.optional(
-        Schema.Union([RetrievalOptions, Schema.Null]),
-      ),
-      rewriteModel: Schema.optional(
-        Schema.Union([
-          Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
-          Schema.Literal("@cf/zai-org/glm-4.7-flash"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
-          Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
-          Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
-          Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
-          Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
-          Schema.Literal("@cf/google/gemma-3-12b-it"),
-          Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
-          Schema.Literal("@cf/moonshotai/kimi-k2.5"),
-          Schema.Literal("anthropic/claude-3-7-sonnet"),
-          Schema.Literal("anthropic/claude-sonnet-4"),
-          Schema.Literal("anthropic/claude-opus-4"),
-          Schema.Literal("anthropic/claude-3-5-haiku"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
-          Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
-          Schema.Literal("cerebras/llama-3.3-70b"),
-          Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
-          Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
-          Schema.Literal("cerebras/gpt-oss-120b"),
-          Schema.Literal("google-ai-studio/gemini-2.5-flash"),
-          Schema.Literal("google-ai-studio/gemini-2.5-pro"),
-          Schema.Literal("grok/grok-4"),
-          Schema.Literal("groq/llama-3.3-70b-versatile"),
-          Schema.Literal("groq/llama-3.1-8b-instant"),
-          Schema.Literal("openai/gpt-5"),
-          Schema.Literal("openai/gpt-5-mini"),
-          Schema.Literal("openai/gpt-5-nano"),
-          Schema.Literal(""),
-          Schema.Null,
-        ]),
-      ),
-      rewriteQuery: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      scoreThreshold: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
-      status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literal("r2"),
-          Schema.Literal("web-crawler"),
-          Schema.Null,
-        ]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          modifiedAt: "modified_at",
-          aiGatewayId: "ai_gateway_id",
-          aiSearchModel: "ai_search_model",
-          cache: "cache",
-          cacheThreshold: "cache_threshold",
-          cacheTtl: "cache_ttl",
-          chunkOverlap: "chunk_overlap",
-          chunkSize: "chunk_size",
-          createdBy: "created_by",
-          customMetadata: "custom_metadata",
-          embeddingModel: "embedding_model",
-          enable: "enable",
-          engineVersion: "engine_version",
-          fusionMethod: "fusion_method",
-          hybridSearchEnabled: "hybrid_search_enabled",
-          indexMethod: "index_method",
-          indexingOptions: "indexing_options",
-          lastActivity: "last_activity",
-          maxNumResults: "max_num_results",
-          metadata: "metadata",
-          modifiedBy: "modified_by",
-          namespace: "namespace",
-          paused: "paused",
-          publicEndpointId: "public_endpoint_id",
-          publicEndpointParams: "public_endpoint_params",
-          reranking: "reranking",
-          rerankingModel: "reranking_model",
-          retrievalOptions: "retrieval_options",
-          rewriteModel: "rewrite_model",
-          rewriteQuery: "rewrite_query",
-          scoreThreshold: "score_threshold",
-          source: "source",
-          sourceParams: "source_params",
-          status: "status",
-          syncInterval: "sync_interval",
-          tokenId: "token_id",
-          type: "type",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const ReadInstanceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    aiGatewayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    aiSearchModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
+        Schema.Literal("@cf/zai-org/glm-4.7-flash"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
+        Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
+        Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
+        Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
+        Schema.Literal("@cf/google/gemma-3-12b-it"),
+        Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
+        Schema.Literal("@cf/moonshotai/kimi-k2.5"),
+        Schema.Literal("anthropic/claude-3-7-sonnet"),
+        Schema.Literal("anthropic/claude-sonnet-4"),
+        Schema.Literal("anthropic/claude-opus-4"),
+        Schema.Literal("anthropic/claude-3-5-haiku"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
+        Schema.Literal("cerebras/llama-3.3-70b"),
+        Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
+        Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("cerebras/gpt-oss-120b"),
+        Schema.Literal("google-ai-studio/gemini-2.5-flash"),
+        Schema.Literal("google-ai-studio/gemini-2.5-pro"),
+        Schema.Literal("grok/grok-4"),
+        Schema.Literal("groq/llama-3.3-70b-versatile"),
+        Schema.Literal("groq/llama-3.1-8b-instant"),
+        Schema.Literal("openai/gpt-5"),
+        Schema.Literal("openai/gpt-5-mini"),
+        Schema.Literal("openai/gpt-5-nano"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    cache: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    cacheThreshold: Schema.optional(
+      Schema.Union([
+        Schema.Literal("super_strict_match"),
+        Schema.Literal("close_enough"),
+        Schema.Literal("flexible_friend"),
+        Schema.Literal("anything_goes"),
+        Schema.Null,
+      ]),
+    ),
+    cacheTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    chunkOverlap: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    chunkSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    customMetadata: Schema.optional(
+      Schema.Union([Schema.Array(CustomMetadata), Schema.Null]),
+    ),
+    embeddingModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/qwen/qwen3-embedding-0.6b"),
+        Schema.Literal("@cf/qwen/qwen3-vl-embedding-2b"),
+        Schema.Literal("@cf/baai/bge-m3"),
+        Schema.Literal("@cf/baai/bge-large-en-v1.5"),
+        Schema.Literal("@cf/google/embeddinggemma-300m"),
+        Schema.Literal("google-ai-studio/gemini-embedding-001"),
+        Schema.Literal("google-ai-studio/gemini-embedding-2-preview"),
+        Schema.Literal("openai/text-embedding-3-small"),
+        Schema.Literal("openai/text-embedding-3-large"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    enable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    engineVersion: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    fusionMethod: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["max", "rrf"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    hybridSearchEnabled: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    indexMethod: Schema.optional(Schema.Union([IndexMethod, Schema.Null])),
+    indexingOptions: Schema.optional(
+      Schema.Union([IndexingOptions, Schema.Null]),
+    ),
+    lastActivity: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    maxNumResults: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
+    modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    namespace: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    publicEndpointId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    publicEndpointParams: Schema.optional(
+      Schema.Union([PublicEndpointParams, Schema.Null]),
+    ),
+    reranking: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    rerankingModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/baai/bge-reranker-base"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    retrievalOptions: Schema.optional(
+      Schema.Union([RetrievalOptions, Schema.Null]),
+    ),
+    rewriteModel: Schema.optional(
+      Schema.Union([
+        Schema.Literal("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
+        Schema.Literal("@cf/zai-org/glm-4.7-flash"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fast"),
+        Schema.Literal("@cf/meta/llama-3.1-8b-instruct-fp8"),
+        Schema.Literal("@cf/meta/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("@cf/qwen/qwen3-30b-a3b-fp8"),
+        Schema.Literal("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
+        Schema.Literal("@cf/moonshotai/kimi-k2-instruct"),
+        Schema.Literal("@cf/google/gemma-3-12b-it"),
+        Schema.Literal("@cf/google/gemma-4-26b-a4b-it"),
+        Schema.Literal("@cf/moonshotai/kimi-k2.5"),
+        Schema.Literal("anthropic/claude-3-7-sonnet"),
+        Schema.Literal("anthropic/claude-sonnet-4"),
+        Schema.Literal("anthropic/claude-opus-4"),
+        Schema.Literal("anthropic/claude-3-5-haiku"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-instruct"),
+        Schema.Literal("cerebras/qwen-3-235b-a22b-thinking"),
+        Schema.Literal("cerebras/llama-3.3-70b"),
+        Schema.Literal("cerebras/llama-4-maverick-17b-128e-instruct"),
+        Schema.Literal("cerebras/llama-4-scout-17b-16e-instruct"),
+        Schema.Literal("cerebras/gpt-oss-120b"),
+        Schema.Literal("google-ai-studio/gemini-2.5-flash"),
+        Schema.Literal("google-ai-studio/gemini-2.5-pro"),
+        Schema.Literal("grok/grok-4"),
+        Schema.Literal("groq/llama-3.3-70b-versatile"),
+        Schema.Literal("groq/llama-3.1-8b-instant"),
+        Schema.Literal("openai/gpt-5"),
+        Schema.Literal("openai/gpt-5-mini"),
+        Schema.Literal("openai/gpt-5-nano"),
+        Schema.Literal(""),
+        Schema.Null,
+      ]),
+    ),
+    rewriteQuery: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    scoreThreshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
+    status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Literal("r2"),
+        Schema.Literal("web-crawler"),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        modifiedAt: "modified_at",
+        aiGatewayId: "ai_gateway_id",
+        aiSearchModel: "ai_search_model",
+        cache: "cache",
+        cacheThreshold: "cache_threshold",
+        cacheTtl: "cache_ttl",
+        chunkOverlap: "chunk_overlap",
+        chunkSize: "chunk_size",
+        createdBy: "created_by",
+        customMetadata: "custom_metadata",
+        embeddingModel: "embedding_model",
+        enable: "enable",
+        engineVersion: "engine_version",
+        fusionMethod: "fusion_method",
+        hybridSearchEnabled: "hybrid_search_enabled",
+        indexMethod: "index_method",
+        indexingOptions: "indexing_options",
+        lastActivity: "last_activity",
+        maxNumResults: "max_num_results",
+        metadata: "metadata",
+        modifiedBy: "modified_by",
+        namespace: "namespace",
+        paused: "paused",
+        publicEndpointId: "public_endpoint_id",
+        publicEndpointParams: "public_endpoint_params",
+        reranking: "reranking",
+        rerankingModel: "reranking_model",
+        retrievalOptions: "retrieval_options",
+        rewriteModel: "rewrite_model",
+        rewriteQuery: "rewrite_query",
+        scoreThreshold: "score_threshold",
+        source: "source",
+        sourceParams: "source_params",
+        status: "status",
+        syncInterval: "sync_interval",
+        tokenId: "token_id",
+        type: "type",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ReadInstanceResponse>;
 
 export type ReadInstanceError =
@@ -5570,7 +5544,7 @@ export const readInstance: API.OperationMethod<
   ReadInstanceResponse,
   ReadInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReadInstanceRequest,
   output: ReadInstanceResponse,
   errors: [ValidationError, NotFound, InvalidRoute, Forbidden],
@@ -5668,25 +5642,24 @@ export interface SearchInstanceRequest {
   query?: string;
 }
 
-export const SearchInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String.pipe(T.HttpPath("id")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      aiSearchOptions: Schema.optional(AisearchOptions),
-      messages: Schema.optional(Schema.Array(Message)),
-      query: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        aiSearchOptions: "ai_search_options",
-        messages: "messages",
-        query: "query",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/ai-search/instances/{id}/search",
-      }),
-    ),
+export const SearchInstanceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String.pipe(T.HttpPath("id")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    aiSearchOptions: Schema.optional(AisearchOptions),
+    messages: Schema.optional(Schema.Array(Message)),
+    query: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      aiSearchOptions: "ai_search_options",
+      messages: "messages",
+      query: "query",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/ai-search/instances/{id}/search",
+    }),
+  ),
 ) as unknown as Schema.Codec<SearchInstanceRequest>;
 
 export interface SearchInstanceResponse {
@@ -5714,7 +5687,7 @@ export interface SearchInstanceResponse {
 }
 
 export const SearchInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       chunks: Schema.Array(Chunk),
       queryKind: Schema.Union([
@@ -5740,7 +5713,7 @@ export const searchInstance: API.OperationMethod<
   SearchInstanceResponse,
   SearchInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchInstanceRequest,
   output: SearchInstanceResponse,
   errors: [],
@@ -5751,17 +5724,16 @@ export interface StatsInstanceRequest {
   accountId: string;
 }
 
-export const StatsInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String.pipe(T.HttpPath("id")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/ai-search/instances/{id}/stats",
-      }),
-    ),
+export const StatsInstanceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String.pipe(T.HttpPath("id")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/ai-search/instances/{id}/stats",
+    }),
+  ),
 ) as unknown as Schema.Codec<StatsInstanceRequest>;
 
 export interface StatsInstanceResponse {
@@ -5787,47 +5759,40 @@ export interface StatsInstanceResponse {
   skipped?: number | null;
 }
 
-export const StatsInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      completed: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      degraded: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      engine: Schema.optional(Schema.Union([Engine, Schema.Null])),
-      error: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      fileEmbedErrors: Schema.optional(
-        Schema.Union([
-          Schema.Record(Schema.String, Schema.Unknown),
-          Schema.Null,
-        ]),
-      ),
-      indexSourceErrors: Schema.optional(
-        Schema.Union([
-          Schema.Record(Schema.String, Schema.Unknown),
-          Schema.Null,
-        ]),
-      ),
-      lastActivity: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      outdated: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      queued: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      running: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      skipped: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          completed: "completed",
-          degraded: "degraded",
-          engine: "engine",
-          error: "error",
-          fileEmbedErrors: "file_embed_errors",
-          indexSourceErrors: "index_source_errors",
-          lastActivity: "last_activity",
-          outdated: "outdated",
-          queued: "queued",
-          running: "running",
-          skipped: "skipped",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const StatsInstanceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    completed: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    degraded: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    engine: Schema.optional(Schema.Union([Engine, Schema.Null])),
+    error: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    fileEmbedErrors: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
+    indexSourceErrors: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
+    lastActivity: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    outdated: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    queued: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    running: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    skipped: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        completed: "completed",
+        degraded: "degraded",
+        engine: "engine",
+        error: "error",
+        fileEmbedErrors: "file_embed_errors",
+        indexSourceErrors: "index_source_errors",
+        lastActivity: "last_activity",
+        outdated: "outdated",
+        queued: "queued",
+        running: "running",
+        skipped: "skipped",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<StatsInstanceResponse>;
 
 export type StatsInstanceError =
@@ -5841,7 +5806,7 @@ export const statsInstance: API.OperationMethod<
   StatsInstanceResponse,
   StatsInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StatsInstanceRequest,
   output: StatsInstanceResponse,
   errors: [ValidationError, NotFound, InvalidRoute],
@@ -5857,18 +5822,17 @@ export interface GetInstanceJobRequest {
   accountId: string;
 }
 
-export const GetInstanceJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String.pipe(T.HttpPath("id")),
-      jobId: Schema.String.pipe(T.HttpPath("jobId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/ai-search/instances/{id}/jobs/{jobId}",
-      }),
-    ),
+export const GetInstanceJobRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String.pipe(T.HttpPath("id")),
+    jobId: Schema.String.pipe(T.HttpPath("jobId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/ai-search/instances/{id}/jobs/{jobId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetInstanceJobRequest>;
 
 export interface GetInstanceJobResponse {
@@ -5882,7 +5846,7 @@ export interface GetInstanceJobResponse {
 }
 
 export const GetInstanceJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       source: Schema.Union([
@@ -5920,7 +5884,7 @@ export const getInstanceJob: API.OperationMethod<
   GetInstanceJobResponse,
   GetInstanceJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceJobRequest,
   output: GetInstanceJobResponse,
   errors: [ValidationError, NotFound, InvalidRoute],
@@ -5935,7 +5899,7 @@ export interface ListInstanceJobsRequest {
 }
 
 export const ListInstanceJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -5968,7 +5932,7 @@ export interface ListInstanceJobsResponse {
 }
 
 export const ListInstanceJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListInstanceJobsResponseResult),
       resultInfo: Schema.optional(
@@ -5984,7 +5948,7 @@ export const listInstanceJobs: API.PaginatedOperationMethod<
   ListInstanceJobsResponse,
   ListInstanceJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceJobsRequest,
   output: ListInstanceJobsResponse,
   errors: [],
@@ -6006,7 +5970,7 @@ export interface CreateInstanceJobRequest {
 }
 
 export const CreateInstanceJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6030,7 +5994,7 @@ export interface CreateInstanceJobResponse {
 }
 
 export const CreateInstanceJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       source: Schema.optional(
@@ -6072,7 +6036,7 @@ export const createInstanceJob: API.OperationMethod<
   CreateInstanceJobResponse,
   CreateInstanceJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceJobRequest,
   output: CreateInstanceJobResponse,
   errors: [
@@ -6096,7 +6060,7 @@ export interface LogsInstanceJobRequest {
 }
 
 export const LogsInstanceJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       jobId: Schema.String.pipe(T.HttpPath("jobId")),
@@ -6119,7 +6083,7 @@ export type LogsInstanceJobResponse = {
 }[];
 
 export const LogsInstanceJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(JobLogsResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<LogsInstanceJobResponse>;
 
@@ -6134,7 +6098,7 @@ export const logsInstanceJob: API.OperationMethod<
   LogsInstanceJobResponse,
   LogsInstanceJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LogsInstanceJobRequest,
   output: LogsInstanceJobResponse,
   errors: [ValidationError, NotFound, InvalidRoute],
@@ -6153,19 +6117,18 @@ export interface ListNamespacesRequest {
   search?: string;
 }
 
-export const ListNamespacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/ai-search/namespaces",
-      }),
-    ),
+export const ListNamespacesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/ai-search/namespaces",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListNamespacesRequest>;
 
 export interface ListNamespacesResponse {
@@ -6179,7 +6142,7 @@ export interface ListNamespacesResponse {
 }
 
 export const ListNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListNamespacesResponseResult),
       resultInfo: Schema.optional(
@@ -6195,7 +6158,7 @@ export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesResponse,
   ListNamespacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [],
@@ -6218,7 +6181,7 @@ export interface CreateNamespaceRequest {
 }
 
 export const CreateNamespaceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -6239,7 +6202,7 @@ export interface CreateNamespaceResponse {
 }
 
 export const CreateNamespaceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       name: Schema.String,
@@ -6265,7 +6228,7 @@ export const createNamespace: API.OperationMethod<
   CreateNamespaceResponse,
   CreateNamespaceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNamespaceRequest,
   output: CreateNamespaceResponse,
   errors: [NamespaceAlreadyExists, Forbidden],
@@ -6280,7 +6243,7 @@ export interface UpdateNamespaceRequest {
 }
 
 export const UpdateNamespaceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6301,7 +6264,7 @@ export interface UpdateNamespaceResponse {
 }
 
 export const UpdateNamespaceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       name: Schema.String,
@@ -6327,7 +6290,7 @@ export const updateNamespace: API.OperationMethod<
   UpdateNamespaceResponse,
   UpdateNamespaceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNamespaceRequest,
   output: UpdateNamespaceResponse,
   errors: [NamespaceNotFound, Forbidden],
@@ -6339,7 +6302,7 @@ export interface DeleteNamespaceRequest {
 }
 
 export const DeleteNamespaceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6354,7 +6317,7 @@ export const DeleteNamespaceRequest =
 export type DeleteNamespaceResponse = unknown;
 
 export const DeleteNamespaceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteNamespaceResponse>;
 
@@ -6368,7 +6331,7 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceResponse,
   DeleteNamespaceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
   errors: [NamespaceNotFound, Forbidden],
@@ -6379,17 +6342,16 @@ export interface ReadNamespaceRequest {
   accountId: string;
 }
 
-export const ReadNamespaceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String.pipe(T.HttpPath("name")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/ai-search/namespaces/{name}",
-      }),
-    ),
+export const ReadNamespaceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/ai-search/namespaces/{name}",
+    }),
+  ),
 ) as unknown as Schema.Codec<ReadNamespaceRequest>;
 
 export interface ReadNamespaceResponse {
@@ -6399,21 +6361,20 @@ export interface ReadNamespaceResponse {
   description?: string | null;
 }
 
-export const ReadNamespaceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      createdAt: Schema.String,
-      name: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          createdAt: "created_at",
-          name: "name",
-          description: "description",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const ReadNamespaceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    createdAt: Schema.String,
+    name: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        name: "name",
+        description: "description",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ReadNamespaceResponse>;
 
 export type ReadNamespaceError = DefaultErrors | NamespaceNotFound | Forbidden;
@@ -6423,7 +6384,7 @@ export const readNamespace: API.OperationMethod<
   ReadNamespaceResponse,
   ReadNamespaceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReadNamespaceRequest,
   output: ReadNamespaceResponse,
   errors: [NamespaceNotFound, Forbidden],
@@ -6523,7 +6484,7 @@ export interface SearchNamespaceRequest {
 }
 
 export const SearchNamespaceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6570,7 +6531,7 @@ export interface SearchNamespaceResponse {
 }
 
 export const SearchNamespaceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       chunks: Schema.Array(Chunk2),
       queryKind: Schema.Union([
@@ -6600,7 +6561,7 @@ export const searchNamespace: API.OperationMethod<
   SearchNamespaceResponse,
   SearchNamespaceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchNamespaceRequest,
   output: SearchNamespaceResponse,
   errors: [],
@@ -6627,7 +6588,7 @@ export interface ListNamespaceInstancesRequest {
 }
 
 export const ListNamespaceInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6828,7 +6789,7 @@ export interface ListNamespaceInstancesResponse {
 }
 
 export const ListNamespaceInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListInstancesResponseResult),
       resultInfo: Schema.optional(
@@ -6848,7 +6809,7 @@ export const listNamespaceInstances: API.PaginatedOperationMethod<
   ListNamespaceInstancesResponse,
   ListNamespaceInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespaceInstancesRequest,
   output: ListNamespaceInstancesResponse,
   errors: [NamespaceNotFound, InvalidRoute, Forbidden],
@@ -7053,7 +7014,7 @@ export interface CreateNamespaceInstanceRequest {
 }
 
 export const CreateNamespaceInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -7423,7 +7384,7 @@ export interface CreateNamespaceInstanceResponse {
 }
 
 export const CreateNamespaceInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -7655,7 +7616,7 @@ export const createNamespaceInstance: API.OperationMethod<
   CreateNamespaceInstanceResponse,
   CreateNamespaceInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNamespaceInstanceRequest,
   output: CreateNamespaceInstanceResponse,
   errors: [
@@ -7901,7 +7862,7 @@ export interface UpdateNamespaceInstanceRequest {
 }
 
 export const UpdateNamespaceInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -8312,7 +8273,7 @@ export interface UpdateNamespaceInstanceResponse {
 }
 
 export const UpdateNamespaceInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -8542,7 +8503,7 @@ export const updateNamespaceInstance: API.OperationMethod<
   UpdateNamespaceInstanceResponse,
   UpdateNamespaceInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNamespaceInstanceRequest,
   output: UpdateNamespaceInstanceResponse,
   errors: [
@@ -8563,7 +8524,7 @@ export interface DeleteNamespaceInstanceRequest {
 }
 
 export const DeleteNamespaceInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -8764,7 +8725,7 @@ export interface DeleteNamespaceInstanceResponse {
 }
 
 export const DeleteNamespaceInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -8992,7 +8953,7 @@ export const deleteNamespaceInstance: API.OperationMethod<
   DeleteNamespaceInstanceResponse,
   DeleteNamespaceInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNamespaceInstanceRequest,
   output: DeleteNamespaceInstanceResponse,
   errors: [
@@ -9011,7 +8972,7 @@ export interface ReadNamespaceInstanceRequest {
 }
 
 export const ReadNamespaceInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -9212,7 +9173,7 @@ export interface ReadNamespaceInstanceResponse {
 }
 
 export const ReadNamespaceInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -9440,7 +9401,7 @@ export const readNamespaceInstance: API.OperationMethod<
   ReadNamespaceInstanceResponse,
   ReadNamespaceInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReadNamespaceInstanceRequest,
   output: ReadNamespaceInstanceResponse,
   errors: [
@@ -9546,7 +9507,7 @@ export interface SearchNamespaceInstanceRequest {
 }
 
 export const SearchNamespaceInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -9592,7 +9553,7 @@ export interface SearchNamespaceInstanceResponse {
 }
 
 export const SearchNamespaceInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       chunks: Schema.Array(Chunk),
       queryKind: Schema.Union([
@@ -9618,7 +9579,7 @@ export const searchNamespaceInstance: API.OperationMethod<
   SearchNamespaceInstanceResponse,
   SearchNamespaceInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchNamespaceInstanceRequest,
   output: SearchNamespaceInstanceResponse,
   errors: [],
@@ -9631,7 +9592,7 @@ export interface StatsNamespaceInstanceRequest {
 }
 
 export const StatsNamespaceInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -9668,7 +9629,7 @@ export interface StatsNamespaceInstanceResponse {
 }
 
 export const StatsNamespaceInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       completed: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       degraded: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -9717,7 +9678,7 @@ export const statsNamespaceInstance: API.OperationMethod<
   StatsNamespaceInstanceResponse,
   StatsNamespaceInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StatsNamespaceInstanceRequest,
   output: StatsNamespaceInstanceResponse,
   errors: [],
@@ -9735,7 +9696,7 @@ export interface GetNamespaceInstanceItemRequest {
 }
 
 export const GetNamespaceInstanceItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -9773,7 +9734,7 @@ export interface GetNamespaceInstanceItemResponse {
 }
 
 export const GetNamespaceInstanceItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       checksum: Schema.String,
@@ -9828,7 +9789,7 @@ export const getNamespaceInstanceItem: API.OperationMethod<
   GetNamespaceInstanceItemResponse,
   GetNamespaceInstanceItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNamespaceInstanceItemRequest,
   output: GetNamespaceInstanceItemResponse,
   errors: [],
@@ -9863,7 +9824,7 @@ export interface ListNamespaceInstanceItemsRequest {
 }
 
 export const ListNamespaceInstanceItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -9934,7 +9895,7 @@ export interface ListNamespaceInstanceItemsResponse {
 }
 
 export const ListNamespaceInstanceItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListNamespaceInstanceItemsResponseResult),
       resultInfo: Schema.optional(
@@ -9950,7 +9911,7 @@ export const listNamespaceInstanceItems: API.PaginatedOperationMethod<
   ListNamespaceInstanceItemsResponse,
   ListNamespaceInstanceItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespaceInstanceItemsRequest,
   output: ListNamespaceInstanceItemsResponse,
   errors: [],
@@ -9971,7 +9932,7 @@ export interface DeleteNamespaceInstanceItemRequest {
 }
 
 export const DeleteNamespaceInstanceItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -9990,7 +9951,7 @@ export interface DeleteNamespaceInstanceItemResponse {
 }
 
 export const DeleteNamespaceInstanceItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       key: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -10003,7 +9964,7 @@ export const deleteNamespaceInstanceItem: API.OperationMethod<
   DeleteNamespaceInstanceItemResponse,
   DeleteNamespaceInstanceItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNamespaceInstanceItemRequest,
   output: DeleteNamespaceInstanceItemResponse,
   errors: [],
@@ -10017,7 +9978,7 @@ export interface DownloadNamespaceInstanceItemRequest {
 }
 
 export const DownloadNamespaceInstanceItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -10034,7 +9995,7 @@ export const DownloadNamespaceInstanceItemRequest =
 export type DownloadNamespaceInstanceItemResponse = unknown;
 
 export const DownloadNamespaceInstanceItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<DownloadNamespaceInstanceItemResponse>;
 
@@ -10045,7 +10006,7 @@ export const downloadNamespaceInstanceItem: API.OperationMethod<
   DownloadNamespaceInstanceItemResponse,
   DownloadNamespaceInstanceItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DownloadNamespaceInstanceItemRequest,
   output: DownloadNamespaceInstanceItemResponse,
   errors: [],
@@ -10061,7 +10022,7 @@ export interface UploadNamespaceInstanceItemRequest {
 }
 
 export const UploadNamespaceInstanceItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -10100,7 +10061,7 @@ export interface UploadNamespaceInstanceItemResponse {
 }
 
 export const UploadNamespaceInstanceItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       checksum: Schema.String,
@@ -10155,7 +10116,7 @@ export const uploadNamespaceInstanceItem: API.OperationMethod<
   UploadNamespaceInstanceItemResponse,
   UploadNamespaceInstanceItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadNamespaceInstanceItemRequest,
   output: UploadNamespaceInstanceItemResponse,
   errors: [],
@@ -10174,7 +10135,7 @@ export interface ChunksNamespaceInstanceItemRequest {
 }
 
 export const ChunksNamespaceInstanceItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -10203,7 +10164,7 @@ export type ChunksNamespaceInstanceItemResponse = {
 }[];
 
 export const ChunksNamespaceInstanceItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(ItemChunksResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<ChunksNamespaceInstanceItemResponse>;
 
@@ -10214,7 +10175,7 @@ export const chunksNamespaceInstanceItem: API.OperationMethod<
   ChunksNamespaceInstanceItemResponse,
   ChunksNamespaceInstanceItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChunksNamespaceInstanceItemRequest,
   output: ChunksNamespaceInstanceItemResponse,
   errors: [],
@@ -10233,7 +10194,7 @@ export interface LogsNamespaceInstanceItemRequest {
 }
 
 export const LogsNamespaceInstanceItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -10260,7 +10221,7 @@ export type LogsNamespaceInstanceItemResponse = {
 }[];
 
 export const LogsNamespaceInstanceItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(ItemLogsResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<LogsNamespaceInstanceItemResponse>;
 
@@ -10271,7 +10232,7 @@ export const logsNamespaceInstanceItem: API.OperationMethod<
   LogsNamespaceInstanceItemResponse,
   LogsNamespaceInstanceItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LogsNamespaceInstanceItemRequest,
   output: LogsNamespaceInstanceItemResponse,
   errors: [],
@@ -10290,7 +10251,7 @@ export interface SyncNamespaceInstanceItemRequest {
 }
 
 export const SyncNamespaceInstanceItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -10334,7 +10295,7 @@ export interface SyncNamespaceInstanceItemResponse {
 }
 
 export const SyncNamespaceInstanceItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       checksum: Schema.String,
@@ -10389,7 +10350,7 @@ export const syncNamespaceInstanceItem: API.OperationMethod<
   SyncNamespaceInstanceItemResponse,
   SyncNamespaceInstanceItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SyncNamespaceInstanceItemRequest,
   output: SyncNamespaceInstanceItemResponse,
   errors: [],
@@ -10407,7 +10368,7 @@ export interface GetNamespaceInstanceJobRequest {
 }
 
 export const GetNamespaceInstanceJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -10432,7 +10393,7 @@ export interface GetNamespaceInstanceJobResponse {
 }
 
 export const GetNamespaceInstanceJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       source: Schema.Union([
@@ -10466,7 +10427,7 @@ export const getNamespaceInstanceJob: API.OperationMethod<
   GetNamespaceInstanceJobResponse,
   GetNamespaceInstanceJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNamespaceInstanceJobRequest,
   output: GetNamespaceInstanceJobResponse,
   errors: [],
@@ -10482,7 +10443,7 @@ export interface ListNamespaceInstanceJobsRequest {
 }
 
 export const ListNamespaceInstanceJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -10516,7 +10477,7 @@ export interface ListNamespaceInstanceJobsResponse {
 }
 
 export const ListNamespaceInstanceJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListInstanceJobsResponseResult),
       resultInfo: Schema.optional(
@@ -10532,7 +10493,7 @@ export const listNamespaceInstanceJobs: API.PaginatedOperationMethod<
   ListNamespaceInstanceJobsResponse,
   ListNamespaceInstanceJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespaceInstanceJobsRequest,
   output: ListNamespaceInstanceJobsResponse,
   errors: [],
@@ -10555,7 +10516,7 @@ export interface CreateNamespaceInstanceJobRequest {
 }
 
 export const CreateNamespaceInstanceJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -10580,7 +10541,7 @@ export interface CreateNamespaceInstanceJobResponse {
 }
 
 export const CreateNamespaceInstanceJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       source: Schema.Union([
@@ -10614,7 +10575,7 @@ export const createNamespaceInstanceJob: API.OperationMethod<
   CreateNamespaceInstanceJobResponse,
   CreateNamespaceInstanceJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNamespaceInstanceJobRequest,
   output: CreateNamespaceInstanceJobResponse,
   errors: [],
@@ -10631,7 +10592,7 @@ export interface PatchNamespaceInstanceJobRequest {
 }
 
 export const PatchNamespaceInstanceJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -10657,7 +10618,7 @@ export interface PatchNamespaceInstanceJobResponse {
 }
 
 export const PatchNamespaceInstanceJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       source: Schema.Union([
@@ -10691,7 +10652,7 @@ export const patchNamespaceInstanceJob: API.OperationMethod<
   PatchNamespaceInstanceJobResponse,
   PatchNamespaceInstanceJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchNamespaceInstanceJobRequest,
   output: PatchNamespaceInstanceJobResponse,
   errors: [],
@@ -10710,7 +10671,7 @@ export interface LogsNamespaceInstanceJobRequest {
 }
 
 export const LogsNamespaceInstanceJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -10734,7 +10695,7 @@ export type LogsNamespaceInstanceJobResponse = {
 }[];
 
 export const LogsNamespaceInstanceJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(JobLogsResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<LogsNamespaceInstanceJobResponse>;
 
@@ -10745,7 +10706,7 @@ export const logsNamespaceInstanceJob: API.OperationMethod<
   LogsNamespaceInstanceJobResponse,
   LogsNamespaceInstanceJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LogsNamespaceInstanceJobRequest,
   output: LogsNamespaceInstanceJobResponse,
   errors: [],
@@ -10769,7 +10730,7 @@ export interface CreateOrUpdateNamespaceInstanceItemRequest {
 }
 
 export const CreateOrUpdateNamespaceInstanceItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       id: Schema.String.pipe(T.HttpPath("id")),
@@ -10814,7 +10775,7 @@ export interface CreateOrUpdateNamespaceInstanceItemResponse {
 }
 
 export const CreateOrUpdateNamespaceInstanceItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       checksum: Schema.String,
@@ -10869,7 +10830,7 @@ export const createOrUpdateNamespaceInstanceItem: API.OperationMethod<
   CreateOrUpdateNamespaceInstanceItemResponse,
   CreateOrUpdateNamespaceInstanceItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrUpdateNamespaceInstanceItemRequest,
   output: CreateOrUpdateNamespaceInstanceItemResponse,
   errors: [],
@@ -10888,19 +10849,18 @@ export interface ListTokensRequest {
   search?: string;
 }
 
-export const ListTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/ai-search/tokens",
-      }),
-    ),
+export const ListTokensRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/ai-search/tokens",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListTokensRequest>;
 
 export interface ListTokensResponse {
@@ -10923,14 +10883,13 @@ export interface ListTokensResponse {
   } | null;
 }
 
-export const ListTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListTokensResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListInstancesResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListTokensResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListTokensResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListInstancesResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListTokensResponse>;
 
 export type ListTokensError = DefaultErrors | InvalidRoute | Forbidden;
@@ -10940,7 +10899,7 @@ export const listTokens: API.PaginatedOperationMethod<
   ListTokensResponse,
   ListTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTokensRequest,
   output: ListTokensResponse,
   errors: [InvalidRoute, Forbidden],
@@ -10966,26 +10925,25 @@ export interface CreateTokenRequest {
   legacy?: boolean;
 }
 
-export const CreateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      cfApiId: Schema.String,
-      cfApiKey: Schema.String,
-      name: Schema.String,
-      legacy: Schema.optional(Schema.Boolean),
-    }).pipe(
-      Schema.encodeKeys({
-        cfApiId: "cf_api_id",
-        cfApiKey: "cf_api_key",
-        name: "name",
-        legacy: "legacy",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/ai-search/tokens",
-      }),
-    ),
+export const CreateTokenRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    cfApiId: Schema.String,
+    cfApiKey: Schema.String,
+    name: Schema.String,
+    legacy: Schema.optional(Schema.Boolean),
+  }).pipe(
+    Schema.encodeKeys({
+      cfApiId: "cf_api_id",
+      cfApiKey: "cf_api_key",
+      name: "name",
+      legacy: "legacy",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/ai-search/tokens",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateTokenRequest>;
 
 export interface CreateTokenResponse {
@@ -11000,33 +10958,32 @@ export interface CreateTokenResponse {
   modifiedBy?: string | null;
 }
 
-export const CreateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      cfApiId: Schema.String,
-      createdAt: Schema.String,
-      modifiedAt: Schema.String,
-      name: Schema.String,
-      createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      legacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          cfApiId: "cf_api_id",
-          createdAt: "created_at",
-          modifiedAt: "modified_at",
-          name: "name",
-          createdBy: "created_by",
-          enabled: "enabled",
-          legacy: "legacy",
-          modifiedBy: "modified_by",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateTokenResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    cfApiId: Schema.String,
+    createdAt: Schema.String,
+    modifiedAt: Schema.String,
+    name: Schema.String,
+    createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    legacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        cfApiId: "cf_api_id",
+        createdAt: "created_at",
+        modifiedAt: "modified_at",
+        name: "name",
+        createdBy: "created_by",
+        enabled: "enabled",
+        legacy: "legacy",
+        modifiedBy: "modified_by",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateTokenResponse>;
 
 export type CreateTokenError =
@@ -11042,7 +10999,7 @@ export const createToken: API.OperationMethod<
   CreateTokenResponse,
   CreateTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTokenRequest,
   output: CreateTokenResponse,
   errors: [
@@ -11068,27 +11025,26 @@ export interface UpdateTokenRequest {
   legacy?: boolean;
 }
 
-export const UpdateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String.pipe(T.HttpPath("id")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      cfApiId: Schema.String,
-      cfApiKey: Schema.String,
-      name: Schema.String,
-      legacy: Schema.optional(Schema.Boolean),
-    }).pipe(
-      Schema.encodeKeys({
-        cfApiId: "cf_api_id",
-        cfApiKey: "cf_api_key",
-        name: "name",
-        legacy: "legacy",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/ai-search/tokens/{id}",
-      }),
-    ),
+export const UpdateTokenRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String.pipe(T.HttpPath("id")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    cfApiId: Schema.String,
+    cfApiKey: Schema.String,
+    name: Schema.String,
+    legacy: Schema.optional(Schema.Boolean),
+  }).pipe(
+    Schema.encodeKeys({
+      cfApiId: "cf_api_id",
+      cfApiKey: "cf_api_key",
+      name: "name",
+      legacy: "legacy",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/ai-search/tokens/{id}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateTokenRequest>;
 
 export interface UpdateTokenResponse {
@@ -11103,33 +11059,32 @@ export interface UpdateTokenResponse {
   modifiedBy?: string | null;
 }
 
-export const UpdateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      cfApiId: Schema.String,
-      createdAt: Schema.String,
-      modifiedAt: Schema.String,
-      name: Schema.String,
-      createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      legacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          cfApiId: "cf_api_id",
-          createdAt: "created_at",
-          modifiedAt: "modified_at",
-          name: "name",
-          createdBy: "created_by",
-          enabled: "enabled",
-          legacy: "legacy",
-          modifiedBy: "modified_by",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateTokenResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    cfApiId: Schema.String,
+    createdAt: Schema.String,
+    modifiedAt: Schema.String,
+    name: Schema.String,
+    createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    legacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        cfApiId: "cf_api_id",
+        createdAt: "created_at",
+        modifiedAt: "modified_at",
+        name: "name",
+        createdBy: "created_by",
+        enabled: "enabled",
+        legacy: "legacy",
+        modifiedBy: "modified_by",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateTokenResponse>;
 
 export type UpdateTokenError =
@@ -11146,7 +11101,7 @@ export const updateToken: API.OperationMethod<
   UpdateTokenResponse,
   UpdateTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTokenRequest,
   output: UpdateTokenResponse,
   errors: [
@@ -11164,23 +11119,22 @@ export interface DeleteTokenRequest {
   accountId: string;
 }
 
-export const DeleteTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String.pipe(T.HttpPath("id")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/ai-search/tokens/{id}",
-      }),
-    ),
+export const DeleteTokenRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String.pipe(T.HttpPath("id")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/ai-search/tokens/{id}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteTokenRequest>;
 
 export type DeleteTokenResponse = unknown;
 
-export const DeleteTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+export const DeleteTokenResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteTokenResponse>;
 
 export type DeleteTokenError =
@@ -11197,7 +11151,7 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenResponse,
   DeleteTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTokenRequest,
   output: DeleteTokenResponse,
   errors: [
@@ -11215,7 +11169,7 @@ export interface ReadTokenRequest {
   accountId: string;
 }
 
-export const ReadTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ReadTokenRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -11239,33 +11193,32 @@ export interface ReadTokenResponse {
   modifiedBy?: string | null;
 }
 
-export const ReadTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      cfApiId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      legacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          cfApiId: "cf_api_id",
-          createdAt: "created_at",
-          modifiedAt: "modified_at",
-          name: "name",
-          createdBy: "created_by",
-          enabled: "enabled",
-          legacy: "legacy",
-          modifiedBy: "modified_by",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const ReadTokenResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    cfApiId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    legacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        cfApiId: "cf_api_id",
+        createdAt: "created_at",
+        modifiedAt: "modified_at",
+        name: "name",
+        createdBy: "created_by",
+        enabled: "enabled",
+        legacy: "legacy",
+        modifiedBy: "modified_by",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ReadTokenResponse>;
 
 export type ReadTokenError =
@@ -11281,7 +11234,7 @@ export const readToken: API.OperationMethod<
   ReadTokenResponse,
   ReadTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReadTokenRequest,
   output: ReadTokenResponse,
   errors: [ValidationError, NotFound, InvalidRoute, TokenNotFound, Forbidden],

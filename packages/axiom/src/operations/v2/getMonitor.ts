@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface GetMonitorInput {
   id: string;
 }
-export const GetMonitorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMonitorInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/monitors/{id}" }),
@@ -48,7 +48,7 @@ export interface GetMonitorOutput {
   updatedAt?: string;
   id: string;
 }
-export const GetMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMonitorOutput = /*@__PURE__*/ Schema.Struct({
   alertOnNoData: Schema.optional(Schema.Boolean),
   aplQuery: Schema.optional(Schema.String),
   columnName: Schema.optional(Schema.String),
@@ -92,7 +92,7 @@ export const GetMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param id - Unique identifier of the monitor (format: mon_*)
  */
-export const getMonitor = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getMonitor = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetMonitorInput,
   outputSchema: GetMonitorOutput,
   errors: [NotFound] as const,

@@ -10,7 +10,7 @@ export interface SubscriptionsDeliveriesListInput {
   status?: "completed" | "failed" | "skipped" | "starting";
 }
 export const SubscriptionsDeliveriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     subscription_id: Schema.Number.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
@@ -49,7 +49,7 @@ export interface SubscriptionsDeliveriesListOutput {
   }[];
 }
 export const SubscriptionsDeliveriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
@@ -89,9 +89,7 @@ export const SubscriptionsDeliveriesListOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param status - Return only deliveries in this run status (starting, completed, failed, or skipped).
  */
-export const subscriptionsDeliveriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubscriptionsDeliveriesListInput,
-    outputSchema: SubscriptionsDeliveriesListOutput,
-  }),
-);
+export const subscriptionsDeliveriesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubscriptionsDeliveriesListInput,
+  outputSchema: SubscriptionsDeliveriesListOutput,
+}));

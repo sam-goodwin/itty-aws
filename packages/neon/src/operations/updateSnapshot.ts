@@ -8,7 +8,7 @@ export interface UpdateSnapshotInput {
   snapshot_id: string;
   snapshot: { name?: string };
 }
-export const UpdateSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateSnapshotInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   snapshot_id: Schema.String.pipe(T.PathParam()),
   snapshot: Schema.Struct({
@@ -36,7 +36,7 @@ export interface UpdateSnapshotOutput {
     diff_size?: number;
   };
 }
-export const UpdateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateSnapshotOutput = /*@__PURE__*/ Schema.Struct({
   snapshot: Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -61,7 +61,7 @@ export const UpdateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param project_id - The Neon project ID
  * @param snapshot_id - The snapshot ID
  */
-export const updateSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateSnapshot = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateSnapshotInput,
   outputSchema: UpdateSnapshotOutput,
 }));

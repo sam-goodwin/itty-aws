@@ -17,7 +17,7 @@ export interface GetTopupsInput {
   starting_after?: string;
   status?: "canceled" | "failed" | "pending" | "succeeded";
 }
-export const GetTopupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTopupsInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.optional(Schema.String),
   created: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
@@ -135,7 +135,7 @@ export interface GetTopupsOutput {
   object: "list";
   url: string;
 }
-export const GetTopupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTopupsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       amount: Schema.Number,
@@ -269,7 +269,7 @@ export const GetTopupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param status - Only return top-ups that have the given status. One of `canceled`, `failed`, `pending` or `succeeded`.
  */
-export const GetTopups = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTopups = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetTopupsInput,
   outputSchema: GetTopupsOutput,
 }));

@@ -7,7 +7,7 @@ export interface ExportEvmAccountInput {
   address: string;
   exportEncryptionKey: string;
 }
-export const ExportEvmAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExportEvmAccountInput = /*@__PURE__*/ Schema.Struct({
   address: Schema.String.pipe(T.PathParam()),
   exportEncryptionKey: Schema.String,
 }).pipe(
@@ -18,11 +18,9 @@ export const ExportEvmAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ExportEvmAccountOutput {
   encryptedPrivateKey: string;
 }
-export const ExportEvmAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    encryptedPrivateKey: Schema.String,
-  },
-) as unknown as Schema.Codec<ExportEvmAccountOutput>;
+export const ExportEvmAccountOutput = /*@__PURE__*/ Schema.Struct({
+  encryptedPrivateKey: Schema.String,
+}) as unknown as Schema.Codec<ExportEvmAccountOutput>;
 
 // The operation
 /**
@@ -40,7 +38,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The 0x-prefixed address of the EVM account. The address does not need to be checksummed.
  */
-export const exportEvmAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const exportEvmAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExportEvmAccountInput,
   outputSchema: ExportEvmAccountOutput,
 }));

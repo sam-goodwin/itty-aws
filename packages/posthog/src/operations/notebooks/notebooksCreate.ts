@@ -61,7 +61,7 @@ export interface NotebooksCreateInput {
   parent_resource?: { type: "account"; id: string } | null;
   _create_in_folder?: string;
 }
-export const NotebooksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NotebooksCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   short_id: Schema.optional(Schema.String),
@@ -209,7 +209,7 @@ export interface NotebooksCreateOutput {
   parent_resource?: { type: "account"; id: string } | null;
   _create_in_folder?: string;
 }
-export const NotebooksCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NotebooksCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   short_id: Schema.optional(Schema.String),
   title: Schema.optional(Schema.NullOr(Schema.String)),
@@ -303,7 +303,7 @@ export const NotebooksCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const notebooksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const notebooksCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: NotebooksCreateInput,
   outputSchema: NotebooksCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

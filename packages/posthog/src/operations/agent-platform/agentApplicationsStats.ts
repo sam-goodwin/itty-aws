@@ -9,7 +9,7 @@ export interface AgentApplicationsStatsInput {
   since?: string;
 }
 export const AgentApplicationsStatsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     since: Schema.optional(Schema.String),
@@ -30,7 +30,7 @@ export interface AgentApplicationsStatsOutput {
   pendingApprovalsCount: number;
 }
 export const AgentApplicationsStatsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     liveCount: Schema.Number,
     sessionsInWindowCount: Schema.Number,
     spendInWindowUsd: Schema.Number,
@@ -47,9 +47,7 @@ export const AgentApplicationsStatsOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param since - ISO datetime — counts spend + session totals from this point forward. Defaults to 24h ago.
  */
-export const agentApplicationsStats = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentApplicationsStatsInput,
-    outputSchema: AgentApplicationsStatsOutput,
-  }),
-);
+export const agentApplicationsStats = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentApplicationsStatsInput,
+  outputSchema: AgentApplicationsStatsOutput,
+}));

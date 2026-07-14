@@ -10,7 +10,7 @@ export interface V1GetProjectPgbouncerConfigInput {
   ref: string;
 }
 export const V1GetProjectPgbouncerConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -32,7 +32,7 @@ export interface V1GetProjectPgbouncerConfigOutput {
   reserve_pool_size?: number;
 }
 export const V1GetProjectPgbouncerConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     default_pool_size: Schema.optional(Schema.Number),
     ignore_startup_parameters: Schema.optional(Schema.String),
     max_client_conn: Schema.optional(Schema.Number),
@@ -52,10 +52,8 @@ export const V1GetProjectPgbouncerConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetProjectPgbouncerConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetProjectPgbouncerConfigInput,
-    outputSchema: V1GetProjectPgbouncerConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1GetProjectPgbouncerConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetProjectPgbouncerConfigInput,
+  outputSchema: V1GetProjectPgbouncerConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

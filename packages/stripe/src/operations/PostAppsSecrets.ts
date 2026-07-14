@@ -10,7 +10,7 @@ export interface PostAppsSecretsInput {
   payload: string;
   scope: { type: "account" | "user"; user?: string };
 }
-export const PostAppsSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostAppsSecretsInput = /*@__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.Array(Schema.String)),
   expires_at: Schema.optional(Schema.Number),
   name: Schema.String,
@@ -39,7 +39,7 @@ export interface PostAppsSecretsOutput {
   payload?: string | null;
   scope: { type: "account" | "user"; user?: string };
 }
-export const PostAppsSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostAppsSecretsOutput = /*@__PURE__*/ Schema.Struct({
   created: Schema.Number,
   deleted: Schema.optional(Schema.Boolean),
   expires_at: Schema.NullOr(Schema.Number),
@@ -60,7 +60,7 @@ export const PostAppsSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>Create or replace a secret in the secret store.</p>
  */
-export const PostAppsSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostAppsSecrets = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostAppsSecretsInput,
   outputSchema: PostAppsSecretsOutput,
 }));

@@ -8,7 +8,7 @@ export interface ExportsRetrieveInput {
   id: number;
   project_id: string;
 }
-export const ExportsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExportsRetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.Number.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -37,7 +37,7 @@ export interface ExportsRetrieveOutput {
   exception?: string | null;
   user_access_level?: string | null;
 }
-export const ExportsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExportsRetrieveOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Number),
   dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
   insight: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -68,7 +68,7 @@ export const ExportsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param id - A unique integer value identifying this exported asset.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const exportsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const exportsRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExportsRetrieveInput,
   outputSchema: ExportsRetrieveOutput,
   errors: [Forbidden, NotFound] as const,

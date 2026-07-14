@@ -15,7 +15,7 @@ export interface ListTrafficBudgetsInput {
   fingerprint?: string;
 }
 export const ListTrafficBudgetsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -70,7 +70,7 @@ export interface ListTrafficBudgetsOutput {
   }[];
 }
 export const ListTrafficBudgetsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -135,16 +135,14 @@ export const ListTrafficBudgetsOutput =
  * @param created_at - Filter by creation date range (format: 'start..end')
  * @param fingerprint - Filter budgets by query fingerprint
  */
-export const listTrafficBudgets = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListTrafficBudgetsInput,
-    outputSchema: ListTrafficBudgetsOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listTrafficBudgets = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListTrafficBudgetsInput,
+  outputSchema: ListTrafficBudgetsOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

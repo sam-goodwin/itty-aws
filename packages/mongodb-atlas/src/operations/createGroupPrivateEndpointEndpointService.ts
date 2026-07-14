@@ -10,7 +10,7 @@ export interface CreateGroupPrivateEndpointEndpointServiceInput {
   pretty?: boolean;
 }
 export const CreateGroupPrivateEndpointEndpointServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const CreateGroupPrivateEndpointEndpointServiceInput =
 // Output Schema
 export type CreateGroupPrivateEndpointEndpointServiceOutput = void;
 export const CreateGroupPrivateEndpointEndpointServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupPrivateEndpointEndpointServiceOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupPrivateEndpointEndpointServiceOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const CreateGroupPrivateEndpointEndpointServiceOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const createGroupPrivateEndpointEndpointService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupPrivateEndpointEndpointServiceInput,
     outputSchema: CreateGroupPrivateEndpointEndpointServiceOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

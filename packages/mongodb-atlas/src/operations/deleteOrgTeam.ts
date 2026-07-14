@@ -10,7 +10,7 @@ export interface DeleteOrgTeamInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const DeleteOrgTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteOrgTeamInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   teamId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -25,7 +25,7 @@ export const DeleteOrgTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteOrgTeamOutput = void;
 export const DeleteOrgTeamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgTeamOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgTeamOutput>;
 
 // The operation
 /**
@@ -38,7 +38,7 @@ export const DeleteOrgTeamOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param teamId - Unique 24-hexadecimal digit string that identifies the team that you want to delete.
  */
-export const deleteOrgTeam = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteOrgTeam = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteOrgTeamInput,
   outputSchema: DeleteOrgTeamOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

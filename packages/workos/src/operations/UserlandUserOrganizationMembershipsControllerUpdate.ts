@@ -8,7 +8,7 @@ export interface UserlandUserOrganizationMembershipsControllerUpdateInput {
   id: string;
 }
 export const UserlandUserOrganizationMembershipsControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -49,7 +49,7 @@ export interface UserlandUserOrganizationMembershipsControllerUpdateOutput {
   };
 }
 export const UserlandUserOrganizationMembershipsControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.String),
@@ -103,7 +103,7 @@ export const UserlandUserOrganizationMembershipsControllerUpdateOutput =
  * @param id - The unique ID of the organization membership.
  */
 export const UserlandUserOrganizationMembershipsControllerUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserOrganizationMembershipsControllerUpdateInput,
     outputSchema: UserlandUserOrganizationMembershipsControllerUpdateOutput,
     errors: [NotFound, UnprocessableEntity] as const,

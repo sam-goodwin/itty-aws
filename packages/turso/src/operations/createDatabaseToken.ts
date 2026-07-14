@@ -12,7 +12,7 @@ export interface CreateDatabaseTokenInput {
   permissions?: { read_attach?: { databases?: string[] } };
 }
 export const CreateDatabaseTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     expiration: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export interface CreateDatabaseTokenOutput {
   jwt?: string;
 }
 export const CreateDatabaseTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jwt: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<CreateDatabaseTokenOutput>;
 
@@ -55,7 +55,7 @@ export const CreateDatabaseTokenOutput =
  * @param expiration - Expiration time for the token (e.g., 2w1d30m).
  * @param authorization - Authorization level for the token (full-access or read-only).
  */
-export const createDatabaseToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createDatabaseToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateDatabaseTokenInput,
   outputSchema: CreateDatabaseTokenOutput,
   errors: [BadRequest, NotFound] as const,

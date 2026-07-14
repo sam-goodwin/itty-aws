@@ -8,7 +8,7 @@ export interface GetInvoiceInput {
   organization: string;
   id: string;
 }
-export const GetInvoiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetInvoiceInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -27,7 +27,7 @@ export interface GetInvoiceOutput {
   paid: boolean;
   overdue: boolean;
 }
-export const GetInvoiceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetInvoiceOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   total: Schema.String,
   billing_period_start: Schema.String,
@@ -43,7 +43,7 @@ export const GetInvoiceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param organization - Organization name slug from `list_organizations`. Example: `acme`.
  * @param id - Invoice public ID from `list_invoices`. Example: `aabb12123434`.
  */
-export const getInvoice = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getInvoice = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetInvoiceInput,
   outputSchema: GetInvoiceOutput,
   errors: [Forbidden, NotFound] as const,

@@ -94,7 +94,7 @@ interface ListCustomTrustStoresResponseResult {
   uploadedOn: string;
 }
 const ListCustomTrustStoresResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       certificate: Schema.String,
@@ -135,7 +135,7 @@ interface ListCustomTrustStoresResponseResultInfo {
   totalCount?: number | null;
 }
 const ListCustomTrustStoresResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -162,7 +162,7 @@ export interface GetCustomTrustStoreRequest {
 }
 
 export const GetCustomTrustStoreRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customOriginTrustStoreId: Schema.String.pipe(
         T.HttpPath("customOriginTrustStoreId"),
@@ -203,7 +203,7 @@ export interface GetCustomTrustStoreResponse {
 }
 
 export const GetCustomTrustStoreResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       certificate: Schema.String,
@@ -251,7 +251,7 @@ export const getCustomTrustStore: API.OperationMethod<
   GetCustomTrustStoreResponse,
   GetCustomTrustStoreError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomTrustStoreRequest,
   output: GetCustomTrustStoreResponse,
   errors: [
@@ -274,7 +274,7 @@ export interface ListCustomTrustStoresRequest {
 }
 
 export const ListCustomTrustStoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -316,7 +316,7 @@ export interface ListCustomTrustStoresResponse {
 }
 
 export const ListCustomTrustStoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListCustomTrustStoresResponseResult),
       resultInfo: Schema.optional(
@@ -335,7 +335,7 @@ export const listCustomTrustStores: API.PaginatedOperationMethod<
   ListCustomTrustStoresResponse,
   ListCustomTrustStoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomTrustStoresRequest,
   output: ListCustomTrustStoresResponse,
   errors: [AdvancedCertificateManagerRequired, Forbidden],
@@ -356,7 +356,7 @@ export interface CreateCustomTrustStoreRequest {
 }
 
 export const CreateCustomTrustStoreRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       certificate: Schema.String,
@@ -395,7 +395,7 @@ export interface CreateCustomTrustStoreResponse {
 }
 
 export const CreateCustomTrustStoreResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       certificate: Schema.String,
@@ -442,7 +442,7 @@ export const createCustomTrustStore: API.OperationMethod<
   CreateCustomTrustStoreResponse,
   CreateCustomTrustStoreError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomTrustStoreRequest,
   output: CreateCustomTrustStoreResponse,
   errors: [
@@ -459,7 +459,7 @@ export interface DeleteCustomTrustStoreRequest {
 }
 
 export const DeleteCustomTrustStoreRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customOriginTrustStoreId: Schema.String.pipe(
         T.HttpPath("customOriginTrustStoreId"),
@@ -479,7 +479,7 @@ export interface DeleteCustomTrustStoreResponse {
 }
 
 export const DeleteCustomTrustStoreResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -497,7 +497,7 @@ export const deleteCustomTrustStore: API.OperationMethod<
   DeleteCustomTrustStoreResponse,
   DeleteCustomTrustStoreError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomTrustStoreRequest,
   output: DeleteCustomTrustStoreResponse,
   errors: [
@@ -517,11 +517,10 @@ export interface GetTotalTlRequest {
   zoneId: string;
 }
 
-export const GetTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/acm/total_tls" })),
+export const GetTotalTlRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/acm/total_tls" })),
 ) as unknown as Schema.Codec<GetTotalTlRequest>;
 
 export interface GetTotalTlResponse {
@@ -538,31 +537,28 @@ export interface GetTotalTlResponse {
   validityPeriod?: number | null;
 }
 
-export const GetTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      certificateAuthority: Schema.optional(
+export const GetTotalTlResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    certificateAuthority: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+          Schema.String,
         ]),
-      ),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      validityPeriod: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          certificateAuthority: "certificate_authority",
-          enabled: "enabled",
-          validityPeriod: "validity_period",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    validityPeriod: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        certificateAuthority: "certificate_authority",
+        enabled: "enabled",
+        validityPeriod: "validity_period",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetTotalTlResponse>;
 
 export type GetTotalTlError =
@@ -576,7 +572,7 @@ export const getTotalTl: API.OperationMethod<
   GetTotalTlResponse,
   GetTotalTlError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTotalTlRequest,
   output: GetTotalTlResponse,
   errors: [
@@ -595,24 +591,23 @@ export interface UpdateTotalTlRequest {
   certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | (string & {});
 }
 
-export const UpdateTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      enabled: Schema.Boolean,
-      certificateAuthority: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
-          Schema.String,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        enabled: "enabled",
-        certificateAuthority: "certificate_authority",
-      }),
-      T.Http({ method: "POST", path: "/zones/{zone_id}/acm/total_tls" }),
+export const UpdateTotalTlRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    enabled: Schema.Boolean,
+    certificateAuthority: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+        Schema.String,
+      ]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      enabled: "enabled",
+      certificateAuthority: "certificate_authority",
+    }),
+    T.Http({ method: "POST", path: "/zones/{zone_id}/acm/total_tls" }),
+  ),
 ) as unknown as Schema.Codec<UpdateTotalTlRequest>;
 
 export interface UpdateTotalTlResponse {
@@ -629,31 +624,28 @@ export interface UpdateTotalTlResponse {
   validityPeriod?: number | null;
 }
 
-export const UpdateTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      certificateAuthority: Schema.optional(
+export const UpdateTotalTlResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    certificateAuthority: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+          Schema.String,
         ]),
-      ),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      validityPeriod: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          certificateAuthority: "certificate_authority",
-          enabled: "enabled",
-          validityPeriod: "validity_period",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    validityPeriod: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        certificateAuthority: "certificate_authority",
+        enabled: "enabled",
+        validityPeriod: "validity_period",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateTotalTlResponse>;
 
 export type UpdateTotalTlError =
@@ -669,7 +661,7 @@ export const updateTotalTl: API.OperationMethod<
   UpdateTotalTlResponse,
   UpdateTotalTlError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTotalTlRequest,
   output: UpdateTotalTlResponse,
   errors: [
@@ -690,24 +682,23 @@ export interface EditTotalTlRequest {
   certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | (string & {});
 }
 
-export const EditTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      enabled: Schema.Boolean,
-      certificateAuthority: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
-          Schema.String,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        enabled: "enabled",
-        certificateAuthority: "certificate_authority",
-      }),
-      T.Http({ method: "POST", path: "/zones/{zone_id}/acm/total_tls" }),
+export const EditTotalTlRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    enabled: Schema.Boolean,
+    certificateAuthority: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+        Schema.String,
+      ]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      enabled: "enabled",
+      certificateAuthority: "certificate_authority",
+    }),
+    T.Http({ method: "POST", path: "/zones/{zone_id}/acm/total_tls" }),
+  ),
 ) as unknown as Schema.Codec<EditTotalTlRequest>;
 
 export interface EditTotalTlResponse {
@@ -724,31 +715,30 @@ export interface EditTotalTlResponse {
   validityPeriod?: "90" | null;
 }
 
-export const EditTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      certificateAuthority: Schema.optional(
+export const EditTotalTlResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    certificateAuthority: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["google", "lets_encrypt", "ssl_com"]),
+          Schema.String,
         ]),
-      ),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      validityPeriod: Schema.optional(
-        Schema.Union([Schema.Literal("90"), Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          certificateAuthority: "certificate_authority",
-          enabled: "enabled",
-          validityPeriod: "validity_period",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    validityPeriod: Schema.optional(
+      Schema.Union([Schema.Literal("90"), Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        certificateAuthority: "certificate_authority",
+        enabled: "enabled",
+        validityPeriod: "validity_period",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<EditTotalTlResponse>;
 
 export type EditTotalTlError = DefaultErrors;
@@ -758,7 +748,7 @@ export const editTotalTl: API.OperationMethod<
   EditTotalTlResponse,
   EditTotalTlError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EditTotalTlRequest,
   output: EditTotalTlResponse,
   errors: [],

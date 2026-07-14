@@ -18,7 +18,7 @@ export interface DataIntegrationsControllerUpsertApiKeyInput {
   secret: string | Redacted.Redacted<string>;
 }
 export const DataIntegrationsControllerUpsertApiKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
     user_id: Schema.String,
     organization_id: Schema.optional(Schema.String),
@@ -41,7 +41,7 @@ export interface DataIntegrationsControllerUpsertApiKeyOutput {
   updated_at?: string;
 }
 export const DataIntegrationsControllerUpsertApiKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -65,7 +65,7 @@ export const DataIntegrationsControllerUpsertApiKeyOutput =
  * @param slug - The identifier of the integration.
  */
 export const DataIntegrationsControllerUpsertApiKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataIntegrationsControllerUpsertApiKeyInput,
     outputSchema: DataIntegrationsControllerUpsertApiKeyOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

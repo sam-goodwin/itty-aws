@@ -9,7 +9,7 @@ export interface AddGroupUsersInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const AddGroupUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddGroupUsersInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export const AddGroupUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AddGroupUsersOutput = void;
 export const AddGroupUsersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddGroupUsersOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AddGroupUsersOutput>;
 
 // The operation
 /**
@@ -38,7 +38,7 @@ export const AddGroupUsersOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const addGroupUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const addGroupUsers = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddGroupUsersInput,
   outputSchema: AddGroupUsersOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

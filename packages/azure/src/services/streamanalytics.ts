@@ -26,7 +26,7 @@ export interface ClustersCreateOrUpdateInput {
   location?: string;
 }
 export const ClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -65,7 +65,7 @@ export interface ClustersCreateOrUpdateOutput {
   type?: string;
 }
 export const ClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -82,19 +82,17 @@ export const ClustersCreateOrUpdateOutput =
  * @param If-Match - The ETag of the resource. Omit this value to always overwrite the current record set. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new resource to be created, but to prevent updating an existing record set. Other values will result in a 412 Pre-condition Failed response.
  */
-export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersCreateOrUpdateInput,
-    outputSchema: ClustersCreateOrUpdateOutput,
-  }),
-);
+export const ClustersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersCreateOrUpdateInput,
+  outputSchema: ClustersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ClustersDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -109,7 +107,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersDeleteOutput = void;
 export const ClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -120,7 +118,7 @@ export const ClustersDeleteOutput =
  * @param clusterName - The name of the cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
@@ -130,7 +128,7 @@ export interface ClustersGetInput {
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -148,7 +146,7 @@ export interface ClustersGetOutput {
   name?: string;
   type?: string;
 }
-export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -163,7 +161,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterName - The name of the cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
@@ -173,7 +171,7 @@ export interface ClustersListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const ClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -190,7 +188,7 @@ export interface ClustersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -211,18 +209,16 @@ export const ClustersListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListByResourceGroupInput,
-    outputSchema: ClustersListByResourceGroupOutput,
-  }),
-);
+export const ClustersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListByResourceGroupInput,
+  outputSchema: ClustersListByResourceGroupOutput,
+}));
 // Input Schema
 export interface ClustersListBySubscriptionInput {
   subscriptionId: string;
 }
 export const ClustersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -238,7 +234,7 @@ export interface ClustersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ClustersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -258,12 +254,10 @@ export const ClustersListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const ClustersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListBySubscriptionInput,
-    outputSchema: ClustersListBySubscriptionOutput,
-  }),
-);
+export const ClustersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListBySubscriptionInput,
+  outputSchema: ClustersListBySubscriptionOutput,
+}));
 // Input Schema
 export interface ClustersListStreamingJobsInput {
   subscriptionId: string;
@@ -271,7 +265,7 @@ export interface ClustersListStreamingJobsInput {
   clusterName: string;
 }
 export const ClustersListStreamingJobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -303,7 +297,7 @@ export interface ClustersListStreamingJobsOutput {
   nextLink?: string;
 }
 export const ClustersListStreamingJobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -338,12 +332,10 @@ export const ClustersListStreamingJobsOutput =
  * @param clusterName - The name of the cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const ClustersListStreamingJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListStreamingJobsInput,
-    outputSchema: ClustersListStreamingJobsOutput,
-  }),
-);
+export const ClustersListStreamingJobs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListStreamingJobsInput,
+  outputSchema: ClustersListStreamingJobsOutput,
+}));
 // Input Schema
 export interface ClustersUpdateInput {
   subscriptionId: string;
@@ -361,7 +353,7 @@ export interface ClustersUpdateInput {
   tags?: Record<string, string>;
   location?: string;
 }
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -399,7 +391,7 @@ export interface ClustersUpdateOutput {
   name?: string;
   type?: string;
 }
-export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -415,7 +407,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param If-Match - The ETag of the resource. Omit this value to always overwrite the current record set. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  */
-export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
@@ -439,7 +431,7 @@ export interface FunctionsCreateOrReplaceInput {
   type?: string;
 }
 export const FunctionsCreateOrReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -490,7 +482,7 @@ export interface FunctionsCreateOrReplaceOutput {
   type?: string;
 }
 export const FunctionsCreateOrReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -508,12 +500,10 @@ export const FunctionsCreateOrReplaceOutput =
  * @param jobName - The name of the streaming job.
  * @param functionName - The name of the function.
  */
-export const FunctionsCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FunctionsCreateOrReplaceInput,
-    outputSchema: FunctionsCreateOrReplaceOutput,
-  }),
-);
+export const FunctionsCreateOrReplace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FunctionsCreateOrReplaceInput,
+  outputSchema: FunctionsCreateOrReplaceOutput,
+}));
 // Input Schema
 export interface FunctionsDeleteInput {
   subscriptionId: string;
@@ -521,7 +511,7 @@ export interface FunctionsDeleteInput {
   jobName: string;
   functionName: string;
 }
-export const FunctionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -537,7 +527,7 @@ export const FunctionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type FunctionsDeleteOutput = void;
 export const FunctionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FunctionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FunctionsDeleteOutput>;
 
 // The operation
 /**
@@ -549,7 +539,7 @@ export const FunctionsDeleteOutput =
  * @param jobName - The name of the streaming job.
  * @param functionName - The name of the function.
  */
-export const FunctionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FunctionsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FunctionsDeleteInput,
   outputSchema: FunctionsDeleteOutput,
 }));
@@ -560,7 +550,7 @@ export interface FunctionsGetInput {
   jobName: string;
   functionName: string;
 }
-export const FunctionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -579,7 +569,7 @@ export interface FunctionsGetOutput {
   name?: string;
   type?: string;
 }
-export const FunctionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -595,7 +585,7 @@ export const FunctionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobName - The name of the streaming job.
  * @param functionName - The name of the function.
  */
-export const FunctionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FunctionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FunctionsGetInput,
   outputSchema: FunctionsGetOutput,
 }));
@@ -607,7 +597,7 @@ export interface FunctionsListByStreamingJobInput {
   $select?: string;
 }
 export const FunctionsListByStreamingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -626,7 +616,7 @@ export interface FunctionsListByStreamingJobOutput {
   nextLink?: string;
 }
 export const FunctionsListByStreamingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -649,12 +639,10 @@ export const FunctionsListByStreamingJobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const FunctionsListByStreamingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FunctionsListByStreamingJobInput,
-    outputSchema: FunctionsListByStreamingJobOutput,
-  }),
-);
+export const FunctionsListByStreamingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FunctionsListByStreamingJobInput,
+  outputSchema: FunctionsListByStreamingJobOutput,
+}));
 // Input Schema
 export interface FunctionsRetrieveDefaultDefinitionInput {
   subscriptionId: string;
@@ -664,7 +652,7 @@ export interface FunctionsRetrieveDefaultDefinitionInput {
   bindingType: string;
 }
 export const FunctionsRetrieveDefaultDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -685,7 +673,7 @@ export interface FunctionsRetrieveDefaultDefinitionOutput {
   type?: string;
 }
 export const FunctionsRetrieveDefaultDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -702,7 +690,7 @@ export const FunctionsRetrieveDefaultDefinitionOutput =
  * @param functionName - The name of the function.
  */
 export const FunctionsRetrieveDefaultDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FunctionsRetrieveDefaultDefinitionInput,
     outputSchema: FunctionsRetrieveDefaultDefinitionOutput,
   }));
@@ -725,7 +713,7 @@ export interface FunctionsTestInput {
   name?: string;
   type?: string;
 }
-export const FunctionsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsTestInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -774,7 +762,7 @@ export interface FunctionsTestOutput {
   status?: string;
   error?: { code?: string; message?: string };
 }
-export const FunctionsTestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsTestOutput = /*@__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
   error: Schema.optional(
     Schema.Struct({
@@ -794,7 +782,7 @@ export const FunctionsTestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobName - The name of the streaming job.
  * @param functionName - The name of the function.
  */
-export const FunctionsTest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FunctionsTest = /*@__PURE__*/ API.make(() => ({
   inputSchema: FunctionsTestInput,
   outputSchema: FunctionsTestOutput,
 }));
@@ -817,7 +805,7 @@ export interface FunctionsUpdateInput {
   name?: string;
   type?: string;
 }
-export const FunctionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -867,7 +855,7 @@ export interface FunctionsUpdateOutput {
   name?: string;
   type?: string;
 }
-export const FunctionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FunctionsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -884,7 +872,7 @@ export const FunctionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobName - The name of the streaming job.
  * @param functionName - The name of the function.
  */
-export const FunctionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FunctionsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FunctionsUpdateInput,
   outputSchema: FunctionsUpdateOutput,
 }));
@@ -909,7 +897,7 @@ export interface InputsCreateOrReplaceInput {
   type?: string;
 }
 export const InputsCreateOrReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -962,7 +950,7 @@ export interface InputsCreateOrReplaceOutput {
   type?: string;
 }
 export const InputsCreateOrReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -980,12 +968,10 @@ export const InputsCreateOrReplaceOutput =
  * @param jobName - The name of the streaming job.
  * @param inputName - The name of the input.
  */
-export const InputsCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InputsCreateOrReplaceInput,
-    outputSchema: InputsCreateOrReplaceOutput,
-  }),
-);
+export const InputsCreateOrReplace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InputsCreateOrReplaceInput,
+  outputSchema: InputsCreateOrReplaceOutput,
+}));
 // Input Schema
 export interface InputsDeleteInput {
   subscriptionId: string;
@@ -993,7 +979,7 @@ export interface InputsDeleteInput {
   jobName: string;
   inputName: string;
 }
-export const InputsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1009,7 +995,7 @@ export const InputsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type InputsDeleteOutput = void;
 export const InputsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InputsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InputsDeleteOutput>;
 
 // The operation
 /**
@@ -1021,7 +1007,7 @@ export const InputsDeleteOutput =
  * @param jobName - The name of the streaming job.
  * @param inputName - The name of the input.
  */
-export const InputsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InputsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: InputsDeleteInput,
   outputSchema: InputsDeleteOutput,
 }));
@@ -1032,7 +1018,7 @@ export interface InputsGetInput {
   jobName: string;
   inputName: string;
 }
-export const InputsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1051,7 +1037,7 @@ export interface InputsGetOutput {
   name?: string;
   type?: string;
 }
-export const InputsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1067,7 +1053,7 @@ export const InputsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobName - The name of the streaming job.
  * @param inputName - The name of the input.
  */
-export const InputsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InputsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InputsGetInput,
   outputSchema: InputsGetOutput,
 }));
@@ -1079,7 +1065,7 @@ export interface InputsListByStreamingJobInput {
   $select?: string;
 }
 export const InputsListByStreamingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -1098,7 +1084,7 @@ export interface InputsListByStreamingJobOutput {
   nextLink?: string;
 }
 export const InputsListByStreamingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1121,12 +1107,10 @@ export const InputsListByStreamingJobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const InputsListByStreamingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InputsListByStreamingJobInput,
-    outputSchema: InputsListByStreamingJobOutput,
-  }),
-);
+export const InputsListByStreamingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InputsListByStreamingJobInput,
+  outputSchema: InputsListByStreamingJobOutput,
+}));
 // Input Schema
 export interface InputsTestInput {
   subscriptionId: string;
@@ -1147,7 +1131,7 @@ export interface InputsTestInput {
   name?: string;
   type?: string;
 }
-export const InputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsTestInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1198,7 +1182,7 @@ export interface InputsTestOutput {
   status?: string;
   error?: { code?: string; message?: string };
 }
-export const InputsTestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsTestOutput = /*@__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
   error: Schema.optional(
     Schema.Struct({
@@ -1218,7 +1202,7 @@ export const InputsTestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobName - The name of the streaming job.
  * @param inputName - The name of the input.
  */
-export const InputsTest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InputsTest = /*@__PURE__*/ API.make(() => ({
   inputSchema: InputsTestInput,
   outputSchema: InputsTestOutput,
 }));
@@ -1242,7 +1226,7 @@ export interface InputsUpdateInput {
   name?: string;
   type?: string;
 }
-export const InputsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1294,7 +1278,7 @@ export interface InputsUpdateOutput {
   name?: string;
   type?: string;
 }
-export const InputsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InputsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1311,15 +1295,13 @@ export const InputsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobName - The name of the streaming job.
  * @param inputName - The name of the input.
  */
-export const InputsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InputsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: InputsUpdateInput,
   outputSchema: InputsUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StreamAnalytics/operations",
@@ -1341,7 +1323,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1367,7 +1349,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1392,7 +1374,7 @@ export interface OutputsCreateOrReplaceInput {
   type?: string;
 }
 export const OutputsCreateOrReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -1445,7 +1427,7 @@ export interface OutputsCreateOrReplaceOutput {
   type?: string;
 }
 export const OutputsCreateOrReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1463,12 +1445,10 @@ export const OutputsCreateOrReplaceOutput =
  * @param jobName - The name of the streaming job.
  * @param outputName - The name of the output.
  */
-export const OutputsCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OutputsCreateOrReplaceInput,
-    outputSchema: OutputsCreateOrReplaceOutput,
-  }),
-);
+export const OutputsCreateOrReplace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutputsCreateOrReplaceInput,
+  outputSchema: OutputsCreateOrReplaceOutput,
+}));
 // Input Schema
 export interface OutputsDeleteInput {
   subscriptionId: string;
@@ -1476,7 +1456,7 @@ export interface OutputsDeleteInput {
   jobName: string;
   outputName: string;
 }
-export const OutputsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1492,7 +1472,7 @@ export const OutputsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type OutputsDeleteOutput = void;
 export const OutputsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OutputsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OutputsDeleteOutput>;
 
 // The operation
 /**
@@ -1504,7 +1484,7 @@ export const OutputsDeleteOutput =
  * @param jobName - The name of the streaming job.
  * @param outputName - The name of the output.
  */
-export const OutputsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OutputsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: OutputsDeleteInput,
   outputSchema: OutputsDeleteOutput,
 }));
@@ -1515,7 +1495,7 @@ export interface OutputsGetInput {
   jobName: string;
   outputName: string;
 }
-export const OutputsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1534,7 +1514,7 @@ export interface OutputsGetOutput {
   name?: string;
   type?: string;
 }
-export const OutputsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1550,7 +1530,7 @@ export const OutputsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobName - The name of the streaming job.
  * @param outputName - The name of the output.
  */
-export const OutputsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OutputsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OutputsGetInput,
   outputSchema: OutputsGetOutput,
 }));
@@ -1562,7 +1542,7 @@ export interface OutputsListByStreamingJobInput {
   $select?: string;
 }
 export const OutputsListByStreamingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -1581,7 +1561,7 @@ export interface OutputsListByStreamingJobOutput {
   nextLink?: string;
 }
 export const OutputsListByStreamingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1604,12 +1584,10 @@ export const OutputsListByStreamingJobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const OutputsListByStreamingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OutputsListByStreamingJobInput,
-    outputSchema: OutputsListByStreamingJobOutput,
-  }),
-);
+export const OutputsListByStreamingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutputsListByStreamingJobInput,
+  outputSchema: OutputsListByStreamingJobOutput,
+}));
 // Input Schema
 export interface OutputsTestInput {
   subscriptionId: string;
@@ -1630,7 +1608,7 @@ export interface OutputsTestInput {
   name?: string;
   type?: string;
 }
-export const OutputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsTestInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1681,7 +1659,7 @@ export interface OutputsTestOutput {
   status?: string;
   error?: { code?: string; message?: string };
 }
-export const OutputsTestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsTestOutput = /*@__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
   error: Schema.optional(
     Schema.Struct({
@@ -1701,7 +1679,7 @@ export const OutputsTestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobName - The name of the streaming job.
  * @param outputName - The name of the output.
  */
-export const OutputsTest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OutputsTest = /*@__PURE__*/ API.make(() => ({
   inputSchema: OutputsTestInput,
   outputSchema: OutputsTestOutput,
 }));
@@ -1725,7 +1703,7 @@ export interface OutputsUpdateInput {
   name?: string;
   type?: string;
 }
-export const OutputsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1777,7 +1755,7 @@ export interface OutputsUpdateOutput {
   name?: string;
   type?: string;
 }
-export const OutputsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutputsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1794,7 +1772,7 @@ export const OutputsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobName - The name of the streaming job.
  * @param outputName - The name of the output.
  */
-export const OutputsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OutputsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: OutputsUpdateInput,
   outputSchema: OutputsUpdateOutput,
 }));
@@ -1822,7 +1800,7 @@ export interface PrivateEndpointsCreateOrUpdateInput {
   etag?: string;
 }
 export const PrivateEndpointsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1868,7 +1846,7 @@ export interface PrivateEndpointsCreateOrUpdateOutput {
   type?: string;
 }
 export const PrivateEndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1887,7 +1865,7 @@ export const PrivateEndpointsCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new resource to be created, but to prevent updating an existing record set. Other values will result in a 412 Pre-condition Failed response.
  */
 export const PrivateEndpointsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointsCreateOrUpdateInput,
     outputSchema: PrivateEndpointsCreateOrUpdateOutput,
   }));
@@ -1899,7 +1877,7 @@ export interface PrivateEndpointsDeleteInput {
   privateEndpointName: string;
 }
 export const PrivateEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1915,7 +1893,7 @@ export const PrivateEndpointsDeleteInput =
 // Output Schema
 export type PrivateEndpointsDeleteOutput = void;
 export const PrivateEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -1927,12 +1905,10 @@ export const PrivateEndpointsDeleteOutput =
  * @param privateEndpointName - The name of the private endpoint.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateEndpointsDeleteInput,
-    outputSchema: PrivateEndpointsDeleteOutput,
-  }),
-);
+export const PrivateEndpointsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateEndpointsDeleteInput,
+  outputSchema: PrivateEndpointsDeleteOutput,
+}));
 // Input Schema
 export interface PrivateEndpointsGetInput {
   subscriptionId: string;
@@ -1941,7 +1917,7 @@ export interface PrivateEndpointsGetInput {
   privateEndpointName: string;
 }
 export const PrivateEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1961,7 +1937,7 @@ export interface PrivateEndpointsGetOutput {
   type?: string;
 }
 export const PrivateEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1977,7 +1953,7 @@ export const PrivateEndpointsGetOutput =
  * @param privateEndpointName - The name of the private endpoint.
  * @param api-version - The API version to use for this operation.
  */
-export const PrivateEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateEndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateEndpointsGetInput,
   outputSchema: PrivateEndpointsGetOutput,
 }));
@@ -1988,7 +1964,7 @@ export interface PrivateEndpointsListByClusterInput {
   clusterName: string;
 }
 export const PrivateEndpointsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2006,7 +1982,7 @@ export interface PrivateEndpointsListByClusterOutput {
   nextLink?: string;
 }
 export const PrivateEndpointsListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2029,7 +2005,7 @@ export const PrivateEndpointsListByClusterOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointsListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointsListByClusterInput,
     outputSchema: PrivateEndpointsListByClusterOutput,
   }));
@@ -2068,7 +2044,7 @@ export interface StreamingJobsCreateOrReplaceInput {
   location?: string;
 }
 export const StreamingJobsCreateOrReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -2176,7 +2152,7 @@ export interface StreamingJobsCreateOrReplaceOutput {
   type?: string;
 }
 export const StreamingJobsCreateOrReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2194,7 +2170,7 @@ export const StreamingJobsCreateOrReplaceOutput =
  * @param jobName - The name of the streaming job.
  */
 export const StreamingJobsCreateOrReplace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StreamingJobsCreateOrReplaceInput,
     outputSchema: StreamingJobsCreateOrReplaceOutput,
   }));
@@ -2205,7 +2181,7 @@ export interface StreamingJobsDeleteInput {
   jobName: string;
 }
 export const StreamingJobsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -2220,7 +2196,7 @@ export const StreamingJobsDeleteInput =
 // Output Schema
 export type StreamingJobsDeleteOutput = void;
 export const StreamingJobsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StreamingJobsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StreamingJobsDeleteOutput>;
 
 // The operation
 /**
@@ -2231,7 +2207,7 @@ export const StreamingJobsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const StreamingJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsDeleteInput,
   outputSchema: StreamingJobsDeleteOutput,
 }));
@@ -2242,7 +2218,7 @@ export interface StreamingJobsGetInput {
   jobName: string;
   $expand?: string;
 }
-export const StreamingJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StreamingJobsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -2261,13 +2237,11 @@ export interface StreamingJobsGetOutput {
   name?: string;
   type?: string;
 }
-export const StreamingJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<StreamingJobsGetOutput>;
+export const StreamingJobsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<StreamingJobsGetOutput>;
 
 // The operation
 /**
@@ -2279,7 +2253,7 @@ export const StreamingJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const StreamingJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsGetInput,
   outputSchema: StreamingJobsGetOutput,
 }));
@@ -2288,12 +2262,10 @@ export interface StreamingJobsListInput {
   subscriptionId: string;
   $expand?: string;
 }
-export const StreamingJobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $expand: Schema.optional(Schema.String),
-  },
-).pipe(
+export const StreamingJobsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  $expand: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StreamAnalytics/streamingjobs",
@@ -2307,7 +2279,7 @@ export interface StreamingJobsListOutput {
   nextLink?: string;
 }
 export const StreamingJobsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2328,7 +2300,7 @@ export const StreamingJobsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const StreamingJobsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsListInput,
   outputSchema: StreamingJobsListOutput,
 }));
@@ -2339,7 +2311,7 @@ export interface StreamingJobsListByResourceGroupInput {
   $expand?: string;
 }
 export const StreamingJobsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
@@ -2357,7 +2329,7 @@ export interface StreamingJobsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const StreamingJobsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2380,7 +2352,7 @@ export const StreamingJobsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const StreamingJobsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StreamingJobsListByResourceGroupInput,
     outputSchema: StreamingJobsListByResourceGroupOutput,
   }));
@@ -2392,7 +2364,7 @@ export interface StreamingJobsScaleInput {
   streamingUnits?: number;
 }
 export const StreamingJobsScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -2408,7 +2380,7 @@ export const StreamingJobsScaleInput =
 // Output Schema
 export type StreamingJobsScaleOutput = void;
 export const StreamingJobsScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StreamingJobsScaleOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StreamingJobsScaleOutput>;
 
 // The operation
 /**
@@ -2419,7 +2391,7 @@ export const StreamingJobsScaleOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const StreamingJobsScale = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsScale = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsScaleInput,
   outputSchema: StreamingJobsScaleOutput,
 }));
@@ -2432,7 +2404,7 @@ export interface StreamingJobsStartInput {
   outputStartTime?: string;
 }
 export const StreamingJobsStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -2451,7 +2423,7 @@ export const StreamingJobsStartInput =
 // Output Schema
 export type StreamingJobsStartOutput = void;
 export const StreamingJobsStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StreamingJobsStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StreamingJobsStartOutput>;
 
 // The operation
 /**
@@ -2462,7 +2434,7 @@ export const StreamingJobsStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const StreamingJobsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsStartInput,
   outputSchema: StreamingJobsStartOutput,
 }));
@@ -2472,13 +2444,11 @@ export interface StreamingJobsStopInput {
   resourceGroupName: string;
   jobName: string;
 }
-export const StreamingJobsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const StreamingJobsStopInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/stop",
@@ -2489,7 +2459,7 @@ export const StreamingJobsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type StreamingJobsStopOutput = void;
 export const StreamingJobsStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StreamingJobsStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StreamingJobsStopOutput>;
 
 // The operation
 /**
@@ -2500,7 +2470,7 @@ export const StreamingJobsStopOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const StreamingJobsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsStopInput,
   outputSchema: StreamingJobsStopOutput,
 }));
@@ -2539,7 +2509,7 @@ export interface StreamingJobsUpdateInput {
   location?: string;
 }
 export const StreamingJobsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -2647,7 +2617,7 @@ export interface StreamingJobsUpdateOutput {
   type?: string;
 }
 export const StreamingJobsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2663,7 +2633,7 @@ export const StreamingJobsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the streaming job.
  */
-export const StreamingJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StreamingJobsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: StreamingJobsUpdateInput,
   outputSchema: StreamingJobsUpdateOutput,
 }));
@@ -2673,7 +2643,7 @@ export interface SubscriptionsListQuotasInput {
   subscriptionId: string;
 }
 export const SubscriptionsListQuotasInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2689,7 +2659,7 @@ export interface SubscriptionsListQuotasOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const SubscriptionsListQuotasOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2709,12 +2679,10 @@ export const SubscriptionsListQuotasOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const SubscriptionsListQuotas = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubscriptionsListQuotasInput,
-    outputSchema: SubscriptionsListQuotasOutput,
-  }),
-);
+export const SubscriptionsListQuotas = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubscriptionsListQuotasInput,
+  outputSchema: SubscriptionsListQuotasOutput,
+}));
 // Input Schema
 export interface TransformationsCreateOrReplaceInput {
   subscriptionId: string;
@@ -2732,7 +2700,7 @@ export interface TransformationsCreateOrReplaceInput {
   type?: string;
 }
 export const TransformationsCreateOrReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -2763,7 +2731,7 @@ export interface TransformationsCreateOrReplaceOutput {
   type?: string;
 }
 export const TransformationsCreateOrReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2782,7 +2750,7 @@ export const TransformationsCreateOrReplaceOutput =
  * @param transformationName - The name of the transformation.
  */
 export const TransformationsCreateOrReplace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TransformationsCreateOrReplaceInput,
     outputSchema: TransformationsCreateOrReplaceOutput,
   }));
@@ -2794,7 +2762,7 @@ export interface TransformationsGetInput {
   transformationName: string;
 }
 export const TransformationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -2814,7 +2782,7 @@ export interface TransformationsGetOutput {
   type?: string;
 }
 export const TransformationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2830,7 +2798,7 @@ export const TransformationsGetOutput =
  * @param jobName - The name of the streaming job.
  * @param transformationName - The name of the transformation.
  */
-export const TransformationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TransformationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TransformationsGetInput,
   outputSchema: TransformationsGetOutput,
 }));
@@ -2851,7 +2819,7 @@ export interface TransformationsUpdateInput {
   type?: string;
 }
 export const TransformationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -2882,7 +2850,7 @@ export interface TransformationsUpdateOutput {
   type?: string;
 }
 export const TransformationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2899,9 +2867,7 @@ export const TransformationsUpdateOutput =
  * @param jobName - The name of the streaming job.
  * @param transformationName - The name of the transformation.
  */
-export const TransformationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TransformationsUpdateInput,
-    outputSchema: TransformationsUpdateOutput,
-  }),
-);
+export const TransformationsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TransformationsUpdateInput,
+  outputSchema: TransformationsUpdateOutput,
+}));

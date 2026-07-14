@@ -53,7 +53,7 @@ export interface GoogleCloudEssentialcontactsV1Contact {
 }
 
 export const GoogleCloudEssentialcontactsV1Contact: Schema.Codec<GoogleCloudEssentialcontactsV1Contact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
     notificationCategorySubscriptions: Schema.optional(
@@ -72,7 +72,7 @@ export interface GoogleCloudEssentialcontactsV1ListContactsResponse {
 }
 
 export const GoogleCloudEssentialcontactsV1ListContactsResponse: Schema.Codec<GoogleCloudEssentialcontactsV1ListContactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contacts: Schema.optional(
       Schema.Array(GoogleCloudEssentialcontactsV1Contact),
     ),
@@ -84,7 +84,7 @@ export const GoogleCloudEssentialcontactsV1ListContactsResponse: Schema.Codec<Go
 export interface GoogleProtobufEmpty {}
 
 export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
@@ -96,7 +96,7 @@ export interface GoogleCloudEssentialcontactsV1ComputeContactsResponse {
 }
 
 export const GoogleCloudEssentialcontactsV1ComputeContactsResponse: Schema.Codec<GoogleCloudEssentialcontactsV1ComputeContactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contacts: Schema.optional(
       Schema.Array(GoogleCloudEssentialcontactsV1Contact),
     ),
@@ -123,7 +123,7 @@ export interface GoogleCloudEssentialcontactsV1SendTestMessageRequest {
 }
 
 export const GoogleCloudEssentialcontactsV1SendTestMessageRequest: Schema.Codec<GoogleCloudEssentialcontactsV1SendTestMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contacts: Schema.optional(Schema.Array(Schema.String)),
     notificationCategory: Schema.optional(Schema.String),
   }).annotate({
@@ -192,7 +192,7 @@ export interface CreateProjectsContactsRequest {
 }
 
 export const CreateProjectsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudEssentialcontactsV1Contact).pipe(
       T.HttpBody(),
@@ -205,7 +205,7 @@ export const CreateProjectsContactsRequest =
 export type CreateProjectsContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
 export const CreateProjectsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
 export type CreateProjectsContactsError =
   | DefaultErrors
@@ -220,7 +220,7 @@ export const createProjectsContacts: API.OperationMethod<
   CreateProjectsContactsResponse,
   CreateProjectsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsContactsRequest,
   output: CreateProjectsContactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -236,7 +236,7 @@ export interface PatchProjectsContactsRequest {
 }
 
 export const PatchProjectsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudEssentialcontactsV1Contact).pipe(
@@ -250,7 +250,7 @@ export const PatchProjectsContactsRequest =
 export type PatchProjectsContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
 export const PatchProjectsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
 export type PatchProjectsContactsError =
   | DefaultErrors
@@ -265,7 +265,7 @@ export const patchProjectsContacts: API.OperationMethod<
   PatchProjectsContactsResponse,
   PatchProjectsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsContactsRequest,
   output: PatchProjectsContactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -281,7 +281,7 @@ export interface ListProjectsContactsRequest {
 }
 
 export const ListProjectsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -293,7 +293,7 @@ export const ListProjectsContactsRequest =
 export type ListProjectsContactsResponse =
   GoogleCloudEssentialcontactsV1ListContactsResponse;
 export const ListProjectsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1ListContactsResponse;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1ListContactsResponse;
 
 export type ListProjectsContactsError = DefaultErrors | NotFound | Forbidden;
 
@@ -303,7 +303,7 @@ export const listProjectsContacts: API.PaginatedOperationMethod<
   ListProjectsContactsResponse,
   ListProjectsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsContactsRequest,
   output: ListProjectsContactsResponse,
   errors: [NotFound, Forbidden],
@@ -319,7 +319,7 @@ export interface GetProjectsContactsRequest {
 }
 
 export const GetProjectsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -328,7 +328,7 @@ export const GetProjectsContactsRequest =
 
 export type GetProjectsContactsResponse = GoogleCloudEssentialcontactsV1Contact;
 export const GetProjectsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
 export type GetProjectsContactsError = DefaultErrors | NotFound | Forbidden;
 
@@ -338,7 +338,7 @@ export const getProjectsContacts: API.OperationMethod<
   GetProjectsContactsResponse,
   GetProjectsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsContactsRequest,
   output: GetProjectsContactsResponse,
   errors: [NotFound, Forbidden],
@@ -350,7 +350,7 @@ export interface DeleteProjectsContactsRequest {
 }
 
 export const DeleteProjectsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -358,8 +358,7 @@ export const DeleteProjectsContactsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsContactsRequest>;
 
 export type DeleteProjectsContactsResponse = GoogleProtobufEmpty;
-export const DeleteProjectsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+export const DeleteProjectsContactsResponse = /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsContactsError =
   | DefaultErrors
@@ -374,7 +373,7 @@ export const deleteProjectsContacts: API.OperationMethod<
   DeleteProjectsContactsResponse,
   DeleteProjectsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsContactsRequest,
   output: DeleteProjectsContactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -402,7 +401,7 @@ export interface ComputeProjectsContactsRequest {
 }
 
 export const ComputeProjectsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     notificationCategories: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("notificationCategories"),
@@ -417,7 +416,7 @@ export const ComputeProjectsContactsRequest =
 export type ComputeProjectsContactsResponse =
   GoogleCloudEssentialcontactsV1ComputeContactsResponse;
 export const ComputeProjectsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1ComputeContactsResponse;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1ComputeContactsResponse;
 
 export type ComputeProjectsContactsError = DefaultErrors | NotFound | Forbidden;
 
@@ -427,7 +426,7 @@ export const computeProjectsContacts: API.PaginatedOperationMethod<
   ComputeProjectsContactsResponse,
   ComputeProjectsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ComputeProjectsContactsRequest,
   output: ComputeProjectsContactsResponse,
   errors: [NotFound, Forbidden],
@@ -445,7 +444,7 @@ export interface SendTestMessageProjectsContactsRequest {
 }
 
 export const SendTestMessageProjectsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(
       GoogleCloudEssentialcontactsV1SendTestMessageRequest,
@@ -461,7 +460,7 @@ export const SendTestMessageProjectsContactsRequest =
 
 export type SendTestMessageProjectsContactsResponse = GoogleProtobufEmpty;
 export const SendTestMessageProjectsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type SendTestMessageProjectsContactsError =
   | DefaultErrors
@@ -476,7 +475,7 @@ export const sendTestMessageProjectsContacts: API.OperationMethod<
   SendTestMessageProjectsContactsResponse,
   SendTestMessageProjectsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendTestMessageProjectsContactsRequest,
   output: SendTestMessageProjectsContactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -490,7 +489,7 @@ export interface CreateFoldersContactsRequest {
 }
 
 export const CreateFoldersContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudEssentialcontactsV1Contact).pipe(
       T.HttpBody(),
@@ -503,7 +502,7 @@ export const CreateFoldersContactsRequest =
 export type CreateFoldersContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
 export const CreateFoldersContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
 export type CreateFoldersContactsError =
   | DefaultErrors
@@ -518,7 +517,7 @@ export const createFoldersContacts: API.OperationMethod<
   CreateFoldersContactsResponse,
   CreateFoldersContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFoldersContactsRequest,
   output: CreateFoldersContactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -534,7 +533,7 @@ export interface PatchFoldersContactsRequest {
 }
 
 export const PatchFoldersContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudEssentialcontactsV1Contact).pipe(
@@ -548,7 +547,7 @@ export const PatchFoldersContactsRequest =
 export type PatchFoldersContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
 export const PatchFoldersContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
 export type PatchFoldersContactsError =
   | DefaultErrors
@@ -563,7 +562,7 @@ export const patchFoldersContacts: API.OperationMethod<
   PatchFoldersContactsResponse,
   PatchFoldersContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchFoldersContactsRequest,
   output: PatchFoldersContactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -579,7 +578,7 @@ export interface ListFoldersContactsRequest {
 }
 
 export const ListFoldersContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -591,7 +590,7 @@ export const ListFoldersContactsRequest =
 export type ListFoldersContactsResponse =
   GoogleCloudEssentialcontactsV1ListContactsResponse;
 export const ListFoldersContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1ListContactsResponse;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1ListContactsResponse;
 
 export type ListFoldersContactsError = DefaultErrors | NotFound | Forbidden;
 
@@ -601,7 +600,7 @@ export const listFoldersContacts: API.PaginatedOperationMethod<
   ListFoldersContactsResponse,
   ListFoldersContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersContactsRequest,
   output: ListFoldersContactsResponse,
   errors: [NotFound, Forbidden],
@@ -617,7 +616,7 @@ export interface GetFoldersContactsRequest {
 }
 
 export const GetFoldersContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -626,7 +625,7 @@ export const GetFoldersContactsRequest =
 
 export type GetFoldersContactsResponse = GoogleCloudEssentialcontactsV1Contact;
 export const GetFoldersContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
 export type GetFoldersContactsError = DefaultErrors | NotFound | Forbidden;
 
@@ -636,7 +635,7 @@ export const getFoldersContacts: API.OperationMethod<
   GetFoldersContactsResponse,
   GetFoldersContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoldersContactsRequest,
   output: GetFoldersContactsResponse,
   errors: [NotFound, Forbidden],
@@ -648,7 +647,7 @@ export interface DeleteFoldersContactsRequest {
 }
 
 export const DeleteFoldersContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -656,8 +655,7 @@ export const DeleteFoldersContactsRequest =
   ) as unknown as Schema.Codec<DeleteFoldersContactsRequest>;
 
 export type DeleteFoldersContactsResponse = GoogleProtobufEmpty;
-export const DeleteFoldersContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+export const DeleteFoldersContactsResponse = /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteFoldersContactsError =
   | DefaultErrors
@@ -672,7 +670,7 @@ export const deleteFoldersContacts: API.OperationMethod<
   DeleteFoldersContactsResponse,
   DeleteFoldersContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFoldersContactsRequest,
   output: DeleteFoldersContactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -700,7 +698,7 @@ export interface ComputeFoldersContactsRequest {
 }
 
 export const ComputeFoldersContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     notificationCategories: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("notificationCategories"),
@@ -715,7 +713,7 @@ export const ComputeFoldersContactsRequest =
 export type ComputeFoldersContactsResponse =
   GoogleCloudEssentialcontactsV1ComputeContactsResponse;
 export const ComputeFoldersContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1ComputeContactsResponse;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1ComputeContactsResponse;
 
 export type ComputeFoldersContactsError = DefaultErrors | NotFound | Forbidden;
 
@@ -725,7 +723,7 @@ export const computeFoldersContacts: API.PaginatedOperationMethod<
   ComputeFoldersContactsResponse,
   ComputeFoldersContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ComputeFoldersContactsRequest,
   output: ComputeFoldersContactsResponse,
   errors: [NotFound, Forbidden],
@@ -743,7 +741,7 @@ export interface SendTestMessageFoldersContactsRequest {
 }
 
 export const SendTestMessageFoldersContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(
       GoogleCloudEssentialcontactsV1SendTestMessageRequest,
@@ -759,7 +757,7 @@ export const SendTestMessageFoldersContactsRequest =
 
 export type SendTestMessageFoldersContactsResponse = GoogleProtobufEmpty;
 export const SendTestMessageFoldersContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type SendTestMessageFoldersContactsError =
   | DefaultErrors
@@ -774,7 +772,7 @@ export const sendTestMessageFoldersContacts: API.OperationMethod<
   SendTestMessageFoldersContactsResponse,
   SendTestMessageFoldersContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendTestMessageFoldersContactsRequest,
   output: SendTestMessageFoldersContactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -788,7 +786,7 @@ export interface CreateOrganizationsContactsRequest {
 }
 
 export const CreateOrganizationsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudEssentialcontactsV1Contact).pipe(
       T.HttpBody(),
@@ -801,7 +799,7 @@ export const CreateOrganizationsContactsRequest =
 export type CreateOrganizationsContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
 export const CreateOrganizationsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
 export type CreateOrganizationsContactsError =
   | DefaultErrors
@@ -816,7 +814,7 @@ export const createOrganizationsContacts: API.OperationMethod<
   CreateOrganizationsContactsResponse,
   CreateOrganizationsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsContactsRequest,
   output: CreateOrganizationsContactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -832,7 +830,7 @@ export interface PatchOrganizationsContactsRequest {
 }
 
 export const PatchOrganizationsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudEssentialcontactsV1Contact).pipe(
@@ -846,7 +844,7 @@ export const PatchOrganizationsContactsRequest =
 export type PatchOrganizationsContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
 export const PatchOrganizationsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
 export type PatchOrganizationsContactsError =
   | DefaultErrors
@@ -861,7 +859,7 @@ export const patchOrganizationsContacts: API.OperationMethod<
   PatchOrganizationsContactsResponse,
   PatchOrganizationsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsContactsRequest,
   output: PatchOrganizationsContactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -877,7 +875,7 @@ export interface ListOrganizationsContactsRequest {
 }
 
 export const ListOrganizationsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -889,7 +887,7 @@ export const ListOrganizationsContactsRequest =
 export type ListOrganizationsContactsResponse =
   GoogleCloudEssentialcontactsV1ListContactsResponse;
 export const ListOrganizationsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1ListContactsResponse;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1ListContactsResponse;
 
 export type ListOrganizationsContactsError =
   | DefaultErrors
@@ -902,7 +900,7 @@ export const listOrganizationsContacts: API.PaginatedOperationMethod<
   ListOrganizationsContactsResponse,
   ListOrganizationsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsContactsRequest,
   output: ListOrganizationsContactsResponse,
   errors: [NotFound, Forbidden],
@@ -918,7 +916,7 @@ export interface GetOrganizationsContactsRequest {
 }
 
 export const GetOrganizationsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -928,7 +926,7 @@ export const GetOrganizationsContactsRequest =
 export type GetOrganizationsContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
 export const GetOrganizationsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
 export type GetOrganizationsContactsError =
   | DefaultErrors
@@ -941,7 +939,7 @@ export const getOrganizationsContacts: API.OperationMethod<
   GetOrganizationsContactsResponse,
   GetOrganizationsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsContactsRequest,
   output: GetOrganizationsContactsResponse,
   errors: [NotFound, Forbidden],
@@ -953,7 +951,7 @@ export interface DeleteOrganizationsContactsRequest {
 }
 
 export const DeleteOrganizationsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -962,7 +960,7 @@ export const DeleteOrganizationsContactsRequest =
 
 export type DeleteOrganizationsContactsResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsContactsError =
   | DefaultErrors
@@ -977,7 +975,7 @@ export const deleteOrganizationsContacts: API.OperationMethod<
   DeleteOrganizationsContactsResponse,
   DeleteOrganizationsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsContactsRequest,
   output: DeleteOrganizationsContactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1005,7 +1003,7 @@ export interface ComputeOrganizationsContactsRequest {
 }
 
 export const ComputeOrganizationsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     notificationCategories: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("notificationCategories"),
@@ -1020,7 +1018,7 @@ export const ComputeOrganizationsContactsRequest =
 export type ComputeOrganizationsContactsResponse =
   GoogleCloudEssentialcontactsV1ComputeContactsResponse;
 export const ComputeOrganizationsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1ComputeContactsResponse;
+  /*@__PURE__*/ GoogleCloudEssentialcontactsV1ComputeContactsResponse;
 
 export type ComputeOrganizationsContactsError =
   | DefaultErrors
@@ -1033,7 +1031,7 @@ export const computeOrganizationsContacts: API.PaginatedOperationMethod<
   ComputeOrganizationsContactsResponse,
   ComputeOrganizationsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ComputeOrganizationsContactsRequest,
   output: ComputeOrganizationsContactsResponse,
   errors: [NotFound, Forbidden],
@@ -1051,7 +1049,7 @@ export interface SendTestMessageOrganizationsContactsRequest {
 }
 
 export const SendTestMessageOrganizationsContactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(
       GoogleCloudEssentialcontactsV1SendTestMessageRequest,
@@ -1067,7 +1065,7 @@ export const SendTestMessageOrganizationsContactsRequest =
 
 export type SendTestMessageOrganizationsContactsResponse = GoogleProtobufEmpty;
 export const SendTestMessageOrganizationsContactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type SendTestMessageOrganizationsContactsError =
   | DefaultErrors
@@ -1082,7 +1080,7 @@ export const sendTestMessageOrganizationsContacts: API.OperationMethod<
   SendTestMessageOrganizationsContactsResponse,
   SendTestMessageOrganizationsContactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendTestMessageOrganizationsContactsRequest,
   output: SendTestMessageOrganizationsContactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

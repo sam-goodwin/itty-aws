@@ -11,7 +11,7 @@ export interface UpdateGroupClusterProcessArgsInput {
   pretty?: boolean;
 }
 export const UpdateGroupClusterProcessArgsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const UpdateGroupClusterProcessArgsInput =
 // Output Schema
 export type UpdateGroupClusterProcessArgsOutput = void;
 export const UpdateGroupClusterProcessArgsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterProcessArgsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterProcessArgsOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const UpdateGroupClusterProcessArgsOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  */
 export const updateGroupClusterProcessArgs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupClusterProcessArgsInput,
     outputSchema: UpdateGroupClusterProcessArgsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

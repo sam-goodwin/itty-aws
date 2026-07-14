@@ -22,7 +22,7 @@ export interface GetDcvDelegationRequest {
 }
 
 export const GetDcvDelegationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -36,7 +36,7 @@ export interface GetDcvDelegationResponse {
 }
 
 export const GetDcvDelegationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -49,7 +49,7 @@ export const getDcvDelegation: API.OperationMethod<
   GetDcvDelegationResponse,
   GetDcvDelegationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDcvDelegationRequest,
   output: GetDcvDelegationResponse,
   errors: [],

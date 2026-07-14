@@ -10,7 +10,7 @@ export interface V1UpdatePoolerConfigInput {
   pool_mode?: "transaction" | "session";
 }
 export const V1UpdatePoolerConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     default_pool_size: Schema.optional(Schema.NullOr(Schema.Number)),
     pool_mode: Schema.optional(Schema.Literals(["transaction", "session"])),
@@ -27,7 +27,7 @@ export interface V1UpdatePoolerConfigOutput {
   pool_mode: string;
 }
 export const V1UpdatePoolerConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     default_pool_size: Schema.NullOr(Schema.Number),
     pool_mode: Schema.String,
   }) as unknown as Schema.Codec<V1UpdatePoolerConfigOutput>;
@@ -38,10 +38,8 @@ export const V1UpdatePoolerConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1UpdatePoolerConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdatePoolerConfigInput,
-    outputSchema: V1UpdatePoolerConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1UpdatePoolerConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdatePoolerConfigInput,
+  outputSchema: V1UpdatePoolerConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

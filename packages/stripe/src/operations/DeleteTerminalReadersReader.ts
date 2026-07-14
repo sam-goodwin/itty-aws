@@ -7,7 +7,7 @@ export interface DeleteTerminalReadersReaderInput {
   reader: string;
 }
 export const DeleteTerminalReadersReaderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -45,7 +45,7 @@ export interface DeleteTerminalReadersReaderOutput {
   serial_number: string;
 }
 export const DeleteTerminalReadersReaderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     device_type: Schema.Literals([
       "bbpos_chipper2x",
@@ -79,9 +79,7 @@ export const DeleteTerminalReadersReaderOutput =
  *
  * <p>Deletes a <code>Reader</code> object.</p>
  */
-export const DeleteTerminalReadersReader = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteTerminalReadersReaderInput,
-    outputSchema: DeleteTerminalReadersReaderOutput,
-  }),
-);
+export const DeleteTerminalReadersReader = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteTerminalReadersReaderInput,
+  outputSchema: DeleteTerminalReadersReaderOutput,
+}));

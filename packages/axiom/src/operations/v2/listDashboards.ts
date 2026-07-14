@@ -7,7 +7,7 @@ export interface ListDashboardsInput {
   limit?: number;
   offset?: number;
 }
-export const ListDashboardsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDashboardsInput = /*@__PURE__*/ Schema.Struct({
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
 }).pipe(
@@ -187,7 +187,7 @@ export type ListDashboardsOutput = ReadonlyArray<{
   updatedBy: string;
   version: string | number;
 }>;
-export const ListDashboardsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ListDashboardsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     createdAt: Schema.String,
     createdBy: Schema.String,
@@ -248,7 +248,7 @@ export const ListDashboardsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  *
  * List dashboards visible to the caller.
  */
-export const listDashboards = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listDashboards = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListDashboardsInput,
   outputSchema: ListDashboardsOutput,
 }));

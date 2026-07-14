@@ -16,7 +16,7 @@ export interface CloudHsmClusterBackupStatusGetInput {
   jobId: string;
 }
 export const CloudHsmClusterBackupStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -53,7 +53,7 @@ export interface CloudHsmClusterBackupStatusGetOutput {
   };
 }
 export const CloudHsmClusterBackupStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         status: Schema.optional(
@@ -111,7 +111,7 @@ export const CloudHsmClusterBackupStatusGetOutput =
  * @param jobId - Identifier for the backup operation
  */
 export const CloudHsmClusterBackupStatusGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudHsmClusterBackupStatusGetInput,
     outputSchema: CloudHsmClusterBackupStatusGetOutput,
   }));
@@ -141,7 +141,7 @@ export interface CloudHsmClusterPrivateEndpointConnectionsCreateInput {
   etag?: string;
 }
 export const CloudHsmClusterPrivateEndpointConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -198,7 +198,7 @@ export interface CloudHsmClusterPrivateEndpointConnectionsCreateOutput {
   };
 }
 export const CloudHsmClusterPrivateEndpointConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -229,7 +229,7 @@ export const CloudHsmClusterPrivateEndpointConnectionsCreateOutput =
  * @param peConnectionName - Name of the private endpoint connection associated with the Cloud HSM Cluster.
  */
 export const CloudHsmClusterPrivateEndpointConnectionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudHsmClusterPrivateEndpointConnectionsCreateInput,
     outputSchema: CloudHsmClusterPrivateEndpointConnectionsCreateOutput,
   }));
@@ -241,7 +241,7 @@ export interface CloudHsmClusterPrivateEndpointConnectionsDeleteInput {
   peConnectionName: string;
 }
 export const CloudHsmClusterPrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -257,7 +257,7 @@ export const CloudHsmClusterPrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type CloudHsmClusterPrivateEndpointConnectionsDeleteOutput = void;
 export const CloudHsmClusterPrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CloudHsmClusterPrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CloudHsmClusterPrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -270,7 +270,7 @@ export const CloudHsmClusterPrivateEndpointConnectionsDeleteOutput =
  * @param peConnectionName - Name of the private endpoint connection associated with the Cloud HSM Cluster.
  */
 export const CloudHsmClusterPrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudHsmClusterPrivateEndpointConnectionsDeleteInput,
     outputSchema: CloudHsmClusterPrivateEndpointConnectionsDeleteOutput,
   }));
@@ -282,7 +282,7 @@ export interface CloudHsmClusterPrivateEndpointConnectionsGetInput {
   peConnectionName: string;
 }
 export const CloudHsmClusterPrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -310,7 +310,7 @@ export interface CloudHsmClusterPrivateEndpointConnectionsGetOutput {
   };
 }
 export const CloudHsmClusterPrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -341,7 +341,7 @@ export const CloudHsmClusterPrivateEndpointConnectionsGetOutput =
  * @param peConnectionName - Name of the private endpoint connection associated with the Cloud HSM Cluster.
  */
 export const CloudHsmClusterPrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudHsmClusterPrivateEndpointConnectionsGetInput,
     outputSchema: CloudHsmClusterPrivateEndpointConnectionsGetOutput,
   }));
@@ -352,7 +352,7 @@ export interface CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput {
   cloudHsmClusterName: string;
 }
 export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -382,7 +382,7 @@ export interface CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput 
   nextLink?: string;
 }
 export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -429,7 +429,7 @@ export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput =
  * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
  */
 export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput,
     outputSchema:
       CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput,
@@ -442,7 +442,7 @@ export interface CloudHsmClusterRestoreStatusGetInput {
   jobId: string;
 }
 export const CloudHsmClusterRestoreStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -479,7 +479,7 @@ export interface CloudHsmClusterRestoreStatusGetOutput {
   };
 }
 export const CloudHsmClusterRestoreStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         status: Schema.optional(
@@ -537,7 +537,7 @@ export const CloudHsmClusterRestoreStatusGetOutput =
  * @param jobId - Identifier for the restore operation
  */
 export const CloudHsmClusterRestoreStatusGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudHsmClusterRestoreStatusGetInput,
     outputSchema: CloudHsmClusterRestoreStatusGetOutput,
   }));
@@ -550,7 +550,7 @@ export interface CloudHsmClustersBackupInput {
   token?: string;
 }
 export const CloudHsmClustersBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -588,7 +588,7 @@ export interface CloudHsmClustersBackupOutput {
   };
 }
 export const CloudHsmClustersBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         status: Schema.optional(
@@ -644,12 +644,10 @@ export const CloudHsmClustersBackupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
  */
-export const CloudHsmClustersBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudHsmClustersBackupInput,
-    outputSchema: CloudHsmClustersBackupOutput,
-  }),
-);
+export const CloudHsmClustersBackup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudHsmClustersBackupInput,
+  outputSchema: CloudHsmClustersBackupOutput,
+}));
 // Input Schema
 export interface CloudHsmClustersCreateOrUpdateInput {
   subscriptionId: string;
@@ -713,7 +711,7 @@ export interface CloudHsmClustersCreateOrUpdateInput {
   location: string;
 }
 export const CloudHsmClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -845,7 +843,7 @@ export interface CloudHsmClustersCreateOrUpdateOutput {
   };
 }
 export const CloudHsmClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -875,7 +873,7 @@ export const CloudHsmClustersCreateOrUpdateOutput =
  * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
  */
 export const CloudHsmClustersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudHsmClustersCreateOrUpdateInput,
     outputSchema: CloudHsmClustersCreateOrUpdateOutput,
   }));
@@ -886,7 +884,7 @@ export interface CloudHsmClustersDeleteInput {
   cloudHsmClusterName: string;
 }
 export const CloudHsmClustersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -901,7 +899,7 @@ export const CloudHsmClustersDeleteInput =
 // Output Schema
 export type CloudHsmClustersDeleteOutput = void;
 export const CloudHsmClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CloudHsmClustersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CloudHsmClustersDeleteOutput>;
 
 // The operation
 /**
@@ -912,12 +910,10 @@ export const CloudHsmClustersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
  */
-export const CloudHsmClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudHsmClustersDeleteInput,
-    outputSchema: CloudHsmClustersDeleteOutput,
-  }),
-);
+export const CloudHsmClustersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudHsmClustersDeleteInput,
+  outputSchema: CloudHsmClustersDeleteOutput,
+}));
 // Input Schema
 export interface CloudHsmClustersGetInput {
   subscriptionId: string;
@@ -925,7 +921,7 @@ export interface CloudHsmClustersGetInput {
   cloudHsmClusterName: string;
 }
 export const CloudHsmClustersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -952,7 +948,7 @@ export interface CloudHsmClustersGetOutput {
   };
 }
 export const CloudHsmClustersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -981,7 +977,7 @@ export const CloudHsmClustersGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
  */
-export const CloudHsmClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CloudHsmClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CloudHsmClustersGetInput,
   outputSchema: CloudHsmClustersGetOutput,
 }));
@@ -992,7 +988,7 @@ export interface CloudHsmClustersListByResourceGroupInput {
   $skiptoken?: string;
 }
 export const CloudHsmClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $skiptoken: Schema.optional(Schema.String),
@@ -1022,7 +1018,7 @@ export interface CloudHsmClustersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const CloudHsmClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1067,7 +1063,7 @@ export const CloudHsmClustersListByResourceGroupOutput =
  * @param $skiptoken - The page-continuation token to use with a paged version of this API
  */
 export const CloudHsmClustersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudHsmClustersListByResourceGroupInput,
     outputSchema: CloudHsmClustersListByResourceGroupOutput,
   }));
@@ -1077,7 +1073,7 @@ export interface CloudHsmClustersListBySubscriptionInput {
   $skiptoken?: string;
 }
 export const CloudHsmClustersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
@@ -1106,7 +1102,7 @@ export interface CloudHsmClustersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const CloudHsmClustersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1150,7 +1146,7 @@ export const CloudHsmClustersListBySubscriptionOutput =
  * @param $skiptoken - The page-continuation token to use with a paged version of this API
  */
 export const CloudHsmClustersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudHsmClustersListBySubscriptionInput,
     outputSchema: CloudHsmClustersListBySubscriptionOutput,
   }));
@@ -1164,7 +1160,7 @@ export interface CloudHsmClustersRestoreInput {
   token?: string;
 }
 export const CloudHsmClustersRestoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -1203,7 +1199,7 @@ export interface CloudHsmClustersRestoreOutput {
   };
 }
 export const CloudHsmClustersRestoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         status: Schema.optional(
@@ -1259,12 +1255,10 @@ export const CloudHsmClustersRestoreOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
  */
-export const CloudHsmClustersRestore = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudHsmClustersRestoreInput,
-    outputSchema: CloudHsmClustersRestoreOutput,
-  }),
-);
+export const CloudHsmClustersRestore = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudHsmClustersRestoreInput,
+  outputSchema: CloudHsmClustersRestoreOutput,
+}));
 // Input Schema
 export interface CloudHsmClustersUpdateInput {
   subscriptionId: string;
@@ -1286,7 +1280,7 @@ export interface CloudHsmClustersUpdateInput {
   };
 }
 export const CloudHsmClustersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -1335,7 +1329,7 @@ export interface CloudHsmClustersUpdateOutput {
   };
 }
 export const CloudHsmClustersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1364,12 +1358,10 @@ export const CloudHsmClustersUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
  */
-export const CloudHsmClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudHsmClustersUpdateInput,
-    outputSchema: CloudHsmClustersUpdateOutput,
-  }),
-);
+export const CloudHsmClustersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudHsmClustersUpdateInput,
+  outputSchema: CloudHsmClustersUpdateOutput,
+}));
 // Input Schema
 export interface CloudHsmClustersValidateBackupPropertiesInput {
   subscriptionId: string;
@@ -1379,7 +1371,7 @@ export interface CloudHsmClustersValidateBackupPropertiesInput {
   token?: string;
 }
 export const CloudHsmClustersValidateBackupPropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -1417,7 +1409,7 @@ export interface CloudHsmClustersValidateBackupPropertiesOutput {
   };
 }
 export const CloudHsmClustersValidateBackupPropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         status: Schema.optional(
@@ -1474,7 +1466,7 @@ export const CloudHsmClustersValidateBackupPropertiesOutput =
  * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
  */
 export const CloudHsmClustersValidateBackupProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudHsmClustersValidateBackupPropertiesInput,
     outputSchema: CloudHsmClustersValidateBackupPropertiesOutput,
   }));
@@ -1488,7 +1480,7 @@ export interface CloudHsmClustersValidateRestorePropertiesInput {
   token?: string;
 }
 export const CloudHsmClustersValidateRestorePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -1527,7 +1519,7 @@ export interface CloudHsmClustersValidateRestorePropertiesOutput {
   };
 }
 export const CloudHsmClustersValidateRestorePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         status: Schema.optional(
@@ -1584,7 +1576,7 @@ export const CloudHsmClustersValidateRestorePropertiesOutput =
  * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
  */
 export const CloudHsmClustersValidateRestoreProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudHsmClustersValidateRestorePropertiesInput,
     outputSchema: CloudHsmClustersValidateRestorePropertiesOutput,
   }));
@@ -1628,7 +1620,7 @@ export interface DedicatedHsmCreateOrUpdateInput {
   location: string;
 }
 export const DedicatedHsmCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1720,7 +1712,7 @@ export interface DedicatedHsmCreateOrUpdateOutput {
   };
 }
 export const DedicatedHsmCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1749,12 +1741,10 @@ export const DedicatedHsmCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the dedicated Hsm
  */
-export const DedicatedHsmCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DedicatedHsmCreateOrUpdateInput,
-    outputSchema: DedicatedHsmCreateOrUpdateOutput,
-  }),
-);
+export const DedicatedHsmCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DedicatedHsmCreateOrUpdateInput,
+  outputSchema: DedicatedHsmCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DedicatedHsmDeleteInput {
   subscriptionId: string;
@@ -1762,7 +1752,7 @@ export interface DedicatedHsmDeleteInput {
   name: string;
 }
 export const DedicatedHsmDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1777,7 +1767,7 @@ export const DedicatedHsmDeleteInput =
 // Output Schema
 export type DedicatedHsmDeleteOutput = void;
 export const DedicatedHsmDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DedicatedHsmDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DedicatedHsmDeleteOutput>;
 
 // The operation
 /**
@@ -1788,7 +1778,7 @@ export const DedicatedHsmDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the dedicated Hsm
  */
-export const DedicatedHsmDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DedicatedHsmDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DedicatedHsmDeleteInput,
   outputSchema: DedicatedHsmDeleteOutput,
 }));
@@ -1798,7 +1788,7 @@ export interface DedicatedHsmGetInput {
   resourceGroupName: string;
   name: string;
 }
-export const DedicatedHsmGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DedicatedHsmGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -1824,7 +1814,7 @@ export interface DedicatedHsmGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DedicatedHsmGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DedicatedHsmGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1853,7 +1843,7 @@ export const DedicatedHsmGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the dedicated Hsm
  */
-export const DedicatedHsmGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DedicatedHsmGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DedicatedHsmGetInput,
   outputSchema: DedicatedHsmGetOutput,
 }));
@@ -1864,7 +1854,7 @@ export interface DedicatedHsmListByResourceGroupInput {
   $top?: number;
 }
 export const DedicatedHsmListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -1894,7 +1884,7 @@ export interface DedicatedHsmListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DedicatedHsmListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1939,7 +1929,7 @@ export const DedicatedHsmListByResourceGroupOutput =
  * @param $top - Maximum number of results to return.
  */
 export const DedicatedHsmListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DedicatedHsmListByResourceGroupInput,
     outputSchema: DedicatedHsmListByResourceGroupOutput,
   }));
@@ -1949,7 +1939,7 @@ export interface DedicatedHsmListBySubscriptionInput {
   $top?: number;
 }
 export const DedicatedHsmListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -1978,7 +1968,7 @@ export interface DedicatedHsmListBySubscriptionOutput {
   nextLink?: string;
 }
 export const DedicatedHsmListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2022,7 +2012,7 @@ export const DedicatedHsmListBySubscriptionOutput =
  * @param $top - Maximum number of results to return.
  */
 export const DedicatedHsmListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DedicatedHsmListBySubscriptionInput,
     outputSchema: DedicatedHsmListBySubscriptionOutput,
   }));
@@ -2033,7 +2023,7 @@ export interface DedicatedHsmListOutboundNetworkDependenciesEndpointsInput {
   name: string;
 }
 export const DedicatedHsmListOutboundNetworkDependenciesEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2062,7 +2052,7 @@ export interface DedicatedHsmListOutboundNetworkDependenciesEndpointsOutput {
   nextLink?: string;
 }
 export const DedicatedHsmListOutboundNetworkDependenciesEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         category: Schema.optional(Schema.String),
@@ -2098,7 +2088,7 @@ export const DedicatedHsmListOutboundNetworkDependenciesEndpointsOutput =
  * @param name - Name of the dedicated Hsm
  */
 export const DedicatedHsmListOutboundNetworkDependenciesEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DedicatedHsmListOutboundNetworkDependenciesEndpointsInput,
     outputSchema: DedicatedHsmListOutboundNetworkDependenciesEndpointsOutput,
   }));
@@ -2110,7 +2100,7 @@ export interface DedicatedHsmUpdateInput {
   tags?: Record<string, string>;
 }
 export const DedicatedHsmUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2138,7 +2128,7 @@ export interface DedicatedHsmUpdateOutput {
   };
 }
 export const DedicatedHsmUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2167,15 +2157,13 @@ export const DedicatedHsmUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - Name of the dedicated Hsm
  */
-export const DedicatedHsmUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DedicatedHsmUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DedicatedHsmUpdateInput,
   outputSchema: DedicatedHsmUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HardwareSecurityModules/operations",
@@ -2199,7 +2187,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2229,7 +2217,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2240,7 +2228,7 @@ export interface PrivateEndpointConnectionsListByCloudHsmClusterInput {
   cloudHsmClusterName: string;
 }
 export const PrivateEndpointConnectionsListByCloudHsmClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
@@ -2270,7 +2258,7 @@ export interface PrivateEndpointConnectionsListByCloudHsmClusterOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListByCloudHsmClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2315,7 +2303,7 @@ export const PrivateEndpointConnectionsListByCloudHsmClusterOutput =
  * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
  */
 export const PrivateEndpointConnectionsListByCloudHsmCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByCloudHsmClusterInput,
     outputSchema: PrivateEndpointConnectionsListByCloudHsmClusterOutput,
   }));

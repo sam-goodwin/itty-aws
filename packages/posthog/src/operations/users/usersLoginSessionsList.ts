@@ -9,7 +9,7 @@ export interface UsersLoginSessionsListInput {
   is_staff?: boolean;
 }
 export const UsersLoginSessionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     email: Schema.optional(Schema.String),
     is_staff: Schema.optional(Schema.Boolean),
@@ -28,7 +28,7 @@ export type UsersLoginSessionsListOutput = {
   is_current: boolean;
 }[];
 export const UsersLoginSessionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.String,
       created_at: Schema.NullOr(Schema.String),
@@ -44,9 +44,7 @@ export const UsersLoginSessionsListOutput =
 /**
  * List the cookie-auth login sessions for the current user. Self-only — never another user.
  */
-export const usersLoginSessionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsersLoginSessionsListInput,
-    outputSchema: UsersLoginSessionsListOutput,
-  }),
-);
+export const usersLoginSessionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersLoginSessionsListInput,
+  outputSchema: UsersLoginSessionsListOutput,
+}));

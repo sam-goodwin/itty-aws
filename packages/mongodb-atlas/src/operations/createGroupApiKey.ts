@@ -9,20 +9,18 @@ export interface CreateGroupApiKeyInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const CreateGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  },
-).pipe(
+export const CreateGroupApiKeyInput = /*@__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
   T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/apiKeys" }),
 ) as unknown as Schema.Codec<CreateGroupApiKeyInput>;
 
 // Output Schema
 export type CreateGroupApiKeyOutput = void;
 export const CreateGroupApiKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupApiKeyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupApiKeyOutput>;
 
 // The operation
 /**
@@ -36,7 +34,7 @@ export const CreateGroupApiKeyOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createGroupApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateGroupApiKeyInput,
   outputSchema: CreateGroupApiKeyOutput,
   errors: [Forbidden, NotFound] as const,

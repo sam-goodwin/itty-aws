@@ -8,7 +8,7 @@ export interface RetrieveConversationModelInput {
   modelId: string;
 }
 export const RetrieveConversationModelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     modelId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/conversations/models/{modelId}" }),
@@ -19,7 +19,7 @@ export interface RetrieveConversationModelOutput {
   id: string;
 }
 export const RetrieveConversationModelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
   }) as unknown as Schema.Codec<RetrieveConversationModelOutput>;
 
@@ -29,10 +29,8 @@ export const RetrieveConversationModelOutput =
  *
  * @param modelId - The id of the conversation model to retrieve
  */
-export const retrieveConversationModel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetrieveConversationModelInput,
-    outputSchema: RetrieveConversationModelOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const retrieveConversationModel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetrieveConversationModelInput,
+  outputSchema: RetrieveConversationModelOutput,
+  errors: [NotFound] as const,
+}));

@@ -9,7 +9,7 @@ export interface HogFunctionsDestroyInput {
   project_id: string;
 }
 export const HogFunctionsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const HogFunctionsDestroyInput =
 // Output Schema
 export type HogFunctionsDestroyOutput = void;
 export const HogFunctionsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HogFunctionsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HogFunctionsDestroyOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const HogFunctionsDestroyOutput =
  * @param id - A UUID string identifying this hog function.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const hogFunctionsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const hogFunctionsDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: HogFunctionsDestroyInput,
   outputSchema: HogFunctionsDestroyOutput,
   errors: [Forbidden, NotFound] as const,

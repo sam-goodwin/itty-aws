@@ -9,7 +9,7 @@ export interface CreateOrgTeamInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const CreateOrgTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateOrgTeamInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export const CreateOrgTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CreateOrgTeamOutput = void;
 export const CreateOrgTeamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgTeamOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgTeamOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const CreateOrgTeamOutput =
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createOrgTeam = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createOrgTeam = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateOrgTeamInput,
   outputSchema: CreateOrgTeamOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

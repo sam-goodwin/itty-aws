@@ -62,7 +62,7 @@ interface Httpconfiguration {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
 }
-const Httpconfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Httpconfiguration = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allowInsecure: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     expectedBody: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -103,7 +103,7 @@ interface Tcpconfiguration {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-const Tcpconfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Tcpconfiguration = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     method: Schema.optional(
       Schema.Union([Schema.Literal("connection_established"), Schema.Null]),
@@ -185,7 +185,7 @@ interface ListHealthchecksResponseResult {
   type?: string | null;
 }
 const ListHealthchecksResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -277,7 +277,7 @@ interface ListHealthchecksResponseResultInfo {
   totalCount?: number | null;
 }
 const ListHealthchecksResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -303,17 +303,16 @@ export interface GetHealthcheckRequest {
   zoneId: string;
 }
 
-export const GetHealthcheckRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      healthcheckId: Schema.String.pipe(T.HttpPath("healthcheckId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/healthchecks/{healthcheckId}",
-      }),
-    ),
+export const GetHealthcheckRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    healthcheckId: Schema.String.pipe(T.HttpPath("healthcheckId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/healthchecks/{healthcheckId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetHealthcheckRequest>;
 
 export interface GetHealthcheckResponse {
@@ -390,7 +389,7 @@ export interface GetHealthcheckResponse {
 }
 
 export const GetHealthcheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -487,7 +486,7 @@ export const getHealthcheck: API.OperationMethod<
   GetHealthcheckResponse,
   GetHealthcheckError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHealthcheckRequest,
   output: GetHealthcheckResponse,
   errors: [HealthcheckNotFound, Forbidden],
@@ -501,7 +500,7 @@ export interface ListHealthchecksRequest {
 }
 
 export const ListHealthchecksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -575,7 +574,7 @@ export interface ListHealthchecksResponse {
 }
 
 export const ListHealthchecksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListHealthchecksResponseResult),
       resultInfo: Schema.optional(
@@ -591,7 +590,7 @@ export const listHealthchecks: API.PaginatedOperationMethod<
   ListHealthchecksResponse,
   ListHealthchecksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHealthchecksRequest,
   output: ListHealthchecksResponse,
   errors: [Forbidden],
@@ -663,7 +662,7 @@ export interface CreateHealthcheckRequest {
 }
 
 export const CreateHealthcheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       address: Schema.String,
@@ -800,7 +799,7 @@ export interface CreateHealthcheckResponse {
 }
 
 export const CreateHealthcheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -897,7 +896,7 @@ export const createHealthcheck: API.OperationMethod<
   CreateHealthcheckResponse,
   CreateHealthcheckError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHealthcheckRequest,
   output: CreateHealthcheckResponse,
   errors: [HealthcheckAlreadyExists, Forbidden],
@@ -963,7 +962,7 @@ export interface UpdateHealthcheckRequest {
 }
 
 export const UpdateHealthcheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       healthcheckId: Schema.String.pipe(T.HttpPath("healthcheckId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1104,7 +1103,7 @@ export interface UpdateHealthcheckResponse {
 }
 
 export const UpdateHealthcheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1201,7 +1200,7 @@ export const updateHealthcheck: API.OperationMethod<
   UpdateHealthcheckResponse,
   UpdateHealthcheckError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateHealthcheckRequest,
   output: UpdateHealthcheckResponse,
   errors: [HealthcheckNotFound, Forbidden],
@@ -1267,7 +1266,7 @@ export interface PatchHealthcheckRequest {
 }
 
 export const PatchHealthcheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       healthcheckId: Schema.String.pipe(T.HttpPath("healthcheckId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1408,7 +1407,7 @@ export interface PatchHealthcheckResponse {
 }
 
 export const PatchHealthcheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1502,7 +1501,7 @@ export const patchHealthcheck: API.OperationMethod<
   PatchHealthcheckResponse,
   PatchHealthcheckError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchHealthcheckRequest,
   output: PatchHealthcheckResponse,
   errors: [],
@@ -1515,7 +1514,7 @@ export interface DeleteHealthcheckRequest {
 }
 
 export const DeleteHealthcheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       healthcheckId: Schema.String.pipe(T.HttpPath("healthcheckId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1533,7 +1532,7 @@ export interface DeleteHealthcheckResponse {
 }
 
 export const DeleteHealthcheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1549,7 +1548,7 @@ export const deleteHealthcheck: API.OperationMethod<
   DeleteHealthcheckResponse,
   DeleteHealthcheckError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHealthcheckRequest,
   output: DeleteHealthcheckResponse,
   errors: [HealthcheckNotFound, Forbidden],
@@ -1565,17 +1564,16 @@ export interface GetPreviewRequest {
   zoneId: string;
 }
 
-export const GetPreviewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      healthcheckId: Schema.String.pipe(T.HttpPath("healthcheckId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/healthchecks/preview/{healthcheckId}",
-      }),
-    ),
+export const GetPreviewRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    healthcheckId: Schema.String.pipe(T.HttpPath("healthcheckId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/healthchecks/preview/{healthcheckId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetPreviewRequest>;
 
 export interface GetPreviewResponse {
@@ -1651,92 +1649,87 @@ export interface GetPreviewResponse {
   type?: string | null;
 }
 
-export const GetPreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      checkRegions: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals([
-                "WNAM",
-                "ENAM",
-                "WEU",
-                "EEU",
-                "NSAM",
-                "SSAM",
-                "OC",
-                "ME",
-                "NAF",
-                "SAF",
-                "IN",
-                "SEAS",
-                "NEAS",
-                "ALL_REGIONS",
-              ]),
-              Schema.String,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      consecutiveFails: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      consecutiveSuccesses: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      failureReason: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      httpConfig: Schema.optional(
-        Schema.Union([Httpconfiguration, Schema.Null]),
-      ),
-      interval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      retries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
+export const GetPreviewResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    checkRegions: Schema.optional(
+      Schema.Union([
+        Schema.Array(
           Schema.Union([
-            Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+            Schema.Literals([
+              "WNAM",
+              "ENAM",
+              "WEU",
+              "EEU",
+              "NSAM",
+              "SSAM",
+              "OC",
+              "ME",
+              "NAF",
+              "SAF",
+              "IN",
+              "SEAS",
+              "NEAS",
+              "ALL_REGIONS",
+            ]),
             Schema.String,
           ]),
-          Schema.Null,
+        ),
+        Schema.Null,
+      ]),
+    ),
+    consecutiveFails: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    consecutiveSuccesses: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    failureReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    httpConfig: Schema.optional(Schema.Union([Httpconfiguration, Schema.Null])),
+    interval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    retries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+          Schema.String,
         ]),
-      ),
-      suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      tcpConfig: Schema.optional(Schema.Union([Tcpconfiguration, Schema.Null])),
-      timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          address: "address",
-          checkRegions: "check_regions",
-          consecutiveFails: "consecutive_fails",
-          consecutiveSuccesses: "consecutive_successes",
-          createdOn: "created_on",
-          description: "description",
-          failureReason: "failure_reason",
-          httpConfig: "http_config",
-          interval: "interval",
-          modifiedOn: "modified_on",
-          name: "name",
-          retries: "retries",
-          status: "status",
-          suspended: "suspended",
-          tcpConfig: "tcp_config",
-          timeout: "timeout",
-          type: "type",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    tcpConfig: Schema.optional(Schema.Union([Tcpconfiguration, Schema.Null])),
+    timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        address: "address",
+        checkRegions: "check_regions",
+        consecutiveFails: "consecutive_fails",
+        consecutiveSuccesses: "consecutive_successes",
+        createdOn: "created_on",
+        description: "description",
+        failureReason: "failure_reason",
+        httpConfig: "http_config",
+        interval: "interval",
+        modifiedOn: "modified_on",
+        name: "name",
+        retries: "retries",
+        status: "status",
+        suspended: "suspended",
+        tcpConfig: "tcp_config",
+        timeout: "timeout",
+        type: "type",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetPreviewResponse>;
 
 export type GetPreviewError = DefaultErrors;
@@ -1746,7 +1739,7 @@ export const getPreview: API.OperationMethod<
   GetPreviewResponse,
   GetPreviewError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPreviewRequest,
   output: GetPreviewResponse,
   errors: [],
@@ -1810,68 +1803,65 @@ export interface CreatePreviewRequest {
   type?: string;
 }
 
-export const CreatePreviewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      address: Schema.String,
-      name: Schema.String,
-      checkRegions: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals([
-                "WNAM",
-                "ENAM",
-                "WEU",
-                "EEU",
-                "NSAM",
-                "SSAM",
-                "OC",
-                "ME",
-                "NAF",
-                "SAF",
-                "IN",
-                "SEAS",
-                "NEAS",
-                "ALL_REGIONS",
-              ]),
-              Schema.String,
+export const CreatePreviewRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    address: Schema.String,
+    name: Schema.String,
+    checkRegions: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals([
+              "WNAM",
+              "ENAM",
+              "WEU",
+              "EEU",
+              "NSAM",
+              "SSAM",
+              "OC",
+              "ME",
+              "NAF",
+              "SAF",
+              "IN",
+              "SEAS",
+              "NEAS",
+              "ALL_REGIONS",
             ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      consecutiveFails: Schema.optional(Schema.Number),
-      consecutiveSuccesses: Schema.optional(Schema.Number),
-      description: Schema.optional(Schema.String),
-      httpConfig: Schema.optional(
-        Schema.Union([Httpconfiguration, Schema.Null]),
-      ),
-      interval: Schema.optional(Schema.Number),
-      retries: Schema.optional(Schema.Number),
-      suspended: Schema.optional(Schema.Boolean),
-      tcpConfig: Schema.optional(Schema.Union([Tcpconfiguration, Schema.Null])),
-      timeout: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        address: "address",
-        name: "name",
-        checkRegions: "check_regions",
-        consecutiveFails: "consecutive_fails",
-        consecutiveSuccesses: "consecutive_successes",
-        description: "description",
-        httpConfig: "http_config",
-        interval: "interval",
-        retries: "retries",
-        suspended: "suspended",
-        tcpConfig: "tcp_config",
-        timeout: "timeout",
-        type: "type",
-      }),
-      T.Http({ method: "POST", path: "/zones/{zone_id}/healthchecks/preview" }),
+            Schema.String,
+          ]),
+        ),
+        Schema.Null,
+      ]),
     ),
+    consecutiveFails: Schema.optional(Schema.Number),
+    consecutiveSuccesses: Schema.optional(Schema.Number),
+    description: Schema.optional(Schema.String),
+    httpConfig: Schema.optional(Schema.Union([Httpconfiguration, Schema.Null])),
+    interval: Schema.optional(Schema.Number),
+    retries: Schema.optional(Schema.Number),
+    suspended: Schema.optional(Schema.Boolean),
+    tcpConfig: Schema.optional(Schema.Union([Tcpconfiguration, Schema.Null])),
+    timeout: Schema.optional(Schema.Number),
+    type: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      address: "address",
+      name: "name",
+      checkRegions: "check_regions",
+      consecutiveFails: "consecutive_fails",
+      consecutiveSuccesses: "consecutive_successes",
+      description: "description",
+      httpConfig: "http_config",
+      interval: "interval",
+      retries: "retries",
+      suspended: "suspended",
+      tcpConfig: "tcp_config",
+      timeout: "timeout",
+      type: "type",
+    }),
+    T.Http({ method: "POST", path: "/zones/{zone_id}/healthchecks/preview" }),
+  ),
 ) as unknown as Schema.Codec<CreatePreviewRequest>;
 
 export interface CreatePreviewResponse {
@@ -1947,92 +1937,87 @@ export interface CreatePreviewResponse {
   type?: string | null;
 }
 
-export const CreatePreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      checkRegions: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals([
-                "WNAM",
-                "ENAM",
-                "WEU",
-                "EEU",
-                "NSAM",
-                "SSAM",
-                "OC",
-                "ME",
-                "NAF",
-                "SAF",
-                "IN",
-                "SEAS",
-                "NEAS",
-                "ALL_REGIONS",
-              ]),
-              Schema.String,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      consecutiveFails: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      consecutiveSuccesses: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      failureReason: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      httpConfig: Schema.optional(
-        Schema.Union([Httpconfiguration, Schema.Null]),
-      ),
-      interval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      retries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
+export const CreatePreviewResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    checkRegions: Schema.optional(
+      Schema.Union([
+        Schema.Array(
           Schema.Union([
-            Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+            Schema.Literals([
+              "WNAM",
+              "ENAM",
+              "WEU",
+              "EEU",
+              "NSAM",
+              "SSAM",
+              "OC",
+              "ME",
+              "NAF",
+              "SAF",
+              "IN",
+              "SEAS",
+              "NEAS",
+              "ALL_REGIONS",
+            ]),
             Schema.String,
           ]),
-          Schema.Null,
+        ),
+        Schema.Null,
+      ]),
+    ),
+    consecutiveFails: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    consecutiveSuccesses: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    failureReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    httpConfig: Schema.optional(Schema.Union([Httpconfiguration, Schema.Null])),
+    interval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    retries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+          Schema.String,
         ]),
-      ),
-      suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      tcpConfig: Schema.optional(Schema.Union([Tcpconfiguration, Schema.Null])),
-      timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          address: "address",
-          checkRegions: "check_regions",
-          consecutiveFails: "consecutive_fails",
-          consecutiveSuccesses: "consecutive_successes",
-          createdOn: "created_on",
-          description: "description",
-          failureReason: "failure_reason",
-          httpConfig: "http_config",
-          interval: "interval",
-          modifiedOn: "modified_on",
-          name: "name",
-          retries: "retries",
-          status: "status",
-          suspended: "suspended",
-          tcpConfig: "tcp_config",
-          timeout: "timeout",
-          type: "type",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    tcpConfig: Schema.optional(Schema.Union([Tcpconfiguration, Schema.Null])),
+    timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        address: "address",
+        checkRegions: "check_regions",
+        consecutiveFails: "consecutive_fails",
+        consecutiveSuccesses: "consecutive_successes",
+        createdOn: "created_on",
+        description: "description",
+        failureReason: "failure_reason",
+        httpConfig: "http_config",
+        interval: "interval",
+        modifiedOn: "modified_on",
+        name: "name",
+        retries: "retries",
+        status: "status",
+        suspended: "suspended",
+        tcpConfig: "tcp_config",
+        timeout: "timeout",
+        type: "type",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreatePreviewResponse>;
 
 export type CreatePreviewError = DefaultErrors;
@@ -2042,7 +2027,7 @@ export const createPreview: API.OperationMethod<
   CreatePreviewResponse,
   CreatePreviewError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePreviewRequest,
   output: CreatePreviewResponse,
   errors: [],
@@ -2054,17 +2039,16 @@ export interface DeletePreviewRequest {
   zoneId: string;
 }
 
-export const DeletePreviewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      healthcheckId: Schema.String.pipe(T.HttpPath("healthcheckId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/zones/{zone_id}/healthchecks/preview/{healthcheckId}",
-      }),
-    ),
+export const DeletePreviewRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    healthcheckId: Schema.String.pipe(T.HttpPath("healthcheckId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/healthchecks/preview/{healthcheckId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeletePreviewRequest>;
 
 export interface DeletePreviewResponse {
@@ -2072,11 +2056,10 @@ export interface DeletePreviewResponse {
   id?: string | null;
 }
 
-export const DeletePreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const DeletePreviewResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeletePreviewResponse>;
 
 export type DeletePreviewError = DefaultErrors;
@@ -2086,7 +2069,7 @@ export const deletePreview: API.OperationMethod<
   DeletePreviewResponse,
   DeletePreviewError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePreviewRequest,
   output: DeletePreviewResponse,
   errors: [],

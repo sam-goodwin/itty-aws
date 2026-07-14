@@ -12,7 +12,7 @@ export interface RequestLimitsUpgradeInput {
   };
 }
 export const RequestLimitsUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String,
     userIdType: Schema.Literals(["phone_number"]),
     fields: Schema.optional(
@@ -34,7 +34,7 @@ export const RequestLimitsUpgradeInput =
 // Output Schema
 export type RequestLimitsUpgradeOutput = void;
 export const RequestLimitsUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RequestLimitsUpgradeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RequestLimitsUpgradeOutput>;
 
 // The operation
 /**
@@ -48,9 +48,7 @@ export const RequestLimitsUpgradeOutput =
  * - `ssnLast4`: Last 4 digits of the Social Security Number (no dashes or spaces).
  * - `dateOfBirth`: Date of birth (day, month, year as zero-padded strings).
  */
-export const requestLimitsUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RequestLimitsUpgradeInput,
-    outputSchema: RequestLimitsUpgradeOutput,
-  }),
-);
+export const requestLimitsUpgrade = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RequestLimitsUpgradeInput,
+  outputSchema: RequestLimitsUpgradeOutput,
+}));

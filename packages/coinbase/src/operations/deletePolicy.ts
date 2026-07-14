@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface DeletePolicyInput {
   policyId: string;
 }
-export const DeletePolicyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePolicyInput = /*@__PURE__*/ Schema.Struct({
   policyId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/v2/policy-engine/policies/{policyId}" }),
@@ -15,7 +15,7 @@ export const DeletePolicyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeletePolicyOutput = void;
 export const DeletePolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeletePolicyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeletePolicyOutput>;
 
 // The operation
 /**
@@ -29,7 +29,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param policyId - The ID of the policy to delete.
  */
-export const deletePolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deletePolicy = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeletePolicyInput,
   outputSchema: DeletePolicyOutput,
 }));

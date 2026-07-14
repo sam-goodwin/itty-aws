@@ -25,7 +25,7 @@ const svc = T.Service({
 export interface OperationMetadata {}
 
 export const OperationMetadata: Schema.Codec<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "OperationMetadata",
   });
 
@@ -49,7 +49,7 @@ export interface Location {
 }
 
 export const Location: Schema.Codec<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     features: Schema.optional(Schema.Array(Schema.String)),
     type: Schema.optional(Schema.String),
@@ -63,7 +63,7 @@ export interface ListAvailableLocationsResponse {
 }
 
 export const ListAvailableLocationsResponse: Schema.Codec<ListAvailableLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAvailableLocationsResponse" });
@@ -92,7 +92,7 @@ export interface WebApp {
 }
 
 export const WebApp: Schema.Codec<WebApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     apiKeyId: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface RemoveAnalyticsRequest {
 }
 
 export const RemoveAnalyticsRequest: Schema.Codec<RemoveAnalyticsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyticsPropertyId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemoveAnalyticsRequest" });
 
@@ -141,7 +141,7 @@ export interface IosApp {
 }
 
 export const IosApp: Schema.Codec<IosApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -175,7 +175,7 @@ export interface FirebaseAppInfo {
 }
 
 export const FirebaseAppInfo: Schema.Codec<FirebaseAppInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     platform: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     namespace: Schema.optional(Schema.String),
@@ -196,7 +196,7 @@ export interface AnalyticsProperty {
 }
 
 export const AnalyticsProperty: Schema.Codec<AnalyticsProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     analyticsAccountId: Schema.optional(Schema.String),
@@ -210,7 +210,7 @@ export interface UndeleteAndroidAppRequest {
 }
 
 export const UndeleteAndroidAppRequest: Schema.Codec<UndeleteAndroidAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
   }).annotate({ identifier: "UndeleteAndroidAppRequest" });
@@ -225,7 +225,7 @@ export interface ProjectInfo {
 }
 
 export const ProjectInfo: Schema.Codec<ProjectInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     project: Schema.optional(Schema.String),
     locationId: Schema.optional(Schema.String),
@@ -241,7 +241,7 @@ export interface StreamMapping {
 }
 
 export const StreamMapping: Schema.Codec<StreamMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     streamId: Schema.optional(Schema.String),
     measurementId: Schema.optional(Schema.String),
     app: Schema.optional(Schema.String),
@@ -255,7 +255,7 @@ export interface SearchFirebaseAppsResponse {
 }
 
 export const SearchFirebaseAppsResponse: Schema.Codec<SearchFirebaseAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apps: Schema.optional(Schema.Array(FirebaseAppInfo)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "SearchFirebaseAppsResponse" });
@@ -272,7 +272,7 @@ export interface DefaultResources {
 }
 
 export const DefaultResources: Schema.Codec<DefaultResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     realtimeDatabaseInstance: Schema.optional(Schema.String),
     storageBucket: Schema.optional(Schema.String),
     hostingSite: Schema.optional(Schema.String),
@@ -299,7 +299,7 @@ export interface FirebaseProject {
 }
 
 export const FirebaseProject: Schema.Codec<FirebaseProject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     resources: Schema.optional(DefaultResources),
@@ -318,7 +318,7 @@ export interface ListFirebaseProjectsResponse {
 }
 
 export const ListFirebaseProjectsResponse: Schema.Codec<ListFirebaseProjectsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(FirebaseProject)),
   }).annotate({ identifier: "ListFirebaseProjectsResponse" });
@@ -331,7 +331,7 @@ export interface ListAvailableProjectsResponse {
 }
 
 export const ListAvailableProjectsResponse: Schema.Codec<ListAvailableProjectsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectInfo: Schema.optional(Schema.Array(ProjectInfo)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAvailableProjectsResponse" });
@@ -344,7 +344,7 @@ export interface AddGoogleAnalyticsRequest {
 }
 
 export const AddGoogleAnalyticsRequest: Schema.Codec<AddGoogleAnalyticsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyticsAccountId: Schema.optional(Schema.String),
     analyticsPropertyId: Schema.optional(Schema.String),
   }).annotate({ identifier: "AddGoogleAnalyticsRequest" });
@@ -375,7 +375,7 @@ export interface AndroidApp {
 }
 
 export const AndroidApp: Schema.Codec<AndroidApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     appId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -403,7 +403,7 @@ export interface ShaCertificate {
 }
 
 export const ShaCertificate: Schema.Codec<ShaCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certType: Schema.optional(Schema.String),
     shaHash: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -412,7 +412,7 @@ export const ShaCertificate: Schema.Codec<ShaCertificate> =
 export interface MessageSet {}
 
 export const MessageSet: Schema.Codec<MessageSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MessageSet",
   });
 
@@ -422,7 +422,7 @@ export interface ListShaCertificatesResponse {
 }
 
 export const ListShaCertificatesResponse: Schema.Codec<ListShaCertificatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificates: Schema.optional(Schema.Array(ShaCertificate)),
   }).annotate({ identifier: "ListShaCertificatesResponse" });
 
@@ -436,7 +436,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -458,7 +458,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -472,7 +472,7 @@ export interface ProductMetadata {
 }
 
 export const ProductMetadata: Schema.Codec<ProductMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     warningMessages: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ProductMetadata" });
 
@@ -484,7 +484,7 @@ export interface AndroidAppConfig {
 }
 
 export const AndroidAppConfig: Schema.Codec<AndroidAppConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configFilename: Schema.optional(Schema.String),
     configFileContents: Schema.optional(Schema.String),
   }).annotate({ identifier: "AndroidAppConfig" });
@@ -497,7 +497,7 @@ export interface ListIosAppsResponse {
 }
 
 export const ListIosAppsResponse: Schema.Codec<ListIosAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apps: Schema.optional(Schema.Array(IosApp)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListIosAppsResponse" });
@@ -510,7 +510,7 @@ export interface AnalyticsDetails {
 }
 
 export const AnalyticsDetails: Schema.Codec<AnalyticsDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyticsProperty: Schema.optional(AnalyticsProperty),
     streamMappings: Schema.optional(Schema.Array(StreamMapping)),
   }).annotate({ identifier: "AnalyticsDetails" });
@@ -521,7 +521,7 @@ export interface FinalizeDefaultLocationRequest {
 }
 
 export const FinalizeDefaultLocationRequest: Schema.Codec<FinalizeDefaultLocationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
   }).annotate({ identifier: "FinalizeDefaultLocationRequest" });
 
@@ -533,7 +533,7 @@ export interface UndeleteIosAppRequest {
 }
 
 export const UndeleteIosAppRequest: Schema.Codec<UndeleteIosAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
   }).annotate({ identifier: "UndeleteIosAppRequest" });
@@ -546,7 +546,7 @@ export interface UndeleteWebAppRequest {
 }
 
 export const UndeleteWebAppRequest: Schema.Codec<UndeleteWebAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
   }).annotate({ identifier: "UndeleteWebAppRequest" });
@@ -565,7 +565,7 @@ export interface StatusProto {
 }
 
 export const StatusProto: Schema.Codec<StatusProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     canonicalCode: Schema.optional(Schema.Number),
@@ -581,7 +581,7 @@ export interface ListAndroidAppsResponse {
 }
 
 export const ListAndroidAppsResponse: Schema.Codec<ListAndroidAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apps: Schema.optional(Schema.Array(AndroidApp)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAndroidAppsResponse" });
@@ -598,7 +598,7 @@ export interface RemoveAndroidAppRequest {
 }
 
 export const RemoveAndroidAppRequest: Schema.Codec<RemoveAndroidAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
     immediate: Schema.optional(Schema.Boolean),
@@ -617,7 +617,7 @@ export interface RemoveIosAppRequest {
 }
 
 export const RemoveIosAppRequest: Schema.Codec<RemoveIosAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
     immediate: Schema.optional(Schema.Boolean),
@@ -632,7 +632,7 @@ export interface IosAppConfig {
 }
 
 export const IosAppConfig: Schema.Codec<IosAppConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configFileContents: Schema.optional(Schema.String),
     configFilename: Schema.optional(Schema.String),
   }).annotate({ identifier: "IosAppConfig" });
@@ -649,7 +649,7 @@ export interface AdminSdkConfig {
 }
 
 export const AdminSdkConfig: Schema.Codec<AdminSdkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     databaseURL: Schema.optional(Schema.String),
     storageBucket: Schema.optional(Schema.String),
@@ -664,7 +664,7 @@ export interface ListWebAppsResponse {
 }
 
 export const ListWebAppsResponse: Schema.Codec<ListWebAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apps: Schema.optional(Schema.Array(WebApp)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListWebAppsResponse" });
@@ -681,7 +681,7 @@ export interface RemoveWebAppRequest {
 }
 
 export const RemoveWebAppRequest: Schema.Codec<RemoveWebAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     immediate: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
@@ -718,7 +718,7 @@ export interface WebAppConfig {
 }
 
 export const WebAppConfig: Schema.Codec<WebAppConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     measurementId: Schema.optional(Schema.String),
     databaseURL: Schema.optional(Schema.String),
     storageBucket: Schema.optional(Schema.String),
@@ -740,14 +740,14 @@ export interface AddFirebaseRequest {
 }
 
 export const AddFirebaseRequest: Schema.Codec<AddFirebaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
   }).annotate({ identifier: "AddFirebaseRequest" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -811,7 +811,7 @@ export interface GetAdminSdkConfigProjectsRequest {
 }
 
 export const GetAdminSdkConfigProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -819,8 +819,7 @@ export const GetAdminSdkConfigProjectsRequest =
   ) as unknown as Schema.Codec<GetAdminSdkConfigProjectsRequest>;
 
 export type GetAdminSdkConfigProjectsResponse = AdminSdkConfig;
-export const GetAdminSdkConfigProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AdminSdkConfig;
+export const GetAdminSdkConfigProjectsResponse = /*@__PURE__*/ AdminSdkConfig;
 
 export type GetAdminSdkConfigProjectsError =
   | DefaultErrors
@@ -833,7 +832,7 @@ export const getAdminSdkConfigProjects: API.OperationMethod<
   GetAdminSdkConfigProjectsResponse,
   GetAdminSdkConfigProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdminSdkConfigProjectsRequest,
   output: GetAdminSdkConfigProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -847,7 +846,7 @@ export interface RemoveAnalyticsProjectsRequest {
 }
 
 export const RemoveAnalyticsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(RemoveAnalyticsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -860,8 +859,7 @@ export const RemoveAnalyticsProjectsRequest =
   ) as unknown as Schema.Codec<RemoveAnalyticsProjectsRequest>;
 
 export type RemoveAnalyticsProjectsResponse = Empty;
-export const RemoveAnalyticsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const RemoveAnalyticsProjectsResponse = /*@__PURE__*/ Empty;
 
 export type RemoveAnalyticsProjectsError =
   | DefaultErrors
@@ -876,7 +874,7 @@ export const removeAnalyticsProjects: API.OperationMethod<
   RemoveAnalyticsProjectsResponse,
   RemoveAnalyticsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveAnalyticsProjectsRequest,
   output: RemoveAnalyticsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -887,7 +885,7 @@ export interface GetProjectsRequest {
   name: string;
 }
 
-export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProjectsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -895,7 +893,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetProjectsRequest>;
 
 export type GetProjectsResponse = FirebaseProject;
-export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ FirebaseProject;
+export const GetProjectsResponse = /*@__PURE__*/ FirebaseProject;
 
 export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -905,7 +903,7 @@ export const getProjects: API.OperationMethod<
   GetProjectsResponse,
   GetProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsRequest,
   output: GetProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -917,7 +915,7 @@ export interface GetAnalyticsDetailsProjectsRequest {
 }
 
 export const GetAnalyticsDetailsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -926,7 +924,7 @@ export const GetAnalyticsDetailsProjectsRequest =
 
 export type GetAnalyticsDetailsProjectsResponse = AnalyticsDetails;
 export const GetAnalyticsDetailsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AnalyticsDetails;
+  /*@__PURE__*/ AnalyticsDetails;
 
 export type GetAnalyticsDetailsProjectsError =
   | DefaultErrors
@@ -939,7 +937,7 @@ export const getAnalyticsDetailsProjects: API.OperationMethod<
   GetAnalyticsDetailsProjectsResponse,
   GetAnalyticsDetailsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnalyticsDetailsProjectsRequest,
   output: GetAnalyticsDetailsProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -954,7 +952,7 @@ export interface ListProjectsRequest {
   pageSize?: number;
 }
 
-export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListProjectsRequest = /*@__PURE__*/ Schema.Struct({
   showDeleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("showDeleted")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -964,8 +962,7 @@ export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListProjectsRequest>;
 
 export type ListProjectsResponse = ListFirebaseProjectsResponse;
-export const ListProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListFirebaseProjectsResponse;
+export const ListProjectsResponse = /*@__PURE__*/ ListFirebaseProjectsResponse;
 
 export type ListProjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -975,7 +972,7 @@ export const listProjects: API.PaginatedOperationMethod<
   ListProjectsResponse,
   ListProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -993,7 +990,7 @@ export interface AddFirebaseProjectsRequest {
 }
 
 export const AddFirebaseProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     body: Schema.optional(AddFirebaseRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1006,8 +1003,7 @@ export const AddFirebaseProjectsRequest =
   ) as unknown as Schema.Codec<AddFirebaseProjectsRequest>;
 
 export type AddFirebaseProjectsResponse = Operation;
-export const AddFirebaseProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const AddFirebaseProjectsResponse = /*@__PURE__*/ Operation;
 
 export type AddFirebaseProjectsError =
   | DefaultErrors
@@ -1022,7 +1018,7 @@ export const addFirebaseProjects: API.OperationMethod<
   AddFirebaseProjectsResponse,
   AddFirebaseProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddFirebaseProjectsRequest,
   output: AddFirebaseProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1036,7 +1032,7 @@ export interface AddGoogleAnalyticsProjectsRequest {
 }
 
 export const AddGoogleAnalyticsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AddGoogleAnalyticsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1049,8 +1045,7 @@ export const AddGoogleAnalyticsProjectsRequest =
   ) as unknown as Schema.Codec<AddGoogleAnalyticsProjectsRequest>;
 
 export type AddGoogleAnalyticsProjectsResponse = Operation;
-export const AddGoogleAnalyticsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const AddGoogleAnalyticsProjectsResponse = /*@__PURE__*/ Operation;
 
 export type AddGoogleAnalyticsProjectsError =
   | DefaultErrors
@@ -1065,7 +1060,7 @@ export const addGoogleAnalyticsProjects: API.OperationMethod<
   AddGoogleAnalyticsProjectsResponse,
   AddGoogleAnalyticsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddGoogleAnalyticsProjectsRequest,
   output: AddGoogleAnalyticsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1080,7 +1075,7 @@ export interface PatchProjectsRequest {
   body?: FirebaseProject;
 }
 
-export const PatchProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchProjectsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(FirebaseProject).pipe(T.HttpBody()),
@@ -1090,8 +1085,7 @@ export const PatchProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchProjectsRequest>;
 
 export type PatchProjectsResponse = FirebaseProject;
-export const PatchProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FirebaseProject;
+export const PatchProjectsResponse = /*@__PURE__*/ FirebaseProject;
 
 export type PatchProjectsError =
   | DefaultErrors
@@ -1106,7 +1100,7 @@ export const patchProjects: API.OperationMethod<
   PatchProjectsResponse,
   PatchProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsRequest,
   output: PatchProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1126,7 +1120,7 @@ export interface SearchAppsProjectsRequest {
 }
 
 export const SearchAppsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     showDeleted: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showDeleted"),
     ),
@@ -1141,7 +1135,7 @@ export const SearchAppsProjectsRequest =
 
 export type SearchAppsProjectsResponse = SearchFirebaseAppsResponse;
 export const SearchAppsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SearchFirebaseAppsResponse;
+  /*@__PURE__*/ SearchFirebaseAppsResponse;
 
 export type SearchAppsProjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1151,7 +1145,7 @@ export const searchAppsProjects: API.PaginatedOperationMethod<
   SearchAppsProjectsResponse,
   SearchAppsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAppsProjectsRequest,
   output: SearchAppsProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -1169,7 +1163,7 @@ export interface FinalizeProjectsDefaultLocationRequest {
 }
 
 export const FinalizeProjectsDefaultLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(FinalizeDefaultLocationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1182,8 +1176,7 @@ export const FinalizeProjectsDefaultLocationRequest =
   ) as unknown as Schema.Codec<FinalizeProjectsDefaultLocationRequest>;
 
 export type FinalizeProjectsDefaultLocationResponse = Operation;
-export const FinalizeProjectsDefaultLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const FinalizeProjectsDefaultLocationResponse = /*@__PURE__*/ Operation;
 
 export type FinalizeProjectsDefaultLocationError =
   | DefaultErrors
@@ -1198,7 +1191,7 @@ export const finalizeProjectsDefaultLocation: API.OperationMethod<
   FinalizeProjectsDefaultLocationResponse,
   FinalizeProjectsDefaultLocationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FinalizeProjectsDefaultLocationRequest,
   output: FinalizeProjectsDefaultLocationResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1210,7 +1203,7 @@ export interface GetProjectsAndroidAppsRequest {
 }
 
 export const GetProjectsAndroidAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1218,8 +1211,7 @@ export const GetProjectsAndroidAppsRequest =
   ) as unknown as Schema.Codec<GetProjectsAndroidAppsRequest>;
 
 export type GetProjectsAndroidAppsResponse = AndroidApp;
-export const GetProjectsAndroidAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AndroidApp;
+export const GetProjectsAndroidAppsResponse = /*@__PURE__*/ AndroidApp;
 
 export type GetProjectsAndroidAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1229,7 +1221,7 @@ export const getProjectsAndroidApps: API.OperationMethod<
   GetProjectsAndroidAppsResponse,
   GetProjectsAndroidAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsAndroidAppsRequest,
   output: GetProjectsAndroidAppsResponse,
   errors: [NotFound, Forbidden],
@@ -1247,7 +1239,7 @@ export interface ListProjectsAndroidAppsRequest {
 }
 
 export const ListProjectsAndroidAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     showDeleted: Schema.optional(Schema.Boolean).pipe(
@@ -1261,7 +1253,7 @@ export const ListProjectsAndroidAppsRequest =
 
 export type ListProjectsAndroidAppsResponse = ListAndroidAppsResponse;
 export const ListProjectsAndroidAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAndroidAppsResponse;
+  /*@__PURE__*/ ListAndroidAppsResponse;
 
 export type ListProjectsAndroidAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1271,7 +1263,7 @@ export const listProjectsAndroidApps: API.PaginatedOperationMethod<
   ListProjectsAndroidAppsResponse,
   ListProjectsAndroidAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAndroidAppsRequest,
   output: ListProjectsAndroidAppsResponse,
   errors: [NotFound, Forbidden],
@@ -1289,7 +1281,7 @@ export interface RemoveProjectsAndroidAppsRequest {
 }
 
 export const RemoveProjectsAndroidAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RemoveAndroidAppRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1298,8 +1290,7 @@ export const RemoveProjectsAndroidAppsRequest =
   ) as unknown as Schema.Codec<RemoveProjectsAndroidAppsRequest>;
 
 export type RemoveProjectsAndroidAppsResponse = Operation;
-export const RemoveProjectsAndroidAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const RemoveProjectsAndroidAppsResponse = /*@__PURE__*/ Operation;
 
 export type RemoveProjectsAndroidAppsError =
   | DefaultErrors
@@ -1314,7 +1305,7 @@ export const removeProjectsAndroidApps: API.OperationMethod<
   RemoveProjectsAndroidAppsResponse,
   RemoveProjectsAndroidAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveProjectsAndroidAppsRequest,
   output: RemoveProjectsAndroidAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1328,7 +1319,7 @@ export interface CreateProjectsAndroidAppsRequest {
 }
 
 export const CreateProjectsAndroidAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AndroidApp).pipe(T.HttpBody()),
   }).pipe(
@@ -1341,8 +1332,7 @@ export const CreateProjectsAndroidAppsRequest =
   ) as unknown as Schema.Codec<CreateProjectsAndroidAppsRequest>;
 
 export type CreateProjectsAndroidAppsResponse = Operation;
-export const CreateProjectsAndroidAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateProjectsAndroidAppsResponse = /*@__PURE__*/ Operation;
 
 export type CreateProjectsAndroidAppsError =
   | DefaultErrors
@@ -1357,7 +1347,7 @@ export const createProjectsAndroidApps: API.OperationMethod<
   CreateProjectsAndroidAppsResponse,
   CreateProjectsAndroidAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsAndroidAppsRequest,
   output: CreateProjectsAndroidAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1371,7 +1361,7 @@ export interface UndeleteProjectsAndroidAppsRequest {
 }
 
 export const UndeleteProjectsAndroidAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndeleteAndroidAppRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1380,8 +1370,7 @@ export const UndeleteProjectsAndroidAppsRequest =
   ) as unknown as Schema.Codec<UndeleteProjectsAndroidAppsRequest>;
 
 export type UndeleteProjectsAndroidAppsResponse = Operation;
-export const UndeleteProjectsAndroidAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const UndeleteProjectsAndroidAppsResponse = /*@__PURE__*/ Operation;
 
 export type UndeleteProjectsAndroidAppsError =
   | DefaultErrors
@@ -1396,7 +1385,7 @@ export const undeleteProjectsAndroidApps: API.OperationMethod<
   UndeleteProjectsAndroidAppsResponse,
   UndeleteProjectsAndroidAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeleteProjectsAndroidAppsRequest,
   output: UndeleteProjectsAndroidAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1412,7 +1401,7 @@ export interface PatchProjectsAndroidAppsRequest {
 }
 
 export const PatchProjectsAndroidAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AndroidApp).pipe(T.HttpBody()),
@@ -1422,8 +1411,7 @@ export const PatchProjectsAndroidAppsRequest =
   ) as unknown as Schema.Codec<PatchProjectsAndroidAppsRequest>;
 
 export type PatchProjectsAndroidAppsResponse = AndroidApp;
-export const PatchProjectsAndroidAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AndroidApp;
+export const PatchProjectsAndroidAppsResponse = /*@__PURE__*/ AndroidApp;
 
 export type PatchProjectsAndroidAppsError =
   | DefaultErrors
@@ -1438,7 +1426,7 @@ export const patchProjectsAndroidApps: API.OperationMethod<
   PatchProjectsAndroidAppsResponse,
   PatchProjectsAndroidAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsAndroidAppsRequest,
   output: PatchProjectsAndroidAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1450,7 +1438,7 @@ export interface GetConfigProjectsAndroidAppsRequest {
 }
 
 export const GetConfigProjectsAndroidAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1459,7 +1447,7 @@ export const GetConfigProjectsAndroidAppsRequest =
 
 export type GetConfigProjectsAndroidAppsResponse = AndroidAppConfig;
 export const GetConfigProjectsAndroidAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AndroidAppConfig;
+  /*@__PURE__*/ AndroidAppConfig;
 
 export type GetConfigProjectsAndroidAppsError =
   | DefaultErrors
@@ -1472,7 +1460,7 @@ export const getConfigProjectsAndroidApps: API.OperationMethod<
   GetConfigProjectsAndroidAppsResponse,
   GetConfigProjectsAndroidAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigProjectsAndroidAppsRequest,
   output: GetConfigProjectsAndroidAppsResponse,
   errors: [NotFound, Forbidden],
@@ -1484,7 +1472,7 @@ export interface DeleteProjectsAndroidAppsShaRequest {
 }
 
 export const DeleteProjectsAndroidAppsShaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
@@ -1492,8 +1480,7 @@ export const DeleteProjectsAndroidAppsShaRequest =
   ) as unknown as Schema.Codec<DeleteProjectsAndroidAppsShaRequest>;
 
 export type DeleteProjectsAndroidAppsShaResponse = Empty;
-export const DeleteProjectsAndroidAppsShaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsAndroidAppsShaResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsAndroidAppsShaError =
   | DefaultErrors
@@ -1508,7 +1495,7 @@ export const deleteProjectsAndroidAppsSha: API.OperationMethod<
   DeleteProjectsAndroidAppsShaResponse,
   DeleteProjectsAndroidAppsShaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsAndroidAppsShaRequest,
   output: DeleteProjectsAndroidAppsShaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1520,7 +1507,7 @@ export interface ListProjectsAndroidAppsShaRequest {
 }
 
 export const ListProjectsAndroidAppsShaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/sha" }),
@@ -1529,7 +1516,7 @@ export const ListProjectsAndroidAppsShaRequest =
 
 export type ListProjectsAndroidAppsShaResponse = ListShaCertificatesResponse;
 export const ListProjectsAndroidAppsShaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListShaCertificatesResponse;
+  /*@__PURE__*/ ListShaCertificatesResponse;
 
 export type ListProjectsAndroidAppsShaError =
   | DefaultErrors
@@ -1542,7 +1529,7 @@ export const listProjectsAndroidAppsSha: API.OperationMethod<
   ListProjectsAndroidAppsShaResponse,
   ListProjectsAndroidAppsShaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListProjectsAndroidAppsShaRequest,
   output: ListProjectsAndroidAppsShaResponse,
   errors: [NotFound, Forbidden],
@@ -1556,7 +1543,7 @@ export interface CreateProjectsAndroidAppsShaRequest {
 }
 
 export const CreateProjectsAndroidAppsShaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ShaCertificate).pipe(T.HttpBody()),
   }).pipe(
@@ -1566,7 +1553,7 @@ export const CreateProjectsAndroidAppsShaRequest =
 
 export type CreateProjectsAndroidAppsShaResponse = ShaCertificate;
 export const CreateProjectsAndroidAppsShaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ShaCertificate;
+  /*@__PURE__*/ ShaCertificate;
 
 export type CreateProjectsAndroidAppsShaError =
   | DefaultErrors
@@ -1581,7 +1568,7 @@ export const createProjectsAndroidAppsSha: API.OperationMethod<
   CreateProjectsAndroidAppsShaResponse,
   CreateProjectsAndroidAppsShaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsAndroidAppsShaRequest,
   output: CreateProjectsAndroidAppsShaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1597,7 +1584,7 @@ export interface ListProjectsAvailableLocationsRequest {
 }
 
 export const ListProjectsAvailableLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1609,7 +1596,7 @@ export const ListProjectsAvailableLocationsRequest =
 export type ListProjectsAvailableLocationsResponse =
   ListAvailableLocationsResponse;
 export const ListProjectsAvailableLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAvailableLocationsResponse;
+  /*@__PURE__*/ ListAvailableLocationsResponse;
 
 export type ListProjectsAvailableLocationsError =
   | DefaultErrors
@@ -1622,7 +1609,7 @@ export const listProjectsAvailableLocations: API.PaginatedOperationMethod<
   ListProjectsAvailableLocationsResponse,
   ListProjectsAvailableLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAvailableLocationsRequest,
   output: ListProjectsAvailableLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1640,7 +1627,7 @@ export interface CreateProjectsWebAppsRequest {
 }
 
 export const CreateProjectsWebAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(WebApp).pipe(T.HttpBody()),
   }).pipe(
@@ -1653,8 +1640,7 @@ export const CreateProjectsWebAppsRequest =
   ) as unknown as Schema.Codec<CreateProjectsWebAppsRequest>;
 
 export type CreateProjectsWebAppsResponse = Operation;
-export const CreateProjectsWebAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateProjectsWebAppsResponse = /*@__PURE__*/ Operation;
 
 export type CreateProjectsWebAppsError =
   | DefaultErrors
@@ -1669,7 +1655,7 @@ export const createProjectsWebApps: API.OperationMethod<
   CreateProjectsWebAppsResponse,
   CreateProjectsWebAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsWebAppsRequest,
   output: CreateProjectsWebAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1681,7 +1667,7 @@ export interface GetProjectsWebAppsRequest {
 }
 
 export const GetProjectsWebAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1689,7 +1675,7 @@ export const GetProjectsWebAppsRequest =
   ) as unknown as Schema.Codec<GetProjectsWebAppsRequest>;
 
 export type GetProjectsWebAppsResponse = WebApp;
-export const GetProjectsWebAppsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
+export const GetProjectsWebAppsResponse = /*@__PURE__*/ WebApp;
 
 export type GetProjectsWebAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1699,7 +1685,7 @@ export const getProjectsWebApps: API.OperationMethod<
   GetProjectsWebAppsResponse,
   GetProjectsWebAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsWebAppsRequest,
   output: GetProjectsWebAppsResponse,
   errors: [NotFound, Forbidden],
@@ -1717,7 +1703,7 @@ export interface ListProjectsWebAppsRequest {
 }
 
 export const ListProjectsWebAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1730,8 +1716,7 @@ export const ListProjectsWebAppsRequest =
   ) as unknown as Schema.Codec<ListProjectsWebAppsRequest>;
 
 export type ListProjectsWebAppsResponse = ListWebAppsResponse;
-export const ListProjectsWebAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListWebAppsResponse;
+export const ListProjectsWebAppsResponse = /*@__PURE__*/ ListWebAppsResponse;
 
 export type ListProjectsWebAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1741,7 +1726,7 @@ export const listProjectsWebApps: API.PaginatedOperationMethod<
   ListProjectsWebAppsResponse,
   ListProjectsWebAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsWebAppsRequest,
   output: ListProjectsWebAppsResponse,
   errors: [NotFound, Forbidden],
@@ -1759,7 +1744,7 @@ export interface RemoveProjectsWebAppsRequest {
 }
 
 export const RemoveProjectsWebAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RemoveWebAppRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1768,8 +1753,7 @@ export const RemoveProjectsWebAppsRequest =
   ) as unknown as Schema.Codec<RemoveProjectsWebAppsRequest>;
 
 export type RemoveProjectsWebAppsResponse = Operation;
-export const RemoveProjectsWebAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const RemoveProjectsWebAppsResponse = /*@__PURE__*/ Operation;
 
 export type RemoveProjectsWebAppsError =
   | DefaultErrors
@@ -1784,7 +1768,7 @@ export const removeProjectsWebApps: API.OperationMethod<
   RemoveProjectsWebAppsResponse,
   RemoveProjectsWebAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveProjectsWebAppsRequest,
   output: RemoveProjectsWebAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1800,7 +1784,7 @@ export interface PatchProjectsWebAppsRequest {
 }
 
 export const PatchProjectsWebAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(WebApp).pipe(T.HttpBody()),
@@ -1810,7 +1794,7 @@ export const PatchProjectsWebAppsRequest =
   ) as unknown as Schema.Codec<PatchProjectsWebAppsRequest>;
 
 export type PatchProjectsWebAppsResponse = WebApp;
-export const PatchProjectsWebAppsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
+export const PatchProjectsWebAppsResponse = /*@__PURE__*/ WebApp;
 
 export type PatchProjectsWebAppsError =
   | DefaultErrors
@@ -1825,7 +1809,7 @@ export const patchProjectsWebApps: API.OperationMethod<
   PatchProjectsWebAppsResponse,
   PatchProjectsWebAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsWebAppsRequest,
   output: PatchProjectsWebAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1837,7 +1821,7 @@ export interface GetConfigProjectsWebAppsRequest {
 }
 
 export const GetConfigProjectsWebAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1845,8 +1829,7 @@ export const GetConfigProjectsWebAppsRequest =
   ) as unknown as Schema.Codec<GetConfigProjectsWebAppsRequest>;
 
 export type GetConfigProjectsWebAppsResponse = WebAppConfig;
-export const GetConfigProjectsWebAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WebAppConfig;
+export const GetConfigProjectsWebAppsResponse = /*@__PURE__*/ WebAppConfig;
 
 export type GetConfigProjectsWebAppsError =
   | DefaultErrors
@@ -1859,7 +1842,7 @@ export const getConfigProjectsWebApps: API.OperationMethod<
   GetConfigProjectsWebAppsResponse,
   GetConfigProjectsWebAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigProjectsWebAppsRequest,
   output: GetConfigProjectsWebAppsResponse,
   errors: [NotFound, Forbidden],
@@ -1873,7 +1856,7 @@ export interface UndeleteProjectsWebAppsRequest {
 }
 
 export const UndeleteProjectsWebAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndeleteWebAppRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1882,8 +1865,7 @@ export const UndeleteProjectsWebAppsRequest =
   ) as unknown as Schema.Codec<UndeleteProjectsWebAppsRequest>;
 
 export type UndeleteProjectsWebAppsResponse = Operation;
-export const UndeleteProjectsWebAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const UndeleteProjectsWebAppsResponse = /*@__PURE__*/ Operation;
 
 export type UndeleteProjectsWebAppsError =
   | DefaultErrors
@@ -1898,7 +1880,7 @@ export const undeleteProjectsWebApps: API.OperationMethod<
   UndeleteProjectsWebAppsResponse,
   UndeleteProjectsWebAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeleteProjectsWebAppsRequest,
   output: UndeleteProjectsWebAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1912,7 +1894,7 @@ export interface UndeleteProjectsIosAppsRequest {
 }
 
 export const UndeleteProjectsIosAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndeleteIosAppRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1921,8 +1903,7 @@ export const UndeleteProjectsIosAppsRequest =
   ) as unknown as Schema.Codec<UndeleteProjectsIosAppsRequest>;
 
 export type UndeleteProjectsIosAppsResponse = Operation;
-export const UndeleteProjectsIosAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const UndeleteProjectsIosAppsResponse = /*@__PURE__*/ Operation;
 
 export type UndeleteProjectsIosAppsError =
   | DefaultErrors
@@ -1937,7 +1918,7 @@ export const undeleteProjectsIosApps: API.OperationMethod<
   UndeleteProjectsIosAppsResponse,
   UndeleteProjectsIosAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeleteProjectsIosAppsRequest,
   output: UndeleteProjectsIosAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1953,7 +1934,7 @@ export interface PatchProjectsIosAppsRequest {
 }
 
 export const PatchProjectsIosAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(IosApp).pipe(T.HttpBody()),
@@ -1963,7 +1944,7 @@ export const PatchProjectsIosAppsRequest =
   ) as unknown as Schema.Codec<PatchProjectsIosAppsRequest>;
 
 export type PatchProjectsIosAppsResponse = IosApp;
-export const PatchProjectsIosAppsResponse = /*@__PURE__*/ /*#__PURE__*/ IosApp;
+export const PatchProjectsIosAppsResponse = /*@__PURE__*/ IosApp;
 
 export type PatchProjectsIosAppsError =
   | DefaultErrors
@@ -1978,7 +1959,7 @@ export const patchProjectsIosApps: API.OperationMethod<
   PatchProjectsIosAppsResponse,
   PatchProjectsIosAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsIosAppsRequest,
   output: PatchProjectsIosAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1990,7 +1971,7 @@ export interface GetConfigProjectsIosAppsRequest {
 }
 
 export const GetConfigProjectsIosAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1998,8 +1979,7 @@ export const GetConfigProjectsIosAppsRequest =
   ) as unknown as Schema.Codec<GetConfigProjectsIosAppsRequest>;
 
 export type GetConfigProjectsIosAppsResponse = IosAppConfig;
-export const GetConfigProjectsIosAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ IosAppConfig;
+export const GetConfigProjectsIosAppsResponse = /*@__PURE__*/ IosAppConfig;
 
 export type GetConfigProjectsIosAppsError =
   | DefaultErrors
@@ -2012,7 +1992,7 @@ export const getConfigProjectsIosApps: API.OperationMethod<
   GetConfigProjectsIosAppsResponse,
   GetConfigProjectsIosAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigProjectsIosAppsRequest,
   output: GetConfigProjectsIosAppsResponse,
   errors: [NotFound, Forbidden],
@@ -2030,7 +2010,7 @@ export interface ListProjectsIosAppsRequest {
 }
 
 export const ListProjectsIosAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -2043,8 +2023,7 @@ export const ListProjectsIosAppsRequest =
   ) as unknown as Schema.Codec<ListProjectsIosAppsRequest>;
 
 export type ListProjectsIosAppsResponse = ListIosAppsResponse;
-export const ListProjectsIosAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListIosAppsResponse;
+export const ListProjectsIosAppsResponse = /*@__PURE__*/ ListIosAppsResponse;
 
 export type ListProjectsIosAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2054,7 +2033,7 @@ export const listProjectsIosApps: API.PaginatedOperationMethod<
   ListProjectsIosAppsResponse,
   ListProjectsIosAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsIosAppsRequest,
   output: ListProjectsIosAppsResponse,
   errors: [NotFound, Forbidden],
@@ -2072,7 +2051,7 @@ export interface RemoveProjectsIosAppsRequest {
 }
 
 export const RemoveProjectsIosAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RemoveIosAppRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2081,8 +2060,7 @@ export const RemoveProjectsIosAppsRequest =
   ) as unknown as Schema.Codec<RemoveProjectsIosAppsRequest>;
 
 export type RemoveProjectsIosAppsResponse = Operation;
-export const RemoveProjectsIosAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const RemoveProjectsIosAppsResponse = /*@__PURE__*/ Operation;
 
 export type RemoveProjectsIosAppsError =
   | DefaultErrors
@@ -2097,7 +2075,7 @@ export const removeProjectsIosApps: API.OperationMethod<
   RemoveProjectsIosAppsResponse,
   RemoveProjectsIosAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveProjectsIosAppsRequest,
   output: RemoveProjectsIosAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2109,7 +2087,7 @@ export interface GetProjectsIosAppsRequest {
 }
 
 export const GetProjectsIosAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2117,7 +2095,7 @@ export const GetProjectsIosAppsRequest =
   ) as unknown as Schema.Codec<GetProjectsIosAppsRequest>;
 
 export type GetProjectsIosAppsResponse = IosApp;
-export const GetProjectsIosAppsResponse = /*@__PURE__*/ /*#__PURE__*/ IosApp;
+export const GetProjectsIosAppsResponse = /*@__PURE__*/ IosApp;
 
 export type GetProjectsIosAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2127,7 +2105,7 @@ export const getProjectsIosApps: API.OperationMethod<
   GetProjectsIosAppsResponse,
   GetProjectsIosAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsIosAppsRequest,
   output: GetProjectsIosAppsResponse,
   errors: [NotFound, Forbidden],
@@ -2141,7 +2119,7 @@ export interface CreateProjectsIosAppsRequest {
 }
 
 export const CreateProjectsIosAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(IosApp).pipe(T.HttpBody()),
   }).pipe(
@@ -2154,8 +2132,7 @@ export const CreateProjectsIosAppsRequest =
   ) as unknown as Schema.Codec<CreateProjectsIosAppsRequest>;
 
 export type CreateProjectsIosAppsResponse = Operation;
-export const CreateProjectsIosAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateProjectsIosAppsResponse = /*@__PURE__*/ Operation;
 
 export type CreateProjectsIosAppsError =
   | DefaultErrors
@@ -2170,7 +2147,7 @@ export const createProjectsIosApps: API.OperationMethod<
   CreateProjectsIosAppsResponse,
   CreateProjectsIosAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsIosAppsRequest,
   output: CreateProjectsIosAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2181,7 +2158,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2189,7 +2166,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2199,7 +2176,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2213,7 +2190,7 @@ export interface ListAvailableProjectsRequest {
 }
 
 export const ListAvailableProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
@@ -2223,7 +2200,7 @@ export const ListAvailableProjectsRequest =
 
 export type ListAvailableProjectsResponse_Op = ListAvailableProjectsResponse;
 export const ListAvailableProjectsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListAvailableProjectsResponse;
+  /*@__PURE__*/ ListAvailableProjectsResponse;
 
 export type ListAvailableProjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2233,7 +2210,7 @@ export const listAvailableProjects: API.PaginatedOperationMethod<
   ListAvailableProjectsResponse_Op,
   ListAvailableProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAvailableProjectsRequest,
   output: ListAvailableProjectsResponse_Op,
   errors: [NotFound, Forbidden],

@@ -62,7 +62,7 @@ interface Resource {
   /** Whether the error is terminal or will be continually retried. */
   terminal: boolean;
 }
-const Resource = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Resource = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     error: Schema.String,
     resourceId: Schema.String,
@@ -103,35 +103,34 @@ interface ListRecipientsResponseResult {
       }[]
     | null;
 }
-const ListRecipientsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      accountId: Schema.String,
-      associationStatus: Schema.Union([
-        Schema.Literals([
-          "associating",
-          "associated",
-          "disassociating",
-          "disassociated",
-        ]),
-        Schema.String,
+const ListRecipientsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    accountId: Schema.String,
+    associationStatus: Schema.Union([
+      Schema.Literals([
+        "associating",
+        "associated",
+        "disassociating",
+        "disassociated",
       ]),
-      created: Schema.String,
-      modified: Schema.String,
-      resources: Schema.optional(
-        Schema.Union([Schema.Array(Resource), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        accountId: "account_id",
-        associationStatus: "association_status",
-        created: "created",
-        modified: "modified",
-        resources: "resources",
-      }),
+      Schema.String,
+    ]),
+    created: Schema.String,
+    modified: Schema.String,
+    resources: Schema.optional(
+      Schema.Union([Schema.Array(Resource), Schema.Null]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      accountId: "account_id",
+      associationStatus: "association_status",
+      created: "created",
+      modified: "modified",
+      resources: "resources",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListRecipientsResponseResult>;
 
 interface ListRecipientsResponseResultInfo {
@@ -141,7 +140,7 @@ interface ListRecipientsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListRecipientsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -184,44 +183,43 @@ interface ListResourcesResponseResult {
   /** Resource Status. */
   status: "active" | "deleting" | "deleted" | (string & {});
 }
-const ListResourcesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      created: Schema.String,
-      meta: Schema.Unknown,
-      modified: Schema.String,
-      resourceAccountId: Schema.String,
-      resourceId: Schema.String,
-      resourceType: Schema.Union([
-        Schema.Literals([
-          "custom-ruleset",
-          "gateway-policy",
-          "gateway-destination-ip",
-          "gateway-block-page-settings",
-          "gateway-extended-email-matching",
-          "idp-federation-grant",
-        ]),
-        Schema.String,
+const ListResourcesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    created: Schema.String,
+    meta: Schema.Unknown,
+    modified: Schema.String,
+    resourceAccountId: Schema.String,
+    resourceId: Schema.String,
+    resourceType: Schema.Union([
+      Schema.Literals([
+        "custom-ruleset",
+        "gateway-policy",
+        "gateway-destination-ip",
+        "gateway-block-page-settings",
+        "gateway-extended-email-matching",
+        "idp-federation-grant",
       ]),
-      resourceVersion: Schema.Number,
-      status: Schema.Union([
-        Schema.Literals(["active", "deleting", "deleted"]),
-        Schema.String,
-      ]),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        created: "created",
-        meta: "meta",
-        modified: "modified",
-        resourceAccountId: "resource_account_id",
-        resourceId: "resource_id",
-        resourceType: "resource_type",
-        resourceVersion: "resource_version",
-        status: "status",
-      }),
-    ),
+      Schema.String,
+    ]),
+    resourceVersion: Schema.Number,
+    status: Schema.Union([
+      Schema.Literals(["active", "deleting", "deleted"]),
+      Schema.String,
+    ]),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      created: "created",
+      meta: "meta",
+      modified: "modified",
+      resourceAccountId: "resource_account_id",
+      resourceId: "resource_id",
+      resourceType: "resource_type",
+      resourceVersion: "resource_version",
+      status: "status",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListResourcesResponseResult>;
 
 interface ListResourceSharingsResponseResult {
@@ -273,7 +271,7 @@ interface ListResourceSharingsResponseResult {
     | null;
 }
 const ListResourceSharingsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -340,7 +338,7 @@ interface Recipient {
   /** The account that will receive the share. */
   recipientAccountId?: string | null;
 }
-const Recipient = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Recipient = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     organizationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -373,7 +371,7 @@ interface Resource2 {
     | "idp-federation-grant"
     | (string & {});
 }
-const Resource2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Resource2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     meta: Schema.Unknown,
     resourceAccountId: Schema.String,
@@ -412,21 +410,20 @@ export interface GetRecipientRequest {
   includeResources?: boolean;
 }
 
-export const GetRecipientRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      shareId: Schema.String.pipe(T.HttpPath("shareId")),
-      recipientId: Schema.String.pipe(T.HttpPath("recipientId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      includeResources: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("include_resources"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/shares/{shareId}/recipients/{recipientId}",
-      }),
+export const GetRecipientRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    shareId: Schema.String.pipe(T.HttpPath("shareId")),
+    recipientId: Schema.String.pipe(T.HttpPath("recipientId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    includeResources: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("include_resources"),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/shares/{shareId}/recipients/{recipientId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetRecipientRequest>;
 
 export interface GetRecipientResponse {
@@ -455,37 +452,36 @@ export interface GetRecipientResponse {
     | null;
 }
 
-export const GetRecipientResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      accountId: Schema.String,
-      associationStatus: Schema.Union([
-        Schema.Literals([
-          "associating",
-          "associated",
-          "disassociating",
-          "disassociated",
-        ]),
-        Schema.String,
+export const GetRecipientResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    accountId: Schema.String,
+    associationStatus: Schema.Union([
+      Schema.Literals([
+        "associating",
+        "associated",
+        "disassociating",
+        "disassociated",
       ]),
-      created: Schema.String,
-      modified: Schema.String,
-      resources: Schema.optional(
-        Schema.Union([Schema.Array(Resource), Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          accountId: "account_id",
-          associationStatus: "association_status",
-          created: "created",
-          modified: "modified",
-          resources: "resources",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+      Schema.String,
+    ]),
+    created: Schema.String,
+    modified: Schema.String,
+    resources: Schema.optional(
+      Schema.Union([Schema.Array(Resource), Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        accountId: "account_id",
+        associationStatus: "association_status",
+        created: "created",
+        modified: "modified",
+        resources: "resources",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetRecipientResponse>;
 
 export type GetRecipientError =
@@ -498,7 +494,7 @@ export const getRecipient: API.OperationMethod<
   GetRecipientResponse,
   GetRecipientError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecipientRequest,
   output: GetRecipientResponse,
   errors: [ShareRecipientNotFound, Forbidden],
@@ -514,22 +510,21 @@ export interface ListRecipientsRequest {
   includeResources?: boolean;
 }
 
-export const ListRecipientsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      shareId: Schema.String.pipe(T.HttpPath("shareId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      includeResources: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("include_resources"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/shares/{shareId}/recipients",
-      }),
+export const ListRecipientsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    shareId: Schema.String.pipe(T.HttpPath("shareId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    includeResources: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("include_resources"),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/shares/{shareId}/recipients",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListRecipientsRequest>;
 
 export interface ListRecipientsResponse {
@@ -562,7 +557,7 @@ export interface ListRecipientsResponse {
 }
 
 export const ListRecipientsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListRecipientsResponseResult),
       resultInfo: Schema.optional(
@@ -578,7 +573,7 @@ export const listRecipients: API.PaginatedOperationMethod<
   ListRecipientsResponse,
   ListRecipientsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecipientsRequest,
   output: ListRecipientsResponse,
   errors: [ShareNotFound, Forbidden],
@@ -604,7 +599,7 @@ export interface CreateRecipientRequest {
 }
 
 export const CreateRecipientRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       shareId: Schema.String.pipe(T.HttpPath("shareId")),
       pathAccountId: Schema.String.pipe(T.HttpPath("path_account_id")),
@@ -651,7 +646,7 @@ export interface CreateRecipientResponse {
 }
 
 export const CreateRecipientResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -690,7 +685,7 @@ export const createRecipient: API.OperationMethod<
   CreateRecipientResponse,
   CreateRecipientError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRecipientRequest,
   output: CreateRecipientResponse,
   errors: [ShareNotFound, Forbidden],
@@ -704,7 +699,7 @@ export interface DeleteRecipientRequest {
 }
 
 export const DeleteRecipientRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       shareId: Schema.String.pipe(T.HttpPath("shareId")),
       recipientId: Schema.String.pipe(T.HttpPath("recipientId")),
@@ -744,7 +739,7 @@ export interface DeleteRecipientResponse {
 }
 
 export const DeleteRecipientResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -786,7 +781,7 @@ export const deleteRecipient: API.OperationMethod<
   DeleteRecipientResponse,
   DeleteRecipientError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecipientRequest,
   output: DeleteRecipientResponse,
   errors: [ShareRecipientNotFound, Forbidden],
@@ -803,18 +798,17 @@ export interface GetResourceRequest {
   accountId: string;
 }
 
-export const GetResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      shareId: Schema.String.pipe(T.HttpPath("shareId")),
-      shareResourceId: Schema.String.pipe(T.HttpPath("shareResourceId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/shares/{shareId}/resources/{shareResourceId}",
-      }),
-    ),
+export const GetResourceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    shareId: Schema.String.pipe(T.HttpPath("shareId")),
+    shareResourceId: Schema.String.pipe(T.HttpPath("shareResourceId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/shares/{shareId}/resources/{shareResourceId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetResourceRequest>;
 
 export interface GetResourceResponse {
@@ -845,46 +839,45 @@ export interface GetResourceResponse {
   status: "active" | "deleting" | "deleted" | (string & {});
 }
 
-export const GetResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      created: Schema.String,
-      meta: Schema.Unknown,
-      modified: Schema.String,
-      resourceAccountId: Schema.String,
-      resourceId: Schema.String,
-      resourceType: Schema.Union([
-        Schema.Literals([
-          "custom-ruleset",
-          "gateway-policy",
-          "gateway-destination-ip",
-          "gateway-block-page-settings",
-          "gateway-extended-email-matching",
-          "idp-federation-grant",
-        ]),
-        Schema.String,
+export const GetResourceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    created: Schema.String,
+    meta: Schema.Unknown,
+    modified: Schema.String,
+    resourceAccountId: Schema.String,
+    resourceId: Schema.String,
+    resourceType: Schema.Union([
+      Schema.Literals([
+        "custom-ruleset",
+        "gateway-policy",
+        "gateway-destination-ip",
+        "gateway-block-page-settings",
+        "gateway-extended-email-matching",
+        "idp-federation-grant",
       ]),
-      resourceVersion: Schema.Number,
-      status: Schema.Union([
-        Schema.Literals(["active", "deleting", "deleted"]),
-        Schema.String,
-      ]),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          created: "created",
-          meta: "meta",
-          modified: "modified",
-          resourceAccountId: "resource_account_id",
-          resourceId: "resource_id",
-          resourceType: "resource_type",
-          resourceVersion: "resource_version",
-          status: "status",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+      Schema.String,
+    ]),
+    resourceVersion: Schema.Number,
+    status: Schema.Union([
+      Schema.Literals(["active", "deleting", "deleted"]),
+      Schema.String,
+    ]),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        created: "created",
+        meta: "meta",
+        modified: "modified",
+        resourceAccountId: "resource_account_id",
+        resourceId: "resource_id",
+        resourceType: "resource_type",
+        resourceVersion: "resource_version",
+        status: "status",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetResourceResponse>;
 
 export type GetResourceError =
@@ -897,7 +890,7 @@ export const getResource: API.OperationMethod<
   GetResourceResponse,
   GetResourceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceRequest,
   output: GetResourceResponse,
   errors: [ShareResourceNotFound, Forbidden],
@@ -922,38 +915,37 @@ export interface ListResourcesRequest {
   status?: "active" | "deleting" | "deleted" | (string & {});
 }
 
-export const ListResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      shareId: Schema.String.pipe(T.HttpPath("shareId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      resourceType: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "custom-ruleset",
-            "gateway-policy",
-            "gateway-destination-ip",
-            "gateway-block-page-settings",
-            "gateway-extended-email-matching",
-            "idp-federation-grant",
-          ]),
-          Schema.String,
+export const ListResourcesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    shareId: Schema.String.pipe(T.HttpPath("shareId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    resourceType: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "custom-ruleset",
+          "gateway-policy",
+          "gateway-destination-ip",
+          "gateway-block-page-settings",
+          "gateway-extended-email-matching",
+          "idp-federation-grant",
         ]),
-      ).pipe(T.HttpQuery("resource_type")),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["active", "deleting", "deleted"]),
-          Schema.String,
-        ]),
-      ).pipe(T.HttpQuery("status")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/shares/{shareId}/resources",
-      }),
-    ),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("resource_type")),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["active", "deleting", "deleted"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("status")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/shares/{shareId}/resources",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListResourcesRequest>;
 
 export interface ListResourcesResponse {
@@ -983,14 +975,13 @@ export interface ListResourcesResponse {
   } | null;
 }
 
-export const ListResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListResourcesResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListRecipientsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListResourcesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListResourcesResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListRecipientsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListResourcesResponse>;
 
 export type ListResourcesError = DefaultErrors | ShareNotFound | Forbidden;
@@ -1000,7 +991,7 @@ export const listResources: API.PaginatedOperationMethod<
   ListResourcesResponse,
   ListResourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
   output: ListResourcesResponse,
   errors: [ShareNotFound, Forbidden],
@@ -1034,37 +1025,36 @@ export interface CreateResourceRequest {
     | (string & {});
 }
 
-export const CreateResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      shareId: Schema.String.pipe(T.HttpPath("shareId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      meta: Schema.Unknown,
-      resourceAccountId: Schema.String,
-      resourceId: Schema.String,
-      resourceType: Schema.Union([
-        Schema.Literals([
-          "custom-ruleset",
-          "gateway-policy",
-          "gateway-destination-ip",
-          "gateway-block-page-settings",
-          "gateway-extended-email-matching",
-          "idp-federation-grant",
-        ]),
-        Schema.String,
+export const CreateResourceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    shareId: Schema.String.pipe(T.HttpPath("shareId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    meta: Schema.Unknown,
+    resourceAccountId: Schema.String,
+    resourceId: Schema.String,
+    resourceType: Schema.Union([
+      Schema.Literals([
+        "custom-ruleset",
+        "gateway-policy",
+        "gateway-destination-ip",
+        "gateway-block-page-settings",
+        "gateway-extended-email-matching",
+        "idp-federation-grant",
       ]),
-    }).pipe(
-      Schema.encodeKeys({
-        meta: "meta",
-        resourceAccountId: "resource_account_id",
-        resourceId: "resource_id",
-        resourceType: "resource_type",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/shares/{shareId}/resources",
-      }),
-    ),
+      Schema.String,
+    ]),
+  }).pipe(
+    Schema.encodeKeys({
+      meta: "meta",
+      resourceAccountId: "resource_account_id",
+      resourceId: "resource_id",
+      resourceType: "resource_type",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/shares/{shareId}/resources",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateResourceRequest>;
 
 export interface CreateResourceResponse {
@@ -1096,7 +1086,7 @@ export interface CreateResourceResponse {
 }
 
 export const CreateResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       created: Schema.String,
@@ -1144,7 +1134,7 @@ export const createResource: API.OperationMethod<
   CreateResourceResponse,
   CreateResourceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceRequest,
   output: CreateResourceResponse,
   errors: [ShareNotFound, Forbidden],
@@ -1159,19 +1149,18 @@ export interface UpdateResourceRequest {
   meta: unknown;
 }
 
-export const UpdateResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      shareId: Schema.String.pipe(T.HttpPath("shareId")),
-      shareResourceId: Schema.String.pipe(T.HttpPath("shareResourceId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      meta: Schema.Unknown,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/shares/{shareId}/resources/{shareResourceId}",
-      }),
-    ),
+export const UpdateResourceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    shareId: Schema.String.pipe(T.HttpPath("shareId")),
+    shareResourceId: Schema.String.pipe(T.HttpPath("shareResourceId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    meta: Schema.Unknown,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/shares/{shareId}/resources/{shareResourceId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateResourceRequest>;
 
 export interface UpdateResourceResponse {
@@ -1203,7 +1192,7 @@ export interface UpdateResourceResponse {
 }
 
 export const UpdateResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       created: Schema.String,
@@ -1254,7 +1243,7 @@ export const updateResource: API.OperationMethod<
   UpdateResourceResponse,
   UpdateResourceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceRequest,
   output: UpdateResourceResponse,
   errors: [ShareResourceNotFound, Forbidden],
@@ -1267,18 +1256,17 @@ export interface DeleteResourceRequest {
   accountId: string;
 }
 
-export const DeleteResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      shareId: Schema.String.pipe(T.HttpPath("shareId")),
-      shareResourceId: Schema.String.pipe(T.HttpPath("shareResourceId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/shares/{shareId}/resources/{shareResourceId}",
-      }),
-    ),
+export const DeleteResourceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    shareId: Schema.String.pipe(T.HttpPath("shareId")),
+    shareResourceId: Schema.String.pipe(T.HttpPath("shareResourceId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/shares/{shareId}/resources/{shareResourceId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteResourceRequest>;
 
 export interface DeleteResourceResponse {
@@ -1310,7 +1298,7 @@ export interface DeleteResourceResponse {
 }
 
 export const DeleteResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       created: Schema.String,
@@ -1361,7 +1349,7 @@ export const deleteResource: API.OperationMethod<
   DeleteResourceResponse,
   DeleteResourceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceRequest,
   output: DeleteResourceResponse,
   errors: [ShareResourceNotFound, Forbidden],
@@ -1382,7 +1370,7 @@ export interface GetResourceSharingRequest {
 }
 
 export const GetResourceSharingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       shareId: Schema.String.pipe(T.HttpPath("shareId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1450,7 +1438,7 @@ export interface GetResourceSharingResponse {
 }
 
 export const GetResourceSharingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -1518,7 +1506,7 @@ export const getResourceSharing: API.OperationMethod<
   GetResourceSharingResponse,
   GetResourceSharingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceSharingRequest,
   output: GetResourceSharingResponse,
   errors: [ShareNotFound, Forbidden],
@@ -1558,7 +1546,7 @@ export interface ListResourceSharingsRequest {
 }
 
 export const ListResourceSharingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -1657,7 +1645,7 @@ export interface ListResourceSharingsResponse {
 }
 
 export const ListResourceSharingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListResourceSharingsResponseResult),
       resultInfo: Schema.optional(
@@ -1673,7 +1661,7 @@ export const listResourceSharings: API.PaginatedOperationMethod<
   ListResourceSharingsResponse,
   ListResourceSharingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSharingsRequest,
   output: ListResourceSharingsResponse,
   errors: [Forbidden],
@@ -1714,7 +1702,7 @@ export interface CreateResourceSharingRequest {
 }
 
 export const CreateResourceSharingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -1773,7 +1761,7 @@ export interface CreateResourceSharingResponse {
 }
 
 export const CreateResourceSharingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -1841,7 +1829,7 @@ export const createResourceSharing: API.OperationMethod<
   CreateResourceSharingResponse,
   CreateResourceSharingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceSharingRequest,
   output: CreateResourceSharingResponse,
   errors: [Forbidden],
@@ -1856,7 +1844,7 @@ export interface UpdateResourceSharingRequest {
 }
 
 export const UpdateResourceSharingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       shareId: Schema.String.pipe(T.HttpPath("shareId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1919,7 +1907,7 @@ export interface UpdateResourceSharingResponse {
 }
 
 export const UpdateResourceSharingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -1990,7 +1978,7 @@ export const updateResourceSharing: API.OperationMethod<
   UpdateResourceSharingResponse,
   UpdateResourceSharingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceSharingRequest,
   output: UpdateResourceSharingResponse,
   errors: [ShareNotFound, Forbidden],
@@ -2003,7 +1991,7 @@ export interface DeleteResourceSharingRequest {
 }
 
 export const DeleteResourceSharingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       shareId: Schema.String.pipe(T.HttpPath("shareId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2065,7 +2053,7 @@ export interface DeleteResourceSharingResponse {
 }
 
 export const DeleteResourceSharingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -2136,7 +2124,7 @@ export const deleteResourceSharing: API.OperationMethod<
   DeleteResourceSharingResponse,
   DeleteResourceSharingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceSharingRequest,
   output: DeleteResourceSharingResponse,
   errors: [ShareNotFound, Forbidden],

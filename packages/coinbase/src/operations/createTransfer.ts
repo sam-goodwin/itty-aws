@@ -77,7 +77,7 @@ export interface CreateTransferInput {
     };
   };
 }
-export const CreateTransferInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateTransferInput = /*@__PURE__*/ Schema.Struct({
   source: Schema.Union([
     Schema.Struct({
       accountId: Schema.String,
@@ -288,7 +288,7 @@ export interface CreateTransferOutput {
     };
   };
 }
-export const CreateTransferOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateTransferOutput = /*@__PURE__*/ Schema.Struct({
   transferId: Schema.optional(Schema.String),
   status: Schema.optional(
     Schema.Literals(["quoted", "processing", "completed", "failed"]),
@@ -455,7 +455,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const createTransfer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createTransfer = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateTransferInput,
   outputSchema: CreateTransferOutput,
 }));

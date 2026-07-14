@@ -7,7 +7,7 @@ export interface GetProductsIdInput {
   id: string;
   expand?: string;
 }
-export const GetProductsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProductsIdInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -144,7 +144,7 @@ export interface GetProductsIdOutput {
   updated: number;
   url: string | null;
 }
-export const GetProductsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProductsIdOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   created: Schema.Number,
   default_price: Schema.optional(Schema.Unknown),
@@ -197,7 +197,7 @@ export const GetProductsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetProductsId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetProductsId = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetProductsIdInput,
   outputSchema: GetProductsIdOutput,
 }));

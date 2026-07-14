@@ -9,7 +9,7 @@ export interface EngineeringAnalyticsCiCardsInput {
   source_id?: string;
 }
 export const EngineeringAnalyticsCiCardsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     source_id: Schema.optional(Schema.String),
   }).pipe(
@@ -27,7 +27,7 @@ export interface EngineeringAnalyticsCiCardsOutput {
   failing_ci: number;
 }
 export const EngineeringAnalyticsCiCardsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     open_prs: Schema.Number,
     repos: Schema.Number,
     stuck: Schema.Number,
@@ -41,10 +41,8 @@ export const EngineeringAnalyticsCiCardsOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param source_id - Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.
  */
-export const engineeringAnalyticsCiCards = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EngineeringAnalyticsCiCardsInput,
-    outputSchema: EngineeringAnalyticsCiCardsOutput,
-    errors: [BadRequest] as const,
-  }),
-);
+export const engineeringAnalyticsCiCards = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EngineeringAnalyticsCiCardsInput,
+  outputSchema: EngineeringAnalyticsCiCardsOutput,
+  errors: [BadRequest] as const,
+}));

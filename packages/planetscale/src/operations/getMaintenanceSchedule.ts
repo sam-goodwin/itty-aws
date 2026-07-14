@@ -10,7 +10,7 @@ export interface GetMaintenanceScheduleInput {
   database: string;
 }
 export const GetMaintenanceScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
@@ -45,7 +45,7 @@ export interface GetMaintenanceScheduleOutput {
   pending_mysql_version: string | null;
 }
 export const GetMaintenanceScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     created_at: Schema.String,
@@ -76,10 +76,8 @@ export const GetMaintenanceScheduleOutput =
  * @param organization - Organization name slug from `list_organizations`. Example: `acme`.
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  */
-export const getMaintenanceSchedule = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetMaintenanceScheduleInput,
-    outputSchema: GetMaintenanceScheduleOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getMaintenanceSchedule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetMaintenanceScheduleInput,
+  outputSchema: GetMaintenanceScheduleOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

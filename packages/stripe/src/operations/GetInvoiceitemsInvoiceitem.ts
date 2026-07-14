@@ -13,7 +13,7 @@ export interface GetInvoiceitemsInvoiceitemInput {
   expand?: string;
 }
 export const GetInvoiceitemsInvoiceitemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoiceitem: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -458,7 +458,7 @@ export interface GetInvoiceitemsInvoiceitemOutput {
     | null;
 }
 export const GetInvoiceitemsInvoiceitemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     currency: Schema.String,
     customer: Schema.Unknown,
@@ -751,9 +751,7 @@ export const GetInvoiceitemsInvoiceitemOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetInvoiceitemsInvoiceitem = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetInvoiceitemsInvoiceitemInput,
-    outputSchema: GetInvoiceitemsInvoiceitemOutput,
-  }),
-);
+export const GetInvoiceitemsInvoiceitem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetInvoiceitemsInvoiceitemInput,
+  outputSchema: GetInvoiceitemsInvoiceitemOutput,
+}));

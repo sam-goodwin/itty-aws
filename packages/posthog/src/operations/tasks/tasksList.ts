@@ -24,7 +24,7 @@ export interface TasksListInput {
     | "failed"
     | "cancelled";
 }
-export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   archived: Schema.optional(Schema.Literals(["true", "false", "all"])),
   created_by: Schema.optional(Schema.Number),
@@ -88,7 +88,7 @@ export interface TasksListOutput {
     ci_prompt: string | null;
   }[];
 }
-export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.Number,
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -164,7 +164,7 @@ export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 * `failed` - failed
 * `cancelled` - cancelled
  */
-export const tasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const tasksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksListInput,
   outputSchema: TasksListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

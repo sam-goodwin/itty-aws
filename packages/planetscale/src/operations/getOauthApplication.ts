@@ -9,7 +9,7 @@ export interface GetOauthApplicationInput {
   application_id: string;
 }
 export const GetOauthApplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     application_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -38,7 +38,7 @@ export interface GetOauthApplicationOutput {
   all_scopes_by_resource: Record<string, unknown>;
 }
 export const GetOauthApplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     redirect_uri: Schema.String,
@@ -63,7 +63,7 @@ export const GetOauthApplicationOutput =
  * @param organization - The name of the organization the OAuth application belongs to
  * @param application_id - The ID of the OAuth application
  */
-export const getOauthApplication = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOauthApplication = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOauthApplicationInput,
   outputSchema: GetOauthApplicationOutput,
   errors: [Forbidden, NotFound] as const,

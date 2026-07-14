@@ -8,7 +8,7 @@ export interface V1ListOrganizationMembersInput {
   slug: string;
 }
 export const V1ListOrganizationMembersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/organizations/{slug}/members" }),
@@ -24,7 +24,7 @@ export type V1ListOrganizationMembersOutput = {
   avatar_url: string | null;
 }[];
 export const V1ListOrganizationMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       user_id: Schema.String,
       user_name: Schema.String,
@@ -41,10 +41,8 @@ export const V1ListOrganizationMembersOutput =
  *
  * @param slug - Organization slug
  */
-export const v1ListOrganizationMembers = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1ListOrganizationMembersInput,
-    outputSchema: V1ListOrganizationMembersOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1ListOrganizationMembers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1ListOrganizationMembersInput,
+  outputSchema: V1ListOrganizationMembersOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

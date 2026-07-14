@@ -15,7 +15,7 @@ export interface DeleteSubscriptionItemsItemInput {
   proration_date?: number;
 }
 export const DeleteSubscriptionItemsItemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     item: Schema.String.pipe(T.PathParam()),
     clear_usage: Schema.optional(Schema.Boolean),
     payment_behavior: Schema.optional(
@@ -45,7 +45,7 @@ export interface DeleteSubscriptionItemsItemOutput {
   object: "subscription_item";
 }
 export const DeleteSubscriptionItemsItemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["subscription_item"]),
@@ -57,9 +57,7 @@ export const DeleteSubscriptionItemsItemOutput =
  *
  * <p>Deletes an item from the subscription. Removing a subscription item from a subscription will not cancel the subscription.</p>
  */
-export const DeleteSubscriptionItemsItem = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteSubscriptionItemsItemInput,
-    outputSchema: DeleteSubscriptionItemsItemOutput,
-  }),
-);
+export const DeleteSubscriptionItemsItem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteSubscriptionItemsItemInput,
+  outputSchema: DeleteSubscriptionItemsItemOutput,
+}));

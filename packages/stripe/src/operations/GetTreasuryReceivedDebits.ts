@@ -12,7 +12,7 @@ export interface GetTreasuryReceivedDebitsInput {
   status?: "failed" | "succeeded";
 }
 export const GetTreasuryReceivedDebitsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
     financial_account: Schema.String,
@@ -188,7 +188,7 @@ export interface GetTreasuryReceivedDebitsOutput {
   url: string;
 }
 export const GetTreasuryReceivedDebitsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amount: Schema.Number,
@@ -393,9 +393,7 @@ export const GetTreasuryReceivedDebitsOutput =
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param status - Only return ReceivedDebits that have the given status: `succeeded` or `failed`.
  */
-export const GetTreasuryReceivedDebits = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetTreasuryReceivedDebitsInput,
-    outputSchema: GetTreasuryReceivedDebitsOutput,
-  }),
-);
+export const GetTreasuryReceivedDebits = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTreasuryReceivedDebitsInput,
+  outputSchema: GetTreasuryReceivedDebitsOutput,
+}));

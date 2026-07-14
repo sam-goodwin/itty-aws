@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface GetCurrentUserInfoInput {}
 export const GetCurrentUserInfoInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/users/me" }),
   ) as unknown as Schema.Codec<GetCurrentUserInfoInput>;
 
@@ -99,7 +99,7 @@ export interface GetCurrentUserInfoOutput {
   plan: string;
 }
 export const GetCurrentUserInfoOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active_seconds_limit: Schema.Number,
     billing_account: Schema.optional(
       Schema.Struct({
@@ -223,7 +223,7 @@ export const GetCurrentUserInfoOutput =
  * Retrieves information about the currently authenticated Neon user,
  * including account identifiers, plan details, and linked auth accounts.
  */
-export const getCurrentUserInfo = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getCurrentUserInfo = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCurrentUserInfoInput,
   outputSchema: GetCurrentUserInfoOutput,
 }));

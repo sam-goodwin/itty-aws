@@ -1092,7 +1092,7 @@ export interface EnvironmentsExperimentsConfigPartialUpdateInput {
   events_retention_enforced?: boolean;
 }
 export const EnvironmentsExperimentsConfigPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.optional(Schema.String),
@@ -2269,7 +2269,7 @@ export const EnvironmentsExperimentsConfigPartialUpdateInput =
 // Output Schema
 export type EnvironmentsExperimentsConfigPartialUpdateOutput = void;
 export const EnvironmentsExperimentsConfigPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsExperimentsConfigPartialUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsExperimentsConfigPartialUpdateOutput>;
 
 // The operation
 /**
@@ -2279,7 +2279,7 @@ export const EnvironmentsExperimentsConfigPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsExperimentsConfigPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsExperimentsConfigPartialUpdateInput,
     outputSchema: EnvironmentsExperimentsConfigPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

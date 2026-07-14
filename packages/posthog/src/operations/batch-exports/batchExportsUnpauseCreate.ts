@@ -113,7 +113,7 @@ export interface BatchExportsUnpauseCreateInput {
   offset_hour?: number | null;
 }
 export const BatchExportsUnpauseCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     team_id: Schema.optional(Schema.Number),
@@ -282,7 +282,7 @@ export const BatchExportsUnpauseCreateInput =
 // Output Schema
 export type BatchExportsUnpauseCreateOutput = void;
 export const BatchExportsUnpauseCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsUnpauseCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsUnpauseCreateOutput>;
 
 // The operation
 /**
@@ -291,10 +291,8 @@ export const BatchExportsUnpauseCreateOutput =
  * @param id - A UUID string identifying this batch export.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const batchExportsUnpauseCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BatchExportsUnpauseCreateInput,
-    outputSchema: BatchExportsUnpauseCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const batchExportsUnpauseCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BatchExportsUnpauseCreateInput,
+  outputSchema: BatchExportsUnpauseCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -9,7 +9,7 @@ export interface AgentRevisionsEnvKeysListInput {
   project_id: string;
 }
 export const AgentRevisionsEnvKeysListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -25,7 +25,7 @@ export interface AgentRevisionsEnvKeysListOutput {
   keys: string[];
 }
 export const AgentRevisionsEnvKeysListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keys: Schema.Array(Schema.String),
   }) as unknown as Schema.Codec<AgentRevisionsEnvKeysListOutput>;
 
@@ -39,9 +39,7 @@ export const AgentRevisionsEnvKeysListOutput =
  * @param id - A UUID string identifying this agent revision.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const agentRevisionsEnvKeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentRevisionsEnvKeysListInput,
-    outputSchema: AgentRevisionsEnvKeysListOutput,
-  }),
-);
+export const agentRevisionsEnvKeysList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentRevisionsEnvKeysListInput,
+  outputSchema: AgentRevisionsEnvKeysListOutput,
+}));

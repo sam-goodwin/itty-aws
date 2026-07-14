@@ -15,7 +15,7 @@ export interface GetBillingCreditBalanceSummaryInput {
   filter: string;
 }
 export const GetBillingCreditBalanceSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
     customer_account: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export interface GetBillingCreditBalanceSummaryOutput {
   object: "billing.credit_balance_summary";
 }
 export const GetBillingCreditBalanceSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     balances: Schema.Array(
       Schema.Struct({
         available_balance: Schema.Struct({
@@ -87,7 +87,7 @@ export const GetBillingCreditBalanceSummaryOutput =
  * @param filter - The filter criteria for the credit balance summary.
  */
 export const GetBillingCreditBalanceSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetBillingCreditBalanceSummaryInput,
     outputSchema: GetBillingCreditBalanceSummaryOutput,
   }));

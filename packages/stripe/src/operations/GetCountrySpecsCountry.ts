@@ -8,7 +8,7 @@ export interface GetCountrySpecsCountryInput {
   expand?: string;
 }
 export const GetCountrySpecsCountryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     country: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -34,7 +34,7 @@ export interface GetCountrySpecsCountryOutput {
   };
 }
 export const GetCountrySpecsCountryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     default_currency: Schema.String,
     id: Schema.String,
     object: Schema.Literals(["country_spec"]),
@@ -65,9 +65,7 @@ export const GetCountrySpecsCountryOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetCountrySpecsCountry = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetCountrySpecsCountryInput,
-    outputSchema: GetCountrySpecsCountryOutput,
-  }),
-);
+export const GetCountrySpecsCountry = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCountrySpecsCountryInput,
+  outputSchema: GetCountrySpecsCountryOutput,
+}));

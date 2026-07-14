@@ -10,7 +10,7 @@ export interface DeleteBranchNeonAuthTrustedDomainInput {
   domains: { domain: string }[];
 }
 export const DeleteBranchNeonAuthTrustedDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     auth_provider: Schema.Literals(["mock", "stack", "better_auth"]),
@@ -29,7 +29,7 @@ export const DeleteBranchNeonAuthTrustedDomainInput =
 // Output Schema
 export type DeleteBranchNeonAuthTrustedDomainOutput = void;
 export const DeleteBranchNeonAuthTrustedDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBranchNeonAuthTrustedDomainOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBranchNeonAuthTrustedDomainOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const DeleteBranchNeonAuthTrustedDomainOutput =
  * @param branch_id - The Neon branch ID
  */
 export const deleteBranchNeonAuthTrustedDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteBranchNeonAuthTrustedDomainInput,
     outputSchema: DeleteBranchNeonAuthTrustedDomainOutput,
   }));

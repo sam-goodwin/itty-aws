@@ -9,7 +9,7 @@ export interface WorkflowRetryInput {
   database: string;
   number: number;
 }
-export const WorkflowRetryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowRetryInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   number: Schema.Number.pipe(T.PathParam()),
@@ -107,7 +107,7 @@ export interface WorkflowRetryOutput {
     deleted_at: string | null;
   };
 }
-export const WorkflowRetryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowRetryOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   number: Schema.Number,
@@ -243,7 +243,7 @@ export const WorkflowRetryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param database - The name of the database the workflow belongs to
  * @param number - The sequence number of the workflow
  */
-export const workflowRetry = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const workflowRetry = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowRetryInput,
   outputSchema: WorkflowRetryOutput,
   errors: [Forbidden, NotFound] as const,

@@ -10,7 +10,7 @@ export interface ForceCutoverDeployRequestInput {
   number: number;
 }
 export const ForceCutoverDeployRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -198,7 +198,7 @@ export interface ForceCutoverDeployRequestOutput {
   deployed_at: string | null;
 }
 export const ForceCutoverDeployRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     number: Schema.Number,
     actor: Schema.Struct({
@@ -440,10 +440,8 @@ export const ForceCutoverDeployRequestOutput =
  * @param database - The name of the deploy request's database
  * @param number - The number of the deploy request
  */
-export const forceCutoverDeployRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ForceCutoverDeployRequestInput,
-    outputSchema: ForceCutoverDeployRequestOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const forceCutoverDeployRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ForceCutoverDeployRequestInput,
+  outputSchema: ForceCutoverDeployRequestOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

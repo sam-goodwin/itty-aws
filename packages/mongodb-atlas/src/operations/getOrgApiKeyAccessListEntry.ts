@@ -12,7 +12,7 @@ export interface GetOrgApiKeyAccessListEntryInput {
   pretty?: boolean;
 }
 export const GetOrgApiKeyAccessListEntryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     ipAddress: Schema.String.pipe(T.PathParam()),
     apiUserId: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const GetOrgApiKeyAccessListEntryInput =
 // Output Schema
 export type GetOrgApiKeyAccessListEntryOutput = void;
 export const GetOrgApiKeyAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgApiKeyAccessListEntryOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgApiKeyAccessListEntryOutput>;
 
 // The operation
 /**
@@ -42,10 +42,8 @@ export const GetOrgApiKeyAccessListEntryOutput =
  * @param ipAddress - One IP address or multiple IP addresses represented as one CIDR block to limit  requests to API resources in the specified organization. When adding a CIDR block with a subnet mask, such as  192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key for  which you want to return access list entries.
  */
-export const getOrgApiKeyAccessListEntry = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetOrgApiKeyAccessListEntryInput,
-    outputSchema: GetOrgApiKeyAccessListEntryOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getOrgApiKeyAccessListEntry = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetOrgApiKeyAccessListEntryInput,
+  outputSchema: GetOrgApiKeyAccessListEntryOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

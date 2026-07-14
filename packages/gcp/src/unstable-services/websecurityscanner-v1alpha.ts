@@ -25,7 +25,7 @@ const svc = T.Service({
 export interface StartScanRunRequest {}
 
 export const StartScanRunRequest: Schema.Codec<StartScanRunRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StartScanRunRequest",
   });
 
@@ -37,7 +37,7 @@ export interface Schedule {
 }
 
 export const Schedule: Schema.Codec<Schedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scheduleTime: Schema.optional(Schema.String),
     intervalDurationDays: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Schedule" });
@@ -74,7 +74,7 @@ export interface ScanRun {
 }
 
 export const ScanRun: Schema.Codec<ScanRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     urlsCrawledCount: Schema.optional(Schema.String),
     urlsTestedCount: Schema.optional(Schema.String),
@@ -94,7 +94,7 @@ export interface GoogleAccount {
 }
 
 export const GoogleAccount: Schema.Codec<GoogleAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     password: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAccount" });
@@ -109,7 +109,7 @@ export interface CustomAccount {
 }
 
 export const CustomAccount: Schema.Codec<CustomAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     password: Schema.optional(Schema.String),
     loginUrl: Schema.optional(Schema.String),
@@ -123,7 +123,7 @@ export interface Authentication {
 }
 
 export const Authentication: Schema.Codec<Authentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     googleAccount: Schema.optional(GoogleAccount),
     customAccount: Schema.optional(CustomAccount),
   }).annotate({ identifier: "Authentication" });
@@ -164,7 +164,7 @@ export interface ScanConfig {
 }
 
 export const ScanConfig: Schema.Codec<ScanConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userAgent: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     schedule: Schema.optional(Schedule),
@@ -187,7 +187,7 @@ export interface CrawledUrl {
 }
 
 export const CrawledUrl: Schema.Codec<CrawledUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     httpMethod: Schema.optional(Schema.String),
     body: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -201,7 +201,7 @@ export interface ListCrawledUrlsResponse {
 }
 
 export const ListCrawledUrlsResponse: Schema.Codec<ListCrawledUrlsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     crawledUrls: Schema.optional(Schema.Array(CrawledUrl)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListCrawledUrlsResponse" });
@@ -214,7 +214,7 @@ export interface ViolatingResource {
 }
 
 export const ViolatingResource: Schema.Codec<ViolatingResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentType: Schema.optional(Schema.String),
     resourceUrl: Schema.optional(Schema.String),
   }).annotate({ identifier: "ViolatingResource" });
@@ -227,7 +227,7 @@ export interface Header {
 }
 
 export const Header: Schema.Codec<Header> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "Header" });
@@ -240,7 +240,7 @@ export interface VulnerableHeaders {
 }
 
 export const VulnerableHeaders: Schema.Codec<VulnerableHeaders> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     missingHeaders: Schema.optional(Schema.Array(Header)),
     headers: Schema.optional(Schema.Array(Header)),
   }).annotate({ identifier: "VulnerableHeaders" });
@@ -252,12 +252,10 @@ export interface Xss {
   errorMessage?: string;
 }
 
-export const Xss: Schema.Codec<Xss> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    stackTraces: Schema.optional(Schema.Array(Schema.String)),
-    errorMessage: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Xss" });
+export const Xss: Schema.Codec<Xss> = /*@__PURE__*/ Schema.Struct({
+  stackTraces: Schema.optional(Schema.Array(Schema.String)),
+  errorMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "Xss" });
 
 export interface VulnerableParameters {
   /** The vulnerable parameter names. */
@@ -265,7 +263,7 @@ export interface VulnerableParameters {
 }
 
 export const VulnerableParameters: Schema.Codec<VulnerableParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameterNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "VulnerableParameters" });
 
@@ -279,7 +277,7 @@ export interface OutdatedLibrary {
 }
 
 export const OutdatedLibrary: Schema.Codec<OutdatedLibrary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     libraryName: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
     learnMoreUrls: Schema.optional(Schema.Array(Schema.String)),
@@ -335,7 +333,7 @@ export interface Finding {
 }
 
 export const Finding: Schema.Codec<Finding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vulnerableHeaders: Schema.optional(VulnerableHeaders),
     xss: Schema.optional(Xss),
     findingType: Schema.optional(Schema.String),
@@ -361,7 +359,7 @@ export interface ListFindingsResponse {
 }
 
 export const ListFindingsResponse: Schema.Codec<ListFindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     findings: Schema.optional(Schema.Array(Finding)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListFindingsResponse" });
@@ -374,7 +372,7 @@ export interface ListScanRunsResponse {
 }
 
 export const ListScanRunsResponse: Schema.Codec<ListScanRunsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scanRuns: Schema.optional(Schema.Array(ScanRun)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListScanRunsResponse" });
@@ -382,7 +380,7 @@ export const ListScanRunsResponse: Schema.Codec<ListScanRunsResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -394,7 +392,7 @@ export interface ListScanConfigsResponse {
 }
 
 export const ListScanConfigsResponse: Schema.Codec<ListScanConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scanConfigs: Schema.optional(Schema.Array(ScanConfig)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListScanConfigsResponse" });
@@ -402,7 +400,7 @@ export const ListScanConfigsResponse: Schema.Codec<ListScanConfigsResponse> =
 export interface StopScanRunRequest {}
 
 export const StopScanRunRequest: Schema.Codec<StopScanRunRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StopScanRunRequest",
   });
 
@@ -430,7 +428,7 @@ export interface FindingTypeStats {
 }
 
 export const FindingTypeStats: Schema.Codec<FindingTypeStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     findingType: Schema.optional(Schema.String),
     findingCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "FindingTypeStats" });
@@ -441,7 +439,7 @@ export interface ListFindingTypeStatsResponse {
 }
 
 export const ListFindingTypeStatsResponse: Schema.Codec<ListFindingTypeStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     findingTypeStats: Schema.optional(Schema.Array(FindingTypeStats)),
   }).annotate({ identifier: "ListFindingTypeStatsResponse" });
 
@@ -507,7 +505,7 @@ export interface CreateProjectsScanConfigsRequest {
 }
 
 export const CreateProjectsScanConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ScanConfig).pipe(T.HttpBody()),
   }).pipe(
@@ -520,8 +518,7 @@ export const CreateProjectsScanConfigsRequest =
   ) as unknown as Schema.Codec<CreateProjectsScanConfigsRequest>;
 
 export type CreateProjectsScanConfigsResponse = ScanConfig;
-export const CreateProjectsScanConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ScanConfig;
+export const CreateProjectsScanConfigsResponse = /*@__PURE__*/ ScanConfig;
 
 export type CreateProjectsScanConfigsError =
   | DefaultErrors
@@ -536,7 +533,7 @@ export const createProjectsScanConfigs: API.OperationMethod<
   CreateProjectsScanConfigsResponse,
   CreateProjectsScanConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsScanConfigsRequest,
   output: CreateProjectsScanConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -548,7 +545,7 @@ export interface GetProjectsScanConfigsRequest {
 }
 
 export const GetProjectsScanConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -556,8 +553,7 @@ export const GetProjectsScanConfigsRequest =
   ) as unknown as Schema.Codec<GetProjectsScanConfigsRequest>;
 
 export type GetProjectsScanConfigsResponse = ScanConfig;
-export const GetProjectsScanConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ScanConfig;
+export const GetProjectsScanConfigsResponse = /*@__PURE__*/ ScanConfig;
 
 export type GetProjectsScanConfigsError = DefaultErrors | NotFound | Forbidden;
 
@@ -567,7 +563,7 @@ export const getProjectsScanConfigs: API.OperationMethod<
   GetProjectsScanConfigsResponse,
   GetProjectsScanConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsScanConfigsRequest,
   output: GetProjectsScanConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -581,7 +577,7 @@ export interface StartProjectsScanConfigsRequest {
 }
 
 export const StartProjectsScanConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StartScanRunRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -590,8 +586,7 @@ export const StartProjectsScanConfigsRequest =
   ) as unknown as Schema.Codec<StartProjectsScanConfigsRequest>;
 
 export type StartProjectsScanConfigsResponse = ScanRun;
-export const StartProjectsScanConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ScanRun;
+export const StartProjectsScanConfigsResponse = /*@__PURE__*/ ScanRun;
 
 export type StartProjectsScanConfigsError =
   | DefaultErrors
@@ -606,7 +601,7 @@ export const startProjectsScanConfigs: API.OperationMethod<
   StartProjectsScanConfigsResponse,
   StartProjectsScanConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartProjectsScanConfigsRequest,
   output: StartProjectsScanConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -618,7 +613,7 @@ export interface DeleteProjectsScanConfigsRequest {
 }
 
 export const DeleteProjectsScanConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
@@ -626,8 +621,7 @@ export const DeleteProjectsScanConfigsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsScanConfigsRequest>;
 
 export type DeleteProjectsScanConfigsResponse = Empty;
-export const DeleteProjectsScanConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsScanConfigsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsScanConfigsError =
   | DefaultErrors
@@ -642,7 +636,7 @@ export const deleteProjectsScanConfigs: API.OperationMethod<
   DeleteProjectsScanConfigsResponse,
   DeleteProjectsScanConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsScanConfigsRequest,
   output: DeleteProjectsScanConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -658,7 +652,7 @@ export interface ListProjectsScanConfigsRequest {
 }
 
 export const ListProjectsScanConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -669,7 +663,7 @@ export const ListProjectsScanConfigsRequest =
 
 export type ListProjectsScanConfigsResponse = ListScanConfigsResponse;
 export const ListProjectsScanConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListScanConfigsResponse;
+  /*@__PURE__*/ ListScanConfigsResponse;
 
 export type ListProjectsScanConfigsError = DefaultErrors | NotFound | Forbidden;
 
@@ -679,7 +673,7 @@ export const listProjectsScanConfigs: API.PaginatedOperationMethod<
   ListProjectsScanConfigsResponse,
   ListProjectsScanConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsScanConfigsRequest,
   output: ListProjectsScanConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -699,7 +693,7 @@ export interface PatchProjectsScanConfigsRequest {
 }
 
 export const PatchProjectsScanConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ScanConfig).pipe(T.HttpBody()),
@@ -709,8 +703,7 @@ export const PatchProjectsScanConfigsRequest =
   ) as unknown as Schema.Codec<PatchProjectsScanConfigsRequest>;
 
 export type PatchProjectsScanConfigsResponse = ScanConfig;
-export const PatchProjectsScanConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ScanConfig;
+export const PatchProjectsScanConfigsResponse = /*@__PURE__*/ ScanConfig;
 
 export type PatchProjectsScanConfigsError =
   | DefaultErrors
@@ -725,7 +718,7 @@ export const patchProjectsScanConfigs: API.OperationMethod<
   PatchProjectsScanConfigsResponse,
   PatchProjectsScanConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsScanConfigsRequest,
   output: PatchProjectsScanConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -737,7 +730,7 @@ export interface GetProjectsScanConfigsScanRunsRequest {
 }
 
 export const GetProjectsScanConfigsScanRunsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -745,8 +738,7 @@ export const GetProjectsScanConfigsScanRunsRequest =
   ) as unknown as Schema.Codec<GetProjectsScanConfigsScanRunsRequest>;
 
 export type GetProjectsScanConfigsScanRunsResponse = ScanRun;
-export const GetProjectsScanConfigsScanRunsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ScanRun;
+export const GetProjectsScanConfigsScanRunsResponse = /*@__PURE__*/ ScanRun;
 
 export type GetProjectsScanConfigsScanRunsError =
   | DefaultErrors
@@ -759,7 +751,7 @@ export const getProjectsScanConfigsScanRuns: API.OperationMethod<
   GetProjectsScanConfigsScanRunsResponse,
   GetProjectsScanConfigsScanRunsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsScanConfigsScanRunsRequest,
   output: GetProjectsScanConfigsScanRunsResponse,
   errors: [NotFound, Forbidden],
@@ -773,7 +765,7 @@ export interface StopProjectsScanConfigsScanRunsRequest {
 }
 
 export const StopProjectsScanConfigsScanRunsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StopScanRunRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -782,8 +774,7 @@ export const StopProjectsScanConfigsScanRunsRequest =
   ) as unknown as Schema.Codec<StopProjectsScanConfigsScanRunsRequest>;
 
 export type StopProjectsScanConfigsScanRunsResponse = ScanRun;
-export const StopProjectsScanConfigsScanRunsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ScanRun;
+export const StopProjectsScanConfigsScanRunsResponse = /*@__PURE__*/ ScanRun;
 
 export type StopProjectsScanConfigsScanRunsError =
   | DefaultErrors
@@ -798,7 +789,7 @@ export const stopProjectsScanConfigsScanRuns: API.OperationMethod<
   StopProjectsScanConfigsScanRunsResponse,
   StopProjectsScanConfigsScanRunsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopProjectsScanConfigsScanRunsRequest,
   output: StopProjectsScanConfigsScanRunsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -814,7 +805,7 @@ export interface ListProjectsScanConfigsScanRunsRequest {
 }
 
 export const ListProjectsScanConfigsScanRunsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -825,7 +816,7 @@ export const ListProjectsScanConfigsScanRunsRequest =
 
 export type ListProjectsScanConfigsScanRunsResponse = ListScanRunsResponse;
 export const ListProjectsScanConfigsScanRunsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListScanRunsResponse;
+  /*@__PURE__*/ ListScanRunsResponse;
 
 export type ListProjectsScanConfigsScanRunsError =
   | DefaultErrors
@@ -838,7 +829,7 @@ export const listProjectsScanConfigsScanRuns: API.PaginatedOperationMethod<
   ListProjectsScanConfigsScanRunsResponse,
   ListProjectsScanConfigsScanRunsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsScanConfigsScanRunsRequest,
   output: ListProjectsScanConfigsScanRunsResponse,
   errors: [NotFound, Forbidden],
@@ -858,7 +849,7 @@ export interface ListProjectsScanConfigsScanRunsCrawledUrlsRequest {
 }
 
 export const ListProjectsScanConfigsScanRunsCrawledUrlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -870,7 +861,7 @@ export const ListProjectsScanConfigsScanRunsCrawledUrlsRequest =
 export type ListProjectsScanConfigsScanRunsCrawledUrlsResponse =
   ListCrawledUrlsResponse;
 export const ListProjectsScanConfigsScanRunsCrawledUrlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCrawledUrlsResponse;
+  /*@__PURE__*/ ListCrawledUrlsResponse;
 
 export type ListProjectsScanConfigsScanRunsCrawledUrlsError =
   | DefaultErrors
@@ -883,7 +874,7 @@ export const listProjectsScanConfigsScanRunsCrawledUrls: API.PaginatedOperationM
   ListProjectsScanConfigsScanRunsCrawledUrlsResponse,
   ListProjectsScanConfigsScanRunsCrawledUrlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsScanConfigsScanRunsCrawledUrlsRequest,
   output: ListProjectsScanConfigsScanRunsCrawledUrlsResponse,
   errors: [NotFound, Forbidden],
@@ -905,7 +896,7 @@ export interface ListProjectsScanConfigsScanRunsFindingsRequest {
 }
 
 export const ListProjectsScanConfigsScanRunsFindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -918,7 +909,7 @@ export const ListProjectsScanConfigsScanRunsFindingsRequest =
 export type ListProjectsScanConfigsScanRunsFindingsResponse =
   ListFindingsResponse;
 export const ListProjectsScanConfigsScanRunsFindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListFindingsResponse;
+  /*@__PURE__*/ ListFindingsResponse;
 
 export type ListProjectsScanConfigsScanRunsFindingsError =
   | DefaultErrors
@@ -931,7 +922,7 @@ export const listProjectsScanConfigsScanRunsFindings: API.PaginatedOperationMeth
   ListProjectsScanConfigsScanRunsFindingsResponse,
   ListProjectsScanConfigsScanRunsFindingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsScanConfigsScanRunsFindingsRequest,
   output: ListProjectsScanConfigsScanRunsFindingsResponse,
   errors: [NotFound, Forbidden],
@@ -947,7 +938,7 @@ export interface GetProjectsScanConfigsScanRunsFindingsRequest {
 }
 
 export const GetProjectsScanConfigsScanRunsFindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -956,7 +947,7 @@ export const GetProjectsScanConfigsScanRunsFindingsRequest =
 
 export type GetProjectsScanConfigsScanRunsFindingsResponse = Finding;
 export const GetProjectsScanConfigsScanRunsFindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Finding;
+  /*@__PURE__*/ Finding;
 
 export type GetProjectsScanConfigsScanRunsFindingsError =
   | DefaultErrors
@@ -969,7 +960,7 @@ export const getProjectsScanConfigsScanRunsFindings: API.OperationMethod<
   GetProjectsScanConfigsScanRunsFindingsResponse,
   GetProjectsScanConfigsScanRunsFindingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsScanConfigsScanRunsFindingsRequest,
   output: GetProjectsScanConfigsScanRunsFindingsResponse,
   errors: [NotFound, Forbidden],
@@ -981,7 +972,7 @@ export interface ListProjectsScanConfigsScanRunsFindingTypeStatsRequest {
 }
 
 export const ListProjectsScanConfigsScanRunsFindingTypeStatsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/findingTypeStats" }),
@@ -991,7 +982,7 @@ export const ListProjectsScanConfigsScanRunsFindingTypeStatsRequest =
 export type ListProjectsScanConfigsScanRunsFindingTypeStatsResponse =
   ListFindingTypeStatsResponse;
 export const ListProjectsScanConfigsScanRunsFindingTypeStatsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListFindingTypeStatsResponse;
+  /*@__PURE__*/ ListFindingTypeStatsResponse;
 
 export type ListProjectsScanConfigsScanRunsFindingTypeStatsError =
   | DefaultErrors
@@ -1004,7 +995,7 @@ export const listProjectsScanConfigsScanRunsFindingTypeStats: API.OperationMetho
   ListProjectsScanConfigsScanRunsFindingTypeStatsResponse,
   ListProjectsScanConfigsScanRunsFindingTypeStatsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListProjectsScanConfigsScanRunsFindingTypeStatsRequest,
   output: ListProjectsScanConfigsScanRunsFindingTypeStatsResponse,
   errors: [NotFound, Forbidden],

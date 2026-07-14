@@ -11,7 +11,7 @@ export interface CreateOrgServiceAccountSecretInput {
   pretty?: boolean;
 }
 export const CreateOrgServiceAccountSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     clientId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const CreateOrgServiceAccountSecretInput =
 // Output Schema
 export type CreateOrgServiceAccountSecretOutput = void;
 export const CreateOrgServiceAccountSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgServiceAccountSecretOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgServiceAccountSecretOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ export const CreateOrgServiceAccountSecretOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const createOrgServiceAccountSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateOrgServiceAccountSecretInput,
     outputSchema: CreateOrgServiceAccountSecretOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

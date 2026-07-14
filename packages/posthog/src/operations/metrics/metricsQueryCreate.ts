@@ -59,7 +59,7 @@ export interface MetricsQueryCreateInput {
   };
 }
 export const MetricsQueryCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     query: Schema.Struct({
       metricName: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export interface MetricsQueryCreateOutput {
   }[];
 }
 export const MetricsQueryCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         labels: Schema.Record(Schema.String, Schema.String),
@@ -199,7 +199,7 @@ export const MetricsQueryCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const metricsQueryCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const metricsQueryCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetricsQueryCreateInput,
   outputSchema: MetricsQueryCreateOutput,
 }));

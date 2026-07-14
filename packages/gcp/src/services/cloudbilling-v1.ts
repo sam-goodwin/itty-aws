@@ -34,7 +34,7 @@ export interface ProjectBillingInfo {
 }
 
 export const ProjectBillingInfo: Schema.Codec<ProjectBillingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.optional(Schema.String),
     billingEnabled: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -49,7 +49,7 @@ export interface ListProjectBillingInfoResponse {
 }
 
 export const ListProjectBillingInfoResponse: Schema.Codec<ListProjectBillingInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     projectBillingInfo: Schema.optional(Schema.Array(ProjectBillingInfo)),
   }).annotate({ identifier: "ListProjectBillingInfoResponse" });
@@ -70,7 +70,7 @@ export interface BillingAccount {
 }
 
 export const BillingAccount: Schema.Codec<BillingAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     open: Schema.optional(Schema.Boolean),
     masterBillingAccount: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -87,7 +87,7 @@ export interface ListBillingAccountsResponse {
 }
 
 export const ListBillingAccountsResponse: Schema.Codec<ListBillingAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccounts: Schema.optional(Schema.Array(BillingAccount)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListBillingAccountsResponse" });
@@ -102,7 +102,7 @@ export interface Money {
 }
 
 export const Money: Schema.Codec<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
     units: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export interface TierRate {
 }
 
 export const TierRate: Schema.Codec<TierRate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startUsageAmount: Schema.optional(Schema.Number),
     unitPrice: Schema.optional(Money),
   }).annotate({ identifier: "TierRate" });
@@ -139,7 +139,7 @@ export interface PricingExpression {
 }
 
 export const PricingExpression: Schema.Codec<PricingExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tieredRates: Schema.optional(Schema.Array(TierRate)),
     usageUnitDescription: Schema.optional(Schema.String),
     usageUnit: Schema.optional(Schema.String),
@@ -165,7 +165,7 @@ export interface AggregationInfo {
 }
 
 export const AggregationInfo: Schema.Codec<AggregationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aggregationInterval: Schema.optional(Schema.String),
     aggregationCount: Schema.optional(Schema.Number),
     aggregationLevel: Schema.optional(Schema.String),
@@ -185,7 +185,7 @@ export interface PricingInfo {
 }
 
 export const PricingInfo: Schema.Codec<PricingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyConversionRate: Schema.optional(Schema.Number),
     pricingExpression: Schema.optional(PricingExpression),
     aggregationInfo: Schema.optional(AggregationInfo),
@@ -199,7 +199,7 @@ export interface MoveBillingAccountRequest {
 }
 
 export const MoveBillingAccountRequest: Schema.Codec<MoveBillingAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destinationParent: Schema.optional(Schema.String),
   }).annotate({ identifier: "MoveBillingAccountRequest" });
 
@@ -215,7 +215,7 @@ export interface Category {
 }
 
 export const Category: Schema.Codec<Category> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceDisplayName: Schema.optional(Schema.String),
     resourceFamily: Schema.optional(Schema.String),
     resourceGroup: Schema.optional(Schema.String),
@@ -235,7 +235,7 @@ export interface GeoTaxonomy {
 }
 
 export const GeoTaxonomy: Schema.Codec<GeoTaxonomy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     regions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GeoTaxonomy" });
@@ -259,18 +259,16 @@ export interface Sku {
   description?: string;
 }
 
-export const Sku: Schema.Codec<Sku> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.optional(Schema.String),
-    skuId: Schema.optional(Schema.String),
-    serviceProviderName: Schema.optional(Schema.String),
-    category: Schema.optional(Category),
-    serviceRegions: Schema.optional(Schema.Array(Schema.String)),
-    pricingInfo: Schema.optional(Schema.Array(PricingInfo)),
-    geoTaxonomy: Schema.optional(GeoTaxonomy),
-    description: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Sku" });
+export const Sku: Schema.Codec<Sku> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  skuId: Schema.optional(Schema.String),
+  serviceProviderName: Schema.optional(Schema.String),
+  category: Schema.optional(Category),
+  serviceRegions: Schema.optional(Schema.Array(Schema.String)),
+  pricingInfo: Schema.optional(Schema.Array(PricingInfo)),
+  geoTaxonomy: Schema.optional(GeoTaxonomy),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Sku" });
 
 export interface ListSkusResponse {
   /** The list of public SKUs of the given service. */
@@ -280,7 +278,7 @@ export interface ListSkusResponse {
 }
 
 export const ListSkusResponse: Schema.Codec<ListSkusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skus: Schema.optional(Schema.Array(Sku)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListSkusResponse" });
@@ -298,7 +296,7 @@ export interface AuditLogConfig {
 }
 
 export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AuditLogConfig" });
@@ -315,7 +313,7 @@ export interface Expr {
 }
 
 export const Expr: Schema.Codec<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -332,7 +330,7 @@ export interface Binding {
 }
 
 export const Binding: Schema.Codec<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
     condition: Schema.optional(Expr),
@@ -344,7 +342,7 @@ export interface TestIamPermissionsResponse {
 }
 
 export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
@@ -356,7 +354,7 @@ export interface AuditConfig {
 }
 
 export const AuditConfig: Schema.Codec<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
     service: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuditConfig" });
@@ -373,7 +371,7 @@ export interface Policy {
 }
 
 export const Policy: Schema.Codec<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(Binding)),
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     version: Schema.optional(Schema.Number),
@@ -386,7 +384,7 @@ export interface TestIamPermissionsRequest {
 }
 
 export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
@@ -398,7 +396,7 @@ export interface SetIamPolicyRequest {
 }
 
 export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
@@ -415,7 +413,7 @@ export interface Service {
 }
 
 export const Service: Schema.Codec<Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     businessEntityName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     serviceId: Schema.optional(Schema.String),
@@ -430,7 +428,7 @@ export interface ListServicesResponse {
 }
 
 export const ListServicesResponse: Schema.Codec<ListServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     services: Schema.optional(Schema.Array(Service)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListServicesResponse" });
@@ -496,7 +494,7 @@ export interface ListServicesRequest {
   pageToken?: string;
 }
 
-export const ListServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListServicesRequest = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
 }).pipe(
@@ -505,8 +503,7 @@ export const ListServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListServicesRequest>;
 
 export type ListServicesResponse_Op = ListServicesResponse;
-export const ListServicesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
+export const ListServicesResponse_Op = /*@__PURE__*/ ListServicesResponse;
 
 export type ListServicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -516,7 +513,7 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesResponse_Op,
   ListServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -542,7 +539,7 @@ export interface ListServicesSkusRequest {
 }
 
 export const ListServicesSkusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -557,8 +554,7 @@ export const ListServicesSkusRequest =
   ) as unknown as Schema.Codec<ListServicesSkusRequest>;
 
 export type ListServicesSkusResponse = ListSkusResponse;
-export const ListServicesSkusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSkusResponse;
+export const ListServicesSkusResponse = /*@__PURE__*/ ListSkusResponse;
 
 export type ListServicesSkusError = DefaultErrors | NotFound | Forbidden;
 
@@ -568,7 +564,7 @@ export const listServicesSkus: API.PaginatedOperationMethod<
   ListServicesSkusResponse,
   ListServicesSkusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesSkusRequest,
   output: ListServicesSkusResponse,
   errors: [NotFound, Forbidden],
@@ -590,7 +586,7 @@ export interface ListOrganizationsBillingAccountsRequest {
 }
 
 export const ListOrganizationsBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -603,7 +599,7 @@ export const ListOrganizationsBillingAccountsRequest =
 export type ListOrganizationsBillingAccountsResponse =
   ListBillingAccountsResponse;
 export const ListOrganizationsBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBillingAccountsResponse;
+  /*@__PURE__*/ ListBillingAccountsResponse;
 
 export type ListOrganizationsBillingAccountsError =
   | DefaultErrors
@@ -616,7 +612,7 @@ export const listOrganizationsBillingAccounts: API.PaginatedOperationMethod<
   ListOrganizationsBillingAccountsResponse,
   ListOrganizationsBillingAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsBillingAccountsRequest,
   output: ListOrganizationsBillingAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -634,7 +630,7 @@ export interface CreateOrganizationsBillingAccountsRequest {
 }
 
 export const CreateOrganizationsBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
   }).pipe(
@@ -648,7 +644,7 @@ export const CreateOrganizationsBillingAccountsRequest =
 
 export type CreateOrganizationsBillingAccountsResponse = BillingAccount;
 export const CreateOrganizationsBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+  /*@__PURE__*/ BillingAccount;
 
 export type CreateOrganizationsBillingAccountsError =
   | DefaultErrors
@@ -663,7 +659,7 @@ export const createOrganizationsBillingAccounts: API.OperationMethod<
   CreateOrganizationsBillingAccountsResponse,
   CreateOrganizationsBillingAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsBillingAccountsRequest,
   output: CreateOrganizationsBillingAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -677,7 +673,7 @@ export interface MoveOrganizationsBillingAccountsRequest {
 }
 
 export const MoveOrganizationsBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     destinationParent: Schema.String.pipe(T.HttpPath("destinationParent")),
   }).pipe(
@@ -687,7 +683,7 @@ export const MoveOrganizationsBillingAccountsRequest =
 
 export type MoveOrganizationsBillingAccountsResponse = BillingAccount;
 export const MoveOrganizationsBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+  /*@__PURE__*/ BillingAccount;
 
 export type MoveOrganizationsBillingAccountsError =
   | DefaultErrors
@@ -700,7 +696,7 @@ export const moveOrganizationsBillingAccounts: API.OperationMethod<
   MoveOrganizationsBillingAccountsResponse,
   MoveOrganizationsBillingAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveOrganizationsBillingAccountsRequest,
   output: MoveOrganizationsBillingAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -716,7 +712,7 @@ export interface PatchBillingAccountsRequest {
 }
 
 export const PatchBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
@@ -726,8 +722,7 @@ export const PatchBillingAccountsRequest =
   ) as unknown as Schema.Codec<PatchBillingAccountsRequest>;
 
 export type PatchBillingAccountsResponse = BillingAccount;
-export const PatchBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+export const PatchBillingAccountsResponse = /*@__PURE__*/ BillingAccount;
 
 export type PatchBillingAccountsError =
   | DefaultErrors
@@ -742,7 +737,7 @@ export const patchBillingAccounts: API.OperationMethod<
   PatchBillingAccountsResponse,
   PatchBillingAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchBillingAccountsRequest,
   output: PatchBillingAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -756,7 +751,7 @@ export interface GetIamPolicyBillingAccountsRequest {
 }
 
 export const GetIamPolicyBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -767,8 +762,7 @@ export const GetIamPolicyBillingAccountsRequest =
   ) as unknown as Schema.Codec<GetIamPolicyBillingAccountsRequest>;
 
 export type GetIamPolicyBillingAccountsResponse = Policy;
-export const GetIamPolicyBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetIamPolicyBillingAccountsResponse = /*@__PURE__*/ Policy;
 
 export type GetIamPolicyBillingAccountsError =
   | DefaultErrors
@@ -781,7 +775,7 @@ export const getIamPolicyBillingAccounts: API.OperationMethod<
   GetIamPolicyBillingAccountsResponse,
   GetIamPolicyBillingAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyBillingAccountsRequest,
   output: GetIamPolicyBillingAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -795,7 +789,7 @@ export interface TestIamPermissionsBillingAccountsRequest {
 }
 
 export const TestIamPermissionsBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -810,7 +804,7 @@ export const TestIamPermissionsBillingAccountsRequest =
 export type TestIamPermissionsBillingAccountsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsBillingAccountsError =
   | DefaultErrors
@@ -825,7 +819,7 @@ export const testIamPermissionsBillingAccounts: API.OperationMethod<
   TestIamPermissionsBillingAccountsResponse,
   TestIamPermissionsBillingAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsBillingAccountsRequest,
   output: TestIamPermissionsBillingAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -837,7 +831,7 @@ export interface GetBillingAccountsRequest {
 }
 
 export const GetBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -845,8 +839,7 @@ export const GetBillingAccountsRequest =
   ) as unknown as Schema.Codec<GetBillingAccountsRequest>;
 
 export type GetBillingAccountsResponse = BillingAccount;
-export const GetBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+export const GetBillingAccountsResponse = /*@__PURE__*/ BillingAccount;
 
 export type GetBillingAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -856,7 +849,7 @@ export const getBillingAccounts: API.OperationMethod<
   GetBillingAccountsResponse,
   GetBillingAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBillingAccountsRequest,
   output: GetBillingAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -870,7 +863,7 @@ export interface MoveBillingAccountsRequest {
 }
 
 export const MoveBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MoveBillingAccountRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -879,8 +872,7 @@ export const MoveBillingAccountsRequest =
   ) as unknown as Schema.Codec<MoveBillingAccountsRequest>;
 
 export type MoveBillingAccountsResponse = BillingAccount;
-export const MoveBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+export const MoveBillingAccountsResponse = /*@__PURE__*/ BillingAccount;
 
 export type MoveBillingAccountsError =
   | DefaultErrors
@@ -895,7 +887,7 @@ export const moveBillingAccounts: API.OperationMethod<
   MoveBillingAccountsResponse,
   MoveBillingAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveBillingAccountsRequest,
   output: MoveBillingAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -913,7 +905,7 @@ export interface ListBillingAccountsRequest {
 }
 
 export const ListBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -925,7 +917,7 @@ export const ListBillingAccountsRequest =
 
 export type ListBillingAccountsResponse_Op = ListBillingAccountsResponse;
 export const ListBillingAccountsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListBillingAccountsResponse;
+  /*@__PURE__*/ ListBillingAccountsResponse;
 
 export type ListBillingAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -935,7 +927,7 @@ export const listBillingAccounts: API.PaginatedOperationMethod<
   ListBillingAccountsResponse_Op,
   ListBillingAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsRequest,
   output: ListBillingAccountsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -953,7 +945,7 @@ export interface CreateBillingAccountsRequest {
 }
 
 export const CreateBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
     body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
   }).pipe(
@@ -962,8 +954,7 @@ export const CreateBillingAccountsRequest =
   ) as unknown as Schema.Codec<CreateBillingAccountsRequest>;
 
 export type CreateBillingAccountsResponse = BillingAccount;
-export const CreateBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+export const CreateBillingAccountsResponse = /*@__PURE__*/ BillingAccount;
 
 export type CreateBillingAccountsError =
   | DefaultErrors
@@ -978,7 +969,7 @@ export const createBillingAccounts: API.OperationMethod<
   CreateBillingAccountsResponse,
   CreateBillingAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsRequest,
   output: CreateBillingAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -992,7 +983,7 @@ export interface SetIamPolicyBillingAccountsRequest {
 }
 
 export const SetIamPolicyBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1005,8 +996,7 @@ export const SetIamPolicyBillingAccountsRequest =
   ) as unknown as Schema.Codec<SetIamPolicyBillingAccountsRequest>;
 
 export type SetIamPolicyBillingAccountsResponse = Policy;
-export const SetIamPolicyBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const SetIamPolicyBillingAccountsResponse = /*@__PURE__*/ Policy;
 
 export type SetIamPolicyBillingAccountsError =
   | DefaultErrors
@@ -1021,7 +1011,7 @@ export const setIamPolicyBillingAccounts: API.OperationMethod<
   SetIamPolicyBillingAccountsResponse,
   SetIamPolicyBillingAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyBillingAccountsRequest,
   output: SetIamPolicyBillingAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1039,7 +1029,7 @@ export interface ListBillingAccountsSubAccountsRequest {
 }
 
 export const ListBillingAccountsSubAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1052,7 +1042,7 @@ export const ListBillingAccountsSubAccountsRequest =
 export type ListBillingAccountsSubAccountsResponse =
   ListBillingAccountsResponse;
 export const ListBillingAccountsSubAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBillingAccountsResponse;
+  /*@__PURE__*/ ListBillingAccountsResponse;
 
 export type ListBillingAccountsSubAccountsError =
   | DefaultErrors
@@ -1065,7 +1055,7 @@ export const listBillingAccountsSubAccounts: API.PaginatedOperationMethod<
   ListBillingAccountsSubAccountsResponse,
   ListBillingAccountsSubAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsSubAccountsRequest,
   output: ListBillingAccountsSubAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -1083,7 +1073,7 @@ export interface CreateBillingAccountsSubAccountsRequest {
 }
 
 export const CreateBillingAccountsSubAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
   }).pipe(
@@ -1093,7 +1083,7 @@ export const CreateBillingAccountsSubAccountsRequest =
 
 export type CreateBillingAccountsSubAccountsResponse = BillingAccount;
 export const CreateBillingAccountsSubAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+  /*@__PURE__*/ BillingAccount;
 
 export type CreateBillingAccountsSubAccountsError =
   | DefaultErrors
@@ -1108,7 +1098,7 @@ export const createBillingAccountsSubAccounts: API.OperationMethod<
   CreateBillingAccountsSubAccountsResponse,
   CreateBillingAccountsSubAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsSubAccountsRequest,
   output: CreateBillingAccountsSubAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1124,7 +1114,7 @@ export interface ListBillingAccountsProjectsRequest {
 }
 
 export const ListBillingAccountsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1136,7 +1126,7 @@ export const ListBillingAccountsProjectsRequest =
 export type ListBillingAccountsProjectsResponse =
   ListProjectBillingInfoResponse;
 export const ListBillingAccountsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListProjectBillingInfoResponse;
+  /*@__PURE__*/ ListProjectBillingInfoResponse;
 
 export type ListBillingAccountsProjectsError =
   | DefaultErrors
@@ -1149,7 +1139,7 @@ export const listBillingAccountsProjects: API.PaginatedOperationMethod<
   ListBillingAccountsProjectsResponse,
   ListBillingAccountsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsProjectsRequest,
   output: ListBillingAccountsProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -1167,7 +1157,7 @@ export interface UpdateBillingInfoProjectsRequest {
 }
 
 export const UpdateBillingInfoProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ProjectBillingInfo).pipe(T.HttpBody()),
   }).pipe(
@@ -1177,7 +1167,7 @@ export const UpdateBillingInfoProjectsRequest =
 
 export type UpdateBillingInfoProjectsResponse = ProjectBillingInfo;
 export const UpdateBillingInfoProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProjectBillingInfo;
+  /*@__PURE__*/ ProjectBillingInfo;
 
 export type UpdateBillingInfoProjectsError =
   | DefaultErrors
@@ -1192,7 +1182,7 @@ export const updateBillingInfoProjects: API.OperationMethod<
   UpdateBillingInfoProjectsResponse,
   UpdateBillingInfoProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBillingInfoProjectsRequest,
   output: UpdateBillingInfoProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1204,7 +1194,7 @@ export interface GetBillingInfoProjectsRequest {
 }
 
 export const GetBillingInfoProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/billingInfo" }),
@@ -1212,8 +1202,7 @@ export const GetBillingInfoProjectsRequest =
   ) as unknown as Schema.Codec<GetBillingInfoProjectsRequest>;
 
 export type GetBillingInfoProjectsResponse = ProjectBillingInfo;
-export const GetBillingInfoProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProjectBillingInfo;
+export const GetBillingInfoProjectsResponse = /*@__PURE__*/ ProjectBillingInfo;
 
 export type GetBillingInfoProjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1223,7 +1212,7 @@ export const getBillingInfoProjects: API.OperationMethod<
   GetBillingInfoProjectsResponse,
   GetBillingInfoProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBillingInfoProjectsRequest,
   output: GetBillingInfoProjectsResponse,
   errors: [NotFound, Forbidden],

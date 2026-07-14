@@ -8,7 +8,7 @@ export interface V1DeleteLoginRolesInput {
   ref: string;
 }
 export const V1DeleteLoginRolesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/projects/{ref}/cli/login-role" }),
@@ -19,7 +19,7 @@ export interface V1DeleteLoginRolesOutput {
   message: "ok";
 }
 export const V1DeleteLoginRolesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.Literals(["ok"]),
   }) as unknown as Schema.Codec<V1DeleteLoginRolesOutput>;
 
@@ -29,7 +29,7 @@ export const V1DeleteLoginRolesOutput =
  *
  * @param ref - Project ref
  */
-export const v1DeleteLoginRoles = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1DeleteLoginRoles = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1DeleteLoginRolesInput,
   outputSchema: V1DeleteLoginRolesOutput,
   errors: [BadRequest, Forbidden] as const,

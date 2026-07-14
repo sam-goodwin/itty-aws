@@ -8,7 +8,7 @@ export interface GetDatabaseStatsInput {
   organizationSlug: string;
   databaseName: string;
 }
-export const GetDatabaseStatsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatabaseStatsInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -24,21 +24,19 @@ export interface GetDatabaseStatsOutput {
     | { query?: string; rows_read?: number; rows_written?: number }[]
     | null;
 }
-export const GetDatabaseStatsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    top_queries: Schema.optional(
-      Schema.NullOr(
-        Schema.Array(
-          Schema.Struct({
-            query: Schema.optional(Schema.String),
-            rows_read: Schema.optional(Schema.Number),
-            rows_written: Schema.optional(Schema.Number),
-          }),
-        ),
+export const GetDatabaseStatsOutput = /*@__PURE__*/ Schema.Struct({
+  top_queries: Schema.optional(
+    Schema.NullOr(
+      Schema.Array(
+        Schema.Struct({
+          query: Schema.optional(Schema.String),
+          rows_read: Schema.optional(Schema.Number),
+          rows_written: Schema.optional(Schema.Number),
+        }),
       ),
     ),
-  },
-) as unknown as Schema.Codec<GetDatabaseStatsOutput>;
+  ),
+}) as unknown as Schema.Codec<GetDatabaseStatsOutput>;
 
 // The operation
 /**
@@ -49,7 +47,7 @@ export const GetDatabaseStatsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param organizationSlug - The slug of the organization or user account.
  * @param databaseName - The name of the database.
  */
-export const getDatabaseStats = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDatabaseStats = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDatabaseStatsInput,
   outputSchema: GetDatabaseStatsOutput,
   errors: [NotFound] as const,

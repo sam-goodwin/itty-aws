@@ -40,7 +40,7 @@ export interface PostTerminalLocationsLocationInput {
   phone?: string | "";
 }
 export const PostTerminalLocationsLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     address: Schema.optional(
       Schema.Struct({
@@ -145,7 +145,7 @@ export type PostTerminalLocationsLocationOutput =
     }
   | { deleted: true; id: string; object: "terminal.location" };
 export const PostTerminalLocationsLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       address: Schema.Struct({
         city: Schema.NullOr(Schema.String),
@@ -201,7 +201,7 @@ export const PostTerminalLocationsLocationOutput =
  * <p>Updates a <code>Location</code> object by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p>
  */
 export const PostTerminalLocationsLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTerminalLocationsLocationInput,
     outputSchema: PostTerminalLocationsLocationOutput,
   }));

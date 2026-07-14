@@ -4,14 +4,14 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const App_IPAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apps/{app_name}/ip_assignments" }),
   );
 export type App_IPAssignmentsListInput = typeof App_IPAssignmentsListInput.Type;
 
 // Output Schema
 export const App_IPAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ips: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -31,9 +31,7 @@ export type App_IPAssignmentsListOutput =
 /**
  * List IP assignments for app
  */
-export const App_IPAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: App_IPAssignmentsListInput,
-    outputSchema: App_IPAssignmentsListOutput,
-  }),
-);
+export const App_IPAssignmentsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: App_IPAssignmentsListInput,
+  outputSchema: App_IPAssignmentsListOutput,
+}));

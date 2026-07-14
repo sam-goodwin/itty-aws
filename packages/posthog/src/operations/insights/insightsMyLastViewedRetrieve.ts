@@ -9,7 +9,7 @@ export interface InsightsMyLastViewedRetrieveInput {
   format?: "csv" | "json";
 }
 export const InsightsMyLastViewedRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
   }).pipe(
@@ -22,7 +22,7 @@ export const InsightsMyLastViewedRetrieveInput =
 // Output Schema
 export type InsightsMyLastViewedRetrieveOutput = void;
 export const InsightsMyLastViewedRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InsightsMyLastViewedRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InsightsMyLastViewedRetrieveOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const InsightsMyLastViewedRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const insightsMyLastViewedRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InsightsMyLastViewedRetrieveInput,
     outputSchema: InsightsMyLastViewedRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

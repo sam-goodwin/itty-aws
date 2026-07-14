@@ -15,7 +15,7 @@ export interface PostTransfersTransferInput {
   metadata?: Record<string, string> | "";
 }
 export const PostTransfersTransferInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transfer: Schema.String.pipe(T.PathParam()),
     description: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -335,7 +335,7 @@ export interface PostTransfersTransferOutput {
   transfer_group: string | null;
 }
 export const PostTransfersTransferOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_reversed: Schema.Number,
     balance_transaction: Schema.NullOr(
@@ -668,9 +668,7 @@ export const PostTransfersTransferOutput =
  * <p>Updates the specified transfer by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p>
  * <p>This request accepts only metadata as an argument.</p>
  */
-export const PostTransfersTransfer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostTransfersTransferInput,
-    outputSchema: PostTransfersTransferOutput,
-  }),
-);
+export const PostTransfersTransfer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTransfersTransferInput,
+  outputSchema: PostTransfersTransferOutput,
+}));

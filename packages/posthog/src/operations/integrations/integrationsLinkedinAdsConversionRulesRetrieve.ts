@@ -9,7 +9,7 @@ export interface IntegrationsLinkedinAdsConversionRulesRetrieveInput {
   project_id: string;
 }
 export const IntegrationsLinkedinAdsConversionRulesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const IntegrationsLinkedinAdsConversionRulesRetrieveInput =
 // Output Schema
 export type IntegrationsLinkedinAdsConversionRulesRetrieveOutput = void;
 export const IntegrationsLinkedinAdsConversionRulesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsLinkedinAdsConversionRulesRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsLinkedinAdsConversionRulesRetrieveOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const IntegrationsLinkedinAdsConversionRulesRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const integrationsLinkedinAdsConversionRulesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsLinkedinAdsConversionRulesRetrieveInput,
     outputSchema: IntegrationsLinkedinAdsConversionRulesRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

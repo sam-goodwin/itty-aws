@@ -14,7 +14,7 @@ export interface UpdateGroupApiKeyRolesInput {
   envelope?: boolean;
 }
 export const UpdateGroupApiKeyRolesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     apiUserId: Schema.String.pipe(T.PathParam()),
     pageNum: Schema.optional(Schema.Number),
@@ -32,7 +32,7 @@ export const UpdateGroupApiKeyRolesInput =
 // Output Schema
 export type UpdateGroupApiKeyRolesOutput = void;
 export const UpdateGroupApiKeyRolesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupApiKeyRolesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupApiKeyRolesOutput>;
 
 // The operation
 /**
@@ -50,10 +50,8 @@ export const UpdateGroupApiKeyRolesOutput =
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key that you want to unassign from one project.
  */
-export const updateGroupApiKeyRoles = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupApiKeyRolesInput,
-    outputSchema: UpdateGroupApiKeyRolesOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const updateGroupApiKeyRoles = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupApiKeyRolesInput,
+  outputSchema: UpdateGroupApiKeyRolesOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

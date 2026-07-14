@@ -153,7 +153,7 @@ export interface PostTerminalConfigurationsInput {
     | "";
 }
 export const PostTerminalConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bbpos_wisepad3: Schema.optional(
       Schema.Struct({
         splashscreen: Schema.optional(
@@ -898,7 +898,7 @@ export interface PostTerminalConfigurationsOutput {
   };
 }
 export const PostTerminalConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bbpos_wisepad3: Schema.optional(
       Schema.Struct({
         splashscreen: Schema.optional(
@@ -1780,9 +1780,7 @@ export const PostTerminalConfigurationsOutput =
  *
  * <p>Creates a new <code>Configuration</code> object.</p>
  */
-export const PostTerminalConfigurations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostTerminalConfigurationsInput,
-    outputSchema: PostTerminalConfigurationsOutput,
-  }),
-);
+export const PostTerminalConfigurations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTerminalConfigurationsInput,
+  outputSchema: PostTerminalConfigurationsOutput,
+}));

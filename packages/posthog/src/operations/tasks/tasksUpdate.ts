@@ -36,7 +36,7 @@ export interface TasksUpdateInput {
   model?: string | null;
   reasoning_effort?: "low" | "medium" | "high" | "xhigh" | "max" | null;
 }
-export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksUpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
   title: Schema.optional(Schema.String),
@@ -113,7 +113,7 @@ export interface TasksUpdateOutput {
   } | null;
   ci_prompt: string | null;
 }
-export const TasksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   task_number: Schema.NullOr(Schema.Number),
   slug: Schema.String,
@@ -158,7 +158,7 @@ export const TasksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tasksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const tasksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksUpdateInput,
   outputSchema: TasksUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

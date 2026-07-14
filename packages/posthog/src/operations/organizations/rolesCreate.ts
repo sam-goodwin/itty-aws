@@ -33,7 +33,7 @@ export interface RolesCreateInput {
   members?: Record<string, unknown>[];
   is_default?: boolean;
 }
-export const RolesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesCreateInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface RolesCreateOutput {
   members?: Record<string, unknown>[];
   is_default?: boolean;
 }
-export const RolesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   created_at: Schema.optional(Schema.String),
@@ -159,7 +159,7 @@ export const RolesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const rolesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const rolesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RolesCreateInput,
   outputSchema: RolesCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

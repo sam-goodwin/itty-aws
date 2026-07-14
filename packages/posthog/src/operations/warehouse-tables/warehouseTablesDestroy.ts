@@ -9,7 +9,7 @@ export interface WarehouseTablesDestroyInput {
   project_id: string;
 }
 export const WarehouseTablesDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const WarehouseTablesDestroyInput =
 // Output Schema
 export type WarehouseTablesDestroyOutput = void;
 export const WarehouseTablesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WarehouseTablesDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WarehouseTablesDestroyOutput>;
 
 // The operation
 /**
@@ -31,10 +31,8 @@ export const WarehouseTablesDestroyOutput =
  * @param id - A UUID string identifying this data warehouse table.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const warehouseTablesDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WarehouseTablesDestroyInput,
-    outputSchema: WarehouseTablesDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const warehouseTablesDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WarehouseTablesDestroyInput,
+  outputSchema: WarehouseTablesDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

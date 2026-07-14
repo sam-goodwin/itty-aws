@@ -55,7 +55,7 @@ export interface CreateProjectInput {
     org_id?: string;
   };
 }
-export const CreateProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateProjectInput = /*@__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     settings: Schema.optional(
       Schema.Struct({
@@ -375,7 +375,7 @@ export interface CreateProjectOutput {
     compute_release_version?: string;
   }[];
 }
-export const CreateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateProjectOutput = /*@__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     data_storage_bytes_hour: Schema.Number,
     data_transfer_bytes: Schema.Number,
@@ -686,7 +686,7 @@ export const CreateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * Neon currently supports PostgreSQL 14, 15, 16, 17, and 18.
  * For supported regions and `region_id` values, see [Regions](https://neon.com/docs/introduction/regions/).
  */
-export const createProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateProjectInput,
   outputSchema: CreateProjectOutput,
 }));

@@ -16,7 +16,7 @@ export interface ListOrgEventsInput {
   maxDate?: string;
   minDate?: string;
 }
-export const ListOrgEventsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOrgEventsInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
@@ -34,7 +34,7 @@ export const ListOrgEventsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListOrgEventsOutput = void;
 export const ListOrgEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgEventsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgEventsOutput>;
 
 // The operation
 /**
@@ -56,7 +56,7 @@ export const ListOrgEventsOutput =
  * @param maxDate - Date and time from when MongoDB Cloud stops returning events. This parameter uses the ISO 8601 timestamp format in UTC.
  * @param minDate - Date and time from when MongoDB Cloud starts returning events. This parameter uses the ISO 8601 timestamp format in UTC.
  */
-export const listOrgEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listOrgEvents = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListOrgEventsInput,
   outputSchema: ListOrgEventsOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -9,7 +9,7 @@ export interface V1DeleteHostnameConfigInput {
   remove_addon?: boolean;
 }
 export const V1DeleteHostnameConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     remove_addon: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -19,7 +19,7 @@ export const V1DeleteHostnameConfigInput =
 // Output Schema
 export type V1DeleteHostnameConfigOutput = void;
 export const V1DeleteHostnameConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteHostnameConfigOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteHostnameConfigOutput>;
 
 // The operation
 /**
@@ -28,10 +28,8 @@ export const V1DeleteHostnameConfigOutput =
  * @param ref - Project ref
  * @param remove_addon - If true, also removes the custom domain add-on from the project subscription.
  */
-export const v1DeleteHostnameConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1DeleteHostnameConfigInput,
-    outputSchema: V1DeleteHostnameConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1DeleteHostnameConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1DeleteHostnameConfigInput,
+  outputSchema: V1DeleteHostnameConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

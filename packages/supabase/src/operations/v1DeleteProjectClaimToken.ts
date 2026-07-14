@@ -8,7 +8,7 @@ export interface V1DeleteProjectClaimTokenInput {
   ref: string;
 }
 export const V1DeleteProjectClaimTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/projects/{ref}/claim-token" }),
@@ -17,7 +17,7 @@ export const V1DeleteProjectClaimTokenInput =
 // Output Schema
 export type V1DeleteProjectClaimTokenOutput = void;
 export const V1DeleteProjectClaimTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteProjectClaimTokenOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteProjectClaimTokenOutput>;
 
 // The operation
 /**
@@ -25,10 +25,8 @@ export const V1DeleteProjectClaimTokenOutput =
  *
  * @param ref - Project ref
  */
-export const v1DeleteProjectClaimToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1DeleteProjectClaimTokenInput,
-    outputSchema: V1DeleteProjectClaimTokenOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1DeleteProjectClaimToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1DeleteProjectClaimTokenInput,
+  outputSchema: V1DeleteProjectClaimTokenOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

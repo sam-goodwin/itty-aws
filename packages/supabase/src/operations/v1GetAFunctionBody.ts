@@ -9,7 +9,7 @@ export interface V1GetAFunctionBodyInput {
   function_slug: string;
 }
 export const V1GetAFunctionBodyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     function_slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const V1GetAFunctionBodyInput =
 // Output Schema
 export interface V1GetAFunctionBodyOutput {}
 export const V1GetAFunctionBodyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as unknown as Schema.Codec<V1GetAFunctionBodyOutput>;
 
@@ -35,7 +35,7 @@ export const V1GetAFunctionBodyOutput =
  * @param ref - Project ref
  * @param function_slug - Function slug
  */
-export const v1GetAFunctionBody = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetAFunctionBody = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetAFunctionBodyInput,
   outputSchema: V1GetAFunctionBodyOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

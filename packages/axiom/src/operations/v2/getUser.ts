@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface GetUserInput {
   id: string;
 }
-export const GetUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetUserInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/users/{id}" }),
@@ -20,7 +20,7 @@ export interface GetUserOutput {
   name: string;
   role?: { id: string; name: string };
 }
-export const GetUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetUserOutput = /*@__PURE__*/ Schema.Struct({
   email: Schema.String,
   id: Schema.String,
   name: Schema.String,
@@ -36,7 +36,7 @@ export const GetUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Get user by ID
  */
-export const getUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetUserInput,
   outputSchema: GetUserOutput,
   errors: [NotFound] as const,

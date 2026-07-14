@@ -11,7 +11,7 @@ export interface BusinessKnowledgeSourcesPartialUpdateInput {
   always_include?: boolean;
 }
 export const BusinessKnowledgeSourcesPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export interface BusinessKnowledgeSourcesPartialUpdateOutput {
   always_include: boolean;
 }
 export const BusinessKnowledgeSourcesPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     team_id: Schema.Number,
     name: Schema.String,
@@ -91,7 +91,7 @@ export const BusinessKnowledgeSourcesPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const businessKnowledgeSourcesPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BusinessKnowledgeSourcesPartialUpdateInput,
     outputSchema: BusinessKnowledgeSourcesPartialUpdateOutput,
   }));

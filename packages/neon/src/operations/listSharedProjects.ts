@@ -10,7 +10,7 @@ export interface ListSharedProjectsInput {
   timeout?: number;
 }
 export const ListSharedProjectsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     search: Schema.optional(Schema.String),
@@ -89,7 +89,7 @@ export interface ListSharedProjectsOutput {
   pagination?: { cursor: string };
 }
 export const ListSharedProjectsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projects: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -201,15 +201,13 @@ Projects still being fetched when the timeout occurred are listed in the "unavai
 If not specified, an implicit implementation defined timeout is chosen with the same behaviour as above
 
  */
-export const listSharedProjects = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListSharedProjectsInput,
-    outputSchema: ListSharedProjectsOutput,
-    pagination: {
-      mode: "cursor",
-      inputToken: "cursor",
-      outputToken: "pagination.cursor",
-      items: "projects",
-    },
-  }),
-);
+export const listSharedProjects = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListSharedProjectsInput,
+  outputSchema: ListSharedProjectsOutput,
+  pagination: {
+    mode: "cursor",
+    inputToken: "cursor",
+    outputToken: "pagination.cursor",
+    items: "projects",
+  },
+}));

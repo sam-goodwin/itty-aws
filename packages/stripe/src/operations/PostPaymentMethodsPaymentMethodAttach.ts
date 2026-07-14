@@ -15,7 +15,7 @@ export interface PostPaymentMethodsPaymentMethodAttachInput {
   expand?: string[];
 }
 export const PostPaymentMethodsPaymentMethodAttachInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payment_method: Schema.String.pipe(T.PathParam()),
     customer: Schema.optional(Schema.String),
     customer_account: Schema.optional(Schema.String),
@@ -860,7 +860,7 @@ export interface PostPaymentMethodsPaymentMethodAttachOutput {
   zip?: {};
 }
 export const PostPaymentMethodsPaymentMethodAttachOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acss_debit: Schema.optional(
       Schema.Struct({
         bank_name: Schema.NullOr(Schema.String),
@@ -1657,7 +1657,7 @@ export const PostPaymentMethodsPaymentMethodAttachOutput =
  * on the Customer to the PaymentMethod’s ID.</p>
  */
 export const PostPaymentMethodsPaymentMethodAttach =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentMethodsPaymentMethodAttachInput,
     outputSchema: PostPaymentMethodsPaymentMethodAttachOutput,
   }));

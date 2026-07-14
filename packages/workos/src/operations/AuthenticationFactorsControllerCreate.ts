@@ -14,7 +14,7 @@ export interface AuthenticationFactorsControllerCreateInput {
   user_id?: string;
 }
 export const AuthenticationFactorsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.Literals(["generic_otp", "sms", "totp"]),
     phone_number: Schema.optional(Schema.String),
     totp_issuer: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface AuthenticationFactorsControllerCreateOutput {
   updated_at?: string;
 }
 export const AuthenticationFactorsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     type: Schema.optional(
@@ -74,7 +74,7 @@ export const AuthenticationFactorsControllerCreateOutput =
  * Enrolls an Authentication Factor to be used as an additional factor of authentication. The returned ID should be used to create an authentication Challenge.
  */
 export const AuthenticationFactorsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthenticationFactorsControllerCreateInput,
     outputSchema: AuthenticationFactorsControllerCreateOutput,
     errors: [UnprocessableEntity] as const,

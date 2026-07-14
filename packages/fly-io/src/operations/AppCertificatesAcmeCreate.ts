@@ -14,7 +14,7 @@ export interface AppCertificatesAcmeCreateInput {
   hostname?: string;
 }
 export const AppCertificatesAcmeCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     hostname: Schema.optional(Schema.String),
   }).pipe(
@@ -62,7 +62,7 @@ export interface AppCertificatesAcmeCreateOutput {
   }[];
 }
 export const AppCertificatesAcmeCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
     certificates: Schema.optional(
       Schema.Array(
@@ -141,10 +141,8 @@ export const AppCertificatesAcmeCreateOutput =
  *
  * @param app_name - Fly App Name
  */
-export const AppCertificatesAcmeCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppCertificatesAcmeCreateInput,
-    outputSchema: AppCertificatesAcmeCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const AppCertificatesAcmeCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppCertificatesAcmeCreateInput,
+  outputSchema: AppCertificatesAcmeCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
+}));

@@ -9,7 +9,7 @@ export interface PostV2CoreEventDestinationsIdDisableInput {
   id: string;
 }
 export const PostV2CoreEventDestinationsIdDisableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -64,7 +64,7 @@ export interface PostV2CoreEventDestinationsIdDisableOutput {
   };
 }
 export const PostV2CoreEventDestinationsIdDisableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amazon_eventbridge: Schema.optional(
       Schema.Struct({
         aws_account_id: Schema.String,
@@ -139,7 +139,7 @@ export const PostV2CoreEventDestinationsIdDisableOutput =
  * @param id - Identifier for the event destination to disable.
  */
 export const PostV2CoreEventDestinationsIdDisable =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV2CoreEventDestinationsIdDisableInput,
     outputSchema: PostV2CoreEventDestinationsIdDisableOutput,
   }));

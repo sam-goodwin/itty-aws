@@ -30,7 +30,7 @@ export interface TracingSpansTreeCreateInput {
   };
 }
 export const TracingSpansTreeCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     query: Schema.Struct({
       spanName: Schema.String,
@@ -84,16 +84,14 @@ export const TracingSpansTreeCreateInput =
 // Output Schema
 export type TracingSpansTreeCreateOutput = void;
 export const TracingSpansTreeCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansTreeCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansTreeCreateOutput>;
 
 // The operation
 /**
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tracingSpansTreeCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TracingSpansTreeCreateInput,
-    outputSchema: TracingSpansTreeCreateOutput,
-  }),
-);
+export const tracingSpansTreeCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TracingSpansTreeCreateInput,
+  outputSchema: TracingSpansTreeCreateOutput,
+}));

@@ -14,7 +14,7 @@ export interface UpdateBouncerResizeRequestInput {
   parameters?: Record<string, unknown>;
 }
 export const UpdateBouncerResizeRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -65,7 +65,7 @@ export interface UpdateBouncerResizeRequestOutput {
   };
 }
 export const UpdateBouncerResizeRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     state: Schema.Literals(["pending", "resizing", "canceled", "completed"]),
     replicas_per_cell: Schema.Number,
@@ -116,10 +116,8 @@ export const UpdateBouncerResizeRequestOutput =
  * @param replicas_per_cell - The number of PgBouncers per availability zone. Defaults to 1.
  * @param parameters - Bouncer configuration parameters nested by namespace (e.g., {"pgbouncer": {"default_pool_size": "100"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Only parameters with namespace 'pgbouncer' can be updated.
  */
-export const updateBouncerResizeRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateBouncerResizeRequestInput,
-    outputSchema: UpdateBouncerResizeRequestOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const updateBouncerResizeRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateBouncerResizeRequestInput,
+  outputSchema: UpdateBouncerResizeRequestOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

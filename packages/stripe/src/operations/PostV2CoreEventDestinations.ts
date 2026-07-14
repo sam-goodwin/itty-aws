@@ -24,7 +24,7 @@ export interface PostV2CoreEventDestinationsInput {
   webhook_endpoint?: { url: string };
 }
 export const PostV2CoreEventDestinationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amazon_eventbridge: Schema.optional(
       Schema.Struct({
         aws_account_id: Schema.String,
@@ -113,7 +113,7 @@ export interface PostV2CoreEventDestinationsOutput {
   };
 }
 export const PostV2CoreEventDestinationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amazon_eventbridge: Schema.optional(
       Schema.Struct({
         aws_account_id: Schema.String,
@@ -185,9 +185,7 @@ export const PostV2CoreEventDestinationsOutput =
  *
  * Create a new event destination.
  */
-export const PostV2CoreEventDestinations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostV2CoreEventDestinationsInput,
-    outputSchema: PostV2CoreEventDestinationsOutput,
-  }),
-);
+export const PostV2CoreEventDestinations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostV2CoreEventDestinationsInput,
+  outputSchema: PostV2CoreEventDestinationsOutput,
+}));

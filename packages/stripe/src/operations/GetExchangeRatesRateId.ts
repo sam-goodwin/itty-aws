@@ -8,7 +8,7 @@ export interface GetExchangeRatesRateIdInput {
   expand?: string;
 }
 export const GetExchangeRatesRateIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rate_id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -26,7 +26,7 @@ export interface GetExchangeRatesRateIdOutput {
   rates: Record<string, number>;
 }
 export const GetExchangeRatesRateIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     object: Schema.Literals(["exchange_rate"]),
     rates: Schema.Record(Schema.String, Schema.Number),
@@ -41,9 +41,7 @@ export const GetExchangeRatesRateIdOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetExchangeRatesRateId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetExchangeRatesRateIdInput,
-    outputSchema: GetExchangeRatesRateIdOutput,
-  }),
-);
+export const GetExchangeRatesRateId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetExchangeRatesRateIdInput,
+  outputSchema: GetExchangeRatesRateIdOutput,
+}));

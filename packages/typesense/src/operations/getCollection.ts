@@ -9,7 +9,7 @@ import * as Redacted from "effect/Redacted";
 export interface GetCollectionInput {
   collectionName: string;
 }
-export const GetCollectionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCollectionInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/collections/{collectionName}" }),
@@ -64,7 +64,7 @@ export interface GetCollectionOutput {
   num_documents: number;
   created_at: number;
 }
-export const GetCollectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCollectionOutput = /*@__PURE__*/ Schema.Struct({
   name: Schema.String,
   fields: Schema.Array(
     Schema.Struct({
@@ -129,7 +129,7 @@ export const GetCollectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param collectionName - The name of the collection to retrieve
  */
-export const getCollection = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getCollection = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCollectionInput,
   outputSchema: GetCollectionOutput,
   errors: [NotFound] as const,

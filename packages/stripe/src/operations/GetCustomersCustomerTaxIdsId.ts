@@ -14,7 +14,7 @@ export interface GetCustomersCustomerTaxIdsIdInput {
   expand?: string;
 }
 export const GetCustomersCustomerTaxIdsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -170,7 +170,7 @@ export interface GetCustomersCustomerTaxIdsIdOutput {
   } | null;
 }
 export const GetCustomersCustomerTaxIdsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     country: Schema.NullOr(Schema.String),
     created: Schema.Number,
     customer: Schema.Unknown,
@@ -339,7 +339,7 @@ export const GetCustomersCustomerTaxIdsIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetCustomersCustomerTaxIdsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetCustomersCustomerTaxIdsIdInput,
     outputSchema: GetCustomersCustomerTaxIdsIdOutput,
   }));

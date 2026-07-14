@@ -8,7 +8,7 @@ export interface GetV1EnvironmentVariablesByEnvVarIdInput {
   envVarId: string;
 }
 export const GetV1EnvironmentVariablesByEnvVarIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     envVarId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/environment-variables/{envVarId}" }),
@@ -31,7 +31,7 @@ export interface GetV1EnvironmentVariablesByEnvVarIdOutput {
   };
 }
 export const GetV1EnvironmentVariablesByEnvVarIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -55,7 +55,7 @@ export const GetV1EnvironmentVariablesByEnvVarIdOutput =
  * Returns a single environment variable's metadata. The value is not returned.
  */
 export const getV1EnvironmentVariablesByEnvVarId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1EnvironmentVariablesByEnvVarIdInput,
     outputSchema: GetV1EnvironmentVariablesByEnvVarIdOutput,
     errors: [NotFound, UnprocessableEntity] as const,

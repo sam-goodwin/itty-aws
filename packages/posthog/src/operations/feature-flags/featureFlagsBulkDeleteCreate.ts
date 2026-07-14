@@ -21,7 +21,7 @@ export interface FeatureFlagsBulkDeleteCreateInput {
   ids?: number[];
 }
 export const FeatureFlagsBulkDeleteCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     filters: Schema.optional(
       Schema.Struct({
@@ -65,7 +65,7 @@ export interface FeatureFlagsBulkDeleteCreateOutput {
   errors: { id: unknown; key?: string; reason: string }[];
 }
 export const FeatureFlagsBulkDeleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.Array(
       Schema.Struct({
         id: Schema.Number,
@@ -100,7 +100,7 @@ export const FeatureFlagsBulkDeleteCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const featureFlagsBulkDeleteCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FeatureFlagsBulkDeleteCreateInput,
     outputSchema: FeatureFlagsBulkDeleteCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

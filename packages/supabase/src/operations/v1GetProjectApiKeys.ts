@@ -11,7 +11,7 @@ export interface V1GetProjectApiKeysInput {
   reveal?: boolean;
 }
 export const V1GetProjectApiKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     reveal: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -32,7 +32,7 @@ export type V1GetProjectApiKeysOutput = {
   updated_at?: string | null;
 }[];
 export const V1GetProjectApiKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       api_key: Schema.optional(SensitiveOutputNullableString),
       id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -58,7 +58,7 @@ export const V1GetProjectApiKeysOutput =
  * @param ref - Project ref
  * @param reveal - Boolean string, true or false
  */
-export const v1GetProjectApiKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetProjectApiKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetProjectApiKeysInput,
   outputSchema: V1GetProjectApiKeysOutput,
   errors: [BadRequest, Forbidden] as const,

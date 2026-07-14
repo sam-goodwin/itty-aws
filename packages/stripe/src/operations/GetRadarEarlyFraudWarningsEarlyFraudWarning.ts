@@ -13,7 +13,7 @@ export interface GetRadarEarlyFraudWarningsEarlyFraudWarningInput {
   expand?: string;
 }
 export const GetRadarEarlyFraudWarningsEarlyFraudWarningInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     early_fraud_warning: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -36,7 +36,7 @@ export interface GetRadarEarlyFraudWarningsEarlyFraudWarningOutput {
   payment_intent?: unknown;
 }
 export const GetRadarEarlyFraudWarningsEarlyFraudWarningOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actionable: Schema.Boolean,
     charge: Schema.Unknown,
     created: Schema.Number,
@@ -57,7 +57,7 @@ export const GetRadarEarlyFraudWarningsEarlyFraudWarningOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetRadarEarlyFraudWarningsEarlyFraudWarning =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetRadarEarlyFraudWarningsEarlyFraudWarningInput,
     outputSchema: GetRadarEarlyFraudWarningsEarlyFraudWarningOutput,
   }));

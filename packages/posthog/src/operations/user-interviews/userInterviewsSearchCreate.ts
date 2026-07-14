@@ -12,7 +12,7 @@ export interface UserInterviewsSearchCreateInput {
   limit?: number;
 }
 export const UserInterviewsSearchCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     query: Schema.String,
     document_types: Schema.optional(
@@ -41,7 +41,7 @@ export type UserInterviewsSearchCreateOutput = {
   created_at: string;
 }[];
 export const UserInterviewsSearchCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       interview_id: Schema.String,
       document_type: Schema.Literals(["transcript", "summary"]),
@@ -61,9 +61,7 @@ export const UserInterviewsSearchCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const userInterviewsSearchCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserInterviewsSearchCreateInput,
-    outputSchema: UserInterviewsSearchCreateOutput,
-  }),
-);
+export const userInterviewsSearchCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserInterviewsSearchCreateInput,
+  outputSchema: UserInterviewsSearchCreateOutput,
+}));

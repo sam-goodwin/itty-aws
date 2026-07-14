@@ -13,7 +13,7 @@ export interface PostTestHelpersTerminalReadersReaderTimeoutInputCollectionInput
   expand?: string[];
 }
 export const PostTestHelpersTerminalReadersReaderTimeoutInputCollectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -99,7 +99,7 @@ export interface PostTestHelpersTerminalReadersReaderTimeoutInputCollectionOutpu
   status: "offline" | "online" | null;
 }
 export const PostTestHelpersTerminalReadersReaderTimeoutInputCollectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.Unknown,
     device_sw_version: Schema.NullOr(Schema.String),
     device_type: Schema.Literals([
@@ -187,7 +187,7 @@ export const PostTestHelpersTerminalReadersReaderTimeoutInputCollectionOutput =
  * <p>Use this endpoint to complete an input collection with a timeout error on a simulated reader.</p>
  */
 export const PostTestHelpersTerminalReadersReaderTimeoutInputCollection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PostTestHelpersTerminalReadersReaderTimeoutInputCollectionInput,
     outputSchema:

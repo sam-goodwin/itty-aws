@@ -14,7 +14,7 @@ export interface PostInvoicesInvoiceFinalizeInput {
   expand?: string[];
 }
 export const PostInvoicesInvoiceFinalizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoice: Schema.String.pipe(T.PathParam()),
     auto_advance: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -2212,7 +2212,7 @@ export interface PostInvoicesInvoiceFinalizeOutput {
   webhooks_delivered_at: number | null;
 }
 export const PostInvoicesInvoiceFinalizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_country: Schema.NullOr(Schema.String),
     account_name: Schema.NullOr(Schema.String),
     account_tax_ids: Schema.NullOr(
@@ -3921,9 +3921,7 @@ export const PostInvoicesInvoiceFinalizeOutput =
  *
  * <p>Stripe automatically finalizes drafts before sending and attempting payment on invoices. However, if you’d like to finalize a draft invoice manually, you can do so using this method.</p>
  */
-export const PostInvoicesInvoiceFinalize = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostInvoicesInvoiceFinalizeInput,
-    outputSchema: PostInvoicesInvoiceFinalizeOutput,
-  }),
-);
+export const PostInvoicesInvoiceFinalize = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostInvoicesInvoiceFinalizeInput,
+  outputSchema: PostInvoicesInvoiceFinalizeOutput,
+}));

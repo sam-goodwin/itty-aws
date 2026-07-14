@@ -9,7 +9,7 @@ export interface AppCertificatesAcmeDeleteInput {
   hostname: string;
 }
 export const AppCertificatesAcmeDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     hostname: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -60,7 +60,7 @@ export interface AppCertificatesAcmeDeleteOutput {
   }[];
 }
 export const AppCertificatesAcmeDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
     certificates: Schema.optional(
       Schema.Array(
@@ -140,10 +140,8 @@ export const AppCertificatesAcmeDeleteOutput =
  * @param app_name - Fly App Name
  * @param hostname - Certificate Hostname
  */
-export const AppCertificatesAcmeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppCertificatesAcmeDeleteInput,
-    outputSchema: AppCertificatesAcmeDeleteOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const AppCertificatesAcmeDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppCertificatesAcmeDeleteInput,
+  outputSchema: AppCertificatesAcmeDeleteOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

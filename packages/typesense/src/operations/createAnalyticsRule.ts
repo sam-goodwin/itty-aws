@@ -6,7 +6,7 @@ import { BadRequest } from "../errors.ts";
 // Input Schema
 export interface CreateAnalyticsRuleInput {}
 export const CreateAnalyticsRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "POST", path: "/analytics/rules" }),
   ) as unknown as Schema.Codec<CreateAnalyticsRuleInput>;
 
@@ -48,7 +48,7 @@ export type CreateAnalyticsRuleOutput =
       | { error?: string }
     )[];
 export const CreateAnalyticsRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       name: Schema.String,
       type: Schema.Literals([
@@ -110,7 +110,7 @@ export const CreateAnalyticsRuleOutput =
  *
  * Create one or more analytics rules. You can send a single rule object or an array of rule objects.
  */
-export const createAnalyticsRule = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createAnalyticsRule = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateAnalyticsRuleInput,
   outputSchema: CreateAnalyticsRuleOutput,
   errors: [BadRequest] as const,

@@ -37,7 +37,7 @@ export interface SessionGroupSummariesPartialUpdateInput {
   team?: number;
 }
 export const SessionGroupSummariesPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     title: Schema.optional(Schema.String),
@@ -120,7 +120,7 @@ export interface SessionGroupSummariesPartialUpdateOutput {
   team?: number;
 }
 export const SessionGroupSummariesPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     session_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -172,7 +172,7 @@ export const SessionGroupSummariesPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const sessionGroupSummariesPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SessionGroupSummariesPartialUpdateInput,
     outputSchema: SessionGroupSummariesPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

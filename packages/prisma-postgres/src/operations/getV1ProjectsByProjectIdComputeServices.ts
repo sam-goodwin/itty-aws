@@ -10,7 +10,7 @@ export interface GetV1ProjectsByProjectIdComputeServicesInput {
   limit?: number;
 }
 export const GetV1ProjectsByProjectIdComputeServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -38,7 +38,7 @@ export interface GetV1ProjectsByProjectIdComputeServicesOutput {
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
 export const GetV1ProjectsByProjectIdComputeServicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -70,7 +70,7 @@ export const GetV1ProjectsByProjectIdComputeServicesOutput =
  * Returns all compute services belonging to a project, ordered by creation time (oldest first). Supports cursor-based pagination.
  */
 export const getV1ProjectsByProjectIdComputeServices =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1ProjectsByProjectIdComputeServicesInput,
     outputSchema: GetV1ProjectsByProjectIdComputeServicesOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

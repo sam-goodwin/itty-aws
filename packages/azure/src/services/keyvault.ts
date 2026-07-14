@@ -55,7 +55,7 @@ export interface KeysCreateIfNotExistInput {
   };
 }
 export const KeysCreateIfNotExistInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -161,7 +161,7 @@ export interface KeysCreateIfNotExistOutput {
   };
 }
 export const KeysCreateIfNotExistOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -191,12 +191,10 @@ export const KeysCreateIfNotExistOutput =
  * @param vaultName - The name of the vault which contains the key to be retrieved.
  * @param keyName - The name of the key to be retrieved.
  */
-export const KeysCreateIfNotExist = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KeysCreateIfNotExistInput,
-    outputSchema: KeysCreateIfNotExistOutput,
-  }),
-);
+export const KeysCreateIfNotExist = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KeysCreateIfNotExistInput,
+  outputSchema: KeysCreateIfNotExistOutput,
+}));
 // Input Schema
 export interface KeysGetInput {
   subscriptionId: string;
@@ -204,7 +202,7 @@ export interface KeysGetInput {
   vaultName: string;
   keyName: string;
 }
-export const KeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeysGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -231,7 +229,7 @@ export interface KeysGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const KeysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeysGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -261,7 +259,7 @@ export const KeysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param vaultName - The name of the vault which contains the key to be retrieved.
  * @param keyName - The name of the key to be retrieved.
  */
-export const KeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KeysGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: KeysGetInput,
   outputSchema: KeysGetOutput,
 }));
@@ -273,7 +271,7 @@ export interface KeysGetVersionInput {
   keyName: string;
   keyVersion: string;
 }
-export const KeysGetVersionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeysGetVersionInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -301,7 +299,7 @@ export interface KeysGetVersionOutput {
     lastModifiedAt?: string;
   };
 }
-export const KeysGetVersionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeysGetVersionOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -332,7 +330,7 @@ export const KeysGetVersionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param keyName - The name of the key version to be retrieved.
  * @param keyVersion - The version of the key to be retrieved.
  */
-export const KeysGetVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KeysGetVersion = /*@__PURE__*/ API.make(() => ({
   inputSchema: KeysGetVersionInput,
   outputSchema: KeysGetVersionOutput,
 }));
@@ -342,7 +340,7 @@ export interface KeysListInput {
   resourceGroupName: string;
   vaultName: string;
 }
-export const KeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeysListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -371,7 +369,7 @@ export interface KeysListOutput {
   }[];
   nextLink?: string;
 }
-export const KeysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeysListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -405,7 +403,7 @@ export const KeysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the vault which contains the key to be retrieved.
  */
-export const KeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KeysList = /*@__PURE__*/ API.make(() => ({
   inputSchema: KeysListInput,
   outputSchema: KeysListOutput,
 }));
@@ -416,7 +414,7 @@ export interface KeysListVersionsInput {
   vaultName: string;
   keyName: string;
 }
-export const KeysListVersionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeysListVersionsInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -446,42 +444,30 @@ export interface KeysListVersionsOutput {
   }[];
   nextLink?: string;
 }
-export const KeysListVersionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<KeysListVersionsOutput>;
+export const KeysListVersionsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<KeysListVersionsOutput>;
 
 // The operation
 /**
@@ -493,7 +479,7 @@ export const KeysListVersionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param vaultName - The name of the vault which contains the key version to be retrieved.
  * @param keyName - The name of the key version to be retrieved.
  */
-export const KeysListVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KeysListVersions = /*@__PURE__*/ API.make(() => ({
   inputSchema: KeysListVersionsInput,
   outputSchema: KeysListVersionsOutput,
 }));
@@ -544,7 +530,7 @@ export interface ManagedHsmKeysCreateIfNotExistInput {
   };
 }
 export const ManagedHsmKeysCreateIfNotExistInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -650,7 +636,7 @@ export interface ManagedHsmKeysCreateIfNotExistOutput {
   };
 }
 export const ManagedHsmKeysCreateIfNotExistOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -681,7 +667,7 @@ export const ManagedHsmKeysCreateIfNotExistOutput =
  * @param keyName - The name of the key to be created. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
  */
 export const ManagedHsmKeysCreateIfNotExist =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedHsmKeysCreateIfNotExistInput,
     outputSchema: ManagedHsmKeysCreateIfNotExistOutput,
   }));
@@ -692,14 +678,12 @@ export interface ManagedHsmKeysGetInput {
   name: string;
   keyName: string;
 }
-export const ManagedHsmKeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    keyName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ManagedHsmKeysGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  keyName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/keys/{keyName}",
@@ -722,7 +706,7 @@ export interface ManagedHsmKeysGetOutput {
   };
 }
 export const ManagedHsmKeysGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -752,7 +736,7 @@ export const ManagedHsmKeysGetOutput =
  * @param name - The name of the Managed HSM Pool within the specified resource group.
  * @param keyName - The name of the key to be created. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
  */
-export const ManagedHsmKeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ManagedHsmKeysGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ManagedHsmKeysGetInput,
   outputSchema: ManagedHsmKeysGetOutput,
 }));
@@ -765,7 +749,7 @@ export interface ManagedHsmKeysGetVersionInput {
   keyVersion: string;
 }
 export const ManagedHsmKeysGetVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -794,7 +778,7 @@ export interface ManagedHsmKeysGetVersionOutput {
   };
 }
 export const ManagedHsmKeysGetVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -825,12 +809,10 @@ export const ManagedHsmKeysGetVersionOutput =
  * @param keyName - The name of the key to be created. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
  * @param keyVersion - The version of the key to be retrieved.
  */
-export const ManagedHsmKeysGetVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedHsmKeysGetVersionInput,
-    outputSchema: ManagedHsmKeysGetVersionOutput,
-  }),
-);
+export const ManagedHsmKeysGetVersion = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedHsmKeysGetVersionInput,
+  outputSchema: ManagedHsmKeysGetVersionOutput,
+}));
 // Input Schema
 export interface ManagedHsmKeysListInput {
   subscriptionId: string;
@@ -838,7 +820,7 @@ export interface ManagedHsmKeysListInput {
   name: string;
 }
 export const ManagedHsmKeysListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -868,7 +850,7 @@ export interface ManagedHsmKeysListOutput {
   nextLink?: string;
 }
 export const ManagedHsmKeysListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -912,7 +894,7 @@ export const ManagedHsmKeysListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the Managed HSM Pool within the specified resource group.
  */
-export const ManagedHsmKeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ManagedHsmKeysList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ManagedHsmKeysListInput,
   outputSchema: ManagedHsmKeysListOutput,
 }));
@@ -924,7 +906,7 @@ export interface ManagedHsmKeysListVersionsInput {
   keyName: string;
 }
 export const ManagedHsmKeysListVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -955,7 +937,7 @@ export interface ManagedHsmKeysListVersionsOutput {
   nextLink?: string;
 }
 export const ManagedHsmKeysListVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1000,19 +982,17 @@ export const ManagedHsmKeysListVersionsOutput =
  * @param name - The name of the Managed HSM Pool within the specified resource group.
  * @param keyName - The name of the key to be created. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
  */
-export const ManagedHsmKeysListVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedHsmKeysListVersionsInput,
-    outputSchema: ManagedHsmKeysListVersionsOutput,
-  }),
-);
+export const ManagedHsmKeysListVersions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedHsmKeysListVersionsInput,
+  outputSchema: ManagedHsmKeysListVersionsOutput,
+}));
 // Input Schema
 export interface ManagedHsmsCheckMhsmNameAvailabilityInput {
   subscriptionId: string;
   name: string;
 }
 export const ManagedHsmsCheckMhsmNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
@@ -1030,7 +1010,7 @@ export interface ManagedHsmsCheckMhsmNameAvailabilityOutput {
   message?: string;
 }
 export const ManagedHsmsCheckMhsmNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(
       Schema.Literals(["AccountNameInvalid", "AlreadyExists"]),
@@ -1046,7 +1026,7 @@ export const ManagedHsmsCheckMhsmNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ManagedHsmsCheckMhsmNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedHsmsCheckMhsmNameAvailabilityInput,
     outputSchema: ManagedHsmsCheckMhsmNameAvailabilityOutput,
   }));
@@ -1143,7 +1123,7 @@ export interface ManagedHsmsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const ManagedHsmsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1329,7 +1309,7 @@ export interface ManagedHsmsCreateOrUpdateOutput {
   };
 }
 export const ManagedHsmsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1358,25 +1338,21 @@ export const ManagedHsmsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the managed HSM Pool.
  */
-export const ManagedHsmsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedHsmsCreateOrUpdateInput,
-    outputSchema: ManagedHsmsCreateOrUpdateOutput,
-  }),
-);
+export const ManagedHsmsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedHsmsCreateOrUpdateInput,
+  outputSchema: ManagedHsmsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ManagedHsmsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   name: string;
 }
-export const ManagedHsmsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ManagedHsmsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}",
@@ -1387,7 +1363,7 @@ export const ManagedHsmsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type ManagedHsmsDeleteOutput = void;
 export const ManagedHsmsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedHsmsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedHsmsDeleteOutput>;
 
 // The operation
 /**
@@ -1398,7 +1374,7 @@ export const ManagedHsmsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the managed HSM Pool.
  */
-export const ManagedHsmsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ManagedHsmsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ManagedHsmsDeleteInput,
   outputSchema: ManagedHsmsDeleteOutput,
 }));
@@ -1408,7 +1384,7 @@ export interface ManagedHsmsGetInput {
   resourceGroupName: string;
   name: string;
 }
-export const ManagedHsmsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ManagedHsmsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -1434,7 +1410,7 @@ export interface ManagedHsmsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ManagedHsmsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ManagedHsmsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1463,7 +1439,7 @@ export const ManagedHsmsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the managed HSM Pool.
  */
-export const ManagedHsmsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ManagedHsmsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ManagedHsmsGetInput,
   outputSchema: ManagedHsmsGetOutput,
 }));
@@ -1474,7 +1450,7 @@ export interface ManagedHsmsGetDeletedInput {
   name: string;
 }
 export const ManagedHsmsGetDeletedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1501,7 +1477,7 @@ export interface ManagedHsmsGetDeletedOutput {
   };
 }
 export const ManagedHsmsGetDeletedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1530,12 +1506,10 @@ export const ManagedHsmsGetDeletedOutput =
  * @param location - The name of the Azure region.
  * @param name - The name of the deleted managed HSM.
  */
-export const ManagedHsmsGetDeleted = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedHsmsGetDeletedInput,
-    outputSchema: ManagedHsmsGetDeletedOutput,
-  }),
-);
+export const ManagedHsmsGetDeleted = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedHsmsGetDeletedInput,
+  outputSchema: ManagedHsmsGetDeletedOutput,
+}));
 // Input Schema
 export interface ManagedHsmsListByResourceGroupInput {
   subscriptionId: string;
@@ -1543,7 +1517,7 @@ export interface ManagedHsmsListByResourceGroupInput {
   $top?: number;
 }
 export const ManagedHsmsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -1573,7 +1547,7 @@ export interface ManagedHsmsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ManagedHsmsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1618,7 +1592,7 @@ export const ManagedHsmsListByResourceGroupOutput =
  * @param $top - Maximum number of results to return.
  */
 export const ManagedHsmsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedHsmsListByResourceGroupInput,
     outputSchema: ManagedHsmsListByResourceGroupOutput,
   }));
@@ -1628,7 +1602,7 @@ export interface ManagedHsmsListBySubscriptionInput {
   $top?: number;
 }
 export const ManagedHsmsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -1657,7 +1631,7 @@ export interface ManagedHsmsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ManagedHsmsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1701,7 +1675,7 @@ export const ManagedHsmsListBySubscriptionOutput =
  * @param $top - Maximum number of results to return.
  */
 export const ManagedHsmsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedHsmsListBySubscriptionInput,
     outputSchema: ManagedHsmsListBySubscriptionOutput,
   }));
@@ -1710,7 +1684,7 @@ export interface ManagedHsmsListDeletedInput {
   subscriptionId: string;
 }
 export const ManagedHsmsListDeletedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1738,7 +1712,7 @@ export interface ManagedHsmsListDeletedOutput {
   nextLink?: string;
 }
 export const ManagedHsmsListDeletedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1780,12 +1754,10 @@ export const ManagedHsmsListDeletedOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ManagedHsmsListDeleted = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedHsmsListDeletedInput,
-    outputSchema: ManagedHsmsListDeletedOutput,
-  }),
-);
+export const ManagedHsmsListDeleted = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedHsmsListDeletedInput,
+  outputSchema: ManagedHsmsListDeletedOutput,
+}));
 // Input Schema
 export interface ManagedHsmsPurgeDeletedInput {
   subscriptionId: string;
@@ -1793,7 +1765,7 @@ export interface ManagedHsmsPurgeDeletedInput {
   name: string;
 }
 export const ManagedHsmsPurgeDeletedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1808,7 +1780,7 @@ export const ManagedHsmsPurgeDeletedInput =
 // Output Schema
 export type ManagedHsmsPurgeDeletedOutput = void;
 export const ManagedHsmsPurgeDeletedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedHsmsPurgeDeletedOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedHsmsPurgeDeletedOutput>;
 
 // The operation
 /**
@@ -1819,12 +1791,10 @@ export const ManagedHsmsPurgeDeletedOutput =
  * @param location - The name of the Azure region.
  * @param name - The name of the deleted managed HSM.
  */
-export const ManagedHsmsPurgeDeleted = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedHsmsPurgeDeletedInput,
-    outputSchema: ManagedHsmsPurgeDeletedOutput,
-  }),
-);
+export const ManagedHsmsPurgeDeleted = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedHsmsPurgeDeletedInput,
+  outputSchema: ManagedHsmsPurgeDeletedOutput,
+}));
 // Input Schema
 export interface ManagedHsmsUpdateInput {
   subscriptionId: string;
@@ -1917,172 +1887,168 @@ export interface ManagedHsmsUpdateInput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const ManagedHsmsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-        initialAdminObjectIds: Schema.optional(Schema.Array(Schema.String)),
-        hsmUri: Schema.optional(Schema.String),
-        enableSoftDelete: Schema.optional(Schema.Boolean),
-        softDeleteRetentionInDays: Schema.optional(Schema.Number),
-        enablePurgeProtection: Schema.optional(Schema.Boolean),
-        createMode: Schema.optional(Schema.Literals(["recover", "default"])),
-        statusMessage: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Provisioning",
-            "Failed",
-            "Updating",
-            "Deleting",
-            "Activated",
-            "SecurityDomainRestore",
-            "Restoring",
-          ]),
-        ),
-        networkAcls: Schema.optional(
+export const ManagedHsmsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      tenantId: Schema.optional(Schema.String),
+      initialAdminObjectIds: Schema.optional(Schema.Array(Schema.String)),
+      hsmUri: Schema.optional(Schema.String),
+      enableSoftDelete: Schema.optional(Schema.Boolean),
+      softDeleteRetentionInDays: Schema.optional(Schema.Number),
+      enablePurgeProtection: Schema.optional(Schema.Boolean),
+      createMode: Schema.optional(Schema.Literals(["recover", "default"])),
+      statusMessage: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Provisioning",
+          "Failed",
+          "Updating",
+          "Deleting",
+          "Activated",
+          "SecurityDomainRestore",
+          "Restoring",
+        ]),
+      ),
+      networkAcls: Schema.optional(
+        Schema.Struct({
+          bypass: Schema.optional(Schema.Literals(["AzureServices", "None"])),
+          defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
+          ipRules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                value: Schema.String,
+              }),
+            ),
+          ),
+          serviceTags: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                tag: Schema.String,
+              }),
+            ),
+          ),
+          virtualNetworkRules: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.String,
+              }),
+            ),
+          ),
+        }),
+      ),
+      regions: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            bypass: Schema.optional(Schema.Literals(["AzureServices", "None"])),
-            defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
-            ipRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  value: Schema.String,
-                }),
-              ),
+            name: Schema.optional(Schema.String),
+            provisioningState: Schema.optional(
+              Schema.Literals([
+                "Preprovisioning",
+                "Provisioning",
+                "Succeeded",
+                "Failed",
+                "Deleting",
+                "Cleanup",
+              ]),
             ),
-            serviceTags: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  tag: Schema.String,
-                }),
-              ),
-            ),
-            virtualNetworkRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                }),
-              ),
+            isPrimary: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      ),
+      privateEndpointConnections: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            etag: Schema.optional(Schema.String),
+            properties: Schema.optional(
+              Schema.Struct({
+                privateEndpoint: Schema.optional(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                  }),
+                ),
+                privateLinkServiceConnectionState: Schema.optional(
+                  Schema.Struct({
+                    status: Schema.optional(
+                      Schema.Literals([
+                        "Pending",
+                        "Approved",
+                        "Rejected",
+                        "Disconnected",
+                      ]),
+                    ),
+                    description: Schema.optional(Schema.String),
+                    actionsRequired: Schema.optional(Schema.Literals(["None"])),
+                  }),
+                ),
+                provisioningState: Schema.optional(
+                  Schema.Literals([
+                    "Succeeded",
+                    "Creating",
+                    "Updating",
+                    "Deleting",
+                    "Failed",
+                    "Disconnected",
+                  ]),
+                ),
+              }),
             ),
           }),
         ),
-        regions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              provisioningState: Schema.optional(
-                Schema.Literals([
-                  "Preprovisioning",
-                  "Provisioning",
-                  "Succeeded",
-                  "Failed",
-                  "Deleting",
-                  "Cleanup",
-                ]),
-              ),
-              isPrimary: Schema.optional(Schema.Boolean),
-            }),
+      ),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      scheduledPurgeDate: Schema.optional(Schema.String),
+      securityDomainProperties: Schema.optional(
+        Schema.Struct({
+          activationStatus: Schema.optional(
+            Schema.Literals(["Active", "NotActivated", "Unknown", "Failed"]),
           ),
-        ),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              etag: Schema.optional(Schema.String),
-              properties: Schema.optional(
-                Schema.Struct({
-                  privateEndpoint: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  privateLinkServiceConnectionState: Schema.optional(
-                    Schema.Struct({
-                      status: Schema.optional(
-                        Schema.Literals([
-                          "Pending",
-                          "Approved",
-                          "Rejected",
-                          "Disconnected",
-                        ]),
-                      ),
-                      description: Schema.optional(Schema.String),
-                      actionsRequired: Schema.optional(
-                        Schema.Literals(["None"]),
-                      ),
-                    }),
-                  ),
-                  provisioningState: Schema.optional(
-                    Schema.Literals([
-                      "Succeeded",
-                      "Creating",
-                      "Updating",
-                      "Deleting",
-                      "Failed",
-                      "Disconnected",
-                    ]),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        scheduledPurgeDate: Schema.optional(Schema.String),
-        securityDomainProperties: Schema.optional(
+          activationStatusMessage: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  sku: Schema.optional(
+    Schema.Struct({
+      family: Schema.Literals(["B", "C"]),
+      name: Schema.Literals([
+        "Standard_B1",
+        "Custom_B32",
+        "Custom_B6",
+        "Custom_C42",
+        "Custom_C10",
+      ]),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
           Schema.Struct({
-            activationStatus: Schema.optional(
-              Schema.Literals(["Active", "NotActivated", "Unknown", "Failed"]),
-            ),
-            activationStatusMessage: Schema.optional(Schema.String),
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
           }),
         ),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        family: Schema.Literals(["B", "C"]),
-        name: Schema.Literals([
-          "Standard_B1",
-          "Custom_B32",
-          "Custom_B6",
-          "Custom_C42",
-          "Custom_C10",
-        ]),
-      }),
-    ),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  },
-).pipe(
+      ),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}",
@@ -2105,7 +2071,7 @@ export interface ManagedHsmsUpdateOutput {
   };
 }
 export const ManagedHsmsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2134,7 +2100,7 @@ export const ManagedHsmsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the managed HSM Pool.
  */
-export const ManagedHsmsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ManagedHsmsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ManagedHsmsUpdateInput,
   outputSchema: ManagedHsmsUpdateOutput,
 }));
@@ -2146,7 +2112,7 @@ export interface MHSMPrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const MHSMPrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2174,7 +2140,7 @@ export interface MHSMPrivateEndpointConnectionsDeleteOutput {
   };
 }
 export const MHSMPrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2205,7 +2171,7 @@ export const MHSMPrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection associated with the managed hsm pool.
  */
 export const MHSMPrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MHSMPrivateEndpointConnectionsDeleteInput,
     outputSchema: MHSMPrivateEndpointConnectionsDeleteOutput,
   }));
@@ -2217,7 +2183,7 @@ export interface MHSMPrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const MHSMPrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2245,7 +2211,7 @@ export interface MHSMPrivateEndpointConnectionsGetOutput {
   };
 }
 export const MHSMPrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2276,7 +2242,7 @@ export const MHSMPrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection associated with the managed hsm pool.
  */
 export const MHSMPrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MHSMPrivateEndpointConnectionsGetInput,
     outputSchema: MHSMPrivateEndpointConnectionsGetOutput,
   }));
@@ -2287,7 +2253,7 @@ export interface MHSMPrivateEndpointConnectionsListByResourceInput {
   name: string;
 }
 export const MHSMPrivateEndpointConnectionsListByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2317,7 +2283,7 @@ export interface MHSMPrivateEndpointConnectionsListByResourceOutput {
   nextLink?: string;
 }
 export const MHSMPrivateEndpointConnectionsListByResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2362,7 +2328,7 @@ export const MHSMPrivateEndpointConnectionsListByResourceOutput =
  * @param name - The name of the managed HSM Pool.
  */
 export const MHSMPrivateEndpointConnectionsListByResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MHSMPrivateEndpointConnectionsListByResourceInput,
     outputSchema: MHSMPrivateEndpointConnectionsListByResourceOutput,
   }));
@@ -2414,7 +2380,7 @@ export interface MHSMPrivateEndpointConnectionsPutInput {
   tags?: Record<string, string>;
 }
 export const MHSMPrivateEndpointConnectionsPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2511,7 +2477,7 @@ export interface MHSMPrivateEndpointConnectionsPutOutput {
   };
 }
 export const MHSMPrivateEndpointConnectionsPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2542,7 +2508,7 @@ export const MHSMPrivateEndpointConnectionsPutOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection associated with the managed hsm pool.
  */
 export const MHSMPrivateEndpointConnectionsPut =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MHSMPrivateEndpointConnectionsPutInput,
     outputSchema: MHSMPrivateEndpointConnectionsPutOutput,
   }));
@@ -2553,7 +2519,7 @@ export interface MHSMPrivateLinkResourcesListByMHSMResourceInput {
   name: string;
 }
 export const MHSMPrivateLinkResourcesListByMHSMResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2582,7 +2548,7 @@ export interface MHSMPrivateLinkResourcesListByMHSMResourceOutput {
   }[];
 }
 export const MHSMPrivateLinkResourcesListByMHSMResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2628,7 +2594,7 @@ export const MHSMPrivateLinkResourcesListByMHSMResourceOutput =
  * @param name - The name of the managed HSM Pool.
  */
 export const MHSMPrivateLinkResourcesListByMHSMResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MHSMPrivateLinkResourcesListByMHSMResourceInput,
     outputSchema: MHSMPrivateLinkResourcesListByMHSMResourceOutput,
   }));
@@ -2639,7 +2605,7 @@ export interface MHSMRegionsListByResourceInput {
   name: string;
 }
 export const MHSMRegionsListByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2667,7 +2633,7 @@ export interface MHSMRegionsListByResourceOutput {
   nextLink?: string;
 }
 export const MHSMRegionsListByResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -2696,17 +2662,13 @@ export const MHSMRegionsListByResourceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the managed HSM Pool.
  */
-export const MHSMRegionsListByResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MHSMRegionsListByResourceInput,
-    outputSchema: MHSMRegionsListByResourceOutput,
-  }),
-);
+export const MHSMRegionsListByResource = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MHSMRegionsListByResourceInput,
+  outputSchema: MHSMRegionsListByResourceOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.KeyVault/operations",
@@ -2755,7 +2717,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -2828,7 +2790,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2840,7 +2802,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -2868,7 +2830,7 @@ export interface PrivateEndpointConnectionsDeleteOutput {
   };
 }
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2899,7 +2861,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection associated with the key vault.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -2911,7 +2873,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -2939,7 +2901,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2970,7 +2932,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection associated with the key vault.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -2981,7 +2943,7 @@ export interface PrivateEndpointConnectionsListByResourceInput {
   vaultName: string;
 }
 export const PrivateEndpointConnectionsListByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -3011,7 +2973,7 @@ export interface PrivateEndpointConnectionsListByResourceOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListByResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3056,7 +3018,7 @@ export const PrivateEndpointConnectionsListByResourceOutput =
  * @param vaultName - The name of the vault.
  */
 export const PrivateEndpointConnectionsListByResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByResourceInput,
     outputSchema: PrivateEndpointConnectionsListByResourceOutput,
   }));
@@ -3086,7 +3048,7 @@ export interface PrivateEndpointConnectionsPutInput {
   etag?: string;
 }
 export const PrivateEndpointConnectionsPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -3150,7 +3112,7 @@ export interface PrivateEndpointConnectionsPutOutput {
   };
 }
 export const PrivateEndpointConnectionsPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3181,7 +3143,7 @@ export const PrivateEndpointConnectionsPutOutput =
  * @param privateEndpointConnectionName - Name of the private endpoint connection associated with the key vault.
  */
 export const PrivateEndpointConnectionsPut =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsPutInput,
     outputSchema: PrivateEndpointConnectionsPutOutput,
   }));
@@ -3192,7 +3154,7 @@ export interface PrivateLinkResourcesListByVaultInput {
   vaultName: string;
 }
 export const PrivateLinkResourcesListByVaultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -3221,7 +3183,7 @@ export interface PrivateLinkResourcesListByVaultOutput {
   }[];
 }
 export const PrivateLinkResourcesListByVaultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3267,7 +3229,7 @@ export const PrivateLinkResourcesListByVaultOutput =
  * @param vaultName - The name of the vault.
  */
 export const PrivateLinkResourcesListByVault =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByVaultInput,
     outputSchema: PrivateLinkResourcesListByVaultOutput,
   }));
@@ -3293,7 +3255,7 @@ export interface SecretsCreateOrUpdateInput {
   };
 }
 export const SecretsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -3337,7 +3299,7 @@ export interface SecretsCreateOrUpdateOutput {
   };
 }
 export const SecretsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3367,12 +3329,10 @@ export const SecretsCreateOrUpdateOutput =
  * @param vaultName - The name of the vault.
  * @param secretName - The name of the secret.
  */
-export const SecretsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SecretsCreateOrUpdateInput,
-    outputSchema: SecretsCreateOrUpdateOutput,
-  }),
-);
+export const SecretsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SecretsCreateOrUpdateInput,
+  outputSchema: SecretsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface SecretsGetInput {
   subscriptionId: string;
@@ -3380,7 +3340,7 @@ export interface SecretsGetInput {
   vaultName: string;
   secretName: string;
 }
-export const SecretsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -3407,7 +3367,7 @@ export interface SecretsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SecretsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3437,7 +3397,7 @@ export const SecretsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param vaultName - The name of the vault.
  * @param secretName - The name of the secret.
  */
-export const SecretsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretsGetInput,
   outputSchema: SecretsGetOutput,
 }));
@@ -3448,7 +3408,7 @@ export interface SecretsListInput {
   vaultName: string;
   $top?: number;
 }
-export const SecretsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -3478,7 +3438,7 @@ export interface SecretsListOutput {
   }[];
   nextLink?: string;
 }
-export const SecretsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -3513,7 +3473,7 @@ export const SecretsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param vaultName - The name of the vault.
  * @param $top - Maximum number of results to return.
  */
-export const SecretsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretsListInput,
   outputSchema: SecretsListOutput,
 }));
@@ -3536,7 +3496,7 @@ export interface SecretsUpdateInput {
     };
   };
 }
-export const SecretsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -3579,7 +3539,7 @@ export interface SecretsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const SecretsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3609,7 +3569,7 @@ export const SecretsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param vaultName - The name of the vault.
  * @param secretName - The name of the secret.
  */
-export const SecretsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretsUpdateInput,
   outputSchema: SecretsUpdateOutput,
 }));
@@ -3620,7 +3580,7 @@ export interface VaultsCheckNameAvailabilityInput {
   type: "Microsoft.KeyVault/vaults";
 }
 export const VaultsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.Literals(["Microsoft.KeyVault/vaults"]),
@@ -3639,7 +3599,7 @@ export interface VaultsCheckNameAvailabilityOutput {
   message?: string;
 }
 export const VaultsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(
       Schema.Literals(["AccountNameInvalid", "AlreadyExists"]),
@@ -3654,12 +3614,10 @@ export const VaultsCheckNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const VaultsCheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VaultsCheckNameAvailabilityInput,
-    outputSchema: VaultsCheckNameAvailabilityOutput,
-  }),
-);
+export const VaultsCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VaultsCheckNameAvailabilityInput,
+  outputSchema: VaultsCheckNameAvailabilityOutput,
+}));
 // Input Schema
 export interface VaultsCreateOrUpdateInput {
   subscriptionId: string;
@@ -3790,7 +3748,7 @@ export interface VaultsCreateOrUpdateInput {
   };
 }
 export const VaultsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -4001,7 +3959,7 @@ export interface VaultsCreateOrUpdateOutput {
   };
 }
 export const VaultsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4030,19 +3988,17 @@ export const VaultsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the vault.
  */
-export const VaultsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VaultsCreateOrUpdateInput,
-    outputSchema: VaultsCreateOrUpdateOutput,
-  }),
-);
+export const VaultsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VaultsCreateOrUpdateInput,
+  outputSchema: VaultsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface VaultsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   vaultName: string;
 }
-export const VaultsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VaultsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -4057,7 +4013,7 @@ export const VaultsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type VaultsDeleteOutput = void;
 export const VaultsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VaultsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VaultsDeleteOutput>;
 
 // The operation
 /**
@@ -4068,7 +4024,7 @@ export const VaultsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the vault.
  */
-export const VaultsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VaultsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: VaultsDeleteInput,
   outputSchema: VaultsDeleteOutput,
 }));
@@ -4078,7 +4034,7 @@ export interface VaultsGetInput {
   resourceGroupName: string;
   vaultName: string;
 }
-export const VaultsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VaultsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -4104,7 +4060,7 @@ export interface VaultsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const VaultsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VaultsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4133,7 +4089,7 @@ export const VaultsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the vault.
  */
-export const VaultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VaultsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VaultsGetInput,
   outputSchema: VaultsGetOutput,
 }));
@@ -4143,7 +4099,7 @@ export interface VaultsGetDeletedInput {
   location: string;
   vaultName: string;
 }
-export const VaultsGetDeletedInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VaultsGetDeletedInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -4169,27 +4125,25 @@ export interface VaultsGetDeletedOutput {
     lastModifiedAt?: string;
   };
 }
-export const VaultsGetDeletedOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<VaultsGetDeletedOutput>;
+export const VaultsGetDeletedOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<VaultsGetDeletedOutput>;
 
 // The operation
 /**
@@ -4200,7 +4154,7 @@ export const VaultsGetDeletedOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param location - The name of the Azure region.
  * @param vaultName - The name of the vault.
  */
-export const VaultsGetDeleted = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VaultsGetDeleted = /*@__PURE__*/ API.make(() => ({
   inputSchema: VaultsGetDeletedInput,
   outputSchema: VaultsGetDeletedOutput,
 }));
@@ -4210,7 +4164,7 @@ export interface VaultsListInput {
   $filter: "resourceType eq 'Microsoft.KeyVault/vaults'";
   $top?: number;
 }
-export const VaultsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VaultsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $filter: Schema.Literals(["resourceType eq 'Microsoft.KeyVault/vaults'"]),
   $top: Schema.optional(Schema.Number),
@@ -4239,7 +4193,7 @@ export interface VaultsListOutput {
   }[];
   nextLink?: string;
 }
-export const VaultsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VaultsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -4273,7 +4227,7 @@ export const VaultsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Azure Resource Manager Api Version.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const VaultsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VaultsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VaultsListInput,
   outputSchema: VaultsListOutput,
 }));
@@ -4284,7 +4238,7 @@ export interface VaultsListByResourceGroupInput {
   $top?: number;
 }
 export const VaultsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -4314,7 +4268,7 @@ export interface VaultsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const VaultsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4358,19 +4312,17 @@ export const VaultsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param $top - Maximum number of results to return.
  */
-export const VaultsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VaultsListByResourceGroupInput,
-    outputSchema: VaultsListByResourceGroupOutput,
-  }),
-);
+export const VaultsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VaultsListByResourceGroupInput,
+  outputSchema: VaultsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface VaultsListBySubscriptionInput {
   subscriptionId: string;
   $top?: number;
 }
 export const VaultsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -4399,7 +4351,7 @@ export interface VaultsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const VaultsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4442,21 +4394,17 @@ export const VaultsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param $top - Maximum number of results to return.
  */
-export const VaultsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VaultsListBySubscriptionInput,
-    outputSchema: VaultsListBySubscriptionOutput,
-  }),
-);
+export const VaultsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VaultsListBySubscriptionInput,
+  outputSchema: VaultsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface VaultsListDeletedInput {
   subscriptionId: string;
 }
-export const VaultsListDeletedInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const VaultsListDeletedInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/deletedVaults",
@@ -4482,7 +4430,7 @@ export interface VaultsListDeletedOutput {
   nextLink?: string;
 }
 export const VaultsListDeletedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4524,7 +4472,7 @@ export const VaultsListDeletedOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const VaultsListDeleted = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VaultsListDeleted = /*@__PURE__*/ API.make(() => ({
   inputSchema: VaultsListDeletedInput,
   outputSchema: VaultsListDeletedOutput,
 }));
@@ -4535,7 +4483,7 @@ export interface VaultsPurgeDeletedInput {
   vaultName: string;
 }
 export const VaultsPurgeDeletedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -4550,7 +4498,7 @@ export const VaultsPurgeDeletedInput =
 // Output Schema
 export type VaultsPurgeDeletedOutput = void;
 export const VaultsPurgeDeletedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VaultsPurgeDeletedOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VaultsPurgeDeletedOutput>;
 
 // The operation
 /**
@@ -4561,7 +4509,7 @@ export const VaultsPurgeDeletedOutput =
  * @param location - The name of the Azure region.
  * @param vaultName - The name of the vault.
  */
-export const VaultsPurgeDeleted = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VaultsPurgeDeleted = /*@__PURE__*/ API.make(() => ({
   inputSchema: VaultsPurgeDeletedInput,
   outputSchema: VaultsPurgeDeletedOutput,
 }));
@@ -4671,7 +4619,7 @@ export interface VaultsUpdateInput {
     publicNetworkAccess?: string;
   };
 }
-export const VaultsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VaultsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -4838,7 +4786,7 @@ export interface VaultsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const VaultsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VaultsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4867,7 +4815,7 @@ export const VaultsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the vault.
  */
-export const VaultsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VaultsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VaultsUpdateInput,
   outputSchema: VaultsUpdateOutput,
 }));
@@ -4962,7 +4910,7 @@ export interface VaultsUpdateAccessPolicyInput {
   };
 }
 export const VaultsUpdateAccessPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -5165,7 +5113,7 @@ export interface VaultsUpdateAccessPolicyOutput {
   };
 }
 export const VaultsUpdateAccessPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5279,9 +5227,7 @@ export const VaultsUpdateAccessPolicyOutput =
  * @param vaultName - Name of the vault
  * @param operationKind - Name of the operation
  */
-export const VaultsUpdateAccessPolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VaultsUpdateAccessPolicyInput,
-    outputSchema: VaultsUpdateAccessPolicyOutput,
-  }),
-);
+export const VaultsUpdateAccessPolicy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VaultsUpdateAccessPolicyInput,
+  outputSchema: VaultsUpdateAccessPolicyOutput,
+}));

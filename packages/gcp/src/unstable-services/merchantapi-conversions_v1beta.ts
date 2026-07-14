@@ -30,7 +30,7 @@ export interface ConversionType {
 }
 
 export const ConversionType: Schema.Codec<ConversionType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     report: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ConversionType" });
@@ -54,7 +54,7 @@ export interface AttributionSettings {
 }
 
 export const AttributionSettings: Schema.Codec<AttributionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attributionLookbackWindowDays: Schema.optional(Schema.Number),
     conversionType: Schema.optional(Schema.Array(ConversionType)),
     attributionModel: Schema.optional(Schema.String),
@@ -70,7 +70,7 @@ export interface GoogleAnalyticsLink {
 }
 
 export const GoogleAnalyticsLink: Schema.Codec<GoogleAnalyticsLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     propertyId: Schema.optional(Schema.String),
     attributionSettings: Schema.optional(AttributionSettings),
     property: Schema.optional(Schema.String),
@@ -88,7 +88,7 @@ export interface MerchantCenterDestination {
 }
 
 export const MerchantCenterDestination: Schema.Codec<MerchantCenterDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attributionSettings: Schema.optional(AttributionSettings),
     displayName: Schema.optional(Schema.String),
     destination: Schema.optional(Schema.String),
@@ -120,7 +120,7 @@ export interface ConversionSource {
 }
 
 export const ConversionSource: Schema.Codec<ConversionSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     googleAnalyticsLink: Schema.optional(GoogleAnalyticsLink),
     merchantCenterDestination: Schema.optional(MerchantCenterDestination),
     name: Schema.optional(Schema.String),
@@ -137,7 +137,7 @@ export interface ListConversionSourcesResponse {
 }
 
 export const ListConversionSourcesResponse: Schema.Codec<ListConversionSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversionSources: Schema.optional(Schema.Array(ConversionSource)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListConversionSourcesResponse" });
@@ -175,7 +175,7 @@ export interface ProductChange {
 }
 
 export const ProductChange: Schema.Codec<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(Schema.String),
     newValue: Schema.optional(Schema.String),
     reportingContext: Schema.optional(Schema.String),
@@ -208,7 +208,7 @@ export interface ProductStatusChangeMessage {
 }
 
 export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     eventTime: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
@@ -223,14 +223,14 @@ export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage
 export interface UndeleteConversionSourceRequest {}
 
 export const UndeleteConversionSourceRequest: Schema.Codec<UndeleteConversionSourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteConversionSourceRequest",
   });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -296,7 +296,7 @@ export interface CreateAccountsConversionSourcesRequest {
 }
 
 export const CreateAccountsConversionSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ConversionSource).pipe(T.HttpBody()),
   }).pipe(
@@ -310,7 +310,7 @@ export const CreateAccountsConversionSourcesRequest =
 
 export type CreateAccountsConversionSourcesResponse = ConversionSource;
 export const CreateAccountsConversionSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConversionSource;
+  /*@__PURE__*/ ConversionSource;
 
 export type CreateAccountsConversionSourcesError =
   | DefaultErrors
@@ -325,7 +325,7 @@ export const createAccountsConversionSources: API.OperationMethod<
   CreateAccountsConversionSourcesResponse,
   CreateAccountsConversionSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsConversionSourcesRequest,
   output: CreateAccountsConversionSourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -339,7 +339,7 @@ export interface UndeleteAccountsConversionSourcesRequest {
 }
 
 export const UndeleteAccountsConversionSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndeleteConversionSourceRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -353,7 +353,7 @@ export const UndeleteAccountsConversionSourcesRequest =
 
 export type UndeleteAccountsConversionSourcesResponse = ConversionSource;
 export const UndeleteAccountsConversionSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConversionSource;
+  /*@__PURE__*/ ConversionSource;
 
 export type UndeleteAccountsConversionSourcesError =
   | DefaultErrors
@@ -368,7 +368,7 @@ export const undeleteAccountsConversionSources: API.OperationMethod<
   UndeleteAccountsConversionSourcesResponse,
   UndeleteAccountsConversionSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeleteAccountsConversionSourcesRequest,
   output: UndeleteAccountsConversionSourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -380,7 +380,7 @@ export interface DeleteAccountsConversionSourcesRequest {
 }
 
 export const DeleteAccountsConversionSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "conversions/v1beta/{+name}" }),
@@ -388,8 +388,7 @@ export const DeleteAccountsConversionSourcesRequest =
   ) as unknown as Schema.Codec<DeleteAccountsConversionSourcesRequest>;
 
 export type DeleteAccountsConversionSourcesResponse = Empty;
-export const DeleteAccountsConversionSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteAccountsConversionSourcesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteAccountsConversionSourcesError =
   | DefaultErrors
@@ -404,7 +403,7 @@ export const deleteAccountsConversionSources: API.OperationMethod<
   DeleteAccountsConversionSourcesResponse,
   DeleteAccountsConversionSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsConversionSourcesRequest,
   output: DeleteAccountsConversionSourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -422,7 +421,7 @@ export interface ListAccountsConversionSourcesRequest {
 }
 
 export const ListAccountsConversionSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     showDeleted: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showDeleted"),
     ),
@@ -440,7 +439,7 @@ export const ListAccountsConversionSourcesRequest =
 export type ListAccountsConversionSourcesResponse =
   ListConversionSourcesResponse;
 export const ListAccountsConversionSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListConversionSourcesResponse;
+  /*@__PURE__*/ ListConversionSourcesResponse;
 
 export type ListAccountsConversionSourcesError =
   | DefaultErrors
@@ -453,7 +452,7 @@ export const listAccountsConversionSources: API.PaginatedOperationMethod<
   ListAccountsConversionSourcesResponse,
   ListAccountsConversionSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsConversionSourcesRequest,
   output: ListAccountsConversionSourcesResponse,
   errors: [NotFound, Forbidden],
@@ -473,7 +472,7 @@ export interface PatchAccountsConversionSourcesRequest {
 }
 
 export const PatchAccountsConversionSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ConversionSource).pipe(T.HttpBody()),
@@ -488,7 +487,7 @@ export const PatchAccountsConversionSourcesRequest =
 
 export type PatchAccountsConversionSourcesResponse = ConversionSource;
 export const PatchAccountsConversionSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConversionSource;
+  /*@__PURE__*/ ConversionSource;
 
 export type PatchAccountsConversionSourcesError =
   | DefaultErrors
@@ -503,7 +502,7 @@ export const patchAccountsConversionSources: API.OperationMethod<
   PatchAccountsConversionSourcesResponse,
   PatchAccountsConversionSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsConversionSourcesRequest,
   output: PatchAccountsConversionSourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -515,7 +514,7 @@ export interface GetAccountsConversionSourcesRequest {
 }
 
 export const GetAccountsConversionSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "conversions/v1beta/{+name}" }),
@@ -524,7 +523,7 @@ export const GetAccountsConversionSourcesRequest =
 
 export type GetAccountsConversionSourcesResponse = ConversionSource;
 export const GetAccountsConversionSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConversionSource;
+  /*@__PURE__*/ ConversionSource;
 
 export type GetAccountsConversionSourcesError =
   | DefaultErrors
@@ -537,7 +536,7 @@ export const getAccountsConversionSources: API.OperationMethod<
   GetAccountsConversionSourcesResponse,
   GetAccountsConversionSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsConversionSourcesRequest,
   output: GetAccountsConversionSourcesResponse,
   errors: [NotFound, Forbidden],

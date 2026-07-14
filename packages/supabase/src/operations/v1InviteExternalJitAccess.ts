@@ -18,7 +18,7 @@ export interface V1InviteExternalJitAccessInput {
   }[];
 }
 export const V1InviteExternalJitAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     email: Schema.String,
     roles: Schema.Array(
@@ -65,7 +65,7 @@ export interface V1InviteExternalJitAccessOutput {
   }[];
 }
 export const V1InviteExternalJitAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.String,
     invite_id: Schema.String,
     user_roles: Schema.Array(
@@ -103,10 +103,8 @@ export const V1InviteExternalJitAccessOutput =
  *
  * @param ref - Project ref
  */
-export const v1InviteExternalJitAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1InviteExternalJitAccessInput,
-    outputSchema: V1InviteExternalJitAccessOutput,
-    errors: [Forbidden] as const,
-  }),
-);
+export const v1InviteExternalJitAccess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1InviteExternalJitAccessInput,
+  outputSchema: V1InviteExternalJitAccessOutput,
+  errors: [Forbidden] as const,
+}));

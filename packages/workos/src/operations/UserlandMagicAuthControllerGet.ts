@@ -8,7 +8,7 @@ export interface UserlandMagicAuthControllerGetInput {
   id: string;
 }
 export const UserlandMagicAuthControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/user_management/magic_auth/{id}" }),
@@ -26,7 +26,7 @@ export interface UserlandMagicAuthControllerGetOutput {
   code?: string;
 }
 export const UserlandMagicAuthControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export const UserlandMagicAuthControllerGetOutput =
  * @param id - The unique ID of the Magic Auth code.
  */
 export const UserlandMagicAuthControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandMagicAuthControllerGetInput,
     outputSchema: UserlandMagicAuthControllerGetOutput,
     errors: [NotFound] as const,

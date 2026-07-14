@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface GetV1RegionsAccelerateInput {}
 export const GetV1RegionsAccelerateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/v1/regions/accelerate" }),
   ) as unknown as Schema.Codec<GetV1RegionsAccelerateInput>;
 
@@ -14,7 +14,7 @@ export interface GetV1RegionsAccelerateOutput {
   data: { id: string; type: string; name: string }[];
 }
 export const GetV1RegionsAccelerateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -30,9 +30,7 @@ export const GetV1RegionsAccelerateOutput =
  *
  * Returns all available regions for Prisma Accelerate.
  */
-export const getV1RegionsAccelerate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1RegionsAccelerateInput,
-    outputSchema: GetV1RegionsAccelerateOutput,
-  }),
-);
+export const getV1RegionsAccelerate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1RegionsAccelerateInput,
+  outputSchema: GetV1RegionsAccelerateOutput,
+}));

@@ -8,7 +8,7 @@ export interface GrantPermissionToProjectInput {
   email: string;
 }
 export const GrantPermissionToProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     email: Schema.String,
   }).pipe(
@@ -23,7 +23,7 @@ export interface GrantPermissionToProjectOutput {
   revoked_at?: string;
 }
 export const GrantPermissionToProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     granted_to_email: Schema.String,
     granted_at: Schema.String,
@@ -36,9 +36,7 @@ export const GrantPermissionToProjectOutput =
  *
  * Grants project access to the account associated with the specified email address.
  */
-export const grantPermissionToProject = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GrantPermissionToProjectInput,
-    outputSchema: GrantPermissionToProjectOutput,
-  }),
-);
+export const grantPermissionToProject = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GrantPermissionToProjectInput,
+  outputSchema: GrantPermissionToProjectOutput,
+}));

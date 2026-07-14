@@ -90,7 +90,7 @@ export interface FeatureFlagsCreateStaticCohortForFlagCreateInput {
   is_used_in_replay_settings?: boolean;
 }
 export const FeatureFlagsCreateStaticCohortForFlagCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -235,7 +235,7 @@ export const FeatureFlagsCreateStaticCohortForFlagCreateInput =
 // Output Schema
 export type FeatureFlagsCreateStaticCohortForFlagCreateOutput = void;
 export const FeatureFlagsCreateStaticCohortForFlagCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FeatureFlagsCreateStaticCohortForFlagCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FeatureFlagsCreateStaticCohortForFlagCreateOutput>;
 
 // The operation
 /**
@@ -246,7 +246,7 @@ export const FeatureFlagsCreateStaticCohortForFlagCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const featureFlagsCreateStaticCohortForFlagCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FeatureFlagsCreateStaticCohortForFlagCreateInput,
     outputSchema: FeatureFlagsCreateStaticCohortForFlagCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

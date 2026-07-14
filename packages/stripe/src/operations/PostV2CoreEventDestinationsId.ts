@@ -15,7 +15,7 @@ export interface PostV2CoreEventDestinationsIdInput {
   webhook_endpoint?: { url: string };
 }
 export const PostV2CoreEventDestinationsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     description: Schema.optional(Schema.String),
     enabled_events: Schema.optional(Schema.Array(Schema.String)),
@@ -81,7 +81,7 @@ export interface PostV2CoreEventDestinationsIdOutput {
   };
 }
 export const PostV2CoreEventDestinationsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amazon_eventbridge: Schema.optional(
       Schema.Struct({
         aws_account_id: Schema.String,
@@ -156,7 +156,7 @@ export const PostV2CoreEventDestinationsIdOutput =
  * @param id - Identifier for the event destination to update.
  */
 export const PostV2CoreEventDestinationsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV2CoreEventDestinationsIdInput,
     outputSchema: PostV2CoreEventDestinationsIdOutput,
   }));

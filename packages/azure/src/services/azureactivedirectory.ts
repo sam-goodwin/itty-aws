@@ -26,7 +26,7 @@ export interface PrivateEndpointConnectionsCreateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.String.pipe(T.PathParam()),
@@ -77,7 +77,7 @@ export interface PrivateEndpointConnectionsCreateOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -94,7 +94,7 @@ export const PrivateEndpointConnectionsCreateOutput =
  * @param privateEndpointConnectionName - The PrivateEndpointConnection name.
  */
 export const PrivateEndpointConnectionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateInput,
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
@@ -106,7 +106,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   subscriptionId: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -122,7 +122,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -135,7 +135,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param subscriptionId - Azure subscription ID.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -147,7 +147,7 @@ export interface PrivateEndpointConnectionsGetInput {
   subscriptionId: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -167,7 +167,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -184,7 +184,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param subscriptionId - Azure subscription ID.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -195,7 +195,7 @@ export interface PrivateEndpointConnectionsListByPolicyNameInput {
   subscriptionId: string;
 }
 export const PrivateEndpointConnectionsListByPolicyNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -213,7 +213,7 @@ export interface PrivateEndpointConnectionsListByPolicyNameOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListByPolicyNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -236,7 +236,7 @@ export const PrivateEndpointConnectionsListByPolicyNameOutput =
  * @param subscriptionId - Azure subscription ID.
  */
 export const PrivateEndpointConnectionsListByPolicyName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByPolicyNameInput,
     outputSchema: PrivateEndpointConnectionsListByPolicyNameOutput,
   }));
@@ -256,7 +256,7 @@ export interface PrivateLinkForAzureAdCreateInput {
   type?: string;
 }
 export const PrivateLinkForAzureAdCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.String.pipe(T.PathParam()),
@@ -284,7 +284,7 @@ export interface PrivateLinkForAzureAdCreateOutput {
   type?: string;
 }
 export const PrivateLinkForAzureAdCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -299,12 +299,10 @@ export const PrivateLinkForAzureAdCreateOutput =
  * @param policyName - The name of the private link policy in Azure AD.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const privateLinkForAzureAdCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkForAzureAdCreateInput,
-    outputSchema: PrivateLinkForAzureAdCreateOutput,
-  }),
-);
+export const privateLinkForAzureAdCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkForAzureAdCreateInput,
+  outputSchema: PrivateLinkForAzureAdCreateOutput,
+}));
 // Input Schema
 export interface PrivateLinkForAzureAdDeleteInput {
   subscriptionId: string;
@@ -312,7 +310,7 @@ export interface PrivateLinkForAzureAdDeleteInput {
   policyName: string;
 }
 export const PrivateLinkForAzureAdDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.String.pipe(T.PathParam()),
@@ -327,7 +325,7 @@ export const PrivateLinkForAzureAdDeleteInput =
 // Output Schema
 export type PrivateLinkForAzureAdDeleteOutput = void;
 export const PrivateLinkForAzureAdDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkForAzureAdDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkForAzureAdDeleteOutput>;
 
 // The operation
 /**
@@ -338,12 +336,10 @@ export const PrivateLinkForAzureAdDeleteOutput =
  * @param policyName - The name of the private link policy in Azure AD.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const privateLinkForAzureAdDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkForAzureAdDeleteInput,
-    outputSchema: PrivateLinkForAzureAdDeleteOutput,
-  }),
-);
+export const privateLinkForAzureAdDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkForAzureAdDeleteInput,
+  outputSchema: PrivateLinkForAzureAdDeleteOutput,
+}));
 // Input Schema
 export interface PrivateLinkForAzureAdGetInput {
   subscriptionId: string;
@@ -351,7 +347,7 @@ export interface PrivateLinkForAzureAdGetInput {
   policyName: string;
 }
 export const PrivateLinkForAzureAdGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.String.pipe(T.PathParam()),
@@ -370,7 +366,7 @@ export interface PrivateLinkForAzureAdGetOutput {
   type?: string;
 }
 export const PrivateLinkForAzureAdGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -385,19 +381,17 @@ export const PrivateLinkForAzureAdGetOutput =
  * @param policyName - The name of the private link policy in Azure AD.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const privateLinkForAzureAdGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkForAzureAdGetInput,
-    outputSchema: PrivateLinkForAzureAdGetOutput,
-  }),
-);
+export const privateLinkForAzureAdGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkForAzureAdGetInput,
+  outputSchema: PrivateLinkForAzureAdGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkForAzureAdListInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const PrivateLinkForAzureAdListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -414,7 +408,7 @@ export interface PrivateLinkForAzureAdListOutput {
   nextLink?: string;
 }
 export const PrivateLinkForAzureAdListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -435,18 +429,16 @@ export const PrivateLinkForAzureAdListOutput =
  * @param resourceGroupName - Name of an Azure resource group.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const privateLinkForAzureAdList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkForAzureAdListInput,
-    outputSchema: PrivateLinkForAzureAdListOutput,
-  }),
-);
+export const privateLinkForAzureAdList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkForAzureAdListInput,
+  outputSchema: PrivateLinkForAzureAdListOutput,
+}));
 // Input Schema
 export interface PrivateLinkForAzureAdListBySubscriptionInput {
   subscriptionId: string;
 }
 export const PrivateLinkForAzureAdListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -462,7 +454,7 @@ export interface PrivateLinkForAzureAdListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PrivateLinkForAzureAdListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -483,7 +475,7 @@ export const PrivateLinkForAzureAdListBySubscriptionOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const privateLinkForAzureAdListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkForAzureAdListBySubscriptionInput,
     outputSchema: PrivateLinkForAzureAdListBySubscriptionOutput,
   }));
@@ -495,7 +487,7 @@ export interface PrivateLinkForAzureAdUpdateInput {
   tags?: Record<string, string>;
 }
 export const PrivateLinkForAzureAdUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.String.pipe(T.PathParam()),
@@ -515,7 +507,7 @@ export interface PrivateLinkForAzureAdUpdateOutput {
   type?: string;
 }
 export const PrivateLinkForAzureAdUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -530,12 +522,10 @@ export const PrivateLinkForAzureAdUpdateOutput =
  * @param policyName - The name of the private link policy in Azure AD.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const privateLinkForAzureAdUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkForAzureAdUpdateInput,
-    outputSchema: PrivateLinkForAzureAdUpdateOutput,
-  }),
-);
+export const privateLinkForAzureAdUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkForAzureAdUpdateInput,
+  outputSchema: PrivateLinkForAzureAdUpdateOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesGetInput {
   subscriptionId: string;
@@ -544,7 +534,7 @@ export interface PrivateLinkResourcesGetInput {
   groupName: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.String.pipe(T.PathParam()),
@@ -564,7 +554,7 @@ export interface PrivateLinkResourcesGetOutput {
   type?: string;
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -580,12 +570,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param groupName - The name of the private link resource.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListByPrivateLinkPolicyInput {
   subscriptionId: string;
@@ -593,7 +581,7 @@ export interface PrivateLinkResourcesListByPrivateLinkPolicyInput {
   policyName: string;
 }
 export const PrivateLinkResourcesListByPrivateLinkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.String.pipe(T.PathParam()),
@@ -611,7 +599,7 @@ export interface PrivateLinkResourcesListByPrivateLinkPolicyOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListByPrivateLinkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -634,7 +622,7 @@ export const PrivateLinkResourcesListByPrivateLinkPolicyOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PrivateLinkResourcesListByPrivateLinkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByPrivateLinkPolicyInput,
     outputSchema: PrivateLinkResourcesListByPrivateLinkPolicyOutput,
   }));

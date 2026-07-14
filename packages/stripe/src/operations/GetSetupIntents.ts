@@ -19,7 +19,7 @@ export interface GetSetupIntentsInput {
   payment_method?: string;
   starting_after?: string;
 }
-export const GetSetupIntentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSetupIntentsInput = /*@__PURE__*/ Schema.Struct({
   attach_to_self: Schema.optional(Schema.Boolean),
   created: Schema.optional(Schema.String),
   customer: Schema.optional(Schema.String),
@@ -520,7 +520,7 @@ export interface GetSetupIntentsOutput {
   object: "list";
   url: string;
 }
-export const GetSetupIntentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSetupIntentsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       application: Schema.NullOr(
@@ -723,7 +723,7 @@ It can only be used for this Stripe Account’s own money movement flows like In
  * @param payment_method - Only return SetupIntents that associate with the specified payment method.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetSetupIntents = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetSetupIntents = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetSetupIntentsInput,
   outputSchema: GetSetupIntentsOutput,
 }));

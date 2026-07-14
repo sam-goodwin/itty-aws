@@ -125,7 +125,7 @@ export interface AssociateEntityToThingRequest {
   namespaceVersion?: number;
 }
 export const AssociateEntityToThingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       thingName: S.String,
       entityId: S.String,
@@ -138,16 +138,16 @@ export const AssociateEntityToThingRequest =
   }) as any as S.Schema<AssociateEntityToThingRequest>;
 export interface AssociateEntityToThingResponse {}
 export const AssociateEntityToThingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateEntityToThingResponse",
   }) as any as S.Schema<AssociateEntityToThingResponse>;
 export type DefinitionLanguage = "GRAPHQL" | (string & {});
-export const DefinitionLanguage = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DefinitionLanguage = /*@__PURE__*/ S.String;
 export interface DefinitionDocument {
   language: DefinitionLanguage;
   text: string;
 }
-export const DefinitionDocument = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DefinitionDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ language: DefinitionLanguage, text: S.String }),
 ).annotate({
   identifier: "DefinitionDocument",
@@ -156,14 +156,13 @@ export interface CreateFlowTemplateRequest {
   definition: DefinitionDocument;
   compatibleNamespaceVersion?: number;
 }
-export const CreateFlowTemplateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      definition: DefinitionDocument,
-      compatibleNamespaceVersion: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const CreateFlowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    definition: DefinitionDocument,
+    compatibleNamespaceVersion: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "CreateFlowTemplateRequest",
 }) as any as S.Schema<CreateFlowTemplateRequest>;
@@ -173,7 +172,7 @@ export interface FlowTemplateSummary {
   revisionNumber?: number;
   createdAt?: Date;
 }
-export const FlowTemplateSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowTemplateSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -186,8 +185,8 @@ export const FlowTemplateSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateFlowTemplateResponse {
   summary?: FlowTemplateSummary;
 }
-export const CreateFlowTemplateResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ summary: S.optional(FlowTemplateSummary) }),
+export const CreateFlowTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ summary: S.optional(FlowTemplateSummary) }),
 ).annotate({
   identifier: "CreateFlowTemplateResponse",
 }) as any as S.Schema<CreateFlowTemplateResponse>;
@@ -195,18 +194,18 @@ export interface Tag {
   key: string;
   value: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.String, value: S.String }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type DeploymentTarget = "GREENGRASS" | "CLOUD" | (string & {});
-export const DeploymentTarget = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DeploymentTarget = /*@__PURE__*/ S.String;
 export interface MetricsConfiguration {
   cloudMetricEnabled?: boolean;
   metricRuleRoleArn?: string;
 }
-export const MetricsConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MetricsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudMetricEnabled: S.optional(S.Boolean),
     metricRuleRoleArn: S.optional(S.String),
@@ -224,7 +223,7 @@ export interface CreateSystemInstanceRequest {
   flowActionsRoleArn?: string;
 }
 export const CreateSystemInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       tags: S.optional(TagList),
       definition: DefinitionDocument,
@@ -249,8 +248,7 @@ export type SystemInstanceDeploymentStatus =
   | "PENDING_DELETE"
   | "DELETED_IN_TARGET"
   | (string & {});
-export const SystemInstanceDeploymentStatus =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SystemInstanceDeploymentStatus = /*@__PURE__*/ S.String;
 export interface SystemInstanceSummary {
   id?: string;
   arn?: string;
@@ -262,7 +260,7 @@ export interface SystemInstanceSummary {
   greengrassGroupId?: string;
   greengrassGroupVersionId?: string;
 }
-export const SystemInstanceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SystemInstanceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -281,7 +279,7 @@ export interface CreateSystemInstanceResponse {
   summary?: SystemInstanceSummary;
 }
 export const CreateSystemInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ summary: S.optional(SystemInstanceSummary) }),
   ).annotate({
     identifier: "CreateSystemInstanceResponse",
@@ -291,7 +289,7 @@ export interface CreateSystemTemplateRequest {
   compatibleNamespaceVersion?: number;
 }
 export const CreateSystemTemplateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       definition: DefinitionDocument,
       compatibleNamespaceVersion: S.optional(S.Number),
@@ -307,7 +305,7 @@ export interface SystemTemplateSummary {
   revisionNumber?: number;
   createdAt?: Date;
 }
-export const SystemTemplateSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SystemTemplateSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -321,7 +319,7 @@ export interface CreateSystemTemplateResponse {
   summary?: SystemTemplateSummary;
 }
 export const CreateSystemTemplateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ summary: S.optional(SystemTemplateSummary) }),
   ).annotate({
     identifier: "CreateSystemTemplateResponse",
@@ -329,26 +327,24 @@ export const CreateSystemTemplateResponse =
 export interface DeleteFlowTemplateRequest {
   id: string;
 }
-export const DeleteFlowTemplateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ id: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DeleteFlowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DeleteFlowTemplateRequest",
 }) as any as S.Schema<DeleteFlowTemplateRequest>;
 export interface DeleteFlowTemplateResponse {}
-export const DeleteFlowTemplateResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteFlowTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteFlowTemplateResponse",
 }) as any as S.Schema<DeleteFlowTemplateResponse>;
 export interface DeleteNamespaceRequest {}
-export const DeleteNamespaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DeleteNamespaceRequest",
 }) as any as S.Schema<DeleteNamespaceRequest>;
@@ -356,12 +352,11 @@ export interface DeleteNamespaceResponse {
   namespaceArn?: string;
   namespaceName?: string;
 }
-export const DeleteNamespaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespaceArn: S.optional(S.String),
-      namespaceName: S.optional(S.String),
-    }),
+export const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespaceArn: S.optional(S.String),
+    namespaceName: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DeleteNamespaceResponse",
 }) as any as S.Schema<DeleteNamespaceResponse>;
@@ -369,7 +364,7 @@ export interface DeleteSystemInstanceRequest {
   id?: string;
 }
 export const DeleteSystemInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ id: S.optional(S.String) }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -378,14 +373,14 @@ export const DeleteSystemInstanceRequest =
   }) as any as S.Schema<DeleteSystemInstanceRequest>;
 export interface DeleteSystemInstanceResponse {}
 export const DeleteSystemInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteSystemInstanceResponse",
   }) as any as S.Schema<DeleteSystemInstanceResponse>;
 export interface DeleteSystemTemplateRequest {
   id: string;
 }
 export const DeleteSystemTemplateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ id: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -394,14 +389,14 @@ export const DeleteSystemTemplateRequest =
   }) as any as S.Schema<DeleteSystemTemplateRequest>;
 export interface DeleteSystemTemplateResponse {}
 export const DeleteSystemTemplateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteSystemTemplateResponse",
   }) as any as S.Schema<DeleteSystemTemplateResponse>;
 export interface DeploySystemInstanceRequest {
   id?: string;
 }
 export const DeploySystemInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ id: S.optional(S.String) }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -413,7 +408,7 @@ export interface DeploySystemInstanceResponse {
   greengrassDeploymentId?: string;
 }
 export const DeploySystemInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summary: SystemInstanceSummary,
       greengrassDeploymentId: S.optional(S.String),
@@ -425,7 +420,7 @@ export interface DeprecateFlowTemplateRequest {
   id: string;
 }
 export const DeprecateFlowTemplateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ id: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -434,14 +429,14 @@ export const DeprecateFlowTemplateRequest =
   }) as any as S.Schema<DeprecateFlowTemplateRequest>;
 export interface DeprecateFlowTemplateResponse {}
 export const DeprecateFlowTemplateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeprecateFlowTemplateResponse",
   }) as any as S.Schema<DeprecateFlowTemplateResponse>;
 export interface DeprecateSystemTemplateRequest {
   id: string;
 }
 export const DeprecateSystemTemplateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ id: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -450,17 +445,16 @@ export const DeprecateSystemTemplateRequest =
   }) as any as S.Schema<DeprecateSystemTemplateRequest>;
 export interface DeprecateSystemTemplateResponse {}
 export const DeprecateSystemTemplateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeprecateSystemTemplateResponse",
   }) as any as S.Schema<DeprecateSystemTemplateResponse>;
 export interface DescribeNamespaceRequest {
   namespaceName?: string;
 }
-export const DescribeNamespaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ namespaceName: S.optional(S.String) }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DescribeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ namespaceName: S.optional(S.String) }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DescribeNamespaceRequest",
 }) as any as S.Schema<DescribeNamespaceRequest>;
@@ -471,15 +465,14 @@ export interface DescribeNamespaceResponse {
   trackingNamespaceVersion?: number;
   namespaceVersion?: number;
 }
-export const DescribeNamespaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespaceArn: S.optional(S.String),
-      namespaceName: S.optional(S.String),
-      trackingNamespaceName: S.optional(S.String),
-      trackingNamespaceVersion: S.optional(S.Number),
-      namespaceVersion: S.optional(S.Number),
-    }),
+export const DescribeNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespaceArn: S.optional(S.String),
+    namespaceName: S.optional(S.String),
+    trackingNamespaceName: S.optional(S.String),
+    trackingNamespaceVersion: S.optional(S.Number),
+    namespaceVersion: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "DescribeNamespaceResponse",
 }) as any as S.Schema<DescribeNamespaceResponse>;
@@ -495,13 +488,13 @@ export type EntityType =
   | "MAPPING"
   | "ENUM"
   | (string & {});
-export const EntityType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EntityType = /*@__PURE__*/ S.String;
 export interface DissociateEntityFromThingRequest {
   thingName: string;
   entityType: EntityType;
 }
 export const DissociateEntityFromThingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ thingName: S.String, entityType: EntityType }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -510,16 +503,16 @@ export const DissociateEntityFromThingRequest =
   }) as any as S.Schema<DissociateEntityFromThingRequest>;
 export interface DissociateEntityFromThingResponse {}
 export const DissociateEntityFromThingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DissociateEntityFromThingResponse",
   }) as any as S.Schema<DissociateEntityFromThingResponse>;
 export type Urns = string[];
-export const Urns = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Urns = /*@__PURE__*/ S.Array(S.String);
 export interface GetEntitiesRequest {
   ids: string[];
   namespaceVersion?: number;
 }
-export const GetEntitiesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ids: Urns, namespaceVersion: S.optional(S.Number) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -533,7 +526,7 @@ export interface EntityDescription {
   createdAt?: Date;
   definition?: DefinitionDocument;
 }
-export const EntityDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EntityDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -545,12 +538,11 @@ export const EntityDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "EntityDescription",
 }) as any as S.Schema<EntityDescription>;
 export type EntityDescriptions = EntityDescription[];
-export const EntityDescriptions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EntityDescription);
+export const EntityDescriptions = /*@__PURE__*/ S.Array(EntityDescription);
 export interface GetEntitiesResponse {
   descriptions?: EntityDescription[];
 }
-export const GetEntitiesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ descriptions: S.optional(EntityDescriptions) }),
 ).annotate({
   identifier: "GetEntitiesResponse",
@@ -559,11 +551,10 @@ export interface GetFlowTemplateRequest {
   id: string;
   revisionNumber?: number;
 }
-export const GetFlowTemplateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ id: S.String, revisionNumber: S.optional(S.Number) }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetFlowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String, revisionNumber: S.optional(S.Number) }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetFlowTemplateRequest",
 }) as any as S.Schema<GetFlowTemplateRequest>;
@@ -572,21 +563,20 @@ export interface FlowTemplateDescription {
   definition?: DefinitionDocument;
   validatedNamespaceVersion?: number;
 }
-export const FlowTemplateDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      summary: S.optional(FlowTemplateSummary),
-      definition: S.optional(DefinitionDocument),
-      validatedNamespaceVersion: S.optional(S.Number),
-    }),
+export const FlowTemplateDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    summary: S.optional(FlowTemplateSummary),
+    definition: S.optional(DefinitionDocument),
+    validatedNamespaceVersion: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "FlowTemplateDescription",
 }) as any as S.Schema<FlowTemplateDescription>;
 export interface GetFlowTemplateResponse {
   description?: FlowTemplateDescription;
 }
-export const GetFlowTemplateResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ description: S.optional(FlowTemplateDescription) }),
+export const GetFlowTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ description: S.optional(FlowTemplateDescription) }),
 ).annotate({
   identifier: "GetFlowTemplateResponse",
 }) as any as S.Schema<GetFlowTemplateResponse>;
@@ -596,7 +586,7 @@ export interface GetFlowTemplateRevisionsRequest {
   maxResults?: number;
 }
 export const GetFlowTemplateRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       nextToken: S.optional(S.String),
@@ -608,14 +598,13 @@ export const GetFlowTemplateRevisionsRequest =
     identifier: "GetFlowTemplateRevisionsRequest",
   }) as any as S.Schema<GetFlowTemplateRevisionsRequest>;
 export type FlowTemplateSummaries = FlowTemplateSummary[];
-export const FlowTemplateSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FlowTemplateSummary);
+export const FlowTemplateSummaries = /*@__PURE__*/ S.Array(FlowTemplateSummary);
 export interface GetFlowTemplateRevisionsResponse {
   summaries?: FlowTemplateSummary[];
   nextToken?: string;
 }
 export const GetFlowTemplateRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaries: S.optional(FlowTemplateSummaries),
       nextToken: S.optional(S.String),
@@ -625,7 +614,7 @@ export const GetFlowTemplateRevisionsResponse =
   }) as any as S.Schema<GetFlowTemplateRevisionsResponse>;
 export interface GetNamespaceDeletionStatusRequest {}
 export const GetNamespaceDeletionStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -637,12 +626,11 @@ export type NamespaceDeletionStatus =
   | "SUCCEEDED"
   | "FAILED"
   | (string & {});
-export const NamespaceDeletionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NamespaceDeletionStatus = /*@__PURE__*/ S.String;
 export type NamespaceDeletionStatusErrorCodes =
   | "VALIDATION_FAILED"
   | (string & {});
-export const NamespaceDeletionStatusErrorCodes =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NamespaceDeletionStatusErrorCodes = /*@__PURE__*/ S.String;
 export interface GetNamespaceDeletionStatusResponse {
   namespaceArn?: string;
   namespaceName?: string;
@@ -651,7 +639,7 @@ export interface GetNamespaceDeletionStatusResponse {
   errorMessage?: string;
 }
 export const GetNamespaceDeletionStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       namespaceArn: S.optional(S.String),
       namespaceName: S.optional(S.String),
@@ -665,11 +653,10 @@ export const GetNamespaceDeletionStatusResponse =
 export interface GetSystemInstanceRequest {
   id: string;
 }
-export const GetSystemInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ id: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetSystemInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetSystemInstanceRequest",
 }) as any as S.Schema<GetSystemInstanceRequest>;
@@ -677,14 +664,13 @@ export interface DependencyRevision {
   id?: string;
   revisionNumber?: number;
 }
-export const DependencyRevision = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DependencyRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.optional(S.String), revisionNumber: S.optional(S.Number) }),
 ).annotate({
   identifier: "DependencyRevision",
 }) as any as S.Schema<DependencyRevision>;
 export type DependencyRevisions = DependencyRevision[];
-export const DependencyRevisions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DependencyRevision);
+export const DependencyRevisions = /*@__PURE__*/ S.Array(DependencyRevision);
 export interface SystemInstanceDescription {
   summary?: SystemInstanceSummary;
   definition?: DefinitionDocument;
@@ -694,25 +680,24 @@ export interface SystemInstanceDescription {
   validatedDependencyRevisions?: DependencyRevision[];
   flowActionsRoleArn?: string;
 }
-export const SystemInstanceDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      summary: S.optional(SystemInstanceSummary),
-      definition: S.optional(DefinitionDocument),
-      s3BucketName: S.optional(S.String),
-      metricsConfiguration: S.optional(MetricsConfiguration),
-      validatedNamespaceVersion: S.optional(S.Number),
-      validatedDependencyRevisions: S.optional(DependencyRevisions),
-      flowActionsRoleArn: S.optional(S.String),
-    }),
+export const SystemInstanceDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    summary: S.optional(SystemInstanceSummary),
+    definition: S.optional(DefinitionDocument),
+    s3BucketName: S.optional(S.String),
+    metricsConfiguration: S.optional(MetricsConfiguration),
+    validatedNamespaceVersion: S.optional(S.Number),
+    validatedDependencyRevisions: S.optional(DependencyRevisions),
+    flowActionsRoleArn: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "SystemInstanceDescription",
 }) as any as S.Schema<SystemInstanceDescription>;
 export interface GetSystemInstanceResponse {
   description?: SystemInstanceDescription;
 }
-export const GetSystemInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ description: S.optional(SystemInstanceDescription) }),
+export const GetSystemInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ description: S.optional(SystemInstanceDescription) }),
 ).annotate({
   identifier: "GetSystemInstanceResponse",
 }) as any as S.Schema<GetSystemInstanceResponse>;
@@ -720,11 +705,10 @@ export interface GetSystemTemplateRequest {
   id: string;
   revisionNumber?: number;
 }
-export const GetSystemTemplateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ id: S.String, revisionNumber: S.optional(S.Number) }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetSystemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String, revisionNumber: S.optional(S.Number) }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetSystemTemplateRequest",
 }) as any as S.Schema<GetSystemTemplateRequest>;
@@ -733,21 +717,20 @@ export interface SystemTemplateDescription {
   definition?: DefinitionDocument;
   validatedNamespaceVersion?: number;
 }
-export const SystemTemplateDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      summary: S.optional(SystemTemplateSummary),
-      definition: S.optional(DefinitionDocument),
-      validatedNamespaceVersion: S.optional(S.Number),
-    }),
+export const SystemTemplateDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    summary: S.optional(SystemTemplateSummary),
+    definition: S.optional(DefinitionDocument),
+    validatedNamespaceVersion: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "SystemTemplateDescription",
 }) as any as S.Schema<SystemTemplateDescription>;
 export interface GetSystemTemplateResponse {
   description?: SystemTemplateDescription;
 }
-export const GetSystemTemplateResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ description: S.optional(SystemTemplateDescription) }),
+export const GetSystemTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ description: S.optional(SystemTemplateDescription) }),
 ).annotate({
   identifier: "GetSystemTemplateResponse",
 }) as any as S.Schema<GetSystemTemplateResponse>;
@@ -757,7 +740,7 @@ export interface GetSystemTemplateRevisionsRequest {
   maxResults?: number;
 }
 export const GetSystemTemplateRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       nextToken: S.optional(S.String),
@@ -769,7 +752,7 @@ export const GetSystemTemplateRevisionsRequest =
     identifier: "GetSystemTemplateRevisionsRequest",
   }) as any as S.Schema<GetSystemTemplateRevisionsRequest>;
 export type SystemTemplateSummaries = SystemTemplateSummary[];
-export const SystemTemplateSummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const SystemTemplateSummaries = /*@__PURE__*/ S.Array(
   SystemTemplateSummary,
 );
 export interface GetSystemTemplateRevisionsResponse {
@@ -777,7 +760,7 @@ export interface GetSystemTemplateRevisionsResponse {
   nextToken?: string;
 }
 export const GetSystemTemplateRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaries: S.optional(SystemTemplateSummaries),
       nextToken: S.optional(S.String),
@@ -788,11 +771,10 @@ export const GetSystemTemplateRevisionsResponse =
 export interface GetUploadStatusRequest {
   uploadId: string;
 }
-export const GetUploadStatusRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ uploadId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetUploadStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ uploadId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetUploadStatusRequest",
 }) as any as S.Schema<GetUploadStatusRequest>;
@@ -801,9 +783,9 @@ export type UploadStatus =
   | "SUCCEEDED"
   | "FAILED"
   | (string & {});
-export const UploadStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UploadStatus = /*@__PURE__*/ S.String;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface GetUploadStatusResponse {
   uploadId: string;
   uploadStatus: UploadStatus;
@@ -813,17 +795,16 @@ export interface GetUploadStatusResponse {
   failureReason?: string[];
   createdDate: Date;
 }
-export const GetUploadStatusResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      uploadId: S.String,
-      uploadStatus: UploadStatus,
-      namespaceArn: S.optional(S.String),
-      namespaceName: S.optional(S.String),
-      namespaceVersion: S.optional(S.Number),
-      failureReason: S.optional(StringList),
-      createdDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    }),
+export const GetUploadStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uploadId: S.String,
+    uploadStatus: UploadStatus,
+    namespaceArn: S.optional(S.String),
+    namespaceName: S.optional(S.String),
+    namespaceVersion: S.optional(S.Number),
+    failureReason: S.optional(StringList),
+    createdDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
 ).annotate({
   identifier: "GetUploadStatusResponse",
 }) as any as S.Schema<GetUploadStatusResponse>;
@@ -833,7 +814,7 @@ export interface ListFlowExecutionMessagesRequest {
   maxResults?: number;
 }
 export const ListFlowExecutionMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       flowExecutionId: S.String,
       nextToken: S.optional(S.String),
@@ -863,14 +844,14 @@ export type FlowExecutionEventType =
   | "THING_ACTION_TASK_SUCCEEDED"
   | "ACKNOWLEDGE_TASK_MESSAGE"
   | (string & {});
-export const FlowExecutionEventType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FlowExecutionEventType = /*@__PURE__*/ S.String;
 export interface FlowExecutionMessage {
   messageId?: string;
   eventType?: FlowExecutionEventType;
   timestamp?: Date;
   payload?: string;
 }
-export const FlowExecutionMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowExecutionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messageId: S.optional(S.String),
     eventType: S.optional(FlowExecutionEventType),
@@ -882,13 +863,13 @@ export const FlowExecutionMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlowExecutionMessage>;
 export type FlowExecutionMessages = FlowExecutionMessage[];
 export const FlowExecutionMessages =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FlowExecutionMessage);
+  /*@__PURE__*/ S.Array(FlowExecutionMessage);
 export interface ListFlowExecutionMessagesResponse {
   messages?: FlowExecutionMessage[];
   nextToken?: string;
 }
 export const ListFlowExecutionMessagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       messages: S.optional(FlowExecutionMessages),
       nextToken: S.optional(S.String),
@@ -901,15 +882,14 @@ export interface ListTagsForResourceRequest {
   resourceArn: string;
   nextToken?: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxResults: S.optional(S.Number),
-      resourceArn: S.String,
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number),
+    resourceArn: S.String,
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -918,34 +898,34 @@ export interface ListTagsForResourceResponse {
   nextToken?: string;
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tags: S.optional(TagList), nextToken: S.optional(S.String) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
   }) as any as S.Schema<ListTagsForResourceResponse>;
 export type EntityTypes = EntityType[];
-export const EntityTypes = /*@__PURE__*/ /*#__PURE__*/ S.Array(EntityType);
+export const EntityTypes = /*@__PURE__*/ S.Array(EntityType);
 export type EntityFilterName =
   | "NAME"
   | "NAMESPACE"
   | "SEMANTIC_TYPE_PATH"
   | "REFERENCED_ENTITY_ID"
   | (string & {});
-export const EntityFilterName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EntityFilterName = /*@__PURE__*/ S.String;
 export type EntityFilterValues = string[];
-export const EntityFilterValues = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const EntityFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface EntityFilter {
   name?: EntityFilterName;
   value?: string[];
 }
-export const EntityFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EntityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(EntityFilterName),
     value: S.optional(EntityFilterValues),
   }),
 ).annotate({ identifier: "EntityFilter" }) as any as S.Schema<EntityFilter>;
 export type EntityFilters = EntityFilter[];
-export const EntityFilters = /*@__PURE__*/ /*#__PURE__*/ S.Array(EntityFilter);
+export const EntityFilters = /*@__PURE__*/ S.Array(EntityFilter);
 export interface SearchEntitiesRequest {
   entityTypes: EntityType[];
   filters?: EntityFilter[];
@@ -953,7 +933,7 @@ export interface SearchEntitiesRequest {
   maxResults?: number;
   namespaceVersion?: number;
 }
-export const SearchEntitiesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityTypes: EntityTypes,
     filters: S.optional(EntityFilters),
@@ -970,12 +950,11 @@ export interface SearchEntitiesResponse {
   descriptions?: EntityDescription[];
   nextToken?: string;
 }
-export const SearchEntitiesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      descriptions: S.optional(EntityDescriptions),
-      nextToken: S.optional(S.String),
-    }),
+export const SearchEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    descriptions: S.optional(EntityDescriptions),
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "SearchEntitiesResponse",
 }) as any as S.Schema<SearchEntitiesResponse>;
@@ -988,7 +967,7 @@ export interface SearchFlowExecutionsRequest {
   maxResults?: number;
 }
 export const SearchFlowExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       systemInstanceId: S.String,
       flowExecutionId: S.optional(S.String),
@@ -1008,7 +987,7 @@ export type FlowExecutionStatus =
   | "SUCCEEDED"
   | "FAILED"
   | (string & {});
-export const FlowExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FlowExecutionStatus = /*@__PURE__*/ S.String;
 export interface FlowExecutionSummary {
   flowExecutionId?: string;
   status?: FlowExecutionStatus;
@@ -1017,7 +996,7 @@ export interface FlowExecutionSummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const FlowExecutionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowExecutionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flowExecutionId: S.optional(S.String),
     status: S.optional(FlowExecutionStatus),
@@ -1031,13 +1010,13 @@ export const FlowExecutionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlowExecutionSummary>;
 export type FlowExecutionSummaries = FlowExecutionSummary[];
 export const FlowExecutionSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FlowExecutionSummary);
+  /*@__PURE__*/ S.Array(FlowExecutionSummary);
 export interface SearchFlowExecutionsResponse {
   summaries?: FlowExecutionSummary[];
   nextToken?: string;
 }
 export const SearchFlowExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaries: S.optional(FlowExecutionSummaries),
       nextToken: S.optional(S.String),
@@ -1046,37 +1025,33 @@ export const SearchFlowExecutionsResponse =
     identifier: "SearchFlowExecutionsResponse",
   }) as any as S.Schema<SearchFlowExecutionsResponse>;
 export type FlowTemplateFilterName = "DEVICE_MODEL_ID" | (string & {});
-export const FlowTemplateFilterName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FlowTemplateFilterName = /*@__PURE__*/ S.String;
 export type FlowTemplateFilterValues = string[];
-export const FlowTemplateFilterValues = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const FlowTemplateFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface FlowTemplateFilter {
   name: FlowTemplateFilterName;
   value: string[];
 }
-export const FlowTemplateFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowTemplateFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: FlowTemplateFilterName, value: FlowTemplateFilterValues }),
 ).annotate({
   identifier: "FlowTemplateFilter",
 }) as any as S.Schema<FlowTemplateFilter>;
 export type FlowTemplateFilters = FlowTemplateFilter[];
-export const FlowTemplateFilters =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FlowTemplateFilter);
+export const FlowTemplateFilters = /*@__PURE__*/ S.Array(FlowTemplateFilter);
 export interface SearchFlowTemplatesRequest {
   filters?: FlowTemplateFilter[];
   nextToken?: string;
   maxResults?: number;
 }
-export const SearchFlowTemplatesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filters: S.optional(FlowTemplateFilters),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const SearchFlowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filters: S.optional(FlowTemplateFilters),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "SearchFlowTemplatesRequest",
 }) as any as S.Schema<SearchFlowTemplatesRequest>;
@@ -1085,7 +1060,7 @@ export interface SearchFlowTemplatesResponse {
   nextToken?: string;
 }
 export const SearchFlowTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaries: S.optional(FlowTemplateSummaries),
       nextToken: S.optional(S.String),
@@ -1098,16 +1073,14 @@ export type SystemInstanceFilterName =
   | "STATUS"
   | "GREENGRASS_GROUP_NAME"
   | (string & {});
-export const SystemInstanceFilterName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SystemInstanceFilterName = /*@__PURE__*/ S.String;
 export type SystemInstanceFilterValues = string[];
-export const SystemInstanceFilterValues = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const SystemInstanceFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface SystemInstanceFilter {
   name?: SystemInstanceFilterName;
   value?: string[];
 }
-export const SystemInstanceFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SystemInstanceFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(SystemInstanceFilterName),
     value: S.optional(SystemInstanceFilterValues),
@@ -1117,14 +1090,14 @@ export const SystemInstanceFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SystemInstanceFilter>;
 export type SystemInstanceFilters = SystemInstanceFilter[];
 export const SystemInstanceFilters =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SystemInstanceFilter);
+  /*@__PURE__*/ S.Array(SystemInstanceFilter);
 export interface SearchSystemInstancesRequest {
   filters?: SystemInstanceFilter[];
   nextToken?: string;
   maxResults?: number;
 }
 export const SearchSystemInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       filters: S.optional(SystemInstanceFilters),
       nextToken: S.optional(S.String),
@@ -1136,7 +1109,7 @@ export const SearchSystemInstancesRequest =
     identifier: "SearchSystemInstancesRequest",
   }) as any as S.Schema<SearchSystemInstancesRequest>;
 export type SystemInstanceSummaries = SystemInstanceSummary[];
-export const SystemInstanceSummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const SystemInstanceSummaries = /*@__PURE__*/ S.Array(
   SystemInstanceSummary,
 );
 export interface SearchSystemInstancesResponse {
@@ -1144,7 +1117,7 @@ export interface SearchSystemInstancesResponse {
   nextToken?: string;
 }
 export const SearchSystemInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaries: S.optional(SystemInstanceSummaries),
       nextToken: S.optional(S.String),
@@ -1153,16 +1126,14 @@ export const SearchSystemInstancesResponse =
     identifier: "SearchSystemInstancesResponse",
   }) as any as S.Schema<SearchSystemInstancesResponse>;
 export type SystemTemplateFilterName = "FLOW_TEMPLATE_ID" | (string & {});
-export const SystemTemplateFilterName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SystemTemplateFilterName = /*@__PURE__*/ S.String;
 export type SystemTemplateFilterValues = string[];
-export const SystemTemplateFilterValues = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const SystemTemplateFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface SystemTemplateFilter {
   name: SystemTemplateFilterName;
   value: string[];
 }
-export const SystemTemplateFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SystemTemplateFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SystemTemplateFilterName,
     value: SystemTemplateFilterValues,
@@ -1172,14 +1143,14 @@ export const SystemTemplateFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SystemTemplateFilter>;
 export type SystemTemplateFilters = SystemTemplateFilter[];
 export const SystemTemplateFilters =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SystemTemplateFilter);
+  /*@__PURE__*/ S.Array(SystemTemplateFilter);
 export interface SearchSystemTemplatesRequest {
   filters?: SystemTemplateFilter[];
   nextToken?: string;
   maxResults?: number;
 }
 export const SearchSystemTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       filters: S.optional(SystemTemplateFilters),
       nextToken: S.optional(S.String),
@@ -1195,7 +1166,7 @@ export interface SearchSystemTemplatesResponse {
   nextToken?: string;
 }
 export const SearchSystemTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaries: S.optional(SystemTemplateSummaries),
       nextToken: S.optional(S.String),
@@ -1209,7 +1180,7 @@ export interface SearchThingsRequest {
   maxResults?: number;
   namespaceVersion?: number;
 }
-export const SearchThingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchThingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityId: S.String,
     nextToken: S.optional(S.String),
@@ -1225,16 +1196,16 @@ export interface Thing {
   thingArn?: string;
   thingName?: string;
 }
-export const Thing = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Thing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ thingArn: S.optional(S.String), thingName: S.optional(S.String) }),
 ).annotate({ identifier: "Thing" }) as any as S.Schema<Thing>;
 export type Things = Thing[];
-export const Things = /*@__PURE__*/ /*#__PURE__*/ S.Array(Thing);
+export const Things = /*@__PURE__*/ S.Array(Thing);
 export interface SearchThingsResponse {
   things?: Thing[];
   nextToken?: string;
 }
-export const SearchThingsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchThingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ things: S.optional(Things), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "SearchThingsResponse",
@@ -1243,7 +1214,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1251,7 +1222,7 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
@@ -1260,7 +1231,7 @@ export interface UndeploySystemInstanceRequest {
   id?: string;
 }
 export const UndeploySystemInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ id: S.optional(S.String) }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1271,18 +1242,18 @@ export interface UndeploySystemInstanceResponse {
   summary?: SystemInstanceSummary;
 }
 export const UndeploySystemInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ summary: S.optional(SystemInstanceSummary) }),
   ).annotate({
     identifier: "UndeploySystemInstanceResponse",
   }) as any as S.Schema<UndeploySystemInstanceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1290,7 +1261,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -1300,23 +1271,22 @@ export interface UpdateFlowTemplateRequest {
   definition: DefinitionDocument;
   compatibleNamespaceVersion?: number;
 }
-export const UpdateFlowTemplateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      definition: DefinitionDocument,
-      compatibleNamespaceVersion: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const UpdateFlowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    definition: DefinitionDocument,
+    compatibleNamespaceVersion: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "UpdateFlowTemplateRequest",
 }) as any as S.Schema<UpdateFlowTemplateRequest>;
 export interface UpdateFlowTemplateResponse {
   summary?: FlowTemplateSummary;
 }
-export const UpdateFlowTemplateResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ summary: S.optional(FlowTemplateSummary) }),
+export const UpdateFlowTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ summary: S.optional(FlowTemplateSummary) }),
 ).annotate({
   identifier: "UpdateFlowTemplateResponse",
 }) as any as S.Schema<UpdateFlowTemplateResponse>;
@@ -1326,7 +1296,7 @@ export interface UpdateSystemTemplateRequest {
   compatibleNamespaceVersion?: number;
 }
 export const UpdateSystemTemplateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       definition: DefinitionDocument,
@@ -1341,7 +1311,7 @@ export interface UpdateSystemTemplateResponse {
   summary?: SystemTemplateSummary;
 }
 export const UpdateSystemTemplateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ summary: S.optional(SystemTemplateSummary) }),
   ).annotate({
     identifier: "UpdateSystemTemplateResponse",
@@ -1352,7 +1322,7 @@ export interface UploadEntityDefinitionsRequest {
   deprecateExistingEntities?: boolean;
 }
 export const UploadEntityDefinitionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       document: S.optional(DefinitionDocument),
       syncWithPublicNamespace: S.optional(S.Boolean),
@@ -1367,9 +1337,7 @@ export interface UploadEntityDefinitionsResponse {
   uploadId: string;
 }
 export const UploadEntityDefinitionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ uploadId: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ uploadId: S.String })).annotate({
     identifier: "UploadEntityDefinitionsResponse",
   }) as any as S.Schema<UploadEntityDefinitionsResponse>;
 
@@ -1420,7 +1388,7 @@ export const associateEntityToThing: API.OperationMethod<
   AssociateEntityToThingResponse,
   AssociateEntityToThingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateEntityToThingRequest,
   output: AssociateEntityToThingResponse,
   errors: [
@@ -1448,7 +1416,7 @@ export const createFlowTemplate: API.OperationMethod<
   CreateFlowTemplateResponse,
   CreateFlowTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFlowTemplateRequest,
   output: CreateFlowTemplateResponse,
   errors: [
@@ -1487,7 +1455,7 @@ export const createSystemInstance: API.OperationMethod<
   CreateSystemInstanceResponse,
   CreateSystemInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSystemInstanceRequest,
   output: CreateSystemInstanceResponse,
   errors: [
@@ -1514,7 +1482,7 @@ export const createSystemTemplate: API.OperationMethod<
   CreateSystemTemplateResponse,
   CreateSystemTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSystemTemplateRequest,
   output: CreateSystemTemplateResponse,
   errors: [
@@ -1540,7 +1508,7 @@ export const deleteFlowTemplate: API.OperationMethod<
   DeleteFlowTemplateResponse,
   DeleteFlowTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFlowTemplateRequest,
   output: DeleteFlowTemplateResponse,
   errors: [
@@ -1564,7 +1532,7 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceResponse,
   DeleteNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
   errors: [InternalFailureException, ThrottlingException],
@@ -1587,7 +1555,7 @@ export const deleteSystemInstance: API.OperationMethod<
   DeleteSystemInstanceResponse,
   DeleteSystemInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSystemInstanceRequest,
   output: DeleteSystemInstanceResponse,
   errors: [
@@ -1613,7 +1581,7 @@ export const deleteSystemTemplate: API.OperationMethod<
   DeleteSystemTemplateResponse,
   DeleteSystemTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSystemTemplateRequest,
   output: DeleteSystemTemplateResponse,
   errors: [
@@ -1651,7 +1619,7 @@ export const deploySystemInstance: API.OperationMethod<
   DeploySystemInstanceResponse,
   DeploySystemInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeploySystemInstanceRequest,
   output: DeploySystemInstanceResponse,
   errors: [
@@ -1677,7 +1645,7 @@ export const deprecateFlowTemplate: API.OperationMethod<
   DeprecateFlowTemplateResponse,
   DeprecateFlowTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeprecateFlowTemplateRequest,
   output: DeprecateFlowTemplateResponse,
   errors: [
@@ -1702,7 +1670,7 @@ export const deprecateSystemTemplate: API.OperationMethod<
   DeprecateSystemTemplateResponse,
   DeprecateSystemTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeprecateSystemTemplateRequest,
   output: DeprecateSystemTemplateResponse,
   errors: [
@@ -1727,7 +1695,7 @@ export const describeNamespace: API.OperationMethod<
   DescribeNamespaceResponse,
   DescribeNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeNamespaceRequest,
   output: DescribeNamespaceResponse,
   errors: [
@@ -1753,7 +1721,7 @@ export const dissociateEntityFromThing: API.OperationMethod<
   DissociateEntityFromThingResponse,
   DissociateEntityFromThingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DissociateEntityFromThingRequest,
   output: DissociateEntityFromThingResponse,
   errors: [
@@ -1799,7 +1767,7 @@ export const getEntities: API.OperationMethod<
   GetEntitiesResponse,
   GetEntitiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEntitiesRequest,
   output: GetEntitiesResponse,
   errors: [
@@ -1824,7 +1792,7 @@ export const getFlowTemplate: API.OperationMethod<
   GetFlowTemplateResponse,
   GetFlowTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFlowTemplateRequest,
   output: GetFlowTemplateResponse,
   errors: [
@@ -1865,7 +1833,7 @@ export const getFlowTemplateRevisions: API.OperationMethod<
     GetFlowTemplateRevisionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFlowTemplateRevisionsRequest,
   output: GetFlowTemplateRevisionsResponse,
   errors: [
@@ -1895,7 +1863,7 @@ export const getNamespaceDeletionStatus: API.OperationMethod<
   GetNamespaceDeletionStatusResponse,
   GetNamespaceDeletionStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNamespaceDeletionStatusRequest,
   output: GetNamespaceDeletionStatusResponse,
   errors: [
@@ -1919,7 +1887,7 @@ export const getSystemInstance: API.OperationMethod<
   GetSystemInstanceResponse,
   GetSystemInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSystemInstanceRequest,
   output: GetSystemInstanceResponse,
   errors: [
@@ -1944,7 +1912,7 @@ export const getSystemTemplate: API.OperationMethod<
   GetSystemTemplateResponse,
   GetSystemTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSystemTemplateRequest,
   output: GetSystemTemplateResponse,
   errors: [
@@ -1985,7 +1953,7 @@ export const getSystemTemplateRevisions: API.OperationMethod<
     GetSystemTemplateRevisionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSystemTemplateRevisionsRequest,
   output: GetSystemTemplateRevisionsResponse,
   errors: [
@@ -2016,7 +1984,7 @@ export const getUploadStatus: API.OperationMethod<
   GetUploadStatusResponse,
   GetUploadStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUploadStatusRequest,
   output: GetUploadStatusResponse,
   errors: [
@@ -2056,7 +2024,7 @@ export const listFlowExecutionMessages: API.OperationMethod<
     ListFlowExecutionMessagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowExecutionMessagesRequest,
   output: ListFlowExecutionMessagesResponse,
   errors: [
@@ -2102,7 +2070,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2147,7 +2115,7 @@ export const searchEntities: API.OperationMethod<
     SearchEntitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchEntitiesRequest,
   output: SearchEntitiesResponse,
   errors: [
@@ -2192,7 +2160,7 @@ export const searchFlowExecutions: API.OperationMethod<
     SearchFlowExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchFlowExecutionsRequest,
   output: SearchFlowExecutionsResponse,
   errors: [
@@ -2237,7 +2205,7 @@ export const searchFlowTemplates: API.OperationMethod<
     SearchFlowTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchFlowTemplatesRequest,
   output: SearchFlowTemplatesResponse,
   errors: [
@@ -2281,7 +2249,7 @@ export const searchSystemInstances: API.OperationMethod<
     SearchSystemInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSystemInstancesRequest,
   output: SearchSystemInstancesResponse,
   errors: [
@@ -2325,7 +2293,7 @@ export const searchSystemTemplates: API.OperationMethod<
     SearchSystemTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSystemTemplatesRequest,
   output: SearchSystemTemplatesResponse,
   errors: [
@@ -2375,7 +2343,7 @@ export const searchThings: API.OperationMethod<
     SearchThingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchThingsRequest,
   output: SearchThingsResponse,
   errors: [
@@ -2406,7 +2374,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2432,7 +2400,7 @@ export const undeploySystemInstance: API.OperationMethod<
   UndeploySystemInstanceResponse,
   UndeploySystemInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeploySystemInstanceRequest,
   output: UndeploySystemInstanceResponse,
   errors: [
@@ -2458,7 +2426,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2484,7 +2452,7 @@ export const updateFlowTemplate: API.OperationMethod<
   UpdateFlowTemplateResponse,
   UpdateFlowTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlowTemplateRequest,
   output: UpdateFlowTemplateResponse,
   errors: [
@@ -2509,7 +2477,7 @@ export const updateSystemTemplate: API.OperationMethod<
   UpdateSystemTemplateResponse,
   UpdateSystemTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSystemTemplateRequest,
   output: UpdateSystemTemplateResponse,
   errors: [
@@ -2545,7 +2513,7 @@ export const uploadEntityDefinitions: API.OperationMethod<
   UploadEntityDefinitionsResponse,
   UploadEntityDefinitionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadEntityDefinitionsRequest,
   output: UploadEntityDefinitionsResponse,
   errors: [

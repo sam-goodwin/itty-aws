@@ -28,7 +28,7 @@ export interface V1CreateASsoProviderInput {
     | "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent";
 }
 export const V1CreateASsoProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     type: Schema.Literals(["saml"]),
     metadata_xml: Schema.optional(Schema.String),
@@ -104,7 +104,7 @@ export interface V1CreateASsoProviderOutput {
   updated_at?: string;
 }
 export const V1CreateASsoProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     saml: Schema.optional(
       Schema.Struct({
@@ -162,10 +162,8 @@ export const V1CreateASsoProviderOutput =
  *
  * @param ref - Project ref
  */
-export const v1CreateASsoProvider = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1CreateASsoProviderInput,
-    outputSchema: V1CreateASsoProviderOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1CreateASsoProvider = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1CreateASsoProviderInput,
+  outputSchema: V1CreateASsoProviderOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -37,7 +37,7 @@ export interface UpdateInput {
   is_not_active_reason?: string | null;
   is_pending_deletion?: boolean | null;
 }
-export const UpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.String),
   slug: Schema.optional(Schema.String),
@@ -122,7 +122,7 @@ export interface UpdateOutput {
   is_not_active_reason?: string | null;
   is_pending_deletion?: boolean | null;
 }
-export const UpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   slug: Schema.optional(Schema.String),
@@ -176,7 +176,7 @@ export const UpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param id - A UUID string identifying this organization.
  */
-export const update = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const update = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateInput,
   outputSchema: UpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

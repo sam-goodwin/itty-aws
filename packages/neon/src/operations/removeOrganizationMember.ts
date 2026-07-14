@@ -8,7 +8,7 @@ export interface RemoveOrganizationMemberInput {
   member_id: string;
 }
 export const RemoveOrganizationMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
     member_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const RemoveOrganizationMemberInput =
 // Output Schema
 export interface RemoveOrganizationMemberOutput {}
 export const RemoveOrganizationMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as unknown as Schema.Codec<RemoveOrganizationMemberOutput>;
 
@@ -36,9 +36,7 @@ export const RemoveOrganizationMemberOutput =
  * @param org_id - The Neon organization ID
  * @param member_id - The Neon organization member ID
  */
-export const removeOrganizationMember = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RemoveOrganizationMemberInput,
-    outputSchema: RemoveOrganizationMemberOutput,
-  }),
-);
+export const removeOrganizationMember = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RemoveOrganizationMemberInput,
+  outputSchema: RemoveOrganizationMemberOutput,
+}));

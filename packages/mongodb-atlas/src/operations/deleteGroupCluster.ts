@@ -12,7 +12,7 @@ export interface DeleteGroupClusterInput {
   retainBackups?: boolean;
 }
 export const DeleteGroupClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -28,7 +28,7 @@ export const DeleteGroupClusterInput =
 // Output Schema
 export type DeleteGroupClusterOutput = void;
 export const DeleteGroupClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const DeleteGroupClusterOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  * @param retainBackups - Flag that indicates whether to retain backup snapshots for the deleted dedicated cluster.
  */
-export const deleteGroupCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteGroupCluster = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteGroupClusterInput,
   outputSchema: DeleteGroupClusterOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

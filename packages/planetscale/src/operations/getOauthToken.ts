@@ -11,7 +11,7 @@ export interface GetOauthTokenInput {
   application_id: string;
   token_id: string;
 }
-export const GetOauthTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOauthTokenInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   application_id: Schema.String.pipe(T.PathParam()),
   token_id: Schema.String.pipe(T.PathParam()),
@@ -84,7 +84,7 @@ export interface GetOauthTokenOutput {
     };
   } | null;
 }
-export const GetOauthTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOauthTokenOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.optional(Schema.NullOr(Schema.String)),
   display_name: Schema.String,
@@ -197,7 +197,7 @@ export const GetOauthTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param application_id - The ID of the OAuth application
  * @param token_id - The ID of the OAuth application token
  */
-export const getOauthToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOauthToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOauthTokenInput,
   outputSchema: GetOauthTokenOutput,
   errors: [Forbidden, NotFound] as const,

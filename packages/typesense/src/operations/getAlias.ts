@@ -7,7 +7,7 @@ import { NotFound } from "../errors.ts";
 export interface GetAliasInput {
   aliasName: string;
 }
-export const GetAliasInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAliasInput = /*@__PURE__*/ Schema.Struct({
   aliasName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/aliases/{aliasName}" }),
@@ -18,7 +18,7 @@ export interface GetAliasOutput {
   name: string;
   collection_name: string;
 }
-export const GetAliasOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAliasOutput = /*@__PURE__*/ Schema.Struct({
   name: Schema.String,
   collection_name: Schema.String,
 }) as unknown as Schema.Codec<GetAliasOutput>;
@@ -31,7 +31,7 @@ export const GetAliasOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param aliasName - The name of the alias to retrieve
  */
-export const getAlias = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAlias = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAliasInput,
   outputSchema: GetAliasOutput,
   errors: [NotFound] as const,

@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const App_CertificatesCustomDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/apps/{app_name}/certificates/{hostname}/custom",
@@ -15,7 +15,7 @@ export type App_CertificatesCustomDeleteInput =
 
 // Output Schema
 export const App_CertificatesCustomDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
     certificates: Schema.optional(
       Schema.Array(
@@ -96,7 +96,7 @@ export type App_CertificatesCustomDeleteOutput =
  * Remove custom certificate
  */
 export const App_CertificatesCustomDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: App_CertificatesCustomDeleteInput,
     outputSchema: App_CertificatesCustomDeleteOutput,
   }));

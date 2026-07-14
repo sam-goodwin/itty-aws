@@ -56,7 +56,7 @@ interface ResourceTaggingTaggedResourceObjectAccessApplication {
   type: "access_application";
 }
 const ResourceTaggingTaggedResourceObjectAccessApplication =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -82,7 +82,7 @@ interface ResourceTaggingTaggedResourceObjectAccessApplicationPolicy {
   zoneId: string;
 }
 const ResourceTaggingTaggedResourceObjectAccessApplicationPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accessApplicationId: Schema.String,
@@ -116,7 +116,7 @@ interface ResourceTaggingTaggedResourceObjectAccessGroup {
   type: "access_group";
 }
 const ResourceTaggingTaggedResourceObjectAccessGroup =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -138,7 +138,7 @@ interface ResourceTaggingTaggedResourceObjectAccount {
   type: "account";
 }
 const ResourceTaggingTaggedResourceObjectAccount =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -160,7 +160,7 @@ interface ResourceTaggingTaggedResourceObjectAIGateway {
   type: "ai_gateway";
 }
 const ResourceTaggingTaggedResourceObjectAIGateway =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -182,7 +182,7 @@ interface ResourceTaggingTaggedResourceObjectAlertingPolicy {
   type: "alerting_policy";
 }
 const ResourceTaggingTaggedResourceObjectAlertingPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -204,7 +204,7 @@ interface ResourceTaggingTaggedResourceObjectAlertingWebhook {
   type: "alerting_webhook";
 }
 const ResourceTaggingTaggedResourceObjectAlertingWebhook =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -228,7 +228,7 @@ interface ResourceTaggingTaggedResourceObjectAPIGatewayOperation {
   zoneId: string;
 }
 const ResourceTaggingTaggedResourceObjectAPIGatewayOperation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -260,7 +260,7 @@ interface ResourceTaggingTaggedResourceObjectCloudflaredTunnel {
   type: "cloudflared_tunnel";
 }
 const ResourceTaggingTaggedResourceObjectCloudflaredTunnel =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -284,7 +284,7 @@ interface ResourceTaggingTaggedResourceObjectCustomCertificate {
   zoneId: string;
 }
 const ResourceTaggingTaggedResourceObjectCustomCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -318,7 +318,7 @@ interface ResourceTaggingTaggedResourceObjectCustomHostname {
   zoneId: string;
 }
 const ResourceTaggingTaggedResourceObjectCustomHostname =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -350,7 +350,7 @@ interface ResourceTaggingTaggedResourceObjectD1Database {
   type: "d1_database";
 }
 const ResourceTaggingTaggedResourceObjectD1Database =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -374,7 +374,7 @@ interface ResourceTaggingTaggedResourceObjectDNSRecord {
   zoneId: string;
 }
 const ResourceTaggingTaggedResourceObjectDNSRecord =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -406,7 +406,7 @@ interface ResourceTaggingTaggedResourceObjectDurableObjectNamespace {
   type: "durable_object_namespace";
 }
 const ResourceTaggingTaggedResourceObjectDurableObjectNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -428,7 +428,7 @@ interface ResourceTaggingTaggedResourceObjectGatewayList {
   type: "gateway_list";
 }
 const ResourceTaggingTaggedResourceObjectGatewayList =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -450,7 +450,7 @@ interface ResourceTaggingTaggedResourceObjectGatewayRule {
   type: "gateway_rule";
 }
 const ResourceTaggingTaggedResourceObjectGatewayRule =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -472,7 +472,7 @@ interface ResourceTaggingTaggedResourceObjectImage {
   type: "image";
 }
 const ResourceTaggingTaggedResourceObjectImage =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -494,7 +494,7 @@ interface ResourceTaggingTaggedResourceObjectKVNamespace {
   type: "kv_namespace";
 }
 const ResourceTaggingTaggedResourceObjectKVNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -518,7 +518,7 @@ interface ResourceTaggingTaggedResourceObjectManagedClientCertificate {
   zoneId: string;
 }
 const ResourceTaggingTaggedResourceObjectManagedClientCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -550,7 +550,7 @@ interface ResourceTaggingTaggedResourceObjectQueue {
   type: "queue";
 }
 const ResourceTaggingTaggedResourceObjectQueue =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -572,7 +572,7 @@ interface ResourceTaggingTaggedResourceObjectR2Bucket {
   type: "r2_bucket";
 }
 const ResourceTaggingTaggedResourceObjectR2Bucket =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -594,7 +594,7 @@ interface ResourceTaggingTaggedResourceObjectResourceShare {
   type: "resource_share";
 }
 const ResourceTaggingTaggedResourceObjectResourceShare =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -616,7 +616,7 @@ interface ResourceTaggingTaggedResourceObjectStreamLiveInput {
   type: "stream_live_input";
 }
 const ResourceTaggingTaggedResourceObjectStreamLiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -638,7 +638,7 @@ interface ResourceTaggingTaggedResourceObjectStreamVideo {
   type: "stream_video";
 }
 const ResourceTaggingTaggedResourceObjectStreamVideo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -660,7 +660,7 @@ interface ResourceTaggingTaggedResourceObjectWorker {
   type: "worker";
 }
 const ResourceTaggingTaggedResourceObjectWorker =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -684,7 +684,7 @@ interface ResourceTaggingTaggedResourceObjectWorkerVersion {
   workerId: string;
 }
 const ResourceTaggingTaggedResourceObjectWorkerVersion =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -718,7 +718,7 @@ interface ResourceTaggingTaggedResourceObjectZone {
   zoneId: string;
 }
 const ResourceTaggingTaggedResourceObjectZone =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       etag: Schema.String,
@@ -742,7 +742,7 @@ interface ListKeysResponseResultInfoCursors {
   after?: string | null;
 }
 const ListKeysResponseResultInfoCursors =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
@@ -751,13 +751,12 @@ const ListKeysResponseResultInfoCursors =
 interface ListKeysResponseResultInfo {
   cursors?: { after?: string | null } | null;
 }
-const ListKeysResponseResultInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      cursors: Schema.optional(
-        Schema.Union([ListKeysResponseResultInfoCursors, Schema.Null]),
-      ),
-    }),
+const ListKeysResponseResultInfo = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    cursors: Schema.optional(
+      Schema.Union([ListKeysResponseResultInfoCursors, Schema.Null]),
+    ),
+  }),
 ) as unknown as Schema.Codec<ListKeysResponseResultInfo>;
 
 // =============================================================================
@@ -796,38 +795,37 @@ export interface GetAccountTagRequest {
   workerId?: string;
 }
 
-export const GetAccountTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      resourceId: Schema.String.pipe(T.HttpQuery("resource_id")),
-      resourceType: Schema.Union([
-        Schema.Literals([
-          "access_application",
-          "access_group",
-          "account",
-          "ai_gateway",
-          "alerting_policy",
-          "alerting_webhook",
-          "cloudflared_tunnel",
-          "d1_database",
-          "durable_object_namespace",
-          "gateway_list",
-          "gateway_rule",
-          "image",
-          "kv_namespace",
-          "queue",
-          "r2_bucket",
-          "resource_share",
-          "stream_live_input",
-          "stream_video",
-          "worker",
-          "worker_version",
-        ]),
-        Schema.String,
-      ]).pipe(T.HttpQuery("resource_type")),
-      workerId: Schema.optional(Schema.String).pipe(T.HttpQuery("worker_id")),
-    }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/tags" })),
+export const GetAccountTagRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    resourceId: Schema.String.pipe(T.HttpQuery("resource_id")),
+    resourceType: Schema.Union([
+      Schema.Literals([
+        "access_application",
+        "access_group",
+        "account",
+        "ai_gateway",
+        "alerting_policy",
+        "alerting_webhook",
+        "cloudflared_tunnel",
+        "d1_database",
+        "durable_object_namespace",
+        "gateway_list",
+        "gateway_rule",
+        "image",
+        "kv_namespace",
+        "queue",
+        "r2_bucket",
+        "resource_share",
+        "stream_live_input",
+        "stream_video",
+        "worker",
+        "worker_version",
+      ]),
+      Schema.String,
+    ]).pipe(T.HttpQuery("resource_type")),
+    workerId: Schema.optional(Schema.String).pipe(T.HttpQuery("worker_id")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/tags" })),
 ) as unknown as Schema.Codec<GetAccountTagRequest>;
 
 export type GetAccountTagResponse =
@@ -1030,37 +1028,36 @@ export type GetAccountTagResponse =
       zoneId: string;
     };
 
-export const GetAccountTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([
-      ResourceTaggingTaggedResourceObjectAccessApplicationPolicy,
-      ResourceTaggingTaggedResourceObjectAPIGatewayOperation,
-      ResourceTaggingTaggedResourceObjectCustomCertificate,
-      ResourceTaggingTaggedResourceObjectCustomHostname,
-      ResourceTaggingTaggedResourceObjectDNSRecord,
-      ResourceTaggingTaggedResourceObjectManagedClientCertificate,
-      ResourceTaggingTaggedResourceObjectWorkerVersion,
-      ResourceTaggingTaggedResourceObjectZone,
-      ResourceTaggingTaggedResourceObjectAccessApplication,
-      ResourceTaggingTaggedResourceObjectAccessGroup,
-      ResourceTaggingTaggedResourceObjectAccount,
-      ResourceTaggingTaggedResourceObjectAIGateway,
-      ResourceTaggingTaggedResourceObjectAlertingPolicy,
-      ResourceTaggingTaggedResourceObjectAlertingWebhook,
-      ResourceTaggingTaggedResourceObjectCloudflaredTunnel,
-      ResourceTaggingTaggedResourceObjectD1Database,
-      ResourceTaggingTaggedResourceObjectDurableObjectNamespace,
-      ResourceTaggingTaggedResourceObjectGatewayList,
-      ResourceTaggingTaggedResourceObjectGatewayRule,
-      ResourceTaggingTaggedResourceObjectImage,
-      ResourceTaggingTaggedResourceObjectKVNamespace,
-      ResourceTaggingTaggedResourceObjectQueue,
-      ResourceTaggingTaggedResourceObjectR2Bucket,
-      ResourceTaggingTaggedResourceObjectResourceShare,
-      ResourceTaggingTaggedResourceObjectStreamLiveInput,
-      ResourceTaggingTaggedResourceObjectStreamVideo,
-      ResourceTaggingTaggedResourceObjectWorker,
-    ]).pipe(T.ResponsePath("result")),
+export const GetAccountTagResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    ResourceTaggingTaggedResourceObjectAccessApplicationPolicy,
+    ResourceTaggingTaggedResourceObjectAPIGatewayOperation,
+    ResourceTaggingTaggedResourceObjectCustomCertificate,
+    ResourceTaggingTaggedResourceObjectCustomHostname,
+    ResourceTaggingTaggedResourceObjectDNSRecord,
+    ResourceTaggingTaggedResourceObjectManagedClientCertificate,
+    ResourceTaggingTaggedResourceObjectWorkerVersion,
+    ResourceTaggingTaggedResourceObjectZone,
+    ResourceTaggingTaggedResourceObjectAccessApplication,
+    ResourceTaggingTaggedResourceObjectAccessGroup,
+    ResourceTaggingTaggedResourceObjectAccount,
+    ResourceTaggingTaggedResourceObjectAIGateway,
+    ResourceTaggingTaggedResourceObjectAlertingPolicy,
+    ResourceTaggingTaggedResourceObjectAlertingWebhook,
+    ResourceTaggingTaggedResourceObjectCloudflaredTunnel,
+    ResourceTaggingTaggedResourceObjectD1Database,
+    ResourceTaggingTaggedResourceObjectDurableObjectNamespace,
+    ResourceTaggingTaggedResourceObjectGatewayList,
+    ResourceTaggingTaggedResourceObjectGatewayRule,
+    ResourceTaggingTaggedResourceObjectImage,
+    ResourceTaggingTaggedResourceObjectKVNamespace,
+    ResourceTaggingTaggedResourceObjectQueue,
+    ResourceTaggingTaggedResourceObjectR2Bucket,
+    ResourceTaggingTaggedResourceObjectResourceShare,
+    ResourceTaggingTaggedResourceObjectStreamLiveInput,
+    ResourceTaggingTaggedResourceObjectStreamVideo,
+    ResourceTaggingTaggedResourceObjectWorker,
+  ]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetAccountTagResponse>;
 
 export type GetAccountTagError = DefaultErrors | Forbidden;
@@ -1070,7 +1067,7 @@ export const getAccountTag: API.OperationMethod<
   GetAccountTagResponse,
   GetAccountTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountTagRequest,
   output: GetAccountTagResponse,
   errors: [Forbidden],
@@ -1112,48 +1109,47 @@ export interface PutAccountTagRequest {
   tags?: Record<string, unknown>;
 }
 
-export const PutAccountTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
-      resourceId: Schema.String,
-      resourceType: Schema.Union([
-        Schema.Literals([
-          "access_application",
-          "access_group",
-          "account",
-          "ai_gateway",
-          "alerting_policy",
-          "alerting_webhook",
-          "cloudflared_tunnel",
-          "d1_database",
-          "durable_object_namespace",
-          "gateway_list",
-          "gateway_rule",
-          "image",
-          "kv_namespace",
-          "queue",
-          "r2_bucket",
-          "resource_share",
-          "stream_live_input",
-          "stream_video",
-          "worker",
-          "worker_version",
-        ]),
-        Schema.String,
+export const PutAccountTagRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
+    resourceId: Schema.String,
+    resourceType: Schema.Union([
+      Schema.Literals([
+        "access_application",
+        "access_group",
+        "account",
+        "ai_gateway",
+        "alerting_policy",
+        "alerting_webhook",
+        "cloudflared_tunnel",
+        "d1_database",
+        "durable_object_namespace",
+        "gateway_list",
+        "gateway_rule",
+        "image",
+        "kv_namespace",
+        "queue",
+        "r2_bucket",
+        "resource_share",
+        "stream_live_input",
+        "stream_video",
+        "worker",
+        "worker_version",
       ]),
-      workerId: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }).pipe(
-      Schema.encodeKeys({
-        resourceId: "resource_id",
-        resourceType: "resource_type",
-        workerId: "worker_id",
-        tags: "tags",
-      }),
-      T.Http({ method: "PUT", path: "/accounts/{account_id}/tags" }),
-    ),
+      Schema.String,
+    ]),
+    workerId: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).pipe(
+    Schema.encodeKeys({
+      resourceId: "resource_id",
+      resourceType: "resource_type",
+      workerId: "worker_id",
+      tags: "tags",
+    }),
+    T.Http({ method: "PUT", path: "/accounts/{account_id}/tags" }),
+  ),
 ) as unknown as Schema.Codec<PutAccountTagRequest>;
 
 export type PutAccountTagResponse =
@@ -1356,37 +1352,36 @@ export type PutAccountTagResponse =
       zoneId: string;
     };
 
-export const PutAccountTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([
-      ResourceTaggingTaggedResourceObjectAccessApplicationPolicy,
-      ResourceTaggingTaggedResourceObjectAPIGatewayOperation,
-      ResourceTaggingTaggedResourceObjectCustomCertificate,
-      ResourceTaggingTaggedResourceObjectCustomHostname,
-      ResourceTaggingTaggedResourceObjectDNSRecord,
-      ResourceTaggingTaggedResourceObjectManagedClientCertificate,
-      ResourceTaggingTaggedResourceObjectWorkerVersion,
-      ResourceTaggingTaggedResourceObjectZone,
-      ResourceTaggingTaggedResourceObjectAccessApplication,
-      ResourceTaggingTaggedResourceObjectAccessGroup,
-      ResourceTaggingTaggedResourceObjectAccount,
-      ResourceTaggingTaggedResourceObjectAIGateway,
-      ResourceTaggingTaggedResourceObjectAlertingPolicy,
-      ResourceTaggingTaggedResourceObjectAlertingWebhook,
-      ResourceTaggingTaggedResourceObjectCloudflaredTunnel,
-      ResourceTaggingTaggedResourceObjectD1Database,
-      ResourceTaggingTaggedResourceObjectDurableObjectNamespace,
-      ResourceTaggingTaggedResourceObjectGatewayList,
-      ResourceTaggingTaggedResourceObjectGatewayRule,
-      ResourceTaggingTaggedResourceObjectImage,
-      ResourceTaggingTaggedResourceObjectKVNamespace,
-      ResourceTaggingTaggedResourceObjectQueue,
-      ResourceTaggingTaggedResourceObjectR2Bucket,
-      ResourceTaggingTaggedResourceObjectResourceShare,
-      ResourceTaggingTaggedResourceObjectStreamLiveInput,
-      ResourceTaggingTaggedResourceObjectStreamVideo,
-      ResourceTaggingTaggedResourceObjectWorker,
-    ]).pipe(T.ResponsePath("result")),
+export const PutAccountTagResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    ResourceTaggingTaggedResourceObjectAccessApplicationPolicy,
+    ResourceTaggingTaggedResourceObjectAPIGatewayOperation,
+    ResourceTaggingTaggedResourceObjectCustomCertificate,
+    ResourceTaggingTaggedResourceObjectCustomHostname,
+    ResourceTaggingTaggedResourceObjectDNSRecord,
+    ResourceTaggingTaggedResourceObjectManagedClientCertificate,
+    ResourceTaggingTaggedResourceObjectWorkerVersion,
+    ResourceTaggingTaggedResourceObjectZone,
+    ResourceTaggingTaggedResourceObjectAccessApplication,
+    ResourceTaggingTaggedResourceObjectAccessGroup,
+    ResourceTaggingTaggedResourceObjectAccount,
+    ResourceTaggingTaggedResourceObjectAIGateway,
+    ResourceTaggingTaggedResourceObjectAlertingPolicy,
+    ResourceTaggingTaggedResourceObjectAlertingWebhook,
+    ResourceTaggingTaggedResourceObjectCloudflaredTunnel,
+    ResourceTaggingTaggedResourceObjectD1Database,
+    ResourceTaggingTaggedResourceObjectDurableObjectNamespace,
+    ResourceTaggingTaggedResourceObjectGatewayList,
+    ResourceTaggingTaggedResourceObjectGatewayRule,
+    ResourceTaggingTaggedResourceObjectImage,
+    ResourceTaggingTaggedResourceObjectKVNamespace,
+    ResourceTaggingTaggedResourceObjectQueue,
+    ResourceTaggingTaggedResourceObjectR2Bucket,
+    ResourceTaggingTaggedResourceObjectResourceShare,
+    ResourceTaggingTaggedResourceObjectStreamLiveInput,
+    ResourceTaggingTaggedResourceObjectStreamVideo,
+    ResourceTaggingTaggedResourceObjectWorker,
+  ]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutAccountTagResponse>;
 
 export type PutAccountTagError =
@@ -1399,7 +1394,7 @@ export const putAccountTag: API.OperationMethod<
   PutAccountTagResponse,
   PutAccountTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAccountTagRequest,
   output: PutAccountTagResponse,
   errors: [Forbidden, TagPreconditionFailed],
@@ -1416,7 +1411,7 @@ export interface DeleteAccountTagRequest {
 }
 
 export const DeleteAccountTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
@@ -1436,7 +1431,7 @@ export const DeleteAccountTagRequest =
 export type DeleteAccountTagResponse = unknown;
 
 export const DeleteAccountTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<DeleteAccountTagResponse>;
 
@@ -1447,7 +1442,7 @@ export const deleteAccountTag: API.OperationMethod<
   DeleteAccountTagResponse,
   DeleteAccountTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountTagRequest,
   output: DeleteAccountTagResponse,
   errors: [Forbidden],
@@ -1463,7 +1458,7 @@ export interface ListKeysRequest {
   cursor?: string;
 }
 
-export const ListKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListKeysRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
@@ -1475,7 +1470,7 @@ export interface ListKeysResponse {
   resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
-export const ListKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListKeysResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     result: Schema.Array(Schema.String),
     resultInfo: Schema.optional(
@@ -1491,7 +1486,7 @@ export const listKeys: API.PaginatedOperationMethod<
   ListKeysResponse,
   ListKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeysRequest,
   output: ListKeysResponse,
   errors: [],
@@ -1547,7 +1542,7 @@ export interface ListResourceTaggingsRequest {
 }
 
 export const ListResourceTaggingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
@@ -1800,7 +1795,7 @@ export interface ListResourceTaggingsResponse {
 }
 
 export const ListResourceTaggingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -1846,7 +1841,7 @@ export const listResourceTaggings: API.PaginatedOperationMethod<
   ListResourceTaggingsResponse,
   ListResourceTaggingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTaggingsRequest,
   output: ListResourceTaggingsResponse,
   errors: [],
@@ -1899,52 +1894,51 @@ export interface ListValuesRequest {
     | (string & {});
 }
 
-export const ListValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      tagKey: Schema.String.pipe(T.HttpPath("tagKey")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "access_application",
-            "access_application_policy",
-            "access_group",
-            "account",
-            "ai_gateway",
-            "alerting_policy",
-            "alerting_webhook",
-            "api_gateway_operation",
-            "cloudflared_tunnel",
-            "custom_certificate",
-            "custom_hostname",
-            "d1_database",
-            "dns_record",
-            "durable_object_namespace",
-            "gateway_list",
-            "gateway_rule",
-            "image",
-            "kv_namespace",
-            "managed_client_certificate",
-            "queue",
-            "r2_bucket",
-            "resource_share",
-            "stream_live_input",
-            "stream_video",
-            "worker",
-            "worker_version",
-            "zone",
-          ]),
-          Schema.String,
+export const ListValuesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    tagKey: Schema.String.pipe(T.HttpPath("tagKey")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "access_application",
+          "access_application_policy",
+          "access_group",
+          "account",
+          "ai_gateway",
+          "alerting_policy",
+          "alerting_webhook",
+          "api_gateway_operation",
+          "cloudflared_tunnel",
+          "custom_certificate",
+          "custom_hostname",
+          "d1_database",
+          "dns_record",
+          "durable_object_namespace",
+          "gateway_list",
+          "gateway_rule",
+          "image",
+          "kv_namespace",
+          "managed_client_certificate",
+          "queue",
+          "r2_bucket",
+          "resource_share",
+          "stream_live_input",
+          "stream_video",
+          "worker",
+          "worker_version",
+          "zone",
         ]),
-      ).pipe(T.HttpQuery("type")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/tags/values/{tagKey}",
-      }),
-    ),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("type")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/tags/values/{tagKey}",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListValuesRequest>;
 
 export interface ListValuesResponse {
@@ -1952,14 +1946,13 @@ export interface ListValuesResponse {
   resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
-export const ListValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(Schema.String),
-      resultInfo: Schema.optional(
-        Schema.Union([ListKeysResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListValuesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(Schema.String),
+    resultInfo: Schema.optional(
+      Schema.Union([ListKeysResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListValuesResponse>;
 
 export type ListValuesError = DefaultErrors;
@@ -1969,7 +1962,7 @@ export const listValues: API.PaginatedOperationMethod<
   ListValuesResponse,
   ListValuesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListValuesRequest,
   output: ListValuesResponse,
   errors: [],
@@ -2004,27 +1997,26 @@ export interface GetZoneTagRequest {
   accessApplicationId?: string;
 }
 
-export const GetZoneTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      resourceId: Schema.String.pipe(T.HttpQuery("resource_id")),
-      resourceType: Schema.Union([
-        Schema.Literals([
-          "access_application_policy",
-          "api_gateway_operation",
-          "custom_certificate",
-          "custom_hostname",
-          "dns_record",
-          "managed_client_certificate",
-          "zone",
-        ]),
-        Schema.String,
-      ]).pipe(T.HttpQuery("resource_type")),
-      accessApplicationId: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("access_application_id"),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/tags" })),
+export const GetZoneTagRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    resourceId: Schema.String.pipe(T.HttpQuery("resource_id")),
+    resourceType: Schema.Union([
+      Schema.Literals([
+        "access_application_policy",
+        "api_gateway_operation",
+        "custom_certificate",
+        "custom_hostname",
+        "dns_record",
+        "managed_client_certificate",
+        "zone",
+      ]),
+      Schema.String,
+    ]).pipe(T.HttpQuery("resource_type")),
+    accessApplicationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("access_application_id"),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/tags" })),
 ) as unknown as Schema.Codec<GetZoneTagRequest>;
 
 export type GetZoneTagResponse =
@@ -2227,37 +2219,36 @@ export type GetZoneTagResponse =
       zoneId: string;
     };
 
-export const GetZoneTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([
-      ResourceTaggingTaggedResourceObjectAccessApplicationPolicy,
-      ResourceTaggingTaggedResourceObjectAPIGatewayOperation,
-      ResourceTaggingTaggedResourceObjectCustomCertificate,
-      ResourceTaggingTaggedResourceObjectCustomHostname,
-      ResourceTaggingTaggedResourceObjectDNSRecord,
-      ResourceTaggingTaggedResourceObjectManagedClientCertificate,
-      ResourceTaggingTaggedResourceObjectWorkerVersion,
-      ResourceTaggingTaggedResourceObjectZone,
-      ResourceTaggingTaggedResourceObjectAccessApplication,
-      ResourceTaggingTaggedResourceObjectAccessGroup,
-      ResourceTaggingTaggedResourceObjectAccount,
-      ResourceTaggingTaggedResourceObjectAIGateway,
-      ResourceTaggingTaggedResourceObjectAlertingPolicy,
-      ResourceTaggingTaggedResourceObjectAlertingWebhook,
-      ResourceTaggingTaggedResourceObjectCloudflaredTunnel,
-      ResourceTaggingTaggedResourceObjectD1Database,
-      ResourceTaggingTaggedResourceObjectDurableObjectNamespace,
-      ResourceTaggingTaggedResourceObjectGatewayList,
-      ResourceTaggingTaggedResourceObjectGatewayRule,
-      ResourceTaggingTaggedResourceObjectImage,
-      ResourceTaggingTaggedResourceObjectKVNamespace,
-      ResourceTaggingTaggedResourceObjectQueue,
-      ResourceTaggingTaggedResourceObjectR2Bucket,
-      ResourceTaggingTaggedResourceObjectResourceShare,
-      ResourceTaggingTaggedResourceObjectStreamLiveInput,
-      ResourceTaggingTaggedResourceObjectStreamVideo,
-      ResourceTaggingTaggedResourceObjectWorker,
-    ]).pipe(T.ResponsePath("result")),
+export const GetZoneTagResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    ResourceTaggingTaggedResourceObjectAccessApplicationPolicy,
+    ResourceTaggingTaggedResourceObjectAPIGatewayOperation,
+    ResourceTaggingTaggedResourceObjectCustomCertificate,
+    ResourceTaggingTaggedResourceObjectCustomHostname,
+    ResourceTaggingTaggedResourceObjectDNSRecord,
+    ResourceTaggingTaggedResourceObjectManagedClientCertificate,
+    ResourceTaggingTaggedResourceObjectWorkerVersion,
+    ResourceTaggingTaggedResourceObjectZone,
+    ResourceTaggingTaggedResourceObjectAccessApplication,
+    ResourceTaggingTaggedResourceObjectAccessGroup,
+    ResourceTaggingTaggedResourceObjectAccount,
+    ResourceTaggingTaggedResourceObjectAIGateway,
+    ResourceTaggingTaggedResourceObjectAlertingPolicy,
+    ResourceTaggingTaggedResourceObjectAlertingWebhook,
+    ResourceTaggingTaggedResourceObjectCloudflaredTunnel,
+    ResourceTaggingTaggedResourceObjectD1Database,
+    ResourceTaggingTaggedResourceObjectDurableObjectNamespace,
+    ResourceTaggingTaggedResourceObjectGatewayList,
+    ResourceTaggingTaggedResourceObjectGatewayRule,
+    ResourceTaggingTaggedResourceObjectImage,
+    ResourceTaggingTaggedResourceObjectKVNamespace,
+    ResourceTaggingTaggedResourceObjectQueue,
+    ResourceTaggingTaggedResourceObjectR2Bucket,
+    ResourceTaggingTaggedResourceObjectResourceShare,
+    ResourceTaggingTaggedResourceObjectStreamLiveInput,
+    ResourceTaggingTaggedResourceObjectStreamVideo,
+    ResourceTaggingTaggedResourceObjectWorker,
+  ]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetZoneTagResponse>;
 
 export type GetZoneTagError =
@@ -2270,7 +2261,7 @@ export const getZoneTag: API.OperationMethod<
   GetZoneTagResponse,
   GetZoneTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetZoneTagRequest,
   output: GetZoneTagResponse,
   errors: [ZoneTagResourceNotFound, Forbidden],
@@ -2299,35 +2290,34 @@ export interface PutZoneTagRequest {
   accessApplicationId?: string;
 }
 
-export const PutZoneTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
-      resourceId: Schema.String,
-      resourceType: Schema.Union([
-        Schema.Literals([
-          "api_gateway_operation",
-          "custom_certificate",
-          "custom_hostname",
-          "dns_record",
-          "managed_client_certificate",
-          "zone",
-          "access_application_policy",
-        ]),
-        Schema.String,
+export const PutZoneTagRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
+    resourceId: Schema.String,
+    resourceType: Schema.Union([
+      Schema.Literals([
+        "api_gateway_operation",
+        "custom_certificate",
+        "custom_hostname",
+        "dns_record",
+        "managed_client_certificate",
+        "zone",
+        "access_application_policy",
       ]),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      accessApplicationId: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        resourceId: "resource_id",
-        resourceType: "resource_type",
-        tags: "tags",
-        accessApplicationId: "access_application_id",
-      }),
-      T.Http({ method: "PUT", path: "/zones/{zone_id}/tags" }),
-    ),
+      Schema.String,
+    ]),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    accessApplicationId: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      resourceId: "resource_id",
+      resourceType: "resource_type",
+      tags: "tags",
+      accessApplicationId: "access_application_id",
+    }),
+    T.Http({ method: "PUT", path: "/zones/{zone_id}/tags" }),
+  ),
 ) as unknown as Schema.Codec<PutZoneTagRequest>;
 
 export type PutZoneTagResponse =
@@ -2530,37 +2520,36 @@ export type PutZoneTagResponse =
       zoneId: string;
     };
 
-export const PutZoneTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([
-      ResourceTaggingTaggedResourceObjectAccessApplicationPolicy,
-      ResourceTaggingTaggedResourceObjectAPIGatewayOperation,
-      ResourceTaggingTaggedResourceObjectCustomCertificate,
-      ResourceTaggingTaggedResourceObjectCustomHostname,
-      ResourceTaggingTaggedResourceObjectDNSRecord,
-      ResourceTaggingTaggedResourceObjectManagedClientCertificate,
-      ResourceTaggingTaggedResourceObjectWorkerVersion,
-      ResourceTaggingTaggedResourceObjectZone,
-      ResourceTaggingTaggedResourceObjectAccessApplication,
-      ResourceTaggingTaggedResourceObjectAccessGroup,
-      ResourceTaggingTaggedResourceObjectAccount,
-      ResourceTaggingTaggedResourceObjectAIGateway,
-      ResourceTaggingTaggedResourceObjectAlertingPolicy,
-      ResourceTaggingTaggedResourceObjectAlertingWebhook,
-      ResourceTaggingTaggedResourceObjectCloudflaredTunnel,
-      ResourceTaggingTaggedResourceObjectD1Database,
-      ResourceTaggingTaggedResourceObjectDurableObjectNamespace,
-      ResourceTaggingTaggedResourceObjectGatewayList,
-      ResourceTaggingTaggedResourceObjectGatewayRule,
-      ResourceTaggingTaggedResourceObjectImage,
-      ResourceTaggingTaggedResourceObjectKVNamespace,
-      ResourceTaggingTaggedResourceObjectQueue,
-      ResourceTaggingTaggedResourceObjectR2Bucket,
-      ResourceTaggingTaggedResourceObjectResourceShare,
-      ResourceTaggingTaggedResourceObjectStreamLiveInput,
-      ResourceTaggingTaggedResourceObjectStreamVideo,
-      ResourceTaggingTaggedResourceObjectWorker,
-    ]).pipe(T.ResponsePath("result")),
+export const PutZoneTagResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    ResourceTaggingTaggedResourceObjectAccessApplicationPolicy,
+    ResourceTaggingTaggedResourceObjectAPIGatewayOperation,
+    ResourceTaggingTaggedResourceObjectCustomCertificate,
+    ResourceTaggingTaggedResourceObjectCustomHostname,
+    ResourceTaggingTaggedResourceObjectDNSRecord,
+    ResourceTaggingTaggedResourceObjectManagedClientCertificate,
+    ResourceTaggingTaggedResourceObjectWorkerVersion,
+    ResourceTaggingTaggedResourceObjectZone,
+    ResourceTaggingTaggedResourceObjectAccessApplication,
+    ResourceTaggingTaggedResourceObjectAccessGroup,
+    ResourceTaggingTaggedResourceObjectAccount,
+    ResourceTaggingTaggedResourceObjectAIGateway,
+    ResourceTaggingTaggedResourceObjectAlertingPolicy,
+    ResourceTaggingTaggedResourceObjectAlertingWebhook,
+    ResourceTaggingTaggedResourceObjectCloudflaredTunnel,
+    ResourceTaggingTaggedResourceObjectD1Database,
+    ResourceTaggingTaggedResourceObjectDurableObjectNamespace,
+    ResourceTaggingTaggedResourceObjectGatewayList,
+    ResourceTaggingTaggedResourceObjectGatewayRule,
+    ResourceTaggingTaggedResourceObjectImage,
+    ResourceTaggingTaggedResourceObjectKVNamespace,
+    ResourceTaggingTaggedResourceObjectQueue,
+    ResourceTaggingTaggedResourceObjectR2Bucket,
+    ResourceTaggingTaggedResourceObjectResourceShare,
+    ResourceTaggingTaggedResourceObjectStreamLiveInput,
+    ResourceTaggingTaggedResourceObjectStreamVideo,
+    ResourceTaggingTaggedResourceObjectWorker,
+  ]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutZoneTagResponse>;
 
 export type PutZoneTagError =
@@ -2574,7 +2563,7 @@ export const putZoneTag: API.OperationMethod<
   PutZoneTagResponse,
   PutZoneTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutZoneTagRequest,
   output: PutZoneTagResponse,
   errors: [ZoneTagResourceNotFound, Forbidden, TagPreconditionFailed],
@@ -2590,27 +2579,26 @@ export interface DeleteZoneTagRequest {
   accessApplicationId?: string;
 }
 
-export const DeleteZoneTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
-      resourceId: Schema.String,
-      resourceType: Schema.String,
-      accessApplicationId: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        resourceId: "resource_id",
-        resourceType: "resource_type",
-        accessApplicationId: "access_application_id",
-      }),
-      T.Http({ method: "DELETE", path: "/zones/{zone_id}/tags" }),
-    ),
+export const DeleteZoneTagRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
+    resourceId: Schema.String,
+    resourceType: Schema.String,
+    accessApplicationId: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      resourceId: "resource_id",
+      resourceType: "resource_type",
+      accessApplicationId: "access_application_id",
+    }),
+    T.Http({ method: "DELETE", path: "/zones/{zone_id}/tags" }),
+  ),
 ) as unknown as Schema.Codec<DeleteZoneTagRequest>;
 
 export type DeleteZoneTagResponse = unknown;
 
-export const DeleteZoneTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+export const DeleteZoneTagResponse = /*@__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
 ) as unknown as Schema.Codec<DeleteZoneTagResponse>;
 
@@ -2621,7 +2609,7 @@ export const deleteZoneTag: API.OperationMethod<
   DeleteZoneTagResponse,
   DeleteZoneTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteZoneTagRequest,
   output: DeleteZoneTagResponse,
   errors: [Forbidden],

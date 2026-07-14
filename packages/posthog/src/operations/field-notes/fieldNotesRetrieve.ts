@@ -8,7 +8,7 @@ export interface FieldNotesRetrieveInput {
   project_id: string;
 }
 export const FieldNotesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -58,7 +58,7 @@ export interface FieldNotesRetrieveOutput {
   };
 }
 export const FieldNotesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     comment: Schema.String,
     field_note_status: Schema.optional(
@@ -124,7 +124,7 @@ export const FieldNotesRetrieveOutput =
  * @param id - A UUID string identifying this field note.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const fieldNotesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const fieldNotesRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: FieldNotesRetrieveInput,
   outputSchema: FieldNotesRetrieveOutput,
 }));

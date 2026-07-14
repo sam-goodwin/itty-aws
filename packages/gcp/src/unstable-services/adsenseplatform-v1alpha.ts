@@ -28,7 +28,7 @@ export interface Decimal {
 }
 
 export const Decimal: Schema.Codec<Decimal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "Decimal" });
 
@@ -42,7 +42,7 @@ export interface PlatformGroup {
 }
 
 export const PlatformGroup: Schema.Codec<PlatformGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     revshareMillipercent: Schema.optional(Decimal),
@@ -56,7 +56,7 @@ export interface ListPlatformGroupsResponse {
 }
 
 export const ListPlatformGroupsResponse: Schema.Codec<ListPlatformGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     platformGroups: Schema.optional(Schema.Array(PlatformGroup)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListPlatformGroupsResponse" });
@@ -77,7 +77,7 @@ export interface Site {
 }
 
 export const Site: Schema.Codec<Site> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -86,7 +86,7 @@ export const Site: Schema.Codec<Site> =
 export interface RequestSiteReviewResponse {}
 
 export const RequestSiteReviewResponse: Schema.Codec<RequestSiteReviewResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RequestSiteReviewResponse",
   });
 
@@ -98,7 +98,7 @@ export interface TimeZone {
 }
 
 export const TimeZone: Schema.Codec<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "TimeZone" });
@@ -126,7 +126,7 @@ export interface Account {
 }
 
 export const Account: Schema.Codec<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     creationRequestId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -142,21 +142,21 @@ export interface LookupAccountResponse {
 }
 
 export const LookupAccountResponse: Schema.Codec<LookupAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "LookupAccountResponse" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
 export interface CloseAccountResponse {}
 
 export const CloseAccountResponse: Schema.Codec<CloseAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CloseAccountResponse",
   });
 
@@ -184,7 +184,7 @@ export interface Address {
 }
 
 export const Address: Schema.Codec<Address> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address1: Schema.optional(Schema.String),
     address2: Schema.optional(Schema.String),
     contact: Schema.optional(Schema.String),
@@ -205,7 +205,7 @@ export interface EventInfo {
 }
 
 export const EventInfo: Schema.Codec<EventInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     billingAddress: Schema.optional(Address),
   }).annotate({ identifier: "EventInfo" });
@@ -224,7 +224,7 @@ export interface Event {
 }
 
 export const Event: Schema.Codec<Event> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventInfo: Schema.optional(EventInfo),
     eventTime: Schema.optional(Schema.String),
     eventType: Schema.optional(Schema.String),
@@ -240,7 +240,7 @@ export interface PlatformChildSite {
 }
 
 export const PlatformChildSite: Schema.Codec<PlatformChildSite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
     platformGroup: Schema.optional(Schema.String),
@@ -254,7 +254,7 @@ export interface ListSitesResponse {
 }
 
 export const ListSitesResponse: Schema.Codec<ListSitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sites: Schema.optional(Schema.Array(Site)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListSitesResponse" });
@@ -267,7 +267,7 @@ export interface ListAccountsResponse {
 }
 
 export const ListAccountsResponse: Schema.Codec<ListAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accounts: Schema.optional(Schema.Array(Account)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAccountsResponse" });
@@ -282,7 +282,7 @@ export interface Platform {
 }
 
 export const Platform: Schema.Codec<Platform> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     defaultPlatformGroup: Schema.optional(Schema.String),
@@ -291,7 +291,7 @@ export const Platform: Schema.Codec<Platform> =
 export interface CloseAccountRequest {}
 
 export const CloseAccountRequest: Schema.Codec<CloseAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CloseAccountRequest",
   });
 
@@ -303,7 +303,7 @@ export interface ListPlatformsResponse {
 }
 
 export const ListPlatformsResponse: Schema.Codec<ListPlatformsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     platforms: Schema.optional(Schema.Array(Platform)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListPlatformsResponse" });
@@ -316,7 +316,7 @@ export interface ListPlatformChildSitesResponse {
 }
 
 export const ListPlatformChildSitesResponse: Schema.Codec<ListPlatformChildSitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     platformChildSites: Schema.optional(Schema.Array(PlatformChildSite)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListPlatformChildSitesResponse" });
@@ -381,7 +381,7 @@ export interface GetPlatformsAccountsRequest {
 }
 
 export const GetPlatformsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -389,7 +389,7 @@ export const GetPlatformsAccountsRequest =
   ) as unknown as Schema.Codec<GetPlatformsAccountsRequest>;
 
 export type GetPlatformsAccountsResponse = Account;
-export const GetPlatformsAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
+export const GetPlatformsAccountsResponse = /*@__PURE__*/ Account;
 
 export type GetPlatformsAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -399,7 +399,7 @@ export const getPlatformsAccounts: API.OperationMethod<
   GetPlatformsAccountsResponse,
   GetPlatformsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlatformsAccountsRequest,
   output: GetPlatformsAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -413,7 +413,7 @@ export interface ClosePlatformsAccountsRequest {
 }
 
 export const ClosePlatformsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CloseAccountRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -423,7 +423,7 @@ export const ClosePlatformsAccountsRequest =
 
 export type ClosePlatformsAccountsResponse = CloseAccountResponse;
 export const ClosePlatformsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CloseAccountResponse;
+  /*@__PURE__*/ CloseAccountResponse;
 
 export type ClosePlatformsAccountsError =
   | DefaultErrors
@@ -438,7 +438,7 @@ export const closePlatformsAccounts: API.OperationMethod<
   ClosePlatformsAccountsResponse,
   ClosePlatformsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClosePlatformsAccountsRequest,
   output: ClosePlatformsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -452,7 +452,7 @@ export interface LookupPlatformsAccountsRequest {
 }
 
 export const LookupPlatformsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     creationRequestId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("creationRequestId"),
@@ -464,7 +464,7 @@ export const LookupPlatformsAccountsRequest =
 
 export type LookupPlatformsAccountsResponse = LookupAccountResponse;
 export const LookupPlatformsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LookupAccountResponse;
+  /*@__PURE__*/ LookupAccountResponse;
 
 export type LookupPlatformsAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -474,7 +474,7 @@ export const lookupPlatformsAccounts: API.OperationMethod<
   LookupPlatformsAccountsResponse,
   LookupPlatformsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LookupPlatformsAccountsRequest,
   output: LookupPlatformsAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -490,7 +490,7 @@ export interface ListPlatformsAccountsRequest {
 }
 
 export const ListPlatformsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -500,8 +500,7 @@ export const ListPlatformsAccountsRequest =
   ) as unknown as Schema.Codec<ListPlatformsAccountsRequest>;
 
 export type ListPlatformsAccountsResponse = ListAccountsResponse;
-export const ListPlatformsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAccountsResponse;
+export const ListPlatformsAccountsResponse = /*@__PURE__*/ ListAccountsResponse;
 
 export type ListPlatformsAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -511,7 +510,7 @@ export const listPlatformsAccounts: API.PaginatedOperationMethod<
   ListPlatformsAccountsResponse,
   ListPlatformsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsAccountsRequest,
   output: ListPlatformsAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -529,7 +528,7 @@ export interface CreatePlatformsAccountsRequest {
 }
 
 export const CreatePlatformsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Account).pipe(T.HttpBody()),
   }).pipe(
@@ -542,8 +541,7 @@ export const CreatePlatformsAccountsRequest =
   ) as unknown as Schema.Codec<CreatePlatformsAccountsRequest>;
 
 export type CreatePlatformsAccountsResponse = Account;
-export const CreatePlatformsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Account;
+export const CreatePlatformsAccountsResponse = /*@__PURE__*/ Account;
 
 export type CreatePlatformsAccountsError =
   | DefaultErrors
@@ -558,7 +556,7 @@ export const createPlatformsAccounts: API.OperationMethod<
   CreatePlatformsAccountsResponse,
   CreatePlatformsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePlatformsAccountsRequest,
   output: CreatePlatformsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -572,7 +570,7 @@ export interface CreatePlatformsAccountsEventsRequest {
 }
 
 export const CreatePlatformsAccountsEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Event).pipe(T.HttpBody()),
   }).pipe(
@@ -581,8 +579,7 @@ export const CreatePlatformsAccountsEventsRequest =
   ) as unknown as Schema.Codec<CreatePlatformsAccountsEventsRequest>;
 
 export type CreatePlatformsAccountsEventsResponse = Event;
-export const CreatePlatformsAccountsEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Event;
+export const CreatePlatformsAccountsEventsResponse = /*@__PURE__*/ Event;
 
 export type CreatePlatformsAccountsEventsError =
   | DefaultErrors
@@ -597,7 +594,7 @@ export const createPlatformsAccountsEvents: API.OperationMethod<
   CreatePlatformsAccountsEventsResponse,
   CreatePlatformsAccountsEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePlatformsAccountsEventsRequest,
   output: CreatePlatformsAccountsEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -609,7 +606,7 @@ export interface DeletePlatformsAccountsSitesRequest {
 }
 
 export const DeletePlatformsAccountsSitesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
@@ -617,8 +614,7 @@ export const DeletePlatformsAccountsSitesRequest =
   ) as unknown as Schema.Codec<DeletePlatformsAccountsSitesRequest>;
 
 export type DeletePlatformsAccountsSitesResponse = Empty;
-export const DeletePlatformsAccountsSitesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeletePlatformsAccountsSitesResponse = /*@__PURE__*/ Empty;
 
 export type DeletePlatformsAccountsSitesError =
   | DefaultErrors
@@ -633,7 +629,7 @@ export const deletePlatformsAccountsSites: API.OperationMethod<
   DeletePlatformsAccountsSitesResponse,
   DeletePlatformsAccountsSitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePlatformsAccountsSitesRequest,
   output: DeletePlatformsAccountsSitesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -645,7 +641,7 @@ export interface GetPlatformsAccountsSitesRequest {
 }
 
 export const GetPlatformsAccountsSitesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -653,8 +649,7 @@ export const GetPlatformsAccountsSitesRequest =
   ) as unknown as Schema.Codec<GetPlatformsAccountsSitesRequest>;
 
 export type GetPlatformsAccountsSitesResponse = Site;
-export const GetPlatformsAccountsSitesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Site;
+export const GetPlatformsAccountsSitesResponse = /*@__PURE__*/ Site;
 
 export type GetPlatformsAccountsSitesError =
   | DefaultErrors
@@ -667,7 +662,7 @@ export const getPlatformsAccountsSites: API.OperationMethod<
   GetPlatformsAccountsSitesResponse,
   GetPlatformsAccountsSitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlatformsAccountsSitesRequest,
   output: GetPlatformsAccountsSitesResponse,
   errors: [NotFound, Forbidden],
@@ -681,7 +676,7 @@ export interface CreatePlatformsAccountsSitesRequest {
 }
 
 export const CreatePlatformsAccountsSitesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Site).pipe(T.HttpBody()),
   }).pipe(
@@ -690,8 +685,7 @@ export const CreatePlatformsAccountsSitesRequest =
   ) as unknown as Schema.Codec<CreatePlatformsAccountsSitesRequest>;
 
 export type CreatePlatformsAccountsSitesResponse = Site;
-export const CreatePlatformsAccountsSitesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Site;
+export const CreatePlatformsAccountsSitesResponse = /*@__PURE__*/ Site;
 
 export type CreatePlatformsAccountsSitesError =
   | DefaultErrors
@@ -706,7 +700,7 @@ export const createPlatformsAccountsSites: API.OperationMethod<
   CreatePlatformsAccountsSitesResponse,
   CreatePlatformsAccountsSitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePlatformsAccountsSitesRequest,
   output: CreatePlatformsAccountsSitesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -718,7 +712,7 @@ export interface RequestReviewPlatformsAccountsSitesRequest {
 }
 
 export const RequestReviewPlatformsAccountsSitesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({
@@ -732,7 +726,7 @@ export const RequestReviewPlatformsAccountsSitesRequest =
 export type RequestReviewPlatformsAccountsSitesResponse =
   RequestSiteReviewResponse;
 export const RequestReviewPlatformsAccountsSitesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RequestSiteReviewResponse;
+  /*@__PURE__*/ RequestSiteReviewResponse;
 
 export type RequestReviewPlatformsAccountsSitesError =
   | DefaultErrors
@@ -747,7 +741,7 @@ export const requestReviewPlatformsAccountsSites: API.OperationMethod<
   RequestReviewPlatformsAccountsSitesResponse,
   RequestReviewPlatformsAccountsSitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestReviewPlatformsAccountsSitesRequest,
   output: RequestReviewPlatformsAccountsSitesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -763,7 +757,7 @@ export interface ListPlatformsAccountsSitesRequest {
 }
 
 export const ListPlatformsAccountsSitesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -774,7 +768,7 @@ export const ListPlatformsAccountsSitesRequest =
 
 export type ListPlatformsAccountsSitesResponse = ListSitesResponse;
 export const ListPlatformsAccountsSitesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSitesResponse;
+  /*@__PURE__*/ ListSitesResponse;
 
 export type ListPlatformsAccountsSitesError =
   | DefaultErrors
@@ -787,7 +781,7 @@ export const listPlatformsAccountsSites: API.PaginatedOperationMethod<
   ListPlatformsAccountsSitesResponse,
   ListPlatformsAccountsSitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsAccountsSitesRequest,
   output: ListPlatformsAccountsSitesResponse,
   errors: [NotFound, Forbidden],
@@ -803,7 +797,7 @@ export interface GetAccountsPlatformsRequest {
 }
 
 export const GetAccountsPlatformsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -811,8 +805,7 @@ export const GetAccountsPlatformsRequest =
   ) as unknown as Schema.Codec<GetAccountsPlatformsRequest>;
 
 export type GetAccountsPlatformsResponse = Platform;
-export const GetAccountsPlatformsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Platform;
+export const GetAccountsPlatformsResponse = /*@__PURE__*/ Platform;
 
 export type GetAccountsPlatformsError = DefaultErrors | NotFound | Forbidden;
 
@@ -822,7 +815,7 @@ export const getAccountsPlatforms: API.OperationMethod<
   GetAccountsPlatformsResponse,
   GetAccountsPlatformsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsPlatformsRequest,
   output: GetAccountsPlatformsResponse,
   errors: [NotFound, Forbidden],
@@ -838,7 +831,7 @@ export interface ListAccountsPlatformsRequest {
 }
 
 export const ListAccountsPlatformsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -849,7 +842,7 @@ export const ListAccountsPlatformsRequest =
 
 export type ListAccountsPlatformsResponse = ListPlatformsResponse;
 export const ListAccountsPlatformsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPlatformsResponse;
+  /*@__PURE__*/ ListPlatformsResponse;
 
 export type ListAccountsPlatformsError = DefaultErrors | NotFound | Forbidden;
 
@@ -859,7 +852,7 @@ export const listAccountsPlatforms: API.PaginatedOperationMethod<
   ListAccountsPlatformsResponse,
   ListAccountsPlatformsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsPlatformsRequest,
   output: ListAccountsPlatformsResponse,
   errors: [NotFound, Forbidden],
@@ -879,7 +872,7 @@ export interface PatchAccountsPlatformsGroupsRequest {
 }
 
 export const PatchAccountsPlatformsGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(PlatformGroup).pipe(T.HttpBody()),
@@ -889,8 +882,7 @@ export const PatchAccountsPlatformsGroupsRequest =
   ) as unknown as Schema.Codec<PatchAccountsPlatformsGroupsRequest>;
 
 export type PatchAccountsPlatformsGroupsResponse = PlatformGroup;
-export const PatchAccountsPlatformsGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PlatformGroup;
+export const PatchAccountsPlatformsGroupsResponse = /*@__PURE__*/ PlatformGroup;
 
 export type PatchAccountsPlatformsGroupsError =
   | DefaultErrors
@@ -905,7 +897,7 @@ export const patchAccountsPlatformsGroups: API.OperationMethod<
   PatchAccountsPlatformsGroupsResponse,
   PatchAccountsPlatformsGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsPlatformsGroupsRequest,
   output: PatchAccountsPlatformsGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -921,7 +913,7 @@ export interface ListAccountsPlatformsGroupsRequest {
 }
 
 export const ListAccountsPlatformsGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -932,7 +924,7 @@ export const ListAccountsPlatformsGroupsRequest =
 
 export type ListAccountsPlatformsGroupsResponse = ListPlatformGroupsResponse;
 export const ListAccountsPlatformsGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPlatformGroupsResponse;
+  /*@__PURE__*/ ListPlatformGroupsResponse;
 
 export type ListAccountsPlatformsGroupsError =
   | DefaultErrors
@@ -945,7 +937,7 @@ export const listAccountsPlatformsGroups: API.PaginatedOperationMethod<
   ListAccountsPlatformsGroupsResponse,
   ListAccountsPlatformsGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsPlatformsGroupsRequest,
   output: ListAccountsPlatformsGroupsResponse,
   errors: [NotFound, Forbidden],
@@ -961,7 +953,7 @@ export interface GetAccountsPlatformsGroupsRequest {
 }
 
 export const GetAccountsPlatformsGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -969,8 +961,7 @@ export const GetAccountsPlatformsGroupsRequest =
   ) as unknown as Schema.Codec<GetAccountsPlatformsGroupsRequest>;
 
 export type GetAccountsPlatformsGroupsResponse = PlatformGroup;
-export const GetAccountsPlatformsGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PlatformGroup;
+export const GetAccountsPlatformsGroupsResponse = /*@__PURE__*/ PlatformGroup;
 
 export type GetAccountsPlatformsGroupsError =
   | DefaultErrors
@@ -983,7 +974,7 @@ export const getAccountsPlatformsGroups: API.OperationMethod<
   GetAccountsPlatformsGroupsResponse,
   GetAccountsPlatformsGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsPlatformsGroupsRequest,
   output: GetAccountsPlatformsGroupsResponse,
   errors: [NotFound, Forbidden],
@@ -999,7 +990,7 @@ export interface ListAccountsPlatformsChildAccountsSitesRequest {
 }
 
 export const ListAccountsPlatformsChildAccountsSitesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1011,7 +1002,7 @@ export const ListAccountsPlatformsChildAccountsSitesRequest =
 export type ListAccountsPlatformsChildAccountsSitesResponse =
   ListPlatformChildSitesResponse;
 export const ListAccountsPlatformsChildAccountsSitesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPlatformChildSitesResponse;
+  /*@__PURE__*/ ListPlatformChildSitesResponse;
 
 export type ListAccountsPlatformsChildAccountsSitesError =
   | DefaultErrors
@@ -1024,7 +1015,7 @@ export const listAccountsPlatformsChildAccountsSites: API.PaginatedOperationMeth
   ListAccountsPlatformsChildAccountsSitesResponse,
   ListAccountsPlatformsChildAccountsSitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsPlatformsChildAccountsSitesRequest,
   output: ListAccountsPlatformsChildAccountsSitesResponse,
   errors: [NotFound, Forbidden],
@@ -1040,7 +1031,7 @@ export interface GetAccountsPlatformsChildAccountsSitesRequest {
 }
 
 export const GetAccountsPlatformsChildAccountsSitesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1049,7 +1040,7 @@ export const GetAccountsPlatformsChildAccountsSitesRequest =
 
 export type GetAccountsPlatformsChildAccountsSitesResponse = PlatformChildSite;
 export const GetAccountsPlatformsChildAccountsSitesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PlatformChildSite;
+  /*@__PURE__*/ PlatformChildSite;
 
 export type GetAccountsPlatformsChildAccountsSitesError =
   | DefaultErrors
@@ -1062,7 +1053,7 @@ export const getAccountsPlatformsChildAccountsSites: API.OperationMethod<
   GetAccountsPlatformsChildAccountsSitesResponse,
   GetAccountsPlatformsChildAccountsSitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsPlatformsChildAccountsSitesRequest,
   output: GetAccountsPlatformsChildAccountsSitesResponse,
   errors: [NotFound, Forbidden],
@@ -1078,7 +1069,7 @@ export interface PatchAccountsPlatformsChildAccountsSitesRequest {
 }
 
 export const PatchAccountsPlatformsChildAccountsSitesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(PlatformChildSite).pipe(T.HttpBody()),
@@ -1090,7 +1081,7 @@ export const PatchAccountsPlatformsChildAccountsSitesRequest =
 export type PatchAccountsPlatformsChildAccountsSitesResponse =
   PlatformChildSite;
 export const PatchAccountsPlatformsChildAccountsSitesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PlatformChildSite;
+  /*@__PURE__*/ PlatformChildSite;
 
 export type PatchAccountsPlatformsChildAccountsSitesError =
   | DefaultErrors
@@ -1105,7 +1096,7 @@ export const patchAccountsPlatformsChildAccountsSites: API.OperationMethod<
   PatchAccountsPlatformsChildAccountsSitesResponse,
   PatchAccountsPlatformsChildAccountsSitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsPlatformsChildAccountsSitesRequest,
   output: PatchAccountsPlatformsChildAccountsSitesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

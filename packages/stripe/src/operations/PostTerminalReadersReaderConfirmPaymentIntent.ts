@@ -15,7 +15,7 @@ export interface PostTerminalReadersReaderConfirmPaymentIntentInput {
   payment_intent: string;
 }
 export const PostTerminalReadersReaderConfirmPaymentIntentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
     confirm_config: Schema.optional(
       Schema.Struct({
@@ -107,7 +107,7 @@ export interface PostTerminalReadersReaderConfirmPaymentIntentOutput {
   status: "offline" | "online" | null;
 }
 export const PostTerminalReadersReaderConfirmPaymentIntentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.Unknown,
     device_sw_version: Schema.NullOr(Schema.String),
     device_type: Schema.Literals([
@@ -195,7 +195,7 @@ export const PostTerminalReadersReaderConfirmPaymentIntentOutput =
  * <p>Finalizes a payment on a Reader. See <a href="/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&process=inspect#confirm-the-paymentintent">Confirming a Payment</a> for more details.</p>
  */
 export const PostTerminalReadersReaderConfirmPaymentIntent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTerminalReadersReaderConfirmPaymentIntentInput,
     outputSchema: PostTerminalReadersReaderConfirmPaymentIntentOutput,
   }));

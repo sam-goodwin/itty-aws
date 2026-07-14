@@ -6,11 +6,9 @@ import * as T from "../../traits.ts";
 export interface RemindersRetrieveInput {
   id: string;
 }
-export const RemindersRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const RemindersRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({ method: "GET", path: "/api/reminders/{id}/" }),
 ) as unknown as Schema.Codec<RemindersRetrieveInput>;
 
@@ -56,7 +54,7 @@ export interface RemindersRetrieveOutput {
   updated_at: string | null;
 }
 export const RemindersRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     organization: Schema.String,
     team: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -117,7 +115,7 @@ export const RemindersRetrieveOutput =
  *
  * @param id - A UUID string identifying this reminder.
  */
-export const remindersRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const remindersRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemindersRetrieveInput,
   outputSchema: RemindersRetrieveOutput,
 }));

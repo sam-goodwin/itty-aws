@@ -77,36 +77,35 @@ export type FailureReason = string;
 
 //# Schemas
 export type CompletionStatus = "ready" | "failed" | (string & {});
-export const CompletionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CompletionStatus = /*@__PURE__*/ S.String;
 export interface CompleteRolloutRequest {
   JobArn: string;
   TrajectoryId: string;
   Status?: CompletionStatus;
   ClientToken?: string;
 }
-export const CompleteRolloutRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
-      TrajectoryId: S.String,
-      Status: S.optional(CompletionStatus),
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/complete-rollout" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CompleteRolloutRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
+    TrajectoryId: S.String,
+    Status: S.optional(CompletionStatus),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/complete-rollout" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CompleteRolloutRequest",
 }) as any as S.Schema<CompleteRolloutRequest>;
 export interface CompleteRolloutResponse {}
-export const CompleteRolloutResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const CompleteRolloutResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "CompleteRolloutResponse",
 }) as any as S.Schema<CompleteRolloutResponse>;
@@ -115,7 +114,7 @@ export interface SampleRequest {
   TrajectoryId: string;
   Body: T.StreamingInputBody;
 }
-export const SampleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SampleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
     TrajectoryId: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Trajectory-Id")),
@@ -135,7 +134,7 @@ export interface SampleResponse {
   ContentType?: string;
   Body: T.StreamingOutputBody;
 }
-export const SampleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SampleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
     Body: T.StreamingOutput.pipe(T.HttpPayload()),
@@ -147,7 +146,7 @@ export interface SampleWithResponseStreamRequest {
   Body: T.StreamingInputBody;
 }
 export const SampleWithResponseStreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
       TrajectoryId: S.String.pipe(
@@ -172,7 +171,7 @@ export interface SampleWithResponseStreamResponse {
   Body: T.StreamingOutputBody;
 }
 export const SampleWithResponseStreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
       Body: T.StreamingOutput.pipe(T.HttpPayload()),
@@ -181,14 +180,14 @@ export const SampleWithResponseStreamResponse =
     identifier: "SampleWithResponseStreamResponse",
   }) as any as S.Schema<SampleWithResponseStreamResponse>;
 export type DoubleList = number[];
-export const DoubleList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
+export const DoubleList = /*@__PURE__*/ S.Array(S.Number);
 export interface UpdateRewardRequest {
   JobArn: string;
   TrajectoryId: string;
   Rewards: number[];
   ClientToken?: string;
 }
-export const UpdateRewardRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRewardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
     TrajectoryId: S.String,
@@ -208,7 +207,7 @@ export const UpdateRewardRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateRewardRequest",
 }) as any as S.Schema<UpdateRewardRequest>;
 export interface UpdateRewardResponse {}
-export const UpdateRewardResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRewardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UpdateRewardResponse",
@@ -266,7 +265,7 @@ export const completeRollout: API.OperationMethod<
   CompleteRolloutResponse,
   CompleteRolloutError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteRolloutRequest,
   output: CompleteRolloutResponse,
   errors: [
@@ -298,7 +297,7 @@ export const sample: API.OperationMethod<
   SampleResponse,
   SampleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SampleRequest,
   output: SampleResponse,
   errors: [
@@ -329,7 +328,7 @@ export const sampleWithResponseStream: API.OperationMethod<
   SampleWithResponseStreamResponse,
   SampleWithResponseStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SampleWithResponseStreamRequest,
   output: SampleWithResponseStreamResponse,
   errors: [
@@ -361,7 +360,7 @@ export const updateReward: API.OperationMethod<
   UpdateRewardResponse,
   UpdateRewardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRewardRequest,
   output: UpdateRewardResponse,
   errors: [

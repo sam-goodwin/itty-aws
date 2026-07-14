@@ -8,7 +8,7 @@ export interface MembersDestroyInput {
   organization_id: string;
   user__uuid: string;
 }
-export const MembersDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MembersDestroyInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   user__uuid: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -21,14 +21,14 @@ export const MembersDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type MembersDestroyOutput = void;
 export const MembersDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MembersDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MembersDestroyOutput>;
 
 // The operation
 /**
  *
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const membersDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const membersDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: MembersDestroyInput,
   outputSchema: MembersDestroyOutput,
   errors: [Forbidden, NotFound] as const,

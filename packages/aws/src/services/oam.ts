@@ -106,19 +106,18 @@ export type ResourceType =
   | "AWS::ApplicationSignals::Service"
   | "AWS::ApplicationSignals::ServiceLevelObjective"
   | (string & {});
-export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceType = /*@__PURE__*/ S.String;
 export type ResourceTypesInput = ResourceType[];
-export const ResourceTypesInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceType);
+export const ResourceTypesInput = /*@__PURE__*/ S.Array(ResourceType);
 export type TagMapInput = { [key: string]: string | undefined };
-export const TagMapInput = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMapInput = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export interface LogGroupConfiguration {
   Filter: string;
 }
-export const LogGroupConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LogGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Filter: S.String }),
 ).annotate({
   identifier: "LogGroupConfiguration",
@@ -126,7 +125,7 @@ export const LogGroupConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface MetricConfiguration {
   Filter: string;
 }
-export const MetricConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MetricConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Filter: S.String }),
 ).annotate({
   identifier: "MetricConfiguration",
@@ -135,7 +134,7 @@ export interface LinkConfiguration {
   LogGroupConfiguration?: LogGroupConfiguration;
   MetricConfiguration?: MetricConfiguration;
 }
-export const LinkConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LinkConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LogGroupConfiguration: S.optional(LogGroupConfiguration),
     MetricConfiguration: S.optional(MetricConfiguration),
@@ -150,7 +149,7 @@ export interface CreateLinkInput {
   Tags?: { [key: string]: string | undefined };
   LinkConfiguration?: LinkConfiguration;
 }
-export const CreateLinkInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateLinkInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LabelTemplate: S.String,
     ResourceTypes: ResourceTypesInput,
@@ -171,11 +170,9 @@ export const CreateLinkInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateLinkInput",
 }) as any as S.Schema<CreateLinkInput>;
 export type ResourceTypesOutput = string[];
-export const ResourceTypesOutput = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const ResourceTypesOutput = /*@__PURE__*/ S.Array(S.String);
 export type TagMapOutput = { [key: string]: string | undefined };
-export const TagMapOutput = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMapOutput = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -189,7 +186,7 @@ export interface CreateLinkOutput {
   Tags?: { [key: string]: string | undefined };
   LinkConfiguration?: LinkConfiguration;
 }
-export const CreateLinkOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateLinkOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Id: S.optional(S.String),
@@ -207,7 +204,7 @@ export interface CreateSinkInput {
   Name: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateSinkInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateSinkInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Tags: S.optional(TagMapInput) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/CreateSink" }),
@@ -227,7 +224,7 @@ export interface CreateSinkOutput {
   Name?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateSinkOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateSinkOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Id: S.optional(S.String),
@@ -240,7 +237,7 @@ export const CreateSinkOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteLinkInput {
   Identifier: string;
 }
-export const DeleteLinkInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteLinkInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/DeleteLink" }),
@@ -255,7 +252,7 @@ export const DeleteLinkInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteLinkInput",
 }) as any as S.Schema<DeleteLinkInput>;
 export interface DeleteLinkOutput {}
-export const DeleteLinkOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteLinkOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteLinkOutput",
@@ -263,7 +260,7 @@ export const DeleteLinkOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteSinkInput {
   Identifier: string;
 }
-export const DeleteSinkInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteSinkInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/DeleteSink" }),
@@ -278,7 +275,7 @@ export const DeleteSinkInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteSinkInput",
 }) as any as S.Schema<DeleteSinkInput>;
 export interface DeleteSinkOutput {}
-export const DeleteSinkOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteSinkOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteSinkOutput",
@@ -287,7 +284,7 @@ export interface GetLinkInput {
   Identifier: string;
   IncludeTags?: boolean;
 }
-export const GetLinkInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetLinkInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String, IncludeTags: S.optional(S.Boolean) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetLink" }),
@@ -309,7 +306,7 @@ export interface GetLinkOutput {
   Tags?: { [key: string]: string | undefined };
   LinkConfiguration?: LinkConfiguration;
 }
-export const GetLinkOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetLinkOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Id: S.optional(S.String),
@@ -325,7 +322,7 @@ export interface GetSinkInput {
   Identifier: string;
   IncludeTags?: boolean;
 }
-export const GetSinkInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSinkInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String, IncludeTags: S.optional(S.Boolean) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetSink" }),
@@ -343,7 +340,7 @@ export interface GetSinkOutput {
   Name?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetSinkOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSinkOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Id: S.optional(S.String),
@@ -354,7 +351,7 @@ export const GetSinkOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetSinkPolicyInput {
   SinkIdentifier: string;
 }
-export const GetSinkPolicyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSinkPolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SinkIdentifier: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetSinkPolicy" }),
@@ -373,7 +370,7 @@ export interface GetSinkPolicyOutput {
   SinkId?: string;
   Policy?: string;
 }
-export const GetSinkPolicyOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSinkPolicyOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SinkArn: S.optional(S.String),
     SinkId: S.optional(S.String),
@@ -387,22 +384,21 @@ export interface ListAttachedLinksInput {
   NextToken?: string;
   SinkIdentifier: string;
 }
-export const ListAttachedLinksInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-      SinkIdentifier: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListAttachedLinks" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAttachedLinksInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    SinkIdentifier: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListAttachedLinks" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListAttachedLinksInput",
 }) as any as S.Schema<ListAttachedLinksInput>;
@@ -411,7 +407,7 @@ export interface ListAttachedLinksItem {
   LinkArn?: string;
   ResourceTypes?: string[];
 }
-export const ListAttachedLinksItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAttachedLinksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Label: S.optional(S.String),
     LinkArn: S.optional(S.String),
@@ -421,19 +417,18 @@ export const ListAttachedLinksItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListAttachedLinksItem",
 }) as any as S.Schema<ListAttachedLinksItem>;
 export type ListAttachedLinksItems = ListAttachedLinksItem[];
-export const ListAttachedLinksItems = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ListAttachedLinksItems = /*@__PURE__*/ S.Array(
   ListAttachedLinksItem,
 );
 export interface ListAttachedLinksOutput {
   Items: ListAttachedLinksItem[];
   NextToken?: string;
 }
-export const ListAttachedLinksOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Items: ListAttachedLinksItems,
-      NextToken: S.optional(S.String),
-    }),
+export const ListAttachedLinksOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Items: ListAttachedLinksItems,
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListAttachedLinksOutput",
 }) as any as S.Schema<ListAttachedLinksOutput>;
@@ -441,7 +436,7 @@ export interface ListLinksInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListLinksInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListLinksInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number),
     NextToken: S.optional(S.String),
@@ -463,7 +458,7 @@ export interface ListLinksItem {
   ResourceTypes?: string[];
   SinkArn?: string;
 }
-export const ListLinksItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListLinksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Id: S.optional(S.String),
@@ -473,13 +468,12 @@ export const ListLinksItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListLinksItem" }) as any as S.Schema<ListLinksItem>;
 export type ListLinksItems = ListLinksItem[];
-export const ListLinksItems =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ListLinksItem);
+export const ListLinksItems = /*@__PURE__*/ S.Array(ListLinksItem);
 export interface ListLinksOutput {
   Items: ListLinksItem[];
   NextToken?: string;
 }
-export const ListLinksOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListLinksOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: ListLinksItems, NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListLinksOutput",
@@ -488,7 +482,7 @@ export interface ListSinksInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListSinksInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSinksInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number),
     NextToken: S.optional(S.String),
@@ -508,7 +502,7 @@ export interface ListSinksItem {
   Id?: string;
   Name?: string;
 }
-export const ListSinksItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSinksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Id: S.optional(S.String),
@@ -516,13 +510,12 @@ export const ListSinksItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListSinksItem" }) as any as S.Schema<ListSinksItem>;
 export type ListSinksItems = ListSinksItem[];
-export const ListSinksItems =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ListSinksItem);
+export const ListSinksItems = /*@__PURE__*/ S.Array(ListSinksItem);
 export interface ListSinksOutput {
   Items: ListSinksItem[];
   NextToken?: string;
 }
-export const ListSinksOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSinksOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: ListSinksItems, NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListSinksOutput",
@@ -530,26 +523,25 @@ export const ListSinksOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceInput {
   ResourceArn: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceInput",
 }) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Tags: S.optional(TagMapOutput) }),
+export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagMapOutput) }),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
@@ -557,7 +549,7 @@ export interface PutSinkPolicyInput {
   SinkIdentifier: string;
   Policy: string;
 }
-export const PutSinkPolicyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutSinkPolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SinkIdentifier: S.String, Policy: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/PutSinkPolicy" }),
@@ -576,7 +568,7 @@ export interface PutSinkPolicyOutput {
   SinkId?: string;
   Policy?: string;
 }
-export const PutSinkPolicyOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutSinkPolicyOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SinkArn: S.optional(S.String),
     SinkId: S.optional(S.String),
@@ -589,7 +581,7 @@ export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     Tags: TagMapInput,
@@ -607,18 +599,18 @@ export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceInput",
 }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -636,7 +628,7 @@ export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceInput",
 }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceOutput",
@@ -647,7 +639,7 @@ export interface UpdateLinkInput {
   LinkConfiguration?: LinkConfiguration;
   IncludeTags?: boolean;
 }
-export const UpdateLinkInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateLinkInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String,
     ResourceTypes: ResourceTypesInput,
@@ -676,7 +668,7 @@ export interface UpdateLinkOutput {
   Tags?: { [key: string]: string | undefined };
   LinkConfiguration?: LinkConfiguration;
 }
-export const UpdateLinkOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateLinkOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Id: S.optional(S.String),
@@ -767,7 +759,7 @@ export const createLink: API.OperationMethod<
   CreateLinkOutput,
   CreateLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLinkInput,
   output: CreateLinkOutput,
   errors: [
@@ -798,7 +790,7 @@ export const createSink: API.OperationMethod<
   CreateSinkOutput,
   CreateSinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSinkInput,
   output: CreateSinkOutput,
   errors: [
@@ -824,7 +816,7 @@ export const deleteLink: API.OperationMethod<
   DeleteLinkOutput,
   DeleteLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLinkInput,
   output: DeleteLinkOutput,
   errors: [
@@ -850,7 +842,7 @@ export const deleteSink: API.OperationMethod<
   DeleteSinkOutput,
   DeleteSinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSinkInput,
   output: DeleteSinkOutput,
   errors: [
@@ -878,7 +870,7 @@ export const getLink: API.OperationMethod<
   GetLinkOutput,
   GetLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLinkInput,
   output: GetLinkOutput,
   errors: [
@@ -905,7 +897,7 @@ export const getSink: API.OperationMethod<
   GetSinkOutput,
   GetSinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSinkInput,
   output: GetSinkOutput,
   errors: [
@@ -930,7 +922,7 @@ export const getSinkPolicy: API.OperationMethod<
   GetSinkPolicyOutput,
   GetSinkPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSinkPolicyInput,
   output: GetSinkPolicyOutput,
   errors: [
@@ -974,7 +966,7 @@ export const listAttachedLinks: API.OperationMethod<
     ListAttachedLinksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachedLinksInput,
   output: ListAttachedLinksOutput,
   errors: [
@@ -1021,7 +1013,7 @@ export const listLinks: API.OperationMethod<
     ListLinksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinksInput,
   output: ListLinksOutput,
   errors: [
@@ -1065,7 +1057,7 @@ export const listSinks: API.OperationMethod<
     ListSinksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSinksInput,
   output: ListSinksOutput,
   errors: [
@@ -1093,7 +1085,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1129,7 +1121,7 @@ export const putSinkPolicy: API.OperationMethod<
   PutSinkPolicyOutput,
   PutSinkPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSinkPolicyInput,
   output: PutSinkPolicyOutput,
   errors: [
@@ -1163,7 +1155,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -1187,7 +1179,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1211,7 +1203,7 @@ export const updateLink: API.OperationMethod<
   UpdateLinkOutput,
   UpdateLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLinkInput,
   output: UpdateLinkOutput,
   errors: [

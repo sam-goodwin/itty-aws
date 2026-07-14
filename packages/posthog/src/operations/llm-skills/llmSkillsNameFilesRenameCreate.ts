@@ -11,7 +11,7 @@ export interface LlmSkillsNameFilesRenameCreateInput {
   base_version?: number;
 }
 export const LlmSkillsNameFilesRenameCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     skill_name: Schema.String.pipe(T.PathParam()),
     old_path: Schema.optional(Schema.String),
@@ -68,7 +68,7 @@ export interface LlmSkillsNameFilesRenameCreateOutput {
   first_version_created_at?: string;
 }
 export const LlmSkillsNameFilesRenameCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -143,7 +143,7 @@ export const LlmSkillsNameFilesRenameCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const llmSkillsNameFilesRenameCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmSkillsNameFilesRenameCreateInput,
     outputSchema: LlmSkillsNameFilesRenameCreateOutput,
   }));

@@ -40,7 +40,7 @@ export interface LogsCountRangesCreateInput {
   };
 }
 export const LogsCountRangesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     query: Schema.Struct({
       dateRange: Schema.optional(
@@ -103,7 +103,7 @@ export interface LogsCountRangesCreateOutput {
   interval: string;
 }
 export const LogsCountRangesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ranges: Schema.Array(
       Schema.Struct({
         date_from: Schema.String,
@@ -119,9 +119,7 @@ export const LogsCountRangesCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const logsCountRangesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LogsCountRangesCreateInput,
-    outputSchema: LogsCountRangesCreateOutput,
-  }),
-);
+export const logsCountRangesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LogsCountRangesCreateInput,
+  outputSchema: LogsCountRangesCreateOutput,
+}));

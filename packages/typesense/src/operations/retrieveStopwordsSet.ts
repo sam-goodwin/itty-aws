@@ -8,7 +8,7 @@ export interface RetrieveStopwordsSetInput {
   setId: string;
 }
 export const RetrieveStopwordsSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     setId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/stopwords/{setId}" }),
@@ -19,7 +19,7 @@ export interface RetrieveStopwordsSetOutput {
   stopwords: { id: string; stopwords: string[]; locale?: string };
 }
 export const RetrieveStopwordsSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stopwords: Schema.Struct({
       id: Schema.String,
       stopwords: Schema.Array(Schema.String),
@@ -35,10 +35,8 @@ export const RetrieveStopwordsSetOutput =
  *
  * @param setId - The ID of the stopwords set to retrieve.
  */
-export const retrieveStopwordsSet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetrieveStopwordsSetInput,
-    outputSchema: RetrieveStopwordsSetOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const retrieveStopwordsSet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetrieveStopwordsSetInput,
+  outputSchema: RetrieveStopwordsSetOutput,
+  errors: [NotFound] as const,
+}));

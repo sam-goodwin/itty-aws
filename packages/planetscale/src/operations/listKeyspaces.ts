@@ -11,7 +11,7 @@ export interface ListKeyspacesInput {
   page?: number;
   per_page?: number;
 }
-export const ListKeyspacesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListKeyspacesInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -67,7 +67,7 @@ export interface ListKeyspacesOutput {
     vttablet_options: Record<string, unknown>;
   }[];
 }
-export const ListKeyspacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListKeyspacesOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -125,16 +125,14 @@ export const ListKeyspacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listKeyspaces = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListKeyspacesInput,
-    outputSchema: ListKeyspacesOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listKeyspaces = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListKeyspacesInput,
+  outputSchema: ListKeyspacesOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

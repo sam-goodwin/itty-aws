@@ -12,7 +12,7 @@ export interface ListGroupTeamsInput {
   itemsPerPage?: number;
   pageNum?: number;
 }
-export const ListGroupTeamsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupTeamsInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const ListGroupTeamsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListGroupTeamsOutput = void;
 export const ListGroupTeamsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupTeamsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupTeamsOutput>;
 
 // The operation
 /**
@@ -43,7 +43,7 @@ export const ListGroupTeamsOutput =
  * @param itemsPerPage - Number of items that the response returns per page.
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  */
-export const listGroupTeams = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupTeams = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupTeamsInput,
   outputSchema: ListGroupTeamsOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

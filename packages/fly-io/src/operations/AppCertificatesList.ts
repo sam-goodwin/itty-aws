@@ -11,7 +11,7 @@ export interface AppCertificatesListInput {
   limit?: number;
 }
 export const AppCertificatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
     cursor: Schema.optional(Schema.String),
@@ -41,7 +41,7 @@ export interface AppCertificatesListOutput {
   total_count?: number;
 }
 export const AppCertificatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificates: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -74,7 +74,7 @@ export const AppCertificatesListOutput =
  * @param cursor - Pagination cursor from previous response
  * @param limit - Number of results per page (default 25, max 500)
  */
-export const AppCertificatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppCertificatesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppCertificatesListInput,
   outputSchema: AppCertificatesListOutput,
   errors: [Forbidden, NotFound] as const,

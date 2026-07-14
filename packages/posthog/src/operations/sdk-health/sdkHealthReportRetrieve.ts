@@ -8,7 +8,7 @@ export interface SdkHealthReportRetrieveInput {
   force_refresh?: boolean;
 }
 export const SdkHealthReportRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     force_refresh: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -56,7 +56,7 @@ export interface SdkHealthReportRetrieveOutput {
   }[];
 }
 export const SdkHealthReportRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overall_health: Schema.optional(
       Schema.Literals(["healthy", "needs_attention"]),
     ),
@@ -120,9 +120,7 @@ export const SdkHealthReportRetrieveOutput =
  * @param force_refresh - When true, bypasses the Redis cache and re-queries ClickHouse for SDK usage. Use sparingly — data is refreshed every 12 hours by a background job.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const sdkHealthReportRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SdkHealthReportRetrieveInput,
-    outputSchema: SdkHealthReportRetrieveOutput,
-  }),
-);
+export const sdkHealthReportRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SdkHealthReportRetrieveInput,
+  outputSchema: SdkHealthReportRetrieveOutput,
+}));

@@ -9,7 +9,7 @@ export interface UsersIntegrationsSlackStartCreateInput {
   slack_team_id?: string | null;
 }
 export const UsersIntegrationsSlackStartCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     team_id: Schema.optional(Schema.NullOr(Schema.Number)),
     slack_team_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -25,7 +25,7 @@ export interface UsersIntegrationsSlackStartCreateOutput {
   install_url: string;
 }
 export const UsersIntegrationsSlackStartCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     install_url: Schema.String,
   }) as unknown as Schema.Codec<UsersIntegrationsSlackStartCreateOutput>;
 
@@ -46,7 +46,7 @@ export const UsersIntegrationsSlackStartCreateOutput =
  * to it.
  */
 export const usersIntegrationsSlackStartCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersIntegrationsSlackStartCreateInput,
     outputSchema: UsersIntegrationsSlackStartCreateOutput,
   }));

@@ -893,7 +893,7 @@ export interface IntegrationAccountAgreementsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountAgreementsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2094,7 +2094,7 @@ export interface IntegrationAccountAgreementsCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountAgreementsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2113,7 +2113,7 @@ export const IntegrationAccountAgreementsCreateOrUpdateOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountAgreementsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAgreementsCreateOrUpdateInput,
     outputSchema: IntegrationAccountAgreementsCreateOrUpdateOutput,
   }));
@@ -2125,7 +2125,7 @@ export interface IntegrationAccountAgreementsDeleteInput {
   agreementName: string;
 }
 export const IntegrationAccountAgreementsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2141,7 +2141,7 @@ export const IntegrationAccountAgreementsDeleteInput =
 // Output Schema
 export type IntegrationAccountAgreementsDeleteOutput = void;
 export const IntegrationAccountAgreementsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountAgreementsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountAgreementsDeleteOutput>;
 
 // The operation
 /**
@@ -2154,7 +2154,7 @@ export const IntegrationAccountAgreementsDeleteOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountAgreementsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAgreementsDeleteInput,
     outputSchema: IntegrationAccountAgreementsDeleteOutput,
   }));
@@ -2166,7 +2166,7 @@ export interface IntegrationAccountAgreementsGetInput {
   agreementName: string;
 }
 export const IntegrationAccountAgreementsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2188,7 +2188,7 @@ export interface IntegrationAccountAgreementsGetOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountAgreementsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2207,7 +2207,7 @@ export const IntegrationAccountAgreementsGetOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountAgreementsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAgreementsGetInput,
     outputSchema: IntegrationAccountAgreementsGetOutput,
   }));
@@ -2220,7 +2220,7 @@ export interface IntegrationAccountAgreementsListInput {
   $filter?: string;
 }
 export const IntegrationAccountAgreementsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2246,7 +2246,7 @@ export interface IntegrationAccountAgreementsListOutput {
   nextLink?: string;
 }
 export const IntegrationAccountAgreementsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2273,7 +2273,7 @@ export const IntegrationAccountAgreementsListOutput =
  * @param $filter - The filter to apply on the operation. Options for filters include: AgreementType.
  */
 export const IntegrationAccountAgreementsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAgreementsListInput,
     outputSchema: IntegrationAccountAgreementsListOutput,
   }));
@@ -2287,7 +2287,7 @@ export interface IntegrationAccountAgreementsListContentCallbackUrlInput {
   keyType?: "NotSpecified" | "Primary" | "Secondary";
 }
 export const IntegrationAccountAgreementsListContentCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2320,7 +2320,7 @@ export interface IntegrationAccountAgreementsListContentCallbackUrlOutput {
   };
 }
 export const IntegrationAccountAgreementsListContentCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -2348,7 +2348,7 @@ export const IntegrationAccountAgreementsListContentCallbackUrlOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountAgreementsListContentCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAgreementsListContentCallbackUrlInput,
     outputSchema: IntegrationAccountAgreementsListContentCallbackUrlOutput,
   }));
@@ -2370,7 +2370,7 @@ export interface IntegrationAccountAssembliesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountAssembliesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2402,7 +2402,7 @@ export interface IntegrationAccountAssembliesCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountAssembliesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2421,7 +2421,7 @@ export const IntegrationAccountAssembliesCreateOrUpdateOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountAssembliesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAssembliesCreateOrUpdateInput,
     outputSchema: IntegrationAccountAssembliesCreateOrUpdateOutput,
   }));
@@ -2433,7 +2433,7 @@ export interface IntegrationAccountAssembliesDeleteInput {
   assemblyArtifactName: string;
 }
 export const IntegrationAccountAssembliesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2449,7 +2449,7 @@ export const IntegrationAccountAssembliesDeleteInput =
 // Output Schema
 export type IntegrationAccountAssembliesDeleteOutput = void;
 export const IntegrationAccountAssembliesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountAssembliesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountAssembliesDeleteOutput>;
 
 // The operation
 /**
@@ -2462,7 +2462,7 @@ export const IntegrationAccountAssembliesDeleteOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountAssembliesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAssembliesDeleteInput,
     outputSchema: IntegrationAccountAssembliesDeleteOutput,
   }));
@@ -2474,7 +2474,7 @@ export interface IntegrationAccountAssembliesGetInput {
   assemblyArtifactName: string;
 }
 export const IntegrationAccountAssembliesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2496,7 +2496,7 @@ export interface IntegrationAccountAssembliesGetOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountAssembliesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2515,7 +2515,7 @@ export const IntegrationAccountAssembliesGetOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountAssembliesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAssembliesGetInput,
     outputSchema: IntegrationAccountAssembliesGetOutput,
   }));
@@ -2526,7 +2526,7 @@ export interface IntegrationAccountAssembliesListInput {
   integrationAccountName: string;
 }
 export const IntegrationAccountAssembliesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2549,7 +2549,7 @@ export interface IntegrationAccountAssembliesListOutput {
   }[];
 }
 export const IntegrationAccountAssembliesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2573,7 +2573,7 @@ export const IntegrationAccountAssembliesListOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountAssembliesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAssembliesListInput,
     outputSchema: IntegrationAccountAssembliesListOutput,
   }));
@@ -2585,7 +2585,7 @@ export interface IntegrationAccountAssembliesListContentCallbackUrlInput {
   assemblyArtifactName: string;
 }
 export const IntegrationAccountAssembliesListContentCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2614,7 +2614,7 @@ export interface IntegrationAccountAssembliesListContentCallbackUrlOutput {
   };
 }
 export const IntegrationAccountAssembliesListContentCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -2642,7 +2642,7 @@ export const IntegrationAccountAssembliesListContentCallbackUrlOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountAssembliesListContentCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountAssembliesListContentCallbackUrlInput,
     outputSchema: IntegrationAccountAssembliesListContentCallbackUrlOutput,
   }));
@@ -2664,7 +2664,7 @@ export interface IntegrationAccountBatchConfigurationsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountBatchConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2696,7 +2696,7 @@ export interface IntegrationAccountBatchConfigurationsCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountBatchConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2715,7 +2715,7 @@ export const IntegrationAccountBatchConfigurationsCreateOrUpdateOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountBatchConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountBatchConfigurationsCreateOrUpdateInput,
     outputSchema: IntegrationAccountBatchConfigurationsCreateOrUpdateOutput,
   }));
@@ -2727,7 +2727,7 @@ export interface IntegrationAccountBatchConfigurationsDeleteInput {
   batchConfigurationName: string;
 }
 export const IntegrationAccountBatchConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2743,7 +2743,7 @@ export const IntegrationAccountBatchConfigurationsDeleteInput =
 // Output Schema
 export type IntegrationAccountBatchConfigurationsDeleteOutput = void;
 export const IntegrationAccountBatchConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountBatchConfigurationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountBatchConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -2756,7 +2756,7 @@ export const IntegrationAccountBatchConfigurationsDeleteOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountBatchConfigurationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountBatchConfigurationsDeleteInput,
     outputSchema: IntegrationAccountBatchConfigurationsDeleteOutput,
   }));
@@ -2768,7 +2768,7 @@ export interface IntegrationAccountBatchConfigurationsGetInput {
   batchConfigurationName: string;
 }
 export const IntegrationAccountBatchConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2790,7 +2790,7 @@ export interface IntegrationAccountBatchConfigurationsGetOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountBatchConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2809,7 +2809,7 @@ export const IntegrationAccountBatchConfigurationsGetOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountBatchConfigurationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountBatchConfigurationsGetInput,
     outputSchema: IntegrationAccountBatchConfigurationsGetOutput,
   }));
@@ -2820,7 +2820,7 @@ export interface IntegrationAccountBatchConfigurationsListInput {
   integrationAccountName: string;
 }
 export const IntegrationAccountBatchConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2843,7 +2843,7 @@ export interface IntegrationAccountBatchConfigurationsListOutput {
   }[];
 }
 export const IntegrationAccountBatchConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2867,7 +2867,7 @@ export const IntegrationAccountBatchConfigurationsListOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountBatchConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountBatchConfigurationsListInput,
     outputSchema: IntegrationAccountBatchConfigurationsListOutput,
   }));
@@ -2895,7 +2895,7 @@ export interface IntegrationAccountCertificatesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountCertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2939,7 +2939,7 @@ export interface IntegrationAccountCertificatesCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountCertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2958,7 +2958,7 @@ export const IntegrationAccountCertificatesCreateOrUpdateOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountCertificatesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountCertificatesCreateOrUpdateInput,
     outputSchema: IntegrationAccountCertificatesCreateOrUpdateOutput,
   }));
@@ -2970,7 +2970,7 @@ export interface IntegrationAccountCertificatesDeleteInput {
   certificateName: string;
 }
 export const IntegrationAccountCertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2986,7 +2986,7 @@ export const IntegrationAccountCertificatesDeleteInput =
 // Output Schema
 export type IntegrationAccountCertificatesDeleteOutput = void;
 export const IntegrationAccountCertificatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountCertificatesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountCertificatesDeleteOutput>;
 
 // The operation
 /**
@@ -2999,7 +2999,7 @@ export const IntegrationAccountCertificatesDeleteOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountCertificatesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountCertificatesDeleteInput,
     outputSchema: IntegrationAccountCertificatesDeleteOutput,
   }));
@@ -3011,7 +3011,7 @@ export interface IntegrationAccountCertificatesGetInput {
   certificateName: string;
 }
 export const IntegrationAccountCertificatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3033,7 +3033,7 @@ export interface IntegrationAccountCertificatesGetOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountCertificatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3052,7 +3052,7 @@ export const IntegrationAccountCertificatesGetOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountCertificatesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountCertificatesGetInput,
     outputSchema: IntegrationAccountCertificatesGetOutput,
   }));
@@ -3064,7 +3064,7 @@ export interface IntegrationAccountCertificatesListInput {
   $top?: number;
 }
 export const IntegrationAccountCertificatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3089,7 +3089,7 @@ export interface IntegrationAccountCertificatesListOutput {
   nextLink?: string;
 }
 export const IntegrationAccountCertificatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3115,7 +3115,7 @@ export const IntegrationAccountCertificatesListOutput =
  * @param $top - The number of items to be included in the result.
  */
 export const IntegrationAccountCertificatesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountCertificatesListInput,
     outputSchema: IntegrationAccountCertificatesListOutput,
   }));
@@ -3148,7 +3148,7 @@ export interface IntegrationAccountMapsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountMapsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3208,7 +3208,7 @@ export interface IntegrationAccountMapsCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountMapsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3227,7 +3227,7 @@ export const IntegrationAccountMapsCreateOrUpdateOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountMapsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountMapsCreateOrUpdateInput,
     outputSchema: IntegrationAccountMapsCreateOrUpdateOutput,
   }));
@@ -3239,7 +3239,7 @@ export interface IntegrationAccountMapsDeleteInput {
   mapName: string;
 }
 export const IntegrationAccountMapsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3255,7 +3255,7 @@ export const IntegrationAccountMapsDeleteInput =
 // Output Schema
 export type IntegrationAccountMapsDeleteOutput = void;
 export const IntegrationAccountMapsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountMapsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountMapsDeleteOutput>;
 
 // The operation
 /**
@@ -3268,7 +3268,7 @@ export const IntegrationAccountMapsDeleteOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountMapsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountMapsDeleteInput,
     outputSchema: IntegrationAccountMapsDeleteOutput,
   }));
@@ -3280,7 +3280,7 @@ export interface IntegrationAccountMapsGetInput {
   mapName: string;
 }
 export const IntegrationAccountMapsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3302,7 +3302,7 @@ export interface IntegrationAccountMapsGetOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountMapsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3320,12 +3320,10 @@ export const IntegrationAccountMapsGetOutput =
  * @param mapName - The integration account map name.
  * @param api-version - The API version.
  */
-export const IntegrationAccountMapsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationAccountMapsGetInput,
-    outputSchema: IntegrationAccountMapsGetOutput,
-  }),
-);
+export const IntegrationAccountMapsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountMapsGetInput,
+  outputSchema: IntegrationAccountMapsGetOutput,
+}));
 // Input Schema
 export interface IntegrationAccountMapsListInput {
   subscriptionId: string;
@@ -3335,7 +3333,7 @@ export interface IntegrationAccountMapsListInput {
   $filter?: string;
 }
 export const IntegrationAccountMapsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3361,7 +3359,7 @@ export interface IntegrationAccountMapsListOutput {
   nextLink?: string;
 }
 export const IntegrationAccountMapsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3387,12 +3385,10 @@ export const IntegrationAccountMapsListOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: MapType.
  */
-export const IntegrationAccountMapsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationAccountMapsListInput,
-    outputSchema: IntegrationAccountMapsListOutput,
-  }),
-);
+export const IntegrationAccountMapsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountMapsListInput,
+  outputSchema: IntegrationAccountMapsListOutput,
+}));
 // Input Schema
 export interface IntegrationAccountMapsListContentCallbackUrlInput {
   subscriptionId: string;
@@ -3403,7 +3399,7 @@ export interface IntegrationAccountMapsListContentCallbackUrlInput {
   keyType?: "NotSpecified" | "Primary" | "Secondary";
 }
 export const IntegrationAccountMapsListContentCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3436,7 +3432,7 @@ export interface IntegrationAccountMapsListContentCallbackUrlOutput {
   };
 }
 export const IntegrationAccountMapsListContentCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -3464,7 +3460,7 @@ export const IntegrationAccountMapsListContentCallbackUrlOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountMapsListContentCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountMapsListContentCallbackUrlInput,
     outputSchema: IntegrationAccountMapsListContentCallbackUrlOutput,
   }));
@@ -3490,7 +3486,7 @@ export interface IntegrationAccountPartnersCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountPartnersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3537,7 +3533,7 @@ export interface IntegrationAccountPartnersCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountPartnersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3556,7 +3552,7 @@ export const IntegrationAccountPartnersCreateOrUpdateOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountPartnersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountPartnersCreateOrUpdateInput,
     outputSchema: IntegrationAccountPartnersCreateOrUpdateOutput,
   }));
@@ -3568,7 +3564,7 @@ export interface IntegrationAccountPartnersDeleteInput {
   partnerName: string;
 }
 export const IntegrationAccountPartnersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3584,7 +3580,7 @@ export const IntegrationAccountPartnersDeleteInput =
 // Output Schema
 export type IntegrationAccountPartnersDeleteOutput = void;
 export const IntegrationAccountPartnersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountPartnersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountPartnersDeleteOutput>;
 
 // The operation
 /**
@@ -3597,7 +3593,7 @@ export const IntegrationAccountPartnersDeleteOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountPartnersDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountPartnersDeleteInput,
     outputSchema: IntegrationAccountPartnersDeleteOutput,
   }));
@@ -3609,7 +3605,7 @@ export interface IntegrationAccountPartnersGetInput {
   partnerName: string;
 }
 export const IntegrationAccountPartnersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3631,7 +3627,7 @@ export interface IntegrationAccountPartnersGetOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountPartnersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3650,7 +3646,7 @@ export const IntegrationAccountPartnersGetOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountPartnersGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountPartnersGetInput,
     outputSchema: IntegrationAccountPartnersGetOutput,
   }));
@@ -3663,7 +3659,7 @@ export interface IntegrationAccountPartnersListInput {
   $filter?: string;
 }
 export const IntegrationAccountPartnersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3689,7 +3685,7 @@ export interface IntegrationAccountPartnersListOutput {
   nextLink?: string;
 }
 export const IntegrationAccountPartnersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3716,7 +3712,7 @@ export const IntegrationAccountPartnersListOutput =
  * @param $filter - The filter to apply on the operation. Options for filters include: PartnerType.
  */
 export const IntegrationAccountPartnersList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountPartnersListInput,
     outputSchema: IntegrationAccountPartnersListOutput,
   }));
@@ -3730,7 +3726,7 @@ export interface IntegrationAccountPartnersListContentCallbackUrlInput {
   keyType?: "NotSpecified" | "Primary" | "Secondary";
 }
 export const IntegrationAccountPartnersListContentCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3763,7 +3759,7 @@ export interface IntegrationAccountPartnersListContentCallbackUrlOutput {
   };
 }
 export const IntegrationAccountPartnersListContentCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -3791,7 +3787,7 @@ export const IntegrationAccountPartnersListContentCallbackUrlOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountPartnersListContentCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountPartnersListContentCallbackUrlInput,
     outputSchema: IntegrationAccountPartnersListContentCallbackUrlOutput,
   }));
@@ -3826,7 +3822,7 @@ export interface IntegrationAccountSchemasCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountSchemasCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3878,7 +3874,7 @@ export interface IntegrationAccountSchemasCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountSchemasCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3897,7 +3893,7 @@ export const IntegrationAccountSchemasCreateOrUpdateOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountSchemasCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountSchemasCreateOrUpdateInput,
     outputSchema: IntegrationAccountSchemasCreateOrUpdateOutput,
   }));
@@ -3909,7 +3905,7 @@ export interface IntegrationAccountSchemasDeleteInput {
   schemaName: string;
 }
 export const IntegrationAccountSchemasDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3925,7 +3921,7 @@ export const IntegrationAccountSchemasDeleteInput =
 // Output Schema
 export type IntegrationAccountSchemasDeleteOutput = void;
 export const IntegrationAccountSchemasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountSchemasDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountSchemasDeleteOutput>;
 
 // The operation
 /**
@@ -3938,7 +3934,7 @@ export const IntegrationAccountSchemasDeleteOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountSchemasDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountSchemasDeleteInput,
     outputSchema: IntegrationAccountSchemasDeleteOutput,
   }));
@@ -3950,7 +3946,7 @@ export interface IntegrationAccountSchemasGetInput {
   schemaName: string;
 }
 export const IntegrationAccountSchemasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3972,7 +3968,7 @@ export interface IntegrationAccountSchemasGetOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountSchemasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3991,7 +3987,7 @@ export const IntegrationAccountSchemasGetOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountSchemasGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountSchemasGetInput,
     outputSchema: IntegrationAccountSchemasGetOutput,
   }));
@@ -4004,7 +4000,7 @@ export interface IntegrationAccountSchemasListInput {
   $filter?: string;
 }
 export const IntegrationAccountSchemasListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4030,7 +4026,7 @@ export interface IntegrationAccountSchemasListOutput {
   nextLink?: string;
 }
 export const IntegrationAccountSchemasListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4057,7 +4053,7 @@ export const IntegrationAccountSchemasListOutput =
  * @param $filter - The filter to apply on the operation. Options for filters include: SchemaType.
  */
 export const IntegrationAccountSchemasList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountSchemasListInput,
     outputSchema: IntegrationAccountSchemasListOutput,
   }));
@@ -4071,7 +4067,7 @@ export interface IntegrationAccountSchemasListContentCallbackUrlInput {
   keyType?: "NotSpecified" | "Primary" | "Secondary";
 }
 export const IntegrationAccountSchemasListContentCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4104,7 +4100,7 @@ export interface IntegrationAccountSchemasListContentCallbackUrlOutput {
   };
 }
 export const IntegrationAccountSchemasListContentCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -4132,7 +4128,7 @@ export const IntegrationAccountSchemasListContentCallbackUrlOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountSchemasListContentCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountSchemasListContentCallbackUrlInput,
     outputSchema: IntegrationAccountSchemasListContentCallbackUrlOutput,
   }));
@@ -4163,7 +4159,7 @@ export interface IntegrationAccountsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4215,7 +4211,7 @@ export interface IntegrationAccountsCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4233,7 +4229,7 @@ export const IntegrationAccountsCreateOrUpdateOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountsCreateOrUpdateInput,
     outputSchema: IntegrationAccountsCreateOrUpdateOutput,
   }));
@@ -4244,7 +4240,7 @@ export interface IntegrationAccountsDeleteInput {
   integrationAccountName: string;
 }
 export const IntegrationAccountsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4259,7 +4255,7 @@ export const IntegrationAccountsDeleteInput =
 // Output Schema
 export type IntegrationAccountsDeleteOutput = void;
 export const IntegrationAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountsDeleteOutput>;
 
 // The operation
 /**
@@ -4270,12 +4266,10 @@ export const IntegrationAccountsDeleteOutput =
  * @param integrationAccountName - The integration account name.
  * @param api-version - The API version.
  */
-export const IntegrationAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationAccountsDeleteInput,
-    outputSchema: IntegrationAccountsDeleteOutput,
-  }),
-);
+export const IntegrationAccountsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountsDeleteInput,
+  outputSchema: IntegrationAccountsDeleteOutput,
+}));
 // Input Schema
 export interface IntegrationAccountSessionsCreateOrUpdateInput {
   subscriptionId: string;
@@ -4290,7 +4284,7 @@ export interface IntegrationAccountSessionsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountSessionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4322,7 +4316,7 @@ export interface IntegrationAccountSessionsCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountSessionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4341,7 +4335,7 @@ export const IntegrationAccountSessionsCreateOrUpdateOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountSessionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountSessionsCreateOrUpdateInput,
     outputSchema: IntegrationAccountSessionsCreateOrUpdateOutput,
   }));
@@ -4353,7 +4347,7 @@ export interface IntegrationAccountSessionsDeleteInput {
   sessionName: string;
 }
 export const IntegrationAccountSessionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4369,7 +4363,7 @@ export const IntegrationAccountSessionsDeleteInput =
 // Output Schema
 export type IntegrationAccountSessionsDeleteOutput = void;
 export const IntegrationAccountSessionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountSessionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountSessionsDeleteOutput>;
 
 // The operation
 /**
@@ -4382,7 +4376,7 @@ export const IntegrationAccountSessionsDeleteOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountSessionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountSessionsDeleteInput,
     outputSchema: IntegrationAccountSessionsDeleteOutput,
   }));
@@ -4394,7 +4388,7 @@ export interface IntegrationAccountSessionsGetInput {
   sessionName: string;
 }
 export const IntegrationAccountSessionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4416,7 +4410,7 @@ export interface IntegrationAccountSessionsGetOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountSessionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4435,7 +4429,7 @@ export const IntegrationAccountSessionsGetOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountSessionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountSessionsGetInput,
     outputSchema: IntegrationAccountSessionsGetOutput,
   }));
@@ -4448,7 +4442,7 @@ export interface IntegrationAccountSessionsListInput {
   $filter?: string;
 }
 export const IntegrationAccountSessionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4474,7 +4468,7 @@ export interface IntegrationAccountSessionsListOutput {
   nextLink?: string;
 }
 export const IntegrationAccountSessionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4501,7 +4495,7 @@ export const IntegrationAccountSessionsListOutput =
  * @param $filter - The filter to apply on the operation. Options for filters include: ChangedTime.
  */
 export const IntegrationAccountSessionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountSessionsListInput,
     outputSchema: IntegrationAccountSessionsListOutput,
   }));
@@ -4512,7 +4506,7 @@ export interface IntegrationAccountsGetInput {
   integrationAccountName: string;
 }
 export const IntegrationAccountsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4533,7 +4527,7 @@ export interface IntegrationAccountsGetOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4550,12 +4544,10 @@ export const IntegrationAccountsGetOutput =
  * @param integrationAccountName - The integration account name.
  * @param api-version - The API version.
  */
-export const IntegrationAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationAccountsGetInput,
-    outputSchema: IntegrationAccountsGetOutput,
-  }),
-);
+export const IntegrationAccountsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountsGetInput,
+  outputSchema: IntegrationAccountsGetOutput,
+}));
 // Input Schema
 export interface IntegrationAccountsListByResourceGroupInput {
   subscriptionId: string;
@@ -4563,7 +4555,7 @@ export interface IntegrationAccountsListByResourceGroupInput {
   $top?: number;
 }
 export const IntegrationAccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -4587,7 +4579,7 @@ export interface IntegrationAccountsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const IntegrationAccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4612,7 +4604,7 @@ export const IntegrationAccountsListByResourceGroupOutput =
  * @param $top - The number of items to be included in the result.
  */
 export const IntegrationAccountsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountsListByResourceGroupInput,
     outputSchema: IntegrationAccountsListByResourceGroupOutput,
   }));
@@ -4622,7 +4614,7 @@ export interface IntegrationAccountsListBySubscriptionInput {
   $top?: number;
 }
 export const IntegrationAccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -4645,7 +4637,7 @@ export interface IntegrationAccountsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const IntegrationAccountsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4669,7 +4661,7 @@ export const IntegrationAccountsListBySubscriptionOutput =
  * @param $top - The number of items to be included in the result.
  */
 export const IntegrationAccountsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountsListBySubscriptionInput,
     outputSchema: IntegrationAccountsListBySubscriptionOutput,
   }));
@@ -4682,7 +4674,7 @@ export interface IntegrationAccountsListCallbackUrlInput {
   keyType?: "NotSpecified" | "Primary" | "Secondary";
 }
 export const IntegrationAccountsListCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4703,7 +4695,7 @@ export interface IntegrationAccountsListCallbackUrlOutput {
   value?: string;
 }
 export const IntegrationAccountsListCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<IntegrationAccountsListCallbackUrlOutput>;
 
@@ -4717,7 +4709,7 @@ export const IntegrationAccountsListCallbackUrlOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountsListCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountsListCallbackUrlInput,
     outputSchema: IntegrationAccountsListCallbackUrlOutput,
   }));
@@ -4730,7 +4722,7 @@ export interface IntegrationAccountsListKeyVaultKeysInput {
   skipToken?: string;
 }
 export const IntegrationAccountsListKeyVaultKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4757,7 +4749,7 @@ export interface IntegrationAccountsListKeyVaultKeysOutput {
   skipToken?: string;
 }
 export const IntegrationAccountsListKeyVaultKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4785,7 +4777,7 @@ export const IntegrationAccountsListKeyVaultKeysOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountsListKeyVaultKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountsListKeyVaultKeysInput,
     outputSchema: IntegrationAccountsListKeyVaultKeysOutput,
   }));
@@ -4827,7 +4819,7 @@ export interface IntegrationAccountsLogTrackingEventsInput {
   }[];
 }
 export const IntegrationAccountsLogTrackingEventsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4884,7 +4876,7 @@ export const IntegrationAccountsLogTrackingEventsInput =
 // Output Schema
 export type IntegrationAccountsLogTrackingEventsOutput = void;
 export const IntegrationAccountsLogTrackingEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountsLogTrackingEventsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationAccountsLogTrackingEventsOutput>;
 
 // The operation
 /**
@@ -4896,7 +4888,7 @@ export const IntegrationAccountsLogTrackingEventsOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountsLogTrackingEvents =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountsLogTrackingEventsInput,
     outputSchema: IntegrationAccountsLogTrackingEventsOutput,
   }));
@@ -4908,7 +4900,7 @@ export interface IntegrationAccountsRegenerateAccessKeyInput {
   keyType?: "NotSpecified" | "Primary" | "Secondary";
 }
 export const IntegrationAccountsRegenerateAccessKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4932,7 +4924,7 @@ export interface IntegrationAccountsRegenerateAccessKeyOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountsRegenerateAccessKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4950,7 +4942,7 @@ export const IntegrationAccountsRegenerateAccessKeyOutput =
  * @param api-version - The API version.
  */
 export const IntegrationAccountsRegenerateAccessKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationAccountsRegenerateAccessKeyInput,
     outputSchema: IntegrationAccountsRegenerateAccessKeyOutput,
   }));
@@ -4981,7 +4973,7 @@ export interface IntegrationAccountsUpdateInput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5033,7 +5025,7 @@ export interface IntegrationAccountsUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationAccountsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5050,12 +5042,10 @@ export const IntegrationAccountsUpdateOutput =
  * @param integrationAccountName - The integration account name.
  * @param api-version - The API version.
  */
-export const IntegrationAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationAccountsUpdateInput,
-    outputSchema: IntegrationAccountsUpdateOutput,
-  }),
-);
+export const IntegrationAccountsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationAccountsUpdateInput,
+  outputSchema: IntegrationAccountsUpdateOutput,
+}));
 // Input Schema
 export interface IntegrationServiceEnvironmentManagedApiOperationsListInput {
   subscriptionId: string;
@@ -5064,7 +5054,7 @@ export interface IntegrationServiceEnvironmentManagedApiOperationsListInput {
   apiName: string;
 }
 export const IntegrationServiceEnvironmentManagedApiOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -5089,7 +5079,7 @@ export interface IntegrationServiceEnvironmentManagedApiOperationsListOutput {
   nextLink?: string;
 }
 export const IntegrationServiceEnvironmentManagedApiOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5115,7 +5105,7 @@ export const IntegrationServiceEnvironmentManagedApiOperationsListOutput =
  * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentManagedApiOperationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentManagedApiOperationsListInput,
     outputSchema: IntegrationServiceEnvironmentManagedApiOperationsListOutput,
   }));
@@ -5127,7 +5117,7 @@ export interface IntegrationServiceEnvironmentManagedApisDeleteInput {
   apiName: string;
 }
 export const IntegrationServiceEnvironmentManagedApisDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -5143,7 +5133,7 @@ export const IntegrationServiceEnvironmentManagedApisDeleteInput =
 // Output Schema
 export type IntegrationServiceEnvironmentManagedApisDeleteOutput = void;
 export const IntegrationServiceEnvironmentManagedApisDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationServiceEnvironmentManagedApisDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationServiceEnvironmentManagedApisDeleteOutput>;
 
 // The operation
 /**
@@ -5156,7 +5146,7 @@ export const IntegrationServiceEnvironmentManagedApisDeleteOutput =
  * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentManagedApisDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentManagedApisDeleteInput,
     outputSchema: IntegrationServiceEnvironmentManagedApisDeleteOutput,
   }));
@@ -5168,7 +5158,7 @@ export interface IntegrationServiceEnvironmentManagedApisGetInput {
   apiName: string;
 }
 export const IntegrationServiceEnvironmentManagedApisGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -5190,7 +5180,7 @@ export interface IntegrationServiceEnvironmentManagedApisGetOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationServiceEnvironmentManagedApisGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5209,7 +5199,7 @@ export const IntegrationServiceEnvironmentManagedApisGetOutput =
  * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentManagedApisGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentManagedApisGetInput,
     outputSchema: IntegrationServiceEnvironmentManagedApisGetOutput,
   }));
@@ -5220,7 +5210,7 @@ export interface IntegrationServiceEnvironmentManagedApisListInput {
   integrationServiceEnvironmentName: string;
 }
 export const IntegrationServiceEnvironmentManagedApisListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -5244,7 +5234,7 @@ export interface IntegrationServiceEnvironmentManagedApisListOutput {
   nextLink?: string;
 }
 export const IntegrationServiceEnvironmentManagedApisListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5269,7 +5259,7 @@ export const IntegrationServiceEnvironmentManagedApisListOutput =
  * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentManagedApisList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentManagedApisListInput,
     outputSchema: IntegrationServiceEnvironmentManagedApisListOutput,
   }));
@@ -5388,7 +5378,7 @@ export interface IntegrationServiceEnvironmentManagedApisPutInput {
   tags?: Record<string, string>;
 }
 export const IntegrationServiceEnvironmentManagedApisPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -5580,7 +5570,7 @@ export interface IntegrationServiceEnvironmentManagedApisPutOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationServiceEnvironmentManagedApisPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5599,7 +5589,7 @@ export const IntegrationServiceEnvironmentManagedApisPutOutput =
  * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentManagedApisPut =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentManagedApisPutInput,
     outputSchema: IntegrationServiceEnvironmentManagedApisPutOutput,
   }));
@@ -5610,7 +5600,7 @@ export interface IntegrationServiceEnvironmentNetworkHealthGetInput {
   integrationServiceEnvironmentName: string;
 }
 export const IntegrationServiceEnvironmentNetworkHealthGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -5672,7 +5662,7 @@ export type IntegrationServiceEnvironmentNetworkHealthGetOutput = Record<
   }
 >;
 export const IntegrationServiceEnvironmentNetworkHealthGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  /*@__PURE__*/ Schema.Record(
     Schema.String,
     Schema.Struct({
       outboundNetworkDependencies: Schema.optional(
@@ -5758,7 +5748,7 @@ export const IntegrationServiceEnvironmentNetworkHealthGetOutput =
  * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentNetworkHealthGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentNetworkHealthGetInput,
     outputSchema: IntegrationServiceEnvironmentNetworkHealthGetOutput,
   }));
@@ -5839,7 +5829,7 @@ export interface IntegrationServiceEnvironmentsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const IntegrationServiceEnvironmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -6008,7 +5998,7 @@ export interface IntegrationServiceEnvironmentsCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationServiceEnvironmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6026,7 +6016,7 @@ export const IntegrationServiceEnvironmentsCreateOrUpdateOutput =
  * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentsCreateOrUpdateInput,
     outputSchema: IntegrationServiceEnvironmentsCreateOrUpdateOutput,
   }));
@@ -6037,7 +6027,7 @@ export interface IntegrationServiceEnvironmentsDeleteInput {
   integrationServiceEnvironmentName: string;
 }
 export const IntegrationServiceEnvironmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -6052,7 +6042,7 @@ export const IntegrationServiceEnvironmentsDeleteInput =
 // Output Schema
 export type IntegrationServiceEnvironmentsDeleteOutput = void;
 export const IntegrationServiceEnvironmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationServiceEnvironmentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationServiceEnvironmentsDeleteOutput>;
 
 // The operation
 /**
@@ -6064,7 +6054,7 @@ export const IntegrationServiceEnvironmentsDeleteOutput =
  * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentsDeleteInput,
     outputSchema: IntegrationServiceEnvironmentsDeleteOutput,
   }));
@@ -6075,7 +6065,7 @@ export interface IntegrationServiceEnvironmentsGetInput {
   integrationServiceEnvironmentName: string;
 }
 export const IntegrationServiceEnvironmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -6096,7 +6086,7 @@ export interface IntegrationServiceEnvironmentsGetOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationServiceEnvironmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6114,7 +6104,7 @@ export const IntegrationServiceEnvironmentsGetOutput =
  * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentsGetInput,
     outputSchema: IntegrationServiceEnvironmentsGetOutput,
   }));
@@ -6125,7 +6115,7 @@ export interface IntegrationServiceEnvironmentSkusListInput {
   integrationServiceEnvironmentName: string;
 }
 export const IntegrationServiceEnvironmentSkusListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -6152,7 +6142,7 @@ export interface IntegrationServiceEnvironmentSkusListOutput {
   nextLink?: string;
 }
 export const IntegrationServiceEnvironmentSkusListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6191,7 +6181,7 @@ export const IntegrationServiceEnvironmentSkusListOutput =
  * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentSkusList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentSkusListInput,
     outputSchema: IntegrationServiceEnvironmentSkusListOutput,
   }));
@@ -6202,7 +6192,7 @@ export interface IntegrationServiceEnvironmentsListByResourceGroupInput {
   $top?: number;
 }
 export const IntegrationServiceEnvironmentsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -6226,7 +6216,7 @@ export interface IntegrationServiceEnvironmentsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const IntegrationServiceEnvironmentsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6251,7 +6241,7 @@ export const IntegrationServiceEnvironmentsListByResourceGroupOutput =
  * @param $top - The number of items to be included in the result.
  */
 export const IntegrationServiceEnvironmentsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentsListByResourceGroupInput,
     outputSchema: IntegrationServiceEnvironmentsListByResourceGroupOutput,
   }));
@@ -6261,7 +6251,7 @@ export interface IntegrationServiceEnvironmentsListBySubscriptionInput {
   $top?: number;
 }
 export const IntegrationServiceEnvironmentsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -6284,7 +6274,7 @@ export interface IntegrationServiceEnvironmentsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const IntegrationServiceEnvironmentsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6308,7 +6298,7 @@ export const IntegrationServiceEnvironmentsListBySubscriptionOutput =
  * @param $top - The number of items to be included in the result.
  */
 export const IntegrationServiceEnvironmentsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentsListBySubscriptionInput,
     outputSchema: IntegrationServiceEnvironmentsListBySubscriptionOutput,
   }));
@@ -6319,7 +6309,7 @@ export interface IntegrationServiceEnvironmentsRestartInput {
   integrationServiceEnvironmentName: string;
 }
 export const IntegrationServiceEnvironmentsRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -6334,7 +6324,7 @@ export const IntegrationServiceEnvironmentsRestartInput =
 // Output Schema
 export type IntegrationServiceEnvironmentsRestartOutput = void;
 export const IntegrationServiceEnvironmentsRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationServiceEnvironmentsRestartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationServiceEnvironmentsRestartOutput>;
 
 // The operation
 /**
@@ -6346,7 +6336,7 @@ export const IntegrationServiceEnvironmentsRestartOutput =
  * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentsRestart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentsRestartInput,
     outputSchema: IntegrationServiceEnvironmentsRestartOutput,
   }));
@@ -6427,7 +6417,7 @@ export interface IntegrationServiceEnvironmentsUpdateInput {
   tags?: Record<string, string>;
 }
 export const IntegrationServiceEnvironmentsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
@@ -6596,7 +6586,7 @@ export interface IntegrationServiceEnvironmentsUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IntegrationServiceEnvironmentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6614,15 +6604,13 @@ export const IntegrationServiceEnvironmentsUpdateOutput =
  * @param api-version - The API version.
  */
 export const IntegrationServiceEnvironmentsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationServiceEnvironmentsUpdateInput,
     outputSchema: IntegrationServiceEnvironmentsUpdateOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Logic/operations",
@@ -6645,7 +6633,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -6672,7 +6660,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -6686,7 +6674,7 @@ export interface WorkflowRunActionRepetitionsGetInput {
   repetitionName: string;
 }
 export const WorkflowRunActionRepetitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -6710,7 +6698,7 @@ export interface WorkflowRunActionRepetitionsGetOutput {
   tags?: Record<string, string>;
 }
 export const WorkflowRunActionRepetitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6731,7 +6719,7 @@ export const WorkflowRunActionRepetitionsGetOutput =
  * @param api-version - The API version.
  */
 export const WorkflowRunActionRepetitionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRepetitionsGetInput,
     outputSchema: WorkflowRunActionRepetitionsGetOutput,
   }));
@@ -6744,7 +6732,7 @@ export interface WorkflowRunActionRepetitionsListInput {
   actionName: string;
 }
 export const WorkflowRunActionRepetitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -6770,7 +6758,7 @@ export interface WorkflowRunActionRepetitionsListOutput {
   }[];
 }
 export const WorkflowRunActionRepetitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -6797,7 +6785,7 @@ export const WorkflowRunActionRepetitionsListOutput =
  * @param api-version - The API version.
  */
 export const WorkflowRunActionRepetitionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRepetitionsListInput,
     outputSchema: WorkflowRunActionRepetitionsListOutput,
   }));
@@ -6811,7 +6799,7 @@ export interface WorkflowRunActionRepetitionsListExpressionTracesInput {
   repetitionName: string;
 }
 export const WorkflowRunActionRepetitionsListExpressionTracesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -6836,7 +6824,7 @@ export interface WorkflowRunActionRepetitionsListExpressionTracesOutput {
   }[];
 }
 export const WorkflowRunActionRepetitionsListExpressionTracesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputs: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6866,7 +6854,7 @@ export const WorkflowRunActionRepetitionsListExpressionTracesOutput =
  * @param api-version - The API version.
  */
 export const WorkflowRunActionRepetitionsListExpressionTraces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRepetitionsListExpressionTracesInput,
     outputSchema: WorkflowRunActionRepetitionsListExpressionTracesOutput,
   }));
@@ -6881,7 +6869,7 @@ export interface WorkflowRunActionRepetitionsRequestHistoriesGetInput {
   requestHistoryName: string;
 }
 export const WorkflowRunActionRepetitionsRequestHistoriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -6906,7 +6894,7 @@ export interface WorkflowRunActionRepetitionsRequestHistoriesGetOutput {
   tags?: Record<string, string>;
 }
 export const WorkflowRunActionRepetitionsRequestHistoriesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6928,7 +6916,7 @@ export const WorkflowRunActionRepetitionsRequestHistoriesGetOutput =
  * @param api-version - The API version.
  */
 export const WorkflowRunActionRepetitionsRequestHistoriesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRepetitionsRequestHistoriesGetInput,
     outputSchema: WorkflowRunActionRepetitionsRequestHistoriesGetOutput,
   }));
@@ -6942,7 +6930,7 @@ export interface WorkflowRunActionRepetitionsRequestHistoriesListInput {
   repetitionName: string;
 }
 export const WorkflowRunActionRepetitionsRequestHistoriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -6969,7 +6957,7 @@ export interface WorkflowRunActionRepetitionsRequestHistoriesListOutput {
   nextLink?: string;
 }
 export const WorkflowRunActionRepetitionsRequestHistoriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6997,7 +6985,7 @@ export const WorkflowRunActionRepetitionsRequestHistoriesListOutput =
  * @param api-version - The API version.
  */
 export const WorkflowRunActionRepetitionsRequestHistoriesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRepetitionsRequestHistoriesListInput,
     outputSchema: WorkflowRunActionRepetitionsRequestHistoriesListOutput,
   }));
@@ -7011,7 +6999,7 @@ export interface WorkflowRunActionRequestHistoriesGetInput {
   requestHistoryName: string;
 }
 export const WorkflowRunActionRequestHistoriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -7035,7 +7023,7 @@ export interface WorkflowRunActionRequestHistoriesGetOutput {
   tags?: Record<string, string>;
 }
 export const WorkflowRunActionRequestHistoriesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7056,7 +7044,7 @@ export const WorkflowRunActionRequestHistoriesGetOutput =
  * @param api-version - The API version.
  */
 export const WorkflowRunActionRequestHistoriesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRequestHistoriesGetInput,
     outputSchema: WorkflowRunActionRequestHistoriesGetOutput,
   }));
@@ -7069,7 +7057,7 @@ export interface WorkflowRunActionRequestHistoriesListInput {
   actionName: string;
 }
 export const WorkflowRunActionRequestHistoriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -7095,7 +7083,7 @@ export interface WorkflowRunActionRequestHistoriesListOutput {
   nextLink?: string;
 }
 export const WorkflowRunActionRequestHistoriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7122,7 +7110,7 @@ export const WorkflowRunActionRequestHistoriesListOutput =
  * @param api-version - The API version.
  */
 export const WorkflowRunActionRequestHistoriesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionRequestHistoriesListInput,
     outputSchema: WorkflowRunActionRequestHistoriesListOutput,
   }));
@@ -7136,7 +7124,7 @@ export interface WorkflowRunActionScopeRepetitionsGetInput {
   repetitionName: string;
 }
 export const WorkflowRunActionScopeRepetitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -7160,7 +7148,7 @@ export interface WorkflowRunActionScopeRepetitionsGetOutput {
   tags?: Record<string, string>;
 }
 export const WorkflowRunActionScopeRepetitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7181,7 +7169,7 @@ export const WorkflowRunActionScopeRepetitionsGetOutput =
  * @param api-version - The API version.
  */
 export const WorkflowRunActionScopeRepetitionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionScopeRepetitionsGetInput,
     outputSchema: WorkflowRunActionScopeRepetitionsGetOutput,
   }));
@@ -7194,7 +7182,7 @@ export interface WorkflowRunActionScopeRepetitionsListInput {
   actionName: string;
 }
 export const WorkflowRunActionScopeRepetitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -7220,7 +7208,7 @@ export interface WorkflowRunActionScopeRepetitionsListOutput {
   }[];
 }
 export const WorkflowRunActionScopeRepetitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -7247,7 +7235,7 @@ export const WorkflowRunActionScopeRepetitionsListOutput =
  * @param api-version - The API version.
  */
 export const WorkflowRunActionScopeRepetitionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionScopeRepetitionsListInput,
     outputSchema: WorkflowRunActionScopeRepetitionsListOutput,
   }));
@@ -7260,7 +7248,7 @@ export interface WorkflowRunActionsGetInput {
   actionName: string;
 }
 export const WorkflowRunActionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -7279,7 +7267,7 @@ export interface WorkflowRunActionsGetOutput {
   id?: string;
 }
 export const WorkflowRunActionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<WorkflowRunActionsGetOutput>;
 
@@ -7294,12 +7282,10 @@ export const WorkflowRunActionsGetOutput =
  * @param actionName - The workflow action name.
  * @param api-version - The API version.
  */
-export const WorkflowRunActionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowRunActionsGetInput,
-    outputSchema: WorkflowRunActionsGetOutput,
-  }),
-);
+export const WorkflowRunActionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowRunActionsGetInput,
+  outputSchema: WorkflowRunActionsGetOutput,
+}));
 // Input Schema
 export interface WorkflowRunActionsListInput {
   subscriptionId: string;
@@ -7310,7 +7296,7 @@ export interface WorkflowRunActionsListInput {
   $filter?: string;
 }
 export const WorkflowRunActionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -7331,7 +7317,7 @@ export interface WorkflowRunActionsListOutput {
   nextLink?: string;
 }
 export const WorkflowRunActionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7354,12 +7340,10 @@ export const WorkflowRunActionsListOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: Status.
  */
-export const WorkflowRunActionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowRunActionsListInput,
-    outputSchema: WorkflowRunActionsListOutput,
-  }),
-);
+export const WorkflowRunActionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowRunActionsListInput,
+  outputSchema: WorkflowRunActionsListOutput,
+}));
 // Input Schema
 export interface WorkflowRunActionsListExpressionTracesInput {
   subscriptionId: string;
@@ -7369,7 +7353,7 @@ export interface WorkflowRunActionsListExpressionTracesInput {
   actionName: string;
 }
 export const WorkflowRunActionsListExpressionTracesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -7393,7 +7377,7 @@ export interface WorkflowRunActionsListExpressionTracesOutput {
   }[];
 }
 export const WorkflowRunActionsListExpressionTracesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputs: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7422,7 +7406,7 @@ export const WorkflowRunActionsListExpressionTracesOutput =
  * @param api-version - The API version.
  */
 export const WorkflowRunActionsListExpressionTraces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowRunActionsListExpressionTracesInput,
     outputSchema: WorkflowRunActionsListExpressionTracesOutput,
   }));
@@ -7435,7 +7419,7 @@ export interface WorkflowRunOperationsGetInput {
   operationId: string;
 }
 export const WorkflowRunOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -7454,7 +7438,7 @@ export interface WorkflowRunOperationsGetOutput {
   id?: string;
 }
 export const WorkflowRunOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<WorkflowRunOperationsGetOutput>;
 
@@ -7469,12 +7453,10 @@ export const WorkflowRunOperationsGetOutput =
  * @param operationId - The workflow operation id.
  * @param api-version - The API version.
  */
-export const WorkflowRunOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowRunOperationsGetInput,
-    outputSchema: WorkflowRunOperationsGetOutput,
-  }),
-);
+export const WorkflowRunOperationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowRunOperationsGetInput,
+  outputSchema: WorkflowRunOperationsGetOutput,
+}));
 // Input Schema
 export interface WorkflowRunsCancelInput {
   subscriptionId: string;
@@ -7483,7 +7465,7 @@ export interface WorkflowRunsCancelInput {
   runName: string;
 }
 export const WorkflowRunsCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -7499,7 +7481,7 @@ export const WorkflowRunsCancelInput =
 // Output Schema
 export type WorkflowRunsCancelOutput = void;
 export const WorkflowRunsCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowRunsCancelOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowRunsCancelOutput>;
 
 // The operation
 /**
@@ -7511,7 +7493,7 @@ export const WorkflowRunsCancelOutput =
  * @param runName - The workflow run name.
  * @param api-version - The API version.
  */
-export const WorkflowRunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunsCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowRunsCancelInput,
   outputSchema: WorkflowRunsCancelOutput,
 }));
@@ -7522,7 +7504,7 @@ export interface WorkflowRunsGetInput {
   workflowName: string;
   runName: string;
 }
-export const WorkflowRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowRunsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
@@ -7539,7 +7521,7 @@ export const WorkflowRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface WorkflowRunsGetOutput {
   id?: string;
 }
-export const WorkflowRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowRunsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
 }) as unknown as Schema.Codec<WorkflowRunsGetOutput>;
 
@@ -7553,7 +7535,7 @@ export const WorkflowRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param runName - The workflow run name.
  * @param api-version - The API version.
  */
-export const WorkflowRunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowRunsGetInput,
   outputSchema: WorkflowRunsGetOutput,
 }));
@@ -7565,7 +7547,7 @@ export interface WorkflowRunsListInput {
   $top?: number;
   $filter?: string;
 }
-export const WorkflowRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowRunsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
@@ -7584,18 +7566,16 @@ export interface WorkflowRunsListOutput {
   value?: { id?: string }[];
   nextLink?: string;
 }
-export const WorkflowRunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+export const WorkflowRunsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<WorkflowRunsListOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<WorkflowRunsListOutput>;
 
 // The operation
 /**
@@ -7608,7 +7588,7 @@ export const WorkflowRunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: Status, StartTime, and ClientTrackingId.
  */
-export const WorkflowRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowRunsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowRunsListInput,
   outputSchema: WorkflowRunsListOutput,
 }));
@@ -7752,7 +7732,7 @@ export interface WorkflowsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const WorkflowsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -8063,7 +8043,7 @@ export interface WorkflowsCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const WorkflowsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8080,19 +8060,17 @@ export const WorkflowsCreateOrUpdateOutput =
  * @param workflowName - The workflow name.
  * @param api-version - The API version.
  */
-export const WorkflowsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowsCreateOrUpdateInput,
-    outputSchema: WorkflowsCreateOrUpdateOutput,
-  }),
-);
+export const WorkflowsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsCreateOrUpdateInput,
+  outputSchema: WorkflowsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface WorkflowsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   workflowName: string;
 }
-export const WorkflowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
@@ -8107,7 +8085,7 @@ export const WorkflowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WorkflowsDeleteOutput = void;
 export const WorkflowsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsDeleteOutput>;
 
 // The operation
 /**
@@ -8118,7 +8096,7 @@ export const WorkflowsDeleteOutput =
  * @param workflowName - The workflow name.
  * @param api-version - The API version.
  */
-export const WorkflowsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsDeleteInput,
   outputSchema: WorkflowsDeleteOutput,
 }));
@@ -8128,7 +8106,7 @@ export interface WorkflowsDisableInput {
   resourceGroupName: string;
   workflowName: string;
 }
-export const WorkflowsDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsDisableInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
@@ -8143,7 +8121,7 @@ export const WorkflowsDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WorkflowsDisableOutput = void;
 export const WorkflowsDisableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsDisableOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsDisableOutput>;
 
 // The operation
 /**
@@ -8154,7 +8132,7 @@ export const WorkflowsDisableOutput =
  * @param workflowName - The workflow name.
  * @param api-version - The API version.
  */
-export const WorkflowsDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsDisable = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsDisableInput,
   outputSchema: WorkflowsDisableOutput,
 }));
@@ -8164,7 +8142,7 @@ export interface WorkflowsEnableInput {
   resourceGroupName: string;
   workflowName: string;
 }
-export const WorkflowsEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsEnableInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
@@ -8179,7 +8157,7 @@ export const WorkflowsEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WorkflowsEnableOutput = void;
 export const WorkflowsEnableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsEnableOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsEnableOutput>;
 
 // The operation
 /**
@@ -8190,7 +8168,7 @@ export const WorkflowsEnableOutput =
  * @param workflowName - The workflow name.
  * @param api-version - The API version.
  */
-export const WorkflowsEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsEnable = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsEnableInput,
   outputSchema: WorkflowsEnableOutput,
 }));
@@ -8202,7 +8180,7 @@ export interface WorkflowsGenerateUpgradedDefinitionInput {
   targetSchemaVersion?: string;
 }
 export const WorkflowsGenerateUpgradedDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -8218,7 +8196,7 @@ export const WorkflowsGenerateUpgradedDefinitionInput =
 // Output Schema
 export interface WorkflowsGenerateUpgradedDefinitionOutput {}
 export const WorkflowsGenerateUpgradedDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as unknown as Schema.Codec<WorkflowsGenerateUpgradedDefinitionOutput>;
 
@@ -8232,7 +8210,7 @@ export const WorkflowsGenerateUpgradedDefinitionOutput =
  * @param api-version - The API version.
  */
 export const WorkflowsGenerateUpgradedDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowsGenerateUpgradedDefinitionInput,
     outputSchema: WorkflowsGenerateUpgradedDefinitionOutput,
   }));
@@ -8242,7 +8220,7 @@ export interface WorkflowsGetInput {
   resourceGroupName: string;
   workflowName: string;
 }
-export const WorkflowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
@@ -8262,7 +8240,7 @@ export interface WorkflowsGetOutput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const WorkflowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8279,7 +8257,7 @@ export const WorkflowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workflowName - The workflow name.
  * @param api-version - The API version.
  */
-export const WorkflowsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsGetInput,
   outputSchema: WorkflowsGetOutput,
 }));
@@ -8291,7 +8269,7 @@ export interface WorkflowsListByResourceGroupInput {
   $filter?: string;
 }
 export const WorkflowsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -8316,7 +8294,7 @@ export interface WorkflowsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const WorkflowsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8342,7 +8320,7 @@ export const WorkflowsListByResourceGroupOutput =
  * @param $filter - The filter to apply on the operation. Options for filters include: State, Trigger, and ReferencedResourceId.
  */
 export const WorkflowsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowsListByResourceGroupInput,
     outputSchema: WorkflowsListByResourceGroupOutput,
   }));
@@ -8353,7 +8331,7 @@ export interface WorkflowsListBySubscriptionInput {
   $filter?: string;
 }
 export const WorkflowsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
@@ -8377,7 +8355,7 @@ export interface WorkflowsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const WorkflowsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8401,12 +8379,10 @@ export const WorkflowsListBySubscriptionOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation. Options for filters include: State, Trigger, and ReferencedResourceId.
  */
-export const WorkflowsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowsListBySubscriptionInput,
-    outputSchema: WorkflowsListBySubscriptionOutput,
-  }),
-);
+export const WorkflowsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsListBySubscriptionInput,
+  outputSchema: WorkflowsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface WorkflowsListCallbackUrlInput {
   subscriptionId: string;
@@ -8416,7 +8392,7 @@ export interface WorkflowsListCallbackUrlInput {
   keyType?: "NotSpecified" | "Primary" | "Secondary";
 }
 export const WorkflowsListCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -8448,7 +8424,7 @@ export interface WorkflowsListCallbackUrlOutput {
   };
 }
 export const WorkflowsListCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -8474,12 +8450,10 @@ export const WorkflowsListCallbackUrlOutput =
  * @param workflowName - The workflow name.
  * @param api-version - The API version.
  */
-export const WorkflowsListCallbackUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowsListCallbackUrlInput,
-    outputSchema: WorkflowsListCallbackUrlOutput,
-  }),
-);
+export const WorkflowsListCallbackUrl = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsListCallbackUrlInput,
+  outputSchema: WorkflowsListCallbackUrlOutput,
+}));
 // Input Schema
 export interface WorkflowsListSwaggerInput {
   subscriptionId: string;
@@ -8487,7 +8461,7 @@ export interface WorkflowsListSwaggerInput {
   workflowName: string;
 }
 export const WorkflowsListSwaggerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -8502,7 +8476,7 @@ export const WorkflowsListSwaggerInput =
 // Output Schema
 export interface WorkflowsListSwaggerOutput {}
 export const WorkflowsListSwaggerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as unknown as Schema.Codec<WorkflowsListSwaggerOutput>;
 
@@ -8515,12 +8489,10 @@ export const WorkflowsListSwaggerOutput =
  * @param workflowName - The workflow name.
  * @param api-version - The API version.
  */
-export const WorkflowsListSwagger = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowsListSwaggerInput,
-    outputSchema: WorkflowsListSwaggerOutput,
-  }),
-);
+export const WorkflowsListSwagger = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsListSwaggerInput,
+  outputSchema: WorkflowsListSwaggerOutput,
+}));
 // Input Schema
 export interface WorkflowsMoveInput {
   subscriptionId: string;
@@ -8530,7 +8502,7 @@ export interface WorkflowsMoveInput {
   id?: string;
   type?: string;
 }
-export const WorkflowsMoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsMoveInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
@@ -8548,7 +8520,7 @@ export const WorkflowsMoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WorkflowsMoveOutput = void;
 export const WorkflowsMoveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsMoveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsMoveOutput>;
 
 // The operation
 /**
@@ -8559,7 +8531,7 @@ export const WorkflowsMoveOutput =
  * @param workflowName - The workflow name.
  * @param api-version - The API version.
  */
-export const WorkflowsMove = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsMove = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsMoveInput,
   outputSchema: WorkflowsMoveOutput,
 }));
@@ -8571,7 +8543,7 @@ export interface WorkflowsRegenerateAccessKeyInput {
   keyType?: "NotSpecified" | "Primary" | "Secondary";
 }
 export const WorkflowsRegenerateAccessKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -8589,7 +8561,7 @@ export const WorkflowsRegenerateAccessKeyInput =
 // Output Schema
 export type WorkflowsRegenerateAccessKeyOutput = void;
 export const WorkflowsRegenerateAccessKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsRegenerateAccessKeyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsRegenerateAccessKeyOutput>;
 
 // The operation
 /**
@@ -8601,7 +8573,7 @@ export const WorkflowsRegenerateAccessKeyOutput =
  * @param api-version - The API version.
  */
 export const WorkflowsRegenerateAccessKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowsRegenerateAccessKeyInput,
     outputSchema: WorkflowsRegenerateAccessKeyOutput,
   }));
@@ -8611,7 +8583,7 @@ export interface WorkflowsUpdateInput {
   resourceGroupName: string;
   workflowName: string;
 }
-export const WorkflowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
@@ -8631,7 +8603,7 @@ export interface WorkflowsUpdateOutput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const WorkflowsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8648,7 +8620,7 @@ export const WorkflowsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workflowName - The workflow name.
  * @param api-version - The API version.
  */
-export const WorkflowsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowsUpdateInput,
   outputSchema: WorkflowsUpdateOutput,
 }));
@@ -8792,7 +8764,7 @@ export interface WorkflowsValidateByLocationInput {
   tags?: Record<string, string>;
 }
 export const WorkflowsValidateByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -9097,7 +9069,7 @@ export const WorkflowsValidateByLocationInput =
 // Output Schema
 export type WorkflowsValidateByLocationOutput = void;
 export const WorkflowsValidateByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsValidateByLocationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsValidateByLocationOutput>;
 
 // The operation
 /**
@@ -9109,12 +9081,10 @@ export const WorkflowsValidateByLocationOutput =
  * @param workflowName - The workflow name.
  * @param api-version - The API version.
  */
-export const WorkflowsValidateByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowsValidateByLocationInput,
-    outputSchema: WorkflowsValidateByLocationOutput,
-  }),
-);
+export const WorkflowsValidateByLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowsValidateByLocationInput,
+  outputSchema: WorkflowsValidateByLocationOutput,
+}));
 // Input Schema
 export interface WorkflowsValidateByResourceGroupInput {
   subscriptionId: string;
@@ -9255,7 +9225,7 @@ export interface WorkflowsValidateByResourceGroupInput {
   tags?: Record<string, string>;
 }
 export const WorkflowsValidateByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -9560,7 +9530,7 @@ export const WorkflowsValidateByResourceGroupInput =
 // Output Schema
 export type WorkflowsValidateByResourceGroupOutput = void;
 export const WorkflowsValidateByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsValidateByResourceGroupOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsValidateByResourceGroupOutput>;
 
 // The operation
 /**
@@ -9572,7 +9542,7 @@ export const WorkflowsValidateByResourceGroupOutput =
  * @param api-version - The API version.
  */
 export const WorkflowsValidateByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowsValidateByResourceGroupInput,
     outputSchema: WorkflowsValidateByResourceGroupOutput,
   }));
@@ -9585,7 +9555,7 @@ export interface WorkflowTriggerHistoriesGetInput {
   historyName: string;
 }
 export const WorkflowTriggerHistoriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -9604,7 +9574,7 @@ export interface WorkflowTriggerHistoriesGetOutput {
   id?: string;
 }
 export const WorkflowTriggerHistoriesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<WorkflowTriggerHistoriesGetOutput>;
 
@@ -9619,12 +9589,10 @@ export const WorkflowTriggerHistoriesGetOutput =
  * @param historyName - The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
  * @param api-version - The API version.
  */
-export const WorkflowTriggerHistoriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowTriggerHistoriesGetInput,
-    outputSchema: WorkflowTriggerHistoriesGetOutput,
-  }),
-);
+export const WorkflowTriggerHistoriesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggerHistoriesGetInput,
+  outputSchema: WorkflowTriggerHistoriesGetOutput,
+}));
 // Input Schema
 export interface WorkflowTriggerHistoriesListInput {
   subscriptionId: string;
@@ -9635,7 +9603,7 @@ export interface WorkflowTriggerHistoriesListInput {
   $filter?: string;
 }
 export const WorkflowTriggerHistoriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -9656,7 +9624,7 @@ export interface WorkflowTriggerHistoriesListOutput {
   nextLink?: string;
 }
 export const WorkflowTriggerHistoriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9680,7 +9648,7 @@ export const WorkflowTriggerHistoriesListOutput =
  * @param $filter - The filter to apply on the operation. Options for filters include: Status, StartTime, and ClientTrackingId.
  */
 export const WorkflowTriggerHistoriesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowTriggerHistoriesListInput,
     outputSchema: WorkflowTriggerHistoriesListOutput,
   }));
@@ -9693,7 +9661,7 @@ export interface WorkflowTriggerHistoriesResubmitInput {
   historyName: string;
 }
 export const WorkflowTriggerHistoriesResubmitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -9710,7 +9678,7 @@ export const WorkflowTriggerHistoriesResubmitInput =
 // Output Schema
 export type WorkflowTriggerHistoriesResubmitOutput = void;
 export const WorkflowTriggerHistoriesResubmitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowTriggerHistoriesResubmitOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowTriggerHistoriesResubmitOutput>;
 
 // The operation
 /**
@@ -9724,7 +9692,7 @@ export const WorkflowTriggerHistoriesResubmitOutput =
  * @param api-version - The API version.
  */
 export const WorkflowTriggerHistoriesResubmit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowTriggerHistoriesResubmitInput,
     outputSchema: WorkflowTriggerHistoriesResubmitOutput,
   }));
@@ -9736,7 +9704,7 @@ export interface WorkflowTriggersGetInput {
   triggerName: string;
 }
 export const WorkflowTriggersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -9754,7 +9722,7 @@ export interface WorkflowTriggersGetOutput {
   id?: string;
 }
 export const WorkflowTriggersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<WorkflowTriggersGetOutput>;
 
@@ -9768,7 +9736,7 @@ export const WorkflowTriggersGetOutput =
  * @param triggerName - The workflow trigger name.
  * @param api-version - The API version.
  */
-export const WorkflowTriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowTriggersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowTriggersGetInput,
   outputSchema: WorkflowTriggersGetOutput,
 }));
@@ -9780,7 +9748,7 @@ export interface WorkflowTriggersGetSchemaJsonInput {
   triggerName: string;
 }
 export const WorkflowTriggersGetSchemaJsonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -9799,7 +9767,7 @@ export interface WorkflowTriggersGetSchemaJsonOutput {
   content?: string;
 }
 export const WorkflowTriggersGetSchemaJsonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<WorkflowTriggersGetSchemaJsonOutput>;
@@ -9815,7 +9783,7 @@ export const WorkflowTriggersGetSchemaJsonOutput =
  * @param api-version - The API version.
  */
 export const WorkflowTriggersGetSchemaJson =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowTriggersGetSchemaJsonInput,
     outputSchema: WorkflowTriggersGetSchemaJsonOutput,
   }));
@@ -9828,7 +9796,7 @@ export interface WorkflowTriggersListInput {
   $filter?: string;
 }
 export const WorkflowTriggersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -9848,7 +9816,7 @@ export interface WorkflowTriggersListOutput {
   nextLink?: string;
 }
 export const WorkflowTriggersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9870,12 +9838,10 @@ export const WorkflowTriggersListOutput =
  * @param $top - The number of items to be included in the result.
  * @param $filter - The filter to apply on the operation.
  */
-export const WorkflowTriggersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowTriggersListInput,
-    outputSchema: WorkflowTriggersListOutput,
-  }),
-);
+export const WorkflowTriggersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggersListInput,
+  outputSchema: WorkflowTriggersListOutput,
+}));
 // Input Schema
 export interface WorkflowTriggersListCallbackUrlInput {
   subscriptionId: string;
@@ -9884,7 +9850,7 @@ export interface WorkflowTriggersListCallbackUrlInput {
   triggerName: string;
 }
 export const WorkflowTriggersListCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -9913,7 +9879,7 @@ export interface WorkflowTriggersListCallbackUrlOutput {
   };
 }
 export const WorkflowTriggersListCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -9941,7 +9907,7 @@ export const WorkflowTriggersListCallbackUrlOutput =
  * @param api-version - The API version.
  */
 export const WorkflowTriggersListCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowTriggersListCallbackUrlInput,
     outputSchema: WorkflowTriggersListCallbackUrlOutput,
   }));
@@ -9953,7 +9919,7 @@ export interface WorkflowTriggersResetInput {
   triggerName: string;
 }
 export const WorkflowTriggersResetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -9969,7 +9935,7 @@ export const WorkflowTriggersResetInput =
 // Output Schema
 export type WorkflowTriggersResetOutput = void;
 export const WorkflowTriggersResetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowTriggersResetOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowTriggersResetOutput>;
 
 // The operation
 /**
@@ -9981,12 +9947,10 @@ export const WorkflowTriggersResetOutput =
  * @param triggerName - The workflow trigger name.
  * @param api-version - The API version.
  */
-export const WorkflowTriggersReset = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowTriggersResetInput,
-    outputSchema: WorkflowTriggersResetOutput,
-  }),
-);
+export const WorkflowTriggersReset = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggersResetInput,
+  outputSchema: WorkflowTriggersResetOutput,
+}));
 // Input Schema
 export interface WorkflowTriggersRunInput {
   subscriptionId: string;
@@ -9995,7 +9959,7 @@ export interface WorkflowTriggersRunInput {
   triggerName: string;
 }
 export const WorkflowTriggersRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -10011,7 +9975,7 @@ export const WorkflowTriggersRunInput =
 // Output Schema
 export type WorkflowTriggersRunOutput = void;
 export const WorkflowTriggersRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowTriggersRunOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowTriggersRunOutput>;
 
 // The operation
 /**
@@ -10023,7 +9987,7 @@ export const WorkflowTriggersRunOutput =
  * @param triggerName - The workflow trigger name.
  * @param api-version - The API version.
  */
-export const WorkflowTriggersRun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowTriggersRun = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowTriggersRunInput,
   outputSchema: WorkflowTriggersRunOutput,
 }));
@@ -10036,7 +10000,7 @@ export interface WorkflowTriggersSetStateInput {
   source: { id?: string; name?: string; type?: string };
 }
 export const WorkflowTriggersSetStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -10057,7 +10021,7 @@ export const WorkflowTriggersSetStateInput =
 // Output Schema
 export type WorkflowTriggersSetStateOutput = void;
 export const WorkflowTriggersSetStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowTriggersSetStateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowTriggersSetStateOutput>;
 
 // The operation
 /**
@@ -10069,12 +10033,10 @@ export const WorkflowTriggersSetStateOutput =
  * @param triggerName - The workflow trigger name.
  * @param api-version - The API version.
  */
-export const WorkflowTriggersSetState = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowTriggersSetStateInput,
-    outputSchema: WorkflowTriggersSetStateOutput,
-  }),
-);
+export const WorkflowTriggersSetState = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowTriggersSetStateInput,
+  outputSchema: WorkflowTriggersSetStateOutput,
+}));
 // Input Schema
 export interface WorkflowVersionsGetInput {
   subscriptionId: string;
@@ -10083,7 +10045,7 @@ export interface WorkflowVersionsGetInput {
   versionId: string;
 }
 export const WorkflowVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -10105,7 +10067,7 @@ export interface WorkflowVersionsGetOutput {
   tags?: Record<string, string>;
 }
 export const WorkflowVersionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10123,7 +10085,7 @@ export const WorkflowVersionsGetOutput =
  * @param versionId - The workflow versionId.
  * @param api-version - The API version.
  */
-export const WorkflowVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowVersionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowVersionsGetInput,
   outputSchema: WorkflowVersionsGetOutput,
 }));
@@ -10135,7 +10097,7 @@ export interface WorkflowVersionsListInput {
   $top?: number;
 }
 export const WorkflowVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -10160,7 +10122,7 @@ export interface WorkflowVersionsListOutput {
   nextLink?: string;
 }
 export const WorkflowVersionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -10185,12 +10147,10 @@ export const WorkflowVersionsListOutput =
  * @param api-version - The API version.
  * @param $top - The number of items to be included in the result.
  */
-export const WorkflowVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowVersionsListInput,
-    outputSchema: WorkflowVersionsListOutput,
-  }),
-);
+export const WorkflowVersionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowVersionsListInput,
+  outputSchema: WorkflowVersionsListOutput,
+}));
 // Input Schema
 export interface WorkflowVersionTriggersListCallbackUrlInput {
   subscriptionId: string;
@@ -10202,7 +10162,7 @@ export interface WorkflowVersionTriggersListCallbackUrlInput {
   keyType?: "NotSpecified" | "Primary" | "Secondary";
 }
 export const WorkflowVersionTriggersListCallbackUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -10236,7 +10196,7 @@ export interface WorkflowVersionTriggersListCallbackUrlOutput {
   };
 }
 export const WorkflowVersionTriggersListCallbackUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     basePath: Schema.optional(Schema.String),
@@ -10265,7 +10225,7 @@ export const WorkflowVersionTriggersListCallbackUrlOutput =
  * @param api-version - The API version.
  */
 export const WorkflowVersionTriggersListCallbackUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkflowVersionTriggersListCallbackUrlInput,
     outputSchema: WorkflowVersionTriggersListCallbackUrlOutput,
   }));

@@ -98,7 +98,7 @@ export interface GetLatestConfigurationRequest {
   ConfigurationToken: string;
 }
 export const GetLatestConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ConfigurationToken: S.String.pipe(T.HttpQuery("configuration_token")),
     }).pipe(
@@ -122,7 +122,7 @@ export interface GetLatestConfigurationResponse {
   VersionLabel?: string;
 }
 export const GetLatestConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextPollConfigurationToken: S.optional(S.String).pipe(
         T.HttpHeader("Next-Poll-Configuration-Token"),
@@ -140,26 +140,26 @@ export const GetLatestConfigurationResponse =
 export interface InvalidParameterDetail {
   Problem?: string;
 }
-export const InvalidParameterDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Problem: S.optional(S.String) }),
+export const InvalidParameterDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Problem: S.optional(S.String) }),
 ).annotate({
   identifier: "InvalidParameterDetail",
 }) as any as S.Schema<InvalidParameterDetail>;
 export type InvalidParameterMap = {
   [key: string]: InvalidParameterDetail | undefined;
 };
-export const InvalidParameterMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const InvalidParameterMap = /*@__PURE__*/ S.Record(
   S.String,
   InvalidParameterDetail.pipe(S.optional),
 );
 export type BadRequestDetails = {
   InvalidParameters: { [key: string]: InvalidParameterDetail | undefined };
 };
-export const BadRequestDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const BadRequestDetails = /*@__PURE__*/ S.Union([
   S.Struct({ InvalidParameters: InvalidParameterMap }),
 ]);
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -170,7 +170,7 @@ export interface StartConfigurationSessionRequest {
   RequiredMinimumPollIntervalInSeconds?: number;
 }
 export const StartConfigurationSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ApplicationIdentifier: S.String,
       EnvironmentIdentifier: S.String,
@@ -193,7 +193,7 @@ export interface StartConfigurationSessionResponse {
   InitialConfigurationToken?: string;
 }
 export const StartConfigurationSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ InitialConfigurationToken: S.optional(S.String) }),
   ).annotate({
     identifier: "StartConfigurationSessionResponse",
@@ -254,7 +254,7 @@ export const getLatestConfiguration: API.OperationMethod<
   GetLatestConfigurationResponse,
   GetLatestConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLatestConfigurationRequest,
   output: GetLatestConfigurationResponse,
   errors: [
@@ -282,7 +282,7 @@ export const startConfigurationSession: API.OperationMethod<
   StartConfigurationSessionResponse,
   StartConfigurationSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartConfigurationSessionRequest,
   output: StartConfigurationSessionResponse,
   errors: [

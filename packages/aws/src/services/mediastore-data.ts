@@ -106,7 +106,7 @@ export type SHA256Hash = string;
 export interface DeleteObjectRequest {
   Path: string;
 }
-export const DeleteObjectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Path: S.String.pipe(T.HttpLabel("Path")) }).pipe(
     T.all(
       ns,
@@ -122,7 +122,7 @@ export const DeleteObjectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteObjectRequest",
 }) as any as S.Schema<DeleteObjectRequest>;
 export interface DeleteObjectResponse {}
-export const DeleteObjectResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteObjectResponse",
@@ -130,7 +130,7 @@ export const DeleteObjectResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DescribeObjectRequest {
   Path: string;
 }
-export const DescribeObjectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Path: S.String.pipe(T.HttpLabel("Path")) }).pipe(
     T.all(
       ns,
@@ -152,17 +152,16 @@ export interface DescribeObjectResponse {
   CacheControl?: string;
   LastModified?: Date;
 }
-export const DescribeObjectResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-      ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-      ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
-      CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-      LastModified: S.optional(
-        S.Date.pipe(T.TimestampFormat("http-date")),
-      ).pipe(T.HttpHeader("Last-Modified")),
-    }).pipe(ns),
+export const DescribeObjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+    ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
+    CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    LastModified: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+      T.HttpHeader("Last-Modified"),
+    ),
+  }).pipe(ns),
 ).annotate({
   identifier: "DescribeObjectResponse",
 }) as any as S.Schema<DescribeObjectResponse>;
@@ -170,7 +169,7 @@ export interface GetObjectRequest {
   Path: string;
   Range?: string;
 }
-export const GetObjectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Path: S.String.pipe(T.HttpLabel("Path")),
     Range: S.optional(S.String).pipe(T.HttpHeader("Range")),
@@ -198,7 +197,7 @@ export interface GetObjectResponse {
   LastModified?: Date;
   StatusCode: number;
 }
-export const GetObjectResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
     CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
@@ -219,7 +218,7 @@ export interface ListItemsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListItemsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Path: S.optional(S.String).pipe(T.HttpQuery("Path")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -239,7 +238,7 @@ export const ListItemsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListItemsRequest",
 }) as any as S.Schema<ListItemsRequest>;
 export type ItemType = "OBJECT" | "FOLDER" | (string & {});
-export const ItemType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ItemType = /*@__PURE__*/ S.String;
 export interface Item {
   Name?: string;
   Type?: ItemType;
@@ -248,7 +247,7 @@ export interface Item {
   ContentType?: string;
   ContentLength?: number;
 }
-export const Item = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Type: S.optional(ItemType),
@@ -259,12 +258,12 @@ export const Item = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 export type ItemList = Item[];
-export const ItemList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Item);
+export const ItemList = /*@__PURE__*/ S.Array(Item);
 export interface ListItemsResponse {
   Items?: Item[];
   NextToken?: string;
 }
-export const ListItemsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Items: S.optional(ItemList),
     NextToken: S.optional(S.String),
@@ -273,9 +272,9 @@ export const ListItemsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListItemsResponse",
 }) as any as S.Schema<ListItemsResponse>;
 export type StorageClass = "TEMPORAL" | (string & {});
-export const StorageClass = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StorageClass = /*@__PURE__*/ S.String;
 export type UploadAvailability = "STANDARD" | "STREAMING" | (string & {});
-export const UploadAvailability = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UploadAvailability = /*@__PURE__*/ S.String;
 export interface PutObjectRequest {
   Body: T.StreamingInputBody;
   Path: string;
@@ -284,7 +283,7 @@ export interface PutObjectRequest {
   StorageClass?: StorageClass;
   UploadAvailability?: UploadAvailability;
 }
-export const PutObjectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Body: T.StreamingInput.pipe(T.HttpPayload()),
     Path: S.String.pipe(T.HttpLabel("Path")),
@@ -315,7 +314,7 @@ export interface PutObjectResponse {
   ETag?: string;
   StorageClass?: StorageClass;
 }
-export const PutObjectResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentSHA256: S.optional(S.String),
     ETag: S.optional(S.String),
@@ -357,7 +356,7 @@ export const deleteObject: API.OperationMethod<
   DeleteObjectResponse,
   DeleteObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectRequest,
   output: DeleteObjectResponse,
   errors: [
@@ -380,7 +379,7 @@ export const describeObject: API.OperationMethod<
   DescribeObjectResponse,
   DescribeObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeObjectRequest,
   output: DescribeObjectResponse,
   errors: [
@@ -404,7 +403,7 @@ export const getObject: API.OperationMethod<
   GetObjectResponse,
   GetObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetObjectRequest,
   output: GetObjectResponse,
   errors: [
@@ -443,7 +442,7 @@ export const listItems: API.OperationMethod<
     ListItemsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListItemsRequest,
   output: ListItemsResponse,
   errors: [ContainerNotFoundException, InternalServerError],
@@ -466,7 +465,7 @@ export const putObject: API.OperationMethod<
   PutObjectResponse,
   PutObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutObjectRequest,
   output: PutObjectResponse,
   errors: [ContainerNotFoundException, InternalServerError],

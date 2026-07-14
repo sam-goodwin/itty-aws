@@ -11,7 +11,7 @@ export interface UpdateBackupInput {
   branch: string;
   protected?: boolean;
 }
-export const UpdateBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateBackupInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -83,7 +83,7 @@ export interface UpdateBackupOutput {
     deleted_at: string | null;
   } | null;
 }
-export const UpdateBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateBackupOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   state: Schema.Literals([
@@ -179,7 +179,7 @@ export const UpdateBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param branch - The name of the branch
  * @param protected - Whether the backup is protected from deletion or not
  */
-export const updateBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateBackup = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateBackupInput,
   outputSchema: UpdateBackupOutput,
   errors: [Forbidden, NotFound] as const,

@@ -32,7 +32,7 @@ export interface File {
 }
 
 export const File: Schema.Codec<File> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     fingerprint: Schema.optional(Schema.String),
@@ -44,14 +44,14 @@ export interface Source {
 }
 
 export const Source: Schema.Codec<Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     files: Schema.optional(Schema.Array(File)),
   }).annotate({ identifier: "Source" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -62,12 +62,10 @@ export interface Arg {
   anyValue?: Empty;
 }
 
-export const Arg: Schema.Codec<Arg> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    exactValue: Schema.optional(Schema.Unknown),
-    anyValue: Schema.optional(Empty),
-  },
-).annotate({ identifier: "Arg" });
+export const Arg: Schema.Codec<Arg> = /*@__PURE__*/ Schema.Struct({
+  exactValue: Schema.optional(Schema.Unknown),
+  anyValue: Schema.optional(Empty),
+}).annotate({ identifier: "Arg" });
 
 export interface Result {
   /** The result is an actual value. The type of the value must match that of the type declared by the service. */
@@ -77,7 +75,7 @@ export interface Result {
 }
 
 export const Result: Schema.Codec<Result> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Unknown),
     undefined: Schema.optional(Empty),
   }).annotate({ identifier: "Result" });
@@ -92,7 +90,7 @@ export interface FunctionMock {
 }
 
 export const FunctionMock: Schema.Codec<FunctionMock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     function: Schema.optional(Schema.String),
     args: Schema.optional(Schema.Array(Arg)),
     result: Schema.optional(Result),
@@ -123,7 +121,7 @@ export interface TestCase {
 }
 
 export const TestCase: Schema.Codec<TestCase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expectation: Schema.optional(Schema.String),
     request: Schema.optional(Schema.Unknown),
     resource: Schema.optional(Schema.Unknown),
@@ -138,7 +136,7 @@ export interface TestSuite {
 }
 
 export const TestSuite: Schema.Codec<TestSuite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     testCases: Schema.optional(Schema.Array(TestCase)),
   }).annotate({ identifier: "TestSuite" });
 
@@ -150,7 +148,7 @@ export interface TestRulesetRequest {
 }
 
 export const TestRulesetRequest: Schema.Codec<TestRulesetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Source),
     testSuite: Schema.optional(TestSuite),
   }).annotate({ identifier: "TestRulesetRequest" });
@@ -169,7 +167,7 @@ export interface SourcePosition {
 }
 
 export const SourcePosition: Schema.Codec<SourcePosition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileName: Schema.optional(Schema.String),
     line: Schema.optional(Schema.Number),
     column: Schema.optional(Schema.Number),
@@ -192,7 +190,7 @@ export interface Issue {
 }
 
 export const Issue: Schema.Codec<Issue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourcePosition: Schema.optional(SourcePosition),
     description: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -206,7 +204,7 @@ export interface FunctionCall {
 }
 
 export const FunctionCall: Schema.Codec<FunctionCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     function: Schema.optional(Schema.String),
     args: Schema.optional(Schema.Array(Schema.Unknown)),
   }).annotate({ identifier: "FunctionCall" });
@@ -219,7 +217,7 @@ export interface VisitedExpression {
 }
 
 export const VisitedExpression: Schema.Codec<VisitedExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourcePosition: Schema.optional(SourcePosition),
     value: Schema.optional(Schema.Unknown),
   }).annotate({ identifier: "VisitedExpression" });
@@ -232,7 +230,7 @@ export interface ValueCount {
 }
 
 export const ValueCount: Schema.Codec<ValueCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Unknown),
     count: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ValueCount" });
@@ -247,7 +245,7 @@ export interface ExpressionReport {
 }
 
 export const ExpressionReport: Schema.Codec<ExpressionReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sourcePosition: Schema.optional(SourcePosition),
       values: Schema.optional(Schema.Array(ValueCount)),
@@ -273,7 +271,7 @@ export interface TestResult {
 }
 
 export const TestResult: Schema.Codec<TestResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     debugMessages: Schema.optional(Schema.Array(Schema.String)),
     errorPosition: Schema.optional(SourcePosition),
@@ -290,7 +288,7 @@ export interface TestRulesetResponse {
 }
 
 export const TestRulesetResponse: Schema.Codec<TestRulesetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     issues: Schema.optional(Schema.Array(Issue)),
     testResults: Schema.optional(Schema.Array(TestResult)),
   }).annotate({ identifier: "TestRulesetResponse" });
@@ -301,7 +299,7 @@ export interface Metadata {
 }
 
 export const Metadata: Schema.Codec<Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     services: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Metadata" });
 
@@ -319,7 +317,7 @@ export interface Ruleset {
 }
 
 export const Ruleset: Schema.Codec<Ruleset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     source: Schema.optional(Source),
     createTime: Schema.optional(Schema.String),
@@ -335,7 +333,7 @@ export interface ListRulesetsResponse {
 }
 
 export const ListRulesetsResponse: Schema.Codec<ListRulesetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rulesets: Schema.optional(Schema.Array(Ruleset)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListRulesetsResponse" });
@@ -352,7 +350,7 @@ export interface Release {
 }
 
 export const Release: Schema.Codec<Release> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     rulesetName: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -367,7 +365,7 @@ export interface UpdateReleaseRequest {
 }
 
 export const UpdateReleaseRequest: Schema.Codec<UpdateReleaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     release: Schema.optional(Release),
     updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpdateReleaseRequest" });
@@ -380,7 +378,7 @@ export interface ListReleasesResponse {
 }
 
 export const ListReleasesResponse: Schema.Codec<ListReleasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     releases: Schema.optional(Schema.Array(Release)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListReleasesResponse" });
@@ -409,7 +407,7 @@ export interface GetReleaseExecutableResponse {
 }
 
 export const GetReleaseExecutableResponse: Schema.Codec<GetReleaseExecutableResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     executable: Schema.optional(Schema.String),
     language: Schema.optional(Schema.String),
     rulesetName: Schema.optional(Schema.String),
@@ -479,7 +477,7 @@ export interface TestProjectsRequest {
   body?: TestRulesetRequest;
 }
 
-export const TestProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestProjectsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(TestRulesetRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -488,8 +486,7 @@ export const TestProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<TestProjectsRequest>;
 
 export type TestProjectsResponse = TestRulesetResponse;
-export const TestProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestRulesetResponse;
+export const TestProjectsResponse = /*@__PURE__*/ TestRulesetResponse;
 
 export type TestProjectsError =
   | DefaultErrors
@@ -504,7 +501,7 @@ export const testProjects: API.OperationMethod<
   TestProjectsResponse,
   TestProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestProjectsRequest,
   output: TestProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -518,7 +515,7 @@ export interface CreateProjectsRulesetsRequest {
 }
 
 export const CreateProjectsRulesetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Ruleset).pipe(T.HttpBody()),
   }).pipe(
@@ -527,8 +524,7 @@ export const CreateProjectsRulesetsRequest =
   ) as unknown as Schema.Codec<CreateProjectsRulesetsRequest>;
 
 export type CreateProjectsRulesetsResponse = Ruleset;
-export const CreateProjectsRulesetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Ruleset;
+export const CreateProjectsRulesetsResponse = /*@__PURE__*/ Ruleset;
 
 export type CreateProjectsRulesetsError =
   | DefaultErrors
@@ -543,7 +539,7 @@ export const createProjectsRulesets: API.OperationMethod<
   CreateProjectsRulesetsResponse,
   CreateProjectsRulesetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsRulesetsRequest,
   output: CreateProjectsRulesetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -555,7 +551,7 @@ export interface GetProjectsRulesetsRequest {
 }
 
 export const GetProjectsRulesetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -563,7 +559,7 @@ export const GetProjectsRulesetsRequest =
   ) as unknown as Schema.Codec<GetProjectsRulesetsRequest>;
 
 export type GetProjectsRulesetsResponse = Ruleset;
-export const GetProjectsRulesetsResponse = /*@__PURE__*/ /*#__PURE__*/ Ruleset;
+export const GetProjectsRulesetsResponse = /*@__PURE__*/ Ruleset;
 
 export type GetProjectsRulesetsError = DefaultErrors | NotFound | Forbidden;
 
@@ -573,7 +569,7 @@ export const getProjectsRulesets: API.OperationMethod<
   GetProjectsRulesetsResponse,
   GetProjectsRulesetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsRulesetsRequest,
   output: GetProjectsRulesetsResponse,
   errors: [NotFound, Forbidden],
@@ -591,7 +587,7 @@ export interface ListProjectsRulesetsRequest {
 }
 
 export const ListProjectsRulesetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -602,8 +598,7 @@ export const ListProjectsRulesetsRequest =
   ) as unknown as Schema.Codec<ListProjectsRulesetsRequest>;
 
 export type ListProjectsRulesetsResponse = ListRulesetsResponse;
-export const ListProjectsRulesetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListRulesetsResponse;
+export const ListProjectsRulesetsResponse = /*@__PURE__*/ ListRulesetsResponse;
 
 export type ListProjectsRulesetsError = DefaultErrors | NotFound | Forbidden;
 
@@ -613,7 +608,7 @@ export const listProjectsRulesets: API.PaginatedOperationMethod<
   ListProjectsRulesetsResponse,
   ListProjectsRulesetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRulesetsRequest,
   output: ListProjectsRulesetsResponse,
   errors: [NotFound, Forbidden],
@@ -629,7 +624,7 @@ export interface DeleteProjectsRulesetsRequest {
 }
 
 export const DeleteProjectsRulesetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -637,7 +632,7 @@ export const DeleteProjectsRulesetsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsRulesetsRequest>;
 
 export type DeleteProjectsRulesetsResponse = Empty;
-export const DeleteProjectsRulesetsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsRulesetsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsRulesetsError =
   | DefaultErrors
@@ -652,7 +647,7 @@ export const deleteProjectsRulesets: API.OperationMethod<
   DeleteProjectsRulesetsResponse,
   DeleteProjectsRulesetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsRulesetsRequest,
   output: DeleteProjectsRulesetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -666,7 +661,7 @@ export interface CreateProjectsReleasesRequest {
 }
 
 export const CreateProjectsReleasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Release).pipe(T.HttpBody()),
   }).pipe(
@@ -675,8 +670,7 @@ export const CreateProjectsReleasesRequest =
   ) as unknown as Schema.Codec<CreateProjectsReleasesRequest>;
 
 export type CreateProjectsReleasesResponse = Release;
-export const CreateProjectsReleasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Release;
+export const CreateProjectsReleasesResponse = /*@__PURE__*/ Release;
 
 export type CreateProjectsReleasesError =
   | DefaultErrors
@@ -691,7 +685,7 @@ export const createProjectsReleases: API.OperationMethod<
   CreateProjectsReleasesResponse,
   CreateProjectsReleasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsReleasesRequest,
   output: CreateProjectsReleasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -705,7 +699,7 @@ export interface PatchProjectsReleasesRequest {
 }
 
 export const PatchProjectsReleasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateReleaseRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -714,8 +708,7 @@ export const PatchProjectsReleasesRequest =
   ) as unknown as Schema.Codec<PatchProjectsReleasesRequest>;
 
 export type PatchProjectsReleasesResponse = Release;
-export const PatchProjectsReleasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Release;
+export const PatchProjectsReleasesResponse = /*@__PURE__*/ Release;
 
 export type PatchProjectsReleasesError =
   | DefaultErrors
@@ -730,7 +723,7 @@ export const patchProjectsReleases: API.OperationMethod<
   PatchProjectsReleasesResponse,
   PatchProjectsReleasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsReleasesRequest,
   output: PatchProjectsReleasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -742,7 +735,7 @@ export interface GetProjectsReleasesRequest {
 }
 
 export const GetProjectsReleasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -750,7 +743,7 @@ export const GetProjectsReleasesRequest =
   ) as unknown as Schema.Codec<GetProjectsReleasesRequest>;
 
 export type GetProjectsReleasesResponse = Release;
-export const GetProjectsReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Release;
+export const GetProjectsReleasesResponse = /*@__PURE__*/ Release;
 
 export type GetProjectsReleasesError = DefaultErrors | NotFound | Forbidden;
 
@@ -760,7 +753,7 @@ export const getProjectsReleases: API.OperationMethod<
   GetProjectsReleasesResponse,
   GetProjectsReleasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsReleasesRequest,
   output: GetProjectsReleasesResponse,
   errors: [NotFound, Forbidden],
@@ -778,7 +771,7 @@ export interface ListProjectsReleasesRequest {
 }
 
 export const ListProjectsReleasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -789,8 +782,7 @@ export const ListProjectsReleasesRequest =
   ) as unknown as Schema.Codec<ListProjectsReleasesRequest>;
 
 export type ListProjectsReleasesResponse = ListReleasesResponse;
-export const ListProjectsReleasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListReleasesResponse;
+export const ListProjectsReleasesResponse = /*@__PURE__*/ ListReleasesResponse;
 
 export type ListProjectsReleasesError = DefaultErrors | NotFound | Forbidden;
 
@@ -800,7 +792,7 @@ export const listProjectsReleases: API.PaginatedOperationMethod<
   ListProjectsReleasesResponse,
   ListProjectsReleasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsReleasesRequest,
   output: ListProjectsReleasesResponse,
   errors: [NotFound, Forbidden],
@@ -816,7 +808,7 @@ export interface DeleteProjectsReleasesRequest {
 }
 
 export const DeleteProjectsReleasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -824,7 +816,7 @@ export const DeleteProjectsReleasesRequest =
   ) as unknown as Schema.Codec<DeleteProjectsReleasesRequest>;
 
 export type DeleteProjectsReleasesResponse = Empty;
-export const DeleteProjectsReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsReleasesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsReleasesError =
   | DefaultErrors
@@ -839,7 +831,7 @@ export const deleteProjectsReleases: API.OperationMethod<
   DeleteProjectsReleasesResponse,
   DeleteProjectsReleasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsReleasesRequest,
   output: DeleteProjectsReleasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -857,7 +849,7 @@ export interface GetExecutableProjectsReleasesRequest {
 }
 
 export const GetExecutableProjectsReleasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     executableVersion: Schema.optional(Schema.String).pipe(
       T.HttpQuery("executableVersion"),
@@ -870,7 +862,7 @@ export const GetExecutableProjectsReleasesRequest =
 export type GetExecutableProjectsReleasesResponse =
   GetReleaseExecutableResponse;
 export const GetExecutableProjectsReleasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GetReleaseExecutableResponse;
+  /*@__PURE__*/ GetReleaseExecutableResponse;
 
 export type GetExecutableProjectsReleasesError =
   | DefaultErrors
@@ -883,7 +875,7 @@ export const getExecutableProjectsReleases: API.OperationMethod<
   GetExecutableProjectsReleasesResponse,
   GetExecutableProjectsReleasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExecutableProjectsReleasesRequest,
   output: GetExecutableProjectsReleasesResponse,
   errors: [NotFound, Forbidden],

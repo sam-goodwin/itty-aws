@@ -9,7 +9,7 @@ export interface V1ListActionRunsInput {
   offset?: number;
   limit?: number;
 }
-export const V1ListActionRunsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1ListActionRunsInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   offset: Schema.optional(Schema.Number),
   limit: Schema.optional(Schema.Number),
@@ -47,7 +47,7 @@ export type V1ListActionRunsOutput = {
   created_at: string;
   updated_at: string;
 }[];
-export const V1ListActionRunsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const V1ListActionRunsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
     branch_id: Schema.String,
@@ -91,7 +91,7 @@ export const V1ListActionRunsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  *
  * @param ref - Project ref
  */
-export const v1ListActionRuns = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ListActionRuns = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ListActionRunsInput,
   outputSchema: V1ListActionRunsOutput,
   errors: [BadRequest, Forbidden] as const,

@@ -8,7 +8,7 @@ export interface GetPaymentLinksPaymentLinkInput {
   expand?: string;
 }
 export const GetPaymentLinksPaymentLinkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payment_link: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -882,7 +882,7 @@ export interface GetPaymentLinksPaymentLinkOutput {
   url: string;
 }
 export const GetPaymentLinksPaymentLinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     after_completion: Schema.Struct({
       hosted_confirmation: Schema.optional(
@@ -1940,9 +1940,7 @@ export const GetPaymentLinksPaymentLinkOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetPaymentLinksPaymentLink = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetPaymentLinksPaymentLinkInput,
-    outputSchema: GetPaymentLinksPaymentLinkOutput,
-  }),
-);
+export const GetPaymentLinksPaymentLink = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetPaymentLinksPaymentLinkInput,
+  outputSchema: GetPaymentLinksPaymentLinkOutput,
+}));

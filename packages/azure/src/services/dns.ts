@@ -14,7 +14,7 @@ export interface DnsResourceReferenceGetByTargetResourcesInput {
   properties?: { targetResources?: { id?: string }[] };
 }
 export const DnsResourceReferenceGetByTargetResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -45,7 +45,7 @@ export interface DnsResourceReferenceGetByTargetResourcesOutput {
   };
 }
 export const DnsResourceReferenceGetByTargetResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         dnsResourceReferences: Schema.optional(
@@ -78,7 +78,7 @@ export const DnsResourceReferenceGetByTargetResourcesOutput =
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
 export const DnsResourceReferenceGetByTargetResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResourceReferenceGetByTargetResourcesInput,
     outputSchema: DnsResourceReferenceGetByTargetResourcesOutput,
   }));
@@ -135,7 +135,7 @@ export interface RecordSetsCreateOrUpdateInput {
   };
 }
 export const RecordSetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     zoneName: Schema.String.pipe(T.PathParam()),
     relativeRecordSetName: Schema.String.pipe(T.PathParam()),
@@ -293,7 +293,7 @@ export interface RecordSetsCreateOrUpdateOutput {
   };
 }
 export const RecordSetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -404,12 +404,10 @@ export const RecordSetsCreateOrUpdateOutput =
  * @param api-version - Specifies the API version.
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
-export const RecordSetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecordSetsCreateOrUpdateInput,
-    outputSchema: RecordSetsCreateOrUpdateOutput,
-  }),
-);
+export const RecordSetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecordSetsCreateOrUpdateInput,
+  outputSchema: RecordSetsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface RecordSetsDeleteInput {
   resourceGroupName: string;
@@ -428,7 +426,7 @@ export interface RecordSetsDeleteInput {
     | "TXT";
   subscriptionId: string;
 }
-export const RecordSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecordSetsDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
   relativeRecordSetName: Schema.String.pipe(T.PathParam()),
@@ -456,7 +454,7 @@ export const RecordSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RecordSetsDeleteOutput = void;
 export const RecordSetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RecordSetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RecordSetsDeleteOutput>;
 
 // The operation
 /**
@@ -470,7 +468,7 @@ export const RecordSetsDeleteOutput =
  * @param api-version - Specifies the API version.
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
-export const RecordSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecordSetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecordSetsDeleteInput,
   outputSchema: RecordSetsDeleteOutput,
 }));
@@ -492,7 +490,7 @@ export interface RecordSetsGetInput {
     | "TXT";
   subscriptionId: string;
 }
-export const RecordSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecordSetsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
   relativeRecordSetName: Schema.String.pipe(T.PathParam()),
@@ -554,7 +552,7 @@ export interface RecordSetsGetOutput {
     caaRecords?: { flags?: number; tag?: string; value?: string }[];
   };
 }
-export const RecordSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecordSetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -663,7 +661,7 @@ export const RecordSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Specifies the API version.
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
-export const RecordSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecordSetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecordSetsGetInput,
   outputSchema: RecordSetsGetOutput,
 }));
@@ -676,7 +674,7 @@ export interface RecordSetsListAllByDnsZoneInput {
   $recordsetnamesuffix?: string;
 }
 export const RecordSetsListAllByDnsZoneInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     zoneName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -731,7 +729,7 @@ export interface RecordSetsListAllByDnsZoneOutput {
   nextLink?: string;
 }
 export const RecordSetsListAllByDnsZoneOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -849,12 +847,10 @@ export const RecordSetsListAllByDnsZoneOutput =
  * @param api-version - Specifies the API version.
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
-export const RecordSetsListAllByDnsZone = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecordSetsListAllByDnsZoneInput,
-    outputSchema: RecordSetsListAllByDnsZoneOutput,
-  }),
-);
+export const RecordSetsListAllByDnsZone = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecordSetsListAllByDnsZoneInput,
+  outputSchema: RecordSetsListAllByDnsZoneOutput,
+}));
 // Input Schema
 export interface RecordSetsListByDnsZoneInput {
   resourceGroupName: string;
@@ -864,7 +860,7 @@ export interface RecordSetsListByDnsZoneInput {
   $recordsetnamesuffix?: string;
 }
 export const RecordSetsListByDnsZoneInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     zoneName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -919,7 +915,7 @@ export interface RecordSetsListByDnsZoneOutput {
   nextLink?: string;
 }
 export const RecordSetsListByDnsZoneOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1037,12 +1033,10 @@ export const RecordSetsListByDnsZoneOutput =
  * @param api-version - Specifies the API version.
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
-export const RecordSetsListByDnsZone = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecordSetsListByDnsZoneInput,
-    outputSchema: RecordSetsListByDnsZoneOutput,
-  }),
-);
+export const RecordSetsListByDnsZone = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecordSetsListByDnsZoneInput,
+  outputSchema: RecordSetsListByDnsZoneOutput,
+}));
 // Input Schema
 export interface RecordSetsListByTypeInput {
   resourceGroupName: string;
@@ -1063,7 +1057,7 @@ export interface RecordSetsListByTypeInput {
   $recordsetnamesuffix?: string;
 }
 export const RecordSetsListByTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     zoneName: Schema.String.pipe(T.PathParam()),
     recordType: Schema.Literals([
@@ -1130,7 +1124,7 @@ export interface RecordSetsListByTypeOutput {
   nextLink?: string;
 }
 export const RecordSetsListByTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1249,12 +1243,10 @@ export const RecordSetsListByTypeOutput =
  * @param api-version - Specifies the API version.
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
-export const RecordSetsListByType = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecordSetsListByTypeInput,
-    outputSchema: RecordSetsListByTypeOutput,
-  }),
-);
+export const RecordSetsListByType = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecordSetsListByTypeInput,
+  outputSchema: RecordSetsListByTypeOutput,
+}));
 // Input Schema
 export interface RecordSetsUpdateInput {
   resourceGroupName: string;
@@ -1307,7 +1299,7 @@ export interface RecordSetsUpdateInput {
     caaRecords?: { flags?: number; tag?: string; value?: string }[];
   };
 }
-export const RecordSetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecordSetsUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
   relativeRecordSetName: Schema.String.pipe(T.PathParam()),
@@ -1464,105 +1456,103 @@ export interface RecordSetsUpdateOutput {
     caaRecords?: { flags?: number; tag?: string; value?: string }[];
   };
 }
-export const RecordSetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        TTL: Schema.optional(Schema.Number),
-        fqdn: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        targetResource: Schema.optional(
+export const RecordSetsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      TTL: Schema.optional(Schema.Number),
+      fqdn: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+      targetResource: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+      ARecords: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            id: Schema.optional(Schema.String),
+            ipv4Address: Schema.optional(Schema.String),
           }),
         ),
-        ARecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipv4Address: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        AAAARecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipv6Address: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        MXRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              preference: Schema.optional(Schema.Number),
-              exchange: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        NSRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              nsdname: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        PTRRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ptrdname: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        SRVRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              priority: Schema.optional(Schema.Number),
-              weight: Schema.optional(Schema.Number),
-              port: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        TXTRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              value: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-        CNAMERecord: Schema.optional(
+      ),
+      AAAARecords: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            cname: Schema.optional(Schema.String),
+            ipv6Address: Schema.optional(Schema.String),
           }),
         ),
-        SOARecord: Schema.optional(
+      ),
+      MXRecords: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            host: Schema.optional(Schema.String),
-            email: Schema.optional(Schema.String),
-            serialNumber: Schema.optional(Schema.Number),
-            refreshTime: Schema.optional(Schema.Number),
-            retryTime: Schema.optional(Schema.Number),
-            expireTime: Schema.optional(Schema.Number),
-            minimumTTL: Schema.optional(Schema.Number),
+            preference: Schema.optional(Schema.Number),
+            exchange: Schema.optional(Schema.String),
           }),
         ),
-        caaRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              flags: Schema.optional(Schema.Number),
-              tag: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
+      ),
+      NSRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            nsdname: Schema.optional(Schema.String),
+          }),
         ),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<RecordSetsUpdateOutput>;
+      ),
+      PTRRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            ptrdname: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      SRVRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            priority: Schema.optional(Schema.Number),
+            weight: Schema.optional(Schema.Number),
+            port: Schema.optional(Schema.Number),
+            target: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      TXTRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            value: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      ),
+      CNAMERecord: Schema.optional(
+        Schema.Struct({
+          cname: Schema.optional(Schema.String),
+        }),
+      ),
+      SOARecord: Schema.optional(
+        Schema.Struct({
+          host: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          serialNumber: Schema.optional(Schema.Number),
+          refreshTime: Schema.optional(Schema.Number),
+          retryTime: Schema.optional(Schema.Number),
+          expireTime: Schema.optional(Schema.Number),
+          minimumTTL: Schema.optional(Schema.Number),
+        }),
+      ),
+      caaRecords: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            flags: Schema.optional(Schema.Number),
+            tag: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+}) as unknown as Schema.Codec<RecordSetsUpdateOutput>;
 
 // The operation
 /**
@@ -1576,7 +1566,7 @@ export const RecordSetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - Specifies the API version.
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
-export const RecordSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecordSetsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecordSetsUpdateInput,
   outputSchema: RecordSetsUpdateOutput,
 }));
@@ -1602,7 +1592,7 @@ export interface ZonesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const ZonesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     zoneName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1652,7 +1642,7 @@ export interface ZonesCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const ZonesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1671,7 +1661,7 @@ export const ZonesCreateOrUpdateOutput =
  * @param api-version - Specifies the API version.
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
-export const ZonesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ZonesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ZonesCreateOrUpdateInput,
   outputSchema: ZonesCreateOrUpdateOutput,
 }));
@@ -1681,7 +1671,7 @@ export interface ZonesDeleteInput {
   zoneName: string;
   subscriptionId: string;
 }
-export const ZonesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ZonesDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1696,7 +1686,7 @@ export const ZonesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ZonesDeleteOutput = void;
 export const ZonesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ZonesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ZonesDeleteOutput>;
 
 // The operation
 /**
@@ -1708,7 +1698,7 @@ export const ZonesDeleteOutput =
  * @param api-version - Specifies the API version.
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
-export const ZonesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ZonesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ZonesDeleteInput,
   outputSchema: ZonesDeleteOutput,
 }));
@@ -1718,7 +1708,7 @@ export interface ZonesGetInput {
   zoneName: string;
   subscriptionId: string;
 }
-export const ZonesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ZonesGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1738,7 +1728,7 @@ export interface ZonesGetOutput {
   location: string;
   tags?: Record<string, string>;
 }
-export const ZonesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ZonesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1755,7 +1745,7 @@ export const ZonesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Specifies the API version.
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
-export const ZonesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ZonesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ZonesGetInput,
   outputSchema: ZonesGetOutput,
 }));
@@ -1764,7 +1754,7 @@ export interface ZonesListInput {
   subscriptionId: string;
   $top?: number;
 }
-export const ZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ZonesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
 }).pipe(
@@ -1786,7 +1776,7 @@ export interface ZonesListOutput {
   }[];
   nextLink?: string;
 }
-export const ZonesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ZonesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1809,7 +1799,7 @@ export const ZonesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Specifies the API version.
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
-export const ZonesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ZonesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ZonesListInput,
   outputSchema: ZonesListOutput,
 }));
@@ -1820,7 +1810,7 @@ export interface ZonesListByResourceGroupInput {
   $top?: number;
 }
 export const ZonesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -1844,7 +1834,7 @@ export interface ZonesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ZonesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1868,12 +1858,10 @@ export const ZonesListByResourceGroupOutput =
  * @param api-version - Specifies the API version.
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
-export const ZonesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ZonesListByResourceGroupInput,
-    outputSchema: ZonesListByResourceGroupOutput,
-  }),
-);
+export const ZonesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ZonesListByResourceGroupInput,
+  outputSchema: ZonesListByResourceGroupOutput,
+}));
 // Input Schema
 export interface ZonesUpdateInput {
   resourceGroupName: string;
@@ -1881,7 +1869,7 @@ export interface ZonesUpdateInput {
   subscriptionId: string;
   tags?: Record<string, string>;
 }
-export const ZonesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ZonesUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1902,7 +1890,7 @@ export interface ZonesUpdateOutput {
   location: string;
   tags?: Record<string, string>;
 }
-export const ZonesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ZonesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1920,7 +1908,7 @@ export const ZonesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Specifies the API version.
  * @param subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
  */
-export const ZonesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ZonesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ZonesUpdateInput,
   outputSchema: ZonesUpdateOutput,
 }));

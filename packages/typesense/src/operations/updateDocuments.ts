@@ -8,7 +8,7 @@ export interface UpdateDocumentsInput {
   collectionName: string;
   updateDocumentsParameters?: string;
 }
-export const UpdateDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDocumentsInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   updateDocumentsParameters: Schema.optional(Schema.String),
 }).pipe(
@@ -19,7 +19,7 @@ export const UpdateDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface UpdateDocumentsOutput {
   num_updated: number;
 }
-export const UpdateDocumentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDocumentsOutput = /*@__PURE__*/ Schema.Struct({
   num_updated: Schema.Number,
 }) as unknown as Schema.Codec<UpdateDocumentsOutput>;
 
@@ -31,7 +31,7 @@ export const UpdateDocumentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param collectionName - The name of the collection to update documents in
  */
-export const updateDocuments = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateDocuments = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateDocumentsInput,
   outputSchema: UpdateDocumentsOutput,
   errors: [BadRequest, NotFound] as const,

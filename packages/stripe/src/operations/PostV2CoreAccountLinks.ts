@@ -28,7 +28,7 @@ export interface PostV2CoreAccountLinksInput {
   };
 }
 export const PostV2CoreAccountLinksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String,
     use_case: Schema.Struct({
       account_onboarding: Schema.optional(
@@ -106,7 +106,7 @@ export interface PostV2CoreAccountLinksOutput {
   };
 }
 export const PostV2CoreAccountLinksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String,
     created: Schema.String,
     expires_at: Schema.String,
@@ -162,9 +162,7 @@ export const PostV2CoreAccountLinksOutput =
  *
  * Creates an AccountLink object that includes a single-use URL that an account can use to access a Stripe-hosted flow for collecting or updating required information.
  */
-export const PostV2CoreAccountLinks = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostV2CoreAccountLinksInput,
-    outputSchema: PostV2CoreAccountLinksOutput,
-  }),
-);
+export const PostV2CoreAccountLinks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostV2CoreAccountLinksInput,
+  outputSchema: PostV2CoreAccountLinksOutput,
+}));

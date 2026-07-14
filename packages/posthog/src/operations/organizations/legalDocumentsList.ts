@@ -10,7 +10,7 @@ export interface LegalDocumentsListInput {
   offset?: number;
 }
 export const LegalDocumentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -37,7 +37,7 @@ export interface LegalDocumentsListOutput {
   }[];
 }
 export const LegalDocumentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -70,7 +70,7 @@ export const LegalDocumentsListOutput =
  * @param offset - The initial index from which to return the results.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const legalDocumentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const legalDocumentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LegalDocumentsListInput,
   outputSchema: LegalDocumentsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

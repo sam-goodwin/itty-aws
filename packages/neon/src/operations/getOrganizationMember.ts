@@ -8,7 +8,7 @@ export interface GetOrganizationMemberInput {
   member_id: string;
 }
 export const GetOrganizationMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
     member_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -27,7 +27,7 @@ export interface GetOrganizationMemberOutput {
   joined_at?: string;
 }
 export const GetOrganizationMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     user_id: Schema.String,
     org_id: Schema.String,
@@ -50,9 +50,7 @@ export const GetOrganizationMemberOutput =
  * @param org_id - The Neon organization ID
  * @param member_id - The Neon organization member ID
  */
-export const getOrganizationMember = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetOrganizationMemberInput,
-    outputSchema: GetOrganizationMemberOutput,
-  }),
-);
+export const getOrganizationMember = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetOrganizationMemberInput,
+  outputSchema: GetOrganizationMemberOutput,
+}));

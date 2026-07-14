@@ -12,7 +12,7 @@ export interface DeleteGroupClusterSearchIndexInput {
   pretty?: boolean;
 }
 export const DeleteGroupClusterSearchIndexInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     indexId: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const DeleteGroupClusterSearchIndexInput =
 // Output Schema
 export type DeleteGroupClusterSearchIndexOutput = void;
 export const DeleteGroupClusterSearchIndexOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterSearchIndexOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterSearchIndexOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const DeleteGroupClusterSearchIndexOutput =
  * @param indexId - Unique 24-hexadecimal digit string that identifies the Atlas Search index. Use the [Get All Atlas Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Atlas Search indexes.
  */
 export const deleteGroupClusterSearchIndex =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupClusterSearchIndexInput,
     outputSchema: DeleteGroupClusterSearchIndexOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

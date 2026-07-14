@@ -7,7 +7,7 @@ import { NotFound } from "../errors.ts";
 export interface RevokeApiKeyInput {
   key_id: number;
 }
-export const RevokeApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RevokeApiKeyInput = /*@__PURE__*/ Schema.Struct({
   key_id: Schema.Number.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/api_keys/{key_id}" }),
@@ -23,7 +23,7 @@ export interface RevokeApiKeyOutput {
   last_used_from_addr: string;
   revoked: boolean;
 }
-export const RevokeApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RevokeApiKeyOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.Number,
   name: Schema.String,
   created_at: Schema.String,
@@ -45,7 +45,7 @@ export const RevokeApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param key_id - The API key ID
  */
-export const revokeApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const revokeApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: RevokeApiKeyInput,
   outputSchema: RevokeApiKeyOutput,
   errors: [NotFound] as const,

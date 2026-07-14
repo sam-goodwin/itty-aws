@@ -12,7 +12,7 @@ export interface UpdateGroupClusterBackupSnapshotInput {
   pretty?: boolean;
 }
 export const UpdateGroupClusterBackupSnapshotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     snapshotId: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const UpdateGroupClusterBackupSnapshotInput =
 // Output Schema
 export type UpdateGroupClusterBackupSnapshotOutput = void;
 export const UpdateGroupClusterBackupSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterBackupSnapshotOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterBackupSnapshotOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const UpdateGroupClusterBackupSnapshotOutput =
  * @param snapshotId - Unique 24-hexadecimal digit string that identifies the desired snapshot.
  */
 export const updateGroupClusterBackupSnapshot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupClusterBackupSnapshotInput,
     outputSchema: UpdateGroupClusterBackupSnapshotOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

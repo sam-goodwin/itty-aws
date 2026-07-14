@@ -11,7 +11,7 @@ export interface V1RevokeTokenInput {
   client_secret: string | Redacted.Redacted<string>;
   refresh_token: string | Redacted.Redacted<string>;
 }
-export const V1RevokeTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1RevokeTokenInput = /*@__PURE__*/ Schema.Struct({
   client_id: Schema.String,
   client_secret: SensitiveString,
   refresh_token: SensitiveString,
@@ -22,13 +22,13 @@ export const V1RevokeTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type V1RevokeTokenOutput = void;
 export const V1RevokeTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RevokeTokenOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RevokeTokenOutput>;
 
 // The operation
 /**
  * [Beta] Revoke oauth app authorization and it's corresponding tokens
  */
-export const v1RevokeToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1RevokeToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1RevokeTokenInput,
   outputSchema: V1RevokeTokenOutput,
   errors: [BadRequest, Forbidden] as const,

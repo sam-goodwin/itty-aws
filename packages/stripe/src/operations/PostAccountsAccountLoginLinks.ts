@@ -8,7 +8,7 @@ export interface PostAccountsAccountLoginLinksInput {
   expand?: string[];
 }
 export const PostAccountsAccountLoginLinksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -26,7 +26,7 @@ export interface PostAccountsAccountLoginLinksOutput {
   url: string;
 }
 export const PostAccountsAccountLoginLinksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     object: Schema.Literals(["login_link"]),
     url: Schema.String,
@@ -40,7 +40,7 @@ export const PostAccountsAccountLoginLinksOutput =
  * <p><strong>You can only create login links for accounts that use the <a href="/connect/express-dashboard">Express Dashboard</a> and are connected to your platform</strong>.</p>
  */
 export const PostAccountsAccountLoginLinks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostAccountsAccountLoginLinksInput,
     outputSchema: PostAccountsAccountLoginLinksOutput,
   }));

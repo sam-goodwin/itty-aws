@@ -8,7 +8,7 @@ export interface DeleteConversationModelInput {
   modelId: string;
 }
 export const DeleteConversationModelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     modelId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/conversations/models/{modelId}" }),
@@ -19,7 +19,7 @@ export interface DeleteConversationModelOutput {
   id: string;
 }
 export const DeleteConversationModelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
   }) as unknown as Schema.Codec<DeleteConversationModelOutput>;
 
@@ -29,10 +29,8 @@ export const DeleteConversationModelOutput =
  *
  * @param modelId - The id of the conversation model to delete
  */
-export const deleteConversationModel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteConversationModelInput,
-    outputSchema: DeleteConversationModelOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const deleteConversationModel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteConversationModelInput,
+  outputSchema: DeleteConversationModelOutput,
+  errors: [NotFound] as const,
+}));

@@ -9,7 +9,7 @@ export interface DeleteSynonymSetItemInput {
   itemId: string;
 }
 export const DeleteSynonymSetItemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     synonymSetName: Schema.String.pipe(T.PathParam()),
     itemId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -24,7 +24,7 @@ export interface DeleteSynonymSetItemOutput {
   id: string;
 }
 export const DeleteSynonymSetItemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
   }) as unknown as Schema.Codec<DeleteSynonymSetItemOutput>;
 
@@ -37,10 +37,8 @@ export const DeleteSynonymSetItemOutput =
  * @param synonymSetName - The name of the synonym set
  * @param itemId - The id of the synonym item to delete
  */
-export const deleteSynonymSetItem = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteSynonymSetItemInput,
-    outputSchema: DeleteSynonymSetItemOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const deleteSynonymSetItem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteSynonymSetItemInput,
+  outputSchema: DeleteSynonymSetItemOutput,
+  errors: [NotFound] as const,
+}));

@@ -32,7 +32,7 @@ export interface Businessprofileperformance_Date {
 }
 
 export const Businessprofileperformance_Date: Schema.Codec<Businessprofileperformance_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     month: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
@@ -46,7 +46,7 @@ export interface DatedValue {
 }
 
 export const DatedValue: Schema.Codec<DatedValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date: Schema.optional(Businessprofileperformance_Date),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "DatedValue" });
@@ -57,7 +57,7 @@ export interface TimeSeries {
 }
 
 export const TimeSeries: Schema.Codec<TimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     datedValues: Schema.optional(Schema.Array(DatedValue)),
   }).annotate({ identifier: "TimeSeries" });
 
@@ -67,7 +67,7 @@ export interface GetDailyMetricsTimeSeriesResponse {
 }
 
 export const GetDailyMetricsTimeSeriesResponse: Schema.Codec<GetDailyMetricsTimeSeriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeSeries: Schema.optional(TimeSeries),
   }).annotate({ identifier: "GetDailyMetricsTimeSeriesResponse" });
 
@@ -83,7 +83,7 @@ export interface TimeOfDay {
 }
 
 export const TimeOfDay: Schema.Codec<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hours: Schema.optional(Schema.Number),
     nanos: Schema.optional(Schema.Number),
     minutes: Schema.optional(Schema.Number),
@@ -107,7 +107,7 @@ export interface DailySubEntityType {
 }
 
 export const DailySubEntityType: Schema.Codec<DailySubEntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeOfDay: Schema.optional(TimeOfDay),
     dayOfWeek: Schema.optional(Schema.String),
   }).annotate({ identifier: "DailySubEntityType" });
@@ -135,7 +135,7 @@ export interface DailyMetricTimeSeries {
 }
 
 export const DailyMetricTimeSeries: Schema.Codec<DailyMetricTimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeSeries: Schema.optional(TimeSeries),
     dailySubEntityType: Schema.optional(DailySubEntityType),
     dailyMetric: Schema.optional(Schema.String),
@@ -147,7 +147,7 @@ export interface MultiDailyMetricTimeSeries {
 }
 
 export const MultiDailyMetricTimeSeries: Schema.Codec<MultiDailyMetricTimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dailyMetricTimeSeries: Schema.optional(Schema.Array(DailyMetricTimeSeries)),
   }).annotate({ identifier: "MultiDailyMetricTimeSeries" });
 
@@ -159,7 +159,7 @@ export interface InsightsValue {
 }
 
 export const InsightsValue: Schema.Codec<InsightsValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     threshold: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "InsightsValue" });
@@ -172,7 +172,7 @@ export interface SearchKeywordCount {
 }
 
 export const SearchKeywordCount: Schema.Codec<SearchKeywordCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     searchKeyword: Schema.optional(Schema.String),
     insightsValue: Schema.optional(InsightsValue),
   }).annotate({ identifier: "SearchKeywordCount" });
@@ -183,7 +183,7 @@ export interface FetchMultiDailyMetricsTimeSeriesResponse {
 }
 
 export const FetchMultiDailyMetricsTimeSeriesResponse: Schema.Codec<FetchMultiDailyMetricsTimeSeriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     multiDailyMetricTimeSeries: Schema.optional(
       Schema.Array(MultiDailyMetricTimeSeries),
     ),
@@ -197,7 +197,7 @@ export interface ListSearchKeywordImpressionsMonthlyResponse {
 }
 
 export const ListSearchKeywordImpressionsMonthlyResponse: Schema.Codec<ListSearchKeywordImpressionsMonthlyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     searchKeywordsCounts: Schema.optional(Schema.Array(SearchKeywordCount)),
   }).annotate({ identifier: "ListSearchKeywordImpressionsMonthlyResponse" });
@@ -285,7 +285,7 @@ export interface GetDailyMetricsTimeSeriesLocationsRequest {
 }
 
 export const GetDailyMetricsTimeSeriesLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "dailySubEntityType.timeOfDay.hours": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("dailySubEntityType.timeOfDay.hours"),
     ),
@@ -331,7 +331,7 @@ export const GetDailyMetricsTimeSeriesLocationsRequest =
 export type GetDailyMetricsTimeSeriesLocationsResponse =
   GetDailyMetricsTimeSeriesResponse;
 export const GetDailyMetricsTimeSeriesLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GetDailyMetricsTimeSeriesResponse;
+  /*@__PURE__*/ GetDailyMetricsTimeSeriesResponse;
 
 export type GetDailyMetricsTimeSeriesLocationsError =
   | DefaultErrors
@@ -344,7 +344,7 @@ export const getDailyMetricsTimeSeriesLocations: API.OperationMethod<
   GetDailyMetricsTimeSeriesLocationsResponse,
   GetDailyMetricsTimeSeriesLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDailyMetricsTimeSeriesLocationsRequest,
   output: GetDailyMetricsTimeSeriesLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -383,7 +383,7 @@ export interface FetchMultiDailyMetricsTimeSeriesLocationsRequest {
 }
 
 export const FetchMultiDailyMetricsTimeSeriesLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dailyMetrics: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("dailyMetrics"),
     ),
@@ -417,7 +417,7 @@ export const FetchMultiDailyMetricsTimeSeriesLocationsRequest =
 export type FetchMultiDailyMetricsTimeSeriesLocationsResponse =
   FetchMultiDailyMetricsTimeSeriesResponse;
 export const FetchMultiDailyMetricsTimeSeriesLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FetchMultiDailyMetricsTimeSeriesResponse;
+  /*@__PURE__*/ FetchMultiDailyMetricsTimeSeriesResponse;
 
 export type FetchMultiDailyMetricsTimeSeriesLocationsError =
   | DefaultErrors
@@ -430,7 +430,7 @@ export const fetchMultiDailyMetricsTimeSeriesLocations: API.OperationMethod<
   FetchMultiDailyMetricsTimeSeriesLocationsResponse,
   FetchMultiDailyMetricsTimeSeriesLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FetchMultiDailyMetricsTimeSeriesLocationsRequest,
   output: FetchMultiDailyMetricsTimeSeriesLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -458,7 +458,7 @@ export interface ListLocationsSearchkeywordsImpressionsMonthlyRequest {
 }
 
 export const ListLocationsSearchkeywordsImpressionsMonthlyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "monthlyRange.startMonth.day": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("monthlyRange.startMonth.day"),
     ),
@@ -491,7 +491,7 @@ export const ListLocationsSearchkeywordsImpressionsMonthlyRequest =
 export type ListLocationsSearchkeywordsImpressionsMonthlyResponse =
   ListSearchKeywordImpressionsMonthlyResponse;
 export const ListLocationsSearchkeywordsImpressionsMonthlyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSearchKeywordImpressionsMonthlyResponse;
+  /*@__PURE__*/ ListSearchKeywordImpressionsMonthlyResponse;
 
 export type ListLocationsSearchkeywordsImpressionsMonthlyError =
   | DefaultErrors
@@ -504,7 +504,7 @@ export const listLocationsSearchkeywordsImpressionsMonthly: API.PaginatedOperati
   ListLocationsSearchkeywordsImpressionsMonthlyResponse,
   ListLocationsSearchkeywordsImpressionsMonthlyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsSearchkeywordsImpressionsMonthlyRequest,
   output: ListLocationsSearchkeywordsImpressionsMonthlyResponse,
   errors: [NotFound, Forbidden],

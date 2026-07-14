@@ -12,7 +12,7 @@ export interface AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssig
   resource_type_slug?: string;
 }
 export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     group_id: Schema.String.pipe(T.PathParam()),
     role_slug: Schema.String,
     resource_id: Schema.optional(Schema.String),
@@ -29,7 +29,7 @@ export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmen
 export type AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsOutput =
   void;
 export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmen
  * @param group_id - The ID of the group.
  */
 export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsInput,
     outputSchema:

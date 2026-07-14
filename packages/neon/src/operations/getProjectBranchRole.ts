@@ -12,7 +12,7 @@ export interface GetProjectBranchRoleInput {
   role_name: string;
 }
 export const GetProjectBranchRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     role_name: Schema.String.pipe(T.PathParam()),
@@ -36,7 +36,7 @@ export interface GetProjectBranchRoleOutput {
   };
 }
 export const GetProjectBranchRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.Struct({
       branch_id: Schema.String,
       name: Schema.String,
@@ -60,10 +60,8 @@ export const GetProjectBranchRoleOutput =
  * @param branch_id - The branch ID
  * @param role_name - The role name
  */
-export const getProjectBranchRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetProjectBranchRoleInput,
-    outputSchema: GetProjectBranchRoleOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const getProjectBranchRole = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetProjectBranchRoleInput,
+  outputSchema: GetProjectBranchRoleOutput,
+  errors: [NotFound] as const,
+}));

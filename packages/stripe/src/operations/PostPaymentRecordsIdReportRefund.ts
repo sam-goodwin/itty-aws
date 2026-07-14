@@ -14,7 +14,7 @@ export interface PostPaymentRecordsIdReportRefundInput {
   refunded?: { refunded_at: number };
 }
 export const PostPaymentRecordsIdReportRefundInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     amount: Schema.optional(
       Schema.Struct({
@@ -96,7 +96,7 @@ export interface PostPaymentRecordsIdReportRefundOutput {
   } | null;
 }
 export const PostPaymentRecordsIdReportRefundOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
       currency: Schema.String,
       value: Schema.Number,
@@ -180,7 +180,7 @@ export const PostPaymentRecordsIdReportRefundOutput =
  * @param id - The ID of the Payment Record.
  */
 export const PostPaymentRecordsIdReportRefund =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentRecordsIdReportRefundInput,
     outputSchema: PostPaymentRecordsIdReportRefundOutput,
   }));

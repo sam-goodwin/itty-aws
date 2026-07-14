@@ -9,7 +9,7 @@ export interface TestWebhookInput {
   database: string;
   id: string;
 }
-export const TestWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestWebhookInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
@@ -23,7 +23,7 @@ export const TestWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TestWebhookOutput = void;
 export const TestWebhookOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TestWebhookOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TestWebhookOutput>;
 
 // The operation
 /**
@@ -35,7 +35,7 @@ export const TestWebhookOutput =
  * @param database - The name of the database
  * @param id - The ID of the webhook
  */
-export const testWebhook = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const testWebhook = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestWebhookInput,
   outputSchema: TestWebhookOutput,
   errors: [Forbidden, NotFound] as const,

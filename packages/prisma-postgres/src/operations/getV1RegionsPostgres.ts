@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface GetV1RegionsPostgresInput {}
 export const GetV1RegionsPostgresInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/v1/regions/postgres" }),
   ) as unknown as Schema.Codec<GetV1RegionsPostgresInput>;
 
@@ -19,7 +19,7 @@ export interface GetV1RegionsPostgresOutput {
   }[];
 }
 export const GetV1RegionsPostgresOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -36,9 +36,7 @@ export const GetV1RegionsPostgresOutput =
  *
  * Returns all available regions for Prisma Postgres.
  */
-export const getV1RegionsPostgres = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1RegionsPostgresInput,
-    outputSchema: GetV1RegionsPostgresOutput,
-  }),
-);
+export const getV1RegionsPostgres = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1RegionsPostgresInput,
+  outputSchema: GetV1RegionsPostgresOutput,
+}));

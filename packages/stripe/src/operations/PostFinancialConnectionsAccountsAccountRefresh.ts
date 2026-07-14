@@ -14,7 +14,7 @@ export interface PostFinancialConnectionsAccountsAccountRefreshInput {
   features: ("balance" | "ownership" | "transactions")[];
 }
 export const PostFinancialConnectionsAccountsAccountRefreshInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     features: Schema.Array(
@@ -120,7 +120,7 @@ export interface PostFinancialConnectionsAccountsAccountRefreshOutput {
   } | null;
 }
 export const PostFinancialConnectionsAccountsAccountRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.NullOr(
       Schema.Struct({
         account: Schema.optional(Schema.Unknown),
@@ -269,7 +269,7 @@ export const PostFinancialConnectionsAccountsAccountRefreshOutput =
  * <p>Refreshes the data associated with a Financial Connections <code>Account</code>.</p>
  */
 export const PostFinancialConnectionsAccountsAccountRefresh =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostFinancialConnectionsAccountsAccountRefreshInput,
     outputSchema: PostFinancialConnectionsAccountsAccountRefreshOutput,
   }));

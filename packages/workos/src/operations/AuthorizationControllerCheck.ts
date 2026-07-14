@@ -9,7 +9,7 @@ export interface AuthorizationControllerCheckInput {
   permission_slug: string;
 }
 export const AuthorizationControllerCheckInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
     permission_slug: Schema.String,
   }).pipe(
@@ -24,7 +24,7 @@ export interface AuthorizationControllerCheckOutput {
   authorized?: boolean;
 }
 export const AuthorizationControllerCheckOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorized: Schema.optional(Schema.Boolean),
   }) as unknown as Schema.Codec<AuthorizationControllerCheckOutput>;
 
@@ -37,7 +37,7 @@ export const AuthorizationControllerCheckOutput =
  * @param organization_membership_id - The ID of the organization membership to check.
  */
 export const AuthorizationControllerCheck =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationControllerCheckInput,
     outputSchema: AuthorizationControllerCheckOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

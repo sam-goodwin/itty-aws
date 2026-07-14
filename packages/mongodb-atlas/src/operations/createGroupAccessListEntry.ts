@@ -13,7 +13,7 @@ export interface CreateGroupAccessListEntryInput {
   pretty?: boolean;
 }
 export const CreateGroupAccessListEntryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     includeCount: Schema.optional(Schema.Boolean),
@@ -30,7 +30,7 @@ export const CreateGroupAccessListEntryInput =
 // Output Schema
 export type CreateGroupAccessListEntryOutput = void;
 export const CreateGroupAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupAccessListEntryOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupAccessListEntryOutput>;
 
 // The operation
 /**
@@ -47,10 +47,8 @@ export const CreateGroupAccessListEntryOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupAccessListEntry = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupAccessListEntryInput,
-    outputSchema: CreateGroupAccessListEntryOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const createGroupAccessListEntry = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupAccessListEntryInput,
+  outputSchema: CreateGroupAccessListEntryOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -18,7 +18,7 @@ export interface FileSystemUndoDeleteCreateInput {
   last_viewed_at?: string | null;
 }
 export const FileSystemUndoDeleteCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -40,17 +40,15 @@ export const FileSystemUndoDeleteCreateInput =
 // Output Schema
 export type FileSystemUndoDeleteCreateOutput = void;
 export const FileSystemUndoDeleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileSystemUndoDeleteCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FileSystemUndoDeleteCreateOutput>;
 
 // The operation
 /**
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const fileSystemUndoDeleteCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FileSystemUndoDeleteCreateInput,
-    outputSchema: FileSystemUndoDeleteCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const fileSystemUndoDeleteCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileSystemUndoDeleteCreateInput,
+  outputSchema: FileSystemUndoDeleteCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

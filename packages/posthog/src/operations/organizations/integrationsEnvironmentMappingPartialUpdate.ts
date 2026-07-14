@@ -35,7 +35,7 @@ export interface IntegrationsEnvironmentMappingPartialUpdateInput {
   } | null;
 }
 export const IntegrationsEnvironmentMappingPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
     kind: Schema.optional(Schema.Literals(["vercel"])),
@@ -114,7 +114,7 @@ export interface IntegrationsEnvironmentMappingPartialUpdateOutput {
   } | null;
 }
 export const IntegrationsEnvironmentMappingPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.Literals(["vercel"])),
     integration_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -169,7 +169,7 @@ export const IntegrationsEnvironmentMappingPartialUpdateOutput =
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const integrationsEnvironmentMappingPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsEnvironmentMappingPartialUpdateInput,
     outputSchema: IntegrationsEnvironmentMappingPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -10,12 +10,10 @@ export interface PostV1ConnectionsInput {
   databaseId: string;
   name: string;
 }
-export const PostV1ConnectionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    databaseId: Schema.String,
-    name: Schema.String,
-  },
-).pipe(
+export const PostV1ConnectionsInput = /*@__PURE__*/ Schema.Struct({
+  databaseId: Schema.String,
+  name: Schema.String,
+}).pipe(
   T.Http({ method: "POST", path: "/v1/connections" }),
 ) as unknown as Schema.Codec<PostV1ConnectionsInput>;
 
@@ -54,7 +52,7 @@ export interface PostV1ConnectionsOutput {
   };
 }
 export const PostV1ConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -112,7 +110,7 @@ export const PostV1ConnectionsOutput =
  *
  * Creates a new connection for the specified database.
  */
-export const postV1Connections = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const postV1Connections = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostV1ConnectionsInput,
   outputSchema: PostV1ConnectionsOutput,
   errors: [NotFound, UnprocessableEntity] as const,

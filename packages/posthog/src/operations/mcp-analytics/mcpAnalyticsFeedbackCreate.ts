@@ -17,7 +17,7 @@ export interface McpAnalyticsFeedbackCreateInput {
   category?: "results" | "usability" | "bug" | "docs" | "other";
 }
 export const McpAnalyticsFeedbackCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     attempted_tool: Schema.optional(Schema.String),
     mcp_client_name: Schema.optional(Schema.String),
@@ -57,7 +57,7 @@ export interface McpAnalyticsFeedbackCreateOutput {
   updated_at: string;
 }
 export const McpAnalyticsFeedbackCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     kind: Schema.Literals(["feedback", "missing_capability"]),
     goal: Schema.String,
@@ -81,9 +81,7 @@ export const McpAnalyticsFeedbackCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const mcpAnalyticsFeedbackCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: McpAnalyticsFeedbackCreateInput,
-    outputSchema: McpAnalyticsFeedbackCreateOutput,
-  }),
-);
+export const mcpAnalyticsFeedbackCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: McpAnalyticsFeedbackCreateInput,
+  outputSchema: McpAnalyticsFeedbackCreateOutput,
+}));

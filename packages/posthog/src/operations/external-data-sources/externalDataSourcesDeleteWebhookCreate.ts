@@ -683,7 +683,7 @@ export interface ExternalDataSourcesDeleteWebhookCreateInput {
   supports_column_selection?: boolean;
 }
 export const ExternalDataSourcesDeleteWebhookCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     created_at: Schema.optional(Schema.String),
@@ -1379,7 +1379,7 @@ export const ExternalDataSourcesDeleteWebhookCreateInput =
 // Output Schema
 export type ExternalDataSourcesDeleteWebhookCreateOutput = void;
 export const ExternalDataSourcesDeleteWebhookCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesDeleteWebhookCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesDeleteWebhookCreateOutput>;
 
 // The operation
 /**
@@ -1389,7 +1389,7 @@ export const ExternalDataSourcesDeleteWebhookCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const externalDataSourcesDeleteWebhookCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesDeleteWebhookCreateInput,
     outputSchema: ExternalDataSourcesDeleteWebhookCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -7,11 +7,9 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 export interface GetV1ProjectsByIdInput {
   id: string;
 }
-export const GetV1ProjectsByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const GetV1ProjectsByIdInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({ method: "GET", path: "/v1/projects/{id}" }),
 ) as unknown as Schema.Codec<GetV1ProjectsByIdInput>;
 
@@ -28,7 +26,7 @@ export interface GetV1ProjectsByIdOutput {
   };
 }
 export const GetV1ProjectsByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -50,7 +48,7 @@ export const GetV1ProjectsByIdOutput =
  *
  * Returns the project with the given ID.
  */
-export const getV1ProjectsById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getV1ProjectsById = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV1ProjectsByIdInput,
   outputSchema: GetV1ProjectsByIdOutput,
   errors: [NotFound, UnprocessableEntity] as const,

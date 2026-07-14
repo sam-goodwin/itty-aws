@@ -31,7 +31,7 @@ export interface ExternalDataSourcesBulkUpdateSchemasPartialUpdateInput {
   }[];
 }
 export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -154,7 +154,7 @@ export interface ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput {
   }[];
 }
 export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -279,7 +279,7 @@ export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput =
  * @param search - A search term.
  */
 export const externalDataSourcesBulkUpdateSchemasPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesBulkUpdateSchemasPartialUpdateInput,
     outputSchema: ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

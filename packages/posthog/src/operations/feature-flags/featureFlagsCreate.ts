@@ -109,7 +109,7 @@ export interface FeatureFlagsCreateInput {
   bucketing_identifier?: "distinct_id" | "device_id" | null;
 }
 export const FeatureFlagsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     key: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -398,7 +398,7 @@ export interface FeatureFlagsCreateOutput {
   is_used_in_replay_settings?: boolean;
 }
 export const FeatureFlagsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -541,7 +541,7 @@ export const FeatureFlagsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const featureFlagsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const featureFlagsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FeatureFlagsCreateInput,
   outputSchema: FeatureFlagsCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

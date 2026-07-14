@@ -8,7 +8,7 @@ export interface JumpWireWebDataVaultControllerversionsInput {
   id: string;
 }
 export const JumpWireWebDataVaultControllerversionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/vault/v1/kv/{id}/versions" }),
@@ -26,7 +26,7 @@ export interface JumpWireWebDataVaultControllerversionsOutput {
   list_metadata: { after?: string | null; before?: string | null };
 }
 export const JumpWireWebDataVaultControllerversionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         created_at: Schema.String,
@@ -51,7 +51,7 @@ export const JumpWireWebDataVaultControllerversionsOutput =
  * @param id - Unique identifier of the object.
  */
 export const JumpWireWebDataVaultControllerversions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: JumpWireWebDataVaultControllerversionsInput,
     outputSchema: JumpWireWebDataVaultControllerversionsOutput,
     errors: [BadRequest, NotFound] as const,

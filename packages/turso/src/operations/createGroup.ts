@@ -23,7 +23,7 @@ export interface CreateGroupInput {
         | "vec"
       )[];
 }
-export const CreateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateGroupInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
   location: Schema.String,
@@ -64,7 +64,7 @@ export interface CreateGroupOutput {
     delete_protection?: boolean;
   };
 }
-export const CreateGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateGroupOutput = /*@__PURE__*/ Schema.Struct({
   group: Schema.optional(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -85,7 +85,7 @@ export const CreateGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const createGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateGroupInput,
   outputSchema: CreateGroupOutput,
   errors: [BadRequest, Conflict] as const,

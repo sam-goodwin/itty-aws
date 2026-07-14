@@ -9,7 +9,7 @@ export interface JumpWireWebDataVaultControllerdeleteInput {
   version_check?: string;
 }
 export const JumpWireWebDataVaultControllerdeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     version_check: Schema.optional(Schema.String),
   }).pipe(
@@ -22,7 +22,7 @@ export interface JumpWireWebDataVaultControllerdeleteOutput {
   success: boolean;
 }
 export const JumpWireWebDataVaultControllerdeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String,
     success: Schema.Boolean,
   }) as unknown as Schema.Codec<JumpWireWebDataVaultControllerdeleteOutput>;
@@ -37,7 +37,7 @@ export const JumpWireWebDataVaultControllerdeleteOutput =
  * @param version_check - Expected current version for optimistic locking.
  */
 export const JumpWireWebDataVaultControllerdelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: JumpWireWebDataVaultControllerdeleteInput,
     outputSchema: JumpWireWebDataVaultControllerdeleteOutput,
     errors: [NotFound, Conflict] as const,

@@ -15,7 +15,7 @@ export interface SetSnapshotScheduleInput {
   }[];
 }
 export const SetSnapshotScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     schedule: Schema.Array(
@@ -37,7 +37,7 @@ export const SetSnapshotScheduleInput =
 // Output Schema
 export interface SetSnapshotScheduleOutput {}
 export const SetSnapshotScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as unknown as Schema.Codec<SetSnapshotScheduleOutput>;
 
@@ -52,7 +52,7 @@ export const SetSnapshotScheduleOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const setSnapshotSchedule = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const setSnapshotSchedule = /*@__PURE__*/ API.make(() => ({
   inputSchema: SetSnapshotScheduleInput,
   outputSchema: SetSnapshotScheduleOutput,
 }));

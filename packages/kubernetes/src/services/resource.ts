@@ -56,7 +56,7 @@ export interface CreateResourceV1DeviceClassInput {
   };
 }
 export const CreateResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -182,7 +182,7 @@ export interface CreateResourceV1DeviceClassOutput {
   };
 }
 export const CreateResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -268,13 +268,11 @@ export const CreateResourceV1DeviceClassOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateResourceV1DeviceClassInput,
-    outputSchema: CreateResourceV1DeviceClassOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateResourceV1DeviceClassInput,
+  outputSchema: CreateResourceV1DeviceClassOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface CreateResourceV1NamespacedResourceClaimInput {
   namespace: string;
@@ -430,7 +428,7 @@ export interface CreateResourceV1NamespacedResourceClaimInput {
   };
 }
 export const CreateResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -877,7 +875,7 @@ export interface CreateResourceV1NamespacedResourceClaimOutput {
   };
 }
 export const CreateResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1175,7 +1173,7 @@ export const CreateResourceV1NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1NamespacedResourceClaimInput,
     outputSchema: CreateResourceV1NamespacedResourceClaimOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -1303,7 +1301,7 @@ export interface CreateResourceV1NamespacedResourceClaimTemplateInput {
   };
 }
 export const CreateResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1647,7 +1645,7 @@ export interface CreateResourceV1NamespacedResourceClaimTemplateOutput {
   };
 }
 export const CreateResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1874,7 +1872,7 @@ export const CreateResourceV1NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: CreateResourceV1NamespacedResourceClaimTemplateOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -1999,7 +1997,7 @@ export interface CreateResourceV1ResourceSliceInput {
   };
 }
 export const CreateResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -2329,7 +2327,7 @@ export interface CreateResourceV1ResourceSliceOutput {
   };
 }
 export const CreateResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2547,7 +2545,7 @@ export const CreateResourceV1ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1ResourceSliceInput,
     outputSchema: CreateResourceV1ResourceSliceOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -2608,7 +2606,7 @@ export interface CreateResourceV1alpha3DeviceTaintRuleInput {
   };
 }
 export const CreateResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -2749,7 +2747,7 @@ export interface CreateResourceV1alpha3DeviceTaintRuleOutput {
   };
 }
 export const CreateResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2839,7 +2837,7 @@ export const CreateResourceV1alpha3DeviceTaintRuleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: CreateResourceV1alpha3DeviceTaintRuleOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -2910,7 +2908,7 @@ export interface CreateResourceV1alpha3ResourcePoolStatusRequestInput {
   };
 }
 export const CreateResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -3064,7 +3062,7 @@ export interface CreateResourceV1alpha3ResourcePoolStatusRequestOutput {
   };
 }
 export const CreateResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -3157,7 +3155,7 @@ export const CreateResourceV1alpha3ResourcePoolStatusRequestOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: CreateResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
@@ -3208,7 +3206,7 @@ export interface CreateResourceV1beta1DeviceClassInput {
   };
 }
 export const CreateResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -3337,7 +3335,7 @@ export interface CreateResourceV1beta1DeviceClassOutput {
   };
 }
 export const CreateResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3424,7 +3422,7 @@ export const CreateResourceV1beta1DeviceClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta1DeviceClassInput,
     outputSchema: CreateResourceV1beta1DeviceClassOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -3582,7 +3580,7 @@ export interface CreateResourceV1beta1NamespacedResourceClaimInput {
   };
 }
 export const CreateResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -4023,7 +4021,7 @@ export interface CreateResourceV1beta1NamespacedResourceClaimOutput {
   };
 }
 export const CreateResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4317,7 +4315,7 @@ export const CreateResourceV1beta1NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: CreateResourceV1beta1NamespacedResourceClaimOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -4443,7 +4441,7 @@ export interface CreateResourceV1beta1NamespacedResourceClaimTemplateInput {
   };
 }
 export const CreateResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -4779,7 +4777,7 @@ export interface CreateResourceV1beta1NamespacedResourceClaimTemplateOutput {
   };
 }
 export const CreateResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5000,7 +4998,7 @@ export const CreateResourceV1beta1NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: CreateResourceV1beta1NamespacedResourceClaimTemplateOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -5131,7 +5129,7 @@ export interface CreateResourceV1beta1ResourceSliceInput {
   };
 }
 export const CreateResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -5480,7 +5478,7 @@ export interface CreateResourceV1beta1ResourceSliceOutput {
   };
 }
 export const CreateResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5708,7 +5706,7 @@ export const CreateResourceV1beta1ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta1ResourceSliceInput,
     outputSchema: CreateResourceV1beta1ResourceSliceOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -5760,7 +5758,7 @@ export interface CreateResourceV1beta2DeviceClassInput {
   };
 }
 export const CreateResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -5889,7 +5887,7 @@ export interface CreateResourceV1beta2DeviceClassOutput {
   };
 }
 export const CreateResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5976,7 +5974,7 @@ export const CreateResourceV1beta2DeviceClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2DeviceClassInput,
     outputSchema: CreateResourceV1beta2DeviceClassOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -6037,7 +6035,7 @@ export interface CreateResourceV1beta2DeviceTaintRuleInput {
   };
 }
 export const CreateResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -6178,7 +6176,7 @@ export interface CreateResourceV1beta2DeviceTaintRuleOutput {
   };
 }
 export const CreateResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6268,7 +6266,7 @@ export const CreateResourceV1beta2DeviceTaintRuleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2DeviceTaintRuleInput,
     outputSchema: CreateResourceV1beta2DeviceTaintRuleOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -6428,7 +6426,7 @@ export interface CreateResourceV1beta2NamespacedResourceClaimInput {
   };
 }
 export const CreateResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -6875,7 +6873,7 @@ export interface CreateResourceV1beta2NamespacedResourceClaimOutput {
   };
 }
 export const CreateResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7173,7 +7171,7 @@ export const CreateResourceV1beta2NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: CreateResourceV1beta2NamespacedResourceClaimOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -7301,7 +7299,7 @@ export interface CreateResourceV1beta2NamespacedResourceClaimTemplateInput {
   };
 }
 export const CreateResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -7645,7 +7643,7 @@ export interface CreateResourceV1beta2NamespacedResourceClaimTemplateOutput {
   };
 }
 export const CreateResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7872,7 +7870,7 @@ export const CreateResourceV1beta2NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: CreateResourceV1beta2NamespacedResourceClaimTemplateOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -7997,7 +7995,7 @@ export interface CreateResourceV1beta2ResourceSliceInput {
   };
 }
 export const CreateResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -8330,7 +8328,7 @@ export interface CreateResourceV1beta2ResourceSliceOutput {
   };
 }
 export const CreateResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -8548,7 +8546,7 @@ export const CreateResourceV1beta2ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2ResourceSliceInput,
     outputSchema: CreateResourceV1beta2ResourceSliceOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -8575,7 +8573,7 @@ export interface DeleteResourceV1CollectionDeviceClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1CollectionDeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -8633,7 +8631,7 @@ export interface DeleteResourceV1CollectionDeviceClassOutput {
   status?: string;
 }
 export const DeleteResourceV1CollectionDeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -8735,7 +8733,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1CollectionDeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1CollectionDeviceClassInput,
     outputSchema: DeleteResourceV1CollectionDeviceClassOutput,
   }));
@@ -8762,7 +8760,7 @@ export interface DeleteResourceV1CollectionNamespacedResourceClaimInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1CollectionNamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -8821,7 +8819,7 @@ export interface DeleteResourceV1CollectionNamespacedResourceClaimOutput {
   status?: string;
 }
 export const DeleteResourceV1CollectionNamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -8924,7 +8922,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1CollectionNamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1CollectionNamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1CollectionNamespacedResourceClaimOutput,
   }));
@@ -8951,7 +8949,7 @@ export interface DeleteResourceV1CollectionNamespacedResourceClaimTemplateInput 
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1CollectionNamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -9010,7 +9008,7 @@ export interface DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput
   status?: string;
 }
 export const DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -9113,7 +9111,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1CollectionNamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1CollectionNamespacedResourceClaimTemplateInput,
     outputSchema:
       DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput,
@@ -9140,7 +9138,7 @@ export interface DeleteResourceV1CollectionResourceSliceInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1CollectionResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -9198,7 +9196,7 @@ export interface DeleteResourceV1CollectionResourceSliceOutput {
   status?: string;
 }
 export const DeleteResourceV1CollectionResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -9300,7 +9298,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1CollectionResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1CollectionResourceSliceInput,
     outputSchema: DeleteResourceV1CollectionResourceSliceOutput,
   }));
@@ -9318,7 +9316,7 @@ export interface DeleteResourceV1DeviceClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -9386,7 +9384,7 @@ export interface DeleteResourceV1DeviceClassOutput {
   };
 }
 export const DeleteResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9475,13 +9473,11 @@ export const DeleteResourceV1DeviceClassOutput =
  * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
-export const deleteResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteResourceV1DeviceClassInput,
-    outputSchema: DeleteResourceV1DeviceClassOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteResourceV1DeviceClassInput,
+  outputSchema: DeleteResourceV1DeviceClassOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export interface DeleteResourceV1NamespacedResourceClaimInput {
   name: string;
@@ -9497,7 +9493,7 @@ export interface DeleteResourceV1NamespacedResourceClaimInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -9673,7 +9669,7 @@ export interface DeleteResourceV1NamespacedResourceClaimOutput {
   };
 }
 export const DeleteResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9974,7 +9970,7 @@ export const DeleteResourceV1NamespacedResourceClaimOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1NamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict] as const,
@@ -9994,7 +9990,7 @@ export interface DeleteResourceV1NamespacedResourceClaimTemplateInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -10138,7 +10134,7 @@ export interface DeleteResourceV1NamespacedResourceClaimTemplateOutput {
   };
 }
 export const DeleteResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10368,7 +10364,7 @@ export const DeleteResourceV1NamespacedResourceClaimTemplateOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: DeleteResourceV1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict] as const,
@@ -10387,7 +10383,7 @@ export interface DeleteResourceV1ResourceSliceInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -10528,7 +10524,7 @@ export interface DeleteResourceV1ResourceSliceOutput {
   };
 }
 export const DeleteResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10749,7 +10745,7 @@ export const DeleteResourceV1ResourceSliceOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1ResourceSliceInput,
     outputSchema: DeleteResourceV1ResourceSliceOutput,
     errors: [NotFound, Conflict] as const,
@@ -10776,7 +10772,7 @@ export interface DeleteResourceV1alpha3CollectionDeviceTaintRuleInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1alpha3CollectionDeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -10834,7 +10830,7 @@ export interface DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput {
   status?: string;
 }
 export const DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -10936,7 +10932,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1alpha3CollectionDeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1alpha3CollectionDeviceTaintRuleInput,
     outputSchema: DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput,
   }));
@@ -10962,7 +10958,7 @@ export interface DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput 
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -11020,7 +11016,7 @@ export interface DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput
   status?: string;
 }
 export const DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11122,7 +11118,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1alpha3CollectionResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput,
     outputSchema:
       DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput,
@@ -11141,7 +11137,7 @@ export interface DeleteResourceV1alpha3DeviceTaintRuleInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -11218,7 +11214,7 @@ export interface DeleteResourceV1alpha3DeviceTaintRuleOutput {
   };
 }
 export const DeleteResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -11311,7 +11307,7 @@ export const DeleteResourceV1alpha3DeviceTaintRuleOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: DeleteResourceV1alpha3DeviceTaintRuleOutput,
     errors: [NotFound, Conflict] as const,
@@ -11330,7 +11326,7 @@ export interface DeleteResourceV1alpha3ResourcePoolStatusRequestInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -11417,7 +11413,7 @@ export interface DeleteResourceV1alpha3ResourcePoolStatusRequestOutput {
   };
 }
 export const DeleteResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -11513,7 +11509,7 @@ export const DeleteResourceV1alpha3ResourcePoolStatusRequestOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: DeleteResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
@@ -11539,7 +11535,7 @@ export interface DeleteResourceV1beta1CollectionDeviceClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta1CollectionDeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -11597,7 +11593,7 @@ export interface DeleteResourceV1beta1CollectionDeviceClassOutput {
   status?: string;
 }
 export const DeleteResourceV1beta1CollectionDeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11699,7 +11695,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1beta1CollectionDeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1CollectionDeviceClassInput,
     outputSchema: DeleteResourceV1beta1CollectionDeviceClassOutput,
   }));
@@ -11726,7 +11722,7 @@ export interface DeleteResourceV1beta1CollectionNamespacedResourceClaimInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta1CollectionNamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -11785,7 +11781,7 @@ export interface DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput {
   status?: string;
 }
 export const DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -11888,7 +11884,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1beta1CollectionNamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1CollectionNamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput,
   }));
@@ -11915,7 +11911,7 @@ export interface DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateI
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -11974,7 +11970,7 @@ export interface DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateO
   status?: string;
 }
 export const DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -12077,7 +12073,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1beta1CollectionNamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateInput,
     outputSchema:
@@ -12105,7 +12101,7 @@ export interface DeleteResourceV1beta1CollectionResourceSliceInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta1CollectionResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -12163,7 +12159,7 @@ export interface DeleteResourceV1beta1CollectionResourceSliceOutput {
   status?: string;
 }
 export const DeleteResourceV1beta1CollectionResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -12265,7 +12261,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1beta1CollectionResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1CollectionResourceSliceInput,
     outputSchema: DeleteResourceV1beta1CollectionResourceSliceOutput,
   }));
@@ -12283,7 +12279,7 @@ export interface DeleteResourceV1beta1DeviceClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -12351,7 +12347,7 @@ export interface DeleteResourceV1beta1DeviceClassOutput {
   };
 }
 export const DeleteResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -12441,7 +12437,7 @@ export const DeleteResourceV1beta1DeviceClassOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1DeviceClassInput,
     outputSchema: DeleteResourceV1beta1DeviceClassOutput,
     errors: [NotFound, Conflict] as const,
@@ -12461,7 +12457,7 @@ export interface DeleteResourceV1beta1NamespacedResourceClaimInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -12635,7 +12631,7 @@ export interface DeleteResourceV1beta1NamespacedResourceClaimOutput {
   };
 }
 export const DeleteResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -12932,7 +12928,7 @@ export const DeleteResourceV1beta1NamespacedResourceClaimOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1beta1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict] as const,
@@ -12952,7 +12948,7 @@ export interface DeleteResourceV1beta1NamespacedResourceClaimTemplateInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -13094,7 +13090,7 @@ export interface DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput {
   };
 }
 export const DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -13318,7 +13314,7 @@ export const DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict] as const,
@@ -13337,7 +13333,7 @@ export interface DeleteResourceV1beta1ResourceSliceInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -13484,7 +13480,7 @@ export interface DeleteResourceV1beta1ResourceSliceOutput {
   };
 }
 export const DeleteResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -13715,7 +13711,7 @@ export const DeleteResourceV1beta1ResourceSliceOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1ResourceSliceInput,
     outputSchema: DeleteResourceV1beta1ResourceSliceOutput,
     errors: [NotFound, Conflict] as const,
@@ -13742,7 +13738,7 @@ export interface DeleteResourceV1beta2CollectionDeviceClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta2CollectionDeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -13800,7 +13796,7 @@ export interface DeleteResourceV1beta2CollectionDeviceClassOutput {
   status?: string;
 }
 export const DeleteResourceV1beta2CollectionDeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -13902,7 +13898,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1beta2CollectionDeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2CollectionDeviceClassInput,
     outputSchema: DeleteResourceV1beta2CollectionDeviceClassOutput,
   }));
@@ -13928,7 +13924,7 @@ export interface DeleteResourceV1beta2CollectionDeviceTaintRuleInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta2CollectionDeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -13986,7 +13982,7 @@ export interface DeleteResourceV1beta2CollectionDeviceTaintRuleOutput {
   status?: string;
 }
 export const DeleteResourceV1beta2CollectionDeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -14088,7 +14084,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1beta2CollectionDeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2CollectionDeviceTaintRuleInput,
     outputSchema: DeleteResourceV1beta2CollectionDeviceTaintRuleOutput,
   }));
@@ -14115,7 +14111,7 @@ export interface DeleteResourceV1beta2CollectionNamespacedResourceClaimInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta2CollectionNamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -14174,7 +14170,7 @@ export interface DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput {
   status?: string;
 }
 export const DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -14277,7 +14273,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1beta2CollectionNamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2CollectionNamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput,
   }));
@@ -14304,7 +14300,7 @@ export interface DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateI
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -14363,7 +14359,7 @@ export interface DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateO
   status?: string;
 }
 export const DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -14466,7 +14462,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1beta2CollectionNamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateInput,
     outputSchema:
@@ -14494,7 +14490,7 @@ export interface DeleteResourceV1beta2CollectionResourceSliceInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta2CollectionResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -14552,7 +14548,7 @@ export interface DeleteResourceV1beta2CollectionResourceSliceOutput {
   status?: string;
 }
 export const DeleteResourceV1beta2CollectionResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -14654,7 +14650,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteResourceV1beta2CollectionResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2CollectionResourceSliceInput,
     outputSchema: DeleteResourceV1beta2CollectionResourceSliceOutput,
   }));
@@ -14672,7 +14668,7 @@ export interface DeleteResourceV1beta2DeviceClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -14740,7 +14736,7 @@ export interface DeleteResourceV1beta2DeviceClassOutput {
   };
 }
 export const DeleteResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -14830,7 +14826,7 @@ export const DeleteResourceV1beta2DeviceClassOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2DeviceClassInput,
     outputSchema: DeleteResourceV1beta2DeviceClassOutput,
     errors: [NotFound, Conflict] as const,
@@ -14849,7 +14845,7 @@ export interface DeleteResourceV1beta2DeviceTaintRuleInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -14926,7 +14922,7 @@ export interface DeleteResourceV1beta2DeviceTaintRuleOutput {
   };
 }
 export const DeleteResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15019,7 +15015,7 @@ export const DeleteResourceV1beta2DeviceTaintRuleOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2DeviceTaintRuleInput,
     outputSchema: DeleteResourceV1beta2DeviceTaintRuleOutput,
     errors: [NotFound, Conflict] as const,
@@ -15039,7 +15035,7 @@ export interface DeleteResourceV1beta2NamespacedResourceClaimInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -15215,7 +15211,7 @@ export interface DeleteResourceV1beta2NamespacedResourceClaimOutput {
   };
 }
 export const DeleteResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15516,7 +15512,7 @@ export const DeleteResourceV1beta2NamespacedResourceClaimOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1beta2NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict] as const,
@@ -15536,7 +15532,7 @@ export interface DeleteResourceV1beta2NamespacedResourceClaimTemplateInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -15680,7 +15676,7 @@ export interface DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput {
   };
 }
 export const DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15910,7 +15906,7 @@ export const DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict] as const,
@@ -15929,7 +15925,7 @@ export interface DeleteResourceV1beta2ResourceSliceInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -16070,7 +16066,7 @@ export interface DeleteResourceV1beta2ResourceSliceOutput {
   };
 }
 export const DeleteResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -16291,7 +16287,7 @@ export const DeleteResourceV1beta2ResourceSliceOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2ResourceSliceInput,
     outputSchema: DeleteResourceV1beta2ResourceSliceOutput,
     errors: [NotFound, Conflict] as const,
@@ -16299,7 +16295,7 @@ export const deleteResourceV1beta2ResourceSlice =
 // Input Schema
 export interface GetResourceAPIGroupInput {}
 export const GetResourceAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/" }),
   ) as unknown as Schema.Codec<GetResourceAPIGroupInput>;
 
@@ -16313,7 +16309,7 @@ export interface GetResourceAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetResourceAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -16343,14 +16339,14 @@ export const GetResourceAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getResourceAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getResourceAPIGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetResourceAPIGroupInput,
   outputSchema: GetResourceAPIGroupOutput,
 }));
 // Input Schema
 export interface GetResourceV1APIResourcesInput {}
 export const GetResourceV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetResourceV1APIResourcesInput>;
 
@@ -16373,7 +16369,7 @@ export interface GetResourceV1APIResourcesOutput {
   }[];
 }
 export const GetResourceV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -16397,16 +16393,14 @@ export const GetResourceV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getResourceV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetResourceV1APIResourcesInput,
-    outputSchema: GetResourceV1APIResourcesOutput,
-  }),
-);
+export const getResourceV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetResourceV1APIResourcesInput,
+  outputSchema: GetResourceV1APIResourcesOutput,
+}));
 // Input Schema
 export interface GetResourceV1alpha3APIResourcesInput {}
 export const GetResourceV1alpha3APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1alpha3/" }),
   ) as unknown as Schema.Codec<GetResourceV1alpha3APIResourcesInput>;
 
@@ -16429,7 +16423,7 @@ export interface GetResourceV1alpha3APIResourcesOutput {
   }[];
 }
 export const GetResourceV1alpha3APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -16454,14 +16448,14 @@ export const GetResourceV1alpha3APIResourcesOutput =
  * get available resources
  */
 export const getResourceV1alpha3APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetResourceV1alpha3APIResourcesInput,
     outputSchema: GetResourceV1alpha3APIResourcesOutput,
   }));
 // Input Schema
 export interface GetResourceV1beta1APIResourcesInput {}
 export const GetResourceV1beta1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1beta1/" }),
   ) as unknown as Schema.Codec<GetResourceV1beta1APIResourcesInput>;
 
@@ -16484,7 +16478,7 @@ export interface GetResourceV1beta1APIResourcesOutput {
   }[];
 }
 export const GetResourceV1beta1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -16509,14 +16503,14 @@ export const GetResourceV1beta1APIResourcesOutput =
  * get available resources
  */
 export const getResourceV1beta1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetResourceV1beta1APIResourcesInput,
     outputSchema: GetResourceV1beta1APIResourcesOutput,
   }));
 // Input Schema
 export interface GetResourceV1beta2APIResourcesInput {}
 export const GetResourceV1beta2APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1beta2/" }),
   ) as unknown as Schema.Codec<GetResourceV1beta2APIResourcesInput>;
 
@@ -16539,7 +16533,7 @@ export interface GetResourceV1beta2APIResourcesOutput {
   }[];
 }
 export const GetResourceV1beta2APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -16564,7 +16558,7 @@ export const GetResourceV1beta2APIResourcesOutput =
  * get available resources
  */
 export const getResourceV1beta2APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetResourceV1beta2APIResourcesInput,
     outputSchema: GetResourceV1beta2APIResourcesOutput,
   }));
@@ -16584,7 +16578,7 @@ export interface ListResourceV1DeviceClassInput {
   watch?: boolean;
 }
 export const ListResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -16655,7 +16649,7 @@ export interface ListResourceV1DeviceClassOutput {
   };
 }
 export const ListResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -16811,12 +16805,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListResourceV1DeviceClassInput,
-    outputSchema: ListResourceV1DeviceClassOutput,
-  }),
-);
+export const listResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListResourceV1DeviceClassInput,
+  outputSchema: ListResourceV1DeviceClassOutput,
+}));
 // Input Schema
 export interface ListResourceV1NamespacedResourceClaimInput {
   namespace: string;
@@ -16834,7 +16826,7 @@ export interface ListResourceV1NamespacedResourceClaimInput {
   watch?: boolean;
 }
 export const ListResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -17020,7 +17012,7 @@ export interface ListResourceV1NamespacedResourceClaimOutput {
   };
 }
 export const ListResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -17400,7 +17392,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1NamespacedResourceClaimInput,
     outputSchema: ListResourceV1NamespacedResourceClaimOutput,
   }));
@@ -17421,7 +17413,7 @@ export interface ListResourceV1NamespacedResourceClaimTemplateInput {
   watch?: boolean;
 }
 export const ListResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -17571,7 +17563,7 @@ export interface ListResourceV1NamespacedResourceClaimTemplateOutput {
   };
 }
 export const ListResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -17875,7 +17867,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: ListResourceV1NamespacedResourceClaimTemplateOutput,
   }));
@@ -17895,7 +17887,7 @@ export interface ListResourceV1ResourceClaimForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListResourceV1ResourceClaimForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -18077,7 +18069,7 @@ export interface ListResourceV1ResourceClaimForAllNamespacesOutput {
   };
 }
 export const ListResourceV1ResourceClaimForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -18456,7 +18448,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1ResourceClaimForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1ResourceClaimForAllNamespacesInput,
     outputSchema: ListResourceV1ResourceClaimForAllNamespacesOutput,
   }));
@@ -18476,7 +18468,7 @@ export interface ListResourceV1ResourceClaimTemplateForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListResourceV1ResourceClaimTemplateForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -18625,7 +18617,7 @@ export interface ListResourceV1ResourceClaimTemplateForAllNamespacesOutput {
   };
 }
 export const ListResourceV1ResourceClaimTemplateForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -18928,7 +18920,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1ResourceClaimTemplateForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1ResourceClaimTemplateForAllNamespacesInput,
     outputSchema: ListResourceV1ResourceClaimTemplateForAllNamespacesOutput,
   }));
@@ -18948,7 +18940,7 @@ export interface ListResourceV1ResourceSliceInput {
   watch?: boolean;
 }
 export const ListResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -19096,7 +19088,7 @@ export interface ListResourceV1ResourceSliceOutput {
   };
 }
 export const ListResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -19389,12 +19381,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listResourceV1ResourceSlice = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListResourceV1ResourceSliceInput,
-    outputSchema: ListResourceV1ResourceSliceOutput,
-  }),
-);
+export const listResourceV1ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListResourceV1ResourceSliceInput,
+  outputSchema: ListResourceV1ResourceSliceOutput,
+}));
 // Input Schema
 export interface ListResourceV1alpha3DeviceTaintRuleInput {
   pretty?: string;
@@ -19411,7 +19401,7 @@ export interface ListResourceV1alpha3DeviceTaintRuleInput {
   watch?: boolean;
 }
 export const ListResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -19499,7 +19489,7 @@ export interface ListResourceV1alpha3DeviceTaintRuleOutput {
   };
 }
 export const ListResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -19659,7 +19649,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: ListResourceV1alpha3DeviceTaintRuleOutput,
   }));
@@ -19679,7 +19669,7 @@ export interface ListResourceV1alpha3ResourcePoolStatusRequestInput {
   watch?: boolean;
 }
 export const ListResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -19772,7 +19762,7 @@ export interface ListResourceV1alpha3ResourcePoolStatusRequestOutput {
   };
 }
 export const ListResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -19935,7 +19925,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: ListResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
@@ -19955,7 +19945,7 @@ export interface ListResourceV1beta1DeviceClassInput {
   watch?: boolean;
 }
 export const ListResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -20029,7 +20019,7 @@ export interface ListResourceV1beta1DeviceClassOutput {
   };
 }
 export const ListResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -20186,7 +20176,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta1DeviceClassInput,
     outputSchema: ListResourceV1beta1DeviceClassOutput,
   }));
@@ -20207,7 +20197,7 @@ export interface ListResourceV1beta1NamespacedResourceClaimInput {
   watch?: boolean;
 }
 export const ListResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -20391,7 +20381,7 @@ export interface ListResourceV1beta1NamespacedResourceClaimOutput {
   };
 }
 export const ListResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -20765,7 +20755,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: ListResourceV1beta1NamespacedResourceClaimOutput,
   }));
@@ -20786,7 +20776,7 @@ export interface ListResourceV1beta1NamespacedResourceClaimTemplateInput {
   watch?: boolean;
 }
 export const ListResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -20934,7 +20924,7 @@ export interface ListResourceV1beta1NamespacedResourceClaimTemplateOutput {
   };
 }
 export const ListResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -21234,7 +21224,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: ListResourceV1beta1NamespacedResourceClaimTemplateOutput,
   }));
@@ -21254,7 +21244,7 @@ export interface ListResourceV1beta1ResourceClaimForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListResourceV1beta1ResourceClaimForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -21437,7 +21427,7 @@ export interface ListResourceV1beta1ResourceClaimForAllNamespacesOutput {
   };
 }
 export const ListResourceV1beta1ResourceClaimForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -21810,7 +21800,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1beta1ResourceClaimForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta1ResourceClaimForAllNamespacesInput,
     outputSchema: ListResourceV1beta1ResourceClaimForAllNamespacesOutput,
   }));
@@ -21830,7 +21820,7 @@ export interface ListResourceV1beta1ResourceClaimTemplateForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListResourceV1beta1ResourceClaimTemplateForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -21977,7 +21967,7 @@ export interface ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput 
   };
 }
 export const ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -22276,7 +22266,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1beta1ResourceClaimTemplateForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta1ResourceClaimTemplateForAllNamespacesInput,
     outputSchema:
       ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput,
@@ -22297,7 +22287,7 @@ export interface ListResourceV1beta1ResourceSliceInput {
   watch?: boolean;
 }
 export const ListResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -22450,7 +22440,7 @@ export interface ListResourceV1beta1ResourceSliceOutput {
   };
 }
 export const ListResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -22752,7 +22742,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta1ResourceSliceInput,
     outputSchema: ListResourceV1beta1ResourceSliceOutput,
   }));
@@ -22772,7 +22762,7 @@ export interface ListResourceV1beta2DeviceClassInput {
   watch?: boolean;
 }
 export const ListResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -22846,7 +22836,7 @@ export interface ListResourceV1beta2DeviceClassOutput {
   };
 }
 export const ListResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -23003,7 +22993,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2DeviceClassInput,
     outputSchema: ListResourceV1beta2DeviceClassOutput,
   }));
@@ -23023,7 +23013,7 @@ export interface ListResourceV1beta2DeviceTaintRuleInput {
   watch?: boolean;
 }
 export const ListResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -23111,7 +23101,7 @@ export interface ListResourceV1beta2DeviceTaintRuleOutput {
   };
 }
 export const ListResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -23271,7 +23261,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2DeviceTaintRuleInput,
     outputSchema: ListResourceV1beta2DeviceTaintRuleOutput,
   }));
@@ -23292,7 +23282,7 @@ export interface ListResourceV1beta2NamespacedResourceClaimInput {
   watch?: boolean;
 }
 export const ListResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -23478,7 +23468,7 @@ export interface ListResourceV1beta2NamespacedResourceClaimOutput {
   };
 }
 export const ListResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -23858,7 +23848,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: ListResourceV1beta2NamespacedResourceClaimOutput,
   }));
@@ -23879,7 +23869,7 @@ export interface ListResourceV1beta2NamespacedResourceClaimTemplateInput {
   watch?: boolean;
 }
 export const ListResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -24029,7 +24019,7 @@ export interface ListResourceV1beta2NamespacedResourceClaimTemplateOutput {
   };
 }
 export const ListResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -24333,7 +24323,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: ListResourceV1beta2NamespacedResourceClaimTemplateOutput,
   }));
@@ -24353,7 +24343,7 @@ export interface ListResourceV1beta2ResourceClaimForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListResourceV1beta2ResourceClaimForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -24538,7 +24528,7 @@ export interface ListResourceV1beta2ResourceClaimForAllNamespacesOutput {
   };
 }
 export const ListResourceV1beta2ResourceClaimForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -24917,7 +24907,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1beta2ResourceClaimForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2ResourceClaimForAllNamespacesInput,
     outputSchema: ListResourceV1beta2ResourceClaimForAllNamespacesOutput,
   }));
@@ -24937,7 +24927,7 @@ export interface ListResourceV1beta2ResourceClaimTemplateForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListResourceV1beta2ResourceClaimTemplateForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -25086,7 +25076,7 @@ export interface ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput 
   };
 }
 export const ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -25389,7 +25379,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1beta2ResourceClaimTemplateForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2ResourceClaimTemplateForAllNamespacesInput,
     outputSchema:
       ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput,
@@ -25410,7 +25400,7 @@ export interface ListResourceV1beta2ResourceSliceInput {
   watch?: boolean;
 }
 export const ListResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -25561,7 +25551,7 @@ export interface ListResourceV1beta2ResourceSliceOutput {
   };
 }
 export const ListResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -25855,7 +25845,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1beta2ResourceSliceInput,
     outputSchema: ListResourceV1beta2ResourceSliceOutput,
   }));
@@ -25869,7 +25859,7 @@ export interface PatchResourceV1DeviceClassInput {
   force?: boolean;
 }
 export const PatchResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -25926,7 +25916,7 @@ export interface PatchResourceV1DeviceClassOutput {
   };
 }
 export const PatchResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -26014,13 +26004,11 @@ export const PatchResourceV1DeviceClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchResourceV1DeviceClassInput,
-    outputSchema: PatchResourceV1DeviceClassOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchResourceV1DeviceClassInput,
+  outputSchema: PatchResourceV1DeviceClassOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface PatchResourceV1NamespacedResourceClaimInput {
   name: string;
@@ -26032,7 +26020,7 @@ export interface PatchResourceV1NamespacedResourceClaimInput {
   force?: boolean;
 }
 export const PatchResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -26197,7 +26185,7 @@ export interface PatchResourceV1NamespacedResourceClaimOutput {
   };
 }
 export const PatchResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -26497,7 +26485,7 @@ export const PatchResourceV1NamespacedResourceClaimOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1NamespacedResourceClaimInput,
     outputSchema: PatchResourceV1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -26513,7 +26501,7 @@ export interface PatchResourceV1NamespacedResourceClaimStatusInput {
   force?: boolean;
 }
 export const PatchResourceV1NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -26678,7 +26666,7 @@ export interface PatchResourceV1NamespacedResourceClaimStatusOutput {
   };
 }
 export const PatchResourceV1NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -26978,7 +26966,7 @@ export const PatchResourceV1NamespacedResourceClaimStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1NamespacedResourceClaimStatusInput,
     outputSchema: PatchResourceV1NamespacedResourceClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -26994,7 +26982,7 @@ export interface PatchResourceV1NamespacedResourceClaimTemplateInput {
   force?: boolean;
 }
 export const PatchResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -27127,7 +27115,7 @@ export interface PatchResourceV1NamespacedResourceClaimTemplateOutput {
   };
 }
 export const PatchResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -27356,7 +27344,7 @@ export const PatchResourceV1NamespacedResourceClaimTemplateOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: PatchResourceV1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -27371,7 +27359,7 @@ export interface PatchResourceV1ResourceSliceInput {
   force?: boolean;
 }
 export const PatchResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -27501,7 +27489,7 @@ export interface PatchResourceV1ResourceSliceOutput {
   };
 }
 export const PatchResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -27721,7 +27709,7 @@ export const PatchResourceV1ResourceSliceOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1ResourceSliceInput,
     outputSchema: PatchResourceV1ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -27736,7 +27724,7 @@ export interface PatchResourceV1alpha3DeviceTaintRuleInput {
   force?: boolean;
 }
 export const PatchResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -27802,7 +27790,7 @@ export interface PatchResourceV1alpha3DeviceTaintRuleOutput {
   };
 }
 export const PatchResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -27894,7 +27882,7 @@ export const PatchResourceV1alpha3DeviceTaintRuleOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: PatchResourceV1alpha3DeviceTaintRuleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -27909,7 +27897,7 @@ export interface PatchResourceV1alpha3DeviceTaintRuleStatusInput {
   force?: boolean;
 }
 export const PatchResourceV1alpha3DeviceTaintRuleStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -27975,7 +27963,7 @@ export interface PatchResourceV1alpha3DeviceTaintRuleStatusOutput {
   };
 }
 export const PatchResourceV1alpha3DeviceTaintRuleStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -28067,7 +28055,7 @@ export const PatchResourceV1alpha3DeviceTaintRuleStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1alpha3DeviceTaintRuleStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1alpha3DeviceTaintRuleStatusInput,
     outputSchema: PatchResourceV1alpha3DeviceTaintRuleStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -28082,7 +28070,7 @@ export interface PatchResourceV1alpha3ResourcePoolStatusRequestInput {
   force?: boolean;
 }
 export const PatchResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -28158,7 +28146,7 @@ export interface PatchResourceV1alpha3ResourcePoolStatusRequestOutput {
   };
 }
 export const PatchResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -28253,7 +28241,7 @@ export const PatchResourceV1alpha3ResourcePoolStatusRequestOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
@@ -28267,7 +28255,7 @@ export interface PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput {
   force?: boolean;
 }
 export const PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -28343,7 +28331,7 @@ export interface PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput {
   };
 }
 export const PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -28438,7 +28426,7 @@ export const PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1alpha3ResourcePoolStatusRequestStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput,
     outputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
@@ -28452,7 +28440,7 @@ export interface PatchResourceV1beta1DeviceClassInput {
   force?: boolean;
 }
 export const PatchResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -28509,7 +28497,7 @@ export interface PatchResourceV1beta1DeviceClassOutput {
   };
 }
 export const PatchResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -28598,7 +28586,7 @@ export const PatchResourceV1beta1DeviceClassOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1DeviceClassInput,
     outputSchema: PatchResourceV1beta1DeviceClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -28614,7 +28602,7 @@ export interface PatchResourceV1beta1NamespacedResourceClaimInput {
   force?: boolean;
 }
 export const PatchResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -28777,7 +28765,7 @@ export interface PatchResourceV1beta1NamespacedResourceClaimOutput {
   };
 }
 export const PatchResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -29073,7 +29061,7 @@ export const PatchResourceV1beta1NamespacedResourceClaimOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: PatchResourceV1beta1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -29089,7 +29077,7 @@ export interface PatchResourceV1beta1NamespacedResourceClaimStatusInput {
   force?: boolean;
 }
 export const PatchResourceV1beta1NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -29252,7 +29240,7 @@ export interface PatchResourceV1beta1NamespacedResourceClaimStatusOutput {
   };
 }
 export const PatchResourceV1beta1NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -29548,7 +29536,7 @@ export const PatchResourceV1beta1NamespacedResourceClaimStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1beta1NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1NamespacedResourceClaimStatusInput,
     outputSchema: PatchResourceV1beta1NamespacedResourceClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -29564,7 +29552,7 @@ export interface PatchResourceV1beta1NamespacedResourceClaimTemplateInput {
   force?: boolean;
 }
 export const PatchResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -29695,7 +29683,7 @@ export interface PatchResourceV1beta1NamespacedResourceClaimTemplateOutput {
   };
 }
 export const PatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -29918,7 +29906,7 @@ export const PatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: PatchResourceV1beta1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -29933,7 +29921,7 @@ export interface PatchResourceV1beta1ResourceSliceInput {
   force?: boolean;
 }
 export const PatchResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -30069,7 +30057,7 @@ export interface PatchResourceV1beta1ResourceSliceOutput {
   };
 }
 export const PatchResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -30299,7 +30287,7 @@ export const PatchResourceV1beta1ResourceSliceOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1ResourceSliceInput,
     outputSchema: PatchResourceV1beta1ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -30314,7 +30302,7 @@ export interface PatchResourceV1beta2DeviceClassInput {
   force?: boolean;
 }
 export const PatchResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -30371,7 +30359,7 @@ export interface PatchResourceV1beta2DeviceClassOutput {
   };
 }
 export const PatchResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -30460,7 +30448,7 @@ export const PatchResourceV1beta2DeviceClassOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2DeviceClassInput,
     outputSchema: PatchResourceV1beta2DeviceClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -30475,7 +30463,7 @@ export interface PatchResourceV1beta2DeviceTaintRuleInput {
   force?: boolean;
 }
 export const PatchResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -30541,7 +30529,7 @@ export interface PatchResourceV1beta2DeviceTaintRuleOutput {
   };
 }
 export const PatchResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -30633,7 +30621,7 @@ export const PatchResourceV1beta2DeviceTaintRuleOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2DeviceTaintRuleInput,
     outputSchema: PatchResourceV1beta2DeviceTaintRuleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -30648,7 +30636,7 @@ export interface PatchResourceV1beta2DeviceTaintRuleStatusInput {
   force?: boolean;
 }
 export const PatchResourceV1beta2DeviceTaintRuleStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -30714,7 +30702,7 @@ export interface PatchResourceV1beta2DeviceTaintRuleStatusOutput {
   };
 }
 export const PatchResourceV1beta2DeviceTaintRuleStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -30806,7 +30794,7 @@ export const PatchResourceV1beta2DeviceTaintRuleStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1beta2DeviceTaintRuleStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2DeviceTaintRuleStatusInput,
     outputSchema: PatchResourceV1beta2DeviceTaintRuleStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -30822,7 +30810,7 @@ export interface PatchResourceV1beta2NamespacedResourceClaimInput {
   force?: boolean;
 }
 export const PatchResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -30987,7 +30975,7 @@ export interface PatchResourceV1beta2NamespacedResourceClaimOutput {
   };
 }
 export const PatchResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -31287,7 +31275,7 @@ export const PatchResourceV1beta2NamespacedResourceClaimOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: PatchResourceV1beta2NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -31303,7 +31291,7 @@ export interface PatchResourceV1beta2NamespacedResourceClaimStatusInput {
   force?: boolean;
 }
 export const PatchResourceV1beta2NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -31468,7 +31456,7 @@ export interface PatchResourceV1beta2NamespacedResourceClaimStatusOutput {
   };
 }
 export const PatchResourceV1beta2NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -31768,7 +31756,7 @@ export const PatchResourceV1beta2NamespacedResourceClaimStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1beta2NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2NamespacedResourceClaimStatusInput,
     outputSchema: PatchResourceV1beta2NamespacedResourceClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -31784,7 +31772,7 @@ export interface PatchResourceV1beta2NamespacedResourceClaimTemplateInput {
   force?: boolean;
 }
 export const PatchResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -31917,7 +31905,7 @@ export interface PatchResourceV1beta2NamespacedResourceClaimTemplateOutput {
   };
 }
 export const PatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -32146,7 +32134,7 @@ export const PatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: PatchResourceV1beta2NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -32161,7 +32149,7 @@ export interface PatchResourceV1beta2ResourceSliceInput {
   force?: boolean;
 }
 export const PatchResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -32291,7 +32279,7 @@ export interface PatchResourceV1beta2ResourceSliceOutput {
   };
 }
 export const PatchResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -32511,7 +32499,7 @@ export const PatchResourceV1beta2ResourceSliceOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2ResourceSliceInput,
     outputSchema: PatchResourceV1beta2ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -32522,7 +32510,7 @@ export interface ReadResourceV1DeviceClassInput {
   pretty?: string;
 }
 export const ReadResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -32575,7 +32563,7 @@ export interface ReadResourceV1DeviceClassOutput {
   };
 }
 export const ReadResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -32659,13 +32647,11 @@ export const ReadResourceV1DeviceClassOutput =
  * @param name - name of the DeviceClass
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadResourceV1DeviceClassInput,
-    outputSchema: ReadResourceV1DeviceClassOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadResourceV1DeviceClassInput,
+  outputSchema: ReadResourceV1DeviceClassOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadResourceV1NamespacedResourceClaimInput {
   name: string;
@@ -32673,7 +32659,7 @@ export interface ReadResourceV1NamespacedResourceClaimInput {
   pretty?: string;
 }
 export const ReadResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -32834,7 +32820,7 @@ export interface ReadResourceV1NamespacedResourceClaimOutput {
   };
 }
 export const ReadResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -33130,7 +33116,7 @@ export const ReadResourceV1NamespacedResourceClaimOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1NamespacedResourceClaimInput,
     outputSchema: ReadResourceV1NamespacedResourceClaimOutput,
     errors: [NotFound] as const,
@@ -33142,7 +33128,7 @@ export interface ReadResourceV1NamespacedResourceClaimStatusInput {
   pretty?: string;
 }
 export const ReadResourceV1NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -33303,7 +33289,7 @@ export interface ReadResourceV1NamespacedResourceClaimStatusOutput {
   };
 }
 export const ReadResourceV1NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -33599,7 +33585,7 @@ export const ReadResourceV1NamespacedResourceClaimStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1NamespacedResourceClaimStatusInput,
     outputSchema: ReadResourceV1NamespacedResourceClaimStatusOutput,
     errors: [NotFound] as const,
@@ -33611,7 +33597,7 @@ export interface ReadResourceV1NamespacedResourceClaimTemplateInput {
   pretty?: string;
 }
 export const ReadResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -33740,7 +33726,7 @@ export interface ReadResourceV1NamespacedResourceClaimTemplateOutput {
   };
 }
 export const ReadResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -33965,7 +33951,7 @@ export const ReadResourceV1NamespacedResourceClaimTemplateOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: ReadResourceV1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound] as const,
@@ -33976,7 +33962,7 @@ export interface ReadResourceV1ResourceSliceInput {
   pretty?: string;
 }
 export const ReadResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -34102,7 +34088,7 @@ export interface ReadResourceV1ResourceSliceOutput {
   };
 }
 export const ReadResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -34317,20 +34303,18 @@ export const ReadResourceV1ResourceSliceOutput =
  * @param name - name of the ResourceSlice
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readResourceV1ResourceSlice = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadResourceV1ResourceSliceInput,
-    outputSchema: ReadResourceV1ResourceSliceOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readResourceV1ResourceSlice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadResourceV1ResourceSliceInput,
+  outputSchema: ReadResourceV1ResourceSliceOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadResourceV1alpha3DeviceTaintRuleInput {
   name: string;
   pretty?: string;
 }
 export const ReadResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -34392,7 +34376,7 @@ export interface ReadResourceV1alpha3DeviceTaintRuleOutput {
   };
 }
 export const ReadResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -34480,7 +34464,7 @@ export const ReadResourceV1alpha3DeviceTaintRuleOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: ReadResourceV1alpha3DeviceTaintRuleOutput,
     errors: [NotFound] as const,
@@ -34491,7 +34475,7 @@ export interface ReadResourceV1alpha3DeviceTaintRuleStatusInput {
   pretty?: string;
 }
 export const ReadResourceV1alpha3DeviceTaintRuleStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -34553,7 +34537,7 @@ export interface ReadResourceV1alpha3DeviceTaintRuleStatusOutput {
   };
 }
 export const ReadResourceV1alpha3DeviceTaintRuleStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -34641,7 +34625,7 @@ export const ReadResourceV1alpha3DeviceTaintRuleStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1alpha3DeviceTaintRuleStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1alpha3DeviceTaintRuleStatusInput,
     outputSchema: ReadResourceV1alpha3DeviceTaintRuleStatusOutput,
     errors: [NotFound] as const,
@@ -34652,7 +34636,7 @@ export interface ReadResourceV1alpha3ResourcePoolStatusRequestInput {
   pretty?: string;
 }
 export const ReadResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -34724,7 +34708,7 @@ export interface ReadResourceV1alpha3ResourcePoolStatusRequestOutput {
   };
 }
 export const ReadResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -34815,7 +34799,7 @@ export const ReadResourceV1alpha3ResourcePoolStatusRequestOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
@@ -34825,7 +34809,7 @@ export interface ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput {
   pretty?: string;
 }
 export const ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -34897,7 +34881,7 @@ export interface ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput {
   };
 }
 export const ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -34988,7 +34972,7 @@ export const ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1alpha3ResourcePoolStatusRequestStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput,
     outputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
@@ -34998,7 +34982,7 @@ export interface ReadResourceV1beta1DeviceClassInput {
   pretty?: string;
 }
 export const ReadResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -35051,7 +35035,7 @@ export interface ReadResourceV1beta1DeviceClassOutput {
   };
 }
 export const ReadResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -35136,7 +35120,7 @@ export const ReadResourceV1beta1DeviceClassOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1DeviceClassInput,
     outputSchema: ReadResourceV1beta1DeviceClassOutput,
     errors: [NotFound] as const,
@@ -35148,7 +35132,7 @@ export interface ReadResourceV1beta1NamespacedResourceClaimInput {
   pretty?: string;
 }
 export const ReadResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -35307,7 +35291,7 @@ export interface ReadResourceV1beta1NamespacedResourceClaimOutput {
   };
 }
 export const ReadResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -35599,7 +35583,7 @@ export const ReadResourceV1beta1NamespacedResourceClaimOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: ReadResourceV1beta1NamespacedResourceClaimOutput,
     errors: [NotFound] as const,
@@ -35611,7 +35595,7 @@ export interface ReadResourceV1beta1NamespacedResourceClaimStatusInput {
   pretty?: string;
 }
 export const ReadResourceV1beta1NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -35770,7 +35754,7 @@ export interface ReadResourceV1beta1NamespacedResourceClaimStatusOutput {
   };
 }
 export const ReadResourceV1beta1NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -36062,7 +36046,7 @@ export const ReadResourceV1beta1NamespacedResourceClaimStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1beta1NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1NamespacedResourceClaimStatusInput,
     outputSchema: ReadResourceV1beta1NamespacedResourceClaimStatusOutput,
     errors: [NotFound] as const,
@@ -36074,7 +36058,7 @@ export interface ReadResourceV1beta1NamespacedResourceClaimTemplateInput {
   pretty?: string;
 }
 export const ReadResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -36201,7 +36185,7 @@ export interface ReadResourceV1beta1NamespacedResourceClaimTemplateOutput {
   };
 }
 export const ReadResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -36420,7 +36404,7 @@ export const ReadResourceV1beta1NamespacedResourceClaimTemplateOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: ReadResourceV1beta1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound] as const,
@@ -36431,7 +36415,7 @@ export interface ReadResourceV1beta1ResourceSliceInput {
   pretty?: string;
 }
 export const ReadResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -36563,7 +36547,7 @@ export interface ReadResourceV1beta1ResourceSliceOutput {
   };
 }
 export const ReadResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -36789,7 +36773,7 @@ export const ReadResourceV1beta1ResourceSliceOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1ResourceSliceInput,
     outputSchema: ReadResourceV1beta1ResourceSliceOutput,
     errors: [NotFound] as const,
@@ -36800,7 +36784,7 @@ export interface ReadResourceV1beta2DeviceClassInput {
   pretty?: string;
 }
 export const ReadResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -36853,7 +36837,7 @@ export interface ReadResourceV1beta2DeviceClassOutput {
   };
 }
 export const ReadResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -36938,7 +36922,7 @@ export const ReadResourceV1beta2DeviceClassOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2DeviceClassInput,
     outputSchema: ReadResourceV1beta2DeviceClassOutput,
     errors: [NotFound] as const,
@@ -36949,7 +36933,7 @@ export interface ReadResourceV1beta2DeviceTaintRuleInput {
   pretty?: string;
 }
 export const ReadResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -37011,7 +36995,7 @@ export interface ReadResourceV1beta2DeviceTaintRuleOutput {
   };
 }
 export const ReadResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -37099,7 +37083,7 @@ export const ReadResourceV1beta2DeviceTaintRuleOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2DeviceTaintRuleInput,
     outputSchema: ReadResourceV1beta2DeviceTaintRuleOutput,
     errors: [NotFound] as const,
@@ -37110,7 +37094,7 @@ export interface ReadResourceV1beta2DeviceTaintRuleStatusInput {
   pretty?: string;
 }
 export const ReadResourceV1beta2DeviceTaintRuleStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -37172,7 +37156,7 @@ export interface ReadResourceV1beta2DeviceTaintRuleStatusOutput {
   };
 }
 export const ReadResourceV1beta2DeviceTaintRuleStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -37260,7 +37244,7 @@ export const ReadResourceV1beta2DeviceTaintRuleStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1beta2DeviceTaintRuleStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2DeviceTaintRuleStatusInput,
     outputSchema: ReadResourceV1beta2DeviceTaintRuleStatusOutput,
     errors: [NotFound] as const,
@@ -37272,7 +37256,7 @@ export interface ReadResourceV1beta2NamespacedResourceClaimInput {
   pretty?: string;
 }
 export const ReadResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -37433,7 +37417,7 @@ export interface ReadResourceV1beta2NamespacedResourceClaimOutput {
   };
 }
 export const ReadResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -37729,7 +37713,7 @@ export const ReadResourceV1beta2NamespacedResourceClaimOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: ReadResourceV1beta2NamespacedResourceClaimOutput,
     errors: [NotFound] as const,
@@ -37741,7 +37725,7 @@ export interface ReadResourceV1beta2NamespacedResourceClaimStatusInput {
   pretty?: string;
 }
 export const ReadResourceV1beta2NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -37902,7 +37886,7 @@ export interface ReadResourceV1beta2NamespacedResourceClaimStatusOutput {
   };
 }
 export const ReadResourceV1beta2NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -38198,7 +38182,7 @@ export const ReadResourceV1beta2NamespacedResourceClaimStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1beta2NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2NamespacedResourceClaimStatusInput,
     outputSchema: ReadResourceV1beta2NamespacedResourceClaimStatusOutput,
     errors: [NotFound] as const,
@@ -38210,7 +38194,7 @@ export interface ReadResourceV1beta2NamespacedResourceClaimTemplateInput {
   pretty?: string;
 }
 export const ReadResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -38339,7 +38323,7 @@ export interface ReadResourceV1beta2NamespacedResourceClaimTemplateOutput {
   };
 }
 export const ReadResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -38564,7 +38548,7 @@ export const ReadResourceV1beta2NamespacedResourceClaimTemplateOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: ReadResourceV1beta2NamespacedResourceClaimTemplateOutput,
     errors: [NotFound] as const,
@@ -38575,7 +38559,7 @@ export interface ReadResourceV1beta2ResourceSliceInput {
   pretty?: string;
 }
 export const ReadResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -38701,7 +38685,7 @@ export interface ReadResourceV1beta2ResourceSliceOutput {
   };
 }
 export const ReadResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -38917,7 +38901,7 @@ export const ReadResourceV1beta2ResourceSliceOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2ResourceSliceInput,
     outputSchema: ReadResourceV1beta2ResourceSliceOutput,
     errors: [NotFound] as const,
@@ -38970,7 +38954,7 @@ export interface ReplaceResourceV1DeviceClassInput {
   };
 }
 export const ReplaceResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -39100,7 +39084,7 @@ export interface ReplaceResourceV1DeviceClassOutput {
   };
 }
 export const ReplaceResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -39188,7 +39172,7 @@ export const ReplaceResourceV1DeviceClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1DeviceClassInput,
     outputSchema: ReplaceResourceV1DeviceClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -39349,7 +39333,7 @@ export interface ReplaceResourceV1NamespacedResourceClaimInput {
   };
 }
 export const ReplaceResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -39797,7 +39781,7 @@ export interface ReplaceResourceV1NamespacedResourceClaimOutput {
   };
 }
 export const ReplaceResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -40096,7 +40080,7 @@ export const ReplaceResourceV1NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1NamespacedResourceClaimInput,
     outputSchema: ReplaceResourceV1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -40257,7 +40241,7 @@ export interface ReplaceResourceV1NamespacedResourceClaimStatusInput {
   };
 }
 export const ReplaceResourceV1NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -40705,7 +40689,7 @@ export interface ReplaceResourceV1NamespacedResourceClaimStatusOutput {
   };
 }
 export const ReplaceResourceV1NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -41004,7 +40988,7 @@ export const ReplaceResourceV1NamespacedResourceClaimStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1NamespacedResourceClaimStatusInput,
     outputSchema: ReplaceResourceV1NamespacedResourceClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -41133,7 +41117,7 @@ export interface ReplaceResourceV1NamespacedResourceClaimTemplateInput {
   };
 }
 export const ReplaceResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -41478,7 +41462,7 @@ export interface ReplaceResourceV1NamespacedResourceClaimTemplateOutput {
   };
 }
 export const ReplaceResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -41706,7 +41690,7 @@ export const ReplaceResourceV1NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: ReplaceResourceV1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -41832,7 +41816,7 @@ export interface ReplaceResourceV1ResourceSliceInput {
   };
 }
 export const ReplaceResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -42166,7 +42150,7 @@ export interface ReplaceResourceV1ResourceSliceOutput {
   };
 }
 export const ReplaceResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -42385,7 +42369,7 @@ export const ReplaceResourceV1ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1ResourceSliceInput,
     outputSchema: ReplaceResourceV1ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -42447,7 +42431,7 @@ export interface ReplaceResourceV1alpha3DeviceTaintRuleInput {
   };
 }
 export const ReplaceResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -42589,7 +42573,7 @@ export interface ReplaceResourceV1alpha3DeviceTaintRuleOutput {
   };
 }
 export const ReplaceResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -42680,7 +42664,7 @@ export const ReplaceResourceV1alpha3DeviceTaintRuleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: ReplaceResourceV1alpha3DeviceTaintRuleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -42742,7 +42726,7 @@ export interface ReplaceResourceV1alpha3DeviceTaintRuleStatusInput {
   };
 }
 export const ReplaceResourceV1alpha3DeviceTaintRuleStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -42884,7 +42868,7 @@ export interface ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput {
   };
 }
 export const ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -42975,7 +42959,7 @@ export const ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1alpha3DeviceTaintRuleStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1alpha3DeviceTaintRuleStatusInput,
     outputSchema: ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -43047,7 +43031,7 @@ export interface ReplaceResourceV1alpha3ResourcePoolStatusRequestInput {
   };
 }
 export const ReplaceResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -43202,7 +43186,7 @@ export interface ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput {
   };
 }
 export const ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -43296,7 +43280,7 @@ export const ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
@@ -43367,7 +43351,7 @@ export interface ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput {
   };
 }
 export const ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -43522,7 +43506,7 @@ export interface ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput {
   };
 }
 export const ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -43616,7 +43600,7 @@ export const ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1alpha3ResourcePoolStatusRequestStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput,
     outputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
@@ -43668,7 +43652,7 @@ export interface ReplaceResourceV1beta1DeviceClassInput {
   };
 }
 export const ReplaceResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -43798,7 +43782,7 @@ export interface ReplaceResourceV1beta1DeviceClassOutput {
   };
 }
 export const ReplaceResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -43886,7 +43870,7 @@ export const ReplaceResourceV1beta1DeviceClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1DeviceClassInput,
     outputSchema: ReplaceResourceV1beta1DeviceClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -44045,7 +44029,7 @@ export interface ReplaceResourceV1beta1NamespacedResourceClaimInput {
   };
 }
 export const ReplaceResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -44487,7 +44471,7 @@ export interface ReplaceResourceV1beta1NamespacedResourceClaimOutput {
   };
 }
 export const ReplaceResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -44782,7 +44766,7 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: ReplaceResourceV1beta1NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -44941,7 +44925,7 @@ export interface ReplaceResourceV1beta1NamespacedResourceClaimStatusInput {
   };
 }
 export const ReplaceResourceV1beta1NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -45383,7 +45367,7 @@ export interface ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput {
   };
 }
 export const ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -45678,7 +45662,7 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta1NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1NamespacedResourceClaimStatusInput,
     outputSchema: ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -45805,7 +45789,7 @@ export interface ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput {
   };
 }
 export const ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -46142,7 +46126,7 @@ export interface ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput {
   };
 }
 export const ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -46364,7 +46348,7 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -46496,7 +46480,7 @@ export interface ReplaceResourceV1beta1ResourceSliceInput {
   };
 }
 export const ReplaceResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -46846,7 +46830,7 @@ export interface ReplaceResourceV1beta1ResourceSliceOutput {
   };
 }
 export const ReplaceResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -47075,7 +47059,7 @@ export const ReplaceResourceV1beta1ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1ResourceSliceInput,
     outputSchema: ReplaceResourceV1beta1ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -47128,7 +47112,7 @@ export interface ReplaceResourceV1beta2DeviceClassInput {
   };
 }
 export const ReplaceResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -47258,7 +47242,7 @@ export interface ReplaceResourceV1beta2DeviceClassOutput {
   };
 }
 export const ReplaceResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -47346,7 +47330,7 @@ export const ReplaceResourceV1beta2DeviceClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2DeviceClassInput,
     outputSchema: ReplaceResourceV1beta2DeviceClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -47408,7 +47392,7 @@ export interface ReplaceResourceV1beta2DeviceTaintRuleInput {
   };
 }
 export const ReplaceResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -47550,7 +47534,7 @@ export interface ReplaceResourceV1beta2DeviceTaintRuleOutput {
   };
 }
 export const ReplaceResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -47641,7 +47625,7 @@ export const ReplaceResourceV1beta2DeviceTaintRuleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2DeviceTaintRuleInput,
     outputSchema: ReplaceResourceV1beta2DeviceTaintRuleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -47703,7 +47687,7 @@ export interface ReplaceResourceV1beta2DeviceTaintRuleStatusInput {
   };
 }
 export const ReplaceResourceV1beta2DeviceTaintRuleStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -47845,7 +47829,7 @@ export interface ReplaceResourceV1beta2DeviceTaintRuleStatusOutput {
   };
 }
 export const ReplaceResourceV1beta2DeviceTaintRuleStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -47936,7 +47920,7 @@ export const ReplaceResourceV1beta2DeviceTaintRuleStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2DeviceTaintRuleStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2DeviceTaintRuleStatusInput,
     outputSchema: ReplaceResourceV1beta2DeviceTaintRuleStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -48097,7 +48081,7 @@ export interface ReplaceResourceV1beta2NamespacedResourceClaimInput {
   };
 }
 export const ReplaceResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -48545,7 +48529,7 @@ export interface ReplaceResourceV1beta2NamespacedResourceClaimOutput {
   };
 }
 export const ReplaceResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -48844,7 +48828,7 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: ReplaceResourceV1beta2NamespacedResourceClaimOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -49005,7 +48989,7 @@ export interface ReplaceResourceV1beta2NamespacedResourceClaimStatusInput {
   };
 }
 export const ReplaceResourceV1beta2NamespacedResourceClaimStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -49453,7 +49437,7 @@ export interface ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput {
   };
 }
 export const ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -49752,7 +49736,7 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2NamespacedResourceClaimStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2NamespacedResourceClaimStatusInput,
     outputSchema: ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -49881,7 +49865,7 @@ export interface ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput {
   };
 }
 export const ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -50226,7 +50210,7 @@ export interface ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput {
   };
 }
 export const ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -50454,7 +50438,7 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -50580,7 +50564,7 @@ export interface ReplaceResourceV1beta2ResourceSliceInput {
   };
 }
 export const ReplaceResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -50914,7 +50898,7 @@ export interface ReplaceResourceV1beta2ResourceSliceOutput {
   };
 }
 export const ReplaceResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -51133,7 +51117,7 @@ export const ReplaceResourceV1beta2ResourceSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2ResourceSliceInput,
     outputSchema: ReplaceResourceV1beta2ResourceSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -51155,7 +51139,7 @@ export interface WatchResourceV1DeviceClassInput {
   watch?: boolean;
 }
 export const WatchResourceV1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -51182,7 +51166,7 @@ export interface WatchResourceV1DeviceClassOutput {
   type: string;
 }
 export const WatchResourceV1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1DeviceClassOutput>;
@@ -51246,12 +51230,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchResourceV1DeviceClassInput,
-    outputSchema: WatchResourceV1DeviceClassOutput,
-  }),
-);
+export const watchResourceV1DeviceClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchResourceV1DeviceClassInput,
+  outputSchema: WatchResourceV1DeviceClassOutput,
+}));
 // Input Schema
 export interface WatchResourceV1DeviceClassListInput {
   allowWatchBookmarks?: boolean;
@@ -51268,7 +51250,7 @@ export interface WatchResourceV1DeviceClassListInput {
   watch?: boolean;
 }
 export const WatchResourceV1DeviceClassListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -51294,7 +51276,7 @@ export interface WatchResourceV1DeviceClassListOutput {
   type: string;
 }
 export const WatchResourceV1DeviceClassListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1DeviceClassListOutput>;
@@ -51358,7 +51340,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1DeviceClassList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1DeviceClassListInput,
     outputSchema: WatchResourceV1DeviceClassListOutput,
   }));
@@ -51380,7 +51362,7 @@ export interface WatchResourceV1NamespacedResourceClaimInput {
   watch?: boolean;
 }
 export const WatchResourceV1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -51408,7 +51390,7 @@ export interface WatchResourceV1NamespacedResourceClaimOutput {
   type: string;
 }
 export const WatchResourceV1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1NamespacedResourceClaimOutput>;
@@ -51474,7 +51456,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1NamespacedResourceClaimInput,
     outputSchema: WatchResourceV1NamespacedResourceClaimOutput,
   }));
@@ -51495,7 +51477,7 @@ export interface WatchResourceV1NamespacedResourceClaimListInput {
   watch?: boolean;
 }
 export const WatchResourceV1NamespacedResourceClaimListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -51522,7 +51504,7 @@ export interface WatchResourceV1NamespacedResourceClaimListOutput {
   type: string;
 }
 export const WatchResourceV1NamespacedResourceClaimListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1NamespacedResourceClaimListOutput>;
@@ -51587,7 +51569,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1NamespacedResourceClaimList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1NamespacedResourceClaimListInput,
     outputSchema: WatchResourceV1NamespacedResourceClaimListOutput,
   }));
@@ -51609,7 +51591,7 @@ export interface WatchResourceV1NamespacedResourceClaimTemplateInput {
   watch?: boolean;
 }
 export const WatchResourceV1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -51637,7 +51619,7 @@ export interface WatchResourceV1NamespacedResourceClaimTemplateOutput {
   type: string;
 }
 export const WatchResourceV1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1NamespacedResourceClaimTemplateOutput>;
@@ -51703,7 +51685,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: WatchResourceV1NamespacedResourceClaimTemplateOutput,
   }));
@@ -51724,7 +51706,7 @@ export interface WatchResourceV1NamespacedResourceClaimTemplateListInput {
   watch?: boolean;
 }
 export const WatchResourceV1NamespacedResourceClaimTemplateListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -51751,7 +51733,7 @@ export interface WatchResourceV1NamespacedResourceClaimTemplateListOutput {
   type: string;
 }
 export const WatchResourceV1NamespacedResourceClaimTemplateListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1NamespacedResourceClaimTemplateListOutput>;
@@ -51816,7 +51798,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1NamespacedResourceClaimTemplateList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1NamespacedResourceClaimTemplateListInput,
     outputSchema: WatchResourceV1NamespacedResourceClaimTemplateListOutput,
   }));
@@ -51836,7 +51818,7 @@ export interface WatchResourceV1ResourceClaimListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchResourceV1ResourceClaimListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -51862,7 +51844,7 @@ export interface WatchResourceV1ResourceClaimListForAllNamespacesOutput {
   type: string;
 }
 export const WatchResourceV1ResourceClaimListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1ResourceClaimListForAllNamespacesOutput>;
@@ -51926,7 +51908,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1ResourceClaimListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1ResourceClaimListForAllNamespacesInput,
     outputSchema: WatchResourceV1ResourceClaimListForAllNamespacesOutput,
   }));
@@ -51946,7 +51928,7 @@ export interface WatchResourceV1ResourceClaimTemplateListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchResourceV1ResourceClaimTemplateListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -51972,7 +51954,7 @@ export interface WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput 
   type: string;
 }
 export const WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput>;
@@ -52036,7 +52018,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1ResourceClaimTemplateListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1ResourceClaimTemplateListForAllNamespacesInput,
     outputSchema:
       WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput,
@@ -52058,7 +52040,7 @@ export interface WatchResourceV1ResourceSliceInput {
   watch?: boolean;
 }
 export const WatchResourceV1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -52085,7 +52067,7 @@ export interface WatchResourceV1ResourceSliceOutput {
   type: string;
 }
 export const WatchResourceV1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1ResourceSliceOutput>;
@@ -52150,7 +52132,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1ResourceSliceInput,
     outputSchema: WatchResourceV1ResourceSliceOutput,
   }));
@@ -52170,7 +52152,7 @@ export interface WatchResourceV1ResourceSliceListInput {
   watch?: boolean;
 }
 export const WatchResourceV1ResourceSliceListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -52196,7 +52178,7 @@ export interface WatchResourceV1ResourceSliceListOutput {
   type: string;
 }
 export const WatchResourceV1ResourceSliceListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1ResourceSliceListOutput>;
@@ -52260,7 +52242,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1ResourceSliceList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1ResourceSliceListInput,
     outputSchema: WatchResourceV1ResourceSliceListOutput,
   }));
@@ -52281,7 +52263,7 @@ export interface WatchResourceV1alpha3DeviceTaintRuleInput {
   watch?: boolean;
 }
 export const WatchResourceV1alpha3DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -52308,7 +52290,7 @@ export interface WatchResourceV1alpha3DeviceTaintRuleOutput {
   type: string;
 }
 export const WatchResourceV1alpha3DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1alpha3DeviceTaintRuleOutput>;
@@ -52373,7 +52355,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1alpha3DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: WatchResourceV1alpha3DeviceTaintRuleOutput,
   }));
@@ -52393,7 +52375,7 @@ export interface WatchResourceV1alpha3DeviceTaintRuleListInput {
   watch?: boolean;
 }
 export const WatchResourceV1alpha3DeviceTaintRuleListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -52419,7 +52401,7 @@ export interface WatchResourceV1alpha3DeviceTaintRuleListOutput {
   type: string;
 }
 export const WatchResourceV1alpha3DeviceTaintRuleListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1alpha3DeviceTaintRuleListOutput>;
@@ -52483,7 +52465,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1alpha3DeviceTaintRuleList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1alpha3DeviceTaintRuleListInput,
     outputSchema: WatchResourceV1alpha3DeviceTaintRuleListOutput,
   }));
@@ -52504,7 +52486,7 @@ export interface WatchResourceV1alpha3ResourcePoolStatusRequestInput {
   watch?: boolean;
 }
 export const WatchResourceV1alpha3ResourcePoolStatusRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -52531,7 +52513,7 @@ export interface WatchResourceV1alpha3ResourcePoolStatusRequestOutput {
   type: string;
 }
 export const WatchResourceV1alpha3ResourcePoolStatusRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1alpha3ResourcePoolStatusRequestOutput>;
@@ -52596,7 +52578,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1alpha3ResourcePoolStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestInput,
     outputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
@@ -52616,7 +52598,7 @@ export interface WatchResourceV1alpha3ResourcePoolStatusRequestListInput {
   watch?: boolean;
 }
 export const WatchResourceV1alpha3ResourcePoolStatusRequestListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -52642,7 +52624,7 @@ export interface WatchResourceV1alpha3ResourcePoolStatusRequestListOutput {
   type: string;
 }
 export const WatchResourceV1alpha3ResourcePoolStatusRequestListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1alpha3ResourcePoolStatusRequestListOutput>;
@@ -52706,7 +52688,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1alpha3ResourcePoolStatusRequestList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestListInput,
     outputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestListOutput,
   }));
@@ -52727,7 +52709,7 @@ export interface WatchResourceV1beta1DeviceClassInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta1DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -52754,7 +52736,7 @@ export interface WatchResourceV1beta1DeviceClassOutput {
   type: string;
 }
 export const WatchResourceV1beta1DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta1DeviceClassOutput>;
@@ -52819,7 +52801,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta1DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1DeviceClassInput,
     outputSchema: WatchResourceV1beta1DeviceClassOutput,
   }));
@@ -52839,7 +52821,7 @@ export interface WatchResourceV1beta1DeviceClassListInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta1DeviceClassListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -52865,7 +52847,7 @@ export interface WatchResourceV1beta1DeviceClassListOutput {
   type: string;
 }
 export const WatchResourceV1beta1DeviceClassListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta1DeviceClassListOutput>;
@@ -52929,7 +52911,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta1DeviceClassList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1DeviceClassListInput,
     outputSchema: WatchResourceV1beta1DeviceClassListOutput,
   }));
@@ -52951,7 +52933,7 @@ export interface WatchResourceV1beta1NamespacedResourceClaimInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta1NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -52979,7 +52961,7 @@ export interface WatchResourceV1beta1NamespacedResourceClaimOutput {
   type: string;
 }
 export const WatchResourceV1beta1NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta1NamespacedResourceClaimOutput>;
@@ -53045,7 +53027,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta1NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: WatchResourceV1beta1NamespacedResourceClaimOutput,
   }));
@@ -53066,7 +53048,7 @@ export interface WatchResourceV1beta1NamespacedResourceClaimListInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta1NamespacedResourceClaimListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -53093,7 +53075,7 @@ export interface WatchResourceV1beta1NamespacedResourceClaimListOutput {
   type: string;
 }
 export const WatchResourceV1beta1NamespacedResourceClaimListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta1NamespacedResourceClaimListOutput>;
@@ -53158,7 +53140,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta1NamespacedResourceClaimList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1NamespacedResourceClaimListInput,
     outputSchema: WatchResourceV1beta1NamespacedResourceClaimListOutput,
   }));
@@ -53180,7 +53162,7 @@ export interface WatchResourceV1beta1NamespacedResourceClaimTemplateInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta1NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -53208,7 +53190,7 @@ export interface WatchResourceV1beta1NamespacedResourceClaimTemplateOutput {
   type: string;
 }
 export const WatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta1NamespacedResourceClaimTemplateOutput>;
@@ -53274,7 +53256,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta1NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: WatchResourceV1beta1NamespacedResourceClaimTemplateOutput,
   }));
@@ -53295,7 +53277,7 @@ export interface WatchResourceV1beta1NamespacedResourceClaimTemplateListInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta1NamespacedResourceClaimTemplateListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -53322,7 +53304,7 @@ export interface WatchResourceV1beta1NamespacedResourceClaimTemplateListOutput {
   type: string;
 }
 export const WatchResourceV1beta1NamespacedResourceClaimTemplateListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta1NamespacedResourceClaimTemplateListOutput>;
@@ -53387,7 +53369,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta1NamespacedResourceClaimTemplateList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1NamespacedResourceClaimTemplateListInput,
     outputSchema: WatchResourceV1beta1NamespacedResourceClaimTemplateListOutput,
   }));
@@ -53407,7 +53389,7 @@ export interface WatchResourceV1beta1ResourceClaimListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta1ResourceClaimListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -53433,7 +53415,7 @@ export interface WatchResourceV1beta1ResourceClaimListForAllNamespacesOutput {
   type: string;
 }
 export const WatchResourceV1beta1ResourceClaimListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta1ResourceClaimListForAllNamespacesOutput>;
@@ -53497,7 +53479,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta1ResourceClaimListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1ResourceClaimListForAllNamespacesInput,
     outputSchema: WatchResourceV1beta1ResourceClaimListForAllNamespacesOutput,
   }));
@@ -53517,7 +53499,7 @@ export interface WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesIn
   watch?: boolean;
 }
 export const WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -53543,7 +53525,7 @@ export interface WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesOu
   type: string;
 }
 export const WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesOutput>;
@@ -53607,7 +53589,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta1ResourceClaimTemplateListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesInput,
     outputSchema:
@@ -53630,7 +53612,7 @@ export interface WatchResourceV1beta1ResourceSliceInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta1ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -53657,7 +53639,7 @@ export interface WatchResourceV1beta1ResourceSliceOutput {
   type: string;
 }
 export const WatchResourceV1beta1ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta1ResourceSliceOutput>;
@@ -53722,7 +53704,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta1ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1ResourceSliceInput,
     outputSchema: WatchResourceV1beta1ResourceSliceOutput,
   }));
@@ -53742,7 +53724,7 @@ export interface WatchResourceV1beta1ResourceSliceListInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta1ResourceSliceListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -53768,7 +53750,7 @@ export interface WatchResourceV1beta1ResourceSliceListOutput {
   type: string;
 }
 export const WatchResourceV1beta1ResourceSliceListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta1ResourceSliceListOutput>;
@@ -53832,7 +53814,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta1ResourceSliceList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta1ResourceSliceListInput,
     outputSchema: WatchResourceV1beta1ResourceSliceListOutput,
   }));
@@ -53853,7 +53835,7 @@ export interface WatchResourceV1beta2DeviceClassInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta2DeviceClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -53880,7 +53862,7 @@ export interface WatchResourceV1beta2DeviceClassOutput {
   type: string;
 }
 export const WatchResourceV1beta2DeviceClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta2DeviceClassOutput>;
@@ -53945,7 +53927,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta2DeviceClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2DeviceClassInput,
     outputSchema: WatchResourceV1beta2DeviceClassOutput,
   }));
@@ -53965,7 +53947,7 @@ export interface WatchResourceV1beta2DeviceClassListInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta2DeviceClassListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -53991,7 +53973,7 @@ export interface WatchResourceV1beta2DeviceClassListOutput {
   type: string;
 }
 export const WatchResourceV1beta2DeviceClassListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta2DeviceClassListOutput>;
@@ -54055,7 +54037,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta2DeviceClassList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2DeviceClassListInput,
     outputSchema: WatchResourceV1beta2DeviceClassListOutput,
   }));
@@ -54076,7 +54058,7 @@ export interface WatchResourceV1beta2DeviceTaintRuleInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta2DeviceTaintRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -54103,7 +54085,7 @@ export interface WatchResourceV1beta2DeviceTaintRuleOutput {
   type: string;
 }
 export const WatchResourceV1beta2DeviceTaintRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta2DeviceTaintRuleOutput>;
@@ -54168,7 +54150,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta2DeviceTaintRule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2DeviceTaintRuleInput,
     outputSchema: WatchResourceV1beta2DeviceTaintRuleOutput,
   }));
@@ -54188,7 +54170,7 @@ export interface WatchResourceV1beta2DeviceTaintRuleListInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta2DeviceTaintRuleListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -54214,7 +54196,7 @@ export interface WatchResourceV1beta2DeviceTaintRuleListOutput {
   type: string;
 }
 export const WatchResourceV1beta2DeviceTaintRuleListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta2DeviceTaintRuleListOutput>;
@@ -54278,7 +54260,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta2DeviceTaintRuleList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2DeviceTaintRuleListInput,
     outputSchema: WatchResourceV1beta2DeviceTaintRuleListOutput,
   }));
@@ -54300,7 +54282,7 @@ export interface WatchResourceV1beta2NamespacedResourceClaimInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta2NamespacedResourceClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -54328,7 +54310,7 @@ export interface WatchResourceV1beta2NamespacedResourceClaimOutput {
   type: string;
 }
 export const WatchResourceV1beta2NamespacedResourceClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta2NamespacedResourceClaimOutput>;
@@ -54394,7 +54376,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta2NamespacedResourceClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: WatchResourceV1beta2NamespacedResourceClaimOutput,
   }));
@@ -54415,7 +54397,7 @@ export interface WatchResourceV1beta2NamespacedResourceClaimListInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta2NamespacedResourceClaimListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -54442,7 +54424,7 @@ export interface WatchResourceV1beta2NamespacedResourceClaimListOutput {
   type: string;
 }
 export const WatchResourceV1beta2NamespacedResourceClaimListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta2NamespacedResourceClaimListOutput>;
@@ -54507,7 +54489,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta2NamespacedResourceClaimList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2NamespacedResourceClaimListInput,
     outputSchema: WatchResourceV1beta2NamespacedResourceClaimListOutput,
   }));
@@ -54529,7 +54511,7 @@ export interface WatchResourceV1beta2NamespacedResourceClaimTemplateInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta2NamespacedResourceClaimTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -54557,7 +54539,7 @@ export interface WatchResourceV1beta2NamespacedResourceClaimTemplateOutput {
   type: string;
 }
 export const WatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta2NamespacedResourceClaimTemplateOutput>;
@@ -54623,7 +54605,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta2NamespacedResourceClaimTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: WatchResourceV1beta2NamespacedResourceClaimTemplateOutput,
   }));
@@ -54644,7 +54626,7 @@ export interface WatchResourceV1beta2NamespacedResourceClaimTemplateListInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta2NamespacedResourceClaimTemplateListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -54671,7 +54653,7 @@ export interface WatchResourceV1beta2NamespacedResourceClaimTemplateListOutput {
   type: string;
 }
 export const WatchResourceV1beta2NamespacedResourceClaimTemplateListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta2NamespacedResourceClaimTemplateListOutput>;
@@ -54736,7 +54718,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta2NamespacedResourceClaimTemplateList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2NamespacedResourceClaimTemplateListInput,
     outputSchema: WatchResourceV1beta2NamespacedResourceClaimTemplateListOutput,
   }));
@@ -54756,7 +54738,7 @@ export interface WatchResourceV1beta2ResourceClaimListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta2ResourceClaimListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -54782,7 +54764,7 @@ export interface WatchResourceV1beta2ResourceClaimListForAllNamespacesOutput {
   type: string;
 }
 export const WatchResourceV1beta2ResourceClaimListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta2ResourceClaimListForAllNamespacesOutput>;
@@ -54846,7 +54828,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta2ResourceClaimListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2ResourceClaimListForAllNamespacesInput,
     outputSchema: WatchResourceV1beta2ResourceClaimListForAllNamespacesOutput,
   }));
@@ -54866,7 +54848,7 @@ export interface WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesIn
   watch?: boolean;
 }
 export const WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -54892,7 +54874,7 @@ export interface WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesOu
   type: string;
 }
 export const WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesOutput>;
@@ -54956,7 +54938,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta2ResourceClaimTemplateListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesInput,
     outputSchema:
@@ -54979,7 +54961,7 @@ export interface WatchResourceV1beta2ResourceSliceInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta2ResourceSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -55006,7 +54988,7 @@ export interface WatchResourceV1beta2ResourceSliceOutput {
   type: string;
 }
 export const WatchResourceV1beta2ResourceSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta2ResourceSliceOutput>;
@@ -55071,7 +55053,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta2ResourceSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2ResourceSliceInput,
     outputSchema: WatchResourceV1beta2ResourceSliceOutput,
   }));
@@ -55091,7 +55073,7 @@ export interface WatchResourceV1beta2ResourceSliceListInput {
   watch?: boolean;
 }
 export const WatchResourceV1beta2ResourceSliceListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -55117,7 +55099,7 @@ export interface WatchResourceV1beta2ResourceSliceListOutput {
   type: string;
 }
 export const WatchResourceV1beta2ResourceSliceListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchResourceV1beta2ResourceSliceListOutput>;
@@ -55181,7 +55163,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchResourceV1beta2ResourceSliceList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1beta2ResourceSliceListInput,
     outputSchema: WatchResourceV1beta2ResourceSliceListOutput,
   }));

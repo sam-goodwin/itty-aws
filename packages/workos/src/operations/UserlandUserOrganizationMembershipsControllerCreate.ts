@@ -9,7 +9,7 @@ export interface UserlandUserOrganizationMembershipsControllerCreateInput {
   organization_id: string;
 }
 export const UserlandUserOrganizationMembershipsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user_id: Schema.String,
     organization_id: Schema.String,
   }).pipe(
@@ -51,7 +51,7 @@ export interface UserlandUserOrganizationMembershipsControllerCreateOutput {
   };
 }
 export const UserlandUserOrganizationMembershipsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     user_id: Schema.String,
@@ -98,7 +98,7 @@ export const UserlandUserOrganizationMembershipsControllerCreateOutput =
  * Calling this API with an organization and user that match an `inactive` organization membership will activate the membership with the specified role(s).
  */
 export const UserlandUserOrganizationMembershipsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserOrganizationMembershipsControllerCreateInput,
     outputSchema: UserlandUserOrganizationMembershipsControllerCreateOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

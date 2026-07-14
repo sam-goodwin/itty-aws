@@ -11,7 +11,7 @@ export interface RolesRoleMembershipsListInput {
   offset?: number;
 }
 export const RolesRoleMembershipsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     role_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -89,7 +89,7 @@ export interface RolesRoleMembershipsListOutput {
   }[];
 }
 export const RolesRoleMembershipsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -199,10 +199,8 @@ export const RolesRoleMembershipsListOutput =
  * @param offset - The initial index from which to return the results.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const rolesRoleMembershipsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RolesRoleMembershipsListInput,
-    outputSchema: RolesRoleMembershipsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const rolesRoleMembershipsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RolesRoleMembershipsListInput,
+  outputSchema: RolesRoleMembershipsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

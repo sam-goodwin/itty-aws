@@ -8,7 +8,7 @@ export interface UserHomeSettingsRetrieveInput {
   uuid: string;
 }
 export const UserHomeSettingsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/api/user_home_settings/{uuid}/" }),
@@ -44,7 +44,7 @@ export interface UserHomeSettingsRetrieveOutput {
   } | null;
 }
 export const UserHomeSettingsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tabs: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -85,10 +85,8 @@ export const UserHomeSettingsRetrieveOutput =
 /**
  * Get the authenticated user's pinned sidebar tabs and configured homepage for the current team. Pass `@me` as the UUID.
  */
-export const userHomeSettingsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserHomeSettingsRetrieveInput,
-    outputSchema: UserHomeSettingsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const userHomeSettingsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserHomeSettingsRetrieveInput,
+  outputSchema: UserHomeSettingsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

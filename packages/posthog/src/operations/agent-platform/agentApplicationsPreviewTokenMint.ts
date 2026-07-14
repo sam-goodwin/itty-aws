@@ -9,7 +9,7 @@ export interface AgentApplicationsPreviewTokenMintInput {
   revision_id: string;
 }
 export const AgentApplicationsPreviewTokenMintInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     revision_id: Schema.String,
@@ -30,7 +30,7 @@ export interface AgentApplicationsPreviewTokenMintOutput {
   preview_proxy: unknown;
 }
 export const AgentApplicationsPreviewTokenMintOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.String,
     expires_in: Schema.Number,
     ingress_slug: Schema.String,
@@ -62,7 +62,7 @@ export const AgentApplicationsPreviewTokenMintOutput =
  * @param revision_id - Target draft revision. Must belong to this application and not be live.
  */
 export const agentApplicationsPreviewTokenMint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsPreviewTokenMintInput,
     outputSchema: AgentApplicationsPreviewTokenMintOutput,
   }));

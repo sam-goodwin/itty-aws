@@ -8,7 +8,7 @@ export interface ConversationsQueueRetrieveInput {
   project_id: string;
 }
 export const ConversationsQueueRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversation: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -101,7 +101,7 @@ export interface ConversationsQueueRetrieveOutput {
   } | null;
 }
 export const ConversationsQueueRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     status: Schema.optional(
       Schema.Literals(["idle", "in_progress", "canceling"]),
@@ -229,9 +229,7 @@ export const ConversationsQueueRetrieveOutput =
  * @param conversation - A UUID string identifying this conversation.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const conversationsQueueRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConversationsQueueRetrieveInput,
-    outputSchema: ConversationsQueueRetrieveOutput,
-  }),
-);
+export const conversationsQueueRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConversationsQueueRetrieveInput,
+  outputSchema: ConversationsQueueRetrieveOutput,
+}));

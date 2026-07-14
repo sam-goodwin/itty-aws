@@ -13,7 +13,7 @@ export interface GetBillingCreditBalanceTransactionsIdInput {
   expand?: string;
 }
 export const GetBillingCreditBalanceTransactionsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -106,7 +106,7 @@ export interface GetBillingCreditBalanceTransactionsIdOutput {
   type: "credit" | "debit" | null;
 }
 export const GetBillingCreditBalanceTransactionsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     credit: Schema.NullOr(
       Schema.Struct({
@@ -260,7 +260,7 @@ export const GetBillingCreditBalanceTransactionsIdOutput =
  * @param id - Unique identifier for the object.
  */
 export const GetBillingCreditBalanceTransactionsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetBillingCreditBalanceTransactionsIdInput,
     outputSchema: GetBillingCreditBalanceTransactionsIdOutput,
   }));

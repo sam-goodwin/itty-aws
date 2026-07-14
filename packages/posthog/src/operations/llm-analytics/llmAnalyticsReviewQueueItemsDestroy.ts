@@ -8,7 +8,7 @@ export interface LlmAnalyticsReviewQueueItemsDestroyInput {
   project_id: string;
 }
 export const LlmAnalyticsReviewQueueItemsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const LlmAnalyticsReviewQueueItemsDestroyInput =
 // Output Schema
 export type LlmAnalyticsReviewQueueItemsDestroyOutput = void;
 export const LlmAnalyticsReviewQueueItemsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LlmAnalyticsReviewQueueItemsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LlmAnalyticsReviewQueueItemsDestroyOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const LlmAnalyticsReviewQueueItemsDestroyOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const llmAnalyticsReviewQueueItemsDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsReviewQueueItemsDestroyInput,
     outputSchema: LlmAnalyticsReviewQueueItemsDestroyOutput,
   }));

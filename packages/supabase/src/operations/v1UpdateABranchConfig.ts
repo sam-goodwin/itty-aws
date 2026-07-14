@@ -21,7 +21,7 @@ export interface V1UpdateABranchConfigInput {
   notify_url?: string;
 }
 export const V1UpdateABranchConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branch_id_or_ref: Schema.String.pipe(T.PathParam()),
     branch_name: Schema.optional(Schema.String),
     git_branch: Schema.optional(Schema.String),
@@ -85,7 +85,7 @@ export interface V1UpdateABranchConfigOutput {
     | "RESIZING";
 }
 export const V1UpdateABranchConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     project_ref: Schema.String,
@@ -138,10 +138,8 @@ export const V1UpdateABranchConfigOutput =
  *
  * @param branch_id_or_ref - Branch ref or deprecated branch ID
  */
-export const v1UpdateABranchConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdateABranchConfigInput,
-    outputSchema: V1UpdateABranchConfigOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1UpdateABranchConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdateABranchConfigInput,
+  outputSchema: V1UpdateABranchConfigOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

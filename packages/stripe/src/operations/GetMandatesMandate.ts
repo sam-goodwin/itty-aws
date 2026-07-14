@@ -13,7 +13,7 @@ export interface GetMandatesMandateInput {
   expand?: string;
 }
 export const GetMandatesMandateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mandate: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -129,7 +129,7 @@ export interface GetMandatesMandateOutput {
   type: "multi_use" | "single_use";
 }
 export const GetMandatesMandateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer_acceptance: Schema.Struct({
       accepted_at: Schema.NullOr(Schema.Number),
       offline: Schema.optional(Schema.Struct({})),
@@ -305,7 +305,7 @@ export const GetMandatesMandateOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetMandatesMandate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetMandatesMandate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetMandatesMandateInput,
   outputSchema: GetMandatesMandateOutput,
 }));

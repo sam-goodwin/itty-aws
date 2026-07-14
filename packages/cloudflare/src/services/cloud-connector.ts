@@ -40,7 +40,7 @@ interface Parameters {
   /** Host to perform Cloud Connection to */
   host?: string | null;
 }
-const Parameters = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Parameters = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -62,7 +62,7 @@ interface ListRulesResponseResult {
     | (string & {})
     | null;
 }
-const ListRulesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListRulesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -95,7 +95,7 @@ export interface ListRulesRequest {
   zoneId: string;
 }
 
-export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListRulesRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -120,11 +120,10 @@ export interface ListRulesResponse {
   }[];
 }
 
-export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListRulesResponseResult),
-    }),
+export const ListRulesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListRulesResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListRulesResponse>;
 
 export type ListRulesError =
@@ -137,7 +136,7 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [Forbidden, CloudConnectorRulesNotFound],
@@ -166,7 +165,7 @@ export interface PutRuleRequest {
   }[];
 }
 
-export const PutRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     rules: Schema.optional(Schema.Array(ListRulesResponseResult)).pipe(
@@ -194,7 +193,7 @@ export interface PutRuleResponse {
   }[];
 }
 
-export const PutRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     result: Schema.Array(ListRulesResponseResult),
   }),
@@ -207,7 +206,7 @@ export const putRule: API.PaginatedOperationMethod<
   PutRuleResponse,
   PutRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutRuleRequest,
   output: PutRuleResponse,
   errors: [Forbidden],

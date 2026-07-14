@@ -8,7 +8,7 @@ export interface ManagedViewsetsUpdateInput {
   project_id: string;
 }
 export const ManagedViewsetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.Literals(["revenue_analytics"]).pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const ManagedViewsetsUpdateInput =
 // Output Schema
 export type ManagedViewsetsUpdateOutput = void;
 export const ManagedViewsetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedViewsetsUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedViewsetsUpdateOutput>;
 
 // The operation
 /**
@@ -30,9 +30,7 @@ export const ManagedViewsetsUpdateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const managedViewsetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedViewsetsUpdateInput,
-    outputSchema: ManagedViewsetsUpdateOutput,
-  }),
-);
+export const managedViewsetsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedViewsetsUpdateInput,
+  outputSchema: ManagedViewsetsUpdateOutput,
+}));

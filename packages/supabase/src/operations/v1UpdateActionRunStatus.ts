@@ -65,7 +65,7 @@ export interface V1UpdateActionRunStatusInput {
     | "RUNNING";
 }
 export const V1UpdateActionRunStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     run_id: Schema.String.pipe(T.PathParam()),
     clone: Schema.optional(
@@ -157,7 +157,7 @@ export interface V1UpdateActionRunStatusOutput {
   message: "ok";
 }
 export const V1UpdateActionRunStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.Literals(["ok"]),
   }) as unknown as Schema.Codec<V1UpdateActionRunStatusOutput>;
 
@@ -170,10 +170,8 @@ export const V1UpdateActionRunStatusOutput =
  * @param ref - Project ref
  * @param run_id - Action Run ID
  */
-export const v1UpdateActionRunStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdateActionRunStatusInput,
-    outputSchema: V1UpdateActionRunStatusOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1UpdateActionRunStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdateActionRunStatusInput,
+  outputSchema: V1UpdateActionRunStatusOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

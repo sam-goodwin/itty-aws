@@ -8,7 +8,7 @@ export interface GetTreasuryTransactionEntriesIdInput {
   expand?: string;
 }
 export const GetTreasuryTransactionEntriesIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -155,7 +155,7 @@ export interface GetTreasuryTransactionEntriesIdOutput {
     | "received_debit";
 }
 export const GetTreasuryTransactionEntriesIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     balance_impact: Schema.Struct({
       cash: Schema.Number,
       inbound_pending: Schema.Number,
@@ -311,7 +311,7 @@ export const GetTreasuryTransactionEntriesIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTreasuryTransactionEntriesId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTreasuryTransactionEntriesIdInput,
     outputSchema: GetTreasuryTransactionEntriesIdOutput,
   }));

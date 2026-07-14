@@ -14,7 +14,7 @@ export interface GetGroupClusterCollStatNamespacesInput {
   period?: string;
 }
 export const GetGroupClusterCollStatNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     clusterView: Schema.Literals([
@@ -36,7 +36,7 @@ export const GetGroupClusterCollStatNamespacesInput =
 // Output Schema
 export type GetGroupClusterCollStatNamespacesOutput = void;
 export const GetGroupClusterCollStatNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterCollStatNamespacesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterCollStatNamespacesOutput>;
 
 // The operation
 /**
@@ -55,7 +55,7 @@ export const GetGroupClusterCollStatNamespacesOutput =
  * @param period - Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
  */
 export const getGroupClusterCollStatNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupClusterCollStatNamespacesInput,
     outputSchema: GetGroupClusterCollStatNamespacesOutput,
     errors: [Forbidden, NotFound] as const,

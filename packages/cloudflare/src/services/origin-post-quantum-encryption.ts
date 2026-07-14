@@ -50,7 +50,7 @@ export interface GetOriginPostQuantumEncryptionRequest {
 }
 
 export const GetOriginPostQuantumEncryptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -73,7 +73,7 @@ export interface GetOriginPostQuantumEncryptionResponse {
 }
 
 export const GetOriginPostQuantumEncryptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("origin_pqe"),
       editable: Schema.Boolean,
@@ -104,7 +104,7 @@ export const getOriginPostQuantumEncryption: API.OperationMethod<
   GetOriginPostQuantumEncryptionResponse,
   GetOriginPostQuantumEncryptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOriginPostQuantumEncryptionRequest,
   output: GetOriginPostQuantumEncryptionResponse,
   errors: [InvalidZoneIdentifier, Forbidden],
@@ -118,7 +118,7 @@ export interface PutOriginPostQuantumEncryptionRequest {
 }
 
 export const PutOriginPostQuantumEncryptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       value: Schema.Union([
@@ -145,7 +145,7 @@ export interface PutOriginPostQuantumEncryptionResponse {
 }
 
 export const PutOriginPostQuantumEncryptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("origin_pqe"),
       editable: Schema.Boolean,
@@ -177,7 +177,7 @@ export const putOriginPostQuantumEncryption: API.OperationMethod<
   PutOriginPostQuantumEncryptionResponse,
   PutOriginPostQuantumEncryptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutOriginPostQuantumEncryptionRequest,
   output: PutOriginPostQuantumEncryptionResponse,
   errors: [InvalidZoneIdentifier, InvalidSettingValue, Forbidden],

@@ -7,18 +7,16 @@ import { BadRequest, Forbidden } from "../errors.ts";
 export interface V1RestoreAProjectInput {
   ref: string;
 }
-export const V1RestoreAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const V1RestoreAProjectInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({ method: "POST", path: "/v1/projects/{ref}/restore" }),
 ) as unknown as Schema.Codec<V1RestoreAProjectInput>;
 
 // Output Schema
 export type V1RestoreAProjectOutput = void;
 export const V1RestoreAProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RestoreAProjectOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RestoreAProjectOutput>;
 
 // The operation
 /**
@@ -26,7 +24,7 @@ export const V1RestoreAProjectOutput =
  *
  * @param ref - Project ref
  */
-export const v1RestoreAProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1RestoreAProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1RestoreAProjectInput,
   outputSchema: V1RestoreAProjectOutput,
   errors: [BadRequest, Forbidden] as const,

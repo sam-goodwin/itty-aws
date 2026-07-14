@@ -8,7 +8,7 @@ export interface GetTreasuryTransactionsIdInput {
   expand?: string;
 }
 export const GetTreasuryTransactionsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -142,7 +142,7 @@ export interface GetTreasuryTransactionsIdOutput {
   status_transitions: { posted_at: number | null; void_at: number | null };
 }
 export const GetTreasuryTransactionsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_impact: Schema.Struct({
       cash: Schema.Number,
@@ -290,9 +290,7 @@ export const GetTreasuryTransactionsIdOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTreasuryTransactionsId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetTreasuryTransactionsIdInput,
-    outputSchema: GetTreasuryTransactionsIdOutput,
-  }),
-);
+export const GetTreasuryTransactionsId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTreasuryTransactionsIdInput,
+  outputSchema: GetTreasuryTransactionsIdOutput,
+}));

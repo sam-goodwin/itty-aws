@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface GetV1MeInput {}
-export const GetV1MeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const GetV1MeInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v1/me" }),
 ) as unknown as Schema.Codec<GetV1MeInput>;
 
@@ -20,7 +20,7 @@ export interface GetV1MeOutput {
     };
   };
 }
-export const GetV1MeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV1MeOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Struct({
     user: Schema.NullOr(
       Schema.Struct({
@@ -49,7 +49,7 @@ export const GetV1MeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Returns the user, workspace, and credential represented by the current token.
  */
-export const getV1Me = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getV1Me = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV1MeInput,
   outputSchema: GetV1MeOutput,
 }));

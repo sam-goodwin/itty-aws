@@ -15,7 +15,7 @@ export interface CreateOrganizationTeamInput {
   description?: string;
 }
 export const CreateOrganizationTeamInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     description: Schema.optional(Schema.String),
@@ -64,7 +64,7 @@ export interface CreateOrganizationTeamOutput {
   managed: boolean;
 }
 export const CreateOrganizationTeamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     display_name: Schema.String,
     creator: Schema.Struct({
@@ -131,10 +131,8 @@ export const CreateOrganizationTeamOutput =
  * @param name - The name of the team
  * @param description - A description of the team's purpose
  */
-export const createOrganizationTeam = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateOrganizationTeamInput,
-    outputSchema: CreateOrganizationTeamOutput,
-    errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const createOrganizationTeam = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateOrganizationTeamInput,
+  outputSchema: CreateOrganizationTeamOutput,
+  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
+}));

@@ -8,7 +8,7 @@ export interface PostTestHelpersTreasuryInboundTransfersIdReturnInput {
   expand?: string[];
 }
 export const PostTestHelpersTreasuryInboundTransfersIdReturnInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -280,7 +280,7 @@ export interface PostTestHelpersTreasuryInboundTransfersIdReturnOutput {
     | null;
 }
 export const PostTestHelpersTreasuryInboundTransfersIdReturnOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -464,7 +464,7 @@ export const PostTestHelpersTreasuryInboundTransfersIdReturnOutput =
  * <p>Marks the test mode InboundTransfer object as returned and links the InboundTransfer to a ReceivedDebit. The InboundTransfer must already be in the <code>succeeded</code> state.</p>
  */
 export const PostTestHelpersTreasuryInboundTransfersIdReturn =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersTreasuryInboundTransfersIdReturnInput,
     outputSchema: PostTestHelpersTreasuryInboundTransfersIdReturnOutput,
   }));

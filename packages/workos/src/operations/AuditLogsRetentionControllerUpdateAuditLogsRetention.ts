@@ -9,7 +9,7 @@ export interface AuditLogsRetentionControllerUpdateAuditLogsRetentionInput {
   retention_period_in_days?: number;
 }
 export const AuditLogsRetentionControllerUpdateAuditLogsRetentionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     retention_period_in_days: Schema.optional(Schema.Number),
   }).pipe(
@@ -21,7 +21,7 @@ export interface AuditLogsRetentionControllerUpdateAuditLogsRetentionOutput {
   retention_period_in_days?: number | null;
 }
 export const AuditLogsRetentionControllerUpdateAuditLogsRetentionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     retention_period_in_days: Schema.optional(Schema.NullOr(Schema.Number)),
   }) as unknown as Schema.Codec<AuditLogsRetentionControllerUpdateAuditLogsRetentionOutput>;
 
@@ -34,7 +34,7 @@ export const AuditLogsRetentionControllerUpdateAuditLogsRetentionOutput =
  * @param id - Unique identifier of the Organization.
  */
 export const AuditLogsRetentionControllerUpdateAuditLogsRetention =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuditLogsRetentionControllerUpdateAuditLogsRetentionInput,
     outputSchema: AuditLogsRetentionControllerUpdateAuditLogsRetentionOutput,
     errors: [NotFound, UnprocessableEntity] as const,

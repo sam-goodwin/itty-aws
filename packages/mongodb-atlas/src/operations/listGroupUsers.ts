@@ -17,7 +17,7 @@ export interface ListGroupUsersInput {
   orgMembershipStatuses?: string;
   username?: string;
 }
-export const ListGroupUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupUsersInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
@@ -36,7 +36,7 @@ export const ListGroupUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListGroupUsersOutput = void;
 export const ListGroupUsersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupUsersOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupUsersOutput>;
 
 // The operation
 /**
@@ -60,7 +60,7 @@ export const ListGroupUsersOutput =
  * @param orgMembershipStatuses - Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. Replaces the deprecated `orgMembershipStatus` parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with `orgMembershipStatus`. Not supported in deprecated versions.
  * @param username - Email address to filter users by. Not supported in deprecated versions.
  */
-export const listGroupUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupUsers = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupUsersInput,
   outputSchema: ListGroupUsersOutput,
   errors: [Forbidden, NotFound] as const,

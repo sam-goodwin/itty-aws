@@ -8,7 +8,7 @@ export interface ListPaymentMethodsInput {
   pageToken?: string;
 }
 export const ListPaymentMethodsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
   }).pipe(
@@ -62,7 +62,7 @@ export interface ListPaymentMethodsOutput {
   nextPageToken?: string;
 }
 export const ListPaymentMethodsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     paymentMethods: Schema.Array(
       Schema.Union([
         Schema.Struct({
@@ -124,7 +124,7 @@ export const ListPaymentMethodsOutput =
  * @param pageSize - The number of resources to return per page.
  * @param pageToken - The token for the next page of resources, if any.
  */
-export const listPaymentMethods = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listPaymentMethods = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListPaymentMethodsInput,
   outputSchema: ListPaymentMethodsOutput,
 }));

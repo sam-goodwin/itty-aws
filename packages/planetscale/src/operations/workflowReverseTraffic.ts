@@ -10,7 +10,7 @@ export interface WorkflowReverseTrafficInput {
   number: number;
 }
 export const WorkflowReverseTrafficInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -109,7 +109,7 @@ export interface WorkflowReverseTrafficOutput {
   };
 }
 export const WorkflowReverseTrafficOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     number: Schema.Number,
@@ -245,10 +245,8 @@ export const WorkflowReverseTrafficOutput =
  * @param database - The name of the database the workflow belongs to
  * @param number - The sequence number of the workflow
  */
-export const workflowReverseTraffic = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowReverseTrafficInput,
-    outputSchema: WorkflowReverseTrafficOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const workflowReverseTraffic = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowReverseTrafficInput,
+  outputSchema: WorkflowReverseTrafficOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

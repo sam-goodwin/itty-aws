@@ -8,7 +8,7 @@ export interface GetClimateProductsProductInput {
   expand?: string;
 }
 export const GetClimateProductsProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     product: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -53,7 +53,7 @@ export interface GetClimateProductsProductOutput {
   }[];
 }
 export const GetClimateProductsProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     current_prices_per_metric_ton: Schema.Record(
       Schema.String,
@@ -103,9 +103,7 @@ export const GetClimateProductsProductOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetClimateProductsProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetClimateProductsProductInput,
-    outputSchema: GetClimateProductsProductOutput,
-  }),
-);
+export const GetClimateProductsProduct = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetClimateProductsProductInput,
+  outputSchema: GetClimateProductsProductOutput,
+}));

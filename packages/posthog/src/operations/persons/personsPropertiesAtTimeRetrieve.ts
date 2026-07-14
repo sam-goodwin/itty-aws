@@ -13,7 +13,7 @@ export interface PersonsPropertiesAtTimeRetrieveInput {
   timestamp: string;
 }
 export const PersonsPropertiesAtTimeRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     distinct_id: Schema.optional(Schema.String),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
@@ -47,7 +47,7 @@ export interface PersonsPropertiesAtTimeRetrieveOutput {
   };
 }
 export const PersonsPropertiesAtTimeRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     distinct_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -87,7 +87,7 @@ export const PersonsPropertiesAtTimeRetrieveOutput =
  * @param timestamp - ISO datetime string for the point in time (e.g., '2023-06-15T14:30:00Z')
  */
 export const personsPropertiesAtTimeRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PersonsPropertiesAtTimeRetrieveInput,
     outputSchema: PersonsPropertiesAtTimeRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

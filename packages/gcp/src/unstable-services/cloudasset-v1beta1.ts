@@ -40,7 +40,7 @@ export interface GoogleIdentityAccesscontextmanagerV1OsConstraint {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1OsConstraint: Schema.Codec<GoogleIdentityAccesscontextmanagerV1OsConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osType: Schema.optional(Schema.String),
     requireVerifiedChromeOs: Schema.optional(Schema.Boolean),
     minimumVersion: Schema.optional(Schema.String),
@@ -72,7 +72,7 @@ export interface GoogleIdentityAccesscontextmanagerV1DevicePolicy {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1DevicePolicy: Schema.Codec<GoogleIdentityAccesscontextmanagerV1DevicePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowedEncryptionStatuses: Schema.optional(Schema.Array(Schema.String)),
     allowedDeviceManagementLevels: Schema.optional(Schema.Array(Schema.String)),
     requireAdminApproval: Schema.optional(Schema.Boolean),
@@ -93,7 +93,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcSubNetwork {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1VpcSubNetwork: Schema.Codec<GoogleIdentityAccesscontextmanagerV1VpcSubNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vpcIpSubnetworks: Schema.optional(Schema.Array(Schema.String)),
     network: Schema.optional(Schema.String),
   }).annotate({
@@ -106,7 +106,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcNetworkSource {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSource: Schema.Codec<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vpcSubnetwork: Schema.optional(
       GoogleIdentityAccesscontextmanagerV1VpcSubNetwork,
     ),
@@ -132,7 +132,7 @@ export interface GoogleIdentityAccesscontextmanagerV1Condition {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1Condition: Schema.Codec<GoogleIdentityAccesscontextmanagerV1Condition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     devicePolicy: Schema.optional(
       GoogleIdentityAccesscontextmanagerV1DevicePolicy,
     ),
@@ -154,7 +154,7 @@ export interface GoogleIdentityAccesscontextmanagerV1BasicLevel {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1BasicLevel: Schema.Codec<GoogleIdentityAccesscontextmanagerV1BasicLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conditions: Schema.optional(
       Schema.Array(GoogleIdentityAccesscontextmanagerV1Condition),
     ),
@@ -173,7 +173,7 @@ export interface Expr {
 }
 
 export const Expr: Schema.Codec<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -186,7 +186,7 @@ export interface GoogleIdentityAccesscontextmanagerV1CustomLevel {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1CustomLevel: Schema.Codec<GoogleIdentityAccesscontextmanagerV1CustomLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expr: Schema.optional(Expr),
   }).annotate({
     identifier: "GoogleIdentityAccesscontextmanagerV1CustomLevel",
@@ -206,7 +206,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AccessLevel {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1AccessLevel: Schema.Codec<GoogleIdentityAccesscontextmanagerV1AccessLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -224,7 +224,7 @@ export interface GoogleIdentityAccesscontextmanagerV1MethodSelector {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1MethodSelector: Schema.Codec<GoogleIdentityAccesscontextmanagerV1MethodSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     method: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.String),
   }).annotate({
@@ -239,7 +239,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ApiOperation {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1ApiOperation: Schema.Codec<GoogleIdentityAccesscontextmanagerV1ApiOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.optional(Schema.String),
     methodSelectors: Schema.optional(
       Schema.Array(GoogleIdentityAccesscontextmanagerV1MethodSelector),
@@ -260,7 +260,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressTo {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1EgressTo: Schema.Codec<GoogleIdentityAccesscontextmanagerV1EgressTo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(Schema.String)),
     externalResources: Schema.optional(Schema.Array(Schema.String)),
     roles: Schema.optional(Schema.Array(Schema.String)),
@@ -275,7 +275,7 @@ export interface GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoi
 }
 
 export const GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint: Schema.Codec<GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     forwardingRule: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -292,7 +292,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressSource {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1EgressSource: Schema.Codec<GoogleIdentityAccesscontextmanagerV1EgressSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessLevel: Schema.optional(Schema.String),
     pscEndpoint: Schema.optional(
       GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint,
@@ -323,7 +323,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressFrom {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1EgressFrom: Schema.Codec<GoogleIdentityAccesscontextmanagerV1EgressFrom> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceRestriction: Schema.optional(Schema.String),
     identityType: Schema.optional(Schema.String),
     sources: Schema.optional(
@@ -342,7 +342,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressPolicy {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1EgressPolicy: Schema.Codec<GoogleIdentityAccesscontextmanagerV1EgressPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     egressTo: Schema.optional(GoogleIdentityAccesscontextmanagerV1EgressTo),
     egressFrom: Schema.optional(GoogleIdentityAccesscontextmanagerV1EgressFrom),
     title: Schema.optional(Schema.String),
@@ -363,7 +363,7 @@ export interface AuditLogConfig {
 }
 
 export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
     logType: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuditLogConfig" });
@@ -376,7 +376,7 @@ export interface AuditConfig {
 }
 
 export const AuditConfig: Schema.Codec<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
     service: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuditConfig" });
@@ -391,7 +391,7 @@ export interface Binding {
 }
 
 export const Binding: Schema.Codec<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(Expr),
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -409,7 +409,7 @@ export interface Policy {
 }
 
 export const Policy: Schema.Codec<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     version: Schema.optional(Schema.Number),
@@ -430,7 +430,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AccessPolicy {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1AccessPolicy: Schema.Codec<GoogleIdentityAccesscontextmanagerV1AccessPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -452,7 +452,7 @@ export interface GoogleCloudAssetV1p7beta1RelationshipAttributes {
 }
 
 export const GoogleCloudAssetV1p7beta1RelationshipAttributes: Schema.Codec<GoogleCloudAssetV1p7beta1RelationshipAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetResourceType: Schema.optional(Schema.String),
     action: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -471,7 +471,7 @@ export interface GoogleCloudAssetV1p7beta1RelatedAsset {
 }
 
 export const GoogleCloudAssetV1p7beta1RelatedAsset: Schema.Codec<GoogleCloudAssetV1p7beta1RelatedAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
     assetType: Schema.optional(Schema.String),
     ancestors: Schema.optional(Schema.Array(Schema.String)),
@@ -485,7 +485,7 @@ export interface GoogleCloudAssetV1p7beta1RelatedAssets {
 }
 
 export const GoogleCloudAssetV1p7beta1RelatedAssets: Schema.Codec<GoogleCloudAssetV1p7beta1RelatedAssets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     relationshipAttributes: Schema.optional(
       GoogleCloudAssetV1p7beta1RelationshipAttributes,
     ),
@@ -512,7 +512,7 @@ export interface GoogleCloudAssetV1p7beta1Resource {
 }
 
 export const GoogleCloudAssetV1p7beta1Resource: Schema.Codec<GoogleCloudAssetV1p7beta1Resource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     discoveryDocumentUri: Schema.optional(Schema.String),
     resourceUrl: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -530,7 +530,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AddRequestHeader {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1AddRequestHeader: Schema.Codec<GoogleIdentityAccesscontextmanagerV1AddRequestHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({
@@ -543,7 +543,7 @@ export interface GoogleIdentityAccesscontextmanagerV1Modifier {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1Modifier: Schema.Codec<GoogleIdentityAccesscontextmanagerV1Modifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addRequestHeader: Schema.optional(
       GoogleIdentityAccesscontextmanagerV1AddRequestHeader,
     ),
@@ -559,7 +559,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ServicePattern {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1ServicePattern: Schema.Codec<GoogleIdentityAccesscontextmanagerV1ServicePattern> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pattern: Schema.optional(Schema.String),
     modifiers: Schema.optional(
       Schema.Array(GoogleIdentityAccesscontextmanagerV1Modifier),
@@ -585,7 +585,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices: Schema.Codec<GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableRestriction: Schema.optional(Schema.Boolean),
     allowedServicePatterns: Schema.optional(
       Schema.Array(GoogleIdentityAccesscontextmanagerV1ServicePattern),
@@ -608,7 +608,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressSource {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1IngressSource: Schema.Codec<GoogleIdentityAccesscontextmanagerV1IngressSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessLevel: Schema.optional(Schema.String),
     pscEndpoint: Schema.optional(
       GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint,
@@ -633,7 +633,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressFrom {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1IngressFrom: Schema.Codec<GoogleIdentityAccesscontextmanagerV1IngressFrom> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sources: Schema.optional(
       Schema.Array(GoogleIdentityAccesscontextmanagerV1IngressSource),
     ),
@@ -653,7 +653,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressTo {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1IngressTo: Schema.Codec<GoogleIdentityAccesscontextmanagerV1IngressTo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(Schema.String)),
     roles: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(
@@ -671,7 +671,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressPolicy {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1IngressPolicy: Schema.Codec<GoogleIdentityAccesscontextmanagerV1IngressPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ingressFrom: Schema.optional(
       GoogleIdentityAccesscontextmanagerV1IngressFrom,
     ),
@@ -697,7 +697,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig: Schema.Codec<GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessLevels: Schema.optional(Schema.Array(Schema.String)),
     restrictedServices: Schema.optional(Schema.Array(Schema.String)),
     vpcAccessibleServices: Schema.optional(
@@ -737,7 +737,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
 }
 
 export const GoogleIdentityAccesscontextmanagerV1ServicePerimeter: Schema.Codec<GoogleIdentityAccesscontextmanagerV1ServicePerimeter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     perimeterType: Schema.optional(Schema.String),
     spec: Schema.optional(
       GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig,
@@ -760,14 +760,14 @@ export interface GoogleCloudOrgpolicyV1BooleanPolicy {
 }
 
 export const GoogleCloudOrgpolicyV1BooleanPolicy: Schema.Codec<GoogleCloudOrgpolicyV1BooleanPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enforced: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudOrgpolicyV1BooleanPolicy" });
 
 export interface GoogleCloudOrgpolicyV1RestoreDefault {}
 
 export const GoogleCloudOrgpolicyV1RestoreDefault: Schema.Codec<GoogleCloudOrgpolicyV1RestoreDefault> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudOrgpolicyV1RestoreDefault",
   });
 
@@ -785,7 +785,7 @@ export interface GoogleCloudOrgpolicyV1ListPolicy {
 }
 
 export const GoogleCloudOrgpolicyV1ListPolicy: Schema.Codec<GoogleCloudOrgpolicyV1ListPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allValues: Schema.optional(Schema.String),
     suggestedValue: Schema.optional(Schema.String),
     inheritFromParent: Schema.optional(Schema.Boolean),
@@ -811,7 +811,7 @@ export interface GoogleCloudOrgpolicyV1Policy {
 }
 
 export const GoogleCloudOrgpolicyV1Policy: Schema.Codec<GoogleCloudOrgpolicyV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     booleanPolicy: Schema.optional(GoogleCloudOrgpolicyV1BooleanPolicy),
     constraint: Schema.optional(Schema.String),
@@ -847,7 +847,7 @@ export interface GoogleCloudAssetV1p7beta1Asset {
 }
 
 export const GoogleCloudAssetV1p7beta1Asset: Schema.Codec<GoogleCloudAssetV1p7beta1Asset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessPolicy: Schema.optional(
       GoogleIdentityAccesscontextmanagerV1AccessPolicy,
     ),
@@ -875,7 +875,7 @@ export interface TimeWindow {
 }
 
 export const TimeWindow: Schema.Codec<TimeWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "TimeWindow" });
@@ -890,7 +890,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -912,7 +912,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     error: Schema.optional(Status),
     name: Schema.optional(Schema.String),
@@ -928,7 +928,7 @@ export interface GcsDestination {
 }
 
 export const GcsDestination: Schema.Codec<GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uriPrefix: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GcsDestination" });
@@ -939,7 +939,7 @@ export interface OutputConfig {
 }
 
 export const OutputConfig: Schema.Codec<OutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(GcsDestination),
   }).annotate({ identifier: "OutputConfig" });
 
@@ -959,7 +959,7 @@ export interface ExportAssetsRequest {
 }
 
 export const ExportAssetsRequest: Schema.Codec<ExportAssetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetTypes: Schema.optional(Schema.Array(Schema.String)),
     contentType: Schema.optional(Schema.String),
     readTime: Schema.optional(Schema.String),
@@ -982,7 +982,7 @@ export interface Resource {
 }
 
 export const Resource: Schema.Codec<Resource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     discoveryDocumentUri: Schema.optional(Schema.String),
     resourceUrl: Schema.optional(Schema.String),
@@ -1011,7 +1011,7 @@ export interface Asset {
 }
 
 export const Asset: Schema.Codec<Asset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessPolicy: Schema.optional(
       GoogleIdentityAccesscontextmanagerV1AccessPolicy,
     ),
@@ -1038,7 +1038,7 @@ export interface TemporalAsset {
 }
 
 export const TemporalAsset: Schema.Codec<TemporalAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     window: Schema.optional(TimeWindow),
     deleted: Schema.optional(Schema.Boolean),
     asset: Schema.optional(Asset),
@@ -1050,14 +1050,14 @@ export interface AnalyzeIamPolicyLongrunningMetadata {
 }
 
 export const AnalyzeIamPolicyLongrunningMetadata: Schema.Codec<AnalyzeIamPolicyLongrunningMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "AnalyzeIamPolicyLongrunningMetadata" });
 
 export interface AnalyzeIamPolicyLongrunningResponse {}
 
 export const AnalyzeIamPolicyLongrunningResponse: Schema.Codec<AnalyzeIamPolicyLongrunningResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AnalyzeIamPolicyLongrunningResponse",
   });
 
@@ -1067,7 +1067,7 @@ export interface BatchGetAssetsHistoryResponse {
 }
 
 export const BatchGetAssetsHistoryResponse: Schema.Codec<BatchGetAssetsHistoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assets: Schema.optional(Schema.Array(TemporalAsset)),
   }).annotate({ identifier: "BatchGetAssetsHistoryResponse" });
 
@@ -1133,7 +1133,7 @@ export interface ExportAssetsProjectsRequest {
 }
 
 export const ExportAssetsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ExportAssetsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1146,8 +1146,7 @@ export const ExportAssetsProjectsRequest =
   ) as unknown as Schema.Codec<ExportAssetsProjectsRequest>;
 
 export type ExportAssetsProjectsResponse = Operation;
-export const ExportAssetsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const ExportAssetsProjectsResponse = /*@__PURE__*/ Operation;
 
 export type ExportAssetsProjectsError =
   | DefaultErrors
@@ -1162,7 +1161,7 @@ export const exportAssetsProjects: API.OperationMethod<
   ExportAssetsProjectsResponse,
   ExportAssetsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportAssetsProjectsRequest,
   output: ExportAssetsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1186,7 +1185,7 @@ export interface BatchGetAssetsHistoryProjectsRequest {
 }
 
 export const BatchGetAssetsHistoryProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetNames: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("assetNames"),
     ),
@@ -1208,7 +1207,7 @@ export const BatchGetAssetsHistoryProjectsRequest =
 export type BatchGetAssetsHistoryProjectsResponse =
   BatchGetAssetsHistoryResponse;
 export const BatchGetAssetsHistoryProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchGetAssetsHistoryResponse;
+  /*@__PURE__*/ BatchGetAssetsHistoryResponse;
 
 export type BatchGetAssetsHistoryProjectsError =
   | DefaultErrors
@@ -1221,7 +1220,7 @@ export const batchGetAssetsHistoryProjects: API.OperationMethod<
   BatchGetAssetsHistoryProjectsResponse,
   BatchGetAssetsHistoryProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetAssetsHistoryProjectsRequest,
   output: BatchGetAssetsHistoryProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -1233,7 +1232,7 @@ export interface GetProjectsOperationsRequest {
 }
 
 export const GetProjectsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1241,8 +1240,7 @@ export const GetProjectsOperationsRequest =
   ) as unknown as Schema.Codec<GetProjectsOperationsRequest>;
 
 export type GetProjectsOperationsResponse = Operation;
-export const GetProjectsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetProjectsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1252,7 +1250,7 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsResponse,
   GetProjectsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1266,7 +1264,7 @@ export interface ExportAssetsFoldersRequest {
 }
 
 export const ExportAssetsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ExportAssetsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1279,8 +1277,7 @@ export const ExportAssetsFoldersRequest =
   ) as unknown as Schema.Codec<ExportAssetsFoldersRequest>;
 
 export type ExportAssetsFoldersResponse = Operation;
-export const ExportAssetsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const ExportAssetsFoldersResponse = /*@__PURE__*/ Operation;
 
 export type ExportAssetsFoldersError =
   | DefaultErrors
@@ -1295,7 +1292,7 @@ export const exportAssetsFolders: API.OperationMethod<
   ExportAssetsFoldersResponse,
   ExportAssetsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportAssetsFoldersRequest,
   output: ExportAssetsFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1307,7 +1304,7 @@ export interface GetFoldersOperationsRequest {
 }
 
 export const GetFoldersOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1315,8 +1312,7 @@ export const GetFoldersOperationsRequest =
   ) as unknown as Schema.Codec<GetFoldersOperationsRequest>;
 
 export type GetFoldersOperationsResponse = Operation;
-export const GetFoldersOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetFoldersOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetFoldersOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1326,7 +1322,7 @@ export const getFoldersOperations: API.OperationMethod<
   GetFoldersOperationsResponse,
   GetFoldersOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoldersOperationsRequest,
   output: GetFoldersOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1340,7 +1336,7 @@ export interface ExportAssetsOrganizationsRequest {
 }
 
 export const ExportAssetsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ExportAssetsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1353,8 +1349,7 @@ export const ExportAssetsOrganizationsRequest =
   ) as unknown as Schema.Codec<ExportAssetsOrganizationsRequest>;
 
 export type ExportAssetsOrganizationsResponse = Operation;
-export const ExportAssetsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const ExportAssetsOrganizationsResponse = /*@__PURE__*/ Operation;
 
 export type ExportAssetsOrganizationsError =
   | DefaultErrors
@@ -1369,7 +1364,7 @@ export const exportAssetsOrganizations: API.OperationMethod<
   ExportAssetsOrganizationsResponse,
   ExportAssetsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportAssetsOrganizationsRequest,
   output: ExportAssetsOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1393,7 +1388,7 @@ export interface BatchGetAssetsHistoryOrganizationsRequest {
 }
 
 export const BatchGetAssetsHistoryOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "readTimeWindow.endTime": Schema.optional(Schema.String).pipe(
       T.HttpQuery("readTimeWindow.endTime"),
     ),
@@ -1415,7 +1410,7 @@ export const BatchGetAssetsHistoryOrganizationsRequest =
 export type BatchGetAssetsHistoryOrganizationsResponse =
   BatchGetAssetsHistoryResponse;
 export const BatchGetAssetsHistoryOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchGetAssetsHistoryResponse;
+  /*@__PURE__*/ BatchGetAssetsHistoryResponse;
 
 export type BatchGetAssetsHistoryOrganizationsError =
   | DefaultErrors
@@ -1428,7 +1423,7 @@ export const batchGetAssetsHistoryOrganizations: API.OperationMethod<
   BatchGetAssetsHistoryOrganizationsResponse,
   BatchGetAssetsHistoryOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetAssetsHistoryOrganizationsRequest,
   output: BatchGetAssetsHistoryOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -1440,7 +1435,7 @@ export interface GetOrganizationsOperationsRequest {
 }
 
 export const GetOrganizationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1448,8 +1443,7 @@ export const GetOrganizationsOperationsRequest =
   ) as unknown as Schema.Codec<GetOrganizationsOperationsRequest>;
 
 export type GetOrganizationsOperationsResponse = Operation;
-export const GetOrganizationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOrganizationsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOrganizationsOperationsError =
   | DefaultErrors
@@ -1462,7 +1456,7 @@ export const getOrganizationsOperations: API.OperationMethod<
   GetOrganizationsOperationsResponse,
   GetOrganizationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsOperationsRequest,
   output: GetOrganizationsOperationsResponse,
   errors: [NotFound, Forbidden],

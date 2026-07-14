@@ -9,7 +9,7 @@ export interface WebExperimentsRetrieveInput {
   project_id: string;
 }
 export const WebExperimentsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -28,7 +28,7 @@ export interface WebExperimentsRetrieveOutput {
   variants?: unknown;
 }
 export const WebExperimentsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
@@ -42,10 +42,8 @@ export const WebExperimentsRetrieveOutput =
  * @param id - A unique integer value identifying this web experiment.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const webExperimentsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebExperimentsRetrieveInput,
-    outputSchema: WebExperimentsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const webExperimentsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebExperimentsRetrieveInput,
+  outputSchema: WebExperimentsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

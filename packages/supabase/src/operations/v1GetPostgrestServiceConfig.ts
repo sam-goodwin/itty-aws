@@ -10,7 +10,7 @@ export interface V1GetPostgrestServiceConfigInput {
   ref: string;
 }
 export const V1GetPostgrestServiceConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/postgrest" }),
@@ -25,7 +25,7 @@ export interface V1GetPostgrestServiceConfigOutput {
   jwt_secret?: Redacted.Redacted<string>;
 }
 export const V1GetPostgrestServiceConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     db_schema: Schema.String,
     max_rows: Schema.Number,
     db_extra_search_path: Schema.String,
@@ -39,10 +39,8 @@ export const V1GetPostgrestServiceConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetPostgrestServiceConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetPostgrestServiceConfigInput,
-    outputSchema: V1GetPostgrestServiceConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1GetPostgrestServiceConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetPostgrestServiceConfigInput,
+  outputSchema: V1GetPostgrestServiceConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

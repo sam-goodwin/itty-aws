@@ -35,7 +35,7 @@ export interface PostInvoiceitemsInvoiceitemInput {
   unit_amount_decimal?: string;
 }
 export const PostInvoiceitemsInvoiceitemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoiceitem: Schema.String.pipe(T.PathParam()),
     amount: Schema.optional(Schema.Number),
     description: Schema.optional(Schema.String),
@@ -535,7 +535,7 @@ export interface PostInvoiceitemsInvoiceitemOutput {
     | null;
 }
 export const PostInvoiceitemsInvoiceitemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     currency: Schema.String,
     customer: Schema.Unknown,
@@ -826,9 +826,7 @@ export const PostInvoiceitemsInvoiceitemOutput =
  *
  * <p>Updates the amount or description of an invoice item on an upcoming invoice. Updating an invoice item is only possible before the invoice it’s attached to is closed.</p>
  */
-export const PostInvoiceitemsInvoiceitem = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostInvoiceitemsInvoiceitemInput,
-    outputSchema: PostInvoiceitemsInvoiceitemOutput,
-  }),
-);
+export const PostInvoiceitemsInvoiceitem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostInvoiceitemsInvoiceitemInput,
+  outputSchema: PostInvoiceitemsInvoiceitemOutput,
+}));

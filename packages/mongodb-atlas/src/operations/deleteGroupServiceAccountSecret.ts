@@ -12,7 +12,7 @@ export interface DeleteGroupServiceAccountSecretInput {
   pretty?: boolean;
 }
 export const DeleteGroupServiceAccountSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientId: Schema.String.pipe(T.PathParam()),
     secretId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const DeleteGroupServiceAccountSecretInput =
 // Output Schema
 export type DeleteGroupServiceAccountSecretOutput = void;
 export const DeleteGroupServiceAccountSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupServiceAccountSecretOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupServiceAccountSecretOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const DeleteGroupServiceAccountSecretOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const deleteGroupServiceAccountSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupServiceAccountSecretInput,
     outputSchema: DeleteGroupServiceAccountSecretOutput,
     errors: [Forbidden, NotFound] as const,

@@ -884,7 +884,7 @@ export interface PostPaymentIntentsIntentInput {
   transfer_group?: string;
 }
 export const PostPaymentIntentsIntentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     amount: Schema.optional(Schema.Number),
     amount_details: Schema.optional(
@@ -2756,7 +2756,7 @@ export interface PostPaymentIntentsIntentOutput {
   transfer_group: string | null;
 }
 export const PostPaymentIntentsIntentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -3147,9 +3147,7 @@ export const PostPaymentIntentsIntentOutput =
  * update and confirm at the same time, we recommend updating properties through
  * the <a href="/docs/api/payment_intents/confirm">confirm API</a> instead.</p>
  */
-export const PostPaymentIntentsIntent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostPaymentIntentsIntentInput,
-    outputSchema: PostPaymentIntentsIntentOutput,
-  }),
-);
+export const PostPaymentIntentsIntent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostPaymentIntentsIntentInput,
+  outputSchema: PostPaymentIntentsIntentOutput,
+}));

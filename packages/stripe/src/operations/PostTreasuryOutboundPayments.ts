@@ -46,7 +46,7 @@ export interface PostTreasuryOutboundPaymentsInput {
   statement_descriptor?: string;
 }
 export const PostTreasuryOutboundPaymentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     currency: Schema.String,
     customer: Schema.optional(Schema.String),
@@ -486,7 +486,7 @@ export interface PostTreasuryOutboundPaymentsOutput {
       };
 }
 export const PostTreasuryOutboundPaymentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -799,7 +799,7 @@ export const PostTreasuryOutboundPaymentsOutput =
  * <p>Creates an OutboundPayment.</p>
  */
 export const PostTreasuryOutboundPayments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTreasuryOutboundPaymentsInput,
     outputSchema: PostTreasuryOutboundPaymentsOutput,
   }));

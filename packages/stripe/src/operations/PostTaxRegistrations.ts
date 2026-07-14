@@ -360,7 +360,7 @@ export interface PostTaxRegistrationsInput {
   expires_at?: number;
 }
 export const PostTaxRegistrationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active_from: Schema.Union([Schema.Literals(["now"]), Schema.Number]),
     country: Schema.String,
     country_options: Schema.Struct({
@@ -1804,7 +1804,7 @@ export interface PostTaxRegistrationsOutput {
   status: "active" | "expired" | "scheduled";
 }
 export const PostTaxRegistrationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active_from: Schema.Number,
     country: Schema.String,
     country_options: Schema.Struct({
@@ -2812,9 +2812,7 @@ export const PostTaxRegistrationsOutput =
  *
  * <p>Creates a new Tax <code>Registration</code> object.</p>
  */
-export const PostTaxRegistrations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostTaxRegistrationsInput,
-    outputSchema: PostTaxRegistrationsOutput,
-  }),
-);
+export const PostTaxRegistrations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTaxRegistrationsInput,
+  outputSchema: PostTaxRegistrationsOutput,
+}));

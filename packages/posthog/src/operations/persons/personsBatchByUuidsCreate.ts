@@ -16,7 +16,7 @@ export interface PersonsBatchByUuidsCreateInput {
   last_seen_at?: string | null;
 }
 export const PersonsBatchByUuidsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
     id: Schema.optional(Schema.Number),
@@ -36,7 +36,7 @@ export const PersonsBatchByUuidsCreateInput =
 // Output Schema
 export type PersonsBatchByUuidsCreateOutput = void;
 export const PersonsBatchByUuidsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsBatchByUuidsCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsBatchByUuidsCreateOutput>;
 
 // The operation
 /**
@@ -44,10 +44,8 @@ export const PersonsBatchByUuidsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsBatchByUuidsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsBatchByUuidsCreateInput,
-    outputSchema: PersonsBatchByUuidsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsBatchByUuidsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsBatchByUuidsCreateInput,
+  outputSchema: PersonsBatchByUuidsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

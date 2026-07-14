@@ -8,7 +8,7 @@ export interface TasksRepositoriesRetrieveInput {
   project_id: string;
 }
 export const TasksRepositoriesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -22,7 +22,7 @@ export interface TasksRepositoriesRetrieveOutput {
   repositories?: string[];
 }
 export const TasksRepositoriesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repositories: Schema.optional(Schema.Array(Schema.String)),
   }) as unknown as Schema.Codec<TasksRepositoriesRetrieveOutput>;
 
@@ -34,10 +34,8 @@ export const TasksRepositoriesRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tasksRepositoriesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TasksRepositoriesRetrieveInput,
-    outputSchema: TasksRepositoriesRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const tasksRepositoriesRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TasksRepositoriesRetrieveInput,
+  outputSchema: TasksRepositoriesRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

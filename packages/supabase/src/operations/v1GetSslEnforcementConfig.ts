@@ -8,7 +8,7 @@ export interface V1GetSslEnforcementConfigInput {
   ref: string;
 }
 export const V1GetSslEnforcementConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/ssl-enforcement" }),
@@ -20,7 +20,7 @@ export interface V1GetSslEnforcementConfigOutput {
   appliedSuccessfully: boolean;
 }
 export const V1GetSslEnforcementConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentConfig: Schema.Struct({
       database: Schema.Boolean,
     }),
@@ -33,10 +33,8 @@ export const V1GetSslEnforcementConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetSslEnforcementConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetSslEnforcementConfigInput,
-    outputSchema: V1GetSslEnforcementConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1GetSslEnforcementConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetSslEnforcementConfigInput,
+  outputSchema: V1GetSslEnforcementConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

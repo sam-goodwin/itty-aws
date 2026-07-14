@@ -28,7 +28,7 @@ export interface GetPolicyOptions {
 }
 
 export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
 
@@ -40,7 +40,7 @@ export interface IngressSource {
 }
 
 export const IngressSource: Schema.Codec<IngressSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessLevel: Schema.optional(Schema.String),
     resource: Schema.optional(Schema.String),
   }).annotate({ identifier: "IngressSource" });
@@ -60,7 +60,7 @@ export interface IngressFrom {
 }
 
 export const IngressFrom: Schema.Codec<IngressFrom> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sources: Schema.optional(Schema.Array(IngressSource)),
     identities: Schema.optional(Schema.Array(Schema.String)),
     identityType: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export interface MethodSelector {
 }
 
 export const MethodSelector: Schema.Codec<MethodSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     method: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.String),
   }).annotate({ identifier: "MethodSelector" });
@@ -87,7 +87,7 @@ export interface ApiOperation {
 }
 
 export const ApiOperation: Schema.Codec<ApiOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.optional(Schema.String),
     methodSelectors: Schema.optional(Schema.Array(MethodSelector)),
   }).annotate({ identifier: "ApiOperation" });
@@ -104,7 +104,7 @@ export interface EgressTo {
 }
 
 export const EgressTo: Schema.Codec<EgressTo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     roles: Schema.optional(Schema.Array(Schema.String)),
     resources: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(ApiOperation)),
@@ -119,7 +119,7 @@ export interface EgressSource {
 }
 
 export const EgressSource: Schema.Codec<EgressSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     accessLevel: Schema.optional(Schema.String),
   }).annotate({ identifier: "EgressSource" });
@@ -145,7 +145,7 @@ export interface EgressFrom {
 }
 
 export const EgressFrom: Schema.Codec<EgressFrom> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sources: Schema.optional(Schema.Array(EgressSource)),
     sourceRestriction: Schema.optional(Schema.String),
     identities: Schema.optional(Schema.Array(Schema.String)),
@@ -162,7 +162,7 @@ export interface EgressPolicy {
 }
 
 export const EgressPolicy: Schema.Codec<EgressPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     egressTo: Schema.optional(EgressTo),
     egressFrom: Schema.optional(EgressFrom),
     title: Schema.optional(Schema.String),
@@ -176,7 +176,7 @@ export interface Application {
 }
 
 export const Application: Schema.Codec<Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     clientId: Schema.optional(Schema.String),
   }).annotate({ identifier: "Application" });
@@ -200,7 +200,7 @@ export interface SessionSettings {
 }
 
 export const SessionSettings: Schema.Codec<SessionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sessionReauthMethod: Schema.optional(Schema.String),
     maxInactivity: Schema.optional(Schema.String),
     sessionLengthEnabled: Schema.optional(Schema.Boolean),
@@ -216,7 +216,7 @@ export interface AccessSettings {
 }
 
 export const AccessSettings: Schema.Codec<AccessSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessLevels: Schema.optional(Schema.Array(Schema.String)),
     sessionSettings: Schema.optional(SessionSettings),
   }).annotate({ identifier: "AccessSettings" });
@@ -227,7 +227,7 @@ export interface ClientScope {
 }
 
 export const ClientScope: Schema.Codec<ClientScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     restrictedClientApplication: Schema.optional(Application),
   }).annotate({ identifier: "ClientScope" });
 
@@ -237,7 +237,7 @@ export interface AccessScope {
 }
 
 export const AccessScope: Schema.Codec<AccessScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientScope: Schema.optional(ClientScope),
   }).annotate({ identifier: "AccessScope" });
 
@@ -251,7 +251,7 @@ export interface ScopedAccessSettings {
 }
 
 export const ScopedAccessSettings: Schema.Codec<ScopedAccessSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activeSettings: Schema.optional(AccessSettings),
     dryRunSettings: Schema.optional(AccessSettings),
     scope: Schema.optional(AccessScope),
@@ -275,7 +275,7 @@ export interface GcpUserAccessBinding {
 }
 
 export const GcpUserAccessBinding: Schema.Codec<GcpUserAccessBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     restrictedClientApplications: Schema.optional(Schema.Array(Application)),
     sessionSettings: Schema.optional(SessionSettings),
@@ -293,7 +293,7 @@ export interface VpcSubNetwork {
 }
 
 export const VpcSubNetwork: Schema.Codec<VpcSubNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     vpcIpSubnetworks: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "VpcSubNetwork" });
@@ -304,7 +304,7 @@ export interface VpcNetworkSource {
 }
 
 export const VpcNetworkSource: Schema.Codec<VpcNetworkSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vpcSubnetwork: Schema.optional(VpcSubNetwork),
   }).annotate({ identifier: "VpcNetworkSource" });
 
@@ -326,7 +326,7 @@ export interface OsConstraint {
 }
 
 export const OsConstraint: Schema.Codec<OsConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requireVerifiedChromeOs: Schema.optional(Schema.Boolean),
     osType: Schema.optional(Schema.String),
     minimumVersion: Schema.optional(Schema.String),
@@ -356,7 +356,7 @@ export interface DevicePolicy {
 }
 
 export const DevicePolicy: Schema.Codec<DevicePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowedDeviceManagementLevels: Schema.optional(Schema.Array(Schema.String)),
     requireScreenlock: Schema.optional(Schema.Boolean),
     requireAdminApproval: Schema.optional(Schema.Boolean),
@@ -383,7 +383,7 @@ export interface Condition {
 }
 
 export const Condition: Schema.Codec<Condition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vpcNetworkSources: Schema.optional(Schema.Array(VpcNetworkSource)),
     negate: Schema.optional(Schema.Boolean),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -406,7 +406,7 @@ export interface AuditLogConfig {
 }
 
 export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
     logType: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuditLogConfig" });
@@ -419,7 +419,7 @@ export interface AuditConfig {
 }
 
 export const AuditConfig: Schema.Codec<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
     service: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuditConfig" });
@@ -430,7 +430,7 @@ export interface TestIamPermissionsRequest {
 }
 
 export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
@@ -442,7 +442,7 @@ export interface VpcAccessibleServices {
 }
 
 export const VpcAccessibleServices: Schema.Codec<VpcAccessibleServices> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowedServices: Schema.optional(Schema.Array(Schema.String)),
     enableRestriction: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "VpcAccessibleServices" });
@@ -457,7 +457,7 @@ export interface IngressTo {
 }
 
 export const IngressTo: Schema.Codec<IngressTo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     roles: Schema.optional(Schema.Array(Schema.String)),
     resources: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(ApiOperation)),
@@ -473,7 +473,7 @@ export interface IngressPolicy {
 }
 
 export const IngressPolicy: Schema.Codec<IngressPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     ingressFrom: Schema.optional(IngressFrom),
     ingressTo: Schema.optional(IngressTo),
@@ -495,7 +495,7 @@ export interface ServicePerimeterConfig {
 }
 
 export const ServicePerimeterConfig: Schema.Codec<ServicePerimeterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     egressPolicies: Schema.optional(Schema.Array(EgressPolicy)),
     vpcAccessibleServices: Schema.optional(VpcAccessibleServices),
     accessLevels: Schema.optional(Schema.Array(Schema.String)),
@@ -514,7 +514,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -534,7 +534,7 @@ export interface Expr {
 }
 
 export const Expr: Schema.Codec<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -547,7 +547,7 @@ export interface CustomLevel {
 }
 
 export const CustomLevel: Schema.Codec<CustomLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expr: Schema.optional(Expr),
   }).annotate({ identifier: "CustomLevel" });
 
@@ -559,7 +559,7 @@ export interface BasicLevel {
 }
 
 export const BasicLevel: Schema.Codec<BasicLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conditions: Schema.optional(Schema.Array(Condition)),
     combiningFunction: Schema.optional(Schema.String),
   }).annotate({ identifier: "BasicLevel" });
@@ -578,7 +578,7 @@ export interface AccessLevel {
 }
 
 export const AccessLevel: Schema.Codec<AccessLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     custom: Schema.optional(CustomLevel),
@@ -592,7 +592,7 @@ export interface ReplaceAccessLevelsResponse {
 }
 
 export const ReplaceAccessLevelsResponse: Schema.Codec<ReplaceAccessLevelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessLevels: Schema.optional(Schema.Array(AccessLevel)),
   }).annotate({ identifier: "ReplaceAccessLevelsResponse" });
 
@@ -606,7 +606,7 @@ export interface Binding {
 }
 
 export const Binding: Schema.Codec<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(Expr),
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -624,7 +624,7 @@ export interface Policy {
 }
 
 export const Policy: Schema.Codec<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     etag: Schema.optional(Schema.String),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -639,7 +639,7 @@ export interface SetIamPolicyRequest {
 }
 
 export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
@@ -647,7 +647,7 @@ export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -674,7 +674,7 @@ export interface ServicePerimeter {
 }
 
 export const ServicePerimeter: Schema.Codec<ServicePerimeter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -699,7 +699,7 @@ export interface AccessPolicy {
 }
 
 export const AccessPolicy: Schema.Codec<AccessPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     scopes: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -715,7 +715,7 @@ export interface ListAccessPoliciesResponse {
 }
 
 export const ListAccessPoliciesResponse: Schema.Codec<ListAccessPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessPolicies: Schema.optional(Schema.Array(AccessPolicy)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAccessPoliciesResponse" });
@@ -728,7 +728,7 @@ export interface ReplaceServicePerimetersRequest {
 }
 
 export const ReplaceServicePerimetersRequest: Schema.Codec<ReplaceServicePerimetersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
     etag: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReplaceServicePerimetersRequest" });
@@ -747,7 +747,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -765,7 +765,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -779,7 +779,7 @@ export interface ListGcpUserAccessBindingsResponse {
 }
 
 export const ListGcpUserAccessBindingsResponse: Schema.Codec<ListGcpUserAccessBindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcpUserAccessBindings: Schema.optional(Schema.Array(GcpUserAccessBinding)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListGcpUserAccessBindingsResponse" });
@@ -792,7 +792,7 @@ export interface ReplaceAccessLevelsRequest {
 }
 
 export const ReplaceAccessLevelsRequest: Schema.Codec<ReplaceAccessLevelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessLevels: Schema.optional(Schema.Array(AccessLevel)),
     etag: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReplaceAccessLevelsRequest" });
@@ -822,7 +822,7 @@ export interface AuthorizedOrgsDesc {
 }
 
 export const AuthorizedOrgsDesc: Schema.Codec<AuthorizedOrgsDesc> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorizationDirection: Schema.optional(Schema.String),
     orgs: Schema.optional(Schema.Array(Schema.String)),
     assetType: Schema.optional(Schema.String),
@@ -833,7 +833,7 @@ export const AuthorizedOrgsDesc: Schema.Codec<AuthorizedOrgsDesc> =
 export interface GcpUserAccessBindingOperationMetadata {}
 
 export const GcpUserAccessBindingOperationMetadata: Schema.Codec<GcpUserAccessBindingOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GcpUserAccessBindingOperationMetadata",
   });
 
@@ -843,14 +843,14 @@ export interface GetIamPolicyRequest {
 }
 
 export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface AccessContextManagerOperationMetadata {}
 
 export const AccessContextManagerOperationMetadata: Schema.Codec<AccessContextManagerOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AccessContextManagerOperationMetadata",
   });
 
@@ -862,7 +862,7 @@ export interface ListServicePerimetersResponse {
 }
 
 export const ListServicePerimetersResponse: Schema.Codec<ListServicePerimetersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListServicePerimetersResponse" });
@@ -873,14 +873,14 @@ export interface CommitServicePerimetersRequest {
 }
 
 export const CommitServicePerimetersRequest: Schema.Codec<CommitServicePerimetersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
   }).annotate({ identifier: "CommitServicePerimetersRequest" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -892,7 +892,7 @@ export interface ListAuthorizedOrgsDescsResponse {
 }
 
 export const ListAuthorizedOrgsDescsResponse: Schema.Codec<ListAuthorizedOrgsDescsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorizedOrgsDescs: Schema.optional(Schema.Array(AuthorizedOrgsDesc)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAuthorizedOrgsDescsResponse" });
@@ -903,7 +903,7 @@ export interface ReplaceServicePerimetersResponse {
 }
 
 export const ReplaceServicePerimetersResponse: Schema.Codec<ReplaceServicePerimetersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
   }).annotate({ identifier: "ReplaceServicePerimetersResponse" });
 
@@ -939,7 +939,7 @@ export interface SupportedService {
 }
 
 export const SupportedService: Schema.Codec<SupportedService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     availableOnRestrictedVip: Schema.optional(Schema.Boolean),
     supportedMethods: Schema.optional(Schema.Array(MethodSelector)),
@@ -957,7 +957,7 @@ export interface ListSupportedServicesResponse {
 }
 
 export const ListSupportedServicesResponse: Schema.Codec<ListSupportedServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportedServices: Schema.optional(Schema.Array(SupportedService)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListSupportedServicesResponse" });
@@ -968,7 +968,7 @@ export interface TestIamPermissionsResponse {
 }
 
 export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
@@ -978,7 +978,7 @@ export interface CommitServicePerimetersResponse {
 }
 
 export const CommitServicePerimetersResponse: Schema.Codec<CommitServicePerimetersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
   }).annotate({ identifier: "CommitServicePerimetersResponse" });
 
@@ -990,7 +990,7 @@ export interface ListSupportedPermissionsResponse {
 }
 
 export const ListSupportedPermissionsResponse: Schema.Codec<ListSupportedPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     supportedPermissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ListSupportedPermissionsResponse" });
@@ -1003,7 +1003,7 @@ export interface ListAccessLevelsResponse {
 }
 
 export const ListAccessLevelsResponse: Schema.Codec<ListAccessLevelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessLevels: Schema.optional(Schema.Array(AccessLevel)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAccessLevelsResponse" });
@@ -1072,7 +1072,7 @@ export interface PatchAccessPoliciesRequest {
 }
 
 export const PatchAccessPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AccessPolicy).pipe(T.HttpBody()),
@@ -1082,8 +1082,7 @@ export const PatchAccessPoliciesRequest =
   ) as unknown as Schema.Codec<PatchAccessPoliciesRequest>;
 
 export type PatchAccessPoliciesResponse = Operation;
-export const PatchAccessPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchAccessPoliciesResponse = /*@__PURE__*/ Operation;
 
 export type PatchAccessPoliciesError =
   | DefaultErrors
@@ -1098,7 +1097,7 @@ export const patchAccessPolicies: API.OperationMethod<
   PatchAccessPoliciesResponse,
   PatchAccessPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccessPoliciesRequest,
   output: PatchAccessPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1110,7 +1109,7 @@ export interface GetAccessPoliciesRequest {
 }
 
 export const GetAccessPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1118,8 +1117,7 @@ export const GetAccessPoliciesRequest =
   ) as unknown as Schema.Codec<GetAccessPoliciesRequest>;
 
 export type GetAccessPoliciesResponse = AccessPolicy;
-export const GetAccessPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccessPolicy;
+export const GetAccessPoliciesResponse = /*@__PURE__*/ AccessPolicy;
 
 export type GetAccessPoliciesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1129,7 +1127,7 @@ export const getAccessPolicies: API.OperationMethod<
   GetAccessPoliciesResponse,
   GetAccessPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPoliciesRequest,
   output: GetAccessPoliciesResponse,
   errors: [NotFound, Forbidden],
@@ -1141,7 +1139,7 @@ export interface DeleteAccessPoliciesRequest {
 }
 
 export const DeleteAccessPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -1149,8 +1147,7 @@ export const DeleteAccessPoliciesRequest =
   ) as unknown as Schema.Codec<DeleteAccessPoliciesRequest>;
 
 export type DeleteAccessPoliciesResponse = Operation;
-export const DeleteAccessPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const DeleteAccessPoliciesResponse = /*@__PURE__*/ Operation;
 
 export type DeleteAccessPoliciesError =
   | DefaultErrors
@@ -1165,7 +1162,7 @@ export const deleteAccessPolicies: API.OperationMethod<
   DeleteAccessPoliciesResponse,
   DeleteAccessPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPoliciesRequest,
   output: DeleteAccessPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1179,7 +1176,7 @@ export interface GetIamPolicyAccessPoliciesRequest {
 }
 
 export const GetIamPolicyAccessPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1192,8 +1189,7 @@ export const GetIamPolicyAccessPoliciesRequest =
   ) as unknown as Schema.Codec<GetIamPolicyAccessPoliciesRequest>;
 
 export type GetIamPolicyAccessPoliciesResponse = Policy;
-export const GetIamPolicyAccessPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetIamPolicyAccessPoliciesResponse = /*@__PURE__*/ Policy;
 
 export type GetIamPolicyAccessPoliciesError =
   | DefaultErrors
@@ -1208,7 +1204,7 @@ export const getIamPolicyAccessPolicies: API.OperationMethod<
   GetIamPolicyAccessPoliciesResponse,
   GetIamPolicyAccessPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyAccessPoliciesRequest,
   output: GetIamPolicyAccessPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1220,7 +1216,7 @@ export interface CreateAccessPoliciesRequest {
 }
 
 export const CreateAccessPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(AccessPolicy).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1/accessPolicies", hasBody: true }),
@@ -1228,8 +1224,7 @@ export const CreateAccessPoliciesRequest =
   ) as unknown as Schema.Codec<CreateAccessPoliciesRequest>;
 
 export type CreateAccessPoliciesResponse = Operation;
-export const CreateAccessPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateAccessPoliciesResponse = /*@__PURE__*/ Operation;
 
 export type CreateAccessPoliciesError =
   | DefaultErrors
@@ -1244,7 +1239,7 @@ export const createAccessPolicies: API.OperationMethod<
   CreateAccessPoliciesResponse,
   CreateAccessPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessPoliciesRequest,
   output: CreateAccessPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1258,7 +1253,7 @@ export interface SetIamPolicyAccessPoliciesRequest {
 }
 
 export const SetIamPolicyAccessPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1271,8 +1266,7 @@ export const SetIamPolicyAccessPoliciesRequest =
   ) as unknown as Schema.Codec<SetIamPolicyAccessPoliciesRequest>;
 
 export type SetIamPolicyAccessPoliciesResponse = Policy;
-export const SetIamPolicyAccessPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const SetIamPolicyAccessPoliciesResponse = /*@__PURE__*/ Policy;
 
 export type SetIamPolicyAccessPoliciesError =
   | DefaultErrors
@@ -1287,7 +1281,7 @@ export const setIamPolicyAccessPolicies: API.OperationMethod<
   SetIamPolicyAccessPoliciesResponse,
   SetIamPolicyAccessPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyAccessPoliciesRequest,
   output: SetIamPolicyAccessPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1301,7 +1295,7 @@ export interface TestIamPermissionsAccessPoliciesRequest {
 }
 
 export const TestIamPermissionsAccessPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1316,7 +1310,7 @@ export const TestIamPermissionsAccessPoliciesRequest =
 export type TestIamPermissionsAccessPoliciesResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsAccessPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsAccessPoliciesError =
   | DefaultErrors
@@ -1331,7 +1325,7 @@ export const testIamPermissionsAccessPolicies: API.OperationMethod<
   TestIamPermissionsAccessPoliciesResponse,
   TestIamPermissionsAccessPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsAccessPoliciesRequest,
   output: TestIamPermissionsAccessPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1347,7 +1341,7 @@ export interface ListAccessPoliciesRequest {
 }
 
 export const ListAccessPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1358,7 +1352,7 @@ export const ListAccessPoliciesRequest =
 
 export type ListAccessPoliciesResponse_Op = ListAccessPoliciesResponse;
 export const ListAccessPoliciesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListAccessPoliciesResponse;
+  /*@__PURE__*/ ListAccessPoliciesResponse;
 
 export type ListAccessPoliciesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1368,7 +1362,7 @@ export const listAccessPolicies: API.PaginatedOperationMethod<
   ListAccessPoliciesResponse_Op,
   ListAccessPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -1388,7 +1382,7 @@ export interface ListAccessPoliciesAuthorizedOrgsDescsRequest {
 }
 
 export const ListAccessPoliciesAuthorizedOrgsDescsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1400,7 +1394,7 @@ export const ListAccessPoliciesAuthorizedOrgsDescsRequest =
 export type ListAccessPoliciesAuthorizedOrgsDescsResponse =
   ListAuthorizedOrgsDescsResponse;
 export const ListAccessPoliciesAuthorizedOrgsDescsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedOrgsDescsResponse;
+  /*@__PURE__*/ ListAuthorizedOrgsDescsResponse;
 
 export type ListAccessPoliciesAuthorizedOrgsDescsError =
   | DefaultErrors
@@ -1413,7 +1407,7 @@ export const listAccessPoliciesAuthorizedOrgsDescs: API.PaginatedOperationMethod
   ListAccessPoliciesAuthorizedOrgsDescsResponse,
   ListAccessPoliciesAuthorizedOrgsDescsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesAuthorizedOrgsDescsRequest,
   output: ListAccessPoliciesAuthorizedOrgsDescsResponse,
   errors: [NotFound, Forbidden],
@@ -1433,7 +1427,7 @@ export interface PatchAccessPoliciesAuthorizedOrgsDescsRequest {
 }
 
 export const PatchAccessPoliciesAuthorizedOrgsDescsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AuthorizedOrgsDesc).pipe(T.HttpBody()),
@@ -1444,7 +1438,7 @@ export const PatchAccessPoliciesAuthorizedOrgsDescsRequest =
 
 export type PatchAccessPoliciesAuthorizedOrgsDescsResponse = Operation;
 export const PatchAccessPoliciesAuthorizedOrgsDescsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchAccessPoliciesAuthorizedOrgsDescsError =
   | DefaultErrors
@@ -1459,7 +1453,7 @@ export const patchAccessPoliciesAuthorizedOrgsDescs: API.OperationMethod<
   PatchAccessPoliciesAuthorizedOrgsDescsResponse,
   PatchAccessPoliciesAuthorizedOrgsDescsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccessPoliciesAuthorizedOrgsDescsRequest,
   output: PatchAccessPoliciesAuthorizedOrgsDescsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1471,7 +1465,7 @@ export interface GetAccessPoliciesAuthorizedOrgsDescsRequest {
 }
 
 export const GetAccessPoliciesAuthorizedOrgsDescsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1480,7 +1474,7 @@ export const GetAccessPoliciesAuthorizedOrgsDescsRequest =
 
 export type GetAccessPoliciesAuthorizedOrgsDescsResponse = AuthorizedOrgsDesc;
 export const GetAccessPoliciesAuthorizedOrgsDescsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AuthorizedOrgsDesc;
+  /*@__PURE__*/ AuthorizedOrgsDesc;
 
 export type GetAccessPoliciesAuthorizedOrgsDescsError =
   | DefaultErrors
@@ -1493,7 +1487,7 @@ export const getAccessPoliciesAuthorizedOrgsDescs: API.OperationMethod<
   GetAccessPoliciesAuthorizedOrgsDescsResponse,
   GetAccessPoliciesAuthorizedOrgsDescsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPoliciesAuthorizedOrgsDescsRequest,
   output: GetAccessPoliciesAuthorizedOrgsDescsResponse,
   errors: [NotFound, Forbidden],
@@ -1505,7 +1499,7 @@ export interface DeleteAccessPoliciesAuthorizedOrgsDescsRequest {
 }
 
 export const DeleteAccessPoliciesAuthorizedOrgsDescsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -1514,7 +1508,7 @@ export const DeleteAccessPoliciesAuthorizedOrgsDescsRequest =
 
 export type DeleteAccessPoliciesAuthorizedOrgsDescsResponse = Operation;
 export const DeleteAccessPoliciesAuthorizedOrgsDescsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteAccessPoliciesAuthorizedOrgsDescsError =
   | DefaultErrors
@@ -1529,7 +1523,7 @@ export const deleteAccessPoliciesAuthorizedOrgsDescs: API.OperationMethod<
   DeleteAccessPoliciesAuthorizedOrgsDescsResponse,
   DeleteAccessPoliciesAuthorizedOrgsDescsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPoliciesAuthorizedOrgsDescsRequest,
   output: DeleteAccessPoliciesAuthorizedOrgsDescsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1543,7 +1537,7 @@ export interface CreateAccessPoliciesAuthorizedOrgsDescsRequest {
 }
 
 export const CreateAccessPoliciesAuthorizedOrgsDescsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AuthorizedOrgsDesc).pipe(T.HttpBody()),
   }).pipe(
@@ -1557,7 +1551,7 @@ export const CreateAccessPoliciesAuthorizedOrgsDescsRequest =
 
 export type CreateAccessPoliciesAuthorizedOrgsDescsResponse = Operation;
 export const CreateAccessPoliciesAuthorizedOrgsDescsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateAccessPoliciesAuthorizedOrgsDescsError =
   | DefaultErrors
@@ -1572,7 +1566,7 @@ export const createAccessPoliciesAuthorizedOrgsDescs: API.OperationMethod<
   CreateAccessPoliciesAuthorizedOrgsDescsResponse,
   CreateAccessPoliciesAuthorizedOrgsDescsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessPoliciesAuthorizedOrgsDescsRequest,
   output: CreateAccessPoliciesAuthorizedOrgsDescsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1586,7 +1580,7 @@ export interface CreateAccessPoliciesAccessLevelsRequest {
 }
 
 export const CreateAccessPoliciesAccessLevelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AccessLevel).pipe(T.HttpBody()),
   }).pipe(
@@ -1599,8 +1593,7 @@ export const CreateAccessPoliciesAccessLevelsRequest =
   ) as unknown as Schema.Codec<CreateAccessPoliciesAccessLevelsRequest>;
 
 export type CreateAccessPoliciesAccessLevelsResponse = Operation;
-export const CreateAccessPoliciesAccessLevelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateAccessPoliciesAccessLevelsResponse = /*@__PURE__*/ Operation;
 
 export type CreateAccessPoliciesAccessLevelsError =
   | DefaultErrors
@@ -1615,7 +1608,7 @@ export const createAccessPoliciesAccessLevels: API.OperationMethod<
   CreateAccessPoliciesAccessLevelsResponse,
   CreateAccessPoliciesAccessLevelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessPoliciesAccessLevelsRequest,
   output: CreateAccessPoliciesAccessLevelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1629,7 +1622,7 @@ export interface ReplaceAllAccessPoliciesAccessLevelsRequest {
 }
 
 export const ReplaceAllAccessPoliciesAccessLevelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ReplaceAccessLevelsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1643,7 +1636,7 @@ export const ReplaceAllAccessPoliciesAccessLevelsRequest =
 
 export type ReplaceAllAccessPoliciesAccessLevelsResponse = Operation;
 export const ReplaceAllAccessPoliciesAccessLevelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type ReplaceAllAccessPoliciesAccessLevelsError =
   | DefaultErrors
@@ -1658,7 +1651,7 @@ export const replaceAllAccessPoliciesAccessLevels: API.OperationMethod<
   ReplaceAllAccessPoliciesAccessLevelsResponse,
   ReplaceAllAccessPoliciesAccessLevelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceAllAccessPoliciesAccessLevelsRequest,
   output: ReplaceAllAccessPoliciesAccessLevelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1670,7 +1663,7 @@ export interface DeleteAccessPoliciesAccessLevelsRequest {
 }
 
 export const DeleteAccessPoliciesAccessLevelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -1678,8 +1671,7 @@ export const DeleteAccessPoliciesAccessLevelsRequest =
   ) as unknown as Schema.Codec<DeleteAccessPoliciesAccessLevelsRequest>;
 
 export type DeleteAccessPoliciesAccessLevelsResponse = Operation;
-export const DeleteAccessPoliciesAccessLevelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const DeleteAccessPoliciesAccessLevelsResponse = /*@__PURE__*/ Operation;
 
 export type DeleteAccessPoliciesAccessLevelsError =
   | DefaultErrors
@@ -1694,7 +1686,7 @@ export const deleteAccessPoliciesAccessLevels: API.OperationMethod<
   DeleteAccessPoliciesAccessLevelsResponse,
   DeleteAccessPoliciesAccessLevelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPoliciesAccessLevelsRequest,
   output: DeleteAccessPoliciesAccessLevelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1712,7 +1704,7 @@ export interface GetAccessPoliciesAccessLevelsRequest {
 }
 
 export const GetAccessPoliciesAccessLevelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     accessLevelFormat: Schema.optional(Schema.String).pipe(
       T.HttpQuery("accessLevelFormat"),
@@ -1723,8 +1715,7 @@ export const GetAccessPoliciesAccessLevelsRequest =
   ) as unknown as Schema.Codec<GetAccessPoliciesAccessLevelsRequest>;
 
 export type GetAccessPoliciesAccessLevelsResponse = AccessLevel;
-export const GetAccessPoliciesAccessLevelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccessLevel;
+export const GetAccessPoliciesAccessLevelsResponse = /*@__PURE__*/ AccessLevel;
 
 export type GetAccessPoliciesAccessLevelsError =
   | DefaultErrors
@@ -1737,7 +1728,7 @@ export const getAccessPoliciesAccessLevels: API.OperationMethod<
   GetAccessPoliciesAccessLevelsResponse,
   GetAccessPoliciesAccessLevelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPoliciesAccessLevelsRequest,
   output: GetAccessPoliciesAccessLevelsResponse,
   errors: [NotFound, Forbidden],
@@ -1753,7 +1744,7 @@ export interface PatchAccessPoliciesAccessLevelsRequest {
 }
 
 export const PatchAccessPoliciesAccessLevelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AccessLevel).pipe(T.HttpBody()),
@@ -1763,8 +1754,7 @@ export const PatchAccessPoliciesAccessLevelsRequest =
   ) as unknown as Schema.Codec<PatchAccessPoliciesAccessLevelsRequest>;
 
 export type PatchAccessPoliciesAccessLevelsResponse = Operation;
-export const PatchAccessPoliciesAccessLevelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchAccessPoliciesAccessLevelsResponse = /*@__PURE__*/ Operation;
 
 export type PatchAccessPoliciesAccessLevelsError =
   | DefaultErrors
@@ -1779,7 +1769,7 @@ export const patchAccessPoliciesAccessLevels: API.OperationMethod<
   PatchAccessPoliciesAccessLevelsResponse,
   PatchAccessPoliciesAccessLevelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccessPoliciesAccessLevelsRequest,
   output: PatchAccessPoliciesAccessLevelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1801,7 +1791,7 @@ export interface ListAccessPoliciesAccessLevelsRequest {
 }
 
 export const ListAccessPoliciesAccessLevelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     accessLevelFormat: Schema.optional(Schema.String).pipe(
@@ -1815,7 +1805,7 @@ export const ListAccessPoliciesAccessLevelsRequest =
 
 export type ListAccessPoliciesAccessLevelsResponse = ListAccessLevelsResponse;
 export const ListAccessPoliciesAccessLevelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAccessLevelsResponse;
+  /*@__PURE__*/ ListAccessLevelsResponse;
 
 export type ListAccessPoliciesAccessLevelsError =
   | DefaultErrors
@@ -1828,7 +1818,7 @@ export const listAccessPoliciesAccessLevels: API.PaginatedOperationMethod<
   ListAccessPoliciesAccessLevelsResponse,
   ListAccessPoliciesAccessLevelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesAccessLevelsRequest,
   output: ListAccessPoliciesAccessLevelsResponse,
   errors: [NotFound, Forbidden],
@@ -1846,7 +1836,7 @@ export interface TestIamPermissionsAccessPoliciesAccessLevelsRequest {
 }
 
 export const TestIamPermissionsAccessPoliciesAccessLevelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1861,7 +1851,7 @@ export const TestIamPermissionsAccessPoliciesAccessLevelsRequest =
 export type TestIamPermissionsAccessPoliciesAccessLevelsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsAccessPoliciesAccessLevelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsAccessPoliciesAccessLevelsError =
   | DefaultErrors
@@ -1876,7 +1866,7 @@ export const testIamPermissionsAccessPoliciesAccessLevels: API.OperationMethod<
   TestIamPermissionsAccessPoliciesAccessLevelsResponse,
   TestIamPermissionsAccessPoliciesAccessLevelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsAccessPoliciesAccessLevelsRequest,
   output: TestIamPermissionsAccessPoliciesAccessLevelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1888,7 +1878,7 @@ export interface DeleteAccessPoliciesServicePerimetersRequest {
 }
 
 export const DeleteAccessPoliciesServicePerimetersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -1897,7 +1887,7 @@ export const DeleteAccessPoliciesServicePerimetersRequest =
 
 export type DeleteAccessPoliciesServicePerimetersResponse = Operation;
 export const DeleteAccessPoliciesServicePerimetersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteAccessPoliciesServicePerimetersError =
   | DefaultErrors
@@ -1912,7 +1902,7 @@ export const deleteAccessPoliciesServicePerimeters: API.OperationMethod<
   DeleteAccessPoliciesServicePerimetersResponse,
   DeleteAccessPoliciesServicePerimetersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPoliciesServicePerimetersRequest,
   output: DeleteAccessPoliciesServicePerimetersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1926,7 +1916,7 @@ export interface CreateAccessPoliciesServicePerimetersRequest {
 }
 
 export const CreateAccessPoliciesServicePerimetersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ServicePerimeter).pipe(T.HttpBody()),
   }).pipe(
@@ -1940,7 +1930,7 @@ export const CreateAccessPoliciesServicePerimetersRequest =
 
 export type CreateAccessPoliciesServicePerimetersResponse = Operation;
 export const CreateAccessPoliciesServicePerimetersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateAccessPoliciesServicePerimetersError =
   | DefaultErrors
@@ -1955,7 +1945,7 @@ export const createAccessPoliciesServicePerimeters: API.OperationMethod<
   CreateAccessPoliciesServicePerimetersResponse,
   CreateAccessPoliciesServicePerimetersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessPoliciesServicePerimetersRequest,
   output: CreateAccessPoliciesServicePerimetersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1969,7 +1959,7 @@ export interface ReplaceAllAccessPoliciesServicePerimetersRequest {
 }
 
 export const ReplaceAllAccessPoliciesServicePerimetersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ReplaceServicePerimetersRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1983,7 +1973,7 @@ export const ReplaceAllAccessPoliciesServicePerimetersRequest =
 
 export type ReplaceAllAccessPoliciesServicePerimetersResponse = Operation;
 export const ReplaceAllAccessPoliciesServicePerimetersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type ReplaceAllAccessPoliciesServicePerimetersError =
   | DefaultErrors
@@ -1998,7 +1988,7 @@ export const replaceAllAccessPoliciesServicePerimeters: API.OperationMethod<
   ReplaceAllAccessPoliciesServicePerimetersResponse,
   ReplaceAllAccessPoliciesServicePerimetersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceAllAccessPoliciesServicePerimetersRequest,
   output: ReplaceAllAccessPoliciesServicePerimetersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2014,7 +2004,7 @@ export interface PatchAccessPoliciesServicePerimetersRequest {
 }
 
 export const PatchAccessPoliciesServicePerimetersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ServicePerimeter).pipe(T.HttpBody()),
@@ -2025,7 +2015,7 @@ export const PatchAccessPoliciesServicePerimetersRequest =
 
 export type PatchAccessPoliciesServicePerimetersResponse = Operation;
 export const PatchAccessPoliciesServicePerimetersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchAccessPoliciesServicePerimetersError =
   | DefaultErrors
@@ -2040,7 +2030,7 @@ export const patchAccessPoliciesServicePerimeters: API.OperationMethod<
   PatchAccessPoliciesServicePerimetersResponse,
   PatchAccessPoliciesServicePerimetersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccessPoliciesServicePerimetersRequest,
   output: PatchAccessPoliciesServicePerimetersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2052,7 +2042,7 @@ export interface GetAccessPoliciesServicePerimetersRequest {
 }
 
 export const GetAccessPoliciesServicePerimetersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -2061,7 +2051,7 @@ export const GetAccessPoliciesServicePerimetersRequest =
 
 export type GetAccessPoliciesServicePerimetersResponse = ServicePerimeter;
 export const GetAccessPoliciesServicePerimetersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ServicePerimeter;
+  /*@__PURE__*/ ServicePerimeter;
 
 export type GetAccessPoliciesServicePerimetersError =
   | DefaultErrors
@@ -2074,7 +2064,7 @@ export const getAccessPoliciesServicePerimeters: API.OperationMethod<
   GetAccessPoliciesServicePerimetersResponse,
   GetAccessPoliciesServicePerimetersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPoliciesServicePerimetersRequest,
   output: GetAccessPoliciesServicePerimetersResponse,
   errors: [NotFound, Forbidden],
@@ -2088,7 +2078,7 @@ export interface CommitAccessPoliciesServicePerimetersRequest {
 }
 
 export const CommitAccessPoliciesServicePerimetersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CommitServicePerimetersRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2102,7 +2092,7 @@ export const CommitAccessPoliciesServicePerimetersRequest =
 
 export type CommitAccessPoliciesServicePerimetersResponse = Operation;
 export const CommitAccessPoliciesServicePerimetersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CommitAccessPoliciesServicePerimetersError =
   | DefaultErrors
@@ -2117,7 +2107,7 @@ export const commitAccessPoliciesServicePerimeters: API.OperationMethod<
   CommitAccessPoliciesServicePerimetersResponse,
   CommitAccessPoliciesServicePerimetersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CommitAccessPoliciesServicePerimetersRequest,
   output: CommitAccessPoliciesServicePerimetersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2133,7 +2123,7 @@ export interface ListAccessPoliciesServicePerimetersRequest {
 }
 
 export const ListAccessPoliciesServicePerimetersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2145,7 +2135,7 @@ export const ListAccessPoliciesServicePerimetersRequest =
 export type ListAccessPoliciesServicePerimetersResponse =
   ListServicePerimetersResponse;
 export const ListAccessPoliciesServicePerimetersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListServicePerimetersResponse;
+  /*@__PURE__*/ ListServicePerimetersResponse;
 
 export type ListAccessPoliciesServicePerimetersError =
   | DefaultErrors
@@ -2158,7 +2148,7 @@ export const listAccessPoliciesServicePerimeters: API.PaginatedOperationMethod<
   ListAccessPoliciesServicePerimetersResponse,
   ListAccessPoliciesServicePerimetersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesServicePerimetersRequest,
   output: ListAccessPoliciesServicePerimetersResponse,
   errors: [NotFound, Forbidden],
@@ -2176,7 +2166,7 @@ export interface TestIamPermissionsAccessPoliciesServicePerimetersRequest {
 }
 
 export const TestIamPermissionsAccessPoliciesServicePerimetersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2191,7 +2181,7 @@ export const TestIamPermissionsAccessPoliciesServicePerimetersRequest =
 export type TestIamPermissionsAccessPoliciesServicePerimetersResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsAccessPoliciesServicePerimetersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsAccessPoliciesServicePerimetersError =
   | DefaultErrors
@@ -2206,7 +2196,7 @@ export const testIamPermissionsAccessPoliciesServicePerimeters: API.OperationMet
   TestIamPermissionsAccessPoliciesServicePerimetersResponse,
   TestIamPermissionsAccessPoliciesServicePerimetersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsAccessPoliciesServicePerimetersRequest,
   output: TestIamPermissionsAccessPoliciesServicePerimetersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2219,19 +2209,17 @@ export interface ListPermissionsRequest {
   pageSize?: number;
 }
 
-export const ListPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  },
-).pipe(
+export const ListPermissionsRequest = /*@__PURE__*/ Schema.Struct({
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+}).pipe(
   T.Http({ method: "GET", path: "v1/permissions" }),
   svc,
 ) as unknown as Schema.Codec<ListPermissionsRequest>;
 
 export type ListPermissionsResponse = ListSupportedPermissionsResponse;
 export const ListPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSupportedPermissionsResponse;
+  /*@__PURE__*/ ListSupportedPermissionsResponse;
 
 export type ListPermissionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2241,7 +2229,7 @@ export const listPermissions: API.PaginatedOperationMethod<
   ListPermissionsResponse,
   ListPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
   output: ListPermissionsResponse,
   errors: [NotFound, Forbidden],
@@ -2257,7 +2245,7 @@ export interface DeleteOperationsRequest {
 }
 
 export const DeleteOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -2265,7 +2253,7 @@ export const DeleteOperationsRequest =
   ) as unknown as Schema.Codec<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = Empty;
-export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteOperationsError =
   | DefaultErrors
@@ -2280,7 +2268,7 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsResponse,
   DeleteOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2299,7 +2287,7 @@ export interface ListOperationsRequest {
   pageToken?: string;
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsRequest = /*@__PURE__*/ Schema.Struct({
   returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("returnPartialSuccess"),
   ),
@@ -2313,8 +2301,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
-export const ListOperationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+export const ListOperationsResponse_Op = /*@__PURE__*/ ListOperationsResponse;
 
 export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2324,7 +2311,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse_Op,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -2342,7 +2329,7 @@ export interface CancelOperationsRequest {
 }
 
 export const CancelOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2351,7 +2338,7 @@ export const CancelOperationsRequest =
   ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = Empty;
-export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelOperationsError =
   | DefaultErrors
@@ -2366,7 +2353,7 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsResponse,
   CancelOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2377,7 +2364,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -2385,7 +2372,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2395,7 +2382,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2408,7 +2395,7 @@ export interface ListServicesRequest {
   pageSize?: number;
 }
 
-export const ListServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListServicesRequest = /*@__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
 }).pipe(
@@ -2417,8 +2404,7 @@ export const ListServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListServicesRequest>;
 
 export type ListServicesResponse = ListSupportedServicesResponse;
-export const ListServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSupportedServicesResponse;
+export const ListServicesResponse = /*@__PURE__*/ ListSupportedServicesResponse;
 
 export type ListServicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2428,7 +2414,7 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesResponse,
   ListServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [NotFound, Forbidden],
@@ -2443,7 +2429,7 @@ export interface GetServicesRequest {
   name: string;
 }
 
-export const GetServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetServicesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/services/{name}" }),
@@ -2451,7 +2437,7 @@ export const GetServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetServicesRequest>;
 
 export type GetServicesResponse = SupportedService;
-export const GetServicesResponse = /*@__PURE__*/ /*#__PURE__*/ SupportedService;
+export const GetServicesResponse = /*@__PURE__*/ SupportedService;
 
 export type GetServicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2461,7 +2447,7 @@ export const getServices: API.OperationMethod<
   GetServicesResponse,
   GetServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServicesRequest,
   output: GetServicesResponse,
   errors: [NotFound, Forbidden],
@@ -2473,7 +2459,7 @@ export interface DeleteOrganizationsGcpUserAccessBindingsRequest {
 }
 
 export const DeleteOrganizationsGcpUserAccessBindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -2482,7 +2468,7 @@ export const DeleteOrganizationsGcpUserAccessBindingsRequest =
 
 export type DeleteOrganizationsGcpUserAccessBindingsResponse = Operation;
 export const DeleteOrganizationsGcpUserAccessBindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteOrganizationsGcpUserAccessBindingsError =
   | DefaultErrors
@@ -2497,7 +2483,7 @@ export const deleteOrganizationsGcpUserAccessBindings: API.OperationMethod<
   DeleteOrganizationsGcpUserAccessBindingsResponse,
   DeleteOrganizationsGcpUserAccessBindingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsGcpUserAccessBindingsRequest,
   output: DeleteOrganizationsGcpUserAccessBindingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2511,7 +2497,7 @@ export interface CreateOrganizationsGcpUserAccessBindingsRequest {
 }
 
 export const CreateOrganizationsGcpUserAccessBindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GcpUserAccessBinding).pipe(T.HttpBody()),
   }).pipe(
@@ -2525,7 +2511,7 @@ export const CreateOrganizationsGcpUserAccessBindingsRequest =
 
 export type CreateOrganizationsGcpUserAccessBindingsResponse = Operation;
 export const CreateOrganizationsGcpUserAccessBindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateOrganizationsGcpUserAccessBindingsError =
   | DefaultErrors
@@ -2540,7 +2526,7 @@ export const createOrganizationsGcpUserAccessBindings: API.OperationMethod<
   CreateOrganizationsGcpUserAccessBindingsResponse,
   CreateOrganizationsGcpUserAccessBindingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsGcpUserAccessBindingsRequest,
   output: CreateOrganizationsGcpUserAccessBindingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2558,7 +2544,7 @@ export interface PatchOrganizationsGcpUserAccessBindingsRequest {
 }
 
 export const PatchOrganizationsGcpUserAccessBindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     append: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("append")),
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
@@ -2570,7 +2556,7 @@ export const PatchOrganizationsGcpUserAccessBindingsRequest =
 
 export type PatchOrganizationsGcpUserAccessBindingsResponse = Operation;
 export const PatchOrganizationsGcpUserAccessBindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchOrganizationsGcpUserAccessBindingsError =
   | DefaultErrors
@@ -2585,7 +2571,7 @@ export const patchOrganizationsGcpUserAccessBindings: API.OperationMethod<
   PatchOrganizationsGcpUserAccessBindingsResponse,
   PatchOrganizationsGcpUserAccessBindingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsGcpUserAccessBindingsRequest,
   output: PatchOrganizationsGcpUserAccessBindingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2597,7 +2583,7 @@ export interface GetOrganizationsGcpUserAccessBindingsRequest {
 }
 
 export const GetOrganizationsGcpUserAccessBindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -2607,7 +2593,7 @@ export const GetOrganizationsGcpUserAccessBindingsRequest =
 export type GetOrganizationsGcpUserAccessBindingsResponse =
   GcpUserAccessBinding;
 export const GetOrganizationsGcpUserAccessBindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GcpUserAccessBinding;
+  /*@__PURE__*/ GcpUserAccessBinding;
 
 export type GetOrganizationsGcpUserAccessBindingsError =
   | DefaultErrors
@@ -2620,7 +2606,7 @@ export const getOrganizationsGcpUserAccessBindings: API.OperationMethod<
   GetOrganizationsGcpUserAccessBindingsResponse,
   GetOrganizationsGcpUserAccessBindingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsGcpUserAccessBindingsRequest,
   output: GetOrganizationsGcpUserAccessBindingsResponse,
   errors: [NotFound, Forbidden],
@@ -2636,7 +2622,7 @@ export interface ListOrganizationsGcpUserAccessBindingsRequest {
 }
 
 export const ListOrganizationsGcpUserAccessBindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2648,7 +2634,7 @@ export const ListOrganizationsGcpUserAccessBindingsRequest =
 export type ListOrganizationsGcpUserAccessBindingsResponse =
   ListGcpUserAccessBindingsResponse;
 export const ListOrganizationsGcpUserAccessBindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListGcpUserAccessBindingsResponse;
+  /*@__PURE__*/ ListGcpUserAccessBindingsResponse;
 
 export type ListOrganizationsGcpUserAccessBindingsError =
   | DefaultErrors
@@ -2661,7 +2647,7 @@ export const listOrganizationsGcpUserAccessBindings: API.PaginatedOperationMetho
   ListOrganizationsGcpUserAccessBindingsResponse,
   ListOrganizationsGcpUserAccessBindingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsGcpUserAccessBindingsRequest,
   output: ListOrganizationsGcpUserAccessBindingsResponse,
   errors: [NotFound, Forbidden],

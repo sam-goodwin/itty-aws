@@ -10,7 +10,7 @@ export interface PostPaymentRecordsIdReportPaymentAttemptCanceledInput {
   metadata?: Record<string, string> | "";
 }
 export const PostPaymentRecordsIdReportPaymentAttemptCanceledInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     canceled_at: Schema.Number,
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -72,7 +72,7 @@ export interface PostPaymentRecordsIdReportPaymentAttemptCanceledOutput {
   } | null;
 }
 export const PostPaymentRecordsIdReportPaymentAttemptCanceledOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
       currency: Schema.String,
       value: Schema.Number,
@@ -156,7 +156,7 @@ export const PostPaymentRecordsIdReportPaymentAttemptCanceledOutput =
  * @param id - The ID of the Payment Record.
  */
 export const PostPaymentRecordsIdReportPaymentAttemptCanceled =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentRecordsIdReportPaymentAttemptCanceledInput,
     outputSchema: PostPaymentRecordsIdReportPaymentAttemptCanceledOutput,
   }));

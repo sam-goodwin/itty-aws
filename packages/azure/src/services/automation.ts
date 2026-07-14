@@ -18,7 +18,7 @@ export interface ActivityGetInput {
   moduleName: string;
   activityName: string;
 }
-export const ActivityGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActivityGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -59,7 +59,7 @@ export interface ActivityGetOutput {
     description?: string;
   };
 }
-export const ActivityGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActivityGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   properties: Schema.optional(
@@ -122,7 +122,7 @@ export const ActivityGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param moduleName - The module name.
  * @param activityName - The name of activity.
  */
-export const ActivityGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ActivityGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ActivityGetInput,
   outputSchema: ActivityGetOutput,
 }));
@@ -134,7 +134,7 @@ export interface ActivityListByModuleInput {
   moduleName: string;
 }
 export const ActivityListByModuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -178,7 +178,7 @@ export interface ActivityListByModuleOutput {
   nextLink?: string;
 }
 export const ActivityListByModuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -247,12 +247,10 @@ export const ActivityListByModuleOutput =
  * @param automationAccountName - The name of the automation account.
  * @param moduleName - The module name.
  */
-export const ActivityListByModule = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ActivityListByModuleInput,
-    outputSchema: ActivityListByModuleOutput,
-  }),
-);
+export const ActivityListByModule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ActivityListByModuleInput,
+  outputSchema: ActivityListByModuleOutput,
+}));
 // Input Schema
 export interface AgentRegistrationInformationGetInput {
   subscriptionId: string;
@@ -260,7 +258,7 @@ export interface AgentRegistrationInformationGetInput {
   automationAccountName: string;
 }
 export const AgentRegistrationInformationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -280,7 +278,7 @@ export interface AgentRegistrationInformationGetOutput {
   id?: string;
 }
 export const AgentRegistrationInformationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dscMetaConfiguration: Schema.optional(Schema.String),
     endpoint: Schema.optional(Schema.String),
     keys: Schema.optional(
@@ -302,7 +300,7 @@ export const AgentRegistrationInformationGetOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const AgentRegistrationInformationGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentRegistrationInformationGetInput,
     outputSchema: AgentRegistrationInformationGetOutput,
   }));
@@ -314,7 +312,7 @@ export interface AgentRegistrationInformationRegenerateKeyInput {
   keyName: "primary" | "secondary";
 }
 export const AgentRegistrationInformationRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -335,7 +333,7 @@ export interface AgentRegistrationInformationRegenerateKeyOutput {
   id?: string;
 }
 export const AgentRegistrationInformationRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dscMetaConfiguration: Schema.optional(Schema.String),
     endpoint: Schema.optional(Schema.String),
     keys: Schema.optional(
@@ -357,7 +355,7 @@ export const AgentRegistrationInformationRegenerateKeyOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const AgentRegistrationInformationRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentRegistrationInformationRegenerateKeyInput,
     outputSchema: AgentRegistrationInformationRegenerateKeyOutput,
   }));
@@ -398,7 +396,7 @@ export interface AutomationAccountCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const AutomationAccountCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -483,7 +481,7 @@ export interface AutomationAccountCreateOrUpdateOutput {
   };
 }
 export const AutomationAccountCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -513,7 +511,7 @@ export const AutomationAccountCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const AutomationAccountCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AutomationAccountCreateOrUpdateInput,
     outputSchema: AutomationAccountCreateOrUpdateOutput,
   }));
@@ -524,7 +522,7 @@ export interface AutomationAccountDeleteInput {
   automationAccountName: string;
 }
 export const AutomationAccountDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -539,7 +537,7 @@ export const AutomationAccountDeleteInput =
 // Output Schema
 export type AutomationAccountDeleteOutput = void;
 export const AutomationAccountDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AutomationAccountDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AutomationAccountDeleteOutput>;
 
 // The operation
 /**
@@ -550,12 +548,10 @@ export const AutomationAccountDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const AutomationAccountDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutomationAccountDeleteInput,
-    outputSchema: AutomationAccountDeleteOutput,
-  }),
-);
+export const AutomationAccountDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutomationAccountDeleteInput,
+  outputSchema: AutomationAccountDeleteOutput,
+}));
 // Input Schema
 export interface AutomationAccountGetInput {
   subscriptionId: string;
@@ -563,7 +559,7 @@ export interface AutomationAccountGetInput {
   automationAccountName: string;
 }
 export const AutomationAccountGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -590,7 +586,7 @@ export interface AutomationAccountGetOutput {
   };
 }
 export const AutomationAccountGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -619,18 +615,16 @@ export const AutomationAccountGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const AutomationAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutomationAccountGetInput,
-    outputSchema: AutomationAccountGetOutput,
-  }),
-);
+export const AutomationAccountGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutomationAccountGetInput,
+  outputSchema: AutomationAccountGetOutput,
+}));
 // Input Schema
 export interface AutomationAccountListInput {
   subscriptionId: string;
 }
 export const AutomationAccountListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -658,7 +652,7 @@ export interface AutomationAccountListOutput {
   nextLink?: string;
 }
 export const AutomationAccountListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -702,19 +696,17 @@ export const AutomationAccountListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AutomationAccountList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutomationAccountListInput,
-    outputSchema: AutomationAccountListOutput,
-  }),
-);
+export const AutomationAccountList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutomationAccountListInput,
+  outputSchema: AutomationAccountListOutput,
+}));
 // Input Schema
 export interface AutomationAccountListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const AutomationAccountListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -743,7 +735,7 @@ export interface AutomationAccountListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AutomationAccountListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -787,7 +779,7 @@ export const AutomationAccountListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AutomationAccountListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AutomationAccountListByResourceGroupInput,
     outputSchema: AutomationAccountListByResourceGroupOutput,
   }));
@@ -798,7 +790,7 @@ export interface AutomationAccountListDeletedRunbooksInput {
   automationAccountName: string;
 }
 export const AutomationAccountListDeletedRunbooksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -828,7 +820,7 @@ export interface AutomationAccountListDeletedRunbooksOutput {
   nextLink?: string;
 }
 export const AutomationAccountListDeletedRunbooksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         properties: Schema.optional(
@@ -859,7 +851,7 @@ export const AutomationAccountListDeletedRunbooksOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const AutomationAccountListDeletedRunbooks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AutomationAccountListDeletedRunbooksInput,
     outputSchema: AutomationAccountListDeletedRunbooksOutput,
   }));
@@ -900,7 +892,7 @@ export interface AutomationAccountUpdateInput {
   tags?: Record<string, string>;
 }
 export const AutomationAccountUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -985,7 +977,7 @@ export interface AutomationAccountUpdateOutput {
   };
 }
 export const AutomationAccountUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1014,12 +1006,10 @@ export const AutomationAccountUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const AutomationAccountUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutomationAccountUpdateInput,
-    outputSchema: AutomationAccountUpdateOutput,
-  }),
-);
+export const AutomationAccountUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutomationAccountUpdateInput,
+  outputSchema: AutomationAccountUpdateOutput,
+}));
 // Input Schema
 export interface CertificateCreateOrUpdateInput {
   subscriptionId: string;
@@ -1035,7 +1025,7 @@ export interface CertificateCreateOrUpdateInput {
   };
 }
 export const CertificateCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1070,7 +1060,7 @@ export interface CertificateCreateOrUpdateOutput {
   };
 }
 export const CertificateCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1100,12 +1090,10 @@ export const CertificateCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param certificateName - The name of certificate.
  */
-export const CertificateCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CertificateCreateOrUpdateInput,
-    outputSchema: CertificateCreateOrUpdateOutput,
-  }),
-);
+export const CertificateCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificateCreateOrUpdateInput,
+  outputSchema: CertificateCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface CertificateDeleteInput {
   subscriptionId: string;
@@ -1113,14 +1101,12 @@ export interface CertificateDeleteInput {
   automationAccountName: string;
   certificateName: string;
 }
-export const CertificateDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const CertificateDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
@@ -1131,7 +1117,7 @@ export const CertificateDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type CertificateDeleteOutput = void;
 export const CertificateDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CertificateDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CertificateDeleteOutput>;
 
 // The operation
 /**
@@ -1143,7 +1129,7 @@ export const CertificateDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param certificateName - The name of certificate.
  */
-export const CertificateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificateDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificateDeleteInput,
   outputSchema: CertificateDeleteOutput,
 }));
@@ -1154,7 +1140,7 @@ export interface CertificateGetInput {
   automationAccountName: string;
   certificateName: string;
 }
-export const CertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificateGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1181,7 +1167,7 @@ export interface CertificateGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CertificateGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificateGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1211,7 +1197,7 @@ export const CertificateGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param certificateName - The name of certificate.
  */
-export const CertificateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificateGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificateGetInput,
   outputSchema: CertificateGetOutput,
 }));
@@ -1222,7 +1208,7 @@ export interface CertificateListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const CertificateListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1252,7 +1238,7 @@ export interface CertificateListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const CertificateListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1297,7 +1283,7 @@ export const CertificateListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const CertificateListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CertificateListByAutomationAccountInput,
     outputSchema: CertificateListByAutomationAccountOutput,
   }));
@@ -1310,20 +1296,18 @@ export interface CertificateUpdateInput {
   name?: string;
   properties?: { description?: string };
 }
-export const CertificateUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
-    name: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-).pipe(
+export const CertificateUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
@@ -1346,7 +1330,7 @@ export interface CertificateUpdateOutput {
   };
 }
 export const CertificateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1376,7 +1360,7 @@ export const CertificateUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param certificateName - The name of certificate.
  */
-export const CertificateUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificateUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificateUpdateInput,
   outputSchema: CertificateUpdateOutput,
 }));
@@ -1394,7 +1378,7 @@ export interface ConnectionCreateOrUpdateInput {
   };
 }
 export const ConnectionCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1432,7 +1416,7 @@ export interface ConnectionCreateOrUpdateOutput {
   };
 }
 export const ConnectionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1462,12 +1446,10 @@ export const ConnectionCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param connectionName - The name of connection.
  */
-export const ConnectionCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectionCreateOrUpdateInput,
-    outputSchema: ConnectionCreateOrUpdateOutput,
-  }),
-);
+export const ConnectionCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionCreateOrUpdateInput,
+  outputSchema: ConnectionCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ConnectionDeleteInput {
   subscriptionId: string;
@@ -1475,7 +1457,7 @@ export interface ConnectionDeleteInput {
   automationAccountName: string;
   connectionName: string;
 }
-export const ConnectionDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1491,7 +1473,7 @@ export const ConnectionDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ConnectionDeleteOutput = void;
 export const ConnectionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectionDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectionDeleteOutput>;
 
 // The operation
 /**
@@ -1503,7 +1485,7 @@ export const ConnectionDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param connectionName - The name of connection.
  */
-export const ConnectionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionDeleteInput,
   outputSchema: ConnectionDeleteOutput,
 }));
@@ -1514,7 +1496,7 @@ export interface ConnectionGetInput {
   automationAccountName: string;
   connectionName: string;
 }
-export const ConnectionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1541,7 +1523,7 @@ export interface ConnectionGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ConnectionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1571,7 +1553,7 @@ export const ConnectionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param connectionName - The name of connection.
  */
-export const ConnectionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionGetInput,
   outputSchema: ConnectionGetOutput,
 }));
@@ -1582,7 +1564,7 @@ export interface ConnectionListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const ConnectionListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1612,7 +1594,7 @@ export interface ConnectionListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const ConnectionListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1657,7 +1639,7 @@ export const ConnectionListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const ConnectionListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectionListByAutomationAccountInput,
     outputSchema: ConnectionListByAutomationAccountOutput,
   }));
@@ -1677,7 +1659,7 @@ export interface ConnectionTypeCreateOrUpdateInput {
   };
 }
 export const ConnectionTypeCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1717,7 +1699,7 @@ export interface ConnectionTypeCreateOrUpdateOutput {
   };
 }
 export const ConnectionTypeCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1748,7 +1730,7 @@ export const ConnectionTypeCreateOrUpdateOutput =
  * @param connectionTypeName - The name of connection type.
  */
 export const ConnectionTypeCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectionTypeCreateOrUpdateInput,
     outputSchema: ConnectionTypeCreateOrUpdateOutput,
   }));
@@ -1760,7 +1742,7 @@ export interface ConnectionTypeDeleteInput {
   connectionTypeName: string;
 }
 export const ConnectionTypeDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1776,7 +1758,7 @@ export const ConnectionTypeDeleteInput =
 // Output Schema
 export type ConnectionTypeDeleteOutput = void;
 export const ConnectionTypeDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectionTypeDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectionTypeDeleteOutput>;
 
 // The operation
 /**
@@ -1788,12 +1770,10 @@ export const ConnectionTypeDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param connectionTypeName - The name of connection type.
  */
-export const ConnectionTypeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectionTypeDeleteInput,
-    outputSchema: ConnectionTypeDeleteOutput,
-  }),
-);
+export const ConnectionTypeDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionTypeDeleteInput,
+  outputSchema: ConnectionTypeDeleteOutput,
+}));
 // Input Schema
 export interface ConnectionTypeGetInput {
   subscriptionId: string;
@@ -1801,14 +1781,12 @@ export interface ConnectionTypeGetInput {
   automationAccountName: string;
   connectionTypeName: string;
 }
-export const ConnectionTypeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    connectionTypeName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ConnectionTypeGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  connectionTypeName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
@@ -1831,7 +1809,7 @@ export interface ConnectionTypeGetOutput {
   };
 }
 export const ConnectionTypeGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1861,7 +1839,7 @@ export const ConnectionTypeGetOutput =
  * @param automationAccountName - The name of the automation account.
  * @param connectionTypeName - The name of connection type.
  */
-export const ConnectionTypeGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionTypeGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionTypeGetInput,
   outputSchema: ConnectionTypeGetOutput,
 }));
@@ -1872,7 +1850,7 @@ export interface ConnectionTypeListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const ConnectionTypeListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1902,7 +1880,7 @@ export interface ConnectionTypeListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const ConnectionTypeListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1947,7 +1925,7 @@ export const ConnectionTypeListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const ConnectionTypeListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectionTypeListByAutomationAccountInput,
     outputSchema: ConnectionTypeListByAutomationAccountOutput,
   }));
@@ -1963,7 +1941,7 @@ export interface ConnectionUpdateInput {
     fieldDefinitionValues?: Record<string, string>;
   };
 }
-export const ConnectionUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectionUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -1999,27 +1977,25 @@ export interface ConnectionUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ConnectionUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<ConnectionUpdateOutput>;
+export const ConnectionUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<ConnectionUpdateOutput>;
 
 // The operation
 /**
@@ -2031,7 +2007,7 @@ export const ConnectionUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param automationAccountName - The name of the automation account.
  * @param connectionName - The name of connection.
  */
-export const ConnectionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectionUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectionUpdateInput,
   outputSchema: ConnectionUpdateOutput,
 }));
@@ -2048,7 +2024,7 @@ export interface ConvertGraphRunbookContentInput {
   graphRunbookJson?: string | null;
 }
 export const ConvertGraphRunbookContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2080,7 +2056,7 @@ export interface ConvertGraphRunbookContentOutput {
   graphRunbookJson?: string | null;
 }
 export const ConvertGraphRunbookContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rawContent: Schema.optional(
       Schema.Struct({
         schemaVersion: Schema.optional(Schema.String),
@@ -2102,12 +2078,10 @@ export const ConvertGraphRunbookContentOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const convertGraphRunbookContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConvertGraphRunbookContentInput,
-    outputSchema: ConvertGraphRunbookContentOutput,
-  }),
-);
+export const convertGraphRunbookContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConvertGraphRunbookContentInput,
+  outputSchema: ConvertGraphRunbookContentOutput,
+}));
 // Input Schema
 export interface CredentialCreateOrUpdateInput {
   subscriptionId: string;
@@ -2122,7 +2096,7 @@ export interface CredentialCreateOrUpdateInput {
   };
 }
 export const CredentialCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2156,7 +2130,7 @@ export interface CredentialCreateOrUpdateOutput {
   };
 }
 export const CredentialCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2186,12 +2160,10 @@ export const CredentialCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param credentialName - The name of credential.
  */
-export const CredentialCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CredentialCreateOrUpdateInput,
-    outputSchema: CredentialCreateOrUpdateOutput,
-  }),
-);
+export const CredentialCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CredentialCreateOrUpdateInput,
+  outputSchema: CredentialCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface CredentialDeleteInput {
   subscriptionId: string;
@@ -2199,7 +2171,7 @@ export interface CredentialDeleteInput {
   automationAccountName: string;
   credentialName: string;
 }
-export const CredentialDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CredentialDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2215,7 +2187,7 @@ export const CredentialDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CredentialDeleteOutput = void;
 export const CredentialDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CredentialDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CredentialDeleteOutput>;
 
 // The operation
 /**
@@ -2227,7 +2199,7 @@ export const CredentialDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param credentialName - The name of credential.
  */
-export const CredentialDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CredentialDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CredentialDeleteInput,
   outputSchema: CredentialDeleteOutput,
 }));
@@ -2238,7 +2210,7 @@ export interface CredentialGetInput {
   automationAccountName: string;
   credentialName: string;
 }
-export const CredentialGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CredentialGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2265,7 +2237,7 @@ export interface CredentialGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CredentialGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CredentialGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2295,7 +2267,7 @@ export const CredentialGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param credentialName - The name of credential.
  */
-export const CredentialGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CredentialGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CredentialGetInput,
   outputSchema: CredentialGetOutput,
 }));
@@ -2306,7 +2278,7 @@ export interface CredentialListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const CredentialListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2336,7 +2308,7 @@ export interface CredentialListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const CredentialListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2381,7 +2353,7 @@ export const CredentialListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const CredentialListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CredentialListByAutomationAccountInput,
     outputSchema: CredentialListByAutomationAccountOutput,
   }));
@@ -2398,7 +2370,7 @@ export interface CredentialUpdateInput {
     description?: string;
   };
 }
-export const CredentialUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CredentialUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2433,27 +2405,25 @@ export interface CredentialUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const CredentialUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<CredentialUpdateOutput>;
+export const CredentialUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<CredentialUpdateOutput>;
 
 // The operation
 /**
@@ -2465,7 +2435,7 @@ export const CredentialUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param automationAccountName - The name of the automation account.
  * @param credentialName - The name of credential.
  */
-export const CredentialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CredentialUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CredentialUpdateInput,
   outputSchema: CredentialUpdateOutput,
 }));
@@ -2474,7 +2444,7 @@ export interface DeletedAutomationAccountsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const DeletedAutomationAccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2500,7 +2470,7 @@ export interface DeletedAutomationAccountsListBySubscriptionOutput {
   }[];
 }
 export const DeletedAutomationAccountsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2529,7 +2499,7 @@ export const DeletedAutomationAccountsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const deletedAutomationAccountsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeletedAutomationAccountsListBySubscriptionInput,
     outputSchema: DeletedAutomationAccountsListBySubscriptionOutput,
   }));
@@ -2564,7 +2534,7 @@ export interface DscConfigurationCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const DscConfigurationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2622,7 +2592,7 @@ export interface DscConfigurationCreateOrUpdateOutput {
   };
 }
 export const DscConfigurationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2653,7 +2623,7 @@ export const DscConfigurationCreateOrUpdateOutput =
  * @param configurationName - The configuration name.
  */
 export const DscConfigurationCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DscConfigurationCreateOrUpdateInput,
     outputSchema: DscConfigurationCreateOrUpdateOutput,
   }));
@@ -2665,7 +2635,7 @@ export interface DscConfigurationDeleteInput {
   configurationName: string;
 }
 export const DscConfigurationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2681,7 +2651,7 @@ export const DscConfigurationDeleteInput =
 // Output Schema
 export type DscConfigurationDeleteOutput = void;
 export const DscConfigurationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DscConfigurationDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DscConfigurationDeleteOutput>;
 
 // The operation
 /**
@@ -2693,12 +2663,10 @@ export const DscConfigurationDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param configurationName - The configuration name.
  */
-export const DscConfigurationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DscConfigurationDeleteInput,
-    outputSchema: DscConfigurationDeleteOutput,
-  }),
-);
+export const DscConfigurationDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DscConfigurationDeleteInput,
+  outputSchema: DscConfigurationDeleteOutput,
+}));
 // Input Schema
 export interface DscConfigurationGetInput {
   subscriptionId: string;
@@ -2707,7 +2675,7 @@ export interface DscConfigurationGetInput {
   configurationName: string;
 }
 export const DscConfigurationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2735,7 +2703,7 @@ export interface DscConfigurationGetOutput {
   };
 }
 export const DscConfigurationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2765,7 +2733,7 @@ export const DscConfigurationGetOutput =
  * @param automationAccountName - The name of the automation account.
  * @param configurationName - The configuration name.
  */
-export const DscConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DscConfigurationGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DscConfigurationGetInput,
   outputSchema: DscConfigurationGetOutput,
 }));
@@ -2777,7 +2745,7 @@ export interface DscConfigurationGetContentInput {
   configurationName: string;
 }
 export const DscConfigurationGetContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2793,7 +2761,7 @@ export const DscConfigurationGetContentInput =
 // Output Schema
 export type DscConfigurationGetContentOutput = string;
 export const DscConfigurationGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<DscConfigurationGetContentOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<DscConfigurationGetContentOutput>;
 
 // The operation
 /**
@@ -2805,12 +2773,10 @@ export const DscConfigurationGetContentOutput =
  * @param automationAccountName - The name of the automation account.
  * @param configurationName - The configuration name.
  */
-export const DscConfigurationGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DscConfigurationGetContentInput,
-    outputSchema: DscConfigurationGetContentOutput,
-  }),
-);
+export const DscConfigurationGetContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DscConfigurationGetContentInput,
+  outputSchema: DscConfigurationGetContentOutput,
+}));
 // Input Schema
 export interface DscConfigurationListByAutomationAccountInput {
   subscriptionId: string;
@@ -2822,7 +2788,7 @@ export interface DscConfigurationListByAutomationAccountInput {
   $inlinecount?: string;
 }
 export const DscConfigurationListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -2857,7 +2823,7 @@ export interface DscConfigurationListByAutomationAccountOutput {
   totalCount?: number;
 }
 export const DscConfigurationListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2909,7 +2875,7 @@ export const DscConfigurationListByAutomationAccountOutput =
  * @param $inlinecount - Return total rows.
  */
 export const DscConfigurationListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DscConfigurationListByAutomationAccountInput,
     outputSchema: DscConfigurationListByAutomationAccountOutput,
   }));
@@ -2943,7 +2909,7 @@ export interface DscConfigurationUpdateInput {
   tags?: Record<string, string>;
 }
 export const DscConfigurationUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3002,7 +2968,7 @@ export interface DscConfigurationUpdateOutput {
   };
 }
 export const DscConfigurationUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3032,12 +2998,10 @@ export const DscConfigurationUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param configurationName - The configuration name.
  */
-export const DscConfigurationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DscConfigurationUpdateInput,
-    outputSchema: DscConfigurationUpdateOutput,
-  }),
-);
+export const DscConfigurationUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DscConfigurationUpdateInput,
+  outputSchema: DscConfigurationUpdateOutput,
+}));
 // Input Schema
 export interface DscNodeConfigurationCreateOrUpdateInput {
   subscriptionId: string;
@@ -3058,7 +3022,7 @@ export interface DscNodeConfigurationCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const DscNodeConfigurationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3095,7 +3059,7 @@ export const DscNodeConfigurationCreateOrUpdateInput =
 // Output Schema
 export type DscNodeConfigurationCreateOrUpdateOutput = void;
 export const DscNodeConfigurationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DscNodeConfigurationCreateOrUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DscNodeConfigurationCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3108,7 +3072,7 @@ export const DscNodeConfigurationCreateOrUpdateOutput =
  * @param nodeConfigurationName - The Dsc node configuration name.
  */
 export const DscNodeConfigurationCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DscNodeConfigurationCreateOrUpdateInput,
     outputSchema: DscNodeConfigurationCreateOrUpdateOutput,
   }));
@@ -3120,7 +3084,7 @@ export interface DscNodeConfigurationDeleteInput {
   nodeConfigurationName: string;
 }
 export const DscNodeConfigurationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3136,7 +3100,7 @@ export const DscNodeConfigurationDeleteInput =
 // Output Schema
 export type DscNodeConfigurationDeleteOutput = void;
 export const DscNodeConfigurationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DscNodeConfigurationDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DscNodeConfigurationDeleteOutput>;
 
 // The operation
 /**
@@ -3148,12 +3112,10 @@ export const DscNodeConfigurationDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param nodeConfigurationName - The Dsc node configuration name.
  */
-export const DscNodeConfigurationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DscNodeConfigurationDeleteInput,
-    outputSchema: DscNodeConfigurationDeleteOutput,
-  }),
-);
+export const DscNodeConfigurationDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DscNodeConfigurationDeleteInput,
+  outputSchema: DscNodeConfigurationDeleteOutput,
+}));
 // Input Schema
 export interface DscNodeConfigurationGetInput {
   subscriptionId: string;
@@ -3162,7 +3124,7 @@ export interface DscNodeConfigurationGetInput {
   nodeConfigurationName: string;
 }
 export const DscNodeConfigurationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3190,7 +3152,7 @@ export interface DscNodeConfigurationGetOutput {
   };
 }
 export const DscNodeConfigurationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3220,12 +3182,10 @@ export const DscNodeConfigurationGetOutput =
  * @param automationAccountName - The name of the automation account.
  * @param nodeConfigurationName - The Dsc node configuration name.
  */
-export const DscNodeConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DscNodeConfigurationGetInput,
-    outputSchema: DscNodeConfigurationGetOutput,
-  }),
-);
+export const DscNodeConfigurationGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DscNodeConfigurationGetInput,
+  outputSchema: DscNodeConfigurationGetOutput,
+}));
 // Input Schema
 export interface DscNodeConfigurationListByAutomationAccountInput {
   subscriptionId: string;
@@ -3237,7 +3197,7 @@ export interface DscNodeConfigurationListByAutomationAccountInput {
   $inlinecount?: string;
 }
 export const DscNodeConfigurationListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3272,7 +3232,7 @@ export interface DscNodeConfigurationListByAutomationAccountOutput {
   totalCount?: number;
 }
 export const DscNodeConfigurationListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3324,7 +3284,7 @@ export const DscNodeConfigurationListByAutomationAccountOutput =
  * @param $inlinecount - Return total rows.
  */
 export const DscNodeConfigurationListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DscNodeConfigurationListByAutomationAccountInput,
     outputSchema: DscNodeConfigurationListByAutomationAccountOutput,
   }));
@@ -3335,7 +3295,7 @@ export interface DscNodeDeleteInput {
   automationAccountName: string;
   nodeId: string;
 }
-export const DscNodeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DscNodeDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3351,7 +3311,7 @@ export const DscNodeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DscNodeDeleteOutput = void;
 export const DscNodeDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DscNodeDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DscNodeDeleteOutput>;
 
 // The operation
 /**
@@ -3363,7 +3323,7 @@ export const DscNodeDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param nodeId - The node id.
  */
-export const DscNodeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DscNodeDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DscNodeDeleteInput,
   outputSchema: DscNodeDeleteOutput,
 }));
@@ -3374,7 +3334,7 @@ export interface DscNodeGetInput {
   automationAccountName: string;
   nodeId: string;
 }
-export const DscNodeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DscNodeGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3401,7 +3361,7 @@ export interface DscNodeGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DscNodeGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DscNodeGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3431,7 +3391,7 @@ export const DscNodeGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param nodeId - The node id.
  */
-export const DscNodeGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DscNodeGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DscNodeGetInput,
   outputSchema: DscNodeGetOutput,
 }));
@@ -3446,7 +3406,7 @@ export interface DscNodeListByAutomationAccountInput {
   $inlinecount?: string;
 }
 export const DscNodeListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3481,7 +3441,7 @@ export interface DscNodeListByAutomationAccountOutput {
   totalCount?: number;
 }
 export const DscNodeListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3533,7 +3493,7 @@ export const DscNodeListByAutomationAccountOutput =
  * @param $inlinecount - Return total rows.
  */
 export const DscNodeListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DscNodeListByAutomationAccountInput,
     outputSchema: DscNodeListByAutomationAccountOutput,
   }));
@@ -3545,7 +3505,7 @@ export interface DscNodeUpdateInput {
   nodeId: string;
   properties?: { nodeConfiguration?: { name?: string } };
 }
-export const DscNodeUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DscNodeUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3581,7 +3541,7 @@ export interface DscNodeUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const DscNodeUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DscNodeUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3611,7 +3571,7 @@ export const DscNodeUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param nodeId - The node id.
  */
-export const DscNodeUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DscNodeUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DscNodeUpdateInput,
   outputSchema: DscNodeUpdateOutput,
 }));
@@ -3623,7 +3583,7 @@ export interface FieldsListByTypeInput {
   moduleName: string;
   typeName: string;
 }
-export const FieldsListByTypeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FieldsListByTypeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3642,19 +3602,17 @@ export interface FieldsListByTypeOutput {
   value?: { name?: string; type?: string }[];
   nextLink?: string;
 }
-export const FieldsListByTypeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const FieldsListByTypeOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<FieldsListByTypeOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<FieldsListByTypeOutput>;
 
 // The operation
 /**
@@ -3667,7 +3625,7 @@ export const FieldsListByTypeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param moduleName - The module name.
  * @param typeName - The name of type.
  */
-export const FieldsListByType = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FieldsListByType = /*@__PURE__*/ API.make(() => ({
   inputSchema: FieldsListByTypeInput,
   outputSchema: FieldsListByTypeOutput,
 }));
@@ -3681,7 +3639,7 @@ export interface HybridRunbookWorkerGroupCreateInput {
   name?: string;
 }
 export const HybridRunbookWorkerGroupCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3719,7 +3677,7 @@ export interface HybridRunbookWorkerGroupCreateOutput {
   };
 }
 export const HybridRunbookWorkerGroupCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3750,7 +3708,7 @@ export const HybridRunbookWorkerGroupCreateOutput =
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  */
 export const HybridRunbookWorkerGroupCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HybridRunbookWorkerGroupCreateInput,
     outputSchema: HybridRunbookWorkerGroupCreateOutput,
   }));
@@ -3762,7 +3720,7 @@ export interface HybridRunbookWorkerGroupDeleteInput {
   hybridRunbookWorkerGroupName: string;
 }
 export const HybridRunbookWorkerGroupDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3778,7 +3736,7 @@ export const HybridRunbookWorkerGroupDeleteInput =
 // Output Schema
 export type HybridRunbookWorkerGroupDeleteOutput = void;
 export const HybridRunbookWorkerGroupDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridRunbookWorkerGroupDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridRunbookWorkerGroupDeleteOutput>;
 
 // The operation
 /**
@@ -3791,7 +3749,7 @@ export const HybridRunbookWorkerGroupDeleteOutput =
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  */
 export const HybridRunbookWorkerGroupDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HybridRunbookWorkerGroupDeleteInput,
     outputSchema: HybridRunbookWorkerGroupDeleteOutput,
   }));
@@ -3803,7 +3761,7 @@ export interface HybridRunbookWorkerGroupGetInput {
   hybridRunbookWorkerGroupName: string;
 }
 export const HybridRunbookWorkerGroupGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3831,7 +3789,7 @@ export interface HybridRunbookWorkerGroupGetOutput {
   };
 }
 export const HybridRunbookWorkerGroupGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3861,12 +3819,10 @@ export const HybridRunbookWorkerGroupGetOutput =
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  */
-export const HybridRunbookWorkerGroupGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridRunbookWorkerGroupGetInput,
-    outputSchema: HybridRunbookWorkerGroupGetOutput,
-  }),
-);
+export const HybridRunbookWorkerGroupGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkerGroupGetInput,
+  outputSchema: HybridRunbookWorkerGroupGetOutput,
+}));
 // Input Schema
 export interface HybridRunbookWorkerGroupListByAutomationAccountInput {
   subscriptionId: string;
@@ -3875,7 +3831,7 @@ export interface HybridRunbookWorkerGroupListByAutomationAccountInput {
   $filter?: string;
 }
 export const HybridRunbookWorkerGroupListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -3906,7 +3862,7 @@ export interface HybridRunbookWorkerGroupListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const HybridRunbookWorkerGroupListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3952,7 +3908,7 @@ export const HybridRunbookWorkerGroupListByAutomationAccountOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const HybridRunbookWorkerGroupListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HybridRunbookWorkerGroupListByAutomationAccountInput,
     outputSchema: HybridRunbookWorkerGroupListByAutomationAccountOutput,
   }));
@@ -3966,7 +3922,7 @@ export interface HybridRunbookWorkerGroupUpdateInput {
   name?: string;
 }
 export const HybridRunbookWorkerGroupUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4004,7 +3960,7 @@ export interface HybridRunbookWorkerGroupUpdateOutput {
   };
 }
 export const HybridRunbookWorkerGroupUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4035,7 +3991,7 @@ export const HybridRunbookWorkerGroupUpdateOutput =
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  */
 export const HybridRunbookWorkerGroupUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HybridRunbookWorkerGroupUpdateInput,
     outputSchema: HybridRunbookWorkerGroupUpdateOutput,
   }));
@@ -4050,7 +4006,7 @@ export interface HybridRunbookWorkersCreateInput {
   name?: string;
 }
 export const HybridRunbookWorkersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4085,7 +4041,7 @@ export interface HybridRunbookWorkersCreateOutput {
   };
 }
 export const HybridRunbookWorkersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4116,12 +4072,10 @@ export const HybridRunbookWorkersCreateOutput =
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
  */
-export const HybridRunbookWorkersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridRunbookWorkersCreateInput,
-    outputSchema: HybridRunbookWorkersCreateOutput,
-  }),
-);
+export const HybridRunbookWorkersCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkersCreateInput,
+  outputSchema: HybridRunbookWorkersCreateOutput,
+}));
 // Input Schema
 export interface HybridRunbookWorkersDeleteInput {
   subscriptionId: string;
@@ -4131,7 +4085,7 @@ export interface HybridRunbookWorkersDeleteInput {
   hybridRunbookWorkerId: string;
 }
 export const HybridRunbookWorkersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4148,7 +4102,7 @@ export const HybridRunbookWorkersDeleteInput =
 // Output Schema
 export type HybridRunbookWorkersDeleteOutput = void;
 export const HybridRunbookWorkersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridRunbookWorkersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridRunbookWorkersDeleteOutput>;
 
 // The operation
 /**
@@ -4161,12 +4115,10 @@ export const HybridRunbookWorkersDeleteOutput =
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
  */
-export const HybridRunbookWorkersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridRunbookWorkersDeleteInput,
-    outputSchema: HybridRunbookWorkersDeleteOutput,
-  }),
-);
+export const HybridRunbookWorkersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkersDeleteInput,
+  outputSchema: HybridRunbookWorkersDeleteOutput,
+}));
 // Input Schema
 export interface HybridRunbookWorkersGetInput {
   subscriptionId: string;
@@ -4176,7 +4128,7 @@ export interface HybridRunbookWorkersGetInput {
   hybridRunbookWorkerId: string;
 }
 export const HybridRunbookWorkersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4205,7 +4157,7 @@ export interface HybridRunbookWorkersGetOutput {
   };
 }
 export const HybridRunbookWorkersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4236,12 +4188,10 @@ export const HybridRunbookWorkersGetOutput =
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
  */
-export const HybridRunbookWorkersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridRunbookWorkersGetInput,
-    outputSchema: HybridRunbookWorkersGetOutput,
-  }),
-);
+export const HybridRunbookWorkersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkersGetInput,
+  outputSchema: HybridRunbookWorkersGetOutput,
+}));
 // Input Schema
 export interface HybridRunbookWorkersListByHybridRunbookWorkerGroupInput {
   subscriptionId: string;
@@ -4251,7 +4201,7 @@ export interface HybridRunbookWorkersListByHybridRunbookWorkerGroupInput {
   $filter?: string;
 }
 export const HybridRunbookWorkersListByHybridRunbookWorkerGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4283,7 +4233,7 @@ export interface HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput {
   nextLink?: string;
 }
 export const HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4330,7 +4280,7 @@ export const HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const HybridRunbookWorkersListByHybridRunbookWorkerGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HybridRunbookWorkersListByHybridRunbookWorkerGroupInput,
     outputSchema: HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput,
   }));
@@ -4343,7 +4293,7 @@ export interface HybridRunbookWorkersMoveInput {
   hybridRunbookWorkerId: string;
 }
 export const HybridRunbookWorkersMoveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4360,7 +4310,7 @@ export const HybridRunbookWorkersMoveInput =
 // Output Schema
 export type HybridRunbookWorkersMoveOutput = void;
 export const HybridRunbookWorkersMoveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridRunbookWorkersMoveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridRunbookWorkersMoveOutput>;
 
 // The operation
 /**
@@ -4373,12 +4323,10 @@ export const HybridRunbookWorkersMoveOutput =
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
  */
-export const HybridRunbookWorkersMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridRunbookWorkersMoveInput,
-    outputSchema: HybridRunbookWorkersMoveOutput,
-  }),
-);
+export const HybridRunbookWorkersMove = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkersMoveInput,
+  outputSchema: HybridRunbookWorkersMoveOutput,
+}));
 // Input Schema
 export interface HybridRunbookWorkersPatchInput {
   subscriptionId: string;
@@ -4390,7 +4338,7 @@ export interface HybridRunbookWorkersPatchInput {
   name?: string;
 }
 export const HybridRunbookWorkersPatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4425,7 +4373,7 @@ export interface HybridRunbookWorkersPatchOutput {
   };
 }
 export const HybridRunbookWorkersPatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4456,12 +4404,10 @@ export const HybridRunbookWorkersPatchOutput =
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
  */
-export const HybridRunbookWorkersPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridRunbookWorkersPatchInput,
-    outputSchema: HybridRunbookWorkersPatchOutput,
-  }),
-);
+export const HybridRunbookWorkersPatch = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridRunbookWorkersPatchInput,
+  outputSchema: HybridRunbookWorkersPatchOutput,
+}));
 // Input Schema
 export interface JobCreateInput {
   subscriptionId: string;
@@ -4474,7 +4420,7 @@ export interface JobCreateInput {
     runOn?: string;
   };
 }
-export const JobCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4510,7 +4456,7 @@ export interface JobCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const JobCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4541,7 +4487,7 @@ export const JobCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobName - The job name.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobCreateInput,
   outputSchema: JobCreateOutput,
 }));
@@ -4552,7 +4498,7 @@ export interface JobGetInput {
   automationAccountName: string;
   jobName: string;
 }
-export const JobGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4579,7 +4525,7 @@ export interface JobGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const JobGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4610,7 +4556,7 @@ export const JobGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobName - The job name.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobGetInput,
   outputSchema: JobGetOutput,
 }));
@@ -4622,7 +4568,7 @@ export interface JobGetRunbookContentInput {
   jobName: string;
 }
 export const JobGetRunbookContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4638,7 +4584,7 @@ export const JobGetRunbookContentInput =
 // Output Schema
 export type JobGetRunbookContentOutput = string;
 export const JobGetRunbookContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<JobGetRunbookContentOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<JobGetRunbookContentOutput>;
 
 // The operation
 /**
@@ -4651,12 +4597,10 @@ export const JobGetRunbookContentOutput =
  * @param jobName - The job name.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobGetRunbookContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: JobGetRunbookContentInput,
-    outputSchema: JobGetRunbookContentOutput,
-  }),
-);
+export const JobGetRunbookContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: JobGetRunbookContentInput,
+  outputSchema: JobGetRunbookContentOutput,
+}));
 // Input Schema
 export interface JobListByAutomationAccountInput {
   subscriptionId: string;
@@ -4665,7 +4609,7 @@ export interface JobListByAutomationAccountInput {
   $filter?: string;
 }
 export const JobListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4696,7 +4640,7 @@ export interface JobListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const JobListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4742,12 +4686,10 @@ export const JobListByAutomationAccountOutput =
  * @param $filter - The filter to apply on the operation.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobListByAutomationAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: JobListByAutomationAccountInput,
-    outputSchema: JobListByAutomationAccountOutput,
-  }),
-);
+export const JobListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: JobListByAutomationAccountInput,
+  outputSchema: JobListByAutomationAccountOutput,
+}));
 // Input Schema
 export interface JobResumeInput {
   subscriptionId: string;
@@ -4755,7 +4697,7 @@ export interface JobResumeInput {
   automationAccountName: string;
   jobName: string;
 }
-export const JobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobResumeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4771,7 +4713,7 @@ export const JobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type JobResumeOutput = void;
 export const JobResumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobResumeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<JobResumeOutput>;
 
 // The operation
 /**
@@ -4784,7 +4726,7 @@ export const JobResumeOutput =
  * @param jobName - The job name.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobResume = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobResumeInput,
   outputSchema: JobResumeOutput,
 }));
@@ -4801,24 +4743,22 @@ export interface JobScheduleCreateInput {
     parameters?: Record<string, string>;
   };
 }
-export const JobScheduleCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    jobScheduleId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      schedule: Schema.Struct({
-        name: Schema.optional(Schema.String),
-      }),
-      runbook: Schema.Struct({
-        name: Schema.optional(Schema.String),
-      }),
-      runOn: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+export const JobScheduleCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  jobScheduleId: Schema.String.pipe(T.PathParam()),
+  properties: Schema.Struct({
+    schedule: Schema.Struct({
+      name: Schema.optional(Schema.String),
     }),
-  },
-).pipe(
+    runbook: Schema.Struct({
+      name: Schema.optional(Schema.String),
+    }),
+    runOn: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
@@ -4841,7 +4781,7 @@ export interface JobScheduleCreateOutput {
   };
 }
 export const JobScheduleCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4871,7 +4811,7 @@ export const JobScheduleCreateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param jobScheduleId - The job schedule name.
  */
-export const JobScheduleCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobScheduleCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobScheduleCreateInput,
   outputSchema: JobScheduleCreateOutput,
 }));
@@ -4882,14 +4822,12 @@ export interface JobScheduleDeleteInput {
   automationAccountName: string;
   jobScheduleId: string;
 }
-export const JobScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    jobScheduleId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const JobScheduleDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  jobScheduleId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
@@ -4900,7 +4838,7 @@ export const JobScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type JobScheduleDeleteOutput = void;
 export const JobScheduleDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobScheduleDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<JobScheduleDeleteOutput>;
 
 // The operation
 /**
@@ -4912,7 +4850,7 @@ export const JobScheduleDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param jobScheduleId - The job schedule name.
  */
-export const JobScheduleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobScheduleDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobScheduleDeleteInput,
   outputSchema: JobScheduleDeleteOutput,
 }));
@@ -4923,7 +4861,7 @@ export interface JobScheduleGetInput {
   automationAccountName: string;
   jobScheduleId: string;
 }
-export const JobScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobScheduleGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -4950,7 +4888,7 @@ export interface JobScheduleGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const JobScheduleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobScheduleGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4980,7 +4918,7 @@ export const JobScheduleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param jobScheduleId - The job schedule name.
  */
-export const JobScheduleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobScheduleGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobScheduleGetInput,
   outputSchema: JobScheduleGetOutput,
 }));
@@ -4992,7 +4930,7 @@ export interface JobScheduleListByAutomationAccountInput {
   $filter?: string;
 }
 export const JobScheduleListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5023,7 +4961,7 @@ export interface JobScheduleListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const JobScheduleListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5069,7 +5007,7 @@ export const JobScheduleListByAutomationAccountOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const JobScheduleListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: JobScheduleListByAutomationAccountInput,
     outputSchema: JobScheduleListByAutomationAccountOutput,
   }));
@@ -5080,7 +5018,7 @@ export interface JobStopInput {
   automationAccountName: string;
   jobName: string;
 }
-export const JobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5096,7 +5034,7 @@ export const JobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type JobStopOutput = void;
 export const JobStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<JobStopOutput>;
 
 // The operation
 /**
@@ -5109,7 +5047,7 @@ export const JobStopOutput =
  * @param jobName - The job name.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobStopInput,
   outputSchema: JobStopOutput,
 }));
@@ -5121,7 +5059,7 @@ export interface JobStreamGetInput {
   jobName: string;
   jobStreamId: string;
 }
-export const JobStreamGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobStreamGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5154,7 +5092,7 @@ export interface JobStreamGetOutput {
     value?: Record<string, unknown>;
   };
 }
-export const JobStreamGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobStreamGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   properties: Schema.optional(
     Schema.Struct({
@@ -5190,7 +5128,7 @@ export const JobStreamGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobStreamId - The job stream id.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobStreamGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobStreamGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobStreamGetInput,
   outputSchema: JobStreamGetOutput,
 }));
@@ -5203,7 +5141,7 @@ export interface JobStreamListByJobInput {
   $filter?: string;
 }
 export const JobStreamListByJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5240,7 +5178,7 @@ export interface JobStreamListByJobOutput {
   nextLink?: string;
 }
 export const JobStreamListByJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5283,7 +5221,7 @@ export const JobStreamListByJobOutput =
  * @param $filter - The filter to apply on the operation.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobStreamListByJob = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobStreamListByJob = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobStreamListByJobInput,
   outputSchema: JobStreamListByJobOutput,
 }));
@@ -5294,7 +5232,7 @@ export interface JobSuspendInput {
   automationAccountName: string;
   jobName: string;
 }
-export const JobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobSuspendInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5310,7 +5248,7 @@ export const JobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type JobSuspendOutput = void;
 export const JobSuspendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobSuspendOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<JobSuspendOutput>;
 
 // The operation
 /**
@@ -5323,7 +5261,7 @@ export const JobSuspendOutput =
  * @param jobName - The job name.
  * @param clientRequestId - Identifies this specific client request.
  */
-export const JobSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobSuspend = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobSuspendInput,
   outputSchema: JobSuspendOutput,
 }));
@@ -5334,7 +5272,7 @@ export interface KeysListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const KeysListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5355,7 +5293,7 @@ export interface KeysListByAutomationAccountOutput {
   }[];
 }
 export const KeysListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keys: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5376,12 +5314,10 @@ export const KeysListByAutomationAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const KeysListByAutomationAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KeysListByAutomationAccountInput,
-    outputSchema: KeysListByAutomationAccountOutput,
-  }),
-);
+export const KeysListByAutomationAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KeysListByAutomationAccountInput,
+  outputSchema: KeysListByAutomationAccountOutput,
+}));
 // Input Schema
 export interface LinkedWorkspaceGetInput {
   subscriptionId: string;
@@ -5389,7 +5325,7 @@ export interface LinkedWorkspaceGetInput {
   automationAccountName: string;
 }
 export const LinkedWorkspaceGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5406,7 +5342,7 @@ export interface LinkedWorkspaceGetOutput {
   id?: string;
 }
 export const LinkedWorkspaceGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<LinkedWorkspaceGetOutput>;
 
@@ -5419,7 +5355,7 @@ export const LinkedWorkspaceGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const LinkedWorkspaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkedWorkspaceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkedWorkspaceGetInput,
   outputSchema: LinkedWorkspaceGetOutput,
 }));
@@ -5441,7 +5377,7 @@ export interface ModuleCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const ModuleCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5484,7 +5420,7 @@ export interface ModuleCreateOrUpdateOutput {
   };
 }
 export const ModuleCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5514,12 +5450,10 @@ export const ModuleCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param moduleName - The module name.
  */
-export const ModuleCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ModuleCreateOrUpdateInput,
-    outputSchema: ModuleCreateOrUpdateOutput,
-  }),
-);
+export const ModuleCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ModuleCreateOrUpdateInput,
+  outputSchema: ModuleCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ModuleDeleteInput {
   subscriptionId: string;
@@ -5527,7 +5461,7 @@ export interface ModuleDeleteInput {
   automationAccountName: string;
   moduleName: string;
 }
-export const ModuleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModuleDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5543,7 +5477,7 @@ export const ModuleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ModuleDeleteOutput = void;
 export const ModuleDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ModuleDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ModuleDeleteOutput>;
 
 // The operation
 /**
@@ -5555,7 +5489,7 @@ export const ModuleDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param moduleName - The module name.
  */
-export const ModuleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModuleDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModuleDeleteInput,
   outputSchema: ModuleDeleteOutput,
 }));
@@ -5566,7 +5500,7 @@ export interface ModuleGetInput {
   automationAccountName: string;
   moduleName: string;
 }
-export const ModuleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModuleGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5593,7 +5527,7 @@ export interface ModuleGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ModuleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModuleGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5623,7 +5557,7 @@ export const ModuleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param moduleName - The module name.
  */
-export const ModuleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModuleGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModuleGetInput,
   outputSchema: ModuleGetOutput,
 }));
@@ -5634,7 +5568,7 @@ export interface ModuleListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const ModuleListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5664,7 +5598,7 @@ export interface ModuleListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const ModuleListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5709,7 +5643,7 @@ export const ModuleListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const ModuleListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ModuleListByAutomationAccountInput,
     outputSchema: ModuleListByAutomationAccountOutput,
   }));
@@ -5730,7 +5664,7 @@ export interface ModuleUpdateInput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const ModuleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModuleUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5776,7 +5710,7 @@ export interface ModuleUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ModuleUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModuleUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5806,7 +5740,7 @@ export const ModuleUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param moduleName - The module name.
  */
-export const ModuleUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModuleUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModuleUpdateInput,
   outputSchema: ModuleUpdateOutput,
 }));
@@ -5818,7 +5752,7 @@ export interface NodeCountInformationGetInput {
   countType: "status" | "nodeconfiguration";
 }
 export const NodeCountInformationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5839,7 +5773,7 @@ export interface NodeCountInformationGetOutput {
   totalCount?: number;
 }
 export const NodeCountInformationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5865,12 +5799,10 @@ export const NodeCountInformationGetOutput =
  * @param automationAccountName - The name of the automation account.
  * @param countType - The type of counts to retrieve
  */
-export const NodeCountInformationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NodeCountInformationGetInput,
-    outputSchema: NodeCountInformationGetOutput,
-  }),
-);
+export const NodeCountInformationGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NodeCountInformationGetInput,
+  outputSchema: NodeCountInformationGetOutput,
+}));
 // Input Schema
 export interface NodeReportsGetInput {
   subscriptionId: string;
@@ -5879,7 +5811,7 @@ export interface NodeReportsGetInput {
   nodeId: string;
   reportId: string;
 }
-export const NodeReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NodeReportsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -5941,7 +5873,7 @@ export interface NodeReportsGetOutput {
   numberOfResources?: number;
   rawErrors?: string;
 }
-export const NodeReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NodeReportsGetOutput = /*@__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.NullOr(Schema.String)),
   lastModifiedTime: Schema.optional(Schema.String),
   startTime: Schema.optional(Schema.NullOr(Schema.String)),
@@ -6016,7 +5948,7 @@ export const NodeReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param nodeId - The node id.
  * @param reportId - The report id.
  */
-export const NodeReportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NodeReportsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NodeReportsGetInput,
   outputSchema: NodeReportsGetOutput,
 }));
@@ -6029,7 +5961,7 @@ export interface NodeReportsGetContentInput {
   reportId: string;
 }
 export const NodeReportsGetContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6046,7 +5978,7 @@ export const NodeReportsGetContentInput =
 // Output Schema
 export type NodeReportsGetContentOutput = string;
 export const NodeReportsGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<NodeReportsGetContentOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<NodeReportsGetContentOutput>;
 
 // The operation
 /**
@@ -6059,12 +5991,10 @@ export const NodeReportsGetContentOutput =
  * @param nodeId - The node id.
  * @param reportId - The report id.
  */
-export const NodeReportsGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NodeReportsGetContentInput,
-    outputSchema: NodeReportsGetContentOutput,
-  }),
-);
+export const NodeReportsGetContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NodeReportsGetContentInput,
+  outputSchema: NodeReportsGetContentOutput,
+}));
 // Input Schema
 export interface NodeReportsListByNodeInput {
   subscriptionId: string;
@@ -6074,7 +6004,7 @@ export interface NodeReportsListByNodeInput {
   $filter?: string;
 }
 export const NodeReportsListByNodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6140,7 +6070,7 @@ export interface NodeReportsListByNodeOutput {
   nextLink?: string;
 }
 export const NodeReportsListByNodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         endTime: Schema.optional(Schema.NullOr(Schema.String)),
@@ -6220,12 +6150,10 @@ export const NodeReportsListByNodeOutput =
  * @param nodeId - The node id.
  * @param $filter - The filter to apply on the operation.
  */
-export const NodeReportsListByNode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NodeReportsListByNodeInput,
-    outputSchema: NodeReportsListByNodeOutput,
-  }),
-);
+export const NodeReportsListByNode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NodeReportsListByNodeInput,
+  outputSchema: NodeReportsListByNodeOutput,
+}));
 // Input Schema
 export interface ObjectDataTypesListFieldsByModuleAndTypeInput {
   subscriptionId: string;
@@ -6235,7 +6163,7 @@ export interface ObjectDataTypesListFieldsByModuleAndTypeInput {
   typeName: string;
 }
 export const ObjectDataTypesListFieldsByModuleAndTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6255,7 +6183,7 @@ export interface ObjectDataTypesListFieldsByModuleAndTypeOutput {
   nextLink?: string;
 }
 export const ObjectDataTypesListFieldsByModuleAndTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6279,7 +6207,7 @@ export const ObjectDataTypesListFieldsByModuleAndTypeOutput =
  * @param typeName - The name of type.
  */
 export const ObjectDataTypesListFieldsByModuleAndType =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ObjectDataTypesListFieldsByModuleAndTypeInput,
     outputSchema: ObjectDataTypesListFieldsByModuleAndTypeOutput,
   }));
@@ -6291,7 +6219,7 @@ export interface ObjectDataTypesListFieldsByTypeInput {
   typeName: string;
 }
 export const ObjectDataTypesListFieldsByTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6310,7 +6238,7 @@ export interface ObjectDataTypesListFieldsByTypeOutput {
   nextLink?: string;
 }
 export const ObjectDataTypesListFieldsByTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6333,15 +6261,13 @@ export const ObjectDataTypesListFieldsByTypeOutput =
  * @param typeName - The name of type.
  */
 export const ObjectDataTypesListFieldsByType =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ObjectDataTypesListFieldsByTypeInput,
     outputSchema: ObjectDataTypesListFieldsByTypeOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Automation/operations",
@@ -6380,7 +6306,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -6440,7 +6366,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -6473,7 +6399,7 @@ export interface PackageCreateOrUpdateInput {
   };
 }
 export const PackageCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6545,7 +6471,7 @@ export interface PackageCreateOrUpdateOutput {
   };
 }
 export const PackageCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6576,12 +6502,10 @@ export const PackageCreateOrUpdateOutput =
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  * @param packageName - The Package name.
  */
-export const PackageCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PackageCreateOrUpdateInput,
-    outputSchema: PackageCreateOrUpdateOutput,
-  }),
-);
+export const PackageCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PackageCreateOrUpdateInput,
+  outputSchema: PackageCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface PackageDeleteInput {
   subscriptionId: string;
@@ -6590,7 +6514,7 @@ export interface PackageDeleteInput {
   runtimeEnvironmentName: string;
   packageName: string;
 }
-export const PackageDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PackageDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6607,7 +6531,7 @@ export const PackageDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type PackageDeleteOutput = void;
 export const PackageDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PackageDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PackageDeleteOutput>;
 
 // The operation
 /**
@@ -6620,7 +6544,7 @@ export const PackageDeleteOutput =
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  * @param packageName - The Package name.
  */
-export const PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PackageDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PackageDeleteInput,
   outputSchema: PackageDeleteOutput,
 }));
@@ -6632,7 +6556,7 @@ export interface PackageGetInput {
   runtimeEnvironmentName: string;
   packageName: string;
 }
-export const PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PackageGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6660,7 +6584,7 @@ export interface PackageGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const PackageGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PackageGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6691,7 +6615,7 @@ export const PackageGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  * @param packageName - The Package name.
  */
-export const PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PackageGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PackageGetInput,
   outputSchema: PackageGetOutput,
 }));
@@ -6703,7 +6627,7 @@ export interface PackageListByRuntimeEnvironmentInput {
   runtimeEnvironmentName: string;
 }
 export const PackageListByRuntimeEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6734,7 +6658,7 @@ export interface PackageListByRuntimeEnvironmentOutput {
   nextLink?: string;
 }
 export const PackageListByRuntimeEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6780,7 +6704,7 @@ export const PackageListByRuntimeEnvironmentOutput =
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  */
 export const PackageListByRuntimeEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PackageListByRuntimeEnvironmentInput,
     outputSchema: PackageListByRuntimeEnvironmentOutput,
   }));
@@ -6812,7 +6736,7 @@ export interface PackageUpdateInput {
     };
   };
 }
-export const PackageUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PackageUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6877,7 +6801,7 @@ export interface PackageUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const PackageUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PackageUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6908,7 +6832,7 @@ export const PackageUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  * @param packageName - The Package name.
  */
-export const PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PackageUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PackageUpdateInput,
   outputSchema: PackageUpdateOutput,
 }));
@@ -6929,7 +6853,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -6974,7 +6898,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7005,7 +6929,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
@@ -7017,7 +6941,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7033,7 +6957,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -7046,7 +6970,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -7058,7 +6982,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7086,7 +7010,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7117,7 +7041,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -7128,7 +7052,7 @@ export interface PrivateEndpointConnectionsListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const PrivateEndpointConnectionsListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7158,7 +7082,7 @@ export interface PrivateEndpointConnectionsListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7205,7 +7129,7 @@ export const PrivateEndpointConnectionsListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const PrivateEndpointConnectionsListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByAutomationAccountInput,
     outputSchema: PrivateEndpointConnectionsListByAutomationAccountOutput,
   }));
@@ -7216,7 +7140,7 @@ export interface PrivateLinkResourcesAutomationInput {
   automationAccountName: string;
 }
 export const PrivateLinkResourcesAutomationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7246,7 +7170,7 @@ export interface PrivateLinkResourcesAutomationOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesAutomationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7293,7 +7217,7 @@ export const PrivateLinkResourcesAutomationOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const PrivateLinkResourcesAutomation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesAutomationInput,
     outputSchema: PrivateLinkResourcesAutomationOutput,
   }));
@@ -7313,7 +7237,7 @@ export interface Python2PackageCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const Python2PackageCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7354,7 +7278,7 @@ export interface Python2PackageCreateOrUpdateOutput {
   };
 }
 export const Python2PackageCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7385,7 +7309,7 @@ export const Python2PackageCreateOrUpdateOutput =
  * @param packageName - The python package name.
  */
 export const Python2PackageCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: Python2PackageCreateOrUpdateInput,
     outputSchema: Python2PackageCreateOrUpdateOutput,
   }));
@@ -7397,7 +7321,7 @@ export interface Python2PackageDeleteInput {
   packageName: string;
 }
 export const Python2PackageDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7413,7 +7337,7 @@ export const Python2PackageDeleteInput =
 // Output Schema
 export type Python2PackageDeleteOutput = void;
 export const Python2PackageDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<Python2PackageDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<Python2PackageDeleteOutput>;
 
 // The operation
 /**
@@ -7425,12 +7349,10 @@ export const Python2PackageDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python2PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: Python2PackageDeleteInput,
-    outputSchema: Python2PackageDeleteOutput,
-  }),
-);
+export const Python2PackageDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: Python2PackageDeleteInput,
+  outputSchema: Python2PackageDeleteOutput,
+}));
 // Input Schema
 export interface Python2PackageGetInput {
   subscriptionId: string;
@@ -7438,14 +7360,12 @@ export interface Python2PackageGetInput {
   automationAccountName: string;
   packageName: string;
 }
-export const Python2PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    packageName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const Python2PackageGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  packageName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
@@ -7468,7 +7388,7 @@ export interface Python2PackageGetOutput {
   };
 }
 export const Python2PackageGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7498,7 +7418,7 @@ export const Python2PackageGetOutput =
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python2PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const Python2PackageGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: Python2PackageGetInput,
   outputSchema: Python2PackageGetOutput,
 }));
@@ -7509,7 +7429,7 @@ export interface Python2PackageListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const Python2PackageListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7539,7 +7459,7 @@ export interface Python2PackageListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const Python2PackageListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7584,7 +7504,7 @@ export const Python2PackageListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const Python2PackageListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: Python2PackageListByAutomationAccountInput,
     outputSchema: Python2PackageListByAutomationAccountOutput,
   }));
@@ -7597,7 +7517,7 @@ export interface Python2PackageUpdateInput {
   tags?: Record<string, string>;
 }
 export const Python2PackageUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7626,7 +7546,7 @@ export interface Python2PackageUpdateOutput {
   };
 }
 export const Python2PackageUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7656,12 +7576,10 @@ export const Python2PackageUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python2PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: Python2PackageUpdateInput,
-    outputSchema: Python2PackageUpdateOutput,
-  }),
-);
+export const Python2PackageUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: Python2PackageUpdateInput,
+  outputSchema: Python2PackageUpdateOutput,
+}));
 // Input Schema
 export interface Python3PackageCreateOrUpdateInput {
   subscriptionId: string;
@@ -7678,7 +7596,7 @@ export interface Python3PackageCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const Python3PackageCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7719,7 +7637,7 @@ export interface Python3PackageCreateOrUpdateOutput {
   };
 }
 export const Python3PackageCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7750,7 +7668,7 @@ export const Python3PackageCreateOrUpdateOutput =
  * @param packageName - The python package name.
  */
 export const Python3PackageCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: Python3PackageCreateOrUpdateInput,
     outputSchema: Python3PackageCreateOrUpdateOutput,
   }));
@@ -7762,7 +7680,7 @@ export interface Python3PackageDeleteInput {
   packageName: string;
 }
 export const Python3PackageDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7778,7 +7696,7 @@ export const Python3PackageDeleteInput =
 // Output Schema
 export type Python3PackageDeleteOutput = void;
 export const Python3PackageDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<Python3PackageDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<Python3PackageDeleteOutput>;
 
 // The operation
 /**
@@ -7790,12 +7708,10 @@ export const Python3PackageDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python3PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: Python3PackageDeleteInput,
-    outputSchema: Python3PackageDeleteOutput,
-  }),
-);
+export const Python3PackageDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: Python3PackageDeleteInput,
+  outputSchema: Python3PackageDeleteOutput,
+}));
 // Input Schema
 export interface Python3PackageGetInput {
   subscriptionId: string;
@@ -7803,14 +7719,12 @@ export interface Python3PackageGetInput {
   automationAccountName: string;
   packageName: string;
 }
-export const Python3PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    packageName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const Python3PackageGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  packageName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
@@ -7833,7 +7747,7 @@ export interface Python3PackageGetOutput {
   };
 }
 export const Python3PackageGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7863,7 +7777,7 @@ export const Python3PackageGetOutput =
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python3PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const Python3PackageGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: Python3PackageGetInput,
   outputSchema: Python3PackageGetOutput,
 }));
@@ -7874,7 +7788,7 @@ export interface Python3PackageListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const Python3PackageListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7904,7 +7818,7 @@ export interface Python3PackageListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const Python3PackageListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7949,7 +7863,7 @@ export const Python3PackageListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const Python3PackageListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: Python3PackageListByAutomationAccountInput,
     outputSchema: Python3PackageListByAutomationAccountOutput,
   }));
@@ -7962,7 +7876,7 @@ export interface Python3PackageUpdateInput {
   tags?: Record<string, string>;
 }
 export const Python3PackageUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7991,7 +7905,7 @@ export interface Python3PackageUpdateOutput {
   };
 }
 export const Python3PackageUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8021,12 +7935,10 @@ export const Python3PackageUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
  */
-export const Python3PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: Python3PackageUpdateInput,
-    outputSchema: Python3PackageUpdateOutput,
-  }),
-);
+export const Python3PackageUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: Python3PackageUpdateInput,
+  outputSchema: Python3PackageUpdateOutput,
+}));
 // Input Schema
 export interface RunbookCreateOrUpdateInput {
   subscriptionId: string;
@@ -8081,7 +7993,7 @@ export interface RunbookCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const RunbookCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8174,7 +8086,7 @@ export interface RunbookCreateOrUpdateOutput {
   };
 }
 export const RunbookCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8204,12 +8116,10 @@ export const RunbookCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RunbookCreateOrUpdateInput,
-    outputSchema: RunbookCreateOrUpdateOutput,
-  }),
-);
+export const RunbookCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RunbookCreateOrUpdateInput,
+  outputSchema: RunbookCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface RunbookDeleteInput {
   subscriptionId: string;
@@ -8217,7 +8127,7 @@ export interface RunbookDeleteInput {
   automationAccountName: string;
   runbookName: string;
 }
-export const RunbookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8233,7 +8143,7 @@ export const RunbookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RunbookDeleteOutput = void;
 export const RunbookDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RunbookDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RunbookDeleteOutput>;
 
 // The operation
 /**
@@ -8245,7 +8155,7 @@ export const RunbookDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunbookDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunbookDeleteInput,
   outputSchema: RunbookDeleteOutput,
 }));
@@ -8256,7 +8166,7 @@ export interface RunbookDraftGetInput {
   automationAccountName: string;
   runbookName: string;
 }
-export const RunbookDraftGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookDraftGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8290,7 +8200,7 @@ export interface RunbookDraftGetOutput {
   >;
   outputTypes?: string[];
 }
-export const RunbookDraftGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookDraftGetOutput = /*@__PURE__*/ Schema.Struct({
   inEdit: Schema.optional(Schema.Boolean),
   draftContentLink: Schema.optional(
     Schema.Struct({
@@ -8330,7 +8240,7 @@ export const RunbookDraftGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookDraftGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunbookDraftGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunbookDraftGetInput,
   outputSchema: RunbookDraftGetOutput,
 }));
@@ -8342,7 +8252,7 @@ export interface RunbookDraftGetContentInput {
   runbookName: string;
 }
 export const RunbookDraftGetContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8358,7 +8268,7 @@ export const RunbookDraftGetContentInput =
 // Output Schema
 export type RunbookDraftGetContentOutput = string;
 export const RunbookDraftGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<RunbookDraftGetContentOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<RunbookDraftGetContentOutput>;
 
 // The operation
 /**
@@ -8370,12 +8280,10 @@ export const RunbookDraftGetContentOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookDraftGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RunbookDraftGetContentInput,
-    outputSchema: RunbookDraftGetContentOutput,
-  }),
-);
+export const RunbookDraftGetContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RunbookDraftGetContentInput,
+  outputSchema: RunbookDraftGetContentOutput,
+}));
 // Input Schema
 export interface RunbookDraftReplaceContentInput {
   subscriptionId: string;
@@ -8384,7 +8292,7 @@ export interface RunbookDraftReplaceContentInput {
   runbookName: string;
 }
 export const RunbookDraftReplaceContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8400,7 +8308,7 @@ export const RunbookDraftReplaceContentInput =
 // Output Schema
 export type RunbookDraftReplaceContentOutput = void;
 export const RunbookDraftReplaceContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RunbookDraftReplaceContentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RunbookDraftReplaceContentOutput>;
 
 // The operation
 /**
@@ -8412,12 +8320,10 @@ export const RunbookDraftReplaceContentOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookDraftReplaceContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RunbookDraftReplaceContentInput,
-    outputSchema: RunbookDraftReplaceContentOutput,
-  }),
-);
+export const RunbookDraftReplaceContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RunbookDraftReplaceContentInput,
+  outputSchema: RunbookDraftReplaceContentOutput,
+}));
 // Input Schema
 export interface RunbookDraftUndoEditInput {
   subscriptionId: string;
@@ -8426,7 +8332,7 @@ export interface RunbookDraftUndoEditInput {
   runbookName: string;
 }
 export const RunbookDraftUndoEditInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8492,7 +8398,7 @@ export interface RunbookDraftUndoEditOutput {
   requestId?: string;
 }
 export const RunbookDraftUndoEditOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusCode: Schema.optional(
       Schema.Literals([
         "Continue",
@@ -8557,12 +8463,10 @@ export const RunbookDraftUndoEditOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookDraftUndoEdit = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RunbookDraftUndoEditInput,
-    outputSchema: RunbookDraftUndoEditOutput,
-  }),
-);
+export const RunbookDraftUndoEdit = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RunbookDraftUndoEditInput,
+  outputSchema: RunbookDraftUndoEditOutput,
+}));
 // Input Schema
 export interface RunbookGetInput {
   subscriptionId: string;
@@ -8570,7 +8474,7 @@ export interface RunbookGetInput {
   automationAccountName: string;
   runbookName: string;
 }
-export const RunbookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8597,7 +8501,7 @@ export interface RunbookGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RunbookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8627,7 +8531,7 @@ export const RunbookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunbookGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunbookGetInput,
   outputSchema: RunbookGetOutput,
 }));
@@ -8638,14 +8542,12 @@ export interface RunbookGetContentInput {
   automationAccountName: string;
   runbookName: string;
 }
-export const RunbookGetContentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runbookName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const RunbookGetContentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runbookName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/content",
@@ -8656,7 +8558,7 @@ export const RunbookGetContentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type RunbookGetContentOutput = string;
 export const RunbookGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<RunbookGetContentOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<RunbookGetContentOutput>;
 
 // The operation
 /**
@@ -8668,7 +8570,7 @@ export const RunbookGetContentOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunbookGetContent = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunbookGetContentInput,
   outputSchema: RunbookGetContentOutput,
 }));
@@ -8679,7 +8581,7 @@ export interface RunbookListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const RunbookListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8709,7 +8611,7 @@ export interface RunbookListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const RunbookListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8754,7 +8656,7 @@ export const RunbookListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const RunbookListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RunbookListByAutomationAccountInput,
     outputSchema: RunbookListByAutomationAccountOutput,
   }));
@@ -8765,7 +8667,7 @@ export interface RunbookPublishInput {
   automationAccountName: string;
   runbookName: string;
 }
-export const RunbookPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookPublishInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8781,7 +8683,7 @@ export const RunbookPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RunbookPublishOutput = void;
 export const RunbookPublishOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RunbookPublishOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RunbookPublishOutput>;
 
 // The operation
 /**
@@ -8793,7 +8695,7 @@ export const RunbookPublishOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookPublish = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunbookPublish = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunbookPublishInput,
   outputSchema: RunbookPublishOutput,
 }));
@@ -8813,7 +8715,7 @@ export interface RunbookUpdateInput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const RunbookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8851,7 +8753,7 @@ export interface RunbookUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const RunbookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunbookUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8881,7 +8783,7 @@ export const RunbookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const RunbookUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunbookUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunbookUpdateInput,
   outputSchema: RunbookUpdateOutput,
 }));
@@ -8900,7 +8802,7 @@ export interface RuntimeEnvironmentsCreateInput {
   location: string;
 }
 export const RuntimeEnvironmentsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -8944,7 +8846,7 @@ export interface RuntimeEnvironmentsCreateOutput {
   };
 }
 export const RuntimeEnvironmentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8974,12 +8876,10 @@ export const RuntimeEnvironmentsCreateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  */
-export const RuntimeEnvironmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RuntimeEnvironmentsCreateInput,
-    outputSchema: RuntimeEnvironmentsCreateOutput,
-  }),
-);
+export const RuntimeEnvironmentsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RuntimeEnvironmentsCreateInput,
+  outputSchema: RuntimeEnvironmentsCreateOutput,
+}));
 // Input Schema
 export interface RuntimeEnvironmentsDeleteInput {
   subscriptionId: string;
@@ -8988,7 +8888,7 @@ export interface RuntimeEnvironmentsDeleteInput {
   runtimeEnvironmentName: string;
 }
 export const RuntimeEnvironmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9004,7 +8904,7 @@ export const RuntimeEnvironmentsDeleteInput =
 // Output Schema
 export type RuntimeEnvironmentsDeleteOutput = void;
 export const RuntimeEnvironmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RuntimeEnvironmentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RuntimeEnvironmentsDeleteOutput>;
 
 // The operation
 /**
@@ -9016,12 +8916,10 @@ export const RuntimeEnvironmentsDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  */
-export const RuntimeEnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RuntimeEnvironmentsDeleteInput,
-    outputSchema: RuntimeEnvironmentsDeleteOutput,
-  }),
-);
+export const RuntimeEnvironmentsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RuntimeEnvironmentsDeleteInput,
+  outputSchema: RuntimeEnvironmentsDeleteOutput,
+}));
 // Input Schema
 export interface RuntimeEnvironmentsGetInput {
   subscriptionId: string;
@@ -9030,7 +8928,7 @@ export interface RuntimeEnvironmentsGetInput {
   runtimeEnvironmentName: string;
 }
 export const RuntimeEnvironmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9058,7 +8956,7 @@ export interface RuntimeEnvironmentsGetOutput {
   };
 }
 export const RuntimeEnvironmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9088,12 +8986,10 @@ export const RuntimeEnvironmentsGetOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  */
-export const RuntimeEnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RuntimeEnvironmentsGetInput,
-    outputSchema: RuntimeEnvironmentsGetOutput,
-  }),
-);
+export const RuntimeEnvironmentsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RuntimeEnvironmentsGetInput,
+  outputSchema: RuntimeEnvironmentsGetOutput,
+}));
 // Input Schema
 export interface RuntimeEnvironmentsListByAutomationAccountInput {
   subscriptionId: string;
@@ -9101,7 +8997,7 @@ export interface RuntimeEnvironmentsListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const RuntimeEnvironmentsListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9131,7 +9027,7 @@ export interface RuntimeEnvironmentsListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const RuntimeEnvironmentsListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9176,7 +9072,7 @@ export const RuntimeEnvironmentsListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const RuntimeEnvironmentsListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RuntimeEnvironmentsListByAutomationAccountInput,
     outputSchema: RuntimeEnvironmentsListByAutomationAccountOutput,
   }));
@@ -9197,7 +9093,7 @@ export interface RuntimeEnvironmentsUpdateInput {
   };
 }
 export const RuntimeEnvironmentsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9246,7 +9142,7 @@ export interface RuntimeEnvironmentsUpdateOutput {
   };
 }
 export const RuntimeEnvironmentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9276,12 +9172,10 @@ export const RuntimeEnvironmentsUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  */
-export const RuntimeEnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RuntimeEnvironmentsUpdateInput,
-    outputSchema: RuntimeEnvironmentsUpdateOutput,
-  }),
-);
+export const RuntimeEnvironmentsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RuntimeEnvironmentsUpdateInput,
+  outputSchema: RuntimeEnvironmentsUpdateOutput,
+}));
 // Input Schema
 export interface ScheduleCreateOrUpdateInput {
   subscriptionId: string;
@@ -9314,7 +9208,7 @@ export interface ScheduleCreateOrUpdateInput {
   };
 }
 export const ScheduleCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9382,7 +9276,7 @@ export interface ScheduleCreateOrUpdateOutput {
   };
 }
 export const ScheduleCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9412,12 +9306,10 @@ export const ScheduleCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param scheduleName - The schedule name.
  */
-export const ScheduleCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScheduleCreateOrUpdateInput,
-    outputSchema: ScheduleCreateOrUpdateOutput,
-  }),
-);
+export const ScheduleCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduleCreateOrUpdateInput,
+  outputSchema: ScheduleCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ScheduleDeleteInput {
   subscriptionId: string;
@@ -9425,7 +9317,7 @@ export interface ScheduleDeleteInput {
   automationAccountName: string;
   scheduleName: string;
 }
-export const ScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScheduleDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9441,7 +9333,7 @@ export const ScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ScheduleDeleteOutput = void;
 export const ScheduleDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScheduleDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ScheduleDeleteOutput>;
 
 // The operation
 /**
@@ -9453,7 +9345,7 @@ export const ScheduleDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param scheduleName - The schedule name.
  */
-export const ScheduleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScheduleDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScheduleDeleteInput,
   outputSchema: ScheduleDeleteOutput,
 }));
@@ -9464,7 +9356,7 @@ export interface ScheduleGetInput {
   automationAccountName: string;
   scheduleName: string;
 }
-export const ScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScheduleGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9491,7 +9383,7 @@ export interface ScheduleGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ScheduleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScheduleGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9521,7 +9413,7 @@ export const ScheduleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param scheduleName - The schedule name.
  */
-export const ScheduleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScheduleGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScheduleGetInput,
   outputSchema: ScheduleGetOutput,
 }));
@@ -9532,7 +9424,7 @@ export interface ScheduleListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const ScheduleListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9562,7 +9454,7 @@ export interface ScheduleListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const ScheduleListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9607,7 +9499,7 @@ export const ScheduleListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const ScheduleListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduleListByAutomationAccountInput,
     outputSchema: ScheduleListByAutomationAccountOutput,
   }));
@@ -9620,7 +9512,7 @@ export interface ScheduleUpdateInput {
   name?: string;
   properties?: { description?: string; isEnabled?: boolean };
 }
-export const ScheduleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScheduleUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9654,7 +9546,7 @@ export interface ScheduleUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ScheduleUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScheduleUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9684,7 +9576,7 @@ export const ScheduleUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param scheduleName - The schedule name.
  */
-export const ScheduleUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScheduleUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScheduleUpdateInput,
   outputSchema: ScheduleUpdateOutput,
 }));
@@ -9696,7 +9588,7 @@ export interface SoftwareUpdateConfigurationMachineRunsGetByIdInput {
   softwareUpdateConfigurationMachineRunId: string;
 }
 export const SoftwareUpdateConfigurationMachineRunsGetByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9733,7 +9625,7 @@ export interface SoftwareUpdateConfigurationMachineRunsGetByIdOutput {
   };
 }
 export const SoftwareUpdateConfigurationMachineRunsGetByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -9783,7 +9675,7 @@ export const SoftwareUpdateConfigurationMachineRunsGetByIdOutput =
  * @param clientRequestId - Identifies this specific client request.
  */
 export const SoftwareUpdateConfigurationMachineRunsGetById =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SoftwareUpdateConfigurationMachineRunsGetByIdInput,
     outputSchema: SoftwareUpdateConfigurationMachineRunsGetByIdOutput,
   }));
@@ -9797,7 +9689,7 @@ export interface SoftwareUpdateConfigurationMachineRunsListInput {
   $top?: string;
 }
 export const SoftwareUpdateConfigurationMachineRunsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9839,7 +9731,7 @@ export interface SoftwareUpdateConfigurationMachineRunsListOutput {
   nextLink?: string;
 }
 export const SoftwareUpdateConfigurationMachineRunsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -9896,7 +9788,7 @@ export const SoftwareUpdateConfigurationMachineRunsListOutput =
  * @param $top - Maximum number of entries returned in the results collection
  */
 export const SoftwareUpdateConfigurationMachineRunsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SoftwareUpdateConfigurationMachineRunsListInput,
     outputSchema: SoftwareUpdateConfigurationMachineRunsListOutput,
   }));
@@ -9908,7 +9800,7 @@ export interface SoftwareUpdateConfigurationRunsGetByIdInput {
   softwareUpdateConfigurationRunId: string;
 }
 export const SoftwareUpdateConfigurationRunsGetByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -9945,7 +9837,7 @@ export interface SoftwareUpdateConfigurationRunsGetByIdOutput {
   };
 }
 export const SoftwareUpdateConfigurationRunsGetByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -10000,7 +9892,7 @@ export const SoftwareUpdateConfigurationRunsGetByIdOutput =
  * @param clientRequestId - Identifies this specific client request.
  */
 export const SoftwareUpdateConfigurationRunsGetById =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SoftwareUpdateConfigurationRunsGetByIdInput,
     outputSchema: SoftwareUpdateConfigurationRunsGetByIdOutput,
   }));
@@ -10014,7 +9906,7 @@ export interface SoftwareUpdateConfigurationRunsListInput {
   $top?: string;
 }
 export const SoftwareUpdateConfigurationRunsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -10056,7 +9948,7 @@ export interface SoftwareUpdateConfigurationRunsListOutput {
   nextLink?: string;
 }
 export const SoftwareUpdateConfigurationRunsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -10118,7 +10010,7 @@ export const SoftwareUpdateConfigurationRunsListOutput =
  * @param $top - Maximum number of entries returned in the results collection
  */
 export const SoftwareUpdateConfigurationRunsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SoftwareUpdateConfigurationRunsListInput,
     outputSchema: SoftwareUpdateConfigurationRunsListOutput,
   }));
@@ -10214,7 +10106,7 @@ export interface SoftwareUpdateConfigurationsCreateInput {
   };
 }
 export const SoftwareUpdateConfigurationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -10401,7 +10293,7 @@ export interface SoftwareUpdateConfigurationsCreateOutput {
   };
 }
 export const SoftwareUpdateConfigurationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10433,7 +10325,7 @@ export const SoftwareUpdateConfigurationsCreateOutput =
  * @param clientRequestId - Identifies this specific client request.
  */
 export const SoftwareUpdateConfigurationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SoftwareUpdateConfigurationsCreateInput,
     outputSchema: SoftwareUpdateConfigurationsCreateOutput,
   }));
@@ -10445,7 +10337,7 @@ export interface SoftwareUpdateConfigurationsDeleteInput {
   softwareUpdateConfigurationName: string;
 }
 export const SoftwareUpdateConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -10461,7 +10353,7 @@ export const SoftwareUpdateConfigurationsDeleteInput =
 // Output Schema
 export type SoftwareUpdateConfigurationsDeleteOutput = void;
 export const SoftwareUpdateConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SoftwareUpdateConfigurationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SoftwareUpdateConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -10475,7 +10367,7 @@ export const SoftwareUpdateConfigurationsDeleteOutput =
  * @param clientRequestId - Identifies this specific client request.
  */
 export const SoftwareUpdateConfigurationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SoftwareUpdateConfigurationsDeleteInput,
     outputSchema: SoftwareUpdateConfigurationsDeleteOutput,
   }));
@@ -10487,7 +10379,7 @@ export interface SoftwareUpdateConfigurationsGetByNameInput {
   softwareUpdateConfigurationName: string;
 }
 export const SoftwareUpdateConfigurationsGetByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -10515,7 +10407,7 @@ export interface SoftwareUpdateConfigurationsGetByNameOutput {
   };
 }
 export const SoftwareUpdateConfigurationsGetByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10547,7 +10439,7 @@ export const SoftwareUpdateConfigurationsGetByNameOutput =
  * @param clientRequestId - Identifies this specific client request.
  */
 export const SoftwareUpdateConfigurationsGetByName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SoftwareUpdateConfigurationsGetByNameInput,
     outputSchema: SoftwareUpdateConfigurationsGetByNameOutput,
   }));
@@ -10559,7 +10451,7 @@ export interface SoftwareUpdateConfigurationsListInput {
   $filter?: string;
 }
 export const SoftwareUpdateConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -10634,7 +10526,7 @@ export interface SoftwareUpdateConfigurationsListOutput {
   }[];
 }
 export const SoftwareUpdateConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -10784,7 +10676,7 @@ export const SoftwareUpdateConfigurationsListOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const SoftwareUpdateConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SoftwareUpdateConfigurationsListInput,
     outputSchema: SoftwareUpdateConfigurationsListOutput,
   }));
@@ -10810,7 +10702,7 @@ export interface SourceControlCreateOrUpdateInput {
   };
 }
 export const SourceControlCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -10858,7 +10750,7 @@ export interface SourceControlCreateOrUpdateOutput {
   };
 }
 export const SourceControlCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10888,12 +10780,10 @@ export const SourceControlCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param sourceControlName - The name of source control.
  */
-export const SourceControlCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SourceControlCreateOrUpdateInput,
-    outputSchema: SourceControlCreateOrUpdateOutput,
-  }),
-);
+export const SourceControlCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlCreateOrUpdateInput,
+  outputSchema: SourceControlCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface SourceControlDeleteInput {
   subscriptionId: string;
@@ -10902,7 +10792,7 @@ export interface SourceControlDeleteInput {
   sourceControlName: string;
 }
 export const SourceControlDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -10918,7 +10808,7 @@ export const SourceControlDeleteInput =
 // Output Schema
 export type SourceControlDeleteOutput = void;
 export const SourceControlDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SourceControlDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SourceControlDeleteOutput>;
 
 // The operation
 /**
@@ -10930,7 +10820,7 @@ export const SourceControlDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param sourceControlName - The name of source control.
  */
-export const SourceControlDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SourceControlDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SourceControlDeleteInput,
   outputSchema: SourceControlDeleteOutput,
 }));
@@ -10941,7 +10831,7 @@ export interface SourceControlGetInput {
   automationAccountName: string;
   sourceControlName: string;
 }
-export const SourceControlGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SourceControlGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -10968,27 +10858,25 @@ export interface SourceControlGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SourceControlGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<SourceControlGetOutput>;
+export const SourceControlGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<SourceControlGetOutput>;
 
 // The operation
 /**
@@ -11000,7 +10888,7 @@ export const SourceControlGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param automationAccountName - The name of the automation account.
  * @param sourceControlName - The name of source control.
  */
-export const SourceControlGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SourceControlGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SourceControlGetInput,
   outputSchema: SourceControlGetOutput,
 }));
@@ -11012,7 +10900,7 @@ export interface SourceControlListByAutomationAccountInput {
   $filter?: string;
 }
 export const SourceControlListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -11043,7 +10931,7 @@ export interface SourceControlListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const SourceControlListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11089,7 +10977,7 @@ export const SourceControlListByAutomationAccountOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const SourceControlListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SourceControlListByAutomationAccountInput,
     outputSchema: SourceControlListByAutomationAccountOutput,
   }));
@@ -11103,7 +10991,7 @@ export interface SourceControlSyncJobCreateInput {
   properties: { commitId: string };
 }
 export const SourceControlSyncJobCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -11135,7 +11023,7 @@ export interface SourceControlSyncJobCreateOutput {
   };
 }
 export const SourceControlSyncJobCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -11164,12 +11052,10 @@ export const SourceControlSyncJobCreateOutput =
  * @param sourceControlName - The name of source control.
  * @param sourceControlSyncJobId - The source control sync job id.
  */
-export const SourceControlSyncJobCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SourceControlSyncJobCreateInput,
-    outputSchema: SourceControlSyncJobCreateOutput,
-  }),
-);
+export const SourceControlSyncJobCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlSyncJobCreateInput,
+  outputSchema: SourceControlSyncJobCreateOutput,
+}));
 // Input Schema
 export interface SourceControlSyncJobGetInput {
   subscriptionId: string;
@@ -11179,7 +11065,7 @@ export interface SourceControlSyncJobGetInput {
   sourceControlSyncJobId: string;
 }
 export const SourceControlSyncJobGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -11207,7 +11093,7 @@ export interface SourceControlSyncJobGetOutput {
   };
 }
 export const SourceControlSyncJobGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
@@ -11235,12 +11121,10 @@ export const SourceControlSyncJobGetOutput =
  * @param sourceControlName - The name of source control.
  * @param sourceControlSyncJobId - The source control sync job id.
  */
-export const SourceControlSyncJobGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SourceControlSyncJobGetInput,
-    outputSchema: SourceControlSyncJobGetOutput,
-  }),
-);
+export const SourceControlSyncJobGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlSyncJobGetInput,
+  outputSchema: SourceControlSyncJobGetOutput,
+}));
 // Input Schema
 export interface SourceControlSyncJobListByAutomationAccountInput {
   subscriptionId: string;
@@ -11250,7 +11134,7 @@ export interface SourceControlSyncJobListByAutomationAccountInput {
   $filter?: string;
 }
 export const SourceControlSyncJobListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -11282,7 +11166,7 @@ export interface SourceControlSyncJobListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const SourceControlSyncJobListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -11319,7 +11203,7 @@ export const SourceControlSyncJobListByAutomationAccountOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const SourceControlSyncJobListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SourceControlSyncJobListByAutomationAccountInput,
     outputSchema: SourceControlSyncJobListByAutomationAccountOutput,
   }));
@@ -11333,7 +11217,7 @@ export interface SourceControlSyncJobStreamsGetInput {
   streamId: string;
 }
 export const SourceControlSyncJobStreamsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -11361,7 +11245,7 @@ export interface SourceControlSyncJobStreamsGetOutput {
   };
 }
 export const SourceControlSyncJobStreamsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
@@ -11388,7 +11272,7 @@ export const SourceControlSyncJobStreamsGetOutput =
  * @param streamId - The id of the sync job stream.
  */
 export const SourceControlSyncJobStreamsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SourceControlSyncJobStreamsGetInput,
     outputSchema: SourceControlSyncJobStreamsGetOutput,
   }));
@@ -11402,7 +11286,7 @@ export interface SourceControlSyncJobStreamsListBySyncJobInput {
   $filter?: string;
 }
 export const SourceControlSyncJobStreamsListBySyncJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -11431,7 +11315,7 @@ export interface SourceControlSyncJobStreamsListBySyncJobOutput {
   nextLink?: string;
 }
 export const SourceControlSyncJobStreamsListBySyncJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11461,7 +11345,7 @@ export const SourceControlSyncJobStreamsListBySyncJobOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const SourceControlSyncJobStreamsListBySyncJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SourceControlSyncJobStreamsListBySyncJobInput,
     outputSchema: SourceControlSyncJobStreamsListBySyncJobOutput,
   }));
@@ -11485,7 +11369,7 @@ export interface SourceControlUpdateInput {
   };
 }
 export const SourceControlUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -11531,7 +11415,7 @@ export interface SourceControlUpdateOutput {
   };
 }
 export const SourceControlUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11561,7 +11445,7 @@ export const SourceControlUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param sourceControlName - The name of source control.
  */
-export const SourceControlUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SourceControlUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SourceControlUpdateInput,
   outputSchema: SourceControlUpdateOutput,
 }));
@@ -11573,7 +11457,7 @@ export interface StatisticsListByAutomationAccountInput {
   $filter?: string;
 }
 export const StatisticsListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -11598,7 +11482,7 @@ export interface StatisticsListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const StatisticsListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11624,7 +11508,7 @@ export const StatisticsListByAutomationAccountOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const StatisticsListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StatisticsListByAutomationAccountInput,
     outputSchema: StatisticsListByAutomationAccountOutput,
   }));
@@ -11638,7 +11522,7 @@ export interface TestJobCreateInput {
   runOn?: string;
   runtimeEnvironment?: string;
 }
-export const TestJobCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -11668,7 +11552,7 @@ export interface TestJobCreateOutput {
   parameters?: Record<string, string>;
   logActivityTrace?: number;
 }
-export const TestJobCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobCreateOutput = /*@__PURE__*/ Schema.Struct({
   creationTime: Schema.optional(Schema.String),
   status: Schema.optional(Schema.String),
   statusDetails: Schema.optional(Schema.String),
@@ -11692,7 +11576,7 @@ export const TestJobCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const TestJobCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestJobCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestJobCreateInput,
   outputSchema: TestJobCreateOutput,
 }));
@@ -11703,7 +11587,7 @@ export interface TestJobGetInput {
   automationAccountName: string;
   runbookName: string;
 }
-export const TestJobGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -11730,7 +11614,7 @@ export interface TestJobGetOutput {
   parameters?: Record<string, string>;
   logActivityTrace?: number;
 }
-export const TestJobGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobGetOutput = /*@__PURE__*/ Schema.Struct({
   creationTime: Schema.optional(Schema.String),
   status: Schema.optional(Schema.String),
   statusDetails: Schema.optional(Schema.String),
@@ -11754,7 +11638,7 @@ export const TestJobGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const TestJobGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestJobGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestJobGetInput,
   outputSchema: TestJobGetOutput,
 }));
@@ -11765,7 +11649,7 @@ export interface TestJobResumeInput {
   automationAccountName: string;
   runbookName: string;
 }
-export const TestJobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobResumeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -11781,7 +11665,7 @@ export const TestJobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TestJobResumeOutput = void;
 export const TestJobResumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TestJobResumeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TestJobResumeOutput>;
 
 // The operation
 /**
@@ -11793,7 +11677,7 @@ export const TestJobResumeOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const TestJobResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestJobResume = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestJobResumeInput,
   outputSchema: TestJobResumeOutput,
 }));
@@ -11804,7 +11688,7 @@ export interface TestJobStopInput {
   automationAccountName: string;
   runbookName: string;
 }
-export const TestJobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -11820,7 +11704,7 @@ export const TestJobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TestJobStopOutput = void;
 export const TestJobStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TestJobStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TestJobStopOutput>;
 
 // The operation
 /**
@@ -11832,7 +11716,7 @@ export const TestJobStopOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const TestJobStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestJobStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestJobStopInput,
   outputSchema: TestJobStopOutput,
 }));
@@ -11844,15 +11728,13 @@ export interface TestJobStreamsGetInput {
   runbookName: string;
   jobStreamId: string;
 }
-export const TestJobStreamsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    automationAccountName: Schema.String.pipe(T.PathParam()),
-    runbookName: Schema.String.pipe(T.PathParam()),
-    jobStreamId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const TestJobStreamsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  runbookName: Schema.String.pipe(T.PathParam()),
+  jobStreamId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams/{jobStreamId}",
@@ -11880,7 +11762,7 @@ export interface TestJobStreamsGetOutput {
   };
 }
 export const TestJobStreamsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
@@ -11915,7 +11797,7 @@ export const TestJobStreamsGetOutput =
  * @param runbookName - The runbook name.
  * @param jobStreamId - The job stream id.
  */
-export const TestJobStreamsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestJobStreamsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestJobStreamsGetInput,
   outputSchema: TestJobStreamsGetOutput,
 }));
@@ -11928,7 +11810,7 @@ export interface TestJobStreamsListByTestJobInput {
   $filter?: string;
 }
 export const TestJobStreamsListByTestJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -11965,7 +11847,7 @@ export interface TestJobStreamsListByTestJobOutput {
   nextLink?: string;
 }
 export const TestJobStreamsListByTestJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12007,12 +11889,10 @@ export const TestJobStreamsListByTestJobOutput =
  * @param runbookName - The runbook name.
  * @param $filter - The filter to apply on the operation.
  */
-export const TestJobStreamsListByTestJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TestJobStreamsListByTestJobInput,
-    outputSchema: TestJobStreamsListByTestJobOutput,
-  }),
-);
+export const TestJobStreamsListByTestJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TestJobStreamsListByTestJobInput,
+  outputSchema: TestJobStreamsListByTestJobOutput,
+}));
 // Input Schema
 export interface TestJobSuspendInput {
   subscriptionId: string;
@@ -12020,7 +11900,7 @@ export interface TestJobSuspendInput {
   automationAccountName: string;
   runbookName: string;
 }
-export const TestJobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TestJobSuspendInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12036,7 +11916,7 @@ export const TestJobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TestJobSuspendOutput = void;
 export const TestJobSuspendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TestJobSuspendOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TestJobSuspendOutput>;
 
 // The operation
 /**
@@ -12048,7 +11928,7 @@ export const TestJobSuspendOutput =
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  */
-export const TestJobSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TestJobSuspend = /*@__PURE__*/ API.make(() => ({
   inputSchema: TestJobSuspendInput,
   outputSchema: TestJobSuspendOutput,
 }));
@@ -12059,7 +11939,7 @@ export interface UsagesListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const UsagesListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12084,7 +11964,7 @@ export interface UsagesListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const UsagesListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -12115,7 +11995,7 @@ export const UsagesListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const UsagesListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsagesListByAutomationAccountInput,
     outputSchema: UsagesListByAutomationAccountOutput,
   }));
@@ -12129,7 +12009,7 @@ export interface VariableCreateOrUpdateInput {
   properties: { value?: string; description?: string; isEncrypted?: boolean };
 }
 export const VariableCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12163,7 +12043,7 @@ export interface VariableCreateOrUpdateOutput {
   };
 }
 export const VariableCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12193,12 +12073,10 @@ export const VariableCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param variableName - The name of variable.
  */
-export const VariableCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VariableCreateOrUpdateInput,
-    outputSchema: VariableCreateOrUpdateOutput,
-  }),
-);
+export const VariableCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VariableCreateOrUpdateInput,
+  outputSchema: VariableCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface VariableDeleteInput {
   subscriptionId: string;
@@ -12206,7 +12084,7 @@ export interface VariableDeleteInput {
   automationAccountName: string;
   variableName: string;
 }
-export const VariableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VariableDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12222,7 +12100,7 @@ export const VariableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type VariableDeleteOutput = void;
 export const VariableDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VariableDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VariableDeleteOutput>;
 
 // The operation
 /**
@@ -12234,7 +12112,7 @@ export const VariableDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param variableName - The name of variable.
  */
-export const VariableDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VariableDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: VariableDeleteInput,
   outputSchema: VariableDeleteOutput,
 }));
@@ -12245,7 +12123,7 @@ export interface VariableGetInput {
   automationAccountName: string;
   variableName: string;
 }
-export const VariableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VariableGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12272,7 +12150,7 @@ export interface VariableGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const VariableGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VariableGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -12302,7 +12180,7 @@ export const VariableGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param variableName - The name of variable.
  */
-export const VariableGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VariableGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VariableGetInput,
   outputSchema: VariableGetOutput,
 }));
@@ -12313,7 +12191,7 @@ export interface VariableListByAutomationAccountInput {
   automationAccountName: string;
 }
 export const VariableListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12343,7 +12221,7 @@ export interface VariableListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const VariableListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12388,7 +12266,7 @@ export const VariableListByAutomationAccountOutput =
  * @param automationAccountName - The name of the automation account.
  */
 export const VariableListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VariableListByAutomationAccountInput,
     outputSchema: VariableListByAutomationAccountOutput,
   }));
@@ -12401,7 +12279,7 @@ export interface VariableUpdateInput {
   name?: string;
   properties?: { value?: string; description?: string };
 }
-export const VariableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VariableUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12435,7 +12313,7 @@ export interface VariableUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const VariableUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VariableUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -12465,7 +12343,7 @@ export const VariableUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param variableName - The name of variable.
  */
-export const VariableUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VariableUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VariableUpdateInput,
   outputSchema: VariableUpdateOutput,
 }));
@@ -12491,7 +12369,7 @@ export interface WatcherCreateOrUpdateInput {
   location?: string;
 }
 export const WatcherCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12537,7 +12415,7 @@ export interface WatcherCreateOrUpdateOutput {
   };
 }
 export const WatcherCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12567,12 +12445,10 @@ export const WatcherCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
  */
-export const WatcherCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatcherCreateOrUpdateInput,
-    outputSchema: WatcherCreateOrUpdateOutput,
-  }),
-);
+export const WatcherCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatcherCreateOrUpdateInput,
+  outputSchema: WatcherCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface WatcherDeleteInput {
   subscriptionId: string;
@@ -12580,7 +12456,7 @@ export interface WatcherDeleteInput {
   automationAccountName: string;
   watcherName: string;
 }
-export const WatcherDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12596,7 +12472,7 @@ export const WatcherDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WatcherDeleteOutput = void;
 export const WatcherDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WatcherDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WatcherDeleteOutput>;
 
 // The operation
 /**
@@ -12608,7 +12484,7 @@ export const WatcherDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
  */
-export const WatcherDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatcherDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatcherDeleteInput,
   outputSchema: WatcherDeleteOutput,
 }));
@@ -12619,7 +12495,7 @@ export interface WatcherGetInput {
   automationAccountName: string;
   watcherName: string;
 }
-export const WatcherGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12646,7 +12522,7 @@ export interface WatcherGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const WatcherGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -12676,7 +12552,7 @@ export const WatcherGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
  */
-export const WatcherGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatcherGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatcherGetInput,
   outputSchema: WatcherGetOutput,
 }));
@@ -12688,7 +12564,7 @@ export interface WatcherListByAutomationAccountInput {
   $filter?: string;
 }
 export const WatcherListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12719,7 +12595,7 @@ export interface WatcherListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const WatcherListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12765,7 +12641,7 @@ export const WatcherListByAutomationAccountOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const WatcherListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatcherListByAutomationAccountInput,
     outputSchema: WatcherListByAutomationAccountOutput,
   }));
@@ -12776,7 +12652,7 @@ export interface WatcherStartInput {
   automationAccountName: string;
   watcherName: string;
 }
-export const WatcherStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12792,7 +12668,7 @@ export const WatcherStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WatcherStartOutput = void;
 export const WatcherStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WatcherStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WatcherStartOutput>;
 
 // The operation
 /**
@@ -12804,7 +12680,7 @@ export const WatcherStartOutput =
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
  */
-export const WatcherStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatcherStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatcherStartInput,
   outputSchema: WatcherStartOutput,
 }));
@@ -12815,7 +12691,7 @@ export interface WatcherStopInput {
   automationAccountName: string;
   watcherName: string;
 }
-export const WatcherStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12831,7 +12707,7 @@ export const WatcherStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WatcherStopOutput = void;
 export const WatcherStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WatcherStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WatcherStopOutput>;
 
 // The operation
 /**
@@ -12843,7 +12719,7 @@ export const WatcherStopOutput =
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
  */
-export const WatcherStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatcherStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatcherStopInput,
   outputSchema: WatcherStopOutput,
 }));
@@ -12856,7 +12732,7 @@ export interface WatcherUpdateInput {
   properties?: { executionFrequencyInSeconds?: number };
   name?: string;
 }
-export const WatcherUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12889,7 +12765,7 @@ export interface WatcherUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const WatcherUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatcherUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -12919,7 +12795,7 @@ export const WatcherUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
  */
-export const WatcherUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatcherUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatcherUpdateInput,
   outputSchema: WatcherUpdateOutput,
 }));
@@ -12940,7 +12816,7 @@ export interface WebhookCreateOrUpdateInput {
   };
 }
 export const WebhookCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -12981,7 +12857,7 @@ export interface WebhookCreateOrUpdateOutput {
   };
 }
 export const WebhookCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13011,12 +12887,10 @@ export const WebhookCreateOrUpdateOutput =
  * @param automationAccountName - The name of the automation account.
  * @param webhookName - The webhook name.
  */
-export const WebhookCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebhookCreateOrUpdateInput,
-    outputSchema: WebhookCreateOrUpdateOutput,
-  }),
-);
+export const WebhookCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebhookCreateOrUpdateInput,
+  outputSchema: WebhookCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface WebhookDeleteInput {
   subscriptionId: string;
@@ -13024,7 +12898,7 @@ export interface WebhookDeleteInput {
   automationAccountName: string;
   webhookName: string;
 }
-export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -13040,7 +12914,7 @@ export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WebhookDeleteOutput = void;
 export const WebhookDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebhookDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebhookDeleteOutput>;
 
 // The operation
 /**
@@ -13052,7 +12926,7 @@ export const WebhookDeleteOutput =
  * @param automationAccountName - The name of the automation account.
  * @param webhookName - The webhook name.
  */
-export const WebhookDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookDeleteInput,
   outputSchema: WebhookDeleteOutput,
 }));
@@ -13063,7 +12937,7 @@ export interface WebhookGenerateUriInput {
   automationAccountName: string;
 }
 export const WebhookGenerateUriInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -13078,7 +12952,7 @@ export const WebhookGenerateUriInput =
 // Output Schema
 export type WebhookGenerateUriOutput = string;
 export const WebhookGenerateUriOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<WebhookGenerateUriOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<WebhookGenerateUriOutput>;
 
 // The operation
 /**
@@ -13089,7 +12963,7 @@ export const WebhookGenerateUriOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
-export const WebhookGenerateUri = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookGenerateUri = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookGenerateUriInput,
   outputSchema: WebhookGenerateUriOutput,
 }));
@@ -13100,7 +12974,7 @@ export interface WebhookGetInput {
   automationAccountName: string;
   webhookName: string;
 }
-export const WebhookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -13127,7 +13001,7 @@ export interface WebhookGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const WebhookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -13157,7 +13031,7 @@ export const WebhookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param webhookName - The webhook name.
  */
-export const WebhookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookGetInput,
   outputSchema: WebhookGetOutput,
 }));
@@ -13169,7 +13043,7 @@ export interface WebhookListByAutomationAccountInput {
   $filter?: string;
 }
 export const WebhookListByAutomationAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -13200,7 +13074,7 @@ export interface WebhookListByAutomationAccountOutput {
   nextLink?: string;
 }
 export const WebhookListByAutomationAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -13246,7 +13120,7 @@ export const WebhookListByAutomationAccountOutput =
  * @param $filter - The filter to apply on the operation.
  */
 export const WebhookListByAutomationAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebhookListByAutomationAccountInput,
     outputSchema: WebhookListByAutomationAccountOutput,
   }));
@@ -13264,7 +13138,7 @@ export interface WebhookUpdateInput {
     description?: string;
   };
 }
-export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -13300,7 +13174,7 @@ export interface WebhookUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const WebhookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -13330,7 +13204,7 @@ export const WebhookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param automationAccountName - The name of the automation account.
  * @param webhookName - The webhook name.
  */
-export const WebhookUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookUpdateInput,
   outputSchema: WebhookUpdateOutput,
 }));

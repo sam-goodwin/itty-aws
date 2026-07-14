@@ -683,7 +683,7 @@ export interface ExternalDataSourcesUpdateInput {
   supports_column_selection?: boolean;
 }
 export const ExternalDataSourcesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     created_at: Schema.optional(Schema.String),
@@ -2053,7 +2053,7 @@ export interface ExternalDataSourcesUpdateOutput {
   supports_column_selection?: boolean;
 }
 export const ExternalDataSourcesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(Schema.NullOr(Schema.String)),
@@ -2747,10 +2747,8 @@ export const ExternalDataSourcesUpdateOutput =
  * @param id - A UUID string identifying this external data source.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const externalDataSourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExternalDataSourcesUpdateInput,
-    outputSchema: ExternalDataSourcesUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const externalDataSourcesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExternalDataSourcesUpdateInput,
+  outputSchema: ExternalDataSourcesUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

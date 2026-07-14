@@ -37,7 +37,7 @@ export interface WarehouseViewLinksCreateInput {
   configuration?: unknown;
 }
 export const WarehouseViewLinksCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String,
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
@@ -118,7 +118,7 @@ export interface WarehouseViewLinksCreateOutput {
   configuration?: unknown;
 }
 export const WarehouseViewLinksCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
     created_by: Schema.Struct({
@@ -165,9 +165,7 @@ export const WarehouseViewLinksCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const warehouseViewLinksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WarehouseViewLinksCreateInput,
-    outputSchema: WarehouseViewLinksCreateOutput,
-  }),
-);
+export const warehouseViewLinksCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WarehouseViewLinksCreateInput,
+  outputSchema: WarehouseViewLinksCreateOutput,
+}));

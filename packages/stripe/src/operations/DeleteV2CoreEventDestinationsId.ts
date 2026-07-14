@@ -7,7 +7,7 @@ export interface DeleteV2CoreEventDestinationsIdInput {
   id: string;
 }
 export const DeleteV2CoreEventDestinationsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v2/core/event_destinations/{id}" }),
@@ -19,7 +19,7 @@ export interface DeleteV2CoreEventDestinationsIdOutput {
   object?: string;
 }
 export const DeleteV2CoreEventDestinationsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     object: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DeleteV2CoreEventDestinationsIdOutput>;
@@ -33,7 +33,7 @@ export const DeleteV2CoreEventDestinationsIdOutput =
  * @param id - Identifier for the event destination to delete.
  */
 export const DeleteV2CoreEventDestinationsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteV2CoreEventDestinationsIdInput,
     outputSchema: DeleteV2CoreEventDestinationsIdOutput,
   }));

@@ -36,7 +36,7 @@ export interface Reader {
 }
 
 export const Reader: Schema.Codec<Reader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originatingPublicationId: Schema.optional(Schema.String),
     publicationId: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface Entitlement {
 }
 
 export const Entitlement: Schema.Codec<Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     detail: Schema.optional(Schema.String),
     productId: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export const Entitlement: Schema.Codec<Entitlement> =
 export interface DeleteReaderResponse {}
 
 export const DeleteReaderResponse: Schema.Codec<DeleteReaderResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteReaderResponse",
   });
 
@@ -78,7 +78,7 @@ export interface ReaderEntitlements {
 }
 
 export const ReaderEntitlements: Schema.Codec<ReaderEntitlements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlements: Schema.optional(Schema.Array(Entitlement)),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReaderEntitlements" });
@@ -143,7 +143,7 @@ export interface GetEntitlementsPublicationsReadersRequest {
 }
 
 export const GetEntitlementsPublicationsReadersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -152,7 +152,7 @@ export const GetEntitlementsPublicationsReadersRequest =
 
 export type GetEntitlementsPublicationsReadersResponse = ReaderEntitlements;
 export const GetEntitlementsPublicationsReadersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReaderEntitlements;
+  /*@__PURE__*/ ReaderEntitlements;
 
 export type GetEntitlementsPublicationsReadersError =
   | DefaultErrors
@@ -165,7 +165,7 @@ export const getEntitlementsPublicationsReaders: API.OperationMethod<
   GetEntitlementsPublicationsReadersResponse,
   GetEntitlementsPublicationsReadersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEntitlementsPublicationsReadersRequest,
   output: GetEntitlementsPublicationsReadersResponse,
   errors: [NotFound, Forbidden],
@@ -181,7 +181,7 @@ export interface UpdateEntitlementsPublicationsReadersRequest {
 }
 
 export const UpdateEntitlementsPublicationsReadersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ReaderEntitlements).pipe(T.HttpBody()),
@@ -192,7 +192,7 @@ export const UpdateEntitlementsPublicationsReadersRequest =
 
 export type UpdateEntitlementsPublicationsReadersResponse = ReaderEntitlements;
 export const UpdateEntitlementsPublicationsReadersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReaderEntitlements;
+  /*@__PURE__*/ ReaderEntitlements;
 
 export type UpdateEntitlementsPublicationsReadersError =
   | DefaultErrors
@@ -207,7 +207,7 @@ export const updateEntitlementsPublicationsReaders: API.OperationMethod<
   UpdateEntitlementsPublicationsReadersResponse,
   UpdateEntitlementsPublicationsReadersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEntitlementsPublicationsReadersRequest,
   output: UpdateEntitlementsPublicationsReadersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -219,7 +219,7 @@ export interface GetPublicationsReadersRequest {
 }
 
 export const GetPublicationsReadersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -227,8 +227,7 @@ export const GetPublicationsReadersRequest =
   ) as unknown as Schema.Codec<GetPublicationsReadersRequest>;
 
 export type GetPublicationsReadersResponse = Reader;
-export const GetPublicationsReadersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Reader;
+export const GetPublicationsReadersResponse = /*@__PURE__*/ Reader;
 
 export type GetPublicationsReadersError = DefaultErrors | NotFound | Forbidden;
 
@@ -238,7 +237,7 @@ export const getPublicationsReaders: API.OperationMethod<
   GetPublicationsReadersResponse,
   GetPublicationsReadersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPublicationsReadersRequest,
   output: GetPublicationsReadersResponse,
   errors: [NotFound, Forbidden],
@@ -252,7 +251,7 @@ export interface DeletePublicationsReadersRequest {
 }
 
 export const DeletePublicationsReadersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -262,7 +261,7 @@ export const DeletePublicationsReadersRequest =
 
 export type DeletePublicationsReadersResponse = DeleteReaderResponse;
 export const DeletePublicationsReadersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DeleteReaderResponse;
+  /*@__PURE__*/ DeleteReaderResponse;
 
 export type DeletePublicationsReadersError =
   | DefaultErrors
@@ -277,7 +276,7 @@ export const deletePublicationsReaders: API.OperationMethod<
   DeletePublicationsReadersResponse,
   DeletePublicationsReadersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePublicationsReadersRequest,
   output: DeletePublicationsReadersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

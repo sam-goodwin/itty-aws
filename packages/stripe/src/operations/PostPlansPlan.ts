@@ -12,7 +12,7 @@ export interface PostPlansPlanInput {
   product?: string;
   trial_period_days?: number;
 }
-export const PostPlansPlanInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPlansPlanInput = /*@__PURE__*/ Schema.Struct({
   plan: Schema.String.pipe(T.PathParam()),
   active: Schema.optional(Schema.Boolean),
   expand: Schema.optional(Schema.Array(Schema.String)),
@@ -169,7 +169,7 @@ export interface PostPlansPlanOutput {
   trial_period_days: number | null;
   usage_type: "licensed" | "metered";
 }
-export const PostPlansPlanOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPlansPlanOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   amount: Schema.NullOr(Schema.Number),
   amount_decimal: Schema.NullOr(Schema.String),
@@ -213,7 +213,7 @@ export const PostPlansPlanOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>Updates the specified plan by setting the values of the parameters passed. Any parameters not provided are left unchanged. By design, you cannot change a plan’s ID, amount, currency, or billing cycle.</p>
  */
-export const PostPlansPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPlansPlan = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostPlansPlanInput,
   outputSchema: PostPlansPlanOutput,
 }));

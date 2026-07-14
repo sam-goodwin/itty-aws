@@ -10,7 +10,7 @@ export interface UpdateGroupEncryptionAtRestInput {
   pretty?: boolean;
 }
 export const UpdateGroupEncryptionAtRestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const UpdateGroupEncryptionAtRestInput =
 // Output Schema
 export type UpdateGroupEncryptionAtRestOutput = void;
 export const UpdateGroupEncryptionAtRestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupEncryptionAtRestOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupEncryptionAtRestOutput>;
 
 // The operation
 /**
@@ -39,10 +39,8 @@ export const UpdateGroupEncryptionAtRestOutput =
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const updateGroupEncryptionAtRest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupEncryptionAtRestInput,
-    outputSchema: UpdateGroupEncryptionAtRestOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const updateGroupEncryptionAtRest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupEncryptionAtRestInput,
+  outputSchema: UpdateGroupEncryptionAtRestOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

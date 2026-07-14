@@ -173,7 +173,7 @@ export interface UpdateDashboardInput {
   overwrite?: boolean;
   version?: string | number;
 }
-export const UpdateDashboardInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDashboardInput = /*@__PURE__*/ Schema.Struct({
   uid: Schema.String.pipe(T.PathParam()),
   dashboard: Schema.Struct({
     name: Schema.String,
@@ -402,7 +402,7 @@ export interface UpdateDashboardOutput {
   overwritten?: boolean;
   status: "created" | "updated";
 }
-export const UpdateDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDashboardOutput = /*@__PURE__*/ Schema.Struct({
   dashboard: Schema.Struct({
     createdAt: Schema.String,
     createdBy: Schema.String,
@@ -465,7 +465,7 @@ export const UpdateDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Update a dashboard by UID.
  */
-export const updateDashboard = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateDashboard = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateDashboardInput,
   outputSchema: UpdateDashboardOutput,
   errors: [BadRequest, Conflict] as const,

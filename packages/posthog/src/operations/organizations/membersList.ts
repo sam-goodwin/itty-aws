@@ -11,7 +11,7 @@ export interface MembersListInput {
   order?: "-joined_at" | "joined_at";
   search?: string;
 }
-export const MembersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MembersListInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
@@ -61,7 +61,7 @@ export interface MembersListOutput {
     search_match_type?: "exact" | "similar" | null;
   }[];
 }
-export const MembersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MembersListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -125,7 +125,7 @@ export const MembersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  * @param search - Match against member `first_name`, `last_name`, and `email`. Returns case-insensitive substring matches and fuzzy trigram matches (typos, prefix-as-you-type) together, ordered exact-first; each result's `search_match_type` is `exact` or `similar`. Capped at 200 characters.
  */
-export const membersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const membersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MembersListInput,
   outputSchema: MembersListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

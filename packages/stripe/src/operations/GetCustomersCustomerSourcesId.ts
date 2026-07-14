@@ -14,7 +14,7 @@ export interface GetCustomersCustomerSourcesIdInput {
   expand?: string;
 }
 export const GetCustomersCustomerSourcesIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -29,7 +29,7 @@ export const GetCustomersCustomerSourcesIdInput =
 // Output Schema
 export type GetCustomersCustomerSourcesIdOutput = unknown;
 export const GetCustomersCustomerSourcesIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetCustomersCustomerSourcesIdOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetCustomersCustomerSourcesIdOutput>;
 
 // The operation
 /**
@@ -38,7 +38,7 @@ export const GetCustomersCustomerSourcesIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetCustomersCustomerSourcesId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetCustomersCustomerSourcesIdInput,
     outputSchema: GetCustomersCustomerSourcesIdOutput,
   }));

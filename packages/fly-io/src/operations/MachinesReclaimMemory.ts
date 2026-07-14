@@ -10,7 +10,7 @@ export interface MachinesReclaimMemoryInput {
   amount_mb?: number;
 }
 export const MachinesReclaimMemoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     machine_id: Schema.String.pipe(T.PathParam()),
     amount_mb: Schema.optional(Schema.Number),
@@ -26,7 +26,7 @@ export interface MachinesReclaimMemoryOutput {
   actual_mb?: number;
 }
 export const MachinesReclaimMemoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actual_mb: Schema.optional(Schema.Number),
   }) as unknown as Schema.Codec<MachinesReclaimMemoryOutput>;
 
@@ -39,10 +39,8 @@ export const MachinesReclaimMemoryOutput =
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesReclaimMemory = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesReclaimMemoryInput,
-    outputSchema: MachinesReclaimMemoryOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const MachinesReclaimMemory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesReclaimMemoryInput,
+  outputSchema: MachinesReclaimMemoryOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

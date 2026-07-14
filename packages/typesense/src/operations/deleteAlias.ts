@@ -7,7 +7,7 @@ import { NotFound } from "../errors.ts";
 export interface DeleteAliasInput {
   aliasName: string;
 }
-export const DeleteAliasInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteAliasInput = /*@__PURE__*/ Schema.Struct({
   aliasName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/aliases/{aliasName}" }),
@@ -18,7 +18,7 @@ export interface DeleteAliasOutput {
   name: string;
   collection_name: string;
 }
-export const DeleteAliasOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteAliasOutput = /*@__PURE__*/ Schema.Struct({
   name: Schema.String,
   collection_name: Schema.String,
 }) as unknown as Schema.Codec<DeleteAliasOutput>;
@@ -29,7 +29,7 @@ export const DeleteAliasOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param aliasName - The name of the alias to delete
  */
-export const deleteAlias = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteAlias = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteAliasInput,
   outputSchema: DeleteAliasOutput,
   errors: [NotFound] as const,

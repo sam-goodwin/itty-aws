@@ -28,7 +28,7 @@ interface Value {
   /** The zone's plan level. */
   zonePlan?: string | null;
 }
-const Value = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Value = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     emailState: Schema.optional(
@@ -66,7 +66,7 @@ interface Value2 {
   /** Map of scanning sources and their enabled state. */
   sources?: Record<string, unknown> | null;
 }
-const Value2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Value2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -93,16 +93,15 @@ export interface GetCsamScannerRequest {
   zoneId: string;
 }
 
-export const GetCsamScannerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/settings/csam_scanner_third_party",
-      }),
-    ),
+export const GetCsamScannerRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/settings/csam_scanner_third_party",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetCsamScannerRequest>;
 
 export interface GetCsamScannerResponse {
@@ -123,7 +122,7 @@ export interface GetCsamScannerResponse {
 }
 
 export const GetCsamScannerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(
         Schema.Union([Schema.Literal("csam_scanner"), Schema.Null]),
@@ -150,7 +149,7 @@ export const getCsamScanner: API.OperationMethod<
   GetCsamScannerResponse,
   GetCsamScannerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCsamScannerRequest,
   output: GetCsamScannerResponse,
   errors: [],
@@ -171,7 +170,7 @@ export interface PatchCsamScannerRequest {
 }
 
 export const PatchCsamScannerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       id: Schema.optional(Schema.Literal("csam_scanner")),
@@ -202,7 +201,7 @@ export interface PatchCsamScannerResponse {
 }
 
 export const PatchCsamScannerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(
         Schema.Union([Schema.Literal("csam_scanner"), Schema.Null]),
@@ -229,7 +228,7 @@ export const patchCsamScanner: API.OperationMethod<
   PatchCsamScannerResponse,
   PatchCsamScannerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCsamScannerRequest,
   output: PatchCsamScannerResponse,
   errors: [],

@@ -16,7 +16,7 @@ export interface AuthorizationResourcesControllerUpdateInput {
   description?: string | null;
 }
 export const AuthorizationResourcesControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -38,7 +38,7 @@ export interface AuthorizationResourcesControllerUpdateOutput {
   updated_at: string;
 }
 export const AuthorizationResourcesControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     name: Schema.String,
     description: Schema.NullOr(Schema.String),
@@ -60,7 +60,7 @@ export const AuthorizationResourcesControllerUpdateOutput =
  * @param resource_id - The ID of the authorization resource.
  */
 export const AuthorizationResourcesControllerUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationResourcesControllerUpdateInput,
     outputSchema: AuthorizationResourcesControllerUpdateOutput,
     errors: [

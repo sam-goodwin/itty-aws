@@ -13,7 +13,7 @@ export interface PersonsDeletionStatusListInput {
   status?: "all" | "completed" | "pending";
 }
 export const PersonsDeletionStatusListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
     limit: Schema.optional(Schema.Number),
@@ -40,7 +40,7 @@ export interface PersonsDeletionStatusListOutput {
   }[];
 }
 export const PersonsDeletionStatusListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     count: Schema.optional(Schema.Number),
@@ -66,10 +66,8 @@ export const PersonsDeletionStatusListOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param status - Filter by deletion status: 'pending', 'completed', or 'all'.
  */
-export const personsDeletionStatusList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsDeletionStatusListInput,
-    outputSchema: PersonsDeletionStatusListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsDeletionStatusList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsDeletionStatusListInput,
+  outputSchema: PersonsDeletionStatusListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

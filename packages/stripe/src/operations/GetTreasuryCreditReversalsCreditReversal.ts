@@ -8,7 +8,7 @@ export interface GetTreasuryCreditReversalsCreditReversalInput {
   expand?: string;
 }
 export const GetTreasuryCreditReversalsCreditReversalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     credit_reversal: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -124,7 +124,7 @@ export interface GetTreasuryCreditReversalsCreditReversalOutput {
     | null;
 }
 export const GetTreasuryCreditReversalsCreditReversalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     created: Schema.Number,
     currency: Schema.String,
@@ -250,7 +250,7 @@ export const GetTreasuryCreditReversalsCreditReversalOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTreasuryCreditReversalsCreditReversal =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTreasuryCreditReversalsCreditReversalInput,
     outputSchema: GetTreasuryCreditReversalsCreditReversalOutput,
   }));

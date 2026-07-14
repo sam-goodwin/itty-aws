@@ -90,7 +90,7 @@ export interface InsightsCancelCreateInput {
   search_match_type?: "exact" | "similar" | null;
 }
 export const InsightsCancelCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
     id: Schema.optional(Schema.Number),
@@ -221,7 +221,7 @@ export const InsightsCancelCreateInput =
 // Output Schema
 export type InsightsCancelCreateOutput = void;
 export const InsightsCancelCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InsightsCancelCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InsightsCancelCreateOutput>;
 
 // The operation
 /**
@@ -233,10 +233,8 @@ export const InsightsCancelCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const insightsCancelCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InsightsCancelCreateInput,
-    outputSchema: InsightsCancelCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const insightsCancelCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InsightsCancelCreateInput,
+  outputSchema: InsightsCancelCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

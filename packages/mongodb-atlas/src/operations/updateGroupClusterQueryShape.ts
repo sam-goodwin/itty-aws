@@ -12,7 +12,7 @@ export interface UpdateGroupClusterQueryShapeInput {
   pretty?: boolean;
 }
 export const UpdateGroupClusterQueryShapeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     queryShapeHash: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const UpdateGroupClusterQueryShapeInput =
 // Output Schema
 export type UpdateGroupClusterQueryShapeOutput = void;
 export const UpdateGroupClusterQueryShapeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterQueryShapeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterQueryShapeOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const UpdateGroupClusterQueryShapeOutput =
  * @param queryShapeHash - A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
  */
 export const updateGroupClusterQueryShape =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupClusterQueryShapeInput,
     outputSchema: UpdateGroupClusterQueryShapeOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -9,7 +9,7 @@ export interface EnvironmentsSettingsAsOfRetrieveInput {
   project_id: string;
 }
 export const EnvironmentsSettingsAsOfRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const EnvironmentsSettingsAsOfRetrieveInput =
 // Output Schema
 export type EnvironmentsSettingsAsOfRetrieveOutput = void;
 export const EnvironmentsSettingsAsOfRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsSettingsAsOfRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsSettingsAsOfRetrieveOutput>;
 
 // The operation
 /**
@@ -35,7 +35,7 @@ export const EnvironmentsSettingsAsOfRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsSettingsAsOfRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsSettingsAsOfRetrieveInput,
     outputSchema: EnvironmentsSettingsAsOfRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

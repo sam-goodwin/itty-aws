@@ -17,7 +17,7 @@ export interface CreatePasswordInput {
   cidrs?: string[];
   direct_vtgate?: boolean;
 }
-export const CreatePasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePasswordInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -78,7 +78,7 @@ export interface CreatePasswordOutput {
     private_edge_connectivity: boolean;
   };
 }
-export const CreatePasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePasswordOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   role: Schema.Literals(["reader", "writer", "admin", "readwriter"]),
@@ -140,7 +140,7 @@ export const CreatePasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param cidrs - List of IP addresses or CIDR ranges that can use this password
  * @param direct_vtgate - Whether the password connects directly to a VTGate
  */
-export const createPassword = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createPassword = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreatePasswordInput,
   outputSchema: CreatePasswordOutput,
   errors: [Forbidden, NotFound, UnprocessableEntity] as const,

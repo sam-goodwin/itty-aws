@@ -17,7 +17,7 @@ export interface DesktopFileSystemUndoDeleteCreateInput {
   last_viewed_at?: string | null;
 }
 export const DesktopFileSystemUndoDeleteCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -39,7 +39,7 @@ export const DesktopFileSystemUndoDeleteCreateInput =
 // Output Schema
 export type DesktopFileSystemUndoDeleteCreateOutput = void;
 export const DesktopFileSystemUndoDeleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DesktopFileSystemUndoDeleteCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DesktopFileSystemUndoDeleteCreateOutput>;
 
 // The operation
 /**
@@ -50,7 +50,7 @@ export const DesktopFileSystemUndoDeleteCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const desktopFileSystemUndoDeleteCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DesktopFileSystemUndoDeleteCreateInput,
     outputSchema: DesktopFileSystemUndoDeleteCreateOutput,
   }));

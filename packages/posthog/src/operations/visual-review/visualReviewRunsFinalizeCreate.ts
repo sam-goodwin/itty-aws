@@ -11,7 +11,7 @@ export interface VisualReviewRunsFinalizeCreateInput {
   add_images_to_comment_on_pr?: boolean;
 }
 export const VisualReviewRunsFinalizeCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     approve_all: Schema.optional(Schema.Boolean),
@@ -57,7 +57,7 @@ export interface VisualReviewRunsFinalizeCreateOutput {
   baseline_content: string;
 }
 export const VisualReviewRunsFinalizeCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     run: Schema.Struct({
       approved_by: Schema.optional(
         Schema.NullOr(
@@ -112,7 +112,7 @@ export const VisualReviewRunsFinalizeCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const visualReviewRunsFinalizeCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VisualReviewRunsFinalizeCreateInput,
     outputSchema: VisualReviewRunsFinalizeCreateOutput,
   }));

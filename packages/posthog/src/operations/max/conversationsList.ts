@@ -8,13 +8,11 @@ export interface ConversationsListInput {
   limit?: number;
   offset?: number;
 }
-export const ConversationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    project_id: Schema.String.pipe(T.PathParam()),
-    limit: Schema.optional(Schema.Number),
-    offset: Schema.optional(Schema.Number),
-  },
-).pipe(
+export const ConversationsListInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  limit: Schema.optional(Schema.Number),
+  offset: Schema.optional(Schema.Number),
+}).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/conversations/" }),
 ) as unknown as Schema.Codec<ConversationsListInput>;
 
@@ -100,7 +98,7 @@ export interface ConversationsListOutput {
   }[];
 }
 export const ConversationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -237,7 +235,7 @@ export const ConversationsListOutput =
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const conversationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const conversationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConversationsListInput,
   outputSchema: ConversationsListOutput,
 }));

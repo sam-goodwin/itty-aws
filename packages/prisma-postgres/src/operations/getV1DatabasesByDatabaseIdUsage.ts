@@ -10,7 +10,7 @@ export interface GetV1DatabasesByDatabaseIdUsageInput {
   endDate?: string;
 }
 export const GetV1DatabasesByDatabaseIdUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
     startDate: Schema.optional(Schema.String),
     endDate: Schema.optional(Schema.String),
@@ -28,7 +28,7 @@ export interface GetV1DatabasesByDatabaseIdUsageOutput {
   generatedAt: string;
 }
 export const GetV1DatabasesByDatabaseIdUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     period: Schema.Struct({
       start: Schema.String,
       end: Schema.String,
@@ -53,7 +53,7 @@ export const GetV1DatabasesByDatabaseIdUsageOutput =
  * Returns usage metrics for the specified database.
  */
 export const getV1DatabasesByDatabaseIdUsage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1DatabasesByDatabaseIdUsageInput,
     outputSchema: GetV1DatabasesByDatabaseIdUsageOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

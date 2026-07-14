@@ -15,7 +15,7 @@ export interface ImageVersionsListByImageInput {
   imageName: string;
 }
 export const ImageVersionsListByImageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageName: Schema.String.pipe(T.PathParam()),
@@ -45,7 +45,7 @@ export interface ImageVersionsListByImageOutput {
   nextLink?: string;
 }
 export const ImageVersionsListByImageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -89,17 +89,13 @@ export const ImageVersionsListByImageOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param imageName - Name of the image.
  */
-export const ImageVersionsListByImage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImageVersionsListByImageInput,
-    outputSchema: ImageVersionsListByImageOutput,
-  }),
-);
+export const ImageVersionsListByImage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImageVersionsListByImageInput,
+  outputSchema: ImageVersionsListByImageOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DevOpsInfrastructure/operations",
@@ -123,7 +119,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -153,7 +149,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -164,7 +160,7 @@ export interface PoolsCheckNameAvailabilityInput {
   type: "Microsoft.DevOpsInfrastructure/pools";
 }
 export const PoolsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.Literals(["Microsoft.DevOpsInfrastructure/pools"]),
@@ -184,7 +180,7 @@ export interface PoolsCheckNameAvailabilityOutput {
   reason: "Invalid" | "AlreadyExists";
 }
 export const PoolsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     available: Schema.Literals(["Available", "Unavailable"]),
     message: Schema.String,
     name: Schema.String,
@@ -198,12 +194,10 @@ export const PoolsCheckNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const PoolsCheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoolsCheckNameAvailabilityInput,
-    outputSchema: PoolsCheckNameAvailabilityOutput,
-  }),
-);
+export const PoolsCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoolsCheckNameAvailabilityInput,
+  outputSchema: PoolsCheckNameAvailabilityOutput,
+}));
 // Input Schema
 export interface PoolsCreateOrUpdateInput {
   subscriptionId: string;
@@ -246,7 +240,7 @@ export interface PoolsCreateOrUpdateInput {
   location: string;
 }
 export const PoolsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
@@ -333,7 +327,7 @@ export interface PoolsCreateOrUpdateOutput {
   };
 }
 export const PoolsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -362,7 +356,7 @@ export const PoolsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param poolName - Name of the pool. It needs to be globally unique.
  */
-export const PoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolsCreateOrUpdateInput,
   outputSchema: PoolsCreateOrUpdateOutput,
 }));
@@ -372,7 +366,7 @@ export interface PoolsDeleteInput {
   resourceGroupName: string;
   poolName: string;
 }
-export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
@@ -387,7 +381,7 @@ export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type PoolsDeleteOutput = void;
 export const PoolsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PoolsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PoolsDeleteOutput>;
 
 // The operation
 /**
@@ -398,7 +392,7 @@ export const PoolsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param poolName - Name of the pool. It needs to be globally unique.
  */
-export const PoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolsDeleteInput,
   outputSchema: PoolsDeleteOutput,
 }));
@@ -410,7 +404,7 @@ export interface PoolsDeleteResourcesInput {
   resourceIds: string[];
 }
 export const PoolsDeleteResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
@@ -426,7 +420,7 @@ export const PoolsDeleteResourcesInput =
 // Output Schema
 export type PoolsDeleteResourcesOutput = void;
 export const PoolsDeleteResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PoolsDeleteResourcesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PoolsDeleteResourcesOutput>;
 
 // The operation
 /**
@@ -437,19 +431,17 @@ export const PoolsDeleteResourcesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param poolName - Name of the pool. It needs to be globally unique.
  */
-export const PoolsDeleteResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoolsDeleteResourcesInput,
-    outputSchema: PoolsDeleteResourcesOutput,
-  }),
-);
+export const PoolsDeleteResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoolsDeleteResourcesInput,
+  outputSchema: PoolsDeleteResourcesOutput,
+}));
 // Input Schema
 export interface PoolsGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   poolName: string;
 }
-export const PoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
@@ -475,7 +467,7 @@ export interface PoolsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const PoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -504,7 +496,7 @@ export const PoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param poolName - Name of the pool. It needs to be globally unique.
  */
-export const PoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolsGetInput,
   outputSchema: PoolsGetOutput,
 }));
@@ -514,7 +506,7 @@ export interface PoolsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const PoolsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -543,7 +535,7 @@ export interface PoolsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const PoolsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -586,18 +578,16 @@ export const PoolsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PoolsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoolsListByResourceGroupInput,
-    outputSchema: PoolsListByResourceGroupOutput,
-  }),
-);
+export const PoolsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoolsListByResourceGroupInput,
+  outputSchema: PoolsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface PoolsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const PoolsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -625,7 +615,7 @@ export interface PoolsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PoolsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -667,12 +657,10 @@ export const PoolsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const PoolsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoolsListBySubscriptionInput,
-    outputSchema: PoolsListBySubscriptionOutput,
-  }),
-);
+export const PoolsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoolsListBySubscriptionInput,
+  outputSchema: PoolsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface PoolsUpdateInput {
   subscriptionId: string;
@@ -713,7 +701,7 @@ export interface PoolsUpdateInput {
     runtimeConfiguration?: { workFolder?: string };
   };
 }
-export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
@@ -804,7 +792,7 @@ export interface PoolsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const PoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -833,7 +821,7 @@ export const PoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param poolName - Name of the pool. It needs to be globally unique.
  */
-export const PoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolsUpdateInput,
   outputSchema: PoolsUpdateOutput,
 }));
@@ -844,7 +832,7 @@ export interface ResourceDetailsListByPoolInput {
   poolName: string;
 }
 export const ResourceDetailsListByPoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
@@ -874,7 +862,7 @@ export interface ResourceDetailsListByPoolOutput {
   nextLink?: string;
 }
 export const ResourceDetailsListByPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -918,23 +906,19 @@ export const ResourceDetailsListByPoolOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param poolName - Name of the pool. It needs to be globally unique.
  */
-export const ResourceDetailsListByPool = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ResourceDetailsListByPoolInput,
-    outputSchema: ResourceDetailsListByPoolOutput,
-  }),
-);
+export const ResourceDetailsListByPool = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ResourceDetailsListByPoolInput,
+  outputSchema: ResourceDetailsListByPoolOutput,
+}));
 // Input Schema
 export interface SkuListByLocationInput {
   subscriptionId: string;
   locationName: string;
 }
-export const SkuListByLocationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    locationName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const SkuListByLocationInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  locationName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/locations/{locationName}/skus",
@@ -960,7 +944,7 @@ export interface SkuListByLocationOutput {
   nextLink?: string;
 }
 export const SkuListByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1003,7 +987,7 @@ export const SkuListByLocationOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - Name of the location.
  */
-export const SkuListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SkuListByLocation = /*@__PURE__*/ API.make(() => ({
   inputSchema: SkuListByLocationInput,
   outputSchema: SkuListByLocationOutput,
 }));
@@ -1013,7 +997,7 @@ export interface SubscriptionUsagesUsagesInput {
   location: string;
 }
 export const SubscriptionUsagesUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1036,7 +1020,7 @@ export interface SubscriptionUsagesUsagesOutput {
   nextLink?: string;
 }
 export const SubscriptionUsagesUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(
@@ -1062,9 +1046,7 @@ export const SubscriptionUsagesUsagesOutput =
  * @param location - The name of the Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const SubscriptionUsagesUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubscriptionUsagesUsagesInput,
-    outputSchema: SubscriptionUsagesUsagesOutput,
-  }),
-);
+export const SubscriptionUsagesUsages = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubscriptionUsagesUsagesInput,
+  outputSchema: SubscriptionUsagesUsagesOutput,
+}));

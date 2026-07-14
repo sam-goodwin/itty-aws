@@ -10,7 +10,7 @@ export interface GetOrgFederationSettingsInput {
   pretty?: boolean;
 }
 export const GetOrgFederationSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const GetOrgFederationSettingsInput =
 // Output Schema
 export type GetOrgFederationSettingsOutput = void;
 export const GetOrgFederationSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgFederationSettingsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgFederationSettingsOutput>;
 
 // The operation
 /**
@@ -36,10 +36,8 @@ export const GetOrgFederationSettingsOutput =
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const getOrgFederationSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetOrgFederationSettingsInput,
-    outputSchema: GetOrgFederationSettingsOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getOrgFederationSettings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetOrgFederationSettingsInput,
+  outputSchema: GetOrgFederationSettingsOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

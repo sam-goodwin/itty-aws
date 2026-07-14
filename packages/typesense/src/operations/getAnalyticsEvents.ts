@@ -10,7 +10,7 @@ export interface GetAnalyticsEventsInput {
   n: number;
 }
 export const GetAnalyticsEventsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user_id: Schema.String,
     name: Schema.String,
     n: Schema.Number,
@@ -32,7 +32,7 @@ export interface GetAnalyticsEventsOutput {
   }[];
 }
 export const GetAnalyticsEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     events: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export const GetAnalyticsEventsOutput =
  * @param name - Analytics rule name
  * @param n - Number of events to return (max 1000)
  */
-export const getAnalyticsEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAnalyticsEvents = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAnalyticsEventsInput,
   outputSchema: GetAnalyticsEventsOutput,
   errors: [BadRequest] as const,

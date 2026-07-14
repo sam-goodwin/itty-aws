@@ -12,7 +12,7 @@ export interface ListClusterSizeSkusInput {
   database?: string;
 }
 export const ListClusterSizeSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     engine: Schema.optional(Schema.Literals(["mysql", "postgresql"])),
     rates: Schema.optional(Schema.Boolean),
@@ -45,7 +45,7 @@ export type ListClusterSizeSkusOutput = {
   production: boolean;
 }[];
 export const ListClusterSizeSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       name: Schema.String,
       display_name: Schema.String,
@@ -78,7 +78,7 @@ export const ListClusterSizeSkusOutput =
  * @param region - The region slug to get rates for. If not specified, uses the organization's default region.
  * @param database - The database name to resolve rates for. When specified, database-level custom rates take precedence over organization rates.
  */
-export const listClusterSizeSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listClusterSizeSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListClusterSizeSkusInput,
   outputSchema: ListClusterSizeSkusOutput,
   errors: [Forbidden, NotFound] as const,

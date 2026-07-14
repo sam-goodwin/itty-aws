@@ -22,7 +22,7 @@ export interface ExternalAuthControllerCompleteLoginInput {
   }>;
 }
 export const ExternalAuthControllerCompleteLoginInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     external_auth_id: Schema.optional(Schema.String),
     user: Schema.optional(
       Schema.Struct({
@@ -60,7 +60,7 @@ export interface ExternalAuthControllerCompleteLoginOutput {
   redirect_uri?: string;
 }
 export const ExternalAuthControllerCompleteLoginOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     redirect_uri: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ExternalAuthControllerCompleteLoginOutput>;
 
@@ -76,7 +76,7 @@ export const ExternalAuthControllerCompleteLoginOutput =
  * If you provide a new `id` with an `email` that already belongs to an existing user, the request will fail with an error as email addresses are unique to a user.
  */
 export const ExternalAuthControllerCompleteLogin =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalAuthControllerCompleteLoginInput,
     outputSchema: ExternalAuthControllerCompleteLoginOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

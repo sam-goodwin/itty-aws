@@ -173,7 +173,7 @@ export interface PostV2CoreAccountsAccountIdPersonsInput {
   surname?: string;
 }
 export const PostV2CoreAccountsAccountIdPersonsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
     additional_addresses: Schema.optional(
       Schema.Array(
@@ -595,7 +595,7 @@ export interface PostV2CoreAccountsAccountIdPersonsOutput {
   updated: string;
 }
 export const PostV2CoreAccountsAccountIdPersonsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String,
     additional_addresses: Schema.optional(
       Schema.Array(
@@ -853,7 +853,7 @@ export const PostV2CoreAccountsAccountIdPersonsOutput =
  * @param account_id - Account the Person should be associated with.
  */
 export const PostV2CoreAccountsAccountIdPersons =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV2CoreAccountsAccountIdPersonsInput,
     outputSchema: PostV2CoreAccountsAccountIdPersonsOutput,
   }));

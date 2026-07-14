@@ -10,7 +10,7 @@ export interface UpdateGroupPeerInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const UpdateGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateGroupPeerInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   peerId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -25,7 +25,7 @@ export const UpdateGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type UpdateGroupPeerOutput = void;
 export const UpdateGroupPeerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupPeerOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupPeerOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ export const UpdateGroupPeerOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param peerId - Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
  */
-export const updateGroupPeer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateGroupPeer = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateGroupPeerInput,
   outputSchema: UpdateGroupPeerOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

@@ -4,9 +4,7 @@ import * as T from "../../traits.ts";
 
 // Input Schema
 export interface GetAPITokensInput {}
-export const GetAPITokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetAPITokensInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v2/tokens" }),
 ) as unknown as Schema.Codec<GetAPITokensInput>;
 
@@ -55,7 +53,7 @@ export type GetAPITokensOutput = ReadonlyArray<{
     }
   >;
 }>;
-export const GetAPITokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetAPITokensOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     datasetCapabilities: Schema.Record(
       Schema.String,
@@ -144,7 +142,7 @@ export const GetAPITokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
 /**
  * Get API tokens
  */
-export const getAPITokens = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAPITokens = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAPITokensInput,
   outputSchema: GetAPITokensOutput,
 }));

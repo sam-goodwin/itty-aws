@@ -72,6 +72,7 @@
     "@types/bun": "catalog:",
     "@types/node": "catalog:",
     "dotenv": "catalog:",
+    "rolldown": "catalog:",
     "typescript-5": "npm:typescript@^5.9.3",
     "vitest": "catalog:"
   },

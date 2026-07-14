@@ -324,7 +324,7 @@ export interface SurveysCreateInput {
   _create_in_folder?: string;
   form_content?: unknown;
 }
-export const SurveysCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SurveysCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -817,7 +817,7 @@ export interface SurveysCreateOutput {
   _create_in_folder?: string;
   form_content?: unknown;
 }
-export const SurveysCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SurveysCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   description: Schema.optional(Schema.String),
@@ -999,7 +999,7 @@ export const SurveysCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const surveysCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const surveysCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SurveysCreateInput,
   outputSchema: SurveysCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

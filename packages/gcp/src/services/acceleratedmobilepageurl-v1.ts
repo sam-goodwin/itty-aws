@@ -32,7 +32,7 @@ export interface AmpUrl {
 }
 
 export const AmpUrl: Schema.Codec<AmpUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ampUrl: Schema.optional(Schema.String),
     cdnAmpUrl: Schema.optional(Schema.String),
     originalUrl: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export interface BatchGetAmpUrlsRequest {
 }
 
 export const BatchGetAmpUrlsRequest: Schema.Codec<BatchGetAmpUrlsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lookupStrategy: Schema.optional(Schema.String),
     urls: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchGetAmpUrlsRequest" });
@@ -68,7 +68,7 @@ export interface AmpUrlError {
 }
 
 export const AmpUrlError: Schema.Codec<AmpUrlError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalUrl: Schema.optional(Schema.String),
     errorCode: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
@@ -82,7 +82,7 @@ export interface BatchGetAmpUrlsResponse {
 }
 
 export const BatchGetAmpUrlsResponse: Schema.Codec<BatchGetAmpUrlsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ampUrls: Schema.optional(Schema.Array(AmpUrl)),
     urlErrors: Schema.optional(Schema.Array(AmpUrlError)),
   }).annotate({ identifier: "BatchGetAmpUrlsResponse" });
@@ -147,7 +147,7 @@ export interface BatchGetAmpUrlsRequest_Op {
 }
 
 export const BatchGetAmpUrlsRequest_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(BatchGetAmpUrlsRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1/ampUrls:batchGet", hasBody: true }),
@@ -155,8 +155,7 @@ export const BatchGetAmpUrlsRequest_Op =
   ) as unknown as Schema.Codec<BatchGetAmpUrlsRequest_Op>;
 
 export type BatchGetAmpUrlsResponse_Op = BatchGetAmpUrlsResponse;
-export const BatchGetAmpUrlsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ BatchGetAmpUrlsResponse;
+export const BatchGetAmpUrlsResponse_Op = /*@__PURE__*/ BatchGetAmpUrlsResponse;
 
 export type BatchGetAmpUrlsError =
   | DefaultErrors
@@ -171,7 +170,7 @@ export const batchGetAmpUrls: API.OperationMethod<
   BatchGetAmpUrlsResponse_Op,
   BatchGetAmpUrlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetAmpUrlsRequest_Op,
   output: BatchGetAmpUrlsResponse_Op,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

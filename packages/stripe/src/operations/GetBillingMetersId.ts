@@ -8,7 +8,7 @@ export interface GetBillingMetersIdInput {
   expand?: string;
 }
 export const GetBillingMetersIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -36,7 +36,7 @@ export interface GetBillingMetersIdOutput {
   value_settings: { event_payload_key: string };
 }
 export const GetBillingMetersIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     customer_mapping: Schema.Struct({
       event_payload_key: Schema.String,
@@ -69,7 +69,7 @@ export const GetBillingMetersIdOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetBillingMetersId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetBillingMetersId = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBillingMetersIdInput,
   outputSchema: GetBillingMetersIdOutput,
 }));

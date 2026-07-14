@@ -7,7 +7,7 @@ export interface GetEventsIdInput {
   id: string;
   expand?: string;
 }
-export const GetEventsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEventsIdInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -292,7 +292,7 @@ export interface GetEventsIdOutput {
     | "treasury.received_credit.succeeded"
     | "treasury.received_debit.created";
 }
-export const GetEventsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEventsIdOutput = /*@__PURE__*/ Schema.Struct({
   account: Schema.optional(Schema.String),
   api_version: Schema.NullOr(Schema.String),
   context: Schema.optional(Schema.String),
@@ -583,7 +583,7 @@ export const GetEventsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetEventsId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetEventsId = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetEventsIdInput,
   outputSchema: GetEventsIdOutput,
 }));

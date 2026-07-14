@@ -53,7 +53,7 @@ export interface IssueSeverityPerReportingContext {
 }
 
 export const IssueSeverityPerReportingContext: Schema.Codec<IssueSeverityPerReportingContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
     disapprovedCountries: Schema.optional(Schema.Array(Schema.String)),
     demotedCountries: Schema.optional(Schema.Array(Schema.String)),
@@ -92,7 +92,7 @@ export interface StatusPerReportingContext {
 }
 
 export const StatusPerReportingContext: Schema.Codec<StatusPerReportingContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
     disapprovedCountries: Schema.optional(Schema.Array(Schema.String)),
     approvedCountries: Schema.optional(Schema.Array(Schema.String)),
@@ -132,7 +132,7 @@ export interface ProductChange {
 }
 
 export const ProductChange: Schema.Codec<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newValue: Schema.optional(Schema.String),
     reportingContext: Schema.optional(Schema.String),
     oldValue: Schema.optional(Schema.String),
@@ -149,7 +149,7 @@ export interface Merchantapi_Date {
 }
 
 export const Merchantapi_Date: Schema.Codec<Merchantapi_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -202,7 +202,7 @@ export interface BestSellersBrandView {
 }
 
 export const BestSellersBrandView: Schema.Codec<BestSellersBrandView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportGranularity: Schema.optional(Schema.String),
     previousRank: Schema.optional(Schema.String),
     relativeDemandChange: Schema.optional(Schema.String),
@@ -246,7 +246,7 @@ export interface CompetitiveVisibilityCompetitorView {
 }
 
 export const CompetitiveVisibilityCompetitorView: Schema.Codec<CompetitiveVisibilityCompetitorView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     higherPositionRate: Schema.optional(Schema.Number),
     isYourDomain: Schema.optional(Schema.Boolean),
     rank: Schema.optional(Schema.String),
@@ -268,7 +268,7 @@ export interface Price {
 }
 
 export const Price: Schema.Codec<Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     amountMicros: Schema.optional(Schema.String),
   }).annotate({ identifier: "Price" });
@@ -343,7 +343,7 @@ export interface ProductPerformanceView {
 }
 
 export const ProductPerformanceView: Schema.Codec<ProductPerformanceView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productTypeL3: Schema.optional(Schema.String),
     customLabel4: Schema.optional(Schema.String),
     brand: Schema.optional(Schema.String),
@@ -401,7 +401,7 @@ export interface ProductStatusChangeMessage {
 }
 
 export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.optional(Schema.String),
     resource: Schema.optional(Schema.String),
     managingAccount: Schema.optional(Schema.String),
@@ -421,7 +421,7 @@ export interface ItemIssueType {
 }
 
 export const ItemIssueType: Schema.Codec<ItemIssueType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     canonicalAttribute: Schema.optional(Schema.String),
   }).annotate({ identifier: "ItemIssueType" });
@@ -501,7 +501,7 @@ export interface BestSellersProductClusterView {
 }
 
 export const BestSellersProductClusterView: Schema.Codec<BestSellersProductClusterView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categoryL5: Schema.optional(Schema.String),
     reportCategoryId: Schema.optional(Schema.String),
     relativeDemand: Schema.optional(Schema.String),
@@ -552,7 +552,7 @@ export interface CompetitiveVisibilityTopMerchantView {
 }
 
 export const CompetitiveVisibilityTopMerchantView: Schema.Codec<CompetitiveVisibilityTopMerchantView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     higherPositionRate: Schema.optional(Schema.Number),
     trafficSource: Schema.optional(Schema.String),
     rank: Schema.optional(Schema.String),
@@ -614,7 +614,7 @@ export interface PriceInsightsProductView {
 }
 
 export const PriceInsightsProductView: Schema.Codec<PriceInsightsProductView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     predictedConversionsChangeFraction: Schema.optional(Schema.Number),
     predictedImpressionsChangeFraction: Schema.optional(Schema.Number),
     productTypeL2: Schema.optional(Schema.String),
@@ -658,7 +658,7 @@ export interface CompetitiveVisibilityBenchmarkView {
 }
 
 export const CompetitiveVisibilityBenchmarkView: Schema.Codec<CompetitiveVisibilityBenchmarkView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportCategoryId: Schema.optional(Schema.String),
     trafficSource: Schema.optional(Schema.String),
     yourDomainVisibilityTrend: Schema.optional(Schema.Number),
@@ -705,7 +705,7 @@ export interface PriceCompetitivenessProductView {
 }
 
 export const PriceCompetitivenessProductView: Schema.Codec<PriceCompetitivenessProductView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     offerId: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     categoryL4: Schema.optional(Schema.String),
@@ -739,7 +739,7 @@ export interface NonProductPerformanceView {
 }
 
 export const NonProductPerformanceView: Schema.Codec<NonProductPerformanceView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date: Schema.optional(Merchantapi_Date),
     clicks: Schema.optional(Schema.String),
     week: Schema.optional(Merchantapi_Date),
@@ -760,7 +760,7 @@ export interface ItemIssueSeverity {
 }
 
 export const ItemIssueSeverity: Schema.Codec<ItemIssueSeverity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     severityPerReportingContext: Schema.optional(
       Schema.Array(IssueSeverityPerReportingContext),
     ),
@@ -781,7 +781,7 @@ export interface ItemIssue {
 }
 
 export const ItemIssue: Schema.Codec<ItemIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(ItemIssueType),
     resolution: Schema.optional(Schema.String),
     severity: Schema.optional(ItemIssueSeverity),
@@ -887,7 +887,7 @@ export interface ProductView {
 }
 
 export const ProductView: Schema.Codec<ProductView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categoryL3: Schema.optional(Schema.String),
     productTypeL4: Schema.optional(Schema.String),
     productTypeL5: Schema.optional(Schema.String),
@@ -948,7 +948,7 @@ export interface ReportRow {
 }
 
 export const ReportRow: Schema.Codec<ReportRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     competitiveVisibilityTopMerchantView: Schema.optional(
       CompetitiveVisibilityTopMerchantView,
     ),
@@ -981,7 +981,7 @@ export interface SearchRequest {
 }
 
 export const SearchRequest: Schema.Codec<SearchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String),
     query: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
@@ -995,7 +995,7 @@ export interface SearchResponse {
 }
 
 export const SearchResponse: Schema.Codec<SearchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(ReportRow)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "SearchResponse" });
@@ -1062,7 +1062,7 @@ export interface SearchAccountsReportsRequest {
 }
 
 export const SearchAccountsReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(SearchRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1075,8 +1075,7 @@ export const SearchAccountsReportsRequest =
   ) as unknown as Schema.Codec<SearchAccountsReportsRequest>;
 
 export type SearchAccountsReportsResponse = SearchResponse;
-export const SearchAccountsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SearchResponse;
+export const SearchAccountsReportsResponse = /*@__PURE__*/ SearchResponse;
 
 export type SearchAccountsReportsError =
   | DefaultErrors
@@ -1091,7 +1090,7 @@ export const searchAccountsReports: API.OperationMethod<
   SearchAccountsReportsResponse,
   SearchAccountsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchAccountsReportsRequest,
   output: SearchAccountsReportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

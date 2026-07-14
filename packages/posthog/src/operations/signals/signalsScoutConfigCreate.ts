@@ -12,7 +12,7 @@ export interface SignalsScoutConfigCreateInput {
   run_interval_minutes?: number;
 }
 export const SignalsScoutConfigCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     skill_name: Schema.String,
     enabled: Schema.optional(Schema.Boolean),
@@ -38,7 +38,7 @@ export interface SignalsScoutConfigCreateOutput {
   created_at: string;
 }
 export const SignalsScoutConfigCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     skill_name: Schema.String,
     description: Schema.String,
@@ -58,10 +58,8 @@ export const SignalsScoutConfigCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const signalsScoutConfigCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalsScoutConfigCreateInput,
-    outputSchema: SignalsScoutConfigCreateOutput,
-    errors: [BadRequest] as const,
-  }),
-);
+export const signalsScoutConfigCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalsScoutConfigCreateInput,
+  outputSchema: SignalsScoutConfigCreateOutput,
+  errors: [BadRequest] as const,
+}));

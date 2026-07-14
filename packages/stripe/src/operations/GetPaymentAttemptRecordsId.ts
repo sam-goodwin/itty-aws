@@ -8,7 +8,7 @@ export interface GetPaymentAttemptRecordsIdInput {
   expand?: string;
 }
 export const GetPaymentAttemptRecordsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -63,7 +63,7 @@ export interface GetPaymentAttemptRecordsIdOutput {
   } | null;
 }
 export const GetPaymentAttemptRecordsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
       currency: Schema.String,
       value: Schema.Number,
@@ -146,9 +146,7 @@ export const GetPaymentAttemptRecordsIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  * @param id - The ID of the Payment Attempt Record.
  */
-export const GetPaymentAttemptRecordsId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetPaymentAttemptRecordsIdInput,
-    outputSchema: GetPaymentAttemptRecordsIdOutput,
-  }),
-);
+export const GetPaymentAttemptRecordsId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetPaymentAttemptRecordsIdInput,
+  outputSchema: GetPaymentAttemptRecordsIdOutput,
+}));

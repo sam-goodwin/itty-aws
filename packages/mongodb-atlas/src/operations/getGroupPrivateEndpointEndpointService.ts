@@ -12,7 +12,7 @@ export interface GetGroupPrivateEndpointEndpointServiceInput {
   pretty?: boolean;
 }
 export const GetGroupPrivateEndpointEndpointServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
     endpointServiceId: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const GetGroupPrivateEndpointEndpointServiceInput =
 // Output Schema
 export type GetGroupPrivateEndpointEndpointServiceOutput = void;
 export const GetGroupPrivateEndpointEndpointServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupPrivateEndpointEndpointServiceOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupPrivateEndpointEndpointServiceOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const GetGroupPrivateEndpointEndpointServiceOutput =
  * @param endpointServiceId - Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to return.
  */
 export const getGroupPrivateEndpointEndpointService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupPrivateEndpointEndpointServiceInput,
     outputSchema: GetGroupPrivateEndpointEndpointServiceOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

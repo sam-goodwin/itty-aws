@@ -12,7 +12,7 @@ export interface ListGroupStreamWorkspacesInput {
   pretty?: boolean;
 }
 export const ListGroupStreamWorkspacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     itemsPerPage: Schema.optional(Schema.Number),
@@ -25,7 +25,7 @@ export const ListGroupStreamWorkspacesInput =
 // Output Schema
 export type ListGroupStreamWorkspacesOutput = void;
 export const ListGroupStreamWorkspacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupStreamWorkspacesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupStreamWorkspacesOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const ListGroupStreamWorkspacesOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupStreamWorkspaces = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupStreamWorkspacesInput,
-    outputSchema: ListGroupStreamWorkspacesOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupStreamWorkspaces = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupStreamWorkspacesInput,
+  outputSchema: ListGroupStreamWorkspacesOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

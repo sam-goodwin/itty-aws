@@ -8,7 +8,7 @@ export interface GetNeonAuthAllowLocalhostInput {
   branch_id: string;
 }
 export const GetNeonAuthAllowLocalhostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -23,7 +23,7 @@ export interface GetNeonAuthAllowLocalhostOutput {
   allow_localhost: boolean;
 }
 export const GetNeonAuthAllowLocalhostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allow_localhost: Schema.Boolean,
   }) as unknown as Schema.Codec<GetNeonAuthAllowLocalhostOutput>;
 
@@ -37,9 +37,7 @@ export const GetNeonAuthAllowLocalhostOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const getNeonAuthAllowLocalhost = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetNeonAuthAllowLocalhostInput,
-    outputSchema: GetNeonAuthAllowLocalhostOutput,
-  }),
-);
+export const getNeonAuthAllowLocalhost = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetNeonAuthAllowLocalhostInput,
+  outputSchema: GetNeonAuthAllowLocalhostOutput,
+}));

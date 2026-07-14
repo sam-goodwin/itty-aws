@@ -10,7 +10,7 @@ export interface RolesRoleMembershipsDestroyInput {
   role_id: string;
 }
 export const RolesRoleMembershipsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
     role_id: Schema.String.pipe(T.PathParam()),
@@ -24,7 +24,7 @@ export const RolesRoleMembershipsDestroyInput =
 // Output Schema
 export type RolesRoleMembershipsDestroyOutput = void;
 export const RolesRoleMembershipsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RolesRoleMembershipsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RolesRoleMembershipsDestroyOutput>;
 
 // The operation
 /**
@@ -32,10 +32,8 @@ export const RolesRoleMembershipsDestroyOutput =
  * @param id - A UUID string identifying this role membership.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const rolesRoleMembershipsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RolesRoleMembershipsDestroyInput,
-    outputSchema: RolesRoleMembershipsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const rolesRoleMembershipsDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RolesRoleMembershipsDestroyInput,
+  outputSchema: RolesRoleMembershipsDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

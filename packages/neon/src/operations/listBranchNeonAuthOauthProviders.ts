@@ -10,7 +10,7 @@ export interface ListBranchNeonAuthOauthProvidersInput {
   branch_id: string;
 }
 export const ListBranchNeonAuthOauthProvidersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -30,7 +30,7 @@ export interface ListBranchNeonAuthOauthProvidersOutput {
   }[];
 }
 export const ListBranchNeonAuthOauthProvidersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     providers: Schema.Array(
       Schema.Struct({
         id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
@@ -51,7 +51,7 @@ export const ListBranchNeonAuthOauthProvidersOutput =
  * @param branch_id - The Neon branch ID
  */
 export const listBranchNeonAuthOauthProviders =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListBranchNeonAuthOauthProvidersInput,
     outputSchema: ListBranchNeonAuthOauthProvidersOutput,
   }));

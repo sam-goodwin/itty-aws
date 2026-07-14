@@ -10,7 +10,7 @@ export interface GetServiceTokenInput {
   organization: string;
   id: string;
 }
-export const GetServiceTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetServiceTokenInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -82,7 +82,7 @@ export interface GetServiceTokenOutput {
     };
   } | null;
 }
-export const GetServiceTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetServiceTokenOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.optional(Schema.NullOr(Schema.String)),
   display_name: Schema.String,
@@ -196,7 +196,7 @@ export const GetServiceTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param organization - The name of the organization
  * @param id - The ID of the service token
  */
-export const getServiceToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getServiceToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetServiceTokenInput,
   outputSchema: GetServiceTokenOutput,
   errors: [Forbidden, NotFound] as const,

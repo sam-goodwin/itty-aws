@@ -17,7 +17,7 @@ export interface RadarStandaloneControllerUpdateRadarListInput {
   entry: string;
 }
 export const RadarStandaloneControllerUpdateRadarListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.Literals([
       "ip_address",
       "domain",
@@ -38,7 +38,7 @@ export interface RadarStandaloneControllerUpdateRadarListOutput {
   message?: string;
 }
 export const RadarStandaloneControllerUpdateRadarListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<RadarStandaloneControllerUpdateRadarListOutput>;
 
@@ -52,7 +52,7 @@ export const RadarStandaloneControllerUpdateRadarListOutput =
  * @param action - The list action indicating whether to add the entry to the allow or block list.
  */
 export const RadarStandaloneControllerUpdateRadarList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RadarStandaloneControllerUpdateRadarListInput,
     outputSchema: RadarStandaloneControllerUpdateRadarListOutput,
     errors: [BadRequest] as const,

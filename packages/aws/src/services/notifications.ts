@@ -113,7 +113,7 @@ export interface ListManagedNotificationChannelAssociationsRequest {
   nextToken?: string;
 }
 export const ListManagedNotificationChannelAssociationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       managedNotificationConfigurationArn: S.String.pipe(
         T.HttpQuery("managedNotificationConfigurationArn"),
@@ -142,7 +142,7 @@ export interface ManagedNotificationChannelAssociationSummary {
   overrideOption?: string;
 }
 export const ManagedNotificationChannelAssociationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channelIdentifier: S.String,
       channelType: S.String,
@@ -154,15 +154,13 @@ export const ManagedNotificationChannelAssociationSummary =
 export type ManagedNotificationChannelAssociations =
   ManagedNotificationChannelAssociationSummary[];
 export const ManagedNotificationChannelAssociations =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    ManagedNotificationChannelAssociationSummary,
-  );
+  /*@__PURE__*/ S.Array(ManagedNotificationChannelAssociationSummary);
 export interface ListManagedNotificationChannelAssociationsResponse {
   nextToken?: string;
   channelAssociations: ManagedNotificationChannelAssociationSummary[];
 }
 export const ListManagedNotificationChannelAssociationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       channelAssociations: ManagedNotificationChannelAssociations,
@@ -174,13 +172,13 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.String, message: S.String }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export interface ListMemberAccountsRequest {
@@ -191,29 +189,28 @@ export interface ListMemberAccountsRequest {
   status?: string;
   organizationalUnitId?: string;
 }
-export const ListMemberAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      notificationConfigurationArn: S.String.pipe(
-        T.HttpQuery("notificationConfigurationArn"),
-      ),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      memberAccount: S.optional(S.String).pipe(T.HttpQuery("memberAccount")),
-      status: S.optional(S.String).pipe(T.HttpQuery("status")),
-      organizationalUnitId: S.optional(S.String).pipe(
-        T.HttpQuery("organizationalUnitId"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/list-member-accounts" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListMemberAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notificationConfigurationArn: S.String.pipe(
+      T.HttpQuery("notificationConfigurationArn"),
     ),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    memberAccount: S.optional(S.String).pipe(T.HttpQuery("memberAccount")),
+    status: S.optional(S.String).pipe(T.HttpQuery("status")),
+    organizationalUnitId: S.optional(S.String).pipe(
+      T.HttpQuery("organizationalUnitId"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/list-member-accounts" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "ListMemberAccountsRequest",
 }) as any as S.Schema<ListMemberAccountsRequest>;
@@ -224,7 +221,7 @@ export interface MemberAccount {
   statusReason: string;
   organizationalUnitId: string;
 }
-export const MemberAccount = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MemberAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notificationConfigurationArn: S.optional(S.String),
     accountId: S.String,
@@ -234,41 +231,38 @@ export const MemberAccount = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MemberAccount" }) as any as S.Schema<MemberAccount>;
 export type MemberAccounts = MemberAccount[];
-export const MemberAccounts =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MemberAccount);
+export const MemberAccounts = /*@__PURE__*/ S.Array(MemberAccount);
 export interface ListMemberAccountsResponse {
   memberAccounts: MemberAccount[];
   nextToken?: string;
 }
-export const ListMemberAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      memberAccounts: MemberAccounts,
-      nextToken: S.optional(S.String),
-    }),
+export const ListMemberAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    memberAccounts: MemberAccounts,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListMemberAccountsResponse",
 }) as any as S.Schema<ListMemberAccountsResponse>;
 export interface ListTagsForResourceRequest {
   arn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{arn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{arn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -276,7 +270,7 @@ export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tags: S.optional(TagMap) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -285,7 +279,7 @@ export interface TagResourceRequest {
   arn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")), tags: TagMap }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/tags/{arn}" }),
@@ -300,18 +294,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   arn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String.pipe(T.HttpLabel("arn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -329,7 +323,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -338,27 +332,26 @@ export interface AssociateChannelRequest {
   arn: string;
   notificationConfigurationArn: string;
 }
-export const AssociateChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.String.pipe(T.HttpLabel("arn")),
-      notificationConfigurationArn: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/channels/associate/{arn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AssociateChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String.pipe(T.HttpLabel("arn")),
+    notificationConfigurationArn: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/channels/associate/{arn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "AssociateChannelRequest",
 }) as any as S.Schema<AssociateChannelRequest>;
 export interface AssociateChannelResponse {}
-export const AssociateChannelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const AssociateChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "AssociateChannelResponse",
 }) as any as S.Schema<AssociateChannelResponse>;
@@ -366,27 +359,26 @@ export interface DisassociateChannelRequest {
   arn: string;
   notificationConfigurationArn: string;
 }
-export const DisassociateChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.String.pipe(T.HttpLabel("arn")),
-      notificationConfigurationArn: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/channels/disassociate/{arn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisassociateChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String.pipe(T.HttpLabel("arn")),
+    notificationConfigurationArn: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/channels/disassociate/{arn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DisassociateChannelRequest",
 }) as any as S.Schema<DisassociateChannelRequest>;
 export interface DisassociateChannelResponse {}
 export const DisassociateChannelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisassociateChannelResponse",
   }) as any as S.Schema<DisassociateChannelResponse>;
 export interface ListChannelsRequest {
@@ -394,7 +386,7 @@ export interface ListChannelsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notificationConfigurationArn: S.String.pipe(
       T.HttpQuery("notificationConfigurationArn"),
@@ -415,18 +407,18 @@ export const ListChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListChannelsRequest",
 }) as any as S.Schema<ListChannelsRequest>;
 export type Channels = string[];
-export const Channels = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Channels = /*@__PURE__*/ S.Array(S.String);
 export interface ListChannelsResponse {
   nextToken?: string;
   channels: string[];
 }
-export const ListChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), channels: Channels }),
 ).annotate({
   identifier: "ListChannelsResponse",
 }) as any as S.Schema<ListChannelsResponse>;
 export type Regions = string[];
-export const Regions = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Regions = /*@__PURE__*/ S.Array(S.String);
 export interface CreateEventRuleRequest {
   notificationConfigurationArn: string;
   source: string;
@@ -434,24 +426,23 @@ export interface CreateEventRuleRequest {
   eventPattern?: string;
   regions: string[];
 }
-export const CreateEventRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      notificationConfigurationArn: S.String,
-      source: S.String,
-      eventType: S.String,
-      eventPattern: S.optional(S.String),
-      regions: Regions,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/event-rules" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateEventRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notificationConfigurationArn: S.String,
+    source: S.String,
+    eventType: S.String,
+    eventPattern: S.optional(S.String),
+    regions: Regions,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/event-rules" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateEventRuleRequest",
 }) as any as S.Schema<CreateEventRuleRequest>;
@@ -459,15 +450,15 @@ export interface EventRuleStatusSummary {
   status: string;
   reason: string;
 }
-export const EventRuleStatusSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ status: S.String, reason: S.String }),
+export const EventRuleStatusSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ status: S.String, reason: S.String }),
 ).annotate({
   identifier: "EventRuleStatusSummary",
 }) as any as S.Schema<EventRuleStatusSummary>;
 export type StatusSummaryByRegion = {
   [key: string]: EventRuleStatusSummary | undefined;
 };
-export const StatusSummaryByRegion = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const StatusSummaryByRegion = /*@__PURE__*/ S.Record(
   S.String,
   EventRuleStatusSummary.pipe(S.optional),
 );
@@ -476,13 +467,12 @@ export interface CreateEventRuleResponse {
   notificationConfigurationArn: string;
   statusSummaryByRegion: { [key: string]: EventRuleStatusSummary | undefined };
 }
-export const CreateEventRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.String,
-      notificationConfigurationArn: S.String,
-      statusSummaryByRegion: StatusSummaryByRegion,
-    }),
+export const CreateEventRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    notificationConfigurationArn: S.String,
+    statusSummaryByRegion: StatusSummaryByRegion,
+  }),
 ).annotate({
   identifier: "CreateEventRuleResponse",
 }) as any as S.Schema<CreateEventRuleResponse>;
@@ -491,22 +481,21 @@ export interface UpdateEventRuleRequest {
   eventPattern?: string;
   regions?: string[];
 }
-export const UpdateEventRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.String.pipe(T.HttpLabel("arn")),
-      eventPattern: S.optional(S.String),
-      regions: S.optional(Regions),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/event-rules/{arn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateEventRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String.pipe(T.HttpLabel("arn")),
+    eventPattern: S.optional(S.String),
+    regions: S.optional(Regions),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/event-rules/{arn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateEventRuleRequest",
 }) as any as S.Schema<UpdateEventRuleRequest>;
@@ -515,20 +504,19 @@ export interface UpdateEventRuleResponse {
   notificationConfigurationArn: string;
   statusSummaryByRegion: { [key: string]: EventRuleStatusSummary | undefined };
 }
-export const UpdateEventRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.String,
-      notificationConfigurationArn: S.String,
-      statusSummaryByRegion: StatusSummaryByRegion,
-    }),
+export const UpdateEventRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    notificationConfigurationArn: S.String,
+    statusSummaryByRegion: StatusSummaryByRegion,
+  }),
 ).annotate({
   identifier: "UpdateEventRuleResponse",
 }) as any as S.Schema<UpdateEventRuleResponse>;
 export interface GetEventRuleRequest {
   arn: string;
 }
-export const GetEventRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetEventRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/event-rules/{arn}" }),
@@ -543,7 +531,7 @@ export const GetEventRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetEventRuleRequest",
 }) as any as S.Schema<GetEventRuleRequest>;
 export type ManagedRuleArns = string[];
-export const ManagedRuleArns = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ManagedRuleArns = /*@__PURE__*/ S.Array(S.String);
 export interface GetEventRuleResponse {
   arn: string;
   notificationConfigurationArn: string;
@@ -555,7 +543,7 @@ export interface GetEventRuleResponse {
   managedRules: string[];
   statusSummaryByRegion: { [key: string]: EventRuleStatusSummary | undefined };
 }
-export const GetEventRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetEventRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     notificationConfigurationArn: S.String,
@@ -573,24 +561,23 @@ export const GetEventRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteEventRuleRequest {
   arn: string;
 }
-export const DeleteEventRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/event-rules/{arn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEventRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/event-rules/{arn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteEventRuleRequest",
 }) as any as S.Schema<DeleteEventRuleRequest>;
 export interface DeleteEventRuleResponse {}
-export const DeleteEventRuleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteEventRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteEventRuleResponse",
 }) as any as S.Schema<DeleteEventRuleResponse>;
@@ -599,7 +586,7 @@ export interface ListEventRulesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListEventRulesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListEventRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notificationConfigurationArn: S.String.pipe(
       T.HttpQuery("notificationConfigurationArn"),
@@ -630,7 +617,7 @@ export interface EventRuleStructure {
   managedRules: string[];
   statusSummaryByRegion: { [key: string]: EventRuleStatusSummary | undefined };
 }
-export const EventRuleStructure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EventRuleStructure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     notificationConfigurationArn: S.String,
@@ -646,14 +633,13 @@ export const EventRuleStructure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "EventRuleStructure",
 }) as any as S.Schema<EventRuleStructure>;
 export type EventRules = EventRuleStructure[];
-export const EventRules =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EventRuleStructure);
+export const EventRules = /*@__PURE__*/ S.Array(EventRuleStructure);
 export interface ListEventRulesResponse {
   nextToken?: string;
   eventRules: EventRuleStructure[];
 }
-export const ListEventRulesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ nextToken: S.optional(S.String), eventRules: EventRules }),
+export const ListEventRulesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ nextToken: S.optional(S.String), eventRules: EventRules }),
 ).annotate({
   identifier: "ListEventRulesResponse",
 }) as any as S.Schema<ListEventRulesResponse>;
@@ -662,7 +648,7 @@ export interface AssociateManagedNotificationAccountContactRequest {
   managedNotificationConfigurationArn: string;
 }
 export const AssociateManagedNotificationAccountContactRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contactIdentifier: S.String.pipe(T.HttpLabel("contactIdentifier")),
       managedNotificationConfigurationArn: S.String,
@@ -684,7 +670,7 @@ export const AssociateManagedNotificationAccountContactRequest =
   }) as any as S.Schema<AssociateManagedNotificationAccountContactRequest>;
 export interface AssociateManagedNotificationAccountContactResponse {}
 export const AssociateManagedNotificationAccountContactResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateManagedNotificationAccountContactResponse",
   }) as any as S.Schema<AssociateManagedNotificationAccountContactResponse>;
 export interface DisassociateManagedNotificationAccountContactRequest {
@@ -692,7 +678,7 @@ export interface DisassociateManagedNotificationAccountContactRequest {
   managedNotificationConfigurationArn: string;
 }
 export const DisassociateManagedNotificationAccountContactRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contactIdentifier: S.String.pipe(T.HttpLabel("contactIdentifier")),
       managedNotificationConfigurationArn: S.String,
@@ -714,7 +700,7 @@ export const DisassociateManagedNotificationAccountContactRequest =
   }) as any as S.Schema<DisassociateManagedNotificationAccountContactRequest>;
 export interface DisassociateManagedNotificationAccountContactResponse {}
 export const DisassociateManagedNotificationAccountContactResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisassociateManagedNotificationAccountContactResponse",
   }) as any as S.Schema<DisassociateManagedNotificationAccountContactResponse>;
 export interface AssociateManagedNotificationAdditionalChannelRequest {
@@ -722,7 +708,7 @@ export interface AssociateManagedNotificationAdditionalChannelRequest {
   managedNotificationConfigurationArn: string;
 }
 export const AssociateManagedNotificationAdditionalChannelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channelArn: S.String.pipe(T.HttpLabel("channelArn")),
       managedNotificationConfigurationArn: S.String,
@@ -744,7 +730,7 @@ export const AssociateManagedNotificationAdditionalChannelRequest =
   }) as any as S.Schema<AssociateManagedNotificationAdditionalChannelRequest>;
 export interface AssociateManagedNotificationAdditionalChannelResponse {}
 export const AssociateManagedNotificationAdditionalChannelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateManagedNotificationAdditionalChannelResponse",
   }) as any as S.Schema<AssociateManagedNotificationAdditionalChannelResponse>;
 export interface DisassociateManagedNotificationAdditionalChannelRequest {
@@ -752,7 +738,7 @@ export interface DisassociateManagedNotificationAdditionalChannelRequest {
   managedNotificationConfigurationArn: string;
 }
 export const DisassociateManagedNotificationAdditionalChannelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channelArn: S.String.pipe(T.HttpLabel("channelArn")),
       managedNotificationConfigurationArn: S.String,
@@ -774,7 +760,7 @@ export const DisassociateManagedNotificationAdditionalChannelRequest =
   }) as any as S.Schema<DisassociateManagedNotificationAdditionalChannelRequest>;
 export interface DisassociateManagedNotificationAdditionalChannelResponse {}
 export const DisassociateManagedNotificationAdditionalChannelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisassociateManagedNotificationAdditionalChannelResponse",
   }) as any as S.Schema<DisassociateManagedNotificationAdditionalChannelResponse>;
 export interface GetManagedNotificationChildEventRequest {
@@ -782,7 +768,7 @@ export interface GetManagedNotificationChildEventRequest {
   locale?: string;
 }
 export const GetManagedNotificationChildEventRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String.pipe(T.HttpLabel("arn")),
       locale: S.optional(S.String).pipe(T.HttpQuery("locale")),
@@ -806,18 +792,18 @@ export interface Dimension {
   name: string;
   value: string;
 }
-export const Dimension = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, value: S.String }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 export type Dimensions = Dimension[];
-export const Dimensions = /*@__PURE__*/ /*#__PURE__*/ S.Array(Dimension);
+export const Dimensions = /*@__PURE__*/ S.Array(Dimension);
 export interface MessageComponents {
   headline?: string;
   paragraphSummary?: string;
   completeDescription?: string;
   dimensions?: Dimension[];
 }
-export const MessageComponents = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MessageComponents = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headline: S.optional(S.String),
     paragraphSummary: S.optional(S.String),
@@ -828,7 +814,7 @@ export const MessageComponents = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "MessageComponents",
 }) as any as S.Schema<MessageComponents>;
 export type TextByLocale = { [key: string]: string | undefined };
-export const TextByLocale = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TextByLocale = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -838,7 +824,7 @@ export interface TextPartValue {
   textByLocale?: { [key: string]: string | undefined };
   url?: string;
 }
-export const TextPartValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TextPartValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     displayText: S.optional(S.String),
@@ -847,7 +833,7 @@ export const TextPartValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TextPartValue" }) as any as S.Schema<TextPartValue>;
 export type TextParts = { [key: string]: TextPartValue | undefined };
-export const TextParts = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TextParts = /*@__PURE__*/ S.Record(
   S.String,
   TextPartValue.pipe(S.optional),
 );
@@ -856,18 +842,18 @@ export interface SummarizationDimensionDetail {
   value: string;
 }
 export const SummarizationDimensionDetail =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ name: S.String, value: S.String }),
   ).annotate({
     identifier: "SummarizationDimensionDetail",
   }) as any as S.Schema<SummarizationDimensionDetail>;
 export type SummarizationDimensionDetails = SummarizationDimensionDetail[];
 export const SummarizationDimensionDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SummarizationDimensionDetail);
+  /*@__PURE__*/ S.Array(SummarizationDimensionDetail);
 export interface AggregationDetail {
   summarizationDimensions?: SummarizationDimensionDetail[];
 }
-export const AggregationDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AggregationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summarizationDimensions: S.optional(SummarizationDimensionDetails),
   }),
@@ -890,7 +876,7 @@ export interface ManagedNotificationChildEvent {
   aggregationDetail?: AggregationDetail;
 }
 export const ManagedNotificationChildEvent =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       schemaVersion: S.String,
       id: S.String,
@@ -920,7 +906,7 @@ export interface GetManagedNotificationChildEventResponse {
   content: ManagedNotificationChildEvent;
 }
 export const GetManagedNotificationChildEventResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       managedNotificationConfigurationArn: S.String,
@@ -941,7 +927,7 @@ export interface ListManagedNotificationChildEventsRequest {
   nextToken?: string;
 }
 export const ListManagedNotificationChildEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       aggregateManagedNotificationEventArn: S.String.pipe(
         T.HttpLabel("aggregateManagedNotificationEventArn"),
@@ -981,7 +967,7 @@ export interface ManagedSourceEventMetadataSummary {
   eventType: string;
 }
 export const ManagedSourceEventMetadataSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       eventOriginRegion: S.optional(S.String),
       source: S.String,
@@ -993,8 +979,8 @@ export const ManagedSourceEventMetadataSummary =
 export interface MessageComponentsSummary {
   headline: string;
 }
-export const MessageComponentsSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ headline: S.String }),
+export const MessageComponentsSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ headline: S.String }),
 ).annotate({
   identifier: "MessageComponentsSummary",
 }) as any as S.Schema<MessageComponentsSummary>;
@@ -1007,7 +993,7 @@ export interface ManagedNotificationChildEventSummary {
   notificationType: string;
 }
 export const ManagedNotificationChildEventSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       schemaVersion: S.String,
       sourceEventMetadata: ManagedSourceEventMetadataSummary,
@@ -1029,7 +1015,7 @@ export interface ManagedNotificationChildEventOverview {
   organizationalUnitId?: string;
 }
 export const ManagedNotificationChildEventOverview =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       managedNotificationConfigurationArn: S.String,
@@ -1045,13 +1031,13 @@ export const ManagedNotificationChildEventOverview =
 export type ManagedNotificationChildEvents =
   ManagedNotificationChildEventOverview[];
 export const ManagedNotificationChildEvents =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ManagedNotificationChildEventOverview);
+  /*@__PURE__*/ S.Array(ManagedNotificationChildEventOverview);
 export interface ListManagedNotificationChildEventsResponse {
   nextToken?: string;
   managedNotificationChildEvents: ManagedNotificationChildEventOverview[];
 }
 export const ListManagedNotificationChildEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       managedNotificationChildEvents: ManagedNotificationChildEvents,
@@ -1063,7 +1049,7 @@ export interface GetManagedNotificationConfigurationRequest {
   arn: string;
 }
 export const GetManagedNotificationConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
       T.all(
         T.Http({
@@ -1088,7 +1074,7 @@ export interface GetManagedNotificationConfigurationResponse {
   subCategory: string;
 }
 export const GetManagedNotificationConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       name: S.String,
@@ -1105,7 +1091,7 @@ export interface ListManagedNotificationConfigurationsRequest {
   nextToken?: string;
 }
 export const ListManagedNotificationConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channelIdentifier: S.optional(S.String).pipe(
         T.HttpQuery("channelIdentifier"),
@@ -1131,7 +1117,7 @@ export interface ManagedNotificationConfigurationStructure {
   description: string;
 }
 export const ManagedNotificationConfigurationStructure =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ arn: S.String, name: S.String, description: S.String }),
   ).annotate({
     identifier: "ManagedNotificationConfigurationStructure",
@@ -1139,15 +1125,13 @@ export const ManagedNotificationConfigurationStructure =
 export type ManagedNotificationConfigurations =
   ManagedNotificationConfigurationStructure[];
 export const ManagedNotificationConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    ManagedNotificationConfigurationStructure,
-  );
+  /*@__PURE__*/ S.Array(ManagedNotificationConfigurationStructure);
 export interface ListManagedNotificationConfigurationsResponse {
   nextToken?: string;
   managedNotificationConfigurations: ManagedNotificationConfigurationStructure[];
 }
 export const ListManagedNotificationConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       managedNotificationConfigurations: ManagedNotificationConfigurations,
@@ -1160,7 +1144,7 @@ export interface GetManagedNotificationEventRequest {
   locale?: string;
 }
 export const GetManagedNotificationEventRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String.pipe(T.HttpLabel("arn")),
       locale: S.optional(S.String).pipe(T.HttpQuery("locale")),
@@ -1181,22 +1165,20 @@ export interface AggregationKey {
   name: string;
   value: string;
 }
-export const AggregationKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AggregationKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, value: S.String }),
 ).annotate({ identifier: "AggregationKey" }) as any as S.Schema<AggregationKey>;
 export type AggregationKeys = AggregationKey[];
-export const AggregationKeys =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AggregationKey);
+export const AggregationKeys = /*@__PURE__*/ S.Array(AggregationKey);
 export type SampleAggregationDimensionValues = string[];
-export const SampleAggregationDimensionValues =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SampleAggregationDimensionValues = /*@__PURE__*/ S.Array(S.String);
 export interface SummarizationDimensionOverview {
   name: string;
   count: number;
   sampleValues?: string[];
 }
 export const SummarizationDimensionOverview =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       count: S.Number,
@@ -1207,7 +1189,7 @@ export const SummarizationDimensionOverview =
   }) as any as S.Schema<SummarizationDimensionOverview>;
 export type SummarizationDimensionOverviews = SummarizationDimensionOverview[];
 export const SummarizationDimensionOverviews =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SummarizationDimensionOverview);
+  /*@__PURE__*/ S.Array(SummarizationDimensionOverview);
 export interface AggregationSummary {
   eventCount: number;
   aggregatedBy: AggregationKey[];
@@ -1216,7 +1198,7 @@ export interface AggregationSummary {
   aggregatedOrganizationalUnits?: SummarizationDimensionOverview;
   additionalSummarizationDimensions?: SummarizationDimensionOverview[];
 }
-export const AggregationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AggregationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventCount: S.Number,
     aggregatedBy: AggregationKeys,
@@ -1245,27 +1227,24 @@ export interface ManagedNotificationEvent {
   textParts: { [key: string]: TextPartValue | undefined };
   organizationalUnitId?: string;
 }
-export const ManagedNotificationEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      schemaVersion: S.String,
-      id: S.String,
-      messageComponents: MessageComponents,
-      sourceEventDetailUrl: S.optional(S.String),
-      sourceEventDetailUrlDisplayText: S.optional(S.String),
-      notificationType: S.String,
-      eventStatus: S.optional(S.String),
-      aggregationEventType: S.optional(S.String),
-      aggregationSummary: S.optional(AggregationSummary),
-      startTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      endTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      textParts: TextParts,
-      organizationalUnitId: S.optional(S.String),
-    }),
+export const ManagedNotificationEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaVersion: S.String,
+    id: S.String,
+    messageComponents: MessageComponents,
+    sourceEventDetailUrl: S.optional(S.String),
+    sourceEventDetailUrlDisplayText: S.optional(S.String),
+    notificationType: S.String,
+    eventStatus: S.optional(S.String),
+    aggregationEventType: S.optional(S.String),
+    aggregationSummary: S.optional(AggregationSummary),
+    startTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    textParts: TextParts,
+    organizationalUnitId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ManagedNotificationEvent",
 }) as any as S.Schema<ManagedNotificationEvent>;
@@ -1276,7 +1255,7 @@ export interface GetManagedNotificationEventResponse {
   content: ManagedNotificationEvent;
 }
 export const GetManagedNotificationEventResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       managedNotificationConfigurationArn: S.String,
@@ -1297,7 +1276,7 @@ export interface ListManagedNotificationEventsRequest {
   relatedAccount?: string;
 }
 export const ListManagedNotificationEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       startTime: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1334,7 +1313,7 @@ export interface ManagedNotificationEventSummary {
   notificationType: string;
 }
 export const ManagedNotificationEventSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       schemaVersion: S.String,
       sourceEventMetadata: ManagedSourceEventMetadataSummary,
@@ -1346,8 +1325,7 @@ export const ManagedNotificationEventSummary =
     identifier: "ManagedNotificationEventSummary",
   }) as any as S.Schema<ManagedNotificationEventSummary>;
 export type AggregatedNotificationRegions = string[];
-export const AggregatedNotificationRegions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AggregatedNotificationRegions = /*@__PURE__*/ S.Array(S.String);
 export interface ManagedNotificationEventOverview {
   arn: string;
   managedNotificationConfigurationArn: string;
@@ -1360,7 +1338,7 @@ export interface ManagedNotificationEventOverview {
   aggregatedNotificationRegions?: string[];
 }
 export const ManagedNotificationEventOverview =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       managedNotificationConfigurationArn: S.String,
@@ -1376,7 +1354,7 @@ export const ManagedNotificationEventOverview =
     identifier: "ManagedNotificationEventOverview",
   }) as any as S.Schema<ManagedNotificationEventOverview>;
 export type ManagedNotificationEvents = ManagedNotificationEventOverview[];
-export const ManagedNotificationEvents = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ManagedNotificationEvents = /*@__PURE__*/ S.Array(
   ManagedNotificationEventOverview,
 );
 export interface ListManagedNotificationEventsResponse {
@@ -1384,7 +1362,7 @@ export interface ListManagedNotificationEventsResponse {
   managedNotificationEvents: ManagedNotificationEventOverview[];
 }
 export const ListManagedNotificationEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       managedNotificationEvents: ManagedNotificationEvents,
@@ -1399,7 +1377,7 @@ export interface CreateNotificationConfigurationRequest {
   tags?: { [key: string]: string | undefined };
 }
 export const CreateNotificationConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       description: S.String,
@@ -1423,7 +1401,7 @@ export interface CreateNotificationConfigurationResponse {
   status: string;
 }
 export const CreateNotificationConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ arn: S.String, status: S.String }),
   ).annotate({
     identifier: "CreateNotificationConfigurationResponse",
@@ -1435,7 +1413,7 @@ export interface UpdateNotificationConfigurationRequest {
   aggregationDuration?: string;
 }
 export const UpdateNotificationConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String.pipe(T.HttpLabel("arn")),
       name: S.optional(S.String),
@@ -1458,16 +1436,14 @@ export interface UpdateNotificationConfigurationResponse {
   arn: string;
 }
 export const UpdateNotificationConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ arn: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ arn: S.String })).annotate({
     identifier: "UpdateNotificationConfigurationResponse",
   }) as any as S.Schema<UpdateNotificationConfigurationResponse>;
 export interface GetNotificationConfigurationRequest {
   arn: string;
 }
 export const GetNotificationConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/notification-configurations/{arn}" }),
@@ -1491,7 +1467,7 @@ export interface GetNotificationConfigurationResponse {
   subtype?: string;
 }
 export const GetNotificationConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       name: S.String,
@@ -1508,7 +1484,7 @@ export interface DeleteNotificationConfigurationRequest {
   arn: string;
 }
 export const DeleteNotificationConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
       T.all(
         T.Http({ method: "DELETE", uri: "/notification-configurations/{arn}" }),
@@ -1524,7 +1500,7 @@ export const DeleteNotificationConfigurationRequest =
   }) as any as S.Schema<DeleteNotificationConfigurationRequest>;
 export interface DeleteNotificationConfigurationResponse {}
 export const DeleteNotificationConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteNotificationConfigurationResponse",
   }) as any as S.Schema<DeleteNotificationConfigurationResponse>;
 export interface ListNotificationConfigurationsRequest {
@@ -1536,7 +1512,7 @@ export interface ListNotificationConfigurationsRequest {
   nextToken?: string;
 }
 export const ListNotificationConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       eventRuleSource: S.optional(S.String).pipe(
         T.HttpQuery("eventRuleSource"),
@@ -1569,7 +1545,7 @@ export interface NotificationConfigurationStructure {
   subtype?: string;
 }
 export const NotificationConfigurationStructure =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       name: S.String,
@@ -1583,7 +1559,7 @@ export const NotificationConfigurationStructure =
     identifier: "NotificationConfigurationStructure",
   }) as any as S.Schema<NotificationConfigurationStructure>;
 export type NotificationConfigurations = NotificationConfigurationStructure[];
-export const NotificationConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const NotificationConfigurations = /*@__PURE__*/ S.Array(
   NotificationConfigurationStructure,
 );
 export interface ListNotificationConfigurationsResponse {
@@ -1591,7 +1567,7 @@ export interface ListNotificationConfigurationsResponse {
   notificationConfigurations: NotificationConfigurationStructure[];
 }
 export const ListNotificationConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       notificationConfigurations: NotificationConfigurations,
@@ -1604,7 +1580,7 @@ export interface GetNotificationEventRequest {
   locale?: string;
 }
 export const GetNotificationEventRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String.pipe(T.HttpLabel("arn")),
       locale: S.optional(S.String).pipe(T.HttpQuery("locale")),
@@ -1622,14 +1598,14 @@ export const GetNotificationEventRequest =
     identifier: "GetNotificationEventRequest",
   }) as any as S.Schema<GetNotificationEventRequest>;
 export type Tags = string[];
-export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Tags = /*@__PURE__*/ S.Array(S.String);
 export interface Resource {
   id?: string;
   arn?: string;
   detailUrl?: string;
   tags?: string[];
 }
-export const Resource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -1638,7 +1614,7 @@ export const Resource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type Resources = Resource[];
-export const Resources = /*@__PURE__*/ /*#__PURE__*/ S.Array(Resource);
+export const Resources = /*@__PURE__*/ S.Array(Resource);
 export interface SourceEventMetadata {
   eventTypeVersion: string;
   sourceEventId: string;
@@ -1649,7 +1625,7 @@ export interface SourceEventMetadata {
   eventType: string;
   relatedResources: Resource[];
 }
-export const SourceEventMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SourceEventMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTypeVersion: S.String,
     sourceEventId: S.String,
@@ -1669,7 +1645,7 @@ export interface MediaElement {
   url: string;
   caption: string;
 }
-export const MediaElement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MediaElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mediaId: S.String,
     type: S.String,
@@ -1678,7 +1654,7 @@ export const MediaElement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MediaElement" }) as any as S.Schema<MediaElement>;
 export type Media = MediaElement[];
-export const Media = /*@__PURE__*/ /*#__PURE__*/ S.Array(MediaElement);
+export const Media = /*@__PURE__*/ S.Array(MediaElement);
 export interface NotificationEventSchema {
   schemaVersion: string;
   id: string;
@@ -1697,30 +1673,27 @@ export interface NotificationEventSchema {
   media: MediaElement[];
   organizationalUnitId?: string;
 }
-export const NotificationEventSchema = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      schemaVersion: S.String,
-      id: S.String,
-      sourceEventMetadata: SourceEventMetadata,
-      messageComponents: MessageComponents,
-      sourceEventDetailUrl: S.optional(S.String),
-      sourceEventDetailUrlDisplayText: S.optional(S.String),
-      notificationType: S.String,
-      eventStatus: S.optional(S.String),
-      aggregationEventType: S.optional(S.String),
-      aggregateNotificationEventArn: S.optional(S.String),
-      aggregationSummary: S.optional(AggregationSummary),
-      startTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      endTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      textParts: TextParts,
-      media: Media,
-      organizationalUnitId: S.optional(S.String),
-    }),
+export const NotificationEventSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaVersion: S.String,
+    id: S.String,
+    sourceEventMetadata: SourceEventMetadata,
+    messageComponents: MessageComponents,
+    sourceEventDetailUrl: S.optional(S.String),
+    sourceEventDetailUrlDisplayText: S.optional(S.String),
+    notificationType: S.String,
+    eventStatus: S.optional(S.String),
+    aggregationEventType: S.optional(S.String),
+    aggregateNotificationEventArn: S.optional(S.String),
+    aggregationSummary: S.optional(AggregationSummary),
+    startTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    textParts: TextParts,
+    media: Media,
+    organizationalUnitId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "NotificationEventSchema",
 }) as any as S.Schema<NotificationEventSchema>;
@@ -1731,7 +1704,7 @@ export interface GetNotificationEventResponse {
   content: NotificationEventSchema;
 }
 export const GetNotificationEventResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       notificationConfigurationArn: S.String,
@@ -1753,7 +1726,7 @@ export interface ListNotificationEventsRequest {
   organizationalUnitId?: string;
 }
 export const ListNotificationEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       startTime: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1792,13 +1765,12 @@ export interface SourceEventMetadataSummary {
   source: string;
   eventType: string;
 }
-export const SourceEventMetadataSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      eventOriginRegion: S.optional(S.String),
-      source: S.String,
-      eventType: S.String,
-    }),
+export const SourceEventMetadataSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    eventOriginRegion: S.optional(S.String),
+    source: S.String,
+    eventType: S.String,
+  }),
 ).annotate({
   identifier: "SourceEventMetadataSummary",
 }) as any as S.Schema<SourceEventMetadataSummary>;
@@ -1809,15 +1781,14 @@ export interface NotificationEventSummary {
   eventStatus: string;
   notificationType: string;
 }
-export const NotificationEventSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      schemaVersion: S.String,
-      sourceEventMetadata: SourceEventMetadataSummary,
-      messageComponents: MessageComponentsSummary,
-      eventStatus: S.String,
-      notificationType: S.String,
-    }),
+export const NotificationEventSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaVersion: S.String,
+    sourceEventMetadata: SourceEventMetadataSummary,
+    messageComponents: MessageComponentsSummary,
+    eventStatus: S.String,
+    notificationType: S.String,
+  }),
 ).annotate({
   identifier: "NotificationEventSummary",
 }) as any as S.Schema<NotificationEventSummary>;
@@ -1832,24 +1803,23 @@ export interface NotificationEventOverview {
   aggregationSummary?: AggregationSummary;
   organizationalUnitId?: string;
 }
-export const NotificationEventOverview = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.String,
-      notificationConfigurationArn: S.String,
-      relatedAccount: S.String,
-      creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      notificationEvent: NotificationEventSummary,
-      aggregationEventType: S.optional(S.String),
-      aggregateNotificationEventArn: S.optional(S.String),
-      aggregationSummary: S.optional(AggregationSummary),
-      organizationalUnitId: S.optional(S.String),
-    }),
+export const NotificationEventOverview = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    notificationConfigurationArn: S.String,
+    relatedAccount: S.String,
+    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    notificationEvent: NotificationEventSummary,
+    aggregationEventType: S.optional(S.String),
+    aggregateNotificationEventArn: S.optional(S.String),
+    aggregationSummary: S.optional(AggregationSummary),
+    organizationalUnitId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "NotificationEventOverview",
 }) as any as S.Schema<NotificationEventOverview>;
 export type NotificationEvents = NotificationEventOverview[];
-export const NotificationEvents = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const NotificationEvents = /*@__PURE__*/ S.Array(
   NotificationEventOverview,
 );
 export interface ListNotificationEventsResponse {
@@ -1857,7 +1827,7 @@ export interface ListNotificationEventsResponse {
   notificationEvents: NotificationEventOverview[];
 }
 export const ListNotificationEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       notificationEvents: NotificationEvents,
@@ -1869,7 +1839,7 @@ export interface RegisterNotificationHubRequest {
   notificationHubRegion: string;
 }
 export const RegisterNotificationHubRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ notificationHubRegion: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/notification-hubs" }),
@@ -1888,7 +1858,7 @@ export interface NotificationHubStatusSummary {
   reason: string;
 }
 export const NotificationHubStatusSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ status: S.String, reason: S.String }),
   ).annotate({
     identifier: "NotificationHubStatusSummary",
@@ -1900,7 +1870,7 @@ export interface RegisterNotificationHubResponse {
   lastActivationTime?: Date;
 }
 export const RegisterNotificationHubResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       notificationHubRegion: S.String,
       statusSummary: NotificationHubStatusSummary,
@@ -1916,7 +1886,7 @@ export interface DeregisterNotificationHubRequest {
   notificationHubRegion: string;
 }
 export const DeregisterNotificationHubRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       notificationHubRegion: S.String.pipe(
         T.HttpLabel("notificationHubRegion"),
@@ -1942,7 +1912,7 @@ export interface DeregisterNotificationHubResponse {
   statusSummary: NotificationHubStatusSummary;
 }
 export const DeregisterNotificationHubResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       notificationHubRegion: S.String,
       statusSummary: NotificationHubStatusSummary,
@@ -1955,7 +1925,7 @@ export interface ListNotificationHubsRequest {
   nextToken?: string;
 }
 export const ListNotificationHubsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1978,29 +1948,26 @@ export interface NotificationHubOverview {
   creationTime: Date;
   lastActivationTime?: Date;
 }
-export const NotificationHubOverview = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      notificationHubRegion: S.String,
-      statusSummary: NotificationHubStatusSummary,
-      creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      lastActivationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const NotificationHubOverview = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notificationHubRegion: S.String,
+    statusSummary: NotificationHubStatusSummary,
+    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastActivationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "NotificationHubOverview",
 }) as any as S.Schema<NotificationHubOverview>;
 export type NotificationHubs = NotificationHubOverview[];
-export const NotificationHubs = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  NotificationHubOverview,
-);
+export const NotificationHubs = /*@__PURE__*/ S.Array(NotificationHubOverview);
 export interface ListNotificationHubsResponse {
   notificationHubs: NotificationHubOverview[];
   nextToken?: string;
 }
 export const ListNotificationHubsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       notificationHubs: NotificationHubs,
       nextToken: S.optional(S.String),
@@ -2010,7 +1977,7 @@ export const ListNotificationHubsResponse =
   }) as any as S.Schema<ListNotificationHubsResponse>;
 export interface EnableNotificationsAccessForOrganizationRequest {}
 export const EnableNotificationsAccessForOrganizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/organization/access" }),
@@ -2026,12 +1993,12 @@ export const EnableNotificationsAccessForOrganizationRequest =
   }) as any as S.Schema<EnableNotificationsAccessForOrganizationRequest>;
 export interface EnableNotificationsAccessForOrganizationResponse {}
 export const EnableNotificationsAccessForOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "EnableNotificationsAccessForOrganizationResponse",
   }) as any as S.Schema<EnableNotificationsAccessForOrganizationResponse>;
 export interface GetNotificationsAccessForOrganizationRequest {}
 export const GetNotificationsAccessForOrganizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/organization/access" }),
@@ -2051,12 +2018,12 @@ export type AccessStatus =
   | "PENDING"
   | "FAILED"
   | (string & {});
-export const AccessStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccessStatus = /*@__PURE__*/ S.String;
 export interface NotificationsAccessForOrganization {
   accessStatus: AccessStatus;
 }
 export const NotificationsAccessForOrganization =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ accessStatus: AccessStatus }),
   ).annotate({
     identifier: "NotificationsAccessForOrganization",
@@ -2065,7 +2032,7 @@ export interface GetNotificationsAccessForOrganizationResponse {
   notificationsAccessForOrganization: NotificationsAccessForOrganization;
 }
 export const GetNotificationsAccessForOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       notificationsAccessForOrganization: NotificationsAccessForOrganization,
     }),
@@ -2074,7 +2041,7 @@ export const GetNotificationsAccessForOrganizationResponse =
   }) as any as S.Schema<GetNotificationsAccessForOrganizationResponse>;
 export interface DisableNotificationsAccessForOrganizationRequest {}
 export const DisableNotificationsAccessForOrganizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(
         T.Http({ method: "DELETE", uri: "/organization/access" }),
@@ -2090,7 +2057,7 @@ export const DisableNotificationsAccessForOrganizationRequest =
   }) as any as S.Schema<DisableNotificationsAccessForOrganizationRequest>;
 export interface DisableNotificationsAccessForOrganizationResponse {}
 export const DisableNotificationsAccessForOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisableNotificationsAccessForOrganizationResponse",
   }) as any as S.Schema<DisableNotificationsAccessForOrganizationResponse>;
 export interface AssociateOrganizationalUnitRequest {
@@ -2098,7 +2065,7 @@ export interface AssociateOrganizationalUnitRequest {
   notificationConfigurationArn: string;
 }
 export const AssociateOrganizationalUnitRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organizationalUnitId: S.String.pipe(T.HttpLabel("organizationalUnitId")),
       notificationConfigurationArn: S.String,
@@ -2120,7 +2087,7 @@ export const AssociateOrganizationalUnitRequest =
   }) as any as S.Schema<AssociateOrganizationalUnitRequest>;
 export interface AssociateOrganizationalUnitResponse {}
 export const AssociateOrganizationalUnitResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateOrganizationalUnitResponse",
   }) as any as S.Schema<AssociateOrganizationalUnitResponse>;
 export interface DisassociateOrganizationalUnitRequest {
@@ -2128,7 +2095,7 @@ export interface DisassociateOrganizationalUnitRequest {
   notificationConfigurationArn: string;
 }
 export const DisassociateOrganizationalUnitRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organizationalUnitId: S.String.pipe(T.HttpLabel("organizationalUnitId")),
       notificationConfigurationArn: S.String,
@@ -2150,7 +2117,7 @@ export const DisassociateOrganizationalUnitRequest =
   }) as any as S.Schema<DisassociateOrganizationalUnitRequest>;
 export interface DisassociateOrganizationalUnitResponse {}
 export const DisassociateOrganizationalUnitResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisassociateOrganizationalUnitResponse",
   }) as any as S.Schema<DisassociateOrganizationalUnitResponse>;
 export interface ListOrganizationalUnitsRequest {
@@ -2159,7 +2126,7 @@ export interface ListOrganizationalUnitsRequest {
   nextToken?: string;
 }
 export const ListOrganizationalUnitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       notificationConfigurationArn: S.String.pipe(
         T.HttpQuery("notificationConfigurationArn"),
@@ -2180,15 +2147,13 @@ export const ListOrganizationalUnitsRequest =
     identifier: "ListOrganizationalUnitsRequest",
   }) as any as S.Schema<ListOrganizationalUnitsRequest>;
 export type OrganizationalUnits = string[];
-export const OrganizationalUnits = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const OrganizationalUnits = /*@__PURE__*/ S.Array(S.String);
 export interface ListOrganizationalUnitsResponse {
   organizationalUnits: string[];
   nextToken?: string;
 }
 export const ListOrganizationalUnitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organizationalUnits: OrganizationalUnits,
       nextToken: S.optional(S.String),
@@ -2275,7 +2240,7 @@ export const listManagedNotificationChannelAssociations: API.OperationMethod<
     ListManagedNotificationChannelAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationChannelAssociationsRequest,
   output: ListManagedNotificationChannelAssociationsResponse,
   errors: [
@@ -2323,7 +2288,7 @@ export const listMemberAccounts: API.OperationMethod<
     ListMemberAccountsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemberAccountsRequest,
   output: ListMemberAccountsResponse,
   errors: [
@@ -2360,7 +2325,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2391,7 +2356,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2420,7 +2385,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2449,7 +2414,7 @@ export const associateChannel: API.OperationMethod<
   AssociateChannelResponse,
   AssociateChannelError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateChannelRequest,
   output: AssociateChannelResponse,
   errors: [
@@ -2478,7 +2443,7 @@ export const disassociateChannel: API.OperationMethod<
   DisassociateChannelResponse,
   DisassociateChannelError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateChannelRequest,
   output: DisassociateChannelResponse,
   errors: [
@@ -2520,7 +2485,7 @@ export const listChannels: API.OperationMethod<
     ListChannelsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [
@@ -2555,7 +2520,7 @@ export const createEventRule: API.OperationMethod<
   CreateEventRuleResponse,
   CreateEventRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventRuleRequest,
   output: CreateEventRuleResponse,
   errors: [
@@ -2585,7 +2550,7 @@ export const updateEventRule: API.OperationMethod<
   UpdateEventRuleResponse,
   UpdateEventRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventRuleRequest,
   output: UpdateEventRuleResponse,
   errors: [
@@ -2613,7 +2578,7 @@ export const getEventRule: API.OperationMethod<
   GetEventRuleResponse,
   GetEventRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventRuleRequest,
   output: GetEventRuleResponse,
   errors: [
@@ -2641,7 +2606,7 @@ export const deleteEventRule: API.OperationMethod<
   DeleteEventRuleResponse,
   DeleteEventRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventRuleRequest,
   output: DeleteEventRuleResponse,
   errors: [
@@ -2684,7 +2649,7 @@ export const listEventRules: API.OperationMethod<
     ListEventRulesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventRulesRequest,
   output: ListEventRulesResponse,
   errors: [
@@ -2719,7 +2684,7 @@ export const associateManagedNotificationAccountContact: API.OperationMethod<
   AssociateManagedNotificationAccountContactResponse,
   AssociateManagedNotificationAccountContactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateManagedNotificationAccountContactRequest,
   output: AssociateManagedNotificationAccountContactResponse,
   errors: [
@@ -2749,7 +2714,7 @@ export const disassociateManagedNotificationAccountContact: API.OperationMethod<
   DisassociateManagedNotificationAccountContactResponse,
   DisassociateManagedNotificationAccountContactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateManagedNotificationAccountContactRequest,
   output: DisassociateManagedNotificationAccountContactResponse,
   errors: [
@@ -2781,7 +2746,7 @@ export const associateManagedNotificationAdditionalChannel: API.OperationMethod<
   AssociateManagedNotificationAdditionalChannelResponse,
   AssociateManagedNotificationAdditionalChannelError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateManagedNotificationAdditionalChannelRequest,
   output: AssociateManagedNotificationAdditionalChannelResponse,
   errors: [
@@ -2812,7 +2777,7 @@ export const disassociateManagedNotificationAdditionalChannel: API.OperationMeth
   DisassociateManagedNotificationAdditionalChannelResponse,
   DisassociateManagedNotificationAdditionalChannelError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateManagedNotificationAdditionalChannelRequest,
   output: DisassociateManagedNotificationAdditionalChannelResponse,
   errors: [
@@ -2839,7 +2804,7 @@ export const getManagedNotificationChildEvent: API.OperationMethod<
   GetManagedNotificationChildEventResponse,
   GetManagedNotificationChildEventError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedNotificationChildEventRequest,
   output: GetManagedNotificationChildEventResponse,
   errors: [
@@ -2880,7 +2845,7 @@ export const listManagedNotificationChildEvents: API.OperationMethod<
     ListManagedNotificationChildEventsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationChildEventsRequest,
   output: ListManagedNotificationChildEventsResponse,
   errors: [
@@ -2912,7 +2877,7 @@ export const getManagedNotificationConfiguration: API.OperationMethod<
   GetManagedNotificationConfigurationResponse,
   GetManagedNotificationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedNotificationConfigurationRequest,
   output: GetManagedNotificationConfigurationResponse,
   errors: [
@@ -2953,7 +2918,7 @@ export const listManagedNotificationConfigurations: API.OperationMethod<
     ListManagedNotificationConfigurationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationConfigurationsRequest,
   output: ListManagedNotificationConfigurationsResponse,
   errors: [
@@ -2985,7 +2950,7 @@ export const getManagedNotificationEvent: API.OperationMethod<
   GetManagedNotificationEventResponse,
   GetManagedNotificationEventError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedNotificationEventRequest,
   output: GetManagedNotificationEventResponse,
   errors: [
@@ -3026,7 +2991,7 @@ export const listManagedNotificationEvents: API.OperationMethod<
     ListManagedNotificationEventsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationEventsRequest,
   output: ListManagedNotificationEventsResponse,
   errors: [
@@ -3059,7 +3024,7 @@ export const createNotificationConfiguration: API.OperationMethod<
   CreateNotificationConfigurationResponse,
   CreateNotificationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNotificationConfigurationRequest,
   output: CreateNotificationConfigurationResponse,
   errors: [
@@ -3088,7 +3053,7 @@ export const updateNotificationConfiguration: API.OperationMethod<
   UpdateNotificationConfigurationResponse,
   UpdateNotificationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNotificationConfigurationRequest,
   output: UpdateNotificationConfigurationResponse,
   errors: [
@@ -3116,7 +3081,7 @@ export const getNotificationConfiguration: API.OperationMethod<
   GetNotificationConfigurationResponse,
   GetNotificationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationConfigurationRequest,
   output: GetNotificationConfigurationResponse,
   errors: [
@@ -3144,7 +3109,7 @@ export const deleteNotificationConfiguration: API.OperationMethod<
   DeleteNotificationConfigurationResponse,
   DeleteNotificationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotificationConfigurationRequest,
   output: DeleteNotificationConfigurationResponse,
   errors: [
@@ -3186,7 +3151,7 @@ export const listNotificationConfigurations: API.OperationMethod<
     ListNotificationConfigurationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationConfigurationsRequest,
   output: ListNotificationConfigurationsResponse,
   errors: [
@@ -3220,7 +3185,7 @@ export const getNotificationEvent: API.OperationMethod<
   GetNotificationEventResponse,
   GetNotificationEventError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationEventRequest,
   output: GetNotificationEventResponse,
   errors: [
@@ -3263,7 +3228,7 @@ export const listNotificationEvents: API.OperationMethod<
     ListNotificationEventsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationEventsRequest,
   output: ListNotificationEventsResponse,
   errors: [
@@ -3298,7 +3263,7 @@ export const registerNotificationHub: API.OperationMethod<
   RegisterNotificationHubResponse,
   RegisterNotificationHubError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterNotificationHubRequest,
   output: RegisterNotificationHubResponse,
   errors: [
@@ -3329,7 +3294,7 @@ export const deregisterNotificationHub: API.OperationMethod<
   DeregisterNotificationHubResponse,
   DeregisterNotificationHubError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterNotificationHubRequest,
   output: DeregisterNotificationHubResponse,
   errors: [
@@ -3371,7 +3336,7 @@ export const listNotificationHubs: API.OperationMethod<
     ListNotificationHubsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationHubsRequest,
   output: ListNotificationHubsResponse,
   errors: [
@@ -3405,7 +3370,7 @@ export const enableNotificationsAccessForOrganization: API.OperationMethod<
   EnableNotificationsAccessForOrganizationResponse,
   EnableNotificationsAccessForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableNotificationsAccessForOrganizationRequest,
   output: EnableNotificationsAccessForOrganizationResponse,
   errors: [
@@ -3433,7 +3398,7 @@ export const getNotificationsAccessForOrganization: API.OperationMethod<
   GetNotificationsAccessForOrganizationResponse,
   GetNotificationsAccessForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationsAccessForOrganizationRequest,
   output: GetNotificationsAccessForOrganizationResponse,
   errors: [
@@ -3461,7 +3426,7 @@ export const disableNotificationsAccessForOrganization: API.OperationMethod<
   DisableNotificationsAccessForOrganizationResponse,
   DisableNotificationsAccessForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableNotificationsAccessForOrganizationRequest,
   output: DisableNotificationsAccessForOrganizationResponse,
   errors: [
@@ -3492,7 +3457,7 @@ export const associateOrganizationalUnit: API.OperationMethod<
   AssociateOrganizationalUnitResponse,
   AssociateOrganizationalUnitError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateOrganizationalUnitRequest,
   output: AssociateOrganizationalUnitResponse,
   errors: [
@@ -3521,7 +3486,7 @@ export const disassociateOrganizationalUnit: API.OperationMethod<
   DisassociateOrganizationalUnitResponse,
   DisassociateOrganizationalUnitError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateOrganizationalUnitRequest,
   output: DisassociateOrganizationalUnitResponse,
   errors: [
@@ -3563,7 +3528,7 @@ export const listOrganizationalUnits: API.OperationMethod<
     ListOrganizationalUnitsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationalUnitsRequest,
   output: ListOrganizationalUnitsResponse,
   errors: [

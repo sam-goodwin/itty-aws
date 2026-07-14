@@ -66,7 +66,7 @@ export interface ExternalDataSchemasResyncCreateInput {
   } | null;
 }
 export const ExternalDataSchemasResyncCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -176,7 +176,7 @@ export const ExternalDataSchemasResyncCreateInput =
 // Output Schema
 export type ExternalDataSchemasResyncCreateOutput = void;
 export const ExternalDataSchemasResyncCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSchemasResyncCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSchemasResyncCreateOutput>;
 
 // The operation
 /**
@@ -185,7 +185,7 @@ export const ExternalDataSchemasResyncCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const externalDataSchemasResyncCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSchemasResyncCreateInput,
     outputSchema: ExternalDataSchemasResyncCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

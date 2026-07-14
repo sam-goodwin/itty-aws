@@ -10,7 +10,7 @@ export interface PostV2BillingMeterEventsInput {
   timestamp?: string;
 }
 export const PostV2BillingMeterEventsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     event_name: Schema.String,
     identifier: Schema.optional(Schema.String),
     payload: Schema.Record(Schema.String, Schema.String),
@@ -30,7 +30,7 @@ export interface PostV2BillingMeterEventsOutput {
   timestamp: string;
 }
 export const PostV2BillingMeterEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.String,
     event_name: Schema.String,
     identifier: Schema.String,
@@ -46,9 +46,7 @@ export const PostV2BillingMeterEventsOutput =
  *
  * Creates a meter event. Events are validated synchronously, but are processed asynchronously. Supports up to 1,000 events per second in livemode. For higher rate-limits, please use meter event streams instead.
  */
-export const PostV2BillingMeterEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostV2BillingMeterEventsInput,
-    outputSchema: PostV2BillingMeterEventsOutput,
-  }),
-);
+export const PostV2BillingMeterEvents = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostV2BillingMeterEventsInput,
+  outputSchema: PostV2BillingMeterEventsOutput,
+}));

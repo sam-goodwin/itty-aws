@@ -1231,7 +1231,7 @@ export interface CreateBatchV1NamespacedCronJobInput {
   };
 }
 export const CreateBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -5166,7 +5166,7 @@ export interface CreateBatchV1NamespacedCronJobOutput {
   };
 }
 export const CreateBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7885,7 +7885,7 @@ export const CreateBatchV1NamespacedCronJobOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateBatchV1NamespacedCronJobInput,
     outputSchema: CreateBatchV1NamespacedCronJobOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -9052,7 +9052,7 @@ export interface CreateBatchV1NamespacedJobInput {
   };
 }
 export const CreateBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -12770,7 +12770,7 @@ export interface CreateBatchV1NamespacedJobOutput {
   };
 }
 export const CreateBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15331,13 +15331,11 @@ export const CreateBatchV1NamespacedJobOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateBatchV1NamespacedJobInput,
-    outputSchema: CreateBatchV1NamespacedJobOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateBatchV1NamespacedJobInput,
+  outputSchema: CreateBatchV1NamespacedJobOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface DeleteBatchV1CollectionNamespacedCronJobInput {
   namespace: string;
@@ -15361,7 +15359,7 @@ export interface DeleteBatchV1CollectionNamespacedCronJobInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteBatchV1CollectionNamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -15420,7 +15418,7 @@ export interface DeleteBatchV1CollectionNamespacedCronJobOutput {
   status?: string;
 }
 export const DeleteBatchV1CollectionNamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -15523,7 +15521,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteBatchV1CollectionNamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteBatchV1CollectionNamespacedCronJobInput,
     outputSchema: DeleteBatchV1CollectionNamespacedCronJobOutput,
   }));
@@ -15550,7 +15548,7 @@ export interface DeleteBatchV1CollectionNamespacedJobInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteBatchV1CollectionNamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -15609,7 +15607,7 @@ export interface DeleteBatchV1CollectionNamespacedJobOutput {
   status?: string;
 }
 export const DeleteBatchV1CollectionNamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -15712,7 +15710,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteBatchV1CollectionNamespacedJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteBatchV1CollectionNamespacedJobInput,
     outputSchema: DeleteBatchV1CollectionNamespacedJobOutput,
   }));
@@ -15731,7 +15729,7 @@ export interface DeleteBatchV1NamespacedCronJobInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -15782,7 +15780,7 @@ export interface DeleteBatchV1NamespacedCronJobOutput {
   status?: string;
 }
 export const DeleteBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -15836,7 +15834,7 @@ export const DeleteBatchV1NamespacedCronJobOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteBatchV1NamespacedCronJobInput,
     outputSchema: DeleteBatchV1NamespacedCronJobOutput,
     errors: [NotFound, Conflict] as const,
@@ -15856,7 +15854,7 @@ export interface DeleteBatchV1NamespacedJobInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -15907,7 +15905,7 @@ export interface DeleteBatchV1NamespacedJobOutput {
   status?: string;
 }
 export const DeleteBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -15960,18 +15958,14 @@ export const DeleteBatchV1NamespacedJobOutput =
  * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
-export const deleteBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteBatchV1NamespacedJobInput,
-    outputSchema: DeleteBatchV1NamespacedJobOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteBatchV1NamespacedJobInput,
+  outputSchema: DeleteBatchV1NamespacedJobOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export interface GetBatchAPIGroupInput {}
-export const GetBatchAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetBatchAPIGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/apis/batch/" }),
 ) as unknown as Schema.Codec<GetBatchAPIGroupInput>;
 
@@ -15984,46 +15978,44 @@ export interface GetBatchAPIGroupOutput {
   serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
   versions: { groupVersion: string; version: string }[];
 }
-export const GetBatchAPIGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    apiVersion: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    name: Schema.String,
-    preferredVersion: Schema.optional(
+export const GetBatchAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.String,
+  preferredVersion: Schema.optional(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+  serverAddressByClientCIDRs: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
+        clientCIDR: Schema.String,
+        serverAddress: Schema.String,
       }),
     ),
-    serverAddressByClientCIDRs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
-      ),
-    ),
-    versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<GetBatchAPIGroupOutput>;
+  ),
+  versions: Schema.Array(
+    Schema.Struct({
+      groupVersion: Schema.String,
+      version: Schema.String,
+    }),
+  ),
+}) as unknown as Schema.Codec<GetBatchAPIGroupOutput>;
 
 // The operation
 /**
  * get information of a group
  */
-export const getBatchAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getBatchAPIGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBatchAPIGroupInput,
   outputSchema: GetBatchAPIGroupOutput,
 }));
 // Input Schema
 export interface GetBatchV1APIResourcesInput {}
 export const GetBatchV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/batch/v1/" }),
   ) as unknown as Schema.Codec<GetBatchV1APIResourcesInput>;
 
@@ -16046,7 +16038,7 @@ export interface GetBatchV1APIResourcesOutput {
   }[];
 }
 export const GetBatchV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -16070,12 +16062,10 @@ export const GetBatchV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getBatchV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetBatchV1APIResourcesInput,
-    outputSchema: GetBatchV1APIResourcesOutput,
-  }),
-);
+export const getBatchV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetBatchV1APIResourcesInput,
+  outputSchema: GetBatchV1APIResourcesOutput,
+}));
 // Input Schema
 export interface ListBatchV1CronJobForAllNamespacesInput {
   allowWatchBookmarks?: boolean;
@@ -16092,7 +16082,7 @@ export interface ListBatchV1CronJobForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListBatchV1CronJobForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -17349,7 +17339,7 @@ export interface ListBatchV1CronJobForAllNamespacesOutput {
   };
 }
 export const ListBatchV1CronJobForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -20298,7 +20288,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listBatchV1CronJobForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListBatchV1CronJobForAllNamespacesInput,
     outputSchema: ListBatchV1CronJobForAllNamespacesOutput,
   }));
@@ -20318,7 +20308,7 @@ export interface ListBatchV1JobForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListBatchV1JobForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -21523,7 +21513,7 @@ export interface ListBatchV1JobForAllNamespacesOutput {
   };
 }
 export const ListBatchV1JobForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -24266,7 +24256,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listBatchV1JobForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListBatchV1JobForAllNamespacesInput,
     outputSchema: ListBatchV1JobForAllNamespacesOutput,
   }));
@@ -24287,7 +24277,7 @@ export interface ListBatchV1NamespacedCronJobInput {
   watch?: boolean;
 }
 export const ListBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -25548,7 +25538,7 @@ export interface ListBatchV1NamespacedCronJobOutput {
   };
 }
 export const ListBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -28498,7 +28488,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListBatchV1NamespacedCronJobInput,
     outputSchema: ListBatchV1NamespacedCronJobOutput,
   }));
@@ -28519,7 +28509,7 @@ export interface ListBatchV1NamespacedJobInput {
   watch?: boolean;
 }
 export const ListBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -29728,7 +29718,7 @@ export interface ListBatchV1NamespacedJobOutput {
   };
 }
 export const ListBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -32471,12 +32461,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListBatchV1NamespacedJobInput,
-    outputSchema: ListBatchV1NamespacedJobOutput,
-  }),
-);
+export const listBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListBatchV1NamespacedJobInput,
+  outputSchema: ListBatchV1NamespacedJobOutput,
+}));
 // Input Schema
 export interface PatchBatchV1NamespacedCronJobInput {
   name: string;
@@ -32488,7 +32476,7 @@ export interface PatchBatchV1NamespacedCronJobInput {
   force?: boolean;
 }
 export const PatchBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -33720,7 +33708,7 @@ export interface PatchBatchV1NamespacedCronJobOutput {
   };
 }
 export const PatchBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -36441,7 +36429,7 @@ export const PatchBatchV1NamespacedCronJobOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchBatchV1NamespacedCronJobInput,
     outputSchema: PatchBatchV1NamespacedCronJobOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -36457,7 +36445,7 @@ export interface PatchBatchV1NamespacedCronJobStatusInput {
   force?: boolean;
 }
 export const PatchBatchV1NamespacedCronJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -37689,7 +37677,7 @@ export interface PatchBatchV1NamespacedCronJobStatusOutput {
   };
 }
 export const PatchBatchV1NamespacedCronJobStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -40410,7 +40398,7 @@ export const PatchBatchV1NamespacedCronJobStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchBatchV1NamespacedCronJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchBatchV1NamespacedCronJobStatusInput,
     outputSchema: PatchBatchV1NamespacedCronJobStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -40426,7 +40414,7 @@ export interface PatchBatchV1NamespacedJobInput {
   force?: boolean;
 }
 export const PatchBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -41598,7 +41586,7 @@ export interface PatchBatchV1NamespacedJobOutput {
   };
 }
 export const PatchBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -44161,13 +44149,11 @@ export const PatchBatchV1NamespacedJobOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchBatchV1NamespacedJobInput,
-    outputSchema: PatchBatchV1NamespacedJobOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchBatchV1NamespacedJobInput,
+  outputSchema: PatchBatchV1NamespacedJobOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface PatchBatchV1NamespacedJobStatusInput {
   name: string;
@@ -44179,7 +44165,7 @@ export interface PatchBatchV1NamespacedJobStatusInput {
   force?: boolean;
 }
 export const PatchBatchV1NamespacedJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -45351,7 +45337,7 @@ export interface PatchBatchV1NamespacedJobStatusOutput {
   };
 }
 export const PatchBatchV1NamespacedJobStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -47915,7 +47901,7 @@ export const PatchBatchV1NamespacedJobStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchBatchV1NamespacedJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchBatchV1NamespacedJobStatusInput,
     outputSchema: PatchBatchV1NamespacedJobStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -47927,7 +47913,7 @@ export interface ReadBatchV1NamespacedCronJobInput {
   pretty?: string;
 }
 export const ReadBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -49155,7 +49141,7 @@ export interface ReadBatchV1NamespacedCronJobOutput {
   };
 }
 export const ReadBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -51872,7 +51858,7 @@ export const ReadBatchV1NamespacedCronJobOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadBatchV1NamespacedCronJobInput,
     outputSchema: ReadBatchV1NamespacedCronJobOutput,
     errors: [NotFound] as const,
@@ -51884,7 +51870,7 @@ export interface ReadBatchV1NamespacedCronJobStatusInput {
   pretty?: string;
 }
 export const ReadBatchV1NamespacedCronJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -53112,7 +53098,7 @@ export interface ReadBatchV1NamespacedCronJobStatusOutput {
   };
 }
 export const ReadBatchV1NamespacedCronJobStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -55829,7 +55815,7 @@ export const ReadBatchV1NamespacedCronJobStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readBatchV1NamespacedCronJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadBatchV1NamespacedCronJobStatusInput,
     outputSchema: ReadBatchV1NamespacedCronJobStatusOutput,
     errors: [NotFound] as const,
@@ -55841,7 +55827,7 @@ export interface ReadBatchV1NamespacedJobInput {
   pretty?: string;
 }
 export const ReadBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -57009,7 +56995,7 @@ export interface ReadBatchV1NamespacedJobOutput {
   };
 }
 export const ReadBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -59568,13 +59554,11 @@ export const ReadBatchV1NamespacedJobOutput =
  * @param namespace - object name and auth scope, such as for teams and projects
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadBatchV1NamespacedJobInput,
-    outputSchema: ReadBatchV1NamespacedJobOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadBatchV1NamespacedJobInput,
+  outputSchema: ReadBatchV1NamespacedJobOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadBatchV1NamespacedJobStatusInput {
   name: string;
@@ -59582,7 +59566,7 @@ export interface ReadBatchV1NamespacedJobStatusInput {
   pretty?: string;
 }
 export const ReadBatchV1NamespacedJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -60750,7 +60734,7 @@ export interface ReadBatchV1NamespacedJobStatusOutput {
   };
 }
 export const ReadBatchV1NamespacedJobStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -63310,7 +63294,7 @@ export const ReadBatchV1NamespacedJobStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readBatchV1NamespacedJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadBatchV1NamespacedJobStatusInput,
     outputSchema: ReadBatchV1NamespacedJobStatusOutput,
     errors: [NotFound] as const,
@@ -64538,7 +64522,7 @@ export interface ReplaceBatchV1NamespacedCronJobInput {
   };
 }
 export const ReplaceBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -68474,7 +68458,7 @@ export interface ReplaceBatchV1NamespacedCronJobOutput {
   };
 }
 export const ReplaceBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -71194,7 +71178,7 @@ export const ReplaceBatchV1NamespacedCronJobOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceBatchV1NamespacedCronJobInput,
     outputSchema: ReplaceBatchV1NamespacedCronJobOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -72422,7 +72406,7 @@ export interface ReplaceBatchV1NamespacedCronJobStatusInput {
   };
 }
 export const ReplaceBatchV1NamespacedCronJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -76358,7 +76342,7 @@ export interface ReplaceBatchV1NamespacedCronJobStatusOutput {
   };
 }
 export const ReplaceBatchV1NamespacedCronJobStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -79078,7 +79062,7 @@ export const ReplaceBatchV1NamespacedCronJobStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceBatchV1NamespacedCronJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceBatchV1NamespacedCronJobStatusInput,
     outputSchema: ReplaceBatchV1NamespacedCronJobStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -80246,7 +80230,7 @@ export interface ReplaceBatchV1NamespacedJobInput {
   };
 }
 export const ReplaceBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -83965,7 +83949,7 @@ export interface ReplaceBatchV1NamespacedJobOutput {
   };
 }
 export const ReplaceBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -86527,13 +86511,11 @@ export const ReplaceBatchV1NamespacedJobOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplaceBatchV1NamespacedJobInput,
-    outputSchema: ReplaceBatchV1NamespacedJobOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const replaceBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceBatchV1NamespacedJobInput,
+  outputSchema: ReplaceBatchV1NamespacedJobOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface ReplaceBatchV1NamespacedJobStatusInput {
   name: string;
@@ -87697,7 +87679,7 @@ export interface ReplaceBatchV1NamespacedJobStatusInput {
   };
 }
 export const ReplaceBatchV1NamespacedJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -91416,7 +91398,7 @@ export interface ReplaceBatchV1NamespacedJobStatusOutput {
   };
 }
 export const ReplaceBatchV1NamespacedJobStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -93979,7 +93961,7 @@ export const ReplaceBatchV1NamespacedJobStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceBatchV1NamespacedJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceBatchV1NamespacedJobStatusInput,
     outputSchema: ReplaceBatchV1NamespacedJobStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -94000,7 +93982,7 @@ export interface WatchBatchV1CronJobListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchBatchV1CronJobListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -94023,7 +94005,7 @@ export interface WatchBatchV1CronJobListForAllNamespacesOutput {
   type: string;
 }
 export const WatchBatchV1CronJobListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchBatchV1CronJobListForAllNamespacesOutput>;
@@ -94087,7 +94069,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchBatchV1CronJobListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchBatchV1CronJobListForAllNamespacesInput,
     outputSchema: WatchBatchV1CronJobListForAllNamespacesOutput,
   }));
@@ -94107,7 +94089,7 @@ export interface WatchBatchV1JobListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchBatchV1JobListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -94130,7 +94112,7 @@ export interface WatchBatchV1JobListForAllNamespacesOutput {
   type: string;
 }
 export const WatchBatchV1JobListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchBatchV1JobListForAllNamespacesOutput>;
@@ -94194,7 +94176,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchBatchV1JobListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchBatchV1JobListForAllNamespacesInput,
     outputSchema: WatchBatchV1JobListForAllNamespacesOutput,
   }));
@@ -94216,7 +94198,7 @@ export interface WatchBatchV1NamespacedCronJobInput {
   watch?: boolean;
 }
 export const WatchBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -94244,7 +94226,7 @@ export interface WatchBatchV1NamespacedCronJobOutput {
   type: string;
 }
 export const WatchBatchV1NamespacedCronJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchBatchV1NamespacedCronJobOutput>;
@@ -94310,7 +94292,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchBatchV1NamespacedCronJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchBatchV1NamespacedCronJobInput,
     outputSchema: WatchBatchV1NamespacedCronJobOutput,
   }));
@@ -94331,7 +94313,7 @@ export interface WatchBatchV1NamespacedCronJobListInput {
   watch?: boolean;
 }
 export const WatchBatchV1NamespacedCronJobListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -94358,7 +94340,7 @@ export interface WatchBatchV1NamespacedCronJobListOutput {
   type: string;
 }
 export const WatchBatchV1NamespacedCronJobListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchBatchV1NamespacedCronJobListOutput>;
@@ -94423,7 +94405,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchBatchV1NamespacedCronJobList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchBatchV1NamespacedCronJobListInput,
     outputSchema: WatchBatchV1NamespacedCronJobListOutput,
   }));
@@ -94445,7 +94427,7 @@ export interface WatchBatchV1NamespacedJobInput {
   watch?: boolean;
 }
 export const WatchBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -94473,7 +94455,7 @@ export interface WatchBatchV1NamespacedJobOutput {
   type: string;
 }
 export const WatchBatchV1NamespacedJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchBatchV1NamespacedJobOutput>;
@@ -94538,12 +94520,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchBatchV1NamespacedJobInput,
-    outputSchema: WatchBatchV1NamespacedJobOutput,
-  }),
-);
+export const watchBatchV1NamespacedJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchBatchV1NamespacedJobInput,
+  outputSchema: WatchBatchV1NamespacedJobOutput,
+}));
 // Input Schema
 export interface WatchBatchV1NamespacedJobListInput {
   namespace: string;
@@ -94561,7 +94541,7 @@ export interface WatchBatchV1NamespacedJobListInput {
   watch?: boolean;
 }
 export const WatchBatchV1NamespacedJobListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -94588,7 +94568,7 @@ export interface WatchBatchV1NamespacedJobListOutput {
   type: string;
 }
 export const WatchBatchV1NamespacedJobListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchBatchV1NamespacedJobListOutput>;
@@ -94653,7 +94633,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchBatchV1NamespacedJobList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchBatchV1NamespacedJobListInput,
     outputSchema: WatchBatchV1NamespacedJobListOutput,
   }));

@@ -8,7 +8,7 @@ export interface StartAnonymizationInput {
   branch_id: string;
 }
 export const StartAnonymizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -36,7 +36,7 @@ export interface StartAnonymizationOutput {
   };
 }
 export const StartAnonymizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String,
     branch_id: Schema.String,
     state: Schema.String,
@@ -67,7 +67,7 @@ export const StartAnonymizationOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const startAnonymization = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const startAnonymization = /*@__PURE__*/ API.make(() => ({
   inputSchema: StartAnonymizationInput,
   outputSchema: StartAnonymizationOutput,
 }));

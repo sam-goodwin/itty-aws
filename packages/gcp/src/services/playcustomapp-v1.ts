@@ -30,7 +30,7 @@ export interface Organization {
 }
 
 export const Organization: Schema.Codec<Organization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.optional(Schema.String),
     organizationName: Schema.optional(Schema.String),
   }).annotate({ identifier: "Organization" });
@@ -47,7 +47,7 @@ export interface CustomApp {
 }
 
 export const CustomApp: Schema.Codec<CustomApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     organizations: Schema.optional(Schema.Array(Organization)),
     title: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export interface CreateAccountsCustomAppsRequest {
 }
 
 export const CreateAccountsCustomAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.HttpPath("account")),
     body: Schema.optional(CustomApp).pipe(T.HttpBody()),
   }).pipe(
@@ -129,8 +129,7 @@ export const CreateAccountsCustomAppsRequest =
   ) as unknown as Schema.Codec<CreateAccountsCustomAppsRequest>;
 
 export type CreateAccountsCustomAppsResponse = CustomApp;
-export const CreateAccountsCustomAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CustomApp;
+export const CreateAccountsCustomAppsResponse = /*@__PURE__*/ CustomApp;
 
 export type CreateAccountsCustomAppsError =
   | DefaultErrors
@@ -145,7 +144,7 @@ export const createAccountsCustomApps: API.OperationMethod<
   CreateAccountsCustomAppsResponse,
   CreateAccountsCustomAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsCustomAppsRequest,
   output: CreateAccountsCustomAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

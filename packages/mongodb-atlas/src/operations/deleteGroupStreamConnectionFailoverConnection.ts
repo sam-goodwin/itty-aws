@@ -13,7 +13,7 @@ export interface DeleteGroupStreamConnectionFailoverConnectionInput {
   pretty?: boolean;
 }
 export const DeleteGroupStreamConnectionFailoverConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -30,7 +30,7 @@ export const DeleteGroupStreamConnectionFailoverConnectionInput =
 // Output Schema
 export type DeleteGroupStreamConnectionFailoverConnectionOutput = void;
 export const DeleteGroupStreamConnectionFailoverConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamConnectionFailoverConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamConnectionFailoverConnectionOutput>;
 
 // The operation
 /**
@@ -48,7 +48,7 @@ export const DeleteGroupStreamConnectionFailoverConnectionOutput =
  * @param failoverConnectionId - Label that identifies the stream failover connection id.
  */
 export const deleteGroupStreamConnectionFailoverConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupStreamConnectionFailoverConnectionInput,
     outputSchema: DeleteGroupStreamConnectionFailoverConnectionOutput,
     errors: [Forbidden, NotFound] as const,

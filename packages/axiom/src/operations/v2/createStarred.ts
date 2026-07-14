@@ -40,7 +40,7 @@ export interface CreateStarredInput {
   };
   who: string;
 }
-export const CreateStarredInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateStarredInput = /*@__PURE__*/ Schema.Struct({
   dataset: Schema.optional(Schema.String),
   kind: Schema.Literals(["apl"]),
   metadata: Schema.Record(Schema.String, Schema.String),
@@ -137,7 +137,7 @@ export interface CreateStarredOutput {
   who: string;
   id: string;
 }
-export const CreateStarredOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateStarredOutput = /*@__PURE__*/ Schema.Struct({
   dataset: Schema.optional(Schema.String),
   kind: Schema.Literals(["apl"]),
   metadata: Schema.Record(Schema.String, Schema.String),
@@ -196,7 +196,7 @@ export const CreateStarredOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }) as unknown as Schema.Codec<CreateStarredOutput>;
 
 // The operation
-export const createStarred = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createStarred = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateStarredInput,
   outputSchema: CreateStarredOutput,
   errors: [UnprocessableEntity] as const,

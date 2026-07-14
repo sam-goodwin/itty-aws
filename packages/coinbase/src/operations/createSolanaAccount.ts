@@ -8,7 +8,7 @@ export interface CreateSolanaAccountInput {
   accountPolicy?: string;
 }
 export const CreateSolanaAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     accountPolicy: Schema.optional(Schema.String),
   }).pipe(
@@ -24,7 +24,7 @@ export interface CreateSolanaAccountOutput {
   updatedAt?: string;
 }
 export const CreateSolanaAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String,
     name: Schema.optional(Schema.String),
     policies: Schema.optional(Schema.Array(Schema.String)),
@@ -47,7 +47,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const createSolanaAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createSolanaAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateSolanaAccountInput,
   outputSchema: CreateSolanaAccountOutput,
 }));

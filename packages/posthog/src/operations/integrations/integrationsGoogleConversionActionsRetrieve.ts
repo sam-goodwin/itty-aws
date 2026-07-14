@@ -9,7 +9,7 @@ export interface IntegrationsGoogleConversionActionsRetrieveInput {
   project_id: string;
 }
 export const IntegrationsGoogleConversionActionsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const IntegrationsGoogleConversionActionsRetrieveInput =
 // Output Schema
 export type IntegrationsGoogleConversionActionsRetrieveOutput = void;
 export const IntegrationsGoogleConversionActionsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsGoogleConversionActionsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsGoogleConversionActionsRetrieveOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const IntegrationsGoogleConversionActionsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const integrationsGoogleConversionActionsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsGoogleConversionActionsRetrieveInput,
     outputSchema: IntegrationsGoogleConversionActionsRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

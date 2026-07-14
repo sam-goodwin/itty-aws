@@ -10,7 +10,7 @@ export interface LogsExplainLogWithAICreateInput {
   force_refresh?: boolean;
 }
 export const LogsExplainLogWithAICreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.optional(Schema.String),
     timestamp: Schema.optional(Schema.String),
@@ -29,7 +29,7 @@ export interface LogsExplainLogWithAICreateOutput {
   force_refresh?: boolean;
 }
 export const LogsExplainLogWithAICreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.optional(Schema.String),
     timestamp: Schema.optional(Schema.String),
     force_refresh: Schema.optional(Schema.Boolean),
@@ -42,9 +42,7 @@ export const LogsExplainLogWithAICreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const logsExplainLogWithAICreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LogsExplainLogWithAICreateInput,
-    outputSchema: LogsExplainLogWithAICreateOutput,
-  }),
-);
+export const logsExplainLogWithAICreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LogsExplainLogWithAICreateInput,
+  outputSchema: LogsExplainLogWithAICreateOutput,
+}));

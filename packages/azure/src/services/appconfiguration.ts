@@ -88,7 +88,7 @@ export interface ConfigurationStoresCreateInput {
   location: string;
 }
 export const ConfigurationStoresCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -237,7 +237,7 @@ export interface ConfigurationStoresCreateOutput {
   type?: string;
 }
 export const ConfigurationStoresCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -252,12 +252,10 @@ export const ConfigurationStoresCreateOutput =
  * @param configStoreName - The name of the configuration store.
  * @param api-version - The client API version.
  */
-export const ConfigurationStoresCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationStoresCreateInput,
-    outputSchema: ConfigurationStoresCreateOutput,
-  }),
-);
+export const ConfigurationStoresCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresCreateInput,
+  outputSchema: ConfigurationStoresCreateOutput,
+}));
 // Input Schema
 export interface ConfigurationStoresDeleteInput {
   subscriptionId: string;
@@ -265,7 +263,7 @@ export interface ConfigurationStoresDeleteInput {
   configStoreName: string;
 }
 export const ConfigurationStoresDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -280,7 +278,7 @@ export const ConfigurationStoresDeleteInput =
 // Output Schema
 export type ConfigurationStoresDeleteOutput = void;
 export const ConfigurationStoresDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationStoresDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationStoresDeleteOutput>;
 
 // The operation
 /**
@@ -291,12 +289,10 @@ export const ConfigurationStoresDeleteOutput =
  * @param configStoreName - The name of the configuration store.
  * @param api-version - The client API version.
  */
-export const ConfigurationStoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationStoresDeleteInput,
-    outputSchema: ConfigurationStoresDeleteOutput,
-  }),
-);
+export const ConfigurationStoresDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresDeleteInput,
+  outputSchema: ConfigurationStoresDeleteOutput,
+}));
 // Input Schema
 export interface ConfigurationStoresGetInput {
   subscriptionId: string;
@@ -304,7 +300,7 @@ export interface ConfigurationStoresGetInput {
   configStoreName: string;
 }
 export const ConfigurationStoresGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -323,7 +319,7 @@ export interface ConfigurationStoresGetOutput {
   type?: string;
 }
 export const ConfigurationStoresGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -338,12 +334,10 @@ export const ConfigurationStoresGetOutput =
  * @param configStoreName - The name of the configuration store.
  * @param api-version - The client API version.
  */
-export const ConfigurationStoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationStoresGetInput,
-    outputSchema: ConfigurationStoresGetOutput,
-  }),
-);
+export const ConfigurationStoresGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresGetInput,
+  outputSchema: ConfigurationStoresGetOutput,
+}));
 // Input Schema
 export interface ConfigurationStoresGetDeletedInput {
   subscriptionId: string;
@@ -351,7 +345,7 @@ export interface ConfigurationStoresGetDeletedInput {
   configStoreName: string;
 }
 export const ConfigurationStoresGetDeletedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -378,7 +372,7 @@ export interface ConfigurationStoresGetDeletedOutput {
   };
 }
 export const ConfigurationStoresGetDeletedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -404,7 +398,7 @@ export const ConfigurationStoresGetDeletedOutput =
  * @param configStoreName - The name of the configuration store.
  */
 export const ConfigurationStoresGetDeleted =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationStoresGetDeletedInput,
     outputSchema: ConfigurationStoresGetDeletedOutput,
   }));
@@ -414,7 +408,7 @@ export interface ConfigurationStoresListInput {
   $skipToken?: string;
 }
 export const ConfigurationStoresListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -431,7 +425,7 @@ export interface ConfigurationStoresListOutput {
   nextLink?: string;
 }
 export const ConfigurationStoresListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -452,12 +446,10 @@ export const ConfigurationStoresListOutput =
  * @param api-version - The client API version.
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
-export const ConfigurationStoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationStoresListInput,
-    outputSchema: ConfigurationStoresListOutput,
-  }),
-);
+export const ConfigurationStoresList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresListInput,
+  outputSchema: ConfigurationStoresListOutput,
+}));
 // Input Schema
 export interface ConfigurationStoresListByResourceGroupInput {
   subscriptionId: string;
@@ -465,7 +457,7 @@ export interface ConfigurationStoresListByResourceGroupInput {
   $skipToken?: string;
 }
 export const ConfigurationStoresListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
@@ -483,7 +475,7 @@ export interface ConfigurationStoresListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ConfigurationStoresListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -506,7 +498,7 @@ export const ConfigurationStoresListByResourceGroupOutput =
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
 export const ConfigurationStoresListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationStoresListByResourceGroupInput,
     outputSchema: ConfigurationStoresListByResourceGroupOutput,
   }));
@@ -515,7 +507,7 @@ export interface ConfigurationStoresListDeletedInput {
   subscriptionId: string;
 }
 export const ConfigurationStoresListDeletedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -543,7 +535,7 @@ export interface ConfigurationStoresListDeletedOutput {
   nextLink?: string;
 }
 export const ConfigurationStoresListDeletedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -576,7 +568,7 @@ export const ConfigurationStoresListDeletedOutput =
  * @param subscriptionId - The Microsoft Azure subscription ID.
  */
 export const ConfigurationStoresListDeleted =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationStoresListDeletedInput,
     outputSchema: ConfigurationStoresListDeletedOutput,
   }));
@@ -588,7 +580,7 @@ export interface ConfigurationStoresListKeysInput {
   $skipToken?: string;
 }
 export const ConfigurationStoresListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -614,7 +606,7 @@ export interface ConfigurationStoresListKeysOutput {
   nextLink?: string;
 }
 export const ConfigurationStoresListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -640,12 +632,10 @@ export const ConfigurationStoresListKeysOutput =
  * @param api-version - The client API version.
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
-export const ConfigurationStoresListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationStoresListKeysInput,
-    outputSchema: ConfigurationStoresListKeysOutput,
-  }),
-);
+export const ConfigurationStoresListKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresListKeysInput,
+  outputSchema: ConfigurationStoresListKeysOutput,
+}));
 // Input Schema
 export interface ConfigurationStoresPurgeDeletedInput {
   subscriptionId: string;
@@ -653,7 +643,7 @@ export interface ConfigurationStoresPurgeDeletedInput {
   configStoreName: string;
 }
 export const ConfigurationStoresPurgeDeletedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -668,7 +658,7 @@ export const ConfigurationStoresPurgeDeletedInput =
 // Output Schema
 export type ConfigurationStoresPurgeDeletedOutput = void;
 export const ConfigurationStoresPurgeDeletedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationStoresPurgeDeletedOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationStoresPurgeDeletedOutput>;
 
 // The operation
 /**
@@ -680,7 +670,7 @@ export const ConfigurationStoresPurgeDeletedOutput =
  * @param configStoreName - The name of the configuration store.
  */
 export const ConfigurationStoresPurgeDeleted =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationStoresPurgeDeletedInput,
     outputSchema: ConfigurationStoresPurgeDeletedOutput,
   }));
@@ -692,7 +682,7 @@ export interface ConfigurationStoresRegenerateKeyInput {
   id?: string;
 }
 export const ConfigurationStoresRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -715,7 +705,7 @@ export interface ConfigurationStoresRegenerateKeyOutput {
   readOnly?: boolean;
 }
 export const ConfigurationStoresRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -734,7 +724,7 @@ export const ConfigurationStoresRegenerateKeyOutput =
  * @param api-version - The client API version.
  */
 export const ConfigurationStoresRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationStoresRegenerateKeyInput,
     outputSchema: ConfigurationStoresRegenerateKeyOutput,
   }));
@@ -776,7 +766,7 @@ export interface ConfigurationStoresUpdateInput {
   tags?: Record<string, string>;
 }
 export const ConfigurationStoresUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -856,7 +846,7 @@ export interface ConfigurationStoresUpdateOutput {
   type?: string;
 }
 export const ConfigurationStoresUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -871,12 +861,10 @@ export const ConfigurationStoresUpdateOutput =
  * @param configStoreName - The name of the configuration store.
  * @param api-version - The client API version.
  */
-export const ConfigurationStoresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationStoresUpdateInput,
-    outputSchema: ConfigurationStoresUpdateOutput,
-  }),
-);
+export const ConfigurationStoresUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationStoresUpdateInput,
+  outputSchema: ConfigurationStoresUpdateOutput,
+}));
 // Input Schema
 export interface KeyValuesCreateOrUpdateInput {
   subscriptionId: string;
@@ -898,7 +886,7 @@ export interface KeyValuesCreateOrUpdateInput {
   };
 }
 export const KeyValuesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -943,7 +931,7 @@ export interface KeyValuesCreateOrUpdateOutput {
   };
 }
 export const KeyValuesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -971,12 +959,10 @@ export const KeyValuesCreateOrUpdateOutput =
  * @param api-version - The client API version.
  * @param keyValueName - Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
  */
-export const KeyValuesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KeyValuesCreateOrUpdateInput,
-    outputSchema: KeyValuesCreateOrUpdateOutput,
-  }),
-);
+export const KeyValuesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KeyValuesCreateOrUpdateInput,
+  outputSchema: KeyValuesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface KeyValuesDeleteInput {
   subscriptionId: string;
@@ -984,7 +970,7 @@ export interface KeyValuesDeleteInput {
   configStoreName: string;
   keyValueName: string;
 }
-export const KeyValuesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeyValuesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   configStoreName: Schema.String.pipe(T.PathParam()),
@@ -1000,7 +986,7 @@ export const KeyValuesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type KeyValuesDeleteOutput = void;
 export const KeyValuesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KeyValuesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<KeyValuesDeleteOutput>;
 
 // The operation
 /**
@@ -1012,7 +998,7 @@ export const KeyValuesDeleteOutput =
  * @param api-version - The client API version.
  * @param keyValueName - Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
  */
-export const KeyValuesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KeyValuesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: KeyValuesDeleteInput,
   outputSchema: KeyValuesDeleteOutput,
 }));
@@ -1023,7 +1009,7 @@ export interface KeyValuesGetInput {
   configStoreName: string;
   keyValueName: string;
 }
-export const KeyValuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeyValuesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   configStoreName: Schema.String.pipe(T.PathParam()),
@@ -1052,7 +1038,7 @@ export interface KeyValuesGetOutput {
     tags?: Record<string, string>;
   };
 }
-export const KeyValuesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeyValuesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1080,7 +1066,7 @@ export const KeyValuesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The client API version.
  * @param keyValueName - Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
  */
-export const KeyValuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KeyValuesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: KeyValuesGetInput,
   outputSchema: KeyValuesGetOutput,
 }));
@@ -1091,7 +1077,7 @@ export interface OperationsCheckNameAvailabilityInput {
   type: "Microsoft.AppConfiguration/configurationStores";
 }
 export const OperationsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.Literals(["Microsoft.AppConfiguration/configurationStores"]),
@@ -1110,7 +1096,7 @@ export interface OperationsCheckNameAvailabilityOutput {
   reason?: string;
 }
 export const OperationsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -1124,7 +1110,7 @@ export const OperationsCheckNameAvailabilityOutput =
  * @param api-version - The client API version.
  */
 export const OperationsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OperationsCheckNameAvailabilityInput,
     outputSchema: OperationsCheckNameAvailabilityOutput,
   }));
@@ -1132,7 +1118,7 @@ export const OperationsCheckNameAvailability =
 export interface OperationsListInput {
   $skipToken?: string;
 }
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   $skipToken: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -1180,7 +1166,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1247,7 +1233,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The client API version.
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1259,7 +1245,7 @@ export interface OperationsRegionalCheckNameAvailabilityInput {
   type: "Microsoft.AppConfiguration/configurationStores";
 }
 export const OperationsRegionalCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
@@ -1279,7 +1265,7 @@ export interface OperationsRegionalCheckNameAvailabilityOutput {
   reason?: string;
 }
 export const OperationsRegionalCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -1294,7 +1280,7 @@ export const OperationsRegionalCheckNameAvailabilityOutput =
  * @param api-version - The client API version.
  */
 export const OperationsRegionalCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OperationsRegionalCheckNameAvailabilityInput,
     outputSchema: OperationsRegionalCheckNameAvailabilityOutput,
   }));
@@ -1324,7 +1310,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -1395,7 +1381,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1445,7 +1431,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param privateEndpointConnectionName - Private endpoint connection name
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
@@ -1457,7 +1443,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -1473,7 +1459,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1486,7 +1472,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - Private endpoint connection name
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -1498,7 +1484,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -1533,7 +1519,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1583,7 +1569,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - Private endpoint connection name
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -1594,7 +1580,7 @@ export interface PrivateEndpointConnectionsListByConfigurationStoreInput {
   configStoreName: string;
 }
 export const PrivateEndpointConnectionsListByConfigurationStoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -1631,7 +1617,7 @@ export interface PrivateEndpointConnectionsListByConfigurationStoreOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListByConfigurationStoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1687,7 +1673,7 @@ export const PrivateEndpointConnectionsListByConfigurationStoreOutput =
  * @param api-version - The client API version.
  */
 export const PrivateEndpointConnectionsListByConfigurationStore =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByConfigurationStoreInput,
     outputSchema: PrivateEndpointConnectionsListByConfigurationStoreOutput,
   }));
@@ -1699,7 +1685,7 @@ export interface PrivateLinkResourcesGetInput {
   groupName: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -1724,7 +1710,7 @@ export interface PrivateLinkResourcesGetOutput {
   };
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1747,12 +1733,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param api-version - The client API version.
  * @param groupName - The name of the private link resource group.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListByConfigurationStoreInput {
   subscriptionId: string;
@@ -1760,7 +1744,7 @@ export interface PrivateLinkResourcesListByConfigurationStoreInput {
   configStoreName: string;
 }
 export const PrivateLinkResourcesListByConfigurationStoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -1787,7 +1771,7 @@ export interface PrivateLinkResourcesListByConfigurationStoreOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListByConfigurationStoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1817,7 +1801,7 @@ export const PrivateLinkResourcesListByConfigurationStoreOutput =
  * @param api-version - The client API version.
  */
 export const PrivateLinkResourcesListByConfigurationStore =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByConfigurationStoreInput,
     outputSchema: PrivateLinkResourcesListByConfigurationStoreOutput,
   }));
@@ -1849,7 +1833,7 @@ export interface ReplicasCreateInput {
       | "Canceled";
   };
 }
-export const ReplicasCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicasCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   configStoreName: Schema.String.pipe(T.PathParam()),
@@ -1918,7 +1902,7 @@ export interface ReplicasCreateOutput {
       | "Canceled";
   };
 }
-export const ReplicasCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicasCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1963,7 +1947,7 @@ export const ReplicasCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The client API version.
  * @param replicaName - The name of the replica.
  */
-export const ReplicasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicasCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicasCreateInput,
   outputSchema: ReplicasCreateOutput,
 }));
@@ -1974,7 +1958,7 @@ export interface ReplicasDeleteInput {
   configStoreName: string;
   replicaName: string;
 }
-export const ReplicasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicasDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   configStoreName: Schema.String.pipe(T.PathParam()),
@@ -1990,7 +1974,7 @@ export const ReplicasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ReplicasDeleteOutput = void;
 export const ReplicasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicasDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicasDeleteOutput>;
 
 // The operation
 /**
@@ -2002,7 +1986,7 @@ export const ReplicasDeleteOutput =
  * @param api-version - The client API version.
  * @param replicaName - The name of the replica.
  */
-export const ReplicasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicasDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicasDeleteInput,
   outputSchema: ReplicasDeleteOutput,
 }));
@@ -2013,7 +1997,7 @@ export interface ReplicasGetInput {
   configStoreName: string;
   replicaName: string;
 }
-export const ReplicasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicasGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   configStoreName: Schema.String.pipe(T.PathParam()),
@@ -2050,7 +2034,7 @@ export interface ReplicasGetOutput {
       | "Canceled";
   };
 }
-export const ReplicasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicasGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2095,7 +2079,7 @@ export const ReplicasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The client API version.
  * @param replicaName - The name of the replica.
  */
-export const ReplicasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicasGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicasGetInput,
   outputSchema: ReplicasGetOutput,
 }));
@@ -2107,7 +2091,7 @@ export interface ReplicasListByConfigurationStoreInput {
   $skipToken?: string;
 }
 export const ReplicasListByConfigurationStoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configStoreName: Schema.String.pipe(T.PathParam()),
@@ -2148,7 +2132,7 @@ export interface ReplicasListByConfigurationStoreOutput {
   nextLink?: string;
 }
 export const ReplicasListByConfigurationStoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2211,7 +2195,7 @@ export const ReplicasListByConfigurationStoreOutput =
  * @param $skipToken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
 export const ReplicasListByConfigurationStore =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicasListByConfigurationStoreInput,
     outputSchema: ReplicasListByConfigurationStoreOutput,
   }));
@@ -2244,7 +2228,7 @@ export interface SnapshotsCreateInput {
     etag?: string;
   };
 }
-export const SnapshotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   configStoreName: Schema.String.pipe(T.PathParam()),
@@ -2316,7 +2300,7 @@ export interface SnapshotsCreateOutput {
     etag?: string;
   };
 }
-export const SnapshotsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2363,7 +2347,7 @@ export const SnapshotsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param snapshotName - The name of the snapshot.
  * @param api-version - The API version to use for this operation.
  */
-export const SnapshotsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotsCreateInput,
   outputSchema: SnapshotsCreateOutput,
 }));
@@ -2374,7 +2358,7 @@ export interface SnapshotsGetInput {
   configStoreName: string;
   snapshotName: string;
 }
-export const SnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   configStoreName: Schema.String.pipe(T.PathParam()),
@@ -2412,7 +2396,7 @@ export interface SnapshotsGetOutput {
     etag?: string;
   };
 }
-export const SnapshotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2459,7 +2443,7 @@ export const SnapshotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param snapshotName - The name of the snapshot.
  * @param api-version - The API version to use for this operation.
  */
-export const SnapshotsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotsGetInput,
   outputSchema: SnapshotsGetOutput,
 }));

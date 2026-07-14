@@ -9,7 +9,7 @@ export interface GetV2CoreEventsInput {
   object_id?: string;
   types?: string;
 }
-export const GetV2CoreEventsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV2CoreEventsInput = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
   object_id: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export interface GetV2CoreEventsOutput {
   next_page_url: string | null;
   previous_page_url: string | null;
 }
-export const GetV2CoreEventsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV2CoreEventsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       changes: Schema.optional(Schema.Unknown),
@@ -74,7 +74,7 @@ export const GetV2CoreEventsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param object_id - Primary object ID used to retrieve related events.
  * @param types - An array of up to 20 strings containing specific event names.
  */
-export const GetV2CoreEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetV2CoreEvents = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV2CoreEventsInput,
   outputSchema: GetV2CoreEventsOutput,
 }));

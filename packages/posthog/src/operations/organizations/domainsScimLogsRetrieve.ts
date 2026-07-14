@@ -9,7 +9,7 @@ export interface DomainsScimLogsRetrieveInput {
   organization_id: string;
 }
 export const DomainsScimLogsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const DomainsScimLogsRetrieveInput =
 // Output Schema
 export type DomainsScimLogsRetrieveOutput = void;
 export const DomainsScimLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsScimLogsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsScimLogsRetrieveOutput>;
 
 // The operation
 /**
@@ -30,10 +30,8 @@ export const DomainsScimLogsRetrieveOutput =
  * @param id - A UUID string identifying this domain.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const domainsScimLogsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsScimLogsRetrieveInput,
-    outputSchema: DomainsScimLogsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const domainsScimLogsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsScimLogsRetrieveInput,
+  outputSchema: DomainsScimLogsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -8,7 +8,7 @@ export interface HealthIssuesRetrieveInput {
   project_id: string;
 }
 export const HealthIssuesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -35,7 +35,7 @@ export interface HealthIssuesRetrieveOutput {
   remediation: { human: string; agent: string } | null;
 }
 export const HealthIssuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     kind: Schema.String,
     severity: Schema.Literals(["critical", "warning", "info"]),
@@ -65,9 +65,7 @@ export const HealthIssuesRetrieveOutput =
  * @param id - A UUID string identifying this health issue.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const healthIssuesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HealthIssuesRetrieveInput,
-    outputSchema: HealthIssuesRetrieveOutput,
-  }),
-);
+export const healthIssuesRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HealthIssuesRetrieveInput,
+  outputSchema: HealthIssuesRetrieveOutput,
+}));

@@ -63,7 +63,7 @@ interface Annotation {
   startDate: string;
   tags?: string[] | null;
 }
-const Annotation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Annotation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dataSource: Schema.Union([
       Schema.Literals([
@@ -164,7 +164,7 @@ interface ConfidenceInfo {
   /** Provides an indication of how much confidence Cloudflare has in the data. */
   level: number;
 }
-const ConfidenceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ConfidenceInfo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     annotations: Schema.Array(Annotation),
     level: Schema.Number,
@@ -177,7 +177,7 @@ interface DateRange {
   /** Adjusted start of date range. */
   startTime: string;
 }
-const DateRange = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DateRange = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     endTime: Schema.String,
     startTime: Schema.String,
@@ -188,7 +188,7 @@ interface Unit {
   name: string;
   value: string;
 }
-const Unit = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Unit = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     value: Schema.String,
@@ -259,7 +259,7 @@ interface Meta {
   /** Measurement units for the results. */
   units: { name: string; value: string }[];
 }
-const Meta = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     confidenceInfo: ConfidenceInfo,
     dateRange: Schema.Array(DateRange),
@@ -353,7 +353,7 @@ interface Meta2 {
   /** Measurement units for the results. */
   units: { name: string; value: string }[];
 }
-const Meta2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     aggInterval: Schema.Union([
       Schema.Literals([
@@ -388,7 +388,7 @@ const Meta2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Serie0 {
   timestamps: string[];
 }
-const Serie0 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie0 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     timestamps: Schema.Array(Schema.String),
   }),
@@ -400,7 +400,7 @@ interface DomainCategory {
   /** Number of successfully scanned domains in this sub-category. */
   value: number;
 }
-const DomainCategory = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DomainCategory = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     value: Schema.Number,
@@ -432,7 +432,7 @@ interface Meta3 {
   /** Measurement units for the results. */
   units: { name: string; value: string }[];
 }
-const Meta3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     date: Schema.String,
     domainCategories: Schema.Array(DomainCategory),
@@ -460,7 +460,7 @@ interface Summary0 {
   /** A numeric string that can include decimals and infinity values. */
   value: string;
 }
-const Summary0 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary0 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     value: Schema.String,
   }),
@@ -473,22 +473,21 @@ interface ToMarkdownCreateResponse {
   name: string;
   tokens: string;
 }
-const ToMarkdownCreateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      data: Schema.String,
-      format: Schema.String,
-      mimeType: Schema.String,
-      name: Schema.String,
-      tokens: Schema.String,
-    }),
+const ToMarkdownCreateResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    data: Schema.String,
+    format: Schema.String,
+    mimeType: Schema.String,
+    name: Schema.String,
+    tokens: Schema.String,
+  }),
 ) as unknown as Schema.Codec<ToMarkdownCreateResponse>;
 
 interface Locations {
   code: string;
   name: string;
 }
-const Locations = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Locations = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.String,
     name: Schema.String,
@@ -500,7 +499,7 @@ interface AsnsDetail {
   name: string;
   locations?: { code: string; name: string } | null;
 }
-const AsnsDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AsnsDetail = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.String,
     name: Schema.String,
@@ -512,7 +511,7 @@ interface OriginsDetail {
   name: string;
   origin: string;
 }
-const OriginsDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OriginsDetail = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     origin: Schema.String,
@@ -523,7 +522,7 @@ interface Outage {
   outageCause: string;
   outageType: string;
 }
-const Outage = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Outage = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     outageCause: Schema.String,
     outageType: Schema.String,
@@ -551,7 +550,7 @@ interface Annotation2 {
   linkedUrl?: string | null;
   scope?: string | null;
 }
-const Annotation2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Annotation2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     asns: Schema.Array(Schema.Number),
@@ -577,7 +576,7 @@ interface Annotation3 {
   /** A numeric string. */
   value: string;
 }
-const Annotation3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Annotation3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     clientCountryAlpha2: Schema.String,
     clientCountryName: Schema.String,
@@ -591,7 +590,7 @@ interface Summary02 {
   /** A numeric string. */
   positive: string;
 }
-const Summary02 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary02 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     negative: Schema.String,
     positive: Schema.String,
@@ -602,7 +601,7 @@ interface Serie02 {
   negative: string[];
   positive: string[];
 }
-const Serie02 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie02 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     negative: Schema.Array(Schema.String),
     positive: Schema.Array(Schema.String),
@@ -615,7 +614,7 @@ interface Summary03 {
   /** A numeric string. */
   supported: string;
 }
-const Summary03 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary03 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     notsupported: Schema.String,
     supported: Schema.String,
@@ -637,7 +636,7 @@ interface Summary04 {
   /** A numeric string. */
   udp: string;
 }
-const Summary04 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary04 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     https: Schema.String,
     tcp: Schema.String,
@@ -652,7 +651,7 @@ interface Serie03 {
   notsupported: string[];
   supported: string[];
 }
-const Serie03 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie03 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     notsupported: Schema.Array(Schema.String),
     supported: Schema.Array(Schema.String),
@@ -670,7 +669,7 @@ interface Serie04 {
   tls: string[];
   udp: string[];
 }
-const Serie04 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie04 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     https: Schema.Array(Schema.String),
     tcp: Schema.Array(Schema.String),
@@ -745,7 +744,7 @@ interface Meta4 {
   /** Measurement units for the results. */
   units: { name: string; value: string }[];
 }
-const Meta4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
     dateRange: Schema.Array(DateRange),
@@ -779,7 +778,7 @@ interface Summary05 {
   /** A numeric string. */
   under_500MBPS: string;
 }
-const Summary05 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary05 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     _1GBPSTO_10GBPS: Schema.String,
     _10GBPSTO_100GBPS: Schema.String,
@@ -811,7 +810,7 @@ interface Summary06 {
   /** A numeric string. */
   under_10MINS: string;
 }
-const Summary06 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary06 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     _1HOURTO_3HOURS: Schema.String,
     _10MINSTO_20MINS: Schema.String,
@@ -841,7 +840,7 @@ interface Summary07 {
   /** A numeric string. */
   udp: string;
 }
-const Summary07 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary07 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     gre: Schema.String,
     icmp: Schema.String,
@@ -860,7 +859,7 @@ interface Serie05 {
   timestamps: string[];
   under_500MBPS: string[];
 }
-const Serie05 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie05 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     _1GBPSTO_10GBPS: Schema.Array(Schema.String),
     _10GBPSTO_100GBPS: Schema.Array(Schema.String),
@@ -889,7 +888,7 @@ interface Serie06 {
   timestamps: string[];
   under_10MINS: string[];
 }
-const Serie06 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie06 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     _1HOURTO_3HOURS: Schema.Array(Schema.String),
     _10MINSTO_20MINS: Schema.Array(Schema.String),
@@ -918,7 +917,7 @@ interface Serie07 {
   timestamps: string[];
   udp: string[];
 }
-const Serie07 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie07 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     gre: Schema.Array(Schema.String),
     icmp: Schema.Array(Schema.String),
@@ -941,7 +940,7 @@ interface Top0 {
   originCountryName: string;
   value: string;
 }
-const Top0 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top0 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     originCountryAlpha2: Schema.String,
     originCountryName: Schema.String,
@@ -955,7 +954,7 @@ interface Top02 {
   rank: number;
   value: string;
 }
-const Top02 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top02 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     originCountryAlpha2: Schema.String,
     originCountryName: Schema.String,
@@ -970,7 +969,7 @@ interface Top03 {
   targetCountryName: string;
   value: string;
 }
-const Top03 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top03 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     rank: Schema.Number,
     targetCountryAlpha2: Schema.String,
@@ -983,7 +982,7 @@ interface Serie08 {
   timestamps: string[];
   values: string[];
 }
-const Serie08 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie08 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     timestamps: Schema.Array(Schema.String),
     values: Schema.Array(Schema.String),
@@ -997,7 +996,7 @@ interface Top04 {
   targetCountryName: string;
   value: string;
 }
-const Top04 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top04 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     originCountryAlpha2: Schema.String,
     originCountryName: Schema.String,
@@ -1013,7 +1012,7 @@ interface Top05 {
   rank: number;
   value: string;
 }
-const Top05 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top05 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     originAsn: Schema.String,
     originAsnName: Schema.String,
@@ -1073,7 +1072,7 @@ interface Meta5 {
   dateRange: { endTime: string; startTime: string }[];
   lastUpdated: string;
 }
-const Meta5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta5 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     aggInterval: Schema.Union([
       Schema.Literals(["15m", "1h", "1d", "1w"]),
@@ -1090,7 +1089,7 @@ interface Asninfo {
   countryCode: string;
   orgName: string;
 }
-const Asninfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Asninfo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.Number,
     countryCode: Schema.String,
@@ -1108,7 +1107,7 @@ interface Tag {
   name: string;
   score: number;
 }
-const Tag = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Tag = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     score: Schema.Number,
@@ -1135,7 +1134,7 @@ interface Event {
   victimAsns: number[];
   victimCountries: string[];
 }
-const Event = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Event = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Number,
     confidenceScore: Schema.Number,
@@ -1204,7 +1203,7 @@ interface ListBgpHijackEventsResponseResultItem {
   totalMonitors: number;
 }
 const ListBgpHijackEventsResponseResultItem =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asnInfo: Schema.Array(Asninfo),
       events: Schema.Array(Event),
@@ -1247,7 +1246,7 @@ interface ListBgpHijackEventsResponseResult {
     | null;
 }
 const ListBgpHijackEventsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       items: Schema.optional(
         Schema.Union([
@@ -1265,7 +1264,7 @@ interface ListBgpHijackEventsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListBgpHijackEventsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1286,7 +1285,7 @@ interface Latest {
   path: string;
   timestamp: number;
 }
-const Latest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Latest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     entriesCount: Schema.Number,
     path: Schema.String,
@@ -1306,7 +1305,7 @@ interface Asndata {
   healthy: boolean;
   latest: { entriesCount: number; path: string; timestamp: number };
 }
-const Asndata = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Asndata = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     delaySecs: Schema.Number,
     delayStr: Schema.String,
@@ -1319,7 +1318,7 @@ interface Latest2 {
   count: number;
   timestamp: number;
 }
-const Latest2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Latest2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     count: Schema.Number,
     timestamp: Schema.Number,
@@ -1332,7 +1331,7 @@ interface CountryData {
   healthy: boolean;
   latest: { count: number; timestamp: number };
 }
-const CountryData = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CountryData = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     delaySecs: Schema.Number,
     delayStr: Schema.String,
@@ -1357,7 +1356,7 @@ interface Delay {
   healthy: boolean;
   nowTs: number;
 }
-const Delay = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Delay = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asnData: Asndata,
     countryData: CountryData,
@@ -1461,7 +1460,7 @@ interface Meta6 {
     nowTs: number;
   } | null;
 }
-const Meta6 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta6 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     aggInterval: Schema.Union([
       Schema.Literals([
@@ -1499,7 +1498,7 @@ interface Serie09 {
   ipv6: string[];
   timestamps: string[];
 }
-const Serie09 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie09 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipv4: Schema.Array(Schema.String),
     ipv6: Schema.Array(Schema.String),
@@ -1512,7 +1511,7 @@ interface Asn {
   v4_24s: number;
   v6_48s: number;
 }
-const Asn = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Asn = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.Number,
     v4_24s: Schema.Number,
@@ -1535,7 +1534,7 @@ interface Event2 {
   peerCount: number;
   prefixCount: number;
 }
-const Event2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Event2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Number,
     countries: Schema.Array(Schema.String),
@@ -1588,7 +1587,7 @@ interface ListBgpLeakEventsResponseResultItem {
   }[];
 }
 const ListBgpLeakEventsResponseResultItem =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asnInfo: Schema.Array(Asninfo),
       events: Schema.Array(Event2),
@@ -1618,7 +1617,7 @@ interface ListBgpLeakEventsResponseResult {
     | null;
 }
 const ListBgpLeakEventsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       items: Schema.optional(
         Schema.Union([
@@ -1650,7 +1649,7 @@ interface Asn2 {
   /** Number of RPKI valid prefixes originated by the AS. */
   rpkiValid: number;
 }
-const Asn2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Asn2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.Number,
     coneSize: Schema.Number,
@@ -1673,7 +1672,7 @@ interface Meta7 {
   /** Total number of route collector peers used to generate this data. */
   totalPeers: number;
 }
-const Meta7 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta7 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dataTime: Schema.String,
     queryTime: Schema.String,
@@ -1686,7 +1685,7 @@ interface Meta8 {
   queryTime: string;
   totalPeers: number;
 }
-const Meta8 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta8 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dataTime: Schema.String,
     queryTime: Schema.String,
@@ -1705,7 +1704,7 @@ interface Origin {
   peerCount: number;
   rpkiValidation: string;
 }
-const Origin = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Origin = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     origin: Schema.Number,
     peerCount: Schema.Number,
@@ -1723,7 +1722,7 @@ interface Moa {
   origins: { origin: number; peerCount: number; rpkiValidation: string }[];
   prefix: string;
 }
-const Moa = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Moa = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     origins: Schema.Array(Origin),
     prefix: Schema.String,
@@ -1736,7 +1735,7 @@ interface PrefixOrigin {
   prefix: string;
   rpkiValidation: string;
 }
-const PrefixOrigin = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PrefixOrigin = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     origin: Schema.Number,
     peerCount: Schema.Number,
@@ -1764,7 +1763,7 @@ interface Asninfo2 {
   /** Organization name. */
   orgName: string;
 }
-const Asninfo2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Asninfo2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asName: Schema.String,
     asn: Schema.Number,
@@ -1798,7 +1797,7 @@ interface Collector {
   /** Total number of collector peers used from this collector for IPv6 prefixes. */
   peersV6Count: number;
 }
-const Collector = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Collector = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     collector: Schema.String,
     latestRealtimeTs: Schema.String,
@@ -1834,7 +1833,7 @@ interface PrefixOrigin2 {
   /** Ratio of peers seeing this prefix to total number of peers. */
   visibility: number;
 }
-const PrefixOrigin2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PrefixOrigin2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     origin: Schema.Number,
     prefix: Schema.String,
@@ -1884,7 +1883,7 @@ interface Meta9 {
   /** The timestamp of this query. */
   queryTime: string;
 }
-const Meta9 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta9 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asnInfo: Schema.Array(Asninfo2),
     collectors: Schema.Array(Collector),
@@ -1914,7 +1913,7 @@ interface Route {
   /** Latest timestamp of change for this route. */
   timestamp: string;
 }
-const Route = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Route = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asPath: Schema.Array(Schema.Number),
     collector: Schema.String,
@@ -1952,7 +1951,7 @@ interface Stats {
   routesValidIpv4: number;
   routesValidIpv6: number;
 }
-const Stats = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Stats = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     distinctOrigins: Schema.Number,
     distinctOriginsIpv4: Schema.Number,
@@ -2004,7 +2003,7 @@ interface Schema13335 {
   /** AS name. */
   name: string;
 }
-const Schema13335 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Schema13335 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.Number,
     country: Schema.String,
@@ -2015,7 +2014,7 @@ const Schema13335 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Asninfo3 {
   "13335": { asn: number; country: string; name: string };
 }
-const Asninfo3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Asninfo3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     "13335": Schema13335,
   }),
@@ -2032,7 +2031,7 @@ interface Entry {
     | "ProvidersRemoved"
     | (string & {});
 }
-const Entry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Entry = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     customerAsn: Schema.Number,
     providers: Schema.Array(Schema.Number),
@@ -2072,7 +2071,7 @@ interface Change {
   /** Running total of active ASPA objects after this day. */
   totalCount: number;
 }
-const Change = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Change = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     customersAdded: Schema.Number,
     customersRemoved: Schema.Number,
@@ -2090,7 +2089,7 @@ interface Meta10 {
   /** Timestamp when the query was executed. */
   queryTime: string;
 }
-const Meta10 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta10 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dataTime: Schema.String,
     queryTime: Schema.String,
@@ -2102,7 +2101,7 @@ interface Aspaobject {
   customerAsn: number;
   providers: number[];
 }
-const Aspaobject = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Aspaobject = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     customerAsn: Schema.Number,
     providers: Schema.Array(Schema.Number),
@@ -2117,7 +2116,7 @@ interface Meta11 {
   /** Total number of ASPA objects. */
   totalCount: number;
 }
-const Meta11 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta11 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dataTime: Schema.String,
     queryTime: Schema.String,
@@ -2128,7 +2127,7 @@ const Meta11 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Meta12 {
   dateRange: { endTime: string; startTime: string }[];
 }
-const Meta12 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta12 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dateRange: Schema.Array(DateRange),
   }),
@@ -2139,7 +2138,7 @@ interface Top06 {
   /** A numeric string. */
   value: string;
 }
-const Top06 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top06 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     prefix: Schema.String,
     value: Schema.String,
@@ -2152,7 +2151,7 @@ interface Top07 {
   /** Percentage of updates by this AS out of the total updates by all autonomous systems. */
   value: string;
 }
-const Top07 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top07 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.Number,
     asname: Schema.String,
@@ -2166,7 +2165,7 @@ interface Asn3 {
   name: string;
   pfxsCount: number;
 }
-const Asn3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Asn3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.Number,
     country: Schema.String,
@@ -2202,7 +2201,7 @@ interface Bot {
   /** The URL of the agent's [Web Bot Auth](https://blog.cloudflare.com/web-bot-auth/) resource. Null for bots not verified via request signature. */
   signatureAgentUrl?: string | null;
 }
-const Bot = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Bot = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     category: Schema.String,
     description: Schema.String,
@@ -2234,7 +2233,7 @@ interface Bot2 {
   slug: string;
   userAgentPatterns: string[];
 }
-const Bot2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Bot2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     category: Schema.String,
     description: Schema.String,
@@ -2256,7 +2255,7 @@ interface Summary08 {
   /** A numeric string. */
   link: string;
 }
-const Summary08 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary08 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     brandImpersonation: Schema.String,
     credentialHarvester: Schema.String,
@@ -2278,7 +2277,7 @@ interface Serie010 {
   identityDeception: string[];
   link: string[];
 }
-const Serie010 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie010 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     brandImpersonation: Schema.Array(Schema.String),
     credentialHarvester: Schema.Array(Schema.String),
@@ -2300,7 +2299,7 @@ interface Summary09 {
   /** A numeric string. */
   human: string;
 }
-const Summary09 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary09 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bot: Schema.String,
     human: Schema.String,
@@ -2312,7 +2311,7 @@ interface Serie011 {
   human: string[];
   timestamps: string[];
 }
-const Serie011 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie011 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bot: Schema.Array(Schema.String),
     human: Schema.Array(Schema.String),
@@ -2324,12 +2323,11 @@ interface SummaryCtResponseSummary01 {
   rfc6962: string;
   static: string;
 }
-const SummaryCtResponseSummary01 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      rfc6962: Schema.String,
-      static: Schema.String,
-    }),
+const SummaryCtResponseSummary01 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    rfc6962: Schema.String,
+    static: Schema.String,
+  }),
 ) as unknown as Schema.Codec<SummaryCtResponseSummary01>;
 
 interface SummaryCtResponseSummary02 {
@@ -2340,54 +2338,51 @@ interface SummaryCtResponseSummary02 {
   gt_91dLte_121d: string;
   lte_3d: string;
 }
-const SummaryCtResponseSummary02 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      gt_121d: Schema.String,
-      gt_16dLte_31d: Schema.String,
-      gt_31dLte_91d: Schema.String,
-      gt_3dLte_16d: Schema.String,
-      gt_91dLte_121d: Schema.String,
-      lte_3d: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        gt_121d: "gt_121d",
-        gt_16dLte_31d: "gt_16d_lte_31d",
-        gt_31dLte_91d: "gt_31d_lte_91d",
-        gt_3dLte_16d: "gt_3d_lte_16d",
-        gt_91dLte_121d: "gt_91d_lte_121d",
-        lte_3d: "lte_3d",
-      }),
-    ),
+const SummaryCtResponseSummary02 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    gt_121d: Schema.String,
+    gt_16dLte_31d: Schema.String,
+    gt_31dLte_91d: Schema.String,
+    gt_3dLte_16d: Schema.String,
+    gt_91dLte_121d: Schema.String,
+    lte_3d: Schema.String,
+  }).pipe(
+    Schema.encodeKeys({
+      gt_121d: "gt_121d",
+      gt_16dLte_31d: "gt_16d_lte_31d",
+      gt_31dLte_91d: "gt_31d_lte_91d",
+      gt_3dLte_16d: "gt_3d_lte_16d",
+      gt_91dLte_121d: "gt_91d_lte_121d",
+      lte_3d: "lte_3d",
+    }),
+  ),
 ) as unknown as Schema.Codec<SummaryCtResponseSummary02>;
 
 interface SummaryCtResponseSummary03 {
   certificate: string;
   precertificate: string;
 }
-const SummaryCtResponseSummary03 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      certificate: Schema.String,
-      precertificate: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        certificate: "CERTIFICATE",
-        precertificate: "PRECERTIFICATE",
-      }),
-    ),
+const SummaryCtResponseSummary03 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    certificate: Schema.String,
+    precertificate: Schema.String,
+  }).pipe(
+    Schema.encodeKeys({
+      certificate: "CERTIFICATE",
+      precertificate: "PRECERTIFICATE",
+    }),
+  ),
 ) as unknown as Schema.Codec<SummaryCtResponseSummary03>;
 
 interface SummaryCtResponseSummary04 {
   expired: string;
   valid: string;
 }
-const SummaryCtResponseSummary04 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      expired: Schema.String,
-      valid: Schema.String,
-    }).pipe(Schema.encodeKeys({ expired: "EXPIRED", valid: "VALID" })),
+const SummaryCtResponseSummary04 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    expired: Schema.String,
+    valid: Schema.String,
+  }).pipe(Schema.encodeKeys({ expired: "EXPIRED", valid: "VALID" })),
 ) as unknown as Schema.Codec<SummaryCtResponseSummary04>;
 
 interface SummaryCtResponseSummary06 {
@@ -2395,13 +2390,12 @@ interface SummaryCtResponseSummary06 {
   ecdsa: string;
   rsa: string;
 }
-const SummaryCtResponseSummary06 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dsa: Schema.String,
-      ecdsa: Schema.String,
-      rsa: Schema.String,
-    }).pipe(Schema.encodeKeys({ dsa: "DSA", ecdsa: "ECDSA", rsa: "RSA" })),
+const SummaryCtResponseSummary06 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dsa: Schema.String,
+    ecdsa: Schema.String,
+    rsa: Schema.String,
+  }).pipe(Schema.encodeKeys({ dsa: "DSA", ecdsa: "ECDSA", rsa: "RSA" })),
 ) as unknown as Schema.Codec<SummaryCtResponseSummary06>;
 
 interface SummaryCtResponseSummary07 {
@@ -2410,14 +2404,13 @@ interface SummaryCtResponseSummary07 {
   organization: string;
   unknown: string;
 }
-const SummaryCtResponseSummary07 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      domain: Schema.String,
-      extended: Schema.String,
-      organization: Schema.String,
-      unknown: Schema.String,
-    }),
+const SummaryCtResponseSummary07 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    domain: Schema.String,
+    extended: Schema.String,
+    organization: Schema.String,
+    unknown: Schema.String,
+  }),
 ) as unknown as Schema.Codec<SummaryCtResponseSummary07>;
 
 interface Related {
@@ -2437,7 +2430,7 @@ interface Related {
   /** The SHA-256 fingerprint of the intermediate certificate. */
   sha256Fingerprint: string;
 }
-const Related = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Related = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     certificateRecordType: Schema.Union([
       Schema.Literals(["ROOT_CERTIFICATE", "INTERMEDIATE_CERTIFICATE"]),
@@ -2541,7 +2534,7 @@ interface CertificateAuthority {
   /** The end date of the certificate’s validity period (ISO format). */
   validTo: string;
 }
-const CertificateAuthority = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CertificateAuthority = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     appleStatus: Schema.Union([
       Schema.Literals([
@@ -2641,7 +2634,7 @@ interface CertificateAuthority2 {
   /** The SHA-256 fingerprint of the intermediate certificate. */
   sha256Fingerprint: string;
 }
-const CertificateAuthority2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CertificateAuthority2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     certificateRecordType: Schema.Union([
       Schema.Literals(["ROOT_CERTIFICATE", "INTERMEDIATE_CERTIFICATE"]),
@@ -2675,7 +2668,7 @@ interface Endpoint {
   responseTime: number;
   uptime: number;
 }
-const Endpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Endpoint = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     endpoint: Schema.Union([
       Schema.Literals([
@@ -2711,7 +2704,7 @@ interface Performance {
   responseTime: number;
   uptime: number;
 }
-const Performance = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Performance = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     endpoints: Schema.Array(Endpoint),
     responseTime: Schema.Number,
@@ -2738,7 +2731,7 @@ interface Related2 {
     | "REJECTED"
     | (string & {});
 }
-const Related2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Related2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     description: Schema.String,
     endExclusive: Schema.String,
@@ -2826,7 +2819,7 @@ interface CertificateLog {
   /** The URL for the certificate log. */
   url: string;
 }
-const CertificateLog = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CertificateLog = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     api: Schema.Union([Schema.Literals(["RFC6962", "STATIC"]), Schema.String]),
     avgThroughput: Schema.Number,
@@ -2883,7 +2876,7 @@ interface CertificateLog2 {
   /** The URL for the certificate log. */
   url: string;
 }
-const CertificateLog2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CertificateLog2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     api: Schema.Union([Schema.Literals(["RFC6962", "STATIC"]), Schema.String]),
     description: Schema.String,
@@ -2915,7 +2908,7 @@ interface Dataset {
   title: string;
   type: string;
 }
-const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dataset = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Number,
     description: Schema.String,
@@ -2929,7 +2922,7 @@ const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Dataset2 {
   url: string;
 }
-const Dataset2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dataset2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     url: Schema.String,
   }),
@@ -2945,7 +2938,7 @@ interface Summary010 {
   /** A numeric string. */
   secure: string;
 }
-const Summary010 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary010 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     insecure: Schema.String,
     invalid: Schema.String,
@@ -2967,7 +2960,7 @@ interface Serie012 {
   other: string[];
   secure: string[];
 }
-const Serie012 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie012 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     insecure: Schema.Array(Schema.String),
     invalid: Schema.Array(Schema.String),
@@ -2989,7 +2982,7 @@ interface Top08 {
   /** A numeric string. */
   value: string;
 }
-const Top08 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top08 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     clientASN: Schema.Number,
     clientASName: Schema.String,
@@ -3005,7 +2998,7 @@ interface RadarEmailSummary {
   /** A numeric string. */
   pass: string;
 }
-const RadarEmailSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RadarEmailSummary = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fail: Schema.String,
     none: Schema.String,
@@ -3019,7 +3012,7 @@ interface Summary011 {
   /** A numeric string. */
   notencrypted: string;
 }
-const Summary011 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary011 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     encrypted: Schema.String,
     notencrypted: Schema.String,
@@ -3036,7 +3029,7 @@ interface RadarEmailSeries {
   none: string[];
   pass: string[];
 }
-const RadarEmailSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RadarEmailSeries = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fail: Schema.Array(Schema.String),
     none: Schema.Array(Schema.String),
@@ -3048,7 +3041,7 @@ interface Serie013 {
   encrypted: string[];
   notencrypted: string[];
 }
-const Serie013 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie013 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     encrypted: Schema.Array(Schema.String),
     notencrypted: Schema.Array(Schema.String),
@@ -3066,7 +3059,7 @@ interface Summary012 {
   /** A numeric string. */
   notmalicious: string;
 }
-const Summary012 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary012 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     malicious: Schema.String,
     notmalicious: Schema.String,
@@ -3084,7 +3077,7 @@ interface Summary013 {
   /** A numeric string. */
   spam: string;
 }
-const Summary013 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary013 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     notspam: Schema.String,
     spam: Schema.String,
@@ -3097,7 +3090,7 @@ interface Summary014 {
   /** A numeric string. */
   spoof: string;
 }
-const Summary014 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary014 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     notspoof: Schema.String,
     spoof: Schema.String,
@@ -3108,7 +3101,7 @@ interface Serie014 {
   malicious: string[];
   notmalicious: string[];
 }
-const Serie014 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie014 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     malicious: Schema.Array(Schema.String),
     notmalicious: Schema.Array(Schema.String),
@@ -3124,7 +3117,7 @@ interface Serie015 {
   notspam: string[];
   spam: string[];
 }
-const Serie015 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie015 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     notspam: Schema.Array(Schema.String),
     spam: Schema.Array(Schema.String),
@@ -3135,7 +3128,7 @@ interface Serie016 {
   notspoof: string[];
   spoof: string[];
 }
-const Serie016 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie016 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     notspoof: Schema.Array(Schema.String),
     spoof: Schema.Array(Schema.String),
@@ -3152,7 +3145,7 @@ interface Ip {
   location: string;
   locationName: string;
 }
-const Ip = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ip = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.String,
     asnLocation: Schema.String,
@@ -3171,7 +3164,7 @@ interface Location {
   /** Estimated users per location. */
   estimatedUsers?: number | null;
 }
-const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Location = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     locationAlpha2: Schema.String,
     locationName: Schema.String,
@@ -3188,7 +3181,7 @@ interface EstimatedUsers {
   /** Total estimated users. */
   estimatedUsers?: number | null;
 }
-const EstimatedUsers = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const EstimatedUsers = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     locations: Schema.Array(Location),
     estimatedUsers: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -3202,7 +3195,7 @@ interface Related3 {
   /** Total estimated users. */
   estimatedUsers?: number | null;
 }
-const Related3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Related3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.Number,
     name: Schema.String,
@@ -3237,7 +3230,7 @@ interface Asn4 {
   website: string;
   aka?: string | null;
 }
-const Asn4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Asn4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.Number,
     confidenceLevel: Schema.Number,
@@ -3257,7 +3250,7 @@ interface EstimatedUsers2 {
   /** Total estimated users. */
   estimatedUsers?: number | null;
 }
-const EstimatedUsers2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const EstimatedUsers2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     estimatedUsers: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   }),
@@ -3273,7 +3266,7 @@ interface Asn5 {
   orgName?: string | null;
   website?: string | null;
 }
-const Asn5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Asn5 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.Number,
     country: Schema.String,
@@ -3311,7 +3304,7 @@ interface Asn6 {
   website: string;
   aka?: string | null;
 }
-const Asn6 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Asn6 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.Number,
     country: Schema.String,
@@ -3335,7 +3328,7 @@ interface Rel {
   asn2Name: string;
   rel: string;
 }
-const Rel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Rel = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn1: Schema.Number,
     asn1Country: Schema.String,
@@ -3369,7 +3362,7 @@ interface Location2 {
   region: string;
   subregion: string;
 }
-const Location2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Location2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     alpha2: Schema.String,
     confidenceLevel: Schema.Number,
@@ -3393,7 +3386,7 @@ interface Location3 {
   region: string;
   subregion: string;
 }
-const Location3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Location3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     alpha2: Schema.String,
     continent: Schema.String,
@@ -3418,7 +3411,7 @@ interface Parent {
   /** BCP 47 locale code used for the geolocation name translation */
   locale?: string | null;
 }
-const Parent = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Parent = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     geoId: Schema.String,
     latitude: Schema.String,
@@ -3455,7 +3448,7 @@ interface Parent2 {
   /** BCP 47 locale code used for the geolocation name translation */
   locale?: string | null;
 }
-const Parent2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Parent2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     geoId: Schema.String,
     latitude: Schema.String,
@@ -3502,7 +3495,7 @@ interface Geolocation {
   /** BCP 47 locale code used for the geolocation name translation */
   locale?: string | null;
 }
-const Geolocation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Geolocation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     geoId: Schema.String,
     latitude: Schema.String,
@@ -3523,7 +3516,7 @@ interface TimeseriesGroupsCtResponseSerie01 {
   static: string[];
 }
 const TimeseriesGroupsCtResponseSerie01 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       rfc6962: Schema.Array(Schema.String),
       static: Schema.Array(Schema.String),
@@ -3539,7 +3532,7 @@ interface TimeseriesGroupsCtResponseSerie02 {
   lte_3d: string[];
 }
 const TimeseriesGroupsCtResponseSerie02 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       gt_121d: Schema.Array(Schema.String),
       gt_16dLte_31d: Schema.Array(Schema.String),
@@ -3564,7 +3557,7 @@ interface TimeseriesGroupsCtResponseSerie03 {
   precertificate: string[];
 }
 const TimeseriesGroupsCtResponseSerie03 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificate: Schema.Array(Schema.String),
       precertificate: Schema.Array(Schema.String),
@@ -3581,7 +3574,7 @@ interface TimeseriesGroupsCtResponseSerie04 {
   valid: string[];
 }
 const TimeseriesGroupsCtResponseSerie04 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       expired: Schema.Array(Schema.String),
       valid: Schema.Array(Schema.String),
@@ -3594,7 +3587,7 @@ interface TimeseriesGroupsCtResponseSerie06 {
   rsa: string[];
 }
 const TimeseriesGroupsCtResponseSerie06 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dsa: Schema.Array(Schema.String),
       ecdsa: Schema.Array(Schema.String),
@@ -3609,7 +3602,7 @@ interface TimeseriesGroupsCtResponseSerie07 {
   unknown: string[];
 }
 const TimeseriesGroupsCtResponseSerie07 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       domain: Schema.Array(Schema.String),
       extended: Schema.Array(Schema.String),
@@ -3626,7 +3619,7 @@ interface Serie017 {
   postSyn: string[];
   timestamps: string[];
 }
-const Serie017 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie017 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     laterInFlow: Schema.Array(Schema.String),
     noMatch: Schema.Array(Schema.String),
@@ -3652,7 +3645,7 @@ interface Summary015 {
   /** A numeric string. */
   ios: string;
 }
-const Summary015 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary015 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     android: Schema.String,
     ios: Schema.String,
@@ -3665,7 +3658,7 @@ interface Summary016 {
   /** A numeric string. */
   compromised: string;
 }
-const Summary016 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary016 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     clean: Schema.String,
     compromised: Schema.String,
@@ -3677,7 +3670,7 @@ interface Serie018 {
   compromised: string[];
   timestamps: string[];
 }
-const Serie018 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie018 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     clean: Schema.Array(Schema.String),
     compromised: Schema.Array(Schema.String),
@@ -3697,7 +3690,7 @@ interface Summary017 {
   /** A numeric string. */
   other: string;
 }
-const Summary017 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary017 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     http: Schema.String,
     other: Schema.String,
@@ -3712,7 +3705,7 @@ interface Bugs {
   /** Server cannot handle an unknown key exchange algorithm in the ClientHello keyshare extension. Compliant servers should respond with HelloRetryRequest for a supported algorithm. */
   unknownKeyshare: boolean;
 }
-const Bugs = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Bugs = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     hrrFailure: Schema.Boolean,
     splitClientHello: Schema.Boolean,
@@ -3726,7 +3719,7 @@ interface Summary018 {
   /** A numeric string. */
   https: string;
 }
-const Summary018 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary018 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     http: Schema.String,
     https: Schema.String,
@@ -3738,7 +3731,7 @@ interface Serie019 {
   https: string[];
   timestamps: string[];
 }
-const Serie019 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie019 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     http: Schema.Array(Schema.String),
     https: Schema.Array(Schema.String),
@@ -3751,7 +3744,7 @@ interface Summary019 {
   p50: string;
   p75: string;
 }
-const Summary019 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary019 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     p25: Schema.String,
     p50: Schema.String,
@@ -3764,7 +3757,7 @@ interface Histogram0 {
   bandwidthUpload: string[];
   bucketMin: string[];
 }
-const Histogram0 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Histogram0 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bandwidthDownload: Schema.Array(Schema.String),
     bandwidthUpload: Schema.Array(Schema.String),
@@ -3839,7 +3832,7 @@ interface Meta13 {
   /** Measurement units for the results. */
   units: { name: string; value: string }[];
 }
-const Meta13 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta13 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bucketSize: Schema.Number,
     confidenceInfo: ConfidenceInfo,
@@ -3872,7 +3865,7 @@ interface Summary020 {
   latencyLoaded: string;
   packetLoss: string;
 }
-const Summary020 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary020 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bandwidthDownload: Schema.String,
     bandwidthUpload: Schema.String,
@@ -3896,7 +3889,7 @@ interface Top09 {
   numTests: number;
   rankPower: number;
 }
-const Top09 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top09 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bandwidthDownload: Schema.String,
     bandwidthUpload: Schema.String,
@@ -3923,7 +3916,7 @@ interface Top010 {
   numTests: number;
   rankPower: number;
 }
-const Top010 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top010 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bandwidthDownload: Schema.String,
     bandwidthUpload: Schema.String,
@@ -3943,7 +3936,7 @@ interface Serie020 {
   supported: string[];
   timestamps: string[];
 }
-const Serie020 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie020 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     notsupported: Schema.Array(Schema.String),
     supported: Schema.Array(Schema.String),
@@ -3962,7 +3955,7 @@ interface Category {
   name: string;
   superCategoryId: number;
 }
-const Category = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Category = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Number,
     name: Schema.String,
@@ -3977,7 +3970,7 @@ interface Top011 {
   /** Only available in TRENDING rankings. */
   pctRankChange?: number | null;
 }
-const Top011 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top011 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     categories: Schema.Array(Category),
     domain: Schema.String,
@@ -3991,7 +3984,7 @@ interface TopLocation {
   locationName: string;
   rank: number;
 }
-const TopLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TopLocation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     locationCode: Schema.String,
     locationName: Schema.String,
@@ -4008,7 +4001,7 @@ interface Details0 {
     | { locationCode: string; locationName: string; rank: number }[]
     | null;
 }
-const Details0 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Details0 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     categories: Schema.Array(Category),
     bucket: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -4029,7 +4022,7 @@ const Details0 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Categories0 {
   name: string;
 }
-const Categories0 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Categories0 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
   }),
@@ -4039,7 +4032,7 @@ interface Top012 {
   rank: number;
   service: string;
 }
-const Top012 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top012 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     rank: Schema.Number,
     service: Schema.String,
@@ -4052,7 +4045,7 @@ interface Top013 {
   fully?: number | null;
   partially?: number | null;
 }
-const Top013 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top013 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     value: Schema.Number,
@@ -4066,7 +4059,7 @@ interface Search {
   name: string;
   type: string;
 }
-const Search = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Search = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.String,
     name: Schema.String,
@@ -4094,7 +4087,7 @@ interface AsSet {
   /** The AS number matching PeeringDB record */
   peeringdbAsn?: number | null;
 }
-const AsSet = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AsSet = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asMembersCount: Schema.Number,
     asSetMembersCount: Schema.Number,
@@ -4134,7 +4127,7 @@ interface Summary021 {
   /** Connection resets or timeouts after the server received only a single SYN packet. */
   postSyn: string;
 }
-const Summary021 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary021 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     laterInFlow: Schema.String,
     noMatch: Schema.String,
@@ -4159,7 +4152,7 @@ interface Ase {
   rank: number;
   rankChange?: number | null;
 }
-const Ase = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ase = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.Number,
     country: Schema.String,
@@ -4174,7 +4167,7 @@ interface Meta14 {
   total: number;
   compareDate?: string | null;
 }
-const Meta14 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta14 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     date: Schema.String,
     total: Schema.Number,
@@ -4197,7 +4190,7 @@ interface TrafficAnomaly {
   originDetails?: { name: string; origin: string } | null;
   visibleInDataSources?: string[] | null;
 }
-const TrafficAnomaly = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TrafficAnomaly = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     startDate: Schema.String,
     status: Schema.String,
@@ -4229,7 +4222,7 @@ interface Summary022 {
   /** A numeric string. */
   lte_1m: string;
 }
-const Summary022 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary022 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     gt_15mLte_1h: Schema.String,
     gt_1dLte_1w: Schema.String,
@@ -4260,7 +4253,7 @@ interface Serie021 {
   gt_5mLte_15m: string[];
   lte_1m: string[];
 }
-const Serie021 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie021 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     gt_15mLte_1h: Schema.Array(Schema.String),
     gt_1dLte_1w: Schema.Array(Schema.String),
@@ -4290,7 +4283,7 @@ interface Summary023 {
   /** A numeric string. */
   other: string;
 }
-const Summary023 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary023 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     desktop: Schema.String,
     mobile: Schema.String,
@@ -4304,7 +4297,7 @@ interface Serie022 {
   other: string[];
   timestamps: string[];
 }
-const Serie022 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie022 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     desktop: Schema.Array(Schema.String),
     mobile: Schema.Array(Schema.String),
@@ -4320,7 +4313,7 @@ interface Top014 {
   /** A numeric string. */
   value: string;
 }
-const Top014 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top014 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     botCategory: Schema.String,
     botName: Schema.String,
@@ -4334,7 +4327,7 @@ interface Top015 {
   /** A numeric string. */
   value: string;
 }
-const Top015 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Top015 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     botCategory: Schema.String,
     value: Schema.String,
@@ -4347,7 +4340,7 @@ interface Summary024 {
   /** A numeric string. */
   ipv6: string;
 }
-const Summary024 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary024 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipv4: Schema.String,
     ipv6: Schema.String,
@@ -4358,7 +4351,7 @@ interface Serie023 {
   ipv4: string[];
   ipv6: string[];
 }
-const Serie023 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie023 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipv4: Schema.Array(Schema.String),
     ipv6: Schema.Array(Schema.String),
@@ -4370,7 +4363,7 @@ interface Serie024 {
   ipv6: string[];
   timestamps: string[];
 }
-const Serie024 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie024 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipv4: Schema.Array(Schema.String),
     ipv6: Schema.Array(Schema.String),
@@ -4385,7 +4378,7 @@ interface Summary025 {
   "http/2": string;
   "http/3": string;
 }
-const Summary025 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary025 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     "http/1X": Schema.String,
     "http/2": Schema.String,
@@ -4405,7 +4398,7 @@ interface Serie025 {
   "http/3": string[];
   timestamps: string[];
 }
-const Serie025 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie025 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     "http/1X": Schema.Array(Schema.String),
     "http/2": Schema.Array(Schema.String),
@@ -4431,7 +4424,7 @@ interface Summary026 {
   /** A numeric string. */
   "tls 1.3": string;
 }
-const Summary026 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary026 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     "tls 1.0": Schema.String,
     "tls 1.1": Schema.String,
@@ -4453,7 +4446,7 @@ interface Serie026 {
   "tls 1.2": string[];
   "tls 1.3": string[];
 }
-const Serie026 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie026 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     "tls 1.0": Schema.Array(Schema.String),
     "tls 1.1": Schema.Array(Schema.String),
@@ -4481,7 +4474,7 @@ interface Summary027 {
   /** A numeric string. */
   "tls QUIC": string;
 }
-const Summary027 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summary027 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     "tls 1.0": Schema.String,
     "tls 1.1": Schema.String,
@@ -4507,7 +4500,7 @@ interface Serie027 {
   "tls 1.3": string[];
   "tls QUIC": string[];
 }
-const Serie027 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Serie027 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     timestamps: Schema.Array(Schema.String),
     "tls 1.0": Schema.Array(Schema.String),
@@ -4553,7 +4546,7 @@ export interface UserAgentAiBotSummaryRequest {
 }
 
 export const UserAgentAiBotSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -4638,7 +4631,7 @@ export interface UserAgentAiBotSummaryResponse {
 }
 
 export const UserAgentAiBotSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -4652,7 +4645,7 @@ export const userAgentAiBotSummary: API.OperationMethod<
   UserAgentAiBotSummaryResponse,
   UserAgentAiBotSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UserAgentAiBotSummaryRequest,
   output: UserAgentAiBotSummaryResponse,
   errors: [],
@@ -4686,7 +4679,7 @@ export interface UserAgentAiTimeseriesGroupRequest {
 }
 
 export const UserAgentAiTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -4787,7 +4780,7 @@ export interface UserAgentAiTimeseriesGroupResponse {
 }
 
 export const UserAgentAiTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -4801,7 +4794,7 @@ export const userAgentAiTimeseriesGroup: API.OperationMethod<
   UserAgentAiTimeseriesGroupResponse,
   UserAgentAiTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UserAgentAiTimeseriesGroupRequest,
   output: UserAgentAiTimeseriesGroupResponse,
   errors: [],
@@ -4824,7 +4817,7 @@ export interface SummaryAgentReadinessRequest {
 }
 
 export const SummaryAgentReadinessRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.Literal("CHECK").pipe(T.HttpPath("dimension")),
       date: Schema.optional(Schema.String),
@@ -4864,7 +4857,7 @@ export interface SummaryAgentReadinessResponse {
 }
 
 export const SummaryAgentReadinessResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta3,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -4878,7 +4871,7 @@ export const summaryAgentReadiness: API.OperationMethod<
   SummaryAgentReadinessResponse,
   SummaryAgentReadinessError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryAgentReadinessRequest,
   output: SummaryAgentReadinessResponse,
   errors: [],
@@ -4951,7 +4944,7 @@ export interface TimeseriesAiBotRequest {
 }
 
 export const TimeseriesAiBotRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -5090,7 +5083,7 @@ export interface TimeseriesAiBotResponse {
 }
 
 export const TimeseriesAiBotResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
     }).pipe(T.ResponsePath("result")),
@@ -5103,7 +5096,7 @@ export const timeseriesAiBot: API.OperationMethod<
   TimeseriesAiBotResponse,
   TimeseriesAiBotError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesAiBotRequest,
   output: TimeseriesAiBotResponse,
   errors: [],
@@ -5129,7 +5122,7 @@ export interface ModelAiInferenceSummaryRequest {
 }
 
 export const ModelAiInferenceSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
       dateRange: Schema.optional(Schema.Array(Schema.String)),
@@ -5211,7 +5204,7 @@ export interface ModelAiInferenceSummaryResponse {
 }
 
 export const ModelAiInferenceSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -5225,7 +5218,7 @@ export const modelAiInferenceSummary: API.OperationMethod<
   ModelAiInferenceSummaryResponse,
   ModelAiInferenceSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModelAiInferenceSummaryRequest,
   output: ModelAiInferenceSummaryResponse,
   errors: [],
@@ -5247,7 +5240,7 @@ export interface TaskAiInferenceSummaryRequest {
 }
 
 export const TaskAiInferenceSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
       dateRange: Schema.optional(Schema.Array(Schema.String)),
@@ -5329,7 +5322,7 @@ export interface TaskAiInferenceSummaryResponse {
 }
 
 export const TaskAiInferenceSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -5343,7 +5336,7 @@ export const taskAiInferenceSummary: API.OperationMethod<
   TaskAiInferenceSummaryResponse,
   TaskAiInferenceSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TaskAiInferenceSummaryRequest,
   output: TaskAiInferenceSummaryResponse,
   errors: [],
@@ -5371,7 +5364,7 @@ export interface ModelAiInferenceTimeseriesGroupSummaryRequest {
 }
 
 export const ModelAiInferenceTimeseriesGroupSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -5469,7 +5462,7 @@ export interface ModelAiInferenceTimeseriesGroupSummaryResponse {
 }
 
 export const ModelAiInferenceTimeseriesGroupSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -5483,7 +5476,7 @@ export const modelAiInferenceTimeseriesGroupSummary: API.OperationMethod<
   ModelAiInferenceTimeseriesGroupSummaryResponse,
   ModelAiInferenceTimeseriesGroupSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModelAiInferenceTimeseriesGroupSummaryRequest,
   output: ModelAiInferenceTimeseriesGroupSummaryResponse,
   errors: [],
@@ -5507,7 +5500,7 @@ export interface TaskAiInferenceTimeseriesGroupSummaryRequest {
 }
 
 export const TaskAiInferenceTimeseriesGroupSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -5605,7 +5598,7 @@ export interface TaskAiInferenceTimeseriesGroupSummaryResponse {
 }
 
 export const TaskAiInferenceTimeseriesGroupSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -5619,7 +5612,7 @@ export const taskAiInferenceTimeseriesGroupSummary: API.OperationMethod<
   TaskAiInferenceTimeseriesGroupSummaryResponse,
   TaskAiInferenceTimeseriesGroupSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TaskAiInferenceTimeseriesGroupSummaryRequest,
   output: TaskAiInferenceTimeseriesGroupSummaryResponse,
   errors: [],
@@ -5643,7 +5636,7 @@ export interface SummaryAiMarkdownForAgentRequest {
 }
 
 export const SummaryAiMarkdownForAgentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
       dateRange: Schema.optional(Schema.Array(Schema.String)),
@@ -5724,7 +5717,7 @@ export interface SummaryAiMarkdownForAgentResponse {
 }
 
 export const SummaryAiMarkdownForAgentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary0,
@@ -5738,7 +5731,7 @@ export const summaryAiMarkdownForAgent: API.OperationMethod<
   SummaryAiMarkdownForAgentResponse,
   SummaryAiMarkdownForAgentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryAiMarkdownForAgentRequest,
   output: SummaryAiMarkdownForAgentResponse,
   errors: [],
@@ -5760,7 +5753,7 @@ export interface TimeseriesAiMarkdownForAgentRequest {
 }
 
 export const TimeseriesAiMarkdownForAgentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -5856,7 +5849,7 @@ export interface TimeseriesAiMarkdownForAgentResponse {
 }
 
 export const TimeseriesAiMarkdownForAgentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
     }).pipe(T.ResponsePath("result")),
@@ -5869,7 +5862,7 @@ export const timeseriesAiMarkdownForAgent: API.OperationMethod<
   TimeseriesAiMarkdownForAgentResponse,
   TimeseriesAiMarkdownForAgentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesAiMarkdownForAgentRequest,
   output: TimeseriesAiMarkdownForAgentResponse,
   errors: [],
@@ -5941,7 +5934,7 @@ export interface SummaryAiTimeseriesGroupRequest {
 }
 
 export const SummaryAiTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -6071,7 +6064,7 @@ export interface SummaryAiTimeseriesGroupResponse {
 }
 
 export const SummaryAiTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -6085,7 +6078,7 @@ export const summaryAiTimeseriesGroup: API.OperationMethod<
   SummaryAiTimeseriesGroupResponse,
   SummaryAiTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryAiTimeseriesGroupRequest,
   output: SummaryAiTimeseriesGroupResponse,
   errors: [],
@@ -6154,7 +6147,7 @@ export interface TimeseriesAiTimeseriesGroupRequest {
 }
 
 export const TimeseriesAiTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -6293,7 +6286,7 @@ export interface TimeseriesAiTimeseriesGroupResponse {
 }
 
 export const TimeseriesAiTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
     }).pipe(T.ResponsePath("result")),
@@ -6306,7 +6299,7 @@ export const timeseriesAiTimeseriesGroup: API.OperationMethod<
   TimeseriesAiTimeseriesGroupResponse,
   TimeseriesAiTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesAiTimeseriesGroupRequest,
   output: TimeseriesAiTimeseriesGroupResponse,
   errors: [],
@@ -6324,7 +6317,7 @@ export interface CreateAiToMarkdownRequest {
 }
 
 export const CreateAiToMarkdownRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       files: Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
@@ -6346,7 +6339,7 @@ export type CreateAiToMarkdownResponse = {
 }[];
 
 export const CreateAiToMarkdownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(ToMarkdownCreateResponse).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<CreateAiToMarkdownResponse>;
 
@@ -6357,7 +6350,7 @@ export const createAiToMarkdown: API.OperationMethod<
   CreateAiToMarkdownResponse,
   CreateAiToMarkdownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAiToMarkdownRequest,
   output: CreateAiToMarkdownResponse,
   errors: [],
@@ -6426,7 +6419,7 @@ export interface ListAnnotationsRequest {
 }
 
 export const ListAnnotationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Number),
       dataSource: Schema.optional(
@@ -6512,7 +6505,7 @@ export interface ListAnnotationsResponse {
 }
 
 export const ListAnnotationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       annotations: Schema.Array(Annotation2),
     }).pipe(T.ResponsePath("result")),
@@ -6525,7 +6518,7 @@ export const listAnnotations: API.OperationMethod<
   ListAnnotationsResponse,
   ListAnnotationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAnnotationsRequest,
   output: ListAnnotationsResponse,
   errors: [],
@@ -6557,7 +6550,7 @@ export interface GetAnnotationOutageRequest {
 }
 
 export const GetAnnotationOutageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Number),
       dateEnd: Schema.optional(Schema.String),
@@ -6598,7 +6591,7 @@ export interface GetAnnotationOutageResponse {
 }
 
 export const GetAnnotationOutageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       annotations: Schema.Array(Annotation2),
     }).pipe(T.ResponsePath("result")),
@@ -6611,7 +6604,7 @@ export const getAnnotationOutage: API.OperationMethod<
   GetAnnotationOutageResponse,
   GetAnnotationOutageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnnotationOutageRequest,
   output: GetAnnotationOutageResponse,
   errors: [],
@@ -6631,7 +6624,7 @@ export interface LocationsAnnotationOutageRequest {
 }
 
 export const LocationsAnnotationOutageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dateEnd: Schema.optional(Schema.String),
       dateRange: Schema.optional(Schema.String),
@@ -6654,7 +6647,7 @@ export interface LocationsAnnotationOutageResponse {
 }
 
 export const LocationsAnnotationOutageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       annotations: Schema.Array(Annotation3),
     }).pipe(T.ResponsePath("result")),
@@ -6667,7 +6660,7 @@ export const locationsAnnotationOutage: API.OperationMethod<
   LocationsAnnotationOutageResponse,
   LocationsAnnotationOutageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LocationsAnnotationOutageRequest,
   output: LocationsAnnotationOutageResponse,
   errors: [],
@@ -6818,7 +6811,7 @@ export interface MatchingAnswerDnsSummaryRequest {
 }
 
 export const MatchingAnswerDnsSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -7035,7 +7028,7 @@ export interface MatchingAnswerDnsSummaryResponse {
 }
 
 export const MatchingAnswerDnsSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary02,
@@ -7049,7 +7042,7 @@ export const matchingAnswerDnsSummary: API.OperationMethod<
   MatchingAnswerDnsSummaryResponse,
   MatchingAnswerDnsSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MatchingAnswerDnsSummaryRequest,
   output: MatchingAnswerDnsSummaryResponse,
   errors: [],
@@ -7202,7 +7195,7 @@ export interface MatchingAnswerDnsTimeseriesGroupRequest {
 }
 
 export const MatchingAnswerDnsTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -7435,7 +7428,7 @@ export interface MatchingAnswerDnsTimeseriesGroupResponse {
 }
 
 export const MatchingAnswerDnsTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie02,
@@ -7449,7 +7442,7 @@ export const matchingAnswerDnsTimeseriesGroup: API.OperationMethod<
   MatchingAnswerDnsTimeseriesGroupResponse,
   MatchingAnswerDnsTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MatchingAnswerDnsTimeseriesGroupRequest,
   output: MatchingAnswerDnsTimeseriesGroupResponse,
   errors: [],
@@ -7596,7 +7589,7 @@ export interface TimeseriesAs112Request {
 }
 
 export const TimeseriesAs112Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -7820,7 +7813,7 @@ export interface TimeseriesAs112Response {
 }
 
 export const TimeseriesAs112Response =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
     }).pipe(T.ResponsePath("result")),
@@ -7833,7 +7826,7 @@ export const timeseriesAs112: API.OperationMethod<
   TimeseriesAs112Response,
   TimeseriesAs112Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesAs112Request,
   output: TimeseriesAs112Response,
   errors: [],
@@ -7978,7 +7971,7 @@ export interface DnssecAs112SummaryRequest {
 }
 
 export const DnssecAs112SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -8190,7 +8183,7 @@ export interface DnssecAs112SummaryResponse {
 }
 
 export const DnssecAs112SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary03,
@@ -8204,7 +8197,7 @@ export const dnssecAs112Summary: API.OperationMethod<
   DnssecAs112SummaryResponse,
   DnssecAs112SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DnssecAs112SummaryRequest,
   output: DnssecAs112SummaryResponse,
   errors: [],
@@ -8345,7 +8338,7 @@ export interface EdnsAs112SummaryRequest {
 }
 
 export const EdnsAs112SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -8557,7 +8550,7 @@ export interface EdnsAs112SummaryResponse {
 }
 
 export const EdnsAs112SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary03,
@@ -8571,7 +8564,7 @@ export const ednsAs112Summary: API.OperationMethod<
   EdnsAs112SummaryResponse,
   EdnsAs112SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EdnsAs112SummaryRequest,
   output: EdnsAs112SummaryResponse,
   errors: [],
@@ -8710,7 +8703,7 @@ export interface ProtocolAs112SummaryRequest {
 }
 
 export const ProtocolAs112SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -8914,7 +8907,7 @@ export interface ProtocolAs112SummaryResponse {
 }
 
 export const ProtocolAs112SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary04,
@@ -8928,7 +8921,7 @@ export const protocolAs112Summary: API.OperationMethod<
   ProtocolAs112SummaryResponse,
   ProtocolAs112SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProtocolAs112SummaryRequest,
   output: ProtocolAs112SummaryResponse,
   errors: [],
@@ -9075,7 +9068,7 @@ export interface DnssecAs112TimeseriesGroupRequest {
 }
 
 export const DnssecAs112TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -9302,7 +9295,7 @@ export interface DnssecAs112TimeseriesGroupResponse {
 }
 
 export const DnssecAs112TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie03,
@@ -9316,7 +9309,7 @@ export const dnssecAs112TimeseriesGroup: API.OperationMethod<
   DnssecAs112TimeseriesGroupResponse,
   DnssecAs112TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DnssecAs112TimeseriesGroupRequest,
   output: DnssecAs112TimeseriesGroupResponse,
   errors: [],
@@ -9459,7 +9452,7 @@ export interface EdnsAs112TimeseriesGroupRequest {
 }
 
 export const EdnsAs112TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -9686,7 +9679,7 @@ export interface EdnsAs112TimeseriesGroupResponse {
 }
 
 export const EdnsAs112TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie03,
@@ -9700,7 +9693,7 @@ export const ednsAs112TimeseriesGroup: API.OperationMethod<
   EdnsAs112TimeseriesGroupResponse,
   EdnsAs112TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EdnsAs112TimeseriesGroupRequest,
   output: EdnsAs112TimeseriesGroupResponse,
   errors: [],
@@ -9841,7 +9834,7 @@ export interface ProtocolAs112TimeseriesGroupRequest {
 }
 
 export const ProtocolAs112TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -10063,7 +10056,7 @@ export interface ProtocolAs112TimeseriesGroupResponse {
 }
 
 export const ProtocolAs112TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie04,
@@ -10077,7 +10070,7 @@ export const protocolAs112TimeseriesGroup: API.OperationMethod<
   ProtocolAs112TimeseriesGroupResponse,
   ProtocolAs112TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProtocolAs112TimeseriesGroupRequest,
   output: ProtocolAs112TimeseriesGroupResponse,
   errors: [],
@@ -10107,26 +10100,25 @@ export interface DnssecAs112TopRequest {
   name?: string[];
 }
 
-export const DnssecAs112TopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dnssec: Schema.String.pipe(T.HttpPath("dnssec")),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      limit: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/radar/as112/top/locations/dnssec/{dnssec}",
-      }),
+export const DnssecAs112TopRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dnssec: Schema.String.pipe(T.HttpPath("dnssec")),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
     ),
+    limit: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/radar/as112/top/locations/dnssec/{dnssec}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DnssecAs112TopRequest>;
 
 export interface DnssecAs112TopResponse {
@@ -10200,7 +10192,7 @@ export interface DnssecAs112TopResponse {
 }
 
 export const DnssecAs112TopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -10214,7 +10206,7 @@ export const dnssecAs112Top: API.OperationMethod<
   DnssecAs112TopResponse,
   DnssecAs112TopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DnssecAs112TopRequest,
   output: DnssecAs112TopResponse,
   errors: [],
@@ -10240,23 +10232,22 @@ export interface EdnsAs112TopRequest {
   name?: string[];
 }
 
-export const EdnsAs112TopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      edns: Schema.String.pipe(T.HttpPath("edns")),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      limit: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-    }).pipe(
-      T.Http({ method: "GET", path: "/radar/as112/top/locations/edns/{edns}" }),
+export const EdnsAs112TopRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    edns: Schema.String.pipe(T.HttpPath("edns")),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
     ),
+    limit: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
+    T.Http({ method: "GET", path: "/radar/as112/top/locations/edns/{edns}" }),
+  ),
 ) as unknown as Schema.Codec<EdnsAs112TopRequest>;
 
 export interface EdnsAs112TopResponse {
@@ -10329,12 +10320,11 @@ export interface EdnsAs112TopResponse {
   }[];
 }
 
-export const EdnsAs112TopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta4,
-      top_0: Schema.Array(Annotation3),
-    }).pipe(T.ResponsePath("result")),
+export const EdnsAs112TopResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta4,
+    top_0: Schema.Array(Annotation3),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<EdnsAs112TopResponse>;
 
 export type EdnsAs112TopError = DefaultErrors;
@@ -10344,7 +10334,7 @@ export const ednsAs112Top: API.OperationMethod<
   EdnsAs112TopResponse,
   EdnsAs112TopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EdnsAs112TopRequest,
   output: EdnsAs112TopResponse,
   errors: [],
@@ -10370,7 +10360,7 @@ export interface LocationsAs112TopRequest {
 }
 
 export const LocationsAs112TopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -10456,7 +10446,7 @@ export interface LocationsAs112TopResponse {
 }
 
 export const LocationsAs112TopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -10470,7 +10460,7 @@ export const locationsAs112Top: API.OperationMethod<
   LocationsAs112TopResponse,
   LocationsAs112TopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LocationsAs112TopRequest,
   output: LocationsAs112TopResponse,
   errors: [],
@@ -10512,7 +10502,7 @@ export interface TimeseriesAttackLayer3Request {
 }
 
 export const TimeseriesAttackLayer3Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -10633,7 +10623,7 @@ export interface TimeseriesAttackLayer3Response {
 }
 
 export const TimeseriesAttackLayer3Response =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
     }).pipe(T.ResponsePath("result")),
@@ -10646,7 +10636,7 @@ export const timeseriesAttackLayer3: API.OperationMethod<
   TimeseriesAttackLayer3Response,
   TimeseriesAttackLayer3Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesAttackLayer3Request,
   output: TimeseriesAttackLayer3Response,
   errors: [],
@@ -10680,7 +10670,7 @@ export interface BitrateAttackLayer3SummaryRequest {
 }
 
 export const BitrateAttackLayer3SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -10785,7 +10775,7 @@ export interface BitrateAttackLayer3SummaryResponse {
 }
 
 export const BitrateAttackLayer3SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary05,
@@ -10799,7 +10789,7 @@ export const bitrateAttackLayer3Summary: API.OperationMethod<
   BitrateAttackLayer3SummaryResponse,
   BitrateAttackLayer3SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BitrateAttackLayer3SummaryRequest,
   output: BitrateAttackLayer3SummaryResponse,
   errors: [],
@@ -10829,7 +10819,7 @@ export interface DurationAttackLayer3SummaryRequest {
 }
 
 export const DurationAttackLayer3SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -10935,7 +10925,7 @@ export interface DurationAttackLayer3SummaryResponse {
 }
 
 export const DurationAttackLayer3SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary06,
@@ -10949,7 +10939,7 @@ export const durationAttackLayer3Summary: API.OperationMethod<
   DurationAttackLayer3SummaryResponse,
   DurationAttackLayer3SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DurationAttackLayer3SummaryRequest,
   output: DurationAttackLayer3SummaryResponse,
   errors: [],
@@ -10981,7 +10971,7 @@ export interface IndustryAttackLayer3SummaryRequest {
 }
 
 export const IndustryAttackLayer3SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -11081,7 +11071,7 @@ export interface IndustryAttackLayer3SummaryResponse {
 }
 
 export const IndustryAttackLayer3SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -11095,7 +11085,7 @@ export const industryAttackLayer3Summary: API.OperationMethod<
   IndustryAttackLayer3SummaryResponse,
   IndustryAttackLayer3SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IndustryAttackLayer3SummaryRequest,
   output: IndustryAttackLayer3SummaryResponse,
   errors: [],
@@ -11123,7 +11113,7 @@ export interface ProtocolAttackLayer3SummaryRequest {
 }
 
 export const ProtocolAttackLayer3SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -11214,7 +11204,7 @@ export interface ProtocolAttackLayer3SummaryResponse {
 }
 
 export const ProtocolAttackLayer3SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary07,
@@ -11228,7 +11218,7 @@ export const protocolAttackLayer3Summary: API.OperationMethod<
   ProtocolAttackLayer3SummaryResponse,
   ProtocolAttackLayer3SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProtocolAttackLayer3SummaryRequest,
   output: ProtocolAttackLayer3SummaryResponse,
   errors: [],
@@ -11260,7 +11250,7 @@ export interface VectorAttackLayer3SummaryRequest {
 }
 
 export const VectorAttackLayer3SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -11360,7 +11350,7 @@ export interface VectorAttackLayer3SummaryResponse {
 }
 
 export const VectorAttackLayer3SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -11374,7 +11364,7 @@ export const vectorAttackLayer3Summary: API.OperationMethod<
   VectorAttackLayer3SummaryResponse,
   VectorAttackLayer3SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VectorAttackLayer3SummaryRequest,
   output: VectorAttackLayer3SummaryResponse,
   errors: [],
@@ -11406,7 +11396,7 @@ export interface VerticalAttackLayer3SummaryRequest {
 }
 
 export const VerticalAttackLayer3SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -11506,7 +11496,7 @@ export interface VerticalAttackLayer3SummaryResponse {
 }
 
 export const VerticalAttackLayer3SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -11520,7 +11510,7 @@ export const verticalAttackLayer3Summary: API.OperationMethod<
   VerticalAttackLayer3SummaryResponse,
   VerticalAttackLayer3SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerticalAttackLayer3SummaryRequest,
   output: VerticalAttackLayer3SummaryResponse,
   errors: [],
@@ -11558,7 +11548,7 @@ export interface BitrateAttackLayer3TimeseriesGroupRequest {
 }
 
 export const BitrateAttackLayer3TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -11686,7 +11676,7 @@ export interface BitrateAttackLayer3TimeseriesGroupResponse {
 }
 
 export const BitrateAttackLayer3TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie05,
@@ -11700,7 +11690,7 @@ export const bitrateAttackLayer3TimeseriesGroup: API.OperationMethod<
   BitrateAttackLayer3TimeseriesGroupResponse,
   BitrateAttackLayer3TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BitrateAttackLayer3TimeseriesGroupRequest,
   output: BitrateAttackLayer3TimeseriesGroupResponse,
   errors: [],
@@ -11734,7 +11724,7 @@ export interface DurationAttackLayer3TimeseriesGroupRequest {
 }
 
 export const DurationAttackLayer3TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -11863,7 +11853,7 @@ export interface DurationAttackLayer3TimeseriesGroupResponse {
 }
 
 export const DurationAttackLayer3TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie06,
@@ -11877,7 +11867,7 @@ export const durationAttackLayer3TimeseriesGroup: API.OperationMethod<
   DurationAttackLayer3TimeseriesGroupResponse,
   DurationAttackLayer3TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DurationAttackLayer3TimeseriesGroupRequest,
   output: DurationAttackLayer3TimeseriesGroupResponse,
   errors: [],
@@ -11913,7 +11903,7 @@ export interface IndustryAttackLayer3TimeseriesGroupRequest {
 }
 
 export const IndustryAttackLayer3TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -12035,7 +12025,7 @@ export interface IndustryAttackLayer3TimeseriesGroupResponse {
 }
 
 export const IndustryAttackLayer3TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -12049,7 +12039,7 @@ export const industryAttackLayer3TimeseriesGroup: API.OperationMethod<
   IndustryAttackLayer3TimeseriesGroupResponse,
   IndustryAttackLayer3TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IndustryAttackLayer3TimeseriesGroupRequest,
   output: IndustryAttackLayer3TimeseriesGroupResponse,
   errors: [],
@@ -12081,7 +12071,7 @@ export interface ProtocolAttackLayer3TimeseriesGroupRequest {
 }
 
 export const ProtocolAttackLayer3TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -12200,7 +12190,7 @@ export interface ProtocolAttackLayer3TimeseriesGroupResponse {
 }
 
 export const ProtocolAttackLayer3TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie07,
@@ -12214,7 +12204,7 @@ export const protocolAttackLayer3TimeseriesGroup: API.OperationMethod<
   ProtocolAttackLayer3TimeseriesGroupResponse,
   ProtocolAttackLayer3TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProtocolAttackLayer3TimeseriesGroupRequest,
   output: ProtocolAttackLayer3TimeseriesGroupResponse,
   errors: [],
@@ -12250,7 +12240,7 @@ export interface VectorAttackLayer3TimeseriesGroupRequest {
 }
 
 export const VectorAttackLayer3TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -12372,7 +12362,7 @@ export interface VectorAttackLayer3TimeseriesGroupResponse {
 }
 
 export const VectorAttackLayer3TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -12386,7 +12376,7 @@ export const vectorAttackLayer3TimeseriesGroup: API.OperationMethod<
   VectorAttackLayer3TimeseriesGroupResponse,
   VectorAttackLayer3TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VectorAttackLayer3TimeseriesGroupRequest,
   output: VectorAttackLayer3TimeseriesGroupResponse,
   errors: [],
@@ -12422,7 +12412,7 @@ export interface VerticalAttackLayer3TimeseriesGroupRequest {
 }
 
 export const VerticalAttackLayer3TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -12544,7 +12534,7 @@ export interface VerticalAttackLayer3TimeseriesGroupResponse {
 }
 
 export const VerticalAttackLayer3TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -12558,7 +12548,7 @@ export const verticalAttackLayer3TimeseriesGroup: API.OperationMethod<
   VerticalAttackLayer3TimeseriesGroupResponse,
   VerticalAttackLayer3TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerticalAttackLayer3TimeseriesGroupRequest,
   output: VerticalAttackLayer3TimeseriesGroupResponse,
   errors: [],
@@ -12600,7 +12590,7 @@ export interface AttacksAttackLayer3TopRequest {
 }
 
 export const AttacksAttackLayer3TopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -12717,7 +12707,7 @@ export interface AttacksAttackLayer3TopResponse {
 }
 
 export const AttacksAttackLayer3TopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top0),
@@ -12731,7 +12721,7 @@ export const attacksAttackLayer3Top: API.OperationMethod<
   AttacksAttackLayer3TopResponse,
   AttacksAttackLayer3TopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttacksAttackLayer3TopRequest,
   output: AttacksAttackLayer3TopResponse,
   errors: [],
@@ -12761,7 +12751,7 @@ export interface IndustryAttackLayer3TopRequest {
 }
 
 export const IndustryAttackLayer3TopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -12858,7 +12848,7 @@ export interface IndustryAttackLayer3TopResponse {
 }
 
 export const IndustryAttackLayer3TopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Unit),
@@ -12872,7 +12862,7 @@ export const industryAttackLayer3Top: API.OperationMethod<
   IndustryAttackLayer3TopResponse,
   IndustryAttackLayer3TopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IndustryAttackLayer3TopRequest,
   output: IndustryAttackLayer3TopResponse,
   errors: [],
@@ -12902,7 +12892,7 @@ export interface VerticalAttackLayer3TopRequest {
 }
 
 export const VerticalAttackLayer3TopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -12999,7 +12989,7 @@ export interface VerticalAttackLayer3TopResponse {
 }
 
 export const VerticalAttackLayer3TopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Unit),
@@ -13013,7 +13003,7 @@ export const verticalAttackLayer3Top: API.OperationMethod<
   VerticalAttackLayer3TopResponse,
   VerticalAttackLayer3TopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerticalAttackLayer3TopRequest,
   output: VerticalAttackLayer3TopResponse,
   errors: [],
@@ -13047,7 +13037,7 @@ export interface OriginAttackLayer3TopLocationRequest {
 }
 
 export const OriginAttackLayer3TopLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -13152,7 +13142,7 @@ export interface OriginAttackLayer3TopLocationResponse {
 }
 
 export const OriginAttackLayer3TopLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top02),
@@ -13166,7 +13156,7 @@ export const originAttackLayer3TopLocation: API.OperationMethod<
   OriginAttackLayer3TopLocationResponse,
   OriginAttackLayer3TopLocationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OriginAttackLayer3TopLocationRequest,
   output: OriginAttackLayer3TopLocationResponse,
   errors: [],
@@ -13196,7 +13186,7 @@ export interface TargetAttackLayer3TopLocationRequest {
 }
 
 export const TargetAttackLayer3TopLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -13301,7 +13291,7 @@ export interface TargetAttackLayer3TopLocationResponse {
 }
 
 export const TargetAttackLayer3TopLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top03),
@@ -13315,7 +13305,7 @@ export const targetAttackLayer3TopLocation: API.OperationMethod<
   TargetAttackLayer3TopLocationResponse,
   TargetAttackLayer3TopLocationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TargetAttackLayer3TopLocationRequest,
   output: TargetAttackLayer3TopLocationResponse,
   errors: [],
@@ -13414,7 +13404,7 @@ export interface TimeseriesAttackLayer7Request {
 }
 
 export const TimeseriesAttackLayer7Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -13601,7 +13591,7 @@ export interface TimeseriesAttackLayer7Response {
 }
 
 export const TimeseriesAttackLayer7Response =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie08,
@@ -13615,7 +13605,7 @@ export const timeseriesAttackLayer7: API.OperationMethod<
   TimeseriesAttackLayer7Response,
   TimeseriesAttackLayer7Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesAttackLayer7Request,
   output: TimeseriesAttackLayer7Response,
   errors: [],
@@ -13712,7 +13702,7 @@ export interface IndustryAttackLayer7SummaryRequest {
 }
 
 export const IndustryAttackLayer7SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -13881,7 +13871,7 @@ export interface IndustryAttackLayer7SummaryResponse {
 }
 
 export const IndustryAttackLayer7SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -13895,7 +13885,7 @@ export const industryAttackLayer7Summary: API.OperationMethod<
   IndustryAttackLayer7SummaryResponse,
   IndustryAttackLayer7SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IndustryAttackLayer7SummaryRequest,
   output: IndustryAttackLayer7SummaryResponse,
   errors: [],
@@ -13988,7 +13978,7 @@ export interface VerticalAttackLayer7SummaryRequest {
 }
 
 export const VerticalAttackLayer7SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -14157,7 +14147,7 @@ export interface VerticalAttackLayer7SummaryResponse {
 }
 
 export const VerticalAttackLayer7SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -14171,7 +14161,7 @@ export const verticalAttackLayer7Summary: API.OperationMethod<
   VerticalAttackLayer7SummaryResponse,
   VerticalAttackLayer7SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerticalAttackLayer7SummaryRequest,
   output: VerticalAttackLayer7SummaryResponse,
   errors: [],
@@ -14272,7 +14262,7 @@ export interface IndustryAttackLayer7TimeseriesGroupRequest {
 }
 
 export const IndustryAttackLayer7TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -14463,7 +14453,7 @@ export interface IndustryAttackLayer7TimeseriesGroupResponse {
 }
 
 export const IndustryAttackLayer7TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -14477,7 +14467,7 @@ export const industryAttackLayer7TimeseriesGroup: API.OperationMethod<
   IndustryAttackLayer7TimeseriesGroupResponse,
   IndustryAttackLayer7TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IndustryAttackLayer7TimeseriesGroupRequest,
   output: IndustryAttackLayer7TimeseriesGroupResponse,
   errors: [],
@@ -14574,7 +14564,7 @@ export interface VerticalAttackLayer7TimeseriesGroupRequest {
 }
 
 export const VerticalAttackLayer7TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -14765,7 +14755,7 @@ export interface VerticalAttackLayer7TimeseriesGroupResponse {
 }
 
 export const VerticalAttackLayer7TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -14779,7 +14769,7 @@ export const verticalAttackLayer7TimeseriesGroup: API.OperationMethod<
   VerticalAttackLayer7TimeseriesGroupResponse,
   VerticalAttackLayer7TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerticalAttackLayer7TimeseriesGroupRequest,
   output: VerticalAttackLayer7TimeseriesGroupResponse,
   errors: [],
@@ -14828,7 +14818,7 @@ export interface AttacksAttackLayer7TopRequest {
 }
 
 export const AttacksAttackLayer7TopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -14945,7 +14935,7 @@ export interface AttacksAttackLayer7TopResponse {
 }
 
 export const AttacksAttackLayer7TopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top04),
@@ -14959,7 +14949,7 @@ export const attacksAttackLayer7Top: API.OperationMethod<
   AttacksAttackLayer7TopResponse,
   AttacksAttackLayer7TopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttacksAttackLayer7TopRequest,
   output: AttacksAttackLayer7TopResponse,
   errors: [],
@@ -15052,7 +15042,7 @@ export interface IndustryAttackLayer7TopRequest {
 }
 
 export const IndustryAttackLayer7TopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -15221,7 +15211,7 @@ export interface IndustryAttackLayer7TopResponse {
 }
 
 export const IndustryAttackLayer7TopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Unit),
@@ -15235,7 +15225,7 @@ export const industryAttackLayer7Top: API.OperationMethod<
   IndustryAttackLayer7TopResponse,
   IndustryAttackLayer7TopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IndustryAttackLayer7TopRequest,
   output: IndustryAttackLayer7TopResponse,
   errors: [],
@@ -15328,7 +15318,7 @@ export interface VerticalAttackLayer7TopRequest {
 }
 
 export const VerticalAttackLayer7TopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -15497,7 +15487,7 @@ export interface VerticalAttackLayer7TopResponse {
 }
 
 export const VerticalAttackLayer7TopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Unit),
@@ -15511,7 +15501,7 @@ export const verticalAttackLayer7Top: API.OperationMethod<
   VerticalAttackLayer7TopResponse,
   VerticalAttackLayer7TopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerticalAttackLayer7TopRequest,
   output: VerticalAttackLayer7TopResponse,
   errors: [],
@@ -15606,7 +15596,7 @@ export interface OriginAttackLayer7TopAsRequest {
 }
 
 export const OriginAttackLayer7TopAsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -15779,7 +15769,7 @@ export interface OriginAttackLayer7TopAsResponse {
 }
 
 export const OriginAttackLayer7TopAsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top05),
@@ -15793,7 +15783,7 @@ export const originAttackLayer7TopAs: API.OperationMethod<
   OriginAttackLayer7TopAsResponse,
   OriginAttackLayer7TopAsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OriginAttackLayer7TopAsRequest,
   output: OriginAttackLayer7TopAsResponse,
   errors: [],
@@ -15888,7 +15878,7 @@ export interface OriginAttackLayer7TopLocationRequest {
 }
 
 export const OriginAttackLayer7TopLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -16064,7 +16054,7 @@ export interface OriginAttackLayer7TopLocationResponse {
 }
 
 export const OriginAttackLayer7TopLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top02),
@@ -16078,7 +16068,7 @@ export const originAttackLayer7TopLocation: API.OperationMethod<
   OriginAttackLayer7TopLocationResponse,
   OriginAttackLayer7TopLocationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OriginAttackLayer7TopLocationRequest,
   output: OriginAttackLayer7TopLocationResponse,
   errors: [],
@@ -16113,7 +16103,7 @@ export interface TargetAttackLayer7TopLocationRequest {
 }
 
 export const TargetAttackLayer7TopLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -16220,7 +16210,7 @@ export interface TargetAttackLayer7TopLocationResponse {
 }
 
 export const TargetAttackLayer7TopLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top03),
@@ -16234,7 +16224,7 @@ export const targetAttackLayer7TopLocation: API.OperationMethod<
   TargetAttackLayer7TopLocationResponse,
   TargetAttackLayer7TopLocationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TargetAttackLayer7TopLocationRequest,
   output: TargetAttackLayer7TopLocationResponse,
   errors: [],
@@ -16385,7 +16375,7 @@ export interface DnssecAwareDnsSummaryRequest {
 }
 
 export const DnssecAwareDnsSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -16600,7 +16590,7 @@ export interface DnssecAwareDnsSummaryResponse {
 }
 
 export const DnssecAwareDnsSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary03,
@@ -16614,7 +16604,7 @@ export const dnssecAwareDnsSummary: API.OperationMethod<
   DnssecAwareDnsSummaryResponse,
   DnssecAwareDnsSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DnssecAwareDnsSummaryRequest,
   output: DnssecAwareDnsSummaryResponse,
   errors: [],
@@ -16767,7 +16757,7 @@ export interface DnssecAwareDnsTimeseriesGroupRequest {
 }
 
 export const DnssecAwareDnsTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -17000,7 +16990,7 @@ export interface DnssecAwareDnsTimeseriesGroupResponse {
 }
 
 export const DnssecAwareDnsTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie03,
@@ -17014,7 +17004,7 @@ export const dnssecAwareDnsTimeseriesGroup: API.OperationMethod<
   DnssecAwareDnsTimeseriesGroupResponse,
   DnssecAwareDnsTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DnssecAwareDnsTimeseriesGroupRequest,
   output: DnssecAwareDnsTimeseriesGroupResponse,
   errors: [],
@@ -17045,33 +17035,29 @@ export interface TimeseriesBgpRequest {
   updateType?: ("ANNOUNCEMENT" | "WITHDRAWAL" | (string & {}))[];
 }
 
-export const TimeseriesBgpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      aggInterval: Schema.optional(
+export const TimeseriesBgpRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    aggInterval: Schema.optional(
+      Schema.Union([Schema.Literals(["15m", "1h", "1d", "1w"]), Schema.String]),
+    ),
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    prefix: Schema.optional(Schema.Array(Schema.String)),
+    updateType: Schema.optional(
+      Schema.Array(
         Schema.Union([
-          Schema.Literals(["15m", "1h", "1d", "1w"]),
+          Schema.Literals(["ANNOUNCEMENT", "WITHDRAWAL"]),
           Schema.String,
         ]),
       ),
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      prefix: Schema.optional(Schema.Array(Schema.String)),
-      updateType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["ANNOUNCEMENT", "WITHDRAWAL"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/bgp/timeseries" })),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/bgp/timeseries" })),
 ) as unknown as Schema.Codec<TimeseriesBgpRequest>;
 
 export interface TimeseriesBgpResponse {
@@ -17129,12 +17115,11 @@ export interface TimeseriesBgpResponse {
   serie_0: { timestamps: string[]; values: string[] };
 }
 
-export const TimeseriesBgpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta5,
-      serie_0: Serie08,
-    }).pipe(T.ResponsePath("result")),
+export const TimeseriesBgpResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta5,
+    serie_0: Serie08,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<TimeseriesBgpResponse>;
 
 export type TimeseriesBgpError = DefaultErrors;
@@ -17144,7 +17129,7 @@ export const timeseriesBgp: API.OperationMethod<
   TimeseriesBgpResponse,
   TimeseriesBgpError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesBgpRequest,
   output: TimeseriesBgpResponse,
   errors: [],
@@ -17187,7 +17172,7 @@ export interface ListBgpHijackEventsRequest {
 }
 
 export const ListBgpHijackEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
       perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -17265,7 +17250,7 @@ export interface ListBgpHijackEventsResponse {
 }
 
 export const ListBgpHijackEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: ListBgpHijackEventsResponseResult,
       resultInfo: Schema.optional(
@@ -17281,7 +17266,7 @@ export const listBgpHijackEvents: API.PaginatedOperationMethod<
   ListBgpHijackEventsResponse,
   ListBgpHijackEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBgpHijackEventsRequest,
   output: ListBgpHijackEventsResponse,
   errors: [],
@@ -17320,7 +17305,7 @@ export interface TimeseriesBgpIpRequest {
 }
 
 export const TimeseriesBgpIpRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -17430,7 +17415,7 @@ export interface TimeseriesBgpIpResponse {
 }
 
 export const TimeseriesBgpIpResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta6,
       serie_0: Serie09,
@@ -17444,7 +17429,7 @@ export const timeseriesBgpIp: API.OperationMethod<
   TimeseriesBgpIpResponse,
   TimeseriesBgpIpError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesBgpIpRequest,
   output: TimeseriesBgpIpResponse,
   errors: [],
@@ -17467,19 +17452,18 @@ export interface AsesBgpIpTopRequest {
   metric?: "v4_24s" | "v6_48s" | (string & {});
 }
 
-export const AsesBgpIpTopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      country: Schema.optional(Schema.String),
-      date: Schema.optional(Schema.String),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      limit: Schema.optional(Schema.Number),
-      metric: Schema.optional(
-        Schema.Union([Schema.Literals(["v4_24s", "v6_48s"]), Schema.String]),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/bgp/ips/top/ases" })),
+export const AsesBgpIpTopRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    country: Schema.optional(Schema.String),
+    date: Schema.optional(Schema.String),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    limit: Schema.optional(Schema.Number),
+    metric: Schema.optional(
+      Schema.Union([Schema.Literals(["v4_24s", "v6_48s"]), Schema.String]),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/bgp/ips/top/ases" })),
 ) as unknown as Schema.Codec<AsesBgpIpTopRequest>;
 
 export interface AsesBgpIpTopResponse {
@@ -17489,14 +17473,13 @@ export interface AsesBgpIpTopResponse {
   metric: string;
 }
 
-export const AsesBgpIpTopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      anchorTs: Schema.String,
-      asns: Schema.Array(Asn),
-      country: Schema.Union([Schema.String, Schema.Null]),
-      metric: Schema.String,
-    }).pipe(T.ResponsePath("result")),
+export const AsesBgpIpTopResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    anchorTs: Schema.String,
+    asns: Schema.Array(Asn),
+    country: Schema.Union([Schema.String, Schema.Null]),
+    metric: Schema.String,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<AsesBgpIpTopResponse>;
 
 export type AsesBgpIpTopError = DefaultErrors;
@@ -17506,7 +17489,7 @@ export const asesBgpIpTop: API.OperationMethod<
   AsesBgpIpTopResponse,
   AsesBgpIpTopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AsesBgpIpTopRequest,
   output: AsesBgpIpTopResponse,
   errors: [],
@@ -17549,7 +17532,7 @@ export interface ListBgpLeakEventsRequest {
 }
 
 export const ListBgpLeakEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
       perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -17618,7 +17601,7 @@ export interface ListBgpLeakEventsResponse {
 }
 
 export const ListBgpLeakEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: ListBgpLeakEventsResponseResult,
       resultInfo: Schema.optional(
@@ -17634,7 +17617,7 @@ export const listBgpLeakEvents: API.PaginatedOperationMethod<
   ListBgpLeakEventsResponse,
   ListBgpLeakEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBgpLeakEventsRequest,
   output: ListBgpLeakEventsResponse,
   errors: [],
@@ -17672,32 +17655,31 @@ export interface AsesBgpRouteRequest {
   sortOrder?: "ASC" | "DESC" | (string & {});
 }
 
-export const AsesBgpRouteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      limit: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.String),
-      sortBy: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "cone",
-            "pfxs",
-            "ipv4",
-            "ipv6",
-            "rpki_valid",
-            "rpki_invalid",
-            "rpki_unknown",
-          ]),
-          Schema.String,
+export const AsesBgpRouteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    limit: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.String),
+    sortBy: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "cone",
+          "pfxs",
+          "ipv4",
+          "ipv6",
+          "rpki_valid",
+          "rpki_invalid",
+          "rpki_unknown",
         ]),
-      ),
-      sortOrder: Schema.optional(
-        Schema.Union([Schema.Literals(["ASC", "DESC"]), Schema.String]),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/bgp/routes/ases" })),
+        Schema.String,
+      ]),
+    ),
+    sortOrder: Schema.optional(
+      Schema.Union([Schema.Literals(["ASC", "DESC"]), Schema.String]),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/bgp/routes/ases" })),
 ) as unknown as Schema.Codec<AsesBgpRouteRequest>;
 
 export interface AsesBgpRouteResponse {
@@ -17716,12 +17698,11 @@ export interface AsesBgpRouteResponse {
   meta: { dataTime: string; queryTime: string; totalPeers: number };
 }
 
-export const AsesBgpRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asns: Schema.Array(Asn2),
-      meta: Meta7,
-    }).pipe(T.ResponsePath("result")),
+export const AsesBgpRouteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asns: Schema.Array(Asn2),
+    meta: Meta7,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<AsesBgpRouteResponse>;
 
 export type AsesBgpRouteError = DefaultErrors;
@@ -17731,7 +17712,7 @@ export const asesBgpRoute: API.OperationMethod<
   AsesBgpRouteResponse,
   AsesBgpRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AsesBgpRouteRequest,
   output: AsesBgpRouteResponse,
   errors: [],
@@ -17747,24 +17728,23 @@ export interface MoasBgpRouteRequest {
   prefix?: string;
 }
 
-export const MoasBgpRouteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      invalidOnly: Schema.optional(Schema.Boolean),
-      origin: Schema.optional(Schema.Number),
-      prefix: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        format: "format",
-        invalidOnly: "invalid_only",
-        origin: "origin",
-        prefix: "prefix",
-      }),
-      T.Http({ method: "GET", path: "/radar/bgp/routes/moas" }),
+export const MoasBgpRouteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
     ),
+    invalidOnly: Schema.optional(Schema.Boolean),
+    origin: Schema.optional(Schema.Number),
+    prefix: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      format: "format",
+      invalidOnly: "invalid_only",
+      origin: "origin",
+      prefix: "prefix",
+    }),
+    T.Http({ method: "GET", path: "/radar/bgp/routes/moas" }),
+  ),
 ) as unknown as Schema.Codec<MoasBgpRouteRequest>;
 
 export interface MoasBgpRouteResponse {
@@ -17775,12 +17755,11 @@ export interface MoasBgpRouteResponse {
   }[];
 }
 
-export const MoasBgpRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta8,
-      moas: Schema.Array(Moa),
-    }).pipe(T.ResponsePath("result")),
+export const MoasBgpRouteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta8,
+    moas: Schema.Array(Moa),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<MoasBgpRouteResponse>;
 
 export type MoasBgpRouteError = DefaultErrors;
@@ -17790,7 +17769,7 @@ export const moasBgpRoute: API.OperationMethod<
   MoasBgpRouteResponse,
   MoasBgpRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoasBgpRouteRequest,
   output: MoasBgpRouteResponse,
   errors: [],
@@ -17808,22 +17787,21 @@ export interface Pfx2asBgpRouteRequest {
   rpkiStatus?: "VALID" | "INVALID" | "UNKNOWN" | (string & {});
 }
 
-export const Pfx2asBgpRouteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      longestPrefixMatch: Schema.optional(Schema.Boolean),
-      origin: Schema.optional(Schema.Number),
-      prefix: Schema.optional(Schema.String),
-      rpkiStatus: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["VALID", "INVALID", "UNKNOWN"]),
-          Schema.String,
-        ]),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/bgp/routes/pfx2as" })),
+export const Pfx2asBgpRouteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    longestPrefixMatch: Schema.optional(Schema.Boolean),
+    origin: Schema.optional(Schema.Number),
+    prefix: Schema.optional(Schema.String),
+    rpkiStatus: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["VALID", "INVALID", "UNKNOWN"]),
+        Schema.String,
+      ]),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/bgp/routes/pfx2as" })),
 ) as unknown as Schema.Codec<Pfx2asBgpRouteRequest>;
 
 export interface Pfx2asBgpRouteResponse {
@@ -17837,7 +17815,7 @@ export interface Pfx2asBgpRouteResponse {
 }
 
 export const Pfx2asBgpRouteResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta8,
       prefixOrigins: Schema.Array(PrefixOrigin),
@@ -17855,7 +17833,7 @@ export const pfx2asBgpRoute: API.OperationMethod<
   Pfx2asBgpRouteResponse,
   Pfx2asBgpRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: Pfx2asBgpRouteRequest,
   output: Pfx2asBgpRouteResponse,
   errors: [],
@@ -17868,7 +17846,7 @@ export interface RealtimeBgpRouteRequest {
 }
 
 export const RealtimeBgpRouteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       format: Schema.optional(
         Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
@@ -17916,7 +17894,7 @@ export interface RealtimeBgpRouteResponse {
 }
 
 export const RealtimeBgpRouteResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta9,
       routes: Schema.Array(Route),
@@ -17930,7 +17908,7 @@ export const realtimeBgpRoute: API.OperationMethod<
   RealtimeBgpRouteResponse,
   RealtimeBgpRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RealtimeBgpRouteRequest,
   output: RealtimeBgpRouteResponse,
   errors: [],
@@ -17945,15 +17923,14 @@ export interface StatsBgpRouteRequest {
   location?: string;
 }
 
-export const StatsBgpRouteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Schema.optional(Schema.Number),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      location: Schema.optional(Schema.String),
-    }).pipe(T.Http({ method: "GET", path: "/radar/bgp/routes/stats" })),
+export const StatsBgpRouteRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.optional(Schema.Number),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    location: Schema.optional(Schema.String),
+  }).pipe(T.Http({ method: "GET", path: "/radar/bgp/routes/stats" })),
 ) as unknown as Schema.Codec<StatsBgpRouteRequest>;
 
 export interface StatsBgpRouteResponse {
@@ -17980,12 +17957,11 @@ export interface StatsBgpRouteResponse {
   };
 }
 
-export const StatsBgpRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta8,
-      stats: Stats,
-    }).pipe(T.ResponsePath("result")),
+export const StatsBgpRouteResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta8,
+    stats: Stats,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<StatsBgpRouteResponse>;
 
 export type StatsBgpRouteError = DefaultErrors;
@@ -17995,7 +17971,7 @@ export const statsBgpRoute: API.OperationMethod<
   StatsBgpRouteResponse,
   StatsBgpRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StatsBgpRouteRequest,
   output: StatsBgpRouteResponse,
   errors: [],
@@ -18019,7 +17995,7 @@ export interface ChangesBgpRpkiAspaRequest {
 }
 
 export const ChangesBgpRpkiAspaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Number),
       dateEnd: Schema.optional(Schema.String),
@@ -18055,7 +18031,7 @@ export interface ChangesBgpRpkiAspaResponse {
 }
 
 export const ChangesBgpRpkiAspaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asnInfo: Asninfo3,
       changes: Schema.Array(Change),
@@ -18070,7 +18046,7 @@ export const changesBgpRpkiAspa: API.OperationMethod<
   ChangesBgpRpkiAspaResponse,
   ChangesBgpRpkiAspaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChangesBgpRpkiAspaRequest,
   output: ChangesBgpRpkiAspaResponse,
   errors: [],
@@ -18090,7 +18066,7 @@ export interface SnapshotBgpRpkiAspaRequest {
 }
 
 export const SnapshotBgpRpkiAspaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customerAsn: Schema.optional(Schema.Number),
       date: Schema.optional(Schema.String),
@@ -18109,7 +18085,7 @@ export interface SnapshotBgpRpkiAspaResponse {
 }
 
 export const SnapshotBgpRpkiAspaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asnInfo: Asninfo3,
       aspaObjects: Schema.Array(Aspaobject),
@@ -18124,7 +18100,7 @@ export const snapshotBgpRpkiAspa: API.OperationMethod<
   SnapshotBgpRpkiAspaResponse,
   SnapshotBgpRpkiAspaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SnapshotBgpRpkiAspaRequest,
   output: SnapshotBgpRpkiAspaResponse,
   errors: [],
@@ -18153,7 +18129,7 @@ export interface TimeseriesBgpRpkiAspaRequest {
 }
 
 export const TimeseriesBgpRpkiAspaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dateEnd: Schema.optional(Schema.String),
       dateStart: Schema.optional(Schema.String),
@@ -18179,7 +18155,7 @@ export interface TimeseriesBgpRpkiAspaResponse {
 }
 
 export const TimeseriesBgpRpkiAspaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta10,
       serie_0: Serie08,
@@ -18193,7 +18169,7 @@ export const timeseriesBgpRpkiAspa: API.OperationMethod<
   TimeseriesBgpRpkiAspaResponse,
   TimeseriesBgpRpkiAspaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesBgpRpkiAspaRequest,
   output: TimeseriesBgpRpkiAspaResponse,
   errors: [],
@@ -18228,7 +18204,7 @@ export interface TimeseriesBgpRpkiRoaRequest {
 }
 
 export const TimeseriesBgpRpkiRoaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.String),
@@ -18260,7 +18236,7 @@ export interface TimeseriesBgpRpkiRoaResponse {
 }
 
 export const TimeseriesBgpRpkiRoaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta10,
       serie_0: Serie08,
@@ -18274,7 +18250,7 @@ export const timeseriesBgpRpkiRoa: API.OperationMethod<
   TimeseriesBgpRpkiRoaResponse,
   TimeseriesBgpRpkiRoaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesBgpRpkiRoaRequest,
   output: TimeseriesBgpRpkiRoaResponse,
   errors: [],
@@ -18303,27 +18279,26 @@ export interface PrefixesBgpTopRequest {
   updateType?: ("ANNOUNCEMENT" | "WITHDRAWAL" | (string & {}))[];
 }
 
-export const PrefixesBgpTopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+export const PrefixesBgpTopRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    limit: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    updateType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["ANNOUNCEMENT", "WITHDRAWAL"]),
+          Schema.String,
+        ]),
       ),
-      limit: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      updateType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["ANNOUNCEMENT", "WITHDRAWAL"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/bgp/top/prefixes" })),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/bgp/top/prefixes" })),
 ) as unknown as Schema.Codec<PrefixesBgpTopRequest>;
 
 export interface PrefixesBgpTopResponse {
@@ -18332,7 +18307,7 @@ export interface PrefixesBgpTopResponse {
 }
 
 export const PrefixesBgpTopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta12,
       top_0: Schema.Array(Top06),
@@ -18346,7 +18321,7 @@ export const prefixesBgpTop: API.OperationMethod<
   PrefixesBgpTopResponse,
   PrefixesBgpTopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PrefixesBgpTopRequest,
   output: PrefixesBgpTopResponse,
   errors: [],
@@ -18377,28 +18352,27 @@ export interface GetBgpTopAsRequest {
   updateType?: ("ANNOUNCEMENT" | "WITHDRAWAL" | (string & {}))[];
 }
 
-export const GetBgpTopAsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+export const GetBgpTopAsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    limit: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    prefix: Schema.optional(Schema.Array(Schema.String)),
+    updateType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["ANNOUNCEMENT", "WITHDRAWAL"]),
+          Schema.String,
+        ]),
       ),
-      limit: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      prefix: Schema.optional(Schema.Array(Schema.String)),
-      updateType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["ANNOUNCEMENT", "WITHDRAWAL"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/bgp/top/ases" })),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/bgp/top/ases" })),
 ) as unknown as Schema.Codec<GetBgpTopAsRequest>;
 
 export interface GetBgpTopAsResponse {
@@ -18406,12 +18380,11 @@ export interface GetBgpTopAsResponse {
   top_0: { asn: number; asname: string; value: string }[];
 }
 
-export const GetBgpTopAsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta12,
-      top_0: Schema.Array(Top07),
-    }).pipe(T.ResponsePath("result")),
+export const GetBgpTopAsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta12,
+    top_0: Schema.Array(Top07),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetBgpTopAsResponse>;
 
 export type GetBgpTopAsError = DefaultErrors;
@@ -18421,7 +18394,7 @@ export const getBgpTopAs: API.OperationMethod<
   GetBgpTopAsResponse,
   GetBgpTopAsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBgpTopAsRequest,
   output: GetBgpTopAsResponse,
   errors: [],
@@ -18437,7 +18410,7 @@ export interface PrefixesBgpTopAsRequest {
 }
 
 export const PrefixesBgpTopAsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       country: Schema.optional(Schema.String),
       format: Schema.optional(
@@ -18453,7 +18426,7 @@ export interface PrefixesBgpTopAsResponse {
 }
 
 export const PrefixesBgpTopAsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asns: Schema.Array(Asn3),
       meta: Meta8,
@@ -18467,7 +18440,7 @@ export const prefixesBgpTopAs: API.OperationMethod<
   PrefixesBgpTopAsResponse,
   PrefixesBgpTopAsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PrefixesBgpTopAsRequest,
   output: PrefixesBgpTopAsResponse,
   errors: [],
@@ -18483,7 +18456,7 @@ export interface GetBotRequest {
   format?: "JSON" | "CSV" | (string & {});
 }
 
-export const GetBotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetBotRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     botSlug: Schema.String.pipe(T.HttpPath("botSlug")),
     format: Schema.optional(
@@ -18507,7 +18480,7 @@ export interface GetBotResponse {
   };
 }
 
-export const GetBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetBotResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bot: Bot,
   }).pipe(T.ResponsePath("result")),
@@ -18520,7 +18493,7 @@ export const getBot: API.OperationMethod<
   GetBotResponse,
   GetBotError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBotRequest,
   output: GetBotResponse,
   errors: [],
@@ -18560,7 +18533,7 @@ export interface ListBotsRequest {
   offset?: number;
 }
 
-export const ListBotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListBotsRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     botCategory: Schema.optional(
       Schema.Union([
@@ -18610,7 +18583,7 @@ export interface ListBotsResponse {
   }[];
 }
 
-export const ListBotsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListBotsResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bots: Schema.Array(Bot2),
   }).pipe(T.ResponsePath("result")),
@@ -18623,7 +18596,7 @@ export const listBots: API.OperationMethod<
   ListBotsResponse,
   ListBotsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListBotsRequest,
   output: ListBotsResponse,
   errors: [],
@@ -18679,57 +18652,56 @@ export interface SummaryBotRequest {
   name?: string[];
 }
 
-export const SummaryBotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dimension: Schema.String.pipe(T.HttpPath("dimension")),
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      bot: Schema.optional(Schema.Array(Schema.String)),
-      botCategory: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "SEARCH_ENGINE_CRAWLER",
-              "SEARCH_ENGINE_OPTIMIZATION",
-              "MONITORING_AND_ANALYTICS",
-              "ADVERTISING_AND_MARKETING",
-              "SOCIAL_MEDIA_MARKETING",
-              "PAGE_PREVIEW",
-              "ACADEMIC_RESEARCH",
-              "SECURITY",
-              "ACCESSIBILITY",
-              "WEBHOOKS",
-              "FEED_FETCHER",
-              "AI_CRAWLER",
-              "AGGREGATOR",
-              "AI_ASSISTANT",
-              "AI_SEARCH",
-              "ARCHIVER",
-            ]),
-            Schema.String,
+export const SummaryBotRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dimension: Schema.String.pipe(T.HttpPath("dimension")),
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    bot: Schema.optional(Schema.Array(Schema.String)),
+    botCategory: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "SEARCH_ENGINE_CRAWLER",
+            "SEARCH_ENGINE_OPTIMIZATION",
+            "MONITORING_AND_ANALYTICS",
+            "ADVERTISING_AND_MARKETING",
+            "SOCIAL_MEDIA_MARKETING",
+            "PAGE_PREVIEW",
+            "ACADEMIC_RESEARCH",
+            "SECURITY",
+            "ACCESSIBILITY",
+            "WEBHOOKS",
+            "FEED_FETCHER",
+            "AI_CRAWLER",
+            "AGGREGATOR",
+            "AI_ASSISTANT",
+            "AI_SEARCH",
+            "ARCHIVER",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      botKind: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["AGENT", "BOT"]), Schema.String]),
-        ),
+    ),
+    botKind: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["AGENT", "BOT"]), Schema.String]),
       ),
-      botOperator: Schema.optional(Schema.Array(Schema.String)),
-      botVerificationStatus: Schema.optional(
-        Schema.Array(Schema.Literal("VERIFIED")),
-      ),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      limitPerGroup: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-    }).pipe(T.Http({ method: "GET", path: "/radar/bots/summary/{dimension}" })),
+    ),
+    botOperator: Schema.optional(Schema.Array(Schema.String)),
+    botVerificationStatus: Schema.optional(
+      Schema.Array(Schema.Literal("VERIFIED")),
+    ),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    limitPerGroup: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(T.Http({ method: "GET", path: "/radar/bots/summary/{dimension}" })),
 ) as unknown as Schema.Codec<SummaryBotRequest>;
 
 export interface SummaryBotResponse {
@@ -18798,12 +18770,11 @@ export interface SummaryBotResponse {
   summary_0: Record<string, unknown>;
 }
 
-export const SummaryBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta,
-      summary_0: Schema.Record(Schema.String, Schema.Unknown),
-    }).pipe(T.ResponsePath("result")),
+export const SummaryBotResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta,
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<SummaryBotResponse>;
 
 export type SummaryBotError = DefaultErrors;
@@ -18813,7 +18784,7 @@ export const summaryBot: API.OperationMethod<
   SummaryBotResponse,
   SummaryBotError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryBotRequest,
   output: SummaryBotResponse,
   errors: [],
@@ -18868,61 +18839,57 @@ export interface TimeseriesBotRequest {
   name?: string[];
 }
 
-export const TimeseriesBotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      aggInterval: Schema.optional(
+export const TimeseriesBotRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    aggInterval: Schema.optional(
+      Schema.Union([Schema.Literals(["15m", "1h", "1d", "1w"]), Schema.String]),
+    ),
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    bot: Schema.optional(Schema.Array(Schema.String)),
+    botCategory: Schema.optional(
+      Schema.Array(
         Schema.Union([
-          Schema.Literals(["15m", "1h", "1d", "1w"]),
+          Schema.Literals([
+            "SEARCH_ENGINE_CRAWLER",
+            "SEARCH_ENGINE_OPTIMIZATION",
+            "MONITORING_AND_ANALYTICS",
+            "ADVERTISING_AND_MARKETING",
+            "SOCIAL_MEDIA_MARKETING",
+            "PAGE_PREVIEW",
+            "ACADEMIC_RESEARCH",
+            "SECURITY",
+            "ACCESSIBILITY",
+            "WEBHOOKS",
+            "FEED_FETCHER",
+            "AI_CRAWLER",
+            "AGGREGATOR",
+            "AI_ASSISTANT",
+            "AI_SEARCH",
+            "ARCHIVER",
+          ]),
           Schema.String,
         ]),
       ),
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      bot: Schema.optional(Schema.Array(Schema.String)),
-      botCategory: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "SEARCH_ENGINE_CRAWLER",
-              "SEARCH_ENGINE_OPTIMIZATION",
-              "MONITORING_AND_ANALYTICS",
-              "ADVERTISING_AND_MARKETING",
-              "SOCIAL_MEDIA_MARKETING",
-              "PAGE_PREVIEW",
-              "ACADEMIC_RESEARCH",
-              "SECURITY",
-              "ACCESSIBILITY",
-              "WEBHOOKS",
-              "FEED_FETCHER",
-              "AI_CRAWLER",
-              "AGGREGATOR",
-              "AI_ASSISTANT",
-              "AI_SEARCH",
-              "ARCHIVER",
-            ]),
-            Schema.String,
-          ]),
-        ),
+    ),
+    botKind: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["AGENT", "BOT"]), Schema.String]),
       ),
-      botKind: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["AGENT", "BOT"]), Schema.String]),
-        ),
-      ),
-      botOperator: Schema.optional(Schema.Array(Schema.String)),
-      botVerificationStatus: Schema.optional(
-        Schema.Array(Schema.Literal("VERIFIED")),
-      ),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-    }).pipe(T.Http({ method: "GET", path: "/radar/bots/timeseries" })),
+    ),
+    botOperator: Schema.optional(Schema.Array(Schema.String)),
+    botVerificationStatus: Schema.optional(
+      Schema.Array(Schema.Literal("VERIFIED")),
+    ),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(T.Http({ method: "GET", path: "/radar/bots/timeseries" })),
 ) as unknown as Schema.Codec<TimeseriesBotRequest>;
 
 export interface TimeseriesBotResponse {
@@ -18997,11 +18964,10 @@ export interface TimeseriesBotResponse {
   };
 }
 
-export const TimeseriesBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta2,
-    }).pipe(T.ResponsePath("result")),
+export const TimeseriesBotResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta2,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<TimeseriesBotResponse>;
 
 export type TimeseriesBotError = DefaultErrors;
@@ -19011,7 +18977,7 @@ export const timeseriesBot: API.OperationMethod<
   TimeseriesBotResponse,
   TimeseriesBotError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesBotRequest,
   output: TimeseriesBotResponse,
   errors: [],
@@ -19063,7 +19029,7 @@ export interface SummaryBotWebCrawlerRequest {
 }
 
 export const SummaryBotWebCrawlerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       botOperator: Schema.optional(Schema.Array(Schema.String)),
@@ -19175,7 +19141,7 @@ export interface SummaryBotWebCrawlerResponse {
 }
 
 export const SummaryBotWebCrawlerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -19189,7 +19155,7 @@ export const summaryBotWebCrawler: API.OperationMethod<
   SummaryBotWebCrawlerResponse,
   SummaryBotWebCrawlerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryBotWebCrawlerRequest,
   output: SummaryBotWebCrawlerResponse,
   errors: [],
@@ -19213,7 +19179,7 @@ export interface DomainCategoriesRobotsTxtTopRequest {
 }
 
 export const DomainCategoriesRobotsTxtTopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       date: Schema.optional(Schema.Array(Schema.String)),
       format: Schema.optional(
@@ -19297,7 +19263,7 @@ export interface DomainCategoriesRobotsTxtTopResponse {
 }
 
 export const DomainCategoriesRobotsTxtTopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(DomainCategory),
@@ -19311,7 +19277,7 @@ export const domainCategoriesRobotsTxtTop: API.OperationMethod<
   DomainCategoriesRobotsTxtTopResponse,
   DomainCategoriesRobotsTxtTopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DomainCategoriesRobotsTxtTopRequest,
   output: DomainCategoriesRobotsTxtTopResponse,
   errors: [],
@@ -19351,7 +19317,7 @@ export interface ThreatCategoryEmailSecuritySummaryRequest {
 }
 
 export const ThreatCategoryEmailSecuritySummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -19480,7 +19446,7 @@ export interface ThreatCategoryEmailSecuritySummaryResponse {
 }
 
 export const ThreatCategoryEmailSecuritySummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary08,
@@ -19494,7 +19460,7 @@ export const threatCategoryEmailSecuritySummary: API.OperationMethod<
   ThreatCategoryEmailSecuritySummaryResponse,
   ThreatCategoryEmailSecuritySummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ThreatCategoryEmailSecuritySummaryRequest,
   output: ThreatCategoryEmailSecuritySummaryResponse,
   errors: [],
@@ -19536,7 +19502,7 @@ export interface ThreatCategoryEmailSecurityTimeseriesGroupRequest {
 }
 
 export const ThreatCategoryEmailSecurityTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -19678,7 +19644,7 @@ export interface ThreatCategoryEmailSecurityTimeseriesGroupResponse {
 }
 
 export const ThreatCategoryEmailSecurityTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie010,
@@ -19692,7 +19658,7 @@ export const threatCategoryEmailSecurityTimeseriesGroup: API.OperationMethod<
   ThreatCategoryEmailSecurityTimeseriesGroupResponse,
   ThreatCategoryEmailSecurityTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ThreatCategoryEmailSecurityTimeseriesGroupRequest,
   output: ThreatCategoryEmailSecurityTimeseriesGroupResponse,
   errors: [],
@@ -19754,7 +19720,7 @@ export interface BotClassHttpSummaryRequest {
 }
 
 export const BotClassHttpSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       browserFamily: Schema.optional(
@@ -19901,7 +19867,7 @@ export interface BotClassHttpSummaryResponse {
 }
 
 export const BotClassHttpSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary09,
@@ -19915,7 +19881,7 @@ export const botClassHttpSummary: API.OperationMethod<
   BotClassHttpSummaryResponse,
   BotClassHttpSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BotClassHttpSummaryRequest,
   output: BotClassHttpSummaryResponse,
   errors: [],
@@ -19979,7 +19945,7 @@ export interface BotClassHttpTimeseriesGroupRequest {
 }
 
 export const BotClassHttpTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -20144,7 +20110,7 @@ export interface BotClassHttpTimeseriesGroupResponse {
 }
 
 export const BotClassHttpTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie011,
@@ -20158,7 +20124,7 @@ export const botClassHttpTimeseriesGroup: API.OperationMethod<
   BotClassHttpTimeseriesGroupResponse,
   BotClassHttpTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BotClassHttpTimeseriesGroupRequest,
   output: BotClassHttpTimeseriesGroupResponse,
   errors: [],
@@ -20184,7 +20150,7 @@ export interface BotClassLeakedCredentialSummaryRequest {
 }
 
 export const BotClassLeakedCredentialSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       compromised: Schema.optional(
         Schema.Array(
@@ -20276,7 +20242,7 @@ export interface BotClassLeakedCredentialSummaryResponse {
 }
 
 export const BotClassLeakedCredentialSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary09,
@@ -20290,7 +20256,7 @@ export const botClassLeakedCredentialSummary: API.OperationMethod<
   BotClassLeakedCredentialSummaryResponse,
   BotClassLeakedCredentialSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BotClassLeakedCredentialSummaryRequest,
   output: BotClassLeakedCredentialSummaryResponse,
   errors: [],
@@ -20318,7 +20284,7 @@ export interface BotClassLeakedCredentialTimeseriesGroupRequest {
 }
 
 export const BotClassLeakedCredentialTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -20423,7 +20389,7 @@ export interface BotClassLeakedCredentialTimeseriesGroupResponse {
 }
 
 export const BotClassLeakedCredentialTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie011,
@@ -20437,7 +20403,7 @@ export const botClassLeakedCredentialTimeseriesGroup: API.OperationMethod<
   BotClassLeakedCredentialTimeseriesGroupResponse,
   BotClassLeakedCredentialTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BotClassLeakedCredentialTimeseriesGroupRequest,
   output: BotClassLeakedCredentialTimeseriesGroupResponse,
   errors: [],
@@ -20567,7 +20533,7 @@ export interface ResponseCodeDnsSummaryRequest {
 }
 
 export const ResponseCodeDnsSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -20757,7 +20723,7 @@ export interface ResponseCodeDnsSummaryResponse {
 }
 
 export const ResponseCodeDnsSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -20771,7 +20737,7 @@ export const responseCodeDnsSummary: API.OperationMethod<
   ResponseCodeDnsSummaryResponse,
   ResponseCodeDnsSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResponseCodeDnsSummaryRequest,
   output: ResponseCodeDnsSummaryResponse,
   errors: [],
@@ -20903,7 +20869,7 @@ export interface ResponseCodeDnsTimeseriesGroupRequest {
 }
 
 export const ResponseCodeDnsTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -21109,7 +21075,7 @@ export interface ResponseCodeDnsTimeseriesGroupResponse {
 }
 
 export const ResponseCodeDnsTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -21123,7 +21089,7 @@ export const responseCodeDnsTimeseriesGroup: API.OperationMethod<
   ResponseCodeDnsTimeseriesGroupResponse,
   ResponseCodeDnsTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResponseCodeDnsTimeseriesGroupRequest,
   output: ResponseCodeDnsTimeseriesGroupResponse,
   errors: [],
@@ -21247,7 +21213,7 @@ export interface ResponseCodesAs112SummaryRequest {
 }
 
 export const ResponseCodesAs112SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -21434,7 +21400,7 @@ export interface ResponseCodesAs112SummaryResponse {
 }
 
 export const ResponseCodesAs112SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -21448,7 +21414,7 @@ export const responseCodesAs112Summary: API.OperationMethod<
   ResponseCodesAs112SummaryResponse,
   ResponseCodesAs112SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResponseCodesAs112SummaryRequest,
   output: ResponseCodesAs112SummaryResponse,
   errors: [],
@@ -21574,7 +21540,7 @@ export interface ResponseCodesAs112TimeseriesGroupRequest {
 }
 
 export const ResponseCodesAs112TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -21777,7 +21743,7 @@ export interface ResponseCodesAs112TimeseriesGroupResponse {
 }
 
 export const ResponseCodesAs112TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -21791,7 +21757,7 @@ export const responseCodesAs112TimeseriesGroup: API.OperationMethod<
   ResponseCodesAs112TimeseriesGroupResponse,
   ResponseCodesAs112TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResponseCodesAs112TimeseriesGroupRequest,
   output: ResponseCodesAs112TimeseriesGroupResponse,
   errors: [],
@@ -21875,7 +21841,7 @@ export interface SummaryCtRequest {
   validationLevel?: ("DOMAIN" | "ORGANIZATION" | "EXTENDED" | (string & {}))[];
 }
 
-export const SummaryCtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const SummaryCtRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dimension: Schema.String.pipe(T.HttpPath("dimension")),
     ca: Schema.optional(Schema.Array(Schema.String)),
@@ -22060,21 +22026,20 @@ export interface SummaryCtResponse {
       };
 }
 
-export const SummaryCtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta,
-      summary_0: Schema.Union([
-        SummaryCtResponseSummary02,
-        SummaryCtResponseSummary07,
-        SummaryCtResponseSummary06,
-        SummaryCtResponseSummary01,
-        SummaryCtResponseSummary03,
-        SummaryCtResponseSummary04,
-        Summary02,
-        Schema.Record(Schema.String, Schema.Unknown),
-      ]),
-    }).pipe(T.ResponsePath("result")),
+export const SummaryCtResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta,
+    summary_0: Schema.Union([
+      SummaryCtResponseSummary02,
+      SummaryCtResponseSummary07,
+      SummaryCtResponseSummary06,
+      SummaryCtResponseSummary01,
+      SummaryCtResponseSummary03,
+      SummaryCtResponseSummary04,
+      Summary02,
+      Schema.Record(Schema.String, Schema.Unknown),
+    ]),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<SummaryCtResponse>;
 
 export type SummaryCtError = DefaultErrors;
@@ -22084,7 +22049,7 @@ export const summaryCt: API.OperationMethod<
   SummaryCtResponse,
   SummaryCtError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryCtRequest,
   output: SummaryCtResponse,
   errors: [],
@@ -22161,105 +22126,98 @@ export interface TimeseriesCtRequest {
   validationLevel?: ("DOMAIN" | "ORGANIZATION" | "EXTENDED" | (string & {}))[];
 }
 
-export const TimeseriesCtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      aggInterval: Schema.optional(
+export const TimeseriesCtRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    aggInterval: Schema.optional(
+      Schema.Union([Schema.Literals(["15m", "1h", "1d", "1w"]), Schema.String]),
+    ),
+    ca: Schema.optional(Schema.Array(Schema.String)),
+    caOwner: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    duration: Schema.optional(
+      Schema.Array(
         Schema.Union([
-          Schema.Literals(["15m", "1h", "1d", "1w"]),
+          Schema.Literals([
+            "LTE_3D",
+            "GT_3D_LTE_7D",
+            "GT_7D_LTE_10D",
+            "GT_10D_LTE_47D",
+            "GT_47D_LTE_100D",
+            "GT_100D_LTE_200D",
+            "GT_200D",
+          ]),
           Schema.String,
         ]),
       ),
-      ca: Schema.optional(Schema.Array(Schema.String)),
-      caOwner: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      duration: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "LTE_3D",
-              "GT_3D_LTE_7D",
-              "GT_7D_LTE_10D",
-              "GT_10D_LTE_47D",
-              "GT_47D_LTE_100D",
-              "GT_100D_LTE_200D",
-              "GT_200D",
-            ]),
-            Schema.String,
+    ),
+    entryType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["PRECERTIFICATE", "CERTIFICATE"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    expirationStatus: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["EXPIRED", "VALID"]), Schema.String]),
+      ),
+    ),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    hasIps: Schema.optional(Schema.Array(Schema.Boolean)),
+    hasWildcards: Schema.optional(Schema.Array(Schema.Boolean)),
+    log: Schema.optional(Schema.Array(Schema.String)),
+    logApi: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["RFC6962", "STATIC"]), Schema.String]),
+      ),
+    ),
+    logOperator: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    publicKeyAlgorithm: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["DSA", "ECDSA", "RSA"]), Schema.String]),
+      ),
+    ),
+    signatureAlgorithm: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "DSA_SHA_1",
+            "DSA_SHA_256",
+            "ECDSA_SHA_1",
+            "ECDSA_SHA_256",
+            "ECDSA_SHA_384",
+            "ECDSA_SHA_512",
+            "PSS_SHA_256",
+            "PSS_SHA_384",
+            "PSS_SHA_512",
+            "RSA_MD2",
+            "RSA_MD5",
+            "RSA_SHA_1",
+            "RSA_SHA_256",
+            "RSA_SHA_384",
+            "RSA_SHA_512",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      entryType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["PRECERTIFICATE", "CERTIFICATE"]),
-            Schema.String,
-          ]),
-        ),
+    ),
+    tld: Schema.optional(Schema.Array(Schema.String)),
+    uniqueEntries: Schema.optional(Schema.Array(Schema.Boolean)),
+    validationLevel: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["DOMAIN", "ORGANIZATION", "EXTENDED"]),
+          Schema.String,
+        ]),
       ),
-      expirationStatus: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["EXPIRED", "VALID"]), Schema.String]),
-        ),
-      ),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      hasIps: Schema.optional(Schema.Array(Schema.Boolean)),
-      hasWildcards: Schema.optional(Schema.Array(Schema.Boolean)),
-      log: Schema.optional(Schema.Array(Schema.String)),
-      logApi: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["RFC6962", "STATIC"]), Schema.String]),
-        ),
-      ),
-      logOperator: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      publicKeyAlgorithm: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["DSA", "ECDSA", "RSA"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      signatureAlgorithm: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "DSA_SHA_1",
-              "DSA_SHA_256",
-              "ECDSA_SHA_1",
-              "ECDSA_SHA_256",
-              "ECDSA_SHA_384",
-              "ECDSA_SHA_512",
-              "PSS_SHA_256",
-              "PSS_SHA_384",
-              "PSS_SHA_512",
-              "RSA_MD2",
-              "RSA_MD5",
-              "RSA_SHA_1",
-              "RSA_SHA_256",
-              "RSA_SHA_384",
-              "RSA_SHA_512",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      tld: Schema.optional(Schema.Array(Schema.String)),
-      uniqueEntries: Schema.optional(Schema.Array(Schema.Boolean)),
-      validationLevel: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["DOMAIN", "ORGANIZATION", "EXTENDED"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/ct/timeseries" })),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/ct/timeseries" })),
 ) as unknown as Schema.Codec<TimeseriesCtRequest>;
 
 export interface TimeseriesCtResponse {
@@ -22334,11 +22292,10 @@ export interface TimeseriesCtResponse {
   };
 }
 
-export const TimeseriesCtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta2,
-    }).pipe(T.ResponsePath("result")),
+export const TimeseriesCtResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta2,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<TimeseriesCtResponse>;
 
 export type TimeseriesCtError = DefaultErrors;
@@ -22348,7 +22305,7 @@ export const timeseriesCt: API.OperationMethod<
   TimeseriesCtResponse,
   TimeseriesCtError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesCtRequest,
   output: TimeseriesCtResponse,
   errors: [],
@@ -22364,14 +22321,13 @@ export interface GetCtAuthorityRequest {
   format?: "JSON" | "CSV" | (string & {});
 }
 
-export const GetCtAuthorityRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      caSlug: Schema.String.pipe(T.HttpPath("caSlug")),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/ct/authorities/{caSlug}" })),
+export const GetCtAuthorityRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    caSlug: Schema.String.pipe(T.HttpPath("caSlug")),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/ct/authorities/{caSlug}" })),
 ) as unknown as Schema.Codec<GetCtAuthorityRequest>;
 
 export interface GetCtAuthorityResponse {
@@ -22449,7 +22405,7 @@ export interface GetCtAuthorityResponse {
 }
 
 export const GetCtAuthorityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateAuthority: CertificateAuthority,
     }).pipe(T.ResponsePath("result")),
@@ -22462,7 +22418,7 @@ export const getCtAuthority: API.OperationMethod<
   GetCtAuthorityResponse,
   GetCtAuthorityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCtAuthorityRequest,
   output: GetCtAuthorityResponse,
   errors: [],
@@ -22478,7 +22434,7 @@ export interface ListCtAuthoritiesRequest {
 }
 
 export const ListCtAuthoritiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       format: Schema.optional(
         Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
@@ -22510,7 +22466,7 @@ export interface ListCtAuthoritiesResponse {
 }
 
 export const ListCtAuthoritiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateAuthorities: Schema.Array(CertificateAuthority2),
     }).pipe(T.ResponsePath("result")),
@@ -22523,7 +22479,7 @@ export const listCtAuthorities: API.OperationMethod<
   ListCtAuthoritiesResponse,
   ListCtAuthoritiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCtAuthoritiesRequest,
   output: ListCtAuthoritiesResponse,
   errors: [],
@@ -22539,7 +22495,7 @@ export interface GetCtLogRequest {
   format?: "JSON" | "CSV" | (string & {});
 }
 
-export const GetCtLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetCtLogRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     logSlug: Schema.String.pipe(T.HttpPath("logSlug")),
     format: Schema.optional(
@@ -22604,7 +22560,7 @@ export interface GetCtLogResponse {
   };
 }
 
-export const GetCtLogResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetCtLogResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     certificateLog: CertificateLog,
   }).pipe(T.ResponsePath("result")),
@@ -22617,7 +22573,7 @@ export const getCtLog: API.OperationMethod<
   GetCtLogResponse,
   GetCtLogError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCtLogRequest,
   output: GetCtLogResponse,
   errors: [],
@@ -22632,15 +22588,14 @@ export interface ListCtLogsRequest {
   offset?: number;
 }
 
-export const ListCtLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      limit: Schema.optional(Schema.Number),
-      offset: Schema.optional(Schema.Number),
-    }).pipe(T.Http({ method: "GET", path: "/radar/ct/logs" })),
+export const ListCtLogsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    limit: Schema.optional(Schema.Number),
+    offset: Schema.optional(Schema.Number),
+  }).pipe(T.Http({ method: "GET", path: "/radar/ct/logs" })),
 ) as unknown as Schema.Codec<ListCtLogsRequest>;
 
 export interface ListCtLogsResponse {
@@ -22664,11 +22619,10 @@ export interface ListCtLogsResponse {
   }[];
 }
 
-export const ListCtLogsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      certificateLogs: Schema.Array(CertificateLog2),
-    }).pipe(T.ResponsePath("result")),
+export const ListCtLogsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    certificateLogs: Schema.Array(CertificateLog2),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ListCtLogsResponse>;
 
 export type ListCtLogsError = DefaultErrors;
@@ -22678,7 +22632,7 @@ export const listCtLogs: API.OperationMethod<
   ListCtLogsResponse,
   ListCtLogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCtLogsRequest,
   output: ListCtLogsResponse,
   errors: [],
@@ -22692,16 +22646,15 @@ export interface GetDatasetRequest {
   alias: string;
 }
 
-export const GetDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      alias: Schema.String.pipe(T.HttpPath("alias")),
-    }).pipe(T.Http({ method: "GET", path: "/radar/datasets/{alias}" })),
+export const GetDatasetRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    alias: Schema.String.pipe(T.HttpPath("alias")),
+  }).pipe(T.Http({ method: "GET", path: "/radar/datasets/{alias}" })),
 ) as unknown as Schema.Codec<GetDatasetRequest>;
 
 export type GetDatasetResponse = string;
 
-export const GetDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+export const GetDatasetResponse = /*@__PURE__*/ Schema.suspend(
   () => Schema.String,
 ) as unknown as Schema.Codec<GetDatasetResponse>;
 
@@ -22712,7 +22665,7 @@ export const getDataset: API.OperationMethod<
   GetDatasetResponse,
   GetDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDatasetRequest,
   output: GetDatasetResponse,
   errors: [],
@@ -22731,22 +22684,21 @@ export interface ListDatasetsRequest {
   offset?: number;
 }
 
-export const ListDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      datasetType: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["RANKING_BUCKET", "REPORT"]),
-          Schema.String,
-        ]),
-      ),
-      date: Schema.optional(Schema.String),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      limit: Schema.optional(Schema.Number),
-      offset: Schema.optional(Schema.Number),
-    }).pipe(T.Http({ method: "GET", path: "/radar/datasets" })),
+export const ListDatasetsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    datasetType: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["RANKING_BUCKET", "REPORT"]),
+        Schema.String,
+      ]),
+    ),
+    date: Schema.optional(Schema.String),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    limit: Schema.optional(Schema.Number),
+    offset: Schema.optional(Schema.Number),
+  }).pipe(T.Http({ method: "GET", path: "/radar/datasets" })),
 ) as unknown as Schema.Codec<ListDatasetsRequest>;
 
 export interface ListDatasetsResponse {
@@ -22760,11 +22712,10 @@ export interface ListDatasetsResponse {
   }[];
 }
 
-export const ListDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      datasets: Schema.Array(Dataset),
-    }).pipe(T.ResponsePath("result")),
+export const ListDatasetsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    datasets: Schema.Array(Dataset),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ListDatasetsResponse>;
 
 export type ListDatasetsError = DefaultErrors;
@@ -22774,7 +22725,7 @@ export const listDatasets: API.OperationMethod<
   ListDatasetsResponse,
   ListDatasetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [],
@@ -22788,7 +22739,7 @@ export interface DownloadDatasetRequest {
 }
 
 export const DownloadDatasetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       format: Schema.optional(
         Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
@@ -22802,7 +22753,7 @@ export interface DownloadDatasetResponse {
 }
 
 export const DownloadDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dataset: Dataset2,
     }).pipe(T.ResponsePath("result")),
@@ -22815,7 +22766,7 @@ export const downloadDataset: API.OperationMethod<
   DownloadDatasetResponse,
   DownloadDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DownloadDatasetRequest,
   output: DownloadDatasetResponse,
   errors: [],
@@ -22990,199 +22941,195 @@ export interface TimeseriesDnsRequest {
   tld?: string[];
 }
 
-export const TimeseriesDnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      aggInterval: Schema.optional(
+export const TimeseriesDnsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    aggInterval: Schema.optional(
+      Schema.Union([Schema.Literals(["15m", "1h", "1d", "1w"]), Schema.String]),
+    ),
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    cacheHit: Schema.optional(Schema.Array(Schema.Boolean)),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    dnssec: Schema.optional(
+      Schema.Array(
         Schema.Union([
-          Schema.Literals(["15m", "1h", "1d", "1w"]),
+          Schema.Literals(["INVALID", "INSECURE", "SECURE", "OTHER"]),
           Schema.String,
         ]),
       ),
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      cacheHit: Schema.optional(Schema.Array(Schema.Boolean)),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      dnssec: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["INVALID", "INSECURE", "SECURE", "OTHER"]),
-            Schema.String,
+    ),
+    dnssecAware: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["SUPPORTED", "NOT_SUPPORTED"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    dnssecE2e: Schema.optional(Schema.Array(Schema.Boolean)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    ipVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
+      ),
+    ),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    matchingAnswer: Schema.optional(Schema.Array(Schema.Boolean)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    nodata: Schema.optional(Schema.Array(Schema.Boolean)),
+    protocol: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["UDP", "TCP", "HTTPS", "TLS"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    queryType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literal("A"),
+          Schema.Literal("AAAA"),
+          Schema.Literal("A6"),
+          Schema.Literal("AFSDB"),
+          Schema.Literal("ANY"),
+          Schema.Literal("APL"),
+          Schema.Literal("ATMA"),
+          Schema.Literal("AXFR"),
+          Schema.Literal("CAA"),
+          Schema.Literal("CDNSKEY"),
+          Schema.Literal("CDS"),
+          Schema.Literal("CERT"),
+          Schema.Literal("CNAME"),
+          Schema.Literal("CSYNC"),
+          Schema.Literal("DHCID"),
+          Schema.Literal("DLV"),
+          Schema.Literal("DNAME"),
+          Schema.Literal("DNSKEY"),
+          Schema.Literal("DOA"),
+          Schema.Literal("DS"),
+          Schema.Literal("EID"),
+          Schema.Literal("EUI48"),
+          Schema.Literal("EUI64"),
+          Schema.Literal("GPOS"),
+          Schema.Literal("GID"),
+          Schema.Literal("HINFO"),
+          Schema.Literal("HIP"),
+          Schema.Literal("HTTPS"),
+          Schema.Literal("IPSECKEY"),
+          Schema.Literal("ISDN"),
+          Schema.Literal("IXFR"),
+          Schema.Literal("KEY"),
+          Schema.Literal("KX"),
+          Schema.Literal("L32"),
+          Schema.Literal("L64"),
+          Schema.Literal("LOC"),
+          Schema.Literal("LP"),
+          Schema.Literal("MAILA"),
+          Schema.Literal("MAILB"),
+          Schema.Literal("MB"),
+          Schema.Literal("MD"),
+          Schema.Literal("MF"),
+          Schema.Literal("MG"),
+          Schema.Literal("MINFO"),
+          Schema.Literal("MR"),
+          Schema.Literal("MX"),
+          Schema.Literal("NAPTR"),
+          Schema.Literal("NB"),
+          Schema.Literal("NBSTAT"),
+          Schema.Literal("NID"),
+          Schema.Literal("NIMLOC"),
+          Schema.Literal("NINFO"),
+          Schema.Literal("NS"),
+          Schema.Literal("NSAP"),
+          Schema.Literal("NSEC"),
+          Schema.Literal("NSEC3"),
+          Schema.Literal("NSEC3PARAM"),
+          Schema.Literal("NULL"),
+          Schema.Literal("NXT"),
+          Schema.Literal("OPENPGPKEY"),
+          Schema.Literal("OPT"),
+          Schema.Literal("PTR"),
+          Schema.Literal("PX"),
+          Schema.Literal("RKEY"),
+          Schema.Literal("RP"),
+          Schema.Literal("RRSIG"),
+          Schema.Literal("RT"),
+          Schema.Literal("SIG"),
+          Schema.Literal("SINK"),
+          Schema.Literal("SMIMEA"),
+          Schema.Literal("SOA"),
+          Schema.Literal("SPF"),
+          Schema.Literal("SRV"),
+          Schema.Literal("SSHFP"),
+          Schema.Literal("SVCB"),
+          Schema.Literal("TA"),
+          Schema.Literal("TALINK"),
+          Schema.Literal("TKEY"),
+          Schema.Literal("TLSA"),
+          Schema.Literal("TSIG"),
+          Schema.Literal("TXT"),
+          Schema.Literal("UINFO"),
+          Schema.Literal("UID"),
+          Schema.Literal("UNSPEC"),
+          Schema.Literal("URI"),
+          Schema.Literal("WKS"),
+          Schema.Literal("X25"),
+          Schema.Literal("ZONEMD"),
+          Schema.Null,
+        ]),
+      ),
+    ),
+    responseCode: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "NOERROR",
+            "FORMERR",
+            "SERVFAIL",
+            "NXDOMAIN",
+            "NOTIMP",
+            "REFUSED",
+            "YXDOMAIN",
+            "YXRRSET",
+            "NXRRSET",
+            "NOTAUTH",
+            "NOTZONE",
+            "BADSIG",
+            "BADKEY",
+            "BADTIME",
+            "BADMODE",
+            "BADNAME",
+            "BADALG",
+            "BADTRUNC",
+            "BADCOOKIE",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      dnssecAware: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["SUPPORTED", "NOT_SUPPORTED"]),
-            Schema.String,
+    ),
+    responseTtl: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "LTE_1M",
+            "GT_1M_LTE_5M",
+            "GT_5M_LTE_15M",
+            "GT_15M_LTE_1H",
+            "GT_1H_LTE_1D",
+            "GT_1D_LTE_1W",
+            "GT_1W",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      dnssecE2e: Schema.optional(Schema.Array(Schema.Boolean)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      ipVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
-        ),
-      ),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      matchingAnswer: Schema.optional(Schema.Array(Schema.Boolean)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      nodata: Schema.optional(Schema.Array(Schema.Boolean)),
-      protocol: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["UDP", "TCP", "HTTPS", "TLS"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      queryType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literal("A"),
-            Schema.Literal("AAAA"),
-            Schema.Literal("A6"),
-            Schema.Literal("AFSDB"),
-            Schema.Literal("ANY"),
-            Schema.Literal("APL"),
-            Schema.Literal("ATMA"),
-            Schema.Literal("AXFR"),
-            Schema.Literal("CAA"),
-            Schema.Literal("CDNSKEY"),
-            Schema.Literal("CDS"),
-            Schema.Literal("CERT"),
-            Schema.Literal("CNAME"),
-            Schema.Literal("CSYNC"),
-            Schema.Literal("DHCID"),
-            Schema.Literal("DLV"),
-            Schema.Literal("DNAME"),
-            Schema.Literal("DNSKEY"),
-            Schema.Literal("DOA"),
-            Schema.Literal("DS"),
-            Schema.Literal("EID"),
-            Schema.Literal("EUI48"),
-            Schema.Literal("EUI64"),
-            Schema.Literal("GPOS"),
-            Schema.Literal("GID"),
-            Schema.Literal("HINFO"),
-            Schema.Literal("HIP"),
-            Schema.Literal("HTTPS"),
-            Schema.Literal("IPSECKEY"),
-            Schema.Literal("ISDN"),
-            Schema.Literal("IXFR"),
-            Schema.Literal("KEY"),
-            Schema.Literal("KX"),
-            Schema.Literal("L32"),
-            Schema.Literal("L64"),
-            Schema.Literal("LOC"),
-            Schema.Literal("LP"),
-            Schema.Literal("MAILA"),
-            Schema.Literal("MAILB"),
-            Schema.Literal("MB"),
-            Schema.Literal("MD"),
-            Schema.Literal("MF"),
-            Schema.Literal("MG"),
-            Schema.Literal("MINFO"),
-            Schema.Literal("MR"),
-            Schema.Literal("MX"),
-            Schema.Literal("NAPTR"),
-            Schema.Literal("NB"),
-            Schema.Literal("NBSTAT"),
-            Schema.Literal("NID"),
-            Schema.Literal("NIMLOC"),
-            Schema.Literal("NINFO"),
-            Schema.Literal("NS"),
-            Schema.Literal("NSAP"),
-            Schema.Literal("NSEC"),
-            Schema.Literal("NSEC3"),
-            Schema.Literal("NSEC3PARAM"),
-            Schema.Literal("NULL"),
-            Schema.Literal("NXT"),
-            Schema.Literal("OPENPGPKEY"),
-            Schema.Literal("OPT"),
-            Schema.Literal("PTR"),
-            Schema.Literal("PX"),
-            Schema.Literal("RKEY"),
-            Schema.Literal("RP"),
-            Schema.Literal("RRSIG"),
-            Schema.Literal("RT"),
-            Schema.Literal("SIG"),
-            Schema.Literal("SINK"),
-            Schema.Literal("SMIMEA"),
-            Schema.Literal("SOA"),
-            Schema.Literal("SPF"),
-            Schema.Literal("SRV"),
-            Schema.Literal("SSHFP"),
-            Schema.Literal("SVCB"),
-            Schema.Literal("TA"),
-            Schema.Literal("TALINK"),
-            Schema.Literal("TKEY"),
-            Schema.Literal("TLSA"),
-            Schema.Literal("TSIG"),
-            Schema.Literal("TXT"),
-            Schema.Literal("UINFO"),
-            Schema.Literal("UID"),
-            Schema.Literal("UNSPEC"),
-            Schema.Literal("URI"),
-            Schema.Literal("WKS"),
-            Schema.Literal("X25"),
-            Schema.Literal("ZONEMD"),
-            Schema.Null,
-          ]),
-        ),
-      ),
-      responseCode: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "NOERROR",
-              "FORMERR",
-              "SERVFAIL",
-              "NXDOMAIN",
-              "NOTIMP",
-              "REFUSED",
-              "YXDOMAIN",
-              "YXRRSET",
-              "NXRRSET",
-              "NOTAUTH",
-              "NOTZONE",
-              "BADSIG",
-              "BADKEY",
-              "BADTIME",
-              "BADMODE",
-              "BADNAME",
-              "BADALG",
-              "BADTRUNC",
-              "BADCOOKIE",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      responseTtl: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "LTE_1M",
-              "GT_1M_LTE_5M",
-              "GT_5M_LTE_15M",
-              "GT_15M_LTE_1H",
-              "GT_1H_LTE_1D",
-              "GT_1D_LTE_1W",
-              "GT_1W",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      tld: Schema.optional(Schema.Array(Schema.String)),
-    }).pipe(T.Http({ method: "GET", path: "/radar/dns/timeseries" })),
+    ),
+    tld: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(T.Http({ method: "GET", path: "/radar/dns/timeseries" })),
 ) as unknown as Schema.Codec<TimeseriesDnsRequest>;
 
 export interface TimeseriesDnsResponse {
@@ -23257,11 +23204,10 @@ export interface TimeseriesDnsResponse {
   };
 }
 
-export const TimeseriesDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta2,
-    }).pipe(T.ResponsePath("result")),
+export const TimeseriesDnsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta2,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<TimeseriesDnsResponse>;
 
 export type TimeseriesDnsError = DefaultErrors;
@@ -23271,7 +23217,7 @@ export const timeseriesDns: API.OperationMethod<
   TimeseriesDnsResponse,
   TimeseriesDnsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesDnsRequest,
   output: TimeseriesDnsResponse,
   errors: [],
@@ -23422,7 +23368,7 @@ export interface DnssecDnsSummaryRequest {
 }
 
 export const DnssecDnsSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -23642,7 +23588,7 @@ export interface DnssecDnsSummaryResponse {
 }
 
 export const DnssecDnsSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary010,
@@ -23656,7 +23602,7 @@ export const dnssecDnsSummary: API.OperationMethod<
   DnssecDnsSummaryResponse,
   DnssecDnsSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DnssecDnsSummaryRequest,
   output: DnssecDnsSummaryResponse,
   errors: [],
@@ -23801,7 +23747,7 @@ export interface ProtocolDnsSummaryRequest {
 }
 
 export const ProtocolDnsSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -24008,7 +23954,7 @@ export interface ProtocolDnsSummaryResponse {
 }
 
 export const ProtocolDnsSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary04,
@@ -24022,7 +23968,7 @@ export const protocolDnsSummary: API.OperationMethod<
   ProtocolDnsSummaryResponse,
   ProtocolDnsSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProtocolDnsSummaryRequest,
   output: ProtocolDnsSummaryResponse,
   errors: [],
@@ -24175,7 +24121,7 @@ export interface DnssecDnsTimeseriesGroupRequest {
 }
 
 export const DnssecDnsTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -24410,7 +24356,7 @@ export interface DnssecDnsTimeseriesGroupResponse {
 }
 
 export const DnssecDnsTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie012,
@@ -24424,7 +24370,7 @@ export const dnssecDnsTimeseriesGroup: API.OperationMethod<
   DnssecDnsTimeseriesGroupResponse,
   DnssecDnsTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DnssecDnsTimeseriesGroupRequest,
   output: DnssecDnsTimeseriesGroupResponse,
   errors: [],
@@ -24571,7 +24517,7 @@ export interface ProtocolDnsTimeseriesGroupRequest {
 }
 
 export const ProtocolDnsTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -24793,7 +24739,7 @@ export interface ProtocolDnsTimeseriesGroupResponse {
 }
 
 export const ProtocolDnsTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie04,
@@ -24807,7 +24753,7 @@ export const protocolDnsTimeseriesGroup: API.OperationMethod<
   ProtocolDnsTimeseriesGroupResponse,
   ProtocolDnsTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProtocolDnsTimeseriesGroupRequest,
   output: ProtocolDnsTimeseriesGroupResponse,
   errors: [],
@@ -24982,194 +24928,193 @@ export interface AsesDnsTopRequest {
   )[];
 }
 
-export const AsesDnsTopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      cacheHit: Schema.optional(Schema.Array(Schema.Boolean)),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      dnssec: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["INVALID", "INSECURE", "SECURE", "OTHER"]),
-            Schema.String,
+export const AsesDnsTopRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    cacheHit: Schema.optional(Schema.Array(Schema.Boolean)),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    dnssec: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["INVALID", "INSECURE", "SECURE", "OTHER"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    dnssecAware: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["SUPPORTED", "NOT_SUPPORTED"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    dnssecE2e: Schema.optional(Schema.Array(Schema.Boolean)),
+    domain: Schema.optional(Schema.Array(Schema.String)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    ipVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
+      ),
+    ),
+    limit: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    matchingAnswer: Schema.optional(Schema.Array(Schema.Boolean)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    nodata: Schema.optional(Schema.Array(Schema.Boolean)),
+    protocol: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["UDP", "TCP", "HTTPS", "TLS"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    queryType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literal("A"),
+          Schema.Literal("AAAA"),
+          Schema.Literal("A6"),
+          Schema.Literal("AFSDB"),
+          Schema.Literal("ANY"),
+          Schema.Literal("APL"),
+          Schema.Literal("ATMA"),
+          Schema.Literal("AXFR"),
+          Schema.Literal("CAA"),
+          Schema.Literal("CDNSKEY"),
+          Schema.Literal("CDS"),
+          Schema.Literal("CERT"),
+          Schema.Literal("CNAME"),
+          Schema.Literal("CSYNC"),
+          Schema.Literal("DHCID"),
+          Schema.Literal("DLV"),
+          Schema.Literal("DNAME"),
+          Schema.Literal("DNSKEY"),
+          Schema.Literal("DOA"),
+          Schema.Literal("DS"),
+          Schema.Literal("EID"),
+          Schema.Literal("EUI48"),
+          Schema.Literal("EUI64"),
+          Schema.Literal("GPOS"),
+          Schema.Literal("GID"),
+          Schema.Literal("HINFO"),
+          Schema.Literal("HIP"),
+          Schema.Literal("HTTPS"),
+          Schema.Literal("IPSECKEY"),
+          Schema.Literal("ISDN"),
+          Schema.Literal("IXFR"),
+          Schema.Literal("KEY"),
+          Schema.Literal("KX"),
+          Schema.Literal("L32"),
+          Schema.Literal("L64"),
+          Schema.Literal("LOC"),
+          Schema.Literal("LP"),
+          Schema.Literal("MAILA"),
+          Schema.Literal("MAILB"),
+          Schema.Literal("MB"),
+          Schema.Literal("MD"),
+          Schema.Literal("MF"),
+          Schema.Literal("MG"),
+          Schema.Literal("MINFO"),
+          Schema.Literal("MR"),
+          Schema.Literal("MX"),
+          Schema.Literal("NAPTR"),
+          Schema.Literal("NB"),
+          Schema.Literal("NBSTAT"),
+          Schema.Literal("NID"),
+          Schema.Literal("NIMLOC"),
+          Schema.Literal("NINFO"),
+          Schema.Literal("NS"),
+          Schema.Literal("NSAP"),
+          Schema.Literal("NSEC"),
+          Schema.Literal("NSEC3"),
+          Schema.Literal("NSEC3PARAM"),
+          Schema.Literal("NULL"),
+          Schema.Literal("NXT"),
+          Schema.Literal("OPENPGPKEY"),
+          Schema.Literal("OPT"),
+          Schema.Literal("PTR"),
+          Schema.Literal("PX"),
+          Schema.Literal("RKEY"),
+          Schema.Literal("RP"),
+          Schema.Literal("RRSIG"),
+          Schema.Literal("RT"),
+          Schema.Literal("SIG"),
+          Schema.Literal("SINK"),
+          Schema.Literal("SMIMEA"),
+          Schema.Literal("SOA"),
+          Schema.Literal("SPF"),
+          Schema.Literal("SRV"),
+          Schema.Literal("SSHFP"),
+          Schema.Literal("SVCB"),
+          Schema.Literal("TA"),
+          Schema.Literal("TALINK"),
+          Schema.Literal("TKEY"),
+          Schema.Literal("TLSA"),
+          Schema.Literal("TSIG"),
+          Schema.Literal("TXT"),
+          Schema.Literal("UINFO"),
+          Schema.Literal("UID"),
+          Schema.Literal("UNSPEC"),
+          Schema.Literal("URI"),
+          Schema.Literal("WKS"),
+          Schema.Literal("X25"),
+          Schema.Literal("ZONEMD"),
+          Schema.Null,
+        ]),
+      ),
+    ),
+    responseCode: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "NOERROR",
+            "FORMERR",
+            "SERVFAIL",
+            "NXDOMAIN",
+            "NOTIMP",
+            "REFUSED",
+            "YXDOMAIN",
+            "YXRRSET",
+            "NXRRSET",
+            "NOTAUTH",
+            "NOTZONE",
+            "BADSIG",
+            "BADKEY",
+            "BADTIME",
+            "BADMODE",
+            "BADNAME",
+            "BADALG",
+            "BADTRUNC",
+            "BADCOOKIE",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      dnssecAware: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["SUPPORTED", "NOT_SUPPORTED"]),
-            Schema.String,
+    ),
+    responseTtl: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "LTE_1M",
+            "GT_1M_LTE_5M",
+            "GT_5M_LTE_15M",
+            "GT_15M_LTE_1H",
+            "GT_1H_LTE_1D",
+            "GT_1D_LTE_1W",
+            "GT_1W",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      dnssecE2e: Schema.optional(Schema.Array(Schema.Boolean)),
-      domain: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      ipVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
-        ),
-      ),
-      limit: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      matchingAnswer: Schema.optional(Schema.Array(Schema.Boolean)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      nodata: Schema.optional(Schema.Array(Schema.Boolean)),
-      protocol: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["UDP", "TCP", "HTTPS", "TLS"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      queryType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literal("A"),
-            Schema.Literal("AAAA"),
-            Schema.Literal("A6"),
-            Schema.Literal("AFSDB"),
-            Schema.Literal("ANY"),
-            Schema.Literal("APL"),
-            Schema.Literal("ATMA"),
-            Schema.Literal("AXFR"),
-            Schema.Literal("CAA"),
-            Schema.Literal("CDNSKEY"),
-            Schema.Literal("CDS"),
-            Schema.Literal("CERT"),
-            Schema.Literal("CNAME"),
-            Schema.Literal("CSYNC"),
-            Schema.Literal("DHCID"),
-            Schema.Literal("DLV"),
-            Schema.Literal("DNAME"),
-            Schema.Literal("DNSKEY"),
-            Schema.Literal("DOA"),
-            Schema.Literal("DS"),
-            Schema.Literal("EID"),
-            Schema.Literal("EUI48"),
-            Schema.Literal("EUI64"),
-            Schema.Literal("GPOS"),
-            Schema.Literal("GID"),
-            Schema.Literal("HINFO"),
-            Schema.Literal("HIP"),
-            Schema.Literal("HTTPS"),
-            Schema.Literal("IPSECKEY"),
-            Schema.Literal("ISDN"),
-            Schema.Literal("IXFR"),
-            Schema.Literal("KEY"),
-            Schema.Literal("KX"),
-            Schema.Literal("L32"),
-            Schema.Literal("L64"),
-            Schema.Literal("LOC"),
-            Schema.Literal("LP"),
-            Schema.Literal("MAILA"),
-            Schema.Literal("MAILB"),
-            Schema.Literal("MB"),
-            Schema.Literal("MD"),
-            Schema.Literal("MF"),
-            Schema.Literal("MG"),
-            Schema.Literal("MINFO"),
-            Schema.Literal("MR"),
-            Schema.Literal("MX"),
-            Schema.Literal("NAPTR"),
-            Schema.Literal("NB"),
-            Schema.Literal("NBSTAT"),
-            Schema.Literal("NID"),
-            Schema.Literal("NIMLOC"),
-            Schema.Literal("NINFO"),
-            Schema.Literal("NS"),
-            Schema.Literal("NSAP"),
-            Schema.Literal("NSEC"),
-            Schema.Literal("NSEC3"),
-            Schema.Literal("NSEC3PARAM"),
-            Schema.Literal("NULL"),
-            Schema.Literal("NXT"),
-            Schema.Literal("OPENPGPKEY"),
-            Schema.Literal("OPT"),
-            Schema.Literal("PTR"),
-            Schema.Literal("PX"),
-            Schema.Literal("RKEY"),
-            Schema.Literal("RP"),
-            Schema.Literal("RRSIG"),
-            Schema.Literal("RT"),
-            Schema.Literal("SIG"),
-            Schema.Literal("SINK"),
-            Schema.Literal("SMIMEA"),
-            Schema.Literal("SOA"),
-            Schema.Literal("SPF"),
-            Schema.Literal("SRV"),
-            Schema.Literal("SSHFP"),
-            Schema.Literal("SVCB"),
-            Schema.Literal("TA"),
-            Schema.Literal("TALINK"),
-            Schema.Literal("TKEY"),
-            Schema.Literal("TLSA"),
-            Schema.Literal("TSIG"),
-            Schema.Literal("TXT"),
-            Schema.Literal("UINFO"),
-            Schema.Literal("UID"),
-            Schema.Literal("UNSPEC"),
-            Schema.Literal("URI"),
-            Schema.Literal("WKS"),
-            Schema.Literal("X25"),
-            Schema.Literal("ZONEMD"),
-            Schema.Null,
-          ]),
-        ),
-      ),
-      responseCode: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "NOERROR",
-              "FORMERR",
-              "SERVFAIL",
-              "NXDOMAIN",
-              "NOTIMP",
-              "REFUSED",
-              "YXDOMAIN",
-              "YXRRSET",
-              "NXRRSET",
-              "NOTAUTH",
-              "NOTZONE",
-              "BADSIG",
-              "BADKEY",
-              "BADTIME",
-              "BADMODE",
-              "BADNAME",
-              "BADALG",
-              "BADTRUNC",
-              "BADCOOKIE",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      responseTtl: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "LTE_1M",
-              "GT_1M_LTE_5M",
-              "GT_5M_LTE_15M",
-              "GT_15M_LTE_1H",
-              "GT_1H_LTE_1D",
-              "GT_1D_LTE_1W",
-              "GT_1W",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/dns/top/ases" })),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/dns/top/ases" })),
 ) as unknown as Schema.Codec<AsesDnsTopRequest>;
 
 export interface AsesDnsTopResponse {
@@ -25238,12 +25183,11 @@ export interface AsesDnsTopResponse {
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
 
-export const AsesDnsTopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta4,
-      top_0: Schema.Array(Top08),
-    }).pipe(T.ResponsePath("result")),
+export const AsesDnsTopResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta4,
+    top_0: Schema.Array(Top08),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<AsesDnsTopResponse>;
 
 export type AsesDnsTopError = DefaultErrors;
@@ -25253,7 +25197,7 @@ export const asesDnsTop: API.OperationMethod<
   AsesDnsTopResponse,
   AsesDnsTopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AsesDnsTopRequest,
   output: AsesDnsTopResponse,
   errors: [],
@@ -25427,7 +25371,7 @@ export interface LocationsDnsTopRequest {
 }
 
 export const LocationsDnsTopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       cacheHit: Schema.optional(Schema.Array(Schema.Boolean)),
@@ -25688,7 +25632,7 @@ export interface LocationsDnsTopResponse {
 }
 
 export const LocationsDnsTopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -25702,7 +25646,7 @@ export const locationsDnsTop: API.OperationMethod<
   LocationsDnsTopResponse,
   LocationsDnsTopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LocationsDnsTopRequest,
   output: LocationsDnsTopResponse,
   errors: [],
@@ -25853,7 +25797,7 @@ export interface DnssecE2EDnsSummaryRequest {
 }
 
 export const DnssecE2EDnsSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -26068,7 +26012,7 @@ export interface DnssecE2EDnsSummaryResponse {
 }
 
 export const DnssecE2EDnsSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary02,
@@ -26082,7 +26026,7 @@ export const dnssecE2EDnsSummary: API.OperationMethod<
   DnssecE2EDnsSummaryResponse,
   DnssecE2EDnsSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DnssecE2EDnsSummaryRequest,
   output: DnssecE2EDnsSummaryResponse,
   errors: [],
@@ -26235,7 +26179,7 @@ export interface DnssecE2EDnsTimeseriesGroupRequest {
 }
 
 export const DnssecE2EDnsTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -26468,7 +26412,7 @@ export interface DnssecE2EDnsTimeseriesGroupResponse {
 }
 
 export const DnssecE2EDnsTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie02,
@@ -26482,7 +26426,7 @@ export const dnssecE2EDnsTimeseriesGroup: API.OperationMethod<
   DnssecE2EDnsTimeseriesGroupResponse,
   DnssecE2EDnsTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DnssecE2EDnsTimeseriesGroupRequest,
   output: DnssecE2EDnsTimeseriesGroupResponse,
   errors: [],
@@ -26516,7 +26460,7 @@ export interface ArcEmailRoutingSummaryRequest {
 }
 
 export const ArcEmailRoutingSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
       dateRange: Schema.optional(Schema.Array(Schema.String)),
@@ -26634,7 +26578,7 @@ export interface ArcEmailRoutingSummaryResponse {
 }
 
 export const ArcEmailRoutingSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: RadarEmailSummary,
@@ -26648,7 +26592,7 @@ export const arcEmailRoutingSummary: API.OperationMethod<
   ArcEmailRoutingSummaryResponse,
   ArcEmailRoutingSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ArcEmailRoutingSummaryRequest,
   output: ArcEmailRoutingSummaryResponse,
   errors: [],
@@ -26678,7 +26622,7 @@ export interface DkimEmailRoutingSummaryRequest {
 }
 
 export const DkimEmailRoutingSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -26796,7 +26740,7 @@ export interface DkimEmailRoutingSummaryResponse {
 }
 
 export const DkimEmailRoutingSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: RadarEmailSummary,
@@ -26810,7 +26754,7 @@ export const dkimEmailRoutingSummary: API.OperationMethod<
   DkimEmailRoutingSummaryResponse,
   DkimEmailRoutingSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DkimEmailRoutingSummaryRequest,
   output: DkimEmailRoutingSummaryResponse,
   errors: [],
@@ -26840,7 +26784,7 @@ export interface DmarcEmailRoutingSummaryRequest {
 }
 
 export const DmarcEmailRoutingSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -26958,7 +26902,7 @@ export interface DmarcEmailRoutingSummaryResponse {
 }
 
 export const DmarcEmailRoutingSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: RadarEmailSummary,
@@ -26972,7 +26916,7 @@ export const dmarcEmailRoutingSummary: API.OperationMethod<
   DmarcEmailRoutingSummaryResponse,
   DmarcEmailRoutingSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DmarcEmailRoutingSummaryRequest,
   output: DmarcEmailRoutingSummaryResponse,
   errors: [],
@@ -27002,7 +26946,7 @@ export interface EncryptedEmailRoutingSummaryRequest {
 }
 
 export const EncryptedEmailRoutingSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -27120,7 +27064,7 @@ export interface EncryptedEmailRoutingSummaryResponse {
 }
 
 export const EncryptedEmailRoutingSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary011,
@@ -27134,7 +27078,7 @@ export const encryptedEmailRoutingSummary: API.OperationMethod<
   EncryptedEmailRoutingSummaryResponse,
   EncryptedEmailRoutingSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EncryptedEmailRoutingSummaryRequest,
   output: EncryptedEmailRoutingSummaryResponse,
   errors: [],
@@ -27164,7 +27108,7 @@ export interface SpfEmailRoutingSummaryRequest {
 }
 
 export const SpfEmailRoutingSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -27282,7 +27226,7 @@ export interface SpfEmailRoutingSummaryResponse {
 }
 
 export const SpfEmailRoutingSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: RadarEmailSummary,
@@ -27296,7 +27240,7 @@ export const spfEmailRoutingSummary: API.OperationMethod<
   SpfEmailRoutingSummaryResponse,
   SpfEmailRoutingSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SpfEmailRoutingSummaryRequest,
   output: SpfEmailRoutingSummaryResponse,
   errors: [],
@@ -27332,7 +27276,7 @@ export interface ArcEmailRoutingTimeseriesGroupRequest {
 }
 
 export const ArcEmailRoutingTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -27466,7 +27410,7 @@ export interface ArcEmailRoutingTimeseriesGroupResponse {
 }
 
 export const ArcEmailRoutingTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: RadarEmailSeries,
@@ -27480,7 +27424,7 @@ export const arcEmailRoutingTimeseriesGroup: API.OperationMethod<
   ArcEmailRoutingTimeseriesGroupResponse,
   ArcEmailRoutingTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ArcEmailRoutingTimeseriesGroupRequest,
   output: ArcEmailRoutingTimeseriesGroupResponse,
   errors: [],
@@ -27512,7 +27456,7 @@ export interface DkimEmailRoutingTimeseriesGroupRequest {
 }
 
 export const DkimEmailRoutingTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -27646,7 +27590,7 @@ export interface DkimEmailRoutingTimeseriesGroupResponse {
 }
 
 export const DkimEmailRoutingTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: RadarEmailSeries,
@@ -27660,7 +27604,7 @@ export const dkimEmailRoutingTimeseriesGroup: API.OperationMethod<
   DkimEmailRoutingTimeseriesGroupResponse,
   DkimEmailRoutingTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DkimEmailRoutingTimeseriesGroupRequest,
   output: DkimEmailRoutingTimeseriesGroupResponse,
   errors: [],
@@ -27692,7 +27636,7 @@ export interface DmarcEmailRoutingTimeseriesGroupRequest {
 }
 
 export const DmarcEmailRoutingTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -27826,7 +27770,7 @@ export interface DmarcEmailRoutingTimeseriesGroupResponse {
 }
 
 export const DmarcEmailRoutingTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: RadarEmailSeries,
@@ -27840,7 +27784,7 @@ export const dmarcEmailRoutingTimeseriesGroup: API.OperationMethod<
   DmarcEmailRoutingTimeseriesGroupResponse,
   DmarcEmailRoutingTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DmarcEmailRoutingTimeseriesGroupRequest,
   output: DmarcEmailRoutingTimeseriesGroupResponse,
   errors: [],
@@ -27872,7 +27816,7 @@ export interface EncryptedEmailRoutingTimeseriesGroupRequest {
 }
 
 export const EncryptedEmailRoutingTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -28006,7 +27950,7 @@ export interface EncryptedEmailRoutingTimeseriesGroupResponse {
 }
 
 export const EncryptedEmailRoutingTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie013,
@@ -28020,7 +27964,7 @@ export const encryptedEmailRoutingTimeseriesGroup: API.OperationMethod<
   EncryptedEmailRoutingTimeseriesGroupResponse,
   EncryptedEmailRoutingTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EncryptedEmailRoutingTimeseriesGroupRequest,
   output: EncryptedEmailRoutingTimeseriesGroupResponse,
   errors: [],
@@ -28052,7 +27996,7 @@ export interface SpfEmailRoutingTimeseriesGroupRequest {
 }
 
 export const SpfEmailRoutingTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -28186,7 +28130,7 @@ export interface SpfEmailRoutingTimeseriesGroupResponse {
 }
 
 export const SpfEmailRoutingTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: RadarEmailSeries,
@@ -28200,7 +28144,7 @@ export const spfEmailRoutingTimeseriesGroup: API.OperationMethod<
   SpfEmailRoutingTimeseriesGroupResponse,
   SpfEmailRoutingTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SpfEmailRoutingTimeseriesGroupRequest,
   output: SpfEmailRoutingTimeseriesGroupResponse,
   errors: [],
@@ -28238,7 +28182,7 @@ export interface ArcEmailSecuritySummaryRequest {
 }
 
 export const ArcEmailSecuritySummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
       dateRange: Schema.optional(Schema.Array(Schema.String)),
@@ -28351,7 +28295,7 @@ export interface ArcEmailSecuritySummaryResponse {
 }
 
 export const ArcEmailSecuritySummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: RadarEmailSummary,
@@ -28365,7 +28309,7 @@ export const arcEmailSecuritySummary: API.OperationMethod<
   ArcEmailSecuritySummaryResponse,
   ArcEmailSecuritySummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ArcEmailSecuritySummaryRequest,
   output: ArcEmailSecuritySummaryResponse,
   errors: [],
@@ -28399,7 +28343,7 @@ export interface DkimEmailSecuritySummaryRequest {
 }
 
 export const DkimEmailSecuritySummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -28512,7 +28456,7 @@ export interface DkimEmailSecuritySummaryResponse {
 }
 
 export const DkimEmailSecuritySummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: RadarEmailSummary,
@@ -28526,7 +28470,7 @@ export const dkimEmailSecuritySummary: API.OperationMethod<
   DkimEmailSecuritySummaryResponse,
   DkimEmailSecuritySummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DkimEmailSecuritySummaryRequest,
   output: DkimEmailSecuritySummaryResponse,
   errors: [],
@@ -28560,7 +28504,7 @@ export interface DmarcEmailSecuritySummaryRequest {
 }
 
 export const DmarcEmailSecuritySummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -28673,7 +28617,7 @@ export interface DmarcEmailSecuritySummaryResponse {
 }
 
 export const DmarcEmailSecuritySummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: RadarEmailSummary,
@@ -28687,7 +28631,7 @@ export const dmarcEmailSecuritySummary: API.OperationMethod<
   DmarcEmailSecuritySummaryResponse,
   DmarcEmailSecuritySummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DmarcEmailSecuritySummaryRequest,
   output: DmarcEmailSecuritySummaryResponse,
   errors: [],
@@ -28723,7 +28667,7 @@ export interface MaliciousEmailSecuritySummaryRequest {
 }
 
 export const MaliciousEmailSecuritySummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -28847,7 +28791,7 @@ export interface MaliciousEmailSecuritySummaryResponse {
 }
 
 export const MaliciousEmailSecuritySummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary012,
@@ -28861,7 +28805,7 @@ export const maliciousEmailSecuritySummary: API.OperationMethod<
   MaliciousEmailSecuritySummaryResponse,
   MaliciousEmailSecuritySummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MaliciousEmailSecuritySummaryRequest,
   output: MaliciousEmailSecuritySummaryResponse,
   errors: [],
@@ -28897,7 +28841,7 @@ export interface SpamEmailSecuritySummaryRequest {
 }
 
 export const SpamEmailSecuritySummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -29018,7 +28962,7 @@ export interface SpamEmailSecuritySummaryResponse {
 }
 
 export const SpamEmailSecuritySummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary013,
@@ -29032,7 +28976,7 @@ export const spamEmailSecuritySummary: API.OperationMethod<
   SpamEmailSecuritySummaryResponse,
   SpamEmailSecuritySummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SpamEmailSecuritySummaryRequest,
   output: SpamEmailSecuritySummaryResponse,
   errors: [],
@@ -29066,7 +29010,7 @@ export interface SpfEmailSecuritySummaryRequest {
 }
 
 export const SpfEmailSecuritySummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -29179,7 +29123,7 @@ export interface SpfEmailSecuritySummaryResponse {
 }
 
 export const SpfEmailSecuritySummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: RadarEmailSummary,
@@ -29193,7 +29137,7 @@ export const spfEmailSecuritySummary: API.OperationMethod<
   SpfEmailSecuritySummaryResponse,
   SpfEmailSecuritySummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SpfEmailSecuritySummaryRequest,
   output: SpfEmailSecuritySummaryResponse,
   errors: [],
@@ -29229,7 +29173,7 @@ export interface SpoofEmailSecuritySummaryRequest {
 }
 
 export const SpoofEmailSecuritySummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -29350,7 +29294,7 @@ export interface SpoofEmailSecuritySummaryResponse {
 }
 
 export const SpoofEmailSecuritySummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary014,
@@ -29364,7 +29308,7 @@ export const spoofEmailSecuritySummary: API.OperationMethod<
   SpoofEmailSecuritySummaryResponse,
   SpoofEmailSecuritySummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SpoofEmailSecuritySummaryRequest,
   output: SpoofEmailSecuritySummaryResponse,
   errors: [],
@@ -29404,7 +29348,7 @@ export interface ArcEmailSecurityTimeseriesGroupRequest {
 }
 
 export const ArcEmailSecurityTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -29533,7 +29477,7 @@ export interface ArcEmailSecurityTimeseriesGroupResponse {
 }
 
 export const ArcEmailSecurityTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: RadarEmailSeries,
@@ -29547,7 +29491,7 @@ export const arcEmailSecurityTimeseriesGroup: API.OperationMethod<
   ArcEmailSecurityTimeseriesGroupResponse,
   ArcEmailSecurityTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ArcEmailSecurityTimeseriesGroupRequest,
   output: ArcEmailSecurityTimeseriesGroupResponse,
   errors: [],
@@ -29583,7 +29527,7 @@ export interface DkimEmailSecurityTimeseriesGroupRequest {
 }
 
 export const DkimEmailSecurityTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -29712,7 +29656,7 @@ export interface DkimEmailSecurityTimeseriesGroupResponse {
 }
 
 export const DkimEmailSecurityTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: RadarEmailSeries,
@@ -29726,7 +29670,7 @@ export const dkimEmailSecurityTimeseriesGroup: API.OperationMethod<
   DkimEmailSecurityTimeseriesGroupResponse,
   DkimEmailSecurityTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DkimEmailSecurityTimeseriesGroupRequest,
   output: DkimEmailSecurityTimeseriesGroupResponse,
   errors: [],
@@ -29762,7 +29706,7 @@ export interface DmarcEmailSecurityTimeseriesGroupRequest {
 }
 
 export const DmarcEmailSecurityTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -29891,7 +29835,7 @@ export interface DmarcEmailSecurityTimeseriesGroupResponse {
 }
 
 export const DmarcEmailSecurityTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: RadarEmailSeries,
@@ -29905,7 +29849,7 @@ export const dmarcEmailSecurityTimeseriesGroup: API.OperationMethod<
   DmarcEmailSecurityTimeseriesGroupResponse,
   DmarcEmailSecurityTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DmarcEmailSecurityTimeseriesGroupRequest,
   output: DmarcEmailSecurityTimeseriesGroupResponse,
   errors: [],
@@ -29943,7 +29887,7 @@ export interface MaliciousEmailSecurityTimeseriesGroupRequest {
 }
 
 export const MaliciousEmailSecurityTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -30080,7 +30024,7 @@ export interface MaliciousEmailSecurityTimeseriesGroupResponse {
 }
 
 export const MaliciousEmailSecurityTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie014,
@@ -30094,7 +30038,7 @@ export const maliciousEmailSecurityTimeseriesGroup: API.OperationMethod<
   MaliciousEmailSecurityTimeseriesGroupResponse,
   MaliciousEmailSecurityTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MaliciousEmailSecurityTimeseriesGroupRequest,
   output: MaliciousEmailSecurityTimeseriesGroupResponse,
   errors: [],
@@ -30132,7 +30076,7 @@ export interface SpamEmailSecurityTimeseriesGroupRequest {
 }
 
 export const SpamEmailSecurityTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -30269,7 +30213,7 @@ export interface SpamEmailSecurityTimeseriesGroupResponse {
 }
 
 export const SpamEmailSecurityTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie015,
@@ -30283,7 +30227,7 @@ export const spamEmailSecurityTimeseriesGroup: API.OperationMethod<
   SpamEmailSecurityTimeseriesGroupResponse,
   SpamEmailSecurityTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SpamEmailSecurityTimeseriesGroupRequest,
   output: SpamEmailSecurityTimeseriesGroupResponse,
   errors: [],
@@ -30319,7 +30263,7 @@ export interface SpfEmailSecurityTimeseriesGroupRequest {
 }
 
 export const SpfEmailSecurityTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -30448,7 +30392,7 @@ export interface SpfEmailSecurityTimeseriesGroupResponse {
 }
 
 export const SpfEmailSecurityTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: RadarEmailSeries,
@@ -30462,7 +30406,7 @@ export const spfEmailSecurityTimeseriesGroup: API.OperationMethod<
   SpfEmailSecurityTimeseriesGroupResponse,
   SpfEmailSecurityTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SpfEmailSecurityTimeseriesGroupRequest,
   output: SpfEmailSecurityTimeseriesGroupResponse,
   errors: [],
@@ -30500,7 +30444,7 @@ export interface SpoofEmailSecurityTimeseriesGroupRequest {
 }
 
 export const SpoofEmailSecurityTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -30637,7 +30581,7 @@ export interface SpoofEmailSecurityTimeseriesGroupResponse {
 }
 
 export const SpoofEmailSecurityTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie016,
@@ -30651,7 +30595,7 @@ export const spoofEmailSecurityTimeseriesGroup: API.OperationMethod<
   SpoofEmailSecurityTimeseriesGroupResponse,
   SpoofEmailSecurityTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SpoofEmailSecurityTimeseriesGroupRequest,
   output: SpoofEmailSecurityTimeseriesGroupResponse,
   errors: [],
@@ -30695,7 +30639,7 @@ export interface GetEmailSecurityTopTldRequest {
 }
 
 export const GetEmailSecurityTopTldRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -30818,7 +30762,7 @@ export interface GetEmailSecurityTopTldResponse {
 }
 
 export const GetEmailSecurityTopTldResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Unit),
@@ -30832,7 +30776,7 @@ export const getEmailSecurityTopTld: API.OperationMethod<
   GetEmailSecurityTopTldResponse,
   GetEmailSecurityTopTldError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEmailSecurityTopTldRequest,
   output: GetEmailSecurityTopTldResponse,
   errors: [],
@@ -30877,7 +30821,7 @@ export interface GetEmailSecurityTopTldMaliciousRequest {
 }
 
 export const GetEmailSecurityTopTldMaliciousRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       malicious: Schema.String.pipe(T.HttpPath("malicious")),
       arc: Schema.optional(
@@ -31006,7 +30950,7 @@ export interface GetEmailSecurityTopTldMaliciousResponse {
 }
 
 export const GetEmailSecurityTopTldMaliciousResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Unit),
@@ -31020,7 +30964,7 @@ export const getEmailSecurityTopTldMalicious: API.OperationMethod<
   GetEmailSecurityTopTldMaliciousResponse,
   GetEmailSecurityTopTldMaliciousError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEmailSecurityTopTldMaliciousRequest,
   output: GetEmailSecurityTopTldMaliciousResponse,
   errors: [],
@@ -31065,7 +31009,7 @@ export interface GetEmailSecurityTopTldSpamRequest {
 }
 
 export const GetEmailSecurityTopTldSpamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       spam: Schema.String.pipe(T.HttpPath("spam")),
       arc: Schema.optional(
@@ -31194,7 +31138,7 @@ export interface GetEmailSecurityTopTldSpamResponse {
 }
 
 export const GetEmailSecurityTopTldSpamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Unit),
@@ -31208,7 +31152,7 @@ export const getEmailSecurityTopTldSpam: API.OperationMethod<
   GetEmailSecurityTopTldSpamResponse,
   GetEmailSecurityTopTldSpamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEmailSecurityTopTldSpamRequest,
   output: GetEmailSecurityTopTldSpamResponse,
   errors: [],
@@ -31253,7 +31197,7 @@ export interface GetEmailSecurityTopTldSpoofRequest {
 }
 
 export const GetEmailSecurityTopTldSpoofRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       spoof: Schema.String.pipe(T.HttpPath("spoof")),
       arc: Schema.optional(
@@ -31382,7 +31326,7 @@ export interface GetEmailSecurityTopTldSpoofResponse {
 }
 
 export const GetEmailSecurityTopTldSpoofResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Unit),
@@ -31396,7 +31340,7 @@ export const getEmailSecurityTopTldSpoof: API.OperationMethod<
   GetEmailSecurityTopTldSpoofResponse,
   GetEmailSecurityTopTldSpoofError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEmailSecurityTopTldSpoofRequest,
   output: GetEmailSecurityTopTldSpoofResponse,
   errors: [],
@@ -31413,7 +31357,7 @@ export interface GetEntityRequest {
   format?: "JSON" | "CSV" | (string & {});
 }
 
-export const GetEntityRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetEntityRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ip: Schema.String,
     format: Schema.optional(
@@ -31435,11 +31379,10 @@ export interface GetEntityResponse {
   };
 }
 
-export const GetEntityResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      ip: Ip,
-    }).pipe(T.ResponsePath("result")),
+export const GetEntityResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    ip: Ip,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetEntityResponse>;
 
 export type GetEntityError = DefaultErrors;
@@ -31449,7 +31392,7 @@ export const getEntity: API.OperationMethod<
   GetEntityResponse,
   GetEntityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEntityRequest,
   output: GetEntityResponse,
   errors: [],
@@ -31465,14 +31408,13 @@ export interface GetEntityAsnRequest {
   format?: "JSON" | "CSV" | (string & {});
 }
 
-export const GetEntityAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Schema.Number.pipe(T.HttpPath("asn")),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/entities/asns/{asn}" })),
+export const GetEntityAsnRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.Number.pipe(T.HttpPath("asn")),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/entities/asns/{asn}" })),
 ) as unknown as Schema.Codec<GetEntityAsnRequest>;
 
 export interface GetEntityAsnResponse {
@@ -31503,11 +31445,10 @@ export interface GetEntityAsnResponse {
   };
 }
 
-export const GetEntityAsnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Asn4,
-    }).pipe(T.ResponsePath("result")),
+export const GetEntityAsnResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Asn4,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetEntityAsnResponse>;
 
 export type GetEntityAsnError = DefaultErrors;
@@ -31517,7 +31458,7 @@ export const getEntityAsn: API.OperationMethod<
   GetEntityAsnResponse,
   GetEntityAsnError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEntityAsnRequest,
   output: GetEntityAsnResponse,
   errors: [],
@@ -31538,20 +31479,19 @@ export interface ListEntityAsnsRequest {
   orderBy?: "ASN" | "POPULATION" | (string & {});
 }
 
-export const ListEntityAsnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Schema.optional(Schema.String),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      limit: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.String),
-      offset: Schema.optional(Schema.Number),
-      orderBy: Schema.optional(
-        Schema.Union([Schema.Literals(["ASN", "POPULATION"]), Schema.String]),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/entities/asns" })),
+export const ListEntityAsnsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.optional(Schema.String),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    limit: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.String),
+    offset: Schema.optional(Schema.Number),
+    orderBy: Schema.optional(
+      Schema.Union([Schema.Literals(["ASN", "POPULATION"]), Schema.String]),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/entities/asns" })),
 ) as unknown as Schema.Codec<ListEntityAsnsRequest>;
 
 export interface ListEntityAsnsResponse {
@@ -31568,7 +31508,7 @@ export interface ListEntityAsnsResponse {
 }
 
 export const ListEntityAsnsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asns: Schema.Array(Asn5),
     }).pipe(T.ResponsePath("result")),
@@ -31581,7 +31521,7 @@ export const listEntityAsns: API.OperationMethod<
   ListEntityAsnsResponse,
   ListEntityAsnsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEntityAsnsRequest,
   output: ListEntityAsnsResponse,
   errors: [],
@@ -31594,14 +31534,13 @@ export interface IpEntityAsnRequest {
   format?: "JSON" | "CSV" | (string & {});
 }
 
-export const IpEntityAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      ip: Schema.String,
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/entities/asns/ip" })),
+export const IpEntityAsnRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    ip: Schema.String,
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/entities/asns/ip" })),
 ) as unknown as Schema.Codec<IpEntityAsnRequest>;
 
 export interface IpEntityAsnResponse {
@@ -31631,11 +31570,10 @@ export interface IpEntityAsnResponse {
   };
 }
 
-export const IpEntityAsnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Asn6,
-    }).pipe(T.ResponsePath("result")),
+export const IpEntityAsnResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Asn6,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<IpEntityAsnResponse>;
 
 export type IpEntityAsnError = DefaultErrors;
@@ -31645,7 +31583,7 @@ export const ipEntityAsn: API.OperationMethod<
   IpEntityAsnResponse,
   IpEntityAsnError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpEntityAsnRequest,
   output: IpEntityAsnResponse,
   errors: [],
@@ -31659,15 +31597,14 @@ export interface RelEntityAsnRequest {
   format?: "JSON" | "CSV" | (string & {});
 }
 
-export const RelEntityAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Schema.Number.pipe(T.HttpPath("asn")),
-      asn2: Schema.optional(Schema.Number),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/entities/asns/{asn}/rel" })),
+export const RelEntityAsnRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.Number.pipe(T.HttpPath("asn")),
+    asn2: Schema.optional(Schema.Number),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/entities/asns/{asn}/rel" })),
 ) as unknown as Schema.Codec<RelEntityAsnRequest>;
 
 export interface RelEntityAsnResponse {
@@ -31683,12 +31620,11 @@ export interface RelEntityAsnResponse {
   }[];
 }
 
-export const RelEntityAsnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta8,
-      rels: Schema.Array(Rel),
-    }).pipe(T.ResponsePath("result")),
+export const RelEntityAsnResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta8,
+    rels: Schema.Array(Rel),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<RelEntityAsnResponse>;
 
 export type RelEntityAsnError = DefaultErrors;
@@ -31698,7 +31634,7 @@ export const relEntityAsn: API.OperationMethod<
   RelEntityAsnResponse,
   RelEntityAsnError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RelEntityAsnRequest,
   output: RelEntityAsnResponse,
   errors: [],
@@ -31715,7 +31651,7 @@ export interface GetEntityLocationRequest {
 }
 
 export const GetEntityLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       location: Schema.String.pipe(T.HttpPath("location")),
       format: Schema.optional(
@@ -31740,7 +31676,7 @@ export interface GetEntityLocationResponse {
 }
 
 export const GetEntityLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       location: Location2,
     }).pipe(T.ResponsePath("result")),
@@ -31753,7 +31689,7 @@ export const getEntityLocation: API.OperationMethod<
   GetEntityLocationResponse,
   GetEntityLocationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEntityLocationRequest,
   output: GetEntityLocationResponse,
   errors: [],
@@ -31777,7 +31713,7 @@ export interface ListEntityLocationsRequest {
 }
 
 export const ListEntityLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(
         Schema.Union([
@@ -31809,7 +31745,7 @@ export interface ListEntityLocationsResponse {
 }
 
 export const ListEntityLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       locations: Schema.Array(Location3),
     }).pipe(T.ResponsePath("result")),
@@ -31822,7 +31758,7 @@ export const listEntityLocations: API.OperationMethod<
   ListEntityLocationsResponse,
   ListEntityLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEntityLocationsRequest,
   output: ListEntityLocationsResponse,
   errors: [],
@@ -31888,7 +31824,7 @@ export interface BrowserFamilyHttpTimeseriesGroupRequest {
 }
 
 export const BrowserFamilyHttpTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -32054,7 +31990,7 @@ export interface BrowserFamilyHttpTimeseriesGroupResponse {
 }
 
 export const BrowserFamilyHttpTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -32068,7 +32004,7 @@ export const browserFamilyHttpTimeseriesGroup: API.OperationMethod<
   BrowserFamilyHttpTimeseriesGroupResponse,
   BrowserFamilyHttpTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BrowserFamilyHttpTimeseriesGroupRequest,
   output: BrowserFamilyHttpTimeseriesGroupResponse,
   errors: [],
@@ -32132,7 +32068,7 @@ export interface BrowserFamilyHttpTopRequest {
 }
 
 export const BrowserFamilyHttpTopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       botClass: Schema.optional(
@@ -32280,7 +32216,7 @@ export interface BrowserFamilyHttpTopResponse {
 }
 
 export const BrowserFamilyHttpTopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Unit),
@@ -32294,7 +32230,7 @@ export const browserFamilyHttpTop: API.OperationMethod<
   BrowserFamilyHttpTopResponse,
   BrowserFamilyHttpTopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BrowserFamilyHttpTopRequest,
   output: BrowserFamilyHttpTopResponse,
   errors: [],
@@ -32310,14 +32246,13 @@ export interface GetGeolocationRequest {
   format?: "JSON" | "CSV" | (string & {});
 }
 
-export const GetGeolocationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      geoId: Schema.String.pipe(T.HttpPath("geoId")),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/geolocations/{geoId}" })),
+export const GetGeolocationRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    geoId: Schema.String.pipe(T.HttpPath("geoId")),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/geolocations/{geoId}" })),
 ) as unknown as Schema.Codec<GetGeolocationRequest>;
 
 export interface GetGeolocationResponse {
@@ -32351,7 +32286,7 @@ export interface GetGeolocationResponse {
 }
 
 export const GetGeolocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       geolocation: Geolocation,
     }).pipe(T.ResponsePath("result")),
@@ -32364,7 +32299,7 @@ export const getGeolocation: API.OperationMethod<
   GetGeolocationResponse,
   GetGeolocationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGeolocationRequest,
   output: GetGeolocationResponse,
   errors: [],
@@ -32384,7 +32319,7 @@ export interface ListGeolocationsRequest {
 }
 
 export const ListGeolocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       format: Schema.optional(
         Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
@@ -32427,7 +32362,7 @@ export interface ListGeolocationsResponse {
 }
 
 export const ListGeolocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       geolocations: Schema.Array(Geolocation),
     }).pipe(T.ResponsePath("result")),
@@ -32440,7 +32375,7 @@ export const listGeolocations: API.OperationMethod<
   ListGeolocationsResponse,
   ListGeolocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGeolocationsRequest,
   output: ListGeolocationsResponse,
   errors: [],
@@ -32520,7 +32455,7 @@ export interface TimeseriesGroupsAiBotRequest {
 }
 
 export const TimeseriesGroupsAiBotRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -32672,7 +32607,7 @@ export interface TimeseriesGroupsAiBotResponse {
 }
 
 export const TimeseriesGroupsAiBotResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -32686,7 +32621,7 @@ export const timeseriesGroupsAiBot: API.OperationMethod<
   TimeseriesGroupsAiBotResponse,
   TimeseriesGroupsAiBotError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsAiBotRequest,
   output: TimeseriesGroupsAiBotResponse,
   errors: [],
@@ -32766,7 +32701,7 @@ export interface TimeseriesGroupsAiTimeseriesGroupRequest {
 }
 
 export const TimeseriesGroupsAiTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -32918,7 +32853,7 @@ export interface TimeseriesGroupsAiTimeseriesGroupResponse {
 }
 
 export const TimeseriesGroupsAiTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -32932,7 +32867,7 @@ export const timeseriesGroupsAiTimeseriesGroup: API.OperationMethod<
   TimeseriesGroupsAiTimeseriesGroupResponse,
   TimeseriesGroupsAiTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsAiTimeseriesGroupRequest,
   output: TimeseriesGroupsAiTimeseriesGroupResponse,
   errors: [],
@@ -32995,7 +32930,7 @@ export interface TimeseriesGroupsBotRequest {
 }
 
 export const TimeseriesGroupsBotRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -33132,7 +33067,7 @@ export interface TimeseriesGroupsBotResponse {
 }
 
 export const TimeseriesGroupsBotResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -33146,7 +33081,7 @@ export const timeseriesGroupsBot: API.OperationMethod<
   TimeseriesGroupsBotResponse,
   TimeseriesGroupsBotError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsBotRequest,
   output: TimeseriesGroupsBotResponse,
   errors: [],
@@ -33206,7 +33141,7 @@ export interface TimeseriesGroupsBotWebCrawlerRequest {
 }
 
 export const TimeseriesGroupsBotWebCrawlerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -33337,7 +33272,7 @@ export interface TimeseriesGroupsBotWebCrawlerResponse {
 }
 
 export const TimeseriesGroupsBotWebCrawlerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -33351,7 +33286,7 @@ export const timeseriesGroupsBotWebCrawler: API.OperationMethod<
   TimeseriesGroupsBotWebCrawlerResponse,
   TimeseriesGroupsBotWebCrawlerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsBotWebCrawlerRequest,
   output: TimeseriesGroupsBotWebCrawlerResponse,
   errors: [],
@@ -33438,7 +33373,7 @@ export interface TimeseriesGroupsCtRequest {
 }
 
 export const TimeseriesGroupsCtRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -33645,7 +33580,7 @@ export interface TimeseriesGroupsCtResponse {
 }
 
 export const TimeseriesGroupsCtResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Schema.Union([
@@ -33668,7 +33603,7 @@ export const timeseriesGroupsCt: API.OperationMethod<
   TimeseriesGroupsCtResponse,
   TimeseriesGroupsCtError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsCtRequest,
   output: TimeseriesGroupsCtResponse,
   errors: [],
@@ -33713,7 +33648,7 @@ export interface TimeseriesGroupsNetflowRequest {
 }
 
 export const TimeseriesGroupsNetflowRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -33827,7 +33762,7 @@ export interface TimeseriesGroupsNetflowResponse {
 }
 
 export const TimeseriesGroupsNetflowResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -33841,7 +33776,7 @@ export const timeseriesGroupsNetflow: API.OperationMethod<
   TimeseriesGroupsNetflowResponse,
   TimeseriesGroupsNetflowError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsNetflowRequest,
   output: TimeseriesGroupsNetflowResponse,
   errors: [],
@@ -33866,7 +33801,7 @@ export interface TimeseriesGroupsPostQuantumOriginRequest {
 }
 
 export const TimeseriesGroupsPostQuantumOriginRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.Literal("KEY_AGREEMENT").pipe(T.HttpPath("dimension")),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -33958,7 +33893,7 @@ export interface TimeseriesGroupsPostQuantumOriginResponse {
 }
 
 export const TimeseriesGroupsPostQuantumOriginResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -33972,7 +33907,7 @@ export const timeseriesGroupsPostQuantumOrigin: API.OperationMethod<
   TimeseriesGroupsPostQuantumOriginResponse,
   TimeseriesGroupsPostQuantumOriginError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsPostQuantumOriginRequest,
   output: TimeseriesGroupsPostQuantumOriginResponse,
   errors: [],
@@ -34008,7 +33943,7 @@ export interface TimeseriesGroupsQualityIqiRequest {
 }
 
 export const TimeseriesGroupsQualityIqiRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       metric: Schema.Union([
         Schema.Literals(["BANDWIDTH", "DNS", "LATENCY"]),
@@ -34110,7 +34045,7 @@ export interface TimeseriesGroupsQualityIqiResponse {
 }
 
 export const TimeseriesGroupsQualityIqiResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -34124,7 +34059,7 @@ export const timeseriesGroupsQualityIqi: API.OperationMethod<
   TimeseriesGroupsQualityIqiResponse,
   TimeseriesGroupsQualityIqiError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsQualityIqiRequest,
   output: TimeseriesGroupsQualityIqiResponse,
   errors: [],
@@ -34158,7 +34093,7 @@ export interface TimeseriesGroupsRankingRequest {
 }
 
 export const TimeseriesGroupsRankingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
       dateRange: Schema.optional(Schema.Array(Schema.String)),
@@ -34256,7 +34191,7 @@ export interface TimeseriesGroupsRankingResponse {
 }
 
 export const TimeseriesGroupsRankingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -34270,7 +34205,7 @@ export const timeseriesGroupsRanking: API.OperationMethod<
   TimeseriesGroupsRankingResponse,
   TimeseriesGroupsRankingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsRankingRequest,
   output: TimeseriesGroupsRankingResponse,
   errors: [],
@@ -34298,7 +34233,7 @@ export interface TimeseriesGroupsRankingInternetServiceRequest {
 }
 
 export const TimeseriesGroupsRankingInternetServiceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
       dateRange: Schema.optional(Schema.Array(Schema.String)),
@@ -34391,7 +34326,7 @@ export interface TimeseriesGroupsRankingInternetServiceResponse {
 }
 
 export const TimeseriesGroupsRankingInternetServiceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -34405,7 +34340,7 @@ export const timeseriesGroupsRankingInternetService: API.OperationMethod<
   TimeseriesGroupsRankingInternetServiceResponse,
   TimeseriesGroupsRankingInternetServiceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsRankingInternetServiceRequest,
   output: TimeseriesGroupsRankingInternetServiceResponse,
   errors: [],
@@ -34437,7 +34372,7 @@ export interface TimeseriesGroupsTcpResetsTimeoutRequest {
 }
 
 export const TimeseriesGroupsTcpResetsTimeoutRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -34544,7 +34479,7 @@ export interface TimeseriesGroupsTcpResetsTimeoutResponse {
 }
 
 export const TimeseriesGroupsTcpResetsTimeoutResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie017,
@@ -34558,7 +34493,7 @@ export const timeseriesGroupsTcpResetsTimeout: API.OperationMethod<
   TimeseriesGroupsTcpResetsTimeoutResponse,
   TimeseriesGroupsTcpResetsTimeoutError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsTcpResetsTimeoutRequest,
   output: TimeseriesGroupsTcpResetsTimeoutResponse,
   errors: [],
@@ -34595,7 +34530,7 @@ export interface TimeseriesGroupsV2AiInferenceRequest {
 }
 
 export const TimeseriesGroupsV2AiInferenceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -34703,7 +34638,7 @@ export interface TimeseriesGroupsV2AiInferenceResponse {
 }
 
 export const TimeseriesGroupsV2AiInferenceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -34717,7 +34652,7 @@ export const timeseriesGroupsV2AiInference: API.OperationMethod<
   TimeseriesGroupsV2AiInferenceResponse,
   TimeseriesGroupsV2AiInferenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsV2AiInferenceRequest,
   output: TimeseriesGroupsV2AiInferenceResponse,
   errors: [],
@@ -34867,7 +34802,7 @@ export interface TimeseriesGroupsV2As112Request {
 }
 
 export const TimeseriesGroupsV2As112Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -35099,7 +35034,7 @@ export interface TimeseriesGroupsV2As112Response {
 }
 
 export const TimeseriesGroupsV2As112Response =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -35113,7 +35048,7 @@ export const timeseriesGroupsV2As112: API.OperationMethod<
   TimeseriesGroupsV2As112Response,
   TimeseriesGroupsV2As112Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsV2As112Request,
   output: TimeseriesGroupsV2As112Response,
   errors: [],
@@ -35154,7 +35089,7 @@ export interface TimeseriesGroupsV2AttackLayer3Request {
 }
 
 export const TimeseriesGroupsV2AttackLayer3Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -35277,7 +35212,7 @@ export interface TimeseriesGroupsV2AttackLayer3Response {
 }
 
 export const TimeseriesGroupsV2AttackLayer3Response =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -35291,7 +35226,7 @@ export const timeseriesGroupsV2AttackLayer3: API.OperationMethod<
   TimeseriesGroupsV2AttackLayer3Response,
   TimeseriesGroupsV2AttackLayer3Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsV2AttackLayer3Request,
   output: TimeseriesGroupsV2AttackLayer3Response,
   errors: [],
@@ -35393,7 +35328,7 @@ export interface TimeseriesGroupsV2AttackLayer7Request {
 }
 
 export const TimeseriesGroupsV2AttackLayer7Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -35585,7 +35520,7 @@ export interface TimeseriesGroupsV2AttackLayer7Response {
 }
 
 export const TimeseriesGroupsV2AttackLayer7Response =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -35599,7 +35534,7 @@ export const timeseriesGroupsV2AttackLayer7: API.OperationMethod<
   TimeseriesGroupsV2AttackLayer7Response,
   TimeseriesGroupsV2AttackLayer7Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsV2AttackLayer7Request,
   output: TimeseriesGroupsV2AttackLayer7Response,
   errors: [],
@@ -35780,7 +35715,7 @@ export interface TimeseriesGroupsV2DnsRequest {
 }
 
 export const TimeseriesGroupsV2DnsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -36061,7 +35996,7 @@ export interface TimeseriesGroupsV2DnsResponse {
 }
 
 export const TimeseriesGroupsV2DnsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -36075,7 +36010,7 @@ export const timeseriesGroupsV2Dns: API.OperationMethod<
   TimeseriesGroupsV2DnsResponse,
   TimeseriesGroupsV2DnsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsV2DnsRequest,
   output: TimeseriesGroupsV2DnsResponse,
   errors: [],
@@ -36116,7 +36051,7 @@ export interface TimeseriesGroupsV2EmailRoutingRequest {
 }
 
 export const TimeseriesGroupsV2EmailRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -36260,7 +36195,7 @@ export interface TimeseriesGroupsV2EmailRoutingResponse {
 }
 
 export const TimeseriesGroupsV2EmailRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -36274,7 +36209,7 @@ export const timeseriesGroupsV2EmailRouting: API.OperationMethod<
   TimeseriesGroupsV2EmailRoutingResponse,
   TimeseriesGroupsV2EmailRoutingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsV2EmailRoutingRequest,
   output: TimeseriesGroupsV2EmailRoutingResponse,
   errors: [],
@@ -36319,7 +36254,7 @@ export interface TimeseriesGroupsV2EmailSecurityRequest {
 }
 
 export const TimeseriesGroupsV2EmailSecurityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -36458,7 +36393,7 @@ export interface TimeseriesGroupsV2EmailSecurityResponse {
 }
 
 export const TimeseriesGroupsV2EmailSecurityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -36472,7 +36407,7 @@ export const timeseriesGroupsV2EmailSecurity: API.OperationMethod<
   TimeseriesGroupsV2EmailSecurityResponse,
   TimeseriesGroupsV2EmailSecurityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsV2EmailSecurityRequest,
   output: TimeseriesGroupsV2EmailSecurityResponse,
   errors: [],
@@ -36563,7 +36498,7 @@ export interface TimeseriesGroupsV2HttpRequest {
 }
 
 export const TimeseriesGroupsV2HttpRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -36766,7 +36701,7 @@ export interface TimeseriesGroupsV2HttpResponse {
 }
 
 export const TimeseriesGroupsV2HttpResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -36780,7 +36715,7 @@ export const timeseriesGroupsV2Http: API.OperationMethod<
   TimeseriesGroupsV2HttpResponse,
   TimeseriesGroupsV2HttpError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsV2HttpRequest,
   output: TimeseriesGroupsV2HttpResponse,
   errors: [],
@@ -36830,7 +36765,7 @@ export interface TimeseriesGroupsV2LeakedCredentialRequest {
 }
 
 export const TimeseriesGroupsV2LeakedCredentialRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       aggInterval: Schema.optional(
@@ -36968,7 +36903,7 @@ export interface TimeseriesGroupsV2LeakedCredentialResponse {
 }
 
 export const TimeseriesGroupsV2LeakedCredentialResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -36982,7 +36917,7 @@ export const timeseriesGroupsV2LeakedCredential: API.OperationMethod<
   TimeseriesGroupsV2LeakedCredentialResponse,
   TimeseriesGroupsV2LeakedCredentialError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesGroupsV2LeakedCredentialRequest,
   output: TimeseriesGroupsV2LeakedCredentialResponse,
   errors: [],
@@ -37133,7 +37068,7 @@ export interface CacheHitDnsSummaryRequest {
 }
 
 export const CacheHitDnsSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -37348,7 +37283,7 @@ export interface CacheHitDnsSummaryResponse {
 }
 
 export const CacheHitDnsSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary02,
@@ -37362,7 +37297,7 @@ export const cacheHitDnsSummary: API.OperationMethod<
   CacheHitDnsSummaryResponse,
   CacheHitDnsSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CacheHitDnsSummaryRequest,
   output: CacheHitDnsSummaryResponse,
   errors: [],
@@ -37515,7 +37450,7 @@ export interface CacheHitDnsTimeseriesGroupRequest {
 }
 
 export const CacheHitDnsTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -37745,7 +37680,7 @@ export interface CacheHitDnsTimeseriesGroupResponse {
 }
 
 export const CacheHitDnsTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie02,
@@ -37759,7 +37694,7 @@ export const cacheHitDnsTimeseriesGroup: API.OperationMethod<
   CacheHitDnsTimeseriesGroupResponse,
   CacheHitDnsTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CacheHitDnsTimeseriesGroupRequest,
   output: CacheHitDnsTimeseriesGroupResponse,
   errors: [],
@@ -37848,135 +37783,131 @@ export interface TimeseriesHttpRequest {
   )[];
 }
 
-export const TimeseriesHttpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      aggInterval: Schema.optional(
+export const TimeseriesHttpRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    aggInterval: Schema.optional(
+      Schema.Union([Schema.Literals(["15m", "1h", "1d", "1w"]), Schema.String]),
+    ),
+    apiTraffic: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["API", "NON_API"]), Schema.String]),
+      ),
+    ),
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    botClass: Schema.optional(
+      Schema.Array(
         Schema.Union([
-          Schema.Literals(["15m", "1h", "1d", "1w"]),
+          Schema.Literals(["LIKELY_AUTOMATED", "LIKELY_HUMAN"]),
           Schema.String,
         ]),
       ),
-      apiTraffic: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["API", "NON_API"]), Schema.String]),
-        ),
-      ),
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      botClass: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["LIKELY_AUTOMATED", "LIKELY_HUMAN"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      browserFamily: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["CHROME", "EDGE", "FIREFOX", "SAFARI"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      contentType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "HTML",
-              "IMAGES",
-              "JSON",
-              "JAVASCRIPT",
-              "CSS",
-              "PLAIN_TEXT",
-              "FONTS",
-              "XML",
-              "YAML",
-              "VIDEO",
-              "AUDIO",
-              "MARKDOWN",
-              "DOCUMENTS",
-              "BINARY",
-              "SERIALIZATION",
-              "OTHER",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      deviceType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["DESKTOP", "MOBILE", "OTHER"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      geoId: Schema.optional(Schema.Array(Schema.String)),
-      httpProtocol: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["HTTP", "HTTPS"]), Schema.String]),
-        ),
-      ),
-      httpVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["HTTPv1", "HTTPv2", "HTTPv3"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      ipVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
-        ),
-      ),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      normalization: Schema.optional(
+    ),
+    browserFamily: Schema.optional(
+      Schema.Array(
         Schema.Union([
-          Schema.Literals(["PERCENTAGE_CHANGE", "MIN0_MAX"]),
+          Schema.Literals(["CHROME", "EDGE", "FIREFOX", "SAFARI"]),
           Schema.String,
         ]),
       ),
-      os: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "WINDOWS",
-              "MACOSX",
-              "IOS",
-              "ANDROID",
-              "CHROMEOS",
-              "LINUX",
-              "SMART_TV",
-            ]),
-            Schema.String,
+    ),
+    contentType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "HTML",
+            "IMAGES",
+            "JSON",
+            "JAVASCRIPT",
+            "CSS",
+            "PLAIN_TEXT",
+            "FONTS",
+            "XML",
+            "YAML",
+            "VIDEO",
+            "AUDIO",
+            "MARKDOWN",
+            "DOCUMENTS",
+            "BINARY",
+            "SERIALIZATION",
+            "OTHER",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      tlsVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "TLSv1_0",
-              "TLSv1_1",
-              "TLSv1_2",
-              "TLSv1_3",
-              "TLSvQUIC",
-            ]),
-            Schema.String,
+    ),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    deviceType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["DESKTOP", "MOBILE", "OTHER"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    geoId: Schema.optional(Schema.Array(Schema.String)),
+    httpProtocol: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["HTTP", "HTTPS"]), Schema.String]),
+      ),
+    ),
+    httpVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["HTTPv1", "HTTPv2", "HTTPv3"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    ipVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
+      ),
+    ),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    normalization: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["PERCENTAGE_CHANGE", "MIN0_MAX"]),
+        Schema.String,
+      ]),
+    ),
+    os: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "WINDOWS",
+            "MACOSX",
+            "IOS",
+            "ANDROID",
+            "CHROMEOS",
+            "LINUX",
+            "SMART_TV",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/http/timeseries" })),
+    ),
+    tlsVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "TLSv1_0",
+            "TLSv1_1",
+            "TLSv1_2",
+            "TLSv1_3",
+            "TLSvQUIC",
+          ]),
+          Schema.String,
+        ]),
+      ),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/http/timeseries" })),
 ) as unknown as Schema.Codec<TimeseriesHttpRequest>;
 
 export interface TimeseriesHttpResponse {
@@ -38052,7 +37983,7 @@ export interface TimeseriesHttpResponse {
 }
 
 export const TimeseriesHttpResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
     }).pipe(T.ResponsePath("result")),
@@ -38065,7 +37996,7 @@ export const timeseriesHttp: API.OperationMethod<
   TimeseriesHttpResponse,
   TimeseriesHttpError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesHttpRequest,
   output: TimeseriesHttpResponse,
   errors: [],
@@ -38130,7 +38061,7 @@ export interface GetHttpAsRequest {
   )[];
 }
 
-export const GetHttpAsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetHttpAsRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.optional(Schema.Array(Schema.String)),
     botClass: Schema.optional(
@@ -38285,12 +38216,11 @@ export interface GetHttpAsResponse {
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
 
-export const GetHttpAsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta4,
-      top_0: Schema.Array(Top08),
-    }).pipe(T.ResponsePath("result")),
+export const GetHttpAsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta4,
+    top_0: Schema.Array(Top08),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetHttpAsResponse>;
 
 export type GetHttpAsError = DefaultErrors;
@@ -38300,7 +38230,7 @@ export const getHttpAs: API.OperationMethod<
   GetHttpAsResponse,
   GetHttpAsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpAsRequest,
   output: GetHttpAsResponse,
   errors: [],
@@ -38365,7 +38295,7 @@ export interface GetHttpAsBotClassRequest {
 }
 
 export const GetHttpAsBotClassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       botClass: Schema.String.pipe(T.HttpPath("botClass")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -38519,7 +38449,7 @@ export interface GetHttpAsBotClassResponse {
 }
 
 export const GetHttpAsBotClassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top08),
@@ -38533,7 +38463,7 @@ export const getHttpAsBotClass: API.OperationMethod<
   GetHttpAsBotClassResponse,
   GetHttpAsBotClassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpAsBotClassRequest,
   output: GetHttpAsBotClassResponse,
   errors: [],
@@ -38598,7 +38528,7 @@ export interface GetHttpAsBrowserFamilyRequest {
 }
 
 export const GetHttpAsBrowserFamilyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       browserFamily: Schema.String.pipe(T.HttpPath("browserFamily")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -38752,7 +38682,7 @@ export interface GetHttpAsBrowserFamilyResponse {
 }
 
 export const GetHttpAsBrowserFamilyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top08),
@@ -38766,7 +38696,7 @@ export const getHttpAsBrowserFamily: API.OperationMethod<
   GetHttpAsBrowserFamilyResponse,
   GetHttpAsBrowserFamilyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpAsBrowserFamilyRequest,
   output: GetHttpAsBrowserFamilyResponse,
   errors: [],
@@ -38831,7 +38761,7 @@ export interface GetHttpAsDeviceTypeRequest {
 }
 
 export const GetHttpAsDeviceTypeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deviceType: Schema.String.pipe(T.HttpPath("deviceType")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -38985,7 +38915,7 @@ export interface GetHttpAsDeviceTypeResponse {
 }
 
 export const GetHttpAsDeviceTypeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top08),
@@ -38999,7 +38929,7 @@ export const getHttpAsDeviceType: API.OperationMethod<
   GetHttpAsDeviceTypeResponse,
   GetHttpAsDeviceTypeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpAsDeviceTypeRequest,
   output: GetHttpAsDeviceTypeResponse,
   errors: [],
@@ -39064,7 +38994,7 @@ export interface GetHttpAsHttpMethodRequest {
 }
 
 export const GetHttpAsHttpMethodRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       httpVersion: Schema.String.pipe(T.HttpPath("httpVersion")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -39218,7 +39148,7 @@ export interface GetHttpAsHttpMethodResponse {
 }
 
 export const GetHttpAsHttpMethodResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top08),
@@ -39232,7 +39162,7 @@ export const getHttpAsHttpMethod: API.OperationMethod<
   GetHttpAsHttpMethodResponse,
   GetHttpAsHttpMethodError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpAsHttpMethodRequest,
   output: GetHttpAsHttpMethodResponse,
   errors: [],
@@ -39297,7 +39227,7 @@ export interface GetHttpAsHttpProtocolRequest {
 }
 
 export const GetHttpAsHttpProtocolRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       httpProtocol: Schema.String.pipe(T.HttpPath("httpProtocol")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -39454,7 +39384,7 @@ export interface GetHttpAsHttpProtocolResponse {
 }
 
 export const GetHttpAsHttpProtocolResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top08),
@@ -39468,7 +39398,7 @@ export const getHttpAsHttpProtocol: API.OperationMethod<
   GetHttpAsHttpProtocolResponse,
   GetHttpAsHttpProtocolError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpAsHttpProtocolRequest,
   output: GetHttpAsHttpProtocolResponse,
   errors: [],
@@ -39533,7 +39463,7 @@ export interface GetHttpAsIpVersionRequest {
 }
 
 export const GetHttpAsIpVersionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ipVersion: Schema.String.pipe(T.HttpPath("ipVersion")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -39690,7 +39620,7 @@ export interface GetHttpAsIpVersionResponse {
 }
 
 export const GetHttpAsIpVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top08),
@@ -39704,7 +39634,7 @@ export const getHttpAsIpVersion: API.OperationMethod<
   GetHttpAsIpVersionResponse,
   GetHttpAsIpVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpAsIpVersionRequest,
   output: GetHttpAsIpVersionResponse,
   errors: [],
@@ -39759,79 +39689,78 @@ export interface GetHttpAsOsRequest {
   )[];
 }
 
-export const GetHttpAsOsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      os: Schema.String.pipe(T.HttpPath("os")),
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      botClass: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["LIKELY_AUTOMATED", "LIKELY_HUMAN"]),
-            Schema.String,
+export const GetHttpAsOsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    os: Schema.String.pipe(T.HttpPath("os")),
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    botClass: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["LIKELY_AUTOMATED", "LIKELY_HUMAN"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    browserFamily: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["CHROME", "EDGE", "FIREFOX", "SAFARI"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    deviceType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["DESKTOP", "MOBILE", "OTHER"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    geoId: Schema.optional(Schema.Array(Schema.String)),
+    httpProtocol: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["HTTP", "HTTPS"]), Schema.String]),
+      ),
+    ),
+    httpVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["HTTPv1", "HTTPv2", "HTTPv3"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    ipVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
+      ),
+    ),
+    limit: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    tlsVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "TLSv1_0",
+            "TLSv1_1",
+            "TLSv1_2",
+            "TLSv1_3",
+            "TLSvQUIC",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      browserFamily: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["CHROME", "EDGE", "FIREFOX", "SAFARI"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      deviceType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["DESKTOP", "MOBILE", "OTHER"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      geoId: Schema.optional(Schema.Array(Schema.String)),
-      httpProtocol: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["HTTP", "HTTPS"]), Schema.String]),
-        ),
-      ),
-      httpVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["HTTPv1", "HTTPv2", "HTTPv3"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      ipVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
-        ),
-      ),
-      limit: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      tlsVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "TLSv1_0",
-              "TLSv1_1",
-              "TLSv1_2",
-              "TLSv1_3",
-              "TLSvQUIC",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/http/top/ases/os/{os}" })),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/http/top/ases/os/{os}" })),
 ) as unknown as Schema.Codec<GetHttpAsOsRequest>;
 
 export interface GetHttpAsOsResponse {
@@ -39900,12 +39829,11 @@ export interface GetHttpAsOsResponse {
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
 
-export const GetHttpAsOsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta4,
-      top_0: Schema.Array(Top08),
-    }).pipe(T.ResponsePath("result")),
+export const GetHttpAsOsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta4,
+    top_0: Schema.Array(Top08),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetHttpAsOsResponse>;
 
 export type GetHttpAsOsError = DefaultErrors;
@@ -39915,7 +39843,7 @@ export const getHttpAsOs: API.OperationMethod<
   GetHttpAsOsResponse,
   GetHttpAsOsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpAsOsRequest,
   output: GetHttpAsOsResponse,
   errors: [],
@@ -39973,7 +39901,7 @@ export interface GetHttpAsTlsVersionRequest {
 }
 
 export const GetHttpAsTlsVersionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tlsVersion: Schema.String.pipe(T.HttpPath("tlsVersion")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -40121,7 +40049,7 @@ export interface GetHttpAsTlsVersionResponse {
 }
 
 export const GetHttpAsTlsVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top08),
@@ -40135,7 +40063,7 @@ export const getHttpAsTlsVersion: API.OperationMethod<
   GetHttpAsTlsVersionResponse,
   GetHttpAsTlsVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpAsTlsVersionRequest,
   output: GetHttpAsTlsVersionResponse,
   errors: [],
@@ -40201,7 +40129,7 @@ export interface GetHttpLocationRequest {
 }
 
 export const GetHttpLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       botClass: Schema.optional(
@@ -40361,7 +40289,7 @@ export interface GetHttpLocationResponse {
 }
 
 export const GetHttpLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -40375,7 +40303,7 @@ export const getHttpLocation: API.OperationMethod<
   GetHttpLocationResponse,
   GetHttpLocationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpLocationRequest,
   output: GetHttpLocationResponse,
   errors: [],
@@ -40440,7 +40368,7 @@ export interface GetHttpLocationBotClassRequest {
 }
 
 export const GetHttpLocationBotClassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       botClass: Schema.String.pipe(T.HttpPath("botClass")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -40598,7 +40526,7 @@ export interface GetHttpLocationBotClassResponse {
 }
 
 export const GetHttpLocationBotClassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -40612,7 +40540,7 @@ export const getHttpLocationBotClass: API.OperationMethod<
   GetHttpLocationBotClassResponse,
   GetHttpLocationBotClassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpLocationBotClassRequest,
   output: GetHttpLocationBotClassResponse,
   errors: [],
@@ -40677,7 +40605,7 @@ export interface GetHttpLocationBrowserFamilyRequest {
 }
 
 export const GetHttpLocationBrowserFamilyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       browserFamily: Schema.String.pipe(T.HttpPath("browserFamily")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -40835,7 +40763,7 @@ export interface GetHttpLocationBrowserFamilyResponse {
 }
 
 export const GetHttpLocationBrowserFamilyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -40849,7 +40777,7 @@ export const getHttpLocationBrowserFamily: API.OperationMethod<
   GetHttpLocationBrowserFamilyResponse,
   GetHttpLocationBrowserFamilyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpLocationBrowserFamilyRequest,
   output: GetHttpLocationBrowserFamilyResponse,
   errors: [],
@@ -40914,7 +40842,7 @@ export interface GetHttpLocationDeviceTypeRequest {
 }
 
 export const GetHttpLocationDeviceTypeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deviceType: Schema.String.pipe(T.HttpPath("deviceType")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -41072,7 +41000,7 @@ export interface GetHttpLocationDeviceTypeResponse {
 }
 
 export const GetHttpLocationDeviceTypeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -41086,7 +41014,7 @@ export const getHttpLocationDeviceType: API.OperationMethod<
   GetHttpLocationDeviceTypeResponse,
   GetHttpLocationDeviceTypeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpLocationDeviceTypeRequest,
   output: GetHttpLocationDeviceTypeResponse,
   errors: [],
@@ -41151,7 +41079,7 @@ export interface GetHttpLocationHttpMethodRequest {
 }
 
 export const GetHttpLocationHttpMethodRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       httpVersion: Schema.String.pipe(T.HttpPath("httpVersion")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -41309,7 +41237,7 @@ export interface GetHttpLocationHttpMethodResponse {
 }
 
 export const GetHttpLocationHttpMethodResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -41323,7 +41251,7 @@ export const getHttpLocationHttpMethod: API.OperationMethod<
   GetHttpLocationHttpMethodResponse,
   GetHttpLocationHttpMethodError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpLocationHttpMethodRequest,
   output: GetHttpLocationHttpMethodResponse,
   errors: [],
@@ -41388,7 +41316,7 @@ export interface GetHttpLocationHttpProtocolRequest {
 }
 
 export const GetHttpLocationHttpProtocolRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       httpProtocol: Schema.String.pipe(T.HttpPath("httpProtocol")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -41549,7 +41477,7 @@ export interface GetHttpLocationHttpProtocolResponse {
 }
 
 export const GetHttpLocationHttpProtocolResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -41563,7 +41491,7 @@ export const getHttpLocationHttpProtocol: API.OperationMethod<
   GetHttpLocationHttpProtocolResponse,
   GetHttpLocationHttpProtocolError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpLocationHttpProtocolRequest,
   output: GetHttpLocationHttpProtocolResponse,
   errors: [],
@@ -41628,7 +41556,7 @@ export interface GetHttpLocationIpVersionRequest {
 }
 
 export const GetHttpLocationIpVersionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ipVersion: Schema.String.pipe(T.HttpPath("ipVersion")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -41789,7 +41717,7 @@ export interface GetHttpLocationIpVersionResponse {
 }
 
 export const GetHttpLocationIpVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -41803,7 +41731,7 @@ export const getHttpLocationIpVersion: API.OperationMethod<
   GetHttpLocationIpVersionResponse,
   GetHttpLocationIpVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpLocationIpVersionRequest,
   output: GetHttpLocationIpVersionResponse,
   errors: [],
@@ -41859,7 +41787,7 @@ export interface GetHttpLocationOsRequest {
 }
 
 export const GetHttpLocationOsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       os: Schema.String.pipe(T.HttpPath("os")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -42006,7 +41934,7 @@ export interface GetHttpLocationOsResponse {
 }
 
 export const GetHttpLocationOsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -42020,7 +41948,7 @@ export const getHttpLocationOs: API.OperationMethod<
   GetHttpLocationOsResponse,
   GetHttpLocationOsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpLocationOsRequest,
   output: GetHttpLocationOsResponse,
   errors: [],
@@ -42078,7 +42006,7 @@ export interface GetHttpLocationTlsVersionRequest {
 }
 
 export const GetHttpLocationTlsVersionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tlsVersion: Schema.String.pipe(T.HttpPath("tlsVersion")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -42230,7 +42158,7 @@ export interface GetHttpLocationTlsVersionResponse {
 }
 
 export const GetHttpLocationTlsVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -42244,7 +42172,7 @@ export const getHttpLocationTlsVersion: API.OperationMethod<
   GetHttpLocationTlsVersionResponse,
   GetHttpLocationTlsVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHttpLocationTlsVersionRequest,
   output: GetHttpLocationTlsVersionResponse,
   errors: [],
@@ -42296,77 +42224,76 @@ export interface OsHttpSummaryRequest {
   )[];
 }
 
-export const OsHttpSummaryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      botClass: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["LIKELY_AUTOMATED", "LIKELY_HUMAN"]),
-            Schema.String,
+export const OsHttpSummaryRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    botClass: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["LIKELY_AUTOMATED", "LIKELY_HUMAN"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    browserFamily: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["CHROME", "EDGE", "FIREFOX", "SAFARI"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    deviceType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["DESKTOP", "MOBILE", "OTHER"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    geoId: Schema.optional(Schema.Array(Schema.String)),
+    httpProtocol: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["HTTP", "HTTPS"]), Schema.String]),
+      ),
+    ),
+    httpVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["HTTPv1", "HTTPv2", "HTTPv3"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    ipVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
+      ),
+    ),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    tlsVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "TLSv1_0",
+            "TLSv1_1",
+            "TLSv1_2",
+            "TLSv1_3",
+            "TLSvQUIC",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      browserFamily: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["CHROME", "EDGE", "FIREFOX", "SAFARI"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      deviceType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["DESKTOP", "MOBILE", "OTHER"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      geoId: Schema.optional(Schema.Array(Schema.String)),
-      httpProtocol: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["HTTP", "HTTPS"]), Schema.String]),
-        ),
-      ),
-      httpVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["HTTPv1", "HTTPv2", "HTTPv3"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      ipVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
-        ),
-      ),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      tlsVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "TLSv1_0",
-              "TLSv1_1",
-              "TLSv1_2",
-              "TLSv1_3",
-              "TLSvQUIC",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/http/summary/os" })),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/http/summary/os" })),
 ) as unknown as Schema.Codec<OsHttpSummaryRequest>;
 
 export interface OsHttpSummaryResponse {
@@ -42435,12 +42362,11 @@ export interface OsHttpSummaryResponse {
   summary_0: { android: string; ios: string };
 }
 
-export const OsHttpSummaryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta,
-      summary_0: Summary015,
-    }).pipe(T.ResponsePath("result")),
+export const OsHttpSummaryResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta,
+    summary_0: Summary015,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<OsHttpSummaryResponse>;
 
 export type OsHttpSummaryError = DefaultErrors;
@@ -42450,7 +42376,7 @@ export const osHttpSummary: API.OperationMethod<
   OsHttpSummaryResponse,
   OsHttpSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OsHttpSummaryRequest,
   output: OsHttpSummaryResponse,
   errors: [],
@@ -42518,7 +42444,7 @@ export interface BrowserHttpTimeseriesGroupRequest {
 }
 
 export const BrowserHttpTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -42689,7 +42615,7 @@ export interface BrowserHttpTimeseriesGroupResponse {
 }
 
 export const BrowserHttpTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -42703,7 +42629,7 @@ export const browserHttpTimeseriesGroup: API.OperationMethod<
   BrowserHttpTimeseriesGroupResponse,
   BrowserHttpTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BrowserHttpTimeseriesGroupRequest,
   output: BrowserHttpTimeseriesGroupResponse,
   errors: [],
@@ -42754,7 +42680,7 @@ export interface OsHttpTimeseriesGroupRequest {
 }
 
 export const OsHttpTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -42908,7 +42834,7 @@ export interface OsHttpTimeseriesGroupResponse {
 }
 
 export const OsHttpTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -42922,7 +42848,7 @@ export const osHttpTimeseriesGroup: API.OperationMethod<
   OsHttpTimeseriesGroupResponse,
   OsHttpTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OsHttpTimeseriesGroupRequest,
   output: OsHttpTimeseriesGroupResponse,
   errors: [],
@@ -42987,94 +42913,93 @@ export interface BrowserHttpTopRequest {
   )[];
 }
 
-export const BrowserHttpTopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      botClass: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["LIKELY_AUTOMATED", "LIKELY_HUMAN"]),
-            Schema.String,
+export const BrowserHttpTopRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    botClass: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["LIKELY_AUTOMATED", "LIKELY_HUMAN"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    browserFamily: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["CHROME", "EDGE", "FIREFOX", "SAFARI"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    deviceType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["DESKTOP", "MOBILE", "OTHER"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    geoId: Schema.optional(Schema.Array(Schema.String)),
+    httpProtocol: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["HTTP", "HTTPS"]), Schema.String]),
+      ),
+    ),
+    httpVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["HTTPv1", "HTTPv2", "HTTPv3"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    ipVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
+      ),
+    ),
+    limit: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    os: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "WINDOWS",
+            "MACOSX",
+            "IOS",
+            "ANDROID",
+            "CHROMEOS",
+            "LINUX",
+            "SMART_TV",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      browserFamily: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["CHROME", "EDGE", "FIREFOX", "SAFARI"]),
-            Schema.String,
+    ),
+    tlsVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "TLSv1_0",
+            "TLSv1_1",
+            "TLSv1_2",
+            "TLSv1_3",
+            "TLSvQUIC",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      deviceType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["DESKTOP", "MOBILE", "OTHER"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      geoId: Schema.optional(Schema.Array(Schema.String)),
-      httpProtocol: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["HTTP", "HTTPS"]), Schema.String]),
-        ),
-      ),
-      httpVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["HTTPv1", "HTTPv2", "HTTPv3"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      ipVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
-        ),
-      ),
-      limit: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      os: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "WINDOWS",
-              "MACOSX",
-              "IOS",
-              "ANDROID",
-              "CHROMEOS",
-              "LINUX",
-              "SMART_TV",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      tlsVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "TLSv1_0",
-              "TLSv1_1",
-              "TLSv1_2",
-              "TLSv1_3",
-              "TLSvQUIC",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/http/top/browser" })),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/http/top/browser" })),
 ) as unknown as Schema.Codec<BrowserHttpTopRequest>;
 
 export interface BrowserHttpTopResponse {
@@ -43144,7 +43069,7 @@ export interface BrowserHttpTopResponse {
 }
 
 export const BrowserHttpTopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Unit),
@@ -43158,7 +43083,7 @@ export const browserHttpTop: API.OperationMethod<
   BrowserHttpTopResponse,
   BrowserHttpTopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BrowserHttpTopRequest,
   output: BrowserHttpTopResponse,
   errors: [],
@@ -43184,7 +43109,7 @@ export interface CompromisedLeakedCredentialSummaryRequest {
 }
 
 export const CompromisedLeakedCredentialSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       botClass: Schema.optional(
         Schema.Array(
@@ -43276,7 +43201,7 @@ export interface CompromisedLeakedCredentialSummaryResponse {
 }
 
 export const CompromisedLeakedCredentialSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary016,
@@ -43290,7 +43215,7 @@ export const compromisedLeakedCredentialSummary: API.OperationMethod<
   CompromisedLeakedCredentialSummaryResponse,
   CompromisedLeakedCredentialSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompromisedLeakedCredentialSummaryRequest,
   output: CompromisedLeakedCredentialSummaryResponse,
   errors: [],
@@ -43318,7 +43243,7 @@ export interface CompromisedLeakedCredentialTimeseriesGroupRequest {
 }
 
 export const CompromisedLeakedCredentialTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -43423,7 +43348,7 @@ export interface CompromisedLeakedCredentialTimeseriesGroupResponse {
 }
 
 export const CompromisedLeakedCredentialTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie018,
@@ -43437,7 +43362,7 @@ export const compromisedLeakedCredentialTimeseriesGroup: API.OperationMethod<
   CompromisedLeakedCredentialTimeseriesGroupResponse,
   CompromisedLeakedCredentialTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompromisedLeakedCredentialTimeseriesGroupRequest,
   output: CompromisedLeakedCredentialTimeseriesGroupResponse,
   errors: [],
@@ -43484,7 +43409,7 @@ export interface HttpMethodAttackLayer7SummaryRequest {
 }
 
 export const HttpMethodAttackLayer7SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -43601,7 +43526,7 @@ export interface HttpMethodAttackLayer7SummaryResponse {
 }
 
 export const HttpMethodAttackLayer7SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -43615,7 +43540,7 @@ export const httpMethodAttackLayer7Summary: API.OperationMethod<
   HttpMethodAttackLayer7SummaryResponse,
   HttpMethodAttackLayer7SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: HttpMethodAttackLayer7SummaryRequest,
   output: HttpMethodAttackLayer7SummaryResponse,
   errors: [],
@@ -43666,7 +43591,7 @@ export interface HttpMethodAttackLayer7TimeseriesGroupRequest {
 }
 
 export const HttpMethodAttackLayer7TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -43802,7 +43727,7 @@ export interface HttpMethodAttackLayer7TimeseriesGroupResponse {
 }
 
 export const HttpMethodAttackLayer7TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -43816,7 +43741,7 @@ export const httpMethodAttackLayer7TimeseriesGroup: API.OperationMethod<
   HttpMethodAttackLayer7TimeseriesGroupResponse,
   HttpMethodAttackLayer7TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: HttpMethodAttackLayer7TimeseriesGroupRequest,
   output: HttpMethodAttackLayer7TimeseriesGroupResponse,
   errors: [],
@@ -43847,21 +43772,20 @@ export interface SummaryNetflowRequest {
   name?: string[];
 }
 
-export const SummaryNetflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      geoId: Schema.optional(Schema.Array(Schema.String)),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-    }).pipe(T.Http({ method: "GET", path: "/radar/netflows/summary" })),
+export const SummaryNetflowRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    geoId: Schema.optional(Schema.Array(Schema.String)),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(T.Http({ method: "GET", path: "/radar/netflows/summary" })),
 ) as unknown as Schema.Codec<SummaryNetflowRequest>;
 
 export interface SummaryNetflowResponse {
@@ -43931,7 +43855,7 @@ export interface SummaryNetflowResponse {
 }
 
 export const SummaryNetflowResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary017,
@@ -43945,7 +43869,7 @@ export const summaryNetflow: API.OperationMethod<
   SummaryNetflowResponse,
   SummaryNetflowError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryNetflowRequest,
   output: SummaryNetflowResponse,
   errors: [],
@@ -43979,7 +43903,7 @@ export interface TimeseriesNetflowRequest {
 }
 
 export const TimeseriesNetflowRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -44086,7 +44010,7 @@ export interface TimeseriesNetflowResponse {
 }
 
 export const TimeseriesNetflowResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie08,
@@ -44100,7 +44024,7 @@ export const timeseriesNetflow: API.OperationMethod<
   TimeseriesNetflowResponse,
   TimeseriesNetflowError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TimeseriesNetflowRequest,
   output: TimeseriesNetflowResponse,
   errors: [],
@@ -44133,22 +44057,21 @@ export interface AsesNetflowTopRequest {
   name?: string[];
 }
 
-export const AsesNetflowTopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      geoId: Schema.optional(Schema.Array(Schema.String)),
-      limit: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-    }).pipe(T.Http({ method: "GET", path: "/radar/netflows/top/ases" })),
+export const AsesNetflowTopRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    geoId: Schema.optional(Schema.Array(Schema.String)),
+    limit: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(T.Http({ method: "GET", path: "/radar/netflows/top/ases" })),
 ) as unknown as Schema.Codec<AsesNetflowTopRequest>;
 
 export interface AsesNetflowTopResponse {
@@ -44218,7 +44141,7 @@ export interface AsesNetflowTopResponse {
 }
 
 export const AsesNetflowTopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top08),
@@ -44232,7 +44155,7 @@ export const asesNetflowTop: API.OperationMethod<
   AsesNetflowTopResponse,
   AsesNetflowTopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AsesNetflowTopRequest,
   output: AsesNetflowTopResponse,
   errors: [],
@@ -44262,7 +44185,7 @@ export interface LocationsNetflowTopRequest {
 }
 
 export const LocationsNetflowTopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -44350,7 +44273,7 @@ export interface LocationsNetflowTopResponse {
 }
 
 export const LocationsNetflowTopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -44364,7 +44287,7 @@ export const locationsNetflowTop: API.OperationMethod<
   LocationsNetflowTopResponse,
   LocationsNetflowTopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LocationsNetflowTopRequest,
   output: LocationsNetflowTopResponse,
   errors: [],
@@ -44389,7 +44312,7 @@ export interface SummaryPostQuantumOriginRequest {
 }
 
 export const SummaryPostQuantumOriginRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.Literal("KEY_AGREEMENT").pipe(T.HttpPath("dimension")),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -44474,7 +44397,7 @@ export interface SummaryPostQuantumOriginResponse {
 }
 
 export const SummaryPostQuantumOriginResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -44488,7 +44411,7 @@ export const summaryPostQuantumOrigin: API.OperationMethod<
   SummaryPostQuantumOriginResponse,
   SummaryPostQuantumOriginError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryPostQuantumOriginRequest,
   output: SummaryPostQuantumOriginResponse,
   errors: [],
@@ -44504,7 +44427,7 @@ export interface SupportPostQuantumTlsRequest {
 }
 
 export const SupportPostQuantumTlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       host: Schema.String,
     }).pipe(T.Http({ method: "GET", path: "/radar/post_quantum/tls/support" })),
@@ -44527,7 +44450,7 @@ export interface SupportPostQuantumTlsResponse {
 }
 
 export const SupportPostQuantumTlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       bugs: Bugs,
       host: Schema.String,
@@ -44544,7 +44467,7 @@ export const supportPostQuantumTls: API.OperationMethod<
   SupportPostQuantumTlsResponse,
   SupportPostQuantumTlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SupportPostQuantumTlsRequest,
   output: SupportPostQuantumTlsResponse,
   errors: [],
@@ -44630,7 +44553,7 @@ export interface MitigationProductAttackLayer7SummaryRequest {
 }
 
 export const MitigationProductAttackLayer7SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -44786,7 +44709,7 @@ export interface MitigationProductAttackLayer7SummaryResponse {
 }
 
 export const MitigationProductAttackLayer7SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -44800,7 +44723,7 @@ export const mitigationProductAttackLayer7Summary: API.OperationMethod<
   MitigationProductAttackLayer7SummaryResponse,
   MitigationProductAttackLayer7SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MitigationProductAttackLayer7SummaryRequest,
   output: MitigationProductAttackLayer7SummaryResponse,
   errors: [],
@@ -44890,7 +44813,7 @@ export interface MitigationProductAttackLayer7TimeseriesGroupRequest {
 }
 
 export const MitigationProductAttackLayer7TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -45065,7 +44988,7 @@ export interface MitigationProductAttackLayer7TimeseriesGroupResponse {
 }
 
 export const MitigationProductAttackLayer7TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -45079,7 +45002,7 @@ export const mitigationProductAttackLayer7TimeseriesGroup: API.OperationMethod<
   MitigationProductAttackLayer7TimeseriesGroupResponse,
   MitigationProductAttackLayer7TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MitigationProductAttackLayer7TimeseriesGroupRequest,
   output: MitigationProductAttackLayer7TimeseriesGroupResponse,
   errors: [],
@@ -45141,7 +45064,7 @@ export interface HttpProtocolHttpSummaryRequest {
 }
 
 export const HttpProtocolHttpSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       botClass: Schema.optional(
@@ -45293,7 +45216,7 @@ export interface HttpProtocolHttpSummaryResponse {
 }
 
 export const HttpProtocolHttpSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary018,
@@ -45307,7 +45230,7 @@ export const httpProtocolHttpSummary: API.OperationMethod<
   HttpProtocolHttpSummaryResponse,
   HttpProtocolHttpSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: HttpProtocolHttpSummaryRequest,
   output: HttpProtocolHttpSummaryResponse,
   errors: [],
@@ -45371,7 +45294,7 @@ export interface HttpProtocolHttpTimeseriesGroupRequest {
 }
 
 export const HttpProtocolHttpTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -45539,7 +45462,7 @@ export interface HttpProtocolHttpTimeseriesGroupResponse {
 }
 
 export const HttpProtocolHttpTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie019,
@@ -45553,7 +45476,7 @@ export const httpProtocolHttpTimeseriesGroup: API.OperationMethod<
   HttpProtocolHttpTimeseriesGroupResponse,
   HttpProtocolHttpTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: HttpProtocolHttpTimeseriesGroupRequest,
   output: HttpProtocolHttpTimeseriesGroupResponse,
   errors: [],
@@ -45585,7 +45508,7 @@ export interface SummaryQualityIqiRequest {
 }
 
 export const SummaryQualityIqiRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       metric: Schema.Union([
         Schema.Literals(["BANDWIDTH", "DNS", "LATENCY"]),
@@ -45671,7 +45594,7 @@ export interface SummaryQualityIqiResponse {
 }
 
 export const SummaryQualityIqiResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary019,
@@ -45685,7 +45608,7 @@ export const summaryQualityIqi: API.OperationMethod<
   SummaryQualityIqiResponse,
   SummaryQualityIqiError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryQualityIqiRequest,
   output: SummaryQualityIqiResponse,
   errors: [],
@@ -45715,7 +45638,7 @@ export interface HistogramQualitySpeedRequest {
 }
 
 export const HistogramQualitySpeedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       bucketSize: Schema.optional(Schema.Number),
@@ -45808,7 +45731,7 @@ export interface HistogramQualitySpeedResponse {
 }
 
 export const HistogramQualitySpeedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       histogram_0: Histogram0,
       meta: Meta13,
@@ -45822,7 +45745,7 @@ export const histogramQualitySpeed: API.OperationMethod<
   HistogramQualitySpeedResponse,
   HistogramQualitySpeedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: HistogramQualitySpeedRequest,
   output: HistogramQualitySpeedResponse,
   errors: [],
@@ -45844,7 +45767,7 @@ export interface SummaryQualitySpeedRequest {
 }
 
 export const SummaryQualitySpeedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -45932,7 +45855,7 @@ export interface SummaryQualitySpeedResponse {
 }
 
 export const SummaryQualitySpeedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary020,
@@ -45946,7 +45869,7 @@ export const summaryQualitySpeed: API.OperationMethod<
   SummaryQualitySpeedResponse,
   SummaryQualitySpeedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryQualitySpeedRequest,
   output: SummaryQualitySpeedResponse,
   errors: [],
@@ -45985,7 +45908,7 @@ export interface AsesQualitySpeedTopRequest {
 }
 
 export const AsesQualitySpeedTopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -46091,7 +46014,7 @@ export interface AsesQualitySpeedTopResponse {
 }
 
 export const AsesQualitySpeedTopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top09),
@@ -46105,7 +46028,7 @@ export const asesQualitySpeedTop: API.OperationMethod<
   AsesQualitySpeedTopResponse,
   AsesQualitySpeedTopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AsesQualitySpeedTopRequest,
   output: AsesQualitySpeedTopResponse,
   errors: [],
@@ -46140,7 +46063,7 @@ export interface LocationsQualitySpeedTopRequest {
 }
 
 export const LocationsQualitySpeedTopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -46248,7 +46171,7 @@ export interface LocationsQualitySpeedTopResponse {
 }
 
 export const LocationsQualitySpeedTopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top010),
@@ -46262,7 +46185,7 @@ export const locationsQualitySpeedTop: API.OperationMethod<
   LocationsQualitySpeedTopResponse,
   LocationsQualitySpeedTopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LocationsQualitySpeedTopRequest,
   output: LocationsQualitySpeedTopResponse,
   errors: [],
@@ -46326,7 +46249,7 @@ export interface PostQuantumHttpSummaryRequest {
 }
 
 export const PostQuantumHttpSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       botClass: Schema.optional(
@@ -46483,7 +46406,7 @@ export interface PostQuantumHttpSummaryResponse {
 }
 
 export const PostQuantumHttpSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary03,
@@ -46497,7 +46420,7 @@ export const postQuantumHttpSummary: API.OperationMethod<
   PostQuantumHttpSummaryResponse,
   PostQuantumHttpSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PostQuantumHttpSummaryRequest,
   output: PostQuantumHttpSummaryResponse,
   errors: [],
@@ -46563,7 +46486,7 @@ export interface PostQuantumHttpTimeseriesGroupRequest {
 }
 
 export const PostQuantumHttpTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -46740,7 +46663,7 @@ export interface PostQuantumHttpTimeseriesGroupResponse {
 }
 
 export const PostQuantumHttpTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie020,
@@ -46754,7 +46677,7 @@ export const postQuantumHttpTimeseriesGroup: API.OperationMethod<
   PostQuantumHttpTimeseriesGroupResponse,
   PostQuantumHttpTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PostQuantumHttpTimeseriesGroupRequest,
   output: PostQuantumHttpTimeseriesGroupResponse,
   errors: [],
@@ -46781,24 +46704,23 @@ export interface TopRankingRequest {
   rankingType?: "POPULAR" | "TRENDING_RISE" | "TRENDING_STEADY" | (string & {});
 }
 
-export const TopRankingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      date: Schema.optional(Schema.Array(Schema.String)),
-      domainCategory: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      limit: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      rankingType: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["POPULAR", "TRENDING_RISE", "TRENDING_STEADY"]),
-          Schema.String,
-        ]),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/ranking/top" })),
+export const TopRankingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    date: Schema.optional(Schema.Array(Schema.String)),
+    domainCategory: Schema.optional(Schema.Array(Schema.String)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    limit: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    rankingType: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["POPULAR", "TRENDING_RISE", "TRENDING_STEADY"]),
+        Schema.String,
+      ]),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/ranking/top" })),
 ) as unknown as Schema.Codec<TopRankingRequest>;
 
 export interface TopRankingResponse {
@@ -46871,12 +46793,11 @@ export interface TopRankingResponse {
   }[];
 }
 
-export const TopRankingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta4,
-      top_0: Schema.Array(Top011),
-    }).pipe(T.ResponsePath("result")),
+export const TopRankingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta4,
+    top_0: Schema.Array(Top011),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<TopRankingResponse>;
 
 export type TopRankingError = DefaultErrors;
@@ -46886,7 +46807,7 @@ export const topRanking: API.OperationMethod<
   TopRankingResponse,
   TopRankingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TopRankingRequest,
   output: TopRankingResponse,
   errors: [],
@@ -46913,7 +46834,7 @@ export interface GetRankingDomainRequest {
 }
 
 export const GetRankingDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       domain: Schema.String.pipe(T.HttpPath("domain")),
       date: Schema.optional(Schema.Array(Schema.String)),
@@ -46945,7 +46866,7 @@ export interface GetRankingDomainResponse {
 }
 
 export const GetRankingDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       details_0: Details0,
       meta: Meta12,
@@ -46959,7 +46880,7 @@ export const getRankingDomain: API.OperationMethod<
   GetRankingDomainResponse,
   GetRankingDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRankingDomainRequest,
   output: GetRankingDomainResponse,
   errors: [],
@@ -46981,7 +46902,7 @@ export interface CategoriesRankingInternetServiceRequest {
 }
 
 export const CategoriesRankingInternetServiceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       date: Schema.optional(Schema.Array(Schema.String)),
       format: Schema.optional(
@@ -47002,7 +46923,7 @@ export interface CategoriesRankingInternetServiceResponse {
 }
 
 export const CategoriesRankingInternetServiceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       categories_0: Schema.Array(Categories0),
     }).pipe(T.ResponsePath("result")),
@@ -47015,7 +46936,7 @@ export const categoriesRankingInternetService: API.OperationMethod<
   CategoriesRankingInternetServiceResponse,
   CategoriesRankingInternetServiceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CategoriesRankingInternetServiceRequest,
   output: CategoriesRankingInternetServiceResponse,
   errors: [],
@@ -47035,7 +46956,7 @@ export interface TopRankingInternetServiceRequest {
 }
 
 export const TopRankingInternetServiceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       date: Schema.optional(Schema.Array(Schema.String)),
       format: Schema.optional(
@@ -47115,7 +47036,7 @@ export interface TopRankingInternetServiceResponse {
 }
 
 export const TopRankingInternetServiceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top012),
@@ -47129,7 +47050,7 @@ export const topRankingInternetService: API.OperationMethod<
   TopRankingInternetServiceResponse,
   TopRankingInternetServiceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TopRankingInternetServiceRequest,
   output: TopRankingInternetServiceResponse,
   errors: [],
@@ -47157,7 +47078,7 @@ export interface DirectiveRobotsTxtTopUserAgentRequest {
 }
 
 export const DirectiveRobotsTxtTopUserAgentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       date: Schema.optional(Schema.Array(Schema.String)),
       directive: Schema.optional(
@@ -47250,7 +47171,7 @@ export interface DirectiveRobotsTxtTopUserAgentResponse {
 }
 
 export const DirectiveRobotsTxtTopUserAgentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top013),
@@ -47264,7 +47185,7 @@ export const directiveRobotsTxtTopUserAgent: API.OperationMethod<
   DirectiveRobotsTxtTopUserAgentResponse,
   DirectiveRobotsTxtTopUserAgentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DirectiveRobotsTxtTopUserAgentRequest,
   output: DirectiveRobotsTxtTopUserAgentResponse,
   errors: [],
@@ -47361,7 +47282,7 @@ export interface ManagedRulesAttackLayer7SummaryRequest {
 }
 
 export const ManagedRulesAttackLayer7SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -47533,7 +47454,7 @@ export interface ManagedRulesAttackLayer7SummaryResponse {
 }
 
 export const ManagedRulesAttackLayer7SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -47547,7 +47468,7 @@ export const managedRulesAttackLayer7Summary: API.OperationMethod<
   ManagedRulesAttackLayer7SummaryResponse,
   ManagedRulesAttackLayer7SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ManagedRulesAttackLayer7SummaryRequest,
   output: ManagedRulesAttackLayer7SummaryResponse,
   errors: [],
@@ -47648,7 +47569,7 @@ export interface ManagedRulesAttackLayer7TimeseriesGroupRequest {
 }
 
 export const ManagedRulesAttackLayer7TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -47839,7 +47760,7 @@ export interface ManagedRulesAttackLayer7TimeseriesGroupResponse {
 }
 
 export const ManagedRulesAttackLayer7TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -47853,7 +47774,7 @@ export const managedRulesAttackLayer7TimeseriesGroup: API.OperationMethod<
   ManagedRulesAttackLayer7TimeseriesGroupResponse,
   ManagedRulesAttackLayer7TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ManagedRulesAttackLayer7TimeseriesGroupRequest,
   output: ManagedRulesAttackLayer7TimeseriesGroupResponse,
   errors: [],
@@ -47906,69 +47827,67 @@ export interface GlobalSearchRequest {
   limitPerGroup?: number;
 }
 
-export const GlobalSearchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      query: Schema.String,
-      exclude: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "ADM1S",
-              "ASNS",
-              "BOTS",
-              "CERTIFICATE_AUTHORITIES",
-              "CERTIFICATE_LOGS",
-              "ORIGINS",
-              "ORIGIN_REGIONS",
-              "INDUSTRIES",
-              "LOCATIONS",
-              "NOTEBOOKS",
-              "TLDS",
-              "VERTICALS",
-            ]),
-            Schema.String,
+export const GlobalSearchRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    query: Schema.String,
+    exclude: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "ADM1S",
+            "ASNS",
+            "BOTS",
+            "CERTIFICATE_AUTHORITIES",
+            "CERTIFICATE_LOGS",
+            "ORIGINS",
+            "ORIGIN_REGIONS",
+            "INDUSTRIES",
+            "LOCATIONS",
+            "NOTEBOOKS",
+            "TLDS",
+            "VERTICALS",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      include: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "ADM1S",
-              "ASNS",
-              "BOTS",
-              "CERTIFICATE_AUTHORITIES",
-              "CERTIFICATE_LOGS",
-              "ORIGINS",
-              "ORIGIN_REGIONS",
-              "INDUSTRIES",
-              "LOCATIONS",
-              "NOTEBOOKS",
-              "TLDS",
-              "VERTICALS",
-            ]),
-            Schema.String,
+    ),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    include: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "ADM1S",
+            "ASNS",
+            "BOTS",
+            "CERTIFICATE_AUTHORITIES",
+            "CERTIFICATE_LOGS",
+            "ORIGINS",
+            "ORIGIN_REGIONS",
+            "INDUSTRIES",
+            "LOCATIONS",
+            "NOTEBOOKS",
+            "TLDS",
+            "VERTICALS",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      limit: Schema.optional(Schema.Number),
-      limitPerGroup: Schema.optional(Schema.Number),
-    }).pipe(T.Http({ method: "GET", path: "/radar/search/global" })),
+    ),
+    limit: Schema.optional(Schema.Number),
+    limitPerGroup: Schema.optional(Schema.Number),
+  }).pipe(T.Http({ method: "GET", path: "/radar/search/global" })),
 ) as unknown as Schema.Codec<GlobalSearchRequest>;
 
 export interface GlobalSearchResponse {
   search: { code: string; name: string; type: string }[];
 }
 
-export const GlobalSearchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      search: Schema.Array(Search),
-    }).pipe(T.ResponsePath("result")),
+export const GlobalSearchResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    search: Schema.Array(Search),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GlobalSearchResponse>;
 
 export type GlobalSearchError = DefaultErrors;
@@ -47978,7 +47897,7 @@ export const globalSearch: API.OperationMethod<
   GlobalSearchResponse,
   GlobalSearchError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GlobalSearchRequest,
   output: GlobalSearchResponse,
   errors: [],
@@ -47994,16 +47913,13 @@ export interface AsSetEntityAsnRequest {
   format?: "JSON" | "CSV" | (string & {});
 }
 
-export const AsSetEntityAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Schema.Number.pipe(T.HttpPath("asn")),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-    }).pipe(
-      T.Http({ method: "GET", path: "/radar/entities/asns/{asn}/as_set" }),
+export const AsSetEntityAsnRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.Number.pipe(T.HttpPath("asn")),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
     ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/entities/asns/{asn}/as_set" })),
 ) as unknown as Schema.Codec<AsSetEntityAsnRequest>;
 
 export interface AsSetEntityAsnResponse {
@@ -48023,7 +47939,7 @@ export interface AsSetEntityAsnResponse {
 }
 
 export const AsSetEntityAsnResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asSets: Schema.Array(AsSet),
       paths: Schema.Array(Schema.Array(Schema.String)),
@@ -48039,7 +47955,7 @@ export const asSetEntityAsn: API.OperationMethod<
   AsSetEntityAsnResponse,
   AsSetEntityAsnError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AsSetEntityAsnRequest,
   output: AsSetEntityAsnResponse,
   errors: [],
@@ -48069,7 +47985,7 @@ export interface SummaryTcpResetsTimeoutRequest {
 }
 
 export const SummaryTcpResetsTimeoutRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -48159,7 +48075,7 @@ export interface SummaryTcpResetsTimeoutResponse {
 }
 
 export const SummaryTcpResetsTimeoutResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary021,
@@ -48173,7 +48089,7 @@ export const summaryTcpResetsTimeout: API.OperationMethod<
   SummaryTcpResetsTimeoutResponse,
   SummaryTcpResetsTimeoutError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryTcpResetsTimeoutRequest,
   output: SummaryTcpResetsTimeoutResponse,
   errors: [],
@@ -48205,7 +48121,7 @@ export interface BotnetThreatFeedEntityAsnRequest {
 }
 
 export const BotnetThreatFeedEntityAsnRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       compareDateRange: Schema.optional(Schema.String),
@@ -48245,7 +48161,7 @@ export interface BotnetThreatFeedEntityAsnResponse {
 }
 
 export const BotnetThreatFeedEntityAsnResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ases: Schema.Array(Ase),
       meta: Meta14,
@@ -48259,7 +48175,7 @@ export const botnetThreatFeedEntityAsn: API.OperationMethod<
   BotnetThreatFeedEntityAsnResponse,
   BotnetThreatFeedEntityAsnError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BotnetThreatFeedEntityAsnRequest,
   output: BotnetThreatFeedEntityAsnResponse,
   errors: [],
@@ -48294,7 +48210,7 @@ export interface GetTrafficAnomalyRequest {
 }
 
 export const GetTrafficAnomalyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Number),
       dateEnd: Schema.optional(Schema.String),
@@ -48343,7 +48259,7 @@ export interface GetTrafficAnomalyResponse {
 }
 
 export const GetTrafficAnomalyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       trafficAnomalies: Schema.Array(TrafficAnomaly),
     }).pipe(T.ResponsePath("result")),
@@ -48356,7 +48272,7 @@ export const getTrafficAnomaly: API.OperationMethod<
   GetTrafficAnomalyResponse,
   GetTrafficAnomalyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTrafficAnomalyRequest,
   output: GetTrafficAnomalyResponse,
   errors: [],
@@ -48381,7 +48297,7 @@ export interface GetTrafficAnomalyLocationRequest {
 }
 
 export const GetTrafficAnomalyLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dateEnd: Schema.optional(Schema.String),
       dateRange: Schema.optional(Schema.String),
@@ -48410,7 +48326,7 @@ export interface GetTrafficAnomalyLocationResponse {
 }
 
 export const GetTrafficAnomalyLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       trafficAnomalies: Schema.Array(Annotation3),
     }).pipe(T.ResponsePath("result")),
@@ -48423,7 +48339,7 @@ export const getTrafficAnomalyLocation: API.OperationMethod<
   GetTrafficAnomalyLocationResponse,
   GetTrafficAnomalyLocationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTrafficAnomalyLocationRequest,
   output: GetTrafficAnomalyLocationResponse,
   errors: [],
@@ -48574,7 +48490,7 @@ export interface ResponseTTLDnsSummaryRequest {
 }
 
 export const ResponseTTLDnsSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -48797,7 +48713,7 @@ export interface ResponseTTLDnsSummaryResponse {
 }
 
 export const ResponseTTLDnsSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary022,
@@ -48811,7 +48727,7 @@ export const responseTTLDnsSummary: API.OperationMethod<
   ResponseTTLDnsSummaryResponse,
   ResponseTTLDnsSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResponseTTLDnsSummaryRequest,
   output: ResponseTTLDnsSummaryResponse,
   errors: [],
@@ -48964,7 +48880,7 @@ export interface ResponseTTLDnsTimeseriesGroupRequest {
 }
 
 export const ResponseTTLDnsTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -49205,7 +49121,7 @@ export interface ResponseTTLDnsTimeseriesGroupResponse {
 }
 
 export const ResponseTTLDnsTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie021,
@@ -49219,7 +49135,7 @@ export const responseTTLDnsTimeseriesGroup: API.OperationMethod<
   ResponseTTLDnsTimeseriesGroupResponse,
   ResponseTTLDnsTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResponseTTLDnsTimeseriesGroupRequest,
   output: ResponseTTLDnsTimeseriesGroupResponse,
   errors: [],
@@ -49274,7 +49190,7 @@ export interface QueryTypeAs112SummaryRequest {
 }
 
 export const QueryTypeAs112SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -49392,7 +49308,7 @@ export interface QueryTypeAs112SummaryResponse {
 }
 
 export const QueryTypeAs112SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -49406,7 +49322,7 @@ export const queryTypeAs112Summary: API.OperationMethod<
   QueryTypeAs112SummaryResponse,
   QueryTypeAs112SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryTypeAs112SummaryRequest,
   output: QueryTypeAs112SummaryResponse,
   errors: [],
@@ -49463,7 +49379,7 @@ export interface QueryTypeAs112TimeseriesGroupRequest {
 }
 
 export const QueryTypeAs112TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -49599,7 +49515,7 @@ export interface QueryTypeAs112TimeseriesGroupResponse {
 }
 
 export const QueryTypeAs112TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -49613,7 +49529,7 @@ export const queryTypeAs112TimeseriesGroup: API.OperationMethod<
   QueryTypeAs112TimeseriesGroupResponse,
   QueryTypeAs112TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryTypeAs112TimeseriesGroupRequest,
   output: QueryTypeAs112TimeseriesGroupResponse,
   errors: [],
@@ -49674,7 +49590,7 @@ export interface QueryTypeDnsSummaryRequest {
 }
 
 export const QueryTypeDnsSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -49795,7 +49711,7 @@ export interface QueryTypeDnsSummaryResponse {
 }
 
 export const QueryTypeDnsSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -49809,7 +49725,7 @@ export const queryTypeDnsSummary: API.OperationMethod<
   QueryTypeDnsSummaryResponse,
   QueryTypeDnsSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryTypeDnsSummaryRequest,
   output: QueryTypeDnsSummaryResponse,
   errors: [],
@@ -49872,7 +49788,7 @@ export interface QueryTypeDnsTimeseriesGroupRequest {
 }
 
 export const QueryTypeDnsTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -50011,7 +49927,7 @@ export interface QueryTypeDnsTimeseriesGroupResponse {
 }
 
 export const QueryTypeDnsTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie0,
@@ -50025,7 +49941,7 @@ export const queryTypeDnsTimeseriesGroup: API.OperationMethod<
   QueryTypeDnsTimeseriesGroupResponse,
   QueryTypeDnsTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryTypeDnsTimeseriesGroupRequest,
   output: QueryTypeDnsTimeseriesGroupResponse,
   errors: [],
@@ -50087,7 +50003,7 @@ export interface DeviceTypeHttpSummaryRequest {
 }
 
 export const DeviceTypeHttpSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       botClass: Schema.optional(
@@ -50234,7 +50150,7 @@ export interface DeviceTypeHttpSummaryResponse {
 }
 
 export const DeviceTypeHttpSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary023,
@@ -50248,7 +50164,7 @@ export const deviceTypeHttpSummary: API.OperationMethod<
   DeviceTypeHttpSummaryResponse,
   DeviceTypeHttpSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeviceTypeHttpSummaryRequest,
   output: DeviceTypeHttpSummaryResponse,
   errors: [],
@@ -50312,7 +50228,7 @@ export interface DeviceTypeHttpTimeseriesGroupRequest {
 }
 
 export const DeviceTypeHttpTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -50482,7 +50398,7 @@ export interface DeviceTypeHttpTimeseriesGroupResponse {
 }
 
 export const DeviceTypeHttpTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie022,
@@ -50496,7 +50412,7 @@ export const deviceTypeHttpTimeseriesGroup: API.OperationMethod<
   DeviceTypeHttpTimeseriesGroupResponse,
   DeviceTypeHttpTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeviceTypeHttpTimeseriesGroupRequest,
   output: DeviceTypeHttpTimeseriesGroupResponse,
   errors: [],
@@ -50567,68 +50483,67 @@ export interface SummaryV2AiBotRequest {
   vertical?: string[];
 }
 
-export const SummaryV2AiBotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dimension: Schema.String.pipe(T.HttpPath("dimension")),
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      contentType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "HTML",
-              "IMAGES",
-              "JSON",
-              "JAVASCRIPT",
-              "CSS",
-              "PLAIN_TEXT",
-              "FONTS",
-              "XML",
-              "YAML",
-              "VIDEO",
-              "AUDIO",
-              "MARKDOWN",
-              "DOCUMENTS",
-              "BINARY",
-              "SERIALIZATION",
-              "OTHER",
-            ]),
-            Schema.String,
+export const SummaryV2AiBotRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dimension: Schema.String.pipe(T.HttpPath("dimension")),
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    contentType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "HTML",
+            "IMAGES",
+            "JSON",
+            "JAVASCRIPT",
+            "CSS",
+            "PLAIN_TEXT",
+            "FONTS",
+            "XML",
+            "YAML",
+            "VIDEO",
+            "AUDIO",
+            "MARKDOWN",
+            "DOCUMENTS",
+            "BINARY",
+            "SERIALIZATION",
+            "OTHER",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      crawlPurpose: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      industry: Schema.optional(Schema.Array(Schema.String)),
-      limitPerGroup: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      responseStatus: Schema.optional(Schema.Array(Schema.String)),
-      responseStatusCategory: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "INFORMATIONAL",
-              "SUCCESS",
-              "REDIRECTION",
-              "CLIENT_ERROR",
-              "SERVER_ERROR",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      userAgent: Schema.optional(Schema.Array(Schema.String)),
-      vertical: Schema.optional(Schema.Array(Schema.String)),
-    }).pipe(
-      T.Http({ method: "GET", path: "/radar/ai/bots/summary/{dimension}" }),
     ),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    crawlPurpose: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    industry: Schema.optional(Schema.Array(Schema.String)),
+    limitPerGroup: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    responseStatus: Schema.optional(Schema.Array(Schema.String)),
+    responseStatusCategory: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "INFORMATIONAL",
+            "SUCCESS",
+            "REDIRECTION",
+            "CLIENT_ERROR",
+            "SERVER_ERROR",
+          ]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    userAgent: Schema.optional(Schema.Array(Schema.String)),
+    vertical: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
+    T.Http({ method: "GET", path: "/radar/ai/bots/summary/{dimension}" }),
+  ),
 ) as unknown as Schema.Codec<SummaryV2AiBotRequest>;
 
 export interface SummaryV2AiBotResponse {
@@ -50698,7 +50613,7 @@ export interface SummaryV2AiBotResponse {
 }
 
 export const SummaryV2AiBotResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -50712,7 +50627,7 @@ export const summaryV2AiBot: API.OperationMethod<
   SummaryV2AiBotResponse,
   SummaryV2AiBotError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryV2AiBotRequest,
   output: SummaryV2AiBotResponse,
   errors: [],
@@ -50745,7 +50660,7 @@ export interface SummaryV2AiInferenceRequest {
 }
 
 export const SummaryV2AiInferenceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -50834,7 +50749,7 @@ export interface SummaryV2AiInferenceResponse {
 }
 
 export const SummaryV2AiInferenceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -50848,7 +50763,7 @@ export const summaryV2AiInference: API.OperationMethod<
   SummaryV2AiInferenceResponse,
   SummaryV2AiInferenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryV2AiInferenceRequest,
   output: SummaryV2AiInferenceResponse,
   errors: [],
@@ -50995,154 +50910,151 @@ export interface SummaryV2As112Request {
   )[];
 }
 
-export const SummaryV2As112Request = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dimension: Schema.String.pipe(T.HttpPath("dimension")),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      limitPerGroup: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      protocol: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["UDP", "TCP", "HTTPS", "TLS"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      queryType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literal("A"),
-            Schema.Literal("AAAA"),
-            Schema.Literal("A6"),
-            Schema.Literal("AFSDB"),
-            Schema.Literal("ANY"),
-            Schema.Literal("APL"),
-            Schema.Literal("ATMA"),
-            Schema.Literal("AXFR"),
-            Schema.Literal("CAA"),
-            Schema.Literal("CDNSKEY"),
-            Schema.Literal("CDS"),
-            Schema.Literal("CERT"),
-            Schema.Literal("CNAME"),
-            Schema.Literal("CSYNC"),
-            Schema.Literal("DHCID"),
-            Schema.Literal("DLV"),
-            Schema.Literal("DNAME"),
-            Schema.Literal("DNSKEY"),
-            Schema.Literal("DOA"),
-            Schema.Literal("DS"),
-            Schema.Literal("EID"),
-            Schema.Literal("EUI48"),
-            Schema.Literal("EUI64"),
-            Schema.Literal("GPOS"),
-            Schema.Literal("GID"),
-            Schema.Literal("HINFO"),
-            Schema.Literal("HIP"),
-            Schema.Literal("HTTPS"),
-            Schema.Literal("IPSECKEY"),
-            Schema.Literal("ISDN"),
-            Schema.Literal("IXFR"),
-            Schema.Literal("KEY"),
-            Schema.Literal("KX"),
-            Schema.Literal("L32"),
-            Schema.Literal("L64"),
-            Schema.Literal("LOC"),
-            Schema.Literal("LP"),
-            Schema.Literal("MAILA"),
-            Schema.Literal("MAILB"),
-            Schema.Literal("MB"),
-            Schema.Literal("MD"),
-            Schema.Literal("MF"),
-            Schema.Literal("MG"),
-            Schema.Literal("MINFO"),
-            Schema.Literal("MR"),
-            Schema.Literal("MX"),
-            Schema.Literal("NAPTR"),
-            Schema.Literal("NB"),
-            Schema.Literal("NBSTAT"),
-            Schema.Literal("NID"),
-            Schema.Literal("NIMLOC"),
-            Schema.Literal("NINFO"),
-            Schema.Literal("NS"),
-            Schema.Literal("NSAP"),
-            Schema.Literal("NSEC"),
-            Schema.Literal("NSEC3"),
-            Schema.Literal("NSEC3PARAM"),
-            Schema.Literal("NULL"),
-            Schema.Literal("NXT"),
-            Schema.Literal("OPENPGPKEY"),
-            Schema.Literal("OPT"),
-            Schema.Literal("PTR"),
-            Schema.Literal("PX"),
-            Schema.Literal("RKEY"),
-            Schema.Literal("RP"),
-            Schema.Literal("RRSIG"),
-            Schema.Literal("RT"),
-            Schema.Literal("SIG"),
-            Schema.Literal("SINK"),
-            Schema.Literal("SMIMEA"),
-            Schema.Literal("SOA"),
-            Schema.Literal("SPF"),
-            Schema.Literal("SRV"),
-            Schema.Literal("SSHFP"),
-            Schema.Literal("SVCB"),
-            Schema.Literal("TA"),
-            Schema.Literal("TALINK"),
-            Schema.Literal("TKEY"),
-            Schema.Literal("TLSA"),
-            Schema.Literal("TSIG"),
-            Schema.Literal("TXT"),
-            Schema.Literal("UINFO"),
-            Schema.Literal("UID"),
-            Schema.Literal("UNSPEC"),
-            Schema.Literal("URI"),
-            Schema.Literal("WKS"),
-            Schema.Literal("X25"),
-            Schema.Literal("ZONEMD"),
-            Schema.Null,
-          ]),
-        ),
-      ),
-      responseCode: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "NOERROR",
-              "FORMERR",
-              "SERVFAIL",
-              "NXDOMAIN",
-              "NOTIMP",
-              "REFUSED",
-              "YXDOMAIN",
-              "YXRRSET",
-              "NXRRSET",
-              "NOTAUTH",
-              "NOTZONE",
-              "BADSIG",
-              "BADKEY",
-              "BADTIME",
-              "BADMODE",
-              "BADNAME",
-              "BADALG",
-              "BADTRUNC",
-              "BADCOOKIE",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-    }).pipe(
-      T.Http({ method: "GET", path: "/radar/as112/summary/{dimension}" }),
+export const SummaryV2As112Request = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dimension: Schema.String.pipe(T.HttpPath("dimension")),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
     ),
+    limitPerGroup: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    protocol: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["UDP", "TCP", "HTTPS", "TLS"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    queryType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literal("A"),
+          Schema.Literal("AAAA"),
+          Schema.Literal("A6"),
+          Schema.Literal("AFSDB"),
+          Schema.Literal("ANY"),
+          Schema.Literal("APL"),
+          Schema.Literal("ATMA"),
+          Schema.Literal("AXFR"),
+          Schema.Literal("CAA"),
+          Schema.Literal("CDNSKEY"),
+          Schema.Literal("CDS"),
+          Schema.Literal("CERT"),
+          Schema.Literal("CNAME"),
+          Schema.Literal("CSYNC"),
+          Schema.Literal("DHCID"),
+          Schema.Literal("DLV"),
+          Schema.Literal("DNAME"),
+          Schema.Literal("DNSKEY"),
+          Schema.Literal("DOA"),
+          Schema.Literal("DS"),
+          Schema.Literal("EID"),
+          Schema.Literal("EUI48"),
+          Schema.Literal("EUI64"),
+          Schema.Literal("GPOS"),
+          Schema.Literal("GID"),
+          Schema.Literal("HINFO"),
+          Schema.Literal("HIP"),
+          Schema.Literal("HTTPS"),
+          Schema.Literal("IPSECKEY"),
+          Schema.Literal("ISDN"),
+          Schema.Literal("IXFR"),
+          Schema.Literal("KEY"),
+          Schema.Literal("KX"),
+          Schema.Literal("L32"),
+          Schema.Literal("L64"),
+          Schema.Literal("LOC"),
+          Schema.Literal("LP"),
+          Schema.Literal("MAILA"),
+          Schema.Literal("MAILB"),
+          Schema.Literal("MB"),
+          Schema.Literal("MD"),
+          Schema.Literal("MF"),
+          Schema.Literal("MG"),
+          Schema.Literal("MINFO"),
+          Schema.Literal("MR"),
+          Schema.Literal("MX"),
+          Schema.Literal("NAPTR"),
+          Schema.Literal("NB"),
+          Schema.Literal("NBSTAT"),
+          Schema.Literal("NID"),
+          Schema.Literal("NIMLOC"),
+          Schema.Literal("NINFO"),
+          Schema.Literal("NS"),
+          Schema.Literal("NSAP"),
+          Schema.Literal("NSEC"),
+          Schema.Literal("NSEC3"),
+          Schema.Literal("NSEC3PARAM"),
+          Schema.Literal("NULL"),
+          Schema.Literal("NXT"),
+          Schema.Literal("OPENPGPKEY"),
+          Schema.Literal("OPT"),
+          Schema.Literal("PTR"),
+          Schema.Literal("PX"),
+          Schema.Literal("RKEY"),
+          Schema.Literal("RP"),
+          Schema.Literal("RRSIG"),
+          Schema.Literal("RT"),
+          Schema.Literal("SIG"),
+          Schema.Literal("SINK"),
+          Schema.Literal("SMIMEA"),
+          Schema.Literal("SOA"),
+          Schema.Literal("SPF"),
+          Schema.Literal("SRV"),
+          Schema.Literal("SSHFP"),
+          Schema.Literal("SVCB"),
+          Schema.Literal("TA"),
+          Schema.Literal("TALINK"),
+          Schema.Literal("TKEY"),
+          Schema.Literal("TLSA"),
+          Schema.Literal("TSIG"),
+          Schema.Literal("TXT"),
+          Schema.Literal("UINFO"),
+          Schema.Literal("UID"),
+          Schema.Literal("UNSPEC"),
+          Schema.Literal("URI"),
+          Schema.Literal("WKS"),
+          Schema.Literal("X25"),
+          Schema.Literal("ZONEMD"),
+          Schema.Null,
+        ]),
+      ),
+    ),
+    responseCode: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "NOERROR",
+            "FORMERR",
+            "SERVFAIL",
+            "NXDOMAIN",
+            "NOTIMP",
+            "REFUSED",
+            "YXDOMAIN",
+            "YXRRSET",
+            "NXRRSET",
+            "NOTAUTH",
+            "NOTZONE",
+            "BADSIG",
+            "BADKEY",
+            "BADTIME",
+            "BADMODE",
+            "BADNAME",
+            "BADALG",
+            "BADTRUNC",
+            "BADCOOKIE",
+          ]),
+          Schema.String,
+        ]),
+      ),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/as112/summary/{dimension}" })),
 ) as unknown as Schema.Codec<SummaryV2As112Request>;
 
 export interface SummaryV2As112Response {
@@ -51212,7 +51124,7 @@ export interface SummaryV2As112Response {
 }
 
 export const SummaryV2As112Response =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -51226,7 +51138,7 @@ export const summaryV2As112: API.OperationMethod<
   SummaryV2As112Response,
   SummaryV2As112Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryV2As112Request,
   output: SummaryV2As112Response,
   errors: [],
@@ -51263,7 +51175,7 @@ export interface SummaryV2AttackLayer3Request {
 }
 
 export const SummaryV2AttackLayer3Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -51367,7 +51279,7 @@ export interface SummaryV2AttackLayer3Response {
 }
 
 export const SummaryV2AttackLayer3Response =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -51381,7 +51293,7 @@ export const summaryV2AttackLayer3: API.OperationMethod<
   SummaryV2AttackLayer3Response,
   SummaryV2AttackLayer3Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryV2AttackLayer3Request,
   output: SummaryV2AttackLayer3Response,
   errors: [],
@@ -51479,7 +51391,7 @@ export interface SummaryV2AttackLayer7Request {
 }
 
 export const SummaryV2AttackLayer7Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -51652,7 +51564,7 @@ export interface SummaryV2AttackLayer7Response {
 }
 
 export const SummaryV2AttackLayer7Response =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -51666,7 +51578,7 @@ export const summaryV2AttackLayer7: API.OperationMethod<
   SummaryV2AttackLayer7Response,
   SummaryV2AttackLayer7Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryV2AttackLayer7Request,
   output: SummaryV2AttackLayer7Response,
   errors: [],
@@ -51842,195 +51754,194 @@ export interface SummaryV2DnsRequest {
   tld?: string[];
 }
 
-export const SummaryV2DnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dimension: Schema.String.pipe(T.HttpPath("dimension")),
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      cacheHit: Schema.optional(Schema.Array(Schema.Boolean)),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      dnssec: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["INVALID", "INSECURE", "SECURE", "OTHER"]),
-            Schema.String,
+export const SummaryV2DnsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dimension: Schema.String.pipe(T.HttpPath("dimension")),
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    cacheHit: Schema.optional(Schema.Array(Schema.Boolean)),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    dnssec: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["INVALID", "INSECURE", "SECURE", "OTHER"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    dnssecAware: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["SUPPORTED", "NOT_SUPPORTED"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    dnssecE2e: Schema.optional(Schema.Array(Schema.Boolean)),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    ipVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
+      ),
+    ),
+    limitPerGroup: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    matchingAnswer: Schema.optional(Schema.Array(Schema.Boolean)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    nodata: Schema.optional(Schema.Array(Schema.Boolean)),
+    protocol: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["UDP", "TCP", "HTTPS", "TLS"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    queryType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literal("A"),
+          Schema.Literal("AAAA"),
+          Schema.Literal("A6"),
+          Schema.Literal("AFSDB"),
+          Schema.Literal("ANY"),
+          Schema.Literal("APL"),
+          Schema.Literal("ATMA"),
+          Schema.Literal("AXFR"),
+          Schema.Literal("CAA"),
+          Schema.Literal("CDNSKEY"),
+          Schema.Literal("CDS"),
+          Schema.Literal("CERT"),
+          Schema.Literal("CNAME"),
+          Schema.Literal("CSYNC"),
+          Schema.Literal("DHCID"),
+          Schema.Literal("DLV"),
+          Schema.Literal("DNAME"),
+          Schema.Literal("DNSKEY"),
+          Schema.Literal("DOA"),
+          Schema.Literal("DS"),
+          Schema.Literal("EID"),
+          Schema.Literal("EUI48"),
+          Schema.Literal("EUI64"),
+          Schema.Literal("GPOS"),
+          Schema.Literal("GID"),
+          Schema.Literal("HINFO"),
+          Schema.Literal("HIP"),
+          Schema.Literal("HTTPS"),
+          Schema.Literal("IPSECKEY"),
+          Schema.Literal("ISDN"),
+          Schema.Literal("IXFR"),
+          Schema.Literal("KEY"),
+          Schema.Literal("KX"),
+          Schema.Literal("L32"),
+          Schema.Literal("L64"),
+          Schema.Literal("LOC"),
+          Schema.Literal("LP"),
+          Schema.Literal("MAILA"),
+          Schema.Literal("MAILB"),
+          Schema.Literal("MB"),
+          Schema.Literal("MD"),
+          Schema.Literal("MF"),
+          Schema.Literal("MG"),
+          Schema.Literal("MINFO"),
+          Schema.Literal("MR"),
+          Schema.Literal("MX"),
+          Schema.Literal("NAPTR"),
+          Schema.Literal("NB"),
+          Schema.Literal("NBSTAT"),
+          Schema.Literal("NID"),
+          Schema.Literal("NIMLOC"),
+          Schema.Literal("NINFO"),
+          Schema.Literal("NS"),
+          Schema.Literal("NSAP"),
+          Schema.Literal("NSEC"),
+          Schema.Literal("NSEC3"),
+          Schema.Literal("NSEC3PARAM"),
+          Schema.Literal("NULL"),
+          Schema.Literal("NXT"),
+          Schema.Literal("OPENPGPKEY"),
+          Schema.Literal("OPT"),
+          Schema.Literal("PTR"),
+          Schema.Literal("PX"),
+          Schema.Literal("RKEY"),
+          Schema.Literal("RP"),
+          Schema.Literal("RRSIG"),
+          Schema.Literal("RT"),
+          Schema.Literal("SIG"),
+          Schema.Literal("SINK"),
+          Schema.Literal("SMIMEA"),
+          Schema.Literal("SOA"),
+          Schema.Literal("SPF"),
+          Schema.Literal("SRV"),
+          Schema.Literal("SSHFP"),
+          Schema.Literal("SVCB"),
+          Schema.Literal("TA"),
+          Schema.Literal("TALINK"),
+          Schema.Literal("TKEY"),
+          Schema.Literal("TLSA"),
+          Schema.Literal("TSIG"),
+          Schema.Literal("TXT"),
+          Schema.Literal("UINFO"),
+          Schema.Literal("UID"),
+          Schema.Literal("UNSPEC"),
+          Schema.Literal("URI"),
+          Schema.Literal("WKS"),
+          Schema.Literal("X25"),
+          Schema.Literal("ZONEMD"),
+          Schema.Null,
+        ]),
+      ),
+    ),
+    responseCode: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "NOERROR",
+            "FORMERR",
+            "SERVFAIL",
+            "NXDOMAIN",
+            "NOTIMP",
+            "REFUSED",
+            "YXDOMAIN",
+            "YXRRSET",
+            "NXRRSET",
+            "NOTAUTH",
+            "NOTZONE",
+            "BADSIG",
+            "BADKEY",
+            "BADTIME",
+            "BADMODE",
+            "BADNAME",
+            "BADALG",
+            "BADTRUNC",
+            "BADCOOKIE",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      dnssecAware: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["SUPPORTED", "NOT_SUPPORTED"]),
-            Schema.String,
+    ),
+    responseTtl: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "LTE_1M",
+            "GT_1M_LTE_5M",
+            "GT_5M_LTE_15M",
+            "GT_15M_LTE_1H",
+            "GT_1H_LTE_1D",
+            "GT_1D_LTE_1W",
+            "GT_1W",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      dnssecE2e: Schema.optional(Schema.Array(Schema.Boolean)),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      ipVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
-        ),
-      ),
-      limitPerGroup: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      matchingAnswer: Schema.optional(Schema.Array(Schema.Boolean)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      nodata: Schema.optional(Schema.Array(Schema.Boolean)),
-      protocol: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["UDP", "TCP", "HTTPS", "TLS"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      queryType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literal("A"),
-            Schema.Literal("AAAA"),
-            Schema.Literal("A6"),
-            Schema.Literal("AFSDB"),
-            Schema.Literal("ANY"),
-            Schema.Literal("APL"),
-            Schema.Literal("ATMA"),
-            Schema.Literal("AXFR"),
-            Schema.Literal("CAA"),
-            Schema.Literal("CDNSKEY"),
-            Schema.Literal("CDS"),
-            Schema.Literal("CERT"),
-            Schema.Literal("CNAME"),
-            Schema.Literal("CSYNC"),
-            Schema.Literal("DHCID"),
-            Schema.Literal("DLV"),
-            Schema.Literal("DNAME"),
-            Schema.Literal("DNSKEY"),
-            Schema.Literal("DOA"),
-            Schema.Literal("DS"),
-            Schema.Literal("EID"),
-            Schema.Literal("EUI48"),
-            Schema.Literal("EUI64"),
-            Schema.Literal("GPOS"),
-            Schema.Literal("GID"),
-            Schema.Literal("HINFO"),
-            Schema.Literal("HIP"),
-            Schema.Literal("HTTPS"),
-            Schema.Literal("IPSECKEY"),
-            Schema.Literal("ISDN"),
-            Schema.Literal("IXFR"),
-            Schema.Literal("KEY"),
-            Schema.Literal("KX"),
-            Schema.Literal("L32"),
-            Schema.Literal("L64"),
-            Schema.Literal("LOC"),
-            Schema.Literal("LP"),
-            Schema.Literal("MAILA"),
-            Schema.Literal("MAILB"),
-            Schema.Literal("MB"),
-            Schema.Literal("MD"),
-            Schema.Literal("MF"),
-            Schema.Literal("MG"),
-            Schema.Literal("MINFO"),
-            Schema.Literal("MR"),
-            Schema.Literal("MX"),
-            Schema.Literal("NAPTR"),
-            Schema.Literal("NB"),
-            Schema.Literal("NBSTAT"),
-            Schema.Literal("NID"),
-            Schema.Literal("NIMLOC"),
-            Schema.Literal("NINFO"),
-            Schema.Literal("NS"),
-            Schema.Literal("NSAP"),
-            Schema.Literal("NSEC"),
-            Schema.Literal("NSEC3"),
-            Schema.Literal("NSEC3PARAM"),
-            Schema.Literal("NULL"),
-            Schema.Literal("NXT"),
-            Schema.Literal("OPENPGPKEY"),
-            Schema.Literal("OPT"),
-            Schema.Literal("PTR"),
-            Schema.Literal("PX"),
-            Schema.Literal("RKEY"),
-            Schema.Literal("RP"),
-            Schema.Literal("RRSIG"),
-            Schema.Literal("RT"),
-            Schema.Literal("SIG"),
-            Schema.Literal("SINK"),
-            Schema.Literal("SMIMEA"),
-            Schema.Literal("SOA"),
-            Schema.Literal("SPF"),
-            Schema.Literal("SRV"),
-            Schema.Literal("SSHFP"),
-            Schema.Literal("SVCB"),
-            Schema.Literal("TA"),
-            Schema.Literal("TALINK"),
-            Schema.Literal("TKEY"),
-            Schema.Literal("TLSA"),
-            Schema.Literal("TSIG"),
-            Schema.Literal("TXT"),
-            Schema.Literal("UINFO"),
-            Schema.Literal("UID"),
-            Schema.Literal("UNSPEC"),
-            Schema.Literal("URI"),
-            Schema.Literal("WKS"),
-            Schema.Literal("X25"),
-            Schema.Literal("ZONEMD"),
-            Schema.Null,
-          ]),
-        ),
-      ),
-      responseCode: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "NOERROR",
-              "FORMERR",
-              "SERVFAIL",
-              "NXDOMAIN",
-              "NOTIMP",
-              "REFUSED",
-              "YXDOMAIN",
-              "YXRRSET",
-              "NXRRSET",
-              "NOTAUTH",
-              "NOTZONE",
-              "BADSIG",
-              "BADKEY",
-              "BADTIME",
-              "BADMODE",
-              "BADNAME",
-              "BADALG",
-              "BADTRUNC",
-              "BADCOOKIE",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      responseTtl: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "LTE_1M",
-              "GT_1M_LTE_5M",
-              "GT_5M_LTE_15M",
-              "GT_15M_LTE_1H",
-              "GT_1H_LTE_1D",
-              "GT_1D_LTE_1W",
-              "GT_1W",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      tld: Schema.optional(Schema.Array(Schema.String)),
-    }).pipe(T.Http({ method: "GET", path: "/radar/dns/summary/{dimension}" })),
+    ),
+    tld: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(T.Http({ method: "GET", path: "/radar/dns/summary/{dimension}" })),
 ) as unknown as Schema.Codec<SummaryV2DnsRequest>;
 
 export interface SummaryV2DnsResponse {
@@ -52099,12 +52010,11 @@ export interface SummaryV2DnsResponse {
   summary_0: Record<string, unknown>;
 }
 
-export const SummaryV2DnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta,
-      summary_0: Schema.Record(Schema.String, Schema.Unknown),
-    }).pipe(T.ResponsePath("result")),
+export const SummaryV2DnsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta,
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<SummaryV2DnsResponse>;
 
 export type SummaryV2DnsError = DefaultErrors;
@@ -52114,7 +52024,7 @@ export const summaryV2Dns: API.OperationMethod<
   SummaryV2DnsResponse,
   SummaryV2DnsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryV2DnsRequest,
   output: SummaryV2DnsResponse,
   errors: [],
@@ -52153,7 +52063,7 @@ export interface SummaryV2EmailRoutingRequest {
 }
 
 export const SummaryV2EmailRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       arc: Schema.optional(
@@ -52284,7 +52194,7 @@ export interface SummaryV2EmailRoutingResponse {
 }
 
 export const SummaryV2EmailRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -52298,7 +52208,7 @@ export const summaryV2EmailRouting: API.OperationMethod<
   SummaryV2EmailRoutingResponse,
   SummaryV2EmailRoutingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryV2EmailRoutingRequest,
   output: SummaryV2EmailRoutingResponse,
   errors: [],
@@ -52341,7 +52251,7 @@ export interface SummaryV2EmailSecurityRequest {
 }
 
 export const SummaryV2EmailSecurityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       arc: Schema.optional(
@@ -52467,7 +52377,7 @@ export interface SummaryV2EmailSecurityResponse {
 }
 
 export const SummaryV2EmailSecurityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -52481,7 +52391,7 @@ export const summaryV2EmailSecurity: API.OperationMethod<
   SummaryV2EmailSecurityResponse,
   SummaryV2EmailSecurityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryV2EmailSecurityRequest,
   output: SummaryV2EmailSecurityResponse,
   errors: [],
@@ -52567,117 +52477,116 @@ export interface SummaryV2HttpRequest {
   )[];
 }
 
-export const SummaryV2HttpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dimension: Schema.String.pipe(T.HttpPath("dimension")),
-      apiTraffic: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["API", "NON_API"]), Schema.String]),
-        ),
+export const SummaryV2HttpRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dimension: Schema.String.pipe(T.HttpPath("dimension")),
+    apiTraffic: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["API", "NON_API"]), Schema.String]),
       ),
-      asn: Schema.optional(Schema.Array(Schema.String)),
-      botClass: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["LIKELY_AUTOMATED", "LIKELY_HUMAN"]),
-            Schema.String,
+    ),
+    asn: Schema.optional(Schema.Array(Schema.String)),
+    botClass: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["LIKELY_AUTOMATED", "LIKELY_HUMAN"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    contentType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "HTML",
+            "IMAGES",
+            "JSON",
+            "JAVASCRIPT",
+            "CSS",
+            "PLAIN_TEXT",
+            "FONTS",
+            "XML",
+            "YAML",
+            "VIDEO",
+            "AUDIO",
+            "MARKDOWN",
+            "DOCUMENTS",
+            "BINARY",
+            "SERIALIZATION",
+            "OTHER",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      contentType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "HTML",
-              "IMAGES",
-              "JSON",
-              "JAVASCRIPT",
-              "CSS",
-              "PLAIN_TEXT",
-              "FONTS",
-              "XML",
-              "YAML",
-              "VIDEO",
-              "AUDIO",
-              "MARKDOWN",
-              "DOCUMENTS",
-              "BINARY",
-              "SERIALIZATION",
-              "OTHER",
-            ]),
-            Schema.String,
+    ),
+    continent: Schema.optional(Schema.Array(Schema.String)),
+    dateEnd: Schema.optional(Schema.Array(Schema.String)),
+    dateRange: Schema.optional(Schema.Array(Schema.String)),
+    dateStart: Schema.optional(Schema.Array(Schema.String)),
+    deviceType: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["DESKTOP", "MOBILE", "OTHER"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    format: Schema.optional(
+      Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
+    ),
+    geoId: Schema.optional(Schema.Array(Schema.String)),
+    httpProtocol: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["HTTP", "HTTPS"]), Schema.String]),
+      ),
+    ),
+    httpVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["HTTPv1", "HTTPv2", "HTTPv3"]),
+          Schema.String,
+        ]),
+      ),
+    ),
+    ipVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
+      ),
+    ),
+    limitPerGroup: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.Array(Schema.String)),
+    os: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "WINDOWS",
+            "MACOSX",
+            "IOS",
+            "ANDROID",
+            "CHROMEOS",
+            "LINUX",
+            "SMART_TV",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      continent: Schema.optional(Schema.Array(Schema.String)),
-      dateEnd: Schema.optional(Schema.Array(Schema.String)),
-      dateRange: Schema.optional(Schema.Array(Schema.String)),
-      dateStart: Schema.optional(Schema.Array(Schema.String)),
-      deviceType: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["DESKTOP", "MOBILE", "OTHER"]),
-            Schema.String,
+    ),
+    tlsVersion: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals([
+            "TLSv1_0",
+            "TLSv1_1",
+            "TLSv1_2",
+            "TLSv1_3",
+            "TLSvQUIC",
           ]),
-        ),
+          Schema.String,
+        ]),
       ),
-      format: Schema.optional(
-        Schema.Union([Schema.Literals(["JSON", "CSV"]), Schema.String]),
-      ),
-      geoId: Schema.optional(Schema.Array(Schema.String)),
-      httpProtocol: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["HTTP", "HTTPS"]), Schema.String]),
-        ),
-      ),
-      httpVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["HTTPv1", "HTTPv2", "HTTPv3"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      ipVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([Schema.Literals(["IPv4", "IPv6"]), Schema.String]),
-        ),
-      ),
-      limitPerGroup: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      os: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "WINDOWS",
-              "MACOSX",
-              "IOS",
-              "ANDROID",
-              "CHROMEOS",
-              "LINUX",
-              "SMART_TV",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      tlsVersion: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "TLSv1_0",
-              "TLSv1_1",
-              "TLSv1_2",
-              "TLSv1_3",
-              "TLSvQUIC",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/radar/http/summary/{dimension}" })),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/radar/http/summary/{dimension}" })),
 ) as unknown as Schema.Codec<SummaryV2HttpRequest>;
 
 export interface SummaryV2HttpResponse {
@@ -52746,12 +52655,11 @@ export interface SummaryV2HttpResponse {
   summary_0: Record<string, unknown>;
 }
 
-export const SummaryV2HttpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      meta: Meta,
-      summary_0: Schema.Record(Schema.String, Schema.Unknown),
-    }).pipe(T.ResponsePath("result")),
+export const SummaryV2HttpResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    meta: Meta,
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<SummaryV2HttpResponse>;
 
 export type SummaryV2HttpError = DefaultErrors;
@@ -52761,7 +52669,7 @@ export const summaryV2Http: API.OperationMethod<
   SummaryV2HttpResponse,
   SummaryV2HttpError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryV2HttpRequest,
   output: SummaryV2HttpResponse,
   errors: [],
@@ -52798,7 +52706,7 @@ export interface SummaryV2LeakedCredentialRequest {
 }
 
 export const SummaryV2LeakedCredentialRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -52903,7 +52811,7 @@ export interface SummaryV2LeakedCredentialResponse {
 }
 
 export const SummaryV2LeakedCredentialResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -52917,7 +52825,7 @@ export const summaryV2LeakedCredential: API.OperationMethod<
   SummaryV2LeakedCredentialResponse,
   SummaryV2LeakedCredentialError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryV2LeakedCredentialRequest,
   output: SummaryV2LeakedCredentialResponse,
   errors: [],
@@ -52954,7 +52862,7 @@ export interface SummaryV2NetflowRequest {
 }
 
 export const SummaryV2NetflowRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dimension: Schema.String.pipe(T.HttpPath("dimension")),
       asn: Schema.optional(Schema.Array(Schema.String)),
@@ -53046,7 +52954,7 @@ export interface SummaryV2NetflowResponse {
 }
 
 export const SummaryV2NetflowResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Schema.Record(Schema.String, Schema.Unknown),
@@ -53060,7 +52968,7 @@ export const summaryV2Netflow: API.OperationMethod<
   SummaryV2NetflowResponse,
   SummaryV2NetflowError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SummaryV2NetflowRequest,
   output: SummaryV2NetflowResponse,
   errors: [],
@@ -53092,7 +53000,7 @@ export interface BotsVerifiedBotTopRequest {
 }
 
 export const BotsVerifiedBotTopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -53180,7 +53088,7 @@ export interface BotsVerifiedBotTopResponse {
 }
 
 export const BotsVerifiedBotTopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top014),
@@ -53194,7 +53102,7 @@ export const botsVerifiedBotTop: API.OperationMethod<
   BotsVerifiedBotTopResponse,
   BotsVerifiedBotTopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BotsVerifiedBotTopRequest,
   output: BotsVerifiedBotTopResponse,
   errors: [],
@@ -53222,7 +53130,7 @@ export interface CategoriesVerifiedBotTopRequest {
 }
 
 export const CategoriesVerifiedBotTopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -53307,7 +53215,7 @@ export interface CategoriesVerifiedBotTopResponse {
 }
 
 export const CategoriesVerifiedBotTopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Top015),
@@ -53321,7 +53229,7 @@ export const categoriesVerifiedBotTop: API.OperationMethod<
   CategoriesVerifiedBotTopResponse,
   CategoriesVerifiedBotTopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CategoriesVerifiedBotTopRequest,
   output: CategoriesVerifiedBotTopResponse,
   errors: [],
@@ -53466,7 +53374,7 @@ export interface IpVersionAs112SummaryRequest {
 }
 
 export const IpVersionAs112SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -53678,7 +53586,7 @@ export interface IpVersionAs112SummaryResponse {
 }
 
 export const IpVersionAs112SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary024,
@@ -53692,7 +53600,7 @@ export const ipVersionAs112Summary: API.OperationMethod<
   IpVersionAs112SummaryResponse,
   IpVersionAs112SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpVersionAs112SummaryRequest,
   output: IpVersionAs112SummaryResponse,
   errors: [],
@@ -53839,7 +53747,7 @@ export interface IpVersionAs112TimeseriesGroupRequest {
 }
 
 export const IpVersionAs112TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -54069,7 +53977,7 @@ export interface IpVersionAs112TimeseriesGroupResponse {
 }
 
 export const IpVersionAs112TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie023,
@@ -54083,7 +53991,7 @@ export const ipVersionAs112TimeseriesGroup: API.OperationMethod<
   IpVersionAs112TimeseriesGroupResponse,
   IpVersionAs112TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpVersionAs112TimeseriesGroupRequest,
   output: IpVersionAs112TimeseriesGroupResponse,
   errors: [],
@@ -54114,7 +54022,7 @@ export interface IpVersionAs112TopRequest {
 }
 
 export const IpVersionAs112TopRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ipVersion: Schema.String.pipe(T.HttpPath("ipVersion")),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -54206,7 +54114,7 @@ export interface IpVersionAs112TopResponse {
 }
 
 export const IpVersionAs112TopResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta4,
       top_0: Schema.Array(Annotation3),
@@ -54220,7 +54128,7 @@ export const ipVersionAs112Top: API.OperationMethod<
   IpVersionAs112TopResponse,
   IpVersionAs112TopError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpVersionAs112TopRequest,
   output: IpVersionAs112TopResponse,
   errors: [],
@@ -54252,7 +54160,7 @@ export interface IpVersionAttackLayer3SummaryRequest {
 }
 
 export const IpVersionAttackLayer3SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       continent: Schema.optional(Schema.Array(Schema.String)),
       dateEnd: Schema.optional(Schema.Array(Schema.String)),
@@ -54349,7 +54257,7 @@ export interface IpVersionAttackLayer3SummaryResponse {
 }
 
 export const IpVersionAttackLayer3SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary024,
@@ -54363,7 +54271,7 @@ export const ipVersionAttackLayer3Summary: API.OperationMethod<
   IpVersionAttackLayer3SummaryResponse,
   IpVersionAttackLayer3SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpVersionAttackLayer3SummaryRequest,
   output: IpVersionAttackLayer3SummaryResponse,
   errors: [],
@@ -54399,7 +54307,7 @@ export interface IpVersionAttackLayer3TimeseriesGroupRequest {
 }
 
 export const IpVersionAttackLayer3TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -54515,7 +54423,7 @@ export interface IpVersionAttackLayer3TimeseriesGroupResponse {
 }
 
 export const IpVersionAttackLayer3TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie024,
@@ -54529,7 +54437,7 @@ export const ipVersionAttackLayer3TimeseriesGroup: API.OperationMethod<
   IpVersionAttackLayer3TimeseriesGroupResponse,
   IpVersionAttackLayer3TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpVersionAttackLayer3TimeseriesGroupRequest,
   output: IpVersionAttackLayer3TimeseriesGroupResponse,
   errors: [],
@@ -54622,7 +54530,7 @@ export interface HttpVersionAttackLayer7SummaryRequest {
 }
 
 export const HttpVersionAttackLayer7SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -54785,7 +54693,7 @@ export interface HttpVersionAttackLayer7SummaryResponse {
 }
 
 export const HttpVersionAttackLayer7SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary025,
@@ -54799,7 +54707,7 @@ export const httpVersionAttackLayer7Summary: API.OperationMethod<
   HttpVersionAttackLayer7SummaryResponse,
   HttpVersionAttackLayer7SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: HttpVersionAttackLayer7SummaryRequest,
   output: HttpVersionAttackLayer7SummaryResponse,
   errors: [],
@@ -54888,7 +54796,7 @@ export interface IpVersionAttackLayer7SummaryRequest {
 }
 
 export const IpVersionAttackLayer7SummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -55054,7 +54962,7 @@ export interface IpVersionAttackLayer7SummaryResponse {
 }
 
 export const IpVersionAttackLayer7SummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary024,
@@ -55068,7 +54976,7 @@ export const ipVersionAttackLayer7Summary: API.OperationMethod<
   IpVersionAttackLayer7SummaryResponse,
   IpVersionAttackLayer7SummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpVersionAttackLayer7SummaryRequest,
   output: IpVersionAttackLayer7SummaryResponse,
   errors: [],
@@ -55165,7 +55073,7 @@ export interface HttpVersionAttackLayer7TimeseriesGroupRequest {
 }
 
 export const HttpVersionAttackLayer7TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -55352,7 +55260,7 @@ export interface HttpVersionAttackLayer7TimeseriesGroupResponse {
 }
 
 export const HttpVersionAttackLayer7TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie025,
@@ -55366,7 +55274,7 @@ export const httpVersionAttackLayer7TimeseriesGroup: API.OperationMethod<
   HttpVersionAttackLayer7TimeseriesGroupResponse,
   HttpVersionAttackLayer7TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: HttpVersionAttackLayer7TimeseriesGroupRequest,
   output: HttpVersionAttackLayer7TimeseriesGroupResponse,
   errors: [],
@@ -55459,7 +55367,7 @@ export interface IpVersionAttackLayer7TimeseriesGroupRequest {
 }
 
 export const IpVersionAttackLayer7TimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -55644,7 +55552,7 @@ export interface IpVersionAttackLayer7TimeseriesGroupResponse {
 }
 
 export const IpVersionAttackLayer7TimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie024,
@@ -55658,7 +55566,7 @@ export const ipVersionAttackLayer7TimeseriesGroup: API.OperationMethod<
   IpVersionAttackLayer7TimeseriesGroupResponse,
   IpVersionAttackLayer7TimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpVersionAttackLayer7TimeseriesGroupRequest,
   output: IpVersionAttackLayer7TimeseriesGroupResponse,
   errors: [],
@@ -55809,7 +55717,7 @@ export interface IpVersionDnsSummaryRequest {
 }
 
 export const IpVersionDnsSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       continent: Schema.optional(Schema.Array(Schema.String)),
@@ -56024,7 +55932,7 @@ export interface IpVersionDnsSummaryResponse {
 }
 
 export const IpVersionDnsSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary024,
@@ -56038,7 +55946,7 @@ export const ipVersionDnsSummary: API.OperationMethod<
   IpVersionDnsSummaryResponse,
   IpVersionDnsSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpVersionDnsSummaryRequest,
   output: IpVersionDnsSummaryResponse,
   errors: [],
@@ -56191,7 +56099,7 @@ export interface IpVersionDnsTimeseriesGroupRequest {
 }
 
 export const IpVersionDnsTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -56424,7 +56332,7 @@ export interface IpVersionDnsTimeseriesGroupResponse {
 }
 
 export const IpVersionDnsTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie023,
@@ -56438,7 +56346,7 @@ export const ipVersionDnsTimeseriesGroup: API.OperationMethod<
   IpVersionDnsTimeseriesGroupResponse,
   IpVersionDnsTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpVersionDnsTimeseriesGroupRequest,
   output: IpVersionDnsTimeseriesGroupResponse,
   errors: [],
@@ -56472,7 +56380,7 @@ export interface IpVersionEmailRoutingSummaryRequest {
 }
 
 export const IpVersionEmailRoutingSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -56596,7 +56504,7 @@ export interface IpVersionEmailRoutingSummaryResponse {
 }
 
 export const IpVersionEmailRoutingSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary024,
@@ -56610,7 +56518,7 @@ export const ipVersionEmailRoutingSummary: API.OperationMethod<
   IpVersionEmailRoutingSummaryResponse,
   IpVersionEmailRoutingSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpVersionEmailRoutingSummaryRequest,
   output: IpVersionEmailRoutingSummaryResponse,
   errors: [],
@@ -56646,7 +56554,7 @@ export interface IpVersionEmailRoutingTimeseriesGroupRequest {
 }
 
 export const IpVersionEmailRoutingTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -56783,7 +56691,7 @@ export interface IpVersionEmailRoutingTimeseriesGroupResponse {
 }
 
 export const IpVersionEmailRoutingTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie023,
@@ -56797,7 +56705,7 @@ export const ipVersionEmailRoutingTimeseriesGroup: API.OperationMethod<
   IpVersionEmailRoutingTimeseriesGroupResponse,
   IpVersionEmailRoutingTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpVersionEmailRoutingTimeseriesGroupRequest,
   output: IpVersionEmailRoutingTimeseriesGroupResponse,
   errors: [],
@@ -56829,7 +56737,7 @@ export interface TlsVersionEmailSecuritySummaryRequest {
 }
 
 export const TlsVersionEmailSecuritySummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arc: Schema.optional(
         Schema.Array(
@@ -56950,7 +56858,7 @@ export interface TlsVersionEmailSecuritySummaryResponse {
 }
 
 export const TlsVersionEmailSecuritySummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary026,
@@ -56964,7 +56872,7 @@ export const tlsVersionEmailSecuritySummary: API.OperationMethod<
   TlsVersionEmailSecuritySummaryResponse,
   TlsVersionEmailSecuritySummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TlsVersionEmailSecuritySummaryRequest,
   output: TlsVersionEmailSecuritySummaryResponse,
   errors: [],
@@ -56998,7 +56906,7 @@ export interface TlsVersionEmailSecurityTimeseriesGroupRequest {
 }
 
 export const TlsVersionEmailSecurityTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -57132,7 +57040,7 @@ export interface TlsVersionEmailSecurityTimeseriesGroupResponse {
 }
 
 export const TlsVersionEmailSecurityTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie026,
@@ -57146,7 +57054,7 @@ export const tlsVersionEmailSecurityTimeseriesGroup: API.OperationMethod<
   TlsVersionEmailSecurityTimeseriesGroupResponse,
   TlsVersionEmailSecurityTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TlsVersionEmailSecurityTimeseriesGroupRequest,
   output: TlsVersionEmailSecurityTimeseriesGroupResponse,
   errors: [],
@@ -57208,7 +57116,7 @@ export interface HttpVersionHttpSummaryRequest {
 }
 
 export const HttpVersionHttpSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       botClass: Schema.optional(
@@ -57357,7 +57265,7 @@ export interface HttpVersionHttpSummaryResponse {
 }
 
 export const HttpVersionHttpSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary025,
@@ -57371,7 +57279,7 @@ export const httpVersionHttpSummary: API.OperationMethod<
   HttpVersionHttpSummaryResponse,
   HttpVersionHttpSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: HttpVersionHttpSummaryRequest,
   output: HttpVersionHttpSummaryResponse,
   errors: [],
@@ -57429,7 +57337,7 @@ export interface IpVersionHttpSummaryRequest {
 }
 
 export const IpVersionHttpSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       botClass: Schema.optional(
@@ -57579,7 +57487,7 @@ export interface IpVersionHttpSummaryResponse {
 }
 
 export const IpVersionHttpSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary024,
@@ -57593,7 +57501,7 @@ export const ipVersionHttpSummary: API.OperationMethod<
   IpVersionHttpSummaryResponse,
   IpVersionHttpSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpVersionHttpSummaryRequest,
   output: IpVersionHttpSummaryResponse,
   errors: [],
@@ -57644,7 +57552,7 @@ export interface TlsVersionHttpSummaryRequest {
 }
 
 export const TlsVersionHttpSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       asn: Schema.optional(Schema.Array(Schema.String)),
       botClass: Schema.optional(
@@ -57791,7 +57699,7 @@ export interface TlsVersionHttpSummaryResponse {
 }
 
 export const TlsVersionHttpSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta,
       summary_0: Summary027,
@@ -57805,7 +57713,7 @@ export const tlsVersionHttpSummary: API.OperationMethod<
   TlsVersionHttpSummaryResponse,
   TlsVersionHttpSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TlsVersionHttpSummaryRequest,
   output: TlsVersionHttpSummaryResponse,
   errors: [],
@@ -57869,7 +57777,7 @@ export interface HttpVersionHttpTimeseriesGroupRequest {
 }
 
 export const HttpVersionHttpTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -58039,7 +57947,7 @@ export interface HttpVersionHttpTimeseriesGroupResponse {
 }
 
 export const HttpVersionHttpTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie025,
@@ -58053,7 +57961,7 @@ export const httpVersionHttpTimeseriesGroup: API.OperationMethod<
   HttpVersionHttpTimeseriesGroupResponse,
   HttpVersionHttpTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: HttpVersionHttpTimeseriesGroupRequest,
   output: HttpVersionHttpTimeseriesGroupResponse,
   errors: [],
@@ -58113,7 +58021,7 @@ export interface IpVersionHttpTimeseriesGroupRequest {
 }
 
 export const IpVersionHttpTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -58281,7 +58189,7 @@ export interface IpVersionHttpTimeseriesGroupResponse {
 }
 
 export const IpVersionHttpTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie024,
@@ -58295,7 +58203,7 @@ export const ipVersionHttpTimeseriesGroup: API.OperationMethod<
   IpVersionHttpTimeseriesGroupResponse,
   IpVersionHttpTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IpVersionHttpTimeseriesGroupRequest,
   output: IpVersionHttpTimeseriesGroupResponse,
   errors: [],
@@ -58348,7 +58256,7 @@ export interface TlsVersionHttpTimeseriesGroupRequest {
 }
 
 export const TlsVersionHttpTimeseriesGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggInterval: Schema.optional(
         Schema.Union([
@@ -58514,7 +58422,7 @@ export interface TlsVersionHttpTimeseriesGroupResponse {
 }
 
 export const TlsVersionHttpTimeseriesGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       meta: Meta2,
       serie_0: Serie027,
@@ -58528,7 +58436,7 @@ export const tlsVersionHttpTimeseriesGroup: API.OperationMethod<
   TlsVersionHttpTimeseriesGroupResponse,
   TlsVersionHttpTimeseriesGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TlsVersionHttpTimeseriesGroupRequest,
   output: TlsVersionHttpTimeseriesGroupResponse,
   errors: [],

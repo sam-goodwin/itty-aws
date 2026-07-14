@@ -10,7 +10,7 @@ export interface GetV1WorkspacesByWorkspaceIdIntegrationsInput {
   limit?: number;
 }
 export const GetV1WorkspacesByWorkspaceIdIntegrationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workspaceId: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -34,7 +34,7 @@ export interface GetV1WorkspacesByWorkspaceIdIntegrationsOutput {
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
 export const GetV1WorkspacesByWorkspaceIdIntegrationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -66,7 +66,7 @@ export const GetV1WorkspacesByWorkspaceIdIntegrationsOutput =
  * Returns integrations for the given workspace.
  */
 export const getV1WorkspacesByWorkspaceIdIntegrations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1WorkspacesByWorkspaceIdIntegrationsInput,
     outputSchema: GetV1WorkspacesByWorkspaceIdIntegrationsOutput,
     errors: [NotFound, UnprocessableEntity] as const,

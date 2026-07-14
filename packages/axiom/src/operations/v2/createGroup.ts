@@ -11,7 +11,7 @@ export interface CreateGroupInput {
   name: string;
   roles?: ReadonlyArray<string>;
 }
-export const CreateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateGroupInput = /*@__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.String),
   isManaged: Schema.optional(Schema.Boolean),
   members: Schema.optional(Schema.Array(Schema.String)),
@@ -30,7 +30,7 @@ export interface CreateGroupOutput {
   roles?: ReadonlyArray<string>;
   id: string;
 }
-export const CreateGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateGroupOutput = /*@__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.String),
   isManaged: Schema.optional(Schema.Boolean),
   members: Schema.optional(Schema.Array(Schema.String)),
@@ -45,7 +45,7 @@ export const CreateGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Creates a new group in the organization.
  */
-export const createGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateGroupInput,
   outputSchema: CreateGroupOutput,
   errors: [UnprocessableEntity] as const,

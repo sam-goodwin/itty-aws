@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface DeleteNotifierInput {
   id: string;
 }
-export const DeleteNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteNotifierInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/v2/notifiers/{id}" }),
@@ -16,13 +16,13 @@ export const DeleteNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteNotifierOutput = void;
 export const DeleteNotifierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteNotifierOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteNotifierOutput>;
 
 // The operation
 /**
  * Delete notifier
  */
-export const deleteNotifier = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteNotifier = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteNotifierInput,
   outputSchema: DeleteNotifierOutput,
   errors: [NotFound] as const,

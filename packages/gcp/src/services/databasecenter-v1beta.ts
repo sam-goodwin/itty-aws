@@ -32,7 +32,7 @@ export interface Databasecenter_Date {
 }
 
 export const Databasecenter_Date: Schema.Codec<Databasecenter_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
@@ -50,7 +50,7 @@ export interface TimeOfDay {
 }
 
 export const TimeOfDay: Schema.Codec<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nanos: Schema.optional(Schema.Number),
     hours: Schema.optional(Schema.Number),
     minutes: Schema.optional(Schema.Number),
@@ -67,7 +67,7 @@ export interface ResourceMaintenanceDenySchedule {
 }
 
 export const ResourceMaintenanceDenySchedule: Schema.Codec<ResourceMaintenanceDenySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Databasecenter_Date),
     time: Schema.optional(TimeOfDay),
     endDate: Schema.optional(Databasecenter_Date),
@@ -190,7 +190,7 @@ export interface SignalFilter {
 }
 
 export const SignalFilter: Schema.Codec<SignalFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signalType: Schema.optional(Schema.String),
     signalStatus: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignalFilter" });
@@ -307,7 +307,7 @@ export interface SignalTypeGroup {
 }
 
 export const SignalTypeGroup: Schema.Codec<SignalTypeGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signalTypes: Schema.optional(Schema.Array(Schema.String)),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignalTypeGroup" });
@@ -330,7 +330,7 @@ export interface QueryDatabaseResourceGroupsRequest {
 }
 
 export const QueryDatabaseResourceGroupsRequest: Schema.Codec<QueryDatabaseResourceGroupsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String),
     signalFilters: Schema.optional(Schema.Array(SignalFilter)),
     signalTypeGroups: Schema.optional(Schema.Array(SignalTypeGroup)),
@@ -360,7 +360,7 @@ export interface Lineage {
 }
 
 export const Lineage: Schema.Codec<Lineage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceFqn: Schema.optional(Schema.String),
     targetFqn: Schema.optional(Schema.String),
     processFqn: Schema.optional(Schema.String),
@@ -377,7 +377,7 @@ export interface Affiliation {
 }
 
 export const Affiliation: Schema.Codec<Affiliation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lineages: Schema.optional(Schema.Array(Lineage)),
     fullResourceName: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
@@ -423,7 +423,7 @@ export interface Product {
 }
 
 export const Product: Schema.Codec<Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     engine: Schema.optional(Schema.String),
     minorVersion: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -442,7 +442,7 @@ export interface SubResource {
 }
 
 export const SubResource: Schema.Codec<SubResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     container: Schema.optional(Schema.String),
     fullResourceName: Schema.optional(Schema.String),
     resourceType: Schema.optional(Schema.String),
@@ -473,7 +473,7 @@ export interface BackupRunInfo {
 }
 
 export const BackupRunInfo: Schema.Codec<BackupRunInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     subResource: Schema.optional(SubResource),
@@ -494,7 +494,7 @@ export interface ResourceDetails {
 }
 
 export const ResourceDetails: Schema.Codec<ResourceDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     product: Schema.optional(Product),
     container: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -509,7 +509,7 @@ export interface DeltaDetails {
 }
 
 export const DeltaDetails: Schema.Codec<DeltaDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     increasedResources: Schema.optional(Schema.Array(ResourceDetails)),
     decreasedResources: Schema.optional(Schema.Array(ResourceDetails)),
   }).annotate({ identifier: "DeltaDetails" });
@@ -520,7 +520,7 @@ export interface OutdatedMinorVersionInfo {
 }
 
 export const OutdatedMinorVersionInfo: Schema.Codec<OutdatedMinorVersionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendedMinorVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "OutdatedMinorVersionInfo" });
 
@@ -538,7 +538,7 @@ export interface InefficientQueryInfo {
 }
 
 export const InefficientQueryInfo: Schema.Codec<InefficientQueryInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storageCostBytes: Schema.optional(Schema.String),
     database: Schema.optional(Schema.String),
     table: Schema.optional(Schema.String),
@@ -558,7 +558,7 @@ export interface RetentionSettingsInfo {
 }
 
 export const RetentionSettingsInfo: Schema.Codec<RetentionSettingsInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     durationBasedRetention: Schema.optional(Schema.String),
     quantityBasedRetention: Schema.optional(Schema.Number),
     timestampBasedRetentionTime: Schema.optional(Schema.String),
@@ -573,7 +573,7 @@ export interface RegulatoryStandard {
 }
 
 export const RegulatoryStandard: Schema.Codec<RegulatoryStandard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     standard: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "RegulatoryStandard" });
@@ -590,7 +590,7 @@ export interface SCCInfo {
 }
 
 export const SCCInfo: Schema.Codec<SCCInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signal: Schema.optional(Schema.String),
     regulatoryStandards: Schema.optional(Schema.Array(RegulatoryStandard)),
     externalUri: Schema.optional(Schema.String),
@@ -605,7 +605,7 @@ export interface AutomatedBackupPolicyInfo {
 }
 
 export const AutomatedBackupPolicyInfo: Schema.Codec<AutomatedBackupPolicyInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subResource: Schema.optional(SubResource),
     isEnabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "AutomatedBackupPolicyInfo" });
@@ -618,7 +618,7 @@ export interface DeletionProtectionInfo {
 }
 
 export const DeletionProtectionInfo: Schema.Codec<DeletionProtectionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subResource: Schema.optional(SubResource),
     deletionProtectionEnabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DeletionProtectionInfo" });
@@ -648,7 +648,7 @@ export interface ResourceMaintenanceSchedule {
 }
 
 export const ResourceMaintenanceSchedule: Schema.Codec<ResourceMaintenanceSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(TimeOfDay),
     day: Schema.optional(Schema.String),
     phase: Schema.optional(Schema.String),
@@ -660,7 +660,7 @@ export interface MaintenanceRecommendationInfo {
 }
 
 export const MaintenanceRecommendationInfo: Schema.Codec<MaintenanceRecommendationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceMaintenanceSchedules: Schema.optional(
       Schema.Array(ResourceMaintenanceSchedule),
     ),
@@ -682,7 +682,7 @@ export interface ResourceSuspensionInfo {
 }
 
 export const ResourceSuspensionInfo: Schema.Codec<ResourceSuspensionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceSuspended: Schema.optional(Schema.Boolean),
     suspensionReason: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResourceSuspensionInfo" });
@@ -697,7 +697,7 @@ export interface RecommendationInfo {
 }
 
 export const RecommendationInfo: Schema.Codec<RecommendationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommender: Schema.optional(Schema.String),
     recommenderId: Schema.optional(Schema.String),
     recommenderSubtype: Schema.optional(Schema.String),
@@ -842,7 +842,7 @@ export interface AdditionalDetail {
 }
 
 export const AdditionalDetail: Schema.Codec<AdditionalDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     backupRunInfo: Schema.optional(BackupRunInfo),
     outdatedMinorVersionInfo: Schema.optional(OutdatedMinorVersionInfo),
     inefficientQueryInfo: Schema.optional(InefficientQueryInfo),
@@ -990,7 +990,7 @@ export interface Signal {
 }
 
 export const Signal: Schema.Codec<Signal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signalType: Schema.optional(Schema.String),
     additionalDetails: Schema.optional(Schema.Array(AdditionalDetail)),
     issueSeverity: Schema.optional(Schema.String),
@@ -1010,7 +1010,7 @@ export interface AggregateQueryStatsRequest {
 }
 
 export const AggregateQueryStatsRequest: Schema.Codec<AggregateQueryStatsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -1029,7 +1029,7 @@ export interface AggregateIssueStatsRequest {
 }
 
 export const AggregateIssueStatsRequest: Schema.Codec<AggregateIssueStatsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
     signalTypeGroups: Schema.optional(Schema.Array(SignalTypeGroup)),
@@ -1158,7 +1158,7 @@ export interface IssueStats {
 }
 
 export const IssueStats: Schema.Codec<IssueStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signalType: Schema.optional(Schema.String),
     resourceCount: Schema.optional(Schema.Number),
     deltaDetails: Schema.optional(DeltaDetails),
@@ -1261,7 +1261,7 @@ export interface Dimension {
 }
 
 export const Dimension: Schema.Codec<Dimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     tagKey: Schema.optional(Schema.String),
     tagValue: Schema.optional(Schema.String),
@@ -1291,7 +1291,7 @@ export interface TypedValue {
 }
 
 export const TypedValue: Schema.Codec<TypedValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     doubleValue: Schema.optional(Schema.Number),
     int64Value: Schema.optional(Schema.String),
   }).annotate({ identifier: "TypedValue" });
@@ -1304,7 +1304,7 @@ export interface MetricData {
 }
 
 export const MetricData: Schema.Codec<MetricData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     observationTime: Schema.optional(Schema.String),
     value: Schema.optional(TypedValue),
   }).annotate({ identifier: "MetricData" });
@@ -1331,7 +1331,7 @@ export interface Metrics {
 }
 
 export const Metrics: Schema.Codec<Metrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentMemoryUsedBytes: Schema.optional(MetricData),
     peakStorageUtilization: Schema.optional(MetricData),
     nodeCount: Schema.optional(MetricData),
@@ -1454,7 +1454,7 @@ export interface SignalProductsFilters {
 }
 
 export const SignalProductsFilters: Schema.Codec<SignalProductsFilters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signalType: Schema.optional(Schema.String),
     products: Schema.optional(Schema.Array(Product)),
   }).annotate({ identifier: "SignalProductsFilters" });
@@ -1475,7 +1475,7 @@ export interface QueryIssuesRequest {
 }
 
 export const QueryIssuesRequest: Schema.Codec<QueryIssuesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String),
     signalProductsFilters: Schema.optional(Schema.Array(SignalProductsFilters)),
     orderBy: Schema.optional(Schema.String),
@@ -1492,7 +1492,7 @@ export interface UpcomingMaintenance {
 }
 
 export const UpcomingMaintenance: Schema.Codec<UpcomingMaintenance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpcomingMaintenance" });
@@ -1503,7 +1503,7 @@ export interface BackupDRConfig {
 }
 
 export const BackupDRConfig: Schema.Codec<BackupDRConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     backupdrManaged: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BackupDRConfig" });
 
@@ -1517,7 +1517,7 @@ export interface Label {
 }
 
 export const Label: Schema.Codec<Label> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     source: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1537,7 +1537,7 @@ export interface MachineConfig {
 }
 
 export const MachineConfig: Schema.Codec<MachineConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vcpuCount: Schema.optional(Schema.Number),
     memorySizeBytes: Schema.optional(Schema.String),
     shardCount: Schema.optional(Schema.Number),
@@ -1555,7 +1555,7 @@ export interface SignalGroup {
 }
 
 export const SignalGroup: Schema.Codec<SignalGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     issueCount: Schema.optional(Schema.Number),
     signals: Schema.optional(Schema.Array(Signal)),
@@ -1571,14 +1571,12 @@ export interface Tag {
   value?: string;
 }
 
-export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    key: Schema.optional(Schema.String),
-    inherited: Schema.optional(Schema.Boolean),
-    source: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Tag" });
+export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  inherited: Schema.optional(Schema.Boolean),
+  source: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "Tag" });
 
 export interface MaintenanceInfo {
   /** Output only. Previous maintenance version of the database resource. Example: "MYSQL_8_0_41.R20250531.01_15". This is available once a minor version maintenance is complete on a database resource. */
@@ -1611,7 +1609,7 @@ export interface MaintenanceInfo {
 }
 
 export const MaintenanceInfo: Schema.Codec<MaintenanceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     previousMaintenanceVersion: Schema.optional(Schema.String),
     currentVersionReleaseDate: Schema.optional(Databasecenter_Date),
     possibleFailureReasons: Schema.optional(Schema.Array(Schema.String)),
@@ -1686,7 +1684,7 @@ export interface DatabaseResource {
 }
 
 export const DatabaseResource: Schema.Codec<DatabaseResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fullResourceName: Schema.optional(Schema.String),
       backupdrConfig: Schema.optional(BackupDRConfig),
@@ -1719,7 +1717,7 @@ export interface DatabaseResourceIssue {
 }
 
 export const DatabaseResourceIssue: Schema.Codec<DatabaseResourceIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signal: Schema.optional(Signal),
     resource: Schema.optional(DatabaseResource),
   }).annotate({ identifier: "DatabaseResourceIssue" });
@@ -1734,7 +1732,7 @@ export interface QueryIssuesResponse {
 }
 
 export const QueryIssuesResponse: Schema.Codec<QueryIssuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     resourceIssues: Schema.optional(Schema.Array(DatabaseResourceIssue)),
@@ -1748,7 +1746,7 @@ export interface IssueCount {
 }
 
 export const IssueCount: Schema.Codec<IssueCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     issueCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "IssueCount" });
@@ -1769,7 +1767,7 @@ export interface IssueGroupStats {
 }
 
 export const IssueGroupStats: Schema.Codec<IssueGroupStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     resourcesCount: Schema.optional(Schema.Number),
     healthyResourcesCount: Schema.optional(Schema.Number),
@@ -1797,7 +1795,7 @@ export interface QueryMetrics {
 }
 
 export const QueryMetrics: Schema.Codec<QueryMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rowsProcessed: Schema.optional(Schema.String),
     executionCount: Schema.optional(Schema.String),
     totalCpuTime: Schema.optional(Schema.String),
@@ -1815,7 +1813,7 @@ export interface ResourceId {
 }
 
 export const ResourceId: Schema.Codec<ResourceId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     product: Schema.optional(Product),
     fullResourceName: Schema.optional(Schema.String),
@@ -1837,7 +1835,7 @@ export interface QueryStats {
 }
 
 export const QueryStats: Schema.Codec<QueryStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queryMetrics: Schema.optional(QueryMetrics),
     queryHash: Schema.optional(Schema.String),
     inefficientQueryInfo: Schema.optional(InefficientQueryInfo),
@@ -1854,7 +1852,7 @@ export interface DatabaseResourceGroup {
 }
 
 export const DatabaseResourceGroup: Schema.Codec<DatabaseResourceGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rootResources: Schema.optional(Schema.Array(DatabaseResource)),
     signalGroups: Schema.optional(Schema.Array(IssueCount)),
   }).annotate({ identifier: "DatabaseResourceGroup" });
@@ -1871,7 +1869,7 @@ export interface QueryDatabaseResourceGroupsResponse {
 }
 
 export const QueryDatabaseResourceGroupsResponse: Schema.Codec<QueryDatabaseResourceGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     resourceGroups: Schema.optional(Schema.Array(DatabaseResourceGroup)),
@@ -1886,7 +1884,7 @@ export interface QueryStatsInfo {
 }
 
 export const QueryStatsInfo: Schema.Codec<QueryStatsInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queryStats: Schema.optional(Schema.Array(QueryStats)),
     aggregatedQueryStats: Schema.optional(QueryStats),
   }).annotate({ identifier: "QueryStatsInfo" });
@@ -1901,7 +1899,7 @@ export interface AggregateQueryStatsResponse {
 }
 
 export const AggregateQueryStatsResponse: Schema.Codec<AggregateQueryStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queryStats: Schema.optional(Schema.Array(QueryStatsInfo)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1917,7 +1915,7 @@ export interface QueryProductsResponse {
 }
 
 export const QueryProductsResponse: Schema.Codec<QueryProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     products: Schema.optional(Schema.Array(Product)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1935,7 +1933,7 @@ export interface AggregateFleetRow {
 }
 
 export const AggregateFleetRow: Schema.Codec<AggregateFleetRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupsCount: Schema.optional(Schema.Number),
     deltaDetails: Schema.optional(DeltaDetails),
     dimension: Schema.optional(Schema.Array(Dimension)),
@@ -1954,7 +1952,7 @@ export interface AggregateIssueStatsResponse {
 }
 
 export const AggregateIssueStatsResponse: Schema.Codec<AggregateIssueStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     totalResourcesCount: Schema.optional(Schema.Number),
     totalResourceGroupsCount: Schema.optional(Schema.Number),
@@ -1977,7 +1975,7 @@ export interface AggregateFleetResponse {
 }
 
 export const AggregateFleetResponse: Schema.Codec<AggregateFleetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupsTotalCount: Schema.optional(Schema.Number),
     totalSize: Schema.optional(Schema.String),
     resourceTotalCount: Schema.optional(Schema.Number),
@@ -2050,7 +2048,7 @@ export interface QueryProductsV1betaRequest {
 }
 
 export const QueryProductsV1betaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2060,8 +2058,7 @@ export const QueryProductsV1betaRequest =
   ) as unknown as Schema.Codec<QueryProductsV1betaRequest>;
 
 export type QueryProductsV1betaResponse = QueryProductsResponse;
-export const QueryProductsV1betaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ QueryProductsResponse;
+export const QueryProductsV1betaResponse = /*@__PURE__*/ QueryProductsResponse;
 
 export type QueryProductsV1betaError = DefaultErrors | NotFound | Forbidden;
 
@@ -2071,7 +2068,7 @@ export const queryProductsV1beta: API.PaginatedOperationMethod<
   QueryProductsV1betaResponse,
   QueryProductsV1betaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryProductsV1betaRequest,
   output: QueryProductsV1betaResponse,
   errors: [NotFound, Forbidden],
@@ -2103,7 +2100,7 @@ export interface AggregateFleetV1betaRequest {
 }
 
 export const AggregateFleetV1betaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     "baselineDate.year": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("baselineDate.year"),
@@ -2126,7 +2123,7 @@ export const AggregateFleetV1betaRequest =
 
 export type AggregateFleetV1betaResponse = AggregateFleetResponse;
 export const AggregateFleetV1betaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AggregateFleetResponse;
+  /*@__PURE__*/ AggregateFleetResponse;
 
 export type AggregateFleetV1betaError = DefaultErrors | NotFound | Forbidden;
 
@@ -2136,7 +2133,7 @@ export const aggregateFleetV1beta: API.PaginatedOperationMethod<
   AggregateFleetV1betaResponse,
   AggregateFleetV1betaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: AggregateFleetV1betaRequest,
   output: AggregateFleetV1betaResponse,
   errors: [NotFound, Forbidden],
@@ -2152,7 +2149,7 @@ export interface AggregateIssueStatsV1betaRequest {
 }
 
 export const AggregateIssueStatsV1betaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(AggregateIssueStatsRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -2165,7 +2162,7 @@ export const AggregateIssueStatsV1betaRequest =
 
 export type AggregateIssueStatsV1betaResponse = AggregateIssueStatsResponse;
 export const AggregateIssueStatsV1betaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AggregateIssueStatsResponse;
+  /*@__PURE__*/ AggregateIssueStatsResponse;
 
 export type AggregateIssueStatsV1betaError =
   | DefaultErrors
@@ -2180,7 +2177,7 @@ export const aggregateIssueStatsV1beta: API.OperationMethod<
   AggregateIssueStatsV1betaResponse,
   AggregateIssueStatsV1betaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AggregateIssueStatsV1betaRequest,
   output: AggregateIssueStatsV1betaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2192,7 +2189,7 @@ export interface QueryDatabaseResourceGroupsV1betaRequest {
 }
 
 export const QueryDatabaseResourceGroupsV1betaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(QueryDatabaseResourceGroupsRequest).pipe(
       T.HttpBody(),
     ),
@@ -2208,7 +2205,7 @@ export const QueryDatabaseResourceGroupsV1betaRequest =
 export type QueryDatabaseResourceGroupsV1betaResponse =
   QueryDatabaseResourceGroupsResponse;
 export const QueryDatabaseResourceGroupsV1betaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ QueryDatabaseResourceGroupsResponse;
+  /*@__PURE__*/ QueryDatabaseResourceGroupsResponse;
 
 export type QueryDatabaseResourceGroupsV1betaError =
   | DefaultErrors
@@ -2223,7 +2220,7 @@ export const queryDatabaseResourceGroupsV1beta: API.OperationMethod<
   QueryDatabaseResourceGroupsV1betaResponse,
   QueryDatabaseResourceGroupsV1betaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryDatabaseResourceGroupsV1betaRequest,
   output: QueryDatabaseResourceGroupsV1betaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2235,7 +2232,7 @@ export interface QueryIssuesV1betaRequest {
 }
 
 export const QueryIssuesV1betaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(QueryIssuesRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1beta:queryIssues", hasBody: true }),
@@ -2243,8 +2240,7 @@ export const QueryIssuesV1betaRequest =
   ) as unknown as Schema.Codec<QueryIssuesV1betaRequest>;
 
 export type QueryIssuesV1betaResponse = QueryIssuesResponse;
-export const QueryIssuesV1betaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ QueryIssuesResponse;
+export const QueryIssuesV1betaResponse = /*@__PURE__*/ QueryIssuesResponse;
 
 export type QueryIssuesV1betaError =
   | DefaultErrors
@@ -2259,7 +2255,7 @@ export const queryIssuesV1beta: API.OperationMethod<
   QueryIssuesV1betaResponse,
   QueryIssuesV1betaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryIssuesV1betaRequest,
   output: QueryIssuesV1betaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2273,7 +2269,7 @@ export interface AggregateQueryStatsFoldersRequest {
 }
 
 export const AggregateQueryStatsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AggregateQueryStatsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2287,7 +2283,7 @@ export const AggregateQueryStatsFoldersRequest =
 
 export type AggregateQueryStatsFoldersResponse = AggregateQueryStatsResponse;
 export const AggregateQueryStatsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AggregateQueryStatsResponse;
+  /*@__PURE__*/ AggregateQueryStatsResponse;
 
 export type AggregateQueryStatsFoldersError =
   | DefaultErrors
@@ -2302,7 +2298,7 @@ export const aggregateQueryStatsFolders: API.OperationMethod<
   AggregateQueryStatsFoldersResponse,
   AggregateQueryStatsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AggregateQueryStatsFoldersRequest,
   output: AggregateQueryStatsFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2316,7 +2312,7 @@ export interface AggregateQueryStatsOrganizationsRequest {
 }
 
 export const AggregateQueryStatsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AggregateQueryStatsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2331,7 +2327,7 @@ export const AggregateQueryStatsOrganizationsRequest =
 export type AggregateQueryStatsOrganizationsResponse =
   AggregateQueryStatsResponse;
 export const AggregateQueryStatsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AggregateQueryStatsResponse;
+  /*@__PURE__*/ AggregateQueryStatsResponse;
 
 export type AggregateQueryStatsOrganizationsError =
   | DefaultErrors
@@ -2346,7 +2342,7 @@ export const aggregateQueryStatsOrganizations: API.OperationMethod<
   AggregateQueryStatsOrganizationsResponse,
   AggregateQueryStatsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AggregateQueryStatsOrganizationsRequest,
   output: AggregateQueryStatsOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2360,7 +2356,7 @@ export interface AggregateQueryStatsProjectsRequest {
 }
 
 export const AggregateQueryStatsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AggregateQueryStatsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2374,7 +2370,7 @@ export const AggregateQueryStatsProjectsRequest =
 
 export type AggregateQueryStatsProjectsResponse = AggregateQueryStatsResponse;
 export const AggregateQueryStatsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AggregateQueryStatsResponse;
+  /*@__PURE__*/ AggregateQueryStatsResponse;
 
 export type AggregateQueryStatsProjectsError =
   | DefaultErrors
@@ -2389,7 +2385,7 @@ export const aggregateQueryStatsProjects: API.OperationMethod<
   AggregateQueryStatsProjectsResponse,
   AggregateQueryStatsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AggregateQueryStatsProjectsRequest,
   output: AggregateQueryStatsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

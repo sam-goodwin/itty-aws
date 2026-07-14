@@ -19,7 +19,7 @@ export interface GetV2CommerceProductCatalogImportsInput {
     | "succeeded_with_errors";
 }
 export const GetV2CommerceProductCatalogImportsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
     created_gt: Schema.optional(Schema.String),
     created_gte: Schema.optional(Schema.String),
@@ -88,7 +88,7 @@ export interface GetV2CommerceProductCatalogImportsOutput {
   previous_page_url: string | null;
 }
 export const GetV2CommerceProductCatalogImportsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         created: Schema.String,
@@ -193,7 +193,7 @@ Must be an RFC 3339 date & time value, for example: 2022-09-18T13:22:00Z.
  * @param status - Filter by import status.
  */
 export const GetV2CommerceProductCatalogImports =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV2CommerceProductCatalogImportsInput,
     outputSchema: GetV2CommerceProductCatalogImportsOutput,
   }));

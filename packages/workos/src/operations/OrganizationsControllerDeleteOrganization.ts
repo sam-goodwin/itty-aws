@@ -8,7 +8,7 @@ export interface OrganizationsControllerDeleteOrganizationInput {
   id: string;
 }
 export const OrganizationsControllerDeleteOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/organizations/{id}" }),
@@ -17,7 +17,7 @@ export const OrganizationsControllerDeleteOrganizationInput =
 // Output Schema
 export type OrganizationsControllerDeleteOrganizationOutput = void;
 export const OrganizationsControllerDeleteOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationsControllerDeleteOrganizationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationsControllerDeleteOrganizationOutput>;
 
 // The operation
 /**
@@ -28,7 +28,7 @@ export const OrganizationsControllerDeleteOrganizationOutput =
  * @param id - Unique identifier of the Organization.
  */
 export const OrganizationsControllerDeleteOrganization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationsControllerDeleteOrganizationInput,
     outputSchema: OrganizationsControllerDeleteOrganizationOutput,
     errors: [Forbidden, NotFound] as const,

@@ -12,7 +12,7 @@ export interface ConversationsTicketsReplyCreateInput {
   rich_content?: unknown;
 }
 export const ConversationsTicketsReplyCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     message: Schema.String,
@@ -36,7 +36,7 @@ export interface ConversationsTicketsReplyCreateOutput {
   created_at: string;
 }
 export const ConversationsTicketsReplyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     content: Schema.String,
     rich_content: Schema.Unknown,
@@ -57,7 +57,7 @@ export const ConversationsTicketsReplyCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const conversationsTicketsReplyCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConversationsTicketsReplyCreateInput,
     outputSchema: ConversationsTicketsReplyCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -30,7 +30,7 @@ export interface CreateRoleInput {
   require_where_on_delete?: string;
   require_where_on_update?: string;
 }
-export const CreateRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateRoleInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -113,7 +113,7 @@ export interface CreateRoleOutput {
     require_where_on_update: "off" | "warn" | "on";
   };
 }
-export const CreateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateRoleOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   access_host_url: Schema.String,
@@ -181,7 +181,7 @@ export const CreateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param require_where_on_delete - Require WHERE clause on DELETE statements
  * @param require_where_on_update - Require WHERE clause on UPDATE statements
  */
-export const createRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateRoleInput,
   outputSchema: CreateRoleOutput,
   errors: [Forbidden, NotFound] as const,

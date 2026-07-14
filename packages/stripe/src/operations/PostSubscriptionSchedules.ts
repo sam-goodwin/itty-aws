@@ -129,7 +129,7 @@ export interface PostSubscriptionSchedulesInput {
   start_date?: number | "now";
 }
 export const PostSubscriptionSchedulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billing_mode: Schema.optional(
       Schema.Struct({
         flexible: Schema.optional(
@@ -1636,7 +1636,7 @@ export interface PostSubscriptionSchedulesOutput {
     | null;
 }
 export const PostSubscriptionSchedulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -2911,9 +2911,7 @@ export const PostSubscriptionSchedulesOutput =
  *
  * <p>Creates a new subscription schedule object. Each customer can have up to 500 active or scheduled subscriptions.</p>
  */
-export const PostSubscriptionSchedules = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostSubscriptionSchedulesInput,
-    outputSchema: PostSubscriptionSchedulesOutput,
-  }),
-);
+export const PostSubscriptionSchedules = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostSubscriptionSchedulesInput,
+  outputSchema: PostSubscriptionSchedulesOutput,
+}));

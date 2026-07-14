@@ -11,7 +11,7 @@ export interface PinGroupClusterFeatureCompatibilityVersionInput {
   pretty?: boolean;
 }
 export const PinGroupClusterFeatureCompatibilityVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const PinGroupClusterFeatureCompatibilityVersionInput =
 // Output Schema
 export type PinGroupClusterFeatureCompatibilityVersionOutput = void;
 export const PinGroupClusterFeatureCompatibilityVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PinGroupClusterFeatureCompatibilityVersionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PinGroupClusterFeatureCompatibilityVersionOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const PinGroupClusterFeatureCompatibilityVersionOutput =
  * @param clusterName - Human-readable label that identifies this cluster.
  */
 export const pinGroupClusterFeatureCompatibilityVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PinGroupClusterFeatureCompatibilityVersionInput,
     outputSchema: PinGroupClusterFeatureCompatibilityVersionOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

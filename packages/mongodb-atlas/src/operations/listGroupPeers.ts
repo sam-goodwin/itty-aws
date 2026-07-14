@@ -13,7 +13,7 @@ export interface ListGroupPeersInput {
   pretty?: boolean;
   providerName?: "AWS" | "AZURE" | "GCP";
 }
-export const ListGroupPeersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupPeersInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
@@ -28,7 +28,7 @@ export const ListGroupPeersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListGroupPeersOutput = void;
 export const ListGroupPeersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupPeersOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupPeersOutput>;
 
 // The operation
 /**
@@ -46,7 +46,7 @@ export const ListGroupPeersOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param providerName - Cloud service provider to use for this VPC peering connection.
  */
-export const listGroupPeers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupPeers = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupPeersInput,
   outputSchema: ListGroupPeersOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

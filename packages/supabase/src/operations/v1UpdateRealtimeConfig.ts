@@ -19,7 +19,7 @@ export interface V1UpdateRealtimeConfigInput {
   presence_enabled?: boolean;
 }
 export const V1UpdateRealtimeConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     private_only: Schema.optional(Schema.Boolean),
     connection_pool: Schema.optional(Schema.Number),
@@ -39,7 +39,7 @@ export const V1UpdateRealtimeConfigInput =
 // Output Schema
 export type V1UpdateRealtimeConfigOutput = void;
 export const V1UpdateRealtimeConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1UpdateRealtimeConfigOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1UpdateRealtimeConfigOutput>;
 
 // The operation
 /**
@@ -47,10 +47,8 @@ export const V1UpdateRealtimeConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1UpdateRealtimeConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdateRealtimeConfigInput,
-    outputSchema: V1UpdateRealtimeConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1UpdateRealtimeConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdateRealtimeConfigInput,
+  outputSchema: V1UpdateRealtimeConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

@@ -11,7 +11,7 @@ export interface PostSourcesSourceVerifyInput {
   values: string[];
 }
 export const PostSourcesSourceVerifyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     values: Schema.Array(Schema.String),
@@ -336,7 +336,7 @@ export interface PostSourcesSourceVerifyOutput {
   };
 }
 export const PostSourcesSourceVerifyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ach_credit_transfer: Schema.optional(
       Schema.Struct({
         account_number: Schema.optional(Schema.NullOr(Schema.String)),
@@ -757,9 +757,7 @@ export const PostSourcesSourceVerifyOutput =
 /**
  * <p>Verify a given source.</p>
  */
-export const PostSourcesSourceVerify = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostSourcesSourceVerifyInput,
-    outputSchema: PostSourcesSourceVerifyOutput,
-  }),
-);
+export const PostSourcesSourceVerify = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostSourcesSourceVerifyInput,
+  outputSchema: PostSourcesSourceVerifyOutput,
+}));

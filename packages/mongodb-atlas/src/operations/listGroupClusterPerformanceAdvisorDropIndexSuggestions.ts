@@ -9,7 +9,7 @@ export interface ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput {
   clusterName: string;
 }
 export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput =
 // Output Schema
 export type ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput = void;
 export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput>;
 
 // The operation
 /**
@@ -36,7 +36,7 @@ export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  */
 export const listGroupClusterPerformanceAdvisorDropIndexSuggestions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput,
     outputSchema: ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

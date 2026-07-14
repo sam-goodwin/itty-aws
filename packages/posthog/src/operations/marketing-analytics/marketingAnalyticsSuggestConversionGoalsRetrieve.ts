@@ -9,7 +9,7 @@ export interface MarketingAnalyticsSuggestConversionGoalsRetrieveInput {
   top_n?: number;
 }
 export const MarketingAnalyticsSuggestConversionGoalsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     min_count: Schema.optional(Schema.Number),
     top_n: Schema.optional(Schema.Number),
@@ -37,7 +37,7 @@ export interface MarketingAnalyticsSuggestConversionGoalsRetrieveOutput {
   excluded_events_count: number;
 }
 export const MarketingAnalyticsSuggestConversionGoalsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     candidates: Schema.Array(
       Schema.Struct({
         event_name: Schema.String,
@@ -66,7 +66,7 @@ export const MarketingAnalyticsSuggestConversionGoalsRetrieveOutput =
  * @param top_n - Max candidates to return
  */
 export const marketingAnalyticsSuggestConversionGoalsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketingAnalyticsSuggestConversionGoalsRetrieveInput,
     outputSchema: MarketingAnalyticsSuggestConversionGoalsRetrieveOutput,
   }));

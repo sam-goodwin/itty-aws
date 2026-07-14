@@ -10,7 +10,7 @@ export interface FeatureFlagsEvaluationReasonsRetrieveInput {
   groups?: string;
 }
 export const FeatureFlagsEvaluationReasonsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     distinct_id: Schema.String,
     groups: Schema.optional(Schema.String),
@@ -24,7 +24,7 @@ export const FeatureFlagsEvaluationReasonsRetrieveInput =
 // Output Schema
 export type FeatureFlagsEvaluationReasonsRetrieveOutput = void;
 export const FeatureFlagsEvaluationReasonsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FeatureFlagsEvaluationReasonsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FeatureFlagsEvaluationReasonsRetrieveOutput>;
 
 // The operation
 /**
@@ -36,7 +36,7 @@ export const FeatureFlagsEvaluationReasonsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const featureFlagsEvaluationReasonsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FeatureFlagsEvaluationReasonsRetrieveInput,
     outputSchema: FeatureFlagsEvaluationReasonsRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

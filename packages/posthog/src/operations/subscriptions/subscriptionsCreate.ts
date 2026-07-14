@@ -66,7 +66,7 @@ export interface SubscriptionsCreateInput {
   summary_prompt_guide?: string;
 }
 export const SubscriptionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.Number),
     resource_type: Schema.optional(
@@ -215,7 +215,7 @@ export interface SubscriptionsCreateOutput {
   summary_prompt_guide?: string;
 }
 export const SubscriptionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     resource_type: Schema.optional(
       Schema.Literals(["insight", "dashboard", "ai_prompt"]),
@@ -301,7 +301,7 @@ export const SubscriptionsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const subscriptionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const subscriptionsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionsCreateInput,
   outputSchema: SubscriptionsCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -11,7 +11,7 @@ export interface CreateDelegationForEndUserAccountInput {
   walletSecretId: string;
 }
 export const CreateDelegationForEndUserAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
     address: Schema.String.pipe(T.PathParam()),
     projectID: Schema.optional(Schema.String),
@@ -29,7 +29,7 @@ export interface CreateDelegationForEndUserAccountOutput {
   expiresAt: string;
 }
 export const CreateDelegationForEndUserAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiresAt: Schema.String,
   }) as unknown as Schema.Codec<CreateDelegationForEndUserAccountOutput>;
 
@@ -54,7 +54,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
  * @param projectID - The ID of the CDP Project. Required for end users authenticated using custom auth (i.e. a non-CDP JWT provider).
  */
 export const createDelegationForEndUserAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateDelegationForEndUserAccountInput,
     outputSchema: CreateDelegationForEndUserAccountOutput,
   }));

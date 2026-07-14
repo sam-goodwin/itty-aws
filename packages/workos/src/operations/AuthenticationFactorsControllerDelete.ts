@@ -8,7 +8,7 @@ export interface AuthenticationFactorsControllerDeleteInput {
   id: string;
 }
 export const AuthenticationFactorsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/auth/factors/{id}" }),
@@ -17,7 +17,7 @@ export const AuthenticationFactorsControllerDeleteInput =
 // Output Schema
 export type AuthenticationFactorsControllerDeleteOutput = void;
 export const AuthenticationFactorsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthenticationFactorsControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthenticationFactorsControllerDeleteOutput>;
 
 // The operation
 /**
@@ -28,7 +28,7 @@ export const AuthenticationFactorsControllerDeleteOutput =
  * @param id - The unique ID of the Factor.
  */
 export const AuthenticationFactorsControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthenticationFactorsControllerDeleteInput,
     outputSchema: AuthenticationFactorsControllerDeleteOutput,
     errors: [NotFound] as const,

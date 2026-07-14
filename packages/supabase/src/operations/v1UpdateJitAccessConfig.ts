@@ -9,7 +9,7 @@ export interface V1UpdateJitAccessConfigInput {
   state: "enabled" | "disabled";
 }
 export const V1UpdateJitAccessConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     state: Schema.Literals(["enabled", "disabled"]),
   }).pipe(
@@ -26,7 +26,7 @@ export type V1UpdateJitAccessConfigOutput =
         | "temporarily_unavailable";
     };
 export const V1UpdateJitAccessConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       state: Schema.Literals(["enabled", "disabled"]),
       appliedSuccessfully: Schema.optional(Schema.Boolean),
@@ -46,10 +46,8 @@ export const V1UpdateJitAccessConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1UpdateJitAccessConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdateJitAccessConfigInput,
-    outputSchema: V1UpdateJitAccessConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1UpdateJitAccessConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdateJitAccessConfigInput,
+  outputSchema: V1UpdateJitAccessConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

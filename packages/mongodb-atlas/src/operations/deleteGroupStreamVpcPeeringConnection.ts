@@ -10,7 +10,7 @@ export interface DeleteGroupStreamVpcPeeringConnectionInput {
   envelope?: boolean;
 }
 export const DeleteGroupStreamVpcPeeringConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const DeleteGroupStreamVpcPeeringConnectionInput =
 // Output Schema
 export type DeleteGroupStreamVpcPeeringConnectionOutput = void;
 export const DeleteGroupStreamVpcPeeringConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamVpcPeeringConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamVpcPeeringConnectionOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const DeleteGroupStreamVpcPeeringConnectionOutput =
  * @param id - The VPC Peering Connection id.
  */
 export const deleteGroupStreamVpcPeeringConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupStreamVpcPeeringConnectionInput,
     outputSchema: DeleteGroupStreamVpcPeeringConnectionOutput,
     errors: [Forbidden, NotFound] as const,

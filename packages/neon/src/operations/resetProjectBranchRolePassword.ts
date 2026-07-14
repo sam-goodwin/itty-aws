@@ -12,7 +12,7 @@ export interface ResetProjectBranchRolePasswordInput {
   role_name: string;
 }
 export const ResetProjectBranchRolePasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     role_name: Schema.String.pipe(T.PathParam()),
@@ -90,7 +90,7 @@ export interface ResetProjectBranchRolePasswordOutput {
   }[];
 }
 export const ResetProjectBranchRolePasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.Struct({
       branch_id: Schema.String,
       name: Schema.String,
@@ -176,7 +176,7 @@ export const ResetProjectBranchRolePasswordOutput =
  * @param role_name - The role name
  */
 export const resetProjectBranchRolePassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResetProjectBranchRolePasswordInput,
     outputSchema: ResetProjectBranchRolePasswordOutput,
     errors: [NotFound] as const,

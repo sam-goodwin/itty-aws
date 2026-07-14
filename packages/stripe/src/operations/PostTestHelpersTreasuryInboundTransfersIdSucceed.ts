@@ -8,7 +8,7 @@ export interface PostTestHelpersTreasuryInboundTransfersIdSucceedInput {
   expand?: string[];
 }
 export const PostTestHelpersTreasuryInboundTransfersIdSucceedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -280,7 +280,7 @@ export interface PostTestHelpersTreasuryInboundTransfersIdSucceedOutput {
     | null;
 }
 export const PostTestHelpersTreasuryInboundTransfersIdSucceedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -464,7 +464,7 @@ export const PostTestHelpersTreasuryInboundTransfersIdSucceedOutput =
  * <p>Transitions a test mode created InboundTransfer to the <code>succeeded</code> status. The InboundTransfer must already be in the <code>processing</code> state.</p>
  */
 export const PostTestHelpersTreasuryInboundTransfersIdSucceed =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersTreasuryInboundTransfersIdSucceedInput,
     outputSchema: PostTestHelpersTreasuryInboundTransfersIdSucceedOutput,
   }));

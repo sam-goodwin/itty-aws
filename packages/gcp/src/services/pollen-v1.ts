@@ -34,7 +34,7 @@ export interface Color {
 }
 
 export const Color: Schema.Codec<Color> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     green: Schema.optional(Schema.Number),
     blue: Schema.optional(Schema.Number),
     red: Schema.optional(Schema.Number),
@@ -57,7 +57,7 @@ export interface IndexInfo {
 }
 
 export const IndexInfo: Schema.Codec<IndexInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     category: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
@@ -86,7 +86,7 @@ export interface PlantDescription {
 }
 
 export const PlantDescription: Schema.Codec<PlantDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     family: Schema.optional(Schema.String),
     specialColors: Schema.optional(Schema.String),
     specialShapes: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface PollenTypeInfo {
 }
 
 export const PollenTypeInfo: Schema.Codec<PollenTypeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     inSeason: Schema.optional(Schema.Boolean),
     indexInfo: Schema.optional(IndexInfo),
@@ -152,7 +152,7 @@ export interface PlantInfo {
 }
 
 export const PlantInfo: Schema.Codec<PlantInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     inSeason: Schema.optional(Schema.Boolean),
     indexInfo: Schema.optional(IndexInfo),
@@ -170,7 +170,7 @@ export interface Pollen_Date {
 }
 
 export const Pollen_Date: Schema.Codec<Pollen_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -186,7 +186,7 @@ export interface DayInfo {
 }
 
 export const DayInfo: Schema.Codec<DayInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pollenTypeInfo: Schema.optional(Schema.Array(PollenTypeInfo)),
     plantInfo: Schema.optional(Schema.Array(PlantInfo)),
     date: Schema.optional(Pollen_Date),
@@ -202,7 +202,7 @@ export interface HttpBody {
 }
 
 export const HttpBody: Schema.Codec<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentType: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
     extensions: Schema.optional(
@@ -220,7 +220,7 @@ export interface LookupForecastResponse {
 }
 
 export const LookupForecastResponse: Schema.Codec<LookupForecastResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     dailyInfo: Schema.optional(Schema.Array(DayInfo)),
     nextPageToken: Schema.optional(Schema.String),
@@ -274,7 +274,7 @@ export interface LookupForecastRequest {
   plantsDescription?: boolean;
 }
 
-export const LookupForecastRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LookupForecastRequest = /*@__PURE__*/ Schema.Struct({
   "location.latitude": Schema.optional(Schema.Number).pipe(
     T.HttpQuery("location.latitude"),
   ),
@@ -296,8 +296,7 @@ export const LookupForecastRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<LookupForecastRequest>;
 
 export type LookupForecastResponse_Op = LookupForecastResponse;
-export const LookupForecastResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ LookupForecastResponse;
+export const LookupForecastResponse_Op = /*@__PURE__*/ LookupForecastResponse;
 
 export type LookupForecastError = DefaultErrors | NotFound | Forbidden;
 
@@ -307,7 +306,7 @@ export const lookupForecast: API.PaginatedOperationMethod<
   LookupForecastResponse_Op,
   LookupForecastError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: LookupForecastRequest,
   output: LookupForecastResponse_Op,
   errors: [NotFound, Forbidden],
@@ -334,7 +333,7 @@ export interface LookupHeatmapTileMapTypesHeatmapTilesRequest {
 }
 
 export const LookupHeatmapTileMapTypesHeatmapTilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     x: Schema.Number.pipe(T.HttpPath("x")),
     y: Schema.Number.pipe(T.HttpPath("y")),
     mapType: Schema.String.pipe(T.HttpPath("mapType")),
@@ -349,7 +348,7 @@ export const LookupHeatmapTileMapTypesHeatmapTilesRequest =
 
 export type LookupHeatmapTileMapTypesHeatmapTilesResponse = HttpBody;
 export const LookupHeatmapTileMapTypesHeatmapTilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+  /*@__PURE__*/ HttpBody;
 
 export type LookupHeatmapTileMapTypesHeatmapTilesError =
   | DefaultErrors
@@ -362,7 +361,7 @@ export const lookupHeatmapTileMapTypesHeatmapTiles: API.OperationMethod<
   LookupHeatmapTileMapTypesHeatmapTilesResponse,
   LookupHeatmapTileMapTypesHeatmapTilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LookupHeatmapTileMapTypesHeatmapTilesRequest,
   output: LookupHeatmapTileMapTypesHeatmapTilesResponse,
   errors: [NotFound, Forbidden],

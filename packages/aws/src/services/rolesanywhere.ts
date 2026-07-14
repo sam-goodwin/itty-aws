@@ -103,18 +103,17 @@ export type CertificateField = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/ListTagsForResource" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/ListTagsForResource" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -122,16 +121,16 @@ export interface Tag {
   key: string | redacted.Redacted<string>;
   value: string | redacted.Redacted<string>;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: SensitiveString, value: SensitiveString }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tags: S.optional(TagList) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -142,7 +141,7 @@ export interface NotificationSetting {
   threshold?: number;
   channel?: string;
 }
-export const NotificationSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NotificationSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     event: S.String,
@@ -153,14 +152,13 @@ export const NotificationSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "NotificationSetting",
 }) as any as S.Schema<NotificationSetting>;
 export type NotificationSettings = NotificationSetting[];
-export const NotificationSettings =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(NotificationSetting);
+export const NotificationSettings = /*@__PURE__*/ S.Array(NotificationSetting);
 export interface PutNotificationSettingsRequest {
   trustAnchorId: string;
   notificationSettings: NotificationSetting[];
 }
 export const PutNotificationSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       trustAnchorId: S.String,
       notificationSettings: NotificationSettings,
@@ -180,7 +178,7 @@ export const PutNotificationSettingsRequest =
 export type SourceData =
   | { x509CertificateData: string; acmPcaArn?: never }
   | { x509CertificateData?: never; acmPcaArn: string };
-export const SourceData = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const SourceData = /*@__PURE__*/ S.Union([
   S.Struct({ x509CertificateData: S.String }),
   S.Struct({ acmPcaArn: S.String }),
 ]);
@@ -188,7 +186,7 @@ export interface Source {
   sourceType?: string;
   sourceData?: SourceData;
 }
-export const Source = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceType: S.optional(S.String),
     sourceData: S.optional(SourceData),
@@ -201,20 +199,19 @@ export interface NotificationSettingDetail {
   channel?: string;
   configuredBy?: string;
 }
-export const NotificationSettingDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      event: S.String,
-      threshold: S.optional(S.Number),
-      channel: S.optional(S.String),
-      configuredBy: S.optional(S.String),
-    }),
+export const NotificationSettingDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    event: S.String,
+    threshold: S.optional(S.Number),
+    channel: S.optional(S.String),
+    configuredBy: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "NotificationSettingDetail",
 }) as any as S.Schema<NotificationSettingDetail>;
 export type NotificationSettingDetails = NotificationSettingDetail[];
-export const NotificationSettingDetails = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const NotificationSettingDetails = /*@__PURE__*/ S.Array(
   NotificationSettingDetail,
 );
 export interface TrustAnchorDetail {
@@ -227,7 +224,7 @@ export interface TrustAnchorDetail {
   updatedAt?: Date;
   notificationSettings?: NotificationSettingDetail[];
 }
-export const TrustAnchorDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TrustAnchorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trustAnchorId: S.optional(S.String),
     trustAnchorArn: S.optional(S.String),
@@ -249,7 +246,7 @@ export interface PutNotificationSettingsResponse {
   trustAnchor: TrustAnchorDetail;
 }
 export const PutNotificationSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ trustAnchor: TrustAnchorDetail }),
   ).annotate({
     identifier: "PutNotificationSettingsResponse",
@@ -258,13 +255,13 @@ export interface NotificationSettingKey {
   event: string;
   channel?: string;
 }
-export const NotificationSettingKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ event: S.String, channel: S.optional(S.String) }),
+export const NotificationSettingKey = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ event: S.String, channel: S.optional(S.String) }),
 ).annotate({
   identifier: "NotificationSettingKey",
 }) as any as S.Schema<NotificationSettingKey>;
 export type NotificationSettingKeys = NotificationSettingKey[];
-export const NotificationSettingKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const NotificationSettingKeys = /*@__PURE__*/ S.Array(
   NotificationSettingKey,
 );
 export interface ResetNotificationSettingsRequest {
@@ -272,7 +269,7 @@ export interface ResetNotificationSettingsRequest {
   notificationSettingKeys: NotificationSettingKey[];
 }
 export const ResetNotificationSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       trustAnchorId: S.String,
       notificationSettingKeys: NotificationSettingKeys,
@@ -293,7 +290,7 @@ export interface ResetNotificationSettingsResponse {
   trustAnchor: TrustAnchorDetail;
 }
 export const ResetNotificationSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ trustAnchor: TrustAnchorDetail }),
   ).annotate({
     identifier: "ResetNotificationSettingsResponse",
@@ -302,7 +299,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/TagResource" }),
@@ -317,18 +314,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string | redacted.Redacted<string>[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string | redacted.Redacted<string>[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/UntagResource" }),
@@ -343,7 +340,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -355,7 +352,7 @@ export interface ImportCrlRequest {
   tags?: Tag[];
   trustAnchorArn: string;
 }
-export const ImportCrlRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ImportCrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     crlData: T.Blob,
@@ -385,7 +382,7 @@ export interface CrlDetail {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const CrlDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CrlDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crlId: S.optional(S.String),
     crlArn: S.optional(S.String),
@@ -404,7 +401,7 @@ export const CrlDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CrlDetailResponse {
   crl: CrlDetail;
 }
-export const CrlDetailResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CrlDetailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ crl: CrlDetail }),
 ).annotate({
   identifier: "CrlDetailResponse",
@@ -412,7 +409,7 @@ export const CrlDetailResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ScalarCrlRequest {
   crlId: string;
 }
-export const ScalarCrlRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScalarCrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ crlId: S.String.pipe(T.HttpLabel("crlId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/crl/{crlId}" }),
@@ -431,7 +428,7 @@ export interface UpdateCrlRequest {
   name?: string;
   crlData?: Uint8Array;
 }
-export const UpdateCrlRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateCrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crlId: S.String.pipe(T.HttpLabel("crlId")),
     name: S.optional(S.String),
@@ -453,7 +450,7 @@ export interface ListRequest {
   nextToken?: string;
   pageSize?: number;
 }
-export const ListRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     pageSize: S.optional(S.Number).pipe(T.HttpQuery("pageSize")),
@@ -469,20 +466,20 @@ export const ListRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 export type CrlDetails = CrlDetail[];
-export const CrlDetails = /*@__PURE__*/ /*#__PURE__*/ S.Array(CrlDetail);
+export const CrlDetails = /*@__PURE__*/ S.Array(CrlDetail);
 export interface ListCrlsResponse {
   nextToken?: string;
   crls?: CrlDetail[];
 }
-export const ListCrlsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListCrlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), crls: S.optional(CrlDetails) }),
 ).annotate({
   identifier: "ListCrlsResponse",
 }) as any as S.Schema<ListCrlsResponse>;
 export type RoleArnList = string[];
-export const RoleArnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const RoleArnList = /*@__PURE__*/ S.Array(S.String);
 export type ManagedPolicyList = string[];
-export const ManagedPolicyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ManagedPolicyList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateProfileRequest {
   name: string;
   requireInstanceProperties?: boolean;
@@ -494,7 +491,7 @@ export interface CreateProfileRequest {
   tags?: Tag[];
   acceptRoleSessionName?: boolean;
 }
-export const CreateProfileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     requireInstanceProperties: S.optional(S.Boolean),
@@ -521,16 +518,16 @@ export const CreateProfileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface MappingRule {
   specifier: string;
 }
-export const MappingRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MappingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ specifier: S.String }),
 ).annotate({ identifier: "MappingRule" }) as any as S.Schema<MappingRule>;
 export type MappingRules = MappingRule[];
-export const MappingRules = /*@__PURE__*/ /*#__PURE__*/ S.Array(MappingRule);
+export const MappingRules = /*@__PURE__*/ S.Array(MappingRule);
 export interface AttributeMapping {
   certificateField?: string;
   mappingRules?: MappingRule[];
 }
-export const AttributeMapping = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AttributeMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateField: S.optional(S.String),
     mappingRules: S.optional(MappingRules),
@@ -539,8 +536,7 @@ export const AttributeMapping = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AttributeMapping",
 }) as any as S.Schema<AttributeMapping>;
 export type AttributeMappings = AttributeMapping[];
-export const AttributeMappings =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AttributeMapping);
+export const AttributeMappings = /*@__PURE__*/ S.Array(AttributeMapping);
 export interface ProfileDetail {
   profileId?: string;
   profileArn?: string;
@@ -557,7 +553,7 @@ export interface ProfileDetail {
   acceptRoleSessionName?: boolean;
   attributeMappings?: AttributeMapping[];
 }
-export const ProfileDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ProfileDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileId: S.optional(S.String),
     profileArn: S.optional(S.String),
@@ -582,7 +578,7 @@ export const ProfileDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ProfileDetailResponse {
   profile?: ProfileDetail;
 }
-export const ProfileDetailResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ProfileDetailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ profile: S.optional(ProfileDetail) }),
 ).annotate({
   identifier: "ProfileDetailResponse",
@@ -590,7 +586,7 @@ export const ProfileDetailResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ScalarProfileRequest {
   profileId: string;
 }
-export const ScalarProfileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScalarProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ profileId: S.String.pipe(T.HttpLabel("profileId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/profile/{profileId}" }),
@@ -613,7 +609,7 @@ export interface UpdateProfileRequest {
   durationSeconds?: number;
   acceptRoleSessionName?: boolean;
 }
-export const UpdateProfileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileId: S.String.pipe(T.HttpLabel("profileId")),
     name: S.optional(S.String),
@@ -636,13 +632,12 @@ export const UpdateProfileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateProfileRequest",
 }) as any as S.Schema<UpdateProfileRequest>;
 export type ProfileDetails = ProfileDetail[];
-export const ProfileDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ProfileDetail);
+export const ProfileDetails = /*@__PURE__*/ S.Array(ProfileDetail);
 export interface ListProfilesResponse {
   nextToken?: string;
   profiles?: ProfileDetail[];
 }
-export const ListProfilesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     profiles: S.optional(ProfileDetails),
@@ -651,14 +646,14 @@ export const ListProfilesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListProfilesResponse",
 }) as any as S.Schema<ListProfilesResponse>;
 export type SpecifierList = string[];
-export const SpecifierList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SpecifierList = /*@__PURE__*/ S.Array(S.String);
 export interface DeleteAttributeMappingRequest {
   profileId: string;
   certificateField: string;
   specifiers?: string[];
 }
 export const DeleteAttributeMappingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       profileId: S.String.pipe(T.HttpLabel("profileId")),
       certificateField: S.String.pipe(T.HttpQuery("certificateField")),
@@ -680,9 +675,7 @@ export interface DeleteAttributeMappingResponse {
   profile: ProfileDetail;
 }
 export const DeleteAttributeMappingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ profile: ProfileDetail }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ profile: ProfileDetail })).annotate({
     identifier: "DeleteAttributeMappingResponse",
   }) as any as S.Schema<DeleteAttributeMappingResponse>;
 export interface PutAttributeMappingRequest {
@@ -690,22 +683,21 @@ export interface PutAttributeMappingRequest {
   certificateField: string;
   mappingRules: MappingRule[];
 }
-export const PutAttributeMappingRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      profileId: S.String.pipe(T.HttpLabel("profileId")),
-      certificateField: S.String,
-      mappingRules: MappingRules,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/profiles/{profileId}/mappings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutAttributeMappingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileId: S.String.pipe(T.HttpLabel("profileId")),
+    certificateField: S.String,
+    mappingRules: MappingRules,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/profiles/{profileId}/mappings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PutAttributeMappingRequest",
 }) as any as S.Schema<PutAttributeMappingRequest>;
@@ -713,15 +705,13 @@ export interface PutAttributeMappingResponse {
   profile: ProfileDetail;
 }
 export const PutAttributeMappingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ profile: ProfileDetail }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ profile: ProfileDetail })).annotate({
     identifier: "PutAttributeMappingResponse",
   }) as any as S.Schema<PutAttributeMappingResponse>;
 export interface ScalarSubjectRequest {
   subjectId: string;
 }
-export const ScalarSubjectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScalarSubjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ subjectId: S.String.pipe(T.HttpLabel("subjectId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/subject/{subjectId}" }),
@@ -743,7 +733,7 @@ export interface CredentialSummary {
   x509CertificateData?: string;
   failed?: boolean;
 }
-export const CredentialSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CredentialSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seenAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
     serialNumber: S.optional(S.String),
@@ -756,10 +746,9 @@ export const CredentialSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CredentialSummary",
 }) as any as S.Schema<CredentialSummary>;
 export type CredentialSummaries = CredentialSummary[];
-export const CredentialSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CredentialSummary);
+export const CredentialSummaries = /*@__PURE__*/ S.Array(CredentialSummary);
 export type InstancePropertyMap = { [key: string]: string | undefined };
-export const InstancePropertyMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const InstancePropertyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -768,7 +757,7 @@ export interface InstanceProperty {
   properties?: { [key: string]: string | undefined };
   failed?: boolean;
 }
-export const InstanceProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InstanceProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seenAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
     properties: S.optional(InstancePropertyMap),
@@ -778,8 +767,7 @@ export const InstanceProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "InstanceProperty",
 }) as any as S.Schema<InstanceProperty>;
 export type InstanceProperties = InstanceProperty[];
-export const InstanceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(InstanceProperty);
+export const InstanceProperties = /*@__PURE__*/ S.Array(InstanceProperty);
 export interface SubjectDetail {
   subjectArn?: string;
   subjectId?: string;
@@ -791,7 +779,7 @@ export interface SubjectDetail {
   credentials?: CredentialSummary[];
   instanceProperties?: InstanceProperty[];
 }
-export const SubjectDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SubjectDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subjectArn: S.optional(S.String),
     subjectId: S.optional(S.String),
@@ -813,7 +801,7 @@ export const SubjectDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface SubjectDetailResponse {
   subject?: SubjectDetail;
 }
-export const SubjectDetailResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SubjectDetailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ subject: S.optional(SubjectDetail) }),
 ).annotate({
   identifier: "SubjectDetailResponse",
@@ -827,7 +815,7 @@ export interface SubjectSummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const SubjectSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SubjectSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subjectArn: S.optional(S.String),
     subjectId: S.optional(S.String),
@@ -845,13 +833,12 @@ export const SubjectSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SubjectSummary" }) as any as S.Schema<SubjectSummary>;
 export type SubjectSummaries = SubjectSummary[];
-export const SubjectSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SubjectSummary);
+export const SubjectSummaries = /*@__PURE__*/ S.Array(SubjectSummary);
 export interface ListSubjectsResponse {
   subjects?: SubjectSummary[];
   nextToken?: string;
 }
-export const ListSubjectsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSubjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subjects: S.optional(SubjectSummaries),
     nextToken: S.optional(S.String),
@@ -866,52 +853,50 @@ export interface CreateTrustAnchorRequest {
   tags?: Tag[];
   notificationSettings?: NotificationSetting[];
 }
-export const CreateTrustAnchorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      source: Source,
-      enabled: S.optional(S.Boolean),
-      tags: S.optional(TagList),
-      notificationSettings: S.optional(NotificationSettings),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/trustanchors" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateTrustAnchorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    source: Source,
+    enabled: S.optional(S.Boolean),
+    tags: S.optional(TagList),
+    notificationSettings: S.optional(NotificationSettings),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/trustanchors" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateTrustAnchorRequest",
 }) as any as S.Schema<CreateTrustAnchorRequest>;
 export interface TrustAnchorDetailResponse {
   trustAnchor: TrustAnchorDetail;
 }
-export const TrustAnchorDetailResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ trustAnchor: TrustAnchorDetail }),
+export const TrustAnchorDetailResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ trustAnchor: TrustAnchorDetail }),
 ).annotate({
   identifier: "TrustAnchorDetailResponse",
 }) as any as S.Schema<TrustAnchorDetailResponse>;
 export interface ScalarTrustAnchorRequest {
   trustAnchorId: string;
 }
-export const ScalarTrustAnchorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      trustAnchorId: S.String.pipe(T.HttpLabel("trustAnchorId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/trustanchor/{trustAnchorId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ScalarTrustAnchorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    trustAnchorId: S.String.pipe(T.HttpLabel("trustAnchorId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/trustanchor/{trustAnchorId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ScalarTrustAnchorRequest",
 }) as any as S.Schema<ScalarTrustAnchorRequest>;
@@ -920,38 +905,35 @@ export interface UpdateTrustAnchorRequest {
   name?: string;
   source?: Source;
 }
-export const UpdateTrustAnchorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      trustAnchorId: S.String.pipe(T.HttpLabel("trustAnchorId")),
-      name: S.optional(S.String),
-      source: S.optional(Source),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/trustanchor/{trustAnchorId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateTrustAnchorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    trustAnchorId: S.String.pipe(T.HttpLabel("trustAnchorId")),
+    name: S.optional(S.String),
+    source: S.optional(Source),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/trustanchor/{trustAnchorId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateTrustAnchorRequest",
 }) as any as S.Schema<UpdateTrustAnchorRequest>;
 export type TrustAnchorDetails = TrustAnchorDetail[];
-export const TrustAnchorDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TrustAnchorDetail);
+export const TrustAnchorDetails = /*@__PURE__*/ S.Array(TrustAnchorDetail);
 export interface ListTrustAnchorsResponse {
   nextToken?: string;
   trustAnchors?: TrustAnchorDetail[];
 }
-export const ListTrustAnchorsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      trustAnchors: S.optional(TrustAnchorDetails),
-    }),
+export const ListTrustAnchorsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    trustAnchors: S.optional(TrustAnchorDetails),
+  }),
 ).annotate({
   identifier: "ListTrustAnchorsResponse",
 }) as any as S.Schema<ListTrustAnchorsResponse>;
@@ -990,7 +972,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1017,7 +999,7 @@ export const putNotificationSettings: API.OperationMethod<
   PutNotificationSettingsResponse,
   PutNotificationSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutNotificationSettingsRequest,
   output: PutNotificationSettingsResponse,
   errors: [
@@ -1042,7 +1024,7 @@ export const resetNotificationSettings: API.OperationMethod<
   ResetNotificationSettingsResponse,
   ResetNotificationSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetNotificationSettingsRequest,
   output: ResetNotificationSettingsResponse,
   errors: [
@@ -1068,7 +1050,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1094,7 +1076,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1118,7 +1100,7 @@ export const importCrl: API.OperationMethod<
   CrlDetailResponse,
   ImportCrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1135,7 +1117,7 @@ export const getCrl: API.OperationMethod<
   CrlDetailResponse,
   GetCrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [ResourceNotFoundException],
@@ -1156,7 +1138,7 @@ export const updateCrl: API.OperationMethod<
   CrlDetailResponse,
   UpdateCrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCrlRequest,
   output: CrlDetailResponse,
   errors: [
@@ -1180,7 +1162,7 @@ export const deleteCrl: API.OperationMethod<
   CrlDetailResponse,
   DeleteCrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1215,7 +1197,7 @@ export const listCrls: API.OperationMethod<
     ListCrlsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
   output: ListCrlsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1240,7 +1222,7 @@ export const disableCrl: API.OperationMethod<
   CrlDetailResponse,
   DisableCrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1260,7 +1242,7 @@ export const enableCrl: API.OperationMethod<
   CrlDetailResponse,
   EnableCrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1280,7 +1262,7 @@ export const createProfile: API.OperationMethod<
   ProfileDetailResponse,
   CreateProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1300,7 +1282,7 @@ export const getProfile: API.OperationMethod<
   ProfileDetailResponse,
   GetProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1321,7 +1303,7 @@ export const updateProfile: API.OperationMethod<
   ProfileDetailResponse,
   UpdateProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProfileRequest,
   output: ProfileDetailResponse,
   errors: [
@@ -1345,7 +1327,7 @@ export const deleteProfile: API.OperationMethod<
   ProfileDetailResponse,
   DeleteProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1380,7 +1362,7 @@ export const listProfiles: API.OperationMethod<
     ListProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
   output: ListProfilesResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1404,7 +1386,7 @@ export const deleteAttributeMapping: API.OperationMethod<
   DeleteAttributeMappingResponse,
   DeleteAttributeMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAttributeMappingRequest,
   output: DeleteAttributeMappingResponse,
   errors: [
@@ -1428,7 +1410,7 @@ export const disableProfile: API.OperationMethod<
   ProfileDetailResponse,
   DisableProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1448,7 +1430,7 @@ export const enableProfile: API.OperationMethod<
   ProfileDetailResponse,
   EnableProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1467,7 +1449,7 @@ export const putAttributeMapping: API.OperationMethod<
   PutAttributeMappingResponse,
   PutAttributeMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAttributeMappingRequest,
   output: PutAttributeMappingResponse,
   errors: [
@@ -1491,7 +1473,7 @@ export const getSubject: API.OperationMethod<
   SubjectDetailResponse,
   GetSubjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarSubjectRequest,
   output: SubjectDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1526,7 +1508,7 @@ export const listSubjects: API.OperationMethod<
     ListSubjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
   output: ListSubjectsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1551,7 +1533,7 @@ export const createTrustAnchor: API.OperationMethod<
   TrustAnchorDetailResponse,
   CreateTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1572,7 +1554,7 @@ export const getTrustAnchor: API.OperationMethod<
   TrustAnchorDetailResponse,
   GetTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [
@@ -1597,7 +1579,7 @@ export const updateTrustAnchor: API.OperationMethod<
   TrustAnchorDetailResponse,
   UpdateTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [
@@ -1621,7 +1603,7 @@ export const deleteTrustAnchor: API.OperationMethod<
   TrustAnchorDetailResponse,
   DeleteTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1656,7 +1638,7 @@ export const listTrustAnchors: API.OperationMethod<
     ListTrustAnchorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
   output: ListTrustAnchorsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1681,7 +1663,7 @@ export const disableTrustAnchor: API.OperationMethod<
   TrustAnchorDetailResponse,
   DisableTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1701,7 +1683,7 @@ export const enableTrustAnchor: API.OperationMethod<
   TrustAnchorDetailResponse,
   EnableTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],

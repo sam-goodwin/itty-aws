@@ -8,7 +8,7 @@ export interface ListSolanaAccountsInput {
   pageToken?: string;
 }
 export const ListSolanaAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
   }).pipe(
@@ -27,7 +27,7 @@ export interface ListSolanaAccountsOutput {
   nextPageToken?: string;
 }
 export const ListSolanaAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accounts: Schema.Array(
       Schema.Struct({
         address: Schema.String,
@@ -51,7 +51,7 @@ export const ListSolanaAccountsOutput =
  * @param pageSize - The number of resources to return per page.
  * @param pageToken - The token for the next page of resources, if any.
  */
-export const listSolanaAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listSolanaAccounts = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListSolanaAccountsInput,
   outputSchema: ListSolanaAccountsOutput,
 }));

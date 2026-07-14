@@ -38,7 +38,7 @@ interface ManagedRequestHeader {
   /** The Managed Transforms that this Managed Transform conflicts with. */
   conflictsWith?: string[] | null;
 }
-const ManagedRequestHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ManagedRequestHeader = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     enabled: Schema.Boolean,
@@ -62,7 +62,7 @@ interface ManagedRequestHeader2 {
   /** Whether the Managed Transform is enabled. */
   enabled: boolean;
 }
-const ManagedRequestHeader2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ManagedRequestHeader2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     enabled: Schema.Boolean,
@@ -79,7 +79,7 @@ export interface ListManagedTransformsRequest {
 }
 
 export const ListManagedTransformsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -109,7 +109,7 @@ export interface ListManagedTransformsResponse {
 }
 
 export const ListManagedTransformsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       managedRequestHeaders: Schema.Union([
         Schema.Array(ManagedRequestHeader),
@@ -136,7 +136,7 @@ export const listManagedTransforms: API.OperationMethod<
   ListManagedTransformsResponse,
   ListManagedTransformsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListManagedTransformsRequest,
   output: ListManagedTransformsResponse,
   errors: [Forbidden],
@@ -152,7 +152,7 @@ export interface PatchManagedTransformRequest {
 }
 
 export const PatchManagedTransformRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       managedRequestHeaders: Schema.optional(
@@ -192,7 +192,7 @@ export interface PatchManagedTransformResponse {
 }
 
 export const PatchManagedTransformResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       managedRequestHeaders: Schema.Union([
         Schema.Array(ManagedRequestHeader),
@@ -219,7 +219,7 @@ export const patchManagedTransform: API.OperationMethod<
   PatchManagedTransformResponse,
   PatchManagedTransformError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchManagedTransformRequest,
   output: PatchManagedTransformResponse,
   errors: [Forbidden],
@@ -231,7 +231,7 @@ export interface DeleteManagedTransformRequest {
 }
 
 export const DeleteManagedTransformRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -242,7 +242,7 @@ export const DeleteManagedTransformRequest =
 export type DeleteManagedTransformResponse = unknown;
 
 export const DeleteManagedTransformResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<DeleteManagedTransformResponse>;
 
@@ -253,7 +253,7 @@ export const deleteManagedTransform: API.OperationMethod<
   DeleteManagedTransformResponse,
   DeleteManagedTransformError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteManagedTransformRequest,
   output: DeleteManagedTransformResponse,
   errors: [Forbidden],

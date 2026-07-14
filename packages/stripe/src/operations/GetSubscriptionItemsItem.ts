@@ -13,7 +13,7 @@ export interface GetSubscriptionItemsItemInput {
   expand?: string;
 }
 export const GetSubscriptionItemsItemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     item: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -400,7 +400,7 @@ export interface GetSubscriptionItemsItemOutput {
     | null;
 }
 export const GetSubscriptionItemsItemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billed_until: Schema.optional(Schema.Number),
     billing_thresholds: Schema.NullOr(
       Schema.Struct({
@@ -791,9 +791,7 @@ export const GetSubscriptionItemsItemOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetSubscriptionItemsItem = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetSubscriptionItemsItemInput,
-    outputSchema: GetSubscriptionItemsItemOutput,
-  }),
-);
+export const GetSubscriptionItemsItem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetSubscriptionItemsItemInput,
+  outputSchema: GetSubscriptionItemsItemOutput,
+}));

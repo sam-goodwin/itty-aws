@@ -51,7 +51,7 @@ export interface CloudLocation {
 }
 
 export const CloudLocation: Schema.Codec<CloudLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     carbonFreeEnergyPercentage: Schema.optional(Schema.Number),
     displayName: Schema.optional(Schema.String),
@@ -69,7 +69,7 @@ export interface SearchCloudLocationsResponse {
 }
 
 export const SearchCloudLocationsResponse: Schema.Codec<SearchCloudLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cloudLocations: Schema.optional(Schema.Array(CloudLocation)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "SearchCloudLocationsResponse" });
@@ -88,7 +88,7 @@ export interface Location {
 }
 
 export const Location: Schema.Codec<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -104,7 +104,7 @@ export interface ListLocationsResponse {
 }
 
 export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListLocationsResponse" });
@@ -117,7 +117,7 @@ export interface ListCloudLocationsResponse {
 }
 
 export const ListCloudLocationsResponse: Schema.Codec<ListCloudLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     cloudLocations: Schema.optional(Schema.Array(CloudLocation)),
   }).annotate({ identifier: "ListCloudLocationsResponse" });
@@ -167,7 +167,7 @@ export interface ListProjectsLocationsRequest {
 }
 
 export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -182,7 +182,7 @@ export const ListProjectsLocationsRequest =
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+  /*@__PURE__*/ ListLocationsResponse;
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -192,7 +192,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsResponse,
   ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -208,7 +208,7 @@ export interface GetProjectsLocationsRequest {
 }
 
 export const GetProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -216,8 +216,7 @@ export const GetProjectsLocationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
-export const GetProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Location;
+export const GetProjectsLocationsResponse = /*@__PURE__*/ Location;
 
 export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -227,7 +226,7 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsResponse,
   GetProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -239,7 +238,7 @@ export interface GetProjectsLocationsCloudLocationsRequest {
 }
 
 export const GetProjectsLocationsCloudLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -248,7 +247,7 @@ export const GetProjectsLocationsCloudLocationsRequest =
 
 export type GetProjectsLocationsCloudLocationsResponse = CloudLocation;
 export const GetProjectsLocationsCloudLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CloudLocation;
+  /*@__PURE__*/ CloudLocation;
 
 export type GetProjectsLocationsCloudLocationsError =
   | DefaultErrors
@@ -261,7 +260,7 @@ export const getProjectsLocationsCloudLocations: API.OperationMethod<
   GetProjectsLocationsCloudLocationsResponse,
   GetProjectsLocationsCloudLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCloudLocationsRequest,
   output: GetProjectsLocationsCloudLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -279,7 +278,7 @@ export interface ListProjectsLocationsCloudLocationsRequest {
 }
 
 export const ListProjectsLocationsCloudLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -292,7 +291,7 @@ export const ListProjectsLocationsCloudLocationsRequest =
 export type ListProjectsLocationsCloudLocationsResponse =
   ListCloudLocationsResponse;
 export const ListProjectsLocationsCloudLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCloudLocationsResponse;
+  /*@__PURE__*/ ListCloudLocationsResponse;
 
 export type ListProjectsLocationsCloudLocationsError =
   | DefaultErrors
@@ -305,7 +304,7 @@ export const listProjectsLocationsCloudLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsCloudLocationsResponse,
   ListProjectsLocationsCloudLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCloudLocationsRequest,
   output: ListProjectsLocationsCloudLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -329,7 +328,7 @@ export interface SearchProjectsLocationsCloudLocationsRequest {
 }
 
 export const SearchProjectsLocationsCloudLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -345,7 +344,7 @@ export const SearchProjectsLocationsCloudLocationsRequest =
 export type SearchProjectsLocationsCloudLocationsResponse =
   SearchCloudLocationsResponse;
 export const SearchProjectsLocationsCloudLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SearchCloudLocationsResponse;
+  /*@__PURE__*/ SearchCloudLocationsResponse;
 
 export type SearchProjectsLocationsCloudLocationsError =
   | DefaultErrors
@@ -358,7 +357,7 @@ export const searchProjectsLocationsCloudLocations: API.PaginatedOperationMethod
   SearchProjectsLocationsCloudLocationsResponse,
   SearchProjectsLocationsCloudLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsLocationsCloudLocationsRequest,
   output: SearchProjectsLocationsCloudLocationsResponse,
   errors: [NotFound, Forbidden],

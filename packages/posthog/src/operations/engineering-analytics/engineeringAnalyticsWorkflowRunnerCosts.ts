@@ -13,7 +13,7 @@ export interface EngineeringAnalyticsWorkflowRunnerCostsInput {
   workflow_name: string;
 }
 export const EngineeringAnalyticsWorkflowRunnerCostsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     date_from: Schema.optional(Schema.String),
     date_to: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export type EngineeringAnalyticsWorkflowRunnerCostsOutput = {
   estimated_cost_usd: number | null;
 }[];
 export const EngineeringAnalyticsWorkflowRunnerCostsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       provider: Schema.String,
       runner_label: Schema.String,
@@ -58,7 +58,7 @@ export const EngineeringAnalyticsWorkflowRunnerCostsOutput =
  * @param workflow_name - Workflow name to break down cost for.
  */
 export const engineeringAnalyticsWorkflowRunnerCosts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EngineeringAnalyticsWorkflowRunnerCostsInput,
     outputSchema: EngineeringAnalyticsWorkflowRunnerCostsOutput,
     errors: [BadRequest] as const,

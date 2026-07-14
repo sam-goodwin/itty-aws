@@ -11,7 +11,7 @@ export interface GetV1AppsInput {
   branchId?: string;
   branchGitName?: string;
 }
-export const GetV1AppsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV1AppsInput = /*@__PURE__*/ Schema.Struct({
   cursor: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
   projectId: Schema.optional(Schema.String),
@@ -37,7 +37,7 @@ export interface GetV1AppsOutput {
   }[];
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
-export const GetV1AppsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV1AppsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -68,7 +68,7 @@ export const GetV1AppsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Returns all apps the token has access to, ordered by creation time (oldest first). Optionally filter by project ID. Supports cursor-based pagination.
  */
-export const getV1Apps = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getV1Apps = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV1AppsInput,
   outputSchema: GetV1AppsOutput,
   errors: [Forbidden, UnprocessableEntity] as const,

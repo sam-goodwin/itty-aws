@@ -11,7 +11,7 @@ export interface UpdateProjectBranchDatabaseInput {
   database: { name?: string; owner_name?: string };
 }
 export const UpdateProjectBranchDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     database_name: Schema.String.pipe(T.PathParam()),
@@ -92,7 +92,7 @@ export interface UpdateProjectBranchDatabaseOutput {
   }[];
 }
 export const UpdateProjectBranchDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.Struct({
       id: Schema.Number,
       branch_id: Schema.String,
@@ -172,10 +172,8 @@ export const UpdateProjectBranchDatabaseOutput =
  * @param branch_id - The branch ID
  * @param database_name - The database name
  */
-export const updateProjectBranchDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateProjectBranchDatabaseInput,
-    outputSchema: UpdateProjectBranchDatabaseOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const updateProjectBranchDatabase = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateProjectBranchDatabaseInput,
+  outputSchema: UpdateProjectBranchDatabaseOutput,
+  errors: [NotFound] as const,
+}));

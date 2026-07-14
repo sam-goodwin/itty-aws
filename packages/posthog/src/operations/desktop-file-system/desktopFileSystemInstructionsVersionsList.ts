@@ -11,7 +11,7 @@ export interface DesktopFileSystemInstructionsVersionsListInput {
   search?: string;
 }
 export const DesktopFileSystemInstructionsVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -58,7 +58,7 @@ export interface DesktopFileSystemInstructionsVersionsListOutput {
   }[];
 }
 export const DesktopFileSystemInstructionsVersionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.Number,
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -112,7 +112,7 @@ export const DesktopFileSystemInstructionsVersionsListOutput =
  * @param search - A search term.
  */
 export const desktopFileSystemInstructionsVersionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DesktopFileSystemInstructionsVersionsListInput,
     outputSchema: DesktopFileSystemInstructionsVersionsListOutput,
   }));

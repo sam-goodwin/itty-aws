@@ -48,7 +48,7 @@ export interface MonitorsCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -134,7 +134,7 @@ export interface MonitorsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const MonitorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -165,7 +165,7 @@ export const MonitorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Name of the SAP monitor resource.
  */
-export const monitorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const monitorsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsCreateInput,
   outputSchema: MonitorsCreateOutput,
 }));
@@ -175,7 +175,7 @@ export interface MonitorsDeleteInput {
   resourceGroupName: string;
   monitorName: string;
 }
-export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -219,7 +219,7 @@ export interface MonitorsDeleteOutput {
     additionalInfo?: { type?: string; info?: unknown }[];
   };
 }
-export const MonitorsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsDeleteOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   status: Schema.String,
@@ -284,7 +284,7 @@ export const MonitorsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Name of the SAP monitor resource.
  */
-export const monitorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const monitorsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsDeleteInput,
   outputSchema: MonitorsDeleteOutput,
 }));
@@ -294,7 +294,7 @@ export interface MonitorsGetInput {
   resourceGroupName: string;
   monitorName: string;
 }
-export const MonitorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -320,7 +320,7 @@ export interface MonitorsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const MonitorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -351,7 +351,7 @@ export const MonitorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Name of the SAP monitor resource.
  */
-export const monitorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const monitorsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsGetInput,
   outputSchema: MonitorsGetOutput,
 }));
@@ -359,7 +359,7 @@ export const monitorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface MonitorsListInput {
   subscriptionId: string;
 }
-export const MonitorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -386,7 +386,7 @@ export interface MonitorsListOutput {
   }[];
   nextLink?: string;
 }
-export const MonitorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -432,7 +432,7 @@ export const MonitorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const monitorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const monitorsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsListInput,
   outputSchema: MonitorsListOutput,
 }));
@@ -442,7 +442,7 @@ export interface MonitorsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const MonitorsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -471,7 +471,7 @@ export interface MonitorsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const MonitorsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -518,12 +518,10 @@ export const MonitorsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const monitorsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitorsListByResourceGroupInput,
-    outputSchema: MonitorsListByResourceGroupOutput,
-  }),
-);
+export const monitorsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitorsListByResourceGroupInput,
+  outputSchema: MonitorsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface MonitorsUpdateInput {
   subscriptionId: string;
@@ -538,7 +536,7 @@ export interface MonitorsUpdateInput {
     > | null;
   };
 }
-export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -581,7 +579,7 @@ export interface MonitorsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const MonitorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -612,15 +610,13 @@ export const MonitorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Name of the SAP monitor resource.
  */
-export const monitorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const monitorsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsUpdateInput,
   outputSchema: MonitorsUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Workloads/operations",
@@ -644,7 +640,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -674,7 +670,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -711,7 +707,7 @@ export interface ProviderInstancesCreateInput {
   };
 }
 export const ProviderInstancesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -788,7 +784,7 @@ export interface ProviderInstancesCreateOutput {
   };
 }
 export const ProviderInstancesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -820,12 +816,10 @@ export const ProviderInstancesCreateOutput =
  * @param monitorName - Name of the SAP monitor resource.
  * @param providerInstanceName - Name of the provider instance.
  */
-export const ProviderInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProviderInstancesCreateInput,
-    outputSchema: ProviderInstancesCreateOutput,
-  }),
-);
+export const ProviderInstancesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderInstancesCreateInput,
+  outputSchema: ProviderInstancesCreateOutput,
+}));
 // Input Schema
 export interface ProviderInstancesDeleteInput {
   subscriptionId: string;
@@ -834,7 +828,7 @@ export interface ProviderInstancesDeleteInput {
   providerInstanceName: string;
 }
 export const ProviderInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -880,7 +874,7 @@ export interface ProviderInstancesDeleteOutput {
   };
 }
 export const ProviderInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -946,12 +940,10 @@ export const ProviderInstancesDeleteOutput =
  * @param monitorName - Name of the SAP monitor resource.
  * @param providerInstanceName - Name of the provider instance.
  */
-export const ProviderInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProviderInstancesDeleteInput,
-    outputSchema: ProviderInstancesDeleteOutput,
-  }),
-);
+export const ProviderInstancesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderInstancesDeleteInput,
+  outputSchema: ProviderInstancesDeleteOutput,
+}));
 // Input Schema
 export interface ProviderInstancesGetInput {
   subscriptionId: string;
@@ -960,7 +952,7 @@ export interface ProviderInstancesGetInput {
   providerInstanceName: string;
 }
 export const ProviderInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -988,7 +980,7 @@ export interface ProviderInstancesGetOutput {
   };
 }
 export const ProviderInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1020,12 +1012,10 @@ export const ProviderInstancesGetOutput =
  * @param monitorName - Name of the SAP monitor resource.
  * @param providerInstanceName - Name of the provider instance.
  */
-export const ProviderInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProviderInstancesGetInput,
-    outputSchema: ProviderInstancesGetOutput,
-  }),
-);
+export const ProviderInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderInstancesGetInput,
+  outputSchema: ProviderInstancesGetOutput,
+}));
 // Input Schema
 export interface ProviderInstancesListInput {
   subscriptionId: string;
@@ -1033,7 +1023,7 @@ export interface ProviderInstancesListInput {
   monitorName: string;
 }
 export const ProviderInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -1063,7 +1053,7 @@ export interface ProviderInstancesListOutput {
   nextLink?: string;
 }
 export const ProviderInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1111,12 +1101,10 @@ export const ProviderInstancesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Name of the SAP monitor resource.
  */
-export const ProviderInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProviderInstancesListInput,
-    outputSchema: ProviderInstancesListOutput,
-  }),
-);
+export const ProviderInstancesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderInstancesListInput,
+  outputSchema: ProviderInstancesListOutput,
+}));
 // Input Schema
 export interface SAPApplicationServerInstancesCreateInput {
   subscriptionId: string;
@@ -1162,7 +1150,7 @@ export interface SAPApplicationServerInstancesCreateInput {
   location: string;
 }
 export const SAPApplicationServerInstancesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1261,7 +1249,7 @@ export interface SAPApplicationServerInstancesCreateOutput {
   };
 }
 export const SAPApplicationServerInstancesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1292,7 +1280,7 @@ export const SAPApplicationServerInstancesCreateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SAPApplicationServerInstancesCreateInput,
     outputSchema: SAPApplicationServerInstancesCreateOutput,
   }));
@@ -1304,7 +1292,7 @@ export interface SAPApplicationServerInstancesDeleteInput {
   applicationInstanceName: string;
 }
 export const SAPApplicationServerInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1350,7 +1338,7 @@ export interface SAPApplicationServerInstancesDeleteOutput {
   };
 }
 export const SAPApplicationServerInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -1415,7 +1403,7 @@ export const SAPApplicationServerInstancesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SAPApplicationServerInstancesDeleteInput,
     outputSchema: SAPApplicationServerInstancesDeleteOutput,
   }));
@@ -1427,7 +1415,7 @@ export interface SAPApplicationServerInstancesGetInput {
   applicationInstanceName: string;
 }
 export const SAPApplicationServerInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1455,7 +1443,7 @@ export interface SAPApplicationServerInstancesGetOutput {
   };
 }
 export const SAPApplicationServerInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1486,7 +1474,7 @@ export const SAPApplicationServerInstancesGetOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SAPApplicationServerInstancesGetInput,
     outputSchema: SAPApplicationServerInstancesGetOutput,
   }));
@@ -1497,7 +1485,7 @@ export interface SAPApplicationServerInstancesListInput {
   sapVirtualInstanceName: string;
 }
 export const SAPApplicationServerInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1527,7 +1515,7 @@ export interface SAPApplicationServerInstancesListOutput {
   nextLink?: string;
 }
 export const SAPApplicationServerInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1574,7 +1562,7 @@ export const SAPApplicationServerInstancesListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SAPApplicationServerInstancesListInput,
     outputSchema: SAPApplicationServerInstancesListOutput,
   }));
@@ -1587,7 +1575,7 @@ export interface SapApplicationServerInstancesStartInput {
   startVm?: boolean;
 }
 export const SapApplicationServerInstancesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1636,7 +1624,7 @@ export interface SapApplicationServerInstancesStartOutput {
   };
 }
 export const SapApplicationServerInstancesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1703,7 +1691,7 @@ export const SapApplicationServerInstancesStartOutput =
  * @param applicationInstanceName - The name of SAP Application Server instance resource.
  */
 export const SapApplicationServerInstancesStart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SapApplicationServerInstancesStartInput,
     outputSchema: SapApplicationServerInstancesStartOutput,
   }));
@@ -1715,7 +1703,7 @@ export interface SAPApplicationServerInstancesStartInstanceInput {
   applicationInstanceName: string;
 }
 export const SAPApplicationServerInstancesStartInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1761,7 +1749,7 @@ export interface SAPApplicationServerInstancesStartInstanceOutput {
   };
 }
 export const SAPApplicationServerInstancesStartInstanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -1826,7 +1814,7 @@ export const SAPApplicationServerInstancesStartInstanceOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesStartInstance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SAPApplicationServerInstancesStartInstanceInput,
     outputSchema: SAPApplicationServerInstancesStartInstanceOutput,
   }));
@@ -1840,7 +1828,7 @@ export interface SapApplicationServerInstancesStopInput {
   deallocateVm?: boolean;
 }
 export const SapApplicationServerInstancesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1890,7 +1878,7 @@ export interface SapApplicationServerInstancesStopOutput {
   };
 }
 export const SapApplicationServerInstancesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1957,7 +1945,7 @@ export const SapApplicationServerInstancesStopOutput =
  * @param applicationInstanceName - The name of SAP Application Server instance resource.
  */
 export const SapApplicationServerInstancesStop =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SapApplicationServerInstancesStopInput,
     outputSchema: SapApplicationServerInstancesStopOutput,
   }));
@@ -1970,7 +1958,7 @@ export interface SAPApplicationServerInstancesStopInstanceInput {
   softStopTimeoutSeconds?: number;
 }
 export const SAPApplicationServerInstancesStopInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2017,7 +2005,7 @@ export interface SAPApplicationServerInstancesStopInstanceOutput {
   };
 }
 export const SAPApplicationServerInstancesStopInstanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -2082,7 +2070,7 @@ export const SAPApplicationServerInstancesStopInstanceOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesStopInstance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SAPApplicationServerInstancesStopInstanceInput,
     outputSchema: SAPApplicationServerInstancesStopInstanceOutput,
   }));
@@ -2095,7 +2083,7 @@ export interface SAPApplicationServerInstancesUpdateInput {
   tags?: Record<string, string>;
 }
 export const SAPApplicationServerInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2124,7 +2112,7 @@ export interface SAPApplicationServerInstancesUpdateOutput {
   };
 }
 export const SAPApplicationServerInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2155,7 +2143,7 @@ export const SAPApplicationServerInstancesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SAPApplicationServerInstancesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SAPApplicationServerInstancesUpdateInput,
     outputSchema: SAPApplicationServerInstancesUpdateOutput,
   }));
@@ -2168,7 +2156,7 @@ export interface SAPAvailabilityZoneDetailsInput {
   databaseType: "HANA" | "DB2";
 }
 export const SAPAvailabilityZoneDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
@@ -2187,7 +2175,7 @@ export interface SAPAvailabilityZoneDetailsOutput {
   availabilityZonePairs?: { zoneA?: number; zoneB?: number }[];
 }
 export const SAPAvailabilityZoneDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     availabilityZonePairs: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2206,12 +2194,10 @@ export const SAPAvailabilityZoneDetailsOutput =
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const SAPAvailabilityZoneDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPAvailabilityZoneDetailsInput,
-    outputSchema: SAPAvailabilityZoneDetailsOutput,
-  }),
-);
+export const SAPAvailabilityZoneDetails = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPAvailabilityZoneDetailsInput,
+  outputSchema: SAPAvailabilityZoneDetailsOutput,
+}));
 // Input Schema
 export interface SAPCentralInstancesCreateInput {
   subscriptionId: string;
@@ -2287,7 +2273,7 @@ export interface SAPCentralInstancesCreateInput {
   location: string;
 }
 export const SAPCentralInstancesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2435,7 +2421,7 @@ export interface SAPCentralInstancesCreateOutput {
   };
 }
 export const SAPCentralInstancesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2465,12 +2451,10 @@ export const SAPCentralInstancesCreateOutput =
  * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
-export const SAPCentralInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPCentralInstancesCreateInput,
-    outputSchema: SAPCentralInstancesCreateOutput,
-  }),
-);
+export const SAPCentralInstancesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPCentralInstancesCreateInput,
+  outputSchema: SAPCentralInstancesCreateOutput,
+}));
 // Input Schema
 export interface SAPCentralInstancesDeleteInput {
   subscriptionId: string;
@@ -2479,7 +2463,7 @@ export interface SAPCentralInstancesDeleteInput {
   centralInstanceName: string;
 }
 export const SAPCentralInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2525,7 +2509,7 @@ export interface SAPCentralInstancesDeleteOutput {
   };
 }
 export const SAPCentralInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -2589,12 +2573,10 @@ export const SAPCentralInstancesDeleteOutput =
  * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
-export const SAPCentralInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPCentralInstancesDeleteInput,
-    outputSchema: SAPCentralInstancesDeleteOutput,
-  }),
-);
+export const SAPCentralInstancesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPCentralInstancesDeleteInput,
+  outputSchema: SAPCentralInstancesDeleteOutput,
+}));
 // Input Schema
 export interface SAPCentralInstancesGetInput {
   subscriptionId: string;
@@ -2603,7 +2585,7 @@ export interface SAPCentralInstancesGetInput {
   centralInstanceName: string;
 }
 export const SAPCentralInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2631,7 +2613,7 @@ export interface SAPCentralInstancesGetOutput {
   };
 }
 export const SAPCentralInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2661,12 +2643,10 @@ export const SAPCentralInstancesGetOutput =
  * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
-export const SAPCentralInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPCentralInstancesGetInput,
-    outputSchema: SAPCentralInstancesGetOutput,
-  }),
-);
+export const SAPCentralInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPCentralInstancesGetInput,
+  outputSchema: SAPCentralInstancesGetOutput,
+}));
 // Input Schema
 export interface SAPCentralInstancesListInput {
   subscriptionId: string;
@@ -2674,7 +2654,7 @@ export interface SAPCentralInstancesListInput {
   sapVirtualInstanceName: string;
 }
 export const SAPCentralInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2704,7 +2684,7 @@ export interface SAPCentralInstancesListOutput {
   nextLink?: string;
 }
 export const SAPCentralInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2750,12 +2730,10 @@ export const SAPCentralInstancesListOutput =
  * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
-export const SAPCentralInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPCentralInstancesListInput,
-    outputSchema: SAPCentralInstancesListOutput,
-  }),
-);
+export const SAPCentralInstancesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPCentralInstancesListInput,
+  outputSchema: SAPCentralInstancesListOutput,
+}));
 // Input Schema
 export interface SAPCentralInstancesStartInstanceInput {
   subscriptionId: string;
@@ -2764,7 +2742,7 @@ export interface SAPCentralInstancesStartInstanceInput {
   centralInstanceName: string;
 }
 export const SAPCentralInstancesStartInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2810,7 +2788,7 @@ export interface SAPCentralInstancesStartInstanceOutput {
   };
 }
 export const SAPCentralInstancesStartInstanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -2875,7 +2853,7 @@ export const SAPCentralInstancesStartInstanceOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SAPCentralInstancesStartInstance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SAPCentralInstancesStartInstanceInput,
     outputSchema: SAPCentralInstancesStartInstanceOutput,
   }));
@@ -2888,7 +2866,7 @@ export interface SAPCentralInstancesStopInstanceInput {
   softStopTimeoutSeconds?: number;
 }
 export const SAPCentralInstancesStopInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2935,7 +2913,7 @@ export interface SAPCentralInstancesStopInstanceOutput {
   };
 }
 export const SAPCentralInstancesStopInstanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -3000,7 +2978,7 @@ export const SAPCentralInstancesStopInstanceOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SAPCentralInstancesStopInstance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SAPCentralInstancesStopInstanceInput,
     outputSchema: SAPCentralInstancesStopInstanceOutput,
   }));
@@ -3013,7 +2991,7 @@ export interface SAPCentralInstancesUpdateInput {
   tags?: Record<string, string>;
 }
 export const SAPCentralInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3042,7 +3020,7 @@ export interface SAPCentralInstancesUpdateOutput {
   };
 }
 export const SAPCentralInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3072,12 +3050,10 @@ export const SAPCentralInstancesUpdateOutput =
  * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
-export const SAPCentralInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPCentralInstancesUpdateInput,
-    outputSchema: SAPCentralInstancesUpdateOutput,
-  }),
-);
+export const SAPCentralInstancesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPCentralInstancesUpdateInput,
+  outputSchema: SAPCentralInstancesUpdateOutput,
+}));
 // Input Schema
 export interface SapCentralServerInstancesCreateInput {
   subscriptionId: string;
@@ -3154,7 +3130,7 @@ export interface SapCentralServerInstancesCreateInput {
   location: string;
 }
 export const SapCentralServerInstancesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3303,7 +3279,7 @@ export interface SapCentralServerInstancesCreateOutput {
   };
 }
 export const SapCentralServerInstancesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3334,7 +3310,7 @@ export const SapCentralServerInstancesCreateOutput =
  * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  */
 export const SapCentralServerInstancesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SapCentralServerInstancesCreateInput,
     outputSchema: SapCentralServerInstancesCreateOutput,
   }));
@@ -3346,7 +3322,7 @@ export interface SapCentralServerInstancesDeleteInput {
   centralInstanceName: string;
 }
 export const SapCentralServerInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3362,7 +3338,7 @@ export const SapCentralServerInstancesDeleteInput =
 // Output Schema
 export type SapCentralServerInstancesDeleteOutput = void;
 export const SapCentralServerInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SapCentralServerInstancesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SapCentralServerInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -3375,7 +3351,7 @@ export const SapCentralServerInstancesDeleteOutput =
  * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  */
 export const SapCentralServerInstancesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SapCentralServerInstancesDeleteInput,
     outputSchema: SapCentralServerInstancesDeleteOutput,
   }));
@@ -3387,7 +3363,7 @@ export interface SapCentralServerInstancesGetInput {
   centralInstanceName: string;
 }
 export const SapCentralServerInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3415,7 +3391,7 @@ export interface SapCentralServerInstancesGetOutput {
   };
 }
 export const SapCentralServerInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3446,7 +3422,7 @@ export const SapCentralServerInstancesGetOutput =
  * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  */
 export const SapCentralServerInstancesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SapCentralServerInstancesGetInput,
     outputSchema: SapCentralServerInstancesGetOutput,
   }));
@@ -3457,7 +3433,7 @@ export interface SapCentralServerInstancesListInput {
   sapVirtualInstanceName: string;
 }
 export const SapCentralServerInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3487,7 +3463,7 @@ export interface SapCentralServerInstancesListOutput {
   nextLink?: string;
 }
 export const SapCentralServerInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3532,7 +3508,7 @@ export const SapCentralServerInstancesListOutput =
  * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  */
 export const SapCentralServerInstancesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SapCentralServerInstancesListInput,
     outputSchema: SapCentralServerInstancesListOutput,
   }));
@@ -3545,7 +3521,7 @@ export interface SapCentralServerInstancesStartInput {
   startVm?: boolean;
 }
 export const SapCentralServerInstancesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3594,7 +3570,7 @@ export interface SapCentralServerInstancesStartOutput {
   };
 }
 export const SapCentralServerInstancesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3661,7 +3637,7 @@ export const SapCentralServerInstancesStartOutput =
  * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  */
 export const SapCentralServerInstancesStart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SapCentralServerInstancesStartInput,
     outputSchema: SapCentralServerInstancesStartOutput,
   }));
@@ -3675,7 +3651,7 @@ export interface SapCentralServerInstancesStopInput {
   deallocateVm?: boolean;
 }
 export const SapCentralServerInstancesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3725,7 +3701,7 @@ export interface SapCentralServerInstancesStopOutput {
   };
 }
 export const SapCentralServerInstancesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3792,7 +3768,7 @@ export const SapCentralServerInstancesStopOutput =
  * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  */
 export const SapCentralServerInstancesStop =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SapCentralServerInstancesStopInput,
     outputSchema: SapCentralServerInstancesStopOutput,
   }));
@@ -3805,7 +3781,7 @@ export interface SapCentralServerInstancesUpdateInput {
   tags?: Record<string, string>;
 }
 export const SapCentralServerInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3834,7 +3810,7 @@ export interface SapCentralServerInstancesUpdateOutput {
   };
 }
 export const SapCentralServerInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3865,7 +3841,7 @@ export const SapCentralServerInstancesUpdateOutput =
  * @param centralInstanceName - Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
  */
 export const SapCentralServerInstancesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SapCentralServerInstancesUpdateInput,
     outputSchema: SapCentralServerInstancesUpdateOutput,
   }));
@@ -3915,7 +3891,7 @@ export interface SAPDatabaseInstancesCreateInput {
   location: string;
 }
 export const SAPDatabaseInstancesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -4014,7 +3990,7 @@ export interface SAPDatabaseInstancesCreateOutput {
   };
 }
 export const SAPDatabaseInstancesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4044,12 +4020,10 @@ export const SAPDatabaseInstancesCreateOutput =
  * @param databaseInstanceName - Database resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
-export const SAPDatabaseInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPDatabaseInstancesCreateInput,
-    outputSchema: SAPDatabaseInstancesCreateOutput,
-  }),
-);
+export const SAPDatabaseInstancesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPDatabaseInstancesCreateInput,
+  outputSchema: SAPDatabaseInstancesCreateOutput,
+}));
 // Input Schema
 export interface SAPDatabaseInstancesDeleteInput {
   subscriptionId: string;
@@ -4058,7 +4032,7 @@ export interface SAPDatabaseInstancesDeleteInput {
   databaseInstanceName: string;
 }
 export const SAPDatabaseInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -4104,7 +4078,7 @@ export interface SAPDatabaseInstancesDeleteOutput {
   };
 }
 export const SAPDatabaseInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -4168,12 +4142,10 @@ export const SAPDatabaseInstancesDeleteOutput =
  * @param databaseInstanceName - Database resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
-export const SAPDatabaseInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPDatabaseInstancesDeleteInput,
-    outputSchema: SAPDatabaseInstancesDeleteOutput,
-  }),
-);
+export const SAPDatabaseInstancesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPDatabaseInstancesDeleteInput,
+  outputSchema: SAPDatabaseInstancesDeleteOutput,
+}));
 // Input Schema
 export interface SAPDatabaseInstancesGetInput {
   subscriptionId: string;
@@ -4182,7 +4154,7 @@ export interface SAPDatabaseInstancesGetInput {
   databaseInstanceName: string;
 }
 export const SAPDatabaseInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -4210,7 +4182,7 @@ export interface SAPDatabaseInstancesGetOutput {
   };
 }
 export const SAPDatabaseInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4240,12 +4212,10 @@ export const SAPDatabaseInstancesGetOutput =
  * @param databaseInstanceName - Database resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
-export const SAPDatabaseInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPDatabaseInstancesGetInput,
-    outputSchema: SAPDatabaseInstancesGetOutput,
-  }),
-);
+export const SAPDatabaseInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPDatabaseInstancesGetInput,
+  outputSchema: SAPDatabaseInstancesGetOutput,
+}));
 // Input Schema
 export interface SAPDatabaseInstancesListInput {
   subscriptionId: string;
@@ -4253,7 +4223,7 @@ export interface SAPDatabaseInstancesListInput {
   sapVirtualInstanceName: string;
 }
 export const SAPDatabaseInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -4283,7 +4253,7 @@ export interface SAPDatabaseInstancesListOutput {
   nextLink?: string;
 }
 export const SAPDatabaseInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4329,12 +4299,10 @@ export const SAPDatabaseInstancesListOutput =
  * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
-export const SAPDatabaseInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPDatabaseInstancesListInput,
-    outputSchema: SAPDatabaseInstancesListOutput,
-  }),
-);
+export const SAPDatabaseInstancesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPDatabaseInstancesListInput,
+  outputSchema: SAPDatabaseInstancesListOutput,
+}));
 // Input Schema
 export interface SapDatabaseInstancesStartInput {
   subscriptionId: string;
@@ -4344,7 +4312,7 @@ export interface SapDatabaseInstancesStartInput {
   startVm?: boolean;
 }
 export const SapDatabaseInstancesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -4393,7 +4361,7 @@ export interface SapDatabaseInstancesStartOutput {
   };
 }
 export const SapDatabaseInstancesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4459,12 +4427,10 @@ export const SapDatabaseInstancesStartOutput =
  * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param databaseInstanceName - Database resource name string modeled as parameter for auto generation to work correctly.
  */
-export const SapDatabaseInstancesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SapDatabaseInstancesStartInput,
-    outputSchema: SapDatabaseInstancesStartOutput,
-  }),
-);
+export const SapDatabaseInstancesStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SapDatabaseInstancesStartInput,
+  outputSchema: SapDatabaseInstancesStartOutput,
+}));
 // Input Schema
 export interface SAPDatabaseInstancesStartInstanceInput {
   subscriptionId: string;
@@ -4473,7 +4439,7 @@ export interface SAPDatabaseInstancesStartInstanceInput {
   databaseInstanceName: string;
 }
 export const SAPDatabaseInstancesStartInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -4519,7 +4485,7 @@ export interface SAPDatabaseInstancesStartInstanceOutput {
   };
 }
 export const SAPDatabaseInstancesStartInstanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -4584,7 +4550,7 @@ export const SAPDatabaseInstancesStartInstanceOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SAPDatabaseInstancesStartInstance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SAPDatabaseInstancesStartInstanceInput,
     outputSchema: SAPDatabaseInstancesStartInstanceOutput,
   }));
@@ -4598,7 +4564,7 @@ export interface SapDatabaseInstancesStopInput {
   deallocateVm?: boolean;
 }
 export const SapDatabaseInstancesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -4648,7 +4614,7 @@ export interface SapDatabaseInstancesStopOutput {
   };
 }
 export const SapDatabaseInstancesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4714,12 +4680,10 @@ export const SapDatabaseInstancesStopOutput =
  * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param databaseInstanceName - Database resource name string modeled as parameter for auto generation to work correctly.
  */
-export const SapDatabaseInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SapDatabaseInstancesStopInput,
-    outputSchema: SapDatabaseInstancesStopOutput,
-  }),
-);
+export const SapDatabaseInstancesStop = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SapDatabaseInstancesStopInput,
+  outputSchema: SapDatabaseInstancesStopOutput,
+}));
 // Input Schema
 export interface SAPDatabaseInstancesStopInstanceInput {
   subscriptionId: string;
@@ -4729,7 +4693,7 @@ export interface SAPDatabaseInstancesStopInstanceInput {
   softStopTimeoutSeconds?: number;
 }
 export const SAPDatabaseInstancesStopInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -4776,7 +4740,7 @@ export interface SAPDatabaseInstancesStopInstanceOutput {
   };
 }
 export const SAPDatabaseInstancesStopInstanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -4841,7 +4805,7 @@ export const SAPDatabaseInstancesStopInstanceOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SAPDatabaseInstancesStopInstance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SAPDatabaseInstancesStopInstanceInput,
     outputSchema: SAPDatabaseInstancesStopInstanceOutput,
   }));
@@ -4854,7 +4818,7 @@ export interface SAPDatabaseInstancesUpdateInput {
   tags?: Record<string, string>;
 }
 export const SAPDatabaseInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -4883,7 +4847,7 @@ export interface SAPDatabaseInstancesUpdateOutput {
   };
 }
 export const SAPDatabaseInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4913,12 +4877,10 @@ export const SAPDatabaseInstancesUpdateOutput =
  * @param databaseInstanceName - Database resource name string modeled as parameter for auto generation to work correctly.
  * @param api-version - The API version to use for this operation.
  */
-export const SAPDatabaseInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPDatabaseInstancesUpdateInput,
-    outputSchema: SAPDatabaseInstancesUpdateOutput,
-  }),
-);
+export const SAPDatabaseInstancesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPDatabaseInstancesUpdateInput,
+  outputSchema: SAPDatabaseInstancesUpdateOutput,
+}));
 // Input Schema
 export interface SAPDiskConfigurationsInput {
   subscriptionId: string;
@@ -4931,7 +4893,7 @@ export interface SAPDiskConfigurationsInput {
   dbVmSku: string;
 }
 export const SAPDiskConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
@@ -4989,7 +4951,7 @@ export interface SAPDiskConfigurationsOutput {
   >;
 }
 export const SAPDiskConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     volumeConfigurations: Schema.optional(
       Schema.Record(
         Schema.String,
@@ -5055,12 +5017,10 @@ export const SAPDiskConfigurationsOutput =
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const SAPDiskConfigurations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPDiskConfigurationsInput,
-    outputSchema: SAPDiskConfigurationsOutput,
-  }),
-);
+export const SAPDiskConfigurations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPDiskConfigurationsInput,
+  outputSchema: SAPDiskConfigurationsOutput,
+}));
 // Input Schema
 export interface SapLandscapeMonitorCreateInput {
   subscriptionId: string;
@@ -5086,7 +5046,7 @@ export interface SapLandscapeMonitorCreateInput {
   };
 }
 export const SapLandscapeMonitorCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -5156,7 +5116,7 @@ export interface SapLandscapeMonitorCreateOutput {
   };
 }
 export const SapLandscapeMonitorCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5187,12 +5147,10 @@ export const SapLandscapeMonitorCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Name of the SAP monitor resource.
  */
-export const SapLandscapeMonitorCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SapLandscapeMonitorCreateInput,
-    outputSchema: SapLandscapeMonitorCreateOutput,
-  }),
-);
+export const SapLandscapeMonitorCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SapLandscapeMonitorCreateInput,
+  outputSchema: SapLandscapeMonitorCreateOutput,
+}));
 // Input Schema
 export interface SapLandscapeMonitorDeleteInput {
   subscriptionId: string;
@@ -5200,7 +5158,7 @@ export interface SapLandscapeMonitorDeleteInput {
   monitorName: string;
 }
 export const SapLandscapeMonitorDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -5215,7 +5173,7 @@ export const SapLandscapeMonitorDeleteInput =
 // Output Schema
 export type SapLandscapeMonitorDeleteOutput = void;
 export const SapLandscapeMonitorDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SapLandscapeMonitorDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SapLandscapeMonitorDeleteOutput>;
 
 // The operation
 /**
@@ -5228,12 +5186,10 @@ export const SapLandscapeMonitorDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Name of the SAP monitor resource.
  */
-export const SapLandscapeMonitorDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SapLandscapeMonitorDeleteInput,
-    outputSchema: SapLandscapeMonitorDeleteOutput,
-  }),
-);
+export const SapLandscapeMonitorDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SapLandscapeMonitorDeleteInput,
+  outputSchema: SapLandscapeMonitorDeleteOutput,
+}));
 // Input Schema
 export interface SapLandscapeMonitorGetInput {
   subscriptionId: string;
@@ -5241,7 +5197,7 @@ export interface SapLandscapeMonitorGetInput {
   monitorName: string;
 }
 export const SapLandscapeMonitorGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -5268,7 +5224,7 @@ export interface SapLandscapeMonitorGetOutput {
   };
 }
 export const SapLandscapeMonitorGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5299,12 +5255,10 @@ export const SapLandscapeMonitorGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Name of the SAP monitor resource.
  */
-export const SapLandscapeMonitorGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SapLandscapeMonitorGetInput,
-    outputSchema: SapLandscapeMonitorGetOutput,
-  }),
-);
+export const SapLandscapeMonitorGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SapLandscapeMonitorGetInput,
+  outputSchema: SapLandscapeMonitorGetOutput,
+}));
 // Input Schema
 export interface SapLandscapeMonitorListInput {
   subscriptionId: string;
@@ -5312,7 +5266,7 @@ export interface SapLandscapeMonitorListInput {
   monitorName: string;
 }
 export const SapLandscapeMonitorListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -5342,7 +5296,7 @@ export interface SapLandscapeMonitorListOutput {
   nextLink?: string;
 }
 export const SapLandscapeMonitorListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5390,12 +5344,10 @@ export const SapLandscapeMonitorListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Name of the SAP monitor resource.
  */
-export const SapLandscapeMonitorList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SapLandscapeMonitorListInput,
-    outputSchema: SapLandscapeMonitorListOutput,
-  }),
-);
+export const SapLandscapeMonitorList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SapLandscapeMonitorListInput,
+  outputSchema: SapLandscapeMonitorListOutput,
+}));
 // Input Schema
 export interface SapLandscapeMonitorUpdateInput {
   subscriptionId: string;
@@ -5421,7 +5373,7 @@ export interface SapLandscapeMonitorUpdateInput {
   };
 }
 export const SapLandscapeMonitorUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -5491,7 +5443,7 @@ export interface SapLandscapeMonitorUpdateOutput {
   };
 }
 export const SapLandscapeMonitorUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5522,12 +5474,10 @@ export const SapLandscapeMonitorUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Name of the SAP monitor resource.
  */
-export const SapLandscapeMonitorUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SapLandscapeMonitorUpdateInput,
-    outputSchema: SapLandscapeMonitorUpdateOutput,
-  }),
-);
+export const SapLandscapeMonitorUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SapLandscapeMonitorUpdateInput,
+  outputSchema: SapLandscapeMonitorUpdateOutput,
+}));
 // Input Schema
 export interface SAPSizingRecommendationsInput {
   subscriptionId: string;
@@ -5543,7 +5493,7 @@ export interface SAPSizingRecommendationsInput {
   highAvailabilityType?: "AvailabilitySet" | "AvailabilityZone";
 }
 export const SAPSizingRecommendationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
@@ -5570,7 +5520,7 @@ export interface SAPSizingRecommendationsOutput {
   deploymentType: "SingleServer" | "ThreeTier";
 }
 export const SAPSizingRecommendationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
   }) as unknown as Schema.Codec<SAPSizingRecommendationsOutput>;
 
@@ -5582,12 +5532,10 @@ export const SAPSizingRecommendationsOutput =
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const SAPSizingRecommendations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPSizingRecommendationsInput,
-    outputSchema: SAPSizingRecommendationsOutput,
-  }),
-);
+export const SAPSizingRecommendations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPSizingRecommendationsInput,
+  outputSchema: SAPSizingRecommendationsOutput,
+}));
 // Input Schema
 export interface SAPSupportedSkuInput {
   subscriptionId: string;
@@ -5599,7 +5547,7 @@ export interface SAPSupportedSkuInput {
   databaseType: "HANA" | "DB2";
   highAvailabilityType?: "AvailabilitySet" | "AvailabilityZone";
 }
-export const SAPSupportedSkuInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SAPSupportedSkuInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   appLocation: Schema.String,
@@ -5626,7 +5574,7 @@ export interface SAPSupportedSkuOutput {
     isDatabaseCertified?: boolean;
   }[];
 }
-export const SAPSupportedSkuOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SAPSupportedSkuOutput = /*@__PURE__*/ Schema.Struct({
   supportedSkus: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -5646,7 +5594,7 @@ export const SAPSupportedSkuOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param location - The name of Azure region.
  * @param api-version - The API version to use for this operation.
  */
-export const SAPSupportedSku = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SAPSupportedSku = /*@__PURE__*/ API.make(() => ({
   inputSchema: SAPSupportedSkuInput,
   outputSchema: SAPSupportedSkuOutput,
 }));
@@ -5705,7 +5653,7 @@ export interface SAPVirtualInstancesCreateInput {
   location: string;
 }
 export const SAPVirtualInstancesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -5816,7 +5764,7 @@ export interface SAPVirtualInstancesCreateOutput {
   };
 }
 export const SAPVirtualInstancesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5845,12 +5793,10 @@ export const SAPVirtualInstancesCreateOutput =
  * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
-export const SAPVirtualInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPVirtualInstancesCreateInput,
-    outputSchema: SAPVirtualInstancesCreateOutput,
-  }),
-);
+export const SAPVirtualInstancesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPVirtualInstancesCreateInput,
+  outputSchema: SAPVirtualInstancesCreateOutput,
+}));
 // Input Schema
 export interface SAPVirtualInstancesDeleteInput {
   subscriptionId: string;
@@ -5858,7 +5804,7 @@ export interface SAPVirtualInstancesDeleteInput {
   sapVirtualInstanceName: string;
 }
 export const SAPVirtualInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -5903,7 +5849,7 @@ export interface SAPVirtualInstancesDeleteOutput {
   };
 }
 export const SAPVirtualInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -5966,12 +5912,10 @@ export const SAPVirtualInstancesDeleteOutput =
  * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
-export const SAPVirtualInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPVirtualInstancesDeleteInput,
-    outputSchema: SAPVirtualInstancesDeleteOutput,
-  }),
-);
+export const SAPVirtualInstancesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPVirtualInstancesDeleteInput,
+  outputSchema: SAPVirtualInstancesDeleteOutput,
+}));
 // Input Schema
 export interface SAPVirtualInstancesGetInput {
   subscriptionId: string;
@@ -5979,7 +5923,7 @@ export interface SAPVirtualInstancesGetInput {
   sapVirtualInstanceName: string;
 }
 export const SAPVirtualInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -6006,7 +5950,7 @@ export interface SAPVirtualInstancesGetOutput {
   };
 }
 export const SAPVirtualInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6035,12 +5979,10 @@ export const SAPVirtualInstancesGetOutput =
  * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
-export const SAPVirtualInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPVirtualInstancesGetInput,
-    outputSchema: SAPVirtualInstancesGetOutput,
-  }),
-);
+export const SAPVirtualInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPVirtualInstancesGetInput,
+  outputSchema: SAPVirtualInstancesGetOutput,
+}));
 // Input Schema
 export interface SapVirtualInstancesInvokeAvailabilityZoneDetailsInput {
   subscriptionId: string;
@@ -6050,7 +5992,7 @@ export interface SapVirtualInstancesInvokeAvailabilityZoneDetailsInput {
   databaseType: "HANA" | "DB2";
 }
 export const SapVirtualInstancesInvokeAvailabilityZoneDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
@@ -6069,7 +6011,7 @@ export interface SapVirtualInstancesInvokeAvailabilityZoneDetailsOutput {
   availabilityZonePairs?: { zoneA?: number; zoneB?: number }[];
 }
 export const SapVirtualInstancesInvokeAvailabilityZoneDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     availabilityZonePairs: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6089,7 +6031,7 @@ export const SapVirtualInstancesInvokeAvailabilityZoneDetailsOutput =
  * @param location - The name of the Azure region.
  */
 export const SapVirtualInstancesInvokeAvailabilityZoneDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SapVirtualInstancesInvokeAvailabilityZoneDetailsInput,
     outputSchema: SapVirtualInstancesInvokeAvailabilityZoneDetailsOutput,
   }));
@@ -6105,7 +6047,7 @@ export interface SapVirtualInstancesInvokeDiskConfigurationsInput {
   dbVmSku: string;
 }
 export const SapVirtualInstancesInvokeDiskConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
@@ -6163,7 +6105,7 @@ export interface SapVirtualInstancesInvokeDiskConfigurationsOutput {
   >;
 }
 export const SapVirtualInstancesInvokeDiskConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     volumeConfigurations: Schema.optional(
       Schema.Record(
         Schema.String,
@@ -6230,7 +6172,7 @@ export const SapVirtualInstancesInvokeDiskConfigurationsOutput =
  * @param location - The name of the Azure region.
  */
 export const SapVirtualInstancesInvokeDiskConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SapVirtualInstancesInvokeDiskConfigurationsInput,
     outputSchema: SapVirtualInstancesInvokeDiskConfigurationsOutput,
   }));
@@ -6246,7 +6188,7 @@ export interface SapVirtualInstancesInvokeSapSupportedSkuInput {
   highAvailabilityType?: "AvailabilitySet" | "AvailabilityZone";
 }
 export const SapVirtualInstancesInvokeSapSupportedSkuInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
@@ -6274,7 +6216,7 @@ export interface SapVirtualInstancesInvokeSapSupportedSkuOutput {
   }[];
 }
 export const SapVirtualInstancesInvokeSapSupportedSkuOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportedSkus: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6295,7 +6237,7 @@ export const SapVirtualInstancesInvokeSapSupportedSkuOutput =
  * @param location - The name of the Azure region.
  */
 export const SapVirtualInstancesInvokeSapSupportedSku =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SapVirtualInstancesInvokeSapSupportedSkuInput,
     outputSchema: SapVirtualInstancesInvokeSapSupportedSkuOutput,
   }));
@@ -6314,7 +6256,7 @@ export interface SapVirtualInstancesInvokeSizingRecommendationsInput {
   highAvailabilityType?: "AvailabilitySet" | "AvailabilityZone";
 }
 export const SapVirtualInstancesInvokeSizingRecommendationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
@@ -6341,7 +6283,7 @@ export interface SapVirtualInstancesInvokeSizingRecommendationsOutput {
   deploymentType: "SingleServer" | "ThreeTier";
 }
 export const SapVirtualInstancesInvokeSizingRecommendationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
   }) as unknown as Schema.Codec<SapVirtualInstancesInvokeSizingRecommendationsOutput>;
 
@@ -6354,7 +6296,7 @@ export const SapVirtualInstancesInvokeSizingRecommendationsOutput =
  * @param location - The name of the Azure region.
  */
 export const SapVirtualInstancesInvokeSizingRecommendations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SapVirtualInstancesInvokeSizingRecommendationsInput,
     outputSchema: SapVirtualInstancesInvokeSizingRecommendationsOutput,
   }));
@@ -6364,7 +6306,7 @@ export interface SAPVirtualInstancesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const SAPVirtualInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6393,7 +6335,7 @@ export interface SAPVirtualInstancesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SAPVirtualInstancesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6439,7 +6381,7 @@ export const SAPVirtualInstancesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SAPVirtualInstancesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SAPVirtualInstancesListByResourceGroupInput,
     outputSchema: SAPVirtualInstancesListByResourceGroupOutput,
   }));
@@ -6448,7 +6390,7 @@ export interface SAPVirtualInstancesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const SAPVirtualInstancesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -6476,7 +6418,7 @@ export interface SAPVirtualInstancesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const SAPVirtualInstancesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6521,7 +6463,7 @@ export const SAPVirtualInstancesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SAPVirtualInstancesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SAPVirtualInstancesListBySubscriptionInput,
     outputSchema: SAPVirtualInstancesListBySubscriptionOutput,
   }));
@@ -6532,7 +6474,7 @@ export interface SAPVirtualInstancesStartInput {
   sapVirtualInstanceName: string;
 }
 export const SAPVirtualInstancesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -6577,7 +6519,7 @@ export interface SAPVirtualInstancesStartOutput {
   };
 }
 export const SAPVirtualInstancesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -6640,12 +6582,10 @@ export const SAPVirtualInstancesStartOutput =
  * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
-export const SAPVirtualInstancesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPVirtualInstancesStartInput,
-    outputSchema: SAPVirtualInstancesStartOutput,
-  }),
-);
+export const SAPVirtualInstancesStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPVirtualInstancesStartInput,
+  outputSchema: SAPVirtualInstancesStartOutput,
+}));
 // Input Schema
 export interface SAPVirtualInstancesStopInput {
   subscriptionId: string;
@@ -6654,7 +6594,7 @@ export interface SAPVirtualInstancesStopInput {
   softStopTimeoutSeconds?: number;
 }
 export const SAPVirtualInstancesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -6700,7 +6640,7 @@ export interface SAPVirtualInstancesStopOutput {
   };
 }
 export const SAPVirtualInstancesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -6763,12 +6703,10 @@ export const SAPVirtualInstancesStopOutput =
  * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
-export const SAPVirtualInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPVirtualInstancesStopInput,
-    outputSchema: SAPVirtualInstancesStopOutput,
-  }),
-);
+export const SAPVirtualInstancesStop = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPVirtualInstancesStopInput,
+  outputSchema: SAPVirtualInstancesStopOutput,
+}));
 // Input Schema
 export interface SAPVirtualInstancesUpdateInput {
   subscriptionId: string;
@@ -6784,7 +6722,7 @@ export interface SAPVirtualInstancesUpdateInput {
   };
 }
 export const SAPVirtualInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
@@ -6828,7 +6766,7 @@ export interface SAPVirtualInstancesUpdateOutput {
   };
 }
 export const SAPVirtualInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6857,9 +6795,7 @@ export const SAPVirtualInstancesUpdateOutput =
  * @param sapVirtualInstanceName - The name of the Virtual Instances for SAP solutions resource
  * @param api-version - The API version to use for this operation.
  */
-export const SAPVirtualInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SAPVirtualInstancesUpdateInput,
-    outputSchema: SAPVirtualInstancesUpdateOutput,
-  }),
-);
+export const SAPVirtualInstancesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SAPVirtualInstancesUpdateInput,
+  outputSchema: SAPVirtualInstancesUpdateOutput,
+}));

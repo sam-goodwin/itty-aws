@@ -10,7 +10,7 @@ export interface WorkflowReverseCutoverInput {
   number: number;
 }
 export const WorkflowReverseCutoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -109,7 +109,7 @@ export interface WorkflowReverseCutoverOutput {
   };
 }
 export const WorkflowReverseCutoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     number: Schema.Number,
@@ -245,10 +245,8 @@ export const WorkflowReverseCutoverOutput =
  * @param database - The name of the database the workflow belongs to
  * @param number - The sequence number of the workflow
  */
-export const workflowReverseCutover = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowReverseCutoverInput,
-    outputSchema: WorkflowReverseCutoverOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const workflowReverseCutover = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowReverseCutoverInput,
+  outputSchema: WorkflowReverseCutoverOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

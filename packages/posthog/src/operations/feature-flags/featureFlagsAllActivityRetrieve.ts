@@ -10,7 +10,7 @@ export interface FeatureFlagsAllActivityRetrieveInput {
   page?: number;
 }
 export const FeatureFlagsAllActivityRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     page: Schema.optional(Schema.Number),
@@ -51,7 +51,7 @@ export interface FeatureFlagsAllActivityRetrieveOutput {
   total_count?: number;
 }
 export const FeatureFlagsAllActivityRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -112,7 +112,7 @@ export const FeatureFlagsAllActivityRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const featureFlagsAllActivityRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FeatureFlagsAllActivityRetrieveInput,
     outputSchema: FeatureFlagsAllActivityRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -9,7 +9,7 @@ export interface DeleteBranchNeonAuthOauthProviderInput {
   oauth_provider_id: string;
 }
 export const DeleteBranchNeonAuthOauthProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     oauth_provider_id: Schema.String.pipe(T.PathParam()),
@@ -23,7 +23,7 @@ export const DeleteBranchNeonAuthOauthProviderInput =
 // Output Schema
 export type DeleteBranchNeonAuthOauthProviderOutput = void;
 export const DeleteBranchNeonAuthOauthProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBranchNeonAuthOauthProviderOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBranchNeonAuthOauthProviderOutput>;
 
 // The operation
 /**
@@ -36,7 +36,7 @@ export const DeleteBranchNeonAuthOauthProviderOutput =
  * @param oauth_provider_id - The OAuth provider ID
  */
 export const deleteBranchNeonAuthOauthProvider =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteBranchNeonAuthOauthProviderInput,
     outputSchema: DeleteBranchNeonAuthOauthProviderOutput,
   }));

@@ -9,7 +9,7 @@ export interface ExternalDataSourcesStoredCredentialsListInput {
   source_type?: string;
 }
 export const ExternalDataSourcesStoredCredentialsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     search: Schema.optional(Schema.String),
     source_type: Schema.optional(Schema.String),
@@ -28,7 +28,7 @@ export type ExternalDataSourcesStoredCredentialsListOutput = {
   expires_at: string;
 }[];
 export const ExternalDataSourcesStoredCredentialsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       credential_id: Schema.String,
       source_type: Schema.String,
@@ -50,7 +50,7 @@ export const ExternalDataSourcesStoredCredentialsListOutput =
  * @param source_type - Only return stored credentials for this source type (e.g. 'Stripe', 'Postgres').
  */
 export const externalDataSourcesStoredCredentialsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesStoredCredentialsListInput,
     outputSchema: ExternalDataSourcesStoredCredentialsListOutput,
   }));

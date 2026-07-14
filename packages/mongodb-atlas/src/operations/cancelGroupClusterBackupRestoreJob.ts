@@ -12,7 +12,7 @@ export interface CancelGroupClusterBackupRestoreJobInput {
   pretty?: boolean;
 }
 export const CancelGroupClusterBackupRestoreJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     restoreJobId: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const CancelGroupClusterBackupRestoreJobInput =
 // Output Schema
 export type CancelGroupClusterBackupRestoreJobOutput = void;
 export const CancelGroupClusterBackupRestoreJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CancelGroupClusterBackupRestoreJobOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CancelGroupClusterBackupRestoreJobOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const CancelGroupClusterBackupRestoreJobOutput =
  * @param restoreJobId - Unique 24-hexadecimal digit string that identifies the restore job to remove.
  */
 export const cancelGroupClusterBackupRestoreJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CancelGroupClusterBackupRestoreJobInput,
     outputSchema: CancelGroupClusterBackupRestoreJobOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

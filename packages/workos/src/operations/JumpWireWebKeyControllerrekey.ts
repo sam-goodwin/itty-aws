@@ -9,7 +9,7 @@ export interface JumpWireWebKeyControllerrekeyInput {
   encrypted_keys: string;
 }
 export const JumpWireWebKeyControllerrekeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     context: Schema.Record(Schema.String, Schema.String),
     encrypted_keys: Schema.String,
   }).pipe(
@@ -24,7 +24,7 @@ export interface JumpWireWebKeyControllerrekeyOutput {
   id: string;
 }
 export const JumpWireWebKeyControllerrekeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     context: Schema.Record(Schema.String, Schema.String),
     data_key: Schema.String,
     encrypted_keys: Schema.String,
@@ -38,7 +38,7 @@ export const JumpWireWebKeyControllerrekeyOutput =
  * Decrypt an existing data key and re-encrypt it under a new key context.
  */
 export const JumpWireWebKeyControllerrekey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: JumpWireWebKeyControllerrekeyInput,
     outputSchema: JumpWireWebKeyControllerrekeyOutput,
     errors: [BadRequest, UnprocessableEntity] as const,

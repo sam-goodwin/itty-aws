@@ -683,7 +683,7 @@ export interface ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateInput {
   supports_column_selection?: boolean;
 }
 export const ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     created_at: Schema.optional(Schema.String),
@@ -1379,7 +1379,7 @@ export const ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateInput =
 // Output Schema
 export type ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateOutput = void;
 export const ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateOutput>;
 
 // The operation
 /**
@@ -1389,7 +1389,7 @@ export const ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const externalDataSourcesRevenueAnalyticsConfigPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateInput,
     outputSchema: ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -9,7 +9,7 @@ export interface GetOrganizationMembershipInput {
   id: string;
 }
 export const GetOrganizationMembershipInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -48,7 +48,7 @@ export interface GetOrganizationMembershipOutput {
   updated_at: string;
 }
 export const GetOrganizationMembershipOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     user: Schema.Struct({
       id: Schema.String,
@@ -87,10 +87,8 @@ export const GetOrganizationMembershipOutput =
  * @param organization - The name of the organization
  * @param id - The ID of the user
  */
-export const getOrganizationMembership = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetOrganizationMembershipInput,
-    outputSchema: GetOrganizationMembershipOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getOrganizationMembership = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetOrganizationMembershipInput,
+  outputSchema: GetOrganizationMembershipOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

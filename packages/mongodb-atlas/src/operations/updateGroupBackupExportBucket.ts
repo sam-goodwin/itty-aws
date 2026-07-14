@@ -11,7 +11,7 @@ export interface UpdateGroupBackupExportBucketInput {
   pretty?: boolean;
 }
 export const UpdateGroupBackupExportBucketInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     exportBucketId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const UpdateGroupBackupExportBucketInput =
 // Output Schema
 export type UpdateGroupBackupExportBucketOutput = void;
 export const UpdateGroupBackupExportBucketOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupBackupExportBucketOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupBackupExportBucketOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const UpdateGroupBackupExportBucketOutput =
  * @param exportBucketId - Unique 24-hexadecimal character string that identifies the snapshot export bucket.
  */
 export const updateGroupBackupExportBucket =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupBackupExportBucketInput,
     outputSchema: UpdateGroupBackupExportBucketOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

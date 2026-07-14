@@ -14,7 +14,7 @@ export interface AuthorizationOrganizationRolePermissionsControllerAddPermission
   slug: string;
 }
 export const AuthorizationOrganizationRolePermissionsControllerAddPermissionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -38,7 +38,7 @@ export interface AuthorizationOrganizationRolePermissionsControllerAddPermission
   updated_at: string;
 }
 export const AuthorizationOrganizationRolePermissionsControllerAddPermissionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String,
     object: Schema.String,
     id: Schema.String,
@@ -61,7 +61,7 @@ export const AuthorizationOrganizationRolePermissionsControllerAddPermissionOutp
  * @param slug - The slug of the role.
  */
 export const AuthorizationOrganizationRolePermissionsControllerAddPermission =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationOrganizationRolePermissionsControllerAddPermissionInput,
     outputSchema:

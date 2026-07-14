@@ -9,7 +9,7 @@ export interface ErrorTrackingSymbolSetsBulkFinishUploadCreateInput {
   content_hashes: Record<string, string>;
 }
 export const ErrorTrackingSymbolSetsBulkFinishUploadCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     content_hashes: Schema.Record(Schema.String, Schema.String),
   }).pipe(
@@ -22,7 +22,7 @@ export const ErrorTrackingSymbolSetsBulkFinishUploadCreateInput =
 // Output Schema
 export type ErrorTrackingSymbolSetsBulkFinishUploadCreateOutput = void;
 export const ErrorTrackingSymbolSetsBulkFinishUploadCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSymbolSetsBulkFinishUploadCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSymbolSetsBulkFinishUploadCreateOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const ErrorTrackingSymbolSetsBulkFinishUploadCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingSymbolSetsBulkFinishUploadCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingSymbolSetsBulkFinishUploadCreateInput,
     outputSchema: ErrorTrackingSymbolSetsBulkFinishUploadCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

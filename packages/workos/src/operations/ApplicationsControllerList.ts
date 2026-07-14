@@ -13,7 +13,7 @@ export interface ApplicationsControllerListInput {
   organization_id?: string;
 }
 export const ApplicationsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -40,7 +40,7 @@ export interface ApplicationsControllerListOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const ApplicationsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -77,10 +77,8 @@ export const ApplicationsControllerListOutput =
  * @param registration_types - Filter Connect Applications by registration type. Specify multiple as a comma-separated list (e.g. `registration_types=dynamic,authenticated`). Defaults to `authenticated` only when not specified.
  * @param organization_id - Filter Connect Applications by organization ID.
  */
-export const ApplicationsControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationsControllerListInput,
-    outputSchema: ApplicationsControllerListOutput,
-    errors: [UnprocessableEntity] as const,
-  }),
-);
+export const ApplicationsControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationsControllerListInput,
+  outputSchema: ApplicationsControllerListOutput,
+  errors: [UnprocessableEntity] as const,
+}));

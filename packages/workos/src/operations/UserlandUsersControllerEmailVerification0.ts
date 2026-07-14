@@ -9,7 +9,7 @@ export interface UserlandUsersControllerEmailVerification0Input {
   code?: string;
 }
 export const UserlandUsersControllerEmailVerification0Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     code: Schema.optional(Schema.String),
   }).pipe(
@@ -39,7 +39,7 @@ export interface UserlandUsersControllerEmailVerification0Output {
   };
 }
 export const UserlandUsersControllerEmailVerification0Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user: Schema.optional(
       Schema.Struct({
         object: Schema.optional(Schema.String),
@@ -69,7 +69,7 @@ export const UserlandUsersControllerEmailVerification0Output =
  * @param id - The ID of the user.
  */
 export const UserlandUsersControllerEmailVerification0 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerEmailVerification0Input,
     outputSchema: UserlandUsersControllerEmailVerification0Output,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

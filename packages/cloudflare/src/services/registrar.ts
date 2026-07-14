@@ -78,7 +78,7 @@ interface RegistrantContact {
   /** Contact fax number. */
   fax?: string | null;
 }
-const RegistrantContact = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RegistrantContact = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     address: Schema.String,
     city: Schema.String,
@@ -148,7 +148,7 @@ interface TransferIn {
     | (string & {})
     | null;
 }
-const TransferIn = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TransferIn = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     acceptFoa: Schema.optional(
       Schema.Union([
@@ -286,51 +286,48 @@ interface ListDomainsResponseResult {
   autoRenew?: boolean | null;
   privacy?: boolean | null;
 }
-const ListDomainsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      available: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      canRegister: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      currentRegistrar: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      expiresAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      locked: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      registrantContact: Schema.optional(
-        Schema.Union([RegistrantContact, Schema.Null]),
-      ),
-      registryStatuses: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      supportedTld: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      transferIn: Schema.optional(Schema.Union([TransferIn, Schema.Null])),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      autoRenew: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      privacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        available: "available",
-        canRegister: "can_register",
-        createdAt: "created_at",
-        currentRegistrar: "current_registrar",
-        expiresAt: "expires_at",
-        locked: "locked",
-        registrantContact: "registrant_contact",
-        registryStatuses: "registry_statuses",
-        supportedTld: "supported_tld",
-        transferIn: "transfer_in",
-        updatedAt: "updated_at",
-        name: "name",
-        autoRenew: "auto_renew",
-        privacy: "privacy",
-      }),
+const ListDomainsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    available: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    canRegister: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    currentRegistrar: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
     ),
+    expiresAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    locked: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    registrantContact: Schema.optional(
+      Schema.Union([RegistrantContact, Schema.Null]),
+    ),
+    registryStatuses: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    supportedTld: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    transferIn: Schema.optional(Schema.Union([TransferIn, Schema.Null])),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    autoRenew: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    privacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      available: "available",
+      canRegister: "can_register",
+      createdAt: "created_at",
+      currentRegistrar: "current_registrar",
+      expiresAt: "expires_at",
+      locked: "locked",
+      registrantContact: "registrant_contact",
+      registryStatuses: "registry_statuses",
+      supportedTld: "supported_tld",
+      transferIn: "transfer_in",
+      updatedAt: "updated_at",
+      name: "name",
+      autoRenew: "auto_renew",
+      privacy: "privacy",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListDomainsResponseResult>;
 
 interface Pricing {
@@ -341,7 +338,7 @@ interface Pricing {
   /** Per-year renewal cost for this domain. Applied to each year beyond the first year of a multi-year registration, and to each annual auto-renewal thereafter. May differ from `registration_cost`, especia */
   renewalCost: string;
 }
-const Pricing = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Pricing = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     currency: Schema.String,
     registrationCost: Schema.String,
@@ -378,7 +375,7 @@ interface Domain {
   /** The pricing tier for this domain. Always present when `registrable` is `true`; defaults to `standard` for most domains. May be absent when `registrable` is `false`.  - `standard`: Standard registry pr */
   tier?: "standard" | "premium" | (string & {}) | null;
 }
-const Domain = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Domain = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     registrable: Schema.Boolean,
@@ -413,7 +410,7 @@ interface Links {
   /** URL to the domain resource. */
   resource?: string | null;
 }
-const Links = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Links = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     self: Schema.String,
     resource: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -426,7 +423,7 @@ interface Error2 {
   /** Human-readable explanation of the failure. May include registry-specific details. */
   message: string;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.String,
     message: Schema.String,
@@ -443,7 +440,7 @@ export interface GetDomainRequest {
   accountId: string;
 }
 
-export const GetDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetDomainRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     domainName: Schema.String.pipe(T.HttpPath("domainName")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -457,8 +454,8 @@ export const GetDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 
 export type GetDomainResponse = unknown;
 
-export const GetDomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+export const GetDomainResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetDomainResponse>;
 
 export type GetDomainError = DefaultErrors | Forbidden;
@@ -468,7 +465,7 @@ export const getDomain: API.OperationMethod<
   GetDomainResponse,
   GetDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainRequest,
   output: GetDomainResponse,
   errors: [Forbidden],
@@ -479,16 +476,15 @@ export interface ListDomainsRequest {
   accountId: string;
 }
 
-export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/registrar/domains",
-      }),
-    ),
+export const ListDomainsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/registrar/domains",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListDomainsRequest>;
 
 export interface ListDomainsResponse {
@@ -554,11 +550,10 @@ export interface ListDomainsResponse {
   }[];
 }
 
-export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListDomainsResponseResult),
-    }),
+export const ListDomainsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListDomainsResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListDomainsResponse>;
 
 export type ListDomainsError = DefaultErrors | Forbidden;
@@ -568,7 +563,7 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsResponse,
   ListDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [Forbidden],
@@ -590,7 +585,7 @@ export interface PutDomainRequest {
   privacy?: boolean;
 }
 
-export const PutDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutDomainRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     domainName: Schema.String.pipe(T.HttpPath("domainName")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -612,8 +607,8 @@ export const PutDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 
 export type PutDomainResponse = unknown;
 
-export const PutDomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+export const PutDomainResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutDomainResponse>;
 
 export type PutDomainError =
@@ -627,7 +622,7 @@ export const putDomain: API.OperationMethod<
   PutDomainResponse,
   PutDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDomainRequest,
   output: PutDomainResponse,
   errors: [RegistrarDomainNotOwned, RegistrarUpdateNotAllowed, Forbidden],
@@ -644,17 +639,16 @@ export interface CheckRegistrarRequest {
   domains: string[];
 }
 
-export const CheckRegistrarRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      domains: Schema.Array(Schema.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/registrar/domain-check",
-      }),
-    ),
+export const CheckRegistrarRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    domains: Schema.Array(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/registrar/domain-check",
+    }),
+  ),
 ) as unknown as Schema.Codec<CheckRegistrarRequest>;
 
 export interface CheckRegistrarResponse {
@@ -680,7 +674,7 @@ export interface CheckRegistrarResponse {
 }
 
 export const CheckRegistrarResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       domains: Schema.Array(Domain),
     }).pipe(T.ResponsePath("result")),
@@ -693,7 +687,7 @@ export const checkRegistrar: API.OperationMethod<
   CheckRegistrarResponse,
   CheckRegistrarError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckRegistrarRequest,
   output: CheckRegistrarResponse,
   errors: [],
@@ -711,7 +705,7 @@ export interface SearchRegistrarRequest {
 }
 
 export const SearchRegistrarRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       q: Schema.String.pipe(T.HttpQuery("q")),
@@ -750,7 +744,7 @@ export interface SearchRegistrarResponse {
 }
 
 export const SearchRegistrarResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       domains: Schema.Array(Domain),
     }).pipe(T.ResponsePath("result")),
@@ -763,7 +757,7 @@ export const searchRegistrar: API.OperationMethod<
   SearchRegistrarResponse,
   SearchRegistrarError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchRegistrarRequest,
   output: SearchRegistrarResponse,
   errors: [],
@@ -780,7 +774,7 @@ export interface GetRegistrationStatusRequest {
 }
 
 export const GetRegistrationStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       domainName: Schema.String.pipe(T.HttpPath("domainName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -814,7 +808,7 @@ export interface GetRegistrationStatusResponse {
 }
 
 export const GetRegistrationStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       completed: Schema.Boolean,
       createdAt: Schema.String,
@@ -860,7 +854,7 @@ export const getRegistrationStatus: API.OperationMethod<
   GetRegistrationStatusResponse,
   GetRegistrationStatusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegistrationStatusRequest,
   output: GetRegistrationStatusResponse,
   errors: [],
@@ -877,7 +871,7 @@ export interface GetUpdateStatusRequest {
 }
 
 export const GetUpdateStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       domainName: Schema.String.pipe(T.HttpPath("domainName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -911,7 +905,7 @@ export interface GetUpdateStatusResponse {
 }
 
 export const GetUpdateStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       completed: Schema.Boolean,
       createdAt: Schema.String,
@@ -957,7 +951,7 @@ export const getUpdateStatus: API.OperationMethod<
   GetUpdateStatusResponse,
   GetUpdateStatusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUpdateStatusRequest,
   output: GetUpdateStatusResponse,
   errors: [],

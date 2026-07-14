@@ -10,9 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StorageActions/operations",
@@ -36,7 +34,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -66,7 +64,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -78,7 +76,7 @@ export interface StorageTaskAssignmentListInput {
   $maxpagesize?: number;
 }
 export const StorageTaskAssignmentListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageTaskName: Schema.String.pipe(T.PathParam()),
@@ -97,7 +95,7 @@ export interface StorageTaskAssignmentListOutput {
   nextLink?: string;
 }
 export const StorageTaskAssignmentListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -116,12 +114,10 @@ export const StorageTaskAssignmentListOutput =
  * @param storageTaskName - The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
  * @param $maxpagesize - Optional, specifies the maximum number of Storage Task Assignment Resource IDs to be included in the list response.
  */
-export const StorageTaskAssignmentList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTaskAssignmentListInput,
-    outputSchema: StorageTaskAssignmentListOutput,
-  }),
-);
+export const StorageTaskAssignmentList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTaskAssignmentListInput,
+  outputSchema: StorageTaskAssignmentListOutput,
+}));
 // Input Schema
 export interface StorageTasksCreateInput {
   subscriptionId: string;
@@ -192,7 +188,7 @@ export interface StorageTasksCreateInput {
   location: string;
 }
 export const StorageTasksCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageTaskName: Schema.String.pipe(T.PathParam()),
@@ -303,7 +299,7 @@ export interface StorageTasksCreateOutput {
   };
 }
 export const StorageTasksCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -332,7 +328,7 @@ export const StorageTasksCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageTaskName - The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
  */
-export const StorageTasksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageTasksCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageTasksCreateInput,
   outputSchema: StorageTasksCreateOutput,
 }));
@@ -343,7 +339,7 @@ export interface StorageTasksDeleteInput {
   storageTaskName: string;
 }
 export const StorageTasksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageTaskName: Schema.String.pipe(T.PathParam()),
@@ -358,7 +354,7 @@ export const StorageTasksDeleteInput =
 // Output Schema
 export type StorageTasksDeleteOutput = void;
 export const StorageTasksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTasksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTasksDeleteOutput>;
 
 // The operation
 /**
@@ -369,7 +365,7 @@ export const StorageTasksDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageTaskName - The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
  */
-export const StorageTasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageTasksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageTasksDeleteInput,
   outputSchema: StorageTasksDeleteOutput,
 }));
@@ -379,7 +375,7 @@ export interface StorageTasksGetInput {
   resourceGroupName: string;
   storageTaskName: string;
 }
-export const StorageTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StorageTasksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageTaskName: Schema.String.pipe(T.PathParam()),
@@ -405,7 +401,7 @@ export interface StorageTasksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const StorageTasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StorageTasksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -434,7 +430,7 @@ export const StorageTasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageTaskName - The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
  */
-export const StorageTasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageTasksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageTasksGetInput,
   outputSchema: StorageTasksGetOutput,
 }));
@@ -444,7 +440,7 @@ export interface StorageTasksListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const StorageTasksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -473,7 +469,7 @@ export interface StorageTasksListByResourceGroupOutput {
   nextLink?: string;
 }
 export const StorageTasksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -517,7 +513,7 @@ export const StorageTasksListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const StorageTasksListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageTasksListByResourceGroupInput,
     outputSchema: StorageTasksListByResourceGroupOutput,
   }));
@@ -526,7 +522,7 @@ export interface StorageTasksListBySubscriptionInput {
   subscriptionId: string;
 }
 export const StorageTasksListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -554,7 +550,7 @@ export interface StorageTasksListBySubscriptionOutput {
   nextLink?: string;
 }
 export const StorageTasksListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -597,7 +593,7 @@ export const StorageTasksListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const StorageTasksListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageTasksListBySubscriptionInput,
     outputSchema: StorageTasksListBySubscriptionOutput,
   }));
@@ -618,7 +614,7 @@ export interface StorageTasksPreviewActionsInput {
   };
 }
 export const StorageTasksPreviewActionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
@@ -695,7 +691,7 @@ export interface StorageTasksPreviewActionsOutput {
   };
 }
 export const StorageTasksPreviewActionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
       container: Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -757,12 +753,10 @@ export const StorageTasksPreviewActionsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - Represents an Azure geography region where supported resource providers live.
  */
-export const StorageTasksPreviewActions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTasksPreviewActionsInput,
-    outputSchema: StorageTasksPreviewActionsOutput,
-  }),
-);
+export const StorageTasksPreviewActions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTasksPreviewActionsInput,
+  outputSchema: StorageTasksPreviewActionsOutput,
+}));
 // Input Schema
 export interface StorageTasksReportListInput {
   subscriptionId: string;
@@ -772,7 +766,7 @@ export interface StorageTasksReportListInput {
   $filter?: string;
 }
 export const StorageTasksReportListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageTaskName: Schema.String.pipe(T.PathParam()),
@@ -804,7 +798,7 @@ export interface StorageTasksReportListOutput {
   nextLink?: string;
 }
 export const StorageTasksReportListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -850,12 +844,10 @@ export const StorageTasksReportListOutput =
  * @param $maxpagesize - Optional, specifies the maximum number of Storage Task Assignment Resource IDs to be included in the list response.
  * @param $filter - Optional. When specified, it can be used to query using reporting properties.
  */
-export const StorageTasksReportList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTasksReportListInput,
-    outputSchema: StorageTasksReportListOutput,
-  }),
-);
+export const StorageTasksReportList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTasksReportListInput,
+  outputSchema: StorageTasksReportListOutput,
+}));
 // Input Schema
 export interface StorageTasksStopAllAssignmentsInput {
   subscriptionId: string;
@@ -863,7 +855,7 @@ export interface StorageTasksStopAllAssignmentsInput {
   storageTaskName: string;
 }
 export const StorageTasksStopAllAssignmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageTaskName: Schema.String.pipe(T.PathParam()),
@@ -878,7 +870,7 @@ export const StorageTasksStopAllAssignmentsInput =
 // Output Schema
 export type StorageTasksStopAllAssignmentsOutput = void;
 export const StorageTasksStopAllAssignmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTasksStopAllAssignmentsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTasksStopAllAssignmentsOutput>;
 
 // The operation
 /**
@@ -890,7 +882,7 @@ export const StorageTasksStopAllAssignmentsOutput =
  * @param storageTaskName - The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
  */
 export const StorageTasksStopAllAssignments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageTasksStopAllAssignmentsInput,
     outputSchema: StorageTasksStopAllAssignmentsOutput,
   }));
@@ -963,7 +955,7 @@ export interface StorageTasksUpdateInput {
   };
 }
 export const StorageTasksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageTaskName: Schema.String.pipe(T.PathParam()),
@@ -1079,7 +1071,7 @@ export interface StorageTasksUpdateOutput {
   };
 }
 export const StorageTasksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1108,7 +1100,7 @@ export const StorageTasksUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageTaskName - The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
  */
-export const StorageTasksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageTasksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageTasksUpdateInput,
   outputSchema: StorageTasksUpdateOutput,
 }));

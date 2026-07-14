@@ -9,7 +9,7 @@ export interface GetProjectEndpointInput {
   endpoint_id: string;
 }
 export const GetProjectEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     endpoint_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -58,7 +58,7 @@ export interface GetProjectEndpointOutput {
   };
 }
 export const GetProjectEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoint: Schema.Struct({
       host: Schema.String,
       id: Schema.String,
@@ -116,7 +116,7 @@ export const GetProjectEndpointOutput =
  * @param project_id - The Neon project ID
  * @param endpoint_id - The endpoint ID
  */
-export const getProjectEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getProjectEndpoint = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetProjectEndpointInput,
   outputSchema: GetProjectEndpointOutput,
   errors: [NotFound] as const,

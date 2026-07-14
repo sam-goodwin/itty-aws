@@ -8,7 +8,7 @@ export interface DeleteAccountsAccountExternalAccountsIdInput {
   id: string;
 }
 export const DeleteAccountsAccountExternalAccountsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -29,7 +29,7 @@ export type DeleteAccountsAccountExternalAccountsIdOutput =
     }
   | { currency?: string | null; deleted: true; id: string; object: "card" };
 export const DeleteAccountsAccountExternalAccountsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       currency: Schema.optional(Schema.NullOr(Schema.String)),
       deleted: Schema.Literals([true]),
@@ -53,7 +53,7 @@ export const DeleteAccountsAccountExternalAccountsIdOutput =
  * @param id - Unique identifier for the external account to be deleted.
  */
 export const DeleteAccountsAccountExternalAccountsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAccountsAccountExternalAccountsIdInput,
     outputSchema: DeleteAccountsAccountExternalAccountsIdOutput,
   }));

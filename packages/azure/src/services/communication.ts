@@ -17,7 +17,7 @@ export interface CommunicationServicesCheckNameAvailabilityInput {
   type?: string;
 }
 export const CommunicationServicesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export interface CommunicationServicesCheckNameAvailabilityOutput {
   message?: string;
 }
 export const CommunicationServicesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export const CommunicationServicesCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const CommunicationServicesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunicationServicesCheckNameAvailabilityInput,
     outputSchema: CommunicationServicesCheckNameAvailabilityOutput,
   }));
@@ -98,7 +98,7 @@ export interface CommunicationServicesCreateOrUpdateInput {
   location: string;
 }
 export const CommunicationServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
@@ -175,7 +175,7 @@ export interface CommunicationServicesCreateOrUpdateOutput {
   };
 }
 export const CommunicationServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -207,7 +207,7 @@ export const CommunicationServicesCreateOrUpdateOutput =
  * @param communicationServiceName - The name of the CommunicationService resource.
  */
 export const CommunicationServicesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunicationServicesCreateOrUpdateInput,
     outputSchema: CommunicationServicesCreateOrUpdateOutput,
   }));
@@ -218,7 +218,7 @@ export interface CommunicationServicesDeleteInput {
   communicationServiceName: string;
 }
 export const CommunicationServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
@@ -233,7 +233,7 @@ export const CommunicationServicesDeleteInput =
 // Output Schema
 export type CommunicationServicesDeleteOutput = void;
 export const CommunicationServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CommunicationServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CommunicationServicesDeleteOutput>;
 
 // The operation
 /**
@@ -246,12 +246,10 @@ export const CommunicationServicesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param communicationServiceName - The name of the CommunicationService resource.
  */
-export const CommunicationServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommunicationServicesDeleteInput,
-    outputSchema: CommunicationServicesDeleteOutput,
-  }),
-);
+export const CommunicationServicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommunicationServicesDeleteInput,
+  outputSchema: CommunicationServicesDeleteOutput,
+}));
 // Input Schema
 export interface CommunicationServicesGetInput {
   subscriptionId: string;
@@ -259,7 +257,7 @@ export interface CommunicationServicesGetInput {
   communicationServiceName: string;
 }
 export const CommunicationServicesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
@@ -286,7 +284,7 @@ export interface CommunicationServicesGetOutput {
   };
 }
 export const CommunicationServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -317,12 +315,10 @@ export const CommunicationServicesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param communicationServiceName - The name of the CommunicationService resource.
  */
-export const CommunicationServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommunicationServicesGetInput,
-    outputSchema: CommunicationServicesGetOutput,
-  }),
-);
+export const CommunicationServicesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommunicationServicesGetInput,
+  outputSchema: CommunicationServicesGetOutput,
+}));
 // Input Schema
 export interface CommunicationServicesLinkNotificationHubInput {
   subscriptionId: string;
@@ -332,7 +328,7 @@ export interface CommunicationServicesLinkNotificationHubInput {
   connectionString: string | Redacted.Redacted<string>;
 }
 export const CommunicationServicesLinkNotificationHubInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
@@ -351,7 +347,7 @@ export interface CommunicationServicesLinkNotificationHubOutput {
   resourceId?: string;
 }
 export const CommunicationServicesLinkNotificationHubOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<CommunicationServicesLinkNotificationHubOutput>;
 
@@ -367,7 +363,7 @@ export const CommunicationServicesLinkNotificationHubOutput =
  * @param communicationServiceName - The name of the CommunicationService resource.
  */
 export const CommunicationServicesLinkNotificationHub =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunicationServicesLinkNotificationHubInput,
     outputSchema: CommunicationServicesLinkNotificationHubOutput,
   }));
@@ -377,7 +373,7 @@ export interface CommunicationServicesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const CommunicationServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -406,7 +402,7 @@ export interface CommunicationServicesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const CommunicationServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -452,7 +448,7 @@ export const CommunicationServicesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const CommunicationServicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunicationServicesListByResourceGroupInput,
     outputSchema: CommunicationServicesListByResourceGroupOutput,
   }));
@@ -461,7 +457,7 @@ export interface CommunicationServicesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const CommunicationServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -489,7 +485,7 @@ export interface CommunicationServicesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const CommunicationServicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -534,7 +530,7 @@ export const CommunicationServicesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const CommunicationServicesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunicationServicesListBySubscriptionInput,
     outputSchema: CommunicationServicesListBySubscriptionOutput,
   }));
@@ -545,7 +541,7 @@ export interface CommunicationServicesListKeysInput {
   communicationServiceName: string;
 }
 export const CommunicationServicesListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
@@ -565,7 +561,7 @@ export interface CommunicationServicesListKeysOutput {
   secondaryConnectionString?: string;
 }
 export const CommunicationServicesListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     primaryConnectionString: Schema.optional(Schema.String),
@@ -584,7 +580,7 @@ export const CommunicationServicesListKeysOutput =
  * @param communicationServiceName - The name of the CommunicationService resource.
  */
 export const CommunicationServicesListKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunicationServicesListKeysInput,
     outputSchema: CommunicationServicesListKeysOutput,
   }));
@@ -596,7 +592,7 @@ export interface CommunicationServicesRegenerateKeyInput {
   keyType?: "Primary" | "Secondary";
 }
 export const CommunicationServicesRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
@@ -617,7 +613,7 @@ export interface CommunicationServicesRegenerateKeyOutput {
   secondaryConnectionString?: string;
 }
 export const CommunicationServicesRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     primaryConnectionString: Schema.optional(Schema.String),
@@ -636,7 +632,7 @@ export const CommunicationServicesRegenerateKeyOutput =
  * @param communicationServiceName - The name of the CommunicationService resource.
  */
 export const CommunicationServicesRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunicationServicesRegenerateKeyInput,
     outputSchema: CommunicationServicesRegenerateKeyOutput,
   }));
@@ -666,7 +662,7 @@ export interface CommunicationServicesUpdateInput {
   tags?: Record<string, string>;
 }
 export const CommunicationServicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
@@ -724,7 +720,7 @@ export interface CommunicationServicesUpdateOutput {
   };
 }
 export const CommunicationServicesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -755,12 +751,10 @@ export const CommunicationServicesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param communicationServiceName - The name of the CommunicationService resource.
  */
-export const CommunicationServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommunicationServicesUpdateInput,
-    outputSchema: CommunicationServicesUpdateOutput,
-  }),
-);
+export const CommunicationServicesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommunicationServicesUpdateInput,
+  outputSchema: CommunicationServicesUpdateOutput,
+}));
 // Input Schema
 export interface DomainsCancelVerificationInput {
   subscriptionId: string;
@@ -770,7 +764,7 @@ export interface DomainsCancelVerificationInput {
   verificationType: "Domain" | "SPF" | "DKIM" | "DKIM2" | "DMARC";
 }
 export const DomainsCancelVerificationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -793,7 +787,7 @@ export const DomainsCancelVerificationInput =
 // Output Schema
 export type DomainsCancelVerificationOutput = void;
 export const DomainsCancelVerificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsCancelVerificationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsCancelVerificationOutput>;
 
 // The operation
 /**
@@ -807,12 +801,10 @@ export const DomainsCancelVerificationOutput =
  * @param emailServiceName - The name of the EmailService resource.
  * @param domainName - The name of the Domains resource.
  */
-export const DomainsCancelVerification = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsCancelVerificationInput,
-    outputSchema: DomainsCancelVerificationOutput,
-  }),
-);
+export const DomainsCancelVerification = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsCancelVerificationInput,
+  outputSchema: DomainsCancelVerificationOutput,
+}));
 // Input Schema
 export interface DomainsCreateOrUpdateInput {
   subscriptionId: string;
@@ -902,7 +894,7 @@ export interface DomainsCreateOrUpdateInput {
   location: string;
 }
 export const DomainsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -1083,7 +1075,7 @@ export interface DomainsCreateOrUpdateOutput {
   };
 }
 export const DomainsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1115,12 +1107,10 @@ export const DomainsCreateOrUpdateOutput =
  * @param emailServiceName - The name of the EmailService resource.
  * @param domainName - The name of the Domains resource.
  */
-export const DomainsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsCreateOrUpdateInput,
-    outputSchema: DomainsCreateOrUpdateOutput,
-  }),
-);
+export const DomainsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsCreateOrUpdateInput,
+  outputSchema: DomainsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DomainsDeleteInput {
   subscriptionId: string;
@@ -1128,7 +1118,7 @@ export interface DomainsDeleteInput {
   emailServiceName: string;
   domainName: string;
 }
-export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -1144,7 +1134,7 @@ export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DomainsDeleteOutput = void;
 export const DomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsDeleteOutput>;
 
 // The operation
 /**
@@ -1158,7 +1148,7 @@ export const DomainsDeleteOutput =
  * @param emailServiceName - The name of the EmailService resource.
  * @param domainName - The name of the Domains resource.
  */
-export const DomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsDeleteInput,
   outputSchema: DomainsDeleteOutput,
 }));
@@ -1169,7 +1159,7 @@ export interface DomainsGetInput {
   emailServiceName: string;
   domainName: string;
 }
-export const DomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -1196,7 +1186,7 @@ export interface DomainsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1228,7 +1218,7 @@ export const DomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param emailServiceName - The name of the EmailService resource.
  * @param domainName - The name of the Domains resource.
  */
-export const DomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsGetInput,
   outputSchema: DomainsGetOutput,
 }));
@@ -1241,7 +1231,7 @@ export interface DomainsInitiateVerificationInput {
   verificationType: "Domain" | "SPF" | "DKIM" | "DKIM2" | "DMARC";
 }
 export const DomainsInitiateVerificationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -1264,7 +1254,7 @@ export const DomainsInitiateVerificationInput =
 // Output Schema
 export type DomainsInitiateVerificationOutput = void;
 export const DomainsInitiateVerificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsInitiateVerificationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsInitiateVerificationOutput>;
 
 // The operation
 /**
@@ -1278,12 +1268,10 @@ export const DomainsInitiateVerificationOutput =
  * @param emailServiceName - The name of the EmailService resource.
  * @param domainName - The name of the Domains resource.
  */
-export const DomainsInitiateVerification = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsInitiateVerificationInput,
-    outputSchema: DomainsInitiateVerificationOutput,
-  }),
-);
+export const DomainsInitiateVerification = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsInitiateVerificationInput,
+  outputSchema: DomainsInitiateVerificationOutput,
+}));
 // Input Schema
 export interface DomainsListByEmailServiceResourceInput {
   subscriptionId: string;
@@ -1291,7 +1279,7 @@ export interface DomainsListByEmailServiceResourceInput {
   emailServiceName: string;
 }
 export const DomainsListByEmailServiceResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -1321,7 +1309,7 @@ export interface DomainsListByEmailServiceResourceOutput {
   nextLink?: string;
 }
 export const DomainsListByEmailServiceResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1368,7 +1356,7 @@ export const DomainsListByEmailServiceResourceOutput =
  * @param emailServiceName - The name of the EmailService resource.
  */
 export const DomainsListByEmailServiceResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainsListByEmailServiceResourceInput,
     outputSchema: DomainsListByEmailServiceResourceOutput,
   }));
@@ -1381,7 +1369,7 @@ export interface DomainsUpdateInput {
   properties?: { userEngagementTracking?: "Disabled" | "Enabled" };
   tags?: Record<string, string>;
 }
-export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -1416,7 +1404,7 @@ export interface DomainsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const DomainsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1448,7 +1436,7 @@ export const DomainsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param emailServiceName - The name of the EmailService resource.
  * @param domainName - The name of the Domains resource.
  */
-export const DomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsUpdateInput,
   outputSchema: DomainsUpdateOutput,
 }));
@@ -1474,7 +1462,7 @@ export interface EmailServicesCreateOrUpdateInput {
   location: string;
 }
 export const EmailServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -1521,7 +1509,7 @@ export interface EmailServicesCreateOrUpdateOutput {
   };
 }
 export const EmailServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1552,12 +1540,10 @@ export const EmailServicesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param emailServiceName - The name of the EmailService resource.
  */
-export const EmailServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EmailServicesCreateOrUpdateInput,
-    outputSchema: EmailServicesCreateOrUpdateOutput,
-  }),
-);
+export const EmailServicesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EmailServicesCreateOrUpdateInput,
+  outputSchema: EmailServicesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface EmailServicesDeleteInput {
   subscriptionId: string;
@@ -1565,7 +1551,7 @@ export interface EmailServicesDeleteInput {
   emailServiceName: string;
 }
 export const EmailServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -1580,7 +1566,7 @@ export const EmailServicesDeleteInput =
 // Output Schema
 export type EmailServicesDeleteOutput = void;
 export const EmailServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EmailServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EmailServicesDeleteOutput>;
 
 // The operation
 /**
@@ -1593,7 +1579,7 @@ export const EmailServicesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param emailServiceName - The name of the EmailService resource.
  */
-export const EmailServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EmailServicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EmailServicesDeleteInput,
   outputSchema: EmailServicesDeleteOutput,
 }));
@@ -1603,7 +1589,7 @@ export interface EmailServicesGetInput {
   resourceGroupName: string;
   emailServiceName: string;
 }
-export const EmailServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EmailServicesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -1629,27 +1615,25 @@ export interface EmailServicesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const EmailServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<EmailServicesGetOutput>;
+export const EmailServicesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<EmailServicesGetOutput>;
 
 // The operation
 /**
@@ -1662,7 +1646,7 @@ export const EmailServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param emailServiceName - The name of the EmailService resource.
  */
-export const EmailServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EmailServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EmailServicesGetInput,
   outputSchema: EmailServicesGetOutput,
 }));
@@ -1672,7 +1656,7 @@ export interface EmailServicesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const EmailServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1701,7 +1685,7 @@ export interface EmailServicesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const EmailServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1747,7 +1731,7 @@ export const EmailServicesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const EmailServicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EmailServicesListByResourceGroupInput,
     outputSchema: EmailServicesListByResourceGroupOutput,
   }));
@@ -1756,7 +1740,7 @@ export interface EmailServicesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const EmailServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1784,7 +1768,7 @@ export interface EmailServicesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const EmailServicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1829,7 +1813,7 @@ export const EmailServicesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const EmailServicesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EmailServicesListBySubscriptionInput,
     outputSchema: EmailServicesListBySubscriptionOutput,
   }));
@@ -1838,7 +1822,7 @@ export interface EmailServicesListVerifiedExchangeOnlineDomainsInput {
   subscriptionId: string;
 }
 export const EmailServicesListVerifiedExchangeOnlineDomainsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1851,7 +1835,7 @@ export const EmailServicesListVerifiedExchangeOnlineDomainsInput =
 // Output Schema
 export type EmailServicesListVerifiedExchangeOnlineDomainsOutput = string[];
 export const EmailServicesListVerifiedExchangeOnlineDomainsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.String,
   ) as unknown as Schema.Codec<EmailServicesListVerifiedExchangeOnlineDomainsOutput>;
 
@@ -1865,7 +1849,7 @@ export const EmailServicesListVerifiedExchangeOnlineDomainsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const EmailServicesListVerifiedExchangeOnlineDomains =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EmailServicesListVerifiedExchangeOnlineDomainsInput,
     outputSchema: EmailServicesListVerifiedExchangeOnlineDomainsOutput,
   }));
@@ -1877,7 +1861,7 @@ export interface EmailServicesUpdateInput {
   tags?: Record<string, string>;
 }
 export const EmailServicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -1905,7 +1889,7 @@ export interface EmailServicesUpdateOutput {
   };
 }
 export const EmailServicesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1936,15 +1920,13 @@ export const EmailServicesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param emailServiceName - The name of the EmailService resource.
  */
-export const EmailServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EmailServicesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EmailServicesUpdateInput,
   outputSchema: EmailServicesUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Communication/operations",
@@ -1968,7 +1950,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2000,7 +1982,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2028,7 +2010,7 @@ export interface SenderUsernamesCreateOrUpdateInput {
   };
 }
 export const SenderUsernamesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -2077,7 +2059,7 @@ export interface SenderUsernamesCreateOrUpdateOutput {
   };
 }
 export const SenderUsernamesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2111,7 +2093,7 @@ export const SenderUsernamesCreateOrUpdateOutput =
  * @param senderUsername - The valid sender Username.
  */
 export const SenderUsernamesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SenderUsernamesCreateOrUpdateInput,
     outputSchema: SenderUsernamesCreateOrUpdateOutput,
   }));
@@ -2124,7 +2106,7 @@ export interface SenderUsernamesDeleteInput {
   senderUsername: string;
 }
 export const SenderUsernamesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -2141,7 +2123,7 @@ export const SenderUsernamesDeleteInput =
 // Output Schema
 export type SenderUsernamesDeleteOutput = void;
 export const SenderUsernamesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SenderUsernamesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SenderUsernamesDeleteOutput>;
 
 // The operation
 /**
@@ -2156,12 +2138,10 @@ export const SenderUsernamesDeleteOutput =
  * @param domainName - The name of the Domains resource.
  * @param senderUsername - The valid sender Username.
  */
-export const SenderUsernamesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SenderUsernamesDeleteInput,
-    outputSchema: SenderUsernamesDeleteOutput,
-  }),
-);
+export const SenderUsernamesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SenderUsernamesDeleteInput,
+  outputSchema: SenderUsernamesDeleteOutput,
+}));
 // Input Schema
 export interface SenderUsernamesGetInput {
   subscriptionId: string;
@@ -2171,7 +2151,7 @@ export interface SenderUsernamesGetInput {
   senderUsername: string;
 }
 export const SenderUsernamesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -2200,7 +2180,7 @@ export interface SenderUsernamesGetOutput {
   };
 }
 export const SenderUsernamesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2233,7 +2213,7 @@ export const SenderUsernamesGetOutput =
  * @param domainName - The name of the Domains resource.
  * @param senderUsername - The valid sender Username.
  */
-export const SenderUsernamesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SenderUsernamesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SenderUsernamesGetInput,
   outputSchema: SenderUsernamesGetOutput,
 }));
@@ -2245,7 +2225,7 @@ export interface SenderUsernamesListByDomainsInput {
   domainName: string;
 }
 export const SenderUsernamesListByDomainsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -2276,7 +2256,7 @@ export interface SenderUsernamesListByDomainsOutput {
   nextLink?: string;
 }
 export const SenderUsernamesListByDomainsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2324,7 +2304,7 @@ export const SenderUsernamesListByDomainsOutput =
  * @param domainName - The name of the Domains resource.
  */
 export const SenderUsernamesListByDomains =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SenderUsernamesListByDomainsInput,
     outputSchema: SenderUsernamesListByDomainsOutput,
   }));
@@ -2341,7 +2321,7 @@ export interface SmtpUsernamesCreateOrUpdateInput {
   };
 }
 export const SmtpUsernamesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
@@ -2376,7 +2356,7 @@ export interface SmtpUsernamesCreateOrUpdateOutput {
   };
 }
 export const SmtpUsernamesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2408,12 +2388,10 @@ export const SmtpUsernamesCreateOrUpdateOutput =
  * @param communicationServiceName - The name of the CommunicationService resource.
  * @param smtpUsername - The name of the SmtpUsernameResource.
  */
-export const SmtpUsernamesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SmtpUsernamesCreateOrUpdateInput,
-    outputSchema: SmtpUsernamesCreateOrUpdateOutput,
-  }),
-);
+export const SmtpUsernamesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SmtpUsernamesCreateOrUpdateInput,
+  outputSchema: SmtpUsernamesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface SmtpUsernamesDeleteInput {
   subscriptionId: string;
@@ -2422,7 +2400,7 @@ export interface SmtpUsernamesDeleteInput {
   smtpUsername: string;
 }
 export const SmtpUsernamesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
@@ -2438,7 +2416,7 @@ export const SmtpUsernamesDeleteInput =
 // Output Schema
 export type SmtpUsernamesDeleteOutput = void;
 export const SmtpUsernamesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SmtpUsernamesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SmtpUsernamesDeleteOutput>;
 
 // The operation
 /**
@@ -2452,7 +2430,7 @@ export const SmtpUsernamesDeleteOutput =
  * @param communicationServiceName - The name of the CommunicationService resource.
  * @param smtpUsername - The name of the SmtpUsernameResource.
  */
-export const SmtpUsernamesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SmtpUsernamesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SmtpUsernamesDeleteInput,
   outputSchema: SmtpUsernamesDeleteOutput,
 }));
@@ -2463,7 +2441,7 @@ export interface SmtpUsernamesGetInput {
   communicationServiceName: string;
   smtpUsername: string;
 }
-export const SmtpUsernamesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SmtpUsernamesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   communicationServiceName: Schema.String.pipe(T.PathParam()),
@@ -2490,27 +2468,25 @@ export interface SmtpUsernamesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SmtpUsernamesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<SmtpUsernamesGetOutput>;
+export const SmtpUsernamesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<SmtpUsernamesGetOutput>;
 
 // The operation
 /**
@@ -2524,7 +2500,7 @@ export const SmtpUsernamesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param communicationServiceName - The name of the CommunicationService resource.
  * @param smtpUsername - The name of the SmtpUsernameResource.
  */
-export const SmtpUsernamesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SmtpUsernamesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SmtpUsernamesGetInput,
   outputSchema: SmtpUsernamesGetOutput,
 }));
@@ -2534,13 +2510,11 @@ export interface SmtpUsernamesListInput {
   resourceGroupName: string;
   communicationServiceName: string;
 }
-export const SmtpUsernamesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    communicationServiceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const SmtpUsernamesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  communicationServiceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/smtpUsernames",
@@ -2566,7 +2540,7 @@ export interface SmtpUsernamesListOutput {
   nextLink?: string;
 }
 export const SmtpUsernamesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2612,7 +2586,7 @@ export const SmtpUsernamesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param communicationServiceName - The name of the CommunicationService resource.
  */
-export const SmtpUsernamesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SmtpUsernamesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SmtpUsernamesListInput,
   outputSchema: SmtpUsernamesListOutput,
 }));
@@ -2634,7 +2608,7 @@ export interface SuppressionListAddressesCreateOrUpdateInput {
   };
 }
 export const SuppressionListAddressesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -2674,7 +2648,7 @@ export interface SuppressionListAddressesCreateOrUpdateOutput {
   };
 }
 export const SuppressionListAddressesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2709,7 +2683,7 @@ export const SuppressionListAddressesCreateOrUpdateOutput =
  * @param addressId - The id of the address in a suppression list.
  */
 export const SuppressionListAddressesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SuppressionListAddressesCreateOrUpdateInput,
     outputSchema: SuppressionListAddressesCreateOrUpdateOutput,
   }));
@@ -2723,7 +2697,7 @@ export interface SuppressionListAddressesDeleteInput {
   addressId: string;
 }
 export const SuppressionListAddressesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -2741,7 +2715,7 @@ export const SuppressionListAddressesDeleteInput =
 // Output Schema
 export type SuppressionListAddressesDeleteOutput = void;
 export const SuppressionListAddressesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SuppressionListAddressesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SuppressionListAddressesDeleteOutput>;
 
 // The operation
 /**
@@ -2758,7 +2732,7 @@ export const SuppressionListAddressesDeleteOutput =
  * @param addressId - The id of the address in a suppression list.
  */
 export const SuppressionListAddressesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SuppressionListAddressesDeleteInput,
     outputSchema: SuppressionListAddressesDeleteOutput,
   }));
@@ -2772,7 +2746,7 @@ export interface SuppressionListAddressesGetInput {
   addressId: string;
 }
 export const SuppressionListAddressesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -2802,7 +2776,7 @@ export interface SuppressionListAddressesGetOutput {
   };
 }
 export const SuppressionListAddressesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2836,12 +2810,10 @@ export const SuppressionListAddressesGetOutput =
  * @param suppressionListName - The name of the suppression list.
  * @param addressId - The id of the address in a suppression list.
  */
-export const SuppressionListAddressesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SuppressionListAddressesGetInput,
-    outputSchema: SuppressionListAddressesGetOutput,
-  }),
-);
+export const SuppressionListAddressesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SuppressionListAddressesGetInput,
+  outputSchema: SuppressionListAddressesGetOutput,
+}));
 // Input Schema
 export interface SuppressionListAddressesListInput {
   subscriptionId: string;
@@ -2851,7 +2823,7 @@ export interface SuppressionListAddressesListInput {
   suppressionListName: string;
 }
 export const SuppressionListAddressesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -2883,7 +2855,7 @@ export interface SuppressionListAddressesListOutput {
   nextLink?: string;
 }
 export const SuppressionListAddressesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2932,7 +2904,7 @@ export const SuppressionListAddressesListOutput =
  * @param suppressionListName - The name of the suppression list.
  */
 export const SuppressionListAddressesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SuppressionListAddressesListInput,
     outputSchema: SuppressionListAddressesListOutput,
   }));
@@ -2951,7 +2923,7 @@ export interface SuppressionListsCreateOrUpdateInput {
   };
 }
 export const SuppressionListsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -2988,7 +2960,7 @@ export interface SuppressionListsCreateOrUpdateOutput {
   };
 }
 export const SuppressionListsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3022,7 +2994,7 @@ export const SuppressionListsCreateOrUpdateOutput =
  * @param suppressionListName - The name of the suppression list.
  */
 export const SuppressionListsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SuppressionListsCreateOrUpdateInput,
     outputSchema: SuppressionListsCreateOrUpdateOutput,
   }));
@@ -3035,7 +3007,7 @@ export interface SuppressionListsDeleteInput {
   suppressionListName: string;
 }
 export const SuppressionListsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -3052,7 +3024,7 @@ export const SuppressionListsDeleteInput =
 // Output Schema
 export type SuppressionListsDeleteOutput = void;
 export const SuppressionListsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SuppressionListsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SuppressionListsDeleteOutput>;
 
 // The operation
 /**
@@ -3067,12 +3039,10 @@ export const SuppressionListsDeleteOutput =
  * @param domainName - The name of the Domains resource.
  * @param suppressionListName - The name of the suppression list.
  */
-export const SuppressionListsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SuppressionListsDeleteInput,
-    outputSchema: SuppressionListsDeleteOutput,
-  }),
-);
+export const SuppressionListsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SuppressionListsDeleteInput,
+  outputSchema: SuppressionListsDeleteOutput,
+}));
 // Input Schema
 export interface SuppressionListsGetInput {
   subscriptionId: string;
@@ -3082,7 +3052,7 @@ export interface SuppressionListsGetInput {
   suppressionListName: string;
 }
 export const SuppressionListsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -3111,7 +3081,7 @@ export interface SuppressionListsGetOutput {
   };
 }
 export const SuppressionListsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3144,7 +3114,7 @@ export const SuppressionListsGetOutput =
  * @param domainName - The name of the Domains resource.
  * @param suppressionListName - The name of the suppression list.
  */
-export const SuppressionListsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SuppressionListsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SuppressionListsGetInput,
   outputSchema: SuppressionListsGetOutput,
 }));
@@ -3156,7 +3126,7 @@ export interface SuppressionListsListByDomainInput {
   domainName: string;
 }
 export const SuppressionListsListByDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
@@ -3187,7 +3157,7 @@ export interface SuppressionListsListByDomainOutput {
   nextLink?: string;
 }
 export const SuppressionListsListByDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3235,7 +3205,7 @@ export const SuppressionListsListByDomainOutput =
  * @param domainName - The name of the Domains resource.
  */
 export const SuppressionListsListByDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SuppressionListsListByDomainInput,
     outputSchema: SuppressionListsListByDomainOutput,
   }));

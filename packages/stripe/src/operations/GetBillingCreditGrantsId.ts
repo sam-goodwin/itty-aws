@@ -13,7 +13,7 @@ export interface GetBillingCreditGrantsIdInput {
   expand?: string;
 }
 export const GetBillingCreditGrantsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -63,7 +63,7 @@ export interface GetBillingCreditGrantsIdOutput {
   voided_at: number | null;
 }
 export const GetBillingCreditGrantsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
       monetary: Schema.NullOr(
         Schema.Struct({
@@ -132,9 +132,7 @@ export const GetBillingCreditGrantsIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  * @param id - Unique identifier for the object.
  */
-export const GetBillingCreditGrantsId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetBillingCreditGrantsIdInput,
-    outputSchema: GetBillingCreditGrantsIdOutput,
-  }),
-);
+export const GetBillingCreditGrantsId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetBillingCreditGrantsIdInput,
+  outputSchema: GetBillingCreditGrantsIdOutput,
+}));

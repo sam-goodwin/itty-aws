@@ -77,7 +77,7 @@ export interface PostSourcesInput {
   type?: string;
   usage?: "reusable" | "single_use";
 }
-export const PostSourcesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostSourcesInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.optional(Schema.Number),
   currency: Schema.optional(Schema.String),
   customer: Schema.optional(Schema.String),
@@ -520,7 +520,7 @@ export interface PostSourcesOutput {
     statement_descriptor?: string;
   };
 }
-export const PostSourcesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostSourcesOutput = /*@__PURE__*/ Schema.Struct({
   ach_credit_transfer: Schema.optional(
     Schema.Struct({
       account_number: Schema.optional(Schema.NullOr(Schema.String)),
@@ -935,7 +935,7 @@ export const PostSourcesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>Creates a new source object.</p>
  */
-export const PostSources = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostSources = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostSourcesInput,
   outputSchema: PostSourcesOutput,
 }));

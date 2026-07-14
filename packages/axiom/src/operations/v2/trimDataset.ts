@@ -8,7 +8,7 @@ export interface TrimDatasetInput {
   dataset_id: string;
   maxDuration: string;
 }
-export const TrimDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TrimDatasetInput = /*@__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
   maxDuration: Schema.String,
 }).pipe(
@@ -18,7 +18,7 @@ export const TrimDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TrimDatasetOutput = void;
 export const TrimDatasetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TrimDatasetOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TrimDatasetOutput>;
 
 // The operation
 /**
@@ -26,7 +26,7 @@ export const TrimDatasetOutput =
  *
  * Trim dataset
  */
-export const trimDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const trimDataset = /*@__PURE__*/ API.make(() => ({
   inputSchema: TrimDatasetInput,
   outputSchema: TrimDatasetOutput,
   errors: [Forbidden, NotFound] as const,

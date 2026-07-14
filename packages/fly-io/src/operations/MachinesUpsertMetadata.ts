@@ -12,7 +12,7 @@ export interface MachinesUpsertMetadataInput {
   value?: string;
 }
 export const MachinesUpsertMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     machine_id: Schema.String.pipe(T.PathParam()),
     key: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const MachinesUpsertMetadataInput =
 // Output Schema
 export type MachinesUpsertMetadataOutput = void;
 export const MachinesUpsertMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesUpsertMetadataOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesUpsertMetadataOutput>;
 
 // The operation
 /**
@@ -40,10 +40,8 @@ export const MachinesUpsertMetadataOutput =
  * @param machine_id - Machine ID
  * @param key - Metadata Key
  */
-export const MachinesUpsertMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesUpsertMetadataInput,
-    outputSchema: MachinesUpsertMetadataOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const MachinesUpsertMetadata = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesUpsertMetadataInput,
+  outputSchema: MachinesUpsertMetadataOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

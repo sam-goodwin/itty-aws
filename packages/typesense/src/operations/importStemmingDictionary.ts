@@ -8,7 +8,7 @@ export interface ImportStemmingDictionaryInput {
   id: string;
 }
 export const ImportStemmingDictionaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
   }).pipe(
     T.Http({ method: "POST", path: "/stemming/dictionaries/import" }),
@@ -17,7 +17,7 @@ export const ImportStemmingDictionaryInput =
 // Output Schema
 export type ImportStemmingDictionaryOutput = void;
 export const ImportStemmingDictionaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportStemmingDictionaryOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportStemmingDictionaryOutput>;
 
 // The operation
 /**
@@ -27,10 +27,8 @@ export const ImportStemmingDictionaryOutput =
  *
  * @param id - The ID to assign to the dictionary
  */
-export const importStemmingDictionary = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImportStemmingDictionaryInput,
-    outputSchema: ImportStemmingDictionaryOutput,
-    errors: [BadRequest] as const,
-  }),
-);
+export const importStemmingDictionary = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImportStemmingDictionaryInput,
+  outputSchema: ImportStemmingDictionaryOutput,
+  errors: [BadRequest] as const,
+}));

@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface GetBalanceInput {
   expand?: string;
 }
-export const GetBalanceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBalanceInput = /*@__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -65,7 +65,7 @@ export interface GetBalanceOutput {
     }[];
   };
 }
-export const GetBalanceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBalanceOutput = /*@__PURE__*/ Schema.Struct({
   available: Schema.Array(
     Schema.Struct({
       amount: Schema.Number,
@@ -197,7 +197,7 @@ export const GetBalanceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetBalance = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetBalance = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBalanceInput,
   outputSchema: GetBalanceOutput,
 }));

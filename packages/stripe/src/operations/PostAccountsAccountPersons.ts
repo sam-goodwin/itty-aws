@@ -127,7 +127,7 @@ export interface PostAccountsAccountPersonsInput {
   };
 }
 export const PostAccountsAccountPersonsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     additional_tos_acceptances: Schema.optional(
       Schema.Struct({
@@ -695,7 +695,7 @@ export interface PostAccountsAccountPersonsOutput {
   };
 }
 export const PostAccountsAccountPersonsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.optional(Schema.String),
     additional_tos_acceptances: Schema.optional(
       Schema.Struct({
@@ -1146,9 +1146,7 @@ export const PostAccountsAccountPersonsOutput =
  *
  * <p>Creates a new person.</p>
  */
-export const PostAccountsAccountPersons = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostAccountsAccountPersonsInput,
-    outputSchema: PostAccountsAccountPersonsOutput,
-  }),
-);
+export const PostAccountsAccountPersons = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostAccountsAccountPersonsInput,
+  outputSchema: PostAccountsAccountPersonsOutput,
+}));

@@ -35,7 +35,7 @@ export interface BatchExportsRunsRetryCreateInput {
   backfill?: string | null;
 }
 export const BatchExportsRunsRetryCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     batch_export_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -77,7 +77,7 @@ export const BatchExportsRunsRetryCreateInput =
 // Output Schema
 export type BatchExportsRunsRetryCreateOutput = void;
 export const BatchExportsRunsRetryCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsRunsRetryCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsRunsRetryCreateOutput>;
 
 // The operation
 /**
@@ -88,10 +88,8 @@ export const BatchExportsRunsRetryCreateOutput =
  * @param id - A UUID string identifying this batch export run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const batchExportsRunsRetryCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BatchExportsRunsRetryCreateInput,
-    outputSchema: BatchExportsRunsRetryCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const batchExportsRunsRetryCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BatchExportsRunsRetryCreateInput,
+  outputSchema: BatchExportsRunsRetryCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

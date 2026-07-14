@@ -9,7 +9,7 @@ export interface ExperimentSavedMetricsRetrieveInput {
   project_id: string;
 }
 export const ExperimentSavedMetricsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -52,7 +52,7 @@ export interface ExperimentSavedMetricsRetrieveOutput {
   user_access_level?: string | null;
 }
 export const ExperimentSavedMetricsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -103,7 +103,7 @@ export const ExperimentSavedMetricsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const experimentSavedMetricsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExperimentSavedMetricsRetrieveInput,
     outputSchema: ExperimentSavedMetricsRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

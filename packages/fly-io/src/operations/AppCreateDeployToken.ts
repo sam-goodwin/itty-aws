@@ -9,7 +9,7 @@ export interface AppCreateDeployTokenInput {
   expiry?: string;
 }
 export const AppCreateDeployTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     expiry: Schema.optional(Schema.String),
   }).pipe(
@@ -21,7 +21,7 @@ export interface AppCreateDeployTokenOutput {
   token?: string;
 }
 export const AppCreateDeployTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<AppCreateDeployTokenOutput>;
 
@@ -31,10 +31,8 @@ export const AppCreateDeployTokenOutput =
  *
  * @param app_name - Fly App Name
  */
-export const AppCreateDeployToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppCreateDeployTokenInput,
-    outputSchema: AppCreateDeployTokenOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const AppCreateDeployToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppCreateDeployTokenInput,
+  outputSchema: AppCreateDeployTokenOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

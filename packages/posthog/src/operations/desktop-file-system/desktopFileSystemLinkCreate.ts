@@ -17,7 +17,7 @@ export interface DesktopFileSystemLinkCreateInput {
   last_viewed_at?: string | null;
 }
 export const DesktopFileSystemLinkCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
@@ -39,7 +39,7 @@ export const DesktopFileSystemLinkCreateInput =
 // Output Schema
 export type DesktopFileSystemLinkCreateOutput = void;
 export const DesktopFileSystemLinkCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DesktopFileSystemLinkCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DesktopFileSystemLinkCreateOutput>;
 
 // The operation
 /**
@@ -50,9 +50,7 @@ export const DesktopFileSystemLinkCreateOutput =
  * @param id - A UUID string identifying this file system.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const desktopFileSystemLinkCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DesktopFileSystemLinkCreateInput,
-    outputSchema: DesktopFileSystemLinkCreateOutput,
-  }),
-);
+export const desktopFileSystemLinkCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DesktopFileSystemLinkCreateInput,
+  outputSchema: DesktopFileSystemLinkCreateOutput,
+}));

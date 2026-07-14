@@ -32,7 +32,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -54,7 +54,7 @@ export interface GoogleLongrunningOperation {
 }
 
 export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
     error: Schema.optional(Status),
@@ -70,7 +70,7 @@ export interface GoogleFirestoreAdminV1beta1Progress {
 }
 
 export const GoogleFirestoreAdminV1beta1Progress: Schema.Codec<GoogleFirestoreAdminV1beta1Progress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workCompleted: Schema.optional(Schema.String),
     workEstimated: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleFirestoreAdminV1beta1Progress" });
@@ -94,7 +94,7 @@ export interface GoogleFirestoreAdminV1beta1IndexOperationMetadata {
 }
 
 export const GoogleFirestoreAdminV1beta1IndexOperationMetadata: Schema.Codec<GoogleFirestoreAdminV1beta1IndexOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentProgress: Schema.optional(GoogleFirestoreAdminV1beta1Progress),
     operationType: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface GoogleFirestoreAdminV1beta1ExportDocumentsResponse {
 }
 
 export const GoogleFirestoreAdminV1beta1ExportDocumentsResponse: Schema.Codec<GoogleFirestoreAdminV1beta1ExportDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputUriPrefix: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleFirestoreAdminV1beta1ExportDocumentsResponse",
@@ -123,7 +123,7 @@ export interface FieldReference {
 }
 
 export const FieldReference: Schema.Codec<FieldReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldPath: Schema.optional(Schema.String),
   }).annotate({ identifier: "FieldReference" });
 
@@ -141,7 +141,7 @@ export interface UnaryFilter {
 }
 
 export const UnaryFilter: Schema.Codec<UnaryFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     op: Schema.optional(Schema.String),
     field: Schema.optional(FieldReference),
   }).annotate({ identifier: "UnaryFilter" });
@@ -158,7 +158,7 @@ export interface Order {
 }
 
 export const Order: Schema.Codec<Order> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     field: Schema.optional(FieldReference),
     direction: Schema.optional(Schema.String),
   }).annotate({ identifier: "Order" });
@@ -175,7 +175,7 @@ export interface ReadWrite {
 }
 
 export const ReadWrite: Schema.Codec<ReadWrite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     retryTransaction: Schema.optional(Schema.String),
     concurrencyMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReadWrite" });
@@ -188,7 +188,7 @@ export interface CollectionSelector {
 }
 
 export const CollectionSelector: Schema.Codec<CollectionSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     collectionId: Schema.optional(Schema.String),
     allDescendants: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CollectionSelector" });
@@ -199,7 +199,7 @@ export interface ArrayValue {
 }
 
 export const ArrayValue: Schema.Codec<ArrayValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       values: Schema.optional(Schema.Array(Value)),
     }),
@@ -211,7 +211,7 @@ export interface MapValue {
 }
 
 export const MapValue: Schema.Codec<MapValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fields: Schema.optional(Schema.Record(Schema.String, Value)),
     }),
@@ -227,7 +227,7 @@ export interface Stage {
 }
 
 export const Stage: Schema.Codec<Stage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
       args: Schema.optional(Schema.Array(Value)),
@@ -241,7 +241,7 @@ export interface Pipeline {
 }
 
 export const Pipeline: Schema.Codec<Pipeline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       stages: Schema.optional(Schema.Array(Stage)),
     }),
@@ -255,7 +255,7 @@ export interface LatLng {
 }
 
 export const LatLng: Schema.Codec<LatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
   }).annotate({ identifier: "LatLng" });
@@ -270,7 +270,7 @@ export interface Firestore_Function {
 }
 
 export const Firestore_Function: Schema.Codec<Firestore_Function> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
       args: Schema.optional(Schema.Array(Value)),
@@ -314,7 +314,7 @@ export interface Value {
 }
 
 export const Value: Schema.Codec<Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       stringValue: Schema.optional(Schema.String),
       bytesValue: Schema.optional(Schema.String),
@@ -342,7 +342,7 @@ export interface Cursor {
 }
 
 export const Cursor: Schema.Codec<Cursor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Value)),
     before: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "Cursor" });
@@ -355,7 +355,7 @@ export interface CompositeFilter {
 }
 
 export const CompositeFilter: Schema.Codec<CompositeFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       op: Schema.optional(Schema.String),
       filters: Schema.optional(Schema.Array(Filter)),
@@ -386,7 +386,7 @@ export interface FieldFilter {
 }
 
 export const FieldFilter: Schema.Codec<FieldFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     field: Schema.optional(FieldReference),
     value: Schema.optional(Value),
     op: Schema.optional(Schema.String),
@@ -402,7 +402,7 @@ export interface Filter {
 }
 
 export const Filter: Schema.Codec<Filter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       compositeFilter: Schema.optional(CompositeFilter),
       fieldFilter: Schema.optional(FieldFilter),
@@ -431,7 +431,7 @@ export interface FindNearest {
 }
 
 export const FindNearest: Schema.Codec<FindNearest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     distanceThreshold: Schema.optional(Schema.Number),
     queryVector: Schema.optional(Value),
     distanceResultField: Schema.optional(Schema.String),
@@ -446,7 +446,7 @@ export interface Projection {
 }
 
 export const Projection: Schema.Codec<Projection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Array(FieldReference)),
   }).annotate({ identifier: "Projection" });
 
@@ -472,7 +472,7 @@ export interface StructuredQuery {
 }
 
 export const StructuredQuery: Schema.Codec<StructuredQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     from: Schema.optional(Schema.Array(CollectionSelector)),
     startAt: Schema.optional(Cursor),
     where: Schema.optional(Filter),
@@ -492,7 +492,7 @@ export interface BitSequence {
 }
 
 export const BitSequence: Schema.Codec<BitSequence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     padding: Schema.optional(Schema.Number),
     bitmap: Schema.optional(Schema.String),
   }).annotate({ identifier: "BitSequence" });
@@ -505,7 +505,7 @@ export interface BloomFilter {
 }
 
 export const BloomFilter: Schema.Codec<BloomFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hashCount: Schema.optional(Schema.Number),
     bits: Schema.optional(BitSequence),
   }).annotate({ identifier: "BloomFilter" });
@@ -520,7 +520,7 @@ export interface ExistenceFilter {
 }
 
 export const ExistenceFilter: Schema.Codec<ExistenceFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetId: Schema.optional(Schema.Number),
     count: Schema.optional(Schema.Number),
     unchangedNames: Schema.optional(BloomFilter),
@@ -536,7 +536,7 @@ export interface ListCollectionIdsRequest {
 }
 
 export const ListCollectionIdsRequest: Schema.Codec<ListCollectionIdsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     readTime: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
@@ -554,7 +554,7 @@ export interface Document {
 }
 
 export const Document: Schema.Codec<Document> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
     fields: Schema.optional(Schema.Record(Schema.String, Value)),
@@ -569,7 +569,7 @@ export interface ListDocumentsResponse {
 }
 
 export const ListDocumentsResponse: Schema.Codec<ListDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     documents: Schema.optional(Schema.Array(Document)),
   }).annotate({ identifier: "ListDocumentsResponse" });
@@ -582,7 +582,7 @@ export interface GoogleFirestoreAdminV1beta1ImportDocumentsRequest {
 }
 
 export const GoogleFirestoreAdminV1beta1ImportDocumentsRequest: Schema.Codec<GoogleFirestoreAdminV1beta1ImportDocumentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputUriPrefix: Schema.optional(Schema.String),
     collectionIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -597,7 +597,7 @@ export interface GoogleFirestoreAdminV1Progress {
 }
 
 export const GoogleFirestoreAdminV1Progress: Schema.Codec<GoogleFirestoreAdminV1Progress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     estimatedWork: Schema.optional(Schema.String),
     completedWork: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleFirestoreAdminV1Progress" });
@@ -627,7 +627,7 @@ export interface GoogleFirestoreAdminV1RestoreDatabaseMetadata {
 }
 
 export const GoogleFirestoreAdminV1RestoreDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1RestoreDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operationState: Schema.optional(Schema.String),
@@ -650,7 +650,7 @@ export interface PartitionQueryRequest {
 }
 
 export const PartitionQueryRequest: Schema.Codec<PartitionQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partitionCount: Schema.optional(Schema.String),
     structuredQuery: Schema.optional(StructuredQuery),
     readTime: Schema.optional(Schema.String),
@@ -664,7 +664,7 @@ export interface AggregationResult {
 }
 
 export const AggregationResult: Schema.Codec<AggregationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aggregateFields: Schema.optional(Schema.Record(Schema.String, Value)),
   }).annotate({ identifier: "AggregationResult" });
 
@@ -680,7 +680,7 @@ export interface ExecutionStats {
 }
 
 export const ExecutionStats: Schema.Codec<ExecutionStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     executionDuration: Schema.optional(Schema.String),
     readOperations: Schema.optional(Schema.String),
     debugStats: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -693,7 +693,7 @@ export interface PlanSummary {
 }
 
 export const PlanSummary: Schema.Codec<PlanSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     indexesUsed: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -707,7 +707,7 @@ export interface ExplainMetrics {
 }
 
 export const ExplainMetrics: Schema.Codec<ExplainMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     executionStats: Schema.optional(ExecutionStats),
     planSummary: Schema.optional(PlanSummary),
   }).annotate({ identifier: "ExplainMetrics" });
@@ -724,7 +724,7 @@ export interface RunAggregationQueryResponse {
 }
 
 export const RunAggregationQueryResponse: Schema.Codec<RunAggregationQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String),
     result: Schema.optional(AggregationResult),
     readTime: Schema.optional(Schema.String),
@@ -737,7 +737,7 @@ export interface ReadOnly {
 }
 
 export const ReadOnly: Schema.Codec<ReadOnly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     readTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReadOnly" });
 
@@ -749,7 +749,7 @@ export interface TransactionOptions {
 }
 
 export const TransactionOptions: Schema.Codec<TransactionOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     readOnly: Schema.optional(ReadOnly),
     readWrite: Schema.optional(ReadWrite),
   }).annotate({ identifier: "TransactionOptions" });
@@ -762,7 +762,7 @@ export interface StructuredPipeline {
 }
 
 export const StructuredPipeline: Schema.Codec<StructuredPipeline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pipeline: Schema.optional(Pipeline),
     options: Schema.optional(Schema.Record(Schema.String, Value)),
   }).annotate({ identifier: "StructuredPipeline" });
@@ -781,7 +781,7 @@ export interface ExecutePipelineRequest {
 }
 
 export const ExecutePipelineRequest: Schema.Codec<ExecutePipelineRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newTransaction: Schema.optional(TransactionOptions),
     autoCommitTransaction: Schema.optional(Schema.Boolean),
     structuredPipeline: Schema.optional(StructuredPipeline),
@@ -809,7 +809,7 @@ export interface TargetChange {
 }
 
 export const TargetChange: Schema.Codec<TargetChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetIds: Schema.optional(Schema.Array(Schema.Number)),
     resumeToken: Schema.optional(Schema.String),
     readTime: Schema.optional(Schema.String),
@@ -838,7 +838,7 @@ export interface FieldTransform {
 }
 
 export const FieldTransform: Schema.Codec<FieldTransform> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appendMissingElements: Schema.optional(ArrayValue),
     setToServerValue: Schema.optional(Schema.String),
     increment: Schema.optional(Value),
@@ -856,7 +856,7 @@ export interface DocumentTransform {
 }
 
 export const DocumentTransform: Schema.Codec<DocumentTransform> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldTransforms: Schema.optional(Schema.Array(FieldTransform)),
     document: Schema.optional(Schema.String),
   }).annotate({ identifier: "DocumentTransform" });
@@ -867,7 +867,7 @@ export interface DocumentMask {
 }
 
 export const DocumentMask: Schema.Codec<DocumentMask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldPaths: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DocumentMask" });
 
@@ -879,7 +879,7 @@ export interface Precondition {
 }
 
 export const Precondition: Schema.Codec<Precondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exists: Schema.optional(Schema.Boolean),
     updateTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "Precondition" });
@@ -900,7 +900,7 @@ export interface Write {
 }
 
 export const Write: Schema.Codec<Write> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transform: Schema.optional(DocumentTransform),
     delete: Schema.optional(Schema.String),
     updateMask: Schema.optional(DocumentMask),
@@ -917,7 +917,7 @@ export interface CommitRequest {
 }
 
 export const CommitRequest: Schema.Codec<CommitRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     writes: Schema.optional(Schema.Array(Write)),
     transaction: Schema.optional(Schema.String),
   }).annotate({ identifier: "CommitRequest" });
@@ -949,7 +949,7 @@ export interface GoogleFirestoreAdminV1beta1ExportDocumentsMetadata {
 }
 
 export const GoogleFirestoreAdminV1beta1ExportDocumentsMetadata: Schema.Codec<GoogleFirestoreAdminV1beta1ExportDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     operationState: Schema.optional(Schema.String),
     collectionIds: Schema.optional(Schema.Array(Schema.String)),
@@ -971,7 +971,7 @@ export interface DocumentChange {
 }
 
 export const DocumentChange: Schema.Codec<DocumentChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetIds: Schema.optional(Schema.Array(Schema.Number)),
     document: Schema.optional(Document),
     removedTargetIds: Schema.optional(Schema.Array(Schema.Number)),
@@ -989,7 +989,7 @@ export interface WriteRequest {
 }
 
 export const WriteRequest: Schema.Codec<WriteRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     streamId: Schema.optional(Schema.String),
     streamToken: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1012,7 +1012,7 @@ export interface RunQueryResponse {
 }
 
 export const RunQueryResponse: Schema.Codec<RunQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String),
     document: Schema.optional(Document),
     readTime: Schema.optional(Schema.String),
@@ -1050,7 +1050,7 @@ export interface GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata {
 }
 
 export const GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata: Schema.Codec<GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
     namespaceIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1073,7 +1073,7 @@ export interface DocumentRemove {
 }
 
 export const DocumentRemove: Schema.Codec<DocumentRemove> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     document: Schema.optional(Schema.String),
     removedTargetIds: Schema.optional(Schema.Array(Schema.Number)),
     readTime: Schema.optional(Schema.String),
@@ -1089,7 +1089,7 @@ export interface DocumentDelete {
 }
 
 export const DocumentDelete: Schema.Codec<DocumentDelete> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     document: Schema.optional(Schema.String),
     removedTargetIds: Schema.optional(Schema.Array(Schema.Number)),
     readTime: Schema.optional(Schema.String),
@@ -1109,7 +1109,7 @@ export interface ListenResponse {
 }
 
 export const ListenResponse: Schema.Codec<ListenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentRemove: Schema.optional(DocumentRemove),
     filter: Schema.optional(ExistenceFilter),
     targetChange: Schema.optional(TargetChange),
@@ -1125,7 +1125,7 @@ export interface ListCollectionIdsResponse {
 }
 
 export const ListCollectionIdsResponse: Schema.Codec<ListCollectionIdsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     collectionIds: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListCollectionIdsResponse" });
@@ -1136,7 +1136,7 @@ export interface BeginTransactionRequest {
 }
 
 export const BeginTransactionRequest: Schema.Codec<BeginTransactionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     options: Schema.optional(TransactionOptions),
   }).annotate({ identifier: "BeginTransactionRequest" });
 
@@ -1145,11 +1145,9 @@ export interface Avg {
   field?: FieldReference;
 }
 
-export const Avg: Schema.Codec<Avg> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    field: Schema.optional(FieldReference),
-  },
-).annotate({ identifier: "Avg" });
+export const Avg: Schema.Codec<Avg> = /*@__PURE__*/ Schema.Struct({
+  field: Schema.optional(FieldReference),
+}).annotate({ identifier: "Avg" });
 
 export interface QueryTarget {
   /** The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` */
@@ -1159,7 +1157,7 @@ export interface QueryTarget {
 }
 
 export const QueryTarget: Schema.Codec<QueryTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     structuredQuery: Schema.optional(StructuredQuery),
   }).annotate({ identifier: "QueryTarget" });
@@ -1170,7 +1168,7 @@ export interface DocumentsTarget {
 }
 
 export const DocumentsTarget: Schema.Codec<DocumentsTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documents: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DocumentsTarget" });
 
@@ -1192,7 +1190,7 @@ export interface Target {
 }
 
 export const Target: Schema.Codec<Target> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expectedCount: Schema.optional(Schema.Number),
     query: Schema.optional(QueryTarget),
     documents: Schema.optional(DocumentsTarget),
@@ -1212,7 +1210,7 @@ export interface ListenRequest {
 }
 
 export const ListenRequest: Schema.Codec<ListenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     addTarget: Schema.optional(Target),
     removeTarget: Schema.optional(Schema.Number),
@@ -1232,7 +1230,7 @@ export interface BatchGetDocumentsRequest {
 }
 
 export const BatchGetDocumentsRequest: Schema.Codec<BatchGetDocumentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mask: Schema.optional(DocumentMask),
     newTransaction: Schema.optional(TransactionOptions),
     documents: Schema.optional(Schema.Array(Schema.String)),
@@ -1246,7 +1244,7 @@ export interface Count {
 }
 
 export const Count: Schema.Codec<Count> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     upTo: Schema.optional(Schema.String),
   }).annotate({ identifier: "Count" });
 
@@ -1255,11 +1253,9 @@ export interface Sum {
   field?: FieldReference;
 }
 
-export const Sum: Schema.Codec<Sum> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    field: Schema.optional(FieldReference),
-  },
-).annotate({ identifier: "Sum" });
+export const Sum: Schema.Codec<Sum> = /*@__PURE__*/ Schema.Struct({
+  field: Schema.optional(FieldReference),
+}).annotate({ identifier: "Sum" });
 
 export interface Aggregation {
   /** Count aggregator. */
@@ -1273,7 +1269,7 @@ export interface Aggregation {
 }
 
 export const Aggregation: Schema.Codec<Aggregation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Count),
     sum: Schema.optional(Sum),
     avg: Schema.optional(Avg),
@@ -1288,7 +1284,7 @@ export interface StructuredAggregationQuery {
 }
 
 export const StructuredAggregationQuery: Schema.Codec<StructuredAggregationQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     structuredQuery: Schema.optional(StructuredQuery),
     aggregations: Schema.optional(Schema.Array(Aggregation)),
   }).annotate({ identifier: "StructuredAggregationQuery" });
@@ -1299,7 +1295,7 @@ export interface ExplainOptions {
 }
 
 export const ExplainOptions: Schema.Codec<ExplainOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyze: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ExplainOptions" });
 
@@ -1317,7 +1313,7 @@ export interface RunAggregationQueryRequest {
 }
 
 export const RunAggregationQueryRequest: Schema.Codec<RunAggregationQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newTransaction: Schema.optional(TransactionOptions),
     structuredAggregationQuery: Schema.optional(StructuredAggregationQuery),
     explainOptions: Schema.optional(ExplainOptions),
@@ -1331,7 +1327,7 @@ export interface RollbackRequest {
 }
 
 export const RollbackRequest: Schema.Codec<RollbackRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String),
   }).annotate({ identifier: "RollbackRequest" });
 
@@ -1343,7 +1339,7 @@ export interface WriteResult {
 }
 
 export const WriteResult: Schema.Codec<WriteResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     transformResults: Schema.optional(Schema.Array(Value)),
   }).annotate({ identifier: "WriteResult" });
@@ -1362,7 +1358,7 @@ export interface RunQueryRequest {
 }
 
 export const RunQueryRequest: Schema.Codec<RunQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     structuredQuery: Schema.optional(StructuredQuery),
     readTime: Schema.optional(Schema.String),
     transaction: Schema.optional(Schema.String),
@@ -1383,7 +1379,7 @@ export interface GoogleFirestoreAdminV1beta1IndexField {
 }
 
 export const GoogleFirestoreAdminV1beta1IndexField: Schema.Codec<GoogleFirestoreAdminV1beta1IndexField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldPath: Schema.optional(Schema.String),
     mode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleFirestoreAdminV1beta1IndexField" });
@@ -1398,7 +1394,7 @@ export interface GoogleFirestoreAdminV1PitrSnapshot {
 }
 
 export const GoogleFirestoreAdminV1PitrSnapshot: Schema.Codec<GoogleFirestoreAdminV1PitrSnapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.optional(Schema.String),
     databaseUid: Schema.optional(Schema.String),
     snapshotTime: Schema.optional(Schema.String),
@@ -1416,7 +1412,7 @@ export interface WriteResponse {
 }
 
 export const WriteResponse: Schema.Codec<WriteResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     streamId: Schema.optional(Schema.String),
     streamToken: Schema.optional(Schema.String),
     commitTime: Schema.optional(Schema.String),
@@ -1426,7 +1422,7 @@ export const WriteResponse: Schema.Codec<WriteResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -1438,7 +1434,7 @@ export interface GoogleFirestoreAdminV1beta1ExportDocumentsRequest {
 }
 
 export const GoogleFirestoreAdminV1beta1ExportDocumentsRequest: Schema.Codec<GoogleFirestoreAdminV1beta1ExportDocumentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     collectionIds: Schema.optional(Schema.Array(Schema.String)),
     outputUriPrefix: Schema.optional(Schema.String),
   }).annotate({
@@ -1457,7 +1453,7 @@ export interface GoogleFirestoreAdminV1beta1Index {
 }
 
 export const GoogleFirestoreAdminV1beta1Index: Schema.Codec<GoogleFirestoreAdminV1beta1Index> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fields: Schema.optional(
       Schema.Array(GoogleFirestoreAdminV1beta1IndexField),
     ),
@@ -1474,7 +1470,7 @@ export interface GoogleFirestoreAdminV1beta1ListIndexesResponse {
 }
 
 export const GoogleFirestoreAdminV1beta1ListIndexesResponse: Schema.Codec<GoogleFirestoreAdminV1beta1ListIndexesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     indexes: Schema.optional(Schema.Array(GoogleFirestoreAdminV1beta1Index)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleFirestoreAdminV1beta1ListIndexesResponse" });
@@ -1491,7 +1487,7 @@ export interface BatchGetDocumentsResponse {
 }
 
 export const BatchGetDocumentsResponse: Schema.Codec<BatchGetDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     readTime: Schema.optional(Schema.String),
     found: Schema.optional(Document),
     missing: Schema.optional(Schema.String),
@@ -1506,7 +1502,7 @@ export interface PartitionQueryResponse {
 }
 
 export const PartitionQueryResponse: Schema.Codec<PartitionQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partitions: Schema.optional(Schema.Array(Cursor)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "PartitionQueryResponse" });
@@ -1514,7 +1510,7 @@ export const PartitionQueryResponse: Schema.Codec<PartitionQueryResponse> =
 export interface GoogleFirestoreAdminV1UpdateDatabaseMetadata {}
 
 export const GoogleFirestoreAdminV1UpdateDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1UpdateDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1UpdateDatabaseMetadata",
   });
 
@@ -1524,7 +1520,7 @@ export interface ExplainStats {
 }
 
 export const ExplainStats: Schema.Codec<ExplainStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "ExplainStats" });
 
@@ -1555,7 +1551,7 @@ export interface GoogleFirestoreAdminV1beta1ImportDocumentsMetadata {
 }
 
 export const GoogleFirestoreAdminV1beta1ImportDocumentsMetadata: Schema.Codec<GoogleFirestoreAdminV1beta1ImportDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     progressDocuments: Schema.optional(GoogleFirestoreAdminV1beta1Progress),
     inputUriPrefix: Schema.optional(Schema.String),
@@ -1575,7 +1571,7 @@ export interface BatchWriteResponse {
 }
 
 export const BatchWriteResponse: Schema.Codec<BatchWriteResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     writeResults: Schema.optional(Schema.Array(WriteResult)),
     status: Schema.optional(Schema.Array(Status)),
   }).annotate({ identifier: "BatchWriteResponse" });
@@ -1605,7 +1601,7 @@ export interface GoogleFirestoreAdminV1CloneDatabaseMetadata {
 }
 
 export const GoogleFirestoreAdminV1CloneDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1CloneDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     operationState: Schema.optional(Schema.String),
     progressPercentage: Schema.optional(GoogleFirestoreAdminV1Progress),
@@ -1622,7 +1618,7 @@ export interface BatchWriteRequest {
 }
 
 export const BatchWriteRequest: Schema.Codec<BatchWriteRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     writes: Schema.optional(Schema.Array(Write)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "BatchWriteRequest" });
@@ -1630,7 +1626,7 @@ export const BatchWriteRequest: Schema.Codec<BatchWriteRequest> =
 export interface GoogleFirestoreAdminV1DeleteDatabaseMetadata {}
 
 export const GoogleFirestoreAdminV1DeleteDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1DeleteDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1DeleteDatabaseMetadata",
   });
 
@@ -1640,7 +1636,7 @@ export interface BeginTransactionResponse {
 }
 
 export const BeginTransactionResponse: Schema.Codec<BeginTransactionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String),
   }).annotate({ identifier: "BeginTransactionResponse" });
 
@@ -1652,7 +1648,7 @@ export interface CommitResponse {
 }
 
 export const CommitResponse: Schema.Codec<CommitResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     writeResults: Schema.optional(Schema.Array(WriteResult)),
     commitTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "CommitResponse" });
@@ -1660,7 +1656,7 @@ export const CommitResponse: Schema.Codec<CommitResponse> =
 export interface GoogleFirestoreAdminV1CreateDatabaseMetadata {}
 
 export const GoogleFirestoreAdminV1CreateDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1CreateDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1CreateDatabaseMetadata",
   });
 
@@ -1676,7 +1672,7 @@ export interface ExecutePipelineResponse {
 }
 
 export const ExecutePipelineResponse: Schema.Codec<ExecutePipelineResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String),
     executionTime: Schema.optional(Schema.String),
     explainStats: Schema.optional(ExplainStats),
@@ -1686,7 +1682,7 @@ export const ExecutePipelineResponse: Schema.Codec<ExecutePipelineResponse> =
 export interface GoogleFirestoreAdminV1beta1LocationMetadata {}
 
 export const GoogleFirestoreAdminV1beta1LocationMetadata: Schema.Codec<GoogleFirestoreAdminV1beta1LocationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1beta1LocationMetadata",
   });
 
@@ -1752,7 +1748,7 @@ export interface ExportDocumentsProjectsDatabasesRequest {
 }
 
 export const ExportDocumentsProjectsDatabasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleFirestoreAdminV1beta1ExportDocumentsRequest,
@@ -1769,7 +1765,7 @@ export const ExportDocumentsProjectsDatabasesRequest =
 export type ExportDocumentsProjectsDatabasesResponse =
   GoogleLongrunningOperation;
 export const ExportDocumentsProjectsDatabasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ExportDocumentsProjectsDatabasesError =
   | DefaultErrors
@@ -1784,7 +1780,7 @@ export const exportDocumentsProjectsDatabases: API.OperationMethod<
   ExportDocumentsProjectsDatabasesResponse,
   ExportDocumentsProjectsDatabasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportDocumentsProjectsDatabasesRequest,
   output: ExportDocumentsProjectsDatabasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1798,7 +1794,7 @@ export interface ImportDocumentsProjectsDatabasesRequest {
 }
 
 export const ImportDocumentsProjectsDatabasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleFirestoreAdminV1beta1ImportDocumentsRequest,
@@ -1815,7 +1811,7 @@ export const ImportDocumentsProjectsDatabasesRequest =
 export type ImportDocumentsProjectsDatabasesResponse =
   GoogleLongrunningOperation;
 export const ImportDocumentsProjectsDatabasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportDocumentsProjectsDatabasesError =
   | DefaultErrors
@@ -1830,7 +1826,7 @@ export const importDocumentsProjectsDatabases: API.OperationMethod<
   ImportDocumentsProjectsDatabasesResponse,
   ImportDocumentsProjectsDatabasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportDocumentsProjectsDatabasesRequest,
   output: ImportDocumentsProjectsDatabasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1850,7 +1846,7 @@ export interface CreateDocumentProjectsDatabasesDocumentsRequest {
 }
 
 export const CreateDocumentProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     "mask.fieldPaths": Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("mask.fieldPaths"),
@@ -1869,7 +1865,7 @@ export const CreateDocumentProjectsDatabasesDocumentsRequest =
 
 export type CreateDocumentProjectsDatabasesDocumentsResponse = Document;
 export const CreateDocumentProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Document;
+  /*@__PURE__*/ Document;
 
 export type CreateDocumentProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -1884,7 +1880,7 @@ export const createDocumentProjectsDatabasesDocuments: API.OperationMethod<
   CreateDocumentProjectsDatabasesDocumentsResponse,
   CreateDocumentProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDocumentProjectsDatabasesDocumentsRequest,
   output: CreateDocumentProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1902,7 +1898,7 @@ export interface GetProjectsDatabasesDocumentsRequest {
 }
 
 export const GetProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String).pipe(
       T.HttpQuery("transaction"),
     ),
@@ -1917,8 +1913,7 @@ export const GetProjectsDatabasesDocumentsRequest =
   ) as unknown as Schema.Codec<GetProjectsDatabasesDocumentsRequest>;
 
 export type GetProjectsDatabasesDocumentsResponse = Document;
-export const GetProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Document;
+export const GetProjectsDatabasesDocumentsResponse = /*@__PURE__*/ Document;
 
 export type GetProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -1931,7 +1926,7 @@ export const getProjectsDatabasesDocuments: API.OperationMethod<
   GetProjectsDatabasesDocumentsResponse,
   GetProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsDatabasesDocumentsRequest,
   output: GetProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden],
@@ -1945,7 +1940,7 @@ export interface WriteProjectsDatabasesDocumentsRequest {
 }
 
 export const WriteProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.String.pipe(T.HttpPath("database")),
     body: Schema.optional(WriteRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1959,7 +1954,7 @@ export const WriteProjectsDatabasesDocumentsRequest =
 
 export type WriteProjectsDatabasesDocumentsResponse = WriteResponse;
 export const WriteProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WriteResponse;
+  /*@__PURE__*/ WriteResponse;
 
 export type WriteProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -1974,7 +1969,7 @@ export const writeProjectsDatabasesDocuments: API.OperationMethod<
   WriteProjectsDatabasesDocumentsResponse,
   WriteProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WriteProjectsDatabasesDocumentsRequest,
   output: WriteProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2002,7 +1997,7 @@ export interface ListProjectsDatabasesDocumentsRequest {
 }
 
 export const ListProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     "mask.fieldPaths": Schema.optional(Schema.Array(Schema.String)).pipe(
@@ -2025,7 +2020,7 @@ export const ListProjectsDatabasesDocumentsRequest =
 
 export type ListProjectsDatabasesDocumentsResponse = ListDocumentsResponse;
 export const ListProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDocumentsResponse;
+  /*@__PURE__*/ ListDocumentsResponse;
 
 export type ListProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2038,7 +2033,7 @@ export const listProjectsDatabasesDocuments: API.PaginatedOperationMethod<
   ListProjectsDatabasesDocumentsResponse,
   ListProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesDocumentsRequest,
   output: ListProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden],
@@ -2056,7 +2051,7 @@ export interface BeginTransactionProjectsDatabasesDocumentsRequest {
 }
 
 export const BeginTransactionProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.String.pipe(T.HttpPath("database")),
     body: Schema.optional(BeginTransactionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2071,7 +2066,7 @@ export const BeginTransactionProjectsDatabasesDocumentsRequest =
 export type BeginTransactionProjectsDatabasesDocumentsResponse =
   BeginTransactionResponse;
 export const BeginTransactionProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BeginTransactionResponse;
+  /*@__PURE__*/ BeginTransactionResponse;
 
 export type BeginTransactionProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2086,7 +2081,7 @@ export const beginTransactionProjectsDatabasesDocuments: API.OperationMethod<
   BeginTransactionProjectsDatabasesDocumentsResponse,
   BeginTransactionProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BeginTransactionProjectsDatabasesDocumentsRequest,
   output: BeginTransactionProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2100,7 +2095,7 @@ export interface RunAggregationQueryProjectsDatabasesDocumentsRequest {
 }
 
 export const RunAggregationQueryProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(RunAggregationQueryRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2115,7 +2110,7 @@ export const RunAggregationQueryProjectsDatabasesDocumentsRequest =
 export type RunAggregationQueryProjectsDatabasesDocumentsResponse =
   RunAggregationQueryResponse;
 export const RunAggregationQueryProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RunAggregationQueryResponse;
+  /*@__PURE__*/ RunAggregationQueryResponse;
 
 export type RunAggregationQueryProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2130,7 +2125,7 @@ export const runAggregationQueryProjectsDatabasesDocuments: API.OperationMethod<
   RunAggregationQueryProjectsDatabasesDocumentsResponse,
   RunAggregationQueryProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunAggregationQueryProjectsDatabasesDocumentsRequest,
   output: RunAggregationQueryProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2152,7 +2147,7 @@ export interface PatchProjectsDatabasesDocumentsRequest {
 }
 
 export const PatchProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     "updateMask.fieldPaths": Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("updateMask.fieldPaths"),
@@ -2173,8 +2168,7 @@ export const PatchProjectsDatabasesDocumentsRequest =
   ) as unknown as Schema.Codec<PatchProjectsDatabasesDocumentsRequest>;
 
 export type PatchProjectsDatabasesDocumentsResponse = Document;
-export const PatchProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Document;
+export const PatchProjectsDatabasesDocumentsResponse = /*@__PURE__*/ Document;
 
 export type PatchProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2189,7 +2183,7 @@ export const patchProjectsDatabasesDocuments: API.OperationMethod<
   PatchProjectsDatabasesDocumentsResponse,
   PatchProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsDatabasesDocumentsRequest,
   output: PatchProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2203,7 +2197,7 @@ export interface ListenProjectsDatabasesDocumentsRequest {
 }
 
 export const ListenProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.String.pipe(T.HttpPath("database")),
     body: Schema.optional(ListenRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2217,7 +2211,7 @@ export const ListenProjectsDatabasesDocumentsRequest =
 
 export type ListenProjectsDatabasesDocumentsResponse = ListenResponse;
 export const ListenProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListenResponse;
+  /*@__PURE__*/ ListenResponse;
 
 export type ListenProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2232,7 +2226,7 @@ export const listenProjectsDatabasesDocuments: API.OperationMethod<
   ListenProjectsDatabasesDocumentsResponse,
   ListenProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListenProjectsDatabasesDocumentsRequest,
   output: ListenProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2246,7 +2240,7 @@ export interface CommitProjectsDatabasesDocumentsRequest {
 }
 
 export const CommitProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.String.pipe(T.HttpPath("database")),
     body: Schema.optional(CommitRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2260,7 +2254,7 @@ export const CommitProjectsDatabasesDocumentsRequest =
 
 export type CommitProjectsDatabasesDocumentsResponse = CommitResponse;
 export const CommitProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CommitResponse;
+  /*@__PURE__*/ CommitResponse;
 
 export type CommitProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2275,7 +2269,7 @@ export const commitProjectsDatabasesDocuments: API.OperationMethod<
   CommitProjectsDatabasesDocumentsResponse,
   CommitProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CommitProjectsDatabasesDocumentsRequest,
   output: CommitProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2289,7 +2283,7 @@ export interface RunQueryProjectsDatabasesDocumentsRequest {
 }
 
 export const RunQueryProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(RunQueryRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2303,7 +2297,7 @@ export const RunQueryProjectsDatabasesDocumentsRequest =
 
 export type RunQueryProjectsDatabasesDocumentsResponse = RunQueryResponse;
 export const RunQueryProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RunQueryResponse;
+  /*@__PURE__*/ RunQueryResponse;
 
 export type RunQueryProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2318,7 +2312,7 @@ export const runQueryProjectsDatabasesDocuments: API.OperationMethod<
   RunQueryProjectsDatabasesDocumentsResponse,
   RunQueryProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunQueryProjectsDatabasesDocumentsRequest,
   output: RunQueryProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2332,7 +2326,7 @@ export interface ExecutePipelineProjectsDatabasesDocumentsRequest {
 }
 
 export const ExecutePipelineProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.String.pipe(T.HttpPath("database")),
     body: Schema.optional(ExecutePipelineRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2347,7 +2341,7 @@ export const ExecutePipelineProjectsDatabasesDocumentsRequest =
 export type ExecutePipelineProjectsDatabasesDocumentsResponse =
   ExecutePipelineResponse;
 export const ExecutePipelineProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExecutePipelineResponse;
+  /*@__PURE__*/ ExecutePipelineResponse;
 
 export type ExecutePipelineProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2362,7 +2356,7 @@ export const executePipelineProjectsDatabasesDocuments: API.OperationMethod<
   ExecutePipelineProjectsDatabasesDocumentsResponse,
   ExecutePipelineProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecutePipelineProjectsDatabasesDocumentsRequest,
   output: ExecutePipelineProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2376,7 +2370,7 @@ export interface PartitionQueryProjectsDatabasesDocumentsRequest {
 }
 
 export const PartitionQueryProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(PartitionQueryRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2391,7 +2385,7 @@ export const PartitionQueryProjectsDatabasesDocumentsRequest =
 export type PartitionQueryProjectsDatabasesDocumentsResponse =
   PartitionQueryResponse;
 export const PartitionQueryProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PartitionQueryResponse;
+  /*@__PURE__*/ PartitionQueryResponse;
 
 export type PartitionQueryProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2406,7 +2400,7 @@ export const partitionQueryProjectsDatabasesDocuments: API.OperationMethod<
   PartitionQueryProjectsDatabasesDocumentsResponse,
   PartitionQueryProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PartitionQueryProjectsDatabasesDocumentsRequest,
   output: PartitionQueryProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2420,7 +2414,7 @@ export interface BatchGetProjectsDatabasesDocumentsRequest {
 }
 
 export const BatchGetProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.String.pipe(T.HttpPath("database")),
     body: Schema.optional(BatchGetDocumentsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2435,7 +2429,7 @@ export const BatchGetProjectsDatabasesDocumentsRequest =
 export type BatchGetProjectsDatabasesDocumentsResponse =
   BatchGetDocumentsResponse;
 export const BatchGetProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchGetDocumentsResponse;
+  /*@__PURE__*/ BatchGetDocumentsResponse;
 
 export type BatchGetProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2450,7 +2444,7 @@ export const batchGetProjectsDatabasesDocuments: API.OperationMethod<
   BatchGetProjectsDatabasesDocumentsResponse,
   BatchGetProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetProjectsDatabasesDocumentsRequest,
   output: BatchGetProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2464,7 +2458,7 @@ export interface BatchWriteProjectsDatabasesDocumentsRequest {
 }
 
 export const BatchWriteProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.String.pipe(T.HttpPath("database")),
     body: Schema.optional(BatchWriteRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2478,7 +2472,7 @@ export const BatchWriteProjectsDatabasesDocumentsRequest =
 
 export type BatchWriteProjectsDatabasesDocumentsResponse = BatchWriteResponse;
 export const BatchWriteProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchWriteResponse;
+  /*@__PURE__*/ BatchWriteResponse;
 
 export type BatchWriteProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2493,7 +2487,7 @@ export const batchWriteProjectsDatabasesDocuments: API.OperationMethod<
   BatchWriteProjectsDatabasesDocumentsResponse,
   BatchWriteProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchWriteProjectsDatabasesDocumentsRequest,
   output: BatchWriteProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2507,7 +2501,7 @@ export interface ListCollectionIdsProjectsDatabasesDocumentsRequest {
 }
 
 export const ListCollectionIdsProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ListCollectionIdsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2522,7 +2516,7 @@ export const ListCollectionIdsProjectsDatabasesDocumentsRequest =
 export type ListCollectionIdsProjectsDatabasesDocumentsResponse =
   ListCollectionIdsResponse;
 export const ListCollectionIdsProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCollectionIdsResponse;
+  /*@__PURE__*/ ListCollectionIdsResponse;
 
 export type ListCollectionIdsProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2537,7 +2531,7 @@ export const listCollectionIdsProjectsDatabasesDocuments: API.OperationMethod<
   ListCollectionIdsProjectsDatabasesDocumentsResponse,
   ListCollectionIdsProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCollectionIdsProjectsDatabasesDocumentsRequest,
   output: ListCollectionIdsProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2551,7 +2545,7 @@ export interface RollbackProjectsDatabasesDocumentsRequest {
 }
 
 export const RollbackProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.String.pipe(T.HttpPath("database")),
     body: Schema.optional(RollbackRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2564,8 +2558,7 @@ export const RollbackProjectsDatabasesDocumentsRequest =
   ) as unknown as Schema.Codec<RollbackProjectsDatabasesDocumentsRequest>;
 
 export type RollbackProjectsDatabasesDocumentsResponse = Empty;
-export const RollbackProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const RollbackProjectsDatabasesDocumentsResponse = /*@__PURE__*/ Empty;
 
 export type RollbackProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2580,7 +2573,7 @@ export const rollbackProjectsDatabasesDocuments: API.OperationMethod<
   RollbackProjectsDatabasesDocumentsResponse,
   RollbackProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollbackProjectsDatabasesDocumentsRequest,
   output: RollbackProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2596,7 +2589,7 @@ export interface DeleteProjectsDatabasesDocumentsRequest {
 }
 
 export const DeleteProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "currentDocument.exists": Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("currentDocument.exists"),
     ),
@@ -2610,8 +2603,7 @@ export const DeleteProjectsDatabasesDocumentsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsDatabasesDocumentsRequest>;
 
 export type DeleteProjectsDatabasesDocumentsResponse = Empty;
-export const DeleteProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsDatabasesDocumentsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2626,7 +2618,7 @@ export const deleteProjectsDatabasesDocuments: API.OperationMethod<
   DeleteProjectsDatabasesDocumentsResponse,
   DeleteProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsDatabasesDocumentsRequest,
   output: DeleteProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2654,7 +2646,7 @@ export interface ListDocumentsProjectsDatabasesDocumentsRequest {
 }
 
 export const ListDocumentsProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String).pipe(
       T.HttpQuery("transaction"),
     ),
@@ -2678,7 +2670,7 @@ export const ListDocumentsProjectsDatabasesDocumentsRequest =
 export type ListDocumentsProjectsDatabasesDocumentsResponse =
   ListDocumentsResponse;
 export const ListDocumentsProjectsDatabasesDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDocumentsResponse;
+  /*@__PURE__*/ ListDocumentsResponse;
 
 export type ListDocumentsProjectsDatabasesDocumentsError =
   | DefaultErrors
@@ -2691,7 +2683,7 @@ export const listDocumentsProjectsDatabasesDocuments: API.PaginatedOperationMeth
   ListDocumentsProjectsDatabasesDocumentsResponse,
   ListDocumentsProjectsDatabasesDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentsProjectsDatabasesDocumentsRequest,
   output: ListDocumentsProjectsDatabasesDocumentsResponse,
   errors: [NotFound, Forbidden],
@@ -2707,7 +2699,7 @@ export interface DeleteProjectsDatabasesIndexesRequest {
 }
 
 export const DeleteProjectsDatabasesIndexesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
@@ -2715,8 +2707,7 @@ export const DeleteProjectsDatabasesIndexesRequest =
   ) as unknown as Schema.Codec<DeleteProjectsDatabasesIndexesRequest>;
 
 export type DeleteProjectsDatabasesIndexesResponse = Empty;
-export const DeleteProjectsDatabasesIndexesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsDatabasesIndexesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsDatabasesIndexesError =
   | DefaultErrors
@@ -2731,7 +2722,7 @@ export const deleteProjectsDatabasesIndexes: API.OperationMethod<
   DeleteProjectsDatabasesIndexesResponse,
   DeleteProjectsDatabasesIndexesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsDatabasesIndexesRequest,
   output: DeleteProjectsDatabasesIndexesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2745,7 +2736,7 @@ export interface CreateProjectsDatabasesIndexesRequest {
 }
 
 export const CreateProjectsDatabasesIndexesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleFirestoreAdminV1beta1Index).pipe(T.HttpBody()),
   }).pipe(
@@ -2759,7 +2750,7 @@ export const CreateProjectsDatabasesIndexesRequest =
 
 export type CreateProjectsDatabasesIndexesResponse = GoogleLongrunningOperation;
 export const CreateProjectsDatabasesIndexesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsDatabasesIndexesError =
   | DefaultErrors
@@ -2774,7 +2765,7 @@ export const createProjectsDatabasesIndexes: API.OperationMethod<
   CreateProjectsDatabasesIndexesResponse,
   CreateProjectsDatabasesIndexesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsDatabasesIndexesRequest,
   output: CreateProjectsDatabasesIndexesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2786,7 +2777,7 @@ export interface GetProjectsDatabasesIndexesRequest {
 }
 
 export const GetProjectsDatabasesIndexesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2796,7 +2787,7 @@ export const GetProjectsDatabasesIndexesRequest =
 export type GetProjectsDatabasesIndexesResponse =
   GoogleFirestoreAdminV1beta1Index;
 export const GetProjectsDatabasesIndexesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirestoreAdminV1beta1Index;
+  /*@__PURE__*/ GoogleFirestoreAdminV1beta1Index;
 
 export type GetProjectsDatabasesIndexesError =
   | DefaultErrors
@@ -2809,7 +2800,7 @@ export const getProjectsDatabasesIndexes: API.OperationMethod<
   GetProjectsDatabasesIndexesResponse,
   GetProjectsDatabasesIndexesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsDatabasesIndexesRequest,
   output: GetProjectsDatabasesIndexesResponse,
   errors: [NotFound, Forbidden],
@@ -2826,7 +2817,7 @@ export interface ListProjectsDatabasesIndexesRequest {
 }
 
 export const ListProjectsDatabasesIndexesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -2839,7 +2830,7 @@ export const ListProjectsDatabasesIndexesRequest =
 export type ListProjectsDatabasesIndexesResponse =
   GoogleFirestoreAdminV1beta1ListIndexesResponse;
 export const ListProjectsDatabasesIndexesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirestoreAdminV1beta1ListIndexesResponse;
+  /*@__PURE__*/ GoogleFirestoreAdminV1beta1ListIndexesResponse;
 
 export type ListProjectsDatabasesIndexesError =
   | DefaultErrors
@@ -2852,7 +2843,7 @@ export const listProjectsDatabasesIndexes: API.PaginatedOperationMethod<
   ListProjectsDatabasesIndexesResponse,
   ListProjectsDatabasesIndexesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesIndexesRequest,
   output: ListProjectsDatabasesIndexesResponse,
   errors: [NotFound, Forbidden],

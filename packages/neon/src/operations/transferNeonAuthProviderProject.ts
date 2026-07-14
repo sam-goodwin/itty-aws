@@ -8,7 +8,7 @@ export interface TransferNeonAuthProviderProjectInput {
   auth_provider: "mock" | "stack" | "better_auth";
 }
 export const TransferNeonAuthProviderProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String,
     auth_provider: Schema.Literals(["mock", "stack", "better_auth"]),
   }).pipe(
@@ -20,7 +20,7 @@ export interface TransferNeonAuthProviderProjectOutput {
   url: string;
 }
 export const TransferNeonAuthProviderProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.String,
   }) as unknown as Schema.Codec<TransferNeonAuthProviderProjectOutput>;
 
@@ -31,7 +31,7 @@ export const TransferNeonAuthProviderProjectOutput =
  * Transfers ownership of your Neon-managed auth project to your own auth provider account.
  */
 export const transferNeonAuthProviderProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TransferNeonAuthProviderProjectInput,
     outputSchema: TransferNeonAuthProviderProjectOutput,
   }));

@@ -7,7 +7,7 @@ export interface GetEvmAccountByNameInput {
   name: string;
 }
 export const GetEvmAccountByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v2/evm/accounts/by-name/{name}" }),
@@ -22,7 +22,7 @@ export interface GetEvmAccountByNameOutput {
   updatedAt?: string;
 }
 export const GetEvmAccountByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String,
     name: Schema.optional(Schema.String),
     policies: Schema.optional(Schema.Array(Schema.String)),
@@ -38,7 +38,7 @@ export const GetEvmAccountByNameOutput =
  *
  * @param name - The name of the EVM account.
  */
-export const getEvmAccountByName = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getEvmAccountByName = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetEvmAccountByNameInput,
   outputSchema: GetEvmAccountByNameOutput,
 }));

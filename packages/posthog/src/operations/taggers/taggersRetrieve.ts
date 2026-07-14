@@ -7,7 +7,7 @@ export interface TaggersRetrieveInput {
   id: string;
   project_id: string;
 }
-export const TaggersRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TaggersRetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -72,7 +72,7 @@ export interface TaggersRetrieveOutput {
   };
   deleted?: boolean;
 }
-export const TaggersRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TaggersRetrieveOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   description: Schema.optional(Schema.String),
@@ -171,7 +171,7 @@ export const TaggersRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param id - A UUID string identifying this tagger.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const taggersRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const taggersRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: TaggersRetrieveInput,
   outputSchema: TaggersRetrieveOutput,
 }));

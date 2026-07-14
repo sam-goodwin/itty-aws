@@ -9,7 +9,7 @@ export interface PostV2BillingMeterEventAdjustmentsInput {
   type: "cancel";
 }
 export const PostV2BillingMeterEventAdjustmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cancel: Schema.Struct({
       identifier: Schema.String,
     }),
@@ -31,7 +31,7 @@ export interface PostV2BillingMeterEventAdjustmentsOutput {
   type: "cancel";
 }
 export const PostV2BillingMeterEventAdjustmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cancel: Schema.Struct({
       identifier: Schema.String,
     }),
@@ -51,7 +51,7 @@ export const PostV2BillingMeterEventAdjustmentsOutput =
  * Creates a meter event adjustment to cancel a previously sent meter event.
  */
 export const PostV2BillingMeterEventAdjustments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV2BillingMeterEventAdjustmentsInput,
     outputSchema: PostV2BillingMeterEventAdjustmentsOutput,
   }));

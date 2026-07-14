@@ -16,7 +16,7 @@ export interface GetApplicationFeesIdRefundsInput {
   starting_after?: string;
 }
 export const GetApplicationFeesIdRefundsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -236,7 +236,7 @@ export interface GetApplicationFeesIdRefundsOutput {
   url: string;
 }
 export const GetApplicationFeesIdRefundsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amount: Schema.Number,
@@ -478,9 +478,7 @@ export const GetApplicationFeesIdRefundsOutput =
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetApplicationFeesIdRefunds = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetApplicationFeesIdRefundsInput,
-    outputSchema: GetApplicationFeesIdRefundsOutput,
-  }),
-);
+export const GetApplicationFeesIdRefunds = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetApplicationFeesIdRefundsInput,
+  outputSchema: GetApplicationFeesIdRefundsOutput,
+}));

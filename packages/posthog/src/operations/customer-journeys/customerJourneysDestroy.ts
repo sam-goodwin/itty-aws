@@ -8,7 +8,7 @@ export interface CustomerJourneysDestroyInput {
   project_id: string;
 }
 export const CustomerJourneysDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,16 +21,14 @@ export const CustomerJourneysDestroyInput =
 // Output Schema
 export type CustomerJourneysDestroyOutput = void;
 export const CustomerJourneysDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomerJourneysDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomerJourneysDestroyOutput>;
 
 // The operation
 /**
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const customerJourneysDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomerJourneysDestroyInput,
-    outputSchema: CustomerJourneysDestroyOutput,
-  }),
-);
+export const customerJourneysDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomerJourneysDestroyInput,
+  outputSchema: CustomerJourneysDestroyOutput,
+}));

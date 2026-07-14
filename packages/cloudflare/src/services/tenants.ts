@@ -26,7 +26,7 @@ interface Settings {
   /** @deprecated Use [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-list-dns-settings) instead. Deprecated. */
   useAccountCustomNsByDefault: boolean | null;
 }
-const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Settings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     abuseContactEmail: Schema.Union([Schema.String, Schema.Null]),
     accessApprovalExpiry: Schema.Union([Schema.String, Schema.Null]),
@@ -60,33 +60,32 @@ interface ListAccountsResponseResult {
   };
   type: "standard" | "enterprise" | (string & {});
 }
-const ListAccountsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      name: Schema.Union([Schema.String, Schema.Null]),
-      settings: Settings,
-      type: Schema.Union([
-        Schema.Literals(["standard", "enterprise"]),
-        Schema.String,
-      ]),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        name: "name",
-        settings: "settings",
-        type: "type",
-      }),
-    ),
+const ListAccountsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    name: Schema.Union([Schema.String, Schema.Null]),
+    settings: Settings,
+    type: Schema.Union([
+      Schema.Literals(["standard", "enterprise"]),
+      Schema.String,
+    ]),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdOn: "created_on",
+      name: "name",
+      settings: "settings",
+      type: "type",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListAccountsResponseResult>;
 
 interface AllowAddSubdomain {
   type: "bool";
   value: boolean;
 }
-const AllowAddSubdomain = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AllowAddSubdomain = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("bool"),
     value: Schema.Boolean,
@@ -98,7 +97,7 @@ interface OrganizationsAPIMaxCountAllocation {
   value: number;
 }
 const OrganizationsAPIMaxCountAllocation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       type: Schema.Literal("max_count"),
       value: Schema.Number,
@@ -110,7 +109,7 @@ interface OrganizationsAPINullAllocation {
   value?: unknown | null;
 }
 const OrganizationsAPINullAllocation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       type: Schema.Literal(""),
       value: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
@@ -120,7 +119,7 @@ const OrganizationsAPINullAllocation =
 interface Feature {
   key: string;
 }
-const Feature = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Feature = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     key: Schema.String,
   }),
@@ -133,7 +132,7 @@ interface CustomEntitlement {
     | { type: ""; value?: unknown | null };
   feature: { key: string };
 }
-const CustomEntitlement = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CustomEntitlement = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allocation: Schema.Union([
       OrganizationsAPIMaxCountAllocation,
@@ -150,7 +149,7 @@ interface ListMembershipsResponseResult {
   userTag: string;
 }
 const ListMembershipsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userEmail: Schema.String,
       userName: Schema.String,
@@ -168,7 +167,7 @@ interface TenantContacts {
   email?: string | null;
   website?: string | null;
 }
-const TenantContacts = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TenantContacts = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     website: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -179,7 +178,7 @@ interface Nspool {
   primary?: string | null;
   secondary?: string | null;
 }
-const Nspool = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Nspool = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     primary: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     secondary: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -189,7 +188,7 @@ const Nspool = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Dns {
   nsPool: { primary?: string | null; secondary?: string | null };
 }
-const Dns = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dns = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     nsPool: Nspool,
   }).pipe(Schema.encodeKeys({ nsPool: "ns_pool" })),
@@ -200,7 +199,7 @@ interface TenantMetadata {
     nsPool: { primary?: string | null; secondary?: string | null };
   } | null;
 }
-const TenantMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TenantMetadata = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dns: Schema.optional(Schema.Union([Dns, Schema.Null])),
   }),
@@ -213,7 +212,7 @@ interface TenantUnit {
   unitStatus: string;
   unitTag: string;
 }
-const TenantUnit = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TenantUnit = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     unitMemberships: Schema.Array(Schema.Unknown),
     unitMetadata: Schema.Unknown,
@@ -239,11 +238,10 @@ export interface ListAccountsRequest {
   tenantId: string;
 }
 
-export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
-    }).pipe(T.Http({ method: "GET", path: "/tenants/{tenantId}/accounts" })),
+export const ListAccountsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
+  }).pipe(T.Http({ method: "GET", path: "/tenants/{tenantId}/accounts" })),
 ) as unknown as Schema.Codec<ListAccountsRequest>;
 
 export interface ListAccountsResponse {
@@ -263,11 +261,10 @@ export interface ListAccountsResponse {
   }[];
 }
 
-export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListAccountsResponseResult),
-    }),
+export const ListAccountsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListAccountsResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListAccountsResponse>;
 
 export type ListAccountsError = DefaultErrors;
@@ -277,7 +274,7 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsResponse,
   ListAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [],
@@ -296,7 +293,7 @@ export interface ListAccountTypesRequest {
 }
 
 export const ListAccountTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
     }).pipe(
@@ -309,7 +306,7 @@ export interface ListAccountTypesResponse {
 }
 
 export const ListAccountTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Schema.String),
     }),
@@ -322,7 +319,7 @@ export const listAccountTypes: API.PaginatedOperationMethod<
   ListAccountTypesResponse,
   ListAccountTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountTypesRequest,
   output: ListAccountTypesResponse,
   errors: [],
@@ -340,13 +337,10 @@ export interface GetEntitlementRequest {
   tenantId: string;
 }
 
-export const GetEntitlementRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/tenants/{tenantId}/entitlements" }),
-    ),
+export const GetEntitlementRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
+  }).pipe(T.Http({ method: "GET", path: "/tenants/{tenantId}/entitlements" })),
 ) as unknown as Schema.Codec<GetEntitlementRequest>;
 
 export interface GetEntitlementResponse {
@@ -367,7 +361,7 @@ export interface GetEntitlementResponse {
 }
 
 export const GetEntitlementResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       allowAddSubdomain: AllowAddSubdomain,
       allowAutoAcceptInvites: AllowAddSubdomain,
@@ -399,7 +393,7 @@ export const getEntitlement: API.OperationMethod<
   GetEntitlementResponse,
   GetEntitlementError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEntitlementRequest,
   output: GetEntitlementResponse,
   errors: [],
@@ -414,7 +408,7 @@ export interface ListMembershipsRequest {
 }
 
 export const ListMembershipsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
     }).pipe(T.Http({ method: "GET", path: "/tenants/{tenantId}/memberships" })),
@@ -425,7 +419,7 @@ export interface ListMembershipsResponse {
 }
 
 export const ListMembershipsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListMembershipsResponseResult),
     }),
@@ -438,7 +432,7 @@ export const listMemberships: API.PaginatedOperationMethod<
   ListMembershipsResponse,
   ListMembershipsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembershipsRequest,
   output: ListMembershipsResponse,
   errors: [],
@@ -456,7 +450,7 @@ export interface GetTenantRequest {
   tenantId: string;
 }
 
-export const GetTenantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetTenantRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
   }).pipe(T.Http({ method: "GET", path: "/tenants/{tenantId}" })),
@@ -487,39 +481,38 @@ export interface GetTenantResponse {
   customerId?: string | null;
 }
 
-export const GetTenantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      cdate: Schema.String,
-      edate: Schema.String,
-      tenantContacts: TenantContacts,
-      tenantLabels: Schema.Array(Schema.String),
-      tenantMetadata: TenantMetadata,
-      tenantName: Schema.String,
-      tenantNetwork: Schema.Unknown,
-      tenantStatus: Schema.String,
-      tenantTag: Schema.String,
-      tenantType: Schema.String,
-      tenantUnits: Schema.Array(TenantUnit),
-      customerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          cdate: "cdate",
-          edate: "edate",
-          tenantContacts: "tenant_contacts",
-          tenantLabels: "tenant_labels",
-          tenantMetadata: "tenant_metadata",
-          tenantName: "tenant_name",
-          tenantNetwork: "tenant_network",
-          tenantStatus: "tenant_status",
-          tenantTag: "tenant_tag",
-          tenantType: "tenant_type",
-          tenantUnits: "tenant_units",
-          customerId: "customer_id",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetTenantResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    cdate: Schema.String,
+    edate: Schema.String,
+    tenantContacts: TenantContacts,
+    tenantLabels: Schema.Array(Schema.String),
+    tenantMetadata: TenantMetadata,
+    tenantName: Schema.String,
+    tenantNetwork: Schema.Unknown,
+    tenantStatus: Schema.String,
+    tenantTag: Schema.String,
+    tenantType: Schema.String,
+    tenantUnits: Schema.Array(TenantUnit),
+    customerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        cdate: "cdate",
+        edate: "edate",
+        tenantContacts: "tenant_contacts",
+        tenantLabels: "tenant_labels",
+        tenantMetadata: "tenant_metadata",
+        tenantName: "tenant_name",
+        tenantNetwork: "tenant_network",
+        tenantStatus: "tenant_status",
+        tenantTag: "tenant_tag",
+        tenantType: "tenant_type",
+        tenantUnits: "tenant_units",
+        customerId: "customer_id",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetTenantResponse>;
 
 export type GetTenantError = DefaultErrors;
@@ -529,7 +522,7 @@ export const getTenant: API.OperationMethod<
   GetTenantResponse,
   GetTenantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTenantRequest,
   output: GetTenantResponse,
   errors: [],

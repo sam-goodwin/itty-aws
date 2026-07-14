@@ -10,7 +10,7 @@ export interface CreateGroupLogIntegrationInput {
   pretty?: boolean;
 }
 export const CreateGroupLogIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const CreateGroupLogIntegrationInput =
 // Output Schema
 export type CreateGroupLogIntegrationOutput = void;
 export const CreateGroupLogIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupLogIntegrationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupLogIntegrationOutput>;
 
 // The operation
 /**
@@ -38,10 +38,8 @@ export const CreateGroupLogIntegrationOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupLogIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupLogIntegrationInput,
-    outputSchema: CreateGroupLogIntegrationOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const createGroupLogIntegration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupLogIntegrationInput,
+  outputSchema: CreateGroupLogIntegrationOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

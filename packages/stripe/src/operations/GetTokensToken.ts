@@ -12,7 +12,7 @@ export interface GetTokensTokenInput {
   token: string;
   expand?: string;
 }
-export const GetTokensTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTokensTokenInput = /*@__PURE__*/ Schema.Struct({
   token: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -90,7 +90,7 @@ export interface GetTokensTokenOutput {
   type: string;
   used: boolean;
 }
-export const GetTokensTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTokensTokenOutput = /*@__PURE__*/ Schema.Struct({
   bank_account: Schema.optional(
     Schema.Struct({
       account: Schema.optional(Schema.Unknown),
@@ -183,7 +183,7 @@ export const GetTokensTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTokensToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTokensToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetTokensTokenInput,
   outputSchema: GetTokensTokenOutput,
 }));

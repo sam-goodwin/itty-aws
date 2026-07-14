@@ -10,7 +10,7 @@ export interface MachinesListEventsInput {
   limit?: number;
 }
 export const MachinesListEventsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     machine_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -31,7 +31,7 @@ export type MachinesListEventsOutput = {
   type?: string;
 }[];
 export const MachinesListEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       request: Schema.optional(Schema.Unknown),
@@ -52,7 +52,7 @@ export const MachinesListEventsOutput =
  * @param machine_id - Machine ID
  * @param limit - The number of events to fetch (max of 50). If omitted, this is set to 20 by default.
  */
-export const MachinesListEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesListEvents = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesListEventsInput,
   outputSchema: MachinesListEventsOutput,
   errors: [Forbidden, NotFound] as const,

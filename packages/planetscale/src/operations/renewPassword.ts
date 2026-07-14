@@ -12,7 +12,7 @@ export interface RenewPasswordInput {
   branch: string;
   id: string;
 }
-export const RenewPasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RenewPasswordInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -66,7 +66,7 @@ export interface RenewPasswordOutput {
     private_edge_connectivity: boolean;
   };
 }
-export const RenewPasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RenewPasswordOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   role: Schema.Literals(["reader", "writer", "admin", "readwriter"]),
@@ -123,7 +123,7 @@ export const RenewPasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param branch - The name of the branch the password belongs to
  * @param id - The ID of the password
  */
-export const renewPassword = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const renewPassword = /*@__PURE__*/ API.make(() => ({
   inputSchema: RenewPasswordInput,
   outputSchema: RenewPasswordOutput,
   errors: [Forbidden, NotFound] as const,

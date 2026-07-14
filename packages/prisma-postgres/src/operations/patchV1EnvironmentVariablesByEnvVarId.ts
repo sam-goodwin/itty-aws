@@ -9,7 +9,7 @@ export interface PatchV1EnvironmentVariablesByEnvVarIdInput {
   value: string;
 }
 export const PatchV1EnvironmentVariablesByEnvVarIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     envVarId: Schema.String.pipe(T.PathParam()),
     value: Schema.String,
   }).pipe(
@@ -33,7 +33,7 @@ export interface PatchV1EnvironmentVariablesByEnvVarIdOutput {
   };
 }
 export const PatchV1EnvironmentVariablesByEnvVarIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -57,7 +57,7 @@ export const PatchV1EnvironmentVariablesByEnvVarIdOutput =
  * Replaces the value of an existing environment variable. Only the value is mutable — the project, environment, key, and branch are fixed at create-time.
  */
 export const patchV1EnvironmentVariablesByEnvVarId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchV1EnvironmentVariablesByEnvVarIdInput,
     outputSchema: PatchV1EnvironmentVariablesByEnvVarIdOutput,
     errors: [NotFound, UnprocessableEntity] as const,

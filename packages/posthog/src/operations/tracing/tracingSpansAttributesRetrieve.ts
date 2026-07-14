@@ -12,7 +12,7 @@ export interface TracingSpansAttributesRetrieveInput {
   search_values?: boolean;
 }
 export const TracingSpansAttributesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     attribute_type: Schema.optional(
       Schema.Literals(["span_attribute", "span_resource_attribute"]),
@@ -39,7 +39,7 @@ export interface TracingSpansAttributesRetrieveOutput {
   count: number;
 }
 export const TracingSpansAttributesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         name: Schema.String,
@@ -65,7 +65,7 @@ export const TracingSpansAttributesRetrieveOutput =
  * @param search_values - When true, the search query also matches attribute values (not just keys), so a value such as a trace_id finds the key holding it.
  */
 export const tracingSpansAttributesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TracingSpansAttributesRetrieveInput,
     outputSchema: TracingSpansAttributesRetrieveOutput,
   }));

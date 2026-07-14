@@ -32,7 +32,7 @@ export interface TosAcceptance {
 }
 
 export const TosAcceptance: Schema.Codec<TosAcceptance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signerTitle: Schema.optional(Schema.String),
     signer: Schema.optional(Schema.String),
     userAccepted: Schema.optional(Schema.Boolean),
@@ -48,7 +48,7 @@ export interface RrmProduct {
 }
 
 export const RrmProduct: Schema.Codec<RrmProduct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tosAcceptance: Schema.optional(TosAcceptance),
     enabled: Schema.optional(Schema.Boolean),
     productTosUrl: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export interface DomainProperty {
 }
 
 export const DomainProperty: Schema.Codec<DomainProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ownershipVerified: Schema.optional(Schema.Boolean),
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "DomainProperty" });
@@ -83,7 +83,7 @@ export interface ContentPolicyStatus {
 }
 
 export const ContentPolicyStatus: Schema.Codec<ContentPolicyStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     policyInfoUrl: Schema.optional(Schema.String),
   }).annotate({ identifier: "ContentPolicyStatus" });
@@ -96,7 +96,7 @@ export interface SlProduct {
 }
 
 export const SlProduct: Schema.Codec<SlProduct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     gcpProjectNumber: Schema.optional(Schema.String),
   }).annotate({ identifier: "SlProduct" });
@@ -147,7 +147,7 @@ export interface Publication {
 }
 
 export const Publication: Schema.Codec<Publication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
     rrmProduct: Schema.optional(RrmProduct),
@@ -178,7 +178,7 @@ export interface NewsletterConfig {
 }
 
 export const NewsletterConfig: Schema.Codec<NewsletterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameRequired: Schema.optional(Schema.Boolean),
     customConsentText: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -198,15 +198,13 @@ export interface Cta {
   displayName?: string;
 }
 
-export const Cta: Schema.Codec<Cta> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    newsletterConfig: Schema.optional(NewsletterConfig),
-    state: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Cta" });
+export const Cta: Schema.Codec<Cta> = /*@__PURE__*/ Schema.Struct({
+  newsletterConfig: Schema.optional(NewsletterConfig),
+  state: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Cta" });
 
 export interface ListPublicationsResponse {
   /** Output only. The list of publications. */
@@ -216,7 +214,7 @@ export interface ListPublicationsResponse {
 }
 
 export const ListPublicationsResponse: Schema.Codec<ListPublicationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     publications: Schema.optional(Schema.Array(Publication)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListPublicationsResponse" });
@@ -227,7 +225,7 @@ export interface CheckFreeAccessResponse {
 }
 
 export const CheckFreeAccessResponse: Schema.Codec<CheckFreeAccessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isAllowed: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CheckFreeAccessResponse" });
 
@@ -239,7 +237,7 @@ export interface ListCtasResponse {
 }
 
 export const ListCtasResponse: Schema.Codec<ListCtasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ctas: Schema.optional(Schema.Array(Cta)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListCtasResponse" });
@@ -308,7 +306,7 @@ export interface CheckFreeAccessPublicationsRequest {
 }
 
 export const CheckFreeAccessPublicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     httpReferrer: Schema.optional(Schema.String).pipe(
       T.HttpQuery("httpReferrer"),
@@ -321,7 +319,7 @@ export const CheckFreeAccessPublicationsRequest =
 
 export type CheckFreeAccessPublicationsResponse = CheckFreeAccessResponse;
 export const CheckFreeAccessPublicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CheckFreeAccessResponse;
+  /*@__PURE__*/ CheckFreeAccessResponse;
 
 export type CheckFreeAccessPublicationsError =
   | DefaultErrors
@@ -334,7 +332,7 @@ export const checkFreeAccessPublications: API.OperationMethod<
   CheckFreeAccessPublicationsResponse,
   CheckFreeAccessPublicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckFreeAccessPublicationsRequest,
   output: CheckFreeAccessPublicationsResponse,
   errors: [NotFound, Forbidden],
@@ -350,7 +348,7 @@ export interface CreateOrganizationsPublicationsRequest {
 }
 
 export const CreateOrganizationsPublicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     publicationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("publicationId"),
@@ -367,7 +365,7 @@ export const CreateOrganizationsPublicationsRequest =
 
 export type CreateOrganizationsPublicationsResponse = Publication;
 export const CreateOrganizationsPublicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Publication;
+  /*@__PURE__*/ Publication;
 
 export type CreateOrganizationsPublicationsError =
   | DefaultErrors
@@ -382,7 +380,7 @@ export const createOrganizationsPublications: API.OperationMethod<
   CreateOrganizationsPublicationsResponse,
   CreateOrganizationsPublicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsPublicationsRequest,
   output: CreateOrganizationsPublicationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -394,7 +392,7 @@ export interface GetOrganizationsPublicationsRequest {
 }
 
 export const GetOrganizationsPublicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -402,8 +400,7 @@ export const GetOrganizationsPublicationsRequest =
   ) as unknown as Schema.Codec<GetOrganizationsPublicationsRequest>;
 
 export type GetOrganizationsPublicationsResponse = Publication;
-export const GetOrganizationsPublicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Publication;
+export const GetOrganizationsPublicationsResponse = /*@__PURE__*/ Publication;
 
 export type GetOrganizationsPublicationsError =
   | DefaultErrors
@@ -416,7 +413,7 @@ export const getOrganizationsPublications: API.OperationMethod<
   GetOrganizationsPublicationsResponse,
   GetOrganizationsPublicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsPublicationsRequest,
   output: GetOrganizationsPublicationsResponse,
   errors: [NotFound, Forbidden],
@@ -434,7 +431,7 @@ export interface ListOrganizationsPublicationsRequest {
 }
 
 export const ListOrganizationsPublicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -446,7 +443,7 @@ export const ListOrganizationsPublicationsRequest =
 
 export type ListOrganizationsPublicationsResponse = ListPublicationsResponse;
 export const ListOrganizationsPublicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPublicationsResponse;
+  /*@__PURE__*/ ListPublicationsResponse;
 
 export type ListOrganizationsPublicationsError =
   | DefaultErrors
@@ -459,7 +456,7 @@ export const listOrganizationsPublications: API.PaginatedOperationMethod<
   ListOrganizationsPublicationsResponse,
   ListOrganizationsPublicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsPublicationsRequest,
   output: ListOrganizationsPublicationsResponse,
   errors: [NotFound, Forbidden],
@@ -479,7 +476,7 @@ export interface PatchOrganizationsPublicationsRequest {
 }
 
 export const PatchOrganizationsPublicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Publication).pipe(T.HttpBody()),
@@ -489,8 +486,7 @@ export const PatchOrganizationsPublicationsRequest =
   ) as unknown as Schema.Codec<PatchOrganizationsPublicationsRequest>;
 
 export type PatchOrganizationsPublicationsResponse = Publication;
-export const PatchOrganizationsPublicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Publication;
+export const PatchOrganizationsPublicationsResponse = /*@__PURE__*/ Publication;
 
 export type PatchOrganizationsPublicationsError =
   | DefaultErrors
@@ -505,7 +501,7 @@ export const patchOrganizationsPublications: API.OperationMethod<
   PatchOrganizationsPublicationsResponse,
   PatchOrganizationsPublicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsPublicationsRequest,
   output: PatchOrganizationsPublicationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -521,7 +517,7 @@ export interface CreateOrganizationsPublicationsCtasRequest {
 }
 
 export const CreateOrganizationsPublicationsCtasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     ctaId: Schema.optional(Schema.String).pipe(T.HttpQuery("ctaId")),
     body: Schema.optional(Cta).pipe(T.HttpBody()),
@@ -531,8 +527,7 @@ export const CreateOrganizationsPublicationsCtasRequest =
   ) as unknown as Schema.Codec<CreateOrganizationsPublicationsCtasRequest>;
 
 export type CreateOrganizationsPublicationsCtasResponse = Cta;
-export const CreateOrganizationsPublicationsCtasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Cta;
+export const CreateOrganizationsPublicationsCtasResponse = /*@__PURE__*/ Cta;
 
 export type CreateOrganizationsPublicationsCtasError =
   | DefaultErrors
@@ -547,7 +542,7 @@ export const createOrganizationsPublicationsCtas: API.OperationMethod<
   CreateOrganizationsPublicationsCtasResponse,
   CreateOrganizationsPublicationsCtasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsPublicationsCtasRequest,
   output: CreateOrganizationsPublicationsCtasResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -559,7 +554,7 @@ export interface GetOrganizationsPublicationsCtasRequest {
 }
 
 export const GetOrganizationsPublicationsCtasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -567,8 +562,7 @@ export const GetOrganizationsPublicationsCtasRequest =
   ) as unknown as Schema.Codec<GetOrganizationsPublicationsCtasRequest>;
 
 export type GetOrganizationsPublicationsCtasResponse = Cta;
-export const GetOrganizationsPublicationsCtasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Cta;
+export const GetOrganizationsPublicationsCtasResponse = /*@__PURE__*/ Cta;
 
 export type GetOrganizationsPublicationsCtasError =
   | DefaultErrors
@@ -581,7 +575,7 @@ export const getOrganizationsPublicationsCtas: API.OperationMethod<
   GetOrganizationsPublicationsCtasResponse,
   GetOrganizationsPublicationsCtasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsPublicationsCtasRequest,
   output: GetOrganizationsPublicationsCtasResponse,
   errors: [NotFound, Forbidden],
@@ -597,7 +591,7 @@ export interface ListOrganizationsPublicationsCtasRequest {
 }
 
 export const ListOrganizationsPublicationsCtasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -608,7 +602,7 @@ export const ListOrganizationsPublicationsCtasRequest =
 
 export type ListOrganizationsPublicationsCtasResponse = ListCtasResponse;
 export const ListOrganizationsPublicationsCtasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCtasResponse;
+  /*@__PURE__*/ ListCtasResponse;
 
 export type ListOrganizationsPublicationsCtasError =
   | DefaultErrors
@@ -621,7 +615,7 @@ export const listOrganizationsPublicationsCtas: API.PaginatedOperationMethod<
   ListOrganizationsPublicationsCtasResponse,
   ListOrganizationsPublicationsCtasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsPublicationsCtasRequest,
   output: ListOrganizationsPublicationsCtasResponse,
   errors: [NotFound, Forbidden],

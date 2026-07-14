@@ -9,7 +9,7 @@ export interface AnnotationsRetrieveInput {
   project_id: string;
 }
 export const AnnotationsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -65,7 +65,7 @@ export interface AnnotationsRetrieveOutput {
   hidden_in_user_interface?: boolean | null;
 }
 export const AnnotationsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     content: Schema.optional(Schema.NullOr(Schema.String)),
     date_marker: Schema.optional(Schema.NullOr(Schema.String)),
@@ -132,7 +132,7 @@ export const AnnotationsRetrieveOutput =
  * @param id - A unique integer value identifying this annotation.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const annotationsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const annotationsRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: AnnotationsRetrieveInput,
   outputSchema: AnnotationsRetrieveOutput,
   errors: [Forbidden, NotFound] as const,

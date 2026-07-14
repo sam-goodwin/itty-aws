@@ -11,7 +11,7 @@ export interface GetDefaultRoleInput {
   database: string;
   branch: string;
 }
-export const GetDefaultRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDefaultRoleInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -71,7 +71,7 @@ export interface GetDefaultRoleOutput {
     require_where_on_update: "off" | "warn" | "on";
   };
 }
-export const GetDefaultRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDefaultRoleOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   access_host_url: Schema.String,
@@ -134,7 +134,7 @@ export const GetDefaultRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  * @param branch - Branch name from `list_branches`. Example: `main`.
  */
-export const getDefaultRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDefaultRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDefaultRoleInput,
   outputSchema: GetDefaultRoleOutput,
   errors: [Forbidden, NotFound] as const,

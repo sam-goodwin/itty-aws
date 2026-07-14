@@ -8,7 +8,7 @@ export interface RolesRetrieveInput {
   id: string;
   organization_id: string;
 }
-export const RolesRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesRetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -47,7 +47,7 @@ export interface RolesRetrieveOutput {
   members?: Record<string, unknown>[];
   is_default?: boolean;
 }
-export const RolesRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesRetrieveOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   created_at: Schema.optional(Schema.String),
@@ -96,7 +96,7 @@ export const RolesRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param id - A UUID string identifying this role.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const rolesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const rolesRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: RolesRetrieveInput,
   outputSchema: RolesRetrieveOutput,
   errors: [Forbidden, NotFound] as const,

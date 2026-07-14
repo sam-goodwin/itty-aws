@@ -31,7 +31,7 @@ export interface CertificatesCreateOrUpdateInput {
   type?: string;
 }
 export const CertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -76,7 +76,7 @@ export interface CertificatesCreateOrUpdateOutput {
   type?: string;
 }
 export const CertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         subject: Schema.optional(Schema.String),
@@ -107,12 +107,10 @@ export const CertificatesCreateOrUpdateOutput =
  * @param certificateName - The name of the certificate
  * @param If-Match - ETag of the Certificate. Do not specify for creating a brand new certificate. Required to update an existing certificate.
  */
-export const CertificatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CertificatesCreateOrUpdateInput,
-    outputSchema: CertificatesCreateOrUpdateOutput,
-  }),
-);
+export const CertificatesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificatesCreateOrUpdateInput,
+  outputSchema: CertificatesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface CertificatesDeleteInput {
   subscriptionId: string;
@@ -121,7 +119,7 @@ export interface CertificatesDeleteInput {
   certificateName: string;
 }
 export const CertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -137,7 +135,7 @@ export const CertificatesDeleteInput =
 // Output Schema
 export type CertificatesDeleteOutput = void;
 export const CertificatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CertificatesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CertificatesDeleteOutput>;
 
 // The operation
 /**
@@ -152,7 +150,7 @@ export const CertificatesDeleteOutput =
  * @param certificateName - The name of the certificate
  * @param If-Match - ETag of the Certificate.
  */
-export const CertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificatesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificatesDeleteInput,
   outputSchema: CertificatesDeleteOutput,
 }));
@@ -164,7 +162,7 @@ export interface CertificatesGenerateVerificationCodeInput {
   certificateName: string;
 }
 export const CertificatesGenerateVerificationCodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -195,7 +193,7 @@ export interface CertificatesGenerateVerificationCodeOutput {
   type?: string;
 }
 export const CertificatesGenerateVerificationCodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         subject: Schema.optional(Schema.String),
@@ -228,7 +226,7 @@ export const CertificatesGenerateVerificationCodeOutput =
  * @param If-Match - ETag of the Certificate.
  */
 export const CertificatesGenerateVerificationCode =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CertificatesGenerateVerificationCodeInput,
     outputSchema: CertificatesGenerateVerificationCodeOutput,
   }));
@@ -239,7 +237,7 @@ export interface CertificatesGetInput {
   resourceName: string;
   certificateName: string;
 }
-export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificatesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -268,7 +266,7 @@ export interface CertificatesGetOutput {
   etag?: string;
   type?: string;
 }
-export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificatesGetOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       subject: Schema.optional(Schema.String),
@@ -298,7 +296,7 @@ export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceName - The name of the IoT hub.
  * @param certificateName - The name of the certificate
  */
-export const CertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificatesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificatesGetInput,
   outputSchema: CertificatesGetOutput,
 }));
@@ -309,7 +307,7 @@ export interface CertificatesListByIotHubInput {
   resourceName: string;
 }
 export const CertificatesListByIotHubInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -340,7 +338,7 @@ export interface CertificatesListByIotHubOutput {
   }[];
 }
 export const CertificatesListByIotHubOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -375,12 +373,10 @@ export const CertificatesListByIotHubOutput =
  * @param resourceGroupName - The name of the resource group that contains the IoT hub.
  * @param resourceName - The name of the IoT hub.
  */
-export const CertificatesListByIotHub = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CertificatesListByIotHubInput,
-    outputSchema: CertificatesListByIotHubOutput,
-  }),
-);
+export const CertificatesListByIotHub = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificatesListByIotHubInput,
+  outputSchema: CertificatesListByIotHubOutput,
+}));
 // Input Schema
 export interface CertificatesVerifyInput {
   subscriptionId: string;
@@ -390,7 +386,7 @@ export interface CertificatesVerifyInput {
   certificate?: string;
 }
 export const CertificatesVerifyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -421,7 +417,7 @@ export interface CertificatesVerifyOutput {
   type?: string;
 }
 export const CertificatesVerifyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         subject: Schema.optional(Schema.String),
@@ -452,7 +448,7 @@ export const CertificatesVerifyOutput =
  * @param certificateName - The name of the certificate
  * @param If-Match - ETag of the Certificate.
  */
-export const CertificatesVerify = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificatesVerify = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificatesVerifyInput,
   outputSchema: CertificatesVerifyOutput,
 }));
@@ -464,7 +460,7 @@ export interface IotHubManualFailoverInput {
   failoverRegion: string;
 }
 export const IotHubManualFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iotHubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -480,7 +476,7 @@ export const IotHubManualFailoverInput =
 // Output Schema
 export type IotHubManualFailoverOutput = void;
 export const IotHubManualFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IotHubManualFailoverOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IotHubManualFailoverOutput>;
 
 // The operation
 /**
@@ -493,19 +489,17 @@ export const IotHubManualFailoverOutput =
  * @param resourceGroupName - Name of the resource group containing the IoT hub resource
  * @param api-version - The version of the API.
  */
-export const IotHubManualFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotHubManualFailoverInput,
-    outputSchema: IotHubManualFailoverOutput,
-  }),
-);
+export const IotHubManualFailover = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubManualFailoverInput,
+  outputSchema: IotHubManualFailoverOutput,
+}));
 // Input Schema
 export interface IotHubResourceCheckNameAvailabilityInput {
   subscriptionId: string;
   name: string;
 }
 export const IotHubResourceCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
@@ -523,7 +517,7 @@ export interface IotHubResourceCheckNameAvailabilityOutput {
   message?: string;
 }
 export const IotHubResourceCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -539,7 +533,7 @@ export const IotHubResourceCheckNameAvailabilityOutput =
  * @param subscriptionId - The subscription identifier.
  */
 export const IotHubResourceCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotHubResourceCheckNameAvailabilityInput,
     outputSchema: IotHubResourceCheckNameAvailabilityOutput,
   }));
@@ -553,7 +547,7 @@ export interface IotHubResourceCreateEventHubConsumerGroupInput {
   properties: { name: string };
 }
 export const IotHubResourceCreateEventHubConsumerGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -579,7 +573,7 @@ export interface IotHubResourceCreateEventHubConsumerGroupOutput {
   etag?: string;
 }
 export const IotHubResourceCreateEventHubConsumerGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -601,7 +595,7 @@ export const IotHubResourceCreateEventHubConsumerGroupOutput =
  * @param name - The name of the consumer group to add.
  */
 export const IotHubResourceCreateEventHubConsumerGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotHubResourceCreateEventHubConsumerGroupInput,
     outputSchema: IotHubResourceCreateEventHubConsumerGroupOutput,
   }));
@@ -830,7 +824,7 @@ export interface IotHubResourceCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const IotHubResourceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1215,7 +1209,7 @@ export interface IotHubResourceCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IotHubResourceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1236,7 +1230,7 @@ export const IotHubResourceCreateOrUpdateOutput =
  * @param If-Match - ETag of the IoT Hub. Do not specify for creating a brand new IoT Hub. Required to update an existing IoT Hub.
  */
 export const IotHubResourceCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotHubResourceCreateOrUpdateInput,
     outputSchema: IotHubResourceCreateOrUpdateOutput,
   }));
@@ -1247,7 +1241,7 @@ export interface IotHubResourceDeleteInput {
   resourceName: string;
 }
 export const IotHubResourceDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1268,7 +1262,7 @@ export interface IotHubResourceDeleteOutput {
   tags?: Record<string, string>;
 }
 export const IotHubResourceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1287,12 +1281,10 @@ export const IotHubResourceDeleteOutput =
  * @param resourceGroupName - The name of the resource group that contains the IoT hub.
  * @param resourceName - The name of the IoT hub.
  */
-export const IotHubResourceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotHubResourceDeleteInput,
-    outputSchema: IotHubResourceDeleteOutput,
-  }),
-);
+export const IotHubResourceDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceDeleteInput,
+  outputSchema: IotHubResourceDeleteOutput,
+}));
 // Input Schema
 export interface IotHubResourceDeleteEventHubConsumerGroupInput {
   subscriptionId: string;
@@ -1302,7 +1294,7 @@ export interface IotHubResourceDeleteEventHubConsumerGroupInput {
   name: string;
 }
 export const IotHubResourceDeleteEventHubConsumerGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1319,7 +1311,7 @@ export const IotHubResourceDeleteEventHubConsumerGroupInput =
 // Output Schema
 export type IotHubResourceDeleteEventHubConsumerGroupOutput = void;
 export const IotHubResourceDeleteEventHubConsumerGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IotHubResourceDeleteEventHubConsumerGroupOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IotHubResourceDeleteEventHubConsumerGroupOutput>;
 
 // The operation
 /**
@@ -1335,7 +1327,7 @@ export const IotHubResourceDeleteEventHubConsumerGroupOutput =
  * @param name - The name of the consumer group to delete.
  */
 export const IotHubResourceDeleteEventHubConsumerGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotHubResourceDeleteEventHubConsumerGroupInput,
     outputSchema: IotHubResourceDeleteEventHubConsumerGroupOutput,
   }));
@@ -1353,7 +1345,7 @@ export interface IotHubResourceExportDevicesInput {
   configurationsBlobName?: string;
 }
 export const IotHubResourceExportDevicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1406,7 +1398,7 @@ export interface IotHubResourceExportDevicesOutput {
   parentJobId?: string;
 }
 export const IotHubResourceExportDevicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobId: Schema.optional(Schema.String),
     startTimeUtc: Schema.optional(Schema.String),
     endTimeUtc: Schema.optional(Schema.String),
@@ -1450,25 +1442,21 @@ export const IotHubResourceExportDevicesOutput =
  * @param resourceGroupName - The name of the resource group that contains the IoT hub.
  * @param resourceName - The name of the IoT hub.
  */
-export const IotHubResourceExportDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotHubResourceExportDevicesInput,
-    outputSchema: IotHubResourceExportDevicesOutput,
-  }),
-);
+export const IotHubResourceExportDevices = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceExportDevicesInput,
+  outputSchema: IotHubResourceExportDevicesOutput,
+}));
 // Input Schema
 export interface IotHubResourceGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceName: string;
 }
-export const IotHubResourceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const IotHubResourceGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
@@ -1485,7 +1473,7 @@ export interface IotHubResourceGetOutput {
   tags?: Record<string, string>;
 }
 export const IotHubResourceGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1504,7 +1492,7 @@ export const IotHubResourceGetOutput =
  * @param resourceGroupName - The name of the resource group that contains the IoT hub.
  * @param resourceName - The name of the IoT hub.
  */
-export const IotHubResourceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IotHubResourceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IotHubResourceGetInput,
   outputSchema: IotHubResourceGetOutput,
 }));
@@ -1515,7 +1503,7 @@ export interface IotHubResourceGetEndpointHealthInput {
   iotHubName: string;
 }
 export const IotHubResourceGetEndpointHealthInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     iotHubName: Schema.String.pipe(T.PathParam()),
@@ -1540,7 +1528,7 @@ export interface IotHubResourceGetEndpointHealthOutput {
   nextLink?: string;
 }
 export const IotHubResourceGetEndpointHealthOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1574,7 +1562,7 @@ export const IotHubResourceGetEndpointHealthOutput =
  * @param api-version - The version of the API.
  */
 export const IotHubResourceGetEndpointHealth =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotHubResourceGetEndpointHealthInput,
     outputSchema: IotHubResourceGetEndpointHealthOutput,
   }));
@@ -1587,7 +1575,7 @@ export interface IotHubResourceGetEventHubConsumerGroupInput {
   name: string;
 }
 export const IotHubResourceGetEventHubConsumerGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1610,7 +1598,7 @@ export interface IotHubResourceGetEventHubConsumerGroupOutput {
   etag?: string;
 }
 export const IotHubResourceGetEventHubConsumerGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1632,7 +1620,7 @@ export const IotHubResourceGetEventHubConsumerGroupOutput =
  * @param name - The name of the consumer group to retrieve.
  */
 export const IotHubResourceGetEventHubConsumerGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotHubResourceGetEventHubConsumerGroupInput,
     outputSchema: IotHubResourceGetEventHubConsumerGroupOutput,
   }));
@@ -1644,7 +1632,7 @@ export interface IotHubResourceGetJobInput {
   jobId: string;
 }
 export const IotHubResourceGetJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1685,7 +1673,7 @@ export interface IotHubResourceGetJobOutput {
   parentJobId?: string;
 }
 export const IotHubResourceGetJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobId: Schema.optional(Schema.String),
     startTimeUtc: Schema.optional(Schema.String),
     endTimeUtc: Schema.optional(Schema.String),
@@ -1730,12 +1718,10 @@ export const IotHubResourceGetJobOutput =
  * @param resourceName - The name of the IoT hub.
  * @param jobId - The job identifier.
  */
-export const IotHubResourceGetJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotHubResourceGetJobInput,
-    outputSchema: IotHubResourceGetJobOutput,
-  }),
-);
+export const IotHubResourceGetJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceGetJobInput,
+  outputSchema: IotHubResourceGetJobOutput,
+}));
 // Input Schema
 export interface IotHubResourceGetKeysForKeyNameInput {
   subscriptionId: string;
@@ -1744,7 +1730,7 @@ export interface IotHubResourceGetKeysForKeyNameInput {
   keyName: string;
 }
 export const IotHubResourceGetKeysForKeyNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1780,7 +1766,7 @@ export interface IotHubResourceGetKeysForKeyNameOutput {
     | "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect";
 }
 export const IotHubResourceGetKeysForKeyNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyName: Schema.String,
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
@@ -1816,7 +1802,7 @@ export const IotHubResourceGetKeysForKeyNameOutput =
  * @param keyName - The name of the shared access policy.
  */
 export const IotHubResourceGetKeysForKeyName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotHubResourceGetKeysForKeyNameInput,
     outputSchema: IotHubResourceGetKeysForKeyNameOutput,
   }));
@@ -1827,7 +1813,7 @@ export interface IotHubResourceGetQuotaMetricsInput {
   resourceName: string;
 }
 export const IotHubResourceGetQuotaMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1845,7 +1831,7 @@ export interface IotHubResourceGetQuotaMetricsOutput {
   nextLink?: string;
 }
 export const IotHubResourceGetQuotaMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1870,7 +1856,7 @@ export const IotHubResourceGetQuotaMetricsOutput =
  * @param resourceName - The name of the IoT hub.
  */
 export const IotHubResourceGetQuotaMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotHubResourceGetQuotaMetricsInput,
     outputSchema: IotHubResourceGetQuotaMetricsOutput,
   }));
@@ -1881,7 +1867,7 @@ export interface IotHubResourceGetStatsInput {
   resourceName: string;
 }
 export const IotHubResourceGetStatsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1900,7 +1886,7 @@ export interface IotHubResourceGetStatsOutput {
   disabledDeviceCount?: number;
 }
 export const IotHubResourceGetStatsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalDeviceCount: Schema.optional(Schema.Number),
     enabledDeviceCount: Schema.optional(Schema.Number),
     disabledDeviceCount: Schema.optional(Schema.Number),
@@ -1917,12 +1903,10 @@ export const IotHubResourceGetStatsOutput =
  * @param resourceGroupName - The name of the resource group that contains the IoT hub.
  * @param resourceName - The name of the IoT hub.
  */
-export const IotHubResourceGetStats = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotHubResourceGetStatsInput,
-    outputSchema: IotHubResourceGetStatsOutput,
-  }),
-);
+export const IotHubResourceGetStats = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceGetStatsInput,
+  outputSchema: IotHubResourceGetStatsOutput,
+}));
 // Input Schema
 export interface IotHubResourceGetValidSkusInput {
   subscriptionId: string;
@@ -1930,7 +1914,7 @@ export interface IotHubResourceGetValidSkusInput {
   resourceName: string;
 }
 export const IotHubResourceGetValidSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1961,7 +1945,7 @@ export interface IotHubResourceGetValidSkusOutput {
   nextLink?: string;
 }
 export const IotHubResourceGetValidSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1998,12 +1982,10 @@ export const IotHubResourceGetValidSkusOutput =
  * @param resourceGroupName - The name of the resource group that contains the IoT hub.
  * @param resourceName - The name of the IoT hub.
  */
-export const IotHubResourceGetValidSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotHubResourceGetValidSkusInput,
-    outputSchema: IotHubResourceGetValidSkusOutput,
-  }),
-);
+export const IotHubResourceGetValidSkus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceGetValidSkusInput,
+  outputSchema: IotHubResourceGetValidSkusOutput,
+}));
 // Input Schema
 export interface IotHubResourceImportDevicesInput {
   subscriptionId: string;
@@ -2019,7 +2001,7 @@ export interface IotHubResourceImportDevicesInput {
   configurationsBlobName?: string;
 }
 export const IotHubResourceImportDevicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2073,7 +2055,7 @@ export interface IotHubResourceImportDevicesOutput {
   parentJobId?: string;
 }
 export const IotHubResourceImportDevicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobId: Schema.optional(Schema.String),
     startTimeUtc: Schema.optional(Schema.String),
     endTimeUtc: Schema.optional(Schema.String),
@@ -2117,19 +2099,17 @@ export const IotHubResourceImportDevicesOutput =
  * @param resourceGroupName - The name of the resource group that contains the IoT hub.
  * @param resourceName - The name of the IoT hub.
  */
-export const IotHubResourceImportDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotHubResourceImportDevicesInput,
-    outputSchema: IotHubResourceImportDevicesOutput,
-  }),
-);
+export const IotHubResourceImportDevices = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceImportDevicesInput,
+  outputSchema: IotHubResourceImportDevicesOutput,
+}));
 // Input Schema
 export interface IotHubResourceListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const IotHubResourceListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2152,7 +2132,7 @@ export interface IotHubResourceListByResourceGroupOutput {
   nextLink?: string;
 }
 export const IotHubResourceListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2178,7 +2158,7 @@ export const IotHubResourceListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group that contains the IoT hub.
  */
 export const IotHubResourceListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotHubResourceListByResourceGroupInput,
     outputSchema: IotHubResourceListByResourceGroupOutput,
   }));
@@ -2187,7 +2167,7 @@ export interface IotHubResourceListBySubscriptionInput {
   subscriptionId: string;
 }
 export const IotHubResourceListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2209,7 +2189,7 @@ export interface IotHubResourceListBySubscriptionOutput {
   nextLink?: string;
 }
 export const IotHubResourceListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2234,7 +2214,7 @@ export const IotHubResourceListBySubscriptionOutput =
  * @param subscriptionId - The subscription identifier.
  */
 export const IotHubResourceListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotHubResourceListBySubscriptionInput,
     outputSchema: IotHubResourceListBySubscriptionOutput,
   }));
@@ -2246,7 +2226,7 @@ export interface IotHubResourceListEventHubConsumerGroupsInput {
   eventHubEndpointName: string;
 }
 export const IotHubResourceListEventHubConsumerGroupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2271,7 +2251,7 @@ export interface IotHubResourceListEventHubConsumerGroupsOutput {
   nextLink?: string;
 }
 export const IotHubResourceListEventHubConsumerGroupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2301,7 +2281,7 @@ export const IotHubResourceListEventHubConsumerGroupsOutput =
  * @param eventHubEndpointName - The name of the Event Hub-compatible endpoint.
  */
 export const IotHubResourceListEventHubConsumerGroups =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IotHubResourceListEventHubConsumerGroupsInput,
     outputSchema: IotHubResourceListEventHubConsumerGroupsOutput,
   }));
@@ -2312,7 +2292,7 @@ export interface IotHubResourceListJobsInput {
   resourceName: string;
 }
 export const IotHubResourceListJobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2355,7 +2335,7 @@ export interface IotHubResourceListJobsOutput {
   nextLink?: string;
 }
 export const IotHubResourceListJobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2406,12 +2386,10 @@ export const IotHubResourceListJobsOutput =
  * @param resourceGroupName - The name of the resource group that contains the IoT hub.
  * @param resourceName - The name of the IoT hub.
  */
-export const IotHubResourceListJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotHubResourceListJobsInput,
-    outputSchema: IotHubResourceListJobsOutput,
-  }),
-);
+export const IotHubResourceListJobs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceListJobsInput,
+  outputSchema: IotHubResourceListJobsOutput,
+}));
 // Input Schema
 export interface IotHubResourceListKeysInput {
   subscriptionId: string;
@@ -2419,7 +2397,7 @@ export interface IotHubResourceListKeysInput {
   resourceName: string;
 }
 export const IotHubResourceListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2457,7 +2435,7 @@ export interface IotHubResourceListKeysOutput {
   nextLink?: string;
 }
 export const IotHubResourceListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2498,12 +2476,10 @@ export const IotHubResourceListKeysOutput =
  * @param resourceGroupName - The name of the resource group that contains the IoT hub.
  * @param resourceName - The name of the IoT hub.
  */
-export const IotHubResourceListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotHubResourceListKeysInput,
-    outputSchema: IotHubResourceListKeysOutput,
-  }),
-);
+export const IotHubResourceListKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceListKeysInput,
+  outputSchema: IotHubResourceListKeysOutput,
+}));
 // Input Schema
 export interface IotHubResourceTestAllRoutesInput {
   iotHubName: string;
@@ -2527,7 +2503,7 @@ export interface IotHubResourceTestAllRoutesInput {
   };
 }
 export const IotHubResourceTestAllRoutesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iotHubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2590,7 +2566,7 @@ export interface IotHubResourceTestAllRoutesOutput {
   }[];
 }
 export const IotHubResourceTestAllRoutesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     routes: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2626,12 +2602,10 @@ export const IotHubResourceTestAllRoutesOutput =
  * @param resourceGroupName - resource group which Iot Hub belongs to
  * @param api-version - The version of the API.
  */
-export const IotHubResourceTestAllRoutes = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotHubResourceTestAllRoutesInput,
-    outputSchema: IotHubResourceTestAllRoutesOutput,
-  }),
-);
+export const IotHubResourceTestAllRoutes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceTestAllRoutesInput,
+  outputSchema: IotHubResourceTestAllRoutesOutput,
+}));
 // Input Schema
 export interface IotHubResourceTestRouteInput {
   iotHubName: string;
@@ -2661,7 +2635,7 @@ export interface IotHubResourceTestRouteInput {
   };
 }
 export const IotHubResourceTestRouteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iotHubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2724,7 +2698,7 @@ export interface IotHubResourceTestRouteOutput {
   };
 }
 export const IotHubResourceTestRouteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.Literals(["undefined", "false", "true"])),
     details: Schema.optional(
       Schema.Struct({
@@ -2767,12 +2741,10 @@ export const IotHubResourceTestRouteOutput =
  * @param resourceGroupName - resource group which Iot Hub belongs to
  * @param api-version - The version of the API.
  */
-export const IotHubResourceTestRoute = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotHubResourceTestRouteInput,
-    outputSchema: IotHubResourceTestRouteOutput,
-  }),
-);
+export const IotHubResourceTestRoute = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceTestRouteInput,
+  outputSchema: IotHubResourceTestRouteOutput,
+}));
 // Input Schema
 export interface IotHubResourceUpdateInput {
   subscriptionId: string;
@@ -2781,7 +2753,7 @@ export interface IotHubResourceUpdateInput {
   tags?: unknown;
 }
 export const IotHubResourceUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2803,7 +2775,7 @@ export interface IotHubResourceUpdateOutput {
   tags?: Record<string, string>;
 }
 export const IotHubResourceUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2822,17 +2794,13 @@ export const IotHubResourceUpdateOutput =
  * @param resourceName - Name of iot hub to update.
  * @param api-version - The version of the API.
  */
-export const IotHubResourceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IotHubResourceUpdateInput,
-    outputSchema: IotHubResourceUpdateOutput,
-  }),
-);
+export const IotHubResourceUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IotHubResourceUpdateInput,
+  outputSchema: IotHubResourceUpdateOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Devices/operations",
@@ -2853,7 +2821,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2878,7 +2846,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The version of the API.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2890,7 +2858,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2918,7 +2886,7 @@ export interface PrivateEndpointConnectionsDeleteOutput {
   };
 }
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2954,7 +2922,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -2966,7 +2934,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2994,7 +2962,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3030,7 +2998,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -3041,7 +3009,7 @@ export interface PrivateEndpointConnectionsListInput {
   resourceName: string;
 }
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3068,7 +3036,7 @@ export type PrivateEndpointConnectionsListOutput = {
   };
 }[];
 export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -3105,7 +3073,7 @@ export const PrivateEndpointConnectionsListOutput =
  * @param resourceName - The name of the IoT hub.
  */
 export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListInput,
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
@@ -3128,7 +3096,7 @@ export interface PrivateEndpointConnectionsUpdateInput {
   };
 }
 export const PrivateEndpointConnectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3176,7 +3144,7 @@ export interface PrivateEndpointConnectionsUpdateOutput {
   };
 }
 export const PrivateEndpointConnectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3212,7 +3180,7 @@ export const PrivateEndpointConnectionsUpdateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection
  */
 export const PrivateEndpointConnectionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsUpdateInput,
     outputSchema: PrivateEndpointConnectionsUpdateOutput,
   }));
@@ -3224,7 +3192,7 @@ export interface PrivateLinkResourcesGetInput {
   groupId: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3249,7 +3217,7 @@ export interface PrivateLinkResourcesGetOutput {
   };
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3272,12 +3240,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param resourceName - The name of the IoT hub.
  * @param groupId - The name of the private link resource
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListInput {
   subscriptionId: string;
@@ -3285,7 +3251,7 @@ export interface PrivateLinkResourcesListInput {
   resourceName: string;
 }
 export const PrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3311,7 +3277,7 @@ export interface PrivateLinkResourcesListOutput {
   }[];
 }
 export const PrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3339,18 +3305,16 @@ export const PrivateLinkResourcesListOutput =
  * @param resourceGroupName - The name of the resource group that contains the IoT hub.
  * @param resourceName - The name of the IoT hub.
  */
-export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesListInput,
-    outputSchema: PrivateLinkResourcesListOutput,
-  }),
-);
+export const PrivateLinkResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesListInput,
+  outputSchema: PrivateLinkResourcesListOutput,
+}));
 // Input Schema
 export interface ResourceProviderCommonGetSubscriptionQuotaInput {
   subscriptionId: string;
 }
 export const ResourceProviderCommonGetSubscriptionQuotaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -3373,7 +3337,7 @@ export interface ResourceProviderCommonGetSubscriptionQuotaOutput {
   nextLink?: string;
 }
 export const ResourceProviderCommonGetSubscriptionQuotaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3404,7 +3368,7 @@ export const ResourceProviderCommonGetSubscriptionQuotaOutput =
  * @param api-version - The version of the API.
  */
 export const ResourceProviderCommonGetSubscriptionQuota =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceProviderCommonGetSubscriptionQuotaInput,
     outputSchema: ResourceProviderCommonGetSubscriptionQuotaOutput,
   }));

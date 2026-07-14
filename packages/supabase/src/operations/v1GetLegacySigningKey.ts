@@ -8,7 +8,7 @@ export interface V1GetLegacySigningKeyInput {
   ref: string;
 }
 export const V1GetLegacySigningKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -27,7 +27,7 @@ export interface V1GetLegacySigningKeyOutput {
   updated_at: string;
 }
 export const V1GetLegacySigningKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     algorithm: Schema.Literals(["EdDSA", "ES256", "RS256", "HS256"]),
     status: Schema.Literals([
@@ -47,10 +47,8 @@ export const V1GetLegacySigningKeyOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetLegacySigningKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetLegacySigningKeyInput,
-    outputSchema: V1GetLegacySigningKeyOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1GetLegacySigningKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetLegacySigningKeyInput,
+  outputSchema: V1GetLegacySigningKeyOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

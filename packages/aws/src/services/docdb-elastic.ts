@@ -106,7 +106,7 @@ export interface ApplyPendingMaintenanceActionInput {
   applyOn?: string;
 }
 export const ApplyPendingMaintenanceActionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceArn: S.String,
       applyAction: S.String,
@@ -134,7 +134,7 @@ export interface PendingMaintenanceActionDetails {
   description?: string;
 }
 export const PendingMaintenanceActionDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       action: S.String,
       autoAppliedAfterDate: S.optional(S.String),
@@ -149,13 +149,13 @@ export const PendingMaintenanceActionDetails =
 export type PendingMaintenanceActionDetailsList =
   PendingMaintenanceActionDetails[];
 export const PendingMaintenanceActionDetailsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PendingMaintenanceActionDetails);
+  /*@__PURE__*/ S.Array(PendingMaintenanceActionDetails);
 export interface ResourcePendingMaintenanceAction {
   resourceArn?: string;
   pendingMaintenanceActionDetails?: PendingMaintenanceActionDetails[];
 }
 export const ResourcePendingMaintenanceAction =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceArn: S.optional(S.String),
       pendingMaintenanceActionDetails: S.optional(
@@ -169,7 +169,7 @@ export interface ApplyPendingMaintenanceActionOutput {
   resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction;
 }
 export const ApplyPendingMaintenanceActionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction,
     }),
@@ -180,17 +180,17 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.String, message: S.String }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -201,29 +201,28 @@ export interface CopyClusterSnapshotInput {
   copyTags?: boolean;
   tags?: { [key: string]: string | undefined };
 }
-export const CopyClusterSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      snapshotArn: S.String.pipe(T.HttpLabel("snapshotArn")),
-      targetSnapshotName: S.String,
-      kmsKeyId: S.optional(S.String),
-      copyTags: S.optional(S.Boolean),
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/cluster-snapshot/{snapshotArn}/copy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CopyClusterSnapshotInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    snapshotArn: S.String.pipe(T.HttpLabel("snapshotArn")),
+    targetSnapshotName: S.String,
+    kmsKeyId: S.optional(S.String),
+    copyTags: S.optional(S.Boolean),
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/cluster-snapshot/{snapshotArn}/copy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CopyClusterSnapshotInput",
 }) as any as S.Schema<CopyClusterSnapshotInput>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface ClusterSnapshot {
   subnetIds: string[];
   snapshotName: string;
@@ -237,7 +236,7 @@ export interface ClusterSnapshot {
   kmsKeyId: string;
   snapshotType?: string;
 }
-export const ClusterSnapshot = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ClusterSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetIds: StringList,
     snapshotName: S.String,
@@ -257,8 +256,8 @@ export const ClusterSnapshot = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CopyClusterSnapshotOutput {
   snapshot: ClusterSnapshot;
 }
-export const CopyClusterSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ snapshot: ClusterSnapshot }),
+export const CopyClusterSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ snapshot: ClusterSnapshot }),
 ).annotate({
   identifier: "CopyClusterSnapshotOutput",
 }) as any as S.Schema<CopyClusterSnapshotOutput>;
@@ -279,7 +278,7 @@ export interface CreateClusterInput {
   preferredBackupWindow?: string;
   shardInstanceCount?: number;
 }
-export const CreateClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterName: S.String,
     authType: S.String,
@@ -314,11 +313,11 @@ export interface Shard {
   createTime: string;
   status: string;
 }
-export const Shard = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Shard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ shardId: S.String, createTime: S.String, status: S.String }),
 ).annotate({ identifier: "Shard" }) as any as S.Schema<Shard>;
 export type ShardList = Shard[];
-export const ShardList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Shard);
+export const ShardList = /*@__PURE__*/ S.Array(Shard);
 export interface Cluster {
   clusterName: string;
   clusterArn: string;
@@ -338,7 +337,7 @@ export interface Cluster {
   preferredBackupWindow?: string;
   shardInstanceCount?: number;
 }
-export const Cluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterName: S.String,
     clusterArn: S.String,
@@ -362,7 +361,7 @@ export const Cluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateClusterOutput {
   cluster: Cluster;
 }
-export const CreateClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cluster: Cluster }),
 ).annotate({
   identifier: "CreateClusterOutput",
@@ -372,22 +371,21 @@ export interface CreateClusterSnapshotInput {
   snapshotName: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateClusterSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clusterArn: S.String,
-      snapshotName: S.String,
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/cluster-snapshot" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateClusterSnapshotInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterArn: S.String,
+    snapshotName: S.String,
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/cluster-snapshot" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateClusterSnapshotInput",
 }) as any as S.Schema<CreateClusterSnapshotInput>;
@@ -395,7 +393,7 @@ export interface CreateClusterSnapshotOutput {
   snapshot: ClusterSnapshot;
 }
 export const CreateClusterSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ snapshot: ClusterSnapshot }),
   ).annotate({
     identifier: "CreateClusterSnapshotOutput",
@@ -403,7 +401,7 @@ export const CreateClusterSnapshotOutput =
 export interface DeleteClusterInput {
   clusterArn: string;
 }
-export const DeleteClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ clusterArn: S.String.pipe(T.HttpLabel("clusterArn")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/cluster/{clusterArn}" }),
@@ -420,7 +418,7 @@ export const DeleteClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteClusterOutput {
   cluster: Cluster;
 }
-export const DeleteClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cluster: Cluster }),
 ).annotate({
   identifier: "DeleteClusterOutput",
@@ -428,18 +426,17 @@ export const DeleteClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteClusterSnapshotInput {
   snapshotArn: string;
 }
-export const DeleteClusterSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ snapshotArn: S.String.pipe(T.HttpLabel("snapshotArn")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/cluster-snapshot/{snapshotArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteClusterSnapshotInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ snapshotArn: S.String.pipe(T.HttpLabel("snapshotArn")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/cluster-snapshot/{snapshotArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteClusterSnapshotInput",
 }) as any as S.Schema<DeleteClusterSnapshotInput>;
@@ -447,7 +444,7 @@ export interface DeleteClusterSnapshotOutput {
   snapshot: ClusterSnapshot;
 }
 export const DeleteClusterSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ snapshot: ClusterSnapshot }),
   ).annotate({
     identifier: "DeleteClusterSnapshotOutput",
@@ -455,7 +452,7 @@ export const DeleteClusterSnapshotOutput =
 export interface GetClusterInput {
   clusterArn: string;
 }
-export const GetClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ clusterArn: S.String.pipe(T.HttpLabel("clusterArn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/cluster/{clusterArn}" }),
@@ -472,7 +469,7 @@ export const GetClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetClusterOutput {
   cluster: Cluster;
 }
-export const GetClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cluster: Cluster }),
 ).annotate({
   identifier: "GetClusterOutput",
@@ -480,26 +477,25 @@ export const GetClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetClusterSnapshotInput {
   snapshotArn: string;
 }
-export const GetClusterSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ snapshotArn: S.String.pipe(T.HttpLabel("snapshotArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/cluster-snapshot/{snapshotArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetClusterSnapshotInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ snapshotArn: S.String.pipe(T.HttpLabel("snapshotArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/cluster-snapshot/{snapshotArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetClusterSnapshotInput",
 }) as any as S.Schema<GetClusterSnapshotInput>;
 export interface GetClusterSnapshotOutput {
   snapshot: ClusterSnapshot;
 }
-export const GetClusterSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ snapshot: ClusterSnapshot }),
+export const GetClusterSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ snapshot: ClusterSnapshot }),
 ).annotate({
   identifier: "GetClusterSnapshotOutput",
 }) as any as S.Schema<GetClusterSnapshotOutput>;
@@ -507,7 +503,7 @@ export interface GetPendingMaintenanceActionInput {
   resourceArn: string;
 }
 export const GetPendingMaintenanceActionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/pending-action/{resourceArn}" }),
@@ -525,7 +521,7 @@ export interface GetPendingMaintenanceActionOutput {
   resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction;
 }
 export const GetPendingMaintenanceActionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction,
     }),
@@ -536,7 +532,7 @@ export interface ListClustersInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListClustersInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListClustersInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -558,16 +554,16 @@ export interface ClusterInList {
   clusterArn: string;
   status: string;
 }
-export const ClusterInList = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ClusterInList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ clusterName: S.String, clusterArn: S.String, status: S.String }),
 ).annotate({ identifier: "ClusterInList" }) as any as S.Schema<ClusterInList>;
 export type ClusterList = ClusterInList[];
-export const ClusterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ClusterInList);
+export const ClusterList = /*@__PURE__*/ S.Array(ClusterInList);
 export interface ListClustersOutput {
   clusters?: ClusterInList[];
   nextToken?: string;
 }
-export const ListClustersOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListClustersOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusters: S.optional(ClusterList),
     nextToken: S.optional(S.String),
@@ -581,23 +577,22 @@ export interface ListClusterSnapshotsInput {
   maxResults?: number;
   snapshotType?: string;
 }
-export const ListClusterSnapshotsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clusterArn: S.optional(S.String).pipe(T.HttpQuery("clusterArn")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      snapshotType: S.optional(S.String).pipe(T.HttpQuery("snapshotType")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/cluster-snapshots" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListClusterSnapshotsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterArn: S.optional(S.String).pipe(T.HttpQuery("clusterArn")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    snapshotType: S.optional(S.String).pipe(T.HttpQuery("snapshotType")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/cluster-snapshots" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListClusterSnapshotsInput",
 }) as any as S.Schema<ListClusterSnapshotsInput>;
@@ -608,7 +603,7 @@ export interface ClusterSnapshotInList {
   status: string;
   snapshotCreationTime: string;
 }
-export const ClusterSnapshotInList = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ClusterSnapshotInList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotName: S.String,
     snapshotArn: S.String,
@@ -620,19 +615,16 @@ export const ClusterSnapshotInList = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ClusterSnapshotInList",
 }) as any as S.Schema<ClusterSnapshotInList>;
 export type ClusterSnapshotList = ClusterSnapshotInList[];
-export const ClusterSnapshotList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  ClusterSnapshotInList,
-);
+export const ClusterSnapshotList = /*@__PURE__*/ S.Array(ClusterSnapshotInList);
 export interface ListClusterSnapshotsOutput {
   snapshots?: ClusterSnapshotInList[];
   nextToken?: string;
 }
-export const ListClusterSnapshotsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      snapshots: S.optional(ClusterSnapshotList),
-      nextToken: S.optional(S.String),
-    }),
+export const ListClusterSnapshotsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    snapshots: S.optional(ClusterSnapshotList),
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListClusterSnapshotsOutput",
 }) as any as S.Schema<ListClusterSnapshotsOutput>;
@@ -641,7 +633,7 @@ export interface ListPendingMaintenanceActionsInput {
   maxResults?: number;
 }
 export const ListPendingMaintenanceActionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -661,13 +653,13 @@ export const ListPendingMaintenanceActionsInput =
 export type ResourcePendingMaintenanceActionList =
   ResourcePendingMaintenanceAction[];
 export const ResourcePendingMaintenanceActionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourcePendingMaintenanceAction);
+  /*@__PURE__*/ S.Array(ResourcePendingMaintenanceAction);
 export interface ListPendingMaintenanceActionsOutput {
   resourcePendingMaintenanceActions: ResourcePendingMaintenanceAction[];
   nextToken?: string;
 }
 export const ListPendingMaintenanceActionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourcePendingMaintenanceActions: ResourcePendingMaintenanceActionList,
       nextToken: S.optional(S.String),
@@ -678,18 +670,17 @@ export const ListPendingMaintenanceActionsOutput =
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -697,7 +688,7 @@ export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tags: S.optional(TagMap) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -713,7 +704,7 @@ export interface RestoreClusterFromSnapshotInput {
   shardInstanceCount?: number;
 }
 export const RestoreClusterFromSnapshotInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clusterName: S.String,
       snapshotArn: S.String.pipe(T.HttpLabel("snapshotArn")),
@@ -743,15 +734,13 @@ export interface RestoreClusterFromSnapshotOutput {
   cluster: Cluster;
 }
 export const RestoreClusterFromSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ cluster: Cluster }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ cluster: Cluster })).annotate({
     identifier: "RestoreClusterFromSnapshotOutput",
   }) as any as S.Schema<RestoreClusterFromSnapshotOutput>;
 export interface StartClusterInput {
   clusterArn: string;
 }
-export const StartClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ clusterArn: S.String.pipe(T.HttpLabel("clusterArn")) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/cluster/{clusterArn}/start" }),
@@ -768,7 +757,7 @@ export const StartClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface StartClusterOutput {
   cluster: Cluster;
 }
-export const StartClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cluster: Cluster }),
 ).annotate({
   identifier: "StartClusterOutput",
@@ -776,7 +765,7 @@ export const StartClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface StopClusterInput {
   clusterArn: string;
 }
-export const StopClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ clusterArn: S.String.pipe(T.HttpLabel("clusterArn")) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/cluster/{clusterArn}/stop" }),
@@ -793,7 +782,7 @@ export const StopClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface StopClusterOutput {
   cluster: Cluster;
 }
-export const StopClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cluster: Cluster }),
 ).annotate({
   identifier: "StopClusterOutput",
@@ -802,7 +791,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagMap,
@@ -820,18 +809,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -849,7 +838,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -868,7 +857,7 @@ export interface UpdateClusterInput {
   preferredBackupWindow?: string;
   shardInstanceCount?: number;
 }
-export const UpdateClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterArn: S.String.pipe(T.HttpLabel("clusterArn")),
     authType: S.optional(S.String),
@@ -898,7 +887,7 @@ export const UpdateClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateClusterOutput {
   cluster: Cluster;
 }
-export const UpdateClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cluster: Cluster }),
 ).annotate({
   identifier: "UpdateClusterOutput",
@@ -960,7 +949,7 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   ApplyPendingMaintenanceActionOutput,
   ApplyPendingMaintenanceActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApplyPendingMaintenanceActionInput,
   output: ApplyPendingMaintenanceActionOutput,
   errors: [
@@ -990,7 +979,7 @@ export const copyClusterSnapshot: API.OperationMethod<
   CopyClusterSnapshotOutput,
   CopyClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyClusterSnapshotInput,
   output: CopyClusterSnapshotOutput,
   errors: [
@@ -1020,7 +1009,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterOutput,
   CreateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterInput,
   output: CreateClusterOutput,
   errors: [
@@ -1050,7 +1039,7 @@ export const createClusterSnapshot: API.OperationMethod<
   CreateClusterSnapshotOutput,
   CreateClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterSnapshotInput,
   output: CreateClusterSnapshotOutput,
   errors: [
@@ -1080,7 +1069,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterOutput,
   DeleteClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterInput,
   output: DeleteClusterOutput,
   errors: [
@@ -1109,7 +1098,7 @@ export const deleteClusterSnapshot: API.OperationMethod<
   DeleteClusterSnapshotOutput,
   DeleteClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterSnapshotInput,
   output: DeleteClusterSnapshotOutput,
   errors: [
@@ -1137,7 +1126,7 @@ export const getCluster: API.OperationMethod<
   GetClusterOutput,
   GetClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetClusterInput,
   output: GetClusterOutput,
   errors: [
@@ -1164,7 +1153,7 @@ export const getClusterSnapshot: API.OperationMethod<
   GetClusterSnapshotOutput,
   GetClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetClusterSnapshotInput,
   output: GetClusterSnapshotOutput,
   errors: [
@@ -1192,7 +1181,7 @@ export const getPendingMaintenanceAction: API.OperationMethod<
   GetPendingMaintenanceActionOutput,
   GetPendingMaintenanceActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPendingMaintenanceActionInput,
   output: GetPendingMaintenanceActionOutput,
   errors: [
@@ -1234,7 +1223,7 @@ export const listClusters: API.OperationMethod<
     ListClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersInput,
   output: ListClustersOutput,
   errors: [
@@ -1280,7 +1269,7 @@ export const listClusterSnapshots: API.OperationMethod<
     ListClusterSnapshotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClusterSnapshotsInput,
   output: ListClusterSnapshotsOutput,
   errors: [
@@ -1326,7 +1315,7 @@ export const listPendingMaintenanceActions: API.OperationMethod<
     ListPendingMaintenanceActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPendingMaintenanceActionsInput,
   output: ListPendingMaintenanceActionsOutput,
   errors: [
@@ -1357,7 +1346,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1385,7 +1374,7 @@ export const restoreClusterFromSnapshot: API.OperationMethod<
   RestoreClusterFromSnapshotOutput,
   RestoreClusterFromSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreClusterFromSnapshotInput,
   output: RestoreClusterFromSnapshotOutput,
   errors: [
@@ -1414,7 +1403,7 @@ export const startCluster: API.OperationMethod<
   StartClusterOutput,
   StartClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartClusterInput,
   output: StartClusterOutput,
   errors: [
@@ -1442,7 +1431,7 @@ export const stopCluster: API.OperationMethod<
   StopClusterOutput,
   StopClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopClusterInput,
   output: StopClusterOutput,
   errors: [
@@ -1468,7 +1457,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1493,7 +1482,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1521,7 +1510,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterOutput,
   UpdateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterInput,
   output: UpdateClusterOutput,
   errors: [

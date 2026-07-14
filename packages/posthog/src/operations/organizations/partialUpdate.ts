@@ -37,7 +37,7 @@ export interface PartialUpdateInput {
   is_not_active_reason?: string | null;
   is_pending_deletion?: boolean | null;
 }
-export const PartialUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PartialUpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.String),
   slug: Schema.optional(Schema.String),
@@ -122,7 +122,7 @@ export interface PartialUpdateOutput {
   is_not_active_reason?: string | null;
   is_pending_deletion?: boolean | null;
 }
-export const PartialUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PartialUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   slug: Schema.optional(Schema.String),
@@ -176,7 +176,7 @@ export const PartialUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param id - A UUID string identifying this organization.
  */
-export const partialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const partialUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PartialUpdateInput,
   outputSchema: PartialUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

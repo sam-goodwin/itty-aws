@@ -10,7 +10,7 @@ export interface V1GetAuthServiceConfigInput {
   ref: string;
 }
 export const V1GetAuthServiceConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/config/auth" }),
@@ -268,7 +268,7 @@ export interface V1GetAuthServiceConfigOutput {
   custom_oauth_max_providers: number;
 }
 export const V1GetAuthServiceConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     api_max_request_duration: Schema.NullOr(Schema.Number),
     db_max_pool_size: Schema.NullOr(Schema.Number),
     db_max_pool_size_unit: Schema.NullOr(
@@ -563,10 +563,8 @@ export const V1GetAuthServiceConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetAuthServiceConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetAuthServiceConfigInput,
-    outputSchema: V1GetAuthServiceConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1GetAuthServiceConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetAuthServiceConfigInput,
+  outputSchema: V1GetAuthServiceConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

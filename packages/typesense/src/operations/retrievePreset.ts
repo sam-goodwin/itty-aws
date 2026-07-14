@@ -7,7 +7,7 @@ import { NotFound } from "../errors.ts";
 export interface RetrievePresetInput {
   presetId: string;
 }
-export const RetrievePresetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RetrievePresetInput = /*@__PURE__*/ Schema.Struct({
   presetId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/presets/{presetId}" }),
@@ -165,7 +165,7 @@ export interface RetrievePresetOutput {
       };
   name: string;
 }
-export const RetrievePresetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RetrievePresetOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Unknown,
   name: Schema.String,
 }) as unknown as Schema.Codec<RetrievePresetOutput>;
@@ -178,7 +178,7 @@ export const RetrievePresetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param presetId - The ID of the preset to retrieve.
  */
-export const retrievePreset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const retrievePreset = /*@__PURE__*/ API.make(() => ({
   inputSchema: RetrievePresetInput,
   outputSchema: RetrievePresetOutput,
   errors: [NotFound] as const,

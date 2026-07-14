@@ -64,7 +64,7 @@ export interface ConversationsTicketsUpdateInput {
   tags?: unknown[];
 }
 export const ConversationsTicketsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     ticket_number: Schema.optional(Schema.Number),
@@ -216,7 +216,7 @@ export interface ConversationsTicketsUpdateOutput {
   tags?: unknown[];
 }
 export const ConversationsTicketsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     ticket_number: Schema.optional(Schema.Number),
     channel_source: Schema.optional(
@@ -309,10 +309,8 @@ export const ConversationsTicketsUpdateOutput =
  * @param id - The ticket's UUID or its numeric ticket number.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const conversationsTicketsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConversationsTicketsUpdateInput,
-    outputSchema: ConversationsTicketsUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const conversationsTicketsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConversationsTicketsUpdateInput,
+  outputSchema: ConversationsTicketsUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

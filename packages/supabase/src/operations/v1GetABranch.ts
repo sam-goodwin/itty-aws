@@ -8,7 +8,7 @@ export interface V1GetABranchInput {
   ref: string;
   name: string;
 }
-export const V1GetABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetABranchInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -56,7 +56,7 @@ export interface V1GetABranchOutput {
     | "PAUSE_FAILED"
     | "RESIZING";
 }
-export const V1GetABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetABranchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   project_ref: Schema.String,
@@ -109,7 +109,7 @@ export const V1GetABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param ref - Project ref
  */
-export const v1GetABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetABranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetABranchInput,
   outputSchema: V1GetABranchOutput,
   errors: [BadRequest, NotFound] as const,

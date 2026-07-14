@@ -9,7 +9,7 @@ export interface V1GetProjectTpaIntegrationInput {
   tpa_id: string;
 }
 export const V1GetProjectTpaIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     tpa_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -32,7 +32,7 @@ export interface V1GetProjectTpaIntegrationOutput {
   resolved_at?: string | null;
 }
 export const V1GetProjectTpaIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     type: Schema.String,
     oidc_issuer_url: Schema.optional(Schema.NullOr(Schema.String)),
@@ -50,10 +50,8 @@ export const V1GetProjectTpaIntegrationOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetProjectTpaIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetProjectTpaIntegrationInput,
-    outputSchema: V1GetProjectTpaIntegrationOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1GetProjectTpaIntegration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetProjectTpaIntegrationInput,
+  outputSchema: V1GetProjectTpaIntegrationOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

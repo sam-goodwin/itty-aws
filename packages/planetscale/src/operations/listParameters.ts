@@ -9,7 +9,7 @@ export interface ListParametersInput {
   database: string;
   branch: string;
 }
-export const ListParametersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListParametersInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -53,7 +53,7 @@ export type ListParametersOutput = {
   options: string[];
   actor: { id: string; display_name: string; avatar_url: string };
 }[];
-export const ListParametersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ListParametersOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -103,7 +103,7 @@ export const ListParametersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  * @param branch - Branch name from `list_branches`. Example: `main`.
  */
-export const listParameters = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listParameters = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListParametersInput,
   outputSchema: ListParametersOutput,
   errors: [Forbidden, NotFound] as const,

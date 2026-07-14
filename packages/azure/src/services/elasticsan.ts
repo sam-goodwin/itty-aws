@@ -60,93 +60,91 @@ export interface ElasticSansCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const ElasticSansCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    elasticSanName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      sku: Schema.Struct({
-        name: Schema.Literals(["Premium_LRS", "Premium_ZRS"]),
-        tier: Schema.optional(Schema.Literals(["Premium"])),
-      }),
-      availabilityZones: Schema.optional(Schema.Array(Schema.String)),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Invalid",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Pending",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Deleted",
-          "Restoring",
-        ]),
-      ),
-      baseSizeTiB: Schema.Number,
-      extendedCapacitySizeTiB: Schema.Number,
-      totalVolumeSizeGiB: Schema.optional(Schema.Number),
-      volumeGroupCount: Schema.optional(Schema.Number),
-      totalIops: Schema.optional(Schema.Number),
-      totalMBps: Schema.optional(Schema.Number),
-      totalSizeTiB: Schema.optional(Schema.Number),
-      privateEndpointConnections: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            systemData: Schema.optional(
-              Schema.Struct({
-                createdBy: Schema.optional(Schema.String),
-                createdByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                createdAt: Schema.optional(Schema.String),
-                lastModifiedBy: Schema.optional(Schema.String),
-                lastModifiedByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                lastModifiedAt: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      publicNetworkAccess: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      autoScaleProperties: Schema.optional(
+export const ElasticSansCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  elasticSanName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.Struct({
+    sku: Schema.Struct({
+      name: Schema.Literals(["Premium_LRS", "Premium_ZRS"]),
+      tier: Schema.optional(Schema.Literals(["Premium"])),
+    }),
+    availabilityZones: Schema.optional(Schema.Array(Schema.String)),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Invalid",
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Pending",
+        "Creating",
+        "Updating",
+        "Deleting",
+        "Deleted",
+        "Restoring",
+      ]),
+    ),
+    baseSizeTiB: Schema.Number,
+    extendedCapacitySizeTiB: Schema.Number,
+    totalVolumeSizeGiB: Schema.optional(Schema.Number),
+    volumeGroupCount: Schema.optional(Schema.Number),
+    totalIops: Schema.optional(Schema.Number),
+    totalMBps: Schema.optional(Schema.Number),
+    totalSizeTiB: Schema.optional(Schema.Number),
+    privateEndpointConnections: Schema.optional(
+      Schema.Array(
         Schema.Struct({
-          scaleUpProperties: Schema.optional(
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
             Schema.Struct({
-              unusedSizeTiB: Schema.optional(Schema.Number),
-              increaseCapacityUnitByTiB: Schema.optional(Schema.Number),
-              capacityUnitScaleUpLimitTiB: Schema.optional(Schema.Number),
-              autoScalePolicyEnforcement: Schema.optional(
-                Schema.Literals(["None", "Enabled", "Disabled"]),
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
               ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
             }),
           ),
         }),
       ),
-    }),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
-  },
-).pipe(
+    ),
+    publicNetworkAccess: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    autoScaleProperties: Schema.optional(
+      Schema.Struct({
+        scaleUpProperties: Schema.optional(
+          Schema.Struct({
+            unusedSizeTiB: Schema.optional(Schema.Number),
+            increaseCapacityUnitByTiB: Schema.optional(Schema.Number),
+            capacityUnitScaleUpLimitTiB: Schema.optional(Schema.Number),
+            autoScalePolicyEnforcement: Schema.optional(
+              Schema.Literals(["None", "Enabled", "Disabled"]),
+            ),
+          }),
+        ),
+      }),
+    ),
+  }),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
@@ -169,7 +167,7 @@ export interface ElasticSansCreateOutput {
   };
 }
 export const ElasticSansCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -198,7 +196,7 @@ export const ElasticSansCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param elasticSanName - The name of the ElasticSan.
  */
-export const ElasticSansCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ElasticSansCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ElasticSansCreateInput,
   outputSchema: ElasticSansCreateOutput,
 }));
@@ -208,13 +206,11 @@ export interface ElasticSansDeleteInput {
   resourceGroupName: string;
   elasticSanName: string;
 }
-export const ElasticSansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    elasticSanName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ElasticSansDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  elasticSanName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
@@ -225,7 +221,7 @@ export const ElasticSansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type ElasticSansDeleteOutput = void;
 export const ElasticSansDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ElasticSansDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ElasticSansDeleteOutput>;
 
 // The operation
 /**
@@ -236,7 +232,7 @@ export const ElasticSansDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param elasticSanName - The name of the ElasticSan.
  */
-export const ElasticSansDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ElasticSansDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ElasticSansDeleteInput,
   outputSchema: ElasticSansDeleteOutput,
 }));
@@ -246,7 +242,7 @@ export interface ElasticSansGetInput {
   resourceGroupName: string;
   elasticSanName: string;
 }
-export const ElasticSansGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ElasticSansGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -272,7 +268,7 @@ export interface ElasticSansGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ElasticSansGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ElasticSansGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -301,7 +297,7 @@ export const ElasticSansGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param elasticSanName - The name of the ElasticSan.
  */
-export const ElasticSansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ElasticSansGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ElasticSansGetInput,
   outputSchema: ElasticSansGetOutput,
 }));
@@ -311,7 +307,7 @@ export interface ElasticSansListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const ElasticSansListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -340,7 +336,7 @@ export interface ElasticSansListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ElasticSansListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -384,7 +380,7 @@ export const ElasticSansListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ElasticSansListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ElasticSansListByResourceGroupInput,
     outputSchema: ElasticSansListByResourceGroupOutput,
   }));
@@ -393,7 +389,7 @@ export interface ElasticSansListBySubscriptionInput {
   subscriptionId: string;
 }
 export const ElasticSansListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -421,7 +417,7 @@ export interface ElasticSansListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ElasticSansListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -464,7 +460,7 @@ export const ElasticSansListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ElasticSansListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ElasticSansListBySubscriptionInput,
     outputSchema: ElasticSansListBySubscriptionOutput,
   }));
@@ -488,37 +484,35 @@ export interface ElasticSansUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const ElasticSansUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    elasticSanName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        baseSizeTiB: Schema.optional(Schema.Number),
-        extendedCapacitySizeTiB: Schema.optional(Schema.Number),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        autoScaleProperties: Schema.optional(
-          Schema.Struct({
-            scaleUpProperties: Schema.optional(
-              Schema.Struct({
-                unusedSizeTiB: Schema.optional(Schema.Number),
-                increaseCapacityUnitByTiB: Schema.optional(Schema.Number),
-                capacityUnitScaleUpLimitTiB: Schema.optional(Schema.Number),
-                autoScalePolicyEnforcement: Schema.optional(
-                  Schema.Literals(["None", "Enabled", "Disabled"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  },
-).pipe(
+export const ElasticSansUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  elasticSanName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      baseSizeTiB: Schema.optional(Schema.Number),
+      extendedCapacitySizeTiB: Schema.optional(Schema.Number),
+      publicNetworkAccess: Schema.optional(
+        Schema.Literals(["Enabled", "Disabled"]),
+      ),
+      autoScaleProperties: Schema.optional(
+        Schema.Struct({
+          scaleUpProperties: Schema.optional(
+            Schema.Struct({
+              unusedSizeTiB: Schema.optional(Schema.Number),
+              increaseCapacityUnitByTiB: Schema.optional(Schema.Number),
+              capacityUnitScaleUpLimitTiB: Schema.optional(Schema.Number),
+              autoScalePolicyEnforcement: Schema.optional(
+                Schema.Literals(["None", "Enabled", "Disabled"]),
+              ),
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
@@ -541,7 +535,7 @@ export interface ElasticSansUpdateOutput {
   };
 }
 export const ElasticSansUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -570,15 +564,13 @@ export const ElasticSansUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param elasticSanName - The name of the ElasticSan.
  */
-export const ElasticSansUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ElasticSansUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ElasticSansUpdateInput,
   outputSchema: ElasticSansUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ElasticSan/operations",
@@ -602,7 +594,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -632,7 +624,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -664,7 +656,7 @@ export interface PrivateEndpointConnectionsCreateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -721,7 +713,7 @@ export interface PrivateEndpointConnectionsCreateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -752,7 +744,7 @@ export const PrivateEndpointConnectionsCreateOutput =
  * @param privateEndpointConnectionName - The name of the Private Endpoint connection.
  */
 export const PrivateEndpointConnectionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateInput,
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
@@ -764,7 +756,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -780,7 +772,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -793,7 +785,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the Private Endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -805,7 +797,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -833,7 +825,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -864,7 +856,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the Private Endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -875,7 +867,7 @@ export interface PrivateEndpointConnectionsListInput {
   elasticSanName: string;
 }
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -905,7 +897,7 @@ export interface PrivateEndpointConnectionsListOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -950,7 +942,7 @@ export const PrivateEndpointConnectionsListOutput =
  * @param elasticSanName - The name of the ElasticSan.
  */
 export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListInput,
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
@@ -961,7 +953,7 @@ export interface PrivateLinkResourcesListByElasticSanInput {
   elasticSanName: string;
 }
 export const PrivateLinkResourcesListByElasticSanInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -991,7 +983,7 @@ export interface PrivateLinkResourcesListByElasticSanOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListByElasticSanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1036,7 +1028,7 @@ export const PrivateLinkResourcesListByElasticSanOutput =
  * @param elasticSanName - The name of the ElasticSan.
  */
 export const PrivateLinkResourcesListByElasticSan =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByElasticSanInput,
     outputSchema: PrivateLinkResourcesListByElasticSanOutput,
   }));
@@ -1045,7 +1037,7 @@ export interface SkusListInput {
   subscriptionId: string;
   $filter?: string;
 }
-export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
 }).pipe(
@@ -1068,7 +1060,7 @@ export interface SkusListOutput {
   }[];
   nextLink?: string;
 }
-export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.Literals(["Premium_LRS", "Premium_ZRS"]),
@@ -1104,7 +1096,7 @@ export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription.
  * @param $filter - Specify $filter='location eq <location>' to filter on location.
  */
-export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SkusListInput,
   outputSchema: SkusListOutput,
 }));
@@ -1168,7 +1160,7 @@ export interface VolumeGroupsCreateInput {
   };
 }
 export const VolumeGroupsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -1304,7 +1296,7 @@ export interface VolumeGroupsCreateOutput {
   };
 }
 export const VolumeGroupsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1334,7 +1326,7 @@ export const VolumeGroupsCreateOutput =
  * @param elasticSanName - The name of the ElasticSan.
  * @param volumeGroupName - The name of the VolumeGroup.
  */
-export const VolumeGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumeGroupsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumeGroupsCreateInput,
   outputSchema: VolumeGroupsCreateOutput,
 }));
@@ -1346,7 +1338,7 @@ export interface VolumeGroupsDeleteInput {
   volumeGroupName: string;
 }
 export const VolumeGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -1362,7 +1354,7 @@ export const VolumeGroupsDeleteInput =
 // Output Schema
 export type VolumeGroupsDeleteOutput = void;
 export const VolumeGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumeGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumeGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -1374,7 +1366,7 @@ export const VolumeGroupsDeleteOutput =
  * @param elasticSanName - The name of the ElasticSan.
  * @param volumeGroupName - The name of the VolumeGroup.
  */
-export const VolumeGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumeGroupsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumeGroupsDeleteInput,
   outputSchema: VolumeGroupsDeleteOutput,
 }));
@@ -1385,7 +1377,7 @@ export interface VolumeGroupsGetInput {
   elasticSanName: string;
   volumeGroupName: string;
 }
-export const VolumeGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumeGroupsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -1412,7 +1404,7 @@ export interface VolumeGroupsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const VolumeGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumeGroupsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1442,7 +1434,7 @@ export const VolumeGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param elasticSanName - The name of the ElasticSan.
  * @param volumeGroupName - The name of the VolumeGroup.
  */
-export const VolumeGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumeGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumeGroupsGetInput,
   outputSchema: VolumeGroupsGetOutput,
 }));
@@ -1453,7 +1445,7 @@ export interface VolumeGroupsListByElasticSanInput {
   elasticSanName: string;
 }
 export const VolumeGroupsListByElasticSanInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -1483,7 +1475,7 @@ export interface VolumeGroupsListByElasticSanOutput {
   nextLink?: string;
 }
 export const VolumeGroupsListByElasticSanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1528,7 +1520,7 @@ export const VolumeGroupsListByElasticSanOutput =
  * @param elasticSanName - The name of the ElasticSan.
  */
 export const VolumeGroupsListByElasticSan =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VolumeGroupsListByElasticSanInput,
     outputSchema: VolumeGroupsListByElasticSanOutput,
   }));
@@ -1568,7 +1560,7 @@ export interface VolumeGroupsUpdateInput {
   };
 }
 export const VolumeGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -1657,7 +1649,7 @@ export interface VolumeGroupsUpdateOutput {
   };
 }
 export const VolumeGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1687,7 +1679,7 @@ export const VolumeGroupsUpdateOutput =
  * @param elasticSanName - The name of the ElasticSan.
  * @param volumeGroupName - The name of the VolumeGroup.
  */
-export const VolumeGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumeGroupsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumeGroupsUpdateInput,
   outputSchema: VolumeGroupsUpdateOutput,
 }));
@@ -1749,7 +1741,7 @@ export interface VolumesCreateInput {
       | "Restoring";
   };
 }
-export const VolumesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -1847,7 +1839,7 @@ export interface VolumesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const VolumesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1878,7 +1870,7 @@ export const VolumesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param volumeGroupName - The name of the VolumeGroup.
  * @param volumeName - The name of the Volume.
  */
-export const VolumesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesCreateInput,
   outputSchema: VolumesCreateOutput,
 }));
@@ -1890,7 +1882,7 @@ export interface VolumesDeleteInput {
   volumeGroupName: string;
   volumeName: string;
 }
-export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -1907,7 +1899,7 @@ export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type VolumesDeleteOutput = void;
 export const VolumesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesDeleteOutput>;
 
 // The operation
 /**
@@ -1922,7 +1914,7 @@ export const VolumesDeleteOutput =
  * @param x-ms-delete-snapshots - Optional, used to delete snapshots under volume. Allowed value are only true or false. Default value is false.
  * @param x-ms-force-delete - Optional, used to delete volume if active sessions present. Allowed value are only true or false. Default value is false.
  */
-export const VolumesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesDeleteInput,
   outputSchema: VolumesDeleteOutput,
 }));
@@ -1934,7 +1926,7 @@ export interface VolumesGetInput {
   volumeGroupName: string;
   volumeName: string;
 }
-export const VolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -1962,7 +1954,7 @@ export interface VolumesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const VolumesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1993,7 +1985,7 @@ export const VolumesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param volumeGroupName - The name of the VolumeGroup.
  * @param volumeName - The name of the Volume.
  */
-export const VolumesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesGetInput,
   outputSchema: VolumesGetOutput,
 }));
@@ -2005,7 +1997,7 @@ export interface VolumesListByVolumeGroupInput {
   volumeGroupName: string;
 }
 export const VolumesListByVolumeGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -2036,7 +2028,7 @@ export interface VolumesListByVolumeGroupOutput {
   nextLink?: string;
 }
 export const VolumesListByVolumeGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2081,12 +2073,10 @@ export const VolumesListByVolumeGroupOutput =
  * @param elasticSanName - The name of the ElasticSan.
  * @param volumeGroupName - The name of the VolumeGroup.
  */
-export const VolumesListByVolumeGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesListByVolumeGroupInput,
-    outputSchema: VolumesListByVolumeGroupOutput,
-  }),
-);
+export const VolumesListByVolumeGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesListByVolumeGroupInput,
+  outputSchema: VolumesListByVolumeGroupOutput,
+}));
 // Input Schema
 export interface VolumeSnapshotsCreateInput {
   subscriptionId: string;
@@ -2112,7 +2102,7 @@ export interface VolumeSnapshotsCreateInput {
   };
 }
 export const VolumeSnapshotsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -2162,7 +2152,7 @@ export interface VolumeSnapshotsCreateOutput {
   };
 }
 export const VolumeSnapshotsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2193,12 +2183,10 @@ export const VolumeSnapshotsCreateOutput =
  * @param volumeGroupName - The name of the VolumeGroup.
  * @param snapshotName - The name of the volume snapshot within the given volume group.
  */
-export const VolumeSnapshotsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumeSnapshotsCreateInput,
-    outputSchema: VolumeSnapshotsCreateOutput,
-  }),
-);
+export const VolumeSnapshotsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumeSnapshotsCreateInput,
+  outputSchema: VolumeSnapshotsCreateOutput,
+}));
 // Input Schema
 export interface VolumeSnapshotsDeleteInput {
   subscriptionId: string;
@@ -2208,7 +2196,7 @@ export interface VolumeSnapshotsDeleteInput {
   snapshotName: string;
 }
 export const VolumeSnapshotsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -2225,7 +2213,7 @@ export const VolumeSnapshotsDeleteInput =
 // Output Schema
 export type VolumeSnapshotsDeleteOutput = void;
 export const VolumeSnapshotsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumeSnapshotsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumeSnapshotsDeleteOutput>;
 
 // The operation
 /**
@@ -2238,12 +2226,10 @@ export const VolumeSnapshotsDeleteOutput =
  * @param volumeGroupName - The name of the VolumeGroup.
  * @param snapshotName - The name of the volume snapshot within the given volume group.
  */
-export const VolumeSnapshotsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumeSnapshotsDeleteInput,
-    outputSchema: VolumeSnapshotsDeleteOutput,
-  }),
-);
+export const VolumeSnapshotsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumeSnapshotsDeleteInput,
+  outputSchema: VolumeSnapshotsDeleteOutput,
+}));
 // Input Schema
 export interface VolumeSnapshotsGetInput {
   subscriptionId: string;
@@ -2253,7 +2239,7 @@ export interface VolumeSnapshotsGetInput {
   snapshotName: string;
 }
 export const VolumeSnapshotsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -2282,7 +2268,7 @@ export interface VolumeSnapshotsGetOutput {
   };
 }
 export const VolumeSnapshotsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2313,7 +2299,7 @@ export const VolumeSnapshotsGetOutput =
  * @param volumeGroupName - The name of the VolumeGroup.
  * @param snapshotName - The name of the volume snapshot within the given volume group.
  */
-export const VolumeSnapshotsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumeSnapshotsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumeSnapshotsGetInput,
   outputSchema: VolumeSnapshotsGetOutput,
 }));
@@ -2326,7 +2312,7 @@ export interface VolumeSnapshotsListByVolumeGroupInput {
   $filter?: string;
 }
 export const VolumeSnapshotsListByVolumeGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -2358,7 +2344,7 @@ export interface VolumeSnapshotsListByVolumeGroupOutput {
   nextLink?: string;
 }
 export const VolumeSnapshotsListByVolumeGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2405,7 +2391,7 @@ export const VolumeSnapshotsListByVolumeGroupOutput =
  * @param $filter - Specify $filter='volumeName eq <volume name>' to filter on volume.
  */
 export const VolumeSnapshotsListByVolumeGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VolumeSnapshotsListByVolumeGroupInput,
     outputSchema: VolumeSnapshotsListByVolumeGroupOutput,
   }));
@@ -2417,7 +2403,7 @@ export interface VolumesPreBackupInput {
   volumeGroupName: string;
   volumeNames: string[];
 }
-export const VolumesPreBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesPreBackupInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -2435,11 +2421,9 @@ export const VolumesPreBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface VolumesPreBackupOutput {
   validationStatus?: string;
 }
-export const VolumesPreBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    validationStatus: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<VolumesPreBackupOutput>;
+export const VolumesPreBackupOutput = /*@__PURE__*/ Schema.Struct({
+  validationStatus: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<VolumesPreBackupOutput>;
 
 // The operation
 /**
@@ -2451,7 +2435,7 @@ export const VolumesPreBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param elasticSanName - The name of the ElasticSan.
  * @param volumeGroupName - The name of the VolumeGroup.
  */
-export const VolumesPreBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesPreBackup = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesPreBackupInput,
   outputSchema: VolumesPreBackupOutput,
 }));
@@ -2463,15 +2447,13 @@ export interface VolumesPreRestoreInput {
   volumeGroupName: string;
   diskSnapshotIds: string[];
 }
-export const VolumesPreRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    elasticSanName: Schema.String.pipe(T.PathParam()),
-    volumeGroupName: Schema.String.pipe(T.PathParam()),
-    diskSnapshotIds: Schema.Array(Schema.String),
-  },
-).pipe(
+export const VolumesPreRestoreInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  elasticSanName: Schema.String.pipe(T.PathParam()),
+  volumeGroupName: Schema.String.pipe(T.PathParam()),
+  diskSnapshotIds: Schema.Array(Schema.String),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/preRestore",
@@ -2484,7 +2466,7 @@ export interface VolumesPreRestoreOutput {
   validationStatus?: string;
 }
 export const VolumesPreRestoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validationStatus: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<VolumesPreRestoreOutput>;
 
@@ -2498,7 +2480,7 @@ export const VolumesPreRestoreOutput =
  * @param elasticSanName - The name of the ElasticSan.
  * @param volumeGroupName - The name of the VolumeGroup.
  */
-export const VolumesPreRestore = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesPreRestore = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesPreRestoreInput,
   outputSchema: VolumesPreRestoreOutput,
 }));
@@ -2511,7 +2493,7 @@ export interface VolumesUpdateInput {
   volumeName: string;
   properties?: { sizeGiB?: number; managedBy?: { resourceId?: string } };
 }
-export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   elasticSanName: Schema.String.pipe(T.PathParam()),
@@ -2549,7 +2531,7 @@ export interface VolumesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const VolumesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2580,7 +2562,7 @@ export const VolumesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param volumeGroupName - The name of the VolumeGroup.
  * @param volumeName - The name of the Volume.
  */
-export const VolumesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesUpdateInput,
   outputSchema: VolumesUpdateOutput,
 }));

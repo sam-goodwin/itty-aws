@@ -42,7 +42,7 @@ interface FailureCriteria {
   /** HTTP status codes to match against the origin response.  - Maximum of 10 codes per criterion. - Each code must be a valid HTTP status code (100-599). - Codes are deduplicated and sorted on save. - Omi */
   statusCodes?: number[] | null;
 }
-const FailureCriteria = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FailureCriteria = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     kind: Schema.Literal("status_code"),
     statusCodes: Schema.optional(
@@ -63,7 +63,7 @@ interface AuthenticationSettings {
     statusCodes?: number[] | null;
   } | null;
 }
-const AuthenticationSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AuthenticationSettings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     failureCriteria: Schema.optional(
       Schema.Union([FailureCriteria, Schema.Null]),
@@ -88,7 +88,7 @@ export interface GetFraudRequest {
   zoneId: string;
 }
 
-export const GetFraudRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetFraudRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -117,7 +117,7 @@ export interface GetFraudResponse {
   usernameExpressions?: string[] | null;
 }
 
-export const GetFraudResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetFraudResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     authenticationSettings: Schema.optional(
       Schema.Union([AuthenticationSettings, Schema.Null]),
@@ -149,7 +149,7 @@ export const getFraud: API.OperationMethod<
   GetFraudResponse,
   GetFraudError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFraudRequest,
   output: GetFraudResponse,
   errors: [Forbidden],
@@ -169,7 +169,7 @@ export interface PutFraudRequest {
   usernameExpressions?: string[];
 }
 
-export const PutFraudRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutFraudRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     authenticationSettings: Schema.optional(AuthenticationSettings),
@@ -208,7 +208,7 @@ export interface PutFraudResponse {
   usernameExpressions?: string[] | null;
 }
 
-export const PutFraudResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutFraudResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     authenticationSettings: Schema.optional(
       Schema.Union([AuthenticationSettings, Schema.Null]),
@@ -243,7 +243,7 @@ export const putFraud: API.OperationMethod<
   PutFraudResponse,
   PutFraudError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutFraudRequest,
   output: PutFraudResponse,
   errors: [Forbidden, FraudDetectionNotEntitled],

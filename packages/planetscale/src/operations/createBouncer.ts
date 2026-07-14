@@ -13,7 +13,7 @@ export interface CreateBouncerInput {
   bouncer_size?: string;
   replicas_per_cell?: number;
 }
-export const CreateBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateBouncerInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -75,7 +75,7 @@ export interface CreateBouncerOutput {
     actor: { id: string; display_name: string; avatar_url: string };
   }[];
 }
-export const CreateBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateBouncerOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   sku: Schema.Struct({
@@ -150,7 +150,7 @@ export const CreateBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param bouncer_size - The size SKU for the bouncer
  * @param replicas_per_cell - The number of replica servers per cell
  */
-export const createBouncer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createBouncer = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateBouncerInput,
   outputSchema: CreateBouncerOutput,
   errors: [Forbidden, NotFound] as const,

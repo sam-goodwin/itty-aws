@@ -9,7 +9,7 @@ export interface GetDeploymentInput {
   database: string;
   number: number;
 }
-export const GetDeploymentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDeploymentInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   number: Schema.Number.pipe(T.PathParam()),
@@ -146,7 +146,7 @@ export interface GetDeploymentOutput {
   queue_paused: boolean;
   queue_pause_reason: string | null;
 }
-export const GetDeploymentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDeploymentOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   auto_cutover: Schema.Boolean,
   auto_delete_branch: Schema.Boolean,
@@ -323,7 +323,7 @@ export const GetDeploymentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param database - The name of the deploy request's database
  * @param number - The number of the deploy request
  */
-export const getDeployment = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDeployment = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDeploymentInput,
   outputSchema: GetDeploymentOutput,
   errors: [Forbidden, NotFound] as const,

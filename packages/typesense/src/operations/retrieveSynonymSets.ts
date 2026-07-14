@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface RetrieveSynonymSetsInput {}
 export const RetrieveSynonymSetsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/synonym_sets" }),
   ) as unknown as Schema.Codec<RetrieveSynonymSetsInput>;
 
@@ -21,7 +21,7 @@ export type RetrieveSynonymSetsOutput = {
   name: string;
 }[];
 export const RetrieveSynonymSetsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       items: Schema.Array(
         Schema.Struct({
@@ -42,7 +42,7 @@ export const RetrieveSynonymSetsOutput =
  *
  * Retrieve all synonym sets
  */
-export const retrieveSynonymSets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const retrieveSynonymSets = /*@__PURE__*/ API.make(() => ({
   inputSchema: RetrieveSynonymSetsInput,
   outputSchema: RetrieveSynonymSetsOutput,
 }));

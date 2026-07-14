@@ -41,7 +41,7 @@ export interface V1ApplyProjectAddonInput {
     | "etl_pipeline";
 }
 export const V1ApplyProjectAddonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     addon_variant: Schema.Union([
       Schema.Literals([
@@ -85,7 +85,7 @@ export const V1ApplyProjectAddonInput =
 // Output Schema
 export type V1ApplyProjectAddonOutput = void;
 export const V1ApplyProjectAddonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1ApplyProjectAddonOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1ApplyProjectAddonOutput>;
 
 // The operation
 /**
@@ -95,7 +95,7 @@ export const V1ApplyProjectAddonOutput =
  *
  * @param ref - Project ref
  */
-export const v1ApplyProjectAddon = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ApplyProjectAddon = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ApplyProjectAddonInput,
   outputSchema: V1ApplyProjectAddonOutput,
   errors: [BadRequest, Forbidden] as const,

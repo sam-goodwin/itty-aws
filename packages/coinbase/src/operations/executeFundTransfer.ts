@@ -7,7 +7,7 @@ export interface ExecuteFundTransferInput {
   transferId: string;
 }
 export const ExecuteFundTransferInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transferId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "POST", path: "/v2/transfers/{transferId}/execute" }),
@@ -108,7 +108,7 @@ export interface ExecuteFundTransferOutput {
   };
 }
 export const ExecuteFundTransferOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transferId: Schema.optional(Schema.String),
     status: Schema.optional(
       Schema.Literals(["quoted", "processing", "completed", "failed"]),
@@ -276,7 +276,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const executeFundTransfer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const executeFundTransfer = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExecuteFundTransferInput,
   outputSchema: ExecuteFundTransferOutput,
 }));

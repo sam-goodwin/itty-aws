@@ -9,7 +9,7 @@ export interface PostV2CommerceProductCatalogImportsInput {
   mode: "replace" | "upsert";
 }
 export const PostV2CommerceProductCatalogImportsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     feed_type: Schema.Literals([
       "inventory",
       "pricing",
@@ -64,7 +64,7 @@ export interface PostV2CommerceProductCatalogImportsOutput {
   };
 }
 export const PostV2CommerceProductCatalogImportsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.String,
     feed_type: Schema.Literals([
       "inventory",
@@ -149,7 +149,7 @@ export const PostV2CommerceProductCatalogImportsOutput =
  * Creates a ProductCatalogImport.
  */
 export const PostV2CommerceProductCatalogImports =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV2CommerceProductCatalogImportsInput,
     outputSchema: PostV2CommerceProductCatalogImportsOutput,
   }));

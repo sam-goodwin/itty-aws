@@ -49,7 +49,7 @@ export interface AlertProcessingRulesCreateOrUpdateInput {
   location: string;
 }
 export const AlertProcessingRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertProcessingRuleName: Schema.String.pipe(T.PathParam()),
@@ -135,7 +135,7 @@ export interface AlertProcessingRulesCreateOrUpdateOutput {
   name?: string;
 }
 export const AlertProcessingRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -151,7 +151,7 @@ export const AlertProcessingRulesCreateOrUpdateOutput =
  * @param alertProcessingRuleName - The name of the alert processing rule that needs to be fetched.
  */
 export const AlertProcessingRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AlertProcessingRulesCreateOrUpdateInput,
     outputSchema: AlertProcessingRulesCreateOrUpdateOutput,
   }));
@@ -162,7 +162,7 @@ export interface AlertProcessingRulesDeleteInput {
   alertProcessingRuleName: string;
 }
 export const AlertProcessingRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertProcessingRuleName: Schema.String.pipe(T.PathParam()),
@@ -177,7 +177,7 @@ export const AlertProcessingRulesDeleteInput =
 // Output Schema
 export type AlertProcessingRulesDeleteOutput = void;
 export const AlertProcessingRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AlertProcessingRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AlertProcessingRulesDeleteOutput>;
 
 // The operation
 /**
@@ -188,12 +188,10 @@ export const AlertProcessingRulesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param alertProcessingRuleName - The name of the alert processing rule that needs to be fetched.
  */
-export const AlertProcessingRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertProcessingRulesDeleteInput,
-    outputSchema: AlertProcessingRulesDeleteOutput,
-  }),
-);
+export const AlertProcessingRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertProcessingRulesDeleteInput,
+  outputSchema: AlertProcessingRulesDeleteOutput,
+}));
 // Input Schema
 export interface AlertProcessingRulesGetByNameInput {
   subscriptionId: string;
@@ -201,7 +199,7 @@ export interface AlertProcessingRulesGetByNameInput {
   alertProcessingRuleName: string;
 }
 export const AlertProcessingRulesGetByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertProcessingRuleName: Schema.String.pipe(T.PathParam()),
@@ -220,7 +218,7 @@ export interface AlertProcessingRulesGetByNameOutput {
   name?: string;
 }
 export const AlertProcessingRulesGetByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -236,7 +234,7 @@ export const AlertProcessingRulesGetByNameOutput =
  * @param alertProcessingRuleName - The name of the alert processing rule that needs to be fetched.
  */
 export const AlertProcessingRulesGetByName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AlertProcessingRulesGetByNameInput,
     outputSchema: AlertProcessingRulesGetByNameOutput,
   }));
@@ -246,7 +244,7 @@ export interface AlertProcessingRulesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const AlertProcessingRulesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -263,7 +261,7 @@ export interface AlertProcessingRulesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AlertProcessingRulesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -283,7 +281,7 @@ export const AlertProcessingRulesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AlertProcessingRulesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AlertProcessingRulesListByResourceGroupInput,
     outputSchema: AlertProcessingRulesListByResourceGroupOutput,
   }));
@@ -292,7 +290,7 @@ export interface AlertProcessingRulesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AlertProcessingRulesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -308,7 +306,7 @@ export interface AlertProcessingRulesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AlertProcessingRulesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -327,7 +325,7 @@ export const AlertProcessingRulesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const AlertProcessingRulesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AlertProcessingRulesListBySubscriptionInput,
     outputSchema: AlertProcessingRulesListBySubscriptionOutput,
   }));
@@ -340,7 +338,7 @@ export interface AlertProcessingRulesUpdateInput {
   tags?: Record<string, string>;
 }
 export const AlertProcessingRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertProcessingRuleName: Schema.String.pipe(T.PathParam()),
@@ -365,7 +363,7 @@ export interface AlertProcessingRulesUpdateOutput {
   name?: string;
 }
 export const AlertProcessingRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -380,12 +378,10 @@ export const AlertProcessingRulesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param alertProcessingRuleName - The name of the alert processing rule that needs to be fetched.
  */
-export const AlertProcessingRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertProcessingRulesUpdateInput,
-    outputSchema: AlertProcessingRulesUpdateOutput,
-  }),
-);
+export const AlertProcessingRulesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertProcessingRulesUpdateInput,
+  outputSchema: AlertProcessingRulesUpdateOutput,
+}));
 // Input Schema
 export interface AlertsChangeStateInput {
   scope: string;
@@ -393,14 +389,12 @@ export interface AlertsChangeStateInput {
   newState: "New" | "Acknowledged" | "Closed";
   comments?: string;
 }
-export const AlertsChangeStateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    scope: Schema.String.pipe(T.PathParam()),
-    alertId: Schema.String.pipe(T.PathParam()),
-    newState: Schema.Literals(["New", "Acknowledged", "Closed"]),
-    comments: Schema.optional(Schema.String),
-  },
-).pipe(
+export const AlertsChangeStateInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  alertId: Schema.String.pipe(T.PathParam()),
+  newState: Schema.Literals(["New", "Acknowledged", "Closed"]),
+  comments: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/{scope}/providers/Microsoft.AlertsManagement/alerts/{alertId}/changestate",
@@ -415,7 +409,7 @@ export interface AlertsChangeStateOutput {
   name?: string;
 }
 export const AlertsChangeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -430,7 +424,7 @@ export const AlertsChangeStateOutput =
  * @param api-version - API version.
  * @param newState - New state of the alert.
  */
-export const AlertsChangeState = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertsChangeState = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsChangeStateInput,
   outputSchema: AlertsChangeStateOutput,
 }));
@@ -480,7 +474,7 @@ export interface AlertsGetAllInput {
   timeRange?: "1h" | "1d" | "7d" | "30d";
   customTimeRange?: string;
 }
-export const AlertsGetAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsGetAllInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   targetResource: Schema.optional(Schema.String),
   targetResourceType: Schema.optional(Schema.String),
@@ -547,7 +541,7 @@ export interface AlertsGetAllOutput {
   nextLink?: string;
   value?: { id?: string; type?: string; name?: string }[];
 }
-export const AlertsGetAllOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsGetAllOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -584,7 +578,7 @@ export const AlertsGetAllOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param customTimeRange - Filter by custom time range in the format <start-time>/<end-time>  where time is in (ISO-8601 format)'. Permissible values is within 30 days from  query time. Either timeRange or customTimeRange could be used but not both. Default is none.
  * @param api-version - API version.
  */
-export const AlertsGetAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertsGetAll = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsGetAllInput,
   outputSchema: AlertsGetAllOutput,
 }));
@@ -593,7 +587,7 @@ export interface AlertsGetByIdInput {
   scope: string;
   alertId: string;
 }
-export const AlertsGetByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsGetByIdInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   alertId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -610,7 +604,7 @@ export interface AlertsGetByIdOutput {
   type?: string;
   name?: string;
 }
-export const AlertsGetByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsGetByIdOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -626,7 +620,7 @@ export const AlertsGetByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param alertId - Unique ID of an alert instance.
  * @param api-version - API version.
  */
-export const AlertsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertsGetById = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsGetByIdInput,
   outputSchema: AlertsGetByIdOutput,
 }));
@@ -635,7 +629,7 @@ export interface AlertsGetHistoryInput {
   scope: string;
   alertId: string;
 }
-export const AlertsGetHistoryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsGetHistoryInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   alertId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -652,13 +646,11 @@ export interface AlertsGetHistoryOutput {
   type?: string;
   name?: string;
 }
-export const AlertsGetHistoryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<AlertsGetHistoryOutput>;
+export const AlertsGetHistoryOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<AlertsGetHistoryOutput>;
 
 // The operation
 /**
@@ -668,7 +660,7 @@ export const AlertsGetHistoryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param alertId - Unique ID of an alert instance.
  * @param api-version - The API version to use for this operation.
  */
-export const AlertsGetHistory = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertsGetHistory = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsGetHistoryInput,
   outputSchema: AlertsGetHistoryOutput,
 }));
@@ -709,7 +701,7 @@ export interface AlertsGetSummaryInput {
   timeRange?: "1h" | "1d" | "7d" | "30d";
   customTimeRange?: string;
 }
-export const AlertsGetSummaryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsGetSummaryInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   groupby: Schema.Literals([
     "severity",
@@ -766,13 +758,11 @@ export interface AlertsGetSummaryOutput {
   type?: string;
   name?: string;
 }
-export const AlertsGetSummaryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<AlertsGetSummaryOutput>;
+export const AlertsGetSummaryOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<AlertsGetSummaryOutput>;
 
 // The operation
 /**
@@ -793,7 +783,7 @@ export const AlertsGetSummaryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param customTimeRange - Filter by custom time range in the format <start-time>/<end-time>  where time is in (ISO-8601 format)'. Permissible values is within 30 days from  query time. Either timeRange or customTimeRange could be used but not both. Default is none.
  * @param api-version - API version.
  */
-export const AlertsGetSummary = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertsGetSummary = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsGetSummaryInput,
   outputSchema: AlertsGetSummaryOutput,
 }));
@@ -801,7 +791,7 @@ export const AlertsGetSummary = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface AlertsMetaDataInput {
   identifier: "MonitorServiceList";
 }
-export const AlertsMetaDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsMetaDataInput = /*@__PURE__*/ Schema.Struct({
   identifier: Schema.Literals(["MonitorServiceList"]),
 }).pipe(
   T.Http({
@@ -815,7 +805,7 @@ export const AlertsMetaDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface AlertsMetaDataOutput {
   properties?: { metadataIdentifier: "MonitorServiceList" };
 }
-export const AlertsMetaDataOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsMetaDataOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       metadataIdentifier: Schema.Literals(["MonitorServiceList"]),
@@ -830,15 +820,13 @@ export const AlertsMetaDataOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - API version.
  * @param identifier - Identification of the information to be retrieved by API call.
  */
-export const AlertsMetaData = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertsMetaData = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsMetaDataInput,
   outputSchema: AlertsMetaDataOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AlertsManagement/operations",
@@ -859,7 +847,7 @@ export interface OperationsListOutput {
     };
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -882,7 +870,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - API version.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -917,7 +905,7 @@ export interface PrometheusRuleGroupsCreateOrUpdateInput {
   location: string;
 }
 export const PrometheusRuleGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ruleGroupName: Schema.String.pipe(T.PathParam()),
@@ -983,7 +971,7 @@ export interface PrometheusRuleGroupsCreateOrUpdateOutput {
   };
 }
 export const PrometheusRuleGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1013,7 +1001,7 @@ export const PrometheusRuleGroupsCreateOrUpdateOutput =
  * @param ruleGroupName - The name of the rule group.
  */
 export const PrometheusRuleGroupsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrometheusRuleGroupsCreateOrUpdateInput,
     outputSchema: PrometheusRuleGroupsCreateOrUpdateOutput,
   }));
@@ -1024,7 +1012,7 @@ export interface PrometheusRuleGroupsDeleteInput {
   ruleGroupName: string;
 }
 export const PrometheusRuleGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ruleGroupName: Schema.String.pipe(T.PathParam()),
@@ -1039,7 +1027,7 @@ export const PrometheusRuleGroupsDeleteInput =
 // Output Schema
 export type PrometheusRuleGroupsDeleteOutput = void;
 export const PrometheusRuleGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrometheusRuleGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrometheusRuleGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -1050,12 +1038,10 @@ export const PrometheusRuleGroupsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ruleGroupName - The name of the rule group.
  */
-export const PrometheusRuleGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrometheusRuleGroupsDeleteInput,
-    outputSchema: PrometheusRuleGroupsDeleteOutput,
-  }),
-);
+export const PrometheusRuleGroupsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrometheusRuleGroupsDeleteInput,
+  outputSchema: PrometheusRuleGroupsDeleteOutput,
+}));
 // Input Schema
 export interface PrometheusRuleGroupsGetInput {
   subscriptionId: string;
@@ -1063,7 +1049,7 @@ export interface PrometheusRuleGroupsGetInput {
   ruleGroupName: string;
 }
 export const PrometheusRuleGroupsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ruleGroupName: Schema.String.pipe(T.PathParam()),
@@ -1090,7 +1076,7 @@ export interface PrometheusRuleGroupsGetOutput {
   };
 }
 export const PrometheusRuleGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1119,19 +1105,17 @@ export const PrometheusRuleGroupsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ruleGroupName - The name of the rule group.
  */
-export const PrometheusRuleGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrometheusRuleGroupsGetInput,
-    outputSchema: PrometheusRuleGroupsGetOutput,
-  }),
-);
+export const PrometheusRuleGroupsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrometheusRuleGroupsGetInput,
+  outputSchema: PrometheusRuleGroupsGetOutput,
+}));
 // Input Schema
 export interface PrometheusRuleGroupsListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const PrometheusRuleGroupsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1160,7 +1144,7 @@ export interface PrometheusRuleGroupsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const PrometheusRuleGroupsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1206,7 +1190,7 @@ export const PrometheusRuleGroupsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const PrometheusRuleGroupsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrometheusRuleGroupsListByResourceGroupInput,
     outputSchema: PrometheusRuleGroupsListByResourceGroupOutput,
   }));
@@ -1215,7 +1199,7 @@ export interface PrometheusRuleGroupsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const PrometheusRuleGroupsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1243,7 +1227,7 @@ export interface PrometheusRuleGroupsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PrometheusRuleGroupsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1288,7 +1272,7 @@ export const PrometheusRuleGroupsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const PrometheusRuleGroupsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrometheusRuleGroupsListBySubscriptionInput,
     outputSchema: PrometheusRuleGroupsListBySubscriptionOutput,
   }));
@@ -1301,7 +1285,7 @@ export interface PrometheusRuleGroupsUpdateInput {
   properties?: { enabled?: boolean };
 }
 export const PrometheusRuleGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ruleGroupName: Schema.String.pipe(T.PathParam()),
@@ -1334,7 +1318,7 @@ export interface PrometheusRuleGroupsUpdateOutput {
   };
 }
 export const PrometheusRuleGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1363,12 +1347,10 @@ export const PrometheusRuleGroupsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ruleGroupName - The name of the rule group.
  */
-export const PrometheusRuleGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrometheusRuleGroupsUpdateInput,
-    outputSchema: PrometheusRuleGroupsUpdateOutput,
-  }),
-);
+export const PrometheusRuleGroupsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrometheusRuleGroupsUpdateInput,
+  outputSchema: PrometheusRuleGroupsUpdateOutput,
+}));
 // Input Schema
 export interface SmartDetectorAlertRulesCreateOrUpdateInput {
   subscriptionId: string;
@@ -1410,7 +1392,7 @@ export interface SmartDetectorAlertRulesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const SmartDetectorAlertRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertRuleName: Schema.String.pipe(T.PathParam()),
@@ -1485,7 +1467,7 @@ export interface SmartDetectorAlertRulesCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const SmartDetectorAlertRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1503,7 +1485,7 @@ export const SmartDetectorAlertRulesCreateOrUpdateOutput =
  * @param api-version - Client Api Version.
  */
 export const SmartDetectorAlertRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SmartDetectorAlertRulesCreateOrUpdateInput,
     outputSchema: SmartDetectorAlertRulesCreateOrUpdateOutput,
   }));
@@ -1514,7 +1496,7 @@ export interface SmartDetectorAlertRulesDeleteInput {
   alertRuleName: string;
 }
 export const SmartDetectorAlertRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertRuleName: Schema.String.pipe(T.PathParam()),
@@ -1529,7 +1511,7 @@ export const SmartDetectorAlertRulesDeleteInput =
 // Output Schema
 export type SmartDetectorAlertRulesDeleteOutput = void;
 export const SmartDetectorAlertRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SmartDetectorAlertRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SmartDetectorAlertRulesDeleteOutput>;
 
 // The operation
 /**
@@ -1541,7 +1523,7 @@ export const SmartDetectorAlertRulesDeleteOutput =
  * @param api-version - Client Api Version.
  */
 export const SmartDetectorAlertRulesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SmartDetectorAlertRulesDeleteInput,
     outputSchema: SmartDetectorAlertRulesDeleteOutput,
   }));
@@ -1553,7 +1535,7 @@ export interface SmartDetectorAlertRulesGetInput {
   expandDetector?: boolean;
 }
 export const SmartDetectorAlertRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertRuleName: Schema.String.pipe(T.PathParam()),
@@ -1575,7 +1557,7 @@ export interface SmartDetectorAlertRulesGetOutput {
   tags?: Record<string, string>;
 }
 export const SmartDetectorAlertRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1593,19 +1575,17 @@ export const SmartDetectorAlertRulesGetOutput =
  * @param api-version - Client Api Version.
  * @param expandDetector - Indicates if Smart Detector should be expanded.
  */
-export const SmartDetectorAlertRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SmartDetectorAlertRulesGetInput,
-    outputSchema: SmartDetectorAlertRulesGetOutput,
-  }),
-);
+export const SmartDetectorAlertRulesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SmartDetectorAlertRulesGetInput,
+  outputSchema: SmartDetectorAlertRulesGetOutput,
+}));
 // Input Schema
 export interface SmartDetectorAlertRulesListInput {
   subscriptionId: string;
   expandDetector?: boolean;
 }
 export const SmartDetectorAlertRulesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     expandDetector: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -1628,7 +1608,7 @@ export interface SmartDetectorAlertRulesListOutput {
   nextLink?: string;
 }
 export const SmartDetectorAlertRulesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1651,12 +1631,10 @@ export const SmartDetectorAlertRulesListOutput =
  * @param api-version - Client Api Version.
  * @param expandDetector - Indicates if Smart Detector should be expanded.
  */
-export const SmartDetectorAlertRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SmartDetectorAlertRulesListInput,
-    outputSchema: SmartDetectorAlertRulesListOutput,
-  }),
-);
+export const SmartDetectorAlertRulesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SmartDetectorAlertRulesListInput,
+  outputSchema: SmartDetectorAlertRulesListOutput,
+}));
 // Input Schema
 export interface SmartDetectorAlertRulesListByResourceGroupInput {
   subscriptionId: string;
@@ -1664,7 +1642,7 @@ export interface SmartDetectorAlertRulesListByResourceGroupInput {
   expandDetector?: boolean;
 }
 export const SmartDetectorAlertRulesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     expandDetector: Schema.optional(Schema.Boolean),
@@ -1688,7 +1666,7 @@ export interface SmartDetectorAlertRulesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SmartDetectorAlertRulesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1713,7 +1691,7 @@ export const SmartDetectorAlertRulesListByResourceGroupOutput =
  * @param expandDetector - Indicates if Smart Detector should be expanded.
  */
 export const SmartDetectorAlertRulesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SmartDetectorAlertRulesListByResourceGroupInput,
     outputSchema: SmartDetectorAlertRulesListByResourceGroupOutput,
   }));
@@ -1740,7 +1718,7 @@ export interface SmartDetectorAlertRulesPatchInput {
   };
 }
 export const SmartDetectorAlertRulesPatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertRuleName: Schema.String.pipe(T.PathParam()),
@@ -1787,7 +1765,7 @@ export interface SmartDetectorAlertRulesPatchOutput {
   tags?: Record<string, string>;
 }
 export const SmartDetectorAlertRulesPatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1805,7 +1783,7 @@ export const SmartDetectorAlertRulesPatchOutput =
  * @param api-version - Client Api Version.
  */
 export const SmartDetectorAlertRulesPatch =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SmartDetectorAlertRulesPatchInput,
     outputSchema: SmartDetectorAlertRulesPatchOutput,
   }));

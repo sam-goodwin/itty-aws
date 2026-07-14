@@ -16,7 +16,7 @@ export interface BinaryHardeningListByFirmwareInput {
   firmwareId: string;
 }
 export const BinaryHardeningListByFirmwareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -47,7 +47,7 @@ export interface BinaryHardeningListByFirmwareOutput {
   nextLink?: string;
 }
 export const BinaryHardeningListByFirmwareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -93,7 +93,7 @@ export const BinaryHardeningListByFirmwareOutput =
  * @param firmwareId - The id of the firmware.
  */
 export const BinaryHardeningListByFirmware =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BinaryHardeningListByFirmwareInput,
     outputSchema: BinaryHardeningListByFirmwareOutput,
   }));
@@ -105,7 +105,7 @@ export interface CryptoCertificatesListByFirmwareInput {
   firmwareId: string;
 }
 export const CryptoCertificatesListByFirmwareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -136,7 +136,7 @@ export interface CryptoCertificatesListByFirmwareOutput {
   nextLink?: string;
 }
 export const CryptoCertificatesListByFirmwareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -182,7 +182,7 @@ export const CryptoCertificatesListByFirmwareOutput =
  * @param firmwareId - The id of the firmware.
  */
 export const CryptoCertificatesListByFirmware =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CryptoCertificatesListByFirmwareInput,
     outputSchema: CryptoCertificatesListByFirmwareOutput,
   }));
@@ -194,7 +194,7 @@ export interface CryptoKeysListByFirmwareInput {
   firmwareId: string;
 }
 export const CryptoKeysListByFirmwareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -225,7 +225,7 @@ export interface CryptoKeysListByFirmwareOutput {
   nextLink?: string;
 }
 export const CryptoKeysListByFirmwareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -270,12 +270,10 @@ export const CryptoKeysListByFirmwareOutput =
  * @param workspaceName - The name of the firmware analysis workspace.
  * @param firmwareId - The id of the firmware.
  */
-export const CryptoKeysListByFirmware = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CryptoKeysListByFirmwareInput,
-    outputSchema: CryptoKeysListByFirmwareOutput,
-  }),
-);
+export const CryptoKeysListByFirmware = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CryptoKeysListByFirmwareInput,
+  outputSchema: CryptoKeysListByFirmwareOutput,
+}));
 // Input Schema
 export interface CvesListByFirmwareInput {
   subscriptionId: string;
@@ -284,7 +282,7 @@ export interface CvesListByFirmwareInput {
   firmwareId: string;
 }
 export const CvesListByFirmwareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -315,7 +313,7 @@ export interface CvesListByFirmwareOutput {
   nextLink?: string;
 }
 export const CvesListByFirmwareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -360,7 +358,7 @@ export const CvesListByFirmwareOutput =
  * @param workspaceName - The name of the firmware analysis workspace.
  * @param firmwareId - The id of the firmware.
  */
-export const CvesListByFirmware = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CvesListByFirmware = /*@__PURE__*/ API.make(() => ({
   inputSchema: CvesListByFirmwareInput,
   outputSchema: CvesListByFirmwareOutput,
 }));
@@ -388,7 +386,7 @@ export interface FirmwaresCreateInput {
       | "Analyzing";
   };
 }
-export const FirmwaresCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirmwaresCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -452,7 +450,7 @@ export interface FirmwaresCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FirmwaresCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirmwaresCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -482,7 +480,7 @@ export const FirmwaresCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the firmware analysis workspace.
  * @param firmwareId - The id of the firmware.
  */
-export const FirmwaresCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirmwaresCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirmwaresCreateInput,
   outputSchema: FirmwaresCreateOutput,
 }));
@@ -493,7 +491,7 @@ export interface FirmwaresDeleteInput {
   workspaceName: string;
   firmwareId: string;
 }
-export const FirmwaresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirmwaresDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -509,7 +507,7 @@ export const FirmwaresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type FirmwaresDeleteOutput = void;
 export const FirmwaresDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FirmwaresDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FirmwaresDeleteOutput>;
 
 // The operation
 /**
@@ -521,7 +519,7 @@ export const FirmwaresDeleteOutput =
  * @param workspaceName - The name of the firmware analysis workspace.
  * @param firmwareId - The id of the firmware.
  */
-export const FirmwaresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirmwaresDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirmwaresDeleteInput,
   outputSchema: FirmwaresDeleteOutput,
 }));
@@ -532,7 +530,7 @@ export interface FirmwaresGetInput {
   workspaceName: string;
   firmwareId: string;
 }
-export const FirmwaresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirmwaresGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -559,7 +557,7 @@ export interface FirmwaresGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const FirmwaresGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirmwaresGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -589,7 +587,7 @@ export const FirmwaresGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the firmware analysis workspace.
  * @param firmwareId - The id of the firmware.
  */
-export const FirmwaresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirmwaresGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirmwaresGetInput,
   outputSchema: FirmwaresGetOutput,
 }));
@@ -600,7 +598,7 @@ export interface FirmwaresListByWorkspaceInput {
   workspaceName: string;
 }
 export const FirmwaresListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -630,7 +628,7 @@ export interface FirmwaresListByWorkspaceOutput {
   nextLink?: string;
 }
 export const FirmwaresListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -674,12 +672,10 @@ export const FirmwaresListByWorkspaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the firmware analysis workspace.
  */
-export const FirmwaresListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FirmwaresListByWorkspaceInput,
-    outputSchema: FirmwaresListByWorkspaceOutput,
-  }),
-);
+export const FirmwaresListByWorkspace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FirmwaresListByWorkspaceInput,
+  outputSchema: FirmwaresListByWorkspaceOutput,
+}));
 // Input Schema
 export interface FirmwaresUpdateInput {
   subscriptionId: string;
@@ -704,7 +700,7 @@ export interface FirmwaresUpdateInput {
       | "Analyzing";
   };
 }
-export const FirmwaresUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirmwaresUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -768,7 +764,7 @@ export interface FirmwaresUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FirmwaresUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirmwaresUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -798,15 +794,13 @@ export const FirmwaresUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the firmware analysis workspace.
  * @param firmwareId - The id of the firmware.
  */
-export const FirmwaresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirmwaresUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirmwaresUpdateInput,
   outputSchema: FirmwaresUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.IoTFirmwareDefense/operations",
@@ -830,7 +824,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -860,7 +854,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -872,7 +866,7 @@ export interface PasswordHashesListByFirmwareInput {
   firmwareId: string;
 }
 export const PasswordHashesListByFirmwareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -903,7 +897,7 @@ export interface PasswordHashesListByFirmwareOutput {
   nextLink?: string;
 }
 export const PasswordHashesListByFirmwareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -949,7 +943,7 @@ export const PasswordHashesListByFirmwareOutput =
  * @param firmwareId - The id of the firmware.
  */
 export const PasswordHashesListByFirmware =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PasswordHashesListByFirmwareInput,
     outputSchema: PasswordHashesListByFirmwareOutput,
   }));
@@ -961,7 +955,7 @@ export interface SbomComponentsListByFirmwareInput {
   firmwareId: string;
 }
 export const SbomComponentsListByFirmwareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -992,7 +986,7 @@ export interface SbomComponentsListByFirmwareOutput {
   nextLink?: string;
 }
 export const SbomComponentsListByFirmwareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1038,7 +1032,7 @@ export const SbomComponentsListByFirmwareOutput =
  * @param firmwareId - The id of the firmware.
  */
 export const SbomComponentsListByFirmware =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SbomComponentsListByFirmwareInput,
     outputSchema: SbomComponentsListByFirmwareOutput,
   }));
@@ -1055,7 +1049,7 @@ export interface SummariesGetInput {
     | "CryptoCertificate"
     | "CryptoKey";
 }
-export const SummariesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SummariesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1089,7 +1083,7 @@ export interface SummariesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SummariesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SummariesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1120,7 +1114,7 @@ export const SummariesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param firmwareId - The id of the firmware.
  * @param summaryType - The Firmware analysis summary name describing the type of summary.
  */
-export const SummariesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SummariesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SummariesGetInput,
   outputSchema: SummariesGetOutput,
 }));
@@ -1132,7 +1126,7 @@ export interface SummariesListByFirmwareInput {
   firmwareId: string;
 }
 export const SummariesListByFirmwareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1163,7 +1157,7 @@ export interface SummariesListByFirmwareOutput {
   nextLink?: string;
 }
 export const SummariesListByFirmwareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1208,12 +1202,10 @@ export const SummariesListByFirmwareOutput =
  * @param workspaceName - The name of the firmware analysis workspace.
  * @param firmwareId - The id of the firmware.
  */
-export const SummariesListByFirmware = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SummariesListByFirmwareInput,
-    outputSchema: SummariesListByFirmwareOutput,
-  }),
-);
+export const SummariesListByFirmware = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SummariesListByFirmwareInput,
+  outputSchema: SummariesListByFirmwareOutput,
+}));
 // Input Schema
 export interface UsageMetricsGetInput {
   subscriptionId: string;
@@ -1221,7 +1213,7 @@ export interface UsageMetricsGetInput {
   workspaceName: string;
   name: string;
 }
-export const UsageMetricsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsageMetricsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1248,7 +1240,7 @@ export interface UsageMetricsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const UsageMetricsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsageMetricsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1278,7 +1270,7 @@ export const UsageMetricsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the firmware analysis workspace.
  * @param name - The Firmware analysis summary name describing the type of summary.
  */
-export const UsageMetricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsageMetricsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsageMetricsGetInput,
   outputSchema: UsageMetricsGetOutput,
 }));
@@ -1289,7 +1281,7 @@ export interface UsageMetricsListByWorkspaceInput {
   workspaceName: string;
 }
 export const UsageMetricsListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1319,7 +1311,7 @@ export interface UsageMetricsListByWorkspaceOutput {
   nextLink?: string;
 }
 export const UsageMetricsListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1363,12 +1355,10 @@ export const UsageMetricsListByWorkspaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the firmware analysis workspace.
  */
-export const UsageMetricsListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsageMetricsListByWorkspaceInput,
-    outputSchema: UsageMetricsListByWorkspaceOutput,
-  }),
-);
+export const UsageMetricsListByWorkspace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsageMetricsListByWorkspaceInput,
+  outputSchema: UsageMetricsListByWorkspaceOutput,
+}));
 // Input Schema
 export interface WorkspacesCreateInput {
   subscriptionId: string;
@@ -1393,7 +1383,7 @@ export interface WorkspacesCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const WorkspacesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1446,27 +1436,25 @@ export interface WorkspacesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const WorkspacesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<WorkspacesCreateOutput>;
+export const WorkspacesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<WorkspacesCreateOutput>;
 
 // The operation
 /**
@@ -1477,7 +1465,7 @@ export const WorkspacesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the firmware analysis workspace.
  */
-export const WorkspacesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesCreateInput,
   outputSchema: WorkspacesCreateOutput,
 }));
@@ -1487,7 +1475,7 @@ export interface WorkspacesDeleteInput {
   resourceGroupName: string;
   workspaceName: string;
 }
-export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1502,7 +1490,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WorkspacesDeleteOutput = void;
 export const WorkspacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -1513,7 +1501,7 @@ export const WorkspacesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the firmware analysis workspace.
  */
-export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesDeleteInput,
   outputSchema: WorkspacesDeleteOutput,
 }));
@@ -1525,7 +1513,7 @@ export interface WorkspacesGenerateUploadUrlInput {
   firmwareId?: string;
 }
 export const WorkspacesGenerateUploadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1543,7 +1531,7 @@ export interface WorkspacesGenerateUploadUrlOutput {
   url?: string;
 }
 export const WorkspacesGenerateUploadUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<WorkspacesGenerateUploadUrlOutput>;
 
@@ -1556,19 +1544,17 @@ export const WorkspacesGenerateUploadUrlOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the firmware analysis workspace.
  */
-export const WorkspacesGenerateUploadUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspacesGenerateUploadUrlInput,
-    outputSchema: WorkspacesGenerateUploadUrlOutput,
-  }),
-);
+export const WorkspacesGenerateUploadUrl = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspacesGenerateUploadUrlInput,
+  outputSchema: WorkspacesGenerateUploadUrlOutput,
+}));
 // Input Schema
 export interface WorkspacesGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   workspaceName: string;
 }
-export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1594,7 +1580,7 @@ export interface WorkspacesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1623,7 +1609,7 @@ export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the firmware analysis workspace.
  */
-export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesGetInput,
   outputSchema: WorkspacesGetOutput,
 }));
@@ -1633,7 +1619,7 @@ export interface WorkspacesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const WorkspacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1662,7 +1648,7 @@ export interface WorkspacesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const WorkspacesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1706,7 +1692,7 @@ export const WorkspacesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const WorkspacesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspacesListByResourceGroupInput,
     outputSchema: WorkspacesListByResourceGroupOutput,
   }));
@@ -1715,7 +1701,7 @@ export interface WorkspacesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const WorkspacesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1743,7 +1729,7 @@ export interface WorkspacesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const WorkspacesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1786,7 +1772,7 @@ export const WorkspacesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WorkspacesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspacesListBySubscriptionInput,
     outputSchema: WorkspacesListBySubscriptionOutput,
   }));
@@ -1804,7 +1790,7 @@ export interface WorkspacesUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1842,27 +1828,25 @@ export interface WorkspacesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<WorkspacesUpdateOutput>;
+export const WorkspacesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<WorkspacesUpdateOutput>;
 
 // The operation
 /**
@@ -1873,7 +1857,7 @@ export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the firmware analysis workspace.
  */
-export const WorkspacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesUpdateInput,
   outputSchema: WorkspacesUpdateOutput,
 }));

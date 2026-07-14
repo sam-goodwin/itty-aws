@@ -41,7 +41,7 @@ export interface SmtpMsa {
 }
 
 export const SmtpMsa: Schema.Codec<SmtpMsa> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
     securityMode: Schema.optional(Schema.String),
@@ -75,7 +75,7 @@ export interface SendAs {
 }
 
 export const SendAs: Schema.Codec<SendAs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signature: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     isPrimary: Schema.optional(Schema.Boolean),
@@ -93,7 +93,7 @@ export interface ListSendAsResponse {
 }
 
 export const ListSendAsResponse: Schema.Codec<ListSendAsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sendAs: Schema.optional(Schema.Array(SendAs)),
   }).annotate({ identifier: "ListSendAsResponse" });
 
@@ -105,7 +105,7 @@ export interface ClassificationLabelFieldValue {
 }
 
 export const ClassificationLabelFieldValue: Schema.Codec<ClassificationLabelFieldValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldId: Schema.optional(Schema.String),
     selection: Schema.optional(Schema.String),
   }).annotate({ identifier: "ClassificationLabelFieldValue" });
@@ -124,7 +124,7 @@ export interface Delegate {
 }
 
 export const Delegate: Schema.Codec<Delegate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verificationStatus: Schema.optional(Schema.String),
     delegateEmail: Schema.optional(Schema.String),
   }).annotate({ identifier: "Delegate" });
@@ -135,7 +135,7 @@ export interface ListDelegatesResponse {
 }
 
 export const ListDelegatesResponse: Schema.Codec<ListDelegatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegates: Schema.optional(Schema.Array(Delegate)),
   }).annotate({ identifier: "ListDelegatesResponse" });
 
@@ -147,7 +147,7 @@ export interface ClassificationLabelValue {
 }
 
 export const ClassificationLabelValue: Schema.Codec<ClassificationLabelValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Array(ClassificationLabelFieldValue)),
     labelId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ClassificationLabelValue" });
@@ -160,7 +160,7 @@ export interface MessagePartHeader {
 }
 
 export const MessagePartHeader: Schema.Codec<MessagePartHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "MessagePartHeader" });
@@ -175,7 +175,7 @@ export interface MessagePartBody {
 }
 
 export const MessagePartBody: Schema.Codec<MessagePartBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     size: Schema.optional(Schema.Number),
     attachmentId: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -197,7 +197,7 @@ export interface MessagePart {
 }
 
 export const MessagePart: Schema.Codec<MessagePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mimeType: Schema.optional(Schema.String),
       filename: Schema.optional(Schema.String),
@@ -232,7 +232,7 @@ export interface Message {
 }
 
 export const Message: Schema.Codec<Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     classificationLabelValues: Schema.optional(
       Schema.Array(ClassificationLabelValue),
     ),
@@ -254,7 +254,7 @@ export interface HistoryLabelRemoved {
 }
 
 export const HistoryLabelRemoved: Schema.Codec<HistoryLabelRemoved> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
     labelIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "HistoryLabelRemoved" });
@@ -271,7 +271,7 @@ export interface Profile {
 }
 
 export const Profile: Schema.Codec<Profile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messagesTotal: Schema.optional(Schema.Number),
     historyId: Schema.optional(Schema.String),
     threadsTotal: Schema.optional(Schema.Number),
@@ -290,7 +290,7 @@ export interface ModifyMessageRequest {
 }
 
 export const ModifyMessageRequest: Schema.Codec<ModifyMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addLabelIds: Schema.optional(Schema.Array(Schema.String)),
     addClassificationLabels: Schema.optional(
       Schema.Array(ClassificationLabelValue),
@@ -309,7 +309,7 @@ export interface FilterAction {
 }
 
 export const FilterAction: Schema.Codec<FilterAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addLabelIds: Schema.optional(Schema.Array(Schema.String)),
     removeLabelIds: Schema.optional(Schema.Array(Schema.String)),
     forward: Schema.optional(Schema.String),
@@ -337,7 +337,7 @@ export interface FilterCriteria {
 }
 
 export const FilterCriteria: Schema.Codec<FilterCriteria> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     negatedQuery: Schema.optional(Schema.String),
     sizeComparison: Schema.optional(Schema.String),
     excludeChats: Schema.optional(Schema.Boolean),
@@ -359,7 +359,7 @@ export interface Filter {
 }
 
 export const Filter: Schema.Codec<Filter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     action: Schema.optional(FilterAction),
     criteria: Schema.optional(FilterCriteria),
@@ -381,7 +381,7 @@ export interface AutoForwarding {
 }
 
 export const AutoForwarding: Schema.Codec<AutoForwarding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     emailAddress: Schema.optional(Schema.String),
     disposition: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
@@ -393,7 +393,7 @@ export interface ListFiltersResponse {
 }
 
 export const ListFiltersResponse: Schema.Codec<ListFiltersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.Array(Filter)),
   }).annotate({ identifier: "ListFiltersResponse" });
 
@@ -405,7 +405,7 @@ export interface LabelColor {
 }
 
 export const LabelColor: Schema.Codec<LabelColor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     backgroundColor: Schema.optional(Schema.String),
     textColor: Schema.optional(Schema.String),
   }).annotate({ identifier: "LabelColor" });
@@ -438,7 +438,7 @@ export interface Label {
 }
 
 export const Label: Schema.Codec<Label> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     messageListVisibility: Schema.optional(Schema.String),
@@ -459,7 +459,7 @@ export interface SignAndEncryptKeyPairs {
 }
 
 export const SignAndEncryptKeyPairs: Schema.Codec<SignAndEncryptKeyPairs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signingKeyPairId: Schema.optional(Schema.String),
     encryptionKeyPairId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignAndEncryptKeyPairs" });
@@ -474,7 +474,7 @@ export interface CseIdentity {
 }
 
 export const CseIdentity: Schema.Codec<CseIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKeyPairId: Schema.optional(Schema.String),
     signAndEncryptKeyPairs: Schema.optional(SignAndEncryptKeyPairs),
     emailAddress: Schema.optional(Schema.String),
@@ -498,7 +498,7 @@ export interface SmimeInfo {
 }
 
 export const SmimeInfo: Schema.Codec<SmimeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isDefault: Schema.optional(Schema.Boolean),
     expiration: Schema.optional(Schema.String),
     pkcs12: Schema.optional(Schema.String),
@@ -513,7 +513,7 @@ export interface HistoryMessageDeleted {
 }
 
 export const HistoryMessageDeleted: Schema.Codec<HistoryMessageDeleted> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "HistoryMessageDeleted" });
 
@@ -529,7 +529,7 @@ export interface ForwardingAddress {
 }
 
 export const ForwardingAddress: Schema.Codec<ForwardingAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     forwardingEmail: Schema.optional(Schema.String),
     verificationStatus: Schema.optional(Schema.String),
   }).annotate({ identifier: "ForwardingAddress" });
@@ -537,7 +537,7 @@ export const ForwardingAddress: Schema.Codec<ForwardingAddress> =
 export interface DisableCseKeyPairRequest {}
 
 export const DisableCseKeyPairRequest: Schema.Codec<DisableCseKeyPairRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableCseKeyPairRequest",
   });
 
@@ -549,7 +549,7 @@ export interface WatchResponse {
 }
 
 export const WatchResponse: Schema.Codec<WatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     historyId: Schema.optional(Schema.String),
     expiration: Schema.optional(Schema.String),
   }).annotate({ identifier: "WatchResponse" });
@@ -566,7 +566,7 @@ export interface WatchRequest {
 }
 
 export const WatchRequest: Schema.Codec<WatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labelIds: Schema.optional(Schema.Array(Schema.String)),
     labelFilterAction: Schema.optional(Schema.String),
     labelFilterBehavior: Schema.optional(Schema.String),
@@ -579,7 +579,7 @@ export interface HardwareKeyMetadata {
 }
 
 export const HardwareKeyMetadata: Schema.Codec<HardwareKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
   }).annotate({ identifier: "HardwareKeyMetadata" });
 
@@ -591,7 +591,7 @@ export interface KaclsKeyMetadata {
 }
 
 export const KaclsKeyMetadata: Schema.Codec<KaclsKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kaclsUri: Schema.optional(Schema.String),
     kaclsData: Schema.optional(Schema.String),
   }).annotate({ identifier: "KaclsKeyMetadata" });
@@ -606,7 +606,7 @@ export interface CsePrivateKeyMetadata {
 }
 
 export const CsePrivateKeyMetadata: Schema.Codec<CsePrivateKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateKeyMetadataId: Schema.optional(Schema.String),
     hardwareKeyMetadata: Schema.optional(HardwareKeyMetadata),
     kaclsKeyMetadata: Schema.optional(KaclsKeyMetadata),
@@ -618,7 +618,7 @@ export interface LanguageSettings {
 }
 
 export const LanguageSettings: Schema.Codec<LanguageSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayLanguage: Schema.optional(Schema.String),
   }).annotate({ identifier: "LanguageSettings" });
 
@@ -640,7 +640,7 @@ export interface CseKeyPair {
 }
 
 export const CseKeyPair: Schema.Codec<CseKeyPair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateKeyMetadata: Schema.optional(Schema.Array(CsePrivateKeyMetadata)),
     disableTime: Schema.optional(Schema.String),
     pem: Schema.optional(Schema.String),
@@ -658,7 +658,7 @@ export interface ListCseKeyPairsResponse {
 }
 
 export const ListCseKeyPairsResponse: Schema.Codec<ListCseKeyPairsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cseKeyPairs: Schema.optional(Schema.Array(CseKeyPair)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListCseKeyPairsResponse" });
@@ -671,7 +671,7 @@ export interface ListCseIdentitiesResponse {
 }
 
 export const ListCseIdentitiesResponse: Schema.Codec<ListCseIdentitiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cseIdentities: Schema.optional(Schema.Array(CseIdentity)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListCseIdentitiesResponse" });
@@ -682,7 +682,7 @@ export interface BatchDeleteMessagesRequest {
 }
 
 export const BatchDeleteMessagesRequest: Schema.Codec<BatchDeleteMessagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ids: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchDeleteMessagesRequest" });
 
@@ -691,7 +691,7 @@ export interface HistoryMessageAdded {
 }
 
 export const HistoryMessageAdded: Schema.Codec<HistoryMessageAdded> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "HistoryMessageAdded" });
 
@@ -707,7 +707,7 @@ export interface Thread {
 }
 
 export const Thread: Schema.Codec<Thread> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     snippet: Schema.optional(Schema.String),
     historyId: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -724,7 +724,7 @@ export interface ListThreadsResponse {
 }
 
 export const ListThreadsResponse: Schema.Codec<ListThreadsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     threads: Schema.optional(Schema.Array(Thread)),
     resultSizeEstimate: Schema.optional(Schema.Number),
     nextPageToken: Schema.optional(Schema.String),
@@ -740,7 +740,7 @@ export interface ListMessagesResponse {
 }
 
 export const ListMessagesResponse: Schema.Codec<ListMessagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messages: Schema.optional(Schema.Array(Message)),
     nextPageToken: Schema.optional(Schema.String),
     resultSizeEstimate: Schema.optional(Schema.Number),
@@ -749,7 +749,7 @@ export const ListMessagesResponse: Schema.Codec<ListMessagesResponse> =
 export interface EnableCseKeyPairRequest {}
 
 export const EnableCseKeyPairRequest: Schema.Codec<EnableCseKeyPairRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableCseKeyPairRequest",
   });
 
@@ -760,7 +760,7 @@ export interface HistoryLabelAdded {
 }
 
 export const HistoryLabelAdded: Schema.Codec<HistoryLabelAdded> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labelIds: Schema.optional(Schema.Array(Schema.String)),
     message: Schema.optional(Message),
   }).annotate({ identifier: "HistoryLabelAdded" });
@@ -781,7 +781,7 @@ export interface History {
 }
 
 export const History: Schema.Codec<History> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messagesDeleted: Schema.optional(Schema.Array(HistoryMessageDeleted)),
     messages: Schema.optional(Schema.Array(Message)),
     messagesAdded: Schema.optional(Schema.Array(HistoryMessageAdded)),
@@ -798,7 +798,7 @@ export interface ModifyThreadRequest {
 }
 
 export const ModifyThreadRequest: Schema.Codec<ModifyThreadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addLabelIds: Schema.optional(Schema.Array(Schema.String)),
     removeLabelIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ModifyThreadRequest" });
@@ -811,7 +811,7 @@ export interface Draft {
 }
 
 export const Draft: Schema.Codec<Draft> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     message: Schema.optional(Message),
   }).annotate({ identifier: "Draft" });
@@ -826,7 +826,7 @@ export interface ListDraftsResponse {
 }
 
 export const ListDraftsResponse: Schema.Codec<ListDraftsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resultSizeEstimate: Schema.optional(Schema.Number),
     drafts: Schema.optional(Schema.Array(Draft)),
     nextPageToken: Schema.optional(Schema.String),
@@ -838,7 +838,7 @@ export interface ListForwardingAddressesResponse {
 }
 
 export const ListForwardingAddressesResponse: Schema.Codec<ListForwardingAddressesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     forwardingAddresses: Schema.optional(Schema.Array(ForwardingAddress)),
   }).annotate({ identifier: "ListForwardingAddressesResponse" });
 
@@ -861,7 +861,7 @@ export interface PopSettings {
 }
 
 export const PopSettings: Schema.Codec<PopSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessWindow: Schema.optional(Schema.String),
     disposition: Schema.optional(Schema.String),
   }).annotate({ identifier: "PopSettings" });
@@ -872,7 +872,7 @@ export interface ListLabelsResponse {
 }
 
 export const ListLabelsResponse: Schema.Codec<ListLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(Label)),
   }).annotate({ identifier: "ListLabelsResponse" });
 
@@ -896,7 +896,7 @@ export interface VacationSettings {
 }
 
 export const VacationSettings: Schema.Codec<VacationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responseBodyPlainText: Schema.optional(Schema.String),
     restrictToDomain: Schema.optional(Schema.Boolean),
     restrictToContacts: Schema.optional(Schema.Boolean),
@@ -910,7 +910,7 @@ export const VacationSettings: Schema.Codec<VacationSettings> =
 export interface ObliterateCseKeyPairRequest {}
 
 export const ObliterateCseKeyPairRequest: Schema.Codec<ObliterateCseKeyPairRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ObliterateCseKeyPairRequest",
   });
 
@@ -931,7 +931,7 @@ export interface ImapSettings {
 }
 
 export const ImapSettings: Schema.Codec<ImapSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     autoExpunge: Schema.optional(Schema.Boolean),
     expungeBehavior: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
@@ -944,7 +944,7 @@ export interface ListSmimeInfoResponse {
 }
 
 export const ListSmimeInfoResponse: Schema.Codec<ListSmimeInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     smimeInfo: Schema.optional(Schema.Array(SmimeInfo)),
   }).annotate({ identifier: "ListSmimeInfoResponse" });
 
@@ -962,7 +962,7 @@ export interface BatchModifyMessagesRequest {
 }
 
 export const BatchModifyMessagesRequest: Schema.Codec<BatchModifyMessagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addLabelIds: Schema.optional(Schema.Array(Schema.String)),
     ids: Schema.optional(Schema.Array(Schema.String)),
     addClassificationLabels: Schema.optional(
@@ -982,7 +982,7 @@ export interface ListHistoryResponse {
 }
 
 export const ListHistoryResponse: Schema.Codec<ListHistoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     historyId: Schema.optional(Schema.String),
     history: Schema.optional(Schema.Array(History)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1047,7 +1047,7 @@ export interface StopUsersRequest {
   userId: string;
 }
 
-export const StopUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StopUsersRequest = /*@__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.HttpPath("userId")),
 }).pipe(
   T.Http({
@@ -1060,9 +1060,7 @@ export const StopUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StopUsersResponse {}
 export const StopUsersResponse: Schema.Codec<StopUsersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<StopUsersResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<StopUsersResponse>;
 
 export type StopUsersError =
   | DefaultErrors
@@ -1077,7 +1075,7 @@ export const stopUsers: API.OperationMethod<
   StopUsersResponse,
   StopUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopUsersRequest,
   output: StopUsersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1090,7 +1088,7 @@ export interface WatchUsersRequest {
   body?: WatchRequest;
 }
 
-export const WatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchUsersRequest = /*@__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.HttpPath("userId")),
   body: Schema.optional(WatchRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -1103,7 +1101,7 @@ export const WatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<WatchUsersRequest>;
 
 export type WatchUsersResponse = WatchResponse;
-export const WatchUsersResponse = /*@__PURE__*/ /*#__PURE__*/ WatchResponse;
+export const WatchUsersResponse = /*@__PURE__*/ WatchResponse;
 
 export type WatchUsersError =
   | DefaultErrors
@@ -1118,7 +1116,7 @@ export const watchUsers: API.OperationMethod<
   WatchUsersResponse,
   WatchUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WatchUsersRequest,
   output: WatchUsersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1129,17 +1127,15 @@ export interface GetProfileUsersRequest {
   userId: string;
 }
 
-export const GetProfileUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    userId: Schema.String.pipe(T.HttpPath("userId")),
-  },
-).pipe(
+export const GetProfileUsersRequest = /*@__PURE__*/ Schema.Struct({
+  userId: Schema.String.pipe(T.HttpPath("userId")),
+}).pipe(
   T.Http({ method: "GET", path: "gmail/v1/users/{userId}/profile" }),
   svc,
 ) as unknown as Schema.Codec<GetProfileUsersRequest>;
 
 export type GetProfileUsersResponse = Profile;
-export const GetProfileUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Profile;
+export const GetProfileUsersResponse = /*@__PURE__*/ Profile;
 
 export type GetProfileUsersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1149,7 +1145,7 @@ export const getProfileUsers: API.OperationMethod<
   GetProfileUsersResponse,
   GetProfileUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProfileUsersRequest,
   output: GetProfileUsersResponse,
   errors: [NotFound, Forbidden],
@@ -1176,7 +1172,7 @@ export interface ListUsersHistoryRequest {
 }
 
 export const ListUsersHistoryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     startHistoryId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("startHistoryId"),
@@ -1193,8 +1189,7 @@ export const ListUsersHistoryRequest =
   ) as unknown as Schema.Codec<ListUsersHistoryRequest>;
 
 export type ListUsersHistoryResponse = ListHistoryResponse;
-export const ListUsersHistoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListHistoryResponse;
+export const ListUsersHistoryResponse = /*@__PURE__*/ ListHistoryResponse;
 
 export type ListUsersHistoryError = DefaultErrors | NotFound | Forbidden;
 
@@ -1204,7 +1199,7 @@ export const listUsersHistory: API.PaginatedOperationMethod<
   ListUsersHistoryResponse,
   ListUsersHistoryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersHistoryRequest,
   output: ListUsersHistoryResponse,
   errors: [NotFound, Forbidden],
@@ -1220,7 +1215,7 @@ export interface GetPopUsersSettingsRequest {
 }
 
 export const GetPopUsersSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
     T.Http({ method: "GET", path: "gmail/v1/users/{userId}/settings/pop" }),
@@ -1228,8 +1223,7 @@ export const GetPopUsersSettingsRequest =
   ) as unknown as Schema.Codec<GetPopUsersSettingsRequest>;
 
 export type GetPopUsersSettingsResponse = PopSettings;
-export const GetPopUsersSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PopSettings;
+export const GetPopUsersSettingsResponse = /*@__PURE__*/ PopSettings;
 
 export type GetPopUsersSettingsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1239,7 +1233,7 @@ export const getPopUsersSettings: API.OperationMethod<
   GetPopUsersSettingsResponse,
   GetPopUsersSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPopUsersSettingsRequest,
   output: GetPopUsersSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -1251,7 +1245,7 @@ export interface GetAutoForwardingUsersSettingsRequest {
 }
 
 export const GetAutoForwardingUsersSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
     T.Http({
@@ -1263,7 +1257,7 @@ export const GetAutoForwardingUsersSettingsRequest =
 
 export type GetAutoForwardingUsersSettingsResponse = AutoForwarding;
 export const GetAutoForwardingUsersSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AutoForwarding;
+  /*@__PURE__*/ AutoForwarding;
 
 export type GetAutoForwardingUsersSettingsError =
   | DefaultErrors
@@ -1276,7 +1270,7 @@ export const getAutoForwardingUsersSettings: API.OperationMethod<
   GetAutoForwardingUsersSettingsResponse,
   GetAutoForwardingUsersSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutoForwardingUsersSettingsRequest,
   output: GetAutoForwardingUsersSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -1288,7 +1282,7 @@ export interface GetImapUsersSettingsRequest {
 }
 
 export const GetImapUsersSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
     T.Http({ method: "GET", path: "gmail/v1/users/{userId}/settings/imap" }),
@@ -1296,8 +1290,7 @@ export const GetImapUsersSettingsRequest =
   ) as unknown as Schema.Codec<GetImapUsersSettingsRequest>;
 
 export type GetImapUsersSettingsResponse = ImapSettings;
-export const GetImapUsersSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ImapSettings;
+export const GetImapUsersSettingsResponse = /*@__PURE__*/ ImapSettings;
 
 export type GetImapUsersSettingsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1307,7 +1300,7 @@ export const getImapUsersSettings: API.OperationMethod<
   GetImapUsersSettingsResponse,
   GetImapUsersSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImapUsersSettingsRequest,
   output: GetImapUsersSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -1321,7 +1314,7 @@ export interface UpdateLanguageUsersSettingsRequest {
 }
 
 export const UpdateLanguageUsersSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(LanguageSettings).pipe(T.HttpBody()),
   }).pipe(
@@ -1335,7 +1328,7 @@ export const UpdateLanguageUsersSettingsRequest =
 
 export type UpdateLanguageUsersSettingsResponse = LanguageSettings;
 export const UpdateLanguageUsersSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LanguageSettings;
+  /*@__PURE__*/ LanguageSettings;
 
 export type UpdateLanguageUsersSettingsError =
   | DefaultErrors
@@ -1350,7 +1343,7 @@ export const updateLanguageUsersSettings: API.OperationMethod<
   UpdateLanguageUsersSettingsResponse,
   UpdateLanguageUsersSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLanguageUsersSettingsRequest,
   output: UpdateLanguageUsersSettingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1362,7 +1355,7 @@ export interface GetVacationUsersSettingsRequest {
 }
 
 export const GetVacationUsersSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
     T.Http({
@@ -1373,8 +1366,7 @@ export const GetVacationUsersSettingsRequest =
   ) as unknown as Schema.Codec<GetVacationUsersSettingsRequest>;
 
 export type GetVacationUsersSettingsResponse = VacationSettings;
-export const GetVacationUsersSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VacationSettings;
+export const GetVacationUsersSettingsResponse = /*@__PURE__*/ VacationSettings;
 
 export type GetVacationUsersSettingsError =
   | DefaultErrors
@@ -1387,7 +1379,7 @@ export const getVacationUsersSettings: API.OperationMethod<
   GetVacationUsersSettingsResponse,
   GetVacationUsersSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVacationUsersSettingsRequest,
   output: GetVacationUsersSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -1401,7 +1393,7 @@ export interface UpdateAutoForwardingUsersSettingsRequest {
 }
 
 export const UpdateAutoForwardingUsersSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(AutoForwarding).pipe(T.HttpBody()),
   }).pipe(
@@ -1415,7 +1407,7 @@ export const UpdateAutoForwardingUsersSettingsRequest =
 
 export type UpdateAutoForwardingUsersSettingsResponse = AutoForwarding;
 export const UpdateAutoForwardingUsersSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AutoForwarding;
+  /*@__PURE__*/ AutoForwarding;
 
 export type UpdateAutoForwardingUsersSettingsError =
   | DefaultErrors
@@ -1430,7 +1422,7 @@ export const updateAutoForwardingUsersSettings: API.OperationMethod<
   UpdateAutoForwardingUsersSettingsResponse,
   UpdateAutoForwardingUsersSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutoForwardingUsersSettingsRequest,
   output: UpdateAutoForwardingUsersSettingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1444,7 +1436,7 @@ export interface UpdateImapUsersSettingsRequest {
 }
 
 export const UpdateImapUsersSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(ImapSettings).pipe(T.HttpBody()),
   }).pipe(
@@ -1457,8 +1449,7 @@ export const UpdateImapUsersSettingsRequest =
   ) as unknown as Schema.Codec<UpdateImapUsersSettingsRequest>;
 
 export type UpdateImapUsersSettingsResponse = ImapSettings;
-export const UpdateImapUsersSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ImapSettings;
+export const UpdateImapUsersSettingsResponse = /*@__PURE__*/ ImapSettings;
 
 export type UpdateImapUsersSettingsError =
   | DefaultErrors
@@ -1473,7 +1464,7 @@ export const updateImapUsersSettings: API.OperationMethod<
   UpdateImapUsersSettingsResponse,
   UpdateImapUsersSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateImapUsersSettingsRequest,
   output: UpdateImapUsersSettingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1487,7 +1478,7 @@ export interface UpdatePopUsersSettingsRequest {
 }
 
 export const UpdatePopUsersSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(PopSettings).pipe(T.HttpBody()),
   }).pipe(
@@ -1500,8 +1491,7 @@ export const UpdatePopUsersSettingsRequest =
   ) as unknown as Schema.Codec<UpdatePopUsersSettingsRequest>;
 
 export type UpdatePopUsersSettingsResponse = PopSettings;
-export const UpdatePopUsersSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PopSettings;
+export const UpdatePopUsersSettingsResponse = /*@__PURE__*/ PopSettings;
 
 export type UpdatePopUsersSettingsError =
   | DefaultErrors
@@ -1516,7 +1506,7 @@ export const updatePopUsersSettings: API.OperationMethod<
   UpdatePopUsersSettingsResponse,
   UpdatePopUsersSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePopUsersSettingsRequest,
   output: UpdatePopUsersSettingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1530,7 +1520,7 @@ export interface UpdateVacationUsersSettingsRequest {
 }
 
 export const UpdateVacationUsersSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(VacationSettings).pipe(T.HttpBody()),
   }).pipe(
@@ -1544,7 +1534,7 @@ export const UpdateVacationUsersSettingsRequest =
 
 export type UpdateVacationUsersSettingsResponse = VacationSettings;
 export const UpdateVacationUsersSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VacationSettings;
+  /*@__PURE__*/ VacationSettings;
 
 export type UpdateVacationUsersSettingsError =
   | DefaultErrors
@@ -1559,7 +1549,7 @@ export const updateVacationUsersSettings: API.OperationMethod<
   UpdateVacationUsersSettingsResponse,
   UpdateVacationUsersSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVacationUsersSettingsRequest,
   output: UpdateVacationUsersSettingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1571,7 +1561,7 @@ export interface GetLanguageUsersSettingsRequest {
 }
 
 export const GetLanguageUsersSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
     T.Http({
@@ -1582,8 +1572,7 @@ export const GetLanguageUsersSettingsRequest =
   ) as unknown as Schema.Codec<GetLanguageUsersSettingsRequest>;
 
 export type GetLanguageUsersSettingsResponse = LanguageSettings;
-export const GetLanguageUsersSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LanguageSettings;
+export const GetLanguageUsersSettingsResponse = /*@__PURE__*/ LanguageSettings;
 
 export type GetLanguageUsersSettingsError =
   | DefaultErrors
@@ -1596,7 +1585,7 @@ export const getLanguageUsersSettings: API.OperationMethod<
   GetLanguageUsersSettingsResponse,
   GetLanguageUsersSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLanguageUsersSettingsRequest,
   output: GetLanguageUsersSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -1610,7 +1599,7 @@ export interface DeleteUsersSettingsFiltersRequest {
 }
 
 export const DeleteUsersSettingsFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     id: Schema.String.pipe(T.HttpPath("id")),
   }).pipe(
@@ -1623,7 +1612,7 @@ export const DeleteUsersSettingsFiltersRequest =
 
 export interface DeleteUsersSettingsFiltersResponse {}
 export const DeleteUsersSettingsFiltersResponse: Schema.Codec<DeleteUsersSettingsFiltersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteUsersSettingsFiltersResponse>;
 
@@ -1640,7 +1629,7 @@ export const deleteUsersSettingsFilters: API.OperationMethod<
   DeleteUsersSettingsFiltersResponse,
   DeleteUsersSettingsFiltersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersSettingsFiltersRequest,
   output: DeleteUsersSettingsFiltersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1654,7 +1643,7 @@ export interface GetUsersSettingsFiltersRequest {
 }
 
 export const GetUsersSettingsFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     id: Schema.String.pipe(T.HttpPath("id")),
   }).pipe(
@@ -1666,8 +1655,7 @@ export const GetUsersSettingsFiltersRequest =
   ) as unknown as Schema.Codec<GetUsersSettingsFiltersRequest>;
 
 export type GetUsersSettingsFiltersResponse = Filter;
-export const GetUsersSettingsFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Filter;
+export const GetUsersSettingsFiltersResponse = /*@__PURE__*/ Filter;
 
 export type GetUsersSettingsFiltersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1677,7 +1665,7 @@ export const getUsersSettingsFilters: API.OperationMethod<
   GetUsersSettingsFiltersResponse,
   GetUsersSettingsFiltersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersSettingsFiltersRequest,
   output: GetUsersSettingsFiltersResponse,
   errors: [NotFound, Forbidden],
@@ -1689,7 +1677,7 @@ export interface ListUsersSettingsFiltersRequest {
 }
 
 export const ListUsersSettingsFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
     T.Http({ method: "GET", path: "gmail/v1/users/{userId}/settings/filters" }),
@@ -1698,7 +1686,7 @@ export const ListUsersSettingsFiltersRequest =
 
 export type ListUsersSettingsFiltersResponse = ListFiltersResponse;
 export const ListUsersSettingsFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListFiltersResponse;
+  /*@__PURE__*/ ListFiltersResponse;
 
 export type ListUsersSettingsFiltersError =
   | DefaultErrors
@@ -1711,7 +1699,7 @@ export const listUsersSettingsFilters: API.OperationMethod<
   ListUsersSettingsFiltersResponse,
   ListUsersSettingsFiltersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListUsersSettingsFiltersRequest,
   output: ListUsersSettingsFiltersResponse,
   errors: [NotFound, Forbidden],
@@ -1725,7 +1713,7 @@ export interface CreateUsersSettingsFiltersRequest {
 }
 
 export const CreateUsersSettingsFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(Filter).pipe(T.HttpBody()),
   }).pipe(
@@ -1738,8 +1726,7 @@ export const CreateUsersSettingsFiltersRequest =
   ) as unknown as Schema.Codec<CreateUsersSettingsFiltersRequest>;
 
 export type CreateUsersSettingsFiltersResponse = Filter;
-export const CreateUsersSettingsFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Filter;
+export const CreateUsersSettingsFiltersResponse = /*@__PURE__*/ Filter;
 
 export type CreateUsersSettingsFiltersError =
   | DefaultErrors
@@ -1754,7 +1741,7 @@ export const createUsersSettingsFilters: API.OperationMethod<
   CreateUsersSettingsFiltersResponse,
   CreateUsersSettingsFiltersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUsersSettingsFiltersRequest,
   output: CreateUsersSettingsFiltersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1768,7 +1755,7 @@ export interface CreateUsersSettingsForwardingAddressesRequest {
 }
 
 export const CreateUsersSettingsForwardingAddressesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(ForwardingAddress).pipe(T.HttpBody()),
   }).pipe(
@@ -1782,7 +1769,7 @@ export const CreateUsersSettingsForwardingAddressesRequest =
 
 export type CreateUsersSettingsForwardingAddressesResponse = ForwardingAddress;
 export const CreateUsersSettingsForwardingAddressesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ForwardingAddress;
+  /*@__PURE__*/ ForwardingAddress;
 
 export type CreateUsersSettingsForwardingAddressesError =
   | DefaultErrors
@@ -1797,7 +1784,7 @@ export const createUsersSettingsForwardingAddresses: API.OperationMethod<
   CreateUsersSettingsForwardingAddressesResponse,
   CreateUsersSettingsForwardingAddressesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUsersSettingsForwardingAddressesRequest,
   output: CreateUsersSettingsForwardingAddressesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1809,7 +1796,7 @@ export interface ListUsersSettingsForwardingAddressesRequest {
 }
 
 export const ListUsersSettingsForwardingAddressesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
     T.Http({
@@ -1822,7 +1809,7 @@ export const ListUsersSettingsForwardingAddressesRequest =
 export type ListUsersSettingsForwardingAddressesResponse =
   ListForwardingAddressesResponse;
 export const ListUsersSettingsForwardingAddressesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListForwardingAddressesResponse;
+  /*@__PURE__*/ ListForwardingAddressesResponse;
 
 export type ListUsersSettingsForwardingAddressesError =
   | DefaultErrors
@@ -1835,7 +1822,7 @@ export const listUsersSettingsForwardingAddresses: API.OperationMethod<
   ListUsersSettingsForwardingAddressesResponse,
   ListUsersSettingsForwardingAddressesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListUsersSettingsForwardingAddressesRequest,
   output: ListUsersSettingsForwardingAddressesResponse,
   errors: [NotFound, Forbidden],
@@ -1849,7 +1836,7 @@ export interface GetUsersSettingsForwardingAddressesRequest {
 }
 
 export const GetUsersSettingsForwardingAddressesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     forwardingEmail: Schema.String.pipe(T.HttpPath("forwardingEmail")),
   }).pipe(
@@ -1862,7 +1849,7 @@ export const GetUsersSettingsForwardingAddressesRequest =
 
 export type GetUsersSettingsForwardingAddressesResponse = ForwardingAddress;
 export const GetUsersSettingsForwardingAddressesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ForwardingAddress;
+  /*@__PURE__*/ ForwardingAddress;
 
 export type GetUsersSettingsForwardingAddressesError =
   | DefaultErrors
@@ -1875,7 +1862,7 @@ export const getUsersSettingsForwardingAddresses: API.OperationMethod<
   GetUsersSettingsForwardingAddressesResponse,
   GetUsersSettingsForwardingAddressesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersSettingsForwardingAddressesRequest,
   output: GetUsersSettingsForwardingAddressesResponse,
   errors: [NotFound, Forbidden],
@@ -1889,7 +1876,7 @@ export interface DeleteUsersSettingsForwardingAddressesRequest {
 }
 
 export const DeleteUsersSettingsForwardingAddressesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     forwardingEmail: Schema.String.pipe(T.HttpPath("forwardingEmail")),
   }).pipe(
@@ -1902,7 +1889,7 @@ export const DeleteUsersSettingsForwardingAddressesRequest =
 
 export interface DeleteUsersSettingsForwardingAddressesResponse {}
 export const DeleteUsersSettingsForwardingAddressesResponse: Schema.Codec<DeleteUsersSettingsForwardingAddressesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteUsersSettingsForwardingAddressesResponse>;
 
@@ -1919,7 +1906,7 @@ export const deleteUsersSettingsForwardingAddresses: API.OperationMethod<
   DeleteUsersSettingsForwardingAddressesResponse,
   DeleteUsersSettingsForwardingAddressesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersSettingsForwardingAddressesRequest,
   output: DeleteUsersSettingsForwardingAddressesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1933,7 +1920,7 @@ export interface DeleteUsersSettingsSendAsRequest {
 }
 
 export const DeleteUsersSettingsSendAsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sendAsEmail: Schema.String.pipe(T.HttpPath("sendAsEmail")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
@@ -1946,7 +1933,7 @@ export const DeleteUsersSettingsSendAsRequest =
 
 export interface DeleteUsersSettingsSendAsResponse {}
 export const DeleteUsersSettingsSendAsResponse: Schema.Codec<DeleteUsersSettingsSendAsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteUsersSettingsSendAsResponse>;
 
@@ -1963,7 +1950,7 @@ export const deleteUsersSettingsSendAs: API.OperationMethod<
   DeleteUsersSettingsSendAsResponse,
   DeleteUsersSettingsSendAsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersSettingsSendAsRequest,
   output: DeleteUsersSettingsSendAsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1975,7 +1962,7 @@ export interface ListUsersSettingsSendAsRequest {
 }
 
 export const ListUsersSettingsSendAsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
     T.Http({ method: "GET", path: "gmail/v1/users/{userId}/settings/sendAs" }),
@@ -1983,8 +1970,7 @@ export const ListUsersSettingsSendAsRequest =
   ) as unknown as Schema.Codec<ListUsersSettingsSendAsRequest>;
 
 export type ListUsersSettingsSendAsResponse = ListSendAsResponse;
-export const ListUsersSettingsSendAsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSendAsResponse;
+export const ListUsersSettingsSendAsResponse = /*@__PURE__*/ ListSendAsResponse;
 
 export type ListUsersSettingsSendAsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1994,7 +1980,7 @@ export const listUsersSettingsSendAs: API.OperationMethod<
   ListUsersSettingsSendAsResponse,
   ListUsersSettingsSendAsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListUsersSettingsSendAsRequest,
   output: ListUsersSettingsSendAsResponse,
   errors: [NotFound, Forbidden],
@@ -2010,7 +1996,7 @@ export interface PatchUsersSettingsSendAsRequest {
 }
 
 export const PatchUsersSettingsSendAsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sendAsEmail: Schema.String.pipe(T.HttpPath("sendAsEmail")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(SendAs).pipe(T.HttpBody()),
@@ -2024,8 +2010,7 @@ export const PatchUsersSettingsSendAsRequest =
   ) as unknown as Schema.Codec<PatchUsersSettingsSendAsRequest>;
 
 export type PatchUsersSettingsSendAsResponse = SendAs;
-export const PatchUsersSettingsSendAsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SendAs;
+export const PatchUsersSettingsSendAsResponse = /*@__PURE__*/ SendAs;
 
 export type PatchUsersSettingsSendAsError =
   | DefaultErrors
@@ -2040,7 +2025,7 @@ export const patchUsersSettingsSendAs: API.OperationMethod<
   PatchUsersSettingsSendAsResponse,
   PatchUsersSettingsSendAsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchUsersSettingsSendAsRequest,
   output: PatchUsersSettingsSendAsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2054,7 +2039,7 @@ export interface GetUsersSettingsSendAsRequest {
 }
 
 export const GetUsersSettingsSendAsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     sendAsEmail: Schema.String.pipe(T.HttpPath("sendAsEmail")),
   }).pipe(
@@ -2066,8 +2051,7 @@ export const GetUsersSettingsSendAsRequest =
   ) as unknown as Schema.Codec<GetUsersSettingsSendAsRequest>;
 
 export type GetUsersSettingsSendAsResponse = SendAs;
-export const GetUsersSettingsSendAsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SendAs;
+export const GetUsersSettingsSendAsResponse = /*@__PURE__*/ SendAs;
 
 export type GetUsersSettingsSendAsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2077,7 +2061,7 @@ export const getUsersSettingsSendAs: API.OperationMethod<
   GetUsersSettingsSendAsResponse,
   GetUsersSettingsSendAsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersSettingsSendAsRequest,
   output: GetUsersSettingsSendAsResponse,
   errors: [NotFound, Forbidden],
@@ -2091,7 +2075,7 @@ export interface CreateUsersSettingsSendAsRequest {
 }
 
 export const CreateUsersSettingsSendAsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(SendAs).pipe(T.HttpBody()),
   }).pipe(
@@ -2104,8 +2088,7 @@ export const CreateUsersSettingsSendAsRequest =
   ) as unknown as Schema.Codec<CreateUsersSettingsSendAsRequest>;
 
 export type CreateUsersSettingsSendAsResponse = SendAs;
-export const CreateUsersSettingsSendAsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SendAs;
+export const CreateUsersSettingsSendAsResponse = /*@__PURE__*/ SendAs;
 
 export type CreateUsersSettingsSendAsError =
   | DefaultErrors
@@ -2120,7 +2103,7 @@ export const createUsersSettingsSendAs: API.OperationMethod<
   CreateUsersSettingsSendAsResponse,
   CreateUsersSettingsSendAsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUsersSettingsSendAsRequest,
   output: CreateUsersSettingsSendAsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2136,7 +2119,7 @@ export interface UpdateUsersSettingsSendAsRequest {
 }
 
 export const UpdateUsersSettingsSendAsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     sendAsEmail: Schema.String.pipe(T.HttpPath("sendAsEmail")),
     body: Schema.optional(SendAs).pipe(T.HttpBody()),
@@ -2150,8 +2133,7 @@ export const UpdateUsersSettingsSendAsRequest =
   ) as unknown as Schema.Codec<UpdateUsersSettingsSendAsRequest>;
 
 export type UpdateUsersSettingsSendAsResponse = SendAs;
-export const UpdateUsersSettingsSendAsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SendAs;
+export const UpdateUsersSettingsSendAsResponse = /*@__PURE__*/ SendAs;
 
 export type UpdateUsersSettingsSendAsError =
   | DefaultErrors
@@ -2166,7 +2148,7 @@ export const updateUsersSettingsSendAs: API.OperationMethod<
   UpdateUsersSettingsSendAsResponse,
   UpdateUsersSettingsSendAsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUsersSettingsSendAsRequest,
   output: UpdateUsersSettingsSendAsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2180,7 +2162,7 @@ export interface VerifyUsersSettingsSendAsRequest {
 }
 
 export const VerifyUsersSettingsSendAsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sendAsEmail: Schema.String.pipe(T.HttpPath("sendAsEmail")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
@@ -2194,7 +2176,7 @@ export const VerifyUsersSettingsSendAsRequest =
 
 export interface VerifyUsersSettingsSendAsResponse {}
 export const VerifyUsersSettingsSendAsResponse: Schema.Codec<VerifyUsersSettingsSendAsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<VerifyUsersSettingsSendAsResponse>;
 
@@ -2211,7 +2193,7 @@ export const verifyUsersSettingsSendAs: API.OperationMethod<
   VerifyUsersSettingsSendAsResponse,
   VerifyUsersSettingsSendAsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyUsersSettingsSendAsRequest,
   output: VerifyUsersSettingsSendAsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2225,7 +2207,7 @@ export interface ListUsersSettingsSendAsSmimeInfoRequest {
 }
 
 export const ListUsersSettingsSendAsSmimeInfoRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     sendAsEmail: Schema.String.pipe(T.HttpPath("sendAsEmail")),
   }).pipe(
@@ -2238,7 +2220,7 @@ export const ListUsersSettingsSendAsSmimeInfoRequest =
 
 export type ListUsersSettingsSendAsSmimeInfoResponse = ListSmimeInfoResponse;
 export const ListUsersSettingsSendAsSmimeInfoResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSmimeInfoResponse;
+  /*@__PURE__*/ ListSmimeInfoResponse;
 
 export type ListUsersSettingsSendAsSmimeInfoError =
   | DefaultErrors
@@ -2251,7 +2233,7 @@ export const listUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   ListUsersSettingsSendAsSmimeInfoResponse,
   ListUsersSettingsSendAsSmimeInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListUsersSettingsSendAsSmimeInfoRequest,
   output: ListUsersSettingsSendAsSmimeInfoResponse,
   errors: [NotFound, Forbidden],
@@ -2267,7 +2249,7 @@ export interface DeleteUsersSettingsSendAsSmimeInfoRequest {
 }
 
 export const DeleteUsersSettingsSendAsSmimeInfoRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     sendAsEmail: Schema.String.pipe(T.HttpPath("sendAsEmail")),
@@ -2281,7 +2263,7 @@ export const DeleteUsersSettingsSendAsSmimeInfoRequest =
 
 export interface DeleteUsersSettingsSendAsSmimeInfoResponse {}
 export const DeleteUsersSettingsSendAsSmimeInfoResponse: Schema.Codec<DeleteUsersSettingsSendAsSmimeInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteUsersSettingsSendAsSmimeInfoResponse>;
 
@@ -2298,7 +2280,7 @@ export const deleteUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   DeleteUsersSettingsSendAsSmimeInfoResponse,
   DeleteUsersSettingsSendAsSmimeInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersSettingsSendAsSmimeInfoRequest,
   output: DeleteUsersSettingsSendAsSmimeInfoResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2314,7 +2296,7 @@ export interface InsertUsersSettingsSendAsSmimeInfoRequest {
 }
 
 export const InsertUsersSettingsSendAsSmimeInfoRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sendAsEmail: Schema.String.pipe(T.HttpPath("sendAsEmail")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(SmimeInfo).pipe(T.HttpBody()),
@@ -2329,7 +2311,7 @@ export const InsertUsersSettingsSendAsSmimeInfoRequest =
 
 export type InsertUsersSettingsSendAsSmimeInfoResponse = SmimeInfo;
 export const InsertUsersSettingsSendAsSmimeInfoResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SmimeInfo;
+  /*@__PURE__*/ SmimeInfo;
 
 export type InsertUsersSettingsSendAsSmimeInfoError =
   | DefaultErrors
@@ -2344,7 +2326,7 @@ export const insertUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   InsertUsersSettingsSendAsSmimeInfoResponse,
   InsertUsersSettingsSendAsSmimeInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertUsersSettingsSendAsSmimeInfoRequest,
   output: InsertUsersSettingsSendAsSmimeInfoResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2360,7 +2342,7 @@ export interface GetUsersSettingsSendAsSmimeInfoRequest {
 }
 
 export const GetUsersSettingsSendAsSmimeInfoRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sendAsEmail: Schema.String.pipe(T.HttpPath("sendAsEmail")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     id: Schema.String.pipe(T.HttpPath("id")),
@@ -2373,8 +2355,7 @@ export const GetUsersSettingsSendAsSmimeInfoRequest =
   ) as unknown as Schema.Codec<GetUsersSettingsSendAsSmimeInfoRequest>;
 
 export type GetUsersSettingsSendAsSmimeInfoResponse = SmimeInfo;
-export const GetUsersSettingsSendAsSmimeInfoResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SmimeInfo;
+export const GetUsersSettingsSendAsSmimeInfoResponse = /*@__PURE__*/ SmimeInfo;
 
 export type GetUsersSettingsSendAsSmimeInfoError =
   | DefaultErrors
@@ -2387,7 +2368,7 @@ export const getUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   GetUsersSettingsSendAsSmimeInfoResponse,
   GetUsersSettingsSendAsSmimeInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersSettingsSendAsSmimeInfoRequest,
   output: GetUsersSettingsSendAsSmimeInfoResponse,
   errors: [NotFound, Forbidden],
@@ -2403,7 +2384,7 @@ export interface SetDefaultUsersSettingsSendAsSmimeInfoRequest {
 }
 
 export const SetDefaultUsersSettingsSendAsSmimeInfoRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     sendAsEmail: Schema.String.pipe(T.HttpPath("sendAsEmail")),
@@ -2418,7 +2399,7 @@ export const SetDefaultUsersSettingsSendAsSmimeInfoRequest =
 
 export interface SetDefaultUsersSettingsSendAsSmimeInfoResponse {}
 export const SetDefaultUsersSettingsSendAsSmimeInfoResponse: Schema.Codec<SetDefaultUsersSettingsSendAsSmimeInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<SetDefaultUsersSettingsSendAsSmimeInfoResponse>;
 
@@ -2435,7 +2416,7 @@ export const setDefaultUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   SetDefaultUsersSettingsSendAsSmimeInfoResponse,
   SetDefaultUsersSettingsSendAsSmimeInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetDefaultUsersSettingsSendAsSmimeInfoRequest,
   output: SetDefaultUsersSettingsSendAsSmimeInfoResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2451,7 +2432,7 @@ export interface ListUsersSettingsCseIdentitiesRequest {
 }
 
 export const ListUsersSettingsCseIdentitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2465,7 +2446,7 @@ export const ListUsersSettingsCseIdentitiesRequest =
 
 export type ListUsersSettingsCseIdentitiesResponse = ListCseIdentitiesResponse;
 export const ListUsersSettingsCseIdentitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCseIdentitiesResponse;
+  /*@__PURE__*/ ListCseIdentitiesResponse;
 
 export type ListUsersSettingsCseIdentitiesError =
   | DefaultErrors
@@ -2478,7 +2459,7 @@ export const listUsersSettingsCseIdentities: API.PaginatedOperationMethod<
   ListUsersSettingsCseIdentitiesResponse,
   ListUsersSettingsCseIdentitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSettingsCseIdentitiesRequest,
   output: ListUsersSettingsCseIdentitiesResponse,
   errors: [NotFound, Forbidden],
@@ -2498,7 +2479,7 @@ export interface PatchUsersSettingsCseIdentitiesRequest {
 }
 
 export const PatchUsersSettingsCseIdentitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     emailAddress: Schema.String.pipe(T.HttpPath("emailAddress")),
     body: Schema.optional(CseIdentity).pipe(T.HttpBody()),
@@ -2513,7 +2494,7 @@ export const PatchUsersSettingsCseIdentitiesRequest =
 
 export type PatchUsersSettingsCseIdentitiesResponse = CseIdentity;
 export const PatchUsersSettingsCseIdentitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CseIdentity;
+  /*@__PURE__*/ CseIdentity;
 
 export type PatchUsersSettingsCseIdentitiesError =
   | DefaultErrors
@@ -2528,7 +2509,7 @@ export const patchUsersSettingsCseIdentities: API.OperationMethod<
   PatchUsersSettingsCseIdentitiesResponse,
   PatchUsersSettingsCseIdentitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchUsersSettingsCseIdentitiesRequest,
   output: PatchUsersSettingsCseIdentitiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2542,7 +2523,7 @@ export interface DeleteUsersSettingsCseIdentitiesRequest {
 }
 
 export const DeleteUsersSettingsCseIdentitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cseEmailAddress: Schema.String.pipe(T.HttpPath("cseEmailAddress")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
@@ -2555,7 +2536,7 @@ export const DeleteUsersSettingsCseIdentitiesRequest =
 
 export interface DeleteUsersSettingsCseIdentitiesResponse {}
 export const DeleteUsersSettingsCseIdentitiesResponse: Schema.Codec<DeleteUsersSettingsCseIdentitiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteUsersSettingsCseIdentitiesResponse>;
 
@@ -2572,7 +2553,7 @@ export const deleteUsersSettingsCseIdentities: API.OperationMethod<
   DeleteUsersSettingsCseIdentitiesResponse,
   DeleteUsersSettingsCseIdentitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersSettingsCseIdentitiesRequest,
   output: DeleteUsersSettingsCseIdentitiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2586,7 +2567,7 @@ export interface CreateUsersSettingsCseIdentitiesRequest {
 }
 
 export const CreateUsersSettingsCseIdentitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(CseIdentity).pipe(T.HttpBody()),
   }).pipe(
@@ -2600,7 +2581,7 @@ export const CreateUsersSettingsCseIdentitiesRequest =
 
 export type CreateUsersSettingsCseIdentitiesResponse = CseIdentity;
 export const CreateUsersSettingsCseIdentitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CseIdentity;
+  /*@__PURE__*/ CseIdentity;
 
 export type CreateUsersSettingsCseIdentitiesError =
   | DefaultErrors
@@ -2615,7 +2596,7 @@ export const createUsersSettingsCseIdentities: API.OperationMethod<
   CreateUsersSettingsCseIdentitiesResponse,
   CreateUsersSettingsCseIdentitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUsersSettingsCseIdentitiesRequest,
   output: CreateUsersSettingsCseIdentitiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2629,7 +2610,7 @@ export interface GetUsersSettingsCseIdentitiesRequest {
 }
 
 export const GetUsersSettingsCseIdentitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     cseEmailAddress: Schema.String.pipe(T.HttpPath("cseEmailAddress")),
   }).pipe(
@@ -2641,8 +2622,7 @@ export const GetUsersSettingsCseIdentitiesRequest =
   ) as unknown as Schema.Codec<GetUsersSettingsCseIdentitiesRequest>;
 
 export type GetUsersSettingsCseIdentitiesResponse = CseIdentity;
-export const GetUsersSettingsCseIdentitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CseIdentity;
+export const GetUsersSettingsCseIdentitiesResponse = /*@__PURE__*/ CseIdentity;
 
 export type GetUsersSettingsCseIdentitiesError =
   | DefaultErrors
@@ -2655,7 +2635,7 @@ export const getUsersSettingsCseIdentities: API.OperationMethod<
   GetUsersSettingsCseIdentitiesResponse,
   GetUsersSettingsCseIdentitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersSettingsCseIdentitiesRequest,
   output: GetUsersSettingsCseIdentitiesResponse,
   errors: [NotFound, Forbidden],
@@ -2671,7 +2651,7 @@ export interface ObliterateUsersSettingsCseKeypairsRequest {
 }
 
 export const ObliterateUsersSettingsCseKeypairsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     keyPairId: Schema.String.pipe(T.HttpPath("keyPairId")),
     body: Schema.optional(ObliterateCseKeyPairRequest).pipe(T.HttpBody()),
@@ -2686,7 +2666,7 @@ export const ObliterateUsersSettingsCseKeypairsRequest =
 
 export interface ObliterateUsersSettingsCseKeypairsResponse {}
 export const ObliterateUsersSettingsCseKeypairsResponse: Schema.Codec<ObliterateUsersSettingsCseKeypairsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<ObliterateUsersSettingsCseKeypairsResponse>;
 
@@ -2703,7 +2683,7 @@ export const obliterateUsersSettingsCseKeypairs: API.OperationMethod<
   ObliterateUsersSettingsCseKeypairsResponse,
   ObliterateUsersSettingsCseKeypairsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ObliterateUsersSettingsCseKeypairsRequest,
   output: ObliterateUsersSettingsCseKeypairsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2719,7 +2699,7 @@ export interface ListUsersSettingsCseKeypairsRequest {
 }
 
 export const ListUsersSettingsCseKeypairsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2733,7 +2713,7 @@ export const ListUsersSettingsCseKeypairsRequest =
 
 export type ListUsersSettingsCseKeypairsResponse = ListCseKeyPairsResponse;
 export const ListUsersSettingsCseKeypairsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCseKeyPairsResponse;
+  /*@__PURE__*/ ListCseKeyPairsResponse;
 
 export type ListUsersSettingsCseKeypairsError =
   | DefaultErrors
@@ -2746,7 +2726,7 @@ export const listUsersSettingsCseKeypairs: API.PaginatedOperationMethod<
   ListUsersSettingsCseKeypairsResponse,
   ListUsersSettingsCseKeypairsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSettingsCseKeypairsRequest,
   output: ListUsersSettingsCseKeypairsResponse,
   errors: [NotFound, Forbidden],
@@ -2764,7 +2744,7 @@ export interface CreateUsersSettingsCseKeypairsRequest {
 }
 
 export const CreateUsersSettingsCseKeypairsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(CseKeyPair).pipe(T.HttpBody()),
   }).pipe(
@@ -2777,8 +2757,7 @@ export const CreateUsersSettingsCseKeypairsRequest =
   ) as unknown as Schema.Codec<CreateUsersSettingsCseKeypairsRequest>;
 
 export type CreateUsersSettingsCseKeypairsResponse = CseKeyPair;
-export const CreateUsersSettingsCseKeypairsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CseKeyPair;
+export const CreateUsersSettingsCseKeypairsResponse = /*@__PURE__*/ CseKeyPair;
 
 export type CreateUsersSettingsCseKeypairsError =
   | DefaultErrors
@@ -2793,7 +2772,7 @@ export const createUsersSettingsCseKeypairs: API.OperationMethod<
   CreateUsersSettingsCseKeypairsResponse,
   CreateUsersSettingsCseKeypairsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUsersSettingsCseKeypairsRequest,
   output: CreateUsersSettingsCseKeypairsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2809,7 +2788,7 @@ export interface EnableUsersSettingsCseKeypairsRequest {
 }
 
 export const EnableUsersSettingsCseKeypairsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     keyPairId: Schema.String.pipe(T.HttpPath("keyPairId")),
     body: Schema.optional(EnableCseKeyPairRequest).pipe(T.HttpBody()),
@@ -2823,8 +2802,7 @@ export const EnableUsersSettingsCseKeypairsRequest =
   ) as unknown as Schema.Codec<EnableUsersSettingsCseKeypairsRequest>;
 
 export type EnableUsersSettingsCseKeypairsResponse = CseKeyPair;
-export const EnableUsersSettingsCseKeypairsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CseKeyPair;
+export const EnableUsersSettingsCseKeypairsResponse = /*@__PURE__*/ CseKeyPair;
 
 export type EnableUsersSettingsCseKeypairsError =
   | DefaultErrors
@@ -2839,7 +2817,7 @@ export const enableUsersSettingsCseKeypairs: API.OperationMethod<
   EnableUsersSettingsCseKeypairsResponse,
   EnableUsersSettingsCseKeypairsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableUsersSettingsCseKeypairsRequest,
   output: EnableUsersSettingsCseKeypairsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2853,7 +2831,7 @@ export interface GetUsersSettingsCseKeypairsRequest {
 }
 
 export const GetUsersSettingsCseKeypairsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     keyPairId: Schema.String.pipe(T.HttpPath("keyPairId")),
   }).pipe(
@@ -2865,8 +2843,7 @@ export const GetUsersSettingsCseKeypairsRequest =
   ) as unknown as Schema.Codec<GetUsersSettingsCseKeypairsRequest>;
 
 export type GetUsersSettingsCseKeypairsResponse = CseKeyPair;
-export const GetUsersSettingsCseKeypairsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CseKeyPair;
+export const GetUsersSettingsCseKeypairsResponse = /*@__PURE__*/ CseKeyPair;
 
 export type GetUsersSettingsCseKeypairsError =
   | DefaultErrors
@@ -2879,7 +2856,7 @@ export const getUsersSettingsCseKeypairs: API.OperationMethod<
   GetUsersSettingsCseKeypairsResponse,
   GetUsersSettingsCseKeypairsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersSettingsCseKeypairsRequest,
   output: GetUsersSettingsCseKeypairsResponse,
   errors: [NotFound, Forbidden],
@@ -2895,7 +2872,7 @@ export interface DisableUsersSettingsCseKeypairsRequest {
 }
 
 export const DisableUsersSettingsCseKeypairsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     keyPairId: Schema.String.pipe(T.HttpPath("keyPairId")),
     body: Schema.optional(DisableCseKeyPairRequest).pipe(T.HttpBody()),
@@ -2909,8 +2886,7 @@ export const DisableUsersSettingsCseKeypairsRequest =
   ) as unknown as Schema.Codec<DisableUsersSettingsCseKeypairsRequest>;
 
 export type DisableUsersSettingsCseKeypairsResponse = CseKeyPair;
-export const DisableUsersSettingsCseKeypairsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CseKeyPair;
+export const DisableUsersSettingsCseKeypairsResponse = /*@__PURE__*/ CseKeyPair;
 
 export type DisableUsersSettingsCseKeypairsError =
   | DefaultErrors
@@ -2925,7 +2901,7 @@ export const disableUsersSettingsCseKeypairs: API.OperationMethod<
   DisableUsersSettingsCseKeypairsResponse,
   DisableUsersSettingsCseKeypairsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableUsersSettingsCseKeypairsRequest,
   output: DisableUsersSettingsCseKeypairsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2937,7 +2913,7 @@ export interface ListUsersSettingsDelegatesRequest {
 }
 
 export const ListUsersSettingsDelegatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
     T.Http({
@@ -2949,7 +2925,7 @@ export const ListUsersSettingsDelegatesRequest =
 
 export type ListUsersSettingsDelegatesResponse = ListDelegatesResponse;
 export const ListUsersSettingsDelegatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDelegatesResponse;
+  /*@__PURE__*/ ListDelegatesResponse;
 
 export type ListUsersSettingsDelegatesError =
   | DefaultErrors
@@ -2962,7 +2938,7 @@ export const listUsersSettingsDelegates: API.OperationMethod<
   ListUsersSettingsDelegatesResponse,
   ListUsersSettingsDelegatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListUsersSettingsDelegatesRequest,
   output: ListUsersSettingsDelegatesResponse,
   errors: [NotFound, Forbidden],
@@ -2976,7 +2952,7 @@ export interface CreateUsersSettingsDelegatesRequest {
 }
 
 export const CreateUsersSettingsDelegatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(Delegate).pipe(T.HttpBody()),
   }).pipe(
@@ -2989,8 +2965,7 @@ export const CreateUsersSettingsDelegatesRequest =
   ) as unknown as Schema.Codec<CreateUsersSettingsDelegatesRequest>;
 
 export type CreateUsersSettingsDelegatesResponse = Delegate;
-export const CreateUsersSettingsDelegatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Delegate;
+export const CreateUsersSettingsDelegatesResponse = /*@__PURE__*/ Delegate;
 
 export type CreateUsersSettingsDelegatesError =
   | DefaultErrors
@@ -3005,7 +2980,7 @@ export const createUsersSettingsDelegates: API.OperationMethod<
   CreateUsersSettingsDelegatesResponse,
   CreateUsersSettingsDelegatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUsersSettingsDelegatesRequest,
   output: CreateUsersSettingsDelegatesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3019,7 +2994,7 @@ export interface DeleteUsersSettingsDelegatesRequest {
 }
 
 export const DeleteUsersSettingsDelegatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegateEmail: Schema.String.pipe(T.HttpPath("delegateEmail")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
@@ -3032,7 +3007,7 @@ export const DeleteUsersSettingsDelegatesRequest =
 
 export interface DeleteUsersSettingsDelegatesResponse {}
 export const DeleteUsersSettingsDelegatesResponse: Schema.Codec<DeleteUsersSettingsDelegatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteUsersSettingsDelegatesResponse>;
 
@@ -3049,7 +3024,7 @@ export const deleteUsersSettingsDelegates: API.OperationMethod<
   DeleteUsersSettingsDelegatesResponse,
   DeleteUsersSettingsDelegatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersSettingsDelegatesRequest,
   output: DeleteUsersSettingsDelegatesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3063,7 +3038,7 @@ export interface GetUsersSettingsDelegatesRequest {
 }
 
 export const GetUsersSettingsDelegatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegateEmail: Schema.String.pipe(T.HttpPath("delegateEmail")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
@@ -3075,8 +3050,7 @@ export const GetUsersSettingsDelegatesRequest =
   ) as unknown as Schema.Codec<GetUsersSettingsDelegatesRequest>;
 
 export type GetUsersSettingsDelegatesResponse = Delegate;
-export const GetUsersSettingsDelegatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Delegate;
+export const GetUsersSettingsDelegatesResponse = /*@__PURE__*/ Delegate;
 
 export type GetUsersSettingsDelegatesError =
   | DefaultErrors
@@ -3089,7 +3063,7 @@ export const getUsersSettingsDelegates: API.OperationMethod<
   GetUsersSettingsDelegatesResponse,
   GetUsersSettingsDelegatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersSettingsDelegatesRequest,
   output: GetUsersSettingsDelegatesResponse,
   errors: [NotFound, Forbidden],
@@ -3105,7 +3079,7 @@ export interface ModifyUsersThreadsRequest {
 }
 
 export const ModifyUsersThreadsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     id: Schema.String.pipe(T.HttpPath("id")),
     body: Schema.optional(ModifyThreadRequest).pipe(T.HttpBody()),
@@ -3119,7 +3093,7 @@ export const ModifyUsersThreadsRequest =
   ) as unknown as Schema.Codec<ModifyUsersThreadsRequest>;
 
 export type ModifyUsersThreadsResponse = Thread;
-export const ModifyUsersThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Thread;
+export const ModifyUsersThreadsResponse = /*@__PURE__*/ Thread;
 
 export type ModifyUsersThreadsError =
   | DefaultErrors
@@ -3134,7 +3108,7 @@ export const modifyUsersThreads: API.OperationMethod<
   ModifyUsersThreadsResponse,
   ModifyUsersThreadsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyUsersThreadsRequest,
   output: ModifyUsersThreadsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3151,22 +3125,20 @@ export interface GetUsersThreadsRequest {
   format?: "full" | "metadata" | "minimal" | (string & {});
 }
 
-export const GetUsersThreadsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String.pipe(T.HttpPath("id")),
-    metadataHeaders: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("metadataHeaders"),
-    ),
-    userId: Schema.String.pipe(T.HttpPath("userId")),
-    format: Schema.optional(Schema.String).pipe(T.HttpQuery("format")),
-  },
-).pipe(
+export const GetUsersThreadsRequest = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.HttpPath("id")),
+  metadataHeaders: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("metadataHeaders"),
+  ),
+  userId: Schema.String.pipe(T.HttpPath("userId")),
+  format: Schema.optional(Schema.String).pipe(T.HttpQuery("format")),
+}).pipe(
   T.Http({ method: "GET", path: "gmail/v1/users/{userId}/threads/{id}" }),
   svc,
 ) as unknown as Schema.Codec<GetUsersThreadsRequest>;
 
 export type GetUsersThreadsResponse = Thread;
-export const GetUsersThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Thread;
+export const GetUsersThreadsResponse = /*@__PURE__*/ Thread;
 
 export type GetUsersThreadsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3176,7 +3148,7 @@ export const getUsersThreads: API.OperationMethod<
   GetUsersThreadsResponse,
   GetUsersThreadsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersThreadsRequest,
   output: GetUsersThreadsResponse,
   errors: [NotFound, Forbidden],
@@ -3190,7 +3162,7 @@ export interface TrashUsersThreadsRequest {
 }
 
 export const TrashUsersThreadsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
@@ -3203,7 +3175,7 @@ export const TrashUsersThreadsRequest =
   ) as unknown as Schema.Codec<TrashUsersThreadsRequest>;
 
 export type TrashUsersThreadsResponse = Thread;
-export const TrashUsersThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Thread;
+export const TrashUsersThreadsResponse = /*@__PURE__*/ Thread;
 
 export type TrashUsersThreadsError =
   | DefaultErrors
@@ -3218,7 +3190,7 @@ export const trashUsersThreads: API.OperationMethod<
   TrashUsersThreadsResponse,
   TrashUsersThreadsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TrashUsersThreadsRequest,
   output: TrashUsersThreadsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3240,7 +3212,7 @@ export interface ListUsersThreadsRequest {
 }
 
 export const ListUsersThreadsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     includeSpamTrash: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("includeSpamTrash"),
@@ -3257,8 +3229,7 @@ export const ListUsersThreadsRequest =
   ) as unknown as Schema.Codec<ListUsersThreadsRequest>;
 
 export type ListUsersThreadsResponse = ListThreadsResponse;
-export const ListUsersThreadsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListThreadsResponse;
+export const ListUsersThreadsResponse = /*@__PURE__*/ ListThreadsResponse;
 
 export type ListUsersThreadsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3268,7 +3239,7 @@ export const listUsersThreads: API.PaginatedOperationMethod<
   ListUsersThreadsResponse,
   ListUsersThreadsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersThreadsRequest,
   output: ListUsersThreadsResponse,
   errors: [NotFound, Forbidden],
@@ -3286,7 +3257,7 @@ export interface UntrashUsersThreadsRequest {
 }
 
 export const UntrashUsersThreadsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
@@ -3299,7 +3270,7 @@ export const UntrashUsersThreadsRequest =
   ) as unknown as Schema.Codec<UntrashUsersThreadsRequest>;
 
 export type UntrashUsersThreadsResponse = Thread;
-export const UntrashUsersThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Thread;
+export const UntrashUsersThreadsResponse = /*@__PURE__*/ Thread;
 
 export type UntrashUsersThreadsError =
   | DefaultErrors
@@ -3314,7 +3285,7 @@ export const untrashUsersThreads: API.OperationMethod<
   UntrashUsersThreadsResponse,
   UntrashUsersThreadsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntrashUsersThreadsRequest,
   output: UntrashUsersThreadsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3328,7 +3299,7 @@ export interface DeleteUsersThreadsRequest {
 }
 
 export const DeleteUsersThreadsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     id: Schema.String.pipe(T.HttpPath("id")),
   }).pipe(
@@ -3338,7 +3309,7 @@ export const DeleteUsersThreadsRequest =
 
 export interface DeleteUsersThreadsResponse {}
 export const DeleteUsersThreadsResponse: Schema.Codec<DeleteUsersThreadsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteUsersThreadsResponse>;
 
@@ -3355,7 +3326,7 @@ export const deleteUsersThreads: API.OperationMethod<
   DeleteUsersThreadsResponse,
   DeleteUsersThreadsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersThreadsRequest,
   output: DeleteUsersThreadsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3366,18 +3337,15 @@ export interface ListUsersLabelsRequest {
   userId: string;
 }
 
-export const ListUsersLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    userId: Schema.String.pipe(T.HttpPath("userId")),
-  },
-).pipe(
+export const ListUsersLabelsRequest = /*@__PURE__*/ Schema.Struct({
+  userId: Schema.String.pipe(T.HttpPath("userId")),
+}).pipe(
   T.Http({ method: "GET", path: "gmail/v1/users/{userId}/labels" }),
   svc,
 ) as unknown as Schema.Codec<ListUsersLabelsRequest>;
 
 export type ListUsersLabelsResponse = ListLabelsResponse;
-export const ListUsersLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLabelsResponse;
+export const ListUsersLabelsResponse = /*@__PURE__*/ ListLabelsResponse;
 
 export type ListUsersLabelsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3387,7 +3355,7 @@ export const listUsersLabels: API.OperationMethod<
   ListUsersLabelsResponse,
   ListUsersLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListUsersLabelsRequest,
   output: ListUsersLabelsResponse,
   errors: [NotFound, Forbidden],
@@ -3403,7 +3371,7 @@ export interface PatchUsersLabelsRequest {
 }
 
 export const PatchUsersLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(Label).pipe(T.HttpBody()),
@@ -3417,7 +3385,7 @@ export const PatchUsersLabelsRequest =
   ) as unknown as Schema.Codec<PatchUsersLabelsRequest>;
 
 export type PatchUsersLabelsResponse = Label;
-export const PatchUsersLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Label;
+export const PatchUsersLabelsResponse = /*@__PURE__*/ Label;
 
 export type PatchUsersLabelsError =
   | DefaultErrors
@@ -3432,7 +3400,7 @@ export const patchUsersLabels: API.OperationMethod<
   PatchUsersLabelsResponse,
   PatchUsersLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchUsersLabelsRequest,
   output: PatchUsersLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3446,7 +3414,7 @@ export interface DeleteUsersLabelsRequest {
 }
 
 export const DeleteUsersLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     id: Schema.String.pipe(T.HttpPath("id")),
   }).pipe(
@@ -3456,7 +3424,7 @@ export const DeleteUsersLabelsRequest =
 
 export interface DeleteUsersLabelsResponse {}
 export const DeleteUsersLabelsResponse: Schema.Codec<DeleteUsersLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteUsersLabelsResponse>;
 
@@ -3473,7 +3441,7 @@ export const deleteUsersLabels: API.OperationMethod<
   DeleteUsersLabelsResponse,
   DeleteUsersLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersLabelsRequest,
   output: DeleteUsersLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3487,7 +3455,7 @@ export interface CreateUsersLabelsRequest {
 }
 
 export const CreateUsersLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(Label).pipe(T.HttpBody()),
   }).pipe(
@@ -3500,7 +3468,7 @@ export const CreateUsersLabelsRequest =
   ) as unknown as Schema.Codec<CreateUsersLabelsRequest>;
 
 export type CreateUsersLabelsResponse = Label;
-export const CreateUsersLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Label;
+export const CreateUsersLabelsResponse = /*@__PURE__*/ Label;
 
 export type CreateUsersLabelsError =
   | DefaultErrors
@@ -3515,7 +3483,7 @@ export const createUsersLabels: API.OperationMethod<
   CreateUsersLabelsResponse,
   CreateUsersLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUsersLabelsRequest,
   output: CreateUsersLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3531,7 +3499,7 @@ export interface UpdateUsersLabelsRequest {
 }
 
 export const UpdateUsersLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     id: Schema.String.pipe(T.HttpPath("id")),
     body: Schema.optional(Label).pipe(T.HttpBody()),
@@ -3545,7 +3513,7 @@ export const UpdateUsersLabelsRequest =
   ) as unknown as Schema.Codec<UpdateUsersLabelsRequest>;
 
 export type UpdateUsersLabelsResponse = Label;
-export const UpdateUsersLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Label;
+export const UpdateUsersLabelsResponse = /*@__PURE__*/ Label;
 
 export type UpdateUsersLabelsError =
   | DefaultErrors
@@ -3560,7 +3528,7 @@ export const updateUsersLabels: API.OperationMethod<
   UpdateUsersLabelsResponse,
   UpdateUsersLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUsersLabelsRequest,
   output: UpdateUsersLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3573,7 +3541,7 @@ export interface GetUsersLabelsRequest {
   userId: string;
 }
 
-export const GetUsersLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetUsersLabelsRequest = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.HttpPath("id")),
   userId: Schema.String.pipe(T.HttpPath("userId")),
 }).pipe(
@@ -3582,7 +3550,7 @@ export const GetUsersLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetUsersLabelsRequest>;
 
 export type GetUsersLabelsResponse = Label;
-export const GetUsersLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Label;
+export const GetUsersLabelsResponse = /*@__PURE__*/ Label;
 
 export type GetUsersLabelsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3592,7 +3560,7 @@ export const getUsersLabels: API.OperationMethod<
   GetUsersLabelsResponse,
   GetUsersLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersLabelsRequest,
   output: GetUsersLabelsResponse,
   errors: [NotFound, Forbidden],
@@ -3606,7 +3574,7 @@ export interface DeleteUsersDraftsRequest {
 }
 
 export const DeleteUsersDraftsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
@@ -3616,7 +3584,7 @@ export const DeleteUsersDraftsRequest =
 
 export interface DeleteUsersDraftsResponse {}
 export const DeleteUsersDraftsResponse: Schema.Codec<DeleteUsersDraftsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteUsersDraftsResponse>;
 
@@ -3633,7 +3601,7 @@ export const deleteUsersDrafts: API.OperationMethod<
   DeleteUsersDraftsResponse,
   DeleteUsersDraftsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersDraftsRequest,
   output: DeleteUsersDraftsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3652,24 +3620,21 @@ export interface ListUsersDraftsRequest {
   includeSpamTrash?: boolean;
 }
 
-export const ListUsersDraftsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    q: Schema.optional(Schema.String).pipe(T.HttpQuery("q")),
-    userId: Schema.String.pipe(T.HttpPath("userId")),
-    includeSpamTrash: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("includeSpamTrash"),
-    ),
-  },
-).pipe(
+export const ListUsersDraftsRequest = /*@__PURE__*/ Schema.Struct({
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  q: Schema.optional(Schema.String).pipe(T.HttpQuery("q")),
+  userId: Schema.String.pipe(T.HttpPath("userId")),
+  includeSpamTrash: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("includeSpamTrash"),
+  ),
+}).pipe(
   T.Http({ method: "GET", path: "gmail/v1/users/{userId}/drafts" }),
   svc,
 ) as unknown as Schema.Codec<ListUsersDraftsRequest>;
 
 export type ListUsersDraftsResponse = ListDraftsResponse;
-export const ListUsersDraftsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDraftsResponse;
+export const ListUsersDraftsResponse = /*@__PURE__*/ ListDraftsResponse;
 
 export type ListUsersDraftsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3679,7 +3644,7 @@ export const listUsersDrafts: API.PaginatedOperationMethod<
   ListUsersDraftsResponse,
   ListUsersDraftsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersDraftsRequest,
   output: ListUsersDraftsResponse,
   errors: [NotFound, Forbidden],
@@ -3698,7 +3663,7 @@ export interface GetUsersDraftsRequest {
   id: string;
 }
 
-export const GetUsersDraftsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetUsersDraftsRequest = /*@__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.HttpPath("userId")),
   format: Schema.optional(Schema.String).pipe(T.HttpQuery("format")),
   id: Schema.String.pipe(T.HttpPath("id")),
@@ -3708,7 +3673,7 @@ export const GetUsersDraftsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetUsersDraftsRequest>;
 
 export type GetUsersDraftsResponse = Draft;
-export const GetUsersDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Draft;
+export const GetUsersDraftsResponse = /*@__PURE__*/ Draft;
 
 export type GetUsersDraftsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3718,7 +3683,7 @@ export const getUsersDrafts: API.OperationMethod<
   GetUsersDraftsResponse,
   GetUsersDraftsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersDraftsRequest,
   output: GetUsersDraftsResponse,
   errors: [NotFound, Forbidden],
@@ -3731,12 +3696,10 @@ export interface SendUsersDraftsRequest {
   body?: Draft;
 }
 
-export const SendUsersDraftsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    userId: Schema.String.pipe(T.HttpPath("userId")),
-    body: Schema.optional(Draft).pipe(T.HttpBody()),
-  },
-).pipe(
+export const SendUsersDraftsRequest = /*@__PURE__*/ Schema.Struct({
+  userId: Schema.String.pipe(T.HttpPath("userId")),
+  body: Schema.optional(Draft).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "gmail/v1/users/{userId}/drafts/send",
@@ -3746,7 +3709,7 @@ export const SendUsersDraftsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<SendUsersDraftsRequest>;
 
 export type SendUsersDraftsResponse = Message;
-export const SendUsersDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
+export const SendUsersDraftsResponse = /*@__PURE__*/ Message;
 
 export type SendUsersDraftsError =
   | DefaultErrors
@@ -3761,7 +3724,7 @@ export const sendUsersDrafts: API.OperationMethod<
   SendUsersDraftsResponse,
   SendUsersDraftsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendUsersDraftsRequest,
   output: SendUsersDraftsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3775,7 +3738,7 @@ export interface CreateUsersDraftsRequest {
 }
 
 export const CreateUsersDraftsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(Draft).pipe(T.HttpBody()),
   }).pipe(
@@ -3788,7 +3751,7 @@ export const CreateUsersDraftsRequest =
   ) as unknown as Schema.Codec<CreateUsersDraftsRequest>;
 
 export type CreateUsersDraftsResponse = Draft;
-export const CreateUsersDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Draft;
+export const CreateUsersDraftsResponse = /*@__PURE__*/ Draft;
 
 export type CreateUsersDraftsError =
   | DefaultErrors
@@ -3803,7 +3766,7 @@ export const createUsersDrafts: API.OperationMethod<
   CreateUsersDraftsResponse,
   CreateUsersDraftsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUsersDraftsRequest,
   output: CreateUsersDraftsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3819,7 +3782,7 @@ export interface UpdateUsersDraftsRequest {
 }
 
 export const UpdateUsersDraftsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     id: Schema.String.pipe(T.HttpPath("id")),
     body: Schema.optional(Draft).pipe(T.HttpBody()),
@@ -3833,7 +3796,7 @@ export const UpdateUsersDraftsRequest =
   ) as unknown as Schema.Codec<UpdateUsersDraftsRequest>;
 
 export type UpdateUsersDraftsResponse = Draft;
-export const UpdateUsersDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Draft;
+export const UpdateUsersDraftsResponse = /*@__PURE__*/ Draft;
 
 export type UpdateUsersDraftsError =
   | DefaultErrors
@@ -3848,7 +3811,7 @@ export const updateUsersDrafts: API.OperationMethod<
   UpdateUsersDraftsResponse,
   UpdateUsersDraftsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUsersDraftsRequest,
   output: UpdateUsersDraftsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3866,7 +3829,7 @@ export interface InsertUsersMessagesRequest {
 }
 
 export const InsertUsersMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     internalDateSource: Schema.optional(Schema.String).pipe(
       T.HttpQuery("internalDateSource"),
     ),
@@ -3883,7 +3846,7 @@ export const InsertUsersMessagesRequest =
   ) as unknown as Schema.Codec<InsertUsersMessagesRequest>;
 
 export type InsertUsersMessagesResponse = Message;
-export const InsertUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
+export const InsertUsersMessagesResponse = /*@__PURE__*/ Message;
 
 export type InsertUsersMessagesError =
   | DefaultErrors
@@ -3898,7 +3861,7 @@ export const insertUsersMessages: API.OperationMethod<
   InsertUsersMessagesResponse,
   InsertUsersMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertUsersMessagesRequest,
   output: InsertUsersMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3916,7 +3879,7 @@ export interface GetUsersMessagesRequest {
 }
 
 export const GetUsersMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     metadataHeaders: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("metadataHeaders"),
@@ -3929,7 +3892,7 @@ export const GetUsersMessagesRequest =
   ) as unknown as Schema.Codec<GetUsersMessagesRequest>;
 
 export type GetUsersMessagesResponse = Message;
-export const GetUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
+export const GetUsersMessagesResponse = /*@__PURE__*/ Message;
 
 export type GetUsersMessagesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3939,7 +3902,7 @@ export const getUsersMessages: API.OperationMethod<
   GetUsersMessagesResponse,
   GetUsersMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersMessagesRequest,
   output: GetUsersMessagesResponse,
   errors: [NotFound, Forbidden],
@@ -3953,7 +3916,7 @@ export interface SendUsersMessagesRequest {
 }
 
 export const SendUsersMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(Message).pipe(T.HttpBody()),
   }).pipe(
@@ -3966,7 +3929,7 @@ export const SendUsersMessagesRequest =
   ) as unknown as Schema.Codec<SendUsersMessagesRequest>;
 
 export type SendUsersMessagesResponse = Message;
-export const SendUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
+export const SendUsersMessagesResponse = /*@__PURE__*/ Message;
 
 export type SendUsersMessagesError =
   | DefaultErrors
@@ -3981,7 +3944,7 @@ export const sendUsersMessages: API.OperationMethod<
   SendUsersMessagesResponse,
   SendUsersMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendUsersMessagesRequest,
   output: SendUsersMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3997,7 +3960,7 @@ export interface ModifyUsersMessagesRequest {
 }
 
 export const ModifyUsersMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     id: Schema.String.pipe(T.HttpPath("id")),
     body: Schema.optional(ModifyMessageRequest).pipe(T.HttpBody()),
@@ -4011,7 +3974,7 @@ export const ModifyUsersMessagesRequest =
   ) as unknown as Schema.Codec<ModifyUsersMessagesRequest>;
 
 export type ModifyUsersMessagesResponse = Message;
-export const ModifyUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
+export const ModifyUsersMessagesResponse = /*@__PURE__*/ Message;
 
 export type ModifyUsersMessagesError =
   | DefaultErrors
@@ -4026,7 +3989,7 @@ export const modifyUsersMessages: API.OperationMethod<
   ModifyUsersMessagesResponse,
   ModifyUsersMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyUsersMessagesRequest,
   output: ModifyUsersMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4040,7 +4003,7 @@ export interface BatchModifyUsersMessagesRequest {
 }
 
 export const BatchModifyUsersMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(BatchModifyMessagesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4054,7 +4017,7 @@ export const BatchModifyUsersMessagesRequest =
 
 export interface BatchModifyUsersMessagesResponse {}
 export const BatchModifyUsersMessagesResponse: Schema.Codec<BatchModifyUsersMessagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<BatchModifyUsersMessagesResponse>;
 
@@ -4071,7 +4034,7 @@ export const batchModifyUsersMessages: API.OperationMethod<
   BatchModifyUsersMessagesResponse,
   BatchModifyUsersMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchModifyUsersMessagesRequest,
   output: BatchModifyUsersMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4085,7 +4048,7 @@ export interface TrashUsersMessagesRequest {
 }
 
 export const TrashUsersMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     id: Schema.String.pipe(T.HttpPath("id")),
   }).pipe(
@@ -4098,7 +4061,7 @@ export const TrashUsersMessagesRequest =
   ) as unknown as Schema.Codec<TrashUsersMessagesRequest>;
 
 export type TrashUsersMessagesResponse = Message;
-export const TrashUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
+export const TrashUsersMessagesResponse = /*@__PURE__*/ Message;
 
 export type TrashUsersMessagesError =
   | DefaultErrors
@@ -4113,7 +4076,7 @@ export const trashUsersMessages: API.OperationMethod<
   TrashUsersMessagesResponse,
   TrashUsersMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TrashUsersMessagesRequest,
   output: TrashUsersMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4127,7 +4090,7 @@ export interface BatchDeleteUsersMessagesRequest {
 }
 
 export const BatchDeleteUsersMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(BatchDeleteMessagesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4141,7 +4104,7 @@ export const BatchDeleteUsersMessagesRequest =
 
 export interface BatchDeleteUsersMessagesResponse {}
 export const BatchDeleteUsersMessagesResponse: Schema.Codec<BatchDeleteUsersMessagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<BatchDeleteUsersMessagesResponse>;
 
@@ -4158,7 +4121,7 @@ export const batchDeleteUsersMessages: API.OperationMethod<
   BatchDeleteUsersMessagesResponse,
   BatchDeleteUsersMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteUsersMessagesRequest,
   output: BatchDeleteUsersMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4180,7 +4143,7 @@ export interface ListUsersMessagesRequest {
 }
 
 export const ListUsersMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     includeSpamTrash: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("includeSpamTrash"),
@@ -4197,8 +4160,7 @@ export const ListUsersMessagesRequest =
   ) as unknown as Schema.Codec<ListUsersMessagesRequest>;
 
 export type ListUsersMessagesResponse = ListMessagesResponse;
-export const ListUsersMessagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListMessagesResponse;
+export const ListUsersMessagesResponse = /*@__PURE__*/ ListMessagesResponse;
 
 export type ListUsersMessagesError = DefaultErrors | NotFound | Forbidden;
 
@@ -4208,7 +4170,7 @@ export const listUsersMessages: API.PaginatedOperationMethod<
   ListUsersMessagesResponse,
   ListUsersMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersMessagesRequest,
   output: ListUsersMessagesResponse,
   errors: [NotFound, Forbidden],
@@ -4234,7 +4196,7 @@ export interface ImportUsersMessagesRequest {
 }
 
 export const ImportUsersMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     neverMarkSpam: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("neverMarkSpam"),
@@ -4257,7 +4219,7 @@ export const ImportUsersMessagesRequest =
   ) as unknown as Schema.Codec<ImportUsersMessagesRequest>;
 
 export type ImportUsersMessagesResponse = Message;
-export const ImportUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
+export const ImportUsersMessagesResponse = /*@__PURE__*/ Message;
 
 export type ImportUsersMessagesError =
   | DefaultErrors
@@ -4272,7 +4234,7 @@ export const importUsersMessages: API.OperationMethod<
   ImportUsersMessagesResponse,
   ImportUsersMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportUsersMessagesRequest,
   output: ImportUsersMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4286,7 +4248,7 @@ export interface UntrashUsersMessagesRequest {
 }
 
 export const UntrashUsersMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
@@ -4299,7 +4261,7 @@ export const UntrashUsersMessagesRequest =
   ) as unknown as Schema.Codec<UntrashUsersMessagesRequest>;
 
 export type UntrashUsersMessagesResponse = Message;
-export const UntrashUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
+export const UntrashUsersMessagesResponse = /*@__PURE__*/ Message;
 
 export type UntrashUsersMessagesError =
   | DefaultErrors
@@ -4314,7 +4276,7 @@ export const untrashUsersMessages: API.OperationMethod<
   UntrashUsersMessagesResponse,
   UntrashUsersMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntrashUsersMessagesRequest,
   output: UntrashUsersMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4328,7 +4290,7 @@ export interface DeleteUsersMessagesRequest {
 }
 
 export const DeleteUsersMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
   }).pipe(
@@ -4338,7 +4300,7 @@ export const DeleteUsersMessagesRequest =
 
 export interface DeleteUsersMessagesResponse {}
 export const DeleteUsersMessagesResponse: Schema.Codec<DeleteUsersMessagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteUsersMessagesResponse>;
 
@@ -4355,7 +4317,7 @@ export const deleteUsersMessages: API.OperationMethod<
   DeleteUsersMessagesResponse,
   DeleteUsersMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersMessagesRequest,
   output: DeleteUsersMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4371,7 +4333,7 @@ export interface GetUsersMessagesAttachmentsRequest {
 }
 
 export const GetUsersMessagesAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     messageId: Schema.String.pipe(T.HttpPath("messageId")),
@@ -4385,7 +4347,7 @@ export const GetUsersMessagesAttachmentsRequest =
 
 export type GetUsersMessagesAttachmentsResponse = MessagePartBody;
 export const GetUsersMessagesAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ MessagePartBody;
+  /*@__PURE__*/ MessagePartBody;
 
 export type GetUsersMessagesAttachmentsError =
   | DefaultErrors
@@ -4398,7 +4360,7 @@ export const getUsersMessagesAttachments: API.OperationMethod<
   GetUsersMessagesAttachmentsResponse,
   GetUsersMessagesAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersMessagesAttachmentsRequest,
   output: GetUsersMessagesAttachmentsResponse,
   errors: [NotFound, Forbidden],

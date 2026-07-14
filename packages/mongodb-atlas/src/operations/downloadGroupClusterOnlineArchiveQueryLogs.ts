@@ -13,7 +13,7 @@ export interface DownloadGroupClusterOnlineArchiveQueryLogsInput {
   archiveOnly?: boolean;
 }
 export const DownloadGroupClusterOnlineArchiveQueryLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -30,7 +30,7 @@ export const DownloadGroupClusterOnlineArchiveQueryLogsInput =
 // Output Schema
 export type DownloadGroupClusterOnlineArchiveQueryLogsOutput = void;
 export const DownloadGroupClusterOnlineArchiveQueryLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupClusterOnlineArchiveQueryLogsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupClusterOnlineArchiveQueryLogsOutput>;
 
 // The operation
 /**
@@ -48,7 +48,7 @@ export const DownloadGroupClusterOnlineArchiveQueryLogsOutput =
  * @param archiveOnly - Flag that indicates whether to download logs for queries against your online archive only or both your online archive and cluster.
  */
 export const downloadGroupClusterOnlineArchiveQueryLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DownloadGroupClusterOnlineArchiveQueryLogsInput,
     outputSchema: DownloadGroupClusterOnlineArchiveQueryLogsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

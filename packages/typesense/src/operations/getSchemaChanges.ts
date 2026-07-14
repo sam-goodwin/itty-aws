@@ -4,9 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface GetSchemaChangesInput {}
-export const GetSchemaChangesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetSchemaChangesInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/operations/schema_changes" }),
 ) as unknown as Schema.Codec<GetSchemaChangesInput>;
 
@@ -16,7 +14,7 @@ export type GetSchemaChangesOutput = {
   validated_docs?: number;
   altered_docs?: number;
 }[];
-export const GetSchemaChangesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetSchemaChangesOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     collection: Schema.optional(Schema.String),
     validated_docs: Schema.optional(Schema.Number),
@@ -30,7 +28,7 @@ export const GetSchemaChangesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  *
  * Returns the status of any ongoing schema change operations. If no schema changes are in progress, returns an empty response.
  */
-export const getSchemaChanges = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getSchemaChanges = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetSchemaChangesInput,
   outputSchema: GetSchemaChangesOutput,
 }));

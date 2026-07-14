@@ -38,7 +38,7 @@ export interface UpdateMonitorInput {
   type: "Threshold" | "MatchEvent" | "AnomalyDetection";
   updatedAt?: string;
 }
-export const UpdateMonitorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMonitorInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   alertOnNoData: Schema.optional(Schema.Boolean),
   aplQuery: Schema.optional(Schema.String),
@@ -113,7 +113,7 @@ export interface UpdateMonitorOutput {
   updatedAt?: string;
   id: string;
 }
-export const UpdateMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMonitorOutput = /*@__PURE__*/ Schema.Struct({
   alertOnNoData: Schema.optional(Schema.Boolean),
   aplQuery: Schema.optional(Schema.String),
   columnName: Schema.optional(Schema.String),
@@ -155,7 +155,7 @@ export const UpdateMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Update monitor
  */
-export const updateMonitor = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateMonitor = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateMonitorInput,
   outputSchema: UpdateMonitorOutput,
   errors: [NotFound, UnprocessableEntity] as const,

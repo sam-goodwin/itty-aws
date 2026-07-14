@@ -9,7 +9,7 @@ export interface GetOrganizationMemberInput {
   username: string;
 }
 export const GetOrganizationMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     username: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -28,7 +28,7 @@ export interface GetOrganizationMemberOutput {
   };
 }
 export const GetOrganizationMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     member: Schema.optional(
       Schema.Struct({
         username: Schema.optional(Schema.String),
@@ -49,10 +49,8 @@ export const GetOrganizationMemberOutput =
  * @param organizationSlug - The slug of the organization or user account.
  * @param username - The username of a Turso user or organization member.
  */
-export const getOrganizationMember = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetOrganizationMemberInput,
-    outputSchema: GetOrganizationMemberOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const getOrganizationMember = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetOrganizationMemberInput,
+  outputSchema: GetOrganizationMemberOutput,
+  errors: [NotFound] as const,
+}));

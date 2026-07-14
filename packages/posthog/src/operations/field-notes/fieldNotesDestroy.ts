@@ -7,12 +7,10 @@ export interface FieldNotesDestroyInput {
   id: string;
   project_id: string;
 }
-export const FieldNotesDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const FieldNotesDestroyInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/api/projects/{project_id}/field_notes/{id}/",
@@ -22,7 +20,7 @@ export const FieldNotesDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type FieldNotesDestroyOutput = void;
 export const FieldNotesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FieldNotesDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FieldNotesDestroyOutput>;
 
 // The operation
 /**
@@ -32,7 +30,7 @@ export const FieldNotesDestroyOutput =
  * @param id - A UUID string identifying this field note.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const fieldNotesDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const fieldNotesDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: FieldNotesDestroyInput,
   outputSchema: FieldNotesDestroyOutput,
 }));

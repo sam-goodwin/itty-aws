@@ -559,7 +559,7 @@ export interface PostSetupIntentsInput {
   usage?: "off_session" | "on_session";
   use_stripe_sdk?: boolean;
 }
-export const PostSetupIntentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostSetupIntentsInput = /*@__PURE__*/ Schema.Struct({
   attach_to_self: Schema.optional(Schema.Boolean),
   automatic_payment_methods: Schema.optional(
     Schema.Struct({
@@ -1882,183 +1882,181 @@ export interface PostSetupIntentsOutput {
     | "succeeded";
   usage: string;
 }
-export const PostSetupIntentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    application: Schema.NullOr(
-      Schema.Union([
-        Schema.String,
-        Schema.Struct({
-          id: Schema.String,
-          name: Schema.NullOr(Schema.String),
-          object: Schema.Literals(["application"]),
-        }),
+export const PostSetupIntentsOutput = /*@__PURE__*/ Schema.Struct({
+  application: Schema.NullOr(
+    Schema.Union([
+      Schema.String,
+      Schema.Struct({
+        id: Schema.String,
+        name: Schema.NullOr(Schema.String),
+        object: Schema.Literals(["application"]),
+      }),
+    ]),
+  ),
+  attach_to_self: Schema.optional(Schema.Boolean),
+  automatic_payment_methods: Schema.NullOr(
+    Schema.Struct({
+      allow_redirects: Schema.optional(Schema.Literals(["always", "never"])),
+      enabled: Schema.NullOr(Schema.Boolean),
+    }),
+  ),
+  cancellation_reason: Schema.NullOr(
+    Schema.Literals(["abandoned", "duplicate", "requested_by_customer"]),
+  ),
+  client_secret: SensitiveOutputNullableString,
+  created: Schema.Number,
+  customer: Schema.Unknown,
+  customer_account: Schema.optional(Schema.NullOr(Schema.String)),
+  description: Schema.NullOr(Schema.String),
+  excluded_payment_method_types: Schema.NullOr(
+    Schema.Array(
+      Schema.Literals([
+        "acss_debit",
+        "affirm",
+        "afterpay_clearpay",
+        "alipay",
+        "alma",
+        "amazon_pay",
+        "au_becs_debit",
+        "bacs_debit",
+        "bancontact",
+        "billie",
+        "bizum",
+        "blik",
+        "boleto",
+        "card",
+        "cashapp",
+        "crypto",
+        "customer_balance",
+        "eps",
+        "fpx",
+        "giropay",
+        "grabpay",
+        "ideal",
+        "kakao_pay",
+        "klarna",
+        "konbini",
+        "kr_card",
+        "mb_way",
+        "mobilepay",
+        "multibanco",
+        "naver_pay",
+        "nz_bank_account",
+        "oxxo",
+        "p24",
+        "pay_by_bank",
+        "payco",
+        "paynow",
+        "paypal",
+        "payto",
+        "pix",
+        "promptpay",
+        "revolut_pay",
+        "samsung_pay",
+        "satispay",
+        "scalapay",
+        "sepa_debit",
+        "sofort",
+        "sunbit",
+        "swish",
+        "twint",
+        "upi",
+        "us_bank_account",
+        "wechat_pay",
+        "zip",
       ]),
     ),
-    attach_to_self: Schema.optional(Schema.Boolean),
-    automatic_payment_methods: Schema.NullOr(
+  ),
+  flow_directions: Schema.optional(
+    Schema.NullOr(Schema.Array(Schema.Literals(["inbound", "outbound"]))),
+  ),
+  id: Schema.String,
+  last_setup_error: Schema.Unknown,
+  latest_attempt: Schema.Unknown,
+  livemode: Schema.Boolean,
+  managed_payments: Schema.optional(
+    Schema.NullOr(
       Schema.Struct({
-        allow_redirects: Schema.optional(Schema.Literals(["always", "never"])),
-        enabled: Schema.NullOr(Schema.Boolean),
+        enabled: Schema.Boolean,
       }),
     ),
-    cancellation_reason: Schema.NullOr(
-      Schema.Literals(["abandoned", "duplicate", "requested_by_customer"]),
-    ),
-    client_secret: SensitiveOutputNullableString,
-    created: Schema.Number,
-    customer: Schema.Unknown,
-    customer_account: Schema.optional(Schema.NullOr(Schema.String)),
-    description: Schema.NullOr(Schema.String),
-    excluded_payment_method_types: Schema.NullOr(
-      Schema.Array(
-        Schema.Literals([
-          "acss_debit",
-          "affirm",
-          "afterpay_clearpay",
-          "alipay",
-          "alma",
-          "amazon_pay",
-          "au_becs_debit",
-          "bacs_debit",
-          "bancontact",
-          "billie",
-          "bizum",
-          "blik",
-          "boleto",
-          "card",
-          "cashapp",
-          "crypto",
-          "customer_balance",
-          "eps",
-          "fpx",
-          "giropay",
-          "grabpay",
-          "ideal",
-          "kakao_pay",
-          "klarna",
-          "konbini",
-          "kr_card",
-          "mb_way",
-          "mobilepay",
-          "multibanco",
-          "naver_pay",
-          "nz_bank_account",
-          "oxxo",
-          "p24",
-          "pay_by_bank",
-          "payco",
-          "paynow",
-          "paypal",
-          "payto",
-          "pix",
-          "promptpay",
-          "revolut_pay",
-          "samsung_pay",
-          "satispay",
-          "scalapay",
-          "sepa_debit",
-          "sofort",
-          "sunbit",
-          "swish",
-          "twint",
-          "upi",
-          "us_bank_account",
-          "wechat_pay",
-          "zip",
-        ]),
-      ),
-    ),
-    flow_directions: Schema.optional(
-      Schema.NullOr(Schema.Array(Schema.Literals(["inbound", "outbound"]))),
-    ),
-    id: Schema.String,
-    last_setup_error: Schema.Unknown,
-    latest_attempt: Schema.Unknown,
-    livemode: Schema.Boolean,
-    managed_payments: Schema.optional(
-      Schema.NullOr(
+  ),
+  mandate: Schema.Unknown,
+  metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+  next_action: Schema.NullOr(
+    Schema.Struct({
+      blik_authorize: Schema.optional(Schema.Struct({})),
+      cashapp_handle_redirect_or_display_qr_code: Schema.optional(
         Schema.Struct({
-          enabled: Schema.Boolean,
-        }),
-      ),
-    ),
-    mandate: Schema.Unknown,
-    metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-    next_action: Schema.NullOr(
-      Schema.Struct({
-        blik_authorize: Schema.optional(Schema.Struct({})),
-        cashapp_handle_redirect_or_display_qr_code: Schema.optional(
-          Schema.Struct({
-            hosted_instructions_url: Schema.String,
-            mobile_auth_url: Schema.String,
-            qr_code: Schema.Struct({
-              expires_at: Schema.Number,
-              image_url_png: Schema.String,
-              image_url_svg: Schema.String,
-            }),
-          }),
-        ),
-        pix_display_qr_code: Schema.optional(
-          Schema.Struct({
-            data: Schema.String,
+          hosted_instructions_url: Schema.String,
+          mobile_auth_url: Schema.String,
+          qr_code: Schema.Struct({
             expires_at: Schema.Number,
-            hosted_instructions_url: Schema.String,
             image_url_png: Schema.String,
             image_url_svg: Schema.String,
           }),
-        ),
-        redirect_to_url: Schema.optional(
-          Schema.Struct({
-            return_url: Schema.NullOr(Schema.String),
-            url: Schema.NullOr(Schema.String),
+        }),
+      ),
+      pix_display_qr_code: Schema.optional(
+        Schema.Struct({
+          data: Schema.String,
+          expires_at: Schema.Number,
+          hosted_instructions_url: Schema.String,
+          image_url_png: Schema.String,
+          image_url_svg: Schema.String,
+        }),
+      ),
+      redirect_to_url: Schema.optional(
+        Schema.Struct({
+          return_url: Schema.NullOr(Schema.String),
+          url: Schema.NullOr(Schema.String),
+        }),
+      ),
+      type: Schema.String,
+      upi_handle_redirect_or_display_qr_code: Schema.optional(
+        Schema.Struct({
+          hosted_instructions_url: Schema.String,
+          qr_code: Schema.Struct({
+            expires_at: Schema.Number,
+            image_url_png: Schema.String,
+            image_url_svg: Schema.String,
           }),
-        ),
-        type: Schema.String,
-        upi_handle_redirect_or_display_qr_code: Schema.optional(
-          Schema.Struct({
-            hosted_instructions_url: Schema.String,
-            qr_code: Schema.Struct({
-              expires_at: Schema.Number,
-              image_url_png: Schema.String,
-              image_url_svg: Schema.String,
-            }),
-          }),
-        ),
-        use_stripe_sdk: Schema.optional(Schema.Unknown),
-        verify_with_microdeposits: Schema.optional(
-          Schema.Struct({
-            arrival_date: Schema.Number,
-            hosted_verification_url: Schema.String,
-            microdeposit_type: Schema.NullOr(
-              Schema.Literals(["amounts", "descriptor_code"]),
-            ),
-          }),
-        ),
-      }),
-    ),
-    object: Schema.Literals(["setup_intent"]),
-    on_behalf_of: Schema.Unknown,
-    payment_method: Schema.Unknown,
-    payment_method_configuration_details: Schema.NullOr(
-      Schema.Struct({
-        id: Schema.String,
-        parent: Schema.NullOr(Schema.String),
-      }),
-    ),
-    payment_method_options: Schema.Unknown,
-    payment_method_types: Schema.Array(Schema.String),
-    single_use_mandate: Schema.Unknown,
-    status: Schema.Literals([
-      "canceled",
-      "processing",
-      "requires_action",
-      "requires_confirmation",
-      "requires_payment_method",
-      "succeeded",
-    ]),
-    usage: Schema.String,
-  },
-) as unknown as Schema.Codec<PostSetupIntentsOutput>;
+        }),
+      ),
+      use_stripe_sdk: Schema.optional(Schema.Unknown),
+      verify_with_microdeposits: Schema.optional(
+        Schema.Struct({
+          arrival_date: Schema.Number,
+          hosted_verification_url: Schema.String,
+          microdeposit_type: Schema.NullOr(
+            Schema.Literals(["amounts", "descriptor_code"]),
+          ),
+        }),
+      ),
+    }),
+  ),
+  object: Schema.Literals(["setup_intent"]),
+  on_behalf_of: Schema.Unknown,
+  payment_method: Schema.Unknown,
+  payment_method_configuration_details: Schema.NullOr(
+    Schema.Struct({
+      id: Schema.String,
+      parent: Schema.NullOr(Schema.String),
+    }),
+  ),
+  payment_method_options: Schema.Unknown,
+  payment_method_types: Schema.Array(Schema.String),
+  single_use_mandate: Schema.Unknown,
+  status: Schema.Literals([
+    "canceled",
+    "processing",
+    "requires_action",
+    "requires_confirmation",
+    "requires_payment_method",
+    "succeeded",
+  ]),
+  usage: Schema.String,
+}) as unknown as Schema.Codec<PostSetupIntentsOutput>;
 
 // The operation
 /**
@@ -2068,7 +2066,7 @@ export const PostSetupIntentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * <p>After you create the SetupIntent, attach a payment method and <a href="/docs/api/setup_intents/confirm">confirm</a>
  * it to collect any required permissions to charge the payment method later.</p>
  */
-export const PostSetupIntents = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostSetupIntents = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostSetupIntentsInput,
   outputSchema: PostSetupIntentsOutput,
 }));

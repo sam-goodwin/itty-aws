@@ -11,7 +11,7 @@ export interface PostRadarValueListsValueListInput {
   name?: string;
 }
 export const PostRadarValueListsValueListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value_list: Schema.String.pipe(T.PathParam()),
     alias: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -64,7 +64,7 @@ export interface PostRadarValueListsValueListOutput {
   object: "radar.value_list";
 }
 export const PostRadarValueListsValueListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alias: Schema.String,
     created: Schema.Number,
     created_by: Schema.String,
@@ -112,7 +112,7 @@ export const PostRadarValueListsValueListOutput =
  * <p>Updates a <code>ValueList</code> object by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Note that <code>item_type</code> is immutable.</p>
  */
 export const PostRadarValueListsValueList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostRadarValueListsValueListInput,
     outputSchema: PostRadarValueListsValueListOutput,
   }));

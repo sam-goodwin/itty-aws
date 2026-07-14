@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface DeleteRoleInput {
   id: string;
 }
-export const DeleteRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteRoleInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/v2/rbac/roles/{id}" }),
@@ -16,7 +16,7 @@ export const DeleteRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteRoleOutput = void;
 export const DeleteRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteRoleOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteRoleOutput>;
 
 // The operation
 /**
@@ -26,7 +26,7 @@ export const DeleteRoleOutput =
  *
  * @param id - Unique identifier of the role to delete
  */
-export const deleteRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteRoleInput,
   outputSchema: DeleteRoleOutput,
   errors: [NotFound] as const,

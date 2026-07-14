@@ -8,7 +8,7 @@ export interface ApplicationsControllerFindInput {
   id: string;
 }
 export const ApplicationsControllerFindInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/connect/applications/{id}" }),
@@ -26,7 +26,7 @@ export interface ApplicationsControllerFindOutput {
   updated_at: string;
 }
 export const ApplicationsControllerFindOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     client_id: Schema.String,
@@ -45,10 +45,8 @@ export const ApplicationsControllerFindOutput =
  *
  * @param id - The application ID or client ID of the Connect Application.
  */
-export const ApplicationsControllerFind = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationsControllerFindInput,
-    outputSchema: ApplicationsControllerFindOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const ApplicationsControllerFind = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationsControllerFindInput,
+  outputSchema: ApplicationsControllerFindOutput,
+  errors: [NotFound] as const,
+}));

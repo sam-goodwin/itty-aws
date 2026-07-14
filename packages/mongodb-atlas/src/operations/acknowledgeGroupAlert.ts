@@ -11,7 +11,7 @@ export interface AcknowledgeGroupAlertInput {
   pretty?: boolean;
 }
 export const AcknowledgeGroupAlertInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     alertId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const AcknowledgeGroupAlertInput =
 // Output Schema
 export type AcknowledgeGroupAlertOutput = void;
 export const AcknowledgeGroupAlertOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AcknowledgeGroupAlertOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AcknowledgeGroupAlertOutput>;
 
 // The operation
 /**
@@ -42,10 +42,8 @@ export const AcknowledgeGroupAlertOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param alertId - Unique 24-hexadecimal digit string that identifies the alert.
  */
-export const acknowledgeGroupAlert = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AcknowledgeGroupAlertInput,
-    outputSchema: AcknowledgeGroupAlertOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const acknowledgeGroupAlert = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AcknowledgeGroupAlertInput,
+  outputSchema: AcknowledgeGroupAlertOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -8,7 +8,7 @@ export interface UpdateEvmSmartAccountInput {
   name?: string;
 }
 export const UpdateEvmSmartAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
   }).pipe(
@@ -25,7 +25,7 @@ export interface UpdateEvmSmartAccountOutput {
   updatedAt?: string;
 }
 export const UpdateEvmSmartAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String,
     owners: Schema.Array(Schema.String),
     name: Schema.optional(Schema.String),
@@ -42,9 +42,7 @@ export const UpdateEvmSmartAccountOutput =
  *
  * @param address - The 0x-prefixed address of the EVM smart account. The address does not need to be checksummed.
  */
-export const updateEvmSmartAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateEvmSmartAccountInput,
-    outputSchema: UpdateEvmSmartAccountOutput,
-  }),
-);
+export const updateEvmSmartAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateEvmSmartAccountInput,
+  outputSchema: UpdateEvmSmartAccountOutput,
+}));

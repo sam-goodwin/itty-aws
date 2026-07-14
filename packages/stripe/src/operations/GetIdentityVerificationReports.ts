@@ -14,7 +14,7 @@ export interface GetIdentityVerificationReportsInput {
   verification_session?: string;
 }
 export const GetIdentityVerificationReportsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_reference_id: Schema.optional(Schema.String),
     created: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
@@ -150,7 +150,7 @@ export interface GetIdentityVerificationReportsOutput {
   url: string;
 }
 export const GetIdentityVerificationReportsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         client_reference_id: Schema.NullOr(Schema.String),
@@ -356,7 +356,7 @@ export const GetIdentityVerificationReportsOutput =
  * @param verification_session - Only return VerificationReports created by this VerificationSession ID. It is allowed to provide a VerificationIntent ID.
  */
 export const GetIdentityVerificationReports =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetIdentityVerificationReportsInput,
     outputSchema: GetIdentityVerificationReportsOutput,
   }));

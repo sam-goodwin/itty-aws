@@ -82,7 +82,7 @@ interface ListOriginCaCertificatesResponseResult {
   expiresOn?: string | null;
 }
 const ListOriginCaCertificatesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       hostnames: Schema.Array(Schema.String),
@@ -125,7 +125,7 @@ interface ListOriginCaCertificatesResponseResultInfo {
   totalCount?: number | null;
 }
 const ListOriginCaCertificatesResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -150,7 +150,7 @@ export interface GetOriginCaCertificateRequest {
 }
 
 export const GetOriginCaCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
     }).pipe(T.Http({ method: "GET", path: "/certificates/{certificateId}" })),
@@ -179,7 +179,7 @@ export interface GetOriginCaCertificateResponse {
 }
 
 export const GetOriginCaCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       hostnames: Schema.Array(Schema.String),
@@ -220,7 +220,7 @@ export const getOriginCaCertificate: API.OperationMethod<
   GetOriginCaCertificateResponse,
   GetOriginCaCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOriginCaCertificateRequest,
   output: GetOriginCaCertificateResponse,
   errors: [CertificateNotFound, Forbidden],
@@ -238,7 +238,7 @@ export interface ListOriginCaCertificatesRequest {
 }
 
 export const ListOriginCaCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
       perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -272,7 +272,7 @@ export interface ListOriginCaCertificatesResponse {
 }
 
 export const ListOriginCaCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListOriginCaCertificatesResponseResult),
       resultInfo: Schema.optional(
@@ -288,7 +288,7 @@ export const listOriginCaCertificates: API.PaginatedOperationMethod<
   ListOriginCaCertificatesResponse,
   ListOriginCaCertificatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOriginCaCertificatesRequest,
   output: ListOriginCaCertificatesResponse,
   errors: [Forbidden],
@@ -317,7 +317,7 @@ export interface CreateOriginCaCertificateRequest {
 }
 
 export const CreateOriginCaCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       csr: Schema.String,
       hostnames: Schema.Array(Schema.String),
@@ -359,7 +359,7 @@ export interface CreateOriginCaCertificateResponse {
 }
 
 export const CreateOriginCaCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       csr: Schema.String,
       hostnames: Schema.Array(Schema.String),
@@ -396,7 +396,7 @@ export const createOriginCaCertificate: API.OperationMethod<
   CreateOriginCaCertificateResponse,
   CreateOriginCaCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOriginCaCertificateRequest,
   output: CreateOriginCaCertificateResponse,
   errors: [HostnameNotAuthorized, Forbidden],
@@ -407,7 +407,7 @@ export interface DeleteOriginCaCertificateRequest {
 }
 
 export const DeleteOriginCaCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
     }).pipe(
@@ -423,7 +423,7 @@ export interface DeleteOriginCaCertificateResponse {
 }
 
 export const DeleteOriginCaCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       revokedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -444,7 +444,7 @@ export const deleteOriginCaCertificate: API.OperationMethod<
   DeleteOriginCaCertificateResponse,
   DeleteOriginCaCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOriginCaCertificateRequest,
   output: DeleteOriginCaCertificateResponse,
   errors: [

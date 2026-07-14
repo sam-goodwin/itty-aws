@@ -26,7 +26,7 @@ export interface CapabilitiesCreateOrUpdateInput {
   };
 }
 export const CapabilitiesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -66,7 +66,7 @@ export interface CapabilitiesCreateOrUpdateOutput {
   };
 }
 export const CapabilitiesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -99,12 +99,10 @@ export const CapabilitiesCreateOrUpdateOutput =
  * @param targetName - String that represents a Target resource name.
  * @param capabilityName - String that represents a Capability resource name.
  */
-export const CapabilitiesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CapabilitiesCreateOrUpdateInput,
-    outputSchema: CapabilitiesCreateOrUpdateOutput,
-  }),
-);
+export const CapabilitiesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CapabilitiesCreateOrUpdateInput,
+  outputSchema: CapabilitiesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface CapabilitiesDeleteInput {
   subscriptionId: string;
@@ -116,7 +114,7 @@ export interface CapabilitiesDeleteInput {
   capabilityName: string;
 }
 export const CapabilitiesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -135,7 +133,7 @@ export const CapabilitiesDeleteInput =
 // Output Schema
 export type CapabilitiesDeleteOutput = void;
 export const CapabilitiesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CapabilitiesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CapabilitiesDeleteOutput>;
 
 // The operation
 /**
@@ -150,7 +148,7 @@ export const CapabilitiesDeleteOutput =
  * @param targetName - String that represents a Target resource name.
  * @param capabilityName - String that represents a Capability resource name.
  */
-export const CapabilitiesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapabilitiesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapabilitiesDeleteInput,
   outputSchema: CapabilitiesDeleteOutput,
 }));
@@ -164,7 +162,7 @@ export interface CapabilitiesGetInput {
   targetName: string;
   capabilityName: string;
 }
-export const CapabilitiesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapabilitiesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   parentProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -194,7 +192,7 @@ export interface CapabilitiesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CapabilitiesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapabilitiesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -227,7 +225,7 @@ export const CapabilitiesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param targetName - String that represents a Target resource name.
  * @param capabilityName - String that represents a Capability resource name.
  */
-export const CapabilitiesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapabilitiesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapabilitiesGetInput,
   outputSchema: CapabilitiesGetOutput,
 }));
@@ -241,7 +239,7 @@ export interface CapabilitiesListInput {
   targetName: string;
   continuationToken?: string;
 }
-export const CapabilitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CapabilitiesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   parentProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -274,42 +272,30 @@ export interface CapabilitiesListOutput {
   }[];
   nextLink?: string;
 }
-export const CapabilitiesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<CapabilitiesListOutput>;
+export const CapabilitiesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<CapabilitiesListOutput>;
 
 // The operation
 /**
@@ -324,7 +310,7 @@ export const CapabilitiesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param continuationToken - String that sets the continuation token.
  * @param targetName - String that represents a Target resource name.
  */
-export const CapabilitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapabilitiesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapabilitiesListInput,
   outputSchema: CapabilitiesListOutput,
 }));
@@ -336,7 +322,7 @@ export interface CapabilityTypesGetInput {
   capabilityTypeName: string;
 }
 export const CapabilityTypesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     targetTypeName: Schema.String.pipe(T.PathParam()),
@@ -364,7 +350,7 @@ export interface CapabilityTypesGetOutput {
   };
 }
 export const CapabilityTypesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -394,7 +380,7 @@ export const CapabilityTypesGetOutput =
  * @param targetTypeName - String that represents a Target Type resource name.
  * @param capabilityTypeName - String that represents a Capability Type resource name.
  */
-export const CapabilityTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapabilityTypesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapabilityTypesGetInput,
   outputSchema: CapabilityTypesGetOutput,
 }));
@@ -406,7 +392,7 @@ export interface CapabilityTypesListInput {
   continuationToken?: string;
 }
 export const CapabilityTypesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     targetTypeName: Schema.String.pipe(T.PathParam()),
@@ -437,7 +423,7 @@ export interface CapabilityTypesListOutput {
   nextLink?: string;
 }
 export const CapabilityTypesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -482,7 +468,7 @@ export const CapabilityTypesListOutput =
  * @param targetTypeName - String that represents a Target Type resource name.
  * @param continuationToken - String that sets the continuation token.
  */
-export const CapabilityTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CapabilityTypesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CapabilityTypesListInput,
   outputSchema: CapabilityTypesListOutput,
 }));
@@ -492,13 +478,11 @@ export interface ExperimentsCancelInput {
   resourceGroupName: string;
   experimentName: string;
 }
-export const ExperimentsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    experimentName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ExperimentsCancelInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  experimentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/cancel",
@@ -509,7 +493,7 @@ export const ExperimentsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type ExperimentsCancelOutput = void;
 export const ExperimentsCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsCancelOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsCancelOutput>;
 
 // The operation
 /**
@@ -520,7 +504,7 @@ export const ExperimentsCancelOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param experimentName - String that represents a Experiment resource name.
  */
-export const ExperimentsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExperimentsCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsCancelInput,
   outputSchema: ExperimentsCancelOutput,
 }));
@@ -567,7 +551,7 @@ export interface ExperimentsCreateOrUpdateInput {
   location: string;
 }
 export const ExperimentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
@@ -656,7 +640,7 @@ export interface ExperimentsCreateOrUpdateOutput {
   };
 }
 export const ExperimentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -685,25 +669,21 @@ export const ExperimentsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param experimentName - String that represents a Experiment resource name.
  */
-export const ExperimentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExperimentsCreateOrUpdateInput,
-    outputSchema: ExperimentsCreateOrUpdateOutput,
-  }),
-);
+export const ExperimentsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExperimentsCreateOrUpdateInput,
+  outputSchema: ExperimentsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ExperimentsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   experimentName: string;
 }
-export const ExperimentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    experimentName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ExperimentsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  experimentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
@@ -714,7 +694,7 @@ export const ExperimentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type ExperimentsDeleteOutput = void;
 export const ExperimentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsDeleteOutput>;
 
 // The operation
 /**
@@ -725,7 +705,7 @@ export const ExperimentsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param experimentName - String that represents a Experiment resource name.
  */
-export const ExperimentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExperimentsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsDeleteInput,
   outputSchema: ExperimentsDeleteOutput,
 }));
@@ -737,7 +717,7 @@ export interface ExperimentsExecutionDetailsInput {
   executionId: string;
 }
 export const ExperimentsExecutionDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
@@ -790,7 +770,7 @@ export interface ExperimentsExecutionDetailsOutput {
   };
 }
 export const ExperimentsExecutionDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -868,19 +848,17 @@ export const ExperimentsExecutionDetailsOutput =
  * @param experimentName - String that represents a Experiment resource name.
  * @param executionId - GUID that represents a Experiment execution detail.
  */
-export const ExperimentsExecutionDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExperimentsExecutionDetailsInput,
-    outputSchema: ExperimentsExecutionDetailsOutput,
-  }),
-);
+export const ExperimentsExecutionDetails = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExperimentsExecutionDetailsInput,
+  outputSchema: ExperimentsExecutionDetailsOutput,
+}));
 // Input Schema
 export interface ExperimentsGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   experimentName: string;
 }
-export const ExperimentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExperimentsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   experimentName: Schema.String.pipe(T.PathParam()),
@@ -906,7 +884,7 @@ export interface ExperimentsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ExperimentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExperimentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -935,7 +913,7 @@ export const ExperimentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param experimentName - String that represents a Experiment resource name.
  */
-export const ExperimentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExperimentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsGetInput,
   outputSchema: ExperimentsGetOutput,
 }));
@@ -947,7 +925,7 @@ export interface ExperimentsGetExecutionInput {
   executionId: string;
 }
 export const ExperimentsGetExecutionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
@@ -975,7 +953,7 @@ export interface ExperimentsGetExecutionOutput {
   };
 }
 export const ExperimentsGetExecutionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1005,12 +983,10 @@ export const ExperimentsGetExecutionOutput =
  * @param experimentName - String that represents a Experiment resource name.
  * @param executionId - GUID that represents a Experiment execution detail.
  */
-export const ExperimentsGetExecution = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExperimentsGetExecutionInput,
-    outputSchema: ExperimentsGetExecutionOutput,
-  }),
-);
+export const ExperimentsGetExecution = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExperimentsGetExecutionInput,
+  outputSchema: ExperimentsGetExecutionOutput,
+}));
 // Input Schema
 export interface ExperimentsListInput {
   subscriptionId: string;
@@ -1018,7 +994,7 @@ export interface ExperimentsListInput {
   running?: boolean;
   continuationToken?: string;
 }
-export const ExperimentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExperimentsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   running: Schema.optional(Schema.Boolean),
@@ -1048,7 +1024,7 @@ export interface ExperimentsListOutput {
   }[];
   nextLink?: string;
 }
-export const ExperimentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExperimentsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1083,7 +1059,7 @@ export const ExperimentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param running - Optional value that indicates whether to filter results based on if the Experiment is currently running. If null, then the results will not be filtered.
  * @param continuationToken - String that sets the continuation token.
  */
-export const ExperimentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExperimentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsListInput,
   outputSchema: ExperimentsListOutput,
 }));
@@ -1094,7 +1070,7 @@ export interface ExperimentsListAllInput {
   continuationToken?: string;
 }
 export const ExperimentsListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     running: Schema.optional(Schema.Boolean),
     continuationToken: Schema.optional(Schema.String),
@@ -1124,7 +1100,7 @@ export interface ExperimentsListAllOutput {
   nextLink?: string;
 }
 export const ExperimentsListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1168,7 +1144,7 @@ export const ExperimentsListAllOutput =
  * @param running - Optional value that indicates whether to filter results based on if the Experiment is currently running. If null, then the results will not be filtered.
  * @param continuationToken - String that sets the continuation token.
  */
-export const ExperimentsListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExperimentsListAll = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsListAllInput,
   outputSchema: ExperimentsListAllOutput,
 }));
@@ -1179,7 +1155,7 @@ export interface ExperimentsListAllExecutionsInput {
   experimentName: string;
 }
 export const ExperimentsListAllExecutionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     experimentName: Schema.String.pipe(T.PathParam()),
@@ -1209,7 +1185,7 @@ export interface ExperimentsListAllExecutionsOutput {
   nextLink?: string;
 }
 export const ExperimentsListAllExecutionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1254,7 +1230,7 @@ export const ExperimentsListAllExecutionsOutput =
  * @param experimentName - String that represents a Experiment resource name.
  */
 export const ExperimentsListAllExecutions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExperimentsListAllExecutionsInput,
     outputSchema: ExperimentsListAllExecutionsOutput,
   }));
@@ -1264,7 +1240,7 @@ export interface ExperimentsStartInput {
   resourceGroupName: string;
   experimentName: string;
 }
-export const ExperimentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExperimentsStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   experimentName: Schema.String.pipe(T.PathParam()),
@@ -1279,7 +1255,7 @@ export const ExperimentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ExperimentsStartOutput = void;
 export const ExperimentsStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsStartOutput>;
 
 // The operation
 /**
@@ -1290,7 +1266,7 @@ export const ExperimentsStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param experimentName - String that represents a Experiment resource name.
  */
-export const ExperimentsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExperimentsStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsStartInput,
   outputSchema: ExperimentsStartOutput,
 }));
@@ -1314,35 +1290,33 @@ export interface ExperimentsUpdateInput {
     >;
   };
 }
-export const ExperimentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    experimentName: Schema.String.pipe(T.PathParam()),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+export const ExperimentsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  experimentName: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
         ),
-      }),
-    ),
-  },
-).pipe(
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
@@ -1365,7 +1339,7 @@ export interface ExperimentsUpdateOutput {
   };
 }
 export const ExperimentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1394,15 +1368,13 @@ export const ExperimentsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param experimentName - String that represents a Experiment resource name.
  */
-export const ExperimentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExperimentsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsUpdateInput,
   outputSchema: ExperimentsUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListAllInput {}
-export const OperationsListAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListAllInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Chaos/operations",
@@ -1427,7 +1399,7 @@ export interface OperationsListAllOutput {
   nextLink?: string;
 }
 export const OperationsListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1457,7 +1429,7 @@ export const OperationsListAllOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsListAll = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListAllInput,
   outputSchema: OperationsListAllOutput,
 }));
@@ -1468,7 +1440,7 @@ export interface OperationStatusesGetInput {
   operationId: string;
 }
 export const OperationStatusesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
@@ -1515,7 +1487,7 @@ export interface OperationStatusesGetOutput {
   };
 }
 export const OperationStatusesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1580,12 +1552,10 @@ export const OperationStatusesGetOutput =
  * @param location - The name of the Azure region.
  * @param operationId - The ID of an ongoing async operation.
  */
-export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OperationStatusesGetInput,
-    outputSchema: OperationStatusesGetOutput,
-  }),
-);
+export const OperationStatusesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OperationStatusesGetInput,
+  outputSchema: OperationStatusesGetOutput,
+}));
 // Input Schema
 export interface TargetsCreateOrUpdateInput {
   subscriptionId: string;
@@ -1598,7 +1568,7 @@ export interface TargetsCreateOrUpdateInput {
   location?: string;
 }
 export const TargetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -1630,7 +1600,7 @@ export interface TargetsCreateOrUpdateOutput {
   };
 }
 export const TargetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1662,12 +1632,10 @@ export const TargetsCreateOrUpdateOutput =
  * @param parentResourceName - The parent resource name.
  * @param targetName - String that represents a Target resource name.
  */
-export const TargetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TargetsCreateOrUpdateInput,
-    outputSchema: TargetsCreateOrUpdateOutput,
-  }),
-);
+export const TargetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TargetsCreateOrUpdateInput,
+  outputSchema: TargetsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface TargetsDeleteInput {
   subscriptionId: string;
@@ -1677,7 +1645,7 @@ export interface TargetsDeleteInput {
   parentResourceName: string;
   targetName: string;
 }
-export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   parentProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -1695,7 +1663,7 @@ export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TargetsDeleteOutput = void;
 export const TargetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TargetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TargetsDeleteOutput>;
 
 // The operation
 /**
@@ -1709,7 +1677,7 @@ export const TargetsDeleteOutput =
  * @param parentResourceName - The parent resource name.
  * @param targetName - String that represents a Target resource name.
  */
-export const TargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TargetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TargetsDeleteInput,
   outputSchema: TargetsDeleteOutput,
 }));
@@ -1722,7 +1690,7 @@ export interface TargetsGetInput {
   parentResourceName: string;
   targetName: string;
 }
-export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   parentProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -1751,7 +1719,7 @@ export interface TargetsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1783,7 +1751,7 @@ export const TargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param parentResourceName - The parent resource name.
  * @param targetName - String that represents a Target resource name.
  */
-export const TargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TargetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TargetsGetInput,
   outputSchema: TargetsGetOutput,
 }));
@@ -1796,7 +1764,7 @@ export interface TargetsListInput {
   parentResourceName: string;
   continuationToken?: string;
 }
-export const TargetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   parentProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -1828,7 +1796,7 @@ export interface TargetsListOutput {
   }[];
   nextLink?: string;
 }
-export const TargetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1865,7 +1833,7 @@ export const TargetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param parentResourceName - The parent resource name.
  * @param continuationToken - String that sets the continuation token.
  */
-export const TargetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TargetsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TargetsListInput,
   outputSchema: TargetsListOutput,
 }));
@@ -1875,7 +1843,7 @@ export interface TargetTypesGetInput {
   location: string;
   targetTypeName: string;
 }
-export const TargetTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetTypesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   targetTypeName: Schema.String.pipe(T.PathParam()),
@@ -1901,7 +1869,7 @@ export interface TargetTypesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TargetTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetTypesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1930,7 +1898,7 @@ export const TargetTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param location - The name of the Azure region.
  * @param targetTypeName - String that represents a Target Type resource name.
  */
-export const TargetTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TargetTypesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TargetTypesGetInput,
   outputSchema: TargetTypesGetOutput,
 }));
@@ -1940,7 +1908,7 @@ export interface TargetTypesListInput {
   location: string;
   continuationToken?: string;
 }
-export const TargetTypesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetTypesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   continuationToken: Schema.optional(Schema.String),
@@ -1969,7 +1937,7 @@ export interface TargetTypesListOutput {
   }[];
   nextLink?: string;
 }
-export const TargetTypesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TargetTypesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2003,7 +1971,7 @@ export const TargetTypesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param location - The name of the Azure region.
  * @param continuationToken - String that sets the continuation token.
  */
-export const TargetTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TargetTypesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TargetTypesListInput,
   outputSchema: TargetTypesListOutput,
 }));

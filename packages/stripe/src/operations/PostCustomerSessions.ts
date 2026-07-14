@@ -61,7 +61,7 @@ export interface PostCustomerSessionsInput {
   expand?: string[];
 }
 export const PostCustomerSessionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     components: Schema.Struct({
       buy_button: Schema.optional(
         Schema.Struct({
@@ -210,7 +210,7 @@ export interface PostCustomerSessionsOutput {
   object: "customer_session";
 }
 export const PostCustomerSessionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_secret: SensitiveOutputString,
     components: Schema.optional(
       Schema.Struct({
@@ -295,9 +295,7 @@ export const PostCustomerSessionsOutput =
  *
  * <p>Creates a Customer Session object that includes a single-use client secret that you can use on your front-end to grant client-side API access for certain customer resources.</p>
  */
-export const PostCustomerSessions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostCustomerSessionsInput,
-    outputSchema: PostCustomerSessionsOutput,
-  }),
-);
+export const PostCustomerSessions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostCustomerSessionsInput,
+  outputSchema: PostCustomerSessionsOutput,
+}));

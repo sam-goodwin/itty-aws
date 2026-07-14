@@ -10,7 +10,7 @@ export interface MachinesDeleteMetadataInput {
   key: string;
 }
 export const MachinesDeleteMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     machine_id: Schema.String.pipe(T.PathParam()),
     key: Schema.String.pipe(T.PathParam()),
@@ -24,7 +24,7 @@ export const MachinesDeleteMetadataInput =
 // Output Schema
 export type MachinesDeleteMetadataOutput = void;
 export const MachinesDeleteMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesDeleteMetadataOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesDeleteMetadataOutput>;
 
 // The operation
 /**
@@ -36,10 +36,8 @@ export const MachinesDeleteMetadataOutput =
  * @param machine_id - Machine ID
  * @param key - Metadata Key
  */
-export const MachinesDeleteMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesDeleteMetadataInput,
-    outputSchema: MachinesDeleteMetadataOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const MachinesDeleteMetadata = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesDeleteMetadataInput,
+  outputSchema: MachinesDeleteMetadataOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

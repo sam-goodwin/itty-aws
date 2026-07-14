@@ -407,7 +407,7 @@ export interface PostV2CoreAccountTokensInput {
   };
 }
 export const PostV2CoreAccountTokensInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contact_email: Schema.optional(Schema.String),
     contact_phone: Schema.optional(Schema.String),
     display_name: Schema.optional(Schema.String),
@@ -1032,7 +1032,7 @@ export interface PostV2CoreAccountTokensOutput {
   used: boolean;
 }
 export const PostV2CoreAccountTokensOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.String,
     expires_at: Schema.String,
     id: Schema.String,
@@ -1051,9 +1051,7 @@ export const PostV2CoreAccountTokensOutput =
  * In live mode, you can only create account tokens with your application's publishable key.
  * In test mode, you can create account tokens with your secret key or publishable key.
  */
-export const PostV2CoreAccountTokens = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostV2CoreAccountTokensInput,
-    outputSchema: PostV2CoreAccountTokensOutput,
-  }),
-);
+export const PostV2CoreAccountTokens = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostV2CoreAccountTokensInput,
+  outputSchema: PostV2CoreAccountTokensOutput,
+}));

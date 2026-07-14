@@ -10,7 +10,7 @@ export interface EnableSafeMigrationsInput {
   branch: string;
 }
 export const EnableSafeMigrationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -78,7 +78,7 @@ export interface EnableSafeMigrationsOutput {
   cluster_architecture?: string;
 }
 export const EnableSafeMigrationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     created_at: Schema.String,
@@ -158,10 +158,8 @@ export const EnableSafeMigrationsOutput =
  * @param database - The name of the database the branch belongs to
  * @param branch - The name of the branch
  */
-export const enableSafeMigrations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EnableSafeMigrationsInput,
-    outputSchema: EnableSafeMigrationsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const enableSafeMigrations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EnableSafeMigrationsInput,
+  outputSchema: EnableSafeMigrationsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

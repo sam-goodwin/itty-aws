@@ -10,7 +10,7 @@ export interface AuthorizationPermissionsControllerUpdateInput {
   description?: string | null;
 }
 export const AuthorizationPermissionsControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -31,7 +31,7 @@ export interface AuthorizationPermissionsControllerUpdateOutput {
   updated_at?: string;
 }
 export const AuthorizationPermissionsControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     slug: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export const AuthorizationPermissionsControllerUpdateOutput =
  * @param slug - A unique key to reference the permission. Must be lowercase and contain only letters, numbers, hyphens, underscores, colons, periods, and asterisks.
  */
 export const AuthorizationPermissionsControllerUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationPermissionsControllerUpdateInput,
     outputSchema: AuthorizationPermissionsControllerUpdateOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

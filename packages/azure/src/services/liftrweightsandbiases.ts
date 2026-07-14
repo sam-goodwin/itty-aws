@@ -73,7 +73,7 @@ export interface InstancesCreateOrUpdateInput {
   location: string;
 }
 export const InstancesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instancename: Schema.String.pipe(T.PathParam()),
@@ -178,7 +178,7 @@ export interface InstancesCreateOrUpdateOutput {
   };
 }
 export const InstancesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -207,19 +207,17 @@ export const InstancesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instancename - Name of the Instance resource
  */
-export const InstancesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InstancesCreateOrUpdateInput,
-    outputSchema: InstancesCreateOrUpdateOutput,
-  }),
-);
+export const InstancesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InstancesCreateOrUpdateInput,
+  outputSchema: InstancesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface InstancesDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   instancename: string;
 }
-export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstancesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instancename: Schema.String.pipe(T.PathParam()),
@@ -234,7 +232,7 @@ export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type InstancesDeleteOutput = void;
 export const InstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InstancesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InstancesDeleteOutput>;
 
 // The operation
 /**
@@ -245,7 +243,7 @@ export const InstancesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instancename - Name of the Instance resource
  */
-export const InstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InstancesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: InstancesDeleteInput,
   outputSchema: InstancesDeleteOutput,
 }));
@@ -255,7 +253,7 @@ export interface InstancesGetInput {
   resourceGroupName: string;
   instancename: string;
 }
-export const InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstancesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instancename: Schema.String.pipe(T.PathParam()),
@@ -281,7 +279,7 @@ export interface InstancesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const InstancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstancesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -310,7 +308,7 @@ export const InstancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instancename - Name of the Instance resource
  */
-export const InstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InstancesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InstancesGetInput,
   outputSchema: InstancesGetOutput,
 }));
@@ -320,7 +318,7 @@ export interface InstancesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const InstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -349,7 +347,7 @@ export interface InstancesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const InstancesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -393,7 +391,7 @@ export const InstancesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const InstancesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InstancesListByResourceGroupInput,
     outputSchema: InstancesListByResourceGroupOutput,
   }));
@@ -402,7 +400,7 @@ export interface InstancesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const InstancesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -430,7 +428,7 @@ export interface InstancesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const InstancesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -472,12 +470,10 @@ export const InstancesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const InstancesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InstancesListBySubscriptionInput,
-    outputSchema: InstancesListBySubscriptionOutput,
-  }),
-);
+export const InstancesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InstancesListBySubscriptionInput,
+  outputSchema: InstancesListBySubscriptionOutput,
+}));
 // Input Schema
 export interface InstancesUpdateInput {
   subscriptionId: string;
@@ -496,7 +492,7 @@ export interface InstancesUpdateInput {
     >;
   };
 }
-export const InstancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstancesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instancename: Schema.String.pipe(T.PathParam()),
@@ -544,7 +540,7 @@ export interface InstancesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const InstancesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstancesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -573,15 +569,13 @@ export const InstancesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instancename - Name of the Instance resource
  */
-export const InstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InstancesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: InstancesUpdateInput,
   outputSchema: InstancesUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.WeightsAndBiases/operations",
@@ -605,7 +599,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -635,7 +629,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

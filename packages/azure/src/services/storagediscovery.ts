@@ -10,9 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StorageDiscovery/operations",
@@ -36,7 +34,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -66,7 +64,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -79,7 +77,7 @@ export interface ReportGenerateReportInput {
   queries: string[];
 }
 export const ReportGenerateReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -102,7 +100,7 @@ export interface ReportGenerateReportOutput {
   }[];
 }
 export const ReportGenerateReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         columns: Schema.optional(
@@ -129,12 +127,10 @@ export const ReportGenerateReportOutput =
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  * @param discoveryResourceName - The name of the ReportResource
  */
-export const ReportGenerateReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportGenerateReportInput,
-    outputSchema: ReportGenerateReportOutput,
-  }),
-);
+export const ReportGenerateReport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportGenerateReportInput,
+  outputSchema: ReportGenerateReportOutput,
+}));
 // Input Schema
 export interface ReportGetInput {
   subscriptionId: string;
@@ -142,7 +138,7 @@ export interface ReportGetInput {
   storageDiscoveryWorkspaceName: string;
   discoveryResourceName: string;
 }
-export const ReportGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -169,7 +165,7 @@ export interface ReportGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ReportGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -199,7 +195,7 @@ export const ReportGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  * @param discoveryResourceName - The name of the ReportResource
  */
-export const ReportGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportGetInput,
   outputSchema: ReportGetOutput,
 }));
@@ -210,7 +206,7 @@ export interface ReportListByResourceGroupInput {
   storageDiscoveryWorkspaceName: string;
 }
 export const ReportListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -240,7 +236,7 @@ export interface ReportListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ReportListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -284,19 +280,17 @@ export const ReportListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
-export const ReportListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportListByResourceGroupInput,
-    outputSchema: ReportListByResourceGroupOutput,
-  }),
-);
+export const ReportListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportListByResourceGroupInput,
+  outputSchema: ReportListByResourceGroupOutput,
+}));
 // Input Schema
 export interface ReportListBySubscriptionInput {
   subscriptionId: string;
   storageDiscoveryWorkspaceName: string;
 }
 export const ReportListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -325,7 +319,7 @@ export interface ReportListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ReportListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -368,12 +362,10 @@ export const ReportListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
-export const ReportListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportListBySubscriptionInput,
-    outputSchema: ReportListBySubscriptionOutput,
-  }),
-);
+export const ReportListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportListBySubscriptionInput,
+  outputSchema: ReportListBySubscriptionOutput,
+}));
 // Input Schema
 export interface StorageDiscoveryWorkspacesCreateOrUpdateInput {
   subscriptionId: string;
@@ -395,7 +387,7 @@ export interface StorageDiscoveryWorkspacesCreateOrUpdateInput {
   location: string;
 }
 export const StorageDiscoveryWorkspacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -444,7 +436,7 @@ export interface StorageDiscoveryWorkspacesCreateOrUpdateOutput {
   };
 }
 export const StorageDiscoveryWorkspacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -474,7 +466,7 @@ export const StorageDiscoveryWorkspacesCreateOrUpdateOutput =
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
 export const StorageDiscoveryWorkspacesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageDiscoveryWorkspacesCreateOrUpdateInput,
     outputSchema: StorageDiscoveryWorkspacesCreateOrUpdateOutput,
   }));
@@ -485,7 +477,7 @@ export interface StorageDiscoveryWorkspacesDeleteInput {
   storageDiscoveryWorkspaceName: string;
 }
 export const StorageDiscoveryWorkspacesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -500,7 +492,7 @@ export const StorageDiscoveryWorkspacesDeleteInput =
 // Output Schema
 export type StorageDiscoveryWorkspacesDeleteOutput = void;
 export const StorageDiscoveryWorkspacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageDiscoveryWorkspacesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageDiscoveryWorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -512,7 +504,7 @@ export const StorageDiscoveryWorkspacesDeleteOutput =
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
 export const StorageDiscoveryWorkspacesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageDiscoveryWorkspacesDeleteInput,
     outputSchema: StorageDiscoveryWorkspacesDeleteOutput,
   }));
@@ -523,7 +515,7 @@ export interface StorageDiscoveryWorkspacesGetInput {
   storageDiscoveryWorkspaceName: string;
 }
 export const StorageDiscoveryWorkspacesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -550,7 +542,7 @@ export interface StorageDiscoveryWorkspacesGetOutput {
   };
 }
 export const StorageDiscoveryWorkspacesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -580,7 +572,7 @@ export const StorageDiscoveryWorkspacesGetOutput =
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
 export const StorageDiscoveryWorkspacesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageDiscoveryWorkspacesGetInput,
     outputSchema: StorageDiscoveryWorkspacesGetOutput,
   }));
@@ -590,7 +582,7 @@ export interface StorageDiscoveryWorkspacesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const StorageDiscoveryWorkspacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -619,7 +611,7 @@ export interface StorageDiscoveryWorkspacesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const StorageDiscoveryWorkspacesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -663,7 +655,7 @@ export const StorageDiscoveryWorkspacesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const StorageDiscoveryWorkspacesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageDiscoveryWorkspacesListByResourceGroupInput,
     outputSchema: StorageDiscoveryWorkspacesListByResourceGroupOutput,
   }));
@@ -672,7 +664,7 @@ export interface StorageDiscoveryWorkspacesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const StorageDiscoveryWorkspacesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -700,7 +692,7 @@ export interface StorageDiscoveryWorkspacesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const StorageDiscoveryWorkspacesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -743,7 +735,7 @@ export const StorageDiscoveryWorkspacesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const StorageDiscoveryWorkspacesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageDiscoveryWorkspacesListBySubscriptionInput,
     outputSchema: StorageDiscoveryWorkspacesListBySubscriptionOutput,
   }));
@@ -755,7 +747,7 @@ export interface StorageDiscoveryWorkspacesReportInput {
   queries: string[];
 }
 export const StorageDiscoveryWorkspacesReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -777,7 +769,7 @@ export interface StorageDiscoveryWorkspacesReportOutput {
   }[];
 }
 export const StorageDiscoveryWorkspacesReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         columns: Schema.optional(
@@ -804,7 +796,7 @@ export const StorageDiscoveryWorkspacesReportOutput =
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
 export const StorageDiscoveryWorkspacesReport =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageDiscoveryWorkspacesReportInput,
     outputSchema: StorageDiscoveryWorkspacesReportOutput,
   }));
@@ -827,7 +819,7 @@ export interface StorageDiscoveryWorkspacesUpdateInput {
   };
 }
 export const StorageDiscoveryWorkspacesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -876,7 +868,7 @@ export interface StorageDiscoveryWorkspacesUpdateOutput {
   };
 }
 export const StorageDiscoveryWorkspacesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -906,7 +898,7 @@ export const StorageDiscoveryWorkspacesUpdateOutput =
  * @param storageDiscoveryWorkspaceName - The name of the StorageDiscoveryWorkspace
  */
 export const StorageDiscoveryWorkspacesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageDiscoveryWorkspacesUpdateInput,
     outputSchema: StorageDiscoveryWorkspacesUpdateOutput,
   }));

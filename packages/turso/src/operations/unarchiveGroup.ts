@@ -8,7 +8,7 @@ export interface UnarchiveGroupInput {
   organizationSlug: string;
   groupName: string;
 }
-export const UnarchiveGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UnarchiveGroupInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -29,7 +29,7 @@ export interface UnarchiveGroupOutput {
     delete_protection?: boolean;
   };
 }
-export const UnarchiveGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UnarchiveGroupOutput = /*@__PURE__*/ Schema.Struct({
   group: Schema.optional(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export const UnarchiveGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param organizationSlug - The slug of the organization or user account.
  * @param groupName - The name of the group.
  */
-export const unarchiveGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const unarchiveGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: UnarchiveGroupInput,
   outputSchema: UnarchiveGroupOutput,
   errors: [NotFound] as const,

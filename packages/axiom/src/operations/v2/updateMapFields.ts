@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface UpdateMapFieldsInput {
   dataset_id: string;
 }
-export const UpdateMapFieldsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMapFieldsInput = /*@__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "PUT", path: "/v2/datasets/{dataset_id}/mapfields" }),
@@ -15,12 +15,12 @@ export const UpdateMapFieldsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 // Output Schema
 export type UpdateMapFieldsOutput = ReadonlyArray<string>;
-export const UpdateMapFieldsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const UpdateMapFieldsOutput = /*@__PURE__*/ Schema.Array(
   Schema.String,
 ) as unknown as Schema.Codec<UpdateMapFieldsOutput>;
 
 // The operation
-export const updateMapFields = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateMapFields = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateMapFieldsInput,
   outputSchema: UpdateMapFieldsOutput,
   errors: [NotFound] as const,

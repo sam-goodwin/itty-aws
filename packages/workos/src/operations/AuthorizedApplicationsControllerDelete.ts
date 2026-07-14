@@ -9,7 +9,7 @@ export interface AuthorizedApplicationsControllerDeleteInput {
   user_id: string;
 }
 export const AuthorizedApplicationsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     user_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const AuthorizedApplicationsControllerDeleteInput =
 // Output Schema
 export type AuthorizedApplicationsControllerDeleteOutput = void;
 export const AuthorizedApplicationsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizedApplicationsControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizedApplicationsControllerDeleteOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const AuthorizedApplicationsControllerDeleteOutput =
  * @param user_id - The ID of the user.
  */
 export const AuthorizedApplicationsControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizedApplicationsControllerDeleteInput,
     outputSchema: AuthorizedApplicationsControllerDeleteOutput,
     errors: [NotFound] as const,

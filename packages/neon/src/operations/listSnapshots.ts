@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface ListSnapshotsInput {
   project_id: string;
 }
-export const ListSnapshotsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSnapshotsInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/projects/{project_id}/snapshots" }),
@@ -27,7 +27,7 @@ export interface ListSnapshotsOutput {
     diff_size?: number;
   }[];
 }
-export const ListSnapshotsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSnapshotsOutput = /*@__PURE__*/ Schema.Struct({
   snapshots: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -54,7 +54,7 @@ export const ListSnapshotsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - The Neon project ID
  */
-export const listSnapshots = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listSnapshots = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListSnapshotsInput,
   outputSchema: ListSnapshotsOutput,
 }));

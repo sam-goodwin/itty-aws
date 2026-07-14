@@ -11,7 +11,7 @@ export interface ListWorkflowsInput {
   page?: number;
   per_page?: number;
 }
-export const ListWorkflowsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListWorkflowsInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   between: Schema.optional(Schema.String),
@@ -131,7 +131,7 @@ export interface ListWorkflowsOutput {
     };
   }[];
 }
-export const ListWorkflowsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListWorkflowsOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -279,16 +279,14 @@ export const ListWorkflowsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listWorkflows = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListWorkflowsInput,
-    outputSchema: ListWorkflowsOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listWorkflows = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListWorkflowsInput,
+  outputSchema: ListWorkflowsOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

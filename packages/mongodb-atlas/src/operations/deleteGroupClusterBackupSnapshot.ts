@@ -12,7 +12,7 @@ export interface DeleteGroupClusterBackupSnapshotInput {
   pretty?: boolean;
 }
 export const DeleteGroupClusterBackupSnapshotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     snapshotId: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const DeleteGroupClusterBackupSnapshotInput =
 // Output Schema
 export type DeleteGroupClusterBackupSnapshotOutput = void;
 export const DeleteGroupClusterBackupSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterBackupSnapshotOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterBackupSnapshotOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const DeleteGroupClusterBackupSnapshotOutput =
  * @param snapshotId - Unique 24-hexadecimal digit string that identifies the desired snapshot.
  */
 export const deleteGroupClusterBackupSnapshot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupClusterBackupSnapshotInput,
     outputSchema: DeleteGroupClusterBackupSnapshotOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

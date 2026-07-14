@@ -108,12 +108,12 @@ export type ClipFragmentSelectorType =
   | "PRODUCER_TIMESTAMP"
   | "SERVER_TIMESTAMP"
   | (string & {});
-export const ClipFragmentSelectorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ClipFragmentSelectorType = /*@__PURE__*/ S.String;
 export interface ClipTimestampRange {
   StartTimestamp: Date;
   EndTimestamp: Date;
 }
-export const ClipTimestampRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ClipTimestampRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     EndTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -125,7 +125,7 @@ export interface ClipFragmentSelector {
   FragmentSelectorType: ClipFragmentSelectorType;
   TimestampRange: ClipTimestampRange;
 }
-export const ClipFragmentSelector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ClipFragmentSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FragmentSelectorType: ClipFragmentSelectorType,
     TimestampRange: ClipTimestampRange,
@@ -138,7 +138,7 @@ export interface GetClipInput {
   StreamARN?: string;
   ClipFragmentSelector: ClipFragmentSelector;
 }
-export const GetClipInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetClipInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -158,7 +158,7 @@ export interface GetClipOutput {
   ContentType?: string;
   Payload?: T.StreamingOutputBody;
 }
-export const GetClipOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetClipOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
     Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
@@ -169,22 +169,21 @@ export type DASHPlaybackMode =
   | "LIVE_REPLAY"
   | "ON_DEMAND"
   | (string & {});
-export const DASHPlaybackMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DASHPlaybackMode = /*@__PURE__*/ S.String;
 export type DASHDisplayFragmentTimestamp = "ALWAYS" | "NEVER" | (string & {});
-export const DASHDisplayFragmentTimestamp =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DASHDisplayFragmentTimestamp = /*@__PURE__*/ S.String;
 export type DASHDisplayFragmentNumber = "ALWAYS" | "NEVER" | (string & {});
-export const DASHDisplayFragmentNumber = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DASHDisplayFragmentNumber = /*@__PURE__*/ S.String;
 export type DASHFragmentSelectorType =
   | "PRODUCER_TIMESTAMP"
   | "SERVER_TIMESTAMP"
   | (string & {});
-export const DASHFragmentSelectorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DASHFragmentSelectorType = /*@__PURE__*/ S.String;
 export interface DASHTimestampRange {
   StartTimestamp?: Date;
   EndTimestamp?: Date;
 }
-export const DASHTimestampRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DASHTimestampRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -196,7 +195,7 @@ export interface DASHFragmentSelector {
   FragmentSelectorType?: DASHFragmentSelectorType;
   TimestampRange?: DASHTimestampRange;
 }
-export const DASHFragmentSelector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DASHFragmentSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FragmentSelectorType: S.optional(DASHFragmentSelectorType),
     TimestampRange: S.optional(DASHTimestampRange),
@@ -215,7 +214,7 @@ export interface GetDASHStreamingSessionURLInput {
   MaxManifestFragmentResults?: number;
 }
 export const GetDASHStreamingSessionURLInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       StreamName: S.optional(S.String),
       StreamARN: S.optional(S.String),
@@ -242,7 +241,7 @@ export interface GetDASHStreamingSessionURLOutput {
   DASHStreamingSessionURL?: string;
 }
 export const GetDASHStreamingSessionURLOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ DASHStreamingSessionURL: S.optional(S.String) }),
   ).annotate({
     identifier: "GetDASHStreamingSessionURLOutput",
@@ -252,17 +251,17 @@ export type HLSPlaybackMode =
   | "LIVE_REPLAY"
   | "ON_DEMAND"
   | (string & {});
-export const HLSPlaybackMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const HLSPlaybackMode = /*@__PURE__*/ S.String;
 export type HLSFragmentSelectorType =
   | "PRODUCER_TIMESTAMP"
   | "SERVER_TIMESTAMP"
   | (string & {});
-export const HLSFragmentSelectorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const HLSFragmentSelectorType = /*@__PURE__*/ S.String;
 export interface HLSTimestampRange {
   StartTimestamp?: Date;
   EndTimestamp?: Date;
 }
-export const HLSTimestampRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HLSTimestampRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -274,7 +273,7 @@ export interface HLSFragmentSelector {
   FragmentSelectorType?: HLSFragmentSelectorType;
   TimestampRange?: HLSTimestampRange;
 }
-export const HLSFragmentSelector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HLSFragmentSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FragmentSelectorType: S.optional(HLSFragmentSelectorType),
     TimestampRange: S.optional(HLSTimestampRange),
@@ -283,15 +282,15 @@ export const HLSFragmentSelector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "HLSFragmentSelector",
 }) as any as S.Schema<HLSFragmentSelector>;
 export type ContainerFormat = "FRAGMENTED_MP4" | "MPEG_TS" | (string & {});
-export const ContainerFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ContainerFormat = /*@__PURE__*/ S.String;
 export type HLSDiscontinuityMode =
   | "ALWAYS"
   | "NEVER"
   | "ON_DISCONTINUITY"
   | (string & {});
-export const HLSDiscontinuityMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const HLSDiscontinuityMode = /*@__PURE__*/ S.String;
 export type HLSDisplayFragmentTimestamp = "ALWAYS" | "NEVER" | (string & {});
-export const HLSDisplayFragmentTimestamp = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const HLSDisplayFragmentTimestamp = /*@__PURE__*/ S.String;
 export interface GetHLSStreamingSessionURLInput {
   StreamName?: string;
   StreamARN?: string;
@@ -304,7 +303,7 @@ export interface GetHLSStreamingSessionURLInput {
   MaxMediaPlaylistFragmentResults?: number;
 }
 export const GetHLSStreamingSessionURLInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       StreamName: S.optional(S.String),
       StreamARN: S.optional(S.String),
@@ -332,7 +331,7 @@ export interface GetHLSStreamingSessionURLOutput {
   HLSStreamingSessionURL?: string;
 }
 export const GetHLSStreamingSessionURLOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ HLSStreamingSessionURL: S.optional(S.String) }),
   ).annotate({
     identifier: "GetHLSStreamingSessionURLOutput",
@@ -341,13 +340,13 @@ export type ImageSelectorType =
   | "PRODUCER_TIMESTAMP"
   | "SERVER_TIMESTAMP"
   | (string & {});
-export const ImageSelectorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ImageSelectorType = /*@__PURE__*/ S.String;
 export type Format = "JPEG" | "PNG" | (string & {});
-export const Format = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Format = /*@__PURE__*/ S.String;
 export type FormatConfigKey = "JPEGQuality" | (string & {});
-export const FormatConfigKey = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FormatConfigKey = /*@__PURE__*/ S.String;
 export type FormatConfig = { [key in FormatConfigKey]?: string };
-export const FormatConfig = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const FormatConfig = /*@__PURE__*/ S.Record(
   FormatConfigKey,
   S.String.pipe(S.optional),
 );
@@ -365,7 +364,7 @@ export interface GetImagesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetImagesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetImagesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -391,13 +390,13 @@ export const GetImagesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetImagesInput" }) as any as S.Schema<GetImagesInput>;
 export type ImageError = "NO_MEDIA" | "MEDIA_ERROR" | (string & {});
-export const ImageError = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ImageError = /*@__PURE__*/ S.String;
 export interface Image {
   TimeStamp?: Date;
   Error?: ImageError;
   ImageContent?: string;
 }
-export const Image = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     Error: S.optional(ImageError),
@@ -405,25 +404,25 @@ export const Image = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 export type Images = Image[];
-export const Images = /*@__PURE__*/ /*#__PURE__*/ S.Array(Image);
+export const Images = /*@__PURE__*/ S.Array(Image);
 export interface GetImagesOutput {
   Images?: Image[];
   NextToken?: string;
 }
-export const GetImagesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetImagesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Images: S.optional(Images), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "GetImagesOutput",
 }) as any as S.Schema<GetImagesOutput>;
 export type FragmentNumberList = string[];
-export const FragmentNumberList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const FragmentNumberList = /*@__PURE__*/ S.Array(S.String);
 export interface GetMediaForFragmentListInput {
   StreamName?: string;
   StreamARN?: string;
   Fragments: string[];
 }
 export const GetMediaForFragmentListInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       StreamName: S.optional(S.String),
       StreamARN: S.optional(S.String),
@@ -446,7 +445,7 @@ export interface GetMediaForFragmentListOutput {
   Payload?: T.StreamingOutputBody;
 }
 export const GetMediaForFragmentListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
       Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
@@ -458,12 +457,12 @@ export type FragmentSelectorType =
   | "PRODUCER_TIMESTAMP"
   | "SERVER_TIMESTAMP"
   | (string & {});
-export const FragmentSelectorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FragmentSelectorType = /*@__PURE__*/ S.String;
 export interface TimestampRange {
   StartTimestamp: Date;
   EndTimestamp: Date;
 }
-export const TimestampRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TimestampRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     EndTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -473,7 +472,7 @@ export interface FragmentSelector {
   FragmentSelectorType: FragmentSelectorType;
   TimestampRange: TimestampRange;
 }
-export const FragmentSelector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FragmentSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FragmentSelectorType: FragmentSelectorType,
     TimestampRange: TimestampRange,
@@ -488,7 +487,7 @@ export interface ListFragmentsInput {
   NextToken?: string;
   FragmentSelector?: FragmentSelector;
 }
-export const ListFragmentsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListFragmentsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -515,7 +514,7 @@ export interface Fragment {
   ServerTimestamp?: Date;
   FragmentLengthInMilliseconds?: number;
 }
-export const Fragment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Fragment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FragmentNumber: S.optional(S.String),
     FragmentSizeInBytes: S.optional(S.Number),
@@ -529,12 +528,12 @@ export const Fragment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Fragment" }) as any as S.Schema<Fragment>;
 export type FragmentList = Fragment[];
-export const FragmentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Fragment);
+export const FragmentList = /*@__PURE__*/ S.Array(Fragment);
 export interface ListFragmentsOutput {
   Fragments?: Fragment[];
   NextToken?: string;
 }
-export const ListFragmentsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListFragmentsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Fragments: S.optional(FragmentList),
     NextToken: S.optional(S.String),
@@ -637,7 +636,7 @@ export const getClip: API.OperationMethod<
   GetClipOutput,
   GetClipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetClipInput,
   output: GetClipOutput,
   errors: [
@@ -793,7 +792,7 @@ export const getDASHStreamingSessionURL: API.OperationMethod<
   GetDASHStreamingSessionURLOutput,
   GetDASHStreamingSessionURLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDASHStreamingSessionURLInput,
   output: GetDASHStreamingSessionURLOutput,
   errors: [
@@ -988,7 +987,7 @@ export const getHLSStreamingSessionURL: API.OperationMethod<
   GetHLSStreamingSessionURLOutput,
   GetHLSStreamingSessionURLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHLSStreamingSessionURLInput,
   output: GetHLSStreamingSessionURLOutput,
   errors: [
@@ -1034,7 +1033,7 @@ export const getImages: API.OperationMethod<
     GetImagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetImagesInput,
   output: GetImagesOutput,
   errors: [
@@ -1093,7 +1092,7 @@ export const getMediaForFragmentList: API.OperationMethod<
   GetMediaForFragmentListOutput,
   GetMediaForFragmentListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMediaForFragmentListInput,
   output: GetMediaForFragmentListOutput,
   errors: [
@@ -1162,7 +1161,7 @@ export const listFragments: API.OperationMethod<
     ListFragmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFragmentsInput,
   output: ListFragmentsOutput,
   errors: [

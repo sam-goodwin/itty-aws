@@ -62,7 +62,7 @@ interface ListListsResponseResult {
   /** An informative summary of the list. */
   description?: string | null;
 }
-const ListListsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListListsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdOn: Schema.String,
@@ -96,7 +96,7 @@ interface ListsBulkOperationPendingOrRunning {
   status: "pending" | "running" | (string & {});
 }
 const ListsBulkOperationPendingOrRunning =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       status: Schema.Union([
@@ -114,13 +114,12 @@ interface ListsBulkOperationCompleted {
   /** The current status of the asynchronous operation. */
   status: "completed";
 }
-const ListsBulkOperationCompleted = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      completed: Schema.String,
-      status: Schema.Literal("completed"),
-    }),
+const ListsBulkOperationCompleted = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    completed: Schema.String,
+    status: Schema.Literal("completed"),
+  }),
 ) as unknown as Schema.Codec<ListsBulkOperationCompleted>;
 
 interface ListsBulkOperationFailed {
@@ -133,14 +132,13 @@ interface ListsBulkOperationFailed {
   /** The current status of the asynchronous operation. */
   status: "failed";
 }
-const ListsBulkOperationFailed = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      completed: Schema.String,
-      error: Schema.String,
-      status: Schema.Literal("failed"),
-    }),
+const ListsBulkOperationFailed = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    completed: Schema.String,
+    error: Schema.String,
+    status: Schema.Literal("failed"),
+  }),
 ) as unknown as Schema.Codec<ListsBulkOperationFailed>;
 
 interface ListsListItemIPFull {
@@ -155,7 +153,7 @@ interface ListsListItemIPFull {
   /** Defines an informative summary of the list item. */
   comment?: string | null;
 }
-const ListsListItemIPFull = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListsListItemIPFull = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdOn: Schema.String,
@@ -178,7 +176,7 @@ interface Hostname {
   /** Only applies to wildcard hostnames (e.g., \ .example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked. */
   excludeExactHostname?: boolean | null;
 }
-const Hostname = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Hostname = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     urlHostname: Schema.String,
     excludeExactHostname: Schema.optional(
@@ -204,23 +202,22 @@ interface ListsListItemHostnameFull {
   /** Defines an informative summary of the list item. */
   comment?: string | null;
 }
-const ListsListItemHostnameFull = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      hostname: Hostname,
-      modifiedOn: Schema.String,
-      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        hostname: "hostname",
-        modifiedOn: "modified_on",
-        comment: "comment",
-      }),
-    ),
+const ListsListItemHostnameFull = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    hostname: Hostname,
+    modifiedOn: Schema.String,
+    comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdOn: "created_on",
+      hostname: "hostname",
+      modifiedOn: "modified_on",
+      comment: "comment",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListsListItemHostnameFull>;
 
 interface Redirect {
@@ -232,7 +229,7 @@ interface Redirect {
   statusCode?: "301" | "302" | "307" | "308" | (string & {}) | null;
   subpathMatching?: boolean | null;
 }
-const Redirect = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Redirect = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     sourceUrl: Schema.String,
     targetUrl: Schema.String,
@@ -290,23 +287,22 @@ interface ListsListItemRedirectFull {
   /** Defines an informative summary of the list item. */
   comment?: string | null;
 }
-const ListsListItemRedirectFull = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      modifiedOn: Schema.String,
-      redirect: Redirect,
-      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        modifiedOn: "modified_on",
-        redirect: "redirect",
-        comment: "comment",
-      }),
-    ),
+const ListsListItemRedirectFull = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    modifiedOn: Schema.String,
+    redirect: Redirect,
+    comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+      redirect: "redirect",
+      comment: "comment",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListsListItemRedirectFull>;
 
 interface ListsListItemASNFull {
@@ -321,7 +317,7 @@ interface ListsListItemASNFull {
   /** Defines an informative summary of the list item. */
   comment?: string | null;
 }
-const ListsListItemASNFull = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListsListItemASNFull = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     asn: Schema.Number,
@@ -343,7 +339,7 @@ interface ListListItemsResponseResultInfoCursors {
   after?: string | null;
 }
 const ListListItemsResponseResultInfoCursors =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
@@ -353,7 +349,7 @@ interface ListListItemsResponseResultInfo {
   cursors?: { after?: string | null } | null;
 }
 const ListListItemsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cursors: Schema.optional(
         Schema.Union([ListListItemsResponseResultInfoCursors, Schema.Null]),
@@ -367,7 +363,7 @@ interface ListsListItemIPComment {
   /** Defines an informative summary of the list item. */
   comment?: string | null;
 }
-const ListsListItemIPComment = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListsListItemIPComment = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ip: Schema.String,
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -388,12 +384,11 @@ interface ListsListItemRedirectComment {
   /** Defines an informative summary of the list item. */
   comment?: string | null;
 }
-const ListsListItemRedirectComment = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      redirect: Redirect,
-      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+const ListsListItemRedirectComment = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    redirect: Redirect,
+    comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<ListsListItemRedirectComment>;
 
 interface ListsListItemHostnameComment {
@@ -402,12 +397,11 @@ interface ListsListItemHostnameComment {
   /** Defines an informative summary of the list item. */
   comment?: string | null;
 }
-const ListsListItemHostnameComment = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      hostname: Hostname,
-      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+const ListsListItemHostnameComment = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    hostname: Hostname,
+    comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<ListsListItemHostnameComment>;
 
 interface ListsListItemASNComment {
@@ -416,7 +410,7 @@ interface ListsListItemASNComment {
   /** Defines an informative summary of the list item. */
   comment?: string | null;
 }
-const ListsListItemASNComment = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListsListItemASNComment = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.Number,
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -427,7 +421,7 @@ interface Item {
   /** Defines the unique ID of the item in the List. */
   id: string;
 }
-const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Item = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
   }),
@@ -443,7 +437,7 @@ export interface GetListRequest {
   accountId: string;
 }
 
-export const GetListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetListRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     listId: Schema.String.pipe(T.HttpPath("listId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -474,7 +468,7 @@ export interface GetListResponse {
   description?: string | null;
 }
 
-export const GetListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetListResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdOn: Schema.String,
@@ -510,7 +504,7 @@ export const getList: API.OperationMethod<
   GetListResponse,
   GetListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetListRequest,
   output: GetListResponse,
   errors: [ListNotFound, Forbidden],
@@ -521,7 +515,7 @@ export interface ListListsRequest {
   accountId: string;
 }
 
-export const ListListsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListListsRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
@@ -542,11 +536,10 @@ export interface ListListsResponse {
   }[];
 }
 
-export const ListListsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListListsResponseResult),
-    }),
+export const ListListsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListListsResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListListsResponse>;
 
 export type ListListsError = DefaultErrors | Forbidden;
@@ -556,7 +549,7 @@ export const listLists: API.PaginatedOperationMethod<
   ListListsResponse,
   ListListsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListListsRequest,
   output: ListListsResponse,
   errors: [Forbidden],
@@ -577,19 +570,18 @@ export interface CreateListRequest {
   description?: string;
 }
 
-export const CreateListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      kind: Schema.Union([
-        Schema.Literals(["ip", "redirect", "hostname", "asn"]),
-        Schema.String,
-      ]),
-      name: Schema.String,
-      description: Schema.optional(Schema.String),
-    }).pipe(
-      T.Http({ method: "POST", path: "/accounts/{account_id}/rules/lists" }),
-    ),
+export const CreateListRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    kind: Schema.Union([
+      Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+      Schema.String,
+    ]),
+    name: Schema.String,
+    description: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({ method: "POST", path: "/accounts/{account_id}/rules/lists" }),
+  ),
 ) as unknown as Schema.Codec<CreateListRequest>;
 
 export interface CreateListResponse {
@@ -611,34 +603,33 @@ export interface CreateListResponse {
   description?: string | null;
 }
 
-export const CreateListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      kind: Schema.Union([
-        Schema.Literals(["ip", "redirect", "hostname", "asn"]),
-        Schema.String,
-      ]),
-      modifiedOn: Schema.String,
-      name: Schema.String,
-      numItems: Schema.Number,
-      numReferencingFilters: Schema.Number,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          kind: "kind",
-          modifiedOn: "modified_on",
-          name: "name",
-          numItems: "num_items",
-          numReferencingFilters: "num_referencing_filters",
-          description: "description",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateListResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    kind: Schema.Union([
+      Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+      Schema.String,
+    ]),
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    numItems: Schema.Number,
+    numReferencingFilters: Schema.Number,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        kind: "kind",
+        modifiedOn: "modified_on",
+        name: "name",
+        numItems: "num_items",
+        numReferencingFilters: "num_referencing_filters",
+        description: "description",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateListResponse>;
 
 export type CreateListError = DefaultErrors | ListAlreadyExists | Forbidden;
@@ -648,7 +639,7 @@ export const createList: API.OperationMethod<
   CreateListResponse,
   CreateListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateListRequest,
   output: CreateListResponse,
   errors: [ListAlreadyExists, Forbidden],
@@ -662,18 +653,17 @@ export interface UpdateListRequest {
   description?: string;
 }
 
-export const UpdateListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      listId: Schema.String.pipe(T.HttpPath("listId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      description: Schema.optional(Schema.String),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/rules/lists/{listId}",
-      }),
-    ),
+export const UpdateListRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    listId: Schema.String.pipe(T.HttpPath("listId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    description: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/rules/lists/{listId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateListRequest>;
 
 export interface UpdateListResponse {
@@ -695,34 +685,33 @@ export interface UpdateListResponse {
   description?: string | null;
 }
 
-export const UpdateListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      kind: Schema.Union([
-        Schema.Literals(["ip", "redirect", "hostname", "asn"]),
-        Schema.String,
-      ]),
-      modifiedOn: Schema.String,
-      name: Schema.String,
-      numItems: Schema.Number,
-      numReferencingFilters: Schema.Number,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          kind: "kind",
-          modifiedOn: "modified_on",
-          name: "name",
-          numItems: "num_items",
-          numReferencingFilters: "num_referencing_filters",
-          description: "description",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateListResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    kind: Schema.Union([
+      Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+      Schema.String,
+    ]),
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    numItems: Schema.Number,
+    numReferencingFilters: Schema.Number,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        kind: "kind",
+        modifiedOn: "modified_on",
+        name: "name",
+        numItems: "num_items",
+        numReferencingFilters: "num_referencing_filters",
+        description: "description",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateListResponse>;
 
 export type UpdateListError = DefaultErrors | ListNotFound | Forbidden;
@@ -732,7 +721,7 @@ export const updateList: API.OperationMethod<
   UpdateListResponse,
   UpdateListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateListRequest,
   output: UpdateListResponse,
   errors: [ListNotFound, Forbidden],
@@ -744,17 +733,16 @@ export interface DeleteListRequest {
   accountId: string;
 }
 
-export const DeleteListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      listId: Schema.String.pipe(T.HttpPath("listId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/rules/lists/{listId}",
-      }),
-    ),
+export const DeleteListRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    listId: Schema.String.pipe(T.HttpPath("listId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/rules/lists/{listId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteListRequest>;
 
 export interface DeleteListResponse {
@@ -762,11 +750,10 @@ export interface DeleteListResponse {
   id: string;
 }
 
-export const DeleteListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-    }).pipe(T.ResponsePath("result")),
+export const DeleteListResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteListResponse>;
 
 export type DeleteListError = DefaultErrors | ListNotFound | Forbidden;
@@ -776,7 +763,7 @@ export const deleteList: API.OperationMethod<
   DeleteListResponse,
   DeleteListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteListRequest,
   output: DeleteListResponse,
   errors: [ListNotFound, Forbidden],
@@ -793,7 +780,7 @@ export interface GetListBulkOperationRequest {
 }
 
 export const GetListBulkOperationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       operationId: Schema.String.pipe(T.HttpPath("operationId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -811,7 +798,7 @@ export type GetListBulkOperationResponse =
   | { id: string; completed: string; error: string; status: "failed" };
 
 export const GetListBulkOperationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       ListsBulkOperationFailed,
       ListsBulkOperationCompleted,
@@ -829,7 +816,7 @@ export const getListBulkOperation: API.OperationMethod<
   GetListBulkOperationResponse,
   GetListBulkOperationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetListBulkOperationRequest,
   output: GetListBulkOperationResponse,
   errors: [ListNotFound, Forbidden],
@@ -846,18 +833,17 @@ export interface GetListItemRequest {
   accountId: string;
 }
 
-export const GetListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      listId: Schema.String.pipe(T.HttpPath("listId")),
-      itemId: Schema.String.pipe(T.HttpPath("itemId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/rules/lists/{listId}/items/{itemId}",
-      }),
-    ),
+export const GetListItemRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    listId: Schema.String.pipe(T.HttpPath("listId")),
+    itemId: Schema.String.pipe(T.HttpPath("itemId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/rules/lists/{listId}/items/{itemId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetListItemRequest>;
 
 export type GetListItemResponse =
@@ -898,14 +884,13 @@ export type GetListItemResponse =
       comment?: string | null;
     };
 
-export const GetListItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([
-      ListsListItemIPFull,
-      ListsListItemHostnameFull,
-      ListsListItemRedirectFull,
-      ListsListItemASNFull,
-    ]).pipe(T.ResponsePath("result")),
+export const GetListItemResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    ListsListItemIPFull,
+    ListsListItemHostnameFull,
+    ListsListItemRedirectFull,
+    ListsListItemASNFull,
+  ]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetListItemResponse>;
 
 export type GetListItemError = DefaultErrors;
@@ -915,7 +900,7 @@ export const getListItem: API.OperationMethod<
   GetListItemResponse,
   GetListItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetListItemRequest,
   output: GetListItemResponse,
   errors: [],
@@ -932,20 +917,19 @@ export interface ListListItemsRequest {
   search?: string;
 }
 
-export const ListListItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      listId: Schema.String.pipe(T.HttpPath("listId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/rules/lists/{listId}/items",
-      }),
-    ),
+export const ListListItemsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    listId: Schema.String.pipe(T.HttpPath("listId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/rules/lists/{listId}/items",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListListItemsRequest>;
 
 export interface ListListItemsResponse {
@@ -993,21 +977,20 @@ export interface ListListItemsResponse {
   resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
-export const ListListItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(
-        Schema.Union([
-          ListsListItemIPFull,
-          ListsListItemHostnameFull,
-          ListsListItemRedirectFull,
-          ListsListItemASNFull,
-        ]),
-      ),
-      resultInfo: Schema.optional(
-        Schema.Union([ListListItemsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListListItemsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(
+      Schema.Union([
+        ListsListItemIPFull,
+        ListsListItemHostnameFull,
+        ListsListItemRedirectFull,
+        ListsListItemASNFull,
+      ]),
+    ),
+    resultInfo: Schema.optional(
+      Schema.Union([ListListItemsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListListItemsResponse>;
 
 export type ListListItemsError = DefaultErrors | ListNotFound | Forbidden;
@@ -1017,7 +1000,7 @@ export const listListItems: API.PaginatedOperationMethod<
   ListListItemsResponse,
   ListListItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListListItemsRequest,
   output: ListListItemsResponse,
   errors: [ListNotFound, Forbidden],
@@ -1056,25 +1039,24 @@ export interface CreateListItemRequest {
   )[];
 }
 
-export const CreateListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      listId: Schema.String.pipe(T.HttpPath("listId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      body: Schema.Array(
-        Schema.Union([
-          ListsListItemIPComment,
-          ListsListItemRedirectComment,
-          ListsListItemHostnameComment,
-          ListsListItemASNComment,
-        ]),
-      ).pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/rules/lists/{listId}/items",
-      }),
-    ),
+export const CreateListItemRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    listId: Schema.String.pipe(T.HttpPath("listId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    body: Schema.Array(
+      Schema.Union([
+        ListsListItemIPComment,
+        ListsListItemRedirectComment,
+        ListsListItemHostnameComment,
+        ListsListItemASNComment,
+      ]),
+    ).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/rules/lists/{listId}/items",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateListItemRequest>;
 
 export interface CreateListItemResponse {
@@ -1083,7 +1065,7 @@ export interface CreateListItemResponse {
 }
 
 export const CreateListItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       operationId: Schema.String,
     })
@@ -1098,7 +1080,7 @@ export const createListItem: API.OperationMethod<
   CreateListItemResponse,
   CreateListItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateListItemRequest,
   output: CreateListItemResponse,
   errors: [],
@@ -1131,25 +1113,24 @@ export interface UpdateListItemRequest {
   )[];
 }
 
-export const UpdateListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      listId: Schema.String.pipe(T.HttpPath("listId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      body: Schema.Array(
-        Schema.Union([
-          ListsListItemIPComment,
-          ListsListItemRedirectComment,
-          ListsListItemHostnameComment,
-          ListsListItemASNComment,
-        ]),
-      ).pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/rules/lists/{listId}/items",
-      }),
-    ),
+export const UpdateListItemRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    listId: Schema.String.pipe(T.HttpPath("listId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    body: Schema.Array(
+      Schema.Union([
+        ListsListItemIPComment,
+        ListsListItemRedirectComment,
+        ListsListItemHostnameComment,
+        ListsListItemASNComment,
+      ]),
+    ).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/rules/lists/{listId}/items",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateListItemRequest>;
 
 export interface UpdateListItemResponse {
@@ -1158,7 +1139,7 @@ export interface UpdateListItemResponse {
 }
 
 export const UpdateListItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       operationId: Schema.String,
     })
@@ -1173,7 +1154,7 @@ export const updateListItem: API.OperationMethod<
   UpdateListItemResponse,
   UpdateListItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateListItemRequest,
   output: UpdateListItemResponse,
   errors: [ListNotFound, Forbidden],
@@ -1187,18 +1168,17 @@ export interface DeleteListItemRequest {
   items?: { id: string }[];
 }
 
-export const DeleteListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      listId: Schema.String.pipe(T.HttpPath("listId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      items: Schema.optional(Schema.Array(Item)),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/rules/lists/{listId}/items",
-      }),
-    ),
+export const DeleteListItemRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    listId: Schema.String.pipe(T.HttpPath("listId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    items: Schema.optional(Schema.Array(Item)),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/rules/lists/{listId}/items",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteListItemRequest>;
 
 export interface DeleteListItemResponse {
@@ -1207,7 +1187,7 @@ export interface DeleteListItemResponse {
 }
 
 export const DeleteListItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       operationId: Schema.String,
     })
@@ -1222,7 +1202,7 @@ export const deleteListItem: API.OperationMethod<
   DeleteListItemResponse,
   DeleteListItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteListItemRequest,
   output: DeleteListItemResponse,
   errors: [],

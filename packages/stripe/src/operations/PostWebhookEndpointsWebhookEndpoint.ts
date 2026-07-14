@@ -277,7 +277,7 @@ export interface PostWebhookEndpointsWebhookEndpointInput {
   url?: string;
 }
 export const PostWebhookEndpointsWebhookEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webhook_endpoint: Schema.String.pipe(T.PathParam()),
     description: Schema.optional(
       Schema.Union([Schema.String, Schema.Literals([""])]),
@@ -582,7 +582,7 @@ export interface PostWebhookEndpointsWebhookEndpointOutput {
   url: string;
 }
 export const PostWebhookEndpointsWebhookEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     api_version: Schema.NullOr(Schema.String),
     application: Schema.NullOr(Schema.String),
     created: Schema.Number,
@@ -604,7 +604,7 @@ export const PostWebhookEndpointsWebhookEndpointOutput =
  * <p>Updates the webhook endpoint. You may edit the <code>url</code>, the list of <code>enabled_events</code>, and the status of your endpoint.</p>
  */
 export const PostWebhookEndpointsWebhookEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostWebhookEndpointsWebhookEndpointInput,
     outputSchema: PostWebhookEndpointsWebhookEndpointOutput,
   }));

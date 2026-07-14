@@ -206,7 +206,7 @@ export interface HogFunctionsInvocationsCreateInput {
   invocation_id?: string | null;
 }
 export const HogFunctionsInvocationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     configuration: Schema.optional(
@@ -737,7 +737,7 @@ export interface HogFunctionsInvocationsCreateOutput {
   invocation_id?: string | null;
 }
 export const HogFunctionsInvocationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.optional(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1067,7 +1067,7 @@ export const HogFunctionsInvocationsCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const hogFunctionsInvocationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HogFunctionsInvocationsCreateInput,
     outputSchema: HogFunctionsInvocationsCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

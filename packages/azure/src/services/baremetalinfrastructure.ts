@@ -15,7 +15,7 @@ export interface AzureBareMetalInstancesGetInput {
   azureBareMetalInstanceName: string;
 }
 export const AzureBareMetalInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureBareMetalInstanceName: Schema.String.pipe(T.PathParam()),
@@ -34,7 +34,7 @@ export interface AzureBareMetalInstancesGetOutput {
   type?: string;
 }
 export const AzureBareMetalInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -51,19 +51,17 @@ export const AzureBareMetalInstancesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureBareMetalInstanceName - Name of the Azure BareMetal on Azure instance.
  */
-export const AzureBareMetalInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AzureBareMetalInstancesGetInput,
-    outputSchema: AzureBareMetalInstancesGetOutput,
-  }),
-);
+export const AzureBareMetalInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureBareMetalInstancesGetInput,
+  outputSchema: AzureBareMetalInstancesGetOutput,
+}));
 // Input Schema
 export interface AzureBareMetalInstancesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const AzureBareMetalInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -80,7 +78,7 @@ export interface AzureBareMetalInstancesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AzureBareMetalInstancesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -104,7 +102,7 @@ export const AzureBareMetalInstancesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AzureBareMetalInstancesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureBareMetalInstancesListByResourceGroupInput,
     outputSchema: AzureBareMetalInstancesListByResourceGroupOutput,
   }));
@@ -113,7 +111,7 @@ export interface AzureBareMetalInstancesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AzureBareMetalInstancesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -129,7 +127,7 @@ export interface AzureBareMetalInstancesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AzureBareMetalInstancesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -152,7 +150,7 @@ export const AzureBareMetalInstancesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const AzureBareMetalInstancesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureBareMetalInstancesListBySubscriptionInput,
     outputSchema: AzureBareMetalInstancesListBySubscriptionOutput,
   }));
@@ -164,7 +162,7 @@ export interface AzureBareMetalInstancesUpdateInput {
   tags?: Record<string, string>;
 }
 export const AzureBareMetalInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureBareMetalInstanceName: Schema.String.pipe(T.PathParam()),
@@ -184,7 +182,7 @@ export interface AzureBareMetalInstancesUpdateOutput {
   type?: string;
 }
 export const AzureBareMetalInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -202,7 +200,7 @@ export const AzureBareMetalInstancesUpdateOutput =
  * @param azureBareMetalInstanceName - Name of the Azure BareMetal on Azure instance.
  */
 export const AzureBareMetalInstancesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureBareMetalInstancesUpdateInput,
     outputSchema: AzureBareMetalInstancesUpdateOutput,
   }));
@@ -246,7 +244,7 @@ export interface AzureBareMetalStorageInstancesCreateInput {
   location: string;
 }
 export const AzureBareMetalStorageInstancesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureBareMetalStorageInstanceName: Schema.String.pipe(T.PathParam()),
@@ -317,7 +315,7 @@ export interface AzureBareMetalStorageInstancesCreateOutput {
   type?: string;
 }
 export const AzureBareMetalStorageInstancesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -333,7 +331,7 @@ export const AzureBareMetalStorageInstancesCreateOutput =
  * @param azureBareMetalStorageInstanceName - Name of the AzureBareMetalStorage on Azure instance.
  */
 export const AzureBareMetalStorageInstancesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureBareMetalStorageInstancesCreateInput,
     outputSchema: AzureBareMetalStorageInstancesCreateOutput,
   }));
@@ -344,7 +342,7 @@ export interface AzureBareMetalStorageInstancesDeleteInput {
   azureBareMetalStorageInstanceName: string;
 }
 export const AzureBareMetalStorageInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureBareMetalStorageInstanceName: Schema.String.pipe(T.PathParam()),
@@ -359,7 +357,7 @@ export const AzureBareMetalStorageInstancesDeleteInput =
 // Output Schema
 export type AzureBareMetalStorageInstancesDeleteOutput = void;
 export const AzureBareMetalStorageInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AzureBareMetalStorageInstancesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AzureBareMetalStorageInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -371,7 +369,7 @@ export const AzureBareMetalStorageInstancesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const AzureBareMetalStorageInstancesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureBareMetalStorageInstancesDeleteInput,
     outputSchema: AzureBareMetalStorageInstancesDeleteOutput,
   }));
@@ -382,7 +380,7 @@ export interface AzureBareMetalStorageInstancesGetInput {
   azureBareMetalStorageInstanceName: string;
 }
 export const AzureBareMetalStorageInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureBareMetalStorageInstanceName: Schema.String.pipe(T.PathParam()),
@@ -401,7 +399,7 @@ export interface AzureBareMetalStorageInstancesGetOutput {
   type?: string;
 }
 export const AzureBareMetalStorageInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -419,7 +417,7 @@ export const AzureBareMetalStorageInstancesGetOutput =
  * @param azureBareMetalStorageInstanceName - Name of the AzureBareMetalStorage on Azure instance.
  */
 export const AzureBareMetalStorageInstancesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureBareMetalStorageInstancesGetInput,
     outputSchema: AzureBareMetalStorageInstancesGetOutput,
   }));
@@ -429,7 +427,7 @@ export interface AzureBareMetalStorageInstancesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const AzureBareMetalStorageInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -446,7 +444,7 @@ export interface AzureBareMetalStorageInstancesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AzureBareMetalStorageInstancesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -470,7 +468,7 @@ export const AzureBareMetalStorageInstancesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AzureBareMetalStorageInstancesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureBareMetalStorageInstancesListByResourceGroupInput,
     outputSchema: AzureBareMetalStorageInstancesListByResourceGroupOutput,
   }));
@@ -479,7 +477,7 @@ export interface AzureBareMetalStorageInstancesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AzureBareMetalStorageInstancesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -495,7 +493,7 @@ export interface AzureBareMetalStorageInstancesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AzureBareMetalStorageInstancesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -518,7 +516,7 @@ export const AzureBareMetalStorageInstancesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const AzureBareMetalStorageInstancesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureBareMetalStorageInstancesListBySubscriptionInput,
     outputSchema: AzureBareMetalStorageInstancesListBySubscriptionOutput,
   }));
@@ -530,7 +528,7 @@ export interface AzureBareMetalStorageInstancesUpdateInput {
   tags?: Record<string, string>;
 }
 export const AzureBareMetalStorageInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureBareMetalStorageInstanceName: Schema.String.pipe(T.PathParam()),
@@ -550,7 +548,7 @@ export interface AzureBareMetalStorageInstancesUpdateOutput {
   type?: string;
 }
 export const AzureBareMetalStorageInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -568,15 +566,13 @@ export const AzureBareMetalStorageInstancesUpdateOutput =
  * @param azureBareMetalStorageInstanceName - Name of the AzureBareMetalStorage on Azure instance.
  */
 export const AzureBareMetalStorageInstancesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureBareMetalStorageInstancesUpdateInput,
     outputSchema: AzureBareMetalStorageInstancesUpdateOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.BareMetalInfrastructure/operations",
@@ -597,7 +593,7 @@ export interface OperationsListOutput {
     isDataAction?: boolean;
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -622,7 +618,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

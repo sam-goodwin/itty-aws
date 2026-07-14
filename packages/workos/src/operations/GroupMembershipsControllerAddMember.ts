@@ -15,7 +15,7 @@ export interface GroupMembershipsControllerAddMemberInput {
   organization_membership_id?: string;
 }
 export const GroupMembershipsControllerAddMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     organization_membership_id: Schema.optional(Schema.String),
@@ -37,7 +37,7 @@ export interface GroupMembershipsControllerAddMemberOutput {
   updated_at?: string;
 }
 export const GroupMembershipsControllerAddMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
@@ -57,7 +57,7 @@ export const GroupMembershipsControllerAddMemberOutput =
  * @param groupId - Unique identifier of the Group.
  */
 export const GroupMembershipsControllerAddMember =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupMembershipsControllerAddMemberInput,
     outputSchema: GroupMembershipsControllerAddMemberOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

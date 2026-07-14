@@ -12,7 +12,7 @@ export interface VisualReviewReposSnapshotsListInput {
   offset?: number;
 }
 export const VisualReviewReposSnapshotsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     identifier: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     repo_id: Schema.String.pipe(T.PathParam()),
@@ -54,7 +54,7 @@ export interface VisualReviewReposSnapshotsListOutput {
   }[];
 }
 export const VisualReviewReposSnapshotsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -100,7 +100,7 @@ export const VisualReviewReposSnapshotsListOutput =
  * @param run_type - Run type (storybook, playwright)
  */
 export const visualReviewReposSnapshotsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VisualReviewReposSnapshotsListInput,
     outputSchema: VisualReviewReposSnapshotsListOutput,
   }));

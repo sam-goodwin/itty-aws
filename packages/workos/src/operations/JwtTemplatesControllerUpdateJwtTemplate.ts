@@ -8,7 +8,7 @@ export interface JwtTemplatesControllerUpdateJwtTemplateInput {
   content?: string;
 }
 export const JwtTemplatesControllerUpdateJwtTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "PUT", path: "/user_management/jwt_template" }),
@@ -22,7 +22,7 @@ export interface JwtTemplatesControllerUpdateJwtTemplateOutput {
   updated_at: string;
 }
 export const JwtTemplatesControllerUpdateJwtTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     content: Schema.String,
     created_at: Schema.String,
@@ -36,7 +36,7 @@ export const JwtTemplatesControllerUpdateJwtTemplateOutput =
  * Update the JWT template for the current environment.
  */
 export const JwtTemplatesControllerUpdateJwtTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: JwtTemplatesControllerUpdateJwtTemplateInput,
     outputSchema: JwtTemplatesControllerUpdateJwtTemplateOutput,
     errors: [UnprocessableEntity] as const,

@@ -10,7 +10,7 @@ export interface AssignOrganizationVPCEndpointInput {
   label: string;
 }
 export const AssignOrganizationVPCEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
     region_id: Schema.String.pipe(T.PathParam()),
     vpc_endpoint_id: Schema.String.pipe(T.PathParam()),
@@ -25,7 +25,7 @@ export const AssignOrganizationVPCEndpointInput =
 // Output Schema
 export type AssignOrganizationVPCEndpointOutput = void;
 export const AssignOrganizationVPCEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AssignOrganizationVPCEndpointOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AssignOrganizationVPCEndpointOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ Azure regions are currently not supported.
  * @param vpc_endpoint_id - The VPC endpoint ID
  */
 export const assignOrganizationVPCEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssignOrganizationVPCEndpointInput,
     outputSchema: AssignOrganizationVPCEndpointOutput,
   }));

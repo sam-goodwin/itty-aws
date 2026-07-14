@@ -13,7 +13,7 @@ export interface UpsertSynonymSetItemInput {
   symbols_to_index?: string[];
 }
 export const UpsertSynonymSetItemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     synonymSetName: Schema.String.pipe(T.PathParam()),
     itemId: Schema.String.pipe(T.PathParam()),
     synonyms: Schema.Array(Schema.String),
@@ -36,7 +36,7 @@ export interface UpsertSynonymSetItemOutput {
   symbols_to_index?: string[];
 }
 export const UpsertSynonymSetItemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     synonyms: Schema.Array(Schema.String),
     root: Schema.optional(Schema.String),
@@ -53,10 +53,8 @@ export const UpsertSynonymSetItemOutput =
  * @param synonymSetName - The name of the synonym set
  * @param itemId - The id of the synonym item to upsert
  */
-export const upsertSynonymSetItem = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpsertSynonymSetItemInput,
-    outputSchema: UpsertSynonymSetItemOutput,
-    errors: [BadRequest] as const,
-  }),
-);
+export const upsertSynonymSetItem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpsertSynonymSetItemInput,
+  outputSchema: UpsertSynonymSetItemOutput,
+  errors: [BadRequest] as const,
+}));

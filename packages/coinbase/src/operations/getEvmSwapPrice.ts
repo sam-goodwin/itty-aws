@@ -13,7 +13,7 @@ export interface GetEvmSwapPriceInput {
   gasPrice?: string;
   slippageBps?: string;
 }
-export const GetEvmSwapPriceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEvmSwapPriceInput = /*@__PURE__*/ Schema.Struct({
   network: Schema.String,
   toToken: Schema.String,
   fromToken: Schema.String,
@@ -53,7 +53,7 @@ export type GetEvmSwapPriceOutput =
       gasPrice: string;
     }
   | { liquidityAvailable: false };
-export const GetEvmSwapPriceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+export const GetEvmSwapPriceOutput = /*@__PURE__*/ Schema.Union([
   Schema.Struct({
     blockNumber: Schema.String,
     toAmount: Schema.String,
@@ -106,7 +106,7 @@ export const GetEvmSwapPriceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
  *
  * Get a price estimate for a swap between two tokens on an EVM network.
  */
-export const getEvmSwapPrice = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getEvmSwapPrice = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetEvmSwapPriceInput,
   outputSchema: GetEvmSwapPriceOutput,
 }));

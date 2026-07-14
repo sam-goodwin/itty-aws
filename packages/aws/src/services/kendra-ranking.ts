@@ -95,8 +95,8 @@ export type RescoreId = string;
 export interface CapacityUnitsConfiguration {
   RescoreCapacityUnits: number;
 }
-export const CapacityUnitsConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ RescoreCapacityUnits: S.Number }),
+export const CapacityUnitsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RescoreCapacityUnits: S.Number }),
 ).annotate({
   identifier: "CapacityUnitsConfiguration",
 }) as any as S.Schema<CapacityUnitsConfiguration>;
@@ -104,11 +104,11 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.String, Value: S.String }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface CreateRescoreExecutionPlanRequest {
   Name: string;
   Description?: string;
@@ -117,7 +117,7 @@ export interface CreateRescoreExecutionPlanRequest {
   ClientToken?: string;
 }
 export const CreateRescoreExecutionPlanRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Name: S.String,
       Description: S.optional(S.String),
@@ -142,7 +142,7 @@ export interface CreateRescoreExecutionPlanResponse {
   Arn: string;
 }
 export const CreateRescoreExecutionPlanResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Id: S.String, Arn: S.String }),
   ).annotate({
     identifier: "CreateRescoreExecutionPlanResponse",
@@ -151,7 +151,7 @@ export interface DeleteRescoreExecutionPlanRequest {
   Id: string;
 }
 export const DeleteRescoreExecutionPlanRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
       T.all(
         T.Http({ method: "DELETE", uri: "/rescore-execution-plans/{Id}" }),
@@ -167,14 +167,14 @@ export const DeleteRescoreExecutionPlanRequest =
   }) as any as S.Schema<DeleteRescoreExecutionPlanRequest>;
 export interface DeleteRescoreExecutionPlanResponse {}
 export const DeleteRescoreExecutionPlanResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteRescoreExecutionPlanResponse",
   }) as any as S.Schema<DeleteRescoreExecutionPlanResponse>;
 export interface DescribeRescoreExecutionPlanRequest {
   Id: string;
 }
 export const DescribeRescoreExecutionPlanRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/rescore-execution-plans/{Id}" }),
@@ -195,7 +195,7 @@ export type RescoreExecutionPlanStatus =
   | "DELETING"
   | "FAILED"
   | (string & {});
-export const RescoreExecutionPlanStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RescoreExecutionPlanStatus = /*@__PURE__*/ S.String;
 export interface DescribeRescoreExecutionPlanResponse {
   Id?: string;
   Arn?: string;
@@ -208,7 +208,7 @@ export interface DescribeRescoreExecutionPlanResponse {
   ErrorMessage?: string;
 }
 export const DescribeRescoreExecutionPlanResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Id: S.optional(S.String),
       Arn: S.optional(S.String),
@@ -228,7 +228,7 @@ export interface ListRescoreExecutionPlansRequest {
   MaxResults?: number;
 }
 export const ListRescoreExecutionPlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -253,7 +253,7 @@ export interface RescoreExecutionPlanSummary {
   Status?: RescoreExecutionPlanStatus;
 }
 export const RescoreExecutionPlanSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Name: S.optional(S.String),
       Id: S.optional(S.String),
@@ -266,13 +266,13 @@ export const RescoreExecutionPlanSummary =
   }) as any as S.Schema<RescoreExecutionPlanSummary>;
 export type RescoreExecutionPlanSummaryList = RescoreExecutionPlanSummary[];
 export const RescoreExecutionPlanSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RescoreExecutionPlanSummary);
+  /*@__PURE__*/ S.Array(RescoreExecutionPlanSummary);
 export interface ListRescoreExecutionPlansResponse {
   SummaryItems?: RescoreExecutionPlanSummary[];
   NextToken?: string;
 }
 export const ListRescoreExecutionPlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SummaryItems: S.optional(RescoreExecutionPlanSummaryList),
       NextToken: S.optional(S.String),
@@ -283,11 +283,10 @@ export const ListRescoreExecutionPlansResponse =
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceARN: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceARN: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -295,15 +294,15 @@ export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Tags: S.optional(TagList) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
   }) as any as S.Schema<ListTagsForResourceResponse>;
 export type TitleTokensList = string[];
-export const TitleTokensList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TitleTokensList = /*@__PURE__*/ S.Array(S.String);
 export type BodyTokensList = string[];
-export const BodyTokensList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const BodyTokensList = /*@__PURE__*/ S.Array(S.String);
 export interface Document {
   Id: string;
   GroupId?: string;
@@ -313,7 +312,7 @@ export interface Document {
   TokenizedBody?: string[];
   OriginalScore: number;
 }
-export const Document = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Document = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.String,
     GroupId: S.optional(S.String),
@@ -325,13 +324,13 @@ export const Document = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Document" }) as any as S.Schema<Document>;
 export type DocumentList = Document[];
-export const DocumentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Document);
+export const DocumentList = /*@__PURE__*/ S.Array(Document);
 export interface RescoreRequest {
   RescoreExecutionPlanId: string;
   SearchQuery: string;
   Documents: Document[];
 }
-export const RescoreRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RescoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RescoreExecutionPlanId: S.String.pipe(
       T.HttpLabel("RescoreExecutionPlanId"),
@@ -356,19 +355,18 @@ export interface RescoreResultItem {
   DocumentId?: string;
   Score?: number;
 }
-export const RescoreResultItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RescoreResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DocumentId: S.optional(S.String), Score: S.optional(S.Number) }),
 ).annotate({
   identifier: "RescoreResultItem",
 }) as any as S.Schema<RescoreResultItem>;
 export type RescoreResultItemList = RescoreResultItem[];
-export const RescoreResultItemList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RescoreResultItem);
+export const RescoreResultItemList = /*@__PURE__*/ S.Array(RescoreResultItem);
 export interface RescoreResult {
   RescoreId?: string;
   ResultItems?: RescoreResultItem[];
 }
-export const RescoreResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RescoreResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RescoreId: S.optional(S.String),
     ResultItems: S.optional(RescoreResultItemList),
@@ -378,7 +376,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -386,18 +384,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -405,7 +403,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -417,7 +415,7 @@ export interface UpdateRescoreExecutionPlanRequest {
   CapacityUnits?: CapacityUnitsConfiguration;
 }
 export const UpdateRescoreExecutionPlanRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Id: S.String.pipe(T.HttpLabel("Id")),
       Name: S.optional(S.String),
@@ -438,7 +436,7 @@ export const UpdateRescoreExecutionPlanRequest =
   }) as any as S.Schema<UpdateRescoreExecutionPlanRequest>;
 export interface UpdateRescoreExecutionPlanResponse {}
 export const UpdateRescoreExecutionPlanResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateRescoreExecutionPlanResponse",
   }) as any as S.Schema<UpdateRescoreExecutionPlanResponse>;
 
@@ -503,7 +501,7 @@ export const createRescoreExecutionPlan: API.OperationMethod<
   CreateRescoreExecutionPlanResponse,
   CreateRescoreExecutionPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRescoreExecutionPlanRequest,
   output: CreateRescoreExecutionPlanResponse,
   errors: [
@@ -534,7 +532,7 @@ export const deleteRescoreExecutionPlan: API.OperationMethod<
   DeleteRescoreExecutionPlanResponse,
   DeleteRescoreExecutionPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRescoreExecutionPlanRequest,
   output: DeleteRescoreExecutionPlanResponse,
   errors: [
@@ -564,7 +562,7 @@ export const describeRescoreExecutionPlan: API.OperationMethod<
   DescribeRescoreExecutionPlanResponse,
   DescribeRescoreExecutionPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRescoreExecutionPlanRequest,
   output: DescribeRescoreExecutionPlanResponse,
   errors: [
@@ -607,7 +605,7 @@ export const listRescoreExecutionPlans: API.OperationMethod<
     ListRescoreExecutionPlansError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRescoreExecutionPlansRequest,
   output: ListRescoreExecutionPlansResponse,
   errors: [
@@ -640,7 +638,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -671,7 +669,7 @@ export const rescore: API.OperationMethod<
   RescoreResult,
   RescoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RescoreRequest,
   output: RescoreResult,
   errors: [
@@ -703,7 +701,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -733,7 +731,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -767,7 +765,7 @@ export const updateRescoreExecutionPlan: API.OperationMethod<
   UpdateRescoreExecutionPlanResponse,
   UpdateRescoreExecutionPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRescoreExecutionPlanRequest,
   output: UpdateRescoreExecutionPlanResponse,
   errors: [

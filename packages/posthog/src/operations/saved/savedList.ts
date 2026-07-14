@@ -14,7 +14,7 @@ export interface SavedListInput {
   status?: string;
   type?: string;
 }
-export const SavedListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SavedListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   created_by: Schema.optional(Schema.Number),
   limit: Schema.optional(Schema.Number),
@@ -69,7 +69,7 @@ export type SavedListOutput = {
   }[];
   count: number;
 }[];
-export const SavedListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const SavedListOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
@@ -151,7 +151,7 @@ export const SavedListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  * @param status - Filter by generation status: 'processing', 'completed', or 'failed'.
  * @param type - Filter by render mode: 'screenshot', 'iframe', or 'recording'.
  */
-export const savedList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const savedList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavedListInput,
   outputSchema: SavedListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

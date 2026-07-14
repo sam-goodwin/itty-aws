@@ -14,7 +14,7 @@ export interface CommentsListInput {
   search?: string;
   source_comment?: string;
 }
-export const CommentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CommentsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   completed: Schema.optional(Schema.Literals(["any", "open", "completed"])),
   cursor: Schema.optional(Schema.String),
@@ -90,7 +90,7 @@ export interface CommentsListOutput {
     source_comment?: string | null;
   }[];
 }
-export const CommentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CommentsListOutput = /*@__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
   results: Schema.optional(
@@ -201,7 +201,7 @@ export const CommentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param search - Full-text search within comment content.
  * @param source_comment - Filter replies to a specific parent comment.
  */
-export const commentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const commentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CommentsListInput,
   outputSchema: CommentsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

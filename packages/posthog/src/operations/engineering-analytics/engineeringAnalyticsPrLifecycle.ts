@@ -11,7 +11,7 @@ export interface EngineeringAnalyticsPrLifecycleInput {
   source_id?: string;
 }
 export const EngineeringAnalyticsPrLifecycleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     pr_number: Schema.Number,
     repo: Schema.String,
@@ -51,7 +51,7 @@ export interface EngineeringAnalyticsPrLifecycleOutput {
   metric_quality?: "precise" | "coarse" | "partial";
 }
 export const EngineeringAnalyticsPrLifecycleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pull_request: Schema.Struct({
       author: Schema.Struct({
         handle: Schema.String,
@@ -102,7 +102,7 @@ export const EngineeringAnalyticsPrLifecycleOutput =
  * @param source_id - Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.
  */
 export const engineeringAnalyticsPrLifecycle =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EngineeringAnalyticsPrLifecycleInput,
     outputSchema: EngineeringAnalyticsPrLifecycleOutput,
     errors: [BadRequest, NotFound] as const,

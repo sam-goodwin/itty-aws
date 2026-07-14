@@ -142,7 +142,7 @@ export interface ApplicationsCreateInput {
   };
 }
 export const ApplicationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -403,7 +403,7 @@ export interface ApplicationsCreateOutput {
   type?: string;
 }
 export const ApplicationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -419,7 +419,7 @@ export const ApplicationsCreateOutput =
  * @param applicationName - The constant value for the application name.
  * @param api-version - The HDInsight client API Version.
  */
-export const ApplicationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsCreateInput,
   outputSchema: ApplicationsCreateOutput,
 }));
@@ -431,7 +431,7 @@ export interface ApplicationsDeleteInput {
   applicationName: string;
 }
 export const ApplicationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -447,7 +447,7 @@ export const ApplicationsDeleteInput =
 // Output Schema
 export type ApplicationsDeleteOutput = void;
 export const ApplicationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsDeleteOutput>;
 
 // The operation
 /**
@@ -459,7 +459,7 @@ export const ApplicationsDeleteOutput =
  * @param applicationName - The constant value for the application name.
  * @param api-version - The HDInsight client API Version.
  */
-export const ApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsDeleteInput,
   outputSchema: ApplicationsDeleteOutput,
 }));
@@ -470,7 +470,7 @@ export interface ApplicationsGetInput {
   clusterName: string;
   applicationName: string;
 }
-export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplicationsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -489,7 +489,7 @@ export interface ApplicationsGetOutput {
   name?: string;
   type?: string;
 }
-export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplicationsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -505,7 +505,7 @@ export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param applicationName - The constant value for the application name.
  * @param api-version - The HDInsight client API Version.
  */
-export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsGetInput,
   outputSchema: ApplicationsGetOutput,
 }));
@@ -518,7 +518,7 @@ export interface ApplicationsGetAzureAsyncOperationStatusInput {
   operationId: string;
 }
 export const ApplicationsGetAzureAsyncOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -538,7 +538,7 @@ export interface ApplicationsGetAzureAsyncOperationStatusOutput {
   error?: { code?: string; message?: string };
 }
 export const ApplicationsGetAzureAsyncOperationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["InProgress", "Succeeded", "Failed"]),
     ),
@@ -562,7 +562,7 @@ export const ApplicationsGetAzureAsyncOperationStatusOutput =
  * @param operationId - The long running operation id.
  */
 export const ApplicationsGetAzureAsyncOperationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplicationsGetAzureAsyncOperationStatusInput,
     outputSchema: ApplicationsGetAzureAsyncOperationStatusOutput,
   }));
@@ -573,7 +573,7 @@ export interface ApplicationsListByClusterInput {
   clusterName: string;
 }
 export const ApplicationsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -591,7 +591,7 @@ export interface ApplicationsListByClusterOutput {
   nextLink?: string;
 }
 export const ApplicationsListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -613,12 +613,10 @@ export const ApplicationsListByClusterOutput =
  * @param clusterName - The name of the cluster.
  * @param api-version - The HDInsight client API Version.
  */
-export const ApplicationsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationsListByClusterInput,
-    outputSchema: ApplicationsListByClusterOutput,
-  }),
-);
+export const ApplicationsListByCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationsListByClusterInput,
+  outputSchema: ApplicationsListByClusterOutput,
+}));
 // Input Schema
 export interface ClustersCreateInput {
   subscriptionId: string;
@@ -775,7 +773,7 @@ export interface ClustersCreateInput {
     >;
   };
 }
-export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1079,7 +1077,7 @@ export interface ClustersCreateOutput {
   name?: string;
   type?: string;
 }
-export const ClustersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1094,7 +1092,7 @@ export const ClustersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterName - The name of the cluster.
  * @param api-version - The HDInsight client API Version.
  */
-export const ClustersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersCreateInput,
   outputSchema: ClustersCreateOutput,
 }));
@@ -1104,7 +1102,7 @@ export interface ClustersDeleteInput {
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1119,7 +1117,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersDeleteOutput = void;
 export const ClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -1130,7 +1128,7 @@ export const ClustersDeleteOutput =
  * @param clusterName - The name of the cluster.
  * @param api-version - The HDInsight client API Version.
  */
-export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
@@ -1149,7 +1147,7 @@ export interface ClustersExecuteScriptActionsInput {
   persistOnSuccess: boolean;
 }
 export const ClustersExecuteScriptActionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1176,7 +1174,7 @@ export const ClustersExecuteScriptActionsInput =
 // Output Schema
 export type ClustersExecuteScriptActionsOutput = void;
 export const ClustersExecuteScriptActionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersExecuteScriptActionsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersExecuteScriptActionsOutput>;
 
 // The operation
 /**
@@ -1190,7 +1188,7 @@ export const ClustersExecuteScriptActionsOutput =
  * @param persistOnSuccess - Gets or sets if the scripts needs to be persisted.
  */
 export const ClustersExecuteScriptActions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersExecuteScriptActionsInput,
     outputSchema: ClustersExecuteScriptActionsOutput,
   }));
@@ -1200,7 +1198,7 @@ export interface ClustersGetInput {
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1218,7 +1216,7 @@ export interface ClustersGetOutput {
   name?: string;
   type?: string;
 }
-export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1233,7 +1231,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterName - The name of the cluster.
  * @param api-version - The HDInsight client API Version.
  */
-export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
@@ -1245,7 +1243,7 @@ export interface ClustersGetAzureAsyncOperationStatusInput {
   operationId: string;
 }
 export const ClustersGetAzureAsyncOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1264,7 +1262,7 @@ export interface ClustersGetAzureAsyncOperationStatusOutput {
   error?: { code?: string; message?: string };
 }
 export const ClustersGetAzureAsyncOperationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["InProgress", "Succeeded", "Failed"]),
     ),
@@ -1287,7 +1285,7 @@ export const ClustersGetAzureAsyncOperationStatusOutput =
  * @param operationId - The long running operation id.
  */
 export const ClustersGetAzureAsyncOperationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersGetAzureAsyncOperationStatusInput,
     outputSchema: ClustersGetAzureAsyncOperationStatusOutput,
   }));
@@ -1298,7 +1296,7 @@ export interface ClustersGetGatewaySettingsInput {
   clusterName: string;
 }
 export const ClustersGetGatewaySettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1317,7 +1315,7 @@ export interface ClustersGetGatewaySettingsOutput {
   "restAuthCredential.password"?: Redacted.Redacted<string>;
 }
 export const ClustersGetGatewaySettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "restAuthCredential.isEnabled": Schema.optional(Schema.String),
     "restAuthCredential.username": Schema.optional(Schema.String),
     "restAuthCredential.password": Schema.optional(SensitiveOutputString),
@@ -1332,17 +1330,15 @@ export const ClustersGetGatewaySettingsOutput =
  * @param clusterName - The name of the cluster.
  * @param api-version - The HDInsight client API Version.
  */
-export const ClustersGetGatewaySettings = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersGetGatewaySettingsInput,
-    outputSchema: ClustersGetGatewaySettingsOutput,
-  }),
-);
+export const ClustersGetGatewaySettings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersGetGatewaySettingsInput,
+  outputSchema: ClustersGetGatewaySettingsOutput,
+}));
 // Input Schema
 export interface ClustersListInput {
   subscriptionId: string;
 }
-export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1357,7 +1353,7 @@ export interface ClustersListOutput {
   value?: { id?: string; name?: string; type?: string }[];
   nextLink?: string;
 }
-export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1377,7 +1373,7 @@ export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param api-version - The HDInsight client API Version.
  */
-export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersListInput,
   outputSchema: ClustersListOutput,
 }));
@@ -1387,7 +1383,7 @@ export interface ClustersListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const ClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1404,7 +1400,7 @@ export interface ClustersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1425,12 +1421,10 @@ export const ClustersListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group.
  * @param api-version - The HDInsight client API Version.
  */
-export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListByResourceGroupInput,
-    outputSchema: ClustersListByResourceGroupOutput,
-  }),
-);
+export const ClustersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListByResourceGroupInput,
+  outputSchema: ClustersListByResourceGroupOutput,
+}));
 // Input Schema
 export interface ClustersResizeInput {
   subscriptionId: string;
@@ -1439,7 +1433,7 @@ export interface ClustersResizeInput {
   roleName: "workernode";
   targetInstanceCount?: number;
 }
-export const ClustersResizeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersResizeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1456,7 +1450,7 @@ export const ClustersResizeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersResizeOutput = void;
 export const ClustersResizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersResizeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersResizeOutput>;
 
 // The operation
 /**
@@ -1468,7 +1462,7 @@ export const ClustersResizeOutput =
  * @param roleName - The constant value for the roleName
  * @param api-version - The HDInsight client API Version.
  */
-export const ClustersResize = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersResize = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersResizeInput,
   outputSchema: ClustersResizeOutput,
 }));
@@ -1482,7 +1476,7 @@ export interface ClustersRotateDiskEncryptionKeyInput {
   keyVersion?: string;
 }
 export const ClustersRotateDiskEncryptionKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1500,7 +1494,7 @@ export const ClustersRotateDiskEncryptionKeyInput =
 // Output Schema
 export type ClustersRotateDiskEncryptionKeyOutput = void;
 export const ClustersRotateDiskEncryptionKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersRotateDiskEncryptionKeyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersRotateDiskEncryptionKeyOutput>;
 
 // The operation
 /**
@@ -1512,7 +1506,7 @@ export const ClustersRotateDiskEncryptionKeyOutput =
  * @param api-version - The HDInsight client API Version.
  */
 export const ClustersRotateDiskEncryptionKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersRotateDiskEncryptionKeyInput,
     outputSchema: ClustersRotateDiskEncryptionKeyOutput,
   }));
@@ -1523,7 +1517,7 @@ export interface ClustersUpdateInput {
   clusterName: string;
   tags?: Record<string, string> | null;
 }
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1544,7 +1538,7 @@ export interface ClustersUpdateOutput {
   name?: string;
   type?: string;
 }
-export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1559,7 +1553,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterName - The name of the cluster.
  * @param api-version - The HDInsight client API Version.
  */
-export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
@@ -1593,7 +1587,7 @@ export interface ClustersUpdateAutoScaleConfigurationInput {
   };
 }
 export const ClustersUpdateAutoScaleConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1650,7 +1644,7 @@ export const ClustersUpdateAutoScaleConfigurationInput =
 // Output Schema
 export type ClustersUpdateAutoScaleConfigurationOutput = void;
 export const ClustersUpdateAutoScaleConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersUpdateAutoScaleConfigurationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersUpdateAutoScaleConfigurationOutput>;
 
 // The operation
 /**
@@ -1663,7 +1657,7 @@ export const ClustersUpdateAutoScaleConfigurationOutput =
  * @param api-version - The HDInsight client API Version.
  */
 export const ClustersUpdateAutoScaleConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersUpdateAutoScaleConfigurationInput,
     outputSchema: ClustersUpdateAutoScaleConfigurationOutput,
   }));
@@ -1677,7 +1671,7 @@ export interface ClustersUpdateGatewaySettingsInput {
   "restAuthCredential.password"?: string | Redacted.Redacted<string>;
 }
 export const ClustersUpdateGatewaySettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1695,7 +1689,7 @@ export const ClustersUpdateGatewaySettingsInput =
 // Output Schema
 export type ClustersUpdateGatewaySettingsOutput = void;
 export const ClustersUpdateGatewaySettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersUpdateGatewaySettingsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersUpdateGatewaySettingsOutput>;
 
 // The operation
 /**
@@ -1707,7 +1701,7 @@ export const ClustersUpdateGatewaySettingsOutput =
  * @param api-version - The HDInsight client API Version.
  */
 export const ClustersUpdateGatewaySettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersUpdateGatewaySettingsInput,
     outputSchema: ClustersUpdateGatewaySettingsOutput,
   }));
@@ -1721,7 +1715,7 @@ export interface ClustersUpdateIdentityCertificateInput {
   certificatePassword?: string | Redacted.Redacted<string>;
 }
 export const ClustersUpdateIdentityCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1739,7 +1733,7 @@ export const ClustersUpdateIdentityCertificateInput =
 // Output Schema
 export type ClustersUpdateIdentityCertificateOutput = void;
 export const ClustersUpdateIdentityCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersUpdateIdentityCertificateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersUpdateIdentityCertificateOutput>;
 
 // The operation
 /**
@@ -1751,7 +1745,7 @@ export const ClustersUpdateIdentityCertificateOutput =
  * @param api-version - The HDInsight client API Version.
  */
 export const ClustersUpdateIdentityCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersUpdateIdentityCertificateInput,
     outputSchema: ClustersUpdateIdentityCertificateOutput,
   }));
@@ -1762,14 +1756,12 @@ export interface ConfigurationsGetInput {
   clusterName: string;
   configurationName: string;
 }
-export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    configurationName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ConfigurationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  configurationName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/configurations/{configurationName}",
@@ -1780,7 +1772,7 @@ export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type ConfigurationsGetOutput = Record<string, string>;
 export const ConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  /*@__PURE__*/ Schema.Record(
     Schema.String,
     Schema.String,
   ) as unknown as Schema.Codec<ConfigurationsGetOutput>;
@@ -1795,7 +1787,7 @@ export const ConfigurationsGetOutput =
  * @param configurationName - The name of the cluster configuration.
  * @param api-version - The HDInsight client API Version.
  */
-export const ConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationsGetInput,
   outputSchema: ConfigurationsGetOutput,
 }));
@@ -1806,7 +1798,7 @@ export interface ConfigurationsListInput {
   clusterName: string;
 }
 export const ConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1823,7 +1815,7 @@ export interface ConfigurationsListOutput {
   configurations?: Record<string, Record<string, string>>;
 }
 export const ConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurations: Schema.optional(
       Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.String)),
     ),
@@ -1838,7 +1830,7 @@ export const ConfigurationsListOutput =
  * @param clusterName - The name of the cluster.
  * @param api-version - The HDInsight client API Version.
  */
-export const ConfigurationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConfigurationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationsListInput,
   outputSchema: ConfigurationsListOutput,
 }));
@@ -1851,7 +1843,7 @@ export interface ExtensionsCreateInput {
   workspaceId?: string;
   primaryKey?: string;
 }
-export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1869,7 +1861,7 @@ export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ExtensionsCreateOutput = void;
 export const ExtensionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsCreateOutput>;
 
 // The operation
 /**
@@ -1881,7 +1873,7 @@ export const ExtensionsCreateOutput =
  * @param extensionName - The name of the cluster extension.
  * @param api-version - The HDInsight client API Version.
  */
-export const ExtensionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsCreateInput,
   outputSchema: ExtensionsCreateOutput,
 }));
@@ -1892,7 +1884,7 @@ export interface ExtensionsDeleteInput {
   clusterName: string;
   extensionName: string;
 }
-export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1908,7 +1900,7 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ExtensionsDeleteOutput = void;
 export const ExtensionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsDeleteOutput>;
 
 // The operation
 /**
@@ -1920,7 +1912,7 @@ export const ExtensionsDeleteOutput =
  * @param extensionName - The name of the cluster extension.
  * @param api-version - The HDInsight client API Version.
  */
-export const ExtensionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsDeleteInput,
   outputSchema: ExtensionsDeleteOutput,
 }));
@@ -1931,7 +1923,7 @@ export interface ExtensionsDisableAzureMonitorInput {
   clusterName: string;
 }
 export const ExtensionsDisableAzureMonitorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1946,7 +1938,7 @@ export const ExtensionsDisableAzureMonitorInput =
 // Output Schema
 export type ExtensionsDisableAzureMonitorOutput = void;
 export const ExtensionsDisableAzureMonitorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsDisableAzureMonitorOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsDisableAzureMonitorOutput>;
 
 // The operation
 /**
@@ -1958,7 +1950,7 @@ export const ExtensionsDisableAzureMonitorOutput =
  * @param api-version - The HDInsight client API Version.
  */
 export const ExtensionsDisableAzureMonitor =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExtensionsDisableAzureMonitorInput,
     outputSchema: ExtensionsDisableAzureMonitorOutput,
   }));
@@ -1969,7 +1961,7 @@ export interface ExtensionsDisableMonitoringInput {
   clusterName: string;
 }
 export const ExtensionsDisableMonitoringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1984,7 +1976,7 @@ export const ExtensionsDisableMonitoringInput =
 // Output Schema
 export type ExtensionsDisableMonitoringOutput = void;
 export const ExtensionsDisableMonitoringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsDisableMonitoringOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsDisableMonitoringOutput>;
 
 // The operation
 /**
@@ -1995,12 +1987,10 @@ export const ExtensionsDisableMonitoringOutput =
  * @param clusterName - The name of the cluster.
  * @param api-version - The HDInsight client API Version.
  */
-export const ExtensionsDisableMonitoring = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExtensionsDisableMonitoringInput,
-    outputSchema: ExtensionsDisableMonitoringOutput,
-  }),
-);
+export const ExtensionsDisableMonitoring = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExtensionsDisableMonitoringInput,
+  outputSchema: ExtensionsDisableMonitoringOutput,
+}));
 // Input Schema
 export interface ExtensionsEnableAzureMonitorInput {
   subscriptionId: string;
@@ -2015,7 +2005,7 @@ export interface ExtensionsEnableAzureMonitorInput {
   };
 }
 export const ExtensionsEnableAzureMonitorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2047,7 +2037,7 @@ export const ExtensionsEnableAzureMonitorInput =
 // Output Schema
 export type ExtensionsEnableAzureMonitorOutput = void;
 export const ExtensionsEnableAzureMonitorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsEnableAzureMonitorOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsEnableAzureMonitorOutput>;
 
 // The operation
 /**
@@ -2059,7 +2049,7 @@ export const ExtensionsEnableAzureMonitorOutput =
  * @param api-version - The HDInsight client API Version.
  */
 export const ExtensionsEnableAzureMonitor =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExtensionsEnableAzureMonitorInput,
     outputSchema: ExtensionsEnableAzureMonitorOutput,
   }));
@@ -2072,7 +2062,7 @@ export interface ExtensionsEnableMonitoringInput {
   primaryKey?: string;
 }
 export const ExtensionsEnableMonitoringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2089,7 +2079,7 @@ export const ExtensionsEnableMonitoringInput =
 // Output Schema
 export type ExtensionsEnableMonitoringOutput = void;
 export const ExtensionsEnableMonitoringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsEnableMonitoringOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsEnableMonitoringOutput>;
 
 // The operation
 /**
@@ -2100,12 +2090,10 @@ export const ExtensionsEnableMonitoringOutput =
  * @param clusterName - The name of the cluster.
  * @param api-version - The HDInsight client API Version.
  */
-export const ExtensionsEnableMonitoring = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExtensionsEnableMonitoringInput,
-    outputSchema: ExtensionsEnableMonitoringOutput,
-  }),
-);
+export const ExtensionsEnableMonitoring = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExtensionsEnableMonitoringInput,
+  outputSchema: ExtensionsEnableMonitoringOutput,
+}));
 // Input Schema
 export interface ExtensionsGetInput {
   subscriptionId: string;
@@ -2113,7 +2101,7 @@ export interface ExtensionsGetInput {
   clusterName: string;
   extensionName: string;
 }
-export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -2131,7 +2119,7 @@ export interface ExtensionsGetOutput {
   clusterMonitoringEnabled?: boolean;
   workspaceId?: string;
 }
-export const ExtensionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsGetOutput = /*@__PURE__*/ Schema.Struct({
   clusterMonitoringEnabled: Schema.optional(Schema.Boolean),
   workspaceId: Schema.optional(Schema.String),
 }) as unknown as Schema.Codec<ExtensionsGetOutput>;
@@ -2146,7 +2134,7 @@ export const ExtensionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param extensionName - The name of the cluster extension.
  * @param api-version - The HDInsight client API Version.
  */
-export const ExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsGetInput,
   outputSchema: ExtensionsGetOutput,
 }));
@@ -2159,7 +2147,7 @@ export interface ExtensionsGetAzureAsyncOperationStatusInput {
   operationId: string;
 }
 export const ExtensionsGetAzureAsyncOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2179,7 +2167,7 @@ export interface ExtensionsGetAzureAsyncOperationStatusOutput {
   error?: { code?: string; message?: string };
 }
 export const ExtensionsGetAzureAsyncOperationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["InProgress", "Succeeded", "Failed"]),
     ),
@@ -2203,7 +2191,7 @@ export const ExtensionsGetAzureAsyncOperationStatusOutput =
  * @param operationId - The long running operation id.
  */
 export const ExtensionsGetAzureAsyncOperationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExtensionsGetAzureAsyncOperationStatusInput,
     outputSchema: ExtensionsGetAzureAsyncOperationStatusOutput,
   }));
@@ -2214,7 +2202,7 @@ export interface ExtensionsGetAzureMonitorStatusInput {
   clusterName: string;
 }
 export const ExtensionsGetAzureMonitorStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2237,7 +2225,7 @@ export interface ExtensionsGetAzureMonitorStatusOutput {
   };
 }
 export const ExtensionsGetAzureMonitorStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clusterMonitoringEnabled: Schema.optional(Schema.Boolean),
     workspaceId: Schema.optional(Schema.String),
     selectedConfigurations: Schema.optional(
@@ -2267,7 +2255,7 @@ export const ExtensionsGetAzureMonitorStatusOutput =
  * @param api-version - The HDInsight client API Version.
  */
 export const ExtensionsGetAzureMonitorStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExtensionsGetAzureMonitorStatusInput,
     outputSchema: ExtensionsGetAzureMonitorStatusOutput,
   }));
@@ -2278,7 +2266,7 @@ export interface ExtensionsGetMonitoringStatusInput {
   clusterName: string;
 }
 export const ExtensionsGetMonitoringStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2296,7 +2284,7 @@ export interface ExtensionsGetMonitoringStatusOutput {
   workspaceId?: string;
 }
 export const ExtensionsGetMonitoringStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clusterMonitoringEnabled: Schema.optional(Schema.Boolean),
     workspaceId: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ExtensionsGetMonitoringStatusOutput>;
@@ -2311,7 +2299,7 @@ export const ExtensionsGetMonitoringStatusOutput =
  * @param api-version - The HDInsight client API Version.
  */
 export const ExtensionsGetMonitoringStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExtensionsGetMonitoringStatusInput,
     outputSchema: ExtensionsGetMonitoringStatusOutput,
   }));
@@ -2323,7 +2311,7 @@ export interface LocationsCheckNameAvailabilityInput {
   type?: string;
 }
 export const LocationsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -2343,7 +2331,7 @@ export interface LocationsCheckNameAvailabilityOutput {
   message?: string;
 }
 export const LocationsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -2358,7 +2346,7 @@ export const LocationsCheckNameAvailabilityOutput =
  * @param api-version - The HDInsight client API Version.
  */
 export const LocationsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LocationsCheckNameAvailabilityInput,
     outputSchema: LocationsCheckNameAvailabilityOutput,
   }));
@@ -2369,7 +2357,7 @@ export interface LocationsGetAzureAsyncOperationStatusInput {
   operationId: string;
 }
 export const LocationsGetAzureAsyncOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
@@ -2387,7 +2375,7 @@ export interface LocationsGetAzureAsyncOperationStatusOutput {
   error?: { code?: string; message?: string };
 }
 export const LocationsGetAzureAsyncOperationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["InProgress", "Succeeded", "Failed"]),
     ),
@@ -2409,7 +2397,7 @@ export const LocationsGetAzureAsyncOperationStatusOutput =
  * @param operationId - The long running operation id.
  */
 export const LocationsGetAzureAsyncOperationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LocationsGetAzureAsyncOperationStatusInput,
     outputSchema: LocationsGetAzureAsyncOperationStatusOutput,
   }));
@@ -2419,7 +2407,7 @@ export interface LocationsGetCapabilitiesInput {
   location: string;
 }
 export const LocationsGetCapabilitiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2456,7 +2444,7 @@ export interface LocationsGetCapabilitiesOutput {
   };
 }
 export const LocationsGetCapabilitiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versions: Schema.optional(
       Schema.Record(
         Schema.String,
@@ -2510,19 +2498,17 @@ export const LocationsGetCapabilitiesOutput =
  * @param location - The Azure location (region) for which to make the request.
  * @param api-version - The HDInsight client API Version.
  */
-export const LocationsGetCapabilities = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LocationsGetCapabilitiesInput,
-    outputSchema: LocationsGetCapabilitiesOutput,
-  }),
-);
+export const LocationsGetCapabilities = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LocationsGetCapabilitiesInput,
+  outputSchema: LocationsGetCapabilitiesOutput,
+}));
 // Input Schema
 export interface LocationsListBillingSpecsInput {
   subscriptionId: string;
   location: string;
 }
 export const LocationsListBillingSpecsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2575,7 +2561,7 @@ export interface LocationsListBillingSpecsOutput {
   }[];
 }
 export const LocationsListBillingSpecsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vmSizes: Schema.optional(Schema.Array(Schema.String)),
     vmSizesWithEncryptionAtHost: Schema.optional(Schema.Array(Schema.String)),
     vmSizeFilters: Schema.optional(
@@ -2648,19 +2634,17 @@ export const LocationsListBillingSpecsOutput =
  * @param location - The Azure location (region) for which to make the request.
  * @param api-version - The HDInsight client API Version.
  */
-export const LocationsListBillingSpecs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LocationsListBillingSpecsInput,
-    outputSchema: LocationsListBillingSpecsOutput,
-  }),
-);
+export const LocationsListBillingSpecs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LocationsListBillingSpecsInput,
+  outputSchema: LocationsListBillingSpecsOutput,
+}));
 // Input Schema
 export interface LocationsListUsagesInput {
   subscriptionId: string;
   location: string;
 }
 export const LocationsListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2681,7 +2665,7 @@ export interface LocationsListUsagesOutput {
   }[];
 }
 export const LocationsListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2707,7 +2691,7 @@ export const LocationsListUsagesOutput =
  * @param location - The Azure location (region) for which to make the request.
  * @param api-version - The HDInsight client API Version.
  */
-export const LocationsListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocationsListUsages = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocationsListUsagesInput,
   outputSchema: LocationsListUsagesOutput,
 }));
@@ -2870,7 +2854,7 @@ export interface LocationsValidateClusterCreateRequestInput {
   };
 }
 export const LocationsValidateClusterCreateRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -3198,7 +3182,7 @@ export interface LocationsValidateClusterCreateRequestOutput {
   }[];
 }
 export const LocationsValidateClusterCreateRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validationErrors: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3244,15 +3228,13 @@ export const LocationsValidateClusterCreateRequestOutput =
  * @param api-version - The HDInsight client API Version.
  */
 export const LocationsValidateClusterCreateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LocationsValidateClusterCreateRequestInput,
     outputSchema: LocationsValidateClusterCreateRequestOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HDInsight/operations",
@@ -3301,7 +3283,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3376,7 +3358,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The HDInsight client API Version.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -3415,7 +3397,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   type?: string;
 }
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3475,7 +3457,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3492,7 +3474,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
@@ -3504,7 +3486,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3520,7 +3502,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -3533,7 +3515,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -3545,7 +3527,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3565,7 +3547,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3582,7 +3564,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -3593,7 +3575,7 @@ export interface PrivateEndpointConnectionsListByClusterInput {
   clusterName: string;
 }
 export const PrivateEndpointConnectionsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3611,7 +3593,7 @@ export interface PrivateEndpointConnectionsListByClusterOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3634,7 +3616,7 @@ export const PrivateEndpointConnectionsListByClusterOutput =
  * @param clusterName - The name of the cluster.
  */
 export const PrivateEndpointConnectionsListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByClusterInput,
     outputSchema: PrivateEndpointConnectionsListByClusterOutput,
   }));
@@ -3646,7 +3628,7 @@ export interface PrivateLinkResourcesGetInput {
   privateLinkResourceName: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3666,7 +3648,7 @@ export interface PrivateLinkResourcesGetOutput {
   type?: string;
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3682,12 +3664,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param clusterName - The name of the cluster.
  * @param privateLinkResourceName - The name of the private link resource.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListByClusterInput {
   subscriptionId: string;
@@ -3695,7 +3675,7 @@ export interface PrivateLinkResourcesListByClusterInput {
   clusterName: string;
 }
 export const PrivateLinkResourcesListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3712,7 +3692,7 @@ export interface PrivateLinkResourcesListByClusterOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const PrivateLinkResourcesListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3734,7 +3714,7 @@ export const PrivateLinkResourcesListByClusterOutput =
  * @param clusterName - The name of the cluster.
  */
 export const PrivateLinkResourcesListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByClusterInput,
     outputSchema: PrivateLinkResourcesListByClusterOutput,
   }));
@@ -3746,7 +3726,7 @@ export interface ScriptActionsDeleteInput {
   scriptName: string;
 }
 export const ScriptActionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3762,7 +3742,7 @@ export const ScriptActionsDeleteInput =
 // Output Schema
 export type ScriptActionsDeleteOutput = void;
 export const ScriptActionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScriptActionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ScriptActionsDeleteOutput>;
 
 // The operation
 /**
@@ -3774,7 +3754,7 @@ export const ScriptActionsDeleteOutput =
  * @param scriptName - The name of the script.
  * @param api-version - The HDInsight client API Version.
  */
-export const ScriptActionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptActionsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptActionsDeleteInput,
   outputSchema: ScriptActionsDeleteOutput,
 }));
@@ -3786,7 +3766,7 @@ export interface ScriptActionsGetExecutionAsyncOperationStatusInput {
   operationId: string;
 }
 export const ScriptActionsGetExecutionAsyncOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3805,7 +3785,7 @@ export interface ScriptActionsGetExecutionAsyncOperationStatusOutput {
   error?: { code?: string; message?: string };
 }
 export const ScriptActionsGetExecutionAsyncOperationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["InProgress", "Succeeded", "Failed"]),
     ),
@@ -3828,7 +3808,7 @@ export const ScriptActionsGetExecutionAsyncOperationStatusOutput =
  * @param operationId - The long running operation id.
  */
 export const ScriptActionsGetExecutionAsyncOperationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScriptActionsGetExecutionAsyncOperationStatusInput,
     outputSchema: ScriptActionsGetExecutionAsyncOperationStatusOutput,
   }));
@@ -3840,7 +3820,7 @@ export interface ScriptActionsGetExecutionDetailInput {
   scriptExecutionId: string;
 }
 export const ScriptActionsGetExecutionDetailInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3862,7 +3842,7 @@ export interface ScriptActionsGetExecutionDetailOutput {
   applicationName?: string;
 }
 export const ScriptActionsGetExecutionDetailOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String,
     uri: Schema.String,
     parameters: Schema.optional(Schema.String),
@@ -3881,7 +3861,7 @@ export const ScriptActionsGetExecutionDetailOutput =
  * @param api-version - The HDInsight client API Version.
  */
 export const ScriptActionsGetExecutionDetail =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScriptActionsGetExecutionDetailInput,
     outputSchema: ScriptActionsGetExecutionDetailOutput,
   }));
@@ -3892,7 +3872,7 @@ export interface ScriptActionsListByClusterInput {
   clusterName: string;
 }
 export const ScriptActionsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3916,7 +3896,7 @@ export interface ScriptActionsListByClusterOutput {
   nextLink?: string;
 }
 export const ScriptActionsListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3940,12 +3920,10 @@ export const ScriptActionsListByClusterOutput =
  * @param clusterName - The name of the cluster.
  * @param api-version - The HDInsight client API Version.
  */
-export const ScriptActionsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScriptActionsListByClusterInput,
-    outputSchema: ScriptActionsListByClusterOutput,
-  }),
-);
+export const ScriptActionsListByCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScriptActionsListByClusterInput,
+  outputSchema: ScriptActionsListByClusterOutput,
+}));
 // Input Schema
 export interface ScriptExecutionHistoryListByClusterInput {
   subscriptionId: string;
@@ -3953,7 +3931,7 @@ export interface ScriptExecutionHistoryListByClusterInput {
   clusterName: string;
 }
 export const ScriptExecutionHistoryListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3977,7 +3955,7 @@ export interface ScriptExecutionHistoryListByClusterOutput {
   nextLink?: string;
 }
 export const ScriptExecutionHistoryListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4002,7 +3980,7 @@ export const ScriptExecutionHistoryListByClusterOutput =
  * @param api-version - The HDInsight client API Version.
  */
 export const ScriptExecutionHistoryListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScriptExecutionHistoryListByClusterInput,
     outputSchema: ScriptExecutionHistoryListByClusterOutput,
   }));
@@ -4014,7 +3992,7 @@ export interface ScriptExecutionHistoryPromoteInput {
   scriptExecutionId: string;
 }
 export const ScriptExecutionHistoryPromoteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4030,7 +4008,7 @@ export const ScriptExecutionHistoryPromoteInput =
 // Output Schema
 export type ScriptExecutionHistoryPromoteOutput = void;
 export const ScriptExecutionHistoryPromoteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScriptExecutionHistoryPromoteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ScriptExecutionHistoryPromoteOutput>;
 
 // The operation
 /**
@@ -4043,7 +4021,7 @@ export const ScriptExecutionHistoryPromoteOutput =
  * @param api-version - The HDInsight client API Version.
  */
 export const ScriptExecutionHistoryPromote =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScriptExecutionHistoryPromoteInput,
     outputSchema: ScriptExecutionHistoryPromoteOutput,
   }));
@@ -4055,7 +4033,7 @@ export interface VirtualMachinesGetAsyncOperationStatusInput {
   operationId: string;
 }
 export const VirtualMachinesGetAsyncOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4074,7 +4052,7 @@ export interface VirtualMachinesGetAsyncOperationStatusOutput {
   error?: { code?: string; message?: string };
 }
 export const VirtualMachinesGetAsyncOperationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["InProgress", "Succeeded", "Failed"]),
     ),
@@ -4097,7 +4075,7 @@ export const VirtualMachinesGetAsyncOperationStatusOutput =
  * @param operationId - The long running operation id.
  */
 export const VirtualMachinesGetAsyncOperationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesGetAsyncOperationStatusInput,
     outputSchema: VirtualMachinesGetAsyncOperationStatusOutput,
   }));
@@ -4108,7 +4086,7 @@ export interface VirtualMachinesListHostsInput {
   clusterName: string;
 }
 export const VirtualMachinesListHostsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4127,7 +4105,7 @@ export type VirtualMachinesListHostsOutput = {
   effectiveDiskEncryptionKeyUrl?: string;
 }[];
 export const VirtualMachinesListHostsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
       fqdn: Schema.optional(Schema.String),
@@ -4144,12 +4122,10 @@ export const VirtualMachinesListHostsOutput =
  * @param clusterName - The name of the cluster.
  * @param api-version - The HDInsight client API Version.
  */
-export const VirtualMachinesListHosts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesListHostsInput,
-    outputSchema: VirtualMachinesListHostsOutput,
-  }),
-);
+export const VirtualMachinesListHosts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesListHostsInput,
+  outputSchema: VirtualMachinesListHostsOutput,
+}));
 // Input Schema
 export interface VirtualMachinesRestartHostsInput {
   subscriptionId: string;
@@ -4157,7 +4133,7 @@ export interface VirtualMachinesRestartHostsInput {
   clusterName: string;
 }
 export const VirtualMachinesRestartHostsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4172,7 +4148,7 @@ export const VirtualMachinesRestartHostsInput =
 // Output Schema
 export type VirtualMachinesRestartHostsOutput = void;
 export const VirtualMachinesRestartHostsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesRestartHostsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesRestartHostsOutput>;
 
 // The operation
 /**
@@ -4183,9 +4159,7 @@ export const VirtualMachinesRestartHostsOutput =
  * @param clusterName - The name of the cluster.
  * @param api-version - The HDInsight client API Version.
  */
-export const VirtualMachinesRestartHosts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesRestartHostsInput,
-    outputSchema: VirtualMachinesRestartHostsOutput,
-  }),
-);
+export const VirtualMachinesRestartHosts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesRestartHostsInput,
+  outputSchema: VirtualMachinesRestartHostsOutput,
+}));

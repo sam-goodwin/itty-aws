@@ -9,7 +9,7 @@ export interface PostTestHelpersTestClocksTestClockAdvanceInput {
   frozen_time: number;
 }
 export const PostTestHelpersTestClocksTestClockAdvanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     test_clock: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     frozen_time: Schema.Number,
@@ -34,7 +34,7 @@ export interface PostTestHelpersTestClocksTestClockAdvanceOutput {
   status_details: { advancing?: { target_frozen_time: number } };
 }
 export const PostTestHelpersTestClocksTestClockAdvanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     deletes_after: Schema.Number,
     frozen_time: Schema.Number,
@@ -59,7 +59,7 @@ export const PostTestHelpersTestClocksTestClockAdvanceOutput =
  * <p>Starts advancing a test clock to a specified time in the future. Advancement is done when status changes to <code>Ready</code>.</p>
  */
 export const PostTestHelpersTestClocksTestClockAdvance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersTestClocksTestClockAdvanceInput,
     outputSchema: PostTestHelpersTestClocksTestClockAdvanceOutput,
   }));

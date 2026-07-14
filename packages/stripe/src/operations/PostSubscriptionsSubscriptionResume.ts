@@ -16,7 +16,7 @@ export interface PostSubscriptionsSubscriptionResumeInput {
   proration_date?: number;
 }
 export const PostSubscriptionsSubscriptionResumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.String.pipe(T.PathParam()),
     billing_cycle_anchor: Schema.optional(
       Schema.Literals(["now", "unchanged"]),
@@ -1092,7 +1092,7 @@ export interface PostSubscriptionsSubscriptionResumeOutput {
   trial_start: number | null;
 }
 export const PostSubscriptionsSubscriptionResumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -1963,7 +1963,7 @@ export const PostSubscriptionsSubscriptionResumeOutput =
  * <p>Initiates resumption of a paused subscription, optionally resetting the billing cycle anchor and creating prorations. Resume is only available for subscriptions that use <code>charge_automatically</code> collection. If Stripe doesn’t generate a resumption invoice, the subscription becomes <code>active</code> immediately. When a resumption invoice is generated, Stripe finalizes it immediately. If the invoice is paid or marked uncollectible, the subscription becomes <code>active</code>. If the invoice is manually voided, the subscription stays <code>paused</code>. If there is no payment attempt within 23 hours, Stripe voids the invoice and the subscription stays <code>paused</code>. Learn more about <a href="/docs/billing/subscriptions/pause#resume-subscriptions">resuming subscriptions</a>.</p>
  */
 export const PostSubscriptionsSubscriptionResume =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostSubscriptionsSubscriptionResumeInput,
     outputSchema: PostSubscriptionsSubscriptionResumeOutput,
   }));

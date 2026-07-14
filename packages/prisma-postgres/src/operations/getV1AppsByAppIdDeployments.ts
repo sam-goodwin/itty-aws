@@ -10,7 +10,7 @@ export interface GetV1AppsByAppIdDeploymentsInput {
   limit?: number;
 }
 export const GetV1AppsByAppIdDeploymentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appId: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -30,7 +30,7 @@ export interface GetV1AppsByAppIdDeploymentsOutput {
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
 export const GetV1AppsByAppIdDeploymentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -53,10 +53,8 @@ export const GetV1AppsByAppIdDeploymentsOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Returns all deployments belonging to an app, ordered by creation time (newest first). Supports cursor-based pagination.
  */
-export const getV1AppsByAppIdDeployments = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1AppsByAppIdDeploymentsInput,
-    outputSchema: GetV1AppsByAppIdDeploymentsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getV1AppsByAppIdDeployments = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1AppsByAppIdDeploymentsInput,
+  outputSchema: GetV1AppsByAppIdDeploymentsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

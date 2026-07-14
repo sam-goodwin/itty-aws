@@ -18,7 +18,7 @@ export interface PostForwardingRequestsInput {
   url: string;
 }
 export const PostForwardingRequestsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     payment_method: Schema.String,
@@ -85,7 +85,7 @@ export interface PostForwardingRequestsOutput {
   url: string | null;
 }
 export const PostForwardingRequestsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     id: Schema.String,
     livemode: Schema.Boolean,
@@ -142,9 +142,7 @@ export const PostForwardingRequestsOutput =
  *
  * <p>Creates a ForwardingRequest object.</p>
  */
-export const PostForwardingRequests = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostForwardingRequestsInput,
-    outputSchema: PostForwardingRequestsOutput,
-  }),
-);
+export const PostForwardingRequests = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostForwardingRequestsInput,
+  outputSchema: PostForwardingRequestsOutput,
+}));

@@ -10,7 +10,7 @@ export interface LlmPromptsNameRetrieveInput {
   version?: number;
 }
 export const LlmPromptsNameRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     prompt_name: Schema.String.pipe(T.PathParam()),
     content: Schema.optional(Schema.Literals(["full", "preview", "none"])),
@@ -39,7 +39,7 @@ export interface LlmPromptsNameRetrieveOutput {
   first_version_created_at?: string;
 }
 export const LlmPromptsNameRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     prompt: Schema.optional(Schema.Unknown),
@@ -73,9 +73,7 @@ export const LlmPromptsNameRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param version - Specific prompt version to fetch. If omitted, the latest version is returned.
  */
-export const llmPromptsNameRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LlmPromptsNameRetrieveInput,
-    outputSchema: LlmPromptsNameRetrieveOutput,
-  }),
-);
+export const llmPromptsNameRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LlmPromptsNameRetrieveInput,
+  outputSchema: LlmPromptsNameRetrieveOutput,
+}));

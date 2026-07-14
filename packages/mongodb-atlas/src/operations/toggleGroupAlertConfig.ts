@@ -11,7 +11,7 @@ export interface ToggleGroupAlertConfigInput {
   pretty?: boolean;
 }
 export const ToggleGroupAlertConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     alertConfigId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const ToggleGroupAlertConfigInput =
 // Output Schema
 export type ToggleGroupAlertConfigOutput = void;
 export const ToggleGroupAlertConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ToggleGroupAlertConfigOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ToggleGroupAlertConfigOutput>;
 
 // The operation
 /**
@@ -43,10 +43,8 @@ export const ToggleGroupAlertConfigOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param alertConfigId - Unique 24-hexadecimal digit string that identifies the alert configuration that triggered this alert.
  */
-export const toggleGroupAlertConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ToggleGroupAlertConfigInput,
-    outputSchema: ToggleGroupAlertConfigOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const toggleGroupAlertConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ToggleGroupAlertConfigInput,
+  outputSchema: ToggleGroupAlertConfigOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

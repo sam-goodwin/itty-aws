@@ -42,7 +42,7 @@ export interface LicenseAssignment {
 }
 
 export const LicenseAssignment: Schema.Codec<LicenseAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etags: Schema.optional(Schema.String),
     selfLink: Schema.optional(Schema.String),
     skuName: Schema.optional(Schema.String),
@@ -65,7 +65,7 @@ export interface LicenseAssignmentList {
 }
 
 export const LicenseAssignmentList: Schema.Codec<LicenseAssignmentList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(LicenseAssignment)),
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -75,7 +75,7 @@ export const LicenseAssignmentList: Schema.Codec<LicenseAssignmentList> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -85,7 +85,7 @@ export interface LicenseAssignmentInsert {
 }
 
 export const LicenseAssignmentInsert: Schema.Codec<LicenseAssignmentInsert> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.optional(Schema.String),
   }).annotate({ identifier: "LicenseAssignmentInsert" });
 
@@ -153,7 +153,7 @@ export interface InsertLicenseAssignmentsRequest {
 }
 
 export const InsertLicenseAssignmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productId: Schema.String.pipe(T.HttpPath("productId")),
     skuId: Schema.String.pipe(T.HttpPath("skuId")),
     body: Schema.optional(LicenseAssignmentInsert).pipe(T.HttpBody()),
@@ -167,8 +167,7 @@ export const InsertLicenseAssignmentsRequest =
   ) as unknown as Schema.Codec<InsertLicenseAssignmentsRequest>;
 
 export type InsertLicenseAssignmentsResponse = LicenseAssignment;
-export const InsertLicenseAssignmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LicenseAssignment;
+export const InsertLicenseAssignmentsResponse = /*@__PURE__*/ LicenseAssignment;
 
 export type InsertLicenseAssignmentsError =
   | DefaultErrors
@@ -183,7 +182,7 @@ export const insertLicenseAssignments: API.OperationMethod<
   InsertLicenseAssignmentsResponse,
   InsertLicenseAssignmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertLicenseAssignmentsRequest,
   output: InsertLicenseAssignmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -199,7 +198,7 @@ export interface GetLicenseAssignmentsRequest {
 }
 
 export const GetLicenseAssignmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productId: Schema.String.pipe(T.HttpPath("productId")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     skuId: Schema.String.pipe(T.HttpPath("skuId")),
@@ -212,8 +211,7 @@ export const GetLicenseAssignmentsRequest =
   ) as unknown as Schema.Codec<GetLicenseAssignmentsRequest>;
 
 export type GetLicenseAssignmentsResponse = LicenseAssignment;
-export const GetLicenseAssignmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LicenseAssignment;
+export const GetLicenseAssignmentsResponse = /*@__PURE__*/ LicenseAssignment;
 
 export type GetLicenseAssignmentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -223,7 +221,7 @@ export const getLicenseAssignments: API.OperationMethod<
   GetLicenseAssignmentsResponse,
   GetLicenseAssignmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLicenseAssignmentsRequest,
   output: GetLicenseAssignmentsResponse,
   errors: [NotFound, Forbidden],
@@ -243,7 +241,7 @@ export interface ListForProductAndSkuLicenseAssignmentsRequest {
 }
 
 export const ListForProductAndSkuLicenseAssignmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skuId: Schema.String.pipe(T.HttpPath("skuId")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     productId: Schema.String.pipe(T.HttpPath("productId")),
@@ -260,7 +258,7 @@ export const ListForProductAndSkuLicenseAssignmentsRequest =
 export type ListForProductAndSkuLicenseAssignmentsResponse =
   LicenseAssignmentList;
 export const ListForProductAndSkuLicenseAssignmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LicenseAssignmentList;
+  /*@__PURE__*/ LicenseAssignmentList;
 
 export type ListForProductAndSkuLicenseAssignmentsError =
   | DefaultErrors
@@ -273,7 +271,7 @@ export const listForProductAndSkuLicenseAssignments: API.PaginatedOperationMetho
   ListForProductAndSkuLicenseAssignmentsResponse,
   ListForProductAndSkuLicenseAssignmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListForProductAndSkuLicenseAssignmentsRequest,
   output: ListForProductAndSkuLicenseAssignmentsResponse,
   errors: [NotFound, Forbidden],
@@ -294,7 +292,7 @@ export interface DeleteLicenseAssignmentsRequest {
 }
 
 export const DeleteLicenseAssignmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productId: Schema.String.pipe(T.HttpPath("productId")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     skuId: Schema.String.pipe(T.HttpPath("skuId")),
@@ -307,8 +305,7 @@ export const DeleteLicenseAssignmentsRequest =
   ) as unknown as Schema.Codec<DeleteLicenseAssignmentsRequest>;
 
 export type DeleteLicenseAssignmentsResponse = Empty;
-export const DeleteLicenseAssignmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteLicenseAssignmentsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteLicenseAssignmentsError =
   | DefaultErrors
@@ -323,7 +320,7 @@ export const deleteLicenseAssignments: API.OperationMethod<
   DeleteLicenseAssignmentsResponse,
   DeleteLicenseAssignmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLicenseAssignmentsRequest,
   output: DeleteLicenseAssignmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -341,7 +338,7 @@ export interface ListForProductLicenseAssignmentsRequest {
 }
 
 export const ListForProductLicenseAssignmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productId: Schema.String.pipe(T.HttpPath("productId")),
     customerId: Schema.String.pipe(T.HttpQuery("customerId")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -356,7 +353,7 @@ export const ListForProductLicenseAssignmentsRequest =
 
 export type ListForProductLicenseAssignmentsResponse = LicenseAssignmentList;
 export const ListForProductLicenseAssignmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LicenseAssignmentList;
+  /*@__PURE__*/ LicenseAssignmentList;
 
 export type ListForProductLicenseAssignmentsError =
   | DefaultErrors
@@ -369,7 +366,7 @@ export const listForProductLicenseAssignments: API.PaginatedOperationMethod<
   ListForProductLicenseAssignmentsResponse,
   ListForProductLicenseAssignmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListForProductLicenseAssignmentsRequest,
   output: ListForProductLicenseAssignmentsResponse,
   errors: [NotFound, Forbidden],
@@ -392,7 +389,7 @@ export interface PatchLicenseAssignmentsRequest {
 }
 
 export const PatchLicenseAssignmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     skuId: Schema.String.pipe(T.HttpPath("skuId")),
     productId: Schema.String.pipe(T.HttpPath("productId")),
@@ -407,8 +404,7 @@ export const PatchLicenseAssignmentsRequest =
   ) as unknown as Schema.Codec<PatchLicenseAssignmentsRequest>;
 
 export type PatchLicenseAssignmentsResponse = LicenseAssignment;
-export const PatchLicenseAssignmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LicenseAssignment;
+export const PatchLicenseAssignmentsResponse = /*@__PURE__*/ LicenseAssignment;
 
 export type PatchLicenseAssignmentsError =
   | DefaultErrors
@@ -423,7 +419,7 @@ export const patchLicenseAssignments: API.OperationMethod<
   PatchLicenseAssignmentsResponse,
   PatchLicenseAssignmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchLicenseAssignmentsRequest,
   output: PatchLicenseAssignmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -441,7 +437,7 @@ export interface UpdateLicenseAssignmentsRequest {
 }
 
 export const UpdateLicenseAssignmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productId: Schema.String.pipe(T.HttpPath("productId")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     skuId: Schema.String.pipe(T.HttpPath("skuId")),
@@ -456,8 +452,7 @@ export const UpdateLicenseAssignmentsRequest =
   ) as unknown as Schema.Codec<UpdateLicenseAssignmentsRequest>;
 
 export type UpdateLicenseAssignmentsResponse = LicenseAssignment;
-export const UpdateLicenseAssignmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LicenseAssignment;
+export const UpdateLicenseAssignmentsResponse = /*@__PURE__*/ LicenseAssignment;
 
 export type UpdateLicenseAssignmentsError =
   | DefaultErrors
@@ -472,7 +467,7 @@ export const updateLicenseAssignments: API.OperationMethod<
   UpdateLicenseAssignmentsResponse,
   UpdateLicenseAssignmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLicenseAssignmentsRequest,
   output: UpdateLicenseAssignmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

@@ -10,7 +10,7 @@ export interface HogFlowsUserBlastRadiusCreateInput {
   group_type_index?: number | null;
 }
 export const HogFlowsUserBlastRadiusCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     group_type_index: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -28,7 +28,7 @@ export interface HogFlowsUserBlastRadiusCreateOutput {
   limit?: number;
 }
 export const HogFlowsUserBlastRadiusCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     affected: Schema.optional(Schema.Number),
     total: Schema.optional(Schema.Number),
     limit: Schema.optional(Schema.Number),
@@ -40,7 +40,7 @@ export const HogFlowsUserBlastRadiusCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const hogFlowsUserBlastRadiusCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HogFlowsUserBlastRadiusCreateInput,
     outputSchema: HogFlowsUserBlastRadiusCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

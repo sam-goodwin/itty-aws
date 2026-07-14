@@ -654,7 +654,7 @@ export interface PostReportingReportRunsInput {
   report_type: string;
 }
 export const PostReportingReportRunsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     parameters: Schema.optional(
       Schema.Struct({
@@ -1390,7 +1390,7 @@ export interface PostReportingReportRunsOutput {
   succeeded_at: number | null;
 }
 export const PostReportingReportRunsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     error: Schema.NullOr(Schema.String),
     id: Schema.String,
@@ -1475,9 +1475,7 @@ export const PostReportingReportRunsOutput =
  *
  * <p>Creates a new object and begin running the report. (Certain report types require a <a href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.)</p>
  */
-export const PostReportingReportRuns = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostReportingReportRunsInput,
-    outputSchema: PostReportingReportRunsOutput,
-  }),
-);
+export const PostReportingReportRuns = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostReportingReportRunsInput,
+  outputSchema: PostReportingReportRunsOutput,
+}));

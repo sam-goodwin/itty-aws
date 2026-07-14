@@ -84,7 +84,7 @@ interface UsageGetResponseItem {
   /** The display name of the Cloudflare zone. Cloudflare extension. */
   xZoneName?: string | null;
 }
-const UsageGetResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const UsageGetResponseItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     billingAccountId: Schema.String,
     billingAccountName: Schema.String,
@@ -206,7 +206,7 @@ interface UsagePaygoResponseItem {
   /** The display name of the Cloudflare zone. */
   zoneName?: string | null;
 }
-const UsagePaygoResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const UsagePaygoResponseItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     billingCurrency: Schema.String,
     billingPeriodStart: Schema.String,
@@ -255,13 +255,12 @@ export interface GetProfileRequest {
   accountId: string;
 }
 
-export const GetProfileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/billing/profile" }),
-    ),
+export const GetProfileRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/billing/profile" }),
+  ),
 ) as unknown as Schema.Codec<GetProfileRequest>;
 
 export interface GetProfileResponse {
@@ -307,117 +306,104 @@ export interface GetProfileResponse {
   zipcode?: string | null;
 }
 
-export const GetProfileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      accountType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      address2: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      balance: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      cardExpiryMonth: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      cardExpiryYear: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      cardNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      city: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      company: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      deviceData: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      editedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enterpriseBillingEmail: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      enterprisePrimaryEmail: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      firstName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      isPartner: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      lastName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      nextBillDate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      paymentAddress: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      paymentAddress2: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      paymentCity: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      paymentCountry: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      paymentEmail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      paymentFirstName: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      paymentGateway: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      paymentLastName: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      paymentNonce: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      paymentState: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      paymentZipcode: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      primaryEmail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      taxIdType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      telephone: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      useLegacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      validationCode: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      vat: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      zipcode: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          accountType: "account_type",
-          address: "address",
-          address2: "address2",
-          balance: "balance",
-          cardExpiryMonth: "card_expiry_month",
-          cardExpiryYear: "card_expiry_year",
-          cardNumber: "card_number",
-          city: "city",
-          company: "company",
-          country: "country",
-          createdOn: "created_on",
-          deviceData: "device_data",
-          editedOn: "edited_on",
-          enterpriseBillingEmail: "enterprise_billing_email",
-          enterprisePrimaryEmail: "enterprise_primary_email",
-          firstName: "first_name",
-          isPartner: "is_partner",
-          lastName: "last_name",
-          nextBillDate: "next_bill_date",
-          paymentAddress: "payment_address",
-          paymentAddress2: "payment_address2",
-          paymentCity: "payment_city",
-          paymentCountry: "payment_country",
-          paymentEmail: "payment_email",
-          paymentFirstName: "payment_first_name",
-          paymentGateway: "payment_gateway",
-          paymentLastName: "payment_last_name",
-          paymentNonce: "payment_nonce",
-          paymentState: "payment_state",
-          paymentZipcode: "payment_zipcode",
-          primaryEmail: "primary_email",
-          state: "state",
-          taxIdType: "tax_id_type",
-          telephone: "telephone",
-          useLegacy: "use_legacy",
-          validationCode: "validation_code",
-          vat: "vat",
-          zipcode: "zipcode",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetProfileResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    accountType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    address2: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    balance: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    cardExpiryMonth: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    cardExpiryYear: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    cardNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    city: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    company: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deviceData: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    editedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enterpriseBillingEmail: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    enterprisePrimaryEmail: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    firstName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    isPartner: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    lastName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    nextBillDate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    paymentAddress: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    paymentAddress2: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    paymentCity: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    paymentCountry: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    paymentEmail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    paymentFirstName: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    paymentGateway: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    paymentLastName: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    paymentNonce: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    paymentState: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    paymentZipcode: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    primaryEmail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    taxIdType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    telephone: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    useLegacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    validationCode: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    vat: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    zipcode: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        accountType: "account_type",
+        address: "address",
+        address2: "address2",
+        balance: "balance",
+        cardExpiryMonth: "card_expiry_month",
+        cardExpiryYear: "card_expiry_year",
+        cardNumber: "card_number",
+        city: "city",
+        company: "company",
+        country: "country",
+        createdOn: "created_on",
+        deviceData: "device_data",
+        editedOn: "edited_on",
+        enterpriseBillingEmail: "enterprise_billing_email",
+        enterprisePrimaryEmail: "enterprise_primary_email",
+        firstName: "first_name",
+        isPartner: "is_partner",
+        lastName: "last_name",
+        nextBillDate: "next_bill_date",
+        paymentAddress: "payment_address",
+        paymentAddress2: "payment_address2",
+        paymentCity: "payment_city",
+        paymentCountry: "payment_country",
+        paymentEmail: "payment_email",
+        paymentFirstName: "payment_first_name",
+        paymentGateway: "payment_gateway",
+        paymentLastName: "payment_last_name",
+        paymentNonce: "payment_nonce",
+        paymentState: "payment_state",
+        paymentZipcode: "payment_zipcode",
+        primaryEmail: "primary_email",
+        state: "state",
+        taxIdType: "tax_id_type",
+        telephone: "telephone",
+        useLegacy: "use_legacy",
+        validationCode: "validation_code",
+        vat: "vat",
+        zipcode: "zipcode",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetProfileResponse>;
 
 export type GetProfileError = DefaultErrors;
@@ -427,7 +413,7 @@ export const getProfile: API.OperationMethod<
   GetProfileResponse,
   GetProfileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProfileRequest,
   output: GetProfileResponse,
   errors: [],
@@ -448,7 +434,7 @@ export interface GetUsageRequest {
   to?: string;
 }
 
-export const GetUsageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetUsageRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     from: Schema.optional(Schema.String).pipe(T.HttpQuery("from")),
@@ -495,7 +481,7 @@ export type GetUsageResponse = {
   xZoneName?: string | null;
 }[];
 
-export const GetUsageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetUsageResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Array(UsageGetResponseItem).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetUsageResponse>;
 
@@ -506,7 +492,7 @@ export const getUsage: API.OperationMethod<
   GetUsageResponse,
   GetUsageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsageRequest,
   output: GetUsageResponse,
   errors: [],
@@ -521,15 +507,14 @@ export interface PaygoUsageRequest {
   to?: string;
 }
 
-export const PaygoUsageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      from: Schema.optional(Schema.String).pipe(T.HttpQuery("from")),
-      to: Schema.optional(Schema.String).pipe(T.HttpQuery("to")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/paygo-usage" }),
-    ),
+export const PaygoUsageRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    from: Schema.optional(Schema.String).pipe(T.HttpQuery("from")),
+    to: Schema.optional(Schema.String).pipe(T.HttpQuery("to")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/paygo-usage" }),
+  ),
 ) as unknown as Schema.Codec<PaygoUsageRequest>;
 
 export type PaygoUsageResponse = {
@@ -550,8 +535,8 @@ export type PaygoUsageResponse = {
   zoneName?: string | null;
 }[];
 
-export const PaygoUsageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Array(UsagePaygoResponseItem).pipe(T.ResponsePath("result")),
+export const PaygoUsageResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Array(UsagePaygoResponseItem).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PaygoUsageResponse>;
 
 export type PaygoUsageError = DefaultErrors;
@@ -561,7 +546,7 @@ export const paygoUsage: API.OperationMethod<
   PaygoUsageResponse,
   PaygoUsageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PaygoUsageRequest,
   output: PaygoUsageResponse,
   errors: [],

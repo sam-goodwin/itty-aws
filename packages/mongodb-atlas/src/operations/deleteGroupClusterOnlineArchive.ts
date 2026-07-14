@@ -12,7 +12,7 @@ export interface DeleteGroupClusterOnlineArchiveInput {
   pretty?: boolean;
 }
 export const DeleteGroupClusterOnlineArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     archiveId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const DeleteGroupClusterOnlineArchiveInput =
 // Output Schema
 export type DeleteGroupClusterOnlineArchiveOutput = void;
 export const DeleteGroupClusterOnlineArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterOnlineArchiveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterOnlineArchiveOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const DeleteGroupClusterOnlineArchiveOutput =
  * @param clusterName - Human-readable label that identifies the cluster that contains the collection from which you want to remove an online archive.
  */
 export const deleteGroupClusterOnlineArchive =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupClusterOnlineArchiveInput,
     outputSchema: DeleteGroupClusterOnlineArchiveOutput,
     errors: [Forbidden, NotFound] as const,

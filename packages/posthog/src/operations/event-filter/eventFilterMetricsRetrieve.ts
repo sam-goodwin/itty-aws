@@ -7,7 +7,7 @@ export interface EventFilterMetricsRetrieveInput {
   project_id: string;
 }
 export const EventFilterMetricsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -22,7 +22,7 @@ export interface EventFilterMetricsRetrieveOutput {
   series?: { name?: string; values?: number[] }[];
 }
 export const EventFilterMetricsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(Schema.String)),
     series: Schema.optional(
       Schema.Array(
@@ -44,9 +44,7 @@ export const EventFilterMetricsRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const eventFilterMetricsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventFilterMetricsRetrieveInput,
-    outputSchema: EventFilterMetricsRetrieveOutput,
-  }),
-);
+export const eventFilterMetricsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventFilterMetricsRetrieveInput,
+  outputSchema: EventFilterMetricsRetrieveOutput,
+}));

@@ -8,7 +8,7 @@ export interface InvitesDestroyInput {
   id: string;
   organization_id: string;
 }
-export const InvitesDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvitesDestroyInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -21,7 +21,7 @@ export const InvitesDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type InvitesDestroyOutput = void;
 export const InvitesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InvitesDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InvitesDestroyOutput>;
 
 // The operation
 /**
@@ -29,7 +29,7 @@ export const InvitesDestroyOutput =
  * @param id - A UUID string identifying this organization invite.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const invitesDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const invitesDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvitesDestroyInput,
   outputSchema: InvitesDestroyOutput,
   errors: [Forbidden, NotFound] as const,

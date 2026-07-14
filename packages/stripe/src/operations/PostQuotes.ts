@@ -68,7 +68,7 @@ export interface PostQuotesInput {
     | { amount?: number; amount_percent?: number; destination: string }
     | "";
 }
-export const PostQuotesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostQuotesInput = /*@__PURE__*/ Schema.Struct({
   application_fee_amount: Schema.optional(
     Schema.Union([Schema.Number, Schema.Literals([""])]),
   ),
@@ -1157,7 +1157,7 @@ export interface PostQuotesOutput {
     destination: unknown;
   } | null;
 }
-export const PostQuotesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostQuotesOutput = /*@__PURE__*/ Schema.Struct({
   amount_subtotal: Schema.Number,
   amount_total: Schema.Number,
   application: Schema.NullOr(
@@ -2200,7 +2200,7 @@ export const PostQuotesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>A quote models prices and services for a customer. Default options for <code>header</code>, <code>description</code>, <code>footer</code>, and <code>expires_at</code> can be set in the dashboard via the <a href="https://dashboard.stripe.com/settings/billing/quote">quote template</a>.</p>
  */
-export const PostQuotes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostQuotes = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostQuotesInput,
   outputSchema: PostQuotesOutput,
 }));

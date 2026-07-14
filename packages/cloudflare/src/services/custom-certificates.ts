@@ -58,7 +58,7 @@ export class ZoneNotFound extends T.applyErrorMatchers(
 interface GeoRestrictions {
   label?: "us" | "eu" | "highest_security" | (string & {}) | null;
 }
-const GeoRestrictions = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GeoRestrictions = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     label: Schema.optional(
       Schema.Union([
@@ -78,7 +78,7 @@ interface Tunnel {
   /** Cloudflare Tunnel Virtual Network ID. */
   vnetId: string;
 }
-const Tunnel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Tunnel = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     privateIp: Schema.String,
     vnetId: Schema.String,
@@ -107,7 +107,7 @@ interface KeylessCertificate {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: { privateIp: string; vnetId: string } | null;
 }
-const KeylessCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const KeylessCertificate = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdOn: Schema.String,
@@ -189,7 +189,7 @@ interface ListCustomCertificatesResponseResult {
   uploadedOn?: string | null;
 }
 const ListCustomCertificatesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       zoneId: Schema.String,
@@ -264,7 +264,7 @@ interface ListCustomCertificatesResponseResultInfo {
   totalCount?: number | null;
 }
 const ListCustomCertificatesResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -286,7 +286,7 @@ interface Certificate {
   /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always */
   priority?: number | null;
 }
-const Certificate = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Certificate = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -304,7 +304,7 @@ export interface GetCustomCertificateRequest {
 }
 
 export const GetCustomCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customCertificateId: Schema.String.pipe(
         T.HttpPath("customCertificateId"),
@@ -370,7 +370,7 @@ export interface GetCustomCertificateResponse {
 }
 
 export const GetCustomCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       zoneId: Schema.String,
@@ -451,7 +451,7 @@ export const getCustomCertificate: API.OperationMethod<
   GetCustomCertificateResponse,
   GetCustomCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomCertificateRequest,
   output: GetCustomCertificateResponse,
   errors: [CustomCertificateNotFound, PlanLevelNotAllowed, Forbidden],
@@ -475,7 +475,7 @@ export interface ListCustomCertificatesRequest {
 }
 
 export const ListCustomCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -547,7 +547,7 @@ export interface ListCustomCertificatesResponse {
 }
 
 export const ListCustomCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListCustomCertificatesResponseResult),
       resultInfo: Schema.optional(
@@ -567,7 +567,7 @@ export const listCustomCertificates: API.PaginatedOperationMethod<
   ListCustomCertificatesResponse,
   ListCustomCertificatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomCertificatesRequest,
   output: ListCustomCertificatesResponse,
   errors: [PlanLevelNotAllowed, ZoneNotFound, Forbidden],
@@ -604,7 +604,7 @@ export interface CreateCustomCertificateRequest {
 }
 
 export const CreateCustomCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       certificate: Schema.String,
@@ -697,7 +697,7 @@ export interface CreateCustomCertificateResponse {
 }
 
 export const CreateCustomCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       zoneId: Schema.String,
@@ -777,7 +777,7 @@ export const createCustomCertificate: API.OperationMethod<
   CreateCustomCertificateResponse,
   CreateCustomCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomCertificateRequest,
   output: CreateCustomCertificateResponse,
   errors: [PlanLevelNotAllowed, Forbidden],
@@ -806,7 +806,7 @@ export interface PatchCustomCertificateRequest {
 }
 
 export const PatchCustomCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customCertificateId: Schema.String.pipe(
         T.HttpPath("customCertificateId"),
@@ -898,7 +898,7 @@ export interface PatchCustomCertificateResponse {
 }
 
 export const PatchCustomCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       zoneId: Schema.String,
@@ -979,7 +979,7 @@ export const patchCustomCertificate: API.OperationMethod<
   PatchCustomCertificateResponse,
   PatchCustomCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCustomCertificateRequest,
   output: PatchCustomCertificateResponse,
   errors: [CustomCertificateNotFound, PlanLevelNotAllowed, Forbidden],
@@ -992,7 +992,7 @@ export interface DeleteCustomCertificateRequest {
 }
 
 export const DeleteCustomCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customCertificateId: Schema.String.pipe(
         T.HttpPath("customCertificateId"),
@@ -1012,7 +1012,7 @@ export interface DeleteCustomCertificateResponse {
 }
 
 export const DeleteCustomCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1029,7 +1029,7 @@ export const deleteCustomCertificate: API.OperationMethod<
   DeleteCustomCertificateResponse,
   DeleteCustomCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomCertificateRequest,
   output: DeleteCustomCertificateResponse,
   errors: [CustomCertificateNotFound, PlanLevelNotAllowed, Forbidden],
@@ -1046,17 +1046,16 @@ export interface PutPrioritizeRequest {
   certificates: { id?: string; priority?: number }[];
 }
 
-export const PutPrioritizeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      certificates: Schema.Array(Certificate),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/custom_certificates/prioritize",
-      }),
-    ),
+export const PutPrioritizeRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    certificates: Schema.Array(Certificate),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/custom_certificates/prioritize",
+    }),
+  ),
 ) as unknown as Schema.Codec<PutPrioritizeRequest>;
 
 export interface PutPrioritizeResponse {
@@ -1099,11 +1098,10 @@ export interface PutPrioritizeResponse {
   }[];
 }
 
-export const PutPrioritizeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListCustomCertificatesResponseResult),
-    }),
+export const PutPrioritizeResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListCustomCertificatesResponseResult),
+  }),
 ) as unknown as Schema.Codec<PutPrioritizeResponse>;
 
 export type PutPrioritizeError =
@@ -1116,7 +1114,7 @@ export const putPrioritize: API.PaginatedOperationMethod<
   PutPrioritizeResponse,
   PutPrioritizeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutPrioritizeRequest,
   output: PutPrioritizeResponse,
   errors: [PlanLevelNotAllowed, Forbidden],

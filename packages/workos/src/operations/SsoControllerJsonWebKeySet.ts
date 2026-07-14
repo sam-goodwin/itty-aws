@@ -8,7 +8,7 @@ export interface SsoControllerJsonWebKeySetInput {
   clientId: string;
 }
 export const SsoControllerJsonWebKeySetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/sso/jwks/{clientId}" }),
@@ -28,7 +28,7 @@ export interface SsoControllerJsonWebKeySetOutput {
   }>;
 }
 export const SsoControllerJsonWebKeySetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keys: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -53,10 +53,8 @@ export const SsoControllerJsonWebKeySetOutput =
  *
  * @param clientId - Identifies the application making the request to the WorkOS server. You can obtain your client ID from the [API Keys](https://dashboard.workos.com/api-keys) page in the dashboard.
  */
-export const SsoControllerJsonWebKeySet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SsoControllerJsonWebKeySetInput,
-    outputSchema: SsoControllerJsonWebKeySetOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const SsoControllerJsonWebKeySet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SsoControllerJsonWebKeySetInput,
+  outputSchema: SsoControllerJsonWebKeySetOutput,
+  errors: [NotFound] as const,
+}));

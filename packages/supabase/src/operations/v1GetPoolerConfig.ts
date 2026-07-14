@@ -9,11 +9,9 @@ import * as Redacted from "effect/Redacted";
 export interface V1GetPoolerConfigInput {
   ref: string;
 }
-export const V1GetPoolerConfigInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const V1GetPoolerConfigInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({ method: "GET", path: "/v1/projects/{ref}/config/database/pooler" }),
 ) as unknown as Schema.Codec<V1GetPoolerConfigInput>;
 
@@ -32,7 +30,7 @@ export type V1GetPoolerConfigOutput = {
   max_client_conn: number | null;
   pool_mode: "transaction" | "session";
 }[];
-export const V1GetPoolerConfigOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const V1GetPoolerConfigOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     identifier: Schema.String,
     database_type: Schema.Literals(["PRIMARY", "READ_REPLICA"]),
@@ -55,7 +53,7 @@ export const V1GetPoolerConfigOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  *
  * @param ref - Project ref
  */
-export const v1GetPoolerConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetPoolerConfig = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetPoolerConfigInput,
   outputSchema: V1GetPoolerConfigOutput,
   errors: [BadRequest, Forbidden] as const,

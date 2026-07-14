@@ -16,7 +16,7 @@ export interface OrganizationsControllerCreateInput {
   external_id?: string | null;
 }
 export const OrganizationsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     allow_profiles_outside_organization: Schema.optional(Schema.Boolean),
     domains: Schema.optional(Schema.Array(Schema.String)),
@@ -66,7 +66,7 @@ export interface OrganizationsControllerCreateOutput {
   allow_profiles_outside_organization?: boolean;
 }
 export const OrganizationsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export const OrganizationsControllerCreateOutput =
  * Creates a new organization in the current environment.
  */
 export const OrganizationsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationsControllerCreateInput,
     outputSchema: OrganizationsControllerCreateOutput,
     errors: [BadRequest, Conflict, UnprocessableEntity] as const,

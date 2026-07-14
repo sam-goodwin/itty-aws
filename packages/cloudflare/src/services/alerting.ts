@@ -120,7 +120,7 @@ interface GetDestinationPagerdutyResponseResult {
   name?: string | null;
 }
 const GetDestinationPagerdutyResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -131,7 +131,7 @@ interface Error2 {
   message: string;
   code?: number | null;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     message: Schema.String,
     code: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -165,7 +165,7 @@ interface ListDestinationWebhooksResponseResult {
   url?: string | null;
 }
 const ListDestinationWebhooksResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -224,39 +224,38 @@ interface ListHistoriesResponseResult {
   /** Timestamp of when the notification was dispatched in ISO 8601 format. */
   sent?: string | null;
 }
-const ListHistoriesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      alertBody: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      alertType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      mechanism: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      mechanismType: Schema.optional(
+const ListHistoriesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    alertBody: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    alertType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    mechanism: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    mechanismType: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["email", "pagerduty", "webhook"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["email", "pagerduty", "webhook"]),
+          Schema.String,
         ]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sent: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        alertBody: "alert_body",
-        alertType: "alert_type",
-        description: "description",
-        mechanism: "mechanism",
-        mechanismType: "mechanism_type",
-        name: "name",
-        policyId: "policy_id",
-        sent: "sent",
-      }),
+        Schema.Null,
+      ]),
     ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    policyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sent: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      alertBody: "alert_body",
+      alertType: "alert_type",
+      description: "description",
+      mechanism: "mechanism",
+      mechanismType: "mechanism_type",
+      name: "name",
+      policyId: "policy_id",
+      sent: "sent",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListHistoriesResponseResult>;
 
 interface ListHistoriesResponseResultInfo {
@@ -266,7 +265,7 @@ interface ListHistoriesResponseResultInfo {
   totalCount?: number | null;
 }
 const ListHistoriesResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -378,7 +377,7 @@ interface PolicyFilter {
   /** Usage depends on specific alert type */
   zones?: string[] | null;
 }
-const PolicyFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PolicyFilter = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     actions: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -578,7 +577,7 @@ interface Email {
   /** The email address */
   id?: string | null;
 }
-const Email = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Email = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -589,7 +588,7 @@ interface Mechanism {
   pagerduty?: { id?: string | null }[] | null;
   webhooks?: { id?: string | null }[] | null;
 }
-const Mechanism = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Mechanism = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     email: Schema.optional(Schema.Union([Schema.Array(Email), Schema.Null])),
     pagerduty: Schema.optional(
@@ -746,113 +745,110 @@ interface ListPoliciesResponseResult {
   /** Name of the policy. */
   name?: string | null;
 }
-const ListPoliciesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      alertInterval: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      alertType: Schema.optional(
+const ListPoliciesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    alertInterval: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    alertType: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "abuse_report_alert",
-              "access_custom_certificate_expiration_type",
-              "advanced_ddos_attack_l4_alert",
-              "advanced_ddos_attack_l7_alert",
-              "advanced_http_alert_error",
-              "bgp_hijack_notification",
-              "billing_usage_alert",
-              "block_notification_block_removed",
-              "block_notification_new_block",
-              "block_notification_review_rejected",
-              "bot_traffic_basic_alert",
-              "brand_protection_alert",
-              "brand_protection_digest",
-              "clickhouse_alert_fw_anomaly",
-              "clickhouse_alert_fw_ent_anomaly",
-              "cloudforce_one_request_notification",
-              "cni_maintenance_notification",
-              "custom_analytics",
-              "custom_bot_detection_alert",
-              "custom_ssl_certificate_event_type",
-              "dedicated_ssl_certificate_event_type",
-              "device_connectivity_anomaly_alert",
-              "dos_attack_l4",
-              "dos_attack_l7",
-              "expiring_service_token_alert",
-              "failing_logpush_job_disabled_alert",
-              "fbm_auto_advertisement",
-              "fbm_dosd_attack",
-              "fbm_volumetric_attack",
-              "health_check_status_notification",
-              "hostname_aop_custom_certificate_expiration_type",
-              "http_alert_edge_error",
-              "http_alert_origin_error",
-              "image_notification",
-              "image_resizing_notification",
-              "incident_alert",
-              "load_balancing_health_alert",
-              "load_balancing_pool_enablement_alert",
-              "logo_match_alert",
-              "magic_tunnel_health_check_event",
-              "magic_wan_tunnel_health",
-              "maintenance_event_notification",
-              "mtls_certificate_store_certificate_expiration_type",
-              "pages_event_alert",
-              "radar_notification",
-              "real_origin_monitoring",
-              "scriptmonitor_alert_new_code_change_detections",
-              "scriptmonitor_alert_new_hosts",
-              "scriptmonitor_alert_new_malicious_hosts",
-              "scriptmonitor_alert_new_malicious_scripts",
-              "scriptmonitor_alert_new_malicious_url",
-              "scriptmonitor_alert_new_max_length_resource_url",
-              "scriptmonitor_alert_new_resources",
-              "secondary_dns_all_primaries_failing",
-              "secondary_dns_primaries_failing",
-              "secondary_dns_warning",
-              "secondary_dns_zone_successfully_updated",
-              "secondary_dns_zone_validation_warning",
-              "security_insights_alert",
-              "sentinel_alert",
-              "stream_live_notifications",
-              "synthetic_test_latency_alert",
-              "synthetic_test_low_availability_alert",
-              "traffic_anomalies_alert",
-              "tunnel_health_event",
-              "tunnel_update_event",
-              "universal_ssl_event_type",
-              "web_analytics_metrics_update",
-              "zone_aop_custom_certificate_expiration_type",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "abuse_report_alert",
+            "access_custom_certificate_expiration_type",
+            "advanced_ddos_attack_l4_alert",
+            "advanced_ddos_attack_l7_alert",
+            "advanced_http_alert_error",
+            "bgp_hijack_notification",
+            "billing_usage_alert",
+            "block_notification_block_removed",
+            "block_notification_new_block",
+            "block_notification_review_rejected",
+            "bot_traffic_basic_alert",
+            "brand_protection_alert",
+            "brand_protection_digest",
+            "clickhouse_alert_fw_anomaly",
+            "clickhouse_alert_fw_ent_anomaly",
+            "cloudforce_one_request_notification",
+            "cni_maintenance_notification",
+            "custom_analytics",
+            "custom_bot_detection_alert",
+            "custom_ssl_certificate_event_type",
+            "dedicated_ssl_certificate_event_type",
+            "device_connectivity_anomaly_alert",
+            "dos_attack_l4",
+            "dos_attack_l7",
+            "expiring_service_token_alert",
+            "failing_logpush_job_disabled_alert",
+            "fbm_auto_advertisement",
+            "fbm_dosd_attack",
+            "fbm_volumetric_attack",
+            "health_check_status_notification",
+            "hostname_aop_custom_certificate_expiration_type",
+            "http_alert_edge_error",
+            "http_alert_origin_error",
+            "image_notification",
+            "image_resizing_notification",
+            "incident_alert",
+            "load_balancing_health_alert",
+            "load_balancing_pool_enablement_alert",
+            "logo_match_alert",
+            "magic_tunnel_health_check_event",
+            "magic_wan_tunnel_health",
+            "maintenance_event_notification",
+            "mtls_certificate_store_certificate_expiration_type",
+            "pages_event_alert",
+            "radar_notification",
+            "real_origin_monitoring",
+            "scriptmonitor_alert_new_code_change_detections",
+            "scriptmonitor_alert_new_hosts",
+            "scriptmonitor_alert_new_malicious_hosts",
+            "scriptmonitor_alert_new_malicious_scripts",
+            "scriptmonitor_alert_new_malicious_url",
+            "scriptmonitor_alert_new_max_length_resource_url",
+            "scriptmonitor_alert_new_resources",
+            "secondary_dns_all_primaries_failing",
+            "secondary_dns_primaries_failing",
+            "secondary_dns_warning",
+            "secondary_dns_zone_successfully_updated",
+            "secondary_dns_zone_validation_warning",
+            "security_insights_alert",
+            "sentinel_alert",
+            "stream_live_notifications",
+            "synthetic_test_latency_alert",
+            "synthetic_test_low_availability_alert",
+            "traffic_anomalies_alert",
+            "tunnel_health_event",
+            "tunnel_update_event",
+            "universal_ssl_event_type",
+            "web_analytics_metrics_update",
+            "zone_aop_custom_certificate_expiration_type",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      filters: Schema.optional(Schema.Union([PolicyFilter, Schema.Null])),
-      mechanisms: Schema.optional(Schema.Union([Mechanism, Schema.Null])),
-      modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        alertInterval: "alert_interval",
-        alertType: "alert_type",
-        created: "created",
-        description: "description",
-        enabled: "enabled",
-        filters: "filters",
-        mechanisms: "mechanisms",
-        modified: "modified",
-        name: "name",
-      }),
+        Schema.Null,
+      ]),
     ),
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    filters: Schema.optional(Schema.Union([PolicyFilter, Schema.Null])),
+    mechanisms: Schema.optional(Schema.Union([Mechanism, Schema.Null])),
+    modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      alertInterval: "alert_interval",
+      alertType: "alert_type",
+      created: "created",
+      description: "description",
+      enabled: "enabled",
+      filters: "filters",
+      mechanisms: "mechanisms",
+      modified: "modified",
+      name: "name",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListPoliciesResponseResult>;
 
 interface ListSilencesResponseResult {
@@ -869,25 +865,24 @@ interface ListSilencesResponseResult {
   /** When the silence was modified. */
   updatedAt?: string | null;
 }
-const ListSilencesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      endTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      startTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        endTime: "end_time",
-        policyId: "policy_id",
-        startTime: "start_time",
-        updatedAt: "updated_at",
-      }),
-    ),
+const ListSilencesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    endTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    policyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    startTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      endTime: "end_time",
+      policyId: "policy_id",
+      startTime: "start_time",
+      updatedAt: "updated_at",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSilencesResponseResult>;
 
 interface Body {
@@ -898,7 +893,7 @@ interface Body {
   /** When the silence starts. */
   startTime?: string | null;
 }
-const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     endTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     policyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -920,7 +915,7 @@ interface Body2 {
   /** When the silence starts. */
   startTime?: string | null;
 }
-const Body2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     endTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -944,7 +939,7 @@ export interface ListAvailableAlertsRequest {
 }
 
 export const ListAvailableAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -958,7 +953,7 @@ export const ListAvailableAlertsRequest =
 export type ListAvailableAlertsResponse = Record<string, unknown>;
 
 export const ListAvailableAlertsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Record(Schema.String, Schema.Unknown).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<ListAvailableAlertsResponse>;
 
@@ -969,7 +964,7 @@ export const listAvailableAlerts: API.OperationMethod<
   ListAvailableAlertsResponse,
   ListAvailableAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAvailableAlertsRequest,
   output: ListAvailableAlertsResponse,
   errors: [InvalidRoute],
@@ -985,7 +980,7 @@ export interface GetDestinationEligibleRequest {
 }
 
 export const GetDestinationEligibleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -999,7 +994,7 @@ export const GetDestinationEligibleRequest =
 export type GetDestinationEligibleResponse = Record<string, unknown>;
 
 export const GetDestinationEligibleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Record(Schema.String, Schema.Unknown).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetDestinationEligibleResponse>;
 
@@ -1010,7 +1005,7 @@ export const getDestinationEligible: API.OperationMethod<
   GetDestinationEligibleResponse,
   GetDestinationEligibleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDestinationEligibleRequest,
   output: GetDestinationEligibleResponse,
   errors: [InvalidRoute],
@@ -1026,7 +1021,7 @@ export interface GetDestinationPagerdutyRequest {
 }
 
 export const GetDestinationPagerdutyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -1042,7 +1037,7 @@ export interface GetDestinationPagerdutyResponse {
 }
 
 export const GetDestinationPagerdutyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(GetDestinationPagerdutyResponseResult),
     }),
@@ -1055,7 +1050,7 @@ export const getDestinationPagerduty: API.PaginatedOperationMethod<
   GetDestinationPagerdutyResponse,
   GetDestinationPagerdutyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDestinationPagerdutyRequest,
   output: GetDestinationPagerdutyResponse,
   errors: [],
@@ -1071,7 +1066,7 @@ export interface CreateDestinationPagerdutyRequest {
 }
 
 export const CreateDestinationPagerdutyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -1088,7 +1083,7 @@ export interface CreateDestinationPagerdutyResponse {
 }
 
 export const CreateDestinationPagerdutyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1101,7 +1096,7 @@ export const createDestinationPagerduty: API.OperationMethod<
   CreateDestinationPagerdutyResponse,
   CreateDestinationPagerdutyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDestinationPagerdutyRequest,
   output: CreateDestinationPagerdutyResponse,
   errors: [InvalidRoute],
@@ -1113,7 +1108,7 @@ export interface DeleteDestinationPagerdutyRequest {
 }
 
 export const DeleteDestinationPagerdutyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -1132,7 +1127,7 @@ export interface DeleteDestinationPagerdutyResponse {
 }
 
 export const DeleteDestinationPagerdutyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -1147,7 +1142,7 @@ export const deleteDestinationPagerduty: API.OperationMethod<
   DeleteDestinationPagerdutyResponse,
   DeleteDestinationPagerdutyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDestinationPagerdutyRequest,
   output: DeleteDestinationPagerdutyResponse,
   errors: [InvalidRoute],
@@ -1160,7 +1155,7 @@ export interface LinkDestinationPagerdutyRequest {
 }
 
 export const LinkDestinationPagerdutyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1178,7 +1173,7 @@ export interface LinkDestinationPagerdutyResponse {
 }
 
 export const LinkDestinationPagerdutyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1191,7 +1186,7 @@ export const linkDestinationPagerduty: API.OperationMethod<
   LinkDestinationPagerdutyResponse,
   LinkDestinationPagerdutyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LinkDestinationPagerdutyRequest,
   output: LinkDestinationPagerdutyResponse,
   errors: [InvalidRoute],
@@ -1208,7 +1203,7 @@ export interface GetDestinationWebhookRequest {
 }
 
 export const GetDestinationWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1248,7 +1243,7 @@ export interface GetDestinationWebhookResponse {
 }
 
 export const GetDestinationWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1299,7 +1294,7 @@ export const getDestinationWebhook: API.OperationMethod<
   GetDestinationWebhookResponse,
   GetDestinationWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDestinationWebhookRequest,
   output: GetDestinationWebhookResponse,
   errors: [InvalidRoute, WebhookNotFound],
@@ -1311,7 +1306,7 @@ export interface ListDestinationWebhooksRequest {
 }
 
 export const ListDestinationWebhooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -1345,7 +1340,7 @@ export interface ListDestinationWebhooksResponse {
 }
 
 export const ListDestinationWebhooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDestinationWebhooksResponseResult),
     }),
@@ -1358,7 +1353,7 @@ export const listDestinationWebhooks: API.PaginatedOperationMethod<
   ListDestinationWebhooksResponse,
   ListDestinationWebhooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDestinationWebhooksRequest,
   output: ListDestinationWebhooksResponse,
   errors: [],
@@ -1380,7 +1375,7 @@ export interface CreateDestinationWebhookRequest {
 }
 
 export const CreateDestinationWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -1400,7 +1395,7 @@ export interface CreateDestinationWebhookResponse {
 }
 
 export const CreateDestinationWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1416,7 +1411,7 @@ export const createDestinationWebhook: API.OperationMethod<
   CreateDestinationWebhookResponse,
   CreateDestinationWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDestinationWebhookRequest,
   output: CreateDestinationWebhookResponse,
   errors: [InvalidRoute, WebhookTestFailed],
@@ -1435,7 +1430,7 @@ export interface UpdateDestinationWebhookRequest {
 }
 
 export const UpdateDestinationWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1456,7 +1451,7 @@ export interface UpdateDestinationWebhookResponse {
 }
 
 export const UpdateDestinationWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1473,7 +1468,7 @@ export const updateDestinationWebhook: API.OperationMethod<
   UpdateDestinationWebhookResponse,
   UpdateDestinationWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDestinationWebhookRequest,
   output: UpdateDestinationWebhookResponse,
   errors: [InvalidRoute, InvalidWebhookId, WebhookTestFailed],
@@ -1486,7 +1481,7 @@ export interface DeleteDestinationWebhookRequest {
 }
 
 export const DeleteDestinationWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1506,7 +1501,7 @@ export interface DeleteDestinationWebhookResponse {
 }
 
 export const DeleteDestinationWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -1524,7 +1519,7 @@ export const deleteDestinationWebhook: API.OperationMethod<
   DeleteDestinationWebhookResponse,
   DeleteDestinationWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDestinationWebhookRequest,
   output: DeleteDestinationWebhookResponse,
   errors: [InvalidRoute, InternalServerError],
@@ -1545,20 +1540,19 @@ export interface ListHistoriesRequest {
   since?: string;
 }
 
-export const ListHistoriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      before: Schema.optional(Schema.String).pipe(T.HttpQuery("before")),
-      since: Schema.optional(Schema.String).pipe(T.HttpQuery("since")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/alerting/v3/history",
-      }),
-    ),
+export const ListHistoriesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    before: Schema.optional(Schema.String).pipe(T.HttpQuery("before")),
+    since: Schema.optional(Schema.String).pipe(T.HttpQuery("since")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/alerting/v3/history",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListHistoriesRequest>;
 
 export interface ListHistoriesResponse {
@@ -1581,14 +1575,13 @@ export interface ListHistoriesResponse {
   } | null;
 }
 
-export const ListHistoriesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListHistoriesResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListHistoriesResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListHistoriesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListHistoriesResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListHistoriesResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListHistoriesResponse>;
 
 export type ListHistoriesError = DefaultErrors;
@@ -1598,7 +1591,7 @@ export const listHistories: API.PaginatedOperationMethod<
   ListHistoriesResponse,
   ListHistoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHistoriesRequest,
   output: ListHistoriesResponse,
   errors: [],
@@ -1621,7 +1614,7 @@ export interface GetPolicyRequest {
   accountId: string;
 }
 
-export const GetPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetPolicyRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     policyId: Schema.String.pipe(T.HttpPath("policyId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1781,115 +1774,112 @@ export interface GetPolicyResponse {
   name?: string | null;
 }
 
-export const GetPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      alertInterval: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      alertType: Schema.optional(
+export const GetPolicyResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    alertInterval: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    alertType: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "abuse_report_alert",
-              "access_custom_certificate_expiration_type",
-              "advanced_ddos_attack_l4_alert",
-              "advanced_ddos_attack_l7_alert",
-              "advanced_http_alert_error",
-              "bgp_hijack_notification",
-              "billing_usage_alert",
-              "block_notification_block_removed",
-              "block_notification_new_block",
-              "block_notification_review_rejected",
-              "bot_traffic_basic_alert",
-              "brand_protection_alert",
-              "brand_protection_digest",
-              "clickhouse_alert_fw_anomaly",
-              "clickhouse_alert_fw_ent_anomaly",
-              "cloudforce_one_request_notification",
-              "cni_maintenance_notification",
-              "custom_analytics",
-              "custom_bot_detection_alert",
-              "custom_ssl_certificate_event_type",
-              "dedicated_ssl_certificate_event_type",
-              "device_connectivity_anomaly_alert",
-              "dos_attack_l4",
-              "dos_attack_l7",
-              "expiring_service_token_alert",
-              "failing_logpush_job_disabled_alert",
-              "fbm_auto_advertisement",
-              "fbm_dosd_attack",
-              "fbm_volumetric_attack",
-              "health_check_status_notification",
-              "hostname_aop_custom_certificate_expiration_type",
-              "http_alert_edge_error",
-              "http_alert_origin_error",
-              "image_notification",
-              "image_resizing_notification",
-              "incident_alert",
-              "load_balancing_health_alert",
-              "load_balancing_pool_enablement_alert",
-              "logo_match_alert",
-              "magic_tunnel_health_check_event",
-              "magic_wan_tunnel_health",
-              "maintenance_event_notification",
-              "mtls_certificate_store_certificate_expiration_type",
-              "pages_event_alert",
-              "radar_notification",
-              "real_origin_monitoring",
-              "scriptmonitor_alert_new_code_change_detections",
-              "scriptmonitor_alert_new_hosts",
-              "scriptmonitor_alert_new_malicious_hosts",
-              "scriptmonitor_alert_new_malicious_scripts",
-              "scriptmonitor_alert_new_malicious_url",
-              "scriptmonitor_alert_new_max_length_resource_url",
-              "scriptmonitor_alert_new_resources",
-              "secondary_dns_all_primaries_failing",
-              "secondary_dns_primaries_failing",
-              "secondary_dns_warning",
-              "secondary_dns_zone_successfully_updated",
-              "secondary_dns_zone_validation_warning",
-              "security_insights_alert",
-              "sentinel_alert",
-              "stream_live_notifications",
-              "synthetic_test_latency_alert",
-              "synthetic_test_low_availability_alert",
-              "traffic_anomalies_alert",
-              "tunnel_health_event",
-              "tunnel_update_event",
-              "universal_ssl_event_type",
-              "web_analytics_metrics_update",
-              "zone_aop_custom_certificate_expiration_type",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "abuse_report_alert",
+            "access_custom_certificate_expiration_type",
+            "advanced_ddos_attack_l4_alert",
+            "advanced_ddos_attack_l7_alert",
+            "advanced_http_alert_error",
+            "bgp_hijack_notification",
+            "billing_usage_alert",
+            "block_notification_block_removed",
+            "block_notification_new_block",
+            "block_notification_review_rejected",
+            "bot_traffic_basic_alert",
+            "brand_protection_alert",
+            "brand_protection_digest",
+            "clickhouse_alert_fw_anomaly",
+            "clickhouse_alert_fw_ent_anomaly",
+            "cloudforce_one_request_notification",
+            "cni_maintenance_notification",
+            "custom_analytics",
+            "custom_bot_detection_alert",
+            "custom_ssl_certificate_event_type",
+            "dedicated_ssl_certificate_event_type",
+            "device_connectivity_anomaly_alert",
+            "dos_attack_l4",
+            "dos_attack_l7",
+            "expiring_service_token_alert",
+            "failing_logpush_job_disabled_alert",
+            "fbm_auto_advertisement",
+            "fbm_dosd_attack",
+            "fbm_volumetric_attack",
+            "health_check_status_notification",
+            "hostname_aop_custom_certificate_expiration_type",
+            "http_alert_edge_error",
+            "http_alert_origin_error",
+            "image_notification",
+            "image_resizing_notification",
+            "incident_alert",
+            "load_balancing_health_alert",
+            "load_balancing_pool_enablement_alert",
+            "logo_match_alert",
+            "magic_tunnel_health_check_event",
+            "magic_wan_tunnel_health",
+            "maintenance_event_notification",
+            "mtls_certificate_store_certificate_expiration_type",
+            "pages_event_alert",
+            "radar_notification",
+            "real_origin_monitoring",
+            "scriptmonitor_alert_new_code_change_detections",
+            "scriptmonitor_alert_new_hosts",
+            "scriptmonitor_alert_new_malicious_hosts",
+            "scriptmonitor_alert_new_malicious_scripts",
+            "scriptmonitor_alert_new_malicious_url",
+            "scriptmonitor_alert_new_max_length_resource_url",
+            "scriptmonitor_alert_new_resources",
+            "secondary_dns_all_primaries_failing",
+            "secondary_dns_primaries_failing",
+            "secondary_dns_warning",
+            "secondary_dns_zone_successfully_updated",
+            "secondary_dns_zone_validation_warning",
+            "security_insights_alert",
+            "sentinel_alert",
+            "stream_live_notifications",
+            "synthetic_test_latency_alert",
+            "synthetic_test_low_availability_alert",
+            "traffic_anomalies_alert",
+            "tunnel_health_event",
+            "tunnel_update_event",
+            "universal_ssl_event_type",
+            "web_analytics_metrics_update",
+            "zone_aop_custom_certificate_expiration_type",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      filters: Schema.optional(Schema.Union([PolicyFilter, Schema.Null])),
-      mechanisms: Schema.optional(Schema.Union([Mechanism, Schema.Null])),
-      modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          alertInterval: "alert_interval",
-          alertType: "alert_type",
-          created: "created",
-          description: "description",
-          enabled: "enabled",
-          filters: "filters",
-          mechanisms: "mechanisms",
-          modified: "modified",
-          name: "name",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    filters: Schema.optional(Schema.Union([PolicyFilter, Schema.Null])),
+    mechanisms: Schema.optional(Schema.Union([Mechanism, Schema.Null])),
+    modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        alertInterval: "alert_interval",
+        alertType: "alert_type",
+        created: "created",
+        description: "description",
+        enabled: "enabled",
+        filters: "filters",
+        mechanisms: "mechanisms",
+        modified: "modified",
+        name: "name",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetPolicyResponse>;
 
 export type GetPolicyError = DefaultErrors | InvalidRoute | PolicyNotFound;
@@ -1899,7 +1889,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyResponse,
   GetPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
   errors: [InvalidRoute, PolicyNotFound],
@@ -1910,16 +1900,15 @@ export interface ListPoliciesRequest {
   accountId: string;
 }
 
-export const ListPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/alerting/v3/policies",
-      }),
-    ),
+export const ListPoliciesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/alerting/v3/policies",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListPoliciesRequest>;
 
 export interface ListPoliciesResponse {
@@ -2064,11 +2053,10 @@ export interface ListPoliciesResponse {
   }[];
 }
 
-export const ListPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListPoliciesResponseResult),
-    }),
+export const ListPoliciesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListPoliciesResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListPoliciesResponse>;
 
 export type ListPoliciesError = DefaultErrors;
@@ -2078,7 +2066,7 @@ export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesResponse,
   ListPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [],
@@ -2231,105 +2219,104 @@ export interface CreatePolicyRequest {
   };
 }
 
-export const CreatePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      alertType: Schema.Union([
-        Schema.Literals([
-          "abuse_report_alert",
-          "access_custom_certificate_expiration_type",
-          "advanced_ddos_attack_l4_alert",
-          "advanced_ddos_attack_l7_alert",
-          "advanced_http_alert_error",
-          "bgp_hijack_notification",
-          "billing_usage_alert",
-          "block_notification_block_removed",
-          "block_notification_new_block",
-          "block_notification_review_rejected",
-          "bot_traffic_basic_alert",
-          "brand_protection_alert",
-          "brand_protection_digest",
-          "clickhouse_alert_fw_anomaly",
-          "clickhouse_alert_fw_ent_anomaly",
-          "cloudforce_one_request_notification",
-          "cni_maintenance_notification",
-          "custom_analytics",
-          "custom_bot_detection_alert",
-          "custom_ssl_certificate_event_type",
-          "dedicated_ssl_certificate_event_type",
-          "device_connectivity_anomaly_alert",
-          "dos_attack_l4",
-          "dos_attack_l7",
-          "expiring_service_token_alert",
-          "failing_logpush_job_disabled_alert",
-          "fbm_auto_advertisement",
-          "fbm_dosd_attack",
-          "fbm_volumetric_attack",
-          "health_check_status_notification",
-          "hostname_aop_custom_certificate_expiration_type",
-          "http_alert_edge_error",
-          "http_alert_origin_error",
-          "image_notification",
-          "image_resizing_notification",
-          "incident_alert",
-          "load_balancing_health_alert",
-          "load_balancing_pool_enablement_alert",
-          "logo_match_alert",
-          "magic_tunnel_health_check_event",
-          "magic_wan_tunnel_health",
-          "maintenance_event_notification",
-          "mtls_certificate_store_certificate_expiration_type",
-          "pages_event_alert",
-          "radar_notification",
-          "real_origin_monitoring",
-          "scriptmonitor_alert_new_code_change_detections",
-          "scriptmonitor_alert_new_hosts",
-          "scriptmonitor_alert_new_malicious_hosts",
-          "scriptmonitor_alert_new_malicious_scripts",
-          "scriptmonitor_alert_new_malicious_url",
-          "scriptmonitor_alert_new_max_length_resource_url",
-          "scriptmonitor_alert_new_resources",
-          "secondary_dns_all_primaries_failing",
-          "secondary_dns_primaries_failing",
-          "secondary_dns_warning",
-          "secondary_dns_zone_successfully_updated",
-          "secondary_dns_zone_validation_warning",
-          "security_insights_alert",
-          "sentinel_alert",
-          "stream_live_notifications",
-          "synthetic_test_latency_alert",
-          "synthetic_test_low_availability_alert",
-          "traffic_anomalies_alert",
-          "tunnel_health_event",
-          "tunnel_update_event",
-          "universal_ssl_event_type",
-          "web_analytics_metrics_update",
-          "zone_aop_custom_certificate_expiration_type",
-        ]),
-        Schema.String,
+export const CreatePolicyRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    alertType: Schema.Union([
+      Schema.Literals([
+        "abuse_report_alert",
+        "access_custom_certificate_expiration_type",
+        "advanced_ddos_attack_l4_alert",
+        "advanced_ddos_attack_l7_alert",
+        "advanced_http_alert_error",
+        "bgp_hijack_notification",
+        "billing_usage_alert",
+        "block_notification_block_removed",
+        "block_notification_new_block",
+        "block_notification_review_rejected",
+        "bot_traffic_basic_alert",
+        "brand_protection_alert",
+        "brand_protection_digest",
+        "clickhouse_alert_fw_anomaly",
+        "clickhouse_alert_fw_ent_anomaly",
+        "cloudforce_one_request_notification",
+        "cni_maintenance_notification",
+        "custom_analytics",
+        "custom_bot_detection_alert",
+        "custom_ssl_certificate_event_type",
+        "dedicated_ssl_certificate_event_type",
+        "device_connectivity_anomaly_alert",
+        "dos_attack_l4",
+        "dos_attack_l7",
+        "expiring_service_token_alert",
+        "failing_logpush_job_disabled_alert",
+        "fbm_auto_advertisement",
+        "fbm_dosd_attack",
+        "fbm_volumetric_attack",
+        "health_check_status_notification",
+        "hostname_aop_custom_certificate_expiration_type",
+        "http_alert_edge_error",
+        "http_alert_origin_error",
+        "image_notification",
+        "image_resizing_notification",
+        "incident_alert",
+        "load_balancing_health_alert",
+        "load_balancing_pool_enablement_alert",
+        "logo_match_alert",
+        "magic_tunnel_health_check_event",
+        "magic_wan_tunnel_health",
+        "maintenance_event_notification",
+        "mtls_certificate_store_certificate_expiration_type",
+        "pages_event_alert",
+        "radar_notification",
+        "real_origin_monitoring",
+        "scriptmonitor_alert_new_code_change_detections",
+        "scriptmonitor_alert_new_hosts",
+        "scriptmonitor_alert_new_malicious_hosts",
+        "scriptmonitor_alert_new_malicious_scripts",
+        "scriptmonitor_alert_new_malicious_url",
+        "scriptmonitor_alert_new_max_length_resource_url",
+        "scriptmonitor_alert_new_resources",
+        "secondary_dns_all_primaries_failing",
+        "secondary_dns_primaries_failing",
+        "secondary_dns_warning",
+        "secondary_dns_zone_successfully_updated",
+        "secondary_dns_zone_validation_warning",
+        "security_insights_alert",
+        "sentinel_alert",
+        "stream_live_notifications",
+        "synthetic_test_latency_alert",
+        "synthetic_test_low_availability_alert",
+        "traffic_anomalies_alert",
+        "tunnel_health_event",
+        "tunnel_update_event",
+        "universal_ssl_event_type",
+        "web_analytics_metrics_update",
+        "zone_aop_custom_certificate_expiration_type",
       ]),
-      enabled: Schema.Boolean,
-      mechanisms: Mechanism,
-      name: Schema.String,
-      alertInterval: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      filters: Schema.optional(PolicyFilter),
-    }).pipe(
-      Schema.encodeKeys({
-        alertType: "alert_type",
-        enabled: "enabled",
-        mechanisms: "mechanisms",
-        name: "name",
-        alertInterval: "alert_interval",
-        description: "description",
-        filters: "filters",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/alerting/v3/policies",
-      }),
-    ),
+      Schema.String,
+    ]),
+    enabled: Schema.Boolean,
+    mechanisms: Mechanism,
+    name: Schema.String,
+    alertInterval: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    filters: Schema.optional(PolicyFilter),
+  }).pipe(
+    Schema.encodeKeys({
+      alertType: "alert_type",
+      enabled: "enabled",
+      mechanisms: "mechanisms",
+      name: "name",
+      alertInterval: "alert_interval",
+      description: "description",
+      filters: "filters",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/alerting/v3/policies",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreatePolicyRequest>;
 
 export interface CreatePolicyResponse {
@@ -2337,11 +2324,10 @@ export interface CreatePolicyResponse {
   id?: string | null;
 }
 
-export const CreatePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const CreatePolicyResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreatePolicyResponse>;
 
 export type CreatePolicyError =
@@ -2355,7 +2341,7 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyResponse,
   CreatePolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyRequest,
   output: CreatePolicyResponse,
   errors: [InvalidRoute, FiltersRequired, MechanismRequired],
@@ -2505,108 +2491,107 @@ export interface UpdatePolicyRequest {
   name?: string;
 }
 
-export const UpdatePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      policyId: Schema.String.pipe(T.HttpPath("policyId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      alertInterval: Schema.optional(Schema.String),
-      alertType: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "abuse_report_alert",
-            "access_custom_certificate_expiration_type",
-            "advanced_ddos_attack_l4_alert",
-            "advanced_ddos_attack_l7_alert",
-            "advanced_http_alert_error",
-            "bgp_hijack_notification",
-            "billing_usage_alert",
-            "block_notification_block_removed",
-            "block_notification_new_block",
-            "block_notification_review_rejected",
-            "bot_traffic_basic_alert",
-            "brand_protection_alert",
-            "brand_protection_digest",
-            "clickhouse_alert_fw_anomaly",
-            "clickhouse_alert_fw_ent_anomaly",
-            "cloudforce_one_request_notification",
-            "cni_maintenance_notification",
-            "custom_analytics",
-            "custom_bot_detection_alert",
-            "custom_ssl_certificate_event_type",
-            "dedicated_ssl_certificate_event_type",
-            "device_connectivity_anomaly_alert",
-            "dos_attack_l4",
-            "dos_attack_l7",
-            "expiring_service_token_alert",
-            "failing_logpush_job_disabled_alert",
-            "fbm_auto_advertisement",
-            "fbm_dosd_attack",
-            "fbm_volumetric_attack",
-            "health_check_status_notification",
-            "hostname_aop_custom_certificate_expiration_type",
-            "http_alert_edge_error",
-            "http_alert_origin_error",
-            "image_notification",
-            "image_resizing_notification",
-            "incident_alert",
-            "load_balancing_health_alert",
-            "load_balancing_pool_enablement_alert",
-            "logo_match_alert",
-            "magic_tunnel_health_check_event",
-            "magic_wan_tunnel_health",
-            "maintenance_event_notification",
-            "mtls_certificate_store_certificate_expiration_type",
-            "pages_event_alert",
-            "radar_notification",
-            "real_origin_monitoring",
-            "scriptmonitor_alert_new_code_change_detections",
-            "scriptmonitor_alert_new_hosts",
-            "scriptmonitor_alert_new_malicious_hosts",
-            "scriptmonitor_alert_new_malicious_scripts",
-            "scriptmonitor_alert_new_malicious_url",
-            "scriptmonitor_alert_new_max_length_resource_url",
-            "scriptmonitor_alert_new_resources",
-            "secondary_dns_all_primaries_failing",
-            "secondary_dns_primaries_failing",
-            "secondary_dns_warning",
-            "secondary_dns_zone_successfully_updated",
-            "secondary_dns_zone_validation_warning",
-            "security_insights_alert",
-            "sentinel_alert",
-            "stream_live_notifications",
-            "synthetic_test_latency_alert",
-            "synthetic_test_low_availability_alert",
-            "traffic_anomalies_alert",
-            "tunnel_health_event",
-            "tunnel_update_event",
-            "universal_ssl_event_type",
-            "web_analytics_metrics_update",
-            "zone_aop_custom_certificate_expiration_type",
-          ]),
-          Schema.String,
+export const UpdatePolicyRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    policyId: Schema.String.pipe(T.HttpPath("policyId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    alertInterval: Schema.optional(Schema.String),
+    alertType: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "abuse_report_alert",
+          "access_custom_certificate_expiration_type",
+          "advanced_ddos_attack_l4_alert",
+          "advanced_ddos_attack_l7_alert",
+          "advanced_http_alert_error",
+          "bgp_hijack_notification",
+          "billing_usage_alert",
+          "block_notification_block_removed",
+          "block_notification_new_block",
+          "block_notification_review_rejected",
+          "bot_traffic_basic_alert",
+          "brand_protection_alert",
+          "brand_protection_digest",
+          "clickhouse_alert_fw_anomaly",
+          "clickhouse_alert_fw_ent_anomaly",
+          "cloudforce_one_request_notification",
+          "cni_maintenance_notification",
+          "custom_analytics",
+          "custom_bot_detection_alert",
+          "custom_ssl_certificate_event_type",
+          "dedicated_ssl_certificate_event_type",
+          "device_connectivity_anomaly_alert",
+          "dos_attack_l4",
+          "dos_attack_l7",
+          "expiring_service_token_alert",
+          "failing_logpush_job_disabled_alert",
+          "fbm_auto_advertisement",
+          "fbm_dosd_attack",
+          "fbm_volumetric_attack",
+          "health_check_status_notification",
+          "hostname_aop_custom_certificate_expiration_type",
+          "http_alert_edge_error",
+          "http_alert_origin_error",
+          "image_notification",
+          "image_resizing_notification",
+          "incident_alert",
+          "load_balancing_health_alert",
+          "load_balancing_pool_enablement_alert",
+          "logo_match_alert",
+          "magic_tunnel_health_check_event",
+          "magic_wan_tunnel_health",
+          "maintenance_event_notification",
+          "mtls_certificate_store_certificate_expiration_type",
+          "pages_event_alert",
+          "radar_notification",
+          "real_origin_monitoring",
+          "scriptmonitor_alert_new_code_change_detections",
+          "scriptmonitor_alert_new_hosts",
+          "scriptmonitor_alert_new_malicious_hosts",
+          "scriptmonitor_alert_new_malicious_scripts",
+          "scriptmonitor_alert_new_malicious_url",
+          "scriptmonitor_alert_new_max_length_resource_url",
+          "scriptmonitor_alert_new_resources",
+          "secondary_dns_all_primaries_failing",
+          "secondary_dns_primaries_failing",
+          "secondary_dns_warning",
+          "secondary_dns_zone_successfully_updated",
+          "secondary_dns_zone_validation_warning",
+          "security_insights_alert",
+          "sentinel_alert",
+          "stream_live_notifications",
+          "synthetic_test_latency_alert",
+          "synthetic_test_low_availability_alert",
+          "traffic_anomalies_alert",
+          "tunnel_health_event",
+          "tunnel_update_event",
+          "universal_ssl_event_type",
+          "web_analytics_metrics_update",
+          "zone_aop_custom_certificate_expiration_type",
         ]),
-      ),
-      description: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-      filters: Schema.optional(PolicyFilter),
-      mechanisms: Schema.optional(Mechanism),
-      name: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        alertInterval: "alert_interval",
-        alertType: "alert_type",
-        description: "description",
-        enabled: "enabled",
-        filters: "filters",
-        mechanisms: "mechanisms",
-        name: "name",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/alerting/v3/policies/{policyId}",
-      }),
+        Schema.String,
+      ]),
     ),
+    description: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+    filters: Schema.optional(PolicyFilter),
+    mechanisms: Schema.optional(Mechanism),
+    name: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      alertInterval: "alert_interval",
+      alertType: "alert_type",
+      description: "description",
+      enabled: "enabled",
+      filters: "filters",
+      mechanisms: "mechanisms",
+      name: "name",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/alerting/v3/policies/{policyId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdatePolicyRequest>;
 
 export interface UpdatePolicyResponse {
@@ -2614,11 +2599,10 @@ export interface UpdatePolicyResponse {
   id?: string | null;
 }
 
-export const UpdatePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const UpdatePolicyResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdatePolicyResponse>;
 
 export type UpdatePolicyError =
@@ -2633,7 +2617,7 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyResponse,
   UpdatePolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePolicyRequest,
   output: UpdatePolicyResponse,
   errors: [InvalidRoute, PolicyNotFound, InvalidAlertType, MechanismRequired],
@@ -2645,17 +2629,16 @@ export interface DeletePolicyRequest {
   accountId: string;
 }
 
-export const DeletePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      policyId: Schema.String.pipe(T.HttpPath("policyId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/alerting/v3/policies/{policyId}",
-      }),
-    ),
+export const DeletePolicyRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    policyId: Schema.String.pipe(T.HttpPath("policyId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/alerting/v3/policies/{policyId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeletePolicyRequest>;
 
 export interface DeletePolicyResponse {
@@ -2671,29 +2654,24 @@ export interface DeletePolicyResponse {
   } | null;
 }
 
-export const DeletePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      errors: Schema.optional(
-        Schema.Union([Schema.Array(Error2), Schema.Null]),
-      ),
-      messages: Schema.optional(
-        Schema.Union([Schema.Array(Error2), Schema.Null]),
-      ),
-      success: Schema.optional(
-        Schema.Union([Schema.Literal(true), Schema.Null]),
-      ),
-      resultInfo: Schema.optional(
-        Schema.Union([ListHistoriesResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        errors: "errors",
-        messages: "messages",
-        success: "success",
-        resultInfo: "result_info",
-      }),
+export const DeletePolicyResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    errors: Schema.optional(Schema.Union([Schema.Array(Error2), Schema.Null])),
+    messages: Schema.optional(
+      Schema.Union([Schema.Array(Error2), Schema.Null]),
     ),
+    success: Schema.optional(Schema.Union([Schema.Literal(true), Schema.Null])),
+    resultInfo: Schema.optional(
+      Schema.Union([ListHistoriesResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      errors: "errors",
+      messages: "messages",
+      success: "success",
+      resultInfo: "result_info",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeletePolicyResponse>;
 
 export type DeletePolicyError = DefaultErrors | InvalidRoute | PolicyNotFound;
@@ -2703,7 +2681,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyResponse,
   DeletePolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyRequest,
   output: DeletePolicyResponse,
   errors: [InvalidRoute, PolicyNotFound],
@@ -2719,17 +2697,16 @@ export interface GetSilenceRequest {
   accountId: string;
 }
 
-export const GetSilenceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      silenceId: Schema.String.pipe(T.HttpPath("silenceId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/alerting/v3/silences/{silenceId}",
-      }),
-    ),
+export const GetSilenceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    silenceId: Schema.String.pipe(T.HttpPath("silenceId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/alerting/v3/silences/{silenceId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetSilenceRequest>;
 
 export interface GetSilenceResponse {
@@ -2747,27 +2724,26 @@ export interface GetSilenceResponse {
   updatedAt?: string | null;
 }
 
-export const GetSilenceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      endTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      startTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          endTime: "end_time",
-          policyId: "policy_id",
-          startTime: "start_time",
-          updatedAt: "updated_at",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetSilenceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    endTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    policyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    startTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        endTime: "end_time",
+        policyId: "policy_id",
+        startTime: "start_time",
+        updatedAt: "updated_at",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetSilenceResponse>;
 
 export type GetSilenceError =
@@ -2781,7 +2757,7 @@ export const getSilence: API.OperationMethod<
   GetSilenceResponse,
   GetSilenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSilenceRequest,
   output: GetSilenceResponse,
   errors: [InvalidRoute, InternalServerError, SilenceNotFound],
@@ -2792,16 +2768,15 @@ export interface ListSilencesRequest {
   accountId: string;
 }
 
-export const ListSilencesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/alerting/v3/silences",
-      }),
-    ),
+export const ListSilencesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/alerting/v3/silences",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSilencesRequest>;
 
 export interface ListSilencesResponse {
@@ -2815,11 +2790,10 @@ export interface ListSilencesResponse {
   }[];
 }
 
-export const ListSilencesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListSilencesResponseResult),
-    }),
+export const ListSilencesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListSilencesResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListSilencesResponse>;
 
 export type ListSilencesError = DefaultErrors;
@@ -2829,7 +2803,7 @@ export const listSilences: API.PaginatedOperationMethod<
   ListSilencesResponse,
   ListSilencesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSilencesRequest,
   output: ListSilencesResponse,
   errors: [],
@@ -2846,17 +2820,16 @@ export interface CreateSilenceRequest {
   body: { endTime?: string; policyId?: string; startTime?: string }[];
 }
 
-export const CreateSilenceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      body: Schema.Array(Body).pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/alerting/v3/silences",
-      }),
-    ),
+export const CreateSilenceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    body: Schema.Array(Body).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/alerting/v3/silences",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateSilenceRequest>;
 
 export interface CreateSilenceResponse {
@@ -2866,13 +2839,12 @@ export interface CreateSilenceResponse {
   success: true;
 }
 
-export const CreateSilenceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      errors: Schema.Array(Error2),
-      messages: Schema.Array(Error2),
-      success: Schema.Literal(true),
-    }),
+export const CreateSilenceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    errors: Schema.Array(Error2),
+    messages: Schema.Array(Error2),
+    success: Schema.Literal(true),
+  }),
 ) as unknown as Schema.Codec<CreateSilenceResponse>;
 
 export type CreateSilenceError =
@@ -2886,7 +2858,7 @@ export const createSilence: API.OperationMethod<
   CreateSilenceResponse,
   CreateSilenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSilenceRequest,
   output: CreateSilenceResponse,
   errors: [InvalidRoute, InvalidSilence, SilenceAlreadyExists],
@@ -2899,17 +2871,16 @@ export interface UpdateSilenceRequest {
   body: { id?: string; endTime?: string; startTime?: string }[];
 }
 
-export const UpdateSilenceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      body: Schema.Array(Body2).pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/alerting/v3/silences",
-      }),
-    ),
+export const UpdateSilenceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    body: Schema.Array(Body2).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/alerting/v3/silences",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateSilenceRequest>;
 
 export interface UpdateSilenceResponse {
@@ -2925,14 +2896,13 @@ export interface UpdateSilenceResponse {
     | null;
 }
 
-export const UpdateSilenceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Union([
-        Schema.Array(ListSilencesResponseResult),
-        Schema.Null,
-      ]),
-    }),
+export const UpdateSilenceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Union([
+      Schema.Array(ListSilencesResponseResult),
+      Schema.Null,
+    ]),
+  }),
 ) as unknown as Schema.Codec<UpdateSilenceResponse>;
 
 export type UpdateSilenceError =
@@ -2945,7 +2915,7 @@ export const updateSilence: API.PaginatedOperationMethod<
   UpdateSilenceResponse,
   UpdateSilenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: UpdateSilenceRequest,
   output: UpdateSilenceResponse,
   errors: [SilenceNotFound, InvalidSilence],
@@ -2961,17 +2931,16 @@ export interface DeleteSilenceRequest {
   accountId: string;
 }
 
-export const DeleteSilenceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      silenceId: Schema.String.pipe(T.HttpPath("silenceId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/alerting/v3/silences/{silenceId}",
-      }),
-    ),
+export const DeleteSilenceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    silenceId: Schema.String.pipe(T.HttpPath("silenceId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/alerting/v3/silences/{silenceId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteSilenceRequest>;
 
 export interface DeleteSilenceResponse {
@@ -2981,13 +2950,12 @@ export interface DeleteSilenceResponse {
   success: true;
 }
 
-export const DeleteSilenceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      errors: Schema.Array(Error2),
-      messages: Schema.Array(Error2),
-      success: Schema.Literal(true),
-    }),
+export const DeleteSilenceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    errors: Schema.Array(Error2),
+    messages: Schema.Array(Error2),
+    success: Schema.Literal(true),
+  }),
 ) as unknown as Schema.Codec<DeleteSilenceResponse>;
 
 export type DeleteSilenceError = DefaultErrors | InvalidRoute | SilenceNotFound;
@@ -2997,7 +2965,7 @@ export const deleteSilence: API.OperationMethod<
   DeleteSilenceResponse,
   DeleteSilenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSilenceRequest,
   output: DeleteSilenceResponse,
   errors: [InvalidRoute, SilenceNotFound],

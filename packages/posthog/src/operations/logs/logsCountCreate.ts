@@ -39,7 +39,7 @@ export interface LogsCountCreateInput {
     }[];
   };
 }
-export const LogsCountCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LogsCountCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   query: Schema.optional(
     Schema.Struct({
@@ -98,7 +98,7 @@ export const LogsCountCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface LogsCountCreateOutput {
   count?: number;
 }
-export const LogsCountCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LogsCountCreateOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
 }) as unknown as Schema.Codec<LogsCountCreateOutput>;
 
@@ -107,7 +107,7 @@ export const LogsCountCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const logsCountCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const logsCountCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LogsCountCreateInput,
   outputSchema: LogsCountCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

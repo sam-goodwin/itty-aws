@@ -69,7 +69,7 @@ export interface CreateApiregistrationV1APIServiceInput {
   };
 }
 export const CreateApiregistrationV1APIServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -215,7 +215,7 @@ export interface CreateApiregistrationV1APIServiceOutput {
   };
 }
 export const CreateApiregistrationV1APIServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -306,7 +306,7 @@ export const CreateApiregistrationV1APIServiceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createApiregistrationV1APIService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateApiregistrationV1APIServiceInput,
     outputSchema: CreateApiregistrationV1APIServiceOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -325,7 +325,7 @@ export interface DeleteApiregistrationV1APIServiceInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteApiregistrationV1APIServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -375,7 +375,7 @@ export interface DeleteApiregistrationV1APIServiceOutput {
   status?: string;
 }
 export const DeleteApiregistrationV1APIServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -428,7 +428,7 @@ export const DeleteApiregistrationV1APIServiceOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteApiregistrationV1APIService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteApiregistrationV1APIServiceInput,
     outputSchema: DeleteApiregistrationV1APIServiceOutput,
     errors: [NotFound, Conflict] as const,
@@ -455,7 +455,7 @@ export interface DeleteApiregistrationV1CollectionAPIServiceInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteApiregistrationV1CollectionAPIServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -513,7 +513,7 @@ export interface DeleteApiregistrationV1CollectionAPIServiceOutput {
   status?: string;
 }
 export const DeleteApiregistrationV1CollectionAPIServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -615,14 +615,14 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteApiregistrationV1CollectionAPIService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteApiregistrationV1CollectionAPIServiceInput,
     outputSchema: DeleteApiregistrationV1CollectionAPIServiceOutput,
   }));
 // Input Schema
 export interface GetApiregistrationAPIGroupInput {}
 export const GetApiregistrationAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apiregistration.k8s.io/" }),
   ) as unknown as Schema.Codec<GetApiregistrationAPIGroupInput>;
 
@@ -636,7 +636,7 @@ export interface GetApiregistrationAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetApiregistrationAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -666,16 +666,14 @@ export const GetApiregistrationAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getApiregistrationAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetApiregistrationAPIGroupInput,
-    outputSchema: GetApiregistrationAPIGroupOutput,
-  }),
-);
+export const getApiregistrationAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetApiregistrationAPIGroupInput,
+  outputSchema: GetApiregistrationAPIGroupOutput,
+}));
 // Input Schema
 export interface GetApiregistrationV1APIResourcesInput {}
 export const GetApiregistrationV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apiregistration.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetApiregistrationV1APIResourcesInput>;
 
@@ -698,7 +696,7 @@ export interface GetApiregistrationV1APIResourcesOutput {
   }[];
 }
 export const GetApiregistrationV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -723,7 +721,7 @@ export const GetApiregistrationV1APIResourcesOutput =
  * get available resources
  */
 export const getApiregistrationV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetApiregistrationV1APIResourcesInput,
     outputSchema: GetApiregistrationV1APIResourcesOutput,
   }));
@@ -743,7 +741,7 @@ export interface ListApiregistrationV1APIServiceInput {
   watch?: boolean;
 }
 export const ListApiregistrationV1APIServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -830,7 +828,7 @@ export interface ListApiregistrationV1APIServiceOutput {
   };
 }
 export const ListApiregistrationV1APIServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -991,7 +989,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listApiregistrationV1APIService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListApiregistrationV1APIServiceInput,
     outputSchema: ListApiregistrationV1APIServiceOutput,
   }));
@@ -1005,7 +1003,7 @@ export interface PatchApiregistrationV1APIServiceInput {
   force?: boolean;
 }
 export const PatchApiregistrationV1APIServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1075,7 +1073,7 @@ export interface PatchApiregistrationV1APIServiceOutput {
   };
 }
 export const PatchApiregistrationV1APIServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1168,7 +1166,7 @@ export const PatchApiregistrationV1APIServiceOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchApiregistrationV1APIService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchApiregistrationV1APIServiceInput,
     outputSchema: PatchApiregistrationV1APIServiceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -1183,7 +1181,7 @@ export interface PatchApiregistrationV1APIServiceStatusInput {
   force?: boolean;
 }
 export const PatchApiregistrationV1APIServiceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1253,7 +1251,7 @@ export interface PatchApiregistrationV1APIServiceStatusOutput {
   };
 }
 export const PatchApiregistrationV1APIServiceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1346,7 +1344,7 @@ export const PatchApiregistrationV1APIServiceStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchApiregistrationV1APIServiceStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchApiregistrationV1APIServiceStatusInput,
     outputSchema: PatchApiregistrationV1APIServiceStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -1357,7 +1355,7 @@ export interface ReadApiregistrationV1APIServiceInput {
   pretty?: string;
 }
 export const ReadApiregistrationV1APIServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -1423,7 +1421,7 @@ export interface ReadApiregistrationV1APIServiceOutput {
   };
 }
 export const ReadApiregistrationV1APIServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1512,7 +1510,7 @@ export const ReadApiregistrationV1APIServiceOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readApiregistrationV1APIService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadApiregistrationV1APIServiceInput,
     outputSchema: ReadApiregistrationV1APIServiceOutput,
     errors: [NotFound] as const,
@@ -1523,7 +1521,7 @@ export interface ReadApiregistrationV1APIServiceStatusInput {
   pretty?: string;
 }
 export const ReadApiregistrationV1APIServiceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -1589,7 +1587,7 @@ export interface ReadApiregistrationV1APIServiceStatusOutput {
   };
 }
 export const ReadApiregistrationV1APIServiceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1678,7 +1676,7 @@ export const ReadApiregistrationV1APIServiceStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readApiregistrationV1APIServiceStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadApiregistrationV1APIServiceStatusInput,
     outputSchema: ReadApiregistrationV1APIServiceStatusOutput,
     errors: [NotFound] as const,
@@ -1744,7 +1742,7 @@ export interface ReplaceApiregistrationV1APIServiceInput {
   };
 }
 export const ReplaceApiregistrationV1APIServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1891,7 +1889,7 @@ export interface ReplaceApiregistrationV1APIServiceOutput {
   };
 }
 export const ReplaceApiregistrationV1APIServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1983,7 +1981,7 @@ export const ReplaceApiregistrationV1APIServiceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceApiregistrationV1APIService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceApiregistrationV1APIServiceInput,
     outputSchema: ReplaceApiregistrationV1APIServiceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -2049,7 +2047,7 @@ export interface ReplaceApiregistrationV1APIServiceStatusInput {
   };
 }
 export const ReplaceApiregistrationV1APIServiceStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2196,7 +2194,7 @@ export interface ReplaceApiregistrationV1APIServiceStatusOutput {
   };
 }
 export const ReplaceApiregistrationV1APIServiceStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2288,7 +2286,7 @@ export const ReplaceApiregistrationV1APIServiceStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceApiregistrationV1APIServiceStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceApiregistrationV1APIServiceStatusInput,
     outputSchema: ReplaceApiregistrationV1APIServiceStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -2310,7 +2308,7 @@ export interface WatchApiregistrationV1APIServiceInput {
   watch?: boolean;
 }
 export const WatchApiregistrationV1APIServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -2337,7 +2335,7 @@ export interface WatchApiregistrationV1APIServiceOutput {
   type: string;
 }
 export const WatchApiregistrationV1APIServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchApiregistrationV1APIServiceOutput>;
@@ -2402,7 +2400,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchApiregistrationV1APIService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchApiregistrationV1APIServiceInput,
     outputSchema: WatchApiregistrationV1APIServiceOutput,
   }));
@@ -2422,7 +2420,7 @@ export interface WatchApiregistrationV1APIServiceListInput {
   watch?: boolean;
 }
 export const WatchApiregistrationV1APIServiceListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -2448,7 +2446,7 @@ export interface WatchApiregistrationV1APIServiceListOutput {
   type: string;
 }
 export const WatchApiregistrationV1APIServiceListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchApiregistrationV1APIServiceListOutput>;
@@ -2512,7 +2510,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchApiregistrationV1APIServiceList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchApiregistrationV1APIServiceListInput,
     outputSchema: WatchApiregistrationV1APIServiceListOutput,
   }));

@@ -7,7 +7,7 @@ export interface GetTaxCodesIdInput {
   id: string;
   expand?: string;
 }
-export const GetTaxCodesIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTaxCodesIdInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -25,7 +25,7 @@ export interface GetTaxCodesIdOutput {
   name: string;
   object: "tax_code";
 }
-export const GetTaxCodesIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTaxCodesIdOutput = /*@__PURE__*/ Schema.Struct({
   description: Schema.String,
   id: Schema.String,
   name: Schema.String,
@@ -40,7 +40,7 @@ export const GetTaxCodesIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTaxCodesId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTaxCodesId = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetTaxCodesIdInput,
   outputSchema: GetTaxCodesIdOutput,
 }));

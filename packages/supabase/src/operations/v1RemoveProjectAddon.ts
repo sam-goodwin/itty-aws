@@ -9,7 +9,7 @@ export interface V1RemoveProjectAddonInput {
   addon_variant: string;
 }
 export const V1RemoveProjectAddonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     addon_variant: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const V1RemoveProjectAddonInput =
 // Output Schema
 export type V1RemoveProjectAddonOutput = void;
 export const V1RemoveProjectAddonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RemoveProjectAddonOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RemoveProjectAddonOutput>;
 
 // The operation
 /**
@@ -32,10 +32,8 @@ export const V1RemoveProjectAddonOutput =
  *
  * @param ref - Project ref
  */
-export const v1RemoveProjectAddon = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1RemoveProjectAddonInput,
-    outputSchema: V1RemoveProjectAddonOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1RemoveProjectAddon = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1RemoveProjectAddonInput,
+  outputSchema: V1RemoveProjectAddonOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

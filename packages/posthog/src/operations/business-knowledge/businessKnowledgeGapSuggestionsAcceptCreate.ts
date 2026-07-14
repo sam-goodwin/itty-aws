@@ -9,7 +9,7 @@ export interface BusinessKnowledgeGapSuggestionsAcceptCreateInput {
   resolved_source_id?: string | null;
 }
 export const BusinessKnowledgeGapSuggestionsAcceptCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     resolved_source_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -33,7 +33,7 @@ export interface BusinessKnowledgeGapSuggestionsAcceptCreateOutput {
   created_at: string;
 }
 export const BusinessKnowledgeGapSuggestionsAcceptCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     ticket_id: Schema.String,
     topic: Schema.String,
@@ -57,7 +57,7 @@ export const BusinessKnowledgeGapSuggestionsAcceptCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const businessKnowledgeGapSuggestionsAcceptCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BusinessKnowledgeGapSuggestionsAcceptCreateInput,
     outputSchema: BusinessKnowledgeGapSuggestionsAcceptCreateOutput,
   }));

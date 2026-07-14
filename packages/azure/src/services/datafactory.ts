@@ -51,7 +51,7 @@ export interface ActivityRunsQueryByPipelineRunInput {
   }[];
 }
 export const ActivityRunsQueryByPipelineRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -127,7 +127,7 @@ export interface ActivityRunsQueryByPipelineRunOutput {
   continuationToken?: string;
 }
 export const ActivityRunsQueryByPipelineRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         pipelineName: Schema.optional(Schema.String),
@@ -158,7 +158,7 @@ export const ActivityRunsQueryByPipelineRunOutput =
  * @param runId - The pipeline run identifier.
  */
 export const ActivityRunsQueryByPipelineRun =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ActivityRunsQueryByPipelineRunInput,
     outputSchema: ActivityRunsQueryByPipelineRunOutput,
   }));
@@ -258,7 +258,7 @@ export interface ChangeDataCaptureCreateOrUpdateInput {
   etag?: string;
 }
 export const ChangeDataCaptureCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -486,7 +486,7 @@ export interface ChangeDataCaptureCreateOrUpdateOutput {
   };
 }
 export const ChangeDataCaptureCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -518,7 +518,7 @@ export const ChangeDataCaptureCreateOrUpdateOutput =
  * @param if-match - ETag of the change data capture entity. Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
 export const ChangeDataCaptureCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ChangeDataCaptureCreateOrUpdateInput,
     outputSchema: ChangeDataCaptureCreateOrUpdateOutput,
   }));
@@ -530,7 +530,7 @@ export interface ChangeDataCaptureDeleteInput {
   changeDataCaptureName: string;
 }
 export const ChangeDataCaptureDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -546,7 +546,7 @@ export const ChangeDataCaptureDeleteInput =
 // Output Schema
 export type ChangeDataCaptureDeleteOutput = void;
 export const ChangeDataCaptureDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ChangeDataCaptureDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ChangeDataCaptureDeleteOutput>;
 
 // The operation
 /**
@@ -558,12 +558,10 @@ export const ChangeDataCaptureDeleteOutput =
  * @param factoryName - The factory name.
  * @param changeDataCaptureName - The change data capture name.
  */
-export const ChangeDataCaptureDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ChangeDataCaptureDeleteInput,
-    outputSchema: ChangeDataCaptureDeleteOutput,
-  }),
-);
+export const ChangeDataCaptureDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ChangeDataCaptureDeleteInput,
+  outputSchema: ChangeDataCaptureDeleteOutput,
+}));
 // Input Schema
 export interface ChangeDataCaptureGetInput {
   subscriptionId: string;
@@ -572,7 +570,7 @@ export interface ChangeDataCaptureGetInput {
   changeDataCaptureName: string;
 }
 export const ChangeDataCaptureGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -600,7 +598,7 @@ export interface ChangeDataCaptureGetOutput {
   };
 }
 export const ChangeDataCaptureGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -631,12 +629,10 @@ export const ChangeDataCaptureGetOutput =
  * @param changeDataCaptureName - The change data capture name.
  * @param if-none-match - ETag of the change data capture entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
-export const ChangeDataCaptureGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ChangeDataCaptureGetInput,
-    outputSchema: ChangeDataCaptureGetOutput,
-  }),
-);
+export const ChangeDataCaptureGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ChangeDataCaptureGetInput,
+  outputSchema: ChangeDataCaptureGetOutput,
+}));
 // Input Schema
 export interface ChangeDataCaptureListByFactoryInput {
   subscriptionId: string;
@@ -644,7 +640,7 @@ export interface ChangeDataCaptureListByFactoryInput {
   factoryName: string;
 }
 export const ChangeDataCaptureListByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -674,7 +670,7 @@ export interface ChangeDataCaptureListByFactoryOutput {
   nextLink?: string;
 }
 export const ChangeDataCaptureListByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -719,7 +715,7 @@ export const ChangeDataCaptureListByFactoryOutput =
  * @param factoryName - The factory name.
  */
 export const ChangeDataCaptureListByFactory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ChangeDataCaptureListByFactoryInput,
     outputSchema: ChangeDataCaptureListByFactoryOutput,
   }));
@@ -731,7 +727,7 @@ export interface ChangeDataCaptureStartInput {
   changeDataCaptureName: string;
 }
 export const ChangeDataCaptureStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -747,7 +743,7 @@ export const ChangeDataCaptureStartInput =
 // Output Schema
 export type ChangeDataCaptureStartOutput = void;
 export const ChangeDataCaptureStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ChangeDataCaptureStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ChangeDataCaptureStartOutput>;
 
 // The operation
 /**
@@ -759,12 +755,10 @@ export const ChangeDataCaptureStartOutput =
  * @param factoryName - The factory name.
  * @param changeDataCaptureName - The change data capture name.
  */
-export const ChangeDataCaptureStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ChangeDataCaptureStartInput,
-    outputSchema: ChangeDataCaptureStartOutput,
-  }),
-);
+export const ChangeDataCaptureStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ChangeDataCaptureStartInput,
+  outputSchema: ChangeDataCaptureStartOutput,
+}));
 // Input Schema
 export interface ChangeDataCaptureStatusInput {
   subscriptionId: string;
@@ -773,7 +767,7 @@ export interface ChangeDataCaptureStatusInput {
   changeDataCaptureName: string;
 }
 export const ChangeDataCaptureStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -789,7 +783,7 @@ export const ChangeDataCaptureStatusInput =
 // Output Schema
 export type ChangeDataCaptureStatusOutput = string;
 export const ChangeDataCaptureStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ChangeDataCaptureStatusOutput>;
+  /*@__PURE__*/ Schema.String as unknown as Schema.Codec<ChangeDataCaptureStatusOutput>;
 
 // The operation
 /**
@@ -801,12 +795,10 @@ export const ChangeDataCaptureStatusOutput =
  * @param factoryName - The factory name.
  * @param changeDataCaptureName - The change data capture name.
  */
-export const ChangeDataCaptureStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ChangeDataCaptureStatusInput,
-    outputSchema: ChangeDataCaptureStatusOutput,
-  }),
-);
+export const ChangeDataCaptureStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ChangeDataCaptureStatusInput,
+  outputSchema: ChangeDataCaptureStatusOutput,
+}));
 // Input Schema
 export interface ChangeDataCaptureStopInput {
   subscriptionId: string;
@@ -815,7 +807,7 @@ export interface ChangeDataCaptureStopInput {
   changeDataCaptureName: string;
 }
 export const ChangeDataCaptureStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -831,7 +823,7 @@ export const ChangeDataCaptureStopInput =
 // Output Schema
 export type ChangeDataCaptureStopOutput = void;
 export const ChangeDataCaptureStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ChangeDataCaptureStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ChangeDataCaptureStopOutput>;
 
 // The operation
 /**
@@ -843,12 +835,10 @@ export const ChangeDataCaptureStopOutput =
  * @param factoryName - The factory name.
  * @param changeDataCaptureName - The change data capture name.
  */
-export const ChangeDataCaptureStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ChangeDataCaptureStopInput,
-    outputSchema: ChangeDataCaptureStopOutput,
-  }),
-);
+export const ChangeDataCaptureStop = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ChangeDataCaptureStopInput,
+  outputSchema: ChangeDataCaptureStopOutput,
+}));
 // Input Schema
 export interface CredentialOperationsCreateOrUpdateInput {
   subscriptionId: string;
@@ -859,7 +849,7 @@ export interface CredentialOperationsCreateOrUpdateInput {
   etag?: string;
 }
 export const CredentialOperationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -893,7 +883,7 @@ export interface CredentialOperationsCreateOrUpdateOutput {
   };
 }
 export const CredentialOperationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -925,7 +915,7 @@ export const CredentialOperationsCreateOrUpdateOutput =
  * @param if-match - ETag of the credential entity. Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
 export const CredentialOperationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CredentialOperationsCreateOrUpdateInput,
     outputSchema: CredentialOperationsCreateOrUpdateOutput,
   }));
@@ -937,7 +927,7 @@ export interface CredentialOperationsDeleteInput {
   credentialName: string;
 }
 export const CredentialOperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -953,7 +943,7 @@ export const CredentialOperationsDeleteInput =
 // Output Schema
 export type CredentialOperationsDeleteOutput = void;
 export const CredentialOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CredentialOperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CredentialOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -965,12 +955,10 @@ export const CredentialOperationsDeleteOutput =
  * @param factoryName - The factory name.
  * @param credentialName - Credential name
  */
-export const CredentialOperationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CredentialOperationsDeleteInput,
-    outputSchema: CredentialOperationsDeleteOutput,
-  }),
-);
+export const CredentialOperationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CredentialOperationsDeleteInput,
+  outputSchema: CredentialOperationsDeleteOutput,
+}));
 // Input Schema
 export interface CredentialOperationsGetInput {
   subscriptionId: string;
@@ -979,7 +967,7 @@ export interface CredentialOperationsGetInput {
   credentialName: string;
 }
 export const CredentialOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -1007,7 +995,7 @@ export interface CredentialOperationsGetOutput {
   };
 }
 export const CredentialOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1038,12 +1026,10 @@ export const CredentialOperationsGetOutput =
  * @param credentialName - Credential name
  * @param if-none-match - ETag of the credential entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
-export const CredentialOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CredentialOperationsGetInput,
-    outputSchema: CredentialOperationsGetOutput,
-  }),
-);
+export const CredentialOperationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CredentialOperationsGetInput,
+  outputSchema: CredentialOperationsGetOutput,
+}));
 // Input Schema
 export interface CredentialOperationsListByFactoryInput {
   subscriptionId: string;
@@ -1051,7 +1037,7 @@ export interface CredentialOperationsListByFactoryInput {
   factoryName: string;
 }
 export const CredentialOperationsListByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -1081,7 +1067,7 @@ export interface CredentialOperationsListByFactoryOutput {
   nextLink?: string;
 }
 export const CredentialOperationsListByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1126,7 +1112,7 @@ export const CredentialOperationsListByFactoryOutput =
  * @param factoryName - The factory name.
  */
 export const CredentialOperationsListByFactory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CredentialOperationsListByFactoryInput,
     outputSchema: CredentialOperationsListByFactoryOutput,
   }));
@@ -1155,7 +1141,7 @@ export interface DataFlowDebugSessionAddDataFlowInput {
   };
 }
 export const DataFlowDebugSessionAddDataFlowInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -1229,7 +1215,7 @@ export interface DataFlowDebugSessionAddDataFlowOutput {
   jobVersion?: string;
 }
 export const DataFlowDebugSessionAddDataFlowOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobVersion: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DataFlowDebugSessionAddDataFlowOutput>;
 
@@ -1243,7 +1229,7 @@ export const DataFlowDebugSessionAddDataFlowOutput =
  * @param factoryName - The factory name.
  */
 export const DataFlowDebugSessionAddDataFlow =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataFlowDebugSessionAddDataFlowInput,
     outputSchema: DataFlowDebugSessionAddDataFlowOutput,
   }));
@@ -1258,7 +1244,7 @@ export interface DataFlowDebugSessionCreateInput {
   integrationRuntime?: { name?: string };
 }
 export const DataFlowDebugSessionCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -1284,7 +1270,7 @@ export interface DataFlowDebugSessionCreateOutput {
   sessionId?: string;
 }
 export const DataFlowDebugSessionCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     sessionId: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DataFlowDebugSessionCreateOutput>;
@@ -1298,12 +1284,10 @@ export const DataFlowDebugSessionCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const DataFlowDebugSessionCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataFlowDebugSessionCreateInput,
-    outputSchema: DataFlowDebugSessionCreateOutput,
-  }),
-);
+export const DataFlowDebugSessionCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataFlowDebugSessionCreateInput,
+  outputSchema: DataFlowDebugSessionCreateOutput,
+}));
 // Input Schema
 export interface DataFlowDebugSessionDeleteInput {
   subscriptionId: string;
@@ -1312,7 +1296,7 @@ export interface DataFlowDebugSessionDeleteInput {
   sessionId?: string;
 }
 export const DataFlowDebugSessionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -1328,7 +1312,7 @@ export const DataFlowDebugSessionDeleteInput =
 // Output Schema
 export type DataFlowDebugSessionDeleteOutput = void;
 export const DataFlowDebugSessionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataFlowDebugSessionDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataFlowDebugSessionDeleteOutput>;
 
 // The operation
 /**
@@ -1339,12 +1323,10 @@ export const DataFlowDebugSessionDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const DataFlowDebugSessionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataFlowDebugSessionDeleteInput,
-    outputSchema: DataFlowDebugSessionDeleteOutput,
-  }),
-);
+export const DataFlowDebugSessionDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataFlowDebugSessionDeleteInput,
+  outputSchema: DataFlowDebugSessionDeleteOutput,
+}));
 // Input Schema
 export interface DataFlowDebugSessionExecuteCommandInput {
   subscriptionId: string;
@@ -1363,7 +1345,7 @@ export interface DataFlowDebugSessionExecuteCommandInput {
   };
 }
 export const DataFlowDebugSessionExecuteCommandInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -1397,7 +1379,7 @@ export interface DataFlowDebugSessionExecuteCommandOutput {
   data?: string;
 }
 export const DataFlowDebugSessionExecuteCommandOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DataFlowDebugSessionExecuteCommandOutput>;
@@ -1412,7 +1394,7 @@ export const DataFlowDebugSessionExecuteCommandOutput =
  * @param factoryName - The factory name.
  */
 export const DataFlowDebugSessionExecuteCommand =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataFlowDebugSessionExecuteCommandInput,
     outputSchema: DataFlowDebugSessionExecuteCommandOutput,
   }));
@@ -1423,7 +1405,7 @@ export interface DataFlowDebugSessionQueryByFactoryInput {
   factoryName: string;
 }
 export const DataFlowDebugSessionQueryByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -1451,7 +1433,7 @@ export interface DataFlowDebugSessionQueryByFactoryOutput {
   nextLink?: string;
 }
 export const DataFlowDebugSessionQueryByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         dataFlowName: Schema.optional(Schema.String),
@@ -1478,7 +1460,7 @@ export const DataFlowDebugSessionQueryByFactoryOutput =
  * @param factoryName - The factory name.
  */
 export const DataFlowDebugSessionQueryByFactory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataFlowDebugSessionQueryByFactoryInput,
     outputSchema: DataFlowDebugSessionQueryByFactoryOutput,
   }));
@@ -1497,7 +1479,7 @@ export interface DataFlowsCreateOrUpdateInput {
   etag?: string;
 }
 export const DataFlowsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -1536,7 +1518,7 @@ export interface DataFlowsCreateOrUpdateOutput {
   };
 }
 export const DataFlowsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1567,12 +1549,10 @@ export const DataFlowsCreateOrUpdateOutput =
  * @param dataFlowName - The data flow name.
  * @param if-match - ETag of the data flow entity. Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
-export const DataFlowsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataFlowsCreateOrUpdateInput,
-    outputSchema: DataFlowsCreateOrUpdateOutput,
-  }),
-);
+export const DataFlowsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataFlowsCreateOrUpdateInput,
+  outputSchema: DataFlowsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DataFlowsDeleteInput {
   subscriptionId: string;
@@ -1580,7 +1560,7 @@ export interface DataFlowsDeleteInput {
   factoryName: string;
   dataFlowName: string;
 }
-export const DataFlowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataFlowsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -1596,7 +1576,7 @@ export const DataFlowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DataFlowsDeleteOutput = void;
 export const DataFlowsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataFlowsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataFlowsDeleteOutput>;
 
 // The operation
 /**
@@ -1608,7 +1588,7 @@ export const DataFlowsDeleteOutput =
  * @param factoryName - The factory name.
  * @param dataFlowName - The data flow name.
  */
-export const DataFlowsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataFlowsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataFlowsDeleteInput,
   outputSchema: DataFlowsDeleteOutput,
 }));
@@ -1619,7 +1599,7 @@ export interface DataFlowsGetInput {
   factoryName: string;
   dataFlowName: string;
 }
-export const DataFlowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataFlowsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -1646,7 +1626,7 @@ export interface DataFlowsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DataFlowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataFlowsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1677,7 +1657,7 @@ export const DataFlowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param dataFlowName - The data flow name.
  * @param if-none-match - ETag of the data flow entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
-export const DataFlowsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataFlowsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataFlowsGetInput,
   outputSchema: DataFlowsGetOutput,
 }));
@@ -1688,7 +1668,7 @@ export interface DataFlowsListByFactoryInput {
   factoryName: string;
 }
 export const DataFlowsListByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -1718,7 +1698,7 @@ export interface DataFlowsListByFactoryOutput {
   nextLink?: string;
 }
 export const DataFlowsListByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1762,12 +1742,10 @@ export const DataFlowsListByFactoryOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const DataFlowsListByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataFlowsListByFactoryInput,
-    outputSchema: DataFlowsListByFactoryOutput,
-  }),
-);
+export const DataFlowsListByFactory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataFlowsListByFactoryInput,
+  outputSchema: DataFlowsListByFactoryOutput,
+}));
 // Input Schema
 export interface DatasetsCreateOrUpdateInput {
   subscriptionId: string;
@@ -1804,7 +1782,7 @@ export interface DatasetsCreateOrUpdateInput {
   etag?: string;
 }
 export const DatasetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -1869,7 +1847,7 @@ export interface DatasetsCreateOrUpdateOutput {
   };
 }
 export const DatasetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1900,12 +1878,10 @@ export const DatasetsCreateOrUpdateOutput =
  * @param datasetName - The dataset name.
  * @param if-match - ETag of the dataset entity.  Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
-export const DatasetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatasetsCreateOrUpdateInput,
-    outputSchema: DatasetsCreateOrUpdateOutput,
-  }),
-);
+export const DatasetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatasetsCreateOrUpdateInput,
+  outputSchema: DatasetsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DatasetsDeleteInput {
   subscriptionId: string;
@@ -1913,7 +1889,7 @@ export interface DatasetsDeleteInput {
   factoryName: string;
   datasetName: string;
 }
-export const DatasetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatasetsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -1929,7 +1905,7 @@ export const DatasetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DatasetsDeleteOutput = void;
 export const DatasetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatasetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatasetsDeleteOutput>;
 
 // The operation
 /**
@@ -1941,7 +1917,7 @@ export const DatasetsDeleteOutput =
  * @param factoryName - The factory name.
  * @param datasetName - The dataset name.
  */
-export const DatasetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatasetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatasetsDeleteInput,
   outputSchema: DatasetsDeleteOutput,
 }));
@@ -1952,7 +1928,7 @@ export interface DatasetsGetInput {
   factoryName: string;
   datasetName: string;
 }
-export const DatasetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatasetsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -1979,7 +1955,7 @@ export interface DatasetsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DatasetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatasetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2010,7 +1986,7 @@ export const DatasetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param datasetName - The dataset name.
  * @param if-none-match - ETag of the dataset entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
-export const DatasetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatasetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatasetsGetInput,
   outputSchema: DatasetsGetOutput,
 }));
@@ -2021,7 +1997,7 @@ export interface DatasetsListByFactoryInput {
   factoryName: string;
 }
 export const DatasetsListByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -2051,7 +2027,7 @@ export interface DatasetsListByFactoryOutput {
   nextLink?: string;
 }
 export const DatasetsListByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2095,12 +2071,10 @@ export const DatasetsListByFactoryOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const DatasetsListByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatasetsListByFactoryInput,
-    outputSchema: DatasetsListByFactoryOutput,
-  }),
-);
+export const DatasetsListByFactory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatasetsListByFactoryInput,
+  outputSchema: DatasetsListByFactoryOutput,
+}));
 // Input Schema
 export interface ExposureControlGetFeatureValueInput {
   subscriptionId: string;
@@ -2109,7 +2083,7 @@ export interface ExposureControlGetFeatureValueInput {
   featureType?: string;
 }
 export const ExposureControlGetFeatureValueInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationId: Schema.String.pipe(T.PathParam()),
     featureName: Schema.optional(Schema.String),
@@ -2128,7 +2102,7 @@ export interface ExposureControlGetFeatureValueOutput {
   value?: string;
 }
 export const ExposureControlGetFeatureValueOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     featureName: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ExposureControlGetFeatureValueOutput>;
@@ -2142,7 +2116,7 @@ export const ExposureControlGetFeatureValueOutput =
  * @param locationId - The location identifier.
  */
 export const ExposureControlGetFeatureValue =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExposureControlGetFeatureValueInput,
     outputSchema: ExposureControlGetFeatureValueOutput,
   }));
@@ -2155,7 +2129,7 @@ export interface ExposureControlGetFeatureValueByFactoryInput {
   featureType?: string;
 }
 export const ExposureControlGetFeatureValueByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -2175,7 +2149,7 @@ export interface ExposureControlGetFeatureValueByFactoryOutput {
   value?: string;
 }
 export const ExposureControlGetFeatureValueByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     featureName: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ExposureControlGetFeatureValueByFactoryOutput>;
@@ -2190,7 +2164,7 @@ export const ExposureControlGetFeatureValueByFactoryOutput =
  * @param factoryName - The factory name.
  */
 export const ExposureControlGetFeatureValueByFactory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExposureControlGetFeatureValueByFactoryInput,
     outputSchema: ExposureControlGetFeatureValueByFactoryOutput,
   }));
@@ -2202,7 +2176,7 @@ export interface ExposureControlQueryFeatureValuesByFactoryInput {
   exposureControlRequests: { featureName?: string; featureType?: string }[];
 }
 export const ExposureControlQueryFeatureValuesByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -2225,7 +2199,7 @@ export interface ExposureControlQueryFeatureValuesByFactoryOutput {
   exposureControlResponses: { featureName?: string; value?: string }[];
 }
 export const ExposureControlQueryFeatureValuesByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exposureControlResponses: Schema.Array(
       Schema.Struct({
         featureName: Schema.optional(Schema.String),
@@ -2244,7 +2218,7 @@ export const ExposureControlQueryFeatureValuesByFactoryOutput =
  * @param factoryName - The factory name.
  */
 export const ExposureControlQueryFeatureValuesByFactory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExposureControlQueryFeatureValuesByFactoryInput,
     outputSchema: ExposureControlQueryFeatureValuesByFactoryOutput,
   }));
@@ -2264,7 +2238,7 @@ export interface FactoriesConfigureFactoryRepoInput {
   };
 }
 export const FactoriesConfigureFactoryRepoInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationId: Schema.String.pipe(T.PathParam()),
     factoryResourceId: Schema.optional(Schema.String),
@@ -2302,7 +2276,7 @@ export interface FactoriesConfigureFactoryRepoOutput {
   };
 }
 export const FactoriesConfigureFactoryRepoOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2331,7 +2305,7 @@ export const FactoriesConfigureFactoryRepoOutput =
  * @param locationId - The location identifier.
  */
 export const FactoriesConfigureFactoryRepo =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FactoriesConfigureFactoryRepoInput,
     outputSchema: FactoriesConfigureFactoryRepoOutput,
   }));
@@ -2380,7 +2354,7 @@ export interface FactoriesCreateOrUpdateInput {
   eTag?: string;
 }
 export const FactoriesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -2478,7 +2452,7 @@ export interface FactoriesCreateOrUpdateOutput {
   };
 }
 export const FactoriesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2508,19 +2482,17 @@ export const FactoriesCreateOrUpdateOutput =
  * @param factoryName - The factory name.
  * @param if-match - ETag of the factory entity. Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
-export const FactoriesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FactoriesCreateOrUpdateInput,
-    outputSchema: FactoriesCreateOrUpdateOutput,
-  }),
-);
+export const FactoriesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FactoriesCreateOrUpdateInput,
+  outputSchema: FactoriesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface FactoriesDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   factoryName: string;
 }
-export const FactoriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FactoriesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -2535,7 +2507,7 @@ export const FactoriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type FactoriesDeleteOutput = void;
 export const FactoriesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FactoriesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FactoriesDeleteOutput>;
 
 // The operation
 /**
@@ -2546,7 +2518,7 @@ export const FactoriesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const FactoriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FactoriesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FactoriesDeleteInput,
   outputSchema: FactoriesDeleteOutput,
 }));
@@ -2556,7 +2528,7 @@ export interface FactoriesGetInput {
   resourceGroupName: string;
   factoryName: string;
 }
-export const FactoriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FactoriesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -2582,7 +2554,7 @@ export interface FactoriesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const FactoriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FactoriesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2612,7 +2584,7 @@ export const FactoriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param factoryName - The factory name.
  * @param if-none-match - ETag of the factory entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
-export const FactoriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FactoriesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FactoriesGetInput,
   outputSchema: FactoriesGetOutput,
 }));
@@ -2628,7 +2600,7 @@ export interface FactoriesGetDataPlaneAccessInput {
   expireTime?: string;
 }
 export const FactoriesGetDataPlaneAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -2658,7 +2630,7 @@ export interface FactoriesGetDataPlaneAccessOutput {
   dataPlaneUrl?: string;
 }
 export const FactoriesGetDataPlaneAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(
       Schema.Struct({
         permissions: Schema.optional(Schema.String),
@@ -2681,12 +2653,10 @@ export const FactoriesGetDataPlaneAccessOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const FactoriesGetDataPlaneAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FactoriesGetDataPlaneAccessInput,
-    outputSchema: FactoriesGetDataPlaneAccessOutput,
-  }),
-);
+export const FactoriesGetDataPlaneAccess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FactoriesGetDataPlaneAccessInput,
+  outputSchema: FactoriesGetDataPlaneAccessOutput,
+}));
 // Input Schema
 export interface FactoriesGetGitHubAccessTokenInput {
   subscriptionId: string;
@@ -2698,7 +2668,7 @@ export interface FactoriesGetGitHubAccessTokenInput {
   gitHubAccessTokenBaseUrl: string;
 }
 export const FactoriesGetGitHubAccessTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -2724,7 +2694,7 @@ export interface FactoriesGetGitHubAccessTokenOutput {
   gitHubAccessToken?: string;
 }
 export const FactoriesGetGitHubAccessTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gitHubAccessToken: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<FactoriesGetGitHubAccessTokenOutput>;
 
@@ -2738,7 +2708,7 @@ export const FactoriesGetGitHubAccessTokenOutput =
  * @param factoryName - The factory name.
  */
 export const FactoriesGetGitHubAccessToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FactoriesGetGitHubAccessTokenInput,
     outputSchema: FactoriesGetGitHubAccessTokenOutput,
   }));
@@ -2746,7 +2716,7 @@ export const FactoriesGetGitHubAccessToken =
 export interface FactoriesListInput {
   subscriptionId: string;
 }
-export const FactoriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FactoriesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2773,7 +2743,7 @@ export interface FactoriesListOutput {
   }[];
   nextLink?: string;
 }
-export const FactoriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FactoriesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2805,7 +2775,7 @@ export const FactoriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const FactoriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FactoriesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FactoriesListInput,
   outputSchema: FactoriesListOutput,
 }));
@@ -2815,7 +2785,7 @@ export interface FactoriesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const FactoriesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2844,7 +2814,7 @@ export interface FactoriesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const FactoriesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2888,7 +2858,7 @@ export const FactoriesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const FactoriesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FactoriesListByResourceGroupInput,
     outputSchema: FactoriesListByResourceGroupOutput,
   }));
@@ -2906,7 +2876,7 @@ export interface FactoriesUpdateInput {
   };
   properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
 }
-export const FactoriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FactoriesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -2954,7 +2924,7 @@ export interface FactoriesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FactoriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FactoriesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2983,7 +2953,7 @@ export const FactoriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const FactoriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FactoriesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FactoriesUpdateInput,
   outputSchema: FactoriesUpdateOutput,
 }));
@@ -3003,7 +2973,7 @@ export interface GlobalParametersCreateOrUpdateInput {
   etag?: string;
 }
 export const GlobalParametersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3046,7 +3016,7 @@ export interface GlobalParametersCreateOrUpdateOutput {
   };
 }
 export const GlobalParametersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3077,7 +3047,7 @@ export const GlobalParametersCreateOrUpdateOutput =
  * @param globalParameterName - The global parameter name.
  */
 export const GlobalParametersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GlobalParametersCreateOrUpdateInput,
     outputSchema: GlobalParametersCreateOrUpdateOutput,
   }));
@@ -3089,7 +3059,7 @@ export interface GlobalParametersDeleteInput {
   globalParameterName: string;
 }
 export const GlobalParametersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3105,7 +3075,7 @@ export const GlobalParametersDeleteInput =
 // Output Schema
 export type GlobalParametersDeleteOutput = void;
 export const GlobalParametersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalParametersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalParametersDeleteOutput>;
 
 // The operation
 /**
@@ -3117,12 +3087,10 @@ export const GlobalParametersDeleteOutput =
  * @param factoryName - The factory name.
  * @param globalParameterName - The global parameter name.
  */
-export const GlobalParametersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GlobalParametersDeleteInput,
-    outputSchema: GlobalParametersDeleteOutput,
-  }),
-);
+export const GlobalParametersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalParametersDeleteInput,
+  outputSchema: GlobalParametersDeleteOutput,
+}));
 // Input Schema
 export interface GlobalParametersGetInput {
   subscriptionId: string;
@@ -3131,7 +3099,7 @@ export interface GlobalParametersGetInput {
   globalParameterName: string;
 }
 export const GlobalParametersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3159,7 +3127,7 @@ export interface GlobalParametersGetOutput {
   };
 }
 export const GlobalParametersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3189,7 +3157,7 @@ export const GlobalParametersGetOutput =
  * @param factoryName - The factory name.
  * @param globalParameterName - The global parameter name.
  */
-export const GlobalParametersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GlobalParametersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GlobalParametersGetInput,
   outputSchema: GlobalParametersGetOutput,
 }));
@@ -3200,7 +3168,7 @@ export interface GlobalParametersListByFactoryInput {
   factoryName: string;
 }
 export const GlobalParametersListByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3230,7 +3198,7 @@ export interface GlobalParametersListByFactoryOutput {
   nextLink?: string;
 }
 export const GlobalParametersListByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3275,7 +3243,7 @@ export const GlobalParametersListByFactoryOutput =
  * @param factoryName - The factory name.
  */
 export const GlobalParametersListByFactory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GlobalParametersListByFactoryInput,
     outputSchema: GlobalParametersListByFactoryOutput,
   }));
@@ -3287,7 +3255,7 @@ export interface IntegrationRuntimeDisableInteractiveQueryInput {
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimeDisableInteractiveQueryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3315,7 +3283,7 @@ export interface IntegrationRuntimeDisableInteractiveQueryOutput {
   };
 }
 export const IntegrationRuntimeDisableInteractiveQueryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3346,7 +3314,7 @@ export const IntegrationRuntimeDisableInteractiveQueryOutput =
  * @param integrationRuntimeName - The integration runtime name.
  */
 export const IntegrationRuntimeDisableInteractiveQuery =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimeDisableInteractiveQueryInput,
     outputSchema: IntegrationRuntimeDisableInteractiveQueryOutput,
   }));
@@ -3359,7 +3327,7 @@ export interface IntegrationRuntimeEnableInteractiveQueryInput {
   autoTerminationMinutes?: number;
 }
 export const IntegrationRuntimeEnableInteractiveQueryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3388,7 +3356,7 @@ export interface IntegrationRuntimeEnableInteractiveQueryOutput {
   };
 }
 export const IntegrationRuntimeEnableInteractiveQueryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3419,7 +3387,7 @@ export const IntegrationRuntimeEnableInteractiveQueryOutput =
  * @param integrationRuntimeName - The integration runtime name.
  */
 export const IntegrationRuntimeEnableInteractiveQuery =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimeEnableInteractiveQueryInput,
     outputSchema: IntegrationRuntimeEnableInteractiveQueryOutput,
   }));
@@ -3432,7 +3400,7 @@ export interface IntegrationRuntimeNodesDeleteInput {
   nodeName: string;
 }
 export const IntegrationRuntimeNodesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3449,7 +3417,7 @@ export const IntegrationRuntimeNodesDeleteInput =
 // Output Schema
 export type IntegrationRuntimeNodesDeleteOutput = void;
 export const IntegrationRuntimeNodesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimeNodesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimeNodesDeleteOutput>;
 
 // The operation
 /**
@@ -3461,7 +3429,7 @@ export const IntegrationRuntimeNodesDeleteOutput =
  * @param nodeName - The integration runtime node name.
  */
 export const IntegrationRuntimeNodesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimeNodesDeleteInput,
     outputSchema: IntegrationRuntimeNodesDeleteOutput,
   }));
@@ -3474,7 +3442,7 @@ export interface IntegrationRuntimeNodesGetInput {
   nodeName: string;
 }
 export const IntegrationRuntimeNodesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3517,7 +3485,7 @@ export interface IntegrationRuntimeNodesGetOutput {
   maxConcurrentJobs?: number;
 }
 export const IntegrationRuntimeNodesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodeName: Schema.optional(Schema.String),
     machineName: Schema.optional(Schema.String),
     hostServiceUri: Schema.optional(Schema.String),
@@ -3559,12 +3527,10 @@ export const IntegrationRuntimeNodesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param nodeName - The integration runtime node name.
  */
-export const IntegrationRuntimeNodesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimeNodesGetInput,
-    outputSchema: IntegrationRuntimeNodesGetOutput,
-  }),
-);
+export const IntegrationRuntimeNodesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimeNodesGetInput,
+  outputSchema: IntegrationRuntimeNodesGetOutput,
+}));
 // Input Schema
 export interface IntegrationRuntimeNodesGetIpAddressInput {
   subscriptionId: string;
@@ -3574,7 +3540,7 @@ export interface IntegrationRuntimeNodesGetIpAddressInput {
   nodeName: string;
 }
 export const IntegrationRuntimeNodesGetIpAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3593,7 +3559,7 @@ export interface IntegrationRuntimeNodesGetIpAddressOutput {
   ipAddress?: string;
 }
 export const IntegrationRuntimeNodesGetIpAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ipAddress: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<IntegrationRuntimeNodesGetIpAddressOutput>;
 
@@ -3607,7 +3573,7 @@ export const IntegrationRuntimeNodesGetIpAddressOutput =
  * @param nodeName - The integration runtime node name.
  */
 export const IntegrationRuntimeNodesGetIpAddress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimeNodesGetIpAddressInput,
     outputSchema: IntegrationRuntimeNodesGetIpAddressOutput,
   }));
@@ -3621,7 +3587,7 @@ export interface IntegrationRuntimeNodesUpdateInput {
   concurrentJobsLimit?: number;
 }
 export const IntegrationRuntimeNodesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3665,7 +3631,7 @@ export interface IntegrationRuntimeNodesUpdateOutput {
   maxConcurrentJobs?: number;
 }
 export const IntegrationRuntimeNodesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodeName: Schema.optional(Schema.String),
     machineName: Schema.optional(Schema.String),
     hostServiceUri: Schema.optional(Schema.String),
@@ -3708,7 +3674,7 @@ export const IntegrationRuntimeNodesUpdateOutput =
  * @param nodeName - The integration runtime node name.
  */
 export const IntegrationRuntimeNodesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimeNodesUpdateInput,
     outputSchema: IntegrationRuntimeNodesUpdateOutput,
   }));
@@ -3721,7 +3687,7 @@ export interface IntegrationRuntimeObjectMetadataGetInput {
   metadataPath?: string;
 }
 export const IntegrationRuntimeObjectMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3746,7 +3712,7 @@ export interface IntegrationRuntimeObjectMetadataGetOutput {
   nextLink?: string;
 }
 export const IntegrationRuntimeObjectMetadataGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         type: Schema.Literals(["Folder", "Project", "Package", "Environment"]),
@@ -3769,7 +3735,7 @@ export const IntegrationRuntimeObjectMetadataGetOutput =
  * @param integrationRuntimeName - The integration runtime name.
  */
 export const IntegrationRuntimeObjectMetadataGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimeObjectMetadataGetInput,
     outputSchema: IntegrationRuntimeObjectMetadataGetOutput,
   }));
@@ -3781,7 +3747,7 @@ export interface IntegrationRuntimeObjectMetadataRefreshInput {
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimeObjectMetadataRefreshInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3802,7 +3768,7 @@ export interface IntegrationRuntimeObjectMetadataRefreshOutput {
   error?: string;
 }
 export const IntegrationRuntimeObjectMetadataRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(Schema.String),
@@ -3820,7 +3786,7 @@ export const IntegrationRuntimeObjectMetadataRefreshOutput =
  * @param integrationRuntimeName - The integration runtime name.
  */
 export const IntegrationRuntimeObjectMetadataRefresh =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimeObjectMetadataRefreshInput,
     outputSchema: IntegrationRuntimeObjectMetadataRefreshOutput,
   }));
@@ -3835,7 +3801,7 @@ export interface IntegrationRuntimesCreateLinkedIntegrationRuntimeInput {
   dataFactoryLocation?: string;
 }
 export const IntegrationRuntimesCreateLinkedIntegrationRuntimeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3871,7 +3837,7 @@ export interface IntegrationRuntimesCreateLinkedIntegrationRuntimeOutput {
   };
 }
 export const IntegrationRuntimesCreateLinkedIntegrationRuntimeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     properties: Schema.Struct({
       type: Schema.Literals(["Managed", "SelfHosted"]),
@@ -3904,7 +3870,7 @@ export const IntegrationRuntimesCreateLinkedIntegrationRuntimeOutput =
  * @param integrationRuntimeName - The integration runtime name.
  */
 export const IntegrationRuntimesCreateLinkedIntegrationRuntime =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimesCreateLinkedIntegrationRuntimeInput,
     outputSchema: IntegrationRuntimesCreateLinkedIntegrationRuntimeOutput,
   }));
@@ -3918,7 +3884,7 @@ export interface IntegrationRuntimesCreateOrUpdateInput {
   etag?: string;
 }
 export const IntegrationRuntimesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -3951,7 +3917,7 @@ export interface IntegrationRuntimesCreateOrUpdateOutput {
   };
 }
 export const IntegrationRuntimesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3983,7 +3949,7 @@ export const IntegrationRuntimesCreateOrUpdateOutput =
  * @param if-match - ETag of the integration runtime entity. Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
 export const IntegrationRuntimesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimesCreateOrUpdateInput,
     outputSchema: IntegrationRuntimesCreateOrUpdateOutput,
   }));
@@ -3995,7 +3961,7 @@ export interface IntegrationRuntimesDeleteInput {
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4011,7 +3977,7 @@ export const IntegrationRuntimesDeleteInput =
 // Output Schema
 export type IntegrationRuntimesDeleteOutput = void;
 export const IntegrationRuntimesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesDeleteOutput>;
 
 // The operation
 /**
@@ -4023,12 +3989,10 @@ export const IntegrationRuntimesDeleteOutput =
  * @param factoryName - The factory name.
  * @param integrationRuntimeName - The integration runtime name.
  */
-export const IntegrationRuntimesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimesDeleteInput,
-    outputSchema: IntegrationRuntimesDeleteOutput,
-  }),
-);
+export const IntegrationRuntimesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimesDeleteInput,
+  outputSchema: IntegrationRuntimesDeleteOutput,
+}));
 // Input Schema
 export interface IntegrationRuntimesGetInput {
   subscriptionId: string;
@@ -4037,7 +4001,7 @@ export interface IntegrationRuntimesGetInput {
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4065,7 +4029,7 @@ export interface IntegrationRuntimesGetOutput {
   };
 }
 export const IntegrationRuntimesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4096,12 +4060,10 @@ export const IntegrationRuntimesGetOutput =
  * @param integrationRuntimeName - The integration runtime name.
  * @param if-none-match - ETag of the integration runtime entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
-export const IntegrationRuntimesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimesGetInput,
-    outputSchema: IntegrationRuntimesGetOutput,
-  }),
-);
+export const IntegrationRuntimesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimesGetInput,
+  outputSchema: IntegrationRuntimesGetOutput,
+}));
 // Input Schema
 export interface IntegrationRuntimesGetConnectionInfoInput {
   subscriptionId: string;
@@ -4110,7 +4072,7 @@ export interface IntegrationRuntimesGetConnectionInfoInput {
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimesGetConnectionInfoInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4133,7 +4095,7 @@ export interface IntegrationRuntimesGetConnectionInfoOutput {
   isIdentityCertExprired?: boolean;
 }
 export const IntegrationRuntimesGetConnectionInfoOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceToken: Schema.optional(Schema.String),
     identityCertThumbprint: Schema.optional(Schema.String),
     hostServiceUri: Schema.optional(Schema.String),
@@ -4153,7 +4115,7 @@ export const IntegrationRuntimesGetConnectionInfoOutput =
  * @param integrationRuntimeName - The integration runtime name.
  */
 export const IntegrationRuntimesGetConnectionInfo =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimesGetConnectionInfoInput,
     outputSchema: IntegrationRuntimesGetConnectionInfoOutput,
   }));
@@ -4165,7 +4127,7 @@ export interface IntegrationRuntimesGetMonitoringDataInput {
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimesGetMonitoringDataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4193,7 +4155,7 @@ export interface IntegrationRuntimesGetMonitoringDataOutput {
   }[];
 }
 export const IntegrationRuntimesGetMonitoringDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     nodes: Schema.optional(
       Schema.Array(
@@ -4222,7 +4184,7 @@ export const IntegrationRuntimesGetMonitoringDataOutput =
  * @param integrationRuntimeName - The integration runtime name.
  */
 export const IntegrationRuntimesGetMonitoringData =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimesGetMonitoringDataInput,
     outputSchema: IntegrationRuntimesGetMonitoringDataOutput,
   }));
@@ -4234,7 +4196,7 @@ export interface IntegrationRuntimesGetStatusInput {
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimesGetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4267,7 +4229,7 @@ export interface IntegrationRuntimesGetStatusOutput {
   };
 }
 export const IntegrationRuntimesGetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     properties: Schema.Struct({
       type: Schema.Literals(["Managed", "SelfHosted"]),
@@ -4300,7 +4262,7 @@ export const IntegrationRuntimesGetStatusOutput =
  * @param integrationRuntimeName - The integration runtime name.
  */
 export const IntegrationRuntimesGetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimesGetStatusInput,
     outputSchema: IntegrationRuntimesGetStatusOutput,
   }));
@@ -4312,7 +4274,7 @@ export interface IntegrationRuntimesListAuthKeysInput {
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimesListAuthKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4331,7 +4293,7 @@ export interface IntegrationRuntimesListAuthKeysOutput {
   authKey2?: string;
 }
 export const IntegrationRuntimesListAuthKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authKey1: Schema.optional(Schema.String),
     authKey2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<IntegrationRuntimesListAuthKeysOutput>;
@@ -4347,7 +4309,7 @@ export const IntegrationRuntimesListAuthKeysOutput =
  * @param integrationRuntimeName - The integration runtime name.
  */
 export const IntegrationRuntimesListAuthKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimesListAuthKeysInput,
     outputSchema: IntegrationRuntimesListAuthKeysOutput,
   }));
@@ -4358,7 +4320,7 @@ export interface IntegrationRuntimesListByFactoryInput {
   factoryName: string;
 }
 export const IntegrationRuntimesListByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4388,7 +4350,7 @@ export interface IntegrationRuntimesListByFactoryOutput {
   nextLink?: string;
 }
 export const IntegrationRuntimesListByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4433,7 +4395,7 @@ export const IntegrationRuntimesListByFactoryOutput =
  * @param factoryName - The factory name.
  */
 export const IntegrationRuntimesListByFactory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimesListByFactoryInput,
     outputSchema: IntegrationRuntimesListByFactoryOutput,
   }));
@@ -4445,7 +4407,7 @@ export interface IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInpu
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4469,7 +4431,7 @@ export interface IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutp
   }[];
 }
 export const IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4504,7 +4466,7 @@ export const IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput =
  * @param integrationRuntimeName - The integration runtime name.
  */
 export const IntegrationRuntimesListOutboundNetworkDependenciesEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput,
     outputSchema:
@@ -4519,7 +4481,7 @@ export interface IntegrationRuntimesRegenerateAuthKeyInput {
   keyName?: "authKey1" | "authKey2";
 }
 export const IntegrationRuntimesRegenerateAuthKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4539,7 +4501,7 @@ export interface IntegrationRuntimesRegenerateAuthKeyOutput {
   authKey2?: string;
 }
 export const IntegrationRuntimesRegenerateAuthKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authKey1: Schema.optional(Schema.String),
     authKey2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<IntegrationRuntimesRegenerateAuthKeyOutput>;
@@ -4555,7 +4517,7 @@ export const IntegrationRuntimesRegenerateAuthKeyOutput =
  * @param integrationRuntimeName - The integration runtime name.
  */
 export const IntegrationRuntimesRegenerateAuthKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimesRegenerateAuthKeyInput,
     outputSchema: IntegrationRuntimesRegenerateAuthKeyOutput,
   }));
@@ -4567,7 +4529,7 @@ export interface IntegrationRuntimesRemoveLinksInput {
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimesRemoveLinksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4583,7 +4545,7 @@ export const IntegrationRuntimesRemoveLinksInput =
 // Output Schema
 export type IntegrationRuntimesRemoveLinksOutput = void;
 export const IntegrationRuntimesRemoveLinksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesRemoveLinksOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesRemoveLinksOutput>;
 
 // The operation
 /**
@@ -4596,7 +4558,7 @@ export const IntegrationRuntimesRemoveLinksOutput =
  * @param integrationRuntimeName - The integration runtime name.
  */
 export const IntegrationRuntimesRemoveLinks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimesRemoveLinksInput,
     outputSchema: IntegrationRuntimesRemoveLinksOutput,
   }));
@@ -4608,7 +4570,7 @@ export interface IntegrationRuntimesStartInput {
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4641,7 +4603,7 @@ export interface IntegrationRuntimesStartOutput {
   };
 }
 export const IntegrationRuntimesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     properties: Schema.Struct({
       type: Schema.Literals(["Managed", "SelfHosted"]),
@@ -4673,12 +4635,10 @@ export const IntegrationRuntimesStartOutput =
  * @param factoryName - The factory name.
  * @param integrationRuntimeName - The integration runtime name.
  */
-export const IntegrationRuntimesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimesStartInput,
-    outputSchema: IntegrationRuntimesStartOutput,
-  }),
-);
+export const IntegrationRuntimesStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimesStartInput,
+  outputSchema: IntegrationRuntimesStartOutput,
+}));
 // Input Schema
 export interface IntegrationRuntimesStopInput {
   subscriptionId: string;
@@ -4687,7 +4647,7 @@ export interface IntegrationRuntimesStopInput {
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4703,7 +4663,7 @@ export const IntegrationRuntimesStopInput =
 // Output Schema
 export type IntegrationRuntimesStopOutput = void;
 export const IntegrationRuntimesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesStopOutput>;
 
 // The operation
 /**
@@ -4715,12 +4675,10 @@ export const IntegrationRuntimesStopOutput =
  * @param factoryName - The factory name.
  * @param integrationRuntimeName - The integration runtime name.
  */
-export const IntegrationRuntimesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimesStopInput,
-    outputSchema: IntegrationRuntimesStopOutput,
-  }),
-);
+export const IntegrationRuntimesStop = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimesStopInput,
+  outputSchema: IntegrationRuntimesStopOutput,
+}));
 // Input Schema
 export interface IntegrationRuntimesSyncCredentialsInput {
   subscriptionId: string;
@@ -4729,7 +4687,7 @@ export interface IntegrationRuntimesSyncCredentialsInput {
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimesSyncCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4745,7 +4703,7 @@ export const IntegrationRuntimesSyncCredentialsInput =
 // Output Schema
 export type IntegrationRuntimesSyncCredentialsOutput = void;
 export const IntegrationRuntimesSyncCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesSyncCredentialsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesSyncCredentialsOutput>;
 
 // The operation
 /**
@@ -4758,7 +4716,7 @@ export const IntegrationRuntimesSyncCredentialsOutput =
  * @param integrationRuntimeName - The integration runtime name.
  */
 export const IntegrationRuntimesSyncCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationRuntimesSyncCredentialsInput,
     outputSchema: IntegrationRuntimesSyncCredentialsOutput,
   }));
@@ -4772,7 +4730,7 @@ export interface IntegrationRuntimesUpdateInput {
   updateDelayOffset?: string;
 }
 export const IntegrationRuntimesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4802,7 +4760,7 @@ export interface IntegrationRuntimesUpdateOutput {
   };
 }
 export const IntegrationRuntimesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4832,12 +4790,10 @@ export const IntegrationRuntimesUpdateOutput =
  * @param factoryName - The factory name.
  * @param integrationRuntimeName - The integration runtime name.
  */
-export const IntegrationRuntimesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimesUpdateInput,
-    outputSchema: IntegrationRuntimesUpdateOutput,
-  }),
-);
+export const IntegrationRuntimesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimesUpdateInput,
+  outputSchema: IntegrationRuntimesUpdateOutput,
+}));
 // Input Schema
 export interface IntegrationRuntimesUpgradeInput {
   subscriptionId: string;
@@ -4846,7 +4802,7 @@ export interface IntegrationRuntimesUpgradeInput {
   integrationRuntimeName: string;
 }
 export const IntegrationRuntimesUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4862,7 +4818,7 @@ export const IntegrationRuntimesUpgradeInput =
 // Output Schema
 export type IntegrationRuntimesUpgradeOutput = void;
 export const IntegrationRuntimesUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesUpgradeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesUpgradeOutput>;
 
 // The operation
 /**
@@ -4874,12 +4830,10 @@ export const IntegrationRuntimesUpgradeOutput =
  * @param factoryName - The factory name.
  * @param integrationRuntimeName - The integration runtime name.
  */
-export const IntegrationRuntimesUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntegrationRuntimesUpgradeInput,
-    outputSchema: IntegrationRuntimesUpgradeOutput,
-  }),
-);
+export const IntegrationRuntimesUpgrade = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntegrationRuntimesUpgradeInput,
+  outputSchema: IntegrationRuntimesUpgradeOutput,
+}));
 // Input Schema
 export interface LinkedServicesCreateOrUpdateInput {
   subscriptionId: string;
@@ -4914,7 +4868,7 @@ export interface LinkedServicesCreateOrUpdateInput {
   etag?: string;
 }
 export const LinkedServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -4975,7 +4929,7 @@ export interface LinkedServicesCreateOrUpdateOutput {
   };
 }
 export const LinkedServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5007,7 +4961,7 @@ export const LinkedServicesCreateOrUpdateOutput =
  * @param if-match - ETag of the linkedService entity.  Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
 export const LinkedServicesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LinkedServicesCreateOrUpdateInput,
     outputSchema: LinkedServicesCreateOrUpdateOutput,
   }));
@@ -5019,7 +4973,7 @@ export interface LinkedServicesDeleteInput {
   linkedServiceName: string;
 }
 export const LinkedServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -5035,7 +4989,7 @@ export const LinkedServicesDeleteInput =
 // Output Schema
 export type LinkedServicesDeleteOutput = void;
 export const LinkedServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LinkedServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LinkedServicesDeleteOutput>;
 
 // The operation
 /**
@@ -5047,12 +5001,10 @@ export const LinkedServicesDeleteOutput =
  * @param factoryName - The factory name.
  * @param linkedServiceName - The linked service name.
  */
-export const LinkedServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LinkedServicesDeleteInput,
-    outputSchema: LinkedServicesDeleteOutput,
-  }),
-);
+export const LinkedServicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LinkedServicesDeleteInput,
+  outputSchema: LinkedServicesDeleteOutput,
+}));
 // Input Schema
 export interface LinkedServicesGetInput {
   subscriptionId: string;
@@ -5060,14 +5012,12 @@ export interface LinkedServicesGetInput {
   factoryName: string;
   linkedServiceName: string;
 }
-export const LinkedServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    factoryName: Schema.String.pipe(T.PathParam()),
-    linkedServiceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const LinkedServicesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  factoryName: Schema.String.pipe(T.PathParam()),
+  linkedServiceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/linkedservices/{linkedServiceName}",
@@ -5090,7 +5040,7 @@ export interface LinkedServicesGetOutput {
   };
 }
 export const LinkedServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5121,7 +5071,7 @@ export const LinkedServicesGetOutput =
  * @param linkedServiceName - The linked service name.
  * @param if-none-match - ETag of the linked service entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
-export const LinkedServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkedServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkedServicesGetInput,
   outputSchema: LinkedServicesGetOutput,
 }));
@@ -5132,7 +5082,7 @@ export interface LinkedServicesListByFactoryInput {
   factoryName: string;
 }
 export const LinkedServicesListByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -5162,7 +5112,7 @@ export interface LinkedServicesListByFactoryOutput {
   nextLink?: string;
 }
 export const LinkedServicesListByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5206,12 +5156,10 @@ export const LinkedServicesListByFactoryOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const LinkedServicesListByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LinkedServicesListByFactoryInput,
-    outputSchema: LinkedServicesListByFactoryOutput,
-  }),
-);
+export const LinkedServicesListByFactory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LinkedServicesListByFactoryInput,
+  outputSchema: LinkedServicesListByFactoryOutput,
+}));
 // Input Schema
 export interface ManagedPrivateEndpointsCreateOrUpdateInput {
   subscriptionId: string;
@@ -5234,7 +5182,7 @@ export interface ManagedPrivateEndpointsCreateOrUpdateInput {
   etag?: string;
 }
 export const ManagedPrivateEndpointsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -5278,7 +5226,7 @@ export interface ManagedPrivateEndpointsCreateOrUpdateOutput {
   };
 }
 export const ManagedPrivateEndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5311,7 +5259,7 @@ export const ManagedPrivateEndpointsCreateOrUpdateOutput =
  * @param if-match - ETag of the managed private endpoint entity. Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
 export const ManagedPrivateEndpointsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedPrivateEndpointsCreateOrUpdateInput,
     outputSchema: ManagedPrivateEndpointsCreateOrUpdateOutput,
   }));
@@ -5324,7 +5272,7 @@ export interface ManagedPrivateEndpointsDeleteInput {
   managedPrivateEndpointName: string;
 }
 export const ManagedPrivateEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -5341,7 +5289,7 @@ export const ManagedPrivateEndpointsDeleteInput =
 // Output Schema
 export type ManagedPrivateEndpointsDeleteOutput = void;
 export const ManagedPrivateEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedPrivateEndpointsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedPrivateEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -5355,7 +5303,7 @@ export const ManagedPrivateEndpointsDeleteOutput =
  * @param managedPrivateEndpointName - Managed private endpoint name
  */
 export const ManagedPrivateEndpointsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedPrivateEndpointsDeleteInput,
     outputSchema: ManagedPrivateEndpointsDeleteOutput,
   }));
@@ -5368,7 +5316,7 @@ export interface ManagedPrivateEndpointsGetInput {
   managedPrivateEndpointName: string;
 }
 export const ManagedPrivateEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -5397,7 +5345,7 @@ export interface ManagedPrivateEndpointsGetOutput {
   };
 }
 export const ManagedPrivateEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5429,12 +5377,10 @@ export const ManagedPrivateEndpointsGetOutput =
  * @param managedPrivateEndpointName - Managed private endpoint name
  * @param if-none-match - ETag of the managed private endpoint entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
-export const ManagedPrivateEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedPrivateEndpointsGetInput,
-    outputSchema: ManagedPrivateEndpointsGetOutput,
-  }),
-);
+export const ManagedPrivateEndpointsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedPrivateEndpointsGetInput,
+  outputSchema: ManagedPrivateEndpointsGetOutput,
+}));
 // Input Schema
 export interface ManagedPrivateEndpointsListByFactoryInput {
   subscriptionId: string;
@@ -5443,7 +5389,7 @@ export interface ManagedPrivateEndpointsListByFactoryInput {
   managedVirtualNetworkName: string;
 }
 export const ManagedPrivateEndpointsListByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -5474,7 +5420,7 @@ export interface ManagedPrivateEndpointsListByFactoryOutput {
   nextLink?: string;
 }
 export const ManagedPrivateEndpointsListByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5520,7 +5466,7 @@ export const ManagedPrivateEndpointsListByFactoryOutput =
  * @param managedVirtualNetworkName - Managed virtual network name
  */
 export const ManagedPrivateEndpointsListByFactory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedPrivateEndpointsListByFactoryInput,
     outputSchema: ManagedPrivateEndpointsListByFactoryOutput,
   }));
@@ -5534,7 +5480,7 @@ export interface ManagedVirtualNetworksCreateOrUpdateInput {
   etag?: string;
 }
 export const ManagedVirtualNetworksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -5567,7 +5513,7 @@ export interface ManagedVirtualNetworksCreateOrUpdateOutput {
   };
 }
 export const ManagedVirtualNetworksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5599,7 +5545,7 @@ export const ManagedVirtualNetworksCreateOrUpdateOutput =
  * @param if-match - ETag of the managed Virtual Network entity. Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
 export const ManagedVirtualNetworksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedVirtualNetworksCreateOrUpdateInput,
     outputSchema: ManagedVirtualNetworksCreateOrUpdateOutput,
   }));
@@ -5611,7 +5557,7 @@ export interface ManagedVirtualNetworksGetInput {
   managedVirtualNetworkName: string;
 }
 export const ManagedVirtualNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -5639,7 +5585,7 @@ export interface ManagedVirtualNetworksGetOutput {
   };
 }
 export const ManagedVirtualNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5670,12 +5616,10 @@ export const ManagedVirtualNetworksGetOutput =
  * @param managedVirtualNetworkName - Managed virtual network name
  * @param if-none-match - ETag of the managed Virtual Network entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
-export const ManagedVirtualNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedVirtualNetworksGetInput,
-    outputSchema: ManagedVirtualNetworksGetOutput,
-  }),
-);
+export const ManagedVirtualNetworksGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedVirtualNetworksGetInput,
+  outputSchema: ManagedVirtualNetworksGetOutput,
+}));
 // Input Schema
 export interface ManagedVirtualNetworksListByFactoryInput {
   subscriptionId: string;
@@ -5683,7 +5627,7 @@ export interface ManagedVirtualNetworksListByFactoryInput {
   factoryName: string;
 }
 export const ManagedVirtualNetworksListByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -5713,7 +5657,7 @@ export interface ManagedVirtualNetworksListByFactoryOutput {
   nextLink?: string;
 }
 export const ManagedVirtualNetworksListByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5758,15 +5702,13 @@ export const ManagedVirtualNetworksListByFactoryOutput =
  * @param factoryName - The factory name.
  */
 export const ManagedVirtualNetworksListByFactory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedVirtualNetworksListByFactoryInput,
     outputSchema: ManagedVirtualNetworksListByFactoryOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataFactory/operations",
@@ -5813,7 +5755,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -5889,7 +5831,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -5902,7 +5844,7 @@ export interface PipelineRunsCancelInput {
   isRecursive?: boolean;
 }
 export const PipelineRunsCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -5919,7 +5861,7 @@ export const PipelineRunsCancelInput =
 // Output Schema
 export type PipelineRunsCancelOutput = void;
 export const PipelineRunsCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PipelineRunsCancelOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PipelineRunsCancelOutput>;
 
 // The operation
 /**
@@ -5931,7 +5873,7 @@ export const PipelineRunsCancelOutput =
  * @param runId - The pipeline run identifier.
  * @param isRecursive - If true, cancel all the Child pipelines that are triggered by the current pipeline.
  */
-export const PipelineRunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PipelineRunsCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: PipelineRunsCancelInput,
   outputSchema: PipelineRunsCancelOutput,
 }));
@@ -5942,7 +5884,7 @@ export interface PipelineRunsGetInput {
   factoryName: string;
   runId: string;
 }
-export const PipelineRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PipelineRunsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -5977,7 +5919,7 @@ export interface PipelineRunsGetOutput {
   status?: string;
   message?: string;
 }
-export const PipelineRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PipelineRunsGetOutput = /*@__PURE__*/ Schema.Struct({
   runId: Schema.optional(Schema.String),
   runGroupId: Schema.optional(Schema.String),
   isLatest: Schema.optional(Schema.Boolean),
@@ -6010,7 +5952,7 @@ export const PipelineRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param runId - The pipeline run identifier.
  */
-export const PipelineRunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PipelineRunsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PipelineRunsGetInput,
   outputSchema: PipelineRunsGetOutput,
 }));
@@ -6054,7 +5996,7 @@ export interface PipelineRunsQueryByFactoryInput {
   }[];
 }
 export const PipelineRunsQueryByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -6135,7 +6077,7 @@ export interface PipelineRunsQueryByFactoryOutput {
   continuationToken?: string;
 }
 export const PipelineRunsQueryByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         runId: Schema.optional(Schema.String),
@@ -6177,12 +6119,10 @@ export const PipelineRunsQueryByFactoryOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const PipelineRunsQueryByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PipelineRunsQueryByFactoryInput,
-    outputSchema: PipelineRunsQueryByFactoryOutput,
-  }),
-);
+export const PipelineRunsQueryByFactory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PipelineRunsQueryByFactoryInput,
+  outputSchema: PipelineRunsQueryByFactoryOutput,
+}));
 // Input Schema
 export interface PipelinesCreateOrUpdateInput {
   subscriptionId: string;
@@ -6235,7 +6175,7 @@ export interface PipelinesCreateOrUpdateInput {
   etag?: string;
 }
 export const PipelinesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -6348,7 +6288,7 @@ export interface PipelinesCreateOrUpdateOutput {
   };
 }
 export const PipelinesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6379,12 +6319,10 @@ export const PipelinesCreateOrUpdateOutput =
  * @param pipelineName - The pipeline name.
  * @param if-match - ETag of the pipeline entity.  Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
-export const PipelinesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PipelinesCreateOrUpdateInput,
-    outputSchema: PipelinesCreateOrUpdateOutput,
-  }),
-);
+export const PipelinesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PipelinesCreateOrUpdateInput,
+  outputSchema: PipelinesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface PipelinesCreateRunInput {
   subscriptionId: string;
@@ -6397,7 +6335,7 @@ export interface PipelinesCreateRunInput {
   startFromFailure?: boolean;
 }
 export const PipelinesCreateRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -6419,7 +6357,7 @@ export interface PipelinesCreateRunOutput {
   runId: string;
 }
 export const PipelinesCreateRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     runId: Schema.String,
   }) as unknown as Schema.Codec<PipelinesCreateRunOutput>;
 
@@ -6437,7 +6375,7 @@ export const PipelinesCreateRunOutput =
  * @param startActivityName - In recovery mode, the rerun will start from this activity. If not specified, all activities will run.
  * @param startFromFailure - In recovery mode, if set to true, the rerun will start from failed activities. The property will be used only if startActivityName is not specified.
  */
-export const PipelinesCreateRun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PipelinesCreateRun = /*@__PURE__*/ API.make(() => ({
   inputSchema: PipelinesCreateRunInput,
   outputSchema: PipelinesCreateRunOutput,
 }));
@@ -6448,7 +6386,7 @@ export interface PipelinesDeleteInput {
   factoryName: string;
   pipelineName: string;
 }
-export const PipelinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PipelinesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -6464,7 +6402,7 @@ export const PipelinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type PipelinesDeleteOutput = void;
 export const PipelinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PipelinesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PipelinesDeleteOutput>;
 
 // The operation
 /**
@@ -6476,7 +6414,7 @@ export const PipelinesDeleteOutput =
  * @param factoryName - The factory name.
  * @param pipelineName - The pipeline name.
  */
-export const PipelinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PipelinesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PipelinesDeleteInput,
   outputSchema: PipelinesDeleteOutput,
 }));
@@ -6487,7 +6425,7 @@ export interface PipelinesGetInput {
   factoryName: string;
   pipelineName: string;
 }
-export const PipelinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PipelinesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -6514,7 +6452,7 @@ export interface PipelinesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const PipelinesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PipelinesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6545,7 +6483,7 @@ export const PipelinesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param pipelineName - The pipeline name.
  * @param if-none-match - ETag of the pipeline entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
-export const PipelinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PipelinesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PipelinesGetInput,
   outputSchema: PipelinesGetOutput,
 }));
@@ -6556,7 +6494,7 @@ export interface PipelinesListByFactoryInput {
   factoryName: string;
 }
 export const PipelinesListByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -6586,7 +6524,7 @@ export interface PipelinesListByFactoryOutput {
   nextLink?: string;
 }
 export const PipelinesListByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6630,12 +6568,10 @@ export const PipelinesListByFactoryOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const PipelinesListByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PipelinesListByFactoryInput,
-    outputSchema: PipelinesListByFactoryOutput,
-  }),
-);
+export const PipelinesListByFactory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PipelinesListByFactoryInput,
+  outputSchema: PipelinesListByFactoryOutput,
+}));
 // Input Schema
 export interface PrivateEndpointConnectionCreateOrUpdateInput {
   subscriptionId: string;
@@ -6656,7 +6592,7 @@ export interface PrivateEndpointConnectionCreateOrUpdateInput {
   etag?: string;
 }
 export const PrivateEndpointConnectionCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -6704,7 +6640,7 @@ export interface PrivateEndpointConnectionCreateOrUpdateOutput {
   };
 }
 export const PrivateEndpointConnectionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6736,7 +6672,7 @@ export const PrivateEndpointConnectionCreateOrUpdateOutput =
  * @param if-match - ETag of the private endpoint connection entity.  Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
 export const PrivateEndpointConnectionCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionCreateOrUpdateOutput,
   }));
@@ -6748,7 +6684,7 @@ export interface PrivateEndpointConnectionDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -6764,7 +6700,7 @@ export const PrivateEndpointConnectionDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionDeleteOutput = void;
 export const PrivateEndpointConnectionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionDeleteOutput>;
 
 // The operation
 /**
@@ -6777,7 +6713,7 @@ export const PrivateEndpointConnectionDeleteOutput =
  * @param privateEndpointConnectionName - The private endpoint connection name.
  */
 export const PrivateEndpointConnectionDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionDeleteInput,
     outputSchema: PrivateEndpointConnectionDeleteOutput,
   }));
@@ -6789,7 +6725,7 @@ export interface PrivateEndpointConnectionGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -6817,7 +6753,7 @@ export interface PrivateEndpointConnectionGetOutput {
   };
 }
 export const PrivateEndpointConnectionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6849,7 +6785,7 @@ export const PrivateEndpointConnectionGetOutput =
  * @param if-none-match - ETag of the private endpoint connection entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
 export const PrivateEndpointConnectionGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionGetInput,
     outputSchema: PrivateEndpointConnectionGetOutput,
   }));
@@ -6860,7 +6796,7 @@ export interface PrivateEndPointConnectionsListByFactoryInput {
   factoryName: string;
 }
 export const PrivateEndPointConnectionsListByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -6890,7 +6826,7 @@ export interface PrivateEndPointConnectionsListByFactoryOutput {
   nextLink?: string;
 }
 export const PrivateEndPointConnectionsListByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6935,7 +6871,7 @@ export const PrivateEndPointConnectionsListByFactoryOutput =
  * @param factoryName - The factory name.
  */
 export const privateEndPointConnectionsListByFactory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndPointConnectionsListByFactoryInput,
     outputSchema: PrivateEndPointConnectionsListByFactoryOutput,
   }));
@@ -6946,7 +6882,7 @@ export interface PrivateLinkResourcesGetInput {
   factoryName: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -6963,7 +6899,7 @@ export interface PrivateLinkResourcesGetOutput {
   value: { id?: string; name?: string; type?: string; etag?: string }[];
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6983,12 +6919,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const privateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const privateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface TriggerRunsCancelInput {
   subscriptionId: string;
@@ -6997,15 +6931,13 @@ export interface TriggerRunsCancelInput {
   triggerName: string;
   runId: string;
 }
-export const TriggerRunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    factoryName: Schema.String.pipe(T.PathParam()),
-    triggerName: Schema.String.pipe(T.PathParam()),
-    runId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const TriggerRunsCancelInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  factoryName: Schema.String.pipe(T.PathParam()),
+  triggerName: Schema.String.pipe(T.PathParam()),
+  runId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/triggerRuns/{runId}/cancel",
@@ -7016,7 +6948,7 @@ export const TriggerRunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type TriggerRunsCancelOutput = void;
 export const TriggerRunsCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggerRunsCancelOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggerRunsCancelOutput>;
 
 // The operation
 /**
@@ -7027,7 +6959,7 @@ export const TriggerRunsCancelOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param runId - The pipeline run identifier.
  */
-export const TriggerRunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggerRunsCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggerRunsCancelInput,
   outputSchema: TriggerRunsCancelOutput,
 }));
@@ -7071,7 +7003,7 @@ export interface TriggerRunsQueryByFactoryInput {
   }[];
 }
 export const TriggerRunsQueryByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -7143,7 +7075,7 @@ export interface TriggerRunsQueryByFactoryOutput {
   continuationToken?: string;
 }
 export const TriggerRunsQueryByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         triggerRunId: Schema.optional(Schema.String),
@@ -7180,12 +7112,10 @@ export const TriggerRunsQueryByFactoryOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const TriggerRunsQueryByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TriggerRunsQueryByFactoryInput,
-    outputSchema: TriggerRunsQueryByFactoryOutput,
-  }),
-);
+export const TriggerRunsQueryByFactory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TriggerRunsQueryByFactoryInput,
+  outputSchema: TriggerRunsQueryByFactoryOutput,
+}));
 // Input Schema
 export interface TriggerRunsRerunInput {
   subscriptionId: string;
@@ -7194,7 +7124,7 @@ export interface TriggerRunsRerunInput {
   triggerName: string;
   runId: string;
 }
-export const TriggerRunsRerunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggerRunsRerunInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -7211,7 +7141,7 @@ export const TriggerRunsRerunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TriggerRunsRerunOutput = void;
 export const TriggerRunsRerunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggerRunsRerunOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggerRunsRerunOutput>;
 
 // The operation
 /**
@@ -7222,7 +7152,7 @@ export const TriggerRunsRerunOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param runId - The pipeline run identifier.
  */
-export const TriggerRunsRerun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggerRunsRerun = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggerRunsRerunInput,
   outputSchema: TriggerRunsRerunOutput,
 }));
@@ -7241,7 +7171,7 @@ export interface TriggersCreateOrUpdateInput {
   etag?: string;
 }
 export const TriggersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -7278,7 +7208,7 @@ export interface TriggersCreateOrUpdateOutput {
   };
 }
 export const TriggersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7309,12 +7239,10 @@ export const TriggersCreateOrUpdateOutput =
  * @param triggerName - The trigger name.
  * @param if-match - ETag of the trigger entity.  Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
  */
-export const TriggersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TriggersCreateOrUpdateInput,
-    outputSchema: TriggersCreateOrUpdateOutput,
-  }),
-);
+export const TriggersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TriggersCreateOrUpdateInput,
+  outputSchema: TriggersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface TriggersDeleteInput {
   subscriptionId: string;
@@ -7322,7 +7250,7 @@ export interface TriggersDeleteInput {
   factoryName: string;
   triggerName: string;
 }
-export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -7338,7 +7266,7 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TriggersDeleteOutput = void;
 export const TriggersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersDeleteOutput>;
 
 // The operation
 /**
@@ -7350,7 +7278,7 @@ export const TriggersDeleteOutput =
  * @param factoryName - The factory name.
  * @param triggerName - The trigger name.
  */
-export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersDeleteInput,
   outputSchema: TriggersDeleteOutput,
 }));
@@ -7361,7 +7289,7 @@ export interface TriggersGetInput {
   factoryName: string;
   triggerName: string;
 }
-export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -7388,7 +7316,7 @@ export interface TriggersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7419,7 +7347,7 @@ export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param triggerName - The trigger name.
  * @param if-none-match - ETag of the trigger entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
  */
-export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersGetInput,
   outputSchema: TriggersGetOutput,
 }));
@@ -7431,7 +7359,7 @@ export interface TriggersGetEventSubscriptionStatusInput {
   triggerName: string;
 }
 export const TriggersGetEventSubscriptionStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -7455,7 +7383,7 @@ export interface TriggersGetEventSubscriptionStatusOutput {
     | "Unknown";
 }
 export const TriggersGetEventSubscriptionStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     triggerName: Schema.optional(Schema.String),
     status: Schema.optional(
       Schema.Literals([
@@ -7479,7 +7407,7 @@ export const TriggersGetEventSubscriptionStatusOutput =
  * @param triggerName - The trigger name.
  */
 export const TriggersGetEventSubscriptionStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TriggersGetEventSubscriptionStatusInput,
     outputSchema: TriggersGetEventSubscriptionStatusOutput,
   }));
@@ -7490,7 +7418,7 @@ export interface TriggersListByFactoryInput {
   factoryName: string;
 }
 export const TriggersListByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -7520,7 +7448,7 @@ export interface TriggersListByFactoryOutput {
   nextLink?: string;
 }
 export const TriggersListByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7564,12 +7492,10 @@ export const TriggersListByFactoryOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const TriggersListByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TriggersListByFactoryInput,
-    outputSchema: TriggersListByFactoryOutput,
-  }),
-);
+export const TriggersListByFactory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TriggersListByFactoryInput,
+  outputSchema: TriggersListByFactoryOutput,
+}));
 // Input Schema
 export interface TriggersQueryByFactoryInput {
   subscriptionId: string;
@@ -7579,7 +7505,7 @@ export interface TriggersQueryByFactoryInput {
   parentTriggerName?: string;
 }
 export const TriggersQueryByFactoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -7611,7 +7537,7 @@ export interface TriggersQueryByFactoryOutput {
   continuationToken?: string;
 }
 export const TriggersQueryByFactoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7655,12 +7581,10 @@ export const TriggersQueryByFactoryOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param factoryName - The factory name.
  */
-export const TriggersQueryByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TriggersQueryByFactoryInput,
-    outputSchema: TriggersQueryByFactoryOutput,
-  }),
-);
+export const TriggersQueryByFactory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TriggersQueryByFactoryInput,
+  outputSchema: TriggersQueryByFactoryOutput,
+}));
 // Input Schema
 export interface TriggersStartInput {
   subscriptionId: string;
@@ -7668,7 +7592,7 @@ export interface TriggersStartInput {
   factoryName: string;
   triggerName: string;
 }
-export const TriggersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -7684,7 +7608,7 @@ export const TriggersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TriggersStartOutput = void;
 export const TriggersStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersStartOutput>;
 
 // The operation
 /**
@@ -7696,7 +7620,7 @@ export const TriggersStartOutput =
  * @param factoryName - The factory name.
  * @param triggerName - The trigger name.
  */
-export const TriggersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersStartInput,
   outputSchema: TriggersStartOutput,
 }));
@@ -7707,7 +7631,7 @@ export interface TriggersStopInput {
   factoryName: string;
   triggerName: string;
 }
-export const TriggersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   factoryName: Schema.String.pipe(T.PathParam()),
@@ -7723,7 +7647,7 @@ export const TriggersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TriggersStopOutput = void;
 export const TriggersStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersStopOutput>;
 
 // The operation
 /**
@@ -7735,7 +7659,7 @@ export const TriggersStopOutput =
  * @param factoryName - The factory name.
  * @param triggerName - The trigger name.
  */
-export const TriggersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersStopInput,
   outputSchema: TriggersStopOutput,
 }));
@@ -7747,7 +7671,7 @@ export interface TriggersSubscribeToEventsInput {
   triggerName: string;
 }
 export const TriggersSubscribeToEventsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -7771,7 +7695,7 @@ export interface TriggersSubscribeToEventsOutput {
     | "Unknown";
 }
 export const TriggersSubscribeToEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     triggerName: Schema.optional(Schema.String),
     status: Schema.optional(
       Schema.Literals([
@@ -7794,12 +7718,10 @@ export const TriggersSubscribeToEventsOutput =
  * @param factoryName - The factory name.
  * @param triggerName - The trigger name.
  */
-export const TriggersSubscribeToEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TriggersSubscribeToEventsInput,
-    outputSchema: TriggersSubscribeToEventsOutput,
-  }),
-);
+export const TriggersSubscribeToEvents = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TriggersSubscribeToEventsInput,
+  outputSchema: TriggersSubscribeToEventsOutput,
+}));
 // Input Schema
 export interface TriggersUnsubscribeFromEventsInput {
   subscriptionId: string;
@@ -7808,7 +7730,7 @@ export interface TriggersUnsubscribeFromEventsInput {
   triggerName: string;
 }
 export const TriggersUnsubscribeFromEventsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     factoryName: Schema.String.pipe(T.PathParam()),
@@ -7832,7 +7754,7 @@ export interface TriggersUnsubscribeFromEventsOutput {
     | "Unknown";
 }
 export const TriggersUnsubscribeFromEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     triggerName: Schema.optional(Schema.String),
     status: Schema.optional(
       Schema.Literals([
@@ -7856,7 +7778,7 @@ export const TriggersUnsubscribeFromEventsOutput =
  * @param triggerName - The trigger name.
  */
 export const TriggersUnsubscribeFromEvents =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TriggersUnsubscribeFromEventsInput,
     outputSchema: TriggersUnsubscribeFromEventsOutput,
   }));

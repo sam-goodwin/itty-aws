@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 
 // Input Schema
 export interface GetOrgsInput {}
-export const GetOrgsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const GetOrgsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v2/orgs" }),
 ) as unknown as Schema.Codec<GetOrgsInput>;
 
@@ -64,7 +64,7 @@ export type GetOrgsOutput = ReadonlyArray<{
   primaryEmail: string;
   role?: string;
 }>;
-export const GetOrgsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetOrgsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     defaultEdgeDeployment: Schema.optional(Schema.String),
     firstFailedPayment: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export const GetOrgsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
 ) as unknown as Schema.Codec<GetOrgsOutput>;
 
 // The operation
-export const getOrgs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrgs = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgsInput,
   outputSchema: GetOrgsOutput,
 }));

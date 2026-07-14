@@ -43,7 +43,7 @@ export interface RemindersCreateInput {
   created_at: string;
   updated_at: string | null;
 }
-export const RemindersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RemindersCreateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   organization: Schema.String,
   team: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -142,7 +142,7 @@ export interface RemindersCreateOutput {
   created_at: string;
   updated_at: string | null;
 }
-export const RemindersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RemindersCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   organization: Schema.String,
   team: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -199,7 +199,7 @@ export const RemindersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }) as unknown as Schema.Codec<RemindersCreateOutput>;
 
 // The operation
-export const remindersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const remindersCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemindersCreateInput,
   outputSchema: RemindersCreateOutput,
 }));

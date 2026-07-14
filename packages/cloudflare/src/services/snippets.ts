@@ -69,7 +69,7 @@ interface Rule {
   /** Indicate whether to execute the rule. */
   enabled?: boolean | null;
 }
-const Rule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Rule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     expression: Schema.String,
     snippetName: Schema.String,
@@ -93,19 +93,18 @@ interface ListSnippetsResponseResult {
   /** Indicates when the snippet was last modified. */
   modifiedOn?: string | null;
 }
-const ListSnippetsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      createdOn: Schema.String,
-      snippetName: Schema.String,
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        createdOn: "created_on",
-        snippetName: "snippet_name",
-        modifiedOn: "modified_on",
-      }),
-    ),
+const ListSnippetsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    createdOn: Schema.String,
+    snippetName: Schema.String,
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      createdOn: "created_on",
+      snippetName: "snippet_name",
+      modifiedOn: "modified_on",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSnippetsResponseResult>;
 
 interface ListSnippetsResponseResultInfo {
@@ -115,7 +114,7 @@ interface ListSnippetsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListSnippetsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -135,7 +134,7 @@ interface Metadata {
   /** Specify the name of the file that contains the main module of the snippet. */
   mainModule: string;
 }
-const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Metadata = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     mainModule: Schema.String,
   }).pipe(Schema.encodeKeys({ mainModule: "main_module" })),
@@ -151,22 +150,21 @@ export interface GetContentRequest {
   zoneId: string;
 }
 
-export const GetContentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      snippetName: Schema.String.pipe(T.HttpPath("snippetName")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/snippets/{snippetName}/content",
-      }),
-    ),
+export const GetContentRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    snippetName: Schema.String.pipe(T.HttpPath("snippetName")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/snippets/{snippetName}/content",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetContentRequest>;
 
 export type GetContentResponse = unknown;
 
-export const GetContentResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+export const GetContentResponse = /*@__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
 ) as unknown as Schema.Codec<GetContentResponse>;
 
@@ -177,7 +175,7 @@ export const getContent: API.OperationMethod<
   GetContentResponse,
   GetContentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContentRequest,
   output: GetContentResponse,
   errors: [],
@@ -192,7 +190,7 @@ export interface GetRuleRequest {
   zoneId: string;
 }
 
-export const GetRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -202,7 +200,7 @@ export const GetRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 
 export type GetRuleResponse = unknown;
 
-export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetRuleResponse>;
 
@@ -213,7 +211,7 @@ export const getRule: API.OperationMethod<
   GetRuleResponse,
   GetRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRuleRequest,
   output: GetRuleResponse,
   errors: [],
@@ -224,7 +222,7 @@ export interface ListRulesRequest {
   zoneId: string;
 }
 
-export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListRulesRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -234,8 +232,8 @@ export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 
 export type ListRulesResponse = unknown;
 
-export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+export const ListRulesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ListRulesResponse>;
 
 export type ListRulesError = DefaultErrors | SnippetRulesNotFound | Forbidden;
@@ -245,7 +243,7 @@ export const listRules: API.OperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [SnippetRulesNotFound, Forbidden],
@@ -263,7 +261,7 @@ export interface PutRuleRequest {
   }[];
 }
 
-export const PutRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     rules: Schema.Array(Rule),
@@ -274,7 +272,7 @@ export const PutRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 
 export type PutRuleResponse = unknown;
 
-export const PutRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutRuleResponse>;
 
@@ -285,7 +283,7 @@ export const putRule: API.OperationMethod<
   PutRuleResponse,
   PutRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRuleRequest,
   output: PutRuleResponse,
   errors: [],
@@ -296,22 +294,21 @@ export interface DeleteRuleRequest {
   zoneId: string;
 }
 
-export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/zones/{zone_id}/snippets/snippet_rules",
-      }),
-    ),
+export const DeleteRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/snippets/snippet_rules",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteRuleRequest>;
 
 export type DeleteRuleResponse = unknown;
 
-export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+export const DeleteRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteRuleResponse>;
 
 export type DeleteRuleError = DefaultErrors | SnippetRulesNotFound | Forbidden;
@@ -321,7 +318,7 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
   errors: [SnippetRulesNotFound, Forbidden],
@@ -337,17 +334,16 @@ export interface GetSnippetRequest {
   zoneId: string;
 }
 
-export const GetSnippetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      snippetName: Schema.String.pipe(T.HttpPath("snippetName")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/snippets/{snippetName}",
-      }),
-    ),
+export const GetSnippetRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    snippetName: Schema.String.pipe(T.HttpPath("snippetName")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/snippets/{snippetName}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetSnippetRequest>;
 
 export interface GetSnippetResponse {
@@ -359,21 +355,20 @@ export interface GetSnippetResponse {
   modifiedOn?: string | null;
 }
 
-export const GetSnippetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      createdOn: Schema.String,
-      snippetName: Schema.String,
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          createdOn: "created_on",
-          snippetName: "snippet_name",
-          modifiedOn: "modified_on",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetSnippetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    createdOn: Schema.String,
+    snippetName: Schema.String,
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        createdOn: "created_on",
+        snippetName: "snippet_name",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetSnippetResponse>;
 
 export type GetSnippetError = DefaultErrors | SnippetNotFound;
@@ -383,7 +378,7 @@ export const getSnippet: API.OperationMethod<
   GetSnippetResponse,
   GetSnippetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSnippetRequest,
   output: GetSnippetResponse,
   errors: [SnippetNotFound],
@@ -396,13 +391,12 @@ export interface ListSnippetsRequest {
   perPage?: number;
 }
 
-export const ListSnippetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/snippets" })),
+export const ListSnippetsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/snippets" })),
 ) as unknown as Schema.Codec<ListSnippetsRequest>;
 
 export interface ListSnippetsResponse {
@@ -417,17 +411,16 @@ export interface ListSnippetsResponse {
   } | null;
 }
 
-export const ListSnippetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Union([
-        Schema.Array(ListSnippetsResponseResult),
-        Schema.Null,
-      ]),
-      resultInfo: Schema.optional(
-        Schema.Union([ListSnippetsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListSnippetsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Union([
+      Schema.Array(ListSnippetsResponseResult),
+      Schema.Null,
+    ]),
+    resultInfo: Schema.optional(
+      Schema.Union([ListSnippetsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListSnippetsResponse>;
 
 export type ListSnippetsError = DefaultErrors | Forbidden;
@@ -437,7 +430,7 @@ export const listSnippets: API.PaginatedOperationMethod<
   ListSnippetsResponse,
   ListSnippetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSnippetsRequest,
   output: ListSnippetsResponse,
   errors: [Forbidden],
@@ -459,20 +452,19 @@ export interface PutSnippetRequest {
   files?: File | Blob;
 }
 
-export const PutSnippetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      snippetName: Schema.String.pipe(T.HttpPath("snippetName")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      metadata: Metadata,
-      files: Schema.optional(UploadableSchema.pipe(T.HttpFormDataFile())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/snippets/{snippetName}",
-        contentType: "multipart",
-      }),
-    ),
+export const PutSnippetRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    snippetName: Schema.String.pipe(T.HttpPath("snippetName")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    metadata: Metadata,
+    files: Schema.optional(UploadableSchema.pipe(T.HttpFormDataFile())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/snippets/{snippetName}",
+      contentType: "multipart",
+    }),
+  ),
 ) as unknown as Schema.Codec<PutSnippetRequest>;
 
 export interface PutSnippetResponse {
@@ -484,21 +476,20 @@ export interface PutSnippetResponse {
   modifiedOn?: string | null;
 }
 
-export const PutSnippetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      createdOn: Schema.String,
-      snippetName: Schema.String,
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          createdOn: "created_on",
-          snippetName: "snippet_name",
-          modifiedOn: "modified_on",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PutSnippetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    createdOn: Schema.String,
+    snippetName: Schema.String,
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        createdOn: "created_on",
+        snippetName: "snippet_name",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutSnippetResponse>;
 
 export type PutSnippetError = DefaultErrors;
@@ -508,7 +499,7 @@ export const putSnippet: API.OperationMethod<
   PutSnippetResponse,
   PutSnippetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSnippetRequest,
   output: PutSnippetResponse,
   errors: [],
@@ -520,23 +511,22 @@ export interface DeleteSnippetRequest {
   zoneId: string;
 }
 
-export const DeleteSnippetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      snippetName: Schema.String.pipe(T.HttpPath("snippetName")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/zones/{zone_id}/snippets/{snippetName}",
-      }),
-    ),
+export const DeleteSnippetRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    snippetName: Schema.String.pipe(T.HttpPath("snippetName")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/snippets/{snippetName}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteSnippetRequest>;
 
 export type DeleteSnippetResponse = unknown;
 
-export const DeleteSnippetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+export const DeleteSnippetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteSnippetResponse>;
 
 export type DeleteSnippetError = DefaultErrors | SnippetNotFound | SnippetInUse;
@@ -546,7 +536,7 @@ export const deleteSnippet: API.OperationMethod<
   DeleteSnippetResponse,
   DeleteSnippetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSnippetRequest,
   output: DeleteSnippetResponse,
   errors: [SnippetNotFound, SnippetInUse],

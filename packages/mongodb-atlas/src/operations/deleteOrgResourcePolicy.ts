@@ -11,7 +11,7 @@ export interface DeleteOrgResourcePolicyInput {
   pretty?: boolean;
 }
 export const DeleteOrgResourcePolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     resourcePolicyId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const DeleteOrgResourcePolicyInput =
 // Output Schema
 export type DeleteOrgResourcePolicyOutput = void;
 export const DeleteOrgResourcePolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgResourcePolicyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgResourcePolicyOutput>;
 
 // The operation
 /**
@@ -39,10 +39,8 @@ export const DeleteOrgResourcePolicyOutput =
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param resourcePolicyId - Unique 24-hexadecimal digit string that identifies an atlas resource policy.
  */
-export const deleteOrgResourcePolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteOrgResourcePolicyInput,
-    outputSchema: DeleteOrgResourcePolicyOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const deleteOrgResourcePolicy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteOrgResourcePolicyInput,
+  outputSchema: DeleteOrgResourcePolicyOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

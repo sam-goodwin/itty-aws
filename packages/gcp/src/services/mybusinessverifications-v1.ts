@@ -32,7 +32,7 @@ export interface EmailVerificationData {
 }
 
 export const EmailVerificationData: Schema.Codec<EmailVerificationData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     user: Schema.optional(Schema.String),
     isUserNameEditable: Schema.optional(Schema.Boolean),
@@ -41,7 +41,7 @@ export const EmailVerificationData: Schema.Codec<EmailVerificationData> =
 export interface WaitForVoiceOfMerchant {}
 
 export const WaitForVoiceOfMerchant: Schema.Codec<WaitForVoiceOfMerchant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "WaitForVoiceOfMerchant",
   });
 
@@ -71,7 +71,7 @@ export interface PostalAddress {
 }
 
 export const PostalAddress: Schema.Codec<PostalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locality: Schema.optional(Schema.String),
     addressLines: Schema.optional(Schema.Array(Schema.String)),
     organization: Schema.optional(Schema.String),
@@ -91,7 +91,7 @@ export interface ServiceBusinessContext {
 }
 
 export const ServiceBusinessContext: Schema.Codec<ServiceBusinessContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.optional(PostalAddress),
   }).annotate({ identifier: "ServiceBusinessContext" });
 
@@ -101,7 +101,7 @@ export interface VerificationToken {
 }
 
 export const VerificationToken: Schema.Codec<VerificationToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tokenString: Schema.optional(Schema.String),
   }).annotate({ identifier: "VerificationToken" });
 
@@ -132,7 +132,7 @@ export interface Verification {
 }
 
 export const Verification: Schema.Codec<Verification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     announcement: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
@@ -146,7 +146,7 @@ export interface CompleteVerificationRequest {
 }
 
 export const CompleteVerificationRequest: Schema.Codec<CompleteVerificationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pin: Schema.optional(Schema.String),
   }).annotate({ identifier: "CompleteVerificationRequest" });
 
@@ -158,7 +158,7 @@ export interface GenerateInstantVerificationTokenResponse {
 }
 
 export const GenerateInstantVerificationTokenResponse: Schema.Codec<GenerateInstantVerificationTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instantVerificationToken: Schema.optional(Schema.String),
     result: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateInstantVerificationTokenResponse" });
@@ -166,7 +166,7 @@ export const GenerateInstantVerificationTokenResponse: Schema.Codec<GenerateInst
 export interface ResolveOwnershipConflict {}
 
 export const ResolveOwnershipConflict: Schema.Codec<ResolveOwnershipConflict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResolveOwnershipConflict",
   });
 
@@ -178,7 +178,7 @@ export interface ListVerificationsResponse {
 }
 
 export const ListVerificationsResponse: Schema.Codec<ListVerificationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     verifications: Schema.optional(Schema.Array(Verification)),
   }).annotate({ identifier: "ListVerificationsResponse" });
@@ -189,7 +189,7 @@ export interface Verify {
 }
 
 export const Verify: Schema.Codec<Verify> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hasPendingVerification: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "Verify" });
 
@@ -203,7 +203,7 @@ export interface ComplyWithGuidelines {
 }
 
 export const ComplyWithGuidelines: Schema.Codec<ComplyWithGuidelines> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendationReason: Schema.optional(Schema.String),
   }).annotate({ identifier: "ComplyWithGuidelines" });
 
@@ -223,7 +223,7 @@ export interface VoiceOfMerchantState {
 }
 
 export const VoiceOfMerchantState: Schema.Codec<VoiceOfMerchantState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verify: Schema.optional(Verify),
     complyWithGuidelines: Schema.optional(ComplyWithGuidelines),
     hasBusinessAuthority: Schema.optional(Schema.Boolean),
@@ -242,7 +242,7 @@ export interface AddressVerificationData {
 }
 
 export const AddressVerificationData: Schema.Codec<AddressVerificationData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expectedDeliveryDaysRegion: Schema.optional(Schema.Number),
     address: Schema.optional(PostalAddress),
     business: Schema.optional(Schema.String),
@@ -254,7 +254,7 @@ export interface VerifyLocationResponse {
 }
 
 export const VerifyLocationResponse: Schema.Codec<VerifyLocationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verification: Schema.optional(Verification),
   }).annotate({ identifier: "VerifyLocationResponse" });
 
@@ -264,7 +264,7 @@ export interface CompleteVerificationResponse {
 }
 
 export const CompleteVerificationResponse: Schema.Codec<CompleteVerificationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verification: Schema.optional(Verification),
   }).annotate({ identifier: "CompleteVerificationResponse" });
 
@@ -276,7 +276,7 @@ export interface FetchVerificationOptionsRequest {
 }
 
 export const FetchVerificationOptionsRequest: Schema.Codec<FetchVerificationOptionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     context: Schema.optional(ServiceBusinessContext),
   }).annotate({ identifier: "FetchVerificationOptionsRequest" });
@@ -287,7 +287,7 @@ export interface GenerateInstantVerificationTokenRequest {
 }
 
 export const GenerateInstantVerificationTokenRequest: Schema.Codec<GenerateInstantVerificationTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateInstantVerificationTokenRequest" });
 
@@ -313,7 +313,7 @@ export interface VerificationOption {
 }
 
 export const VerificationOption: Schema.Codec<VerificationOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     announcement: Schema.optional(Schema.String),
     verificationMethod: Schema.optional(Schema.String),
     addressData: Schema.optional(AddressVerificationData),
@@ -327,7 +327,7 @@ export interface FetchVerificationOptionsResponse {
 }
 
 export const FetchVerificationOptionsResponse: Schema.Codec<FetchVerificationOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     options: Schema.optional(Schema.Array(VerificationOption)),
   }).annotate({ identifier: "FetchVerificationOptionsResponse" });
 
@@ -359,7 +359,7 @@ export interface VerifyLocationRequest {
 }
 
 export const VerifyLocationRequest: Schema.Codec<VerifyLocationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trustedPartnerToken: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
@@ -432,7 +432,7 @@ export interface FetchVerificationOptionsLocationsRequest {
 }
 
 export const FetchVerificationOptionsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.HttpPath("location")),
     body: Schema.optional(FetchVerificationOptionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -447,7 +447,7 @@ export const FetchVerificationOptionsLocationsRequest =
 export type FetchVerificationOptionsLocationsResponse =
   FetchVerificationOptionsResponse;
 export const FetchVerificationOptionsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FetchVerificationOptionsResponse;
+  /*@__PURE__*/ FetchVerificationOptionsResponse;
 
 export type FetchVerificationOptionsLocationsError =
   | DefaultErrors
@@ -462,7 +462,7 @@ export const fetchVerificationOptionsLocations: API.OperationMethod<
   FetchVerificationOptionsLocationsResponse,
   FetchVerificationOptionsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FetchVerificationOptionsLocationsRequest,
   output: FetchVerificationOptionsLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -474,7 +474,7 @@ export interface GetVoiceOfMerchantStateLocationsRequest {
 }
 
 export const GetVoiceOfMerchantStateLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/VoiceOfMerchantState" }),
@@ -483,7 +483,7 @@ export const GetVoiceOfMerchantStateLocationsRequest =
 
 export type GetVoiceOfMerchantStateLocationsResponse = VoiceOfMerchantState;
 export const GetVoiceOfMerchantStateLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VoiceOfMerchantState;
+  /*@__PURE__*/ VoiceOfMerchantState;
 
 export type GetVoiceOfMerchantStateLocationsError =
   | DefaultErrors
@@ -496,7 +496,7 @@ export const getVoiceOfMerchantStateLocations: API.OperationMethod<
   GetVoiceOfMerchantStateLocationsResponse,
   GetVoiceOfMerchantStateLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVoiceOfMerchantStateLocationsRequest,
   output: GetVoiceOfMerchantStateLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -509,19 +509,16 @@ export interface VerifyLocationsRequest {
   body?: VerifyLocationRequest;
 }
 
-export const VerifyLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(VerifyLocationRequest).pipe(T.HttpBody()),
-  },
-).pipe(
+export const VerifyLocationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  body: Schema.optional(VerifyLocationRequest).pipe(T.HttpBody()),
+}).pipe(
   T.Http({ method: "POST", path: "v1/{+name}:verify", hasBody: true }),
   svc,
 ) as unknown as Schema.Codec<VerifyLocationsRequest>;
 
 export type VerifyLocationsResponse = VerifyLocationResponse;
-export const VerifyLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VerifyLocationResponse;
+export const VerifyLocationsResponse = /*@__PURE__*/ VerifyLocationResponse;
 
 export type VerifyLocationsError =
   | DefaultErrors
@@ -536,7 +533,7 @@ export const verifyLocations: API.OperationMethod<
   VerifyLocationsResponse,
   VerifyLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyLocationsRequest,
   output: VerifyLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -552,7 +549,7 @@ export interface ListLocationsVerificationsRequest {
 }
 
 export const ListLocationsVerificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -563,7 +560,7 @@ export const ListLocationsVerificationsRequest =
 
 export type ListLocationsVerificationsResponse = ListVerificationsResponse;
 export const ListLocationsVerificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVerificationsResponse;
+  /*@__PURE__*/ ListVerificationsResponse;
 
 export type ListLocationsVerificationsError =
   | DefaultErrors
@@ -576,7 +573,7 @@ export const listLocationsVerifications: API.PaginatedOperationMethod<
   ListLocationsVerificationsResponse,
   ListLocationsVerificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsVerificationsRequest,
   output: ListLocationsVerificationsResponse,
   errors: [NotFound, Forbidden],
@@ -594,7 +591,7 @@ export interface CompleteLocationsVerificationsRequest {
 }
 
 export const CompleteLocationsVerificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CompleteVerificationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -605,7 +602,7 @@ export const CompleteLocationsVerificationsRequest =
 export type CompleteLocationsVerificationsResponse =
   CompleteVerificationResponse;
 export const CompleteLocationsVerificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CompleteVerificationResponse;
+  /*@__PURE__*/ CompleteVerificationResponse;
 
 export type CompleteLocationsVerificationsError =
   | DefaultErrors
@@ -620,7 +617,7 @@ export const completeLocationsVerifications: API.OperationMethod<
   CompleteLocationsVerificationsResponse,
   CompleteLocationsVerificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteLocationsVerificationsRequest,
   output: CompleteLocationsVerificationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -632,7 +629,7 @@ export interface GenerateVerificationTokensRequest {
 }
 
 export const GenerateVerificationTokensRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(GenerateInstantVerificationTokenRequest).pipe(
       T.HttpBody(),
     ),
@@ -648,7 +645,7 @@ export const GenerateVerificationTokensRequest =
 export type GenerateVerificationTokensResponse =
   GenerateInstantVerificationTokenResponse;
 export const GenerateVerificationTokensResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenerateInstantVerificationTokenResponse;
+  /*@__PURE__*/ GenerateInstantVerificationTokenResponse;
 
 export type GenerateVerificationTokensError =
   | DefaultErrors
@@ -663,7 +660,7 @@ export const generateVerificationTokens: API.OperationMethod<
   GenerateVerificationTokensResponse,
   GenerateVerificationTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateVerificationTokensRequest,
   output: GenerateVerificationTokensResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

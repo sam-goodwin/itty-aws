@@ -12,7 +12,7 @@ export interface EngineeringAnalyticsWorkflowHealthInput {
   source_id?: string;
 }
 export const EngineeringAnalyticsWorkflowHealthInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch: Schema.optional(Schema.String),
     date_from: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export type EngineeringAnalyticsWorkflowHealthOutput = {
   estimated_cost_usd?: number | null;
 }[];
 export const EngineeringAnalyticsWorkflowHealthOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       repo: Schema.Struct({
         provider: Schema.String,
@@ -89,7 +89,7 @@ export const EngineeringAnalyticsWorkflowHealthOutput =
  * @param source_id - Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.
  */
 export const engineeringAnalyticsWorkflowHealth =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EngineeringAnalyticsWorkflowHealthInput,
     outputSchema: EngineeringAnalyticsWorkflowHealthOutput,
     errors: [BadRequest] as const,

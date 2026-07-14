@@ -8,7 +8,7 @@ export interface V1ActivateCustomHostnameInput {
   ref: string;
 }
 export const V1ActivateCustomHostnameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -46,7 +46,7 @@ export interface V1ActivateCustomHostnameOutput {
   };
 }
 export const V1ActivateCustomHostnameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.Literals([
       "1_not_started",
       "2_initiated",
@@ -96,10 +96,8 @@ export const V1ActivateCustomHostnameOutput =
  *
  * @param ref - Project ref
  */
-export const v1ActivateCustomHostname = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1ActivateCustomHostnameInput,
-    outputSchema: V1ActivateCustomHostnameOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1ActivateCustomHostname = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1ActivateCustomHostnameInput,
+  outputSchema: V1ActivateCustomHostnameOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

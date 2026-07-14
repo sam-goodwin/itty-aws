@@ -30,7 +30,7 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest
 }
 
 export const GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest: Schema.Codec<GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     etag: Schema.optional(Schema.String),
   }).annotate({
@@ -44,7 +44,7 @@ export interface GoogleCloudRecommenderV1beta1RecommendationInsightReference {
 }
 
 export const GoogleCloudRecommenderV1beta1RecommendationInsightReference: Schema.Codec<GoogleCloudRecommenderV1beta1RecommendationInsightReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     insight: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1RecommendationInsightReference",
@@ -58,7 +58,7 @@ export interface GoogleCloudRecommenderV1beta1SustainabilityProjection {
 }
 
 export const GoogleCloudRecommenderV1beta1SustainabilityProjection: Schema.Codec<GoogleCloudRecommenderV1beta1SustainabilityProjection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kgCO2e: Schema.optional(Schema.Number),
     duration: Schema.optional(Schema.String),
   }).annotate({
@@ -71,7 +71,7 @@ export interface GoogleCloudRecommenderV1beta1SecurityProjection {
 }
 
 export const GoogleCloudRecommenderV1beta1SecurityProjection: Schema.Codec<GoogleCloudRecommenderV1beta1SecurityProjection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1SecurityProjection",
@@ -87,7 +87,7 @@ export interface GoogleTypeMoney {
 }
 
 export const GoogleTypeMoney: Schema.Codec<GoogleTypeMoney> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     units: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -109,7 +109,7 @@ export interface GoogleCloudRecommenderV1beta1CostProjection {
 }
 
 export const GoogleCloudRecommenderV1beta1CostProjection: Schema.Codec<GoogleCloudRecommenderV1beta1CostProjection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pricingType: Schema.optional(Schema.String),
     cost: Schema.optional(GoogleTypeMoney),
     duration: Schema.optional(Schema.String),
@@ -130,7 +130,7 @@ export interface GoogleCloudRecommenderV1beta1ReliabilityProjection {
 }
 
 export const GoogleCloudRecommenderV1beta1ReliabilityProjection: Schema.Codec<GoogleCloudRecommenderV1beta1ReliabilityProjection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     risks: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -161,7 +161,7 @@ export interface GoogleCloudRecommenderV1beta1Impact {
 }
 
 export const GoogleCloudRecommenderV1beta1Impact: Schema.Codec<GoogleCloudRecommenderV1beta1Impact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sustainabilityProjection: Schema.optional(
       GoogleCloudRecommenderV1beta1SustainabilityProjection,
     ),
@@ -184,7 +184,7 @@ export interface GoogleCloudRecommenderV1beta1ValueMatcher {
 }
 
 export const GoogleCloudRecommenderV1beta1ValueMatcher: Schema.Codec<GoogleCloudRecommenderV1beta1ValueMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matchesPattern: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudRecommenderV1beta1ValueMatcher" });
 
@@ -212,7 +212,7 @@ export interface GoogleCloudRecommenderV1beta1Operation {
 }
 
 export const GoogleCloudRecommenderV1beta1Operation: Schema.Codec<GoogleCloudRecommenderV1beta1Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     valueMatcher: Schema.optional(GoogleCloudRecommenderV1beta1ValueMatcher),
     sourceResource: Schema.optional(Schema.String),
@@ -233,7 +233,7 @@ export interface GoogleCloudRecommenderV1beta1OperationGroup {
 }
 
 export const GoogleCloudRecommenderV1beta1OperationGroup: Schema.Codec<GoogleCloudRecommenderV1beta1OperationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1Operation),
     ),
@@ -247,7 +247,7 @@ export interface GoogleCloudRecommenderV1beta1RecommendationContent {
 }
 
 export const GoogleCloudRecommenderV1beta1RecommendationContent: Schema.Codec<GoogleCloudRecommenderV1beta1RecommendationContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationGroups: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1OperationGroup),
     ),
@@ -271,7 +271,7 @@ export interface GoogleCloudRecommenderV1beta1RecommendationStateInfo {
 }
 
 export const GoogleCloudRecommenderV1beta1RecommendationStateInfo: Schema.Codec<GoogleCloudRecommenderV1beta1RecommendationStateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({
@@ -308,7 +308,7 @@ export interface GoogleCloudRecommenderV1beta1Recommendation {
 }
 
 export const GoogleCloudRecommenderV1beta1Recommendation: Schema.Codec<GoogleCloudRecommenderV1beta1Recommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     associatedInsights: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1RecommendationInsightReference),
     ),
@@ -340,7 +340,7 @@ export interface GoogleCloudRecommenderV1beta1ListRecommendationsResponse {
 }
 
 export const GoogleCloudRecommenderV1beta1ListRecommendationsResponse: Schema.Codec<GoogleCloudRecommenderV1beta1ListRecommendationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendations: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1Recommendation),
     ),
@@ -355,7 +355,7 @@ export interface GoogleCloudRecommenderV1beta1RecommenderGenerationConfig {
 }
 
 export const GoogleCloudRecommenderV1beta1RecommenderGenerationConfig: Schema.Codec<GoogleCloudRecommenderV1beta1RecommenderGenerationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1RecommenderGenerationConfig",
@@ -379,7 +379,7 @@ export interface GoogleCloudRecommenderV1beta1RecommenderConfig {
 }
 
 export const GoogleCloudRecommenderV1beta1RecommenderConfig: Schema.Codec<GoogleCloudRecommenderV1beta1RecommenderConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommenderGenerationConfig: Schema.optional(
       GoogleCloudRecommenderV1beta1RecommenderGenerationConfig,
     ),
@@ -399,7 +399,7 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest {
 }
 
 export const GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest: Schema.Codec<GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     etag: Schema.optional(Schema.String),
   }).annotate({
@@ -420,7 +420,7 @@ export interface GoogleCloudLocationLocation {
 }
 
 export const GoogleCloudLocationLocation: Schema.Codec<GoogleCloudLocationLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -436,7 +436,7 @@ export interface GoogleCloudLocationListLocationsResponse {
 }
 
 export const GoogleCloudLocationListLocationsResponse: Schema.Codec<GoogleCloudLocationListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudLocationListLocationsResponse" });
@@ -447,7 +447,7 @@ export interface GoogleCloudRecommenderV1beta1InsightType {
 }
 
 export const GoogleCloudRecommenderV1beta1InsightType: Schema.Codec<GoogleCloudRecommenderV1beta1InsightType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudRecommenderV1beta1InsightType" });
 
@@ -457,7 +457,7 @@ export interface GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig {
 }
 
 export const GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig: Schema.Codec<GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig",
@@ -469,7 +469,7 @@ export interface GoogleCloudRecommenderV1beta1RecommenderType {
 }
 
 export const GoogleCloudRecommenderV1beta1RecommenderType: Schema.Codec<GoogleCloudRecommenderV1beta1RecommenderType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudRecommenderV1beta1RecommenderType" });
 
@@ -481,7 +481,7 @@ export interface GoogleCloudRecommenderV1beta1ListRecommendersResponse {
 }
 
 export const GoogleCloudRecommenderV1beta1ListRecommendersResponse: Schema.Codec<GoogleCloudRecommenderV1beta1ListRecommendersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommenders: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1RecommenderType),
     ),
@@ -496,7 +496,7 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest
 }
 
 export const GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest: Schema.Codec<GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -516,7 +516,7 @@ export interface GoogleCloudRecommenderV1beta1InsightStateInfo {
 }
 
 export const GoogleCloudRecommenderV1beta1InsightStateInfo: Schema.Codec<GoogleCloudRecommenderV1beta1InsightStateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "GoogleCloudRecommenderV1beta1InsightStateInfo" });
@@ -527,7 +527,7 @@ export interface GoogleCloudRecommenderV1beta1InsightRecommendationReference {
 }
 
 export const GoogleCloudRecommenderV1beta1InsightRecommendationReference: Schema.Codec<GoogleCloudRecommenderV1beta1InsightRecommendationReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendation: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1InsightRecommendationReference",
@@ -575,7 +575,7 @@ export interface GoogleCloudRecommenderV1beta1Insight {
 }
 
 export const GoogleCloudRecommenderV1beta1Insight: Schema.Codec<GoogleCloudRecommenderV1beta1Insight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     stateInfo: Schema.optional(GoogleCloudRecommenderV1beta1InsightStateInfo),
@@ -600,7 +600,7 @@ export interface GoogleCloudRecommenderV1beta1ListInsightsResponse {
 }
 
 export const GoogleCloudRecommenderV1beta1ListInsightsResponse: Schema.Codec<GoogleCloudRecommenderV1beta1ListInsightsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     insights: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1Insight),
     ),
@@ -617,7 +617,7 @@ export interface GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest {
 }
 
 export const GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest: Schema.Codec<GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     etag: Schema.optional(Schema.String),
   }).annotate({
@@ -632,7 +632,7 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest {
 }
 
 export const GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest: Schema.Codec<GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     etag: Schema.optional(Schema.String),
   }).annotate({
@@ -657,7 +657,7 @@ export interface GoogleCloudRecommenderV1beta1InsightTypeConfig {
 }
 
 export const GoogleCloudRecommenderV1beta1InsightTypeConfig: Schema.Codec<GoogleCloudRecommenderV1beta1InsightTypeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
     annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -677,7 +677,7 @@ export interface GoogleCloudRecommenderV1beta1ListInsightTypesResponse {
 }
 
 export const GoogleCloudRecommenderV1beta1ListInsightTypesResponse: Schema.Codec<GoogleCloudRecommenderV1beta1ListInsightTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     insightTypes: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1InsightType),
     ),
@@ -754,7 +754,7 @@ export interface ListFoldersLocationsRequest {
 }
 
 export const ListFoldersLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -770,7 +770,7 @@ export const ListFoldersLocationsRequest =
 export type ListFoldersLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
 export const ListFoldersLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
+  /*@__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
 export type ListFoldersLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -780,7 +780,7 @@ export const listFoldersLocations: API.PaginatedOperationMethod<
   ListFoldersLocationsResponse,
   ListFoldersLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsRequest,
   output: ListFoldersLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -802,7 +802,7 @@ export interface ListFoldersLocationsInsightTypesInsightsRequest {
 }
 
 export const ListFoldersLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -815,7 +815,7 @@ export const ListFoldersLocationsInsightTypesInsightsRequest =
 export type ListFoldersLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1ListInsightsResponse;
 export const ListFoldersLocationsInsightTypesInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightsResponse;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightsResponse;
 
 export type ListFoldersLocationsInsightTypesInsightsError =
   | DefaultErrors
@@ -828,7 +828,7 @@ export const listFoldersLocationsInsightTypesInsights: API.PaginatedOperationMet
   ListFoldersLocationsInsightTypesInsightsResponse,
   ListFoldersLocationsInsightTypesInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsInsightTypesInsightsRequest,
   output: ListFoldersLocationsInsightTypesInsightsResponse,
   errors: [NotFound, Forbidden],
@@ -844,7 +844,7 @@ export interface GetFoldersLocationsInsightTypesInsightsRequest {
 }
 
 export const GetFoldersLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -854,7 +854,7 @@ export const GetFoldersLocationsInsightTypesInsightsRequest =
 export type GetFoldersLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
 export const GetFoldersLocationsInsightTypesInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
 export type GetFoldersLocationsInsightTypesInsightsError =
   | DefaultErrors
@@ -867,7 +867,7 @@ export const getFoldersLocationsInsightTypesInsights: API.OperationMethod<
   GetFoldersLocationsInsightTypesInsightsResponse,
   GetFoldersLocationsInsightTypesInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsInsightTypesInsightsRequest,
   output: GetFoldersLocationsInsightTypesInsightsResponse,
   errors: [NotFound, Forbidden],
@@ -881,7 +881,7 @@ export interface MarkAcceptedFoldersLocationsInsightTypesInsightsRequest {
 }
 
 export const MarkAcceptedFoldersLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest,
@@ -898,7 +898,7 @@ export const MarkAcceptedFoldersLocationsInsightTypesInsightsRequest =
 export type MarkAcceptedFoldersLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
 export const MarkAcceptedFoldersLocationsInsightTypesInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
 export type MarkAcceptedFoldersLocationsInsightTypesInsightsError =
   | DefaultErrors
@@ -913,7 +913,7 @@ export const markAcceptedFoldersLocationsInsightTypesInsights: API.OperationMeth
   MarkAcceptedFoldersLocationsInsightTypesInsightsResponse,
   MarkAcceptedFoldersLocationsInsightTypesInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkAcceptedFoldersLocationsInsightTypesInsightsRequest,
   output: MarkAcceptedFoldersLocationsInsightTypesInsightsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -927,7 +927,7 @@ export interface MarkSucceededFoldersLocationsRecommendersRecommendationsRequest
 }
 
 export const MarkSucceededFoldersLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest,
@@ -944,7 +944,7 @@ export const MarkSucceededFoldersLocationsRecommendersRecommendationsRequest =
 export type MarkSucceededFoldersLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkSucceededFoldersLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkSucceededFoldersLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -959,7 +959,7 @@ export const markSucceededFoldersLocationsRecommendersRecommendations: API.Opera
   MarkSucceededFoldersLocationsRecommendersRecommendationsResponse,
   MarkSucceededFoldersLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkSucceededFoldersLocationsRecommendersRecommendationsRequest,
   output: MarkSucceededFoldersLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -973,7 +973,7 @@ export interface MarkClaimedFoldersLocationsRecommendersRecommendationsRequest {
 }
 
 export const MarkClaimedFoldersLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest,
@@ -990,7 +990,7 @@ export const MarkClaimedFoldersLocationsRecommendersRecommendationsRequest =
 export type MarkClaimedFoldersLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkClaimedFoldersLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkClaimedFoldersLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -1005,7 +1005,7 @@ export const markClaimedFoldersLocationsRecommendersRecommendations: API.Operati
   MarkClaimedFoldersLocationsRecommendersRecommendationsResponse,
   MarkClaimedFoldersLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkClaimedFoldersLocationsRecommendersRecommendationsRequest,
   output: MarkClaimedFoldersLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1017,7 +1017,7 @@ export interface GetFoldersLocationsRecommendersRecommendationsRequest {
 }
 
 export const GetFoldersLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1027,7 +1027,7 @@ export const GetFoldersLocationsRecommendersRecommendationsRequest =
 export type GetFoldersLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const GetFoldersLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type GetFoldersLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -1040,7 +1040,7 @@ export const getFoldersLocationsRecommendersRecommendations: API.OperationMethod
   GetFoldersLocationsRecommendersRecommendationsResponse,
   GetFoldersLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsRecommendersRecommendationsRequest,
   output: GetFoldersLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden],
@@ -1054,7 +1054,7 @@ export interface MarkFailedFoldersLocationsRecommendersRecommendationsRequest {
 }
 
 export const MarkFailedFoldersLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest,
@@ -1071,7 +1071,7 @@ export const MarkFailedFoldersLocationsRecommendersRecommendationsRequest =
 export type MarkFailedFoldersLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkFailedFoldersLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkFailedFoldersLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -1086,7 +1086,7 @@ export const markFailedFoldersLocationsRecommendersRecommendations: API.Operatio
   MarkFailedFoldersLocationsRecommendersRecommendationsResponse,
   MarkFailedFoldersLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkFailedFoldersLocationsRecommendersRecommendationsRequest,
   output: MarkFailedFoldersLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1100,7 +1100,7 @@ export interface MarkDismissedFoldersLocationsRecommendersRecommendationsRequest
 }
 
 export const MarkDismissedFoldersLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest,
@@ -1117,7 +1117,7 @@ export const MarkDismissedFoldersLocationsRecommendersRecommendationsRequest =
 export type MarkDismissedFoldersLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkDismissedFoldersLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkDismissedFoldersLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -1132,7 +1132,7 @@ export const markDismissedFoldersLocationsRecommendersRecommendations: API.Opera
   MarkDismissedFoldersLocationsRecommendersRecommendationsResponse,
   MarkDismissedFoldersLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkDismissedFoldersLocationsRecommendersRecommendationsRequest,
   output: MarkDismissedFoldersLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1150,7 +1150,7 @@ export interface ListFoldersLocationsRecommendersRecommendationsRequest {
 }
 
 export const ListFoldersLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1163,7 +1163,7 @@ export const ListFoldersLocationsRecommendersRecommendationsRequest =
 export type ListFoldersLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
 export const ListFoldersLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
 
 export type ListFoldersLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -1176,7 +1176,7 @@ export const listFoldersLocationsRecommendersRecommendations: API.PaginatedOpera
   ListFoldersLocationsRecommendersRecommendationsResponse,
   ListFoldersLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsRecommendersRecommendationsRequest,
   output: ListFoldersLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden],
@@ -1200,7 +1200,7 @@ export interface ListOrganizationsLocationsRequest {
 }
 
 export const ListOrganizationsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
@@ -1216,7 +1216,7 @@ export const ListOrganizationsLocationsRequest =
 export type ListOrganizationsLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
 export const ListOrganizationsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
+  /*@__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
 export type ListOrganizationsLocationsError =
   | DefaultErrors
@@ -1229,7 +1229,7 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsResponse,
   ListOrganizationsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsRequest,
   output: ListOrganizationsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1245,7 +1245,7 @@ export interface GetConfigOrganizationsLocationsRecommendersRequest {
 }
 
 export const GetConfigOrganizationsLocationsRecommendersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1255,7 +1255,7 @@ export const GetConfigOrganizationsLocationsRecommendersRequest =
 export type GetConfigOrganizationsLocationsRecommendersResponse =
   GoogleCloudRecommenderV1beta1RecommenderConfig;
 export const GetConfigOrganizationsLocationsRecommendersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
 
 export type GetConfigOrganizationsLocationsRecommendersError =
   | DefaultErrors
@@ -1268,7 +1268,7 @@ export const getConfigOrganizationsLocationsRecommenders: API.OperationMethod<
   GetConfigOrganizationsLocationsRecommendersResponse,
   GetConfigOrganizationsLocationsRecommendersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigOrganizationsLocationsRecommendersRequest,
   output: GetConfigOrganizationsLocationsRecommendersResponse,
   errors: [NotFound, Forbidden],
@@ -1286,7 +1286,7 @@ export interface UpdateConfigOrganizationsLocationsRecommendersRequest {
 }
 
 export const UpdateConfigOrganizationsLocationsRecommendersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
@@ -1303,7 +1303,7 @@ export const UpdateConfigOrganizationsLocationsRecommendersRequest =
 export type UpdateConfigOrganizationsLocationsRecommendersResponse =
   GoogleCloudRecommenderV1beta1RecommenderConfig;
 export const UpdateConfigOrganizationsLocationsRecommendersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
 
 export type UpdateConfigOrganizationsLocationsRecommendersError =
   | DefaultErrors
@@ -1318,7 +1318,7 @@ export const updateConfigOrganizationsLocationsRecommenders: API.OperationMethod
   UpdateConfigOrganizationsLocationsRecommendersResponse,
   UpdateConfigOrganizationsLocationsRecommendersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigOrganizationsLocationsRecommendersRequest,
   output: UpdateConfigOrganizationsLocationsRecommendersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1332,7 +1332,7 @@ export interface MarkSucceededOrganizationsLocationsRecommendersRecommendationsR
 }
 
 export const MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest,
@@ -1349,7 +1349,7 @@ export const MarkSucceededOrganizationsLocationsRecommendersRecommendationsReque
 export type MarkSucceededOrganizationsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkSucceededOrganizationsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkSucceededOrganizationsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -1364,7 +1364,7 @@ export const markSucceededOrganizationsLocationsRecommendersRecommendations: API
   MarkSucceededOrganizationsLocationsRecommendersRecommendationsResponse,
   MarkSucceededOrganizationsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest,
   output:
     MarkSucceededOrganizationsLocationsRecommendersRecommendationsResponse,
@@ -1379,7 +1379,7 @@ export interface MarkClaimedOrganizationsLocationsRecommendersRecommendationsReq
 }
 
 export const MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest,
@@ -1396,7 +1396,7 @@ export const MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest
 export type MarkClaimedOrganizationsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkClaimedOrganizationsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkClaimedOrganizationsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -1411,7 +1411,7 @@ export const markClaimedOrganizationsLocationsRecommendersRecommendations: API.O
   MarkClaimedOrganizationsLocationsRecommendersRecommendationsResponse,
   MarkClaimedOrganizationsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest,
   output: MarkClaimedOrganizationsLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1423,7 +1423,7 @@ export interface GetOrganizationsLocationsRecommendersRecommendationsRequest {
 }
 
 export const GetOrganizationsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1433,7 +1433,7 @@ export const GetOrganizationsLocationsRecommendersRecommendationsRequest =
 export type GetOrganizationsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const GetOrganizationsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type GetOrganizationsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -1446,7 +1446,7 @@ export const getOrganizationsLocationsRecommendersRecommendations: API.Operation
   GetOrganizationsLocationsRecommendersRecommendationsResponse,
   GetOrganizationsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsRecommendersRecommendationsRequest,
   output: GetOrganizationsLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden],
@@ -1460,7 +1460,7 @@ export interface MarkFailedOrganizationsLocationsRecommendersRecommendationsRequ
 }
 
 export const MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest,
@@ -1477,7 +1477,7 @@ export const MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest 
 export type MarkFailedOrganizationsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkFailedOrganizationsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkFailedOrganizationsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -1492,7 +1492,7 @@ export const markFailedOrganizationsLocationsRecommendersRecommendations: API.Op
   MarkFailedOrganizationsLocationsRecommendersRecommendationsResponse,
   MarkFailedOrganizationsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest,
   output: MarkFailedOrganizationsLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1506,7 +1506,7 @@ export interface MarkDismissedOrganizationsLocationsRecommendersRecommendationsR
 }
 
 export const MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest,
@@ -1523,7 +1523,7 @@ export const MarkDismissedOrganizationsLocationsRecommendersRecommendationsReque
 export type MarkDismissedOrganizationsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkDismissedOrganizationsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkDismissedOrganizationsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -1538,7 +1538,7 @@ export const markDismissedOrganizationsLocationsRecommendersRecommendations: API
   MarkDismissedOrganizationsLocationsRecommendersRecommendationsResponse,
   MarkDismissedOrganizationsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest,
   output:
     MarkDismissedOrganizationsLocationsRecommendersRecommendationsResponse,
@@ -1557,7 +1557,7 @@ export interface ListOrganizationsLocationsRecommendersRecommendationsRequest {
 }
 
 export const ListOrganizationsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -1570,7 +1570,7 @@ export const ListOrganizationsLocationsRecommendersRecommendationsRequest =
 export type ListOrganizationsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
 export const ListOrganizationsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
 
 export type ListOrganizationsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -1583,7 +1583,7 @@ export const listOrganizationsLocationsRecommendersRecommendations: API.Paginate
   ListOrganizationsLocationsRecommendersRecommendationsResponse,
   ListOrganizationsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsRecommendersRecommendationsRequest,
   output: ListOrganizationsLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden],
@@ -1599,7 +1599,7 @@ export interface GetConfigOrganizationsLocationsInsightTypesRequest {
 }
 
 export const GetConfigOrganizationsLocationsInsightTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1609,7 +1609,7 @@ export const GetConfigOrganizationsLocationsInsightTypesRequest =
 export type GetConfigOrganizationsLocationsInsightTypesResponse =
   GoogleCloudRecommenderV1beta1InsightTypeConfig;
 export const GetConfigOrganizationsLocationsInsightTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
 
 export type GetConfigOrganizationsLocationsInsightTypesError =
   | DefaultErrors
@@ -1622,7 +1622,7 @@ export const getConfigOrganizationsLocationsInsightTypes: API.OperationMethod<
   GetConfigOrganizationsLocationsInsightTypesResponse,
   GetConfigOrganizationsLocationsInsightTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigOrganizationsLocationsInsightTypesRequest,
   output: GetConfigOrganizationsLocationsInsightTypesResponse,
   errors: [NotFound, Forbidden],
@@ -1640,7 +1640,7 @@ export interface UpdateConfigOrganizationsLocationsInsightTypesRequest {
 }
 
 export const UpdateConfigOrganizationsLocationsInsightTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
@@ -1657,7 +1657,7 @@ export const UpdateConfigOrganizationsLocationsInsightTypesRequest =
 export type UpdateConfigOrganizationsLocationsInsightTypesResponse =
   GoogleCloudRecommenderV1beta1InsightTypeConfig;
 export const UpdateConfigOrganizationsLocationsInsightTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
 
 export type UpdateConfigOrganizationsLocationsInsightTypesError =
   | DefaultErrors
@@ -1672,7 +1672,7 @@ export const updateConfigOrganizationsLocationsInsightTypes: API.OperationMethod
   UpdateConfigOrganizationsLocationsInsightTypesResponse,
   UpdateConfigOrganizationsLocationsInsightTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigOrganizationsLocationsInsightTypesRequest,
   output: UpdateConfigOrganizationsLocationsInsightTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1690,7 +1690,7 @@ export interface ListOrganizationsLocationsInsightTypesInsightsRequest {
 }
 
 export const ListOrganizationsLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1703,7 +1703,7 @@ export const ListOrganizationsLocationsInsightTypesInsightsRequest =
 export type ListOrganizationsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1ListInsightsResponse;
 export const ListOrganizationsLocationsInsightTypesInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightsResponse;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightsResponse;
 
 export type ListOrganizationsLocationsInsightTypesInsightsError =
   | DefaultErrors
@@ -1716,7 +1716,7 @@ export const listOrganizationsLocationsInsightTypesInsights: API.PaginatedOperat
   ListOrganizationsLocationsInsightTypesInsightsResponse,
   ListOrganizationsLocationsInsightTypesInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsInsightTypesInsightsRequest,
   output: ListOrganizationsLocationsInsightTypesInsightsResponse,
   errors: [NotFound, Forbidden],
@@ -1732,7 +1732,7 @@ export interface GetOrganizationsLocationsInsightTypesInsightsRequest {
 }
 
 export const GetOrganizationsLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1742,7 +1742,7 @@ export const GetOrganizationsLocationsInsightTypesInsightsRequest =
 export type GetOrganizationsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
 export const GetOrganizationsLocationsInsightTypesInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
 export type GetOrganizationsLocationsInsightTypesInsightsError =
   | DefaultErrors
@@ -1755,7 +1755,7 @@ export const getOrganizationsLocationsInsightTypesInsights: API.OperationMethod<
   GetOrganizationsLocationsInsightTypesInsightsResponse,
   GetOrganizationsLocationsInsightTypesInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsInsightTypesInsightsRequest,
   output: GetOrganizationsLocationsInsightTypesInsightsResponse,
   errors: [NotFound, Forbidden],
@@ -1769,7 +1769,7 @@ export interface MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest {
 }
 
 export const MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest,
@@ -1786,7 +1786,7 @@ export const MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest =
 export type MarkAcceptedOrganizationsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
 export const MarkAcceptedOrganizationsLocationsInsightTypesInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
 export type MarkAcceptedOrganizationsLocationsInsightTypesInsightsError =
   | DefaultErrors
@@ -1801,7 +1801,7 @@ export const markAcceptedOrganizationsLocationsInsightTypesInsights: API.Operati
   MarkAcceptedOrganizationsLocationsInsightTypesInsightsResponse,
   MarkAcceptedOrganizationsLocationsInsightTypesInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest,
   output: MarkAcceptedOrganizationsLocationsInsightTypesInsightsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1815,7 +1815,7 @@ export interface ListRecommendersRequest {
 }
 
 export const ListRecommendersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
@@ -1826,7 +1826,7 @@ export const ListRecommendersRequest =
 export type ListRecommendersResponse =
   GoogleCloudRecommenderV1beta1ListRecommendersResponse;
 export const ListRecommendersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendersResponse;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendersResponse;
 
 export type ListRecommendersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1836,7 +1836,7 @@ export const listRecommenders: API.PaginatedOperationMethod<
   ListRecommendersResponse,
   ListRecommendersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendersRequest,
   output: ListRecommendersResponse,
   errors: [NotFound, Forbidden],
@@ -1860,7 +1860,7 @@ export interface ListProjectsLocationsRequest {
 }
 
 export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1876,7 +1876,7 @@ export const ListProjectsLocationsRequest =
 export type ListProjectsLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
 export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
+  /*@__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1886,7 +1886,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsResponse,
   ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1902,7 +1902,7 @@ export interface GetConfigProjectsLocationsRecommendersRequest {
 }
 
 export const GetConfigProjectsLocationsRecommendersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1912,7 +1912,7 @@ export const GetConfigProjectsLocationsRecommendersRequest =
 export type GetConfigProjectsLocationsRecommendersResponse =
   GoogleCloudRecommenderV1beta1RecommenderConfig;
 export const GetConfigProjectsLocationsRecommendersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
 
 export type GetConfigProjectsLocationsRecommendersError =
   | DefaultErrors
@@ -1925,7 +1925,7 @@ export const getConfigProjectsLocationsRecommenders: API.OperationMethod<
   GetConfigProjectsLocationsRecommendersResponse,
   GetConfigProjectsLocationsRecommendersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigProjectsLocationsRecommendersRequest,
   output: GetConfigProjectsLocationsRecommendersResponse,
   errors: [NotFound, Forbidden],
@@ -1943,7 +1943,7 @@ export interface UpdateConfigProjectsLocationsRecommendersRequest {
 }
 
 export const UpdateConfigProjectsLocationsRecommendersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
@@ -1960,7 +1960,7 @@ export const UpdateConfigProjectsLocationsRecommendersRequest =
 export type UpdateConfigProjectsLocationsRecommendersResponse =
   GoogleCloudRecommenderV1beta1RecommenderConfig;
 export const UpdateConfigProjectsLocationsRecommendersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
 
 export type UpdateConfigProjectsLocationsRecommendersError =
   | DefaultErrors
@@ -1975,7 +1975,7 @@ export const updateConfigProjectsLocationsRecommenders: API.OperationMethod<
   UpdateConfigProjectsLocationsRecommendersResponse,
   UpdateConfigProjectsLocationsRecommendersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigProjectsLocationsRecommendersRequest,
   output: UpdateConfigProjectsLocationsRecommendersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1989,7 +1989,7 @@ export interface MarkFailedProjectsLocationsRecommendersRecommendationsRequest {
 }
 
 export const MarkFailedProjectsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest,
@@ -2006,7 +2006,7 @@ export const MarkFailedProjectsLocationsRecommendersRecommendationsRequest =
 export type MarkFailedProjectsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkFailedProjectsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkFailedProjectsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -2021,7 +2021,7 @@ export const markFailedProjectsLocationsRecommendersRecommendations: API.Operati
   MarkFailedProjectsLocationsRecommendersRecommendationsResponse,
   MarkFailedProjectsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkFailedProjectsLocationsRecommendersRecommendationsRequest,
   output: MarkFailedProjectsLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2035,7 +2035,7 @@ export interface MarkDismissedProjectsLocationsRecommendersRecommendationsReques
 }
 
 export const MarkDismissedProjectsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest,
@@ -2052,7 +2052,7 @@ export const MarkDismissedProjectsLocationsRecommendersRecommendationsRequest =
 export type MarkDismissedProjectsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkDismissedProjectsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkDismissedProjectsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -2067,7 +2067,7 @@ export const markDismissedProjectsLocationsRecommendersRecommendations: API.Oper
   MarkDismissedProjectsLocationsRecommendersRecommendationsResponse,
   MarkDismissedProjectsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkDismissedProjectsLocationsRecommendersRecommendationsRequest,
   output: MarkDismissedProjectsLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2085,7 +2085,7 @@ export interface ListProjectsLocationsRecommendersRecommendationsRequest {
 }
 
 export const ListProjectsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2098,7 +2098,7 @@ export const ListProjectsLocationsRecommendersRecommendationsRequest =
 export type ListProjectsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
 export const ListProjectsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
 
 export type ListProjectsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -2111,7 +2111,7 @@ export const listProjectsLocationsRecommendersRecommendations: API.PaginatedOper
   ListProjectsLocationsRecommendersRecommendationsResponse,
   ListProjectsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRecommendersRecommendationsRequest,
   output: ListProjectsLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden],
@@ -2129,7 +2129,7 @@ export interface MarkSucceededProjectsLocationsRecommendersRecommendationsReques
 }
 
 export const MarkSucceededProjectsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest,
@@ -2146,7 +2146,7 @@ export const MarkSucceededProjectsLocationsRecommendersRecommendationsRequest =
 export type MarkSucceededProjectsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkSucceededProjectsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkSucceededProjectsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -2161,7 +2161,7 @@ export const markSucceededProjectsLocationsRecommendersRecommendations: API.Oper
   MarkSucceededProjectsLocationsRecommendersRecommendationsResponse,
   MarkSucceededProjectsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkSucceededProjectsLocationsRecommendersRecommendationsRequest,
   output: MarkSucceededProjectsLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2175,7 +2175,7 @@ export interface MarkClaimedProjectsLocationsRecommendersRecommendationsRequest 
 }
 
 export const MarkClaimedProjectsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest,
@@ -2192,7 +2192,7 @@ export const MarkClaimedProjectsLocationsRecommendersRecommendationsRequest =
 export type MarkClaimedProjectsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkClaimedProjectsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkClaimedProjectsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -2207,7 +2207,7 @@ export const markClaimedProjectsLocationsRecommendersRecommendations: API.Operat
   MarkClaimedProjectsLocationsRecommendersRecommendationsResponse,
   MarkClaimedProjectsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkClaimedProjectsLocationsRecommendersRecommendationsRequest,
   output: MarkClaimedProjectsLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2219,7 +2219,7 @@ export interface GetProjectsLocationsRecommendersRecommendationsRequest {
 }
 
 export const GetProjectsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2229,7 +2229,7 @@ export const GetProjectsLocationsRecommendersRecommendationsRequest =
 export type GetProjectsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const GetProjectsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type GetProjectsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -2242,7 +2242,7 @@ export const getProjectsLocationsRecommendersRecommendations: API.OperationMetho
   GetProjectsLocationsRecommendersRecommendationsResponse,
   GetProjectsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRecommendersRecommendationsRequest,
   output: GetProjectsLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden],
@@ -2254,7 +2254,7 @@ export interface GetConfigProjectsLocationsInsightTypesRequest {
 }
 
 export const GetConfigProjectsLocationsInsightTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2264,7 +2264,7 @@ export const GetConfigProjectsLocationsInsightTypesRequest =
 export type GetConfigProjectsLocationsInsightTypesResponse =
   GoogleCloudRecommenderV1beta1InsightTypeConfig;
 export const GetConfigProjectsLocationsInsightTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
 
 export type GetConfigProjectsLocationsInsightTypesError =
   | DefaultErrors
@@ -2277,7 +2277,7 @@ export const getConfigProjectsLocationsInsightTypes: API.OperationMethod<
   GetConfigProjectsLocationsInsightTypesResponse,
   GetConfigProjectsLocationsInsightTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigProjectsLocationsInsightTypesRequest,
   output: GetConfigProjectsLocationsInsightTypesResponse,
   errors: [NotFound, Forbidden],
@@ -2295,7 +2295,7 @@ export interface UpdateConfigProjectsLocationsInsightTypesRequest {
 }
 
 export const UpdateConfigProjectsLocationsInsightTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
@@ -2312,7 +2312,7 @@ export const UpdateConfigProjectsLocationsInsightTypesRequest =
 export type UpdateConfigProjectsLocationsInsightTypesResponse =
   GoogleCloudRecommenderV1beta1InsightTypeConfig;
 export const UpdateConfigProjectsLocationsInsightTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
 
 export type UpdateConfigProjectsLocationsInsightTypesError =
   | DefaultErrors
@@ -2327,7 +2327,7 @@ export const updateConfigProjectsLocationsInsightTypes: API.OperationMethod<
   UpdateConfigProjectsLocationsInsightTypesResponse,
   UpdateConfigProjectsLocationsInsightTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigProjectsLocationsInsightTypesRequest,
   output: UpdateConfigProjectsLocationsInsightTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2345,7 +2345,7 @@ export interface ListProjectsLocationsInsightTypesInsightsRequest {
 }
 
 export const ListProjectsLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2358,7 +2358,7 @@ export const ListProjectsLocationsInsightTypesInsightsRequest =
 export type ListProjectsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1ListInsightsResponse;
 export const ListProjectsLocationsInsightTypesInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightsResponse;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightsResponse;
 
 export type ListProjectsLocationsInsightTypesInsightsError =
   | DefaultErrors
@@ -2371,7 +2371,7 @@ export const listProjectsLocationsInsightTypesInsights: API.PaginatedOperationMe
   ListProjectsLocationsInsightTypesInsightsResponse,
   ListProjectsLocationsInsightTypesInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInsightTypesInsightsRequest,
   output: ListProjectsLocationsInsightTypesInsightsResponse,
   errors: [NotFound, Forbidden],
@@ -2387,7 +2387,7 @@ export interface GetProjectsLocationsInsightTypesInsightsRequest {
 }
 
 export const GetProjectsLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2397,7 +2397,7 @@ export const GetProjectsLocationsInsightTypesInsightsRequest =
 export type GetProjectsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
 export const GetProjectsLocationsInsightTypesInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
 export type GetProjectsLocationsInsightTypesInsightsError =
   | DefaultErrors
@@ -2410,7 +2410,7 @@ export const getProjectsLocationsInsightTypesInsights: API.OperationMethod<
   GetProjectsLocationsInsightTypesInsightsResponse,
   GetProjectsLocationsInsightTypesInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInsightTypesInsightsRequest,
   output: GetProjectsLocationsInsightTypesInsightsResponse,
   errors: [NotFound, Forbidden],
@@ -2424,7 +2424,7 @@ export interface MarkAcceptedProjectsLocationsInsightTypesInsightsRequest {
 }
 
 export const MarkAcceptedProjectsLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest,
@@ -2441,7 +2441,7 @@ export const MarkAcceptedProjectsLocationsInsightTypesInsightsRequest =
 export type MarkAcceptedProjectsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
 export const MarkAcceptedProjectsLocationsInsightTypesInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
 export type MarkAcceptedProjectsLocationsInsightTypesInsightsError =
   | DefaultErrors
@@ -2456,7 +2456,7 @@ export const markAcceptedProjectsLocationsInsightTypesInsights: API.OperationMet
   MarkAcceptedProjectsLocationsInsightTypesInsightsResponse,
   MarkAcceptedProjectsLocationsInsightTypesInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkAcceptedProjectsLocationsInsightTypesInsightsRequest,
   output: MarkAcceptedProjectsLocationsInsightTypesInsightsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2476,7 +2476,7 @@ export interface ListBillingAccountsLocationsRequest {
 }
 
 export const ListBillingAccountsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2492,7 +2492,7 @@ export const ListBillingAccountsLocationsRequest =
 export type ListBillingAccountsLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
 export const ListBillingAccountsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
+  /*@__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
 export type ListBillingAccountsLocationsError =
   | DefaultErrors
@@ -2505,7 +2505,7 @@ export const listBillingAccountsLocations: API.PaginatedOperationMethod<
   ListBillingAccountsLocationsResponse,
   ListBillingAccountsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsRequest,
   output: ListBillingAccountsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -2521,7 +2521,7 @@ export interface GetConfigBillingAccountsLocationsRecommendersRequest {
 }
 
 export const GetConfigBillingAccountsLocationsRecommendersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2531,7 +2531,7 @@ export const GetConfigBillingAccountsLocationsRecommendersRequest =
 export type GetConfigBillingAccountsLocationsRecommendersResponse =
   GoogleCloudRecommenderV1beta1RecommenderConfig;
 export const GetConfigBillingAccountsLocationsRecommendersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
 
 export type GetConfigBillingAccountsLocationsRecommendersError =
   | DefaultErrors
@@ -2544,7 +2544,7 @@ export const getConfigBillingAccountsLocationsRecommenders: API.OperationMethod<
   GetConfigBillingAccountsLocationsRecommendersResponse,
   GetConfigBillingAccountsLocationsRecommendersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigBillingAccountsLocationsRecommendersRequest,
   output: GetConfigBillingAccountsLocationsRecommendersResponse,
   errors: [NotFound, Forbidden],
@@ -2562,7 +2562,7 @@ export interface UpdateConfigBillingAccountsLocationsRecommendersRequest {
 }
 
 export const UpdateConfigBillingAccountsLocationsRecommendersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
@@ -2579,7 +2579,7 @@ export const UpdateConfigBillingAccountsLocationsRecommendersRequest =
 export type UpdateConfigBillingAccountsLocationsRecommendersResponse =
   GoogleCloudRecommenderV1beta1RecommenderConfig;
 export const UpdateConfigBillingAccountsLocationsRecommendersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
 
 export type UpdateConfigBillingAccountsLocationsRecommendersError =
   | DefaultErrors
@@ -2594,7 +2594,7 @@ export const updateConfigBillingAccountsLocationsRecommenders: API.OperationMeth
   UpdateConfigBillingAccountsLocationsRecommendersResponse,
   UpdateConfigBillingAccountsLocationsRecommendersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigBillingAccountsLocationsRecommendersRequest,
   output: UpdateConfigBillingAccountsLocationsRecommendersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2612,7 +2612,7 @@ export interface ListBillingAccountsLocationsRecommendersRecommendationsRequest 
 }
 
 export const ListBillingAccountsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2625,7 +2625,7 @@ export const ListBillingAccountsLocationsRecommendersRecommendationsRequest =
 export type ListBillingAccountsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
 export const ListBillingAccountsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
 
 export type ListBillingAccountsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -2638,7 +2638,7 @@ export const listBillingAccountsLocationsRecommendersRecommendations: API.Pagina
   ListBillingAccountsLocationsRecommendersRecommendationsResponse,
   ListBillingAccountsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsRecommendersRecommendationsRequest,
   output: ListBillingAccountsLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden],
@@ -2656,7 +2656,7 @@ export interface MarkDismissedBillingAccountsLocationsRecommendersRecommendation
 }
 
 export const MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest,
@@ -2673,7 +2673,7 @@ export const MarkDismissedBillingAccountsLocationsRecommendersRecommendationsReq
 export type MarkDismissedBillingAccountsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkDismissedBillingAccountsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkDismissedBillingAccountsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -2688,7 +2688,7 @@ export const markDismissedBillingAccountsLocationsRecommendersRecommendations: A
   MarkDismissedBillingAccountsLocationsRecommendersRecommendationsResponse,
   MarkDismissedBillingAccountsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest,
   output:
@@ -2704,7 +2704,7 @@ export interface MarkFailedBillingAccountsLocationsRecommendersRecommendationsRe
 }
 
 export const MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest,
@@ -2721,7 +2721,7 @@ export const MarkFailedBillingAccountsLocationsRecommendersRecommendationsReques
 export type MarkFailedBillingAccountsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkFailedBillingAccountsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkFailedBillingAccountsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -2736,7 +2736,7 @@ export const markFailedBillingAccountsLocationsRecommendersRecommendations: API.
   MarkFailedBillingAccountsLocationsRecommendersRecommendationsResponse,
   MarkFailedBillingAccountsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest,
   output: MarkFailedBillingAccountsLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2748,7 +2748,7 @@ export interface GetBillingAccountsLocationsRecommendersRecommendationsRequest {
 }
 
 export const GetBillingAccountsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2758,7 +2758,7 @@ export const GetBillingAccountsLocationsRecommendersRecommendationsRequest =
 export type GetBillingAccountsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const GetBillingAccountsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type GetBillingAccountsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -2771,7 +2771,7 @@ export const getBillingAccountsLocationsRecommendersRecommendations: API.Operati
   GetBillingAccountsLocationsRecommendersRecommendationsResponse,
   GetBillingAccountsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBillingAccountsLocationsRecommendersRecommendationsRequest,
   output: GetBillingAccountsLocationsRecommendersRecommendationsResponse,
   errors: [NotFound, Forbidden],
@@ -2785,7 +2785,7 @@ export interface MarkClaimedBillingAccountsLocationsRecommendersRecommendationsR
 }
 
 export const MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest,
@@ -2802,7 +2802,7 @@ export const MarkClaimedBillingAccountsLocationsRecommendersRecommendationsReque
 export type MarkClaimedBillingAccountsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkClaimedBillingAccountsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkClaimedBillingAccountsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -2817,7 +2817,7 @@ export const markClaimedBillingAccountsLocationsRecommendersRecommendations: API
   MarkClaimedBillingAccountsLocationsRecommendersRecommendationsResponse,
   MarkClaimedBillingAccountsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest,
   output:
     MarkClaimedBillingAccountsLocationsRecommendersRecommendationsResponse,
@@ -2832,7 +2832,7 @@ export interface MarkSucceededBillingAccountsLocationsRecommendersRecommendation
 }
 
 export const MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest,
@@ -2849,7 +2849,7 @@ export const MarkSucceededBillingAccountsLocationsRecommendersRecommendationsReq
 export type MarkSucceededBillingAccountsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
 export const MarkSucceededBillingAccountsLocationsRecommendersRecommendationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkSucceededBillingAccountsLocationsRecommendersRecommendationsError =
   | DefaultErrors
@@ -2864,7 +2864,7 @@ export const markSucceededBillingAccountsLocationsRecommendersRecommendations: A
   MarkSucceededBillingAccountsLocationsRecommendersRecommendationsResponse,
   MarkSucceededBillingAccountsLocationsRecommendersRecommendationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest,
   output:
@@ -2878,7 +2878,7 @@ export interface GetConfigBillingAccountsLocationsInsightTypesRequest {
 }
 
 export const GetConfigBillingAccountsLocationsInsightTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2888,7 +2888,7 @@ export const GetConfigBillingAccountsLocationsInsightTypesRequest =
 export type GetConfigBillingAccountsLocationsInsightTypesResponse =
   GoogleCloudRecommenderV1beta1InsightTypeConfig;
 export const GetConfigBillingAccountsLocationsInsightTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
 
 export type GetConfigBillingAccountsLocationsInsightTypesError =
   | DefaultErrors
@@ -2901,7 +2901,7 @@ export const getConfigBillingAccountsLocationsInsightTypes: API.OperationMethod<
   GetConfigBillingAccountsLocationsInsightTypesResponse,
   GetConfigBillingAccountsLocationsInsightTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigBillingAccountsLocationsInsightTypesRequest,
   output: GetConfigBillingAccountsLocationsInsightTypesResponse,
   errors: [NotFound, Forbidden],
@@ -2919,7 +2919,7 @@ export interface UpdateConfigBillingAccountsLocationsInsightTypesRequest {
 }
 
 export const UpdateConfigBillingAccountsLocationsInsightTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
@@ -2936,7 +2936,7 @@ export const UpdateConfigBillingAccountsLocationsInsightTypesRequest =
 export type UpdateConfigBillingAccountsLocationsInsightTypesResponse =
   GoogleCloudRecommenderV1beta1InsightTypeConfig;
 export const UpdateConfigBillingAccountsLocationsInsightTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
 
 export type UpdateConfigBillingAccountsLocationsInsightTypesError =
   | DefaultErrors
@@ -2951,7 +2951,7 @@ export const updateConfigBillingAccountsLocationsInsightTypes: API.OperationMeth
   UpdateConfigBillingAccountsLocationsInsightTypesResponse,
   UpdateConfigBillingAccountsLocationsInsightTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigBillingAccountsLocationsInsightTypesRequest,
   output: UpdateConfigBillingAccountsLocationsInsightTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2969,7 +2969,7 @@ export interface ListBillingAccountsLocationsInsightTypesInsightsRequest {
 }
 
 export const ListBillingAccountsLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -2982,7 +2982,7 @@ export const ListBillingAccountsLocationsInsightTypesInsightsRequest =
 export type ListBillingAccountsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1ListInsightsResponse;
 export const ListBillingAccountsLocationsInsightTypesInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightsResponse;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightsResponse;
 
 export type ListBillingAccountsLocationsInsightTypesInsightsError =
   | DefaultErrors
@@ -2995,7 +2995,7 @@ export const listBillingAccountsLocationsInsightTypesInsights: API.PaginatedOper
   ListBillingAccountsLocationsInsightTypesInsightsResponse,
   ListBillingAccountsLocationsInsightTypesInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsInsightTypesInsightsRequest,
   output: ListBillingAccountsLocationsInsightTypesInsightsResponse,
   errors: [NotFound, Forbidden],
@@ -3011,7 +3011,7 @@ export interface GetBillingAccountsLocationsInsightTypesInsightsRequest {
 }
 
 export const GetBillingAccountsLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -3021,7 +3021,7 @@ export const GetBillingAccountsLocationsInsightTypesInsightsRequest =
 export type GetBillingAccountsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
 export const GetBillingAccountsLocationsInsightTypesInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
 export type GetBillingAccountsLocationsInsightTypesInsightsError =
   | DefaultErrors
@@ -3034,7 +3034,7 @@ export const getBillingAccountsLocationsInsightTypesInsights: API.OperationMetho
   GetBillingAccountsLocationsInsightTypesInsightsResponse,
   GetBillingAccountsLocationsInsightTypesInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBillingAccountsLocationsInsightTypesInsightsRequest,
   output: GetBillingAccountsLocationsInsightTypesInsightsResponse,
   errors: [NotFound, Forbidden],
@@ -3048,7 +3048,7 @@ export interface MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest
 }
 
 export const MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest,
@@ -3065,7 +3065,7 @@ export const MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest =
 export type MarkAcceptedBillingAccountsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
 export const MarkAcceptedBillingAccountsLocationsInsightTypesInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
 export type MarkAcceptedBillingAccountsLocationsInsightTypesInsightsError =
   | DefaultErrors
@@ -3080,7 +3080,7 @@ export const markAcceptedBillingAccountsLocationsInsightTypesInsights: API.Opera
   MarkAcceptedBillingAccountsLocationsInsightTypesInsightsResponse,
   MarkAcceptedBillingAccountsLocationsInsightTypesInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest,
   output: MarkAcceptedBillingAccountsLocationsInsightTypesInsightsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3094,7 +3094,7 @@ export interface ListInsightTypesRequest {
 }
 
 export const ListInsightTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
@@ -3105,7 +3105,7 @@ export const ListInsightTypesRequest =
 export type ListInsightTypesResponse =
   GoogleCloudRecommenderV1beta1ListInsightTypesResponse;
 export const ListInsightTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightTypesResponse;
+  /*@__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightTypesResponse;
 
 export type ListInsightTypesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3115,7 +3115,7 @@ export const listInsightTypes: API.PaginatedOperationMethod<
   ListInsightTypesResponse,
   ListInsightTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightTypesRequest,
   output: ListInsightTypesResponse,
   errors: [NotFound, Forbidden],

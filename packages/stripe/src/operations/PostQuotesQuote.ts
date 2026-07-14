@@ -64,7 +64,7 @@ export interface PostQuotesQuoteInput {
     | { amount?: number; amount_percent?: number; destination: string }
     | "";
 }
-export const PostQuotesQuoteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostQuotesQuoteInput = /*@__PURE__*/ Schema.Struct({
   quote: Schema.String.pipe(T.PathParam()),
   application_fee_amount: Schema.optional(
     Schema.Union([Schema.Number, Schema.Literals([""])]),
@@ -1138,7 +1138,7 @@ export interface PostQuotesQuoteOutput {
     destination: unknown;
   } | null;
 }
-export const PostQuotesQuoteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostQuotesQuoteOutput = /*@__PURE__*/ Schema.Struct({
   amount_subtotal: Schema.Number,
   amount_total: Schema.Number,
   application: Schema.NullOr(
@@ -2181,7 +2181,7 @@ export const PostQuotesQuoteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>A quote models prices and services for a customer.</p>
  */
-export const PostQuotesQuote = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostQuotesQuote = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostQuotesQuoteInput,
   outputSchema: PostQuotesQuoteOutput,
 }));

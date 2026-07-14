@@ -42,7 +42,7 @@ export interface AttestationProvidersCreateInput {
   };
 }
 export const AttestationProvidersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -106,7 +106,7 @@ export interface AttestationProvidersCreateOutput {
   };
 }
 export const AttestationProvidersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -135,12 +135,10 @@ export const AttestationProvidersCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param providerName - Name of the attestation provider.
  */
-export const AttestationProvidersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AttestationProvidersCreateInput,
-    outputSchema: AttestationProvidersCreateOutput,
-  }),
-);
+export const AttestationProvidersCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AttestationProvidersCreateInput,
+  outputSchema: AttestationProvidersCreateOutput,
+}));
 // Input Schema
 export interface AttestationProvidersDeleteInput {
   subscriptionId: string;
@@ -148,7 +146,7 @@ export interface AttestationProvidersDeleteInput {
   providerName: string;
 }
 export const AttestationProvidersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -163,7 +161,7 @@ export const AttestationProvidersDeleteInput =
 // Output Schema
 export type AttestationProvidersDeleteOutput = void;
 export const AttestationProvidersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AttestationProvidersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AttestationProvidersDeleteOutput>;
 
 // The operation
 /**
@@ -174,12 +172,10 @@ export const AttestationProvidersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param providerName - Name of the attestation provider.
  */
-export const AttestationProvidersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AttestationProvidersDeleteInput,
-    outputSchema: AttestationProvidersDeleteOutput,
-  }),
-);
+export const AttestationProvidersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AttestationProvidersDeleteInput,
+  outputSchema: AttestationProvidersDeleteOutput,
+}));
 // Input Schema
 export interface AttestationProvidersGetInput {
   subscriptionId: string;
@@ -187,7 +183,7 @@ export interface AttestationProvidersGetInput {
   providerName: string;
 }
 export const AttestationProvidersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -214,7 +210,7 @@ export interface AttestationProvidersGetOutput {
   };
 }
 export const AttestationProvidersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -243,19 +239,17 @@ export const AttestationProvidersGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param providerName - Name of the attestation provider.
  */
-export const AttestationProvidersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AttestationProvidersGetInput,
-    outputSchema: AttestationProvidersGetOutput,
-  }),
-);
+export const AttestationProvidersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AttestationProvidersGetInput,
+  outputSchema: AttestationProvidersGetOutput,
+}));
 // Input Schema
 export interface AttestationProvidersGetDefaultByLocationInput {
   subscriptionId: string;
   location: string;
 }
 export const AttestationProvidersGetDefaultByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -281,7 +275,7 @@ export interface AttestationProvidersGetDefaultByLocationOutput {
   };
 }
 export const AttestationProvidersGetDefaultByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -310,7 +304,7 @@ export const AttestationProvidersGetDefaultByLocationOutput =
  * @param location - The name of Azure region.
  */
 export const AttestationProvidersGetDefaultByLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AttestationProvidersGetDefaultByLocationInput,
     outputSchema: AttestationProvidersGetDefaultByLocationOutput,
   }));
@@ -319,7 +313,7 @@ export interface AttestationProvidersListInput {
   subscriptionId: string;
 }
 export const AttestationProvidersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -354,7 +348,7 @@ export interface AttestationProvidersListOutput {
   }[];
 }
 export const AttestationProvidersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -411,19 +405,17 @@ export const AttestationProvidersListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const AttestationProvidersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AttestationProvidersListInput,
-    outputSchema: AttestationProvidersListOutput,
-  }),
-);
+export const AttestationProvidersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AttestationProvidersListInput,
+  outputSchema: AttestationProvidersListOutput,
+}));
 // Input Schema
 export interface AttestationProvidersListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const AttestationProvidersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -459,7 +451,7 @@ export interface AttestationProvidersListByResourceGroupOutput {
   }[];
 }
 export const AttestationProvidersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -518,7 +510,7 @@ export const AttestationProvidersListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AttestationProvidersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AttestationProvidersListByResourceGroupInput,
     outputSchema: AttestationProvidersListByResourceGroupOutput,
   }));
@@ -527,7 +519,7 @@ export interface AttestationProvidersListDefaultInput {
   subscriptionId: string;
 }
 export const AttestationProvidersListDefaultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -562,7 +554,7 @@ export interface AttestationProvidersListDefaultOutput {
   }[];
 }
 export const AttestationProvidersListDefaultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -620,7 +612,7 @@ export const AttestationProvidersListDefaultOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const AttestationProvidersListDefault =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AttestationProvidersListDefaultInput,
     outputSchema: AttestationProvidersListDefaultOutput,
   }));
@@ -636,7 +628,7 @@ export interface AttestationProvidersUpdateInput {
   };
 }
 export const AttestationProvidersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -674,7 +666,7 @@ export interface AttestationProvidersUpdateOutput {
   };
 }
 export const AttestationProvidersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -703,17 +695,13 @@ export const AttestationProvidersUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param providerName - Name of the attestation provider.
  */
-export const AttestationProvidersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AttestationProvidersUpdateInput,
-    outputSchema: AttestationProvidersUpdateOutput,
-  }),
-);
+export const AttestationProvidersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AttestationProvidersUpdateInput,
+  outputSchema: AttestationProvidersUpdateOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Attestation/operations",
@@ -746,7 +734,7 @@ export interface OperationsListOutput {
     };
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   systemData: Schema.optional(
     Schema.Struct({
       createdBy: Schema.optional(Schema.String),
@@ -800,7 +788,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -832,7 +820,7 @@ export interface PrivateEndpointConnectionsCreateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -896,7 +884,7 @@ export interface PrivateEndpointConnectionsCreateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -928,7 +916,7 @@ export const PrivateEndpointConnectionsCreateOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateInput,
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
@@ -940,7 +928,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -956,7 +944,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -969,7 +957,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -981,7 +969,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -1009,7 +997,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1040,7 +1028,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -1051,7 +1039,7 @@ export interface PrivateEndpointConnectionsListInput {
   providerName: string;
 }
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -1081,7 +1069,7 @@ export interface PrivateEndpointConnectionsListOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1126,7 +1114,7 @@ export const PrivateEndpointConnectionsListOutput =
  * @param providerName - Name of the attestation provider.
  */
 export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListInput,
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
@@ -1137,7 +1125,7 @@ export interface PrivateLinkResourcesListByProviderInput {
   providerName: string;
 }
 export const PrivateLinkResourcesListByProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -1167,7 +1155,7 @@ export interface PrivateLinkResourcesListByProviderOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListByProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1212,7 +1200,7 @@ export const PrivateLinkResourcesListByProviderOutput =
  * @param providerName - Name of the attestation provider.
  */
 export const PrivateLinkResourcesListByProvider =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByProviderInput,
     outputSchema: PrivateLinkResourcesListByProviderOutput,
   }));

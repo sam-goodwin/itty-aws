@@ -25,7 +25,7 @@ export interface AksAssessmentOperationsCreateInput {
   eTag?: string;
 }
 export const AksAssessmentOperationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -67,7 +67,7 @@ export interface AksAssessmentOperationsCreateOutput {
   };
 }
 export const AksAssessmentOperationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -98,7 +98,7 @@ export const AksAssessmentOperationsCreateOutput =
  * @param assessmentName - AKS Assessment Name.
  */
 export const AksAssessmentOperationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AksAssessmentOperationsCreateInput,
     outputSchema: AksAssessmentOperationsCreateOutput,
   }));
@@ -110,7 +110,7 @@ export interface AksAssessmentOperationsDeleteInput {
   assessmentName: string;
 }
 export const AksAssessmentOperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -126,7 +126,7 @@ export const AksAssessmentOperationsDeleteInput =
 // Output Schema
 export type AksAssessmentOperationsDeleteOutput = void;
 export const AksAssessmentOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AksAssessmentOperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AksAssessmentOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -139,7 +139,7 @@ export const AksAssessmentOperationsDeleteOutput =
  * @param assessmentName - AKS Assessment Name.
  */
 export const AksAssessmentOperationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AksAssessmentOperationsDeleteInput,
     outputSchema: AksAssessmentOperationsDeleteOutput,
   }));
@@ -151,7 +151,7 @@ export interface AksAssessmentOperationsDownloadUrlInput {
   assessmentName: string;
 }
 export const AksAssessmentOperationsDownloadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -170,7 +170,7 @@ export interface AksAssessmentOperationsDownloadUrlOutput {
   expirationTime: string;
 }
 export const AksAssessmentOperationsDownloadUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assessmentReportUrl: Schema.String,
     expirationTime: Schema.String,
   }) as unknown as Schema.Codec<AksAssessmentOperationsDownloadUrlOutput>;
@@ -186,7 +186,7 @@ export const AksAssessmentOperationsDownloadUrlOutput =
  * @param assessmentName - AKS Assessment Name.
  */
 export const AksAssessmentOperationsDownloadUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AksAssessmentOperationsDownloadUrlInput,
     outputSchema: AksAssessmentOperationsDownloadUrlOutput,
   }));
@@ -198,7 +198,7 @@ export interface AksAssessmentOperationsGetInput {
   assessmentName: string;
 }
 export const AksAssessmentOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -226,7 +226,7 @@ export interface AksAssessmentOperationsGetOutput {
   };
 }
 export const AksAssessmentOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -256,12 +256,10 @@ export const AksAssessmentOperationsGetOutput =
  * @param projectName - Assessment Project Name
  * @param assessmentName - AKS Assessment Name.
  */
-export const AksAssessmentOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AksAssessmentOperationsGetInput,
-    outputSchema: AksAssessmentOperationsGetOutput,
-  }),
-);
+export const AksAssessmentOperationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AksAssessmentOperationsGetInput,
+  outputSchema: AksAssessmentOperationsGetOutput,
+}));
 // Input Schema
 export interface AksAssessmentOperationsListByAssessmentProjectInput {
   subscriptionId: string;
@@ -273,7 +271,7 @@ export interface AksAssessmentOperationsListByAssessmentProjectInput {
   totalRecordCount?: number;
 }
 export const AksAssessmentOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -307,7 +305,7 @@ export interface AksAssessmentOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const AksAssessmentOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -356,7 +354,7 @@ export const AksAssessmentOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const AksAssessmentOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AksAssessmentOperationsListByAssessmentProjectInput,
     outputSchema: AksAssessmentOperationsListByAssessmentProjectOutput,
   }));
@@ -369,7 +367,7 @@ export interface AksClusterOperationsGetInput {
   clusterName: string;
 }
 export const AksClusterOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -398,7 +396,7 @@ export interface AksClusterOperationsGetOutput {
   };
 }
 export const AksClusterOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -429,12 +427,10 @@ export const AksClusterOperationsGetOutput =
  * @param assessmentName - AKS Assessment Name.
  * @param clusterName - AKS Cluster Name.
  */
-export const AksClusterOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AksClusterOperationsGetInput,
-    outputSchema: AksClusterOperationsGetOutput,
-  }),
-);
+export const AksClusterOperationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AksClusterOperationsGetInput,
+  outputSchema: AksClusterOperationsGetOutput,
+}));
 // Input Schema
 export interface AksClusterOperationsListByAksAssessmentInput {
   subscriptionId: string;
@@ -444,7 +440,7 @@ export interface AksClusterOperationsListByAksAssessmentInput {
   $filter?: string;
 }
 export const AksClusterOperationsListByAksAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -476,7 +472,7 @@ export interface AksClusterOperationsListByAksAssessmentOutput {
   nextLink?: string;
 }
 export const AksClusterOperationsListByAksAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -523,7 +519,7 @@ export const AksClusterOperationsListByAksAssessmentOutput =
  * @param assessmentName - AKS Assessment Name.
  */
 export const AksClusterOperationsListByAksAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AksClusterOperationsListByAksAssessmentInput,
     outputSchema: AksClusterOperationsListByAksAssessmentOutput,
   }));
@@ -536,7 +532,7 @@ export interface AksCostDetailOperationsListByAksAssessmentInput {
   $filter?: string;
 }
 export const AksCostDetailOperationsListByAksAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -568,7 +564,7 @@ export interface AksCostDetailOperationsListByAksAssessmentOutput {
   nextLink?: string;
 }
 export const AksCostDetailOperationsListByAksAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -615,7 +611,7 @@ export const AksCostDetailOperationsListByAksAssessmentOutput =
  * @param assessmentName - AKS Assessment Name.
  */
 export const AksCostDetailOperationsListByAksAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AksCostDetailOperationsListByAksAssessmentInput,
     outputSchema: AksCostDetailOperationsListByAksAssessmentOutput,
   }));
@@ -627,7 +623,7 @@ export interface AksOptionsOperationsGetInput {
   assessmentOptionsName: string;
 }
 export const AksOptionsOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -655,7 +651,7 @@ export interface AksOptionsOperationsGetOutput {
   };
 }
 export const AksOptionsOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -685,12 +681,10 @@ export const AksOptionsOperationsGetOutput =
  * @param projectName - Assessment Project Name
  * @param assessmentOptionsName - AKS Assessment Options Name.
  */
-export const AksOptionsOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AksOptionsOperationsGetInput,
-    outputSchema: AksOptionsOperationsGetOutput,
-  }),
-);
+export const AksOptionsOperationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AksOptionsOperationsGetInput,
+  outputSchema: AksOptionsOperationsGetOutput,
+}));
 // Input Schema
 export interface AksOptionsOperationsListByAssessmentProjectInput {
   subscriptionId: string;
@@ -698,7 +692,7 @@ export interface AksOptionsOperationsListByAssessmentProjectInput {
   projectName: string;
 }
 export const AksOptionsOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -728,7 +722,7 @@ export interface AksOptionsOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const AksOptionsOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -773,7 +767,7 @@ export const AksOptionsOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const AksOptionsOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AksOptionsOperationsListByAssessmentProjectInput,
     outputSchema: AksOptionsOperationsListByAssessmentProjectOutput,
   }));
@@ -786,7 +780,7 @@ export interface AksSummaryOperationsGetInput {
   summaryName: string;
 }
 export const AksSummaryOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -815,7 +809,7 @@ export interface AksSummaryOperationsGetOutput {
   };
 }
 export const AksSummaryOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -846,12 +840,10 @@ export const AksSummaryOperationsGetOutput =
  * @param assessmentName - AKS Assessment Name.
  * @param summaryName - AKS Assessment Summary Name.
  */
-export const AksSummaryOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AksSummaryOperationsGetInput,
-    outputSchema: AksSummaryOperationsGetOutput,
-  }),
-);
+export const AksSummaryOperationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AksSummaryOperationsGetInput,
+  outputSchema: AksSummaryOperationsGetOutput,
+}));
 // Input Schema
 export interface AksSummaryOperationsListByAksAssessmentInput {
   subscriptionId: string;
@@ -860,7 +852,7 @@ export interface AksSummaryOperationsListByAksAssessmentInput {
   assessmentName: string;
 }
 export const AksSummaryOperationsListByAksAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -891,7 +883,7 @@ export interface AksSummaryOperationsListByAksAssessmentOutput {
   nextLink?: string;
 }
 export const AksSummaryOperationsListByAksAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -937,7 +929,7 @@ export const AksSummaryOperationsListByAksAssessmentOutput =
  * @param assessmentName - AKS Assessment Name.
  */
 export const AksSummaryOperationsListByAksAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AksSummaryOperationsListByAksAssessmentInput,
     outputSchema: AksSummaryOperationsListByAksAssessmentOutput,
   }));
@@ -951,7 +943,7 @@ export interface AssessedMachinesOperationsGetInput {
   assessedMachineName: string;
 }
 export const AssessedMachinesOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -981,7 +973,7 @@ export interface AssessedMachinesOperationsGetOutput {
   };
 }
 export const AssessedMachinesOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1014,7 +1006,7 @@ export const AssessedMachinesOperationsGetOutput =
  * @param assessedMachineName - Machine assessment Assessed Machine ARM name
  */
 export const AssessedMachinesOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessedMachinesOperationsGetInput,
     outputSchema: AssessedMachinesOperationsGetOutput,
   }));
@@ -1031,7 +1023,7 @@ export interface AssessedMachinesOperationsListByAssessmentInput {
   totalRecordCount?: number;
 }
 export const AssessedMachinesOperationsListByAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -1067,7 +1059,7 @@ export interface AssessedMachinesOperationsListByAssessmentOutput {
   nextLink?: string;
 }
 export const AssessedMachinesOperationsListByAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1118,7 +1110,7 @@ export const AssessedMachinesOperationsListByAssessmentOutput =
  * @param assessmentName - Machine Assessment ARM name
  */
 export const AssessedMachinesOperationsListByAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessedMachinesOperationsListByAssessmentInput,
     outputSchema: AssessedMachinesOperationsListByAssessmentOutput,
   }));
@@ -1132,7 +1124,7 @@ export interface AssessedSqlDatabaseV2OperationsGetInput {
   assessedSqlDatabaseName: string;
 }
 export const AssessedSqlDatabaseV2OperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -1162,7 +1154,7 @@ export interface AssessedSqlDatabaseV2OperationsGetOutput {
   };
 }
 export const AssessedSqlDatabaseV2OperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1195,7 +1187,7 @@ export const AssessedSqlDatabaseV2OperationsGetOutput =
  * @param assessedSqlDatabaseName - Sql assessment Assessed Databases ARM name.
  */
 export const AssessedSqlDatabaseV2OperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessedSqlDatabaseV2OperationsGetInput,
     outputSchema: AssessedSqlDatabaseV2OperationsGetOutput,
   }));
@@ -1212,7 +1204,7 @@ export interface AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Input {
   totalRecordCount?: number;
 }
 export const AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -1248,7 +1240,7 @@ export interface AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Output {
   nextLink?: string;
 }
 export const AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1299,7 +1291,7 @@ export const AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Output =
  * @param assessmentName - SQL Assessment arm name.
  */
 export const AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Input,
     outputSchema: AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Output,
   }));
@@ -1313,7 +1305,7 @@ export interface AssessedSqlInstanceV2OperationsGetInput {
   assessedSqlInstanceName: string;
 }
 export const AssessedSqlInstanceV2OperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -1343,7 +1335,7 @@ export interface AssessedSqlInstanceV2OperationsGetOutput {
   };
 }
 export const AssessedSqlInstanceV2OperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1376,7 +1368,7 @@ export const AssessedSqlInstanceV2OperationsGetOutput =
  * @param assessedSqlInstanceName - Sql assessment Assessed Instance ARM name.
  */
 export const AssessedSqlInstanceV2OperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessedSqlInstanceV2OperationsGetInput,
     outputSchema: AssessedSqlInstanceV2OperationsGetOutput,
   }));
@@ -1393,7 +1385,7 @@ export interface AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Input {
   totalRecordCount?: number;
 }
 export const AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -1429,7 +1421,7 @@ export interface AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Output {
   nextLink?: string;
 }
 export const AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1480,7 +1472,7 @@ export const AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Output =
  * @param assessmentName - SQL Assessment arm name.
  */
 export const AssessedSqlInstanceV2OperationsListBySqlAssessmentV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Input,
     outputSchema: AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Output,
   }));
@@ -1494,7 +1486,7 @@ export interface AssessedSqlMachinesOperationsGetInput {
   assessedSqlMachineName: string;
 }
 export const AssessedSqlMachinesOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -1524,7 +1516,7 @@ export interface AssessedSqlMachinesOperationsGetOutput {
   };
 }
 export const AssessedSqlMachinesOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1557,7 +1549,7 @@ export const AssessedSqlMachinesOperationsGetOutput =
  * @param assessedSqlMachineName - Sql assessment Assessed Machine ARM name.
  */
 export const AssessedSqlMachinesOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessedSqlMachinesOperationsGetInput,
     outputSchema: AssessedSqlMachinesOperationsGetOutput,
   }));
@@ -1574,7 +1566,7 @@ export interface AssessedSqlMachinesOperationsListBySqlAssessmentV2Input {
   totalRecordCount?: number;
 }
 export const AssessedSqlMachinesOperationsListBySqlAssessmentV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -1610,7 +1602,7 @@ export interface AssessedSqlMachinesOperationsListBySqlAssessmentV2Output {
   nextLink?: string;
 }
 export const AssessedSqlMachinesOperationsListBySqlAssessmentV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1661,7 +1653,7 @@ export const AssessedSqlMachinesOperationsListBySqlAssessmentV2Output =
  * @param assessmentName - SQL Assessment arm name.
  */
 export const AssessedSqlMachinesOperationsListBySqlAssessmentV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessedSqlMachinesOperationsListBySqlAssessmentV2Input,
     outputSchema: AssessedSqlMachinesOperationsListBySqlAssessmentV2Output,
   }));
@@ -1675,7 +1667,7 @@ export interface AssessedSqlRecommendedEntityOperationsGetInput {
   recommendedAssessedEntityName: string;
 }
 export const AssessedSqlRecommendedEntityOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -1705,7 +1697,7 @@ export interface AssessedSqlRecommendedEntityOperationsGetOutput {
   };
 }
 export const AssessedSqlRecommendedEntityOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1738,7 +1730,7 @@ export const AssessedSqlRecommendedEntityOperationsGetOutput =
  * @param recommendedAssessedEntityName - Sql assessment Assessed Recommended Entity ARM name.
  */
 export const AssessedSqlRecommendedEntityOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessedSqlRecommendedEntityOperationsGetInput,
     outputSchema: AssessedSqlRecommendedEntityOperationsGetOutput,
   }));
@@ -1755,7 +1747,7 @@ export interface AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Inpu
   totalRecordCount?: number;
 }
 export const AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -1791,7 +1783,7 @@ export interface AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Outp
   nextLink?: string;
 }
 export const AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1842,7 +1834,7 @@ export const AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Output =
  * @param assessmentName - SQL Assessment arm name.
  */
 export const AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Input,
     outputSchema:
@@ -1857,7 +1849,7 @@ export interface AssessedWebApplicationOperationsGetInput {
   assessedWorkload: string;
 }
 export const AssessedWebApplicationOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -1886,7 +1878,7 @@ export interface AssessedWebApplicationOperationsGetOutput {
   };
 }
 export const AssessedWebApplicationOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1918,7 +1910,7 @@ export const AssessedWebApplicationOperationsGetOutput =
  * @param assessedWorkload - Assessed Web Application Name.
  */
 export const AssessedWebApplicationOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessedWebApplicationOperationsGetInput,
     outputSchema: AssessedWebApplicationOperationsGetOutput,
   }));
@@ -1934,7 +1926,7 @@ export interface AssessedWebApplicationOperationsListByAksAssessmentInput {
   totalRecordCount?: number;
 }
 export const AssessedWebApplicationOperationsListByAksAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -1969,7 +1961,7 @@ export interface AssessedWebApplicationOperationsListByAksAssessmentOutput {
   nextLink?: string;
 }
 export const AssessedWebApplicationOperationsListByAksAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2019,7 +2011,7 @@ export const AssessedWebApplicationOperationsListByAksAssessmentOutput =
  * @param assessmentName - AKS Assessment Name.
  */
 export const AssessedWebApplicationOperationsListByAksAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessedWebApplicationOperationsListByAksAssessmentInput,
     outputSchema: AssessedWebApplicationOperationsListByAksAssessmentOutput,
   }));
@@ -2033,7 +2025,7 @@ export interface AssessedWebAppV2OperationsGetInput {
   assessedWebAppName: string;
 }
 export const AssessedWebAppV2OperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -2063,7 +2055,7 @@ export interface AssessedWebAppV2OperationsGetOutput {
   };
 }
 export const AssessedWebAppV2OperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2096,7 +2088,7 @@ export const AssessedWebAppV2OperationsGetOutput =
  * @param assessedWebAppName - Assessed web app ARM name.
  */
 export const AssessedWebAppV2OperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessedWebAppV2OperationsGetInput,
     outputSchema: AssessedWebAppV2OperationsGetOutput,
   }));
@@ -2113,7 +2105,7 @@ export interface AssessedWebAppV2OperationsListByWebAppAssessmentV2Input {
   totalRecordCount?: number;
 }
 export const AssessedWebAppV2OperationsListByWebAppAssessmentV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -2149,7 +2141,7 @@ export interface AssessedWebAppV2OperationsListByWebAppAssessmentV2Output {
   nextLink?: string;
 }
 export const AssessedWebAppV2OperationsListByWebAppAssessmentV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2200,7 +2192,7 @@ export const AssessedWebAppV2OperationsListByWebAppAssessmentV2Output =
  * @param assessmentName - Web app Assessment arm name.
  */
 export const AssessedWebAppV2OperationsListByWebAppAssessmentV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessedWebAppV2OperationsListByWebAppAssessmentV2Input,
     outputSchema: AssessedWebAppV2OperationsListByWebAppAssessmentV2Output,
   }));
@@ -2212,7 +2204,7 @@ export interface AssessmentOptionsOperationsGetInput {
   assessmentOptionsName: string;
 }
 export const AssessmentOptionsOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -2240,7 +2232,7 @@ export interface AssessmentOptionsOperationsGetOutput {
   };
 }
 export const AssessmentOptionsOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2271,7 +2263,7 @@ export const AssessmentOptionsOperationsGetOutput =
  * @param assessmentOptionsName -  assessment options ARM name. Accepted value is 'default'
  */
 export const AssessmentOptionsOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessmentOptionsOperationsGetInput,
     outputSchema: AssessmentOptionsOperationsGetOutput,
   }));
@@ -2282,7 +2274,7 @@ export interface AssessmentOptionsOperationsListByAssessmentProjectInput {
   projectName: string;
 }
 export const AssessmentOptionsOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -2312,7 +2304,7 @@ export interface AssessmentOptionsOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const AssessmentOptionsOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2357,7 +2349,7 @@ export const AssessmentOptionsOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const AssessmentOptionsOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessmentOptionsOperationsListByAssessmentProjectInput,
     outputSchema: AssessmentOptionsOperationsListByAssessmentProjectOutput,
   }));
@@ -2380,7 +2372,7 @@ export interface AssessmentProjectsOperationsCreateInput {
   location: string;
 }
 export const AssessmentProjectsOperationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -2424,7 +2416,7 @@ export interface AssessmentProjectsOperationsCreateOutput {
   };
 }
 export const AssessmentProjectsOperationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2454,7 +2446,7 @@ export const AssessmentProjectsOperationsCreateOutput =
  * @param projectName - Assessment Project Name
  */
 export const AssessmentProjectsOperationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessmentProjectsOperationsCreateInput,
     outputSchema: AssessmentProjectsOperationsCreateOutput,
   }));
@@ -2465,7 +2457,7 @@ export interface AssessmentProjectsOperationsDeleteInput {
   projectName: string;
 }
 export const AssessmentProjectsOperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -2480,7 +2472,7 @@ export const AssessmentProjectsOperationsDeleteInput =
 // Output Schema
 export type AssessmentProjectsOperationsDeleteOutput = void;
 export const AssessmentProjectsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AssessmentProjectsOperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AssessmentProjectsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -2492,7 +2484,7 @@ export const AssessmentProjectsOperationsDeleteOutput =
  * @param projectName - Assessment Project Name
  */
 export const AssessmentProjectsOperationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessmentProjectsOperationsDeleteInput,
     outputSchema: AssessmentProjectsOperationsDeleteOutput,
   }));
@@ -2503,7 +2495,7 @@ export interface AssessmentProjectsOperationsGetInput {
   projectName: string;
 }
 export const AssessmentProjectsOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -2530,7 +2522,7 @@ export interface AssessmentProjectsOperationsGetOutput {
   };
 }
 export const AssessmentProjectsOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2560,7 +2552,7 @@ export const AssessmentProjectsOperationsGetOutput =
  * @param projectName - Assessment Project Name
  */
 export const AssessmentProjectsOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessmentProjectsOperationsGetInput,
     outputSchema: AssessmentProjectsOperationsGetOutput,
   }));
@@ -2570,7 +2562,7 @@ export interface AssessmentProjectsOperationsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const AssessmentProjectsOperationsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2599,7 +2591,7 @@ export interface AssessmentProjectsOperationsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AssessmentProjectsOperationsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2643,7 +2635,7 @@ export const AssessmentProjectsOperationsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AssessmentProjectsOperationsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessmentProjectsOperationsListByResourceGroupInput,
     outputSchema: AssessmentProjectsOperationsListByResourceGroupOutput,
   }));
@@ -2652,7 +2644,7 @@ export interface AssessmentProjectsOperationsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AssessmentProjectsOperationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2680,7 +2672,7 @@ export interface AssessmentProjectsOperationsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AssessmentProjectsOperationsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2723,7 +2715,7 @@ export const AssessmentProjectsOperationsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AssessmentProjectsOperationsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessmentProjectsOperationsListBySubscriptionInput,
     outputSchema: AssessmentProjectsOperationsListBySubscriptionOutput,
   }));
@@ -2751,7 +2743,7 @@ export interface AssessmentProjectsOperationsUpdateInput {
   };
 }
 export const AssessmentProjectsOperationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -2800,7 +2792,7 @@ export interface AssessmentProjectsOperationsUpdateOutput {
   };
 }
 export const AssessmentProjectsOperationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2830,7 +2822,7 @@ export const AssessmentProjectsOperationsUpdateOutput =
  * @param projectName - Assessment Project Name
  */
 export const AssessmentProjectsOperationsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessmentProjectsOperationsUpdateInput,
     outputSchema: AssessmentProjectsOperationsUpdateOutput,
   }));
@@ -2842,7 +2834,7 @@ export interface AssessmentProjectSummaryOperationsGetInput {
   projectSummaryName: string;
 }
 export const AssessmentProjectSummaryOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -2870,7 +2862,7 @@ export interface AssessmentProjectSummaryOperationsGetOutput {
   };
 }
 export const AssessmentProjectSummaryOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2901,7 +2893,7 @@ export const AssessmentProjectSummaryOperationsGetOutput =
  * @param projectSummaryName - Group ARM name
  */
 export const AssessmentProjectSummaryOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessmentProjectSummaryOperationsGetInput,
     outputSchema: AssessmentProjectSummaryOperationsGetOutput,
   }));
@@ -2912,7 +2904,7 @@ export interface AssessmentProjectSummaryOperationsListByAssessmentProjectInput 
   projectName: string;
 }
 export const AssessmentProjectSummaryOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -2942,7 +2934,7 @@ export interface AssessmentProjectSummaryOperationsListByAssessmentProjectOutput
   nextLink?: string;
 }
 export const AssessmentProjectSummaryOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2987,7 +2979,7 @@ export const AssessmentProjectSummaryOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const AssessmentProjectSummaryOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessmentProjectSummaryOperationsListByAssessmentProjectInput,
     outputSchema:
       AssessmentProjectSummaryOperationsListByAssessmentProjectOutput,
@@ -3011,7 +3003,7 @@ export interface AssessmentsOperationsCreateInput {
   };
 }
 export const AssessmentsOperationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -3055,7 +3047,7 @@ export interface AssessmentsOperationsCreateOutput {
   };
 }
 export const AssessmentsOperationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3086,12 +3078,10 @@ export const AssessmentsOperationsCreateOutput =
  * @param groupName - Group ARM name
  * @param assessmentName - Machine Assessment ARM name
  */
-export const AssessmentsOperationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AssessmentsOperationsCreateInput,
-    outputSchema: AssessmentsOperationsCreateOutput,
-  }),
-);
+export const AssessmentsOperationsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AssessmentsOperationsCreateInput,
+  outputSchema: AssessmentsOperationsCreateOutput,
+}));
 // Input Schema
 export interface AssessmentsOperationsDeleteInput {
   subscriptionId: string;
@@ -3101,7 +3091,7 @@ export interface AssessmentsOperationsDeleteInput {
   assessmentName: string;
 }
 export const AssessmentsOperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -3118,7 +3108,7 @@ export const AssessmentsOperationsDeleteInput =
 // Output Schema
 export type AssessmentsOperationsDeleteOutput = void;
 export const AssessmentsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AssessmentsOperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AssessmentsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -3131,12 +3121,10 @@ export const AssessmentsOperationsDeleteOutput =
  * @param groupName - Group ARM name
  * @param assessmentName - Machine Assessment ARM name
  */
-export const AssessmentsOperationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AssessmentsOperationsDeleteInput,
-    outputSchema: AssessmentsOperationsDeleteOutput,
-  }),
-);
+export const AssessmentsOperationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AssessmentsOperationsDeleteInput,
+  outputSchema: AssessmentsOperationsDeleteOutput,
+}));
 // Input Schema
 export interface AssessmentsOperationsDownloadUrlInput {
   subscriptionId: string;
@@ -3146,7 +3134,7 @@ export interface AssessmentsOperationsDownloadUrlInput {
   assessmentName: string;
 }
 export const AssessmentsOperationsDownloadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -3166,7 +3154,7 @@ export interface AssessmentsOperationsDownloadUrlOutput {
   expirationTime: string;
 }
 export const AssessmentsOperationsDownloadUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assessmentReportUrl: Schema.String,
     expirationTime: Schema.String,
   }) as unknown as Schema.Codec<AssessmentsOperationsDownloadUrlOutput>;
@@ -3185,7 +3173,7 @@ export const AssessmentsOperationsDownloadUrlOutput =
  * @param assessmentName - Machine Assessment ARM name
  */
 export const AssessmentsOperationsDownloadUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessmentsOperationsDownloadUrlInput,
     outputSchema: AssessmentsOperationsDownloadUrlOutput,
   }));
@@ -3198,7 +3186,7 @@ export interface AssessmentsOperationsGetInput {
   assessmentName: string;
 }
 export const AssessmentsOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -3227,7 +3215,7 @@ export interface AssessmentsOperationsGetOutput {
   };
 }
 export const AssessmentsOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3258,12 +3246,10 @@ export const AssessmentsOperationsGetOutput =
  * @param groupName - Group ARM name
  * @param assessmentName - Machine Assessment ARM name
  */
-export const AssessmentsOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AssessmentsOperationsGetInput,
-    outputSchema: AssessmentsOperationsGetOutput,
-  }),
-);
+export const AssessmentsOperationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AssessmentsOperationsGetInput,
+  outputSchema: AssessmentsOperationsGetOutput,
+}));
 // Input Schema
 export interface AssessmentsOperationsListByGroupInput {
   subscriptionId: string;
@@ -3272,7 +3258,7 @@ export interface AssessmentsOperationsListByGroupInput {
   groupName: string;
 }
 export const AssessmentsOperationsListByGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -3303,7 +3289,7 @@ export interface AssessmentsOperationsListByGroupOutput {
   nextLink?: string;
 }
 export const AssessmentsOperationsListByGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3349,7 +3335,7 @@ export const AssessmentsOperationsListByGroupOutput =
  * @param groupName - Group ARM name
  */
 export const AssessmentsOperationsListByGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssessmentsOperationsListByGroupInput,
     outputSchema: AssessmentsOperationsListByGroupOutput,
   }));
@@ -3363,7 +3349,7 @@ export interface AvsAssessedMachinesOperationsGetInput {
   avsAssessedMachineName: string;
 }
 export const AvsAssessedMachinesOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -3393,7 +3379,7 @@ export interface AvsAssessedMachinesOperationsGetOutput {
   };
 }
 export const AvsAssessedMachinesOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3426,7 +3412,7 @@ export const AvsAssessedMachinesOperationsGetOutput =
  * @param avsAssessedMachineName - AVS assessment Assessed Machine ARM name
  */
 export const AvsAssessedMachinesOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvsAssessedMachinesOperationsGetInput,
     outputSchema: AvsAssessedMachinesOperationsGetOutput,
   }));
@@ -3443,7 +3429,7 @@ export interface AvsAssessedMachinesOperationsListByAvsAssessmentInput {
   totalRecordCount?: number;
 }
 export const AvsAssessedMachinesOperationsListByAvsAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -3479,7 +3465,7 @@ export interface AvsAssessedMachinesOperationsListByAvsAssessmentOutput {
   nextLink?: string;
 }
 export const AvsAssessedMachinesOperationsListByAvsAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3530,7 +3516,7 @@ export const AvsAssessedMachinesOperationsListByAvsAssessmentOutput =
  * @param assessmentName - AVS Assessment ARM name
  */
 export const AvsAssessedMachinesOperationsListByAvsAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvsAssessedMachinesOperationsListByAvsAssessmentInput,
     outputSchema: AvsAssessedMachinesOperationsListByAvsAssessmentOutput,
   }));
@@ -3542,7 +3528,7 @@ export interface AvsAssessmentOptionsOperationsGetInput {
   avsAssessmentOptionsName: string;
 }
 export const AvsAssessmentOptionsOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -3570,7 +3556,7 @@ export interface AvsAssessmentOptionsOperationsGetOutput {
   };
 }
 export const AvsAssessmentOptionsOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3601,7 +3587,7 @@ export const AvsAssessmentOptionsOperationsGetOutput =
  * @param avsAssessmentOptionsName - AVS Assessment options ARM name. Accepted value is 'default'
  */
 export const AvsAssessmentOptionsOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvsAssessmentOptionsOperationsGetInput,
     outputSchema: AvsAssessmentOptionsOperationsGetOutput,
   }));
@@ -3612,7 +3598,7 @@ export interface AvsAssessmentOptionsOperationsListByAssessmentProjectInput {
   projectName: string;
 }
 export const AvsAssessmentOptionsOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -3642,7 +3628,7 @@ export interface AvsAssessmentOptionsOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const AvsAssessmentOptionsOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3687,7 +3673,7 @@ export const AvsAssessmentOptionsOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const AvsAssessmentOptionsOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvsAssessmentOptionsOperationsListByAssessmentProjectInput,
     outputSchema: AvsAssessmentOptionsOperationsListByAssessmentProjectOutput,
   }));
@@ -3710,7 +3696,7 @@ export interface AvsAssessmentsOperationsCreateInput {
   };
 }
 export const AvsAssessmentsOperationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -3754,7 +3740,7 @@ export interface AvsAssessmentsOperationsCreateOutput {
   };
 }
 export const AvsAssessmentsOperationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3786,7 +3772,7 @@ export const AvsAssessmentsOperationsCreateOutput =
  * @param assessmentName - AVS Assessment ARM name
  */
 export const AvsAssessmentsOperationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvsAssessmentsOperationsCreateInput,
     outputSchema: AvsAssessmentsOperationsCreateOutput,
   }));
@@ -3799,7 +3785,7 @@ export interface AvsAssessmentsOperationsDeleteInput {
   assessmentName: string;
 }
 export const AvsAssessmentsOperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -3816,7 +3802,7 @@ export const AvsAssessmentsOperationsDeleteInput =
 // Output Schema
 export type AvsAssessmentsOperationsDeleteOutput = void;
 export const AvsAssessmentsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AvsAssessmentsOperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AvsAssessmentsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -3830,7 +3816,7 @@ export const AvsAssessmentsOperationsDeleteOutput =
  * @param assessmentName - AVS Assessment ARM name
  */
 export const AvsAssessmentsOperationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvsAssessmentsOperationsDeleteInput,
     outputSchema: AvsAssessmentsOperationsDeleteOutput,
   }));
@@ -3843,7 +3829,7 @@ export interface AvsAssessmentsOperationsDownloadUrlInput {
   assessmentName: string;
 }
 export const AvsAssessmentsOperationsDownloadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -3863,7 +3849,7 @@ export interface AvsAssessmentsOperationsDownloadUrlOutput {
   expirationTime: string;
 }
 export const AvsAssessmentsOperationsDownloadUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assessmentReportUrl: Schema.String,
     expirationTime: Schema.String,
   }) as unknown as Schema.Codec<AvsAssessmentsOperationsDownloadUrlOutput>;
@@ -3882,7 +3868,7 @@ export const AvsAssessmentsOperationsDownloadUrlOutput =
  * @param assessmentName - AVS Assessment ARM name
  */
 export const AvsAssessmentsOperationsDownloadUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvsAssessmentsOperationsDownloadUrlInput,
     outputSchema: AvsAssessmentsOperationsDownloadUrlOutput,
   }));
@@ -3895,7 +3881,7 @@ export interface AvsAssessmentsOperationsGetInput {
   assessmentName: string;
 }
 export const AvsAssessmentsOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -3924,7 +3910,7 @@ export interface AvsAssessmentsOperationsGetOutput {
   };
 }
 export const AvsAssessmentsOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3955,12 +3941,10 @@ export const AvsAssessmentsOperationsGetOutput =
  * @param groupName - Group ARM name
  * @param assessmentName - AVS Assessment ARM name
  */
-export const AvsAssessmentsOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AvsAssessmentsOperationsGetInput,
-    outputSchema: AvsAssessmentsOperationsGetOutput,
-  }),
-);
+export const AvsAssessmentsOperationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AvsAssessmentsOperationsGetInput,
+  outputSchema: AvsAssessmentsOperationsGetOutput,
+}));
 // Input Schema
 export interface AvsAssessmentsOperationsListByGroupInput {
   subscriptionId: string;
@@ -3969,7 +3953,7 @@ export interface AvsAssessmentsOperationsListByGroupInput {
   groupName: string;
 }
 export const AvsAssessmentsOperationsListByGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -4000,7 +3984,7 @@ export interface AvsAssessmentsOperationsListByGroupOutput {
   nextLink?: string;
 }
 export const AvsAssessmentsOperationsListByGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4046,7 +4030,7 @@ export const AvsAssessmentsOperationsListByGroupOutput =
  * @param groupName - Group ARM name
  */
 export const AvsAssessmentsOperationsListByGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvsAssessmentsOperationsListByGroupInput,
     outputSchema: AvsAssessmentsOperationsListByGroupOutput,
   }));
@@ -4058,7 +4042,7 @@ export interface DatabaseInstancesControllerGetDatabaseInstanceInput {
   databaseInstanceName: string;
 }
 export const DatabaseInstancesControllerGetDatabaseInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -4099,7 +4083,7 @@ export interface DatabaseInstancesControllerGetDatabaseInstanceOutput {
   };
 }
 export const DatabaseInstancesControllerGetDatabaseInstanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4150,7 +4134,7 @@ export const DatabaseInstancesControllerGetDatabaseInstanceOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const DatabaseInstancesControllerGetDatabaseInstance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseInstancesControllerGetDatabaseInstanceInput,
     outputSchema: DatabaseInstancesControllerGetDatabaseInstanceOutput,
   }));
@@ -4163,7 +4147,7 @@ export interface DatabaseInstancesControllerListDatabaseInstancesInput {
   pageSize?: number;
 }
 export const DatabaseInstancesControllerListDatabaseInstancesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -4208,7 +4192,7 @@ export interface DatabaseInstancesControllerListDatabaseInstancesOutput {
   nextLink?: string;
 }
 export const DatabaseInstancesControllerListDatabaseInstancesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4267,7 +4251,7 @@ export const DatabaseInstancesControllerListDatabaseInstancesOutput =
  * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const DatabaseInstancesControllerListDatabaseInstances =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseInstancesControllerListDatabaseInstancesInput,
     outputSchema: DatabaseInstancesControllerListDatabaseInstancesOutput,
   }));
@@ -4279,7 +4263,7 @@ export interface DatabasesControllerGetDatabaseInput {
   databaseName: string;
 }
 export const DatabasesControllerGetDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -4319,7 +4303,7 @@ export interface DatabasesControllerGetDatabaseOutput {
   };
 }
 export const DatabasesControllerGetDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4364,7 +4348,7 @@ export const DatabasesControllerGetDatabaseOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const DatabasesControllerGetDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabasesControllerGetDatabaseInput,
     outputSchema: DatabasesControllerGetDatabaseOutput,
   }));
@@ -4377,7 +4361,7 @@ export interface DatabasesControllerListDatabasesInput {
   pageSize?: number;
 }
 export const DatabasesControllerListDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -4421,7 +4405,7 @@ export interface DatabasesControllerListDatabasesOutput {
   nextLink?: string;
 }
 export const DatabasesControllerListDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4474,7 +4458,7 @@ export const DatabasesControllerListDatabasesOutput =
  * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const DatabasesControllerListDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabasesControllerListDatabasesInput,
     outputSchema: DatabasesControllerListDatabasesOutput,
   }));
@@ -4491,7 +4475,7 @@ export interface DependencyMapControllerClientGroupMembersInput {
   filters?: { machineIds?: string[]; processIds?: string[] };
 }
 export const DependencyMapControllerClientGroupMembersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -4517,7 +4501,7 @@ export const DependencyMapControllerClientGroupMembersInput =
 // Output Schema
 export type DependencyMapControllerClientGroupMembersOutput = unknown;
 export const DependencyMapControllerClientGroupMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerClientGroupMembersOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerClientGroupMembersOutput>;
 
 // The operation
 /**
@@ -4529,7 +4513,7 @@ export const DependencyMapControllerClientGroupMembersOutput =
  * @param siteName - Site name
  */
 export const DependencyMapControllerClientGroupMembers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DependencyMapControllerClientGroupMembersInput,
     outputSchema: DependencyMapControllerClientGroupMembersOutput,
   }));
@@ -4542,7 +4526,7 @@ export interface DependencyMapControllerExportDependenciesInput {
   endTime?: string;
 }
 export const DependencyMapControllerExportDependenciesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -4559,7 +4543,7 @@ export const DependencyMapControllerExportDependenciesInput =
 // Output Schema
 export type DependencyMapControllerExportDependenciesOutput = unknown;
 export const DependencyMapControllerExportDependenciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerExportDependenciesOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerExportDependenciesOutput>;
 
 // The operation
 /**
@@ -4571,7 +4555,7 @@ export const DependencyMapControllerExportDependenciesOutput =
  * @param siteName - Site name
  */
 export const DependencyMapControllerExportDependencies =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DependencyMapControllerExportDependenciesInput,
     outputSchema: DependencyMapControllerExportDependenciesOutput,
   }));
@@ -4585,7 +4569,7 @@ export interface DependencyMapControllerGenerateCoarseMapInput {
   filters?: { machineIds?: string[]; processIds?: string[] };
 }
 export const DependencyMapControllerGenerateCoarseMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -4608,7 +4592,7 @@ export const DependencyMapControllerGenerateCoarseMapInput =
 // Output Schema
 export type DependencyMapControllerGenerateCoarseMapOutput = unknown;
 export const DependencyMapControllerGenerateCoarseMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerGenerateCoarseMapOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerGenerateCoarseMapOutput>;
 
 // The operation
 /**
@@ -4620,7 +4604,7 @@ export const DependencyMapControllerGenerateCoarseMapOutput =
  * @param siteName - Site name
  */
 export const DependencyMapControllerGenerateCoarseMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DependencyMapControllerGenerateCoarseMapInput,
     outputSchema: DependencyMapControllerGenerateCoarseMapOutput,
   }));
@@ -4635,7 +4619,7 @@ export interface DependencyMapControllerGenerateDetailedMapInput {
   filters?: { machineIds?: string[]; processIds?: string[] };
 }
 export const DependencyMapControllerGenerateDetailedMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -4659,7 +4643,7 @@ export const DependencyMapControllerGenerateDetailedMapInput =
 // Output Schema
 export type DependencyMapControllerGenerateDetailedMapOutput = unknown;
 export const DependencyMapControllerGenerateDetailedMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerGenerateDetailedMapOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerGenerateDetailedMapOutput>;
 
 // The operation
 /**
@@ -4671,7 +4655,7 @@ export const DependencyMapControllerGenerateDetailedMapOutput =
  * @param siteName - Site name
  */
 export const DependencyMapControllerGenerateDetailedMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DependencyMapControllerGenerateDetailedMapInput,
     outputSchema: DependencyMapControllerGenerateDetailedMapOutput,
   }));
@@ -4686,7 +4670,7 @@ export interface DependencyMapControllerServerGroupMembersInput {
   filters?: { machineIds?: string[]; processIds?: string[] };
 }
 export const DependencyMapControllerServerGroupMembersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -4710,7 +4694,7 @@ export const DependencyMapControllerServerGroupMembersInput =
 // Output Schema
 export type DependencyMapControllerServerGroupMembersOutput = unknown;
 export const DependencyMapControllerServerGroupMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerServerGroupMembersOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerServerGroupMembersOutput>;
 
 // The operation
 /**
@@ -4722,7 +4706,7 @@ export const DependencyMapControllerServerGroupMembersOutput =
  * @param siteName - Site name
  */
 export const DependencyMapControllerServerGroupMembers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DependencyMapControllerServerGroupMembersInput,
     outputSchema: DependencyMapControllerServerGroupMembersOutput,
   }));
@@ -4734,7 +4718,7 @@ export interface EventsControllerDeleteInput {
   eventName: string;
 }
 export const EventsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -4750,7 +4734,7 @@ export const EventsControllerDeleteInput =
 // Output Schema
 export interface EventsControllerDeleteOutput {}
 export const EventsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as unknown as Schema.Codec<EventsControllerDeleteOutput>;
 
@@ -4766,12 +4750,10 @@ export const EventsControllerDeleteOutput =
  * @param eventName - Unique name of an event within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
-export const EventsControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventsControllerDeleteInput,
-    outputSchema: EventsControllerDeleteOutput,
-  }),
-);
+export const EventsControllerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventsControllerDeleteInput,
+  outputSchema: EventsControllerDeleteOutput,
+}));
 // Input Schema
 export interface EventsControllerGetEventInput {
   subscriptionId: string;
@@ -4780,7 +4762,7 @@ export interface EventsControllerGetEventInput {
   eventName: string;
 }
 export const EventsControllerGetEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -4809,7 +4791,7 @@ export interface EventsControllerGetEventOutput {
   };
 }
 export const EventsControllerGetEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4836,12 +4818,10 @@ export const EventsControllerGetEventOutput =
  * @param eventName - Unique name of an event within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
-export const EventsControllerGetEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventsControllerGetEventInput,
-    outputSchema: EventsControllerGetEventOutput,
-  }),
-);
+export const EventsControllerGetEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventsControllerGetEventInput,
+  outputSchema: EventsControllerGetEventOutput,
+}));
 // Input Schema
 export interface EventsControllerListEventsInput {
   subscriptionId: string;
@@ -4850,7 +4830,7 @@ export interface EventsControllerListEventsInput {
   continuationToken?: string;
 }
 export const EventsControllerListEventsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -4882,7 +4862,7 @@ export interface EventsControllerListEventsOutput {
   nextLink?: string;
 }
 export const EventsControllerListEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4916,12 +4896,10 @@ export const EventsControllerListEventsOutput =
  * @param api-version - The API version to use for this operation.
  * @param continuationToken - The continuation token.
  */
-export const EventsControllerListEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventsControllerListEventsInput,
-    outputSchema: EventsControllerListEventsOutput,
-  }),
-);
+export const EventsControllerListEvents = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventsControllerListEventsInput,
+  outputSchema: EventsControllerListEventsOutput,
+}));
 // Input Schema
 export interface GroupsOperationsCreateInput {
   subscriptionId: string;
@@ -4940,7 +4918,7 @@ export interface GroupsOperationsCreateInput {
   };
 }
 export const GroupsOperationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -4983,7 +4961,7 @@ export interface GroupsOperationsCreateOutput {
   };
 }
 export const GroupsOperationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5013,12 +4991,10 @@ export const GroupsOperationsCreateOutput =
  * @param projectName - Assessment Project Name
  * @param groupName - Group ARM name
  */
-export const GroupsOperationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupsOperationsCreateInput,
-    outputSchema: GroupsOperationsCreateOutput,
-  }),
-);
+export const GroupsOperationsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupsOperationsCreateInput,
+  outputSchema: GroupsOperationsCreateOutput,
+}));
 // Input Schema
 export interface GroupsOperationsDeleteInput {
   subscriptionId: string;
@@ -5027,7 +5003,7 @@ export interface GroupsOperationsDeleteInput {
   groupName: string;
 }
 export const GroupsOperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -5043,7 +5019,7 @@ export const GroupsOperationsDeleteInput =
 // Output Schema
 export type GroupsOperationsDeleteOutput = void;
 export const GroupsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsOperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -5055,12 +5031,10 @@ export const GroupsOperationsDeleteOutput =
  * @param projectName - Assessment Project Name
  * @param groupName - Group ARM name
  */
-export const GroupsOperationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupsOperationsDeleteInput,
-    outputSchema: GroupsOperationsDeleteOutput,
-  }),
-);
+export const GroupsOperationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupsOperationsDeleteInput,
+  outputSchema: GroupsOperationsDeleteOutput,
+}));
 // Input Schema
 export interface GroupsOperationsGetInput {
   subscriptionId: string;
@@ -5069,7 +5043,7 @@ export interface GroupsOperationsGetInput {
   groupName: string;
 }
 export const GroupsOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -5097,7 +5071,7 @@ export interface GroupsOperationsGetOutput {
   };
 }
 export const GroupsOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5127,7 +5101,7 @@ export const GroupsOperationsGetOutput =
  * @param projectName - Assessment Project Name
  * @param groupName - Group ARM name
  */
-export const GroupsOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupsOperationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupsOperationsGetInput,
   outputSchema: GroupsOperationsGetOutput,
 }));
@@ -5138,7 +5112,7 @@ export interface GroupsOperationsListByAssessmentProjectInput {
   projectName: string;
 }
 export const GroupsOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -5168,7 +5142,7 @@ export interface GroupsOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const GroupsOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5213,7 +5187,7 @@ export const GroupsOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const GroupsOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupsOperationsListByAssessmentProjectInput,
     outputSchema: GroupsOperationsListByAssessmentProjectOutput,
   }));
@@ -5227,7 +5201,7 @@ export interface GroupsOperationsUpdateMachinesInput {
   properties?: { operationType?: "Add" | "Remove"; machines?: string[] };
 }
 export const GroupsOperationsUpdateMachinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -5262,7 +5236,7 @@ export interface GroupsOperationsUpdateMachinesOutput {
   };
 }
 export const GroupsOperationsUpdateMachinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5295,7 +5269,7 @@ export const GroupsOperationsUpdateMachinesOutput =
  * @param groupName - Group ARM name
  */
 export const GroupsOperationsUpdateMachines =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupsOperationsUpdateMachinesInput,
     outputSchema: GroupsOperationsUpdateMachinesOutput,
   }));
@@ -5347,7 +5321,7 @@ export interface HypervClusterControllerCreateClusterInput {
   };
 }
 export const HypervClusterControllerCreateClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5432,7 +5406,7 @@ export interface HypervClusterControllerCreateClusterOutput {
   };
 }
 export const HypervClusterControllerCreateClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5463,7 +5437,7 @@ export const HypervClusterControllerCreateClusterOutput =
  * @param clusterName -  Cluster ARM name
  */
 export const HypervClusterControllerCreateCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervClusterControllerCreateClusterInput,
     outputSchema: HypervClusterControllerCreateClusterOutput,
   }));
@@ -5475,7 +5449,7 @@ export interface HypervClusterControllerDeleteInput {
   clusterName: string;
 }
 export const HypervClusterControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5491,7 +5465,7 @@ export const HypervClusterControllerDeleteInput =
 // Output Schema
 export type HypervClusterControllerDeleteOutput = void;
 export const HypervClusterControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HypervClusterControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HypervClusterControllerDeleteOutput>;
 
 // The operation
 /**
@@ -5504,7 +5478,7 @@ export const HypervClusterControllerDeleteOutput =
  * @param clusterName -  Cluster ARM name
  */
 export const HypervClusterControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervClusterControllerDeleteInput,
     outputSchema: HypervClusterControllerDeleteOutput,
   }));
@@ -5516,7 +5490,7 @@ export interface HypervClusterControllerGetClusterInput {
   clusterName: string;
 }
 export const HypervClusterControllerGetClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5544,7 +5518,7 @@ export interface HypervClusterControllerGetClusterOutput {
   };
 }
 export const HypervClusterControllerGetClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5575,7 +5549,7 @@ export const HypervClusterControllerGetClusterOutput =
  * @param clusterName -  Cluster ARM name
  */
 export const HypervClusterControllerGetCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervClusterControllerGetClusterInput,
     outputSchema: HypervClusterControllerGetClusterOutput,
   }));
@@ -5587,7 +5561,7 @@ export interface HypervClusterControllerListByHypervSiteInput {
   filter?: string;
 }
 export const HypervClusterControllerListByHypervSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -5618,7 +5592,7 @@ export interface HypervClusterControllerListByHypervSiteOutput {
   nextLink?: string;
 }
 export const HypervClusterControllerListByHypervSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5664,7 +5638,7 @@ export const HypervClusterControllerListByHypervSiteOutput =
  * @param siteName - Site name
  */
 export const HypervClusterControllerListByHypervSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervClusterControllerListByHypervSiteInput,
     outputSchema: HypervClusterControllerListByHypervSiteOutput,
   }));
@@ -5686,7 +5660,7 @@ export interface HypervCollectorsOperationsCreateInput {
   };
 }
 export const HypervCollectorsOperationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -5729,7 +5703,7 @@ export interface HypervCollectorsOperationsCreateOutput {
   };
 }
 export const HypervCollectorsOperationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5760,7 +5734,7 @@ export const HypervCollectorsOperationsCreateOutput =
  * @param hypervCollectorName - Hyper-V collector ARM name
  */
 export const HypervCollectorsOperationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervCollectorsOperationsCreateInput,
     outputSchema: HypervCollectorsOperationsCreateOutput,
   }));
@@ -5772,7 +5746,7 @@ export interface HypervCollectorsOperationsDeleteInput {
   hypervCollectorName: string;
 }
 export const HypervCollectorsOperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -5788,7 +5762,7 @@ export const HypervCollectorsOperationsDeleteInput =
 // Output Schema
 export type HypervCollectorsOperationsDeleteOutput = void;
 export const HypervCollectorsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HypervCollectorsOperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HypervCollectorsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -5801,7 +5775,7 @@ export const HypervCollectorsOperationsDeleteOutput =
  * @param hypervCollectorName - Hyper-V collector ARM name
  */
 export const HypervCollectorsOperationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervCollectorsOperationsDeleteInput,
     outputSchema: HypervCollectorsOperationsDeleteOutput,
   }));
@@ -5813,7 +5787,7 @@ export interface HypervCollectorsOperationsGetInput {
   hypervCollectorName: string;
 }
 export const HypervCollectorsOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -5841,7 +5815,7 @@ export interface HypervCollectorsOperationsGetOutput {
   };
 }
 export const HypervCollectorsOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5872,7 +5846,7 @@ export const HypervCollectorsOperationsGetOutput =
  * @param hypervCollectorName - Hyper-V collector ARM name
  */
 export const HypervCollectorsOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervCollectorsOperationsGetInput,
     outputSchema: HypervCollectorsOperationsGetOutput,
   }));
@@ -5883,7 +5857,7 @@ export interface HypervCollectorsOperationsListByAssessmentProjectInput {
   projectName: string;
 }
 export const HypervCollectorsOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -5913,7 +5887,7 @@ export interface HypervCollectorsOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const HypervCollectorsOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5958,7 +5932,7 @@ export const HypervCollectorsOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const HypervCollectorsOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervCollectorsOperationsListByAssessmentProjectInput,
     outputSchema: HypervCollectorsOperationsListByAssessmentProjectOutput,
   }));
@@ -5975,7 +5949,7 @@ export interface HypervDependencyMapControllerClientGroupMembersInput {
   filters?: { machineIds?: string[]; processIds?: string[] };
 }
 export const HypervDependencyMapControllerClientGroupMembersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6001,7 +5975,7 @@ export const HypervDependencyMapControllerClientGroupMembersInput =
 // Output Schema
 export type HypervDependencyMapControllerClientGroupMembersOutput = unknown;
 export const HypervDependencyMapControllerClientGroupMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerClientGroupMembersOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerClientGroupMembersOutput>;
 
 // The operation
 /**
@@ -6013,7 +5987,7 @@ export const HypervDependencyMapControllerClientGroupMembersOutput =
  * @param siteName - Site name
  */
 export const HypervDependencyMapControllerClientGroupMembers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervDependencyMapControllerClientGroupMembersInput,
     outputSchema: HypervDependencyMapControllerClientGroupMembersOutput,
   }));
@@ -6026,7 +6000,7 @@ export interface HypervDependencyMapControllerExportDependenciesInput {
   endTime?: string;
 }
 export const HypervDependencyMapControllerExportDependenciesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6043,7 +6017,7 @@ export const HypervDependencyMapControllerExportDependenciesInput =
 // Output Schema
 export type HypervDependencyMapControllerExportDependenciesOutput = unknown;
 export const HypervDependencyMapControllerExportDependenciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerExportDependenciesOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerExportDependenciesOutput>;
 
 // The operation
 /**
@@ -6055,7 +6029,7 @@ export const HypervDependencyMapControllerExportDependenciesOutput =
  * @param siteName - Site name
  */
 export const HypervDependencyMapControllerExportDependencies =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervDependencyMapControllerExportDependenciesInput,
     outputSchema: HypervDependencyMapControllerExportDependenciesOutput,
   }));
@@ -6069,7 +6043,7 @@ export interface HypervDependencyMapControllerGenerateCoarseMapInput {
   filters?: { machineIds?: string[]; processIds?: string[] };
 }
 export const HypervDependencyMapControllerGenerateCoarseMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6092,7 +6066,7 @@ export const HypervDependencyMapControllerGenerateCoarseMapInput =
 // Output Schema
 export type HypervDependencyMapControllerGenerateCoarseMapOutput = unknown;
 export const HypervDependencyMapControllerGenerateCoarseMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerGenerateCoarseMapOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerGenerateCoarseMapOutput>;
 
 // The operation
 /**
@@ -6104,7 +6078,7 @@ export const HypervDependencyMapControllerGenerateCoarseMapOutput =
  * @param siteName - Site name
  */
 export const HypervDependencyMapControllerGenerateCoarseMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervDependencyMapControllerGenerateCoarseMapInput,
     outputSchema: HypervDependencyMapControllerGenerateCoarseMapOutput,
   }));
@@ -6119,7 +6093,7 @@ export interface HypervDependencyMapControllerGenerateDetailedMapInput {
   filters?: { machineIds?: string[]; processIds?: string[] };
 }
 export const HypervDependencyMapControllerGenerateDetailedMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6143,7 +6117,7 @@ export const HypervDependencyMapControllerGenerateDetailedMapInput =
 // Output Schema
 export type HypervDependencyMapControllerGenerateDetailedMapOutput = unknown;
 export const HypervDependencyMapControllerGenerateDetailedMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerGenerateDetailedMapOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerGenerateDetailedMapOutput>;
 
 // The operation
 /**
@@ -6155,7 +6129,7 @@ export const HypervDependencyMapControllerGenerateDetailedMapOutput =
  * @param siteName - Site name
  */
 export const HypervDependencyMapControllerGenerateDetailedMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervDependencyMapControllerGenerateDetailedMapInput,
     outputSchema: HypervDependencyMapControllerGenerateDetailedMapOutput,
   }));
@@ -6170,7 +6144,7 @@ export interface HypervDependencyMapControllerServerGroupMembersInput {
   filters?: { machineIds?: string[]; processIds?: string[] };
 }
 export const HypervDependencyMapControllerServerGroupMembersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6194,7 +6168,7 @@ export const HypervDependencyMapControllerServerGroupMembersInput =
 // Output Schema
 export type HypervDependencyMapControllerServerGroupMembersOutput = unknown;
 export const HypervDependencyMapControllerServerGroupMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerServerGroupMembersOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerServerGroupMembersOutput>;
 
 // The operation
 /**
@@ -6206,7 +6180,7 @@ export const HypervDependencyMapControllerServerGroupMembersOutput =
  * @param siteName - Site name
  */
 export const HypervDependencyMapControllerServerGroupMembers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervDependencyMapControllerServerGroupMembersInput,
     outputSchema: HypervDependencyMapControllerServerGroupMembersOutput,
   }));
@@ -6218,7 +6192,7 @@ export interface HypervDependencyMapControllerUpdateDependencyMapStatusInput {
   machines?: { machineId?: string; isDependencyMapToBeEnabled?: boolean }[];
 }
 export const HypervDependencyMapControllerUpdateDependencyMapStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6242,7 +6216,7 @@ export const HypervDependencyMapControllerUpdateDependencyMapStatusInput =
 export type HypervDependencyMapControllerUpdateDependencyMapStatusOutput =
   unknown;
 export const HypervDependencyMapControllerUpdateDependencyMapStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerUpdateDependencyMapStatusOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerUpdateDependencyMapStatusOutput>;
 
 // The operation
 /**
@@ -6255,7 +6229,7 @@ export const HypervDependencyMapControllerUpdateDependencyMapStatusOutput =
  * @param siteName - Site name
  */
 export const HypervDependencyMapControllerUpdateDependencyMapStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervDependencyMapControllerUpdateDependencyMapStatusInput,
     outputSchema: HypervDependencyMapControllerUpdateDependencyMapStatusOutput,
   }));
@@ -6305,7 +6279,7 @@ export interface HypervHostControllerCreateInput {
   };
 }
 export const HypervHostControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6388,7 +6362,7 @@ export interface HypervHostControllerCreateOutput {
   };
 }
 export const HypervHostControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6418,12 +6392,10 @@ export const HypervHostControllerCreateOutput =
  * @param siteName - Site name
  * @param hostName -  Host name
  */
-export const HypervHostControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HypervHostControllerCreateInput,
-    outputSchema: HypervHostControllerCreateOutput,
-  }),
-);
+export const HypervHostControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HypervHostControllerCreateInput,
+  outputSchema: HypervHostControllerCreateOutput,
+}));
 // Input Schema
 export interface HypervHostControllerDeleteInput {
   subscriptionId: string;
@@ -6432,7 +6404,7 @@ export interface HypervHostControllerDeleteInput {
   hostName: string;
 }
 export const HypervHostControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6448,7 +6420,7 @@ export const HypervHostControllerDeleteInput =
 // Output Schema
 export type HypervHostControllerDeleteOutput = void;
 export const HypervHostControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HypervHostControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HypervHostControllerDeleteOutput>;
 
 // The operation
 /**
@@ -6460,12 +6432,10 @@ export const HypervHostControllerDeleteOutput =
  * @param siteName - Site name
  * @param hostName -  Host name
  */
-export const HypervHostControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HypervHostControllerDeleteInput,
-    outputSchema: HypervHostControllerDeleteOutput,
-  }),
-);
+export const HypervHostControllerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HypervHostControllerDeleteInput,
+  outputSchema: HypervHostControllerDeleteOutput,
+}));
 // Input Schema
 export interface HypervHostControllerGetInput {
   subscriptionId: string;
@@ -6474,7 +6444,7 @@ export interface HypervHostControllerGetInput {
   hostName: string;
 }
 export const HypervHostControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6502,7 +6472,7 @@ export interface HypervHostControllerGetOutput {
   };
 }
 export const HypervHostControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6532,12 +6502,10 @@ export const HypervHostControllerGetOutput =
  * @param siteName - Site name
  * @param hostName -  Host name
  */
-export const HypervHostControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HypervHostControllerGetInput,
-    outputSchema: HypervHostControllerGetOutput,
-  }),
-);
+export const HypervHostControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HypervHostControllerGetInput,
+  outputSchema: HypervHostControllerGetOutput,
+}));
 // Input Schema
 export interface HypervHostControllerListByHypervSiteInput {
   subscriptionId: string;
@@ -6546,7 +6514,7 @@ export interface HypervHostControllerListByHypervSiteInput {
   filter?: string;
 }
 export const HypervHostControllerListByHypervSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6577,7 +6545,7 @@ export interface HypervHostControllerListByHypervSiteOutput {
   nextLink?: string;
 }
 export const HypervHostControllerListByHypervSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6623,7 +6591,7 @@ export const HypervHostControllerListByHypervSiteOutput =
  * @param siteName - Site name
  */
 export const HypervHostControllerListByHypervSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervHostControllerListByHypervSiteInput,
     outputSchema: HypervHostControllerListByHypervSiteOutput,
   }));
@@ -6635,7 +6603,7 @@ export interface HypervJobsControllerGetInput {
   jobName: string;
 }
 export const HypervJobsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6663,7 +6631,7 @@ export interface HypervJobsControllerGetOutput {
   };
 }
 export const HypervJobsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6693,12 +6661,10 @@ export const HypervJobsControllerGetOutput =
  * @param siteName - Site name
  * @param jobName -  Jobs name
  */
-export const HypervJobsControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HypervJobsControllerGetInput,
-    outputSchema: HypervJobsControllerGetOutput,
-  }),
-);
+export const HypervJobsControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HypervJobsControllerGetInput,
+  outputSchema: HypervJobsControllerGetOutput,
+}));
 // Input Schema
 export interface HypervJobsControllerListByVmwareSiteInput {
   subscriptionId: string;
@@ -6706,7 +6672,7 @@ export interface HypervJobsControllerListByVmwareSiteInput {
   siteName: string;
 }
 export const HypervJobsControllerListByVmwareSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6736,7 +6702,7 @@ export interface HypervJobsControllerListByVmwareSiteOutput {
   nextLink?: string;
 }
 export const HypervJobsControllerListByVmwareSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6781,7 +6747,7 @@ export const HypervJobsControllerListByVmwareSiteOutput =
  * @param siteName - Site name
  */
 export const HypervJobsControllerListByVmwareSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervJobsControllerListByVmwareSiteInput,
     outputSchema: HypervJobsControllerListByVmwareSiteOutput,
   }));
@@ -6792,7 +6758,7 @@ export interface HypervJobsGetInput {
   siteName: string;
   jobName: string;
 }
-export const HypervJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HypervJobsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   siteName: Schema.String.pipe(T.PathParam()),
@@ -6819,7 +6785,7 @@ export interface HypervJobsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const HypervJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HypervJobsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6849,7 +6815,7 @@ export const HypervJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param siteName - Site name
  * @param jobName -  Job name
  */
-export const HypervJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HypervJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: HypervJobsGetInput,
   outputSchema: HypervJobsGetOutput,
 }));
@@ -6860,7 +6826,7 @@ export interface HypervJobsListByHypervSiteInput {
   siteName: string;
 }
 export const HypervJobsListByHypervSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6890,7 +6856,7 @@ export interface HypervJobsListByHypervSiteOutput {
   nextLink?: string;
 }
 export const HypervJobsListByHypervSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6934,12 +6900,10 @@ export const HypervJobsListByHypervSiteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const HypervJobsListByHypervSite = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HypervJobsListByHypervSiteInput,
-    outputSchema: HypervJobsListByHypervSiteOutput,
-  }),
-);
+export const HypervJobsListByHypervSite = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HypervJobsListByHypervSiteInput,
+  outputSchema: HypervJobsListByHypervSiteOutput,
+}));
 // Input Schema
 export interface HypervMachinesControllerGetInput {
   subscriptionId: string;
@@ -6948,7 +6912,7 @@ export interface HypervMachinesControllerGetInput {
   machineName: string;
 }
 export const HypervMachinesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6976,7 +6940,7 @@ export interface HypervMachinesControllerGetOutput {
   };
 }
 export const HypervMachinesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7006,12 +6970,10 @@ export const HypervMachinesControllerGetOutput =
  * @param siteName - Site name
  * @param machineName -  HypervMachine name
  */
-export const HypervMachinesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HypervMachinesControllerGetInput,
-    outputSchema: HypervMachinesControllerGetOutput,
-  }),
-);
+export const HypervMachinesControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HypervMachinesControllerGetInput,
+  outputSchema: HypervMachinesControllerGetOutput,
+}));
 // Input Schema
 export interface HypervMachinesControllerListByHypervSiteInput {
   subscriptionId: string;
@@ -7023,7 +6985,7 @@ export interface HypervMachinesControllerListByHypervSiteInput {
   totalRecordCount?: number;
 }
 export const HypervMachinesControllerListByHypervSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -7057,7 +7019,7 @@ export interface HypervMachinesControllerListByHypervSiteOutput {
   nextLink?: string;
 }
 export const HypervMachinesControllerListByHypervSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7106,7 +7068,7 @@ export const HypervMachinesControllerListByHypervSiteOutput =
  * @param siteName - Site name
  */
 export const HypervMachinesControllerListByHypervSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervMachinesControllerListByHypervSiteInput,
     outputSchema: HypervMachinesControllerListByHypervSiteOutput,
   }));
@@ -7145,7 +7107,7 @@ export interface HypervMachinesControllerUpdateInput {
   };
 }
 export const HypervMachinesControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -7213,7 +7175,7 @@ export interface HypervMachinesControllerUpdateOutput {
   };
 }
 export const HypervMachinesControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7244,7 +7206,7 @@ export const HypervMachinesControllerUpdateOutput =
  * @param machineName -  HypervMachine name
  */
 export const HypervMachinesControllerUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervMachinesControllerUpdateInput,
     outputSchema: HypervMachinesControllerUpdateOutput,
   }));
@@ -7260,7 +7222,7 @@ export interface HypervMachinesControllerUpdatePropertiesInput {
   }[];
 }
 export const HypervMachinesControllerUpdatePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -7282,7 +7244,7 @@ export const HypervMachinesControllerUpdatePropertiesInput =
 // Output Schema
 export type HypervMachinesControllerUpdatePropertiesOutput = unknown;
 export const HypervMachinesControllerUpdatePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervMachinesControllerUpdatePropertiesOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervMachinesControllerUpdatePropertiesOutput>;
 
 // The operation
 /**
@@ -7295,7 +7257,7 @@ export const HypervMachinesControllerUpdatePropertiesOutput =
  * @param siteName - Site name
  */
 export const HypervMachinesControllerUpdateProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervMachinesControllerUpdatePropertiesInput,
     outputSchema: HypervMachinesControllerUpdatePropertiesOutput,
   }));
@@ -7307,7 +7269,7 @@ export interface HypervOperationsStatusControllerGetHypervOperationsStatusInput 
   operationStatusName: string;
 }
 export const HypervOperationsStatusControllerGetHypervOperationsStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -7331,7 +7293,7 @@ export interface HypervOperationsStatusControllerGetHypervOperationsStatusOutput
   properties?: { result?: string };
 }
 export const HypervOperationsStatusControllerGetHypervOperationsStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -7361,7 +7323,7 @@ export const HypervOperationsStatusControllerGetHypervOperationsStatusOutput =
  * @param operationStatusName - Operation status  Arm Name.
  */
 export const HypervOperationsStatusControllerGetHypervOperationsStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervOperationsStatusControllerGetHypervOperationsStatusInput,
     outputSchema:
       HypervOperationsStatusControllerGetHypervOperationsStatusOutput,
@@ -7374,7 +7336,7 @@ export interface HypervRunAsAccountsControllerGetInput {
   accountName: string;
 }
 export const HypervRunAsAccountsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -7402,7 +7364,7 @@ export interface HypervRunAsAccountsControllerGetOutput {
   };
 }
 export const HypervRunAsAccountsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7433,7 +7395,7 @@ export const HypervRunAsAccountsControllerGetOutput =
  * @param accountName -  RunAsAccounts name
  */
 export const HypervRunAsAccountsControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervRunAsAccountsControllerGetInput,
     outputSchema: HypervRunAsAccountsControllerGetOutput,
   }));
@@ -7444,7 +7406,7 @@ export interface HypervRunAsAccountsControllerListByHypervSiteInput {
   siteName: string;
 }
 export const HypervRunAsAccountsControllerListByHypervSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -7474,7 +7436,7 @@ export interface HypervRunAsAccountsControllerListByHypervSiteOutput {
   nextLink?: string;
 }
 export const HypervRunAsAccountsControllerListByHypervSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7519,7 +7481,7 @@ export const HypervRunAsAccountsControllerListByHypervSiteOutput =
  * @param siteName - Site name
  */
 export const HypervRunAsAccountsControllerListByHypervSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervRunAsAccountsControllerListByHypervSiteInput,
     outputSchema: HypervRunAsAccountsControllerListByHypervSiteOutput,
   }));
@@ -7530,7 +7492,7 @@ export interface HypervSitesControllerComputeErrorSummaryInput {
   siteName: string;
 }
 export const HypervSitesControllerComputeErrorSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -7557,7 +7519,7 @@ export interface HypervSitesControllerComputeErrorSummaryOutput {
   nextLink?: string;
 }
 export const HypervSitesControllerComputeErrorSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applianceName: Schema.String,
     discoveryScopeErrorSummaries: Schema.Struct({
       affectedResourceType: Schema.String,
@@ -7582,7 +7544,7 @@ export const HypervSitesControllerComputeErrorSummaryOutput =
  * @param siteName - Site name
  */
 export const HypervSitesControllerComputeErrorSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervSitesControllerComputeErrorSummaryInput,
     outputSchema: HypervSitesControllerComputeErrorSummaryOutput,
   }));
@@ -7593,7 +7555,7 @@ export interface HypervSitesControllerComputeusageInput {
   siteName: string;
 }
 export const HypervSitesControllerComputeusageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -7613,7 +7575,7 @@ export interface HypervSitesControllerComputeusageOutput {
   clusterCount?: number;
 }
 export const HypervSitesControllerComputeusageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     machineCount: Schema.optional(Schema.Number),
     runAsAccountCount: Schema.optional(Schema.Number),
     hostCount: Schema.optional(Schema.Number),
@@ -7630,7 +7592,7 @@ export const HypervSitesControllerComputeusageOutput =
  * @param siteName - Site name
  */
 export const HypervSitesControllerComputeusage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervSitesControllerComputeusageInput,
     outputSchema: HypervSitesControllerComputeusageOutput,
   }));
@@ -7672,7 +7634,7 @@ export interface HypervSitesControllerCreateInput {
   location: string;
 }
 export const HypervSitesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -7739,7 +7701,7 @@ export interface HypervSitesControllerCreateOutput {
   };
 }
 export const HypervSitesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7768,12 +7730,10 @@ export const HypervSitesControllerCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const HypervSitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HypervSitesControllerCreateInput,
-    outputSchema: HypervSitesControllerCreateOutput,
-  }),
-);
+export const HypervSitesControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HypervSitesControllerCreateInput,
+  outputSchema: HypervSitesControllerCreateOutput,
+}));
 // Input Schema
 export interface HypervSitesControllerDeleteInput {
   subscriptionId: string;
@@ -7781,7 +7741,7 @@ export interface HypervSitesControllerDeleteInput {
   siteName: string;
 }
 export const HypervSitesControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -7796,7 +7756,7 @@ export const HypervSitesControllerDeleteInput =
 // Output Schema
 export type HypervSitesControllerDeleteOutput = void;
 export const HypervSitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HypervSitesControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HypervSitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -7807,12 +7767,10 @@ export const HypervSitesControllerDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const HypervSitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HypervSitesControllerDeleteInput,
-    outputSchema: HypervSitesControllerDeleteOutput,
-  }),
-);
+export const HypervSitesControllerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HypervSitesControllerDeleteInput,
+  outputSchema: HypervSitesControllerDeleteOutput,
+}));
 // Input Schema
 export interface HypervSitesControllerExportApplicationsInput {
   subscriptionId: string;
@@ -7820,7 +7778,7 @@ export interface HypervSitesControllerExportApplicationsInput {
   siteName: string;
 }
 export const HypervSitesControllerExportApplicationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -7835,7 +7793,7 @@ export const HypervSitesControllerExportApplicationsInput =
 // Output Schema
 export type HypervSitesControllerExportApplicationsOutput = unknown;
 export const HypervSitesControllerExportApplicationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervSitesControllerExportApplicationsOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervSitesControllerExportApplicationsOutput>;
 
 // The operation
 /**
@@ -7848,7 +7806,7 @@ export const HypervSitesControllerExportApplicationsOutput =
  * @param siteName - Site name
  */
 export const HypervSitesControllerExportApplications =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervSitesControllerExportApplicationsInput,
     outputSchema: HypervSitesControllerExportApplicationsOutput,
   }));
@@ -7866,7 +7824,7 @@ export interface HypervSitesControllerExportMachineErrorsInput {
   };
 }
 export const HypervSitesControllerExportMachineErrorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -7893,7 +7851,7 @@ export const HypervSitesControllerExportMachineErrorsInput =
 // Output Schema
 export type HypervSitesControllerExportMachineErrorsOutput = unknown;
 export const HypervSitesControllerExportMachineErrorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervSitesControllerExportMachineErrorsOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervSitesControllerExportMachineErrorsOutput>;
 
 // The operation
 /**
@@ -7906,7 +7864,7 @@ export const HypervSitesControllerExportMachineErrorsOutput =
  * @param siteName - Site name
  */
 export const HypervSitesControllerExportMachineErrors =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervSitesControllerExportMachineErrorsInput,
     outputSchema: HypervSitesControllerExportMachineErrorsOutput,
   }));
@@ -7917,7 +7875,7 @@ export interface HypervSitesControllerGetInput {
   siteName: string;
 }
 export const HypervSitesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -7944,7 +7902,7 @@ export interface HypervSitesControllerGetOutput {
   };
 }
 export const HypervSitesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7973,12 +7931,10 @@ export const HypervSitesControllerGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const HypervSitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HypervSitesControllerGetInput,
-    outputSchema: HypervSitesControllerGetOutput,
-  }),
-);
+export const HypervSitesControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HypervSitesControllerGetInput,
+  outputSchema: HypervSitesControllerGetOutput,
+}));
 // Input Schema
 export interface HypervSitesControllerListHealthSummaryInput {
   subscriptionId: string;
@@ -7986,7 +7942,7 @@ export interface HypervSitesControllerListHealthSummaryInput {
   siteName: string;
 }
 export const HypervSitesControllerListHealthSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8021,7 +7977,7 @@ export interface HypervSitesControllerListHealthSummaryOutput {
   nextLink?: string;
 }
 export const HypervSitesControllerListHealthSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         applianceName: Schema.optional(Schema.String),
@@ -8059,7 +8015,7 @@ export const HypervSitesControllerListHealthSummaryOutput =
  * @param siteName - Site name
  */
 export const HypervSitesControllerListHealthSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervSitesControllerListHealthSummaryInput,
     outputSchema: HypervSitesControllerListHealthSummaryOutput,
   }));
@@ -8070,7 +8026,7 @@ export interface HypervSitesControllerSummaryInput {
   siteName: string;
 }
 export const HypervSitesControllerSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8090,7 +8046,7 @@ export interface HypervSitesControllerSummaryOutput {
   clusterCount?: number;
 }
 export const HypervSitesControllerSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     machineCount: Schema.optional(Schema.Number),
     runAsAccountCount: Schema.optional(Schema.Number),
     hostCount: Schema.optional(Schema.Number),
@@ -8107,7 +8063,7 @@ export const HypervSitesControllerSummaryOutput =
  * @param siteName - Site name
  */
 export const HypervSitesControllerSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervSitesControllerSummaryInput,
     outputSchema: HypervSitesControllerSummaryOutput,
   }));
@@ -8146,7 +8102,7 @@ export interface HypervSitesControllerUpdateInput {
   };
 }
 export const HypervSitesControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8210,7 +8166,7 @@ export interface HypervSitesControllerUpdateOutput {
   };
 }
 export const HypervSitesControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8239,19 +8195,17 @@ export const HypervSitesControllerUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const HypervSitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HypervSitesControllerUpdateInput,
-    outputSchema: HypervSitesControllerUpdateOutput,
-  }),
-);
+export const HypervSitesControllerUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HypervSitesControllerUpdateInput,
+  outputSchema: HypervSitesControllerUpdateOutput,
+}));
 // Input Schema
 export interface HypervSitesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const HypervSitesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -8280,7 +8234,7 @@ export interface HypervSitesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const HypervSitesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8326,7 +8280,7 @@ export const HypervSitesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const HypervSitesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervSitesListByResourceGroupInput,
     outputSchema: HypervSitesListByResourceGroupOutput,
   }));
@@ -8335,7 +8289,7 @@ export interface HypervSitesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const HypervSitesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -8363,7 +8317,7 @@ export interface HypervSitesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const HypervSitesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8408,7 +8362,7 @@ export const HypervSitesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const HypervSitesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervSitesListBySubscriptionInput,
     outputSchema: HypervSitesListBySubscriptionOutput,
   }));
@@ -8421,7 +8375,7 @@ export interface HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryI
   default: "default";
 }
 export const HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8450,7 +8404,7 @@ export interface HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryO
   };
 }
 export const HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8482,7 +8436,7 @@ export const HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryOutpu
  * @param default - Default value.
  */
 export const HypervSoftwareInventoriesControllerGetMachineSoftwareInventory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryInput,
     outputSchema:
@@ -8496,7 +8450,7 @@ export interface HypervSoftwareInventoriesControllerListByHypervMachineInput {
   machineName: string;
 }
 export const HypervSoftwareInventoriesControllerListByHypervMachineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8527,7 +8481,7 @@ export interface HypervSoftwareInventoriesControllerListByHypervMachineOutput {
   nextLink?: string;
 }
 export const HypervSoftwareInventoriesControllerListByHypervMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8573,7 +8527,7 @@ export const HypervSoftwareInventoriesControllerListByHypervMachineOutput =
  * @param machineName -  HypervMachine name
  */
 export const HypervSoftwareInventoriesControllerListByHypervMachine =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HypervSoftwareInventoriesControllerListByHypervMachineInput,
     outputSchema: HypervSoftwareInventoriesControllerListByHypervMachineOutput,
   }));
@@ -8586,7 +8540,7 @@ export interface IisWebApplicationsControllerGetInput {
   webApplicationName: string;
 }
 export const IisWebApplicationsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8615,7 +8569,7 @@ export interface IisWebApplicationsControllerGetOutput {
   };
 }
 export const IisWebApplicationsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8647,7 +8601,7 @@ export const IisWebApplicationsControllerGetOutput =
  * @param webApplicationName - Web application name.
  */
 export const IisWebApplicationsControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IisWebApplicationsControllerGetInput,
     outputSchema: IisWebApplicationsControllerGetOutput,
   }));
@@ -8663,7 +8617,7 @@ export interface IisWebApplicationsControllerListByWebAppSiteInput {
   totalRecordCount?: number;
 }
 export const IisWebApplicationsControllerListByWebAppSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8698,7 +8652,7 @@ export interface IisWebApplicationsControllerListByWebAppSiteOutput {
   nextLink?: string;
 }
 export const IisWebApplicationsControllerListByWebAppSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8748,7 +8702,7 @@ export const IisWebApplicationsControllerListByWebAppSiteOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const IisWebApplicationsControllerListByWebAppSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IisWebApplicationsControllerListByWebAppSiteInput,
     outputSchema: IisWebApplicationsControllerListByWebAppSiteOutput,
   }));
@@ -8762,7 +8716,7 @@ export interface IisWebApplicationsControllerUpdateInput {
   properties?: { tags?: Record<string, string> };
 }
 export const IisWebApplicationsControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8796,7 +8750,7 @@ export interface IisWebApplicationsControllerUpdateOutput {
   };
 }
 export const IisWebApplicationsControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8828,7 +8782,7 @@ export const IisWebApplicationsControllerUpdateOutput =
  * @param webApplicationName - Web application name.
  */
 export const IisWebApplicationsControllerUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IisWebApplicationsControllerUpdateInput,
     outputSchema: IisWebApplicationsControllerUpdateOutput,
   }));
@@ -8841,7 +8795,7 @@ export interface IisWebServersControllerGetInput {
   webServerName: string;
 }
 export const IisWebServersControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8870,7 +8824,7 @@ export interface IisWebServersControllerGetOutput {
   };
 }
 export const IisWebServersControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8901,12 +8855,10 @@ export const IisWebServersControllerGetOutput =
  * @param webAppSiteName - Web app site name.
  * @param webServerName - Web server name.
  */
-export const IisWebServersControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IisWebServersControllerGetInput,
-    outputSchema: IisWebServersControllerGetOutput,
-  }),
-);
+export const IisWebServersControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IisWebServersControllerGetInput,
+  outputSchema: IisWebServersControllerGetOutput,
+}));
 // Input Schema
 export interface IisWebServersControllerListByWebAppSiteInput {
   subscriptionId: string;
@@ -8919,7 +8871,7 @@ export interface IisWebServersControllerListByWebAppSiteInput {
   totalRecordCount?: number;
 }
 export const IisWebServersControllerListByWebAppSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -8954,7 +8906,7 @@ export interface IisWebServersControllerListByWebAppSiteOutput {
   nextLink?: string;
 }
 export const IisWebServersControllerListByWebAppSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9004,7 +8956,7 @@ export const IisWebServersControllerListByWebAppSiteOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const IisWebServersControllerListByWebAppSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IisWebServersControllerListByWebAppSiteInput,
     outputSchema: IisWebServersControllerListByWebAppSiteOutput,
   }));
@@ -9026,7 +8978,7 @@ export interface ImportCollectorsOperationsCreateInput {
   };
 }
 export const ImportCollectorsOperationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -9069,7 +9021,7 @@ export interface ImportCollectorsOperationsCreateOutput {
   };
 }
 export const ImportCollectorsOperationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9100,7 +9052,7 @@ export const ImportCollectorsOperationsCreateOutput =
  * @param importCollectorName - Import collector ARM name
  */
 export const ImportCollectorsOperationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportCollectorsOperationsCreateInput,
     outputSchema: ImportCollectorsOperationsCreateOutput,
   }));
@@ -9112,7 +9064,7 @@ export interface ImportCollectorsOperationsDeleteInput {
   importCollectorName: string;
 }
 export const ImportCollectorsOperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -9128,7 +9080,7 @@ export const ImportCollectorsOperationsDeleteInput =
 // Output Schema
 export type ImportCollectorsOperationsDeleteOutput = void;
 export const ImportCollectorsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportCollectorsOperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportCollectorsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -9141,7 +9093,7 @@ export const ImportCollectorsOperationsDeleteOutput =
  * @param importCollectorName - Import collector ARM name
  */
 export const ImportCollectorsOperationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportCollectorsOperationsDeleteInput,
     outputSchema: ImportCollectorsOperationsDeleteOutput,
   }));
@@ -9153,7 +9105,7 @@ export interface ImportCollectorsOperationsGetInput {
   importCollectorName: string;
 }
 export const ImportCollectorsOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -9181,7 +9133,7 @@ export interface ImportCollectorsOperationsGetOutput {
   };
 }
 export const ImportCollectorsOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9212,7 +9164,7 @@ export const ImportCollectorsOperationsGetOutput =
  * @param importCollectorName - Import collector ARM name
  */
 export const ImportCollectorsOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportCollectorsOperationsGetInput,
     outputSchema: ImportCollectorsOperationsGetOutput,
   }));
@@ -9223,7 +9175,7 @@ export interface ImportCollectorsOperationsListByAssessmentProjectInput {
   projectName: string;
 }
 export const ImportCollectorsOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -9253,7 +9205,7 @@ export interface ImportCollectorsOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const ImportCollectorsOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9298,7 +9250,7 @@ export const ImportCollectorsOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const ImportCollectorsOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportCollectorsOperationsListByAssessmentProjectInput,
     outputSchema: ImportCollectorsOperationsListByAssessmentProjectOutput,
   }));
@@ -9310,7 +9262,7 @@ export interface ImportJobsControllerGetInput {
   jobName: string;
 }
 export const ImportJobsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -9338,7 +9290,7 @@ export interface ImportJobsControllerGetOutput {
   };
 }
 export const ImportJobsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9368,12 +9320,10 @@ export const ImportJobsControllerGetOutput =
  * @param siteName - Site name
  * @param jobName -  Jobs name
  */
-export const ImportJobsControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImportJobsControllerGetInput,
-    outputSchema: ImportJobsControllerGetOutput,
-  }),
-);
+export const ImportJobsControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImportJobsControllerGetInput,
+  outputSchema: ImportJobsControllerGetOutput,
+}));
 // Input Schema
 export interface ImportJobsControllerGetDeletejobInput {
   subscriptionId: string;
@@ -9382,7 +9332,7 @@ export interface ImportJobsControllerGetDeletejobInput {
   jobName: string;
 }
 export const ImportJobsControllerGetDeletejobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -9410,7 +9360,7 @@ export interface ImportJobsControllerGetDeletejobOutput {
   };
 }
 export const ImportJobsControllerGetDeletejobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9441,7 +9391,7 @@ export const ImportJobsControllerGetDeletejobOutput =
  * @param jobName - Job Arm Name.
  */
 export const ImportJobsControllerGetDeletejob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportJobsControllerGetDeletejobInput,
     outputSchema: ImportJobsControllerGetDeletejobOutput,
   }));
@@ -9453,7 +9403,7 @@ export interface ImportJobsControllerGetExportjobInput {
   jobName: string;
 }
 export const ImportJobsControllerGetExportjobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -9478,7 +9428,7 @@ export interface ImportJobsControllerGetExportjobOutput {
   displayName?: string;
 }
 export const ImportJobsControllerGetExportjobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
@@ -9505,7 +9455,7 @@ export const ImportJobsControllerGetExportjobOutput =
  * @param jobName - Job Arm Name.
  */
 export const ImportJobsControllerGetExportjob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportJobsControllerGetExportjobInput,
     outputSchema: ImportJobsControllerGetExportjobOutput,
   }));
@@ -9517,7 +9467,7 @@ export interface ImportJobsControllerGetImportjobInput {
   jobName: string;
 }
 export const ImportJobsControllerGetImportjobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -9560,7 +9510,7 @@ export interface ImportJobsControllerGetImportjobOutput {
   displayName?: string;
 }
 export const ImportJobsControllerGetImportjobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
@@ -9607,7 +9557,7 @@ export const ImportJobsControllerGetImportjobOutput =
  * @param jobName - Job Arm Name.
  */
 export const ImportJobsControllerGetImportjob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportJobsControllerGetImportjobInput,
     outputSchema: ImportJobsControllerGetImportjobOutput,
   }));
@@ -9618,7 +9568,7 @@ export interface ImportJobsControllerListByImportSiteInput {
   siteName: string;
 }
 export const ImportJobsControllerListByImportSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -9648,7 +9598,7 @@ export interface ImportJobsControllerListByImportSiteOutput {
   nextLink?: string;
 }
 export const ImportJobsControllerListByImportSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9693,7 +9643,7 @@ export const ImportJobsControllerListByImportSiteOutput =
  * @param siteName - Site name
  */
 export const ImportJobsControllerListByImportSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportJobsControllerListByImportSiteInput,
     outputSchema: ImportJobsControllerListByImportSiteOutput,
   }));
@@ -9704,7 +9654,7 @@ export interface ImportJobsControllerListDeletejobsInput {
   siteName: string;
 }
 export const ImportJobsControllerListDeletejobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -9734,7 +9684,7 @@ export interface ImportJobsControllerListDeletejobsOutput {
   nextLink?: string;
 }
 export const ImportJobsControllerListDeletejobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9781,7 +9731,7 @@ export const ImportJobsControllerListDeletejobsOutput =
  * @param siteName - Site name
  */
 export const ImportJobsControllerListDeletejobs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportJobsControllerListDeletejobsInput,
     outputSchema: ImportJobsControllerListDeletejobsOutput,
   }));
@@ -9792,7 +9742,7 @@ export interface ImportJobsControllerListExportjobsInput {
   siteName: string;
 }
 export const ImportJobsControllerListExportjobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -9819,7 +9769,7 @@ export interface ImportJobsControllerListExportjobsOutput {
   nextLink?: string;
 }
 export const ImportJobsControllerListExportjobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9852,7 +9802,7 @@ export const ImportJobsControllerListExportjobsOutput =
  * @param siteName - Site name
  */
 export const ImportJobsControllerListExportjobs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportJobsControllerListExportjobsInput,
     outputSchema: ImportJobsControllerListExportjobsOutput,
   }));
@@ -9863,7 +9813,7 @@ export interface ImportJobsControllerListImportjobsInput {
   siteName: string;
 }
 export const ImportJobsControllerListImportjobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -9908,7 +9858,7 @@ export interface ImportJobsControllerListImportjobsOutput {
   nextLink?: string;
 }
 export const ImportJobsControllerListImportjobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9961,7 +9911,7 @@ export const ImportJobsControllerListImportjobsOutput =
  * @param siteName - Site name
  */
 export const ImportJobsControllerListImportjobs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportJobsControllerListImportjobsInput,
     outputSchema: ImportJobsControllerListImportjobsOutput,
   }));
@@ -9973,7 +9923,7 @@ export interface ImportMachinesControllerDeleteInput {
   machineName: string;
 }
 export const ImportMachinesControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -9989,7 +9939,7 @@ export const ImportMachinesControllerDeleteInput =
 // Output Schema
 export type ImportMachinesControllerDeleteOutput = void;
 export const ImportMachinesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportMachinesControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportMachinesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -10002,7 +9952,7 @@ export const ImportMachinesControllerDeleteOutput =
  * @param machineName - Machine name
  */
 export const ImportMachinesControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportMachinesControllerDeleteInput,
     outputSchema: ImportMachinesControllerDeleteOutput,
   }));
@@ -10014,7 +9964,7 @@ export interface ImportMachinesControllerGetInput {
   machineName: string;
 }
 export const ImportMachinesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -10042,7 +9992,7 @@ export interface ImportMachinesControllerGetOutput {
   };
 }
 export const ImportMachinesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10072,12 +10022,10 @@ export const ImportMachinesControllerGetOutput =
  * @param siteName - Site name
  * @param machineName - Machine name
  */
-export const ImportMachinesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImportMachinesControllerGetInput,
-    outputSchema: ImportMachinesControllerGetOutput,
-  }),
-);
+export const ImportMachinesControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImportMachinesControllerGetInput,
+  outputSchema: ImportMachinesControllerGetOutput,
+}));
 // Input Schema
 export interface ImportMachinesControllerListByImportSiteInput {
   subscriptionId: string;
@@ -10089,7 +10037,7 @@ export interface ImportMachinesControllerListByImportSiteInput {
   totalRecordCount?: number;
 }
 export const ImportMachinesControllerListByImportSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -10123,7 +10071,7 @@ export interface ImportMachinesControllerListByImportSiteOutput {
   nextLink?: string;
 }
 export const ImportMachinesControllerListByImportSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10172,7 +10120,7 @@ export const ImportMachinesControllerListByImportSiteOutput =
  * @param siteName - Site name
  */
 export const ImportMachinesControllerListByImportSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportMachinesControllerListByImportSiteInput,
     outputSchema: ImportMachinesControllerListByImportSiteOutput,
   }));
@@ -10198,7 +10146,7 @@ export interface ImportSitesControllerCreateInput {
   location: string;
 }
 export const ImportSitesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -10245,7 +10193,7 @@ export interface ImportSitesControllerCreateOutput {
   };
 }
 export const ImportSitesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10274,12 +10222,10 @@ export const ImportSitesControllerCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const ImportSitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImportSitesControllerCreateInput,
-    outputSchema: ImportSitesControllerCreateOutput,
-  }),
-);
+export const ImportSitesControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImportSitesControllerCreateInput,
+  outputSchema: ImportSitesControllerCreateOutput,
+}));
 // Input Schema
 export interface ImportSitesControllerDeleteInput {
   subscriptionId: string;
@@ -10287,7 +10233,7 @@ export interface ImportSitesControllerDeleteInput {
   siteName: string;
 }
 export const ImportSitesControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -10302,7 +10248,7 @@ export const ImportSitesControllerDeleteInput =
 // Output Schema
 export type ImportSitesControllerDeleteOutput = void;
 export const ImportSitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportSitesControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportSitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -10313,12 +10259,10 @@ export const ImportSitesControllerDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const ImportSitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImportSitesControllerDeleteInput,
-    outputSchema: ImportSitesControllerDeleteOutput,
-  }),
-);
+export const ImportSitesControllerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImportSitesControllerDeleteInput,
+  outputSchema: ImportSitesControllerDeleteOutput,
+}));
 // Input Schema
 export interface ImportSitesControllerDeleteImportedMachinesInput {
   subscriptionId: string;
@@ -10326,7 +10270,7 @@ export interface ImportSitesControllerDeleteImportedMachinesInput {
   siteName: string;
 }
 export const ImportSitesControllerDeleteImportedMachinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -10344,7 +10288,7 @@ export interface ImportSitesControllerDeleteImportedMachinesOutput {
   uri?: string;
 }
 export const ImportSitesControllerDeleteImportedMachinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobArmId: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ImportSitesControllerDeleteImportedMachinesOutput>;
@@ -10359,7 +10303,7 @@ export const ImportSitesControllerDeleteImportedMachinesOutput =
  * @param siteName - Site name
  */
 export const ImportSitesControllerDeleteImportedMachines =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportSitesControllerDeleteImportedMachinesInput,
     outputSchema: ImportSitesControllerDeleteImportedMachinesOutput,
   }));
@@ -10372,7 +10316,7 @@ export interface ImportSitesControllerExportUriInput {
   uri?: string;
 }
 export const ImportSitesControllerExportUriInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -10392,7 +10336,7 @@ export interface ImportSitesControllerExportUriOutput {
   uri?: string;
 }
 export const ImportSitesControllerExportUriOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobArmId: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ImportSitesControllerExportUriOutput>;
@@ -10407,7 +10351,7 @@ export const ImportSitesControllerExportUriOutput =
  * @param siteName - Site name
  */
 export const ImportSitesControllerExportUri =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportSitesControllerExportUriInput,
     outputSchema: ImportSitesControllerExportUriOutput,
   }));
@@ -10418,7 +10362,7 @@ export interface ImportSitesControllerGetInput {
   siteName: string;
 }
 export const ImportSitesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -10445,7 +10389,7 @@ export interface ImportSitesControllerGetOutput {
   };
 }
 export const ImportSitesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10474,12 +10418,10 @@ export const ImportSitesControllerGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const ImportSitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImportSitesControllerGetInput,
-    outputSchema: ImportSitesControllerGetOutput,
-  }),
-);
+export const ImportSitesControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImportSitesControllerGetInput,
+  outputSchema: ImportSitesControllerGetOutput,
+}));
 // Input Schema
 export interface ImportSitesControllerImportUriInput {
   subscriptionId: string;
@@ -10489,7 +10431,7 @@ export interface ImportSitesControllerImportUriInput {
   uri?: string;
 }
 export const ImportSitesControllerImportUriInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -10509,7 +10451,7 @@ export interface ImportSitesControllerImportUriOutput {
   uri?: string;
 }
 export const ImportSitesControllerImportUriOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobArmId: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ImportSitesControllerImportUriOutput>;
@@ -10524,7 +10466,7 @@ export const ImportSitesControllerImportUriOutput =
  * @param siteName - Site name
  */
 export const ImportSitesControllerImportUri =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportSitesControllerImportUriInput,
     outputSchema: ImportSitesControllerImportUriOutput,
   }));
@@ -10534,7 +10476,7 @@ export interface ImportSitesControllerListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const ImportSitesControllerListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -10563,7 +10505,7 @@ export interface ImportSitesControllerListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ImportSitesControllerListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10607,7 +10549,7 @@ export const ImportSitesControllerListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ImportSitesControllerListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportSitesControllerListByResourceGroupInput,
     outputSchema: ImportSitesControllerListByResourceGroupOutput,
   }));
@@ -10616,7 +10558,7 @@ export interface ImportSitesControllerListBySubscriptionInput {
   subscriptionId: string;
 }
 export const ImportSitesControllerListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -10644,7 +10586,7 @@ export interface ImportSitesControllerListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ImportSitesControllerListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10687,7 +10629,7 @@ export const ImportSitesControllerListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ImportSitesControllerListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportSitesControllerListBySubscriptionInput,
     outputSchema: ImportSitesControllerListBySubscriptionOutput,
   }));
@@ -10710,7 +10652,7 @@ export interface ImportSitesControllerUpdateInput {
   };
 }
 export const ImportSitesControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -10754,7 +10696,7 @@ export interface ImportSitesControllerUpdateOutput {
   };
 }
 export const ImportSitesControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10783,12 +10725,10 @@ export const ImportSitesControllerUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const ImportSitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImportSitesControllerUpdateInput,
-    outputSchema: ImportSitesControllerUpdateOutput,
-  }),
-);
+export const ImportSitesControllerUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImportSitesControllerUpdateInput,
+  outputSchema: ImportSitesControllerUpdateOutput,
+}));
 // Input Schema
 export interface MachinesControllerGetInput {
   subscriptionId: string;
@@ -10797,7 +10737,7 @@ export interface MachinesControllerGetInput {
   machineName: string;
 }
 export const MachinesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -10825,7 +10765,7 @@ export interface MachinesControllerGetOutput {
   };
 }
 export const MachinesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10855,12 +10795,10 @@ export const MachinesControllerGetOutput =
  * @param siteName - Site name
  * @param machineName - Machine name
  */
-export const MachinesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesControllerGetInput,
-    outputSchema: MachinesControllerGetOutput,
-  }),
-);
+export const MachinesControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesControllerGetInput,
+  outputSchema: MachinesControllerGetOutput,
+}));
 // Input Schema
 export interface MachinesControllerGetMachineInput {
   subscriptionId: string;
@@ -10869,7 +10807,7 @@ export interface MachinesControllerGetMachineInput {
   machineName: string;
 }
 export const MachinesControllerGetMachineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -10948,7 +10886,7 @@ export interface MachinesControllerGetMachineOutput {
   };
 }
 export const MachinesControllerGetMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11046,7 +10984,7 @@ export const MachinesControllerGetMachineOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MachinesControllerGetMachine =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MachinesControllerGetMachineInput,
     outputSchema: MachinesControllerGetMachineOutput,
   }));
@@ -11061,7 +10999,7 @@ export interface MachinesControllerListByVmwareSiteInput {
   totalRecordCount?: number;
 }
 export const MachinesControllerListByVmwareSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -11095,7 +11033,7 @@ export interface MachinesControllerListByVmwareSiteOutput {
   nextLink?: string;
 }
 export const MachinesControllerListByVmwareSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11144,7 +11082,7 @@ export const MachinesControllerListByVmwareSiteOutput =
  * @param siteName - Site name
  */
 export const MachinesControllerListByVmwareSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MachinesControllerListByVmwareSiteInput,
     outputSchema: MachinesControllerListByVmwareSiteOutput,
   }));
@@ -11157,7 +11095,7 @@ export interface MachinesControllerListMachinesInput {
   pageSize?: number;
 }
 export const MachinesControllerListMachinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -11240,7 +11178,7 @@ export interface MachinesControllerListMachinesOutput {
   nextLink?: string;
 }
 export const MachinesControllerListMachinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11348,7 +11286,7 @@ export const MachinesControllerListMachinesOutput =
  * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const MachinesControllerListMachines =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MachinesControllerListMachinesInput,
     outputSchema: MachinesControllerListMachinesOutput,
   }));
@@ -11360,7 +11298,7 @@ export interface MachinesControllerStartInput {
   machineName: string;
 }
 export const MachinesControllerStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -11376,7 +11314,7 @@ export const MachinesControllerStartInput =
 // Output Schema
 export type MachinesControllerStartOutput = unknown;
 export const MachinesControllerStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<MachinesControllerStartOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<MachinesControllerStartOutput>;
 
 // The operation
 /**
@@ -11388,12 +11326,10 @@ export const MachinesControllerStartOutput =
  * @param siteName - Site name
  * @param machineName - Machine name
  */
-export const MachinesControllerStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesControllerStartInput,
-    outputSchema: MachinesControllerStartOutput,
-  }),
-);
+export const MachinesControllerStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesControllerStartInput,
+  outputSchema: MachinesControllerStartOutput,
+}));
 // Input Schema
 export interface MachinesControllerStopInput {
   subscriptionId: string;
@@ -11402,7 +11338,7 @@ export interface MachinesControllerStopInput {
   machineName: string;
 }
 export const MachinesControllerStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -11418,7 +11354,7 @@ export const MachinesControllerStopInput =
 // Output Schema
 export type MachinesControllerStopOutput = unknown;
 export const MachinesControllerStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<MachinesControllerStopOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<MachinesControllerStopOutput>;
 
 // The operation
 /**
@@ -11430,12 +11366,10 @@ export const MachinesControllerStopOutput =
  * @param siteName - Site name
  * @param machineName - Machine name
  */
-export const MachinesControllerStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesControllerStopInput,
-    outputSchema: MachinesControllerStopOutput,
-  }),
-);
+export const MachinesControllerStop = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesControllerStopInput,
+  outputSchema: MachinesControllerStopOutput,
+}));
 // Input Schema
 export interface MachinesControllerUpdateInput {
   subscriptionId: string;
@@ -11471,7 +11405,7 @@ export interface MachinesControllerUpdateInput {
   };
 }
 export const MachinesControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -11539,7 +11473,7 @@ export interface MachinesControllerUpdateOutput {
   };
 }
 export const MachinesControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11569,12 +11503,10 @@ export const MachinesControllerUpdateOutput =
  * @param siteName - Site name
  * @param machineName - Machine name
  */
-export const MachinesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesControllerUpdateInput,
-    outputSchema: MachinesControllerUpdateOutput,
-  }),
-);
+export const MachinesControllerUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesControllerUpdateInput,
+  outputSchema: MachinesControllerUpdateOutput,
+}));
 // Input Schema
 export interface MachinesOperationsGetInput {
   subscriptionId: string;
@@ -11583,7 +11515,7 @@ export interface MachinesOperationsGetInput {
   machineName: string;
 }
 export const MachinesOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -11611,7 +11543,7 @@ export interface MachinesOperationsGetOutput {
   };
 }
 export const MachinesOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11641,12 +11573,10 @@ export const MachinesOperationsGetOutput =
  * @param projectName - Assessment Project Name
  * @param machineName - Assessible Machine ARM name
  */
-export const MachinesOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesOperationsGetInput,
-    outputSchema: MachinesOperationsGetOutput,
-  }),
-);
+export const MachinesOperationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesOperationsGetInput,
+  outputSchema: MachinesOperationsGetOutput,
+}));
 // Input Schema
 export interface MachinesOperationsListByAssessmentProjectInput {
   subscriptionId: string;
@@ -11658,7 +11588,7 @@ export interface MachinesOperationsListByAssessmentProjectInput {
   totalRecordCount?: number;
 }
 export const MachinesOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -11692,7 +11622,7 @@ export interface MachinesOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const MachinesOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11741,7 +11671,7 @@ export const MachinesOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const MachinesOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MachinesOperationsListByAssessmentProjectInput,
     outputSchema: MachinesOperationsListByAssessmentProjectOutput,
   }));
@@ -11782,7 +11712,7 @@ export interface MasterSitesControllerCreateInput {
   location: string;
 }
 export const MasterSitesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -11866,7 +11796,7 @@ export interface MasterSitesControllerCreateOutput {
   };
 }
 export const MasterSitesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11895,12 +11825,10 @@ export const MasterSitesControllerCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const MasterSitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MasterSitesControllerCreateInput,
-    outputSchema: MasterSitesControllerCreateOutput,
-  }),
-);
+export const MasterSitesControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MasterSitesControllerCreateInput,
+  outputSchema: MasterSitesControllerCreateOutput,
+}));
 // Input Schema
 export interface MasterSitesControllerDeleteInput {
   subscriptionId: string;
@@ -11908,7 +11836,7 @@ export interface MasterSitesControllerDeleteInput {
   siteName: string;
 }
 export const MasterSitesControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -11923,7 +11851,7 @@ export const MasterSitesControllerDeleteInput =
 // Output Schema
 export type MasterSitesControllerDeleteOutput = void;
 export const MasterSitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MasterSitesControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MasterSitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -11934,12 +11862,10 @@ export const MasterSitesControllerDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const MasterSitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MasterSitesControllerDeleteInput,
-    outputSchema: MasterSitesControllerDeleteOutput,
-  }),
-);
+export const MasterSitesControllerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MasterSitesControllerDeleteInput,
+  outputSchema: MasterSitesControllerDeleteOutput,
+}));
 // Input Schema
 export interface MasterSitesControllerErrorSummaryInput {
   subscriptionId: string;
@@ -11948,7 +11874,7 @@ export interface MasterSitesControllerErrorSummaryInput {
   applianceName?: string;
 }
 export const MasterSitesControllerErrorSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -11976,7 +11902,7 @@ export interface MasterSitesControllerErrorSummaryOutput {
   nextLink?: string;
 }
 export const MasterSitesControllerErrorSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applianceName: Schema.String,
     discoveryScopeErrorSummaries: Schema.Struct({
       affectedResourceType: Schema.String,
@@ -12001,7 +11927,7 @@ export const MasterSitesControllerErrorSummaryOutput =
  * @param siteName - Site name
  */
 export const MasterSitesControllerErrorSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MasterSitesControllerErrorSummaryInput,
     outputSchema: MasterSitesControllerErrorSummaryOutput,
   }));
@@ -12012,7 +11938,7 @@ export interface MasterSitesControllerGetInput {
   siteName: string;
 }
 export const MasterSitesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -12039,7 +11965,7 @@ export interface MasterSitesControllerGetOutput {
   };
 }
 export const MasterSitesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12070,19 +11996,17 @@ export const MasterSitesControllerGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const MasterSitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MasterSitesControllerGetInput,
-    outputSchema: MasterSitesControllerGetOutput,
-  }),
-);
+export const MasterSitesControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MasterSitesControllerGetInput,
+  outputSchema: MasterSitesControllerGetOutput,
+}));
 // Input Schema
 export interface MasterSitesControllerListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const MasterSitesControllerListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -12111,7 +12035,7 @@ export interface MasterSitesControllerListByResourceGroupOutput {
   nextLink?: string;
 }
 export const MasterSitesControllerListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12157,7 +12081,7 @@ export const MasterSitesControllerListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const MasterSitesControllerListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MasterSitesControllerListByResourceGroupInput,
     outputSchema: MasterSitesControllerListByResourceGroupOutput,
   }));
@@ -12166,7 +12090,7 @@ export interface MasterSitesControllerListBySubscriptionInput {
   subscriptionId: string;
 }
 export const MasterSitesControllerListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -12194,7 +12118,7 @@ export interface MasterSitesControllerListBySubscriptionOutput {
   nextLink?: string;
 }
 export const MasterSitesControllerListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12239,7 +12163,7 @@ export const MasterSitesControllerListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const MasterSitesControllerListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MasterSitesControllerListBySubscriptionInput,
     outputSchema: MasterSitesControllerListBySubscriptionOutput,
   }));
@@ -12257,7 +12181,7 @@ export interface MasterSitesControllerUpdateInput {
   };
 }
 export const MasterSitesControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -12295,7 +12219,7 @@ export interface MasterSitesControllerUpdateOutput {
   };
 }
 export const MasterSitesControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12324,12 +12248,10 @@ export const MasterSitesControllerUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const MasterSitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MasterSitesControllerUpdateInput,
-    outputSchema: MasterSitesControllerUpdateOutput,
-  }),
-);
+export const MasterSitesControllerUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MasterSitesControllerUpdateInput,
+  outputSchema: MasterSitesControllerUpdateOutput,
+}));
 // Input Schema
 export interface MasterSitesOperationsStatusControllerGetVmwareOperationStatusInput {
   subscriptionId: string;
@@ -12338,7 +12260,7 @@ export interface MasterSitesOperationsStatusControllerGetVmwareOperationStatusIn
   operationStatusName: string;
 }
 export const MasterSitesOperationsStatusControllerGetVmwareOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -12362,7 +12284,7 @@ export interface MasterSitesOperationsStatusControllerGetVmwareOperationStatusOu
   properties?: { result?: string };
 }
 export const MasterSitesOperationsStatusControllerGetVmwareOperationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -12392,7 +12314,7 @@ export const MasterSitesOperationsStatusControllerGetVmwareOperationStatusOutput
  * @param operationStatusName - Operation status  Arm Name.
  */
 export const MasterSitesOperationsStatusControllerGetVmwareOperationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       MasterSitesOperationsStatusControllerGetVmwareOperationStatusInput,
     outputSchema:
@@ -12405,7 +12327,7 @@ export interface MigrateProjectsControllerDeleteMigrateProjectInput {
   migrateProjectName: string;
 }
 export const MigrateProjectsControllerDeleteMigrateProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -12420,7 +12342,7 @@ export const MigrateProjectsControllerDeleteMigrateProjectInput =
 // Output Schema
 export type MigrateProjectsControllerDeleteMigrateProjectOutput = void;
 export const MigrateProjectsControllerDeleteMigrateProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MigrateProjectsControllerDeleteMigrateProjectOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MigrateProjectsControllerDeleteMigrateProjectOutput>;
 
 // The operation
 /**
@@ -12434,7 +12356,7 @@ export const MigrateProjectsControllerDeleteMigrateProjectOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerDeleteMigrateProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrateProjectsControllerDeleteMigrateProjectInput,
     outputSchema: MigrateProjectsControllerDeleteMigrateProjectOutput,
   }));
@@ -12445,7 +12367,7 @@ export interface MigrateProjectsControllerGetMigrateProjectInput {
   migrateProjectName: string;
 }
 export const MigrateProjectsControllerGetMigrateProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -12545,7 +12467,7 @@ export interface MigrateProjectsControllerGetMigrateProjectOutput {
   };
 }
 export const MigrateProjectsControllerGetMigrateProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         registeredTools: Schema.optional(
@@ -12709,7 +12631,7 @@ export const MigrateProjectsControllerGetMigrateProjectOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerGetMigrateProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrateProjectsControllerGetMigrateProjectInput,
     outputSchema: MigrateProjectsControllerGetMigrateProjectOutput,
   }));
@@ -12747,7 +12669,7 @@ export interface MigrateProjectsControllerGetToolRegistrationDetailsInput {
   applicationDetails?: { tenantId?: string; applicationId?: string };
 }
 export const MigrateProjectsControllerGetToolRegistrationDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -12800,7 +12722,7 @@ export interface MigrateProjectsControllerGetToolRegistrationDetailsOutput {
   oneTimeKey?: string;
 }
 export const MigrateProjectsControllerGetToolRegistrationDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceEndpoint: Schema.optional(Schema.String),
     oneTimeKey: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<MigrateProjectsControllerGetToolRegistrationDetailsOutput>;
@@ -12814,7 +12736,7 @@ export const MigrateProjectsControllerGetToolRegistrationDetailsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerGetToolRegistrationDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrateProjectsControllerGetToolRegistrationDetailsInput,
     outputSchema: MigrateProjectsControllerGetToolRegistrationDetailsOutput,
   }));
@@ -12909,7 +12831,7 @@ export interface MigrateProjectsControllerPatchMigrateProjectInput {
   };
 }
 export const MigrateProjectsControllerPatchMigrateProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -13158,7 +13080,7 @@ export interface MigrateProjectsControllerPatchMigrateProjectOutput {
   };
 }
 export const MigrateProjectsControllerPatchMigrateProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         registeredTools: Schema.optional(
@@ -13322,7 +13244,7 @@ export const MigrateProjectsControllerPatchMigrateProjectOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerPatchMigrateProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrateProjectsControllerPatchMigrateProjectInput,
     outputSchema: MigrateProjectsControllerPatchMigrateProjectOutput,
   }));
@@ -13417,7 +13339,7 @@ export interface MigrateProjectsControllerPutMigrateProjectInput {
   };
 }
 export const MigrateProjectsControllerPutMigrateProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -13666,7 +13588,7 @@ export interface MigrateProjectsControllerPutMigrateProjectOutput {
   };
 }
 export const MigrateProjectsControllerPutMigrateProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         registeredTools: Schema.optional(
@@ -13831,7 +13753,7 @@ export const MigrateProjectsControllerPutMigrateProjectOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerPutMigrateProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrateProjectsControllerPutMigrateProjectInput,
     outputSchema: MigrateProjectsControllerPutMigrateProjectOutput,
   }));
@@ -13843,7 +13765,7 @@ export interface MigrateProjectsControllerRefreshSummaryInput {
   goal?: "Servers" | "Databases";
 }
 export const MigrateProjectsControllerRefreshSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -13861,7 +13783,7 @@ export interface MigrateProjectsControllerRefreshSummaryOutput {
   isRefreshed?: boolean;
 }
 export const MigrateProjectsControllerRefreshSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isRefreshed: Schema.optional(Schema.Boolean),
   }) as unknown as Schema.Codec<MigrateProjectsControllerRefreshSummaryOutput>;
 
@@ -13875,7 +13797,7 @@ export const MigrateProjectsControllerRefreshSummaryOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerRefreshSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrateProjectsControllerRefreshSummaryInput,
     outputSchema: MigrateProjectsControllerRefreshSummaryOutput,
   }));
@@ -13912,7 +13834,7 @@ export interface MigrateProjectsControllerRegisterToolInput {
     | "Unknown";
 }
 export const MigrateProjectsControllerRegisterToolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -13958,7 +13880,7 @@ export interface MigrateProjectsControllerRegisterToolOutput {
   isRegistered?: boolean;
 }
 export const MigrateProjectsControllerRegisterToolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isRegistered: Schema.optional(Schema.Boolean),
   }) as unknown as Schema.Codec<MigrateProjectsControllerRegisterToolOutput>;
 
@@ -13972,15 +13894,13 @@ export const MigrateProjectsControllerRegisterToolOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerRegisterTool =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrateProjectsControllerRegisterToolInput,
     outputSchema: MigrateProjectsControllerRegisterToolOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Migrate/operations",
@@ -14004,7 +13924,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -14034,7 +13954,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -14063,7 +13983,7 @@ export interface PrivateEndpointConnectionControllerCreateInput {
   };
 }
 export const PrivateEndpointConnectionControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -14126,7 +14046,7 @@ export interface PrivateEndpointConnectionControllerCreateOutput {
   };
 }
 export const PrivateEndpointConnectionControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14157,7 +14077,7 @@ export const PrivateEndpointConnectionControllerCreateOutput =
  * @param peConnectionName -  Private link resource name.
  */
 export const PrivateEndpointConnectionControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionControllerCreateInput,
     outputSchema: PrivateEndpointConnectionControllerCreateOutput,
   }));
@@ -14169,7 +14089,7 @@ export interface PrivateEndpointConnectionControllerDeleteInput {
   peConnectionName: string;
 }
 export const PrivateEndpointConnectionControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -14185,7 +14105,7 @@ export const PrivateEndpointConnectionControllerDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionControllerDeleteOutput = void;
 export const PrivateEndpointConnectionControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionControllerDeleteOutput>;
 
 // The operation
 /**
@@ -14198,7 +14118,7 @@ export const PrivateEndpointConnectionControllerDeleteOutput =
  * @param peConnectionName -  Private link resource name.
  */
 export const PrivateEndpointConnectionControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionControllerDeleteInput,
     outputSchema: PrivateEndpointConnectionControllerDeleteOutput,
   }));
@@ -14210,7 +14130,7 @@ export interface PrivateEndpointConnectionControllerDeletePrivateEndpointConnect
   peConnectionName: string;
 }
 export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -14273,7 +14193,7 @@ export type PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionOu
   | "GatewayTimeout"
   | "HttpVersionNotSupported";
 export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  /*@__PURE__*/ Schema.Literals([
     "Continue",
     "SwitchingProtocols",
     "OK",
@@ -14336,7 +14256,7 @@ export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionO
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionInput,
     outputSchema:
@@ -14350,7 +14270,7 @@ export interface PrivateEndpointConnectionControllerGetInput {
   peConnectionName: string;
 }
 export const PrivateEndpointConnectionControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -14378,7 +14298,7 @@ export interface PrivateEndpointConnectionControllerGetOutput {
   };
 }
 export const PrivateEndpointConnectionControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14409,7 +14329,7 @@ export const PrivateEndpointConnectionControllerGetOutput =
  * @param peConnectionName -  Private link resource name.
  */
 export const PrivateEndpointConnectionControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionControllerGetInput,
     outputSchema: PrivateEndpointConnectionControllerGetOutput,
   }));
@@ -14421,7 +14341,7 @@ export interface PrivateEndpointConnectionControllerGetPrivateEndpointConnection
   peConnectionName: string;
 }
 export const PrivateEndpointConnectionControllerGetPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -14464,7 +14384,7 @@ export interface PrivateEndpointConnectionControllerGetPrivateEndpointConnection
   };
 }
 export const PrivateEndpointConnectionControllerGetPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14530,7 +14450,7 @@ export const PrivateEndpointConnectionControllerGetPrivateEndpointConnectionOutp
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionControllerGetPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PrivateEndpointConnectionControllerGetPrivateEndpointConnectionInput,
     outputSchema:
@@ -14543,7 +14463,7 @@ export interface PrivateEndpointConnectionControllerListByMasterSiteInput {
   siteName: string;
 }
 export const PrivateEndpointConnectionControllerListByMasterSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -14573,7 +14493,7 @@ export interface PrivateEndpointConnectionControllerListByMasterSiteOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionControllerListByMasterSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -14618,7 +14538,7 @@ export const PrivateEndpointConnectionControllerListByMasterSiteOutput =
  * @param siteName - Site name
  */
 export const PrivateEndpointConnectionControllerListByMasterSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionControllerListByMasterSiteInput,
     outputSchema: PrivateEndpointConnectionControllerListByMasterSiteOutput,
   }));
@@ -14656,7 +14576,7 @@ export interface PrivateEndpointConnectionControllerPutPrivateEndpointConnection
   };
 }
 export const PrivateEndpointConnectionControllerPutPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -14749,7 +14669,7 @@ export interface PrivateEndpointConnectionControllerPutPrivateEndpointConnection
   };
 }
 export const PrivateEndpointConnectionControllerPutPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14815,7 +14735,7 @@ export const PrivateEndpointConnectionControllerPutPrivateEndpointConnectionOutp
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionControllerPutPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PrivateEndpointConnectionControllerPutPrivateEndpointConnectionInput,
     outputSchema:
@@ -14829,7 +14749,7 @@ export interface PrivateEndpointConnectionOperationsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionOperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -14845,7 +14765,7 @@ export const PrivateEndpointConnectionOperationsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionOperationsDeleteOutput = void;
 export const PrivateEndpointConnectionOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionOperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -14858,7 +14778,7 @@ export const PrivateEndpointConnectionOperationsDeleteOutput =
  * @param privateEndpointConnectionName - Private endpoint connection ARM name
  */
 export const PrivateEndpointConnectionOperationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionOperationsDeleteInput,
     outputSchema: PrivateEndpointConnectionOperationsDeleteOutput,
   }));
@@ -14870,7 +14790,7 @@ export interface PrivateEndpointConnectionOperationsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -14898,7 +14818,7 @@ export interface PrivateEndpointConnectionOperationsGetOutput {
   };
 }
 export const PrivateEndpointConnectionOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14929,7 +14849,7 @@ export const PrivateEndpointConnectionOperationsGetOutput =
  * @param privateEndpointConnectionName - Private endpoint connection ARM name
  */
 export const PrivateEndpointConnectionOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionOperationsGetInput,
     outputSchema: PrivateEndpointConnectionOperationsGetOutput,
   }));
@@ -14940,7 +14860,7 @@ export interface PrivateEndpointConnectionOperationsListByAssessmentProjectInput
   projectName: string;
 }
 export const PrivateEndpointConnectionOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -14970,7 +14890,7 @@ export interface PrivateEndpointConnectionOperationsListByAssessmentProjectOutpu
   nextLink?: string;
 }
 export const PrivateEndpointConnectionOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -15015,7 +14935,7 @@ export const PrivateEndpointConnectionOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const PrivateEndpointConnectionOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PrivateEndpointConnectionOperationsListByAssessmentProjectInput,
     outputSchema:
@@ -15039,7 +14959,7 @@ export interface PrivateEndpointConnectionOperationsUpdateInput {
   };
 }
 export const PrivateEndpointConnectionOperationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -15087,7 +15007,7 @@ export interface PrivateEndpointConnectionOperationsUpdateOutput {
   };
 }
 export const PrivateEndpointConnectionOperationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15118,7 +15038,7 @@ export const PrivateEndpointConnectionOperationsUpdateOutput =
  * @param privateEndpointConnectionName - Private endpoint connection ARM name
  */
 export const PrivateEndpointConnectionOperationsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionOperationsUpdateInput,
     outputSchema: PrivateEndpointConnectionOperationsUpdateOutput,
   }));
@@ -15185,7 +15105,7 @@ export interface PrivateEndpointConnectionProxyControllerCreateInput {
   };
 }
 export const PrivateEndpointConnectionProxyControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -15361,7 +15281,7 @@ export interface PrivateEndpointConnectionProxyControllerCreateOutput {
   };
 }
 export const PrivateEndpointConnectionProxyControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15481,7 +15401,7 @@ export const PrivateEndpointConnectionProxyControllerCreateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionProxyControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionProxyControllerCreateInput,
     outputSchema: PrivateEndpointConnectionProxyControllerCreateOutput,
   }));
@@ -15493,7 +15413,7 @@ export interface PrivateEndpointConnectionProxyControllerDeleteInput {
   pecProxyName: string;
 }
 export const PrivateEndpointConnectionProxyControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -15509,7 +15429,7 @@ export const PrivateEndpointConnectionProxyControllerDeleteInput =
 // Output Schema
 export interface PrivateEndpointConnectionProxyControllerDeleteOutput {}
 export const PrivateEndpointConnectionProxyControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as unknown as Schema.Codec<PrivateEndpointConnectionProxyControllerDeleteOutput>;
 
@@ -15526,7 +15446,7 @@ export const PrivateEndpointConnectionProxyControllerDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionProxyControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionProxyControllerDeleteInput,
     outputSchema: PrivateEndpointConnectionProxyControllerDeleteOutput,
   }));
@@ -15538,7 +15458,7 @@ export interface PrivateEndpointConnectionProxyControllerGetInput {
   pecProxyName: string;
 }
 export const PrivateEndpointConnectionProxyControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -15610,7 +15530,7 @@ export interface PrivateEndpointConnectionProxyControllerGetOutput {
   };
 }
 export const PrivateEndpointConnectionProxyControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15730,7 +15650,7 @@ export const PrivateEndpointConnectionProxyControllerGetOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionProxyControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionProxyControllerGetInput,
     outputSchema: PrivateEndpointConnectionProxyControllerGetOutput,
   }));
@@ -15741,7 +15661,7 @@ export interface PrivateEndpointConnectionProxyControllerListPrivateEndpointConn
   migrateProjectName: string;
 }
 export const PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -15815,7 +15735,7 @@ export interface PrivateEndpointConnectionProxyControllerListPrivateEndpointConn
   nextLink?: string;
 }
 export const PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15957,7 +15877,7 @@ export const PrivateEndpointConnectionProxyControllerListPrivateEndpointConnecti
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxies =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesInput,
     outputSchema:
@@ -16026,7 +15946,7 @@ export interface PrivateEndpointConnectionProxyControllerValidateInput {
   };
 }
 export const PrivateEndpointConnectionProxyControllerValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -16202,7 +16122,7 @@ export interface PrivateEndpointConnectionProxyControllerValidateOutput {
   };
 }
 export const PrivateEndpointConnectionProxyControllerValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16322,7 +16242,7 @@ export const PrivateEndpointConnectionProxyControllerValidateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionProxyControllerValidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionProxyControllerValidateInput,
     outputSchema: PrivateEndpointConnectionProxyControllerValidateOutput,
   }));
@@ -16333,7 +16253,7 @@ export interface PrivateEndpointConnectionsControllerGetPrivateEndpointConnectio
   migrateProjectName: string;
 }
 export const PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -16378,7 +16298,7 @@ export interface PrivateEndpointConnectionsControllerGetPrivateEndpointConnectio
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -16460,7 +16380,7 @@ export const PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsOu
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionsControllerGetPrivateEndpointConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsInput,
     outputSchema:
@@ -16474,7 +16394,7 @@ export interface PrivateLinkResourceControllerGetPrivateLinkResourceInput {
   privateLinkResourceName: string;
 }
 export const PrivateLinkResourceControllerGetPrivateLinkResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -16499,7 +16419,7 @@ export interface PrivateLinkResourceControllerGetPrivateLinkResourceOutput {
   };
 }
 export const PrivateLinkResourceControllerGetPrivateLinkResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16525,7 +16445,7 @@ export const PrivateLinkResourceControllerGetPrivateLinkResourceOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateLinkResourceControllerGetPrivateLinkResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourceControllerGetPrivateLinkResourceInput,
     outputSchema: PrivateLinkResourceControllerGetPrivateLinkResourceOutput,
   }));
@@ -16536,7 +16456,7 @@ export interface PrivateLinkResourceControllerGetPrivateLinkResourcesInput {
   migrateProjectName: string;
 }
 export const PrivateLinkResourceControllerGetPrivateLinkResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -16563,7 +16483,7 @@ export interface PrivateLinkResourceControllerGetPrivateLinkResourcesOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourceControllerGetPrivateLinkResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -16595,7 +16515,7 @@ export const PrivateLinkResourceControllerGetPrivateLinkResourcesOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateLinkResourceControllerGetPrivateLinkResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourceControllerGetPrivateLinkResourcesInput,
     outputSchema: PrivateLinkResourceControllerGetPrivateLinkResourcesOutput,
   }));
@@ -16607,7 +16527,7 @@ export interface PrivateLinkResourceOperationsGetInput {
   privateLinkResourceName: string;
 }
 export const PrivateLinkResourceOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -16635,7 +16555,7 @@ export interface PrivateLinkResourceOperationsGetOutput {
   };
 }
 export const PrivateLinkResourceOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16666,7 +16586,7 @@ export const PrivateLinkResourceOperationsGetOutput =
  * @param privateLinkResourceName - Private link resource ARM name
  */
 export const PrivateLinkResourceOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourceOperationsGetInput,
     outputSchema: PrivateLinkResourceOperationsGetOutput,
   }));
@@ -16677,7 +16597,7 @@ export interface PrivateLinkResourceOperationsListByAssessmentProjectInput {
   projectName: string;
 }
 export const PrivateLinkResourceOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -16707,7 +16627,7 @@ export interface PrivateLinkResourceOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourceOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -16752,7 +16672,7 @@ export const PrivateLinkResourceOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const PrivateLinkResourceOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourceOperationsListByAssessmentProjectInput,
     outputSchema: PrivateLinkResourceOperationsListByAssessmentProjectOutput,
   }));
@@ -16764,7 +16684,7 @@ export interface PrivateLinkResourcesControllerGetInput {
   privateLinkResourceName: string;
 }
 export const PrivateLinkResourcesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -16792,7 +16712,7 @@ export interface PrivateLinkResourcesControllerGetOutput {
   };
 }
 export const PrivateLinkResourcesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16823,7 +16743,7 @@ export const PrivateLinkResourcesControllerGetOutput =
  * @param privateLinkResourceName - Private link resource name.
  */
 export const PrivateLinkResourcesControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesControllerGetInput,
     outputSchema: PrivateLinkResourcesControllerGetOutput,
   }));
@@ -16834,7 +16754,7 @@ export interface PrivateLinkResourcesControllerListByMasterSiteInput {
   siteName: string;
 }
 export const PrivateLinkResourcesControllerListByMasterSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -16864,7 +16784,7 @@ export interface PrivateLinkResourcesControllerListByMasterSiteOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesControllerListByMasterSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -16909,7 +16829,7 @@ export const PrivateLinkResourcesControllerListByMasterSiteOutput =
  * @param siteName - Site name
  */
 export const PrivateLinkResourcesControllerListByMasterSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesControllerListByMasterSiteInput,
     outputSchema: PrivateLinkResourcesControllerListByMasterSiteOutput,
   }));
@@ -16918,7 +16838,7 @@ export interface ProjectsListInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
-export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -17027,7 +16947,7 @@ export interface ProjectsListOutput {
   }[];
   nextLink?: string;
 }
-export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -17206,7 +17126,7 @@ export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const ProjectsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsListInput,
   outputSchema: ProjectsListOutput,
 }));
@@ -17215,7 +17135,7 @@ export interface ProjectsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const ProjectsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -17324,7 +17244,7 @@ export interface ProjectsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ProjectsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -17507,12 +17427,10 @@ export const ProjectsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const ProjectsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProjectsListBySubscriptionInput,
-    outputSchema: ProjectsListBySubscriptionOutput,
-  }),
-);
+export const ProjectsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProjectsListBySubscriptionInput,
+  outputSchema: ProjectsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface RunAsAccountsControllerGetInput {
   subscriptionId: string;
@@ -17521,7 +17439,7 @@ export interface RunAsAccountsControllerGetInput {
   accountName: string;
 }
 export const RunAsAccountsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -17549,7 +17467,7 @@ export interface RunAsAccountsControllerGetOutput {
   };
 }
 export const RunAsAccountsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17579,12 +17497,10 @@ export const RunAsAccountsControllerGetOutput =
  * @param siteName - Site name
  * @param accountName -  RunAsAccounts name
  */
-export const RunAsAccountsControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RunAsAccountsControllerGetInput,
-    outputSchema: RunAsAccountsControllerGetOutput,
-  }),
-);
+export const RunAsAccountsControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RunAsAccountsControllerGetInput,
+  outputSchema: RunAsAccountsControllerGetOutput,
+}));
 // Input Schema
 export interface RunAsAccountsControllerListByVmwareSiteInput {
   subscriptionId: string;
@@ -17592,7 +17508,7 @@ export interface RunAsAccountsControllerListByVmwareSiteInput {
   siteName: string;
 }
 export const RunAsAccountsControllerListByVmwareSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -17622,7 +17538,7 @@ export interface RunAsAccountsControllerListByVmwareSiteOutput {
   nextLink?: string;
 }
 export const RunAsAccountsControllerListByVmwareSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -17667,7 +17583,7 @@ export const RunAsAccountsControllerListByVmwareSiteOutput =
  * @param siteName - Site name
  */
 export const RunAsAccountsControllerListByVmwareSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RunAsAccountsControllerListByVmwareSiteInput,
     outputSchema: RunAsAccountsControllerListByVmwareSiteOutput,
   }));
@@ -17689,7 +17605,7 @@ export interface ServerCollectorsOperationsCreateInput {
   };
 }
 export const ServerCollectorsOperationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -17732,7 +17648,7 @@ export interface ServerCollectorsOperationsCreateOutput {
   };
 }
 export const ServerCollectorsOperationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17763,7 +17679,7 @@ export const ServerCollectorsOperationsCreateOutput =
  * @param serverCollectorName - Physical server collector ARM name
  */
 export const ServerCollectorsOperationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerCollectorsOperationsCreateInput,
     outputSchema: ServerCollectorsOperationsCreateOutput,
   }));
@@ -17775,7 +17691,7 @@ export interface ServerCollectorsOperationsDeleteInput {
   serverCollectorName: string;
 }
 export const ServerCollectorsOperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -17791,7 +17707,7 @@ export const ServerCollectorsOperationsDeleteInput =
 // Output Schema
 export type ServerCollectorsOperationsDeleteOutput = void;
 export const ServerCollectorsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServerCollectorsOperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServerCollectorsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -17804,7 +17720,7 @@ export const ServerCollectorsOperationsDeleteOutput =
  * @param serverCollectorName - Physical server collector ARM name
  */
 export const ServerCollectorsOperationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerCollectorsOperationsDeleteInput,
     outputSchema: ServerCollectorsOperationsDeleteOutput,
   }));
@@ -17816,7 +17732,7 @@ export interface ServerCollectorsOperationsGetInput {
   serverCollectorName: string;
 }
 export const ServerCollectorsOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -17844,7 +17760,7 @@ export interface ServerCollectorsOperationsGetOutput {
   };
 }
 export const ServerCollectorsOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17875,7 +17791,7 @@ export const ServerCollectorsOperationsGetOutput =
  * @param serverCollectorName - Physical server collector ARM name
  */
 export const ServerCollectorsOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerCollectorsOperationsGetInput,
     outputSchema: ServerCollectorsOperationsGetOutput,
   }));
@@ -17886,7 +17802,7 @@ export interface ServerCollectorsOperationsListByAssessmentProjectInput {
   projectName: string;
 }
 export const ServerCollectorsOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -17916,7 +17832,7 @@ export interface ServerCollectorsOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const ServerCollectorsOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -17961,7 +17877,7 @@ export const ServerCollectorsOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const ServerCollectorsOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerCollectorsOperationsListByAssessmentProjectInput,
     outputSchema: ServerCollectorsOperationsListByAssessmentProjectOutput,
   }));
@@ -17978,7 +17894,7 @@ export interface ServerDependencyMapControllerClientGroupMembersInput {
   filters?: { machineIds?: string[]; processIds?: string[] };
 }
 export const ServerDependencyMapControllerClientGroupMembersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18004,7 +17920,7 @@ export const ServerDependencyMapControllerClientGroupMembersInput =
 // Output Schema
 export type ServerDependencyMapControllerClientGroupMembersOutput = unknown;
 export const ServerDependencyMapControllerClientGroupMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerClientGroupMembersOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerClientGroupMembersOutput>;
 
 // The operation
 /**
@@ -18016,7 +17932,7 @@ export const ServerDependencyMapControllerClientGroupMembersOutput =
  * @param siteName - Site name
  */
 export const ServerDependencyMapControllerClientGroupMembers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerDependencyMapControllerClientGroupMembersInput,
     outputSchema: ServerDependencyMapControllerClientGroupMembersOutput,
   }));
@@ -18029,7 +17945,7 @@ export interface ServerDependencyMapControllerExportDependenciesInput {
   endTime?: string;
 }
 export const ServerDependencyMapControllerExportDependenciesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18046,7 +17962,7 @@ export const ServerDependencyMapControllerExportDependenciesInput =
 // Output Schema
 export type ServerDependencyMapControllerExportDependenciesOutput = unknown;
 export const ServerDependencyMapControllerExportDependenciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerExportDependenciesOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerExportDependenciesOutput>;
 
 // The operation
 /**
@@ -18058,7 +17974,7 @@ export const ServerDependencyMapControllerExportDependenciesOutput =
  * @param siteName - Site name
  */
 export const ServerDependencyMapControllerExportDependencies =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerDependencyMapControllerExportDependenciesInput,
     outputSchema: ServerDependencyMapControllerExportDependenciesOutput,
   }));
@@ -18072,7 +17988,7 @@ export interface ServerDependencyMapControllerGenerateCoarseMapInput {
   filters?: { machineIds?: string[]; processIds?: string[] };
 }
 export const ServerDependencyMapControllerGenerateCoarseMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18095,7 +18011,7 @@ export const ServerDependencyMapControllerGenerateCoarseMapInput =
 // Output Schema
 export type ServerDependencyMapControllerGenerateCoarseMapOutput = unknown;
 export const ServerDependencyMapControllerGenerateCoarseMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerGenerateCoarseMapOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerGenerateCoarseMapOutput>;
 
 // The operation
 /**
@@ -18107,7 +18023,7 @@ export const ServerDependencyMapControllerGenerateCoarseMapOutput =
  * @param siteName - Site name
  */
 export const ServerDependencyMapControllerGenerateCoarseMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerDependencyMapControllerGenerateCoarseMapInput,
     outputSchema: ServerDependencyMapControllerGenerateCoarseMapOutput,
   }));
@@ -18122,7 +18038,7 @@ export interface ServerDependencyMapControllerGenerateDetailedMapInput {
   filters?: { machineIds?: string[]; processIds?: string[] };
 }
 export const ServerDependencyMapControllerGenerateDetailedMapInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18146,7 +18062,7 @@ export const ServerDependencyMapControllerGenerateDetailedMapInput =
 // Output Schema
 export type ServerDependencyMapControllerGenerateDetailedMapOutput = unknown;
 export const ServerDependencyMapControllerGenerateDetailedMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerGenerateDetailedMapOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerGenerateDetailedMapOutput>;
 
 // The operation
 /**
@@ -18158,7 +18074,7 @@ export const ServerDependencyMapControllerGenerateDetailedMapOutput =
  * @param siteName - Site name
  */
 export const ServerDependencyMapControllerGenerateDetailedMap =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerDependencyMapControllerGenerateDetailedMapInput,
     outputSchema: ServerDependencyMapControllerGenerateDetailedMapOutput,
   }));
@@ -18173,7 +18089,7 @@ export interface ServerDependencyMapControllerServerGroupMembersInput {
   filters?: { machineIds?: string[]; processIds?: string[] };
 }
 export const ServerDependencyMapControllerServerGroupMembersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18197,7 +18113,7 @@ export const ServerDependencyMapControllerServerGroupMembersInput =
 // Output Schema
 export type ServerDependencyMapControllerServerGroupMembersOutput = unknown;
 export const ServerDependencyMapControllerServerGroupMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerServerGroupMembersOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerServerGroupMembersOutput>;
 
 // The operation
 /**
@@ -18209,7 +18125,7 @@ export const ServerDependencyMapControllerServerGroupMembersOutput =
  * @param siteName - Site name
  */
 export const ServerDependencyMapControllerServerGroupMembers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerDependencyMapControllerServerGroupMembersInput,
     outputSchema: ServerDependencyMapControllerServerGroupMembersOutput,
   }));
@@ -18221,7 +18137,7 @@ export interface ServerJobsControllerGetInput {
   jobName: string;
 }
 export const ServerJobsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18249,7 +18165,7 @@ export interface ServerJobsControllerGetOutput {
   };
 }
 export const ServerJobsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18279,12 +18195,10 @@ export const ServerJobsControllerGetOutput =
  * @param siteName - Site name
  * @param jobName -  Jobs name
  */
-export const ServerJobsControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServerJobsControllerGetInput,
-    outputSchema: ServerJobsControllerGetOutput,
-  }),
-);
+export const ServerJobsControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServerJobsControllerGetInput,
+  outputSchema: ServerJobsControllerGetOutput,
+}));
 // Input Schema
 export interface ServerJobsControllerListByServerSiteResourceInput {
   subscriptionId: string;
@@ -18292,7 +18206,7 @@ export interface ServerJobsControllerListByServerSiteResourceInput {
   siteName: string;
 }
 export const ServerJobsControllerListByServerSiteResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18322,7 +18236,7 @@ export interface ServerJobsControllerListByServerSiteResourceOutput {
   nextLink?: string;
 }
 export const ServerJobsControllerListByServerSiteResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -18367,7 +18281,7 @@ export const ServerJobsControllerListByServerSiteResourceOutput =
  * @param siteName - Site name
  */
 export const ServerJobsControllerListByServerSiteResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerJobsControllerListByServerSiteResourceInput,
     outputSchema: ServerJobsControllerListByServerSiteResourceOutput,
   }));
@@ -18379,7 +18293,7 @@ export interface ServerOperationsStatusControllerGetServerSiteOperationsStatusIn
   operationStatusName: string;
 }
 export const ServerOperationsStatusControllerGetServerSiteOperationsStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18403,7 +18317,7 @@ export interface ServerOperationsStatusControllerGetServerSiteOperationsStatusOu
   properties?: { result?: string };
 }
 export const ServerOperationsStatusControllerGetServerSiteOperationsStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -18433,7 +18347,7 @@ export const ServerOperationsStatusControllerGetServerSiteOperationsStatusOutput
  * @param operationStatusName - Operation status  Arm Name.
  */
 export const ServerOperationsStatusControllerGetServerSiteOperationsStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ServerOperationsStatusControllerGetServerSiteOperationsStatusInput,
     outputSchema:
@@ -18447,7 +18361,7 @@ export interface ServerRunAsAccountsControllerGetInput {
   accountName: string;
 }
 export const ServerRunAsAccountsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18475,7 +18389,7 @@ export interface ServerRunAsAccountsControllerGetOutput {
   };
 }
 export const ServerRunAsAccountsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18506,7 +18420,7 @@ export const ServerRunAsAccountsControllerGetOutput =
  * @param accountName -  RunAsAccounts name
  */
 export const ServerRunAsAccountsControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerRunAsAccountsControllerGetInput,
     outputSchema: ServerRunAsAccountsControllerGetOutput,
   }));
@@ -18517,7 +18431,7 @@ export interface ServerRunAsAccountsControllerListByServerSiteResourceInput {
   siteName: string;
 }
 export const ServerRunAsAccountsControllerListByServerSiteResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18547,7 +18461,7 @@ export interface ServerRunAsAccountsControllerListByServerSiteResourceOutput {
   nextLink?: string;
 }
 export const ServerRunAsAccountsControllerListByServerSiteResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -18592,7 +18506,7 @@ export const ServerRunAsAccountsControllerListByServerSiteResourceOutput =
  * @param siteName - Site name
  */
 export const ServerRunAsAccountsControllerListByServerSiteResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerRunAsAccountsControllerListByServerSiteResourceInput,
     outputSchema: ServerRunAsAccountsControllerListByServerSiteResourceOutput,
   }));
@@ -18604,7 +18518,7 @@ export interface ServersControllerDeleteMachineInput {
   machineName: string;
 }
 export const ServersControllerDeleteMachineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18620,7 +18534,7 @@ export const ServersControllerDeleteMachineInput =
 // Output Schema
 export type ServersControllerDeleteMachineOutput = void;
 export const ServersControllerDeleteMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersControllerDeleteMachineOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersControllerDeleteMachineOutput>;
 
 // The operation
 /**
@@ -18633,7 +18547,7 @@ export const ServersControllerDeleteMachineOutput =
  * @param machineName -  A server machine name
  */
 export const ServersControllerDeleteMachine =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServersControllerDeleteMachineInput,
     outputSchema: ServersControllerDeleteMachineOutput,
   }));
@@ -18645,7 +18559,7 @@ export interface ServersControllerGetMachineInput {
   machineName: string;
 }
 export const ServersControllerGetMachineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18673,7 +18587,7 @@ export interface ServersControllerGetMachineOutput {
   };
 }
 export const ServersControllerGetMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18703,12 +18617,10 @@ export const ServersControllerGetMachineOutput =
  * @param siteName - Site name
  * @param machineName -  A server machine name
  */
-export const ServersControllerGetMachine = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServersControllerGetMachineInput,
-    outputSchema: ServersControllerGetMachineOutput,
-  }),
-);
+export const ServersControllerGetMachine = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServersControllerGetMachineInput,
+  outputSchema: ServersControllerGetMachineOutput,
+}));
 // Input Schema
 export interface ServersControllerListByServerSiteResourceInput {
   subscriptionId: string;
@@ -18720,7 +18632,7 @@ export interface ServersControllerListByServerSiteResourceInput {
   totalRecordCount?: number;
 }
 export const ServersControllerListByServerSiteResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18754,7 +18666,7 @@ export interface ServersControllerListByServerSiteResourceOutput {
   nextLink?: string;
 }
 export const ServersControllerListByServerSiteResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -18803,7 +18715,7 @@ export const ServersControllerListByServerSiteResourceOutput =
  * @param siteName - Site name
  */
 export const ServersControllerListByServerSiteResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServersControllerListByServerSiteResourceInput,
     outputSchema: ServersControllerListByServerSiteResourceOutput,
   }));
@@ -18869,7 +18781,7 @@ export interface ServersControllerUpdateMachineInput {
   };
 }
 export const ServersControllerUpdateMachineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -18975,7 +18887,7 @@ export interface ServersControllerUpdateMachineOutput {
   };
 }
 export const ServersControllerUpdateMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19006,7 +18918,7 @@ export const ServersControllerUpdateMachineOutput =
  * @param machineName -  A server machine name
  */
 export const ServersControllerUpdateMachine =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServersControllerUpdateMachineInput,
     outputSchema: ServersControllerUpdateMachineOutput,
   }));
@@ -19017,7 +18929,7 @@ export interface ServerSitesControllerComputeErrorSummaryInput {
   siteName: string;
 }
 export const ServerSitesControllerComputeErrorSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -19044,7 +18956,7 @@ export interface ServerSitesControllerComputeErrorSummaryOutput {
   nextLink?: string;
 }
 export const ServerSitesControllerComputeErrorSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applianceName: Schema.String,
     discoveryScopeErrorSummaries: Schema.Struct({
       affectedResourceType: Schema.String,
@@ -19069,7 +18981,7 @@ export const ServerSitesControllerComputeErrorSummaryOutput =
  * @param siteName - Site name
  */
 export const ServerSitesControllerComputeErrorSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerSitesControllerComputeErrorSummaryInput,
     outputSchema: ServerSitesControllerComputeErrorSummaryOutput,
   }));
@@ -19080,7 +18992,7 @@ export interface ServerSitesControllerComputeusageInput {
   siteName: string;
 }
 export const ServerSitesControllerComputeusageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -19098,7 +19010,7 @@ export interface ServerSitesControllerComputeusageOutput {
   serverCount: number;
 }
 export const ServerSitesControllerComputeusageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     runAsAccounts: Schema.Number,
     serverCount: Schema.Number,
   }) as unknown as Schema.Codec<ServerSitesControllerComputeusageOutput>;
@@ -19113,7 +19025,7 @@ export const ServerSitesControllerComputeusageOutput =
  * @param siteName - Site name
  */
 export const ServerSitesControllerComputeusage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerSitesControllerComputeusageInput,
     outputSchema: ServerSitesControllerComputeusageOutput,
   }));
@@ -19155,7 +19067,7 @@ export interface ServerSitesControllerCreateInput {
   location: string;
 }
 export const ServerSitesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -19222,7 +19134,7 @@ export interface ServerSitesControllerCreateOutput {
   };
 }
 export const ServerSitesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19251,12 +19163,10 @@ export const ServerSitesControllerCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const ServerSitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServerSitesControllerCreateInput,
-    outputSchema: ServerSitesControllerCreateOutput,
-  }),
-);
+export const ServerSitesControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServerSitesControllerCreateInput,
+  outputSchema: ServerSitesControllerCreateOutput,
+}));
 // Input Schema
 export interface ServerSitesControllerDeleteInput {
   subscriptionId: string;
@@ -19264,7 +19174,7 @@ export interface ServerSitesControllerDeleteInput {
   siteName: string;
 }
 export const ServerSitesControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -19279,7 +19189,7 @@ export const ServerSitesControllerDeleteInput =
 // Output Schema
 export type ServerSitesControllerDeleteOutput = void;
 export const ServerSitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServerSitesControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServerSitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -19290,12 +19200,10 @@ export const ServerSitesControllerDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const ServerSitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServerSitesControllerDeleteInput,
-    outputSchema: ServerSitesControllerDeleteOutput,
-  }),
-);
+export const ServerSitesControllerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServerSitesControllerDeleteInput,
+  outputSchema: ServerSitesControllerDeleteOutput,
+}));
 // Input Schema
 export interface ServerSitesControllerExportApplicationsInput {
   subscriptionId: string;
@@ -19303,7 +19211,7 @@ export interface ServerSitesControllerExportApplicationsInput {
   siteName: string;
 }
 export const ServerSitesControllerExportApplicationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -19318,7 +19226,7 @@ export const ServerSitesControllerExportApplicationsInput =
 // Output Schema
 export type ServerSitesControllerExportApplicationsOutput = unknown;
 export const ServerSitesControllerExportApplicationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerExportApplicationsOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerExportApplicationsOutput>;
 
 // The operation
 /**
@@ -19331,7 +19239,7 @@ export const ServerSitesControllerExportApplicationsOutput =
  * @param siteName - Site name
  */
 export const ServerSitesControllerExportApplications =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerSitesControllerExportApplicationsInput,
     outputSchema: ServerSitesControllerExportApplicationsOutput,
   }));
@@ -19349,7 +19257,7 @@ export interface ServerSitesControllerExportMachineErrorsInput {
   };
 }
 export const ServerSitesControllerExportMachineErrorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -19376,7 +19284,7 @@ export const ServerSitesControllerExportMachineErrorsInput =
 // Output Schema
 export type ServerSitesControllerExportMachineErrorsOutput = unknown;
 export const ServerSitesControllerExportMachineErrorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerExportMachineErrorsOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerExportMachineErrorsOutput>;
 
 // The operation
 /**
@@ -19389,7 +19297,7 @@ export const ServerSitesControllerExportMachineErrorsOutput =
  * @param siteName - Site name
  */
 export const ServerSitesControllerExportMachineErrors =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerSitesControllerExportMachineErrorsInput,
     outputSchema: ServerSitesControllerExportMachineErrorsOutput,
   }));
@@ -19400,7 +19308,7 @@ export interface ServerSitesControllerGetInput {
   siteName: string;
 }
 export const ServerSitesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -19427,7 +19335,7 @@ export interface ServerSitesControllerGetOutput {
   };
 }
 export const ServerSitesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19456,19 +19364,17 @@ export const ServerSitesControllerGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const ServerSitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServerSitesControllerGetInput,
-    outputSchema: ServerSitesControllerGetOutput,
-  }),
-);
+export const ServerSitesControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServerSitesControllerGetInput,
+  outputSchema: ServerSitesControllerGetOutput,
+}));
 // Input Schema
 export interface ServerSitesControllerListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const ServerSitesControllerListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19497,7 +19403,7 @@ export interface ServerSitesControllerListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ServerSitesControllerListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -19541,7 +19447,7 @@ export const ServerSitesControllerListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ServerSitesControllerListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerSitesControllerListByResourceGroupInput,
     outputSchema: ServerSitesControllerListByResourceGroupOutput,
   }));
@@ -19550,7 +19456,7 @@ export interface ServerSitesControllerListBySubscriptionInput {
   subscriptionId: string;
 }
 export const ServerSitesControllerListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -19578,7 +19484,7 @@ export interface ServerSitesControllerListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ServerSitesControllerListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -19621,7 +19527,7 @@ export const ServerSitesControllerListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ServerSitesControllerListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerSitesControllerListBySubscriptionInput,
     outputSchema: ServerSitesControllerListBySubscriptionOutput,
   }));
@@ -19632,7 +19538,7 @@ export interface ServerSitesControllerListHealthSummaryInput {
   siteName: string;
 }
 export const ServerSitesControllerListHealthSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -19667,7 +19573,7 @@ export interface ServerSitesControllerListHealthSummaryOutput {
   nextLink?: string;
 }
 export const ServerSitesControllerListHealthSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         applianceName: Schema.optional(Schema.String),
@@ -19705,7 +19611,7 @@ export const ServerSitesControllerListHealthSummaryOutput =
  * @param siteName - Site name
  */
 export const ServerSitesControllerListHealthSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerSitesControllerListHealthSummaryInput,
     outputSchema: ServerSitesControllerListHealthSummaryOutput,
   }));
@@ -19716,7 +19622,7 @@ export interface ServerSitesControllerRefreshSiteInput {
   siteName: string;
 }
 export const ServerSitesControllerRefreshSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -19731,7 +19637,7 @@ export const ServerSitesControllerRefreshSiteInput =
 // Output Schema
 export type ServerSitesControllerRefreshSiteOutput = unknown;
 export const ServerSitesControllerRefreshSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerRefreshSiteOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerRefreshSiteOutput>;
 
 // The operation
 /**
@@ -19743,7 +19649,7 @@ export const ServerSitesControllerRefreshSiteOutput =
  * @param siteName - Site name
  */
 export const ServerSitesControllerRefreshSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerSitesControllerRefreshSiteInput,
     outputSchema: ServerSitesControllerRefreshSiteOutput,
   }));
@@ -19754,7 +19660,7 @@ export interface ServerSitesControllerSummaryInput {
   siteName: string;
 }
 export const ServerSitesControllerSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -19772,7 +19678,7 @@ export interface ServerSitesControllerSummaryOutput {
   serverCount?: number;
 }
 export const ServerSitesControllerSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     runAsAccountCount: Schema.optional(Schema.Number),
     serverCount: Schema.optional(Schema.Number),
   }) as unknown as Schema.Codec<ServerSitesControllerSummaryOutput>;
@@ -19787,7 +19693,7 @@ export const ServerSitesControllerSummaryOutput =
  * @param siteName - Site name
  */
 export const ServerSitesControllerSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerSitesControllerSummaryInput,
     outputSchema: ServerSitesControllerSummaryOutput,
   }));
@@ -19818,7 +19724,7 @@ export interface ServerSitesControllerUpdateInput {
   };
 }
 export const ServerSitesControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -19871,7 +19777,7 @@ export interface ServerSitesControllerUpdateOutput {
   };
 }
 export const ServerSitesControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19900,12 +19806,10 @@ export const ServerSitesControllerUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const ServerSitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServerSitesControllerUpdateInput,
-    outputSchema: ServerSitesControllerUpdateOutput,
-  }),
-);
+export const ServerSitesControllerUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServerSitesControllerUpdateInput,
+  outputSchema: ServerSitesControllerUpdateOutput,
+}));
 // Input Schema
 export interface ServerSitesControllerUpdateDependencyMapStatusInput {
   subscriptionId: string;
@@ -19914,7 +19818,7 @@ export interface ServerSitesControllerUpdateDependencyMapStatusInput {
   machines?: { machineId?: string; isDependencyMapToBeEnabled?: boolean }[];
 }
 export const ServerSitesControllerUpdateDependencyMapStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -19937,7 +19841,7 @@ export const ServerSitesControllerUpdateDependencyMapStatusInput =
 // Output Schema
 export type ServerSitesControllerUpdateDependencyMapStatusOutput = unknown;
 export const ServerSitesControllerUpdateDependencyMapStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerUpdateDependencyMapStatusOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerUpdateDependencyMapStatusOutput>;
 
 // The operation
 /**
@@ -19950,7 +19854,7 @@ export const ServerSitesControllerUpdateDependencyMapStatusOutput =
  * @param siteName - Site name
  */
 export const ServerSitesControllerUpdateDependencyMapStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerSitesControllerUpdateDependencyMapStatusInput,
     outputSchema: ServerSitesControllerUpdateDependencyMapStatusOutput,
   }));
@@ -19966,7 +19870,7 @@ export interface ServerSitesControllerUpdatePropertiesInput {
   }[];
 }
 export const ServerSitesControllerUpdatePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -19988,7 +19892,7 @@ export const ServerSitesControllerUpdatePropertiesInput =
 // Output Schema
 export type ServerSitesControllerUpdatePropertiesOutput = unknown;
 export const ServerSitesControllerUpdatePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerUpdatePropertiesOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerUpdatePropertiesOutput>;
 
 // The operation
 /**
@@ -20000,7 +19904,7 @@ export const ServerSitesControllerUpdatePropertiesOutput =
  * @param siteName - Site name
  */
 export const ServerSitesControllerUpdateProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerSitesControllerUpdatePropertiesInput,
     outputSchema: ServerSitesControllerUpdatePropertiesOutput,
   }));
@@ -20013,7 +19917,7 @@ export interface ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryI
   default: "default";
 }
 export const ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -20042,7 +19946,7 @@ export interface ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryO
   };
 }
 export const ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20074,7 +19978,7 @@ export const ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryOutpu
  * @param default - Default value.
  */
 export const ServerSoftwareInventoriesControllerGetMachineSoftwareInventory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryInput,
     outputSchema:
@@ -20088,7 +19992,7 @@ export interface ServerSoftwareInventoriesControllerListByServerInput {
   machineName: string;
 }
 export const ServerSoftwareInventoriesControllerListByServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -20119,7 +20023,7 @@ export interface ServerSoftwareInventoriesControllerListByServerOutput {
   nextLink?: string;
 }
 export const ServerSoftwareInventoriesControllerListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -20165,7 +20069,7 @@ export const ServerSoftwareInventoriesControllerListByServerOutput =
  * @param machineName -  A server machine name
  */
 export const ServerSoftwareInventoriesControllerListByServer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServerSoftwareInventoriesControllerListByServerInput,
     outputSchema: ServerSoftwareInventoriesControllerListByServerOutput,
   }));
@@ -20176,7 +20080,7 @@ export interface SitesControllerComputeErrorSummaryInput {
   siteName: string;
 }
 export const SitesControllerComputeErrorSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -20203,7 +20107,7 @@ export interface SitesControllerComputeErrorSummaryOutput {
   nextLink?: string;
 }
 export const SitesControllerComputeErrorSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applianceName: Schema.String,
     discoveryScopeErrorSummaries: Schema.Struct({
       affectedResourceType: Schema.String,
@@ -20228,7 +20132,7 @@ export const SitesControllerComputeErrorSummaryOutput =
  * @param siteName - Site name
  */
 export const SitesControllerComputeErrorSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SitesControllerComputeErrorSummaryInput,
     outputSchema: SitesControllerComputeErrorSummaryOutput,
   }));
@@ -20239,7 +20143,7 @@ export interface SitesControllerComputeusageInput {
   siteName: string;
 }
 export const SitesControllerComputeusageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -20258,7 +20162,7 @@ export interface SitesControllerComputeusageOutput {
   vCenterCount?: number;
 }
 export const SitesControllerComputeusageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     machineCount: Schema.optional(Schema.Number),
     runAsAccountCount: Schema.optional(Schema.Number),
     vCenterCount: Schema.optional(Schema.Number),
@@ -20273,12 +20177,10 @@ export const SitesControllerComputeusageOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const SitesControllerComputeusage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SitesControllerComputeusageInput,
-    outputSchema: SitesControllerComputeusageOutput,
-  }),
-);
+export const SitesControllerComputeusage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SitesControllerComputeusageInput,
+  outputSchema: SitesControllerComputeusageOutput,
+}));
 // Input Schema
 export interface SitesControllerCreateInput {
   subscriptionId: string;
@@ -20318,7 +20220,7 @@ export interface SitesControllerCreateInput {
   location: string;
 }
 export const SitesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -20386,7 +20288,7 @@ export interface SitesControllerCreateOutput {
   };
 }
 export const SitesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20415,12 +20317,10 @@ export const SitesControllerCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const SitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SitesControllerCreateInput,
-    outputSchema: SitesControllerCreateOutput,
-  }),
-);
+export const SitesControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SitesControllerCreateInput,
+  outputSchema: SitesControllerCreateOutput,
+}));
 // Input Schema
 export interface SitesControllerDeleteInput {
   subscriptionId: string;
@@ -20428,7 +20328,7 @@ export interface SitesControllerDeleteInput {
   siteName: string;
 }
 export const SitesControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -20443,7 +20343,7 @@ export const SitesControllerDeleteInput =
 // Output Schema
 export type SitesControllerDeleteOutput = void;
 export const SitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SitesControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -20454,12 +20354,10 @@ export const SitesControllerDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const SitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SitesControllerDeleteInput,
-    outputSchema: SitesControllerDeleteOutput,
-  }),
-);
+export const SitesControllerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SitesControllerDeleteInput,
+  outputSchema: SitesControllerDeleteOutput,
+}));
 // Input Schema
 export interface SitesControllerExportApplicationsInput {
   subscriptionId: string;
@@ -20467,7 +20365,7 @@ export interface SitesControllerExportApplicationsInput {
   siteName: string;
 }
 export const SitesControllerExportApplicationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -20482,7 +20380,7 @@ export const SitesControllerExportApplicationsInput =
 // Output Schema
 export type SitesControllerExportApplicationsOutput = unknown;
 export const SitesControllerExportApplicationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SitesControllerExportApplicationsOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SitesControllerExportApplicationsOutput>;
 
 // The operation
 /**
@@ -20495,7 +20393,7 @@ export const SitesControllerExportApplicationsOutput =
  * @param siteName - Site name
  */
 export const SitesControllerExportApplications =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SitesControllerExportApplicationsInput,
     outputSchema: SitesControllerExportApplicationsOutput,
   }));
@@ -20513,7 +20411,7 @@ export interface SitesControllerExportMachineErrorsInput {
   };
 }
 export const SitesControllerExportMachineErrorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -20540,7 +20438,7 @@ export const SitesControllerExportMachineErrorsInput =
 // Output Schema
 export type SitesControllerExportMachineErrorsOutput = unknown;
 export const SitesControllerExportMachineErrorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SitesControllerExportMachineErrorsOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SitesControllerExportMachineErrorsOutput>;
 
 // The operation
 /**
@@ -20553,7 +20451,7 @@ export const SitesControllerExportMachineErrorsOutput =
  * @param siteName - Site name
  */
 export const SitesControllerExportMachineErrors =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SitesControllerExportMachineErrorsInput,
     outputSchema: SitesControllerExportMachineErrorsOutput,
   }));
@@ -20565,7 +20463,7 @@ export interface SitesControllerExportMachinesInput {
   filter?: string;
 }
 export const SitesControllerExportMachinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -20581,7 +20479,7 @@ export const SitesControllerExportMachinesInput =
 // Output Schema
 export type SitesControllerExportMachinesOutput = unknown;
 export const SitesControllerExportMachinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SitesControllerExportMachinesOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SitesControllerExportMachinesOutput>;
 
 // The operation
 /**
@@ -20594,7 +20492,7 @@ export const SitesControllerExportMachinesOutput =
  * @param siteName - Site name
  */
 export const SitesControllerExportMachines =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SitesControllerExportMachinesInput,
     outputSchema: SitesControllerExportMachinesOutput,
   }));
@@ -20605,7 +20503,7 @@ export interface SitesControllerGetInput {
   siteName: string;
 }
 export const SitesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -20632,7 +20530,7 @@ export interface SitesControllerGetOutput {
   };
 }
 export const SitesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20661,7 +20559,7 @@ export const SitesControllerGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const SitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SitesControllerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SitesControllerGetInput,
   outputSchema: SitesControllerGetOutput,
 }));
@@ -20671,7 +20569,7 @@ export interface SitesControllerListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const SitesControllerListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -20700,7 +20598,7 @@ export interface SitesControllerListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SitesControllerListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -20746,7 +20644,7 @@ export const SitesControllerListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const SitesControllerListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SitesControllerListByResourceGroupInput,
     outputSchema: SitesControllerListByResourceGroupOutput,
   }));
@@ -20755,7 +20653,7 @@ export interface SitesControllerListBySubscriptionInput {
   subscriptionId: string;
 }
 export const SitesControllerListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20783,7 +20681,7 @@ export interface SitesControllerListBySubscriptionOutput {
   nextLink?: string;
 }
 export const SitesControllerListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -20828,7 +20726,7 @@ export const SitesControllerListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const SitesControllerListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SitesControllerListBySubscriptionInput,
     outputSchema: SitesControllerListBySubscriptionOutput,
   }));
@@ -20839,7 +20737,7 @@ export interface SitesControllerListHealthSummaryInput {
   siteName: string;
 }
 export const SitesControllerListHealthSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -20874,7 +20772,7 @@ export interface SitesControllerListHealthSummaryOutput {
   nextLink?: string;
 }
 export const SitesControllerListHealthSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         applianceName: Schema.optional(Schema.String),
@@ -20912,7 +20810,7 @@ export const SitesControllerListHealthSummaryOutput =
  * @param siteName - Site name
  */
 export const SitesControllerListHealthSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SitesControllerListHealthSummaryInput,
     outputSchema: SitesControllerListHealthSummaryOutput,
   }));
@@ -20923,7 +20821,7 @@ export interface SitesControllerSummaryInput {
   siteName: string;
 }
 export const SitesControllerSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -20942,7 +20840,7 @@ export interface SitesControllerSummaryOutput {
   vCenterCount?: number;
 }
 export const SitesControllerSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     machineCount: Schema.optional(Schema.Number),
     runAsAccountCount: Schema.optional(Schema.Number),
     vCenterCount: Schema.optional(Schema.Number),
@@ -20957,12 +20855,10 @@ export const SitesControllerSummaryOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const SitesControllerSummary = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SitesControllerSummaryInput,
-    outputSchema: SitesControllerSummaryOutput,
-  }),
-);
+export const SitesControllerSummary = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SitesControllerSummaryInput,
+  outputSchema: SitesControllerSummaryOutput,
+}));
 // Input Schema
 export interface SitesControllerUpdateInput {
   subscriptionId: string;
@@ -20998,7 +20894,7 @@ export interface SitesControllerUpdateInput {
   };
 }
 export const SitesControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -21062,7 +20958,7 @@ export interface SitesControllerUpdateOutput {
   };
 }
 export const SitesControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21091,12 +20987,10 @@ export const SitesControllerUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param siteName - Site name
  */
-export const SitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SitesControllerUpdateInput,
-    outputSchema: SitesControllerUpdateOutput,
-  }),
-);
+export const SitesControllerUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SitesControllerUpdateInput,
+  outputSchema: SitesControllerUpdateOutput,
+}));
 // Input Schema
 export interface SolutionsControllerCleanupDataInput {
   subscriptionId: string;
@@ -21105,7 +20999,7 @@ export interface SolutionsControllerCleanupDataInput {
   solutionName: string;
 }
 export const SolutionsControllerCleanupDataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -21121,7 +21015,7 @@ export const SolutionsControllerCleanupDataInput =
 // Output Schema
 export interface SolutionsControllerCleanupDataOutput {}
 export const SolutionsControllerCleanupDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as unknown as Schema.Codec<SolutionsControllerCleanupDataOutput>;
 
@@ -21136,7 +21030,7 @@ export const SolutionsControllerCleanupDataOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerCleanupData =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SolutionsControllerCleanupDataInput,
     outputSchema: SolutionsControllerCleanupDataOutput,
   }));
@@ -21195,7 +21089,7 @@ export interface SolutionsControllerCreateInput {
   };
 }
 export const SolutionsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -21332,7 +21226,7 @@ export interface SolutionsControllerCreateOutput {
   };
 }
 export const SolutionsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21418,12 +21312,10 @@ export const SolutionsControllerCreateOutput =
  * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
-export const SolutionsControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SolutionsControllerCreateInput,
-    outputSchema: SolutionsControllerCreateOutput,
-  }),
-);
+export const SolutionsControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SolutionsControllerCreateInput,
+  outputSchema: SolutionsControllerCreateOutput,
+}));
 // Input Schema
 export interface SolutionsControllerDeleteSolutionInput {
   subscriptionId: string;
@@ -21432,7 +21324,7 @@ export interface SolutionsControllerDeleteSolutionInput {
   solutionName: string;
 }
 export const SolutionsControllerDeleteSolutionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -21448,7 +21340,7 @@ export const SolutionsControllerDeleteSolutionInput =
 // Output Schema
 export interface SolutionsControllerDeleteSolutionOutput {}
 export const SolutionsControllerDeleteSolutionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as unknown as Schema.Codec<SolutionsControllerDeleteSolutionOutput>;
 
@@ -21465,7 +21357,7 @@ export const SolutionsControllerDeleteSolutionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerDeleteSolution =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SolutionsControllerDeleteSolutionInput,
     outputSchema: SolutionsControllerDeleteSolutionOutput,
   }));
@@ -21477,7 +21369,7 @@ export interface SolutionsControllerGetConfigInput {
   solutionName: string;
 }
 export const SolutionsControllerGetConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -21495,7 +21387,7 @@ export interface SolutionsControllerGetConfigOutput {
   publisherSasUri?: string;
 }
 export const SolutionsControllerGetConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     publisherSasUri: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<SolutionsControllerGetConfigOutput>;
 
@@ -21510,7 +21402,7 @@ export const SolutionsControllerGetConfigOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerGetConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SolutionsControllerGetConfigInput,
     outputSchema: SolutionsControllerGetConfigOutput,
   }));
@@ -21522,7 +21414,7 @@ export interface SolutionsControllerGetSolutionInput {
   solutionName: string;
 }
 export const SolutionsControllerGetSolutionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -21586,7 +21478,7 @@ export interface SolutionsControllerGetSolutionOutput {
   };
 }
 export const SolutionsControllerGetSolutionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21673,7 +21565,7 @@ export const SolutionsControllerGetSolutionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerGetSolution =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SolutionsControllerGetSolutionInput,
     outputSchema: SolutionsControllerGetSolutionOutput,
   }));
@@ -21684,7 +21576,7 @@ export interface SolutionsControllerListSolutionsInput {
   migrateProjectName: string;
 }
 export const SolutionsControllerListSolutionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -21750,7 +21642,7 @@ export interface SolutionsControllerListSolutionsOutput {
   nextLink?: string;
 }
 export const SolutionsControllerListSolutionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -21843,7 +21735,7 @@ export const SolutionsControllerListSolutionsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerListSolutions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SolutionsControllerListSolutionsInput,
     outputSchema: SolutionsControllerListSolutionsOutput,
   }));
@@ -21902,7 +21794,7 @@ export interface SolutionsControllerUpdateInput {
   };
 }
 export const SolutionsControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -22039,7 +21931,7 @@ export interface SolutionsControllerUpdateOutput {
   };
 }
 export const SolutionsControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22127,12 +22019,10 @@ export const SolutionsControllerUpdateOutput =
  * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
-export const SolutionsControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SolutionsControllerUpdateInput,
-    outputSchema: SolutionsControllerUpdateOutput,
-  }),
-);
+export const SolutionsControllerUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SolutionsControllerUpdateInput,
+  outputSchema: SolutionsControllerUpdateOutput,
+}));
 // Input Schema
 export interface SqlAssessmentOptionsOperationsGetInput {
   subscriptionId: string;
@@ -22141,7 +22031,7 @@ export interface SqlAssessmentOptionsOperationsGetInput {
   assessmentOptionsName: string;
 }
 export const SqlAssessmentOptionsOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -22169,7 +22059,7 @@ export interface SqlAssessmentOptionsOperationsGetOutput {
   };
 }
 export const SqlAssessmentOptionsOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22200,7 +22090,7 @@ export const SqlAssessmentOptionsOperationsGetOutput =
  * @param assessmentOptionsName - Sql assessment options ARM name. Accepted values is 'default'
  */
 export const SqlAssessmentOptionsOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlAssessmentOptionsOperationsGetInput,
     outputSchema: SqlAssessmentOptionsOperationsGetOutput,
   }));
@@ -22211,7 +22101,7 @@ export interface SqlAssessmentOptionsOperationsListByAssessmentProjectInput {
   projectName: string;
 }
 export const SqlAssessmentOptionsOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -22241,7 +22131,7 @@ export interface SqlAssessmentOptionsOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const SqlAssessmentOptionsOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -22286,7 +22176,7 @@ export const SqlAssessmentOptionsOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const SqlAssessmentOptionsOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlAssessmentOptionsOperationsListByAssessmentProjectInput,
     outputSchema: SqlAssessmentOptionsOperationsListByAssessmentProjectOutput,
   }));
@@ -22309,7 +22199,7 @@ export interface SqlAssessmentV2OperationsCreateInput {
   };
 }
 export const SqlAssessmentV2OperationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -22353,7 +22243,7 @@ export interface SqlAssessmentV2OperationsCreateOutput {
   };
 }
 export const SqlAssessmentV2OperationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22385,7 +22275,7 @@ export const SqlAssessmentV2OperationsCreateOutput =
  * @param assessmentName - SQL Assessment arm name.
  */
 export const SqlAssessmentV2OperationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlAssessmentV2OperationsCreateInput,
     outputSchema: SqlAssessmentV2OperationsCreateOutput,
   }));
@@ -22398,7 +22288,7 @@ export interface SqlAssessmentV2OperationsDeleteInput {
   assessmentName: string;
 }
 export const SqlAssessmentV2OperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -22415,7 +22305,7 @@ export const SqlAssessmentV2OperationsDeleteInput =
 // Output Schema
 export type SqlAssessmentV2OperationsDeleteOutput = void;
 export const SqlAssessmentV2OperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlAssessmentV2OperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlAssessmentV2OperationsDeleteOutput>;
 
 // The operation
 /**
@@ -22429,7 +22319,7 @@ export const SqlAssessmentV2OperationsDeleteOutput =
  * @param assessmentName - SQL Assessment arm name.
  */
 export const SqlAssessmentV2OperationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlAssessmentV2OperationsDeleteInput,
     outputSchema: SqlAssessmentV2OperationsDeleteOutput,
   }));
@@ -22442,7 +22332,7 @@ export interface SqlAssessmentV2OperationsDownloadUrlInput {
   assessmentName: string;
 }
 export const SqlAssessmentV2OperationsDownloadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -22462,7 +22352,7 @@ export interface SqlAssessmentV2OperationsDownloadUrlOutput {
   expirationTime: string;
 }
 export const SqlAssessmentV2OperationsDownloadUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assessmentReportUrl: Schema.String,
     expirationTime: Schema.String,
   }) as unknown as Schema.Codec<SqlAssessmentV2OperationsDownloadUrlOutput>;
@@ -22481,7 +22371,7 @@ export const SqlAssessmentV2OperationsDownloadUrlOutput =
  * @param assessmentName - SQL Assessment arm name.
  */
 export const SqlAssessmentV2OperationsDownloadUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlAssessmentV2OperationsDownloadUrlInput,
     outputSchema: SqlAssessmentV2OperationsDownloadUrlOutput,
   }));
@@ -22494,7 +22384,7 @@ export interface SqlAssessmentV2OperationsGetInput {
   assessmentName: string;
 }
 export const SqlAssessmentV2OperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -22523,7 +22413,7 @@ export interface SqlAssessmentV2OperationsGetOutput {
   };
 }
 export const SqlAssessmentV2OperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22555,7 +22445,7 @@ export const SqlAssessmentV2OperationsGetOutput =
  * @param assessmentName - SQL Assessment arm name.
  */
 export const SqlAssessmentV2OperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlAssessmentV2OperationsGetInput,
     outputSchema: SqlAssessmentV2OperationsGetOutput,
   }));
@@ -22567,7 +22457,7 @@ export interface SqlAssessmentV2OperationsListByGroupInput {
   groupName: string;
 }
 export const SqlAssessmentV2OperationsListByGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -22598,7 +22488,7 @@ export interface SqlAssessmentV2OperationsListByGroupOutput {
   nextLink?: string;
 }
 export const SqlAssessmentV2OperationsListByGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -22644,7 +22534,7 @@ export const SqlAssessmentV2OperationsListByGroupOutput =
  * @param groupName - Group ARM name
  */
 export const SqlAssessmentV2OperationsListByGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlAssessmentV2OperationsListByGroupInput,
     outputSchema: SqlAssessmentV2OperationsListByGroupOutput,
   }));
@@ -22658,7 +22548,7 @@ export interface SqlAssessmentV2SummaryOperationsGetInput {
   summaryName: string;
 }
 export const SqlAssessmentV2SummaryOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -22688,7 +22578,7 @@ export interface SqlAssessmentV2SummaryOperationsGetOutput {
   };
 }
 export const SqlAssessmentV2SummaryOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22721,7 +22611,7 @@ export const SqlAssessmentV2SummaryOperationsGetOutput =
  * @param summaryName - Gets the Name of the SQL Summary.
  */
 export const SqlAssessmentV2SummaryOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlAssessmentV2SummaryOperationsGetInput,
     outputSchema: SqlAssessmentV2SummaryOperationsGetOutput,
   }));
@@ -22734,7 +22624,7 @@ export interface SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Input {
   assessmentName: string;
 }
 export const SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -22766,7 +22656,7 @@ export interface SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Output {
   nextLink?: string;
 }
 export const SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -22813,7 +22703,7 @@ export const SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Output =
  * @param assessmentName - SQL Assessment arm name.
  */
 export const SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Input,
     outputSchema: SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Output,
   }));
@@ -22826,7 +22716,7 @@ export interface SqlAvailabilityGroupsControllerGetInput {
   sqlAvailabilityGroupName: string;
 }
 export const SqlAvailabilityGroupsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -22855,7 +22745,7 @@ export interface SqlAvailabilityGroupsControllerGetOutput {
   };
 }
 export const SqlAvailabilityGroupsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22887,7 +22777,7 @@ export const SqlAvailabilityGroupsControllerGetOutput =
  * @param sqlAvailabilityGroupName - SQL availability group name.
  */
 export const SqlAvailabilityGroupsControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlAvailabilityGroupsControllerGetInput,
     outputSchema: SqlAvailabilityGroupsControllerGetOutput,
   }));
@@ -22903,7 +22793,7 @@ export interface SqlAvailabilityGroupsControllerListBySqlSiteInput {
   totalRecordCount?: number;
 }
 export const SqlAvailabilityGroupsControllerListBySqlSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -22938,7 +22828,7 @@ export interface SqlAvailabilityGroupsControllerListBySqlSiteOutput {
   nextLink?: string;
 }
 export const SqlAvailabilityGroupsControllerListBySqlSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -22988,7 +22878,7 @@ export const SqlAvailabilityGroupsControllerListBySqlSiteOutput =
  * @param sqlSiteName - SQL site name.
  */
 export const SqlAvailabilityGroupsControllerListBySqlSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlAvailabilityGroupsControllerListBySqlSiteInput,
     outputSchema: SqlAvailabilityGroupsControllerListBySqlSiteOutput,
   }));
@@ -23010,7 +22900,7 @@ export interface SqlCollectorOperationsCreateInput {
   };
 }
 export const SqlCollectorOperationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -23053,7 +22943,7 @@ export interface SqlCollectorOperationsCreateOutput {
   };
 }
 export const SqlCollectorOperationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23084,7 +22974,7 @@ export const SqlCollectorOperationsCreateOutput =
  * @param collectorName - Sql collector ARM name.
  */
 export const SqlCollectorOperationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlCollectorOperationsCreateInput,
     outputSchema: SqlCollectorOperationsCreateOutput,
   }));
@@ -23096,7 +22986,7 @@ export interface SqlCollectorOperationsDeleteInput {
   collectorName: string;
 }
 export const SqlCollectorOperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -23112,7 +23002,7 @@ export const SqlCollectorOperationsDeleteInput =
 // Output Schema
 export type SqlCollectorOperationsDeleteOutput = void;
 export const SqlCollectorOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlCollectorOperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlCollectorOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -23125,7 +23015,7 @@ export const SqlCollectorOperationsDeleteOutput =
  * @param collectorName - Sql collector ARM name.
  */
 export const SqlCollectorOperationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlCollectorOperationsDeleteInput,
     outputSchema: SqlCollectorOperationsDeleteOutput,
   }));
@@ -23137,7 +23027,7 @@ export interface SqlCollectorOperationsGetInput {
   collectorName: string;
 }
 export const SqlCollectorOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -23165,7 +23055,7 @@ export interface SqlCollectorOperationsGetOutput {
   };
 }
 export const SqlCollectorOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23195,12 +23085,10 @@ export const SqlCollectorOperationsGetOutput =
  * @param projectName - Assessment Project Name
  * @param collectorName - Sql collector ARM name.
  */
-export const SqlCollectorOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlCollectorOperationsGetInput,
-    outputSchema: SqlCollectorOperationsGetOutput,
-  }),
-);
+export const SqlCollectorOperationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlCollectorOperationsGetInput,
+  outputSchema: SqlCollectorOperationsGetOutput,
+}));
 // Input Schema
 export interface SqlCollectorOperationsListByAssessmentProjectInput {
   subscriptionId: string;
@@ -23208,7 +23096,7 @@ export interface SqlCollectorOperationsListByAssessmentProjectInput {
   projectName: string;
 }
 export const SqlCollectorOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -23238,7 +23126,7 @@ export interface SqlCollectorOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const SqlCollectorOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -23283,7 +23171,7 @@ export const SqlCollectorOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const SqlCollectorOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlCollectorOperationsListByAssessmentProjectInput,
     outputSchema: SqlCollectorOperationsListByAssessmentProjectOutput,
   }));
@@ -23296,7 +23184,7 @@ export interface SqlDatabasesControllerGetInput {
   sqlDatabaseName: string;
 }
 export const SqlDatabasesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -23325,7 +23213,7 @@ export interface SqlDatabasesControllerGetOutput {
   };
 }
 export const SqlDatabasesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23356,12 +23244,10 @@ export const SqlDatabasesControllerGetOutput =
  * @param sqlSiteName - SQL site name.
  * @param sqlDatabaseName - SQL Database name.
  */
-export const SqlDatabasesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlDatabasesControllerGetInput,
-    outputSchema: SqlDatabasesControllerGetOutput,
-  }),
-);
+export const SqlDatabasesControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlDatabasesControllerGetInput,
+  outputSchema: SqlDatabasesControllerGetOutput,
+}));
 // Input Schema
 export interface SqlDatabasesControllerListBySqlSiteInput {
   subscriptionId: string;
@@ -23374,7 +23260,7 @@ export interface SqlDatabasesControllerListBySqlSiteInput {
   totalRecordCount?: number;
 }
 export const SqlDatabasesControllerListBySqlSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -23409,7 +23295,7 @@ export interface SqlDatabasesControllerListBySqlSiteOutput {
   nextLink?: string;
 }
 export const SqlDatabasesControllerListBySqlSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -23459,7 +23345,7 @@ export const SqlDatabasesControllerListBySqlSiteOutput =
  * @param sqlSiteName - SQL site name.
  */
 export const SqlDatabasesControllerListBySqlSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlDatabasesControllerListBySqlSiteInput,
     outputSchema: SqlDatabasesControllerListBySqlSiteOutput,
   }));
@@ -23483,7 +23369,7 @@ export interface SqlDiscoverySiteDataSourceControllerCreateInput {
   };
 }
 export const SqlDiscoverySiteDataSourceControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -23528,7 +23414,7 @@ export interface SqlDiscoverySiteDataSourceControllerCreateOutput {
   };
 }
 export const SqlDiscoverySiteDataSourceControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23560,7 +23446,7 @@ export const SqlDiscoverySiteDataSourceControllerCreateOutput =
  * @param discoverySiteDataSourceName - SQL Discovery site data source name.
  */
 export const SqlDiscoverySiteDataSourceControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlDiscoverySiteDataSourceControllerCreateInput,
     outputSchema: SqlDiscoverySiteDataSourceControllerCreateOutput,
   }));
@@ -23573,7 +23459,7 @@ export interface SqlDiscoverySiteDataSourceControllerDeleteInput {
   discoverySiteDataSourceName: string;
 }
 export const SqlDiscoverySiteDataSourceControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -23590,7 +23476,7 @@ export const SqlDiscoverySiteDataSourceControllerDeleteInput =
 // Output Schema
 export type SqlDiscoverySiteDataSourceControllerDeleteOutput = void;
 export const SqlDiscoverySiteDataSourceControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlDiscoverySiteDataSourceControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlDiscoverySiteDataSourceControllerDeleteOutput>;
 
 // The operation
 /**
@@ -23604,7 +23490,7 @@ export const SqlDiscoverySiteDataSourceControllerDeleteOutput =
  * @param discoverySiteDataSourceName - SQL Discovery site data source name.
  */
 export const SqlDiscoverySiteDataSourceControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlDiscoverySiteDataSourceControllerDeleteInput,
     outputSchema: SqlDiscoverySiteDataSourceControllerDeleteOutput,
   }));
@@ -23617,7 +23503,7 @@ export interface SqlDiscoverySiteDataSourceControllerGetInput {
   discoverySiteDataSourceName: string;
 }
 export const SqlDiscoverySiteDataSourceControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -23646,7 +23532,7 @@ export interface SqlDiscoverySiteDataSourceControllerGetOutput {
   };
 }
 export const SqlDiscoverySiteDataSourceControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23678,7 +23564,7 @@ export const SqlDiscoverySiteDataSourceControllerGetOutput =
  * @param discoverySiteDataSourceName - SQL Discovery site data source name.
  */
 export const SqlDiscoverySiteDataSourceControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlDiscoverySiteDataSourceControllerGetInput,
     outputSchema: SqlDiscoverySiteDataSourceControllerGetOutput,
   }));
@@ -23690,7 +23576,7 @@ export interface SqlDiscoverySiteDataSourceControllerListBySqlSiteInput {
   sqlSiteName: string;
 }
 export const SqlDiscoverySiteDataSourceControllerListBySqlSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -23721,7 +23607,7 @@ export interface SqlDiscoverySiteDataSourceControllerListBySqlSiteOutput {
   nextLink?: string;
 }
 export const SqlDiscoverySiteDataSourceControllerListBySqlSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -23767,7 +23653,7 @@ export const SqlDiscoverySiteDataSourceControllerListBySqlSiteOutput =
  * @param sqlSiteName - SQL site name.
  */
 export const SqlDiscoverySiteDataSourceControllerListBySqlSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlDiscoverySiteDataSourceControllerListBySqlSiteInput,
     outputSchema: SqlDiscoverySiteDataSourceControllerListBySqlSiteOutput,
   }));
@@ -23780,7 +23666,7 @@ export interface SqlJobsControllerGetInput {
   jobName: string;
 }
 export const SqlJobsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -23809,7 +23695,7 @@ export interface SqlJobsControllerGetOutput {
   };
 }
 export const SqlJobsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23842,12 +23728,10 @@ export const SqlJobsControllerGetOutput =
  * @param sqlSiteName - SQL site name.
  * @param jobName - SQL Job name.
  */
-export const SqlJobsControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlJobsControllerGetInput,
-    outputSchema: SqlJobsControllerGetOutput,
-  }),
-);
+export const SqlJobsControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlJobsControllerGetInput,
+  outputSchema: SqlJobsControllerGetOutput,
+}));
 // Input Schema
 export interface SqlJobsControllerListBySqlSiteInput {
   subscriptionId: string;
@@ -23856,7 +23740,7 @@ export interface SqlJobsControllerListBySqlSiteInput {
   sqlSiteName: string;
 }
 export const SqlJobsControllerListBySqlSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -23887,7 +23771,7 @@ export interface SqlJobsControllerListBySqlSiteOutput {
   nextLink?: string;
 }
 export const SqlJobsControllerListBySqlSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -23935,7 +23819,7 @@ export const SqlJobsControllerListBySqlSiteOutput =
  * @param sqlSiteName - SQL site name.
  */
 export const SqlJobsControllerListBySqlSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlJobsControllerListBySqlSiteInput,
     outputSchema: SqlJobsControllerListBySqlSiteOutput,
   }));
@@ -23948,7 +23832,7 @@ export interface SqlOperationsStatusControllerGetSqlOperationStatusInput {
   operationStatusName: string;
 }
 export const SqlOperationsStatusControllerGetSqlOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -23973,7 +23857,7 @@ export interface SqlOperationsStatusControllerGetSqlOperationStatusOutput {
   properties?: { result?: string };
 }
 export const SqlOperationsStatusControllerGetSqlOperationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -24004,7 +23888,7 @@ export const SqlOperationsStatusControllerGetSqlOperationStatusOutput =
  * @param operationStatusName - Operation status  Arm Name.
  */
 export const SqlOperationsStatusControllerGetSqlOperationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlOperationsStatusControllerGetSqlOperationStatusInput,
     outputSchema: SqlOperationsStatusControllerGetSqlOperationStatusOutput,
   }));
@@ -24017,7 +23901,7 @@ export interface SqlRunAsAccountsControllerGetInput {
   accountName: string;
 }
 export const SqlRunAsAccountsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -24046,7 +23930,7 @@ export interface SqlRunAsAccountsControllerGetOutput {
   };
 }
 export const SqlRunAsAccountsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24078,7 +23962,7 @@ export const SqlRunAsAccountsControllerGetOutput =
  * @param accountName - SQL RunAsAccounts name
  */
 export const SqlRunAsAccountsControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlRunAsAccountsControllerGetInput,
     outputSchema: SqlRunAsAccountsControllerGetOutput,
   }));
@@ -24090,7 +23974,7 @@ export interface SqlRunAsAccountsControllerListBySqlSiteInput {
   sqlSiteName: string;
 }
 export const SqlRunAsAccountsControllerListBySqlSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -24121,7 +24005,7 @@ export interface SqlRunAsAccountsControllerListBySqlSiteOutput {
   nextLink?: string;
 }
 export const SqlRunAsAccountsControllerListBySqlSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -24167,7 +24051,7 @@ export const SqlRunAsAccountsControllerListBySqlSiteOutput =
  * @param sqlSiteName - SQL site name.
  */
 export const SqlRunAsAccountsControllerListBySqlSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlRunAsAccountsControllerListBySqlSiteInput,
     outputSchema: SqlRunAsAccountsControllerListBySqlSiteOutput,
   }));
@@ -24180,7 +24064,7 @@ export interface SqlServersControllerGetInput {
   sqlServerName: string;
 }
 export const SqlServersControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -24209,7 +24093,7 @@ export interface SqlServersControllerGetOutput {
   };
 }
 export const SqlServersControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24240,12 +24124,10 @@ export const SqlServersControllerGetOutput =
  * @param sqlSiteName - SQL site name.
  * @param sqlServerName - SQL server name.
  */
-export const SqlServersControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServersControllerGetInput,
-    outputSchema: SqlServersControllerGetOutput,
-  }),
-);
+export const SqlServersControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServersControllerGetInput,
+  outputSchema: SqlServersControllerGetOutput,
+}));
 // Input Schema
 export interface SqlServersControllerListBySqlSiteInput {
   subscriptionId: string;
@@ -24258,7 +24140,7 @@ export interface SqlServersControllerListBySqlSiteInput {
   totalRecordCount?: number;
 }
 export const SqlServersControllerListBySqlSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -24293,7 +24175,7 @@ export interface SqlServersControllerListBySqlSiteOutput {
   nextLink?: string;
 }
 export const SqlServersControllerListBySqlSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -24343,7 +24225,7 @@ export const SqlServersControllerListBySqlSiteOutput =
  * @param sqlSiteName - SQL site name.
  */
 export const SqlServersControllerListBySqlSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServersControllerListBySqlSiteInput,
     outputSchema: SqlServersControllerListBySqlSiteOutput,
   }));
@@ -24427,7 +24309,7 @@ export interface SqlServersControllerUpdateInput {
   };
 }
 export const SqlServersControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -24549,7 +24431,7 @@ export interface SqlServersControllerUpdateOutput {
   };
 }
 export const SqlServersControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24580,12 +24462,10 @@ export const SqlServersControllerUpdateOutput =
  * @param sqlSiteName - SQL site name.
  * @param sqlServerName - SQL server name.
  */
-export const SqlServersControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServersControllerUpdateInput,
-    outputSchema: SqlServersControllerUpdateOutput,
-  }),
-);
+export const SqlServersControllerUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServersControllerUpdateInput,
+  outputSchema: SqlServersControllerUpdateOutput,
+}));
 // Input Schema
 export interface SqlSitesControllerCreateInput {
   subscriptionId: string;
@@ -24624,7 +24504,7 @@ export interface SqlSitesControllerCreateInput {
   };
 }
 export const SqlSitesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -24695,7 +24575,7 @@ export interface SqlSitesControllerCreateOutput {
   };
 }
 export const SqlSitesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24725,12 +24605,10 @@ export const SqlSitesControllerCreateOutput =
  * @param siteName - Site name
  * @param sqlSiteName - SQL site name.
  */
-export const SqlSitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlSitesControllerCreateInput,
-    outputSchema: SqlSitesControllerCreateOutput,
-  }),
-);
+export const SqlSitesControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlSitesControllerCreateInput,
+  outputSchema: SqlSitesControllerCreateOutput,
+}));
 // Input Schema
 export interface SqlSitesControllerDeleteInput {
   subscriptionId: string;
@@ -24739,7 +24617,7 @@ export interface SqlSitesControllerDeleteInput {
   sqlSiteName: string;
 }
 export const SqlSitesControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -24755,7 +24633,7 @@ export const SqlSitesControllerDeleteInput =
 // Output Schema
 export type SqlSitesControllerDeleteOutput = void;
 export const SqlSitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlSitesControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlSitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -24767,12 +24645,10 @@ export const SqlSitesControllerDeleteOutput =
  * @param siteName - Site name
  * @param sqlSiteName - SQL site name.
  */
-export const SqlSitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlSitesControllerDeleteInput,
-    outputSchema: SqlSitesControllerDeleteOutput,
-  }),
-);
+export const SqlSitesControllerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlSitesControllerDeleteInput,
+  outputSchema: SqlSitesControllerDeleteOutput,
+}));
 // Input Schema
 export interface SqlSitesControllerErrorSummaryInput {
   subscriptionId: string;
@@ -24782,7 +24658,7 @@ export interface SqlSitesControllerErrorSummaryInput {
   applianceName?: string;
 }
 export const SqlSitesControllerErrorSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -24811,7 +24687,7 @@ export interface SqlSitesControllerErrorSummaryOutput {
   nextLink?: string;
 }
 export const SqlSitesControllerErrorSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applianceName: Schema.String,
     discoveryScopeErrorSummaries: Schema.Struct({
       affectedResourceType: Schema.String,
@@ -24837,7 +24713,7 @@ export const SqlSitesControllerErrorSummaryOutput =
  * @param sqlSiteName - SQL site name.
  */
 export const SqlSitesControllerErrorSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlSitesControllerErrorSummaryInput,
     outputSchema: SqlSitesControllerErrorSummaryOutput,
   }));
@@ -24849,7 +24725,7 @@ export interface SqlSitesControllerExportSqlServerErrorsInput {
   sqlSiteName: string;
 }
 export const SqlSitesControllerExportSqlServerErrorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -24865,7 +24741,7 @@ export const SqlSitesControllerExportSqlServerErrorsInput =
 // Output Schema
 export type SqlSitesControllerExportSqlServerErrorsOutput = unknown;
 export const SqlSitesControllerExportSqlServerErrorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SqlSitesControllerExportSqlServerErrorsOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SqlSitesControllerExportSqlServerErrorsOutput>;
 
 // The operation
 /**
@@ -24878,7 +24754,7 @@ export const SqlSitesControllerExportSqlServerErrorsOutput =
  * @param sqlSiteName - SQL site name.
  */
 export const SqlSitesControllerExportSqlServerErrors =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlSitesControllerExportSqlServerErrorsInput,
     outputSchema: SqlSitesControllerExportSqlServerErrorsOutput,
   }));
@@ -24892,7 +24768,7 @@ export interface SqlSitesControllerExportSqlServersInput {
   filter?: string;
 }
 export const SqlSitesControllerExportSqlServersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -24910,7 +24786,7 @@ export const SqlSitesControllerExportSqlServersInput =
 // Output Schema
 export type SqlSitesControllerExportSqlServersOutput = unknown;
 export const SqlSitesControllerExportSqlServersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SqlSitesControllerExportSqlServersOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SqlSitesControllerExportSqlServersOutput>;
 
 // The operation
 /**
@@ -24923,7 +24799,7 @@ export const SqlSitesControllerExportSqlServersOutput =
  * @param sqlSiteName - SQL site name.
  */
 export const SqlSitesControllerExportSqlServers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlSitesControllerExportSqlServersInput,
     outputSchema: SqlSitesControllerExportSqlServersOutput,
   }));
@@ -24935,7 +24811,7 @@ export interface SqlSitesControllerGetInput {
   sqlSiteName: string;
 }
 export const SqlSitesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -24963,7 +24839,7 @@ export interface SqlSitesControllerGetOutput {
   };
 }
 export const SqlSitesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24993,12 +24869,10 @@ export const SqlSitesControllerGetOutput =
  * @param siteName - Site name
  * @param sqlSiteName - SQL site name.
  */
-export const SqlSitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlSitesControllerGetInput,
-    outputSchema: SqlSitesControllerGetOutput,
-  }),
-);
+export const SqlSitesControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlSitesControllerGetInput,
+  outputSchema: SqlSitesControllerGetOutput,
+}));
 // Input Schema
 export interface SqlSitesControllerListByMasterSiteInput {
   subscriptionId: string;
@@ -25006,7 +24880,7 @@ export interface SqlSitesControllerListByMasterSiteInput {
   siteName: string;
 }
 export const SqlSitesControllerListByMasterSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -25036,7 +24910,7 @@ export interface SqlSitesControllerListByMasterSiteOutput {
   nextLink?: string;
 }
 export const SqlSitesControllerListByMasterSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -25081,7 +24955,7 @@ export const SqlSitesControllerListByMasterSiteOutput =
  * @param siteName - Site name
  */
 export const SqlSitesControllerListByMasterSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlSitesControllerListByMasterSiteInput,
     outputSchema: SqlSitesControllerListByMasterSiteOutput,
   }));
@@ -25094,7 +24968,7 @@ export interface SqlSitesControllerRefreshInput {
   applianceName?: string;
 }
 export const SqlSitesControllerRefreshInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -25111,7 +24985,7 @@ export const SqlSitesControllerRefreshInput =
 // Output Schema
 export type SqlSitesControllerRefreshOutput = unknown;
 export const SqlSitesControllerRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SqlSitesControllerRefreshOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SqlSitesControllerRefreshOutput>;
 
 // The operation
 /**
@@ -25123,12 +24997,10 @@ export const SqlSitesControllerRefreshOutput =
  * @param siteName - Site name
  * @param sqlSiteName - SQL site name.
  */
-export const SqlSitesControllerRefresh = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlSitesControllerRefreshInput,
-    outputSchema: SqlSitesControllerRefreshOutput,
-  }),
-);
+export const SqlSitesControllerRefresh = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlSitesControllerRefreshInput,
+  outputSchema: SqlSitesControllerRefreshOutput,
+}));
 // Input Schema
 export interface SqlSitesControllerSummaryInput {
   subscriptionId: string;
@@ -25137,7 +25009,7 @@ export interface SqlSitesControllerSummaryInput {
   sqlSiteName: string;
 }
 export const SqlSitesControllerSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -25157,7 +25029,7 @@ export interface SqlSitesControllerSummaryOutput {
   runAsAccountCount?: number;
 }
 export const SqlSitesControllerSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serverCount: Schema.optional(Schema.Number),
     databaseCount: Schema.optional(Schema.Number),
     runAsAccountCount: Schema.optional(Schema.Number),
@@ -25173,12 +25045,10 @@ export const SqlSitesControllerSummaryOutput =
  * @param siteName - Site name
  * @param sqlSiteName - SQL site name.
  */
-export const SqlSitesControllerSummary = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlSitesControllerSummaryInput,
-    outputSchema: SqlSitesControllerSummaryOutput,
-  }),
-);
+export const SqlSitesControllerSummary = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlSitesControllerSummaryInput,
+  outputSchema: SqlSitesControllerSummaryOutput,
+}));
 // Input Schema
 export interface SqlSitesControllerUpdateInput {
   subscriptionId: string;
@@ -25208,7 +25078,7 @@ export interface SqlSitesControllerUpdateInput {
   };
 }
 export const SqlSitesControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -25267,7 +25137,7 @@ export interface SqlSitesControllerUpdateOutput {
   };
 }
 export const SqlSitesControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25297,12 +25167,10 @@ export const SqlSitesControllerUpdateOutput =
  * @param siteName - Site name
  * @param sqlSiteName - SQL site name.
  */
-export const SqlSitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlSitesControllerUpdateInput,
-    outputSchema: SqlSitesControllerUpdateOutput,
-  }),
-);
+export const SqlSitesControllerUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlSitesControllerUpdateInput,
+  outputSchema: SqlSitesControllerUpdateOutput,
+}));
 // Input Schema
 export interface TomcatWebApplicationsControllerGetInput {
   subscriptionId: string;
@@ -25312,7 +25180,7 @@ export interface TomcatWebApplicationsControllerGetInput {
   webApplicationName: string;
 }
 export const TomcatWebApplicationsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -25341,7 +25209,7 @@ export interface TomcatWebApplicationsControllerGetOutput {
   };
 }
 export const TomcatWebApplicationsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25373,7 +25241,7 @@ export const TomcatWebApplicationsControllerGetOutput =
  * @param webApplicationName - Web application name.
  */
 export const TomcatWebApplicationsControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TomcatWebApplicationsControllerGetInput,
     outputSchema: TomcatWebApplicationsControllerGetOutput,
   }));
@@ -25389,7 +25257,7 @@ export interface TomcatWebApplicationsControllerListByWebAppSiteInput {
   totalRecordCount?: number;
 }
 export const TomcatWebApplicationsControllerListByWebAppSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -25424,7 +25292,7 @@ export interface TomcatWebApplicationsControllerListByWebAppSiteOutput {
   nextLink?: string;
 }
 export const TomcatWebApplicationsControllerListByWebAppSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -25474,7 +25342,7 @@ export const TomcatWebApplicationsControllerListByWebAppSiteOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const TomcatWebApplicationsControllerListByWebAppSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TomcatWebApplicationsControllerListByWebAppSiteInput,
     outputSchema: TomcatWebApplicationsControllerListByWebAppSiteOutput,
   }));
@@ -25487,7 +25355,7 @@ export interface TomcatWebApplicationsControllerUpdateInput {
   webApplicationName: string;
 }
 export const TomcatWebApplicationsControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -25516,7 +25384,7 @@ export interface TomcatWebApplicationsControllerUpdateOutput {
   };
 }
 export const TomcatWebApplicationsControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25548,7 +25416,7 @@ export const TomcatWebApplicationsControllerUpdateOutput =
  * @param webApplicationName - Web application name.
  */
 export const TomcatWebApplicationsControllerUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TomcatWebApplicationsControllerUpdateInput,
     outputSchema: TomcatWebApplicationsControllerUpdateOutput,
   }));
@@ -25561,7 +25429,7 @@ export interface TomcatWebServersControllerGetInput {
   webServerName: string;
 }
 export const TomcatWebServersControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -25590,7 +25458,7 @@ export interface TomcatWebServersControllerGetOutput {
   };
 }
 export const TomcatWebServersControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25622,7 +25490,7 @@ export const TomcatWebServersControllerGetOutput =
  * @param webServerName - Web server name.
  */
 export const TomcatWebServersControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TomcatWebServersControllerGetInput,
     outputSchema: TomcatWebServersControllerGetOutput,
   }));
@@ -25638,7 +25506,7 @@ export interface TomcatWebServersControllerListByWebAppSiteInput {
   totalRecordCount?: number;
 }
 export const TomcatWebServersControllerListByWebAppSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -25673,7 +25541,7 @@ export interface TomcatWebServersControllerListByWebAppSiteOutput {
   nextLink?: string;
 }
 export const TomcatWebServersControllerListByWebAppSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -25723,7 +25591,7 @@ export const TomcatWebServersControllerListByWebAppSiteOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const TomcatWebServersControllerListByWebAppSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TomcatWebServersControllerListByWebAppSiteInput,
     outputSchema: TomcatWebServersControllerListByWebAppSiteOutput,
   }));
@@ -25777,7 +25645,7 @@ export interface VcenterControllerCreateInput {
   };
 }
 export const VcenterControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -25864,7 +25732,7 @@ export interface VcenterControllerCreateOutput {
   };
 }
 export const VcenterControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25894,12 +25762,10 @@ export const VcenterControllerCreateOutput =
  * @param siteName - Site name
  * @param vcenterName -  VCenters name
  */
-export const VcenterControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VcenterControllerCreateInput,
-    outputSchema: VcenterControllerCreateOutput,
-  }),
-);
+export const VcenterControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VcenterControllerCreateInput,
+  outputSchema: VcenterControllerCreateOutput,
+}));
 // Input Schema
 export interface VcenterControllerDeleteInput {
   subscriptionId: string;
@@ -25908,7 +25774,7 @@ export interface VcenterControllerDeleteInput {
   vcenterName: string;
 }
 export const VcenterControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -25924,7 +25790,7 @@ export const VcenterControllerDeleteInput =
 // Output Schema
 export type VcenterControllerDeleteOutput = void;
 export const VcenterControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VcenterControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VcenterControllerDeleteOutput>;
 
 // The operation
 /**
@@ -25936,12 +25802,10 @@ export const VcenterControllerDeleteOutput =
  * @param siteName - Site name
  * @param vcenterName -  VCenters name
  */
-export const VcenterControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VcenterControllerDeleteInput,
-    outputSchema: VcenterControllerDeleteOutput,
-  }),
-);
+export const VcenterControllerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VcenterControllerDeleteInput,
+  outputSchema: VcenterControllerDeleteOutput,
+}));
 // Input Schema
 export interface VcenterControllerGetInput {
   subscriptionId: string;
@@ -25950,7 +25814,7 @@ export interface VcenterControllerGetInput {
   vcenterName: string;
 }
 export const VcenterControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -25978,7 +25842,7 @@ export interface VcenterControllerGetOutput {
   };
 }
 export const VcenterControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26008,12 +25872,10 @@ export const VcenterControllerGetOutput =
  * @param siteName - Site name
  * @param vcenterName -  VCenters name
  */
-export const VcenterControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VcenterControllerGetInput,
-    outputSchema: VcenterControllerGetOutput,
-  }),
-);
+export const VcenterControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VcenterControllerGetInput,
+  outputSchema: VcenterControllerGetOutput,
+}));
 // Input Schema
 export interface VcenterControllerListByVmwareSiteInput {
   subscriptionId: string;
@@ -26022,7 +25884,7 @@ export interface VcenterControllerListByVmwareSiteInput {
   filter?: string;
 }
 export const VcenterControllerListByVmwareSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -26053,7 +25915,7 @@ export interface VcenterControllerListByVmwareSiteOutput {
   nextLink?: string;
 }
 export const VcenterControllerListByVmwareSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26099,7 +25961,7 @@ export const VcenterControllerListByVmwareSiteOutput =
  * @param siteName - Site name
  */
 export const VcenterControllerListByVmwareSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VcenterControllerListByVmwareSiteInput,
     outputSchema: VcenterControllerListByVmwareSiteOutput,
   }));
@@ -26111,7 +25973,7 @@ export interface VirtualDesktopUserControllerGetVirtualDesktopUserInput {
   virtualDesktopUserName: string;
 }
 export const VirtualDesktopUserControllerGetVirtualDesktopUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -26163,7 +26025,7 @@ export interface VirtualDesktopUserControllerGetVirtualDesktopUserOutput {
   };
 }
 export const VirtualDesktopUserControllerGetVirtualDesktopUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26222,7 +26084,7 @@ export const VirtualDesktopUserControllerGetVirtualDesktopUserOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualDesktopUserControllerGetVirtualDesktopUser =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualDesktopUserControllerGetVirtualDesktopUserInput,
     outputSchema: VirtualDesktopUserControllerGetVirtualDesktopUserOutput,
   }));
@@ -26235,7 +26097,7 @@ export interface VirtualDesktopUserControllerListVirtualDesktopUsersInput {
   pageSize?: number;
 }
 export const VirtualDesktopUserControllerListVirtualDesktopUsersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -26291,7 +26153,7 @@ export interface VirtualDesktopUserControllerListVirtualDesktopUsersOutput {
   nextLink?: string;
 }
 export const VirtualDesktopUserControllerListVirtualDesktopUsersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -26358,7 +26220,7 @@ export const VirtualDesktopUserControllerListVirtualDesktopUsersOutput =
  * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const VirtualDesktopUserControllerListVirtualDesktopUsers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualDesktopUserControllerListVirtualDesktopUsersInput,
     outputSchema: VirtualDesktopUserControllerListVirtualDesktopUsersOutput,
   }));
@@ -26380,7 +26242,7 @@ export interface VmwareCollectorsOperationsCreateInput {
   };
 }
 export const VmwareCollectorsOperationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -26423,7 +26285,7 @@ export interface VmwareCollectorsOperationsCreateOutput {
   };
 }
 export const VmwareCollectorsOperationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26454,7 +26316,7 @@ export const VmwareCollectorsOperationsCreateOutput =
  * @param vmWareCollectorName - VMware collector ARM name
  */
 export const VmwareCollectorsOperationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VmwareCollectorsOperationsCreateInput,
     outputSchema: VmwareCollectorsOperationsCreateOutput,
   }));
@@ -26466,7 +26328,7 @@ export interface VmwareCollectorsOperationsDeleteInput {
   vmWareCollectorName: string;
 }
 export const VmwareCollectorsOperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -26482,7 +26344,7 @@ export const VmwareCollectorsOperationsDeleteInput =
 // Output Schema
 export type VmwareCollectorsOperationsDeleteOutput = void;
 export const VmwareCollectorsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VmwareCollectorsOperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VmwareCollectorsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -26495,7 +26357,7 @@ export const VmwareCollectorsOperationsDeleteOutput =
  * @param vmWareCollectorName - VMware collector ARM name
  */
 export const VmwareCollectorsOperationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VmwareCollectorsOperationsDeleteInput,
     outputSchema: VmwareCollectorsOperationsDeleteOutput,
   }));
@@ -26507,7 +26369,7 @@ export interface VmwareCollectorsOperationsGetInput {
   vmWareCollectorName: string;
 }
 export const VmwareCollectorsOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -26535,7 +26397,7 @@ export interface VmwareCollectorsOperationsGetOutput {
   };
 }
 export const VmwareCollectorsOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26566,7 +26428,7 @@ export const VmwareCollectorsOperationsGetOutput =
  * @param vmWareCollectorName - VMware collector ARM name
  */
 export const VmwareCollectorsOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VmwareCollectorsOperationsGetInput,
     outputSchema: VmwareCollectorsOperationsGetOutput,
   }));
@@ -26577,7 +26439,7 @@ export interface VmwareCollectorsOperationsListByAssessmentProjectInput {
   projectName: string;
 }
 export const VmwareCollectorsOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -26607,7 +26469,7 @@ export interface VmwareCollectorsOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const VmwareCollectorsOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26652,7 +26514,7 @@ export const VmwareCollectorsOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const VmwareCollectorsOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VmwareCollectorsOperationsListByAssessmentProjectInput,
     outputSchema: VmwareCollectorsOperationsListByAssessmentProjectOutput,
   }));
@@ -26664,7 +26526,7 @@ export interface VmwareHostControllerGetInput {
   hostName: string;
 }
 export const VmwareHostControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -26692,7 +26554,7 @@ export interface VmwareHostControllerGetOutput {
   };
 }
 export const VmwareHostControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26722,12 +26584,10 @@ export const VmwareHostControllerGetOutput =
  * @param siteName - Site name
  * @param hostName -  Hosts name
  */
-export const VmwareHostControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VmwareHostControllerGetInput,
-    outputSchema: VmwareHostControllerGetOutput,
-  }),
-);
+export const VmwareHostControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VmwareHostControllerGetInput,
+  outputSchema: VmwareHostControllerGetOutput,
+}));
 // Input Schema
 export interface VmwareHostControllerListByVmwareSiteInput {
   subscriptionId: string;
@@ -26735,7 +26595,7 @@ export interface VmwareHostControllerListByVmwareSiteInput {
   siteName: string;
 }
 export const VmwareHostControllerListByVmwareSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -26765,7 +26625,7 @@ export interface VmwareHostControllerListByVmwareSiteOutput {
   nextLink?: string;
 }
 export const VmwareHostControllerListByVmwareSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -26810,7 +26670,7 @@ export const VmwareHostControllerListByVmwareSiteOutput =
  * @param siteName - Site name
  */
 export const VmwareHostControllerListByVmwareSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VmwareHostControllerListByVmwareSiteInput,
     outputSchema: VmwareHostControllerListByVmwareSiteOutput,
   }));
@@ -26822,7 +26682,7 @@ export interface VmwareOperationsStatusGetVmwareOperationStatusInput {
   operationStatusName: string;
 }
 export const VmwareOperationsStatusGetVmwareOperationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -26846,7 +26706,7 @@ export interface VmwareOperationsStatusGetVmwareOperationStatusOutput {
   properties?: { result?: string };
 }
 export const VmwareOperationsStatusGetVmwareOperationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -26876,7 +26736,7 @@ export const VmwareOperationsStatusGetVmwareOperationStatusOutput =
  * @param operationStatusName - Operation status  Arm Name.
  */
 export const VmwareOperationsStatusGetVmwareOperationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VmwareOperationsStatusGetVmwareOperationStatusInput,
     outputSchema: VmwareOperationsStatusGetVmwareOperationStatusOutput,
   }));
@@ -26888,7 +26748,7 @@ export interface VmwarePropertiesControllerUpdateDependencyMapStatusInput {
   machines?: { machineId?: string; isDependencyMapToBeEnabled?: boolean }[];
 }
 export const VmwarePropertiesControllerUpdateDependencyMapStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -26911,7 +26771,7 @@ export const VmwarePropertiesControllerUpdateDependencyMapStatusInput =
 // Output Schema
 export type VmwarePropertiesControllerUpdateDependencyMapStatusOutput = unknown;
 export const VmwarePropertiesControllerUpdateDependencyMapStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<VmwarePropertiesControllerUpdateDependencyMapStatusOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<VmwarePropertiesControllerUpdateDependencyMapStatusOutput>;
 
 // The operation
 /**
@@ -26925,7 +26785,7 @@ export const VmwarePropertiesControllerUpdateDependencyMapStatusOutput =
  * @param siteName - Site name
  */
 export const VmwarePropertiesControllerUpdateDependencyMapStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VmwarePropertiesControllerUpdateDependencyMapStatusInput,
     outputSchema: VmwarePropertiesControllerUpdateDependencyMapStatusOutput,
   }));
@@ -26941,7 +26801,7 @@ export interface VmwarePropertiesControllerUpdatePropertiesInput {
   }[];
 }
 export const VmwarePropertiesControllerUpdatePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -26963,7 +26823,7 @@ export const VmwarePropertiesControllerUpdatePropertiesInput =
 // Output Schema
 export type VmwarePropertiesControllerUpdatePropertiesOutput = unknown;
 export const VmwarePropertiesControllerUpdatePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<VmwarePropertiesControllerUpdatePropertiesOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<VmwarePropertiesControllerUpdatePropertiesOutput>;
 
 // The operation
 /**
@@ -26975,7 +26835,7 @@ export const VmwarePropertiesControllerUpdatePropertiesOutput =
  * @param siteName - Site name
  */
 export const VmwarePropertiesControllerUpdateProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VmwarePropertiesControllerUpdatePropertiesInput,
     outputSchema: VmwarePropertiesControllerUpdatePropertiesOutput,
   }));
@@ -26987,7 +26847,7 @@ export interface VmwarePropertiesControllerUpdateRunAsAccountInput {
   machines?: { machineId?: string; runAsAccountId?: string }[];
 }
 export const VmwarePropertiesControllerUpdateRunAsAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -27010,7 +26870,7 @@ export const VmwarePropertiesControllerUpdateRunAsAccountInput =
 // Output Schema
 export type VmwarePropertiesControllerUpdateRunAsAccountOutput = unknown;
 export const VmwarePropertiesControllerUpdateRunAsAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<VmwarePropertiesControllerUpdateRunAsAccountOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<VmwarePropertiesControllerUpdateRunAsAccountOutput>;
 
 // The operation
 /**
@@ -27023,7 +26883,7 @@ export const VmwarePropertiesControllerUpdateRunAsAccountOutput =
  * @param siteName - Site name
  */
 export const VmwarePropertiesControllerUpdateRunAsAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VmwarePropertiesControllerUpdateRunAsAccountInput,
     outputSchema: VmwarePropertiesControllerUpdateRunAsAccountOutput,
   }));
@@ -27035,7 +26895,7 @@ export interface VmwarePropertiesControllerUpdateTagsInput {
   machines?: { machineId?: string; tags?: Record<string, string> }[];
 }
 export const VmwarePropertiesControllerUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -27058,7 +26918,7 @@ export const VmwarePropertiesControllerUpdateTagsInput =
 // Output Schema
 export type VmwarePropertiesControllerUpdateTagsOutput = unknown;
 export const VmwarePropertiesControllerUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<VmwarePropertiesControllerUpdateTagsOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<VmwarePropertiesControllerUpdateTagsOutput>;
 
 // The operation
 /**
@@ -27071,7 +26931,7 @@ export const VmwarePropertiesControllerUpdateTagsOutput =
  * @param siteName - Site name
  */
 export const VmwarePropertiesControllerUpdateTags =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VmwarePropertiesControllerUpdateTagsInput,
     outputSchema: VmwarePropertiesControllerUpdateTagsOutput,
   }));
@@ -27084,7 +26944,7 @@ export interface VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryI
   default: "default";
 }
 export const VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -27113,7 +26973,7 @@ export interface VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryO
   };
 }
 export const VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27145,7 +27005,7 @@ export const VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryOutpu
  * @param default - Default value.
  */
 export const VmwareSoftwareInventoriesControllerGetMachineSoftwareInventory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryInput,
     outputSchema:
@@ -27159,7 +27019,7 @@ export interface VmwareSoftwareInventoriesControllerListByMachineResourceInput {
   machineName: string;
 }
 export const VmwareSoftwareInventoriesControllerListByMachineResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -27190,7 +27050,7 @@ export interface VmwareSoftwareInventoriesControllerListByMachineResourceOutput 
   nextLink?: string;
 }
 export const VmwareSoftwareInventoriesControllerListByMachineResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27236,7 +27096,7 @@ export const VmwareSoftwareInventoriesControllerListByMachineResourceOutput =
  * @param machineName - Machine name
  */
 export const VmwareSoftwareInventoriesControllerListByMachineResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VmwareSoftwareInventoriesControllerListByMachineResourceInput,
     outputSchema:
       VmwareSoftwareInventoriesControllerListByMachineResourceOutput,
@@ -27249,7 +27109,7 @@ export interface WebAppAssessmentOptionsOperationsGetInput {
   assessmentOptionsName: string;
 }
 export const WebAppAssessmentOptionsOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -27277,7 +27137,7 @@ export interface WebAppAssessmentOptionsOperationsGetOutput {
   };
 }
 export const WebAppAssessmentOptionsOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27308,7 +27168,7 @@ export const WebAppAssessmentOptionsOperationsGetOutput =
  * @param assessmentOptionsName - Web app assessment options ARM name. Accepted values is 'default'
  */
 export const WebAppAssessmentOptionsOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppAssessmentOptionsOperationsGetInput,
     outputSchema: WebAppAssessmentOptionsOperationsGetOutput,
   }));
@@ -27319,7 +27179,7 @@ export interface WebAppAssessmentOptionsOperationsListByAssessmentProjectInput {
   projectName: string;
 }
 export const WebAppAssessmentOptionsOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -27349,7 +27209,7 @@ export interface WebAppAssessmentOptionsOperationsListByAssessmentProjectOutput 
   nextLink?: string;
 }
 export const WebAppAssessmentOptionsOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27394,7 +27254,7 @@ export const WebAppAssessmentOptionsOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const WebAppAssessmentOptionsOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppAssessmentOptionsOperationsListByAssessmentProjectInput,
     outputSchema:
       WebAppAssessmentOptionsOperationsListByAssessmentProjectOutput,
@@ -27418,7 +27278,7 @@ export interface WebAppAssessmentV2OperationsCreateInput {
   };
 }
 export const WebAppAssessmentV2OperationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -27462,7 +27322,7 @@ export interface WebAppAssessmentV2OperationsCreateOutput {
   };
 }
 export const WebAppAssessmentV2OperationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27494,7 +27354,7 @@ export const WebAppAssessmentV2OperationsCreateOutput =
  * @param assessmentName - Web app Assessment arm name.
  */
 export const WebAppAssessmentV2OperationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppAssessmentV2OperationsCreateInput,
     outputSchema: WebAppAssessmentV2OperationsCreateOutput,
   }));
@@ -27507,7 +27367,7 @@ export interface WebAppAssessmentV2OperationsDeleteInput {
   assessmentName: string;
 }
 export const WebAppAssessmentV2OperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -27524,7 +27384,7 @@ export const WebAppAssessmentV2OperationsDeleteInput =
 // Output Schema
 export type WebAppAssessmentV2OperationsDeleteOutput = void;
 export const WebAppAssessmentV2OperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebAppAssessmentV2OperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebAppAssessmentV2OperationsDeleteOutput>;
 
 // The operation
 /**
@@ -27538,7 +27398,7 @@ export const WebAppAssessmentV2OperationsDeleteOutput =
  * @param assessmentName - Web app Assessment arm name.
  */
 export const WebAppAssessmentV2OperationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppAssessmentV2OperationsDeleteInput,
     outputSchema: WebAppAssessmentV2OperationsDeleteOutput,
   }));
@@ -27551,7 +27411,7 @@ export interface WebAppAssessmentV2OperationsDownloadUrlInput {
   assessmentName: string;
 }
 export const WebAppAssessmentV2OperationsDownloadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -27571,7 +27431,7 @@ export interface WebAppAssessmentV2OperationsDownloadUrlOutput {
   expirationTime: string;
 }
 export const WebAppAssessmentV2OperationsDownloadUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assessmentReportUrl: Schema.String,
     expirationTime: Schema.String,
   }) as unknown as Schema.Codec<WebAppAssessmentV2OperationsDownloadUrlOutput>;
@@ -27590,7 +27450,7 @@ export const WebAppAssessmentV2OperationsDownloadUrlOutput =
  * @param assessmentName - Web app Assessment arm name.
  */
 export const WebAppAssessmentV2OperationsDownloadUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppAssessmentV2OperationsDownloadUrlInput,
     outputSchema: WebAppAssessmentV2OperationsDownloadUrlOutput,
   }));
@@ -27603,7 +27463,7 @@ export interface WebAppAssessmentV2OperationsGetInput {
   assessmentName: string;
 }
 export const WebAppAssessmentV2OperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -27632,7 +27492,7 @@ export interface WebAppAssessmentV2OperationsGetOutput {
   };
 }
 export const WebAppAssessmentV2OperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27664,7 +27524,7 @@ export const WebAppAssessmentV2OperationsGetOutput =
  * @param assessmentName - Web app Assessment arm name.
  */
 export const WebAppAssessmentV2OperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppAssessmentV2OperationsGetInput,
     outputSchema: WebAppAssessmentV2OperationsGetOutput,
   }));
@@ -27676,7 +27536,7 @@ export interface WebAppAssessmentV2OperationsListByGroupInput {
   groupName: string;
 }
 export const WebAppAssessmentV2OperationsListByGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -27707,7 +27567,7 @@ export interface WebAppAssessmentV2OperationsListByGroupOutput {
   nextLink?: string;
 }
 export const WebAppAssessmentV2OperationsListByGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27753,7 +27613,7 @@ export const WebAppAssessmentV2OperationsListByGroupOutput =
  * @param groupName - Group ARM name
  */
 export const WebAppAssessmentV2OperationsListByGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppAssessmentV2OperationsListByGroupInput,
     outputSchema: WebAppAssessmentV2OperationsListByGroupOutput,
   }));
@@ -27767,7 +27627,7 @@ export interface WebAppAssessmentV2SummaryOperationsGetInput {
   summaryName: string;
 }
 export const WebAppAssessmentV2SummaryOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -27797,7 +27657,7 @@ export interface WebAppAssessmentV2SummaryOperationsGetOutput {
   };
 }
 export const WebAppAssessmentV2SummaryOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27830,7 +27690,7 @@ export const WebAppAssessmentV2SummaryOperationsGetOutput =
  * @param summaryName - Gets the Name of the Web app Summary.
  */
 export const WebAppAssessmentV2SummaryOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppAssessmentV2SummaryOperationsGetInput,
     outputSchema: WebAppAssessmentV2SummaryOperationsGetOutput,
   }));
@@ -27843,7 +27703,7 @@ export interface WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Inpu
   assessmentName: string;
 }
 export const WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -27875,7 +27735,7 @@ export interface WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Outp
   nextLink?: string;
 }
 export const WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -27922,7 +27782,7 @@ export const WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Output =
  * @param assessmentName - Web app Assessment arm name.
  */
 export const WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Input,
     outputSchema:
@@ -27946,7 +27806,7 @@ export interface WebAppCollectorOperationsCreateInput {
   };
 }
 export const WebAppCollectorOperationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -27989,7 +27849,7 @@ export interface WebAppCollectorOperationsCreateOutput {
   };
 }
 export const WebAppCollectorOperationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28020,7 +27880,7 @@ export const WebAppCollectorOperationsCreateOutput =
  * @param collectorName - Web app collector ARM name.
  */
 export const WebAppCollectorOperationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppCollectorOperationsCreateInput,
     outputSchema: WebAppCollectorOperationsCreateOutput,
   }));
@@ -28032,7 +27892,7 @@ export interface WebAppCollectorOperationsDeleteInput {
   collectorName: string;
 }
 export const WebAppCollectorOperationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -28048,7 +27908,7 @@ export const WebAppCollectorOperationsDeleteInput =
 // Output Schema
 export type WebAppCollectorOperationsDeleteOutput = void;
 export const WebAppCollectorOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebAppCollectorOperationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebAppCollectorOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -28061,7 +27921,7 @@ export const WebAppCollectorOperationsDeleteOutput =
  * @param collectorName - Web app collector ARM name.
  */
 export const WebAppCollectorOperationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppCollectorOperationsDeleteInput,
     outputSchema: WebAppCollectorOperationsDeleteOutput,
   }));
@@ -28073,7 +27933,7 @@ export interface WebAppCollectorOperationsGetInput {
   collectorName: string;
 }
 export const WebAppCollectorOperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -28101,7 +27961,7 @@ export interface WebAppCollectorOperationsGetOutput {
   };
 }
 export const WebAppCollectorOperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28132,7 +27992,7 @@ export const WebAppCollectorOperationsGetOutput =
  * @param collectorName - Web app collector ARM name.
  */
 export const WebAppCollectorOperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppCollectorOperationsGetInput,
     outputSchema: WebAppCollectorOperationsGetOutput,
   }));
@@ -28143,7 +28003,7 @@ export interface WebAppCollectorOperationsListByAssessmentProjectInput {
   projectName: string;
 }
 export const WebAppCollectorOperationsListByAssessmentProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -28173,7 +28033,7 @@ export interface WebAppCollectorOperationsListByAssessmentProjectOutput {
   nextLink?: string;
 }
 export const WebAppCollectorOperationsListByAssessmentProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -28218,7 +28078,7 @@ export const WebAppCollectorOperationsListByAssessmentProjectOutput =
  * @param projectName - Assessment Project Name
  */
 export const WebAppCollectorOperationsListByAssessmentProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppCollectorOperationsListByAssessmentProjectInput,
     outputSchema: WebAppCollectorOperationsListByAssessmentProjectOutput,
   }));
@@ -28242,7 +28102,7 @@ export interface WebAppDiscoverySiteDataSourcesControllerCreateInput {
   };
 }
 export const WebAppDiscoverySiteDataSourcesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -28287,7 +28147,7 @@ export interface WebAppDiscoverySiteDataSourcesControllerCreateOutput {
   };
 }
 export const WebAppDiscoverySiteDataSourcesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28319,7 +28179,7 @@ export const WebAppDiscoverySiteDataSourcesControllerCreateOutput =
  * @param discoverySiteDataSourceName - Data Source ARM name.
  */
 export const WebAppDiscoverySiteDataSourcesControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppDiscoverySiteDataSourcesControllerCreateInput,
     outputSchema: WebAppDiscoverySiteDataSourcesControllerCreateOutput,
   }));
@@ -28332,7 +28192,7 @@ export interface WebAppDiscoverySiteDataSourcesControllerDeleteInput {
   discoverySiteDataSourceName: string;
 }
 export const WebAppDiscoverySiteDataSourcesControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -28349,7 +28209,7 @@ export const WebAppDiscoverySiteDataSourcesControllerDeleteInput =
 // Output Schema
 export type WebAppDiscoverySiteDataSourcesControllerDeleteOutput = void;
 export const WebAppDiscoverySiteDataSourcesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebAppDiscoverySiteDataSourcesControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebAppDiscoverySiteDataSourcesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -28363,7 +28223,7 @@ export const WebAppDiscoverySiteDataSourcesControllerDeleteOutput =
  * @param discoverySiteDataSourceName - Data Source ARM name.
  */
 export const WebAppDiscoverySiteDataSourcesControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppDiscoverySiteDataSourcesControllerDeleteInput,
     outputSchema: WebAppDiscoverySiteDataSourcesControllerDeleteOutput,
   }));
@@ -28376,7 +28236,7 @@ export interface WebAppDiscoverySiteDataSourcesControllerGetInput {
   discoverySiteDataSourceName: string;
 }
 export const WebAppDiscoverySiteDataSourcesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -28405,7 +28265,7 @@ export interface WebAppDiscoverySiteDataSourcesControllerGetOutput {
   };
 }
 export const WebAppDiscoverySiteDataSourcesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28437,7 +28297,7 @@ export const WebAppDiscoverySiteDataSourcesControllerGetOutput =
  * @param discoverySiteDataSourceName - Data Source ARM name.
  */
 export const WebAppDiscoverySiteDataSourcesControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppDiscoverySiteDataSourcesControllerGetInput,
     outputSchema: WebAppDiscoverySiteDataSourcesControllerGetOutput,
   }));
@@ -28449,7 +28309,7 @@ export interface WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteInput {
   webAppSiteName: string;
 }
 export const WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -28480,7 +28340,7 @@ export interface WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteOutput 
   nextLink?: string;
 }
 export const WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -28526,7 +28386,7 @@ export const WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const WebAppDiscoverySiteDataSourcesControllerListByWebAppSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteInput,
     outputSchema:
       WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteOutput,
@@ -28540,7 +28400,7 @@ export interface WebAppExtendedMachinesControllerGetInput {
   extendedMachineName: string;
 }
 export const WebAppExtendedMachinesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -28569,7 +28429,7 @@ export interface WebAppExtendedMachinesControllerGetOutput {
   };
 }
 export const WebAppExtendedMachinesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28601,7 +28461,7 @@ export const WebAppExtendedMachinesControllerGetOutput =
  * @param extendedMachineName - Extended machine name.
  */
 export const WebAppExtendedMachinesControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppExtendedMachinesControllerGetInput,
     outputSchema: WebAppExtendedMachinesControllerGetOutput,
   }));
@@ -28617,7 +28477,7 @@ export interface WebAppExtendedMachinesControllerListByWebAppSiteInput {
   totalRecordCount?: number;
 }
 export const WebAppExtendedMachinesControllerListByWebAppSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -28652,7 +28512,7 @@ export interface WebAppExtendedMachinesControllerListByWebAppSiteOutput {
   nextLink?: string;
 }
 export const WebAppExtendedMachinesControllerListByWebAppSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -28702,7 +28562,7 @@ export const WebAppExtendedMachinesControllerListByWebAppSiteOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const WebAppExtendedMachinesControllerListByWebAppSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppExtendedMachinesControllerListByWebAppSiteInput,
     outputSchema: WebAppExtendedMachinesControllerListByWebAppSiteOutput,
   }));
@@ -28718,7 +28578,7 @@ export interface WebApplicationsControllerListByWebAppSiteInput {
   totalRecordCount?: number;
 }
 export const WebApplicationsControllerListByWebAppSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -28753,7 +28613,7 @@ export interface WebApplicationsControllerListByWebAppSiteOutput {
   nextLink?: string;
 }
 export const WebApplicationsControllerListByWebAppSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -28803,7 +28663,7 @@ export const WebApplicationsControllerListByWebAppSiteOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const WebApplicationsControllerListByWebAppSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebApplicationsControllerListByWebAppSiteInput,
     outputSchema: WebApplicationsControllerListByWebAppSiteOutput,
   }));
@@ -28816,7 +28676,7 @@ export interface WebAppPropertiesControllerUpdatePropertiesInput {
   webApps?: { webAppArmId?: string; tags?: Record<string, string> }[];
 }
 export const WebAppPropertiesControllerUpdatePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -28840,7 +28700,7 @@ export const WebAppPropertiesControllerUpdatePropertiesInput =
 // Output Schema
 export type WebAppPropertiesControllerUpdatePropertiesOutput = unknown;
 export const WebAppPropertiesControllerUpdatePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<WebAppPropertiesControllerUpdatePropertiesOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<WebAppPropertiesControllerUpdatePropertiesOutput>;
 
 // The operation
 /**
@@ -28854,7 +28714,7 @@ export const WebAppPropertiesControllerUpdatePropertiesOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const WebAppPropertiesControllerUpdateProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppPropertiesControllerUpdatePropertiesInput,
     outputSchema: WebAppPropertiesControllerUpdatePropertiesOutput,
   }));
@@ -28867,7 +28727,7 @@ export interface WebAppRunAsAccountsControllerGetInput {
   accountName: string;
 }
 export const WebAppRunAsAccountsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -28896,7 +28756,7 @@ export interface WebAppRunAsAccountsControllerGetOutput {
   };
 }
 export const WebAppRunAsAccountsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28928,7 +28788,7 @@ export const WebAppRunAsAccountsControllerGetOutput =
  * @param accountName - Run as account ARM name.
  */
 export const WebAppRunAsAccountsControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppRunAsAccountsControllerGetInput,
     outputSchema: WebAppRunAsAccountsControllerGetOutput,
   }));
@@ -28940,7 +28800,7 @@ export interface WebAppRunAsAccountsControllerListByWebAppSiteInput {
   webAppSiteName: string;
 }
 export const WebAppRunAsAccountsControllerListByWebAppSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -28971,7 +28831,7 @@ export interface WebAppRunAsAccountsControllerListByWebAppSiteOutput {
   nextLink?: string;
 }
 export const WebAppRunAsAccountsControllerListByWebAppSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -29017,7 +28877,7 @@ export const WebAppRunAsAccountsControllerListByWebAppSiteOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const WebAppRunAsAccountsControllerListByWebAppSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppRunAsAccountsControllerListByWebAppSiteInput,
     outputSchema: WebAppRunAsAccountsControllerListByWebAppSiteOutput,
   }));
@@ -29031,7 +28891,7 @@ export interface WebAppServicePlanV2OperationsGetInput {
   webAppServicePlanName: string;
 }
 export const WebAppServicePlanV2OperationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -29061,7 +28921,7 @@ export interface WebAppServicePlanV2OperationsGetOutput {
   };
 }
 export const WebAppServicePlanV2OperationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -29094,7 +28954,7 @@ export const WebAppServicePlanV2OperationsGetOutput =
  * @param webAppServicePlanName - Web app service plan ARM name.
  */
 export const WebAppServicePlanV2OperationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppServicePlanV2OperationsGetInput,
     outputSchema: WebAppServicePlanV2OperationsGetOutput,
   }));
@@ -29111,7 +28971,7 @@ export interface WebAppServicePlanV2OperationsListByWebAppAssessmentV2Input {
   totalRecordCount?: number;
 }
 export const WebAppServicePlanV2OperationsListByWebAppAssessmentV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     projectName: Schema.String.pipe(T.PathParam()),
@@ -29147,7 +29007,7 @@ export interface WebAppServicePlanV2OperationsListByWebAppAssessmentV2Output {
   nextLink?: string;
 }
 export const WebAppServicePlanV2OperationsListByWebAppAssessmentV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -29198,7 +29058,7 @@ export const WebAppServicePlanV2OperationsListByWebAppAssessmentV2Output =
  * @param assessmentName - Web app Assessment arm name.
  */
 export const WebAppServicePlanV2OperationsListByWebAppAssessmentV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppServicePlanV2OperationsListByWebAppAssessmentV2Input,
     outputSchema: WebAppServicePlanV2OperationsListByWebAppAssessmentV2Output,
   }));
@@ -29240,7 +29100,7 @@ export interface WebAppSitesControllerCreateInput {
   };
 }
 export const WebAppSitesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -29311,7 +29171,7 @@ export interface WebAppSitesControllerCreateOutput {
   };
 }
 export const WebAppSitesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -29341,12 +29201,10 @@ export const WebAppSitesControllerCreateOutput =
  * @param siteName - Site name
  * @param webAppSiteName - Web app site name.
  */
-export const WebAppSitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppSitesControllerCreateInput,
-    outputSchema: WebAppSitesControllerCreateOutput,
-  }),
-);
+export const WebAppSitesControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppSitesControllerCreateInput,
+  outputSchema: WebAppSitesControllerCreateOutput,
+}));
 // Input Schema
 export interface WebAppSitesControllerDeleteInput {
   subscriptionId: string;
@@ -29355,7 +29213,7 @@ export interface WebAppSitesControllerDeleteInput {
   webAppSiteName: string;
 }
 export const WebAppSitesControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -29371,7 +29229,7 @@ export const WebAppSitesControllerDeleteInput =
 // Output Schema
 export type WebAppSitesControllerDeleteOutput = void;
 export const WebAppSitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebAppSitesControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebAppSitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -29383,12 +29241,10 @@ export const WebAppSitesControllerDeleteOutput =
  * @param siteName - Site name
  * @param webAppSiteName - Web app site name.
  */
-export const WebAppSitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppSitesControllerDeleteInput,
-    outputSchema: WebAppSitesControllerDeleteOutput,
-  }),
-);
+export const WebAppSitesControllerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppSitesControllerDeleteInput,
+  outputSchema: WebAppSitesControllerDeleteOutput,
+}));
 // Input Schema
 export interface WebAppSitesControllerErrorSummaryInput {
   subscriptionId: string;
@@ -29398,7 +29254,7 @@ export interface WebAppSitesControllerErrorSummaryInput {
   applianceName?: string;
 }
 export const WebAppSitesControllerErrorSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -29427,7 +29283,7 @@ export interface WebAppSitesControllerErrorSummaryOutput {
   nextLink?: string;
 }
 export const WebAppSitesControllerErrorSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applianceName: Schema.String,
     discoveryScopeErrorSummaries: Schema.Struct({
       affectedResourceType: Schema.String,
@@ -29453,7 +29309,7 @@ export const WebAppSitesControllerErrorSummaryOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const WebAppSitesControllerErrorSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppSitesControllerErrorSummaryInput,
     outputSchema: WebAppSitesControllerErrorSummaryOutput,
   }));
@@ -29466,7 +29322,7 @@ export interface WebAppSitesControllerExportInventoryInput {
   filter?: string;
 }
 export const WebAppSitesControllerExportInventoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -29483,7 +29339,7 @@ export const WebAppSitesControllerExportInventoryInput =
 // Output Schema
 export type WebAppSitesControllerExportInventoryOutput = unknown;
 export const WebAppSitesControllerExportInventoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<WebAppSitesControllerExportInventoryOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<WebAppSitesControllerExportInventoryOutput>;
 
 // The operation
 /**
@@ -29496,7 +29352,7 @@ export const WebAppSitesControllerExportInventoryOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const WebAppSitesControllerExportInventory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppSitesControllerExportInventoryInput,
     outputSchema: WebAppSitesControllerExportInventoryOutput,
   }));
@@ -29508,7 +29364,7 @@ export interface WebAppSitesControllerGetInput {
   webAppSiteName: string;
 }
 export const WebAppSitesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -29536,7 +29392,7 @@ export interface WebAppSitesControllerGetOutput {
   };
 }
 export const WebAppSitesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -29566,12 +29422,10 @@ export const WebAppSitesControllerGetOutput =
  * @param siteName - Site name
  * @param webAppSiteName - Web app site name.
  */
-export const WebAppSitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppSitesControllerGetInput,
-    outputSchema: WebAppSitesControllerGetOutput,
-  }),
-);
+export const WebAppSitesControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppSitesControllerGetInput,
+  outputSchema: WebAppSitesControllerGetOutput,
+}));
 // Input Schema
 export interface WebAppSitesControllerListByMasterSiteInput {
   subscriptionId: string;
@@ -29579,7 +29433,7 @@ export interface WebAppSitesControllerListByMasterSiteInput {
   siteName: string;
 }
 export const WebAppSitesControllerListByMasterSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -29609,7 +29463,7 @@ export interface WebAppSitesControllerListByMasterSiteOutput {
   nextLink?: string;
 }
 export const WebAppSitesControllerListByMasterSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -29654,7 +29508,7 @@ export const WebAppSitesControllerListByMasterSiteOutput =
  * @param siteName - Site name
  */
 export const WebAppSitesControllerListByMasterSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppSitesControllerListByMasterSiteInput,
     outputSchema: WebAppSitesControllerListByMasterSiteOutput,
   }));
@@ -29667,7 +29521,7 @@ export interface WebAppSitesControllerRefreshInput {
   applianceName?: string;
 }
 export const WebAppSitesControllerRefreshInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -29684,7 +29538,7 @@ export const WebAppSitesControllerRefreshInput =
 // Output Schema
 export type WebAppSitesControllerRefreshOutput = unknown;
 export const WebAppSitesControllerRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<WebAppSitesControllerRefreshOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<WebAppSitesControllerRefreshOutput>;
 
 // The operation
 /**
@@ -29697,7 +29551,7 @@ export const WebAppSitesControllerRefreshOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const WebAppSitesControllerRefresh =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppSitesControllerRefreshInput,
     outputSchema: WebAppSitesControllerRefreshOutput,
   }));
@@ -29709,7 +29563,7 @@ export interface WebAppSitesControllerSummaryInput {
   webAppSiteName: string;
 }
 export const WebAppSitesControllerSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -29729,7 +29583,7 @@ export interface WebAppSitesControllerSummaryOutput {
   runAsAccountCount?: number;
 }
 export const WebAppSitesControllerSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webServerCount: Schema.optional(Schema.Number),
     webApplicationCount: Schema.optional(Schema.Number),
     runAsAccountCount: Schema.optional(Schema.Number),
@@ -29746,7 +29600,7 @@ export const WebAppSitesControllerSummaryOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const WebAppSitesControllerSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAppSitesControllerSummaryInput,
     outputSchema: WebAppSitesControllerSummaryOutput,
   }));
@@ -29779,7 +29633,7 @@ export interface WebAppSitesControllerUpdateInput {
   };
 }
 export const WebAppSitesControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -29838,7 +29692,7 @@ export interface WebAppSitesControllerUpdateOutput {
   };
 }
 export const WebAppSitesControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -29868,12 +29722,10 @@ export const WebAppSitesControllerUpdateOutput =
  * @param siteName - Site name
  * @param webAppSiteName - Web app site name.
  */
-export const WebAppSitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAppSitesControllerUpdateInput,
-    outputSchema: WebAppSitesControllerUpdateOutput,
-  }),
-);
+export const WebAppSitesControllerUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAppSitesControllerUpdateInput,
+  outputSchema: WebAppSitesControllerUpdateOutput,
+}));
 // Input Schema
 export interface WebServersControllerGetWebServerInput {
   subscriptionId: string;
@@ -29882,7 +29734,7 @@ export interface WebServersControllerGetWebServerInput {
   webServerId: string;
 }
 export const WebServersControllerGetWebServerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -29931,7 +29783,7 @@ export interface WebServersControllerGetWebServerOutput {
   };
 }
 export const WebServersControllerGetWebServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -29987,7 +29839,7 @@ export const WebServersControllerGetWebServerOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebServersControllerGetWebServer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebServersControllerGetWebServerInput,
     outputSchema: WebServersControllerGetWebServerOutput,
   }));
@@ -30003,7 +29855,7 @@ export interface WebServersControllerListByWebAppSiteInput {
   totalRecordCount?: number;
 }
 export const WebServersControllerListByWebAppSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -30038,7 +29890,7 @@ export interface WebServersControllerListByWebAppSiteOutput {
   nextLink?: string;
 }
 export const WebServersControllerListByWebAppSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -30088,7 +29940,7 @@ export const WebServersControllerListByWebAppSiteOutput =
  * @param webAppSiteName - Web app site name.
  */
 export const WebServersControllerListByWebAppSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebServersControllerListByWebAppSiteInput,
     outputSchema: WebServersControllerListByWebAppSiteOutput,
   }));
@@ -30101,7 +29953,7 @@ export interface WebServersControllerListWebServersInput {
   pageSize?: number;
 }
 export const WebServersControllerListWebServersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -30154,7 +30006,7 @@ export interface WebServersControllerListWebServersOutput {
   nextLink?: string;
 }
 export const WebServersControllerListWebServersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -30218,7 +30070,7 @@ export const WebServersControllerListWebServersOutput =
  * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const WebServersControllerListWebServers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebServersControllerListWebServersInput,
     outputSchema: WebServersControllerListWebServersOutput,
   }));
@@ -30230,7 +30082,7 @@ export interface WebSitesControllerGetWebSiteInput {
   webSiteName: string;
 }
 export const WebSitesControllerGetWebSiteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -30298,7 +30150,7 @@ export interface WebSitesControllerGetWebSiteOutput {
   };
 }
 export const WebSitesControllerGetWebSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -30383,7 +30235,7 @@ export const WebSitesControllerGetWebSiteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebSitesControllerGetWebSite =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebSitesControllerGetWebSiteInput,
     outputSchema: WebSitesControllerGetWebSiteOutput,
   }));
@@ -30396,7 +30248,7 @@ export interface WebSitesControllerListWebSitesInput {
   pageSize?: number;
 }
 export const WebSitesControllerListWebSitesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrateProjectName: Schema.String.pipe(T.PathParam()),
@@ -30468,7 +30320,7 @@ export interface WebSitesControllerListWebSitesOutput {
   nextLink?: string;
 }
 export const WebSitesControllerListWebSitesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -30561,7 +30413,7 @@ export const WebSitesControllerListWebSitesOutput =
  * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const WebSitesControllerListWebSites =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebSitesControllerListWebSitesInput,
     outputSchema: WebSitesControllerListWebSitesOutput,
   }));

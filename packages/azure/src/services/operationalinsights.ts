@@ -15,7 +15,7 @@ export interface AvailableServiceTiersListByWorkspaceInput {
   workspaceName: string;
 }
 export const AvailableServiceTiersListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -45,7 +45,7 @@ export type AvailableServiceTiersListByWorkspaceOutput = {
   lastSkuUpdate?: string;
 }[];
 export const AvailableServiceTiersListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       serviceTier: Schema.optional(
         Schema.Literals([
@@ -77,7 +77,7 @@ export const AvailableServiceTiersListByWorkspaceOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const AvailableServiceTiersListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailableServiceTiersListByWorkspaceInput,
     outputSchema: AvailableServiceTiersListByWorkspaceOutput,
   }));
@@ -153,7 +153,7 @@ export interface ClustersCreateOrUpdateInput {
   location: string;
 }
 export const ClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -278,7 +278,7 @@ export interface ClustersCreateOrUpdateOutput {
   };
 }
 export const ClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -307,19 +307,17 @@ export const ClustersCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - Name of the Log Analytics Cluster.
  */
-export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersCreateOrUpdateInput,
-    outputSchema: ClustersCreateOrUpdateOutput,
-  }),
-);
+export const ClustersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersCreateOrUpdateInput,
+  outputSchema: ClustersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ClustersDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -334,7 +332,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersDeleteOutput = void;
 export const ClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -345,7 +343,7 @@ export const ClustersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - Name of the Log Analytics Cluster.
  */
-export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
@@ -355,7 +353,7 @@ export interface ClustersGetInput {
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -381,7 +379,7 @@ export interface ClustersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -410,7 +408,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - Name of the Log Analytics Cluster.
  */
-export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
@@ -418,7 +416,7 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ClustersListInput {
   subscriptionId: string;
 }
-export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -445,7 +443,7 @@ export interface ClustersListOutput {
   }[];
   nextLink?: string;
 }
-export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -477,7 +475,7 @@ export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersListInput,
   outputSchema: ClustersListOutput,
 }));
@@ -487,7 +485,7 @@ export interface ClustersListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const ClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -516,7 +514,7 @@ export interface ClustersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -559,12 +557,10 @@ export const ClustersListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListByResourceGroupInput,
-    outputSchema: ClustersListByResourceGroupOutput,
-  }),
-);
+export const ClustersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListByResourceGroupInput,
+  outputSchema: ClustersListByResourceGroupOutput,
+}));
 // Input Schema
 export interface ClustersUpdateInput {
   subscriptionId: string;
@@ -595,7 +591,7 @@ export interface ClustersUpdateInput {
   sku?: { capacity?: number | null; name?: "CapacityReservation" };
   tags?: Record<string, string>;
 }
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -662,7 +658,7 @@ export interface ClustersUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -691,7 +687,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - Name of the Log Analytics Cluster.
  */
-export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
@@ -715,7 +711,7 @@ export interface DataExportsCreateOrUpdateInput {
   };
 }
 export const DataExportsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -765,7 +761,7 @@ export interface DataExportsCreateOrUpdateOutput {
   };
 }
 export const DataExportsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -795,12 +791,10 @@ export const DataExportsCreateOrUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param dataExportName - The data export rule name.
  */
-export const DataExportsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataExportsCreateOrUpdateInput,
-    outputSchema: DataExportsCreateOrUpdateOutput,
-  }),
-);
+export const DataExportsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataExportsCreateOrUpdateInput,
+  outputSchema: DataExportsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DataExportsDeleteInput {
   subscriptionId: string;
@@ -808,14 +802,12 @@ export interface DataExportsDeleteInput {
   workspaceName: string;
   dataExportName: string;
 }
-export const DataExportsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    dataExportName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const DataExportsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  dataExportName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
@@ -826,7 +818,7 @@ export const DataExportsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type DataExportsDeleteOutput = void;
 export const DataExportsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataExportsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataExportsDeleteOutput>;
 
 // The operation
 /**
@@ -838,7 +830,7 @@ export const DataExportsDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param dataExportName - The data export rule name.
  */
-export const DataExportsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataExportsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataExportsDeleteInput,
   outputSchema: DataExportsDeleteOutput,
 }));
@@ -849,7 +841,7 @@ export interface DataExportsGetInput {
   workspaceName: string;
   dataExportName: string;
 }
-export const DataExportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataExportsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -876,7 +868,7 @@ export interface DataExportsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DataExportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataExportsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -906,7 +898,7 @@ export const DataExportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the workspace.
  * @param dataExportName - The data export rule name.
  */
-export const DataExportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataExportsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataExportsGetInput,
   outputSchema: DataExportsGetOutput,
 }));
@@ -917,7 +909,7 @@ export interface DataExportsListByWorkspaceInput {
   workspaceName: string;
 }
 export const DataExportsListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -947,7 +939,7 @@ export interface DataExportsListByWorkspaceOutput {
   nextLink?: string;
 }
 export const DataExportsListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -993,12 +985,10 @@ export const DataExportsListByWorkspaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const DataExportsListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataExportsListByWorkspaceInput,
-    outputSchema: DataExportsListByWorkspaceOutput,
-  }),
-);
+export const DataExportsListByWorkspace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataExportsListByWorkspaceInput,
+  outputSchema: DataExportsListByWorkspaceOutput,
+}));
 // Input Schema
 export interface DataSourcesCreateOrUpdateInput {
   subscriptionId: string;
@@ -1044,7 +1034,7 @@ export interface DataSourcesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const DataSourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1110,7 +1100,7 @@ export interface DataSourcesCreateOrUpdateOutput {
   };
 }
 export const DataSourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1140,12 +1130,10 @@ export const DataSourcesCreateOrUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param dataSourceName - Name of the datasource
  */
-export const DataSourcesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataSourcesCreateOrUpdateInput,
-    outputSchema: DataSourcesCreateOrUpdateOutput,
-  }),
-);
+export const DataSourcesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataSourcesCreateOrUpdateInput,
+  outputSchema: DataSourcesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DataSourcesDeleteInput {
   subscriptionId: string;
@@ -1153,14 +1141,12 @@ export interface DataSourcesDeleteInput {
   workspaceName: string;
   dataSourceName: string;
 }
-export const DataSourcesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    dataSourceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const DataSourcesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  dataSourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
@@ -1171,7 +1157,7 @@ export const DataSourcesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type DataSourcesDeleteOutput = void;
 export const DataSourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataSourcesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataSourcesDeleteOutput>;
 
 // The operation
 /**
@@ -1183,7 +1169,7 @@ export const DataSourcesDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param dataSourceName - Name of the datasource
  */
-export const DataSourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSourcesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSourcesDeleteInput,
   outputSchema: DataSourcesDeleteOutput,
 }));
@@ -1194,7 +1180,7 @@ export interface DataSourcesGetInput {
   workspaceName: string;
   dataSourceName: string;
 }
-export const DataSourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSourcesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1221,7 +1207,7 @@ export interface DataSourcesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DataSourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSourcesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1251,7 +1237,7 @@ export const DataSourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the workspace.
  * @param dataSourceName - Name of the datasource
  */
-export const DataSourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSourcesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSourcesGetInput,
   outputSchema: DataSourcesGetOutput,
 }));
@@ -1264,7 +1250,7 @@ export interface DataSourcesListByWorkspaceInput {
   $skiptoken?: string;
 }
 export const DataSourcesListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1296,7 +1282,7 @@ export interface DataSourcesListByWorkspaceOutput {
   nextLink?: string;
 }
 export const DataSourcesListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1342,18 +1328,16 @@ export const DataSourcesListByWorkspaceOutput =
  * @param $filter - The filter to apply on the operation.
  * @param $skiptoken - Starting point of the collection of data source instances.
  */
-export const DataSourcesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataSourcesListByWorkspaceInput,
-    outputSchema: DataSourcesListByWorkspaceOutput,
-  }),
-);
+export const DataSourcesListByWorkspace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataSourcesListByWorkspaceInput,
+  outputSchema: DataSourcesListByWorkspaceOutput,
+}));
 // Input Schema
 export interface DeletedWorkspacesListInput {
   subscriptionId: string;
 }
 export const DeletedWorkspacesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1381,7 +1365,7 @@ export interface DeletedWorkspacesListOutput {
   nextLink?: string;
 }
 export const DeletedWorkspacesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1425,19 +1409,17 @@ export const DeletedWorkspacesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const DeletedWorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeletedWorkspacesListInput,
-    outputSchema: DeletedWorkspacesListOutput,
-  }),
-);
+export const DeletedWorkspacesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeletedWorkspacesListInput,
+  outputSchema: DeletedWorkspacesListOutput,
+}));
 // Input Schema
 export interface DeletedWorkspacesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const DeletedWorkspacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1466,7 +1448,7 @@ export interface DeletedWorkspacesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DeletedWorkspacesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1512,7 +1494,7 @@ export const DeletedWorkspacesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const DeletedWorkspacesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeletedWorkspacesListByResourceGroupInput,
     outputSchema: DeletedWorkspacesListByResourceGroupOutput,
   }));
@@ -1523,7 +1505,7 @@ export interface GatewaysDeleteInput {
   workspaceName: string;
   gatewayId: string;
 }
-export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewaysDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1539,7 +1521,7 @@ export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GatewaysDeleteOutput = void;
 export const GatewaysDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GatewaysDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GatewaysDeleteOutput>;
 
 // The operation
 /**
@@ -1551,7 +1533,7 @@ export const GatewaysDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param gatewayId - The Log Analytics gateway Id.
  */
-export const GatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewaysDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewaysDeleteInput,
   outputSchema: GatewaysDeleteOutput,
 }));
@@ -1563,7 +1545,7 @@ export interface IntelligencePacksDisableInput {
   intelligencePackName: string;
 }
 export const IntelligencePacksDisableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1579,7 +1561,7 @@ export const IntelligencePacksDisableInput =
 // Output Schema
 export type IntelligencePacksDisableOutput = void;
 export const IntelligencePacksDisableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntelligencePacksDisableOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntelligencePacksDisableOutput>;
 
 // The operation
 /**
@@ -1591,12 +1573,10 @@ export const IntelligencePacksDisableOutput =
  * @param workspaceName - The name of the workspace.
  * @param intelligencePackName - The name of the intelligence pack.
  */
-export const IntelligencePacksDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntelligencePacksDisableInput,
-    outputSchema: IntelligencePacksDisableOutput,
-  }),
-);
+export const IntelligencePacksDisable = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntelligencePacksDisableInput,
+  outputSchema: IntelligencePacksDisableOutput,
+}));
 // Input Schema
 export interface IntelligencePacksEnableInput {
   subscriptionId: string;
@@ -1605,7 +1585,7 @@ export interface IntelligencePacksEnableInput {
   intelligencePackName: string;
 }
 export const IntelligencePacksEnableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1621,7 +1601,7 @@ export const IntelligencePacksEnableInput =
 // Output Schema
 export type IntelligencePacksEnableOutput = void;
 export const IntelligencePacksEnableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntelligencePacksEnableOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntelligencePacksEnableOutput>;
 
 // The operation
 /**
@@ -1633,12 +1613,10 @@ export const IntelligencePacksEnableOutput =
  * @param workspaceName - The name of the workspace.
  * @param intelligencePackName - The name of the intelligence pack.
  */
-export const IntelligencePacksEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntelligencePacksEnableInput,
-    outputSchema: IntelligencePacksEnableOutput,
-  }),
-);
+export const IntelligencePacksEnable = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntelligencePacksEnableInput,
+  outputSchema: IntelligencePacksEnableOutput,
+}));
 // Input Schema
 export interface IntelligencePacksListInput {
   subscriptionId: string;
@@ -1646,7 +1624,7 @@ export interface IntelligencePacksListInput {
   workspaceName: string;
 }
 export const IntelligencePacksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1665,7 +1643,7 @@ export type IntelligencePacksListOutput = {
   displayName?: string;
 }[];
 export const IntelligencePacksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
       enabled: Schema.optional(Schema.Boolean),
@@ -1682,12 +1660,10 @@ export const IntelligencePacksListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const IntelligencePacksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IntelligencePacksListInput,
-    outputSchema: IntelligencePacksListOutput,
-  }),
-);
+export const IntelligencePacksList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IntelligencePacksListInput,
+  outputSchema: IntelligencePacksListOutput,
+}));
 // Input Schema
 export interface LinkedServicesCreateOrUpdateInput {
   subscriptionId: string;
@@ -1706,7 +1682,7 @@ export interface LinkedServicesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const LinkedServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1747,7 +1723,7 @@ export interface LinkedServicesCreateOrUpdateOutput {
   };
 }
 export const LinkedServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1778,7 +1754,7 @@ export const LinkedServicesCreateOrUpdateOutput =
  * @param linkedServiceName - Name of the linked service.
  */
 export const LinkedServicesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LinkedServicesCreateOrUpdateInput,
     outputSchema: LinkedServicesCreateOrUpdateOutput,
   }));
@@ -1790,7 +1766,7 @@ export interface LinkedServicesDeleteInput {
   linkedServiceName: string;
 }
 export const LinkedServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1818,7 +1794,7 @@ export interface LinkedServicesDeleteOutput {
   };
 }
 export const LinkedServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1848,12 +1824,10 @@ export const LinkedServicesDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param linkedServiceName - Name of the linked service.
  */
-export const LinkedServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LinkedServicesDeleteInput,
-    outputSchema: LinkedServicesDeleteOutput,
-  }),
-);
+export const LinkedServicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LinkedServicesDeleteInput,
+  outputSchema: LinkedServicesDeleteOutput,
+}));
 // Input Schema
 export interface LinkedServicesGetInput {
   subscriptionId: string;
@@ -1861,14 +1835,12 @@ export interface LinkedServicesGetInput {
   workspaceName: string;
   linkedServiceName: string;
 }
-export const LinkedServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    linkedServiceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const LinkedServicesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  linkedServiceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
@@ -1891,7 +1863,7 @@ export interface LinkedServicesGetOutput {
   };
 }
 export const LinkedServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1921,7 +1893,7 @@ export const LinkedServicesGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param linkedServiceName - Name of the linked service.
  */
-export const LinkedServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkedServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkedServicesGetInput,
   outputSchema: LinkedServicesGetOutput,
 }));
@@ -1932,7 +1904,7 @@ export interface LinkedServicesListByWorkspaceInput {
   workspaceName: string;
 }
 export const LinkedServicesListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1962,7 +1934,7 @@ export interface LinkedServicesListByWorkspaceOutput {
   nextLink?: string;
 }
 export const LinkedServicesListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2009,7 +1981,7 @@ export const LinkedServicesListByWorkspaceOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const LinkedServicesListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LinkedServicesListByWorkspaceInput,
     outputSchema: LinkedServicesListByWorkspaceOutput,
   }));
@@ -2035,7 +2007,7 @@ export interface LinkedStorageAccountsCreateOrUpdateInput {
   };
 }
 export const LinkedStorageAccountsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2081,7 +2053,7 @@ export interface LinkedStorageAccountsCreateOrUpdateOutput {
   };
 }
 export const LinkedStorageAccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2112,7 +2084,7 @@ export const LinkedStorageAccountsCreateOrUpdateOutput =
  * @param dataSourceType - Linked storage accounts type.
  */
 export const LinkedStorageAccountsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LinkedStorageAccountsCreateOrUpdateInput,
     outputSchema: LinkedStorageAccountsCreateOrUpdateOutput,
   }));
@@ -2129,7 +2101,7 @@ export interface LinkedStorageAccountsDeleteInput {
     | "Alerts";
 }
 export const LinkedStorageAccountsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2151,7 +2123,7 @@ export const LinkedStorageAccountsDeleteInput =
 // Output Schema
 export type LinkedStorageAccountsDeleteOutput = void;
 export const LinkedStorageAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LinkedStorageAccountsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LinkedStorageAccountsDeleteOutput>;
 
 // The operation
 /**
@@ -2163,12 +2135,10 @@ export const LinkedStorageAccountsDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param dataSourceType - Linked storage accounts type.
  */
-export const LinkedStorageAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LinkedStorageAccountsDeleteInput,
-    outputSchema: LinkedStorageAccountsDeleteOutput,
-  }),
-);
+export const LinkedStorageAccountsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LinkedStorageAccountsDeleteInput,
+  outputSchema: LinkedStorageAccountsDeleteOutput,
+}));
 // Input Schema
 export interface LinkedStorageAccountsGetInput {
   subscriptionId: string;
@@ -2182,7 +2152,7 @@ export interface LinkedStorageAccountsGetInput {
     | "Alerts";
 }
 export const LinkedStorageAccountsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2216,7 +2186,7 @@ export interface LinkedStorageAccountsGetOutput {
   };
 }
 export const LinkedStorageAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2246,12 +2216,10 @@ export const LinkedStorageAccountsGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param dataSourceType - Linked storage accounts type.
  */
-export const LinkedStorageAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LinkedStorageAccountsGetInput,
-    outputSchema: LinkedStorageAccountsGetOutput,
-  }),
-);
+export const LinkedStorageAccountsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LinkedStorageAccountsGetInput,
+  outputSchema: LinkedStorageAccountsGetOutput,
+}));
 // Input Schema
 export interface LinkedStorageAccountsListByWorkspaceInput {
   subscriptionId: string;
@@ -2259,7 +2227,7 @@ export interface LinkedStorageAccountsListByWorkspaceInput {
   workspaceName: string;
 }
 export const LinkedStorageAccountsListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2289,7 +2257,7 @@ export interface LinkedStorageAccountsListByWorkspaceOutput {
   nextLink?: string;
 }
 export const LinkedStorageAccountsListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2336,7 +2304,7 @@ export const LinkedStorageAccountsListByWorkspaceOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const LinkedStorageAccountsListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LinkedStorageAccountsListByWorkspaceInput,
     outputSchema: LinkedStorageAccountsListByWorkspaceOutput,
   }));
@@ -2347,7 +2315,7 @@ export interface ManagementGroupsListInput {
   workspaceName: string;
 }
 export const ManagementGroupsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2376,7 +2344,7 @@ export interface ManagementGroupsListOutput {
   nextLink?: string;
 }
 export const ManagementGroupsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2407,17 +2375,13 @@ export const ManagementGroupsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const ManagementGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagementGroupsListInput,
-    outputSchema: ManagementGroupsListOutput,
-  }),
-);
+export const ManagementGroupsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementGroupsListInput,
+  outputSchema: ManagementGroupsListOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.OperationalInsights/operations",
@@ -2438,7 +2402,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -2461,7 +2425,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2472,7 +2436,7 @@ export interface OperationStatusesGetInput {
   subscriptionId: string;
 }
 export const OperationStatusesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     asyncOperationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2502,7 +2466,7 @@ export interface OperationStatusesGetOutput {
   };
 }
 export const OperationStatusesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -2539,12 +2503,10 @@ export const OperationStatusesGetOutput =
  * @param asyncOperationId - The operation Id.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OperationStatusesGetInput,
-    outputSchema: OperationStatusesGetOutput,
-  }),
-);
+export const OperationStatusesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OperationStatusesGetInput,
+  outputSchema: OperationStatusesGetOutput,
+}));
 // Input Schema
 export interface QueriesDeleteInput {
   subscriptionId: string;
@@ -2552,7 +2514,7 @@ export interface QueriesDeleteInput {
   queryPackName: string;
   id: string;
 }
-export const QueriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueriesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   queryPackName: Schema.String.pipe(T.PathParam()),
@@ -2568,7 +2530,7 @@ export const QueriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type QueriesDeleteOutput = void;
 export const QueriesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<QueriesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<QueriesDeleteOutput>;
 
 // The operation
 /**
@@ -2580,7 +2542,7 @@ export const QueriesDeleteOutput =
  * @param queryPackName - The name of the Log Analytics QueryPack resource.
  * @param id - The id of a specific query defined in the Log Analytics QueryPack
  */
-export const QueriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueriesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueriesDeleteInput,
   outputSchema: QueriesDeleteOutput,
 }));
@@ -2591,7 +2553,7 @@ export interface QueriesGetInput {
   queryPackName: string;
   id: string;
 }
-export const QueriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueriesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   queryPackName: Schema.String.pipe(T.PathParam()),
@@ -2618,7 +2580,7 @@ export interface QueriesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const QueriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueriesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2648,7 +2610,7 @@ export const QueriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param queryPackName - The name of the Log Analytics QueryPack resource.
  * @param id - The id of a specific query defined in the Log Analytics QueryPack
  */
-export const QueriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueriesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueriesGetInput,
   outputSchema: QueriesGetOutput,
 }));
@@ -2661,7 +2623,7 @@ export interface QueriesListInput {
   includeBody?: boolean;
   $skipToken?: string;
 }
-export const QueriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueriesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   queryPackName: Schema.String.pipe(T.PathParam()),
@@ -2693,7 +2655,7 @@ export interface QueriesListOutput {
   }[];
   nextLink?: string;
 }
-export const QueriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueriesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2730,7 +2692,7 @@ export const QueriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param includeBody - Flag indicating whether or not to return the body of each applicable query. If false, only return the query information.
  * @param $skipToken - Base64 encoded token used to fetch the next page of items. Default is null.
  */
-export const QueriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueriesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueriesListInput,
   outputSchema: QueriesListOutput,
 }));
@@ -2757,7 +2719,7 @@ export interface QueriesPutInput {
     properties?: unknown;
   };
 }
-export const QueriesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueriesPutInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   queryPackName: Schema.String.pipe(T.PathParam()),
@@ -2806,7 +2768,7 @@ export interface QueriesPutOutput {
     lastModifiedAt?: string;
   };
 }
-export const QueriesPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueriesPutOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2836,7 +2798,7 @@ export const QueriesPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param queryPackName - The name of the Log Analytics QueryPack resource.
  * @param id - The id of a specific query defined in the Log Analytics QueryPack
  */
-export const QueriesPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueriesPut = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueriesPutInput,
   outputSchema: QueriesPutOutput,
 }));
@@ -2855,7 +2817,7 @@ export interface QueriesSearchInput {
   };
   tags?: Record<string, string[]>;
 }
-export const QueriesSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueriesSearchInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   queryPackName: Schema.String.pipe(T.PathParam()),
@@ -2897,7 +2859,7 @@ export interface QueriesSearchOutput {
   }[];
   nextLink?: string;
 }
-export const QueriesSearchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueriesSearchOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2934,7 +2896,7 @@ export const QueriesSearchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param includeBody - Flag indicating whether or not to return the body of each applicable query. If false, only return the query information.
  * @param $skipToken - Base64 encoded token used to fetch the next page of items. Default is null.
  */
-export const QueriesSearch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueriesSearch = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueriesSearchInput,
   outputSchema: QueriesSearchOutput,
 }));
@@ -2961,7 +2923,7 @@ export interface QueriesUpdateInput {
     properties?: unknown;
   };
 }
-export const QueriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueriesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   queryPackName: Schema.String.pipe(T.PathParam()),
@@ -3010,7 +2972,7 @@ export interface QueriesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const QueriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueriesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3040,7 +3002,7 @@ export const QueriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param queryPackName - The name of the Log Analytics QueryPack resource.
  * @param id - The id of a specific query defined in the Log Analytics QueryPack
  */
-export const QueriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueriesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueriesUpdateInput,
   outputSchema: QueriesUpdateOutput,
 }));
@@ -3059,7 +3021,7 @@ export interface QueryPacksCreateOrUpdateInput {
   location: string;
 }
 export const QueryPacksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     queryPackName: Schema.String.pipe(T.PathParam()),
@@ -3094,7 +3056,7 @@ export interface QueryPacksCreateOrUpdateOutput {
   };
 }
 export const QueryPacksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3123,12 +3085,10 @@ export const QueryPacksCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param queryPackName - The name of the Log Analytics QueryPack resource.
  */
-export const QueryPacksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: QueryPacksCreateOrUpdateInput,
-    outputSchema: QueryPacksCreateOrUpdateOutput,
-  }),
-);
+export const QueryPacksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QueryPacksCreateOrUpdateInput,
+  outputSchema: QueryPacksCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface QueryPacksCreateOrUpdateWithoutNameInput {
   subscriptionId: string;
@@ -3143,7 +3103,7 @@ export interface QueryPacksCreateOrUpdateWithoutNameInput {
   location: string;
 }
 export const QueryPacksCreateOrUpdateWithoutNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
@@ -3177,7 +3137,7 @@ export interface QueryPacksCreateOrUpdateWithoutNameOutput {
   };
 }
 export const QueryPacksCreateOrUpdateWithoutNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3206,7 +3166,7 @@ export const QueryPacksCreateOrUpdateWithoutNameOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const QueryPacksCreateOrUpdateWithoutName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: QueryPacksCreateOrUpdateWithoutNameInput,
     outputSchema: QueryPacksCreateOrUpdateWithoutNameOutput,
   }));
@@ -3216,7 +3176,7 @@ export interface QueryPacksDeleteInput {
   resourceGroupName: string;
   queryPackName: string;
 }
-export const QueryPacksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryPacksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   queryPackName: Schema.String.pipe(T.PathParam()),
@@ -3231,7 +3191,7 @@ export const QueryPacksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type QueryPacksDeleteOutput = void;
 export const QueryPacksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<QueryPacksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<QueryPacksDeleteOutput>;
 
 // The operation
 /**
@@ -3242,7 +3202,7 @@ export const QueryPacksDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param queryPackName - The name of the Log Analytics QueryPack resource.
  */
-export const QueryPacksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueryPacksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryPacksDeleteInput,
   outputSchema: QueryPacksDeleteOutput,
 }));
@@ -3252,7 +3212,7 @@ export interface QueryPacksGetInput {
   resourceGroupName: string;
   queryPackName: string;
 }
-export const QueryPacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryPacksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   queryPackName: Schema.String.pipe(T.PathParam()),
@@ -3278,7 +3238,7 @@ export interface QueryPacksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const QueryPacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryPacksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3307,7 +3267,7 @@ export const QueryPacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param queryPackName - The name of the Log Analytics QueryPack resource.
  */
-export const QueryPacksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueryPacksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryPacksGetInput,
   outputSchema: QueryPacksGetOutput,
 }));
@@ -3315,7 +3275,7 @@ export const QueryPacksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface QueryPacksListInput {
   subscriptionId: string;
 }
-export const QueryPacksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryPacksListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -3342,7 +3302,7 @@ export interface QueryPacksListOutput {
   }[];
   nextLink?: string;
 }
-export const QueryPacksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryPacksListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -3374,7 +3334,7 @@ export const QueryPacksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const QueryPacksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueryPacksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryPacksListInput,
   outputSchema: QueryPacksListOutput,
 }));
@@ -3384,7 +3344,7 @@ export interface QueryPacksListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const QueryPacksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3413,7 +3373,7 @@ export interface QueryPacksListByResourceGroupOutput {
   nextLink?: string;
 }
 export const QueryPacksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3457,7 +3417,7 @@ export const QueryPacksListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const QueryPacksListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: QueryPacksListByResourceGroupInput,
     outputSchema: QueryPacksListByResourceGroupOutput,
   }));
@@ -3469,7 +3429,7 @@ export interface QueryPacksUpdateTagsInput {
   tags?: Record<string, string>;
 }
 export const QueryPacksUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     queryPackName: Schema.String.pipe(T.PathParam()),
@@ -3497,7 +3457,7 @@ export interface QueryPacksUpdateTagsOutput {
   };
 }
 export const QueryPacksUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3526,12 +3486,10 @@ export const QueryPacksUpdateTagsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param queryPackName - The name of the Log Analytics QueryPack resource.
  */
-export const QueryPacksUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: QueryPacksUpdateTagsInput,
-    outputSchema: QueryPacksUpdateTagsOutput,
-  }),
-);
+export const QueryPacksUpdateTags = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QueryPacksUpdateTagsInput,
+  outputSchema: QueryPacksUpdateTagsOutput,
+}));
 // Input Schema
 export interface SavedSearchesCreateOrUpdateInput {
   subscriptionId: string;
@@ -3550,7 +3508,7 @@ export interface SavedSearchesCreateOrUpdateInput {
   etag?: string;
 }
 export const SavedSearchesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3595,7 +3553,7 @@ export interface SavedSearchesCreateOrUpdateOutput {
   };
 }
 export const SavedSearchesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3625,12 +3583,10 @@ export const SavedSearchesCreateOrUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param savedSearchId - The id of the saved search.
  */
-export const SavedSearchesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SavedSearchesCreateOrUpdateInput,
-    outputSchema: SavedSearchesCreateOrUpdateOutput,
-  }),
-);
+export const SavedSearchesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SavedSearchesCreateOrUpdateInput,
+  outputSchema: SavedSearchesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface SavedSearchesDeleteInput {
   subscriptionId: string;
@@ -3639,7 +3595,7 @@ export interface SavedSearchesDeleteInput {
   savedSearchId: string;
 }
 export const SavedSearchesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3655,7 +3611,7 @@ export const SavedSearchesDeleteInput =
 // Output Schema
 export type SavedSearchesDeleteOutput = void;
 export const SavedSearchesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SavedSearchesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SavedSearchesDeleteOutput>;
 
 // The operation
 /**
@@ -3667,7 +3623,7 @@ export const SavedSearchesDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param savedSearchId - The id of the saved search.
  */
-export const SavedSearchesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SavedSearchesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavedSearchesDeleteInput,
   outputSchema: SavedSearchesDeleteOutput,
 }));
@@ -3678,7 +3634,7 @@ export interface SavedSearchesGetInput {
   workspaceName: string;
   savedSearchId: string;
 }
-export const SavedSearchesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SavedSearchesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3705,27 +3661,25 @@ export interface SavedSearchesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SavedSearchesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<SavedSearchesGetOutput>;
+export const SavedSearchesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<SavedSearchesGetOutput>;
 
 // The operation
 /**
@@ -3737,7 +3691,7 @@ export const SavedSearchesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param workspaceName - The name of the workspace.
  * @param savedSearchId - The id of the saved search.
  */
-export const SavedSearchesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SavedSearchesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavedSearchesGetInput,
   outputSchema: SavedSearchesGetOutput,
 }));
@@ -3748,7 +3702,7 @@ export interface SavedSearchesListByWorkspaceInput {
   workspaceName: string;
 }
 export const SavedSearchesListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3777,7 +3731,7 @@ export interface SavedSearchesListByWorkspaceOutput {
   }[];
 }
 export const SavedSearchesListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3823,7 +3777,7 @@ export const SavedSearchesListByWorkspaceOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const SavedSearchesListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SavedSearchesListByWorkspaceInput,
     outputSchema: SavedSearchesListByWorkspaceOutput,
   }));
@@ -3833,7 +3787,7 @@ export interface SchemaGetInput {
   resourceGroupName: string;
   workspaceName: string;
 }
-export const SchemaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchemaGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3876,7 +3830,7 @@ export interface SchemaGetOutput {
     ownerType?: string[];
   }[];
 }
-export const SchemaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchemaGetOutput = /*@__PURE__*/ Schema.Struct({
   metadata: Schema.optional(
     Schema.Struct({
       requestId: Schema.optional(Schema.String),
@@ -3941,7 +3895,7 @@ export const SchemaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SchemaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchemaGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchemaGetInput,
   outputSchema: SchemaGetOutput,
 }));
@@ -3952,7 +3906,7 @@ export interface SharedKeysGetSharedKeysInput {
   workspaceName: string;
 }
 export const SharedKeysGetSharedKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3970,7 +3924,7 @@ export interface SharedKeysGetSharedKeysOutput {
   secondarySharedKey?: string;
 }
 export const SharedKeysGetSharedKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primarySharedKey: Schema.optional(Schema.String),
     secondarySharedKey: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<SharedKeysGetSharedKeysOutput>;
@@ -3984,12 +3938,10 @@ export const SharedKeysGetSharedKeysOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SharedKeysGetSharedKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SharedKeysGetSharedKeysInput,
-    outputSchema: SharedKeysGetSharedKeysOutput,
-  }),
-);
+export const SharedKeysGetSharedKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SharedKeysGetSharedKeysInput,
+  outputSchema: SharedKeysGetSharedKeysOutput,
+}));
 // Input Schema
 export interface SharedKeysRegenerateInput {
   subscriptionId: string;
@@ -3997,7 +3949,7 @@ export interface SharedKeysRegenerateInput {
   workspaceName: string;
 }
 export const SharedKeysRegenerateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4015,7 +3967,7 @@ export interface SharedKeysRegenerateOutput {
   secondarySharedKey?: string;
 }
 export const SharedKeysRegenerateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primarySharedKey: Schema.optional(Schema.String),
     secondarySharedKey: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<SharedKeysRegenerateOutput>;
@@ -4029,12 +3981,10 @@ export const SharedKeysRegenerateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SharedKeysRegenerate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SharedKeysRegenerateInput,
-    outputSchema: SharedKeysRegenerateOutput,
-  }),
-);
+export const SharedKeysRegenerate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SharedKeysRegenerateInput,
+  outputSchema: SharedKeysRegenerateOutput,
+}));
 // Input Schema
 export interface StorageInsightConfigsCreateOrUpdateInput {
   subscriptionId: string;
@@ -4051,7 +4001,7 @@ export interface StorageInsightConfigsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const StorageInsightConfigsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4097,7 +4047,7 @@ export interface StorageInsightConfigsCreateOrUpdateOutput {
   };
 }
 export const StorageInsightConfigsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4128,7 +4078,7 @@ export const StorageInsightConfigsCreateOrUpdateOutput =
  * @param storageInsightName - Name of the storageInsightsConfigs resource
  */
 export const StorageInsightConfigsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageInsightConfigsCreateOrUpdateInput,
     outputSchema: StorageInsightConfigsCreateOrUpdateOutput,
   }));
@@ -4140,7 +4090,7 @@ export interface StorageInsightConfigsDeleteInput {
   storageInsightName: string;
 }
 export const StorageInsightConfigsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4156,7 +4106,7 @@ export const StorageInsightConfigsDeleteInput =
 // Output Schema
 export type StorageInsightConfigsDeleteOutput = void;
 export const StorageInsightConfigsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageInsightConfigsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageInsightConfigsDeleteOutput>;
 
 // The operation
 /**
@@ -4168,12 +4118,10 @@ export const StorageInsightConfigsDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param storageInsightName - Name of the storageInsightsConfigs resource
  */
-export const StorageInsightConfigsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageInsightConfigsDeleteInput,
-    outputSchema: StorageInsightConfigsDeleteOutput,
-  }),
-);
+export const StorageInsightConfigsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageInsightConfigsDeleteInput,
+  outputSchema: StorageInsightConfigsDeleteOutput,
+}));
 // Input Schema
 export interface StorageInsightConfigsGetInput {
   subscriptionId: string;
@@ -4182,7 +4130,7 @@ export interface StorageInsightConfigsGetInput {
   storageInsightName: string;
 }
 export const StorageInsightConfigsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4210,7 +4158,7 @@ export interface StorageInsightConfigsGetOutput {
   };
 }
 export const StorageInsightConfigsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4240,12 +4188,10 @@ export const StorageInsightConfigsGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param storageInsightName - Name of the storageInsightsConfigs resource
  */
-export const StorageInsightConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageInsightConfigsGetInput,
-    outputSchema: StorageInsightConfigsGetOutput,
-  }),
-);
+export const StorageInsightConfigsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageInsightConfigsGetInput,
+  outputSchema: StorageInsightConfigsGetOutput,
+}));
 // Input Schema
 export interface StorageInsightConfigsListByWorkspaceInput {
   subscriptionId: string;
@@ -4253,7 +4199,7 @@ export interface StorageInsightConfigsListByWorkspaceInput {
   workspaceName: string;
 }
 export const StorageInsightConfigsListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4283,7 +4229,7 @@ export interface StorageInsightConfigsListByWorkspaceOutput {
   "@odata.nextLink"?: string;
 }
 export const StorageInsightConfigsListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4330,7 +4276,7 @@ export const StorageInsightConfigsListByWorkspaceOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const StorageInsightConfigsListByWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageInsightConfigsListByWorkspaceInput,
     outputSchema: StorageInsightConfigsListByWorkspaceOutput,
   }));
@@ -4363,7 +4309,7 @@ export interface SummaryLogsCreateOrUpdateInput {
   };
 }
 export const SummaryLogsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4421,7 +4367,7 @@ export interface SummaryLogsCreateOrUpdateOutput {
   };
 }
 export const SummaryLogsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4451,12 +4397,10 @@ export const SummaryLogsCreateOrUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param summaryLogsName - The name of the summary logs. Must not contain '/'.
  */
-export const SummaryLogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SummaryLogsCreateOrUpdateInput,
-    outputSchema: SummaryLogsCreateOrUpdateOutput,
-  }),
-);
+export const SummaryLogsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SummaryLogsCreateOrUpdateInput,
+  outputSchema: SummaryLogsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface SummaryLogsDeleteInput {
   subscriptionId: string;
@@ -4464,14 +4408,12 @@ export interface SummaryLogsDeleteInput {
   workspaceName: string;
   summaryLogsName: string;
 }
-export const SummaryLogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    summaryLogsName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const SummaryLogsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  summaryLogsName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
@@ -4482,7 +4424,7 @@ export const SummaryLogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type SummaryLogsDeleteOutput = void;
 export const SummaryLogsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SummaryLogsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SummaryLogsDeleteOutput>;
 
 // The operation
 /**
@@ -4494,7 +4436,7 @@ export const SummaryLogsDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param summaryLogsName - The name of the summary logs. Must not contain '/'.
  */
-export const SummaryLogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SummaryLogsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SummaryLogsDeleteInput,
   outputSchema: SummaryLogsDeleteOutput,
 }));
@@ -4505,7 +4447,7 @@ export interface SummaryLogsGetInput {
   workspaceName: string;
   summaryLogsName: string;
 }
-export const SummaryLogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SummaryLogsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4532,7 +4474,7 @@ export interface SummaryLogsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SummaryLogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SummaryLogsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4562,7 +4504,7 @@ export const SummaryLogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the workspace.
  * @param summaryLogsName - The name of the summary logs. Must not contain '/'.
  */
-export const SummaryLogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SummaryLogsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SummaryLogsGetInput,
   outputSchema: SummaryLogsGetOutput,
 }));
@@ -4573,7 +4515,7 @@ export interface SummaryLogsListByWorkspaceInput {
   workspaceName: string;
 }
 export const SummaryLogsListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4603,7 +4545,7 @@ export interface SummaryLogsListByWorkspaceOutput {
   nextLink?: string;
 }
 export const SummaryLogsListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4647,12 +4589,10 @@ export const SummaryLogsListByWorkspaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SummaryLogsListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SummaryLogsListByWorkspaceInput,
-    outputSchema: SummaryLogsListByWorkspaceOutput,
-  }),
-);
+export const SummaryLogsListByWorkspace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SummaryLogsListByWorkspaceInput,
+  outputSchema: SummaryLogsListByWorkspaceOutput,
+}));
 // Input Schema
 export interface SummaryLogsRetryBinInput {
   subscriptionId: string;
@@ -4662,7 +4602,7 @@ export interface SummaryLogsRetryBinInput {
   properties?: { retryBinStartTime: string };
 }
 export const SummaryLogsRetryBinInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4683,7 +4623,7 @@ export const SummaryLogsRetryBinInput =
 // Output Schema
 export type SummaryLogsRetryBinOutput = void;
 export const SummaryLogsRetryBinOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SummaryLogsRetryBinOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SummaryLogsRetryBinOutput>;
 
 // The operation
 /**
@@ -4695,7 +4635,7 @@ export const SummaryLogsRetryBinOutput =
  * @param workspaceName - The name of the workspace.
  * @param summaryLogsName - The name of the summary logs. Must not contain '/'.
  */
-export const SummaryLogsRetryBin = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SummaryLogsRetryBin = /*@__PURE__*/ API.make(() => ({
   inputSchema: SummaryLogsRetryBinInput,
   outputSchema: SummaryLogsRetryBinOutput,
 }));
@@ -4706,7 +4646,7 @@ export interface SummaryLogsStartInput {
   workspaceName: string;
   summaryLogsName: string;
 }
-export const SummaryLogsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SummaryLogsStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4722,7 +4662,7 @@ export const SummaryLogsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SummaryLogsStartOutput = void;
 export const SummaryLogsStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SummaryLogsStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SummaryLogsStartOutput>;
 
 // The operation
 /**
@@ -4734,7 +4674,7 @@ export const SummaryLogsStartOutput =
  * @param workspaceName - The name of the workspace.
  * @param summaryLogsName - The name of the summary logs. Must not contain '/'.
  */
-export const SummaryLogsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SummaryLogsStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: SummaryLogsStartInput,
   outputSchema: SummaryLogsStartOutput,
 }));
@@ -4745,7 +4685,7 @@ export interface SummaryLogsStopInput {
   workspaceName: string;
   summaryLogsName: string;
 }
-export const SummaryLogsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SummaryLogsStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4761,7 +4701,7 @@ export const SummaryLogsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SummaryLogsStopOutput = void;
 export const SummaryLogsStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SummaryLogsStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SummaryLogsStopOutput>;
 
 // The operation
 /**
@@ -4773,7 +4713,7 @@ export const SummaryLogsStopOutput =
  * @param workspaceName - The name of the workspace.
  * @param summaryLogsName - The name of the summary logs. Must not contain '/'.
  */
-export const SummaryLogsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SummaryLogsStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: SummaryLogsStopInput,
   outputSchema: SummaryLogsStopOutput,
 }));
@@ -4785,7 +4725,7 @@ export interface TablesCancelSearchInput {
   tableName: string;
 }
 export const TablesCancelSearchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4801,7 +4741,7 @@ export const TablesCancelSearchInput =
 // Output Schema
 export type TablesCancelSearchOutput = void;
 export const TablesCancelSearchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TablesCancelSearchOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TablesCancelSearchOutput>;
 
 // The operation
 /**
@@ -4813,7 +4753,7 @@ export const TablesCancelSearchOutput =
  * @param workspaceName - The name of the workspace.
  * @param tableName - The name of the table.
  */
-export const TablesCancelSearch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TablesCancelSearch = /*@__PURE__*/ API.make(() => ({
   inputSchema: TablesCancelSearchInput,
   outputSchema: TablesCancelSearchOutput,
 }));
@@ -4900,7 +4840,7 @@ export interface TablesCreateOrUpdateInput {
   };
 }
 export const TablesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5044,7 +4984,7 @@ export interface TablesCreateOrUpdateOutput {
   };
 }
 export const TablesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5074,12 +5014,10 @@ export const TablesCreateOrUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param tableName - The name of the table.
  */
-export const TablesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TablesCreateOrUpdateInput,
-    outputSchema: TablesCreateOrUpdateOutput,
-  }),
-);
+export const TablesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TablesCreateOrUpdateInput,
+  outputSchema: TablesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface TablesDeleteInput {
   subscriptionId: string;
@@ -5087,7 +5025,7 @@ export interface TablesDeleteInput {
   workspaceName: string;
   tableName: string;
 }
-export const TablesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TablesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5103,7 +5041,7 @@ export const TablesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TablesDeleteOutput = void;
 export const TablesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TablesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TablesDeleteOutput>;
 
 // The operation
 /**
@@ -5115,7 +5053,7 @@ export const TablesDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param tableName - The name of the table.
  */
-export const TablesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TablesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TablesDeleteInput,
   outputSchema: TablesDeleteOutput,
 }));
@@ -5126,7 +5064,7 @@ export interface TablesGetInput {
   workspaceName: string;
   tableName: string;
 }
-export const TablesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TablesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5153,7 +5091,7 @@ export interface TablesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TablesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TablesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5183,7 +5121,7 @@ export const TablesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the workspace.
  * @param tableName - The name of the table.
  */
-export const TablesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TablesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TablesGetInput,
   outputSchema: TablesGetOutput,
 }));
@@ -5194,7 +5132,7 @@ export interface TablesListByWorkspaceInput {
   workspaceName: string;
 }
 export const TablesListByWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5224,7 +5162,7 @@ export interface TablesListByWorkspaceOutput {
   nextLink?: string;
 }
 export const TablesListByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5270,12 +5208,10 @@ export const TablesListByWorkspaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const TablesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TablesListByWorkspaceInput,
-    outputSchema: TablesListByWorkspaceOutput,
-  }),
-);
+export const TablesListByWorkspace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TablesListByWorkspaceInput,
+  outputSchema: TablesListByWorkspaceOutput,
+}));
 // Input Schema
 export interface TablesMigrateInput {
   subscriptionId: string;
@@ -5283,7 +5219,7 @@ export interface TablesMigrateInput {
   workspaceName: string;
   tableName: string;
 }
-export const TablesMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TablesMigrateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5299,7 +5235,7 @@ export const TablesMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TablesMigrateOutput = void;
 export const TablesMigrateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TablesMigrateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TablesMigrateOutput>;
 
 // The operation
 /**
@@ -5311,7 +5247,7 @@ export const TablesMigrateOutput =
  * @param workspaceName - The name of the workspace.
  * @param tableName - The name of the table.
  */
-export const TablesMigrate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TablesMigrate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TablesMigrateInput,
   outputSchema: TablesMigrateOutput,
 }));
@@ -5397,7 +5333,7 @@ export interface TablesUpdateInput {
     totalRetentionInDaysAsDefault?: boolean;
   };
 }
-export const TablesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TablesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5540,7 +5476,7 @@ export interface TablesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const TablesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TablesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5570,7 +5506,7 @@ export const TablesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the workspace.
  * @param tableName - The name of the table.
  */
-export const TablesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TablesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TablesUpdateInput,
   outputSchema: TablesUpdateOutput,
 }));
@@ -5580,7 +5516,7 @@ export interface UsagesListInput {
   resourceGroupName: string;
   workspaceName: string;
 }
-export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5604,7 +5540,7 @@ export interface UsagesListOutput {
   }[];
   nextLink?: string;
 }
-export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -5634,7 +5570,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsagesListInput,
   outputSchema: UsagesListOutput,
 }));
@@ -5646,7 +5582,7 @@ export interface WorkspacePurgeGetPurgeStatusInput {
   purgeId: string;
 }
 export const WorkspacePurgeGetPurgeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5664,7 +5600,7 @@ export interface WorkspacePurgeGetPurgeStatusOutput {
   status: "pending" | "completed";
 }
 export const WorkspacePurgeGetPurgeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.Literals(["pending", "completed"]),
   }) as unknown as Schema.Codec<WorkspacePurgeGetPurgeStatusOutput>;
 
@@ -5679,7 +5615,7 @@ export const WorkspacePurgeGetPurgeStatusOutput =
  * @param purgeId - In a purge status request, this is the Id of the operation the status of which is returned.
  */
 export const WorkspacePurgeGetPurgeStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspacePurgeGetPurgeStatusInput,
     outputSchema: WorkspacePurgeGetPurgeStatusOutput,
   }));
@@ -5697,7 +5633,7 @@ export interface WorkspacePurgePurgeInput {
   }[];
 }
 export const WorkspacePurgePurgeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5721,7 +5657,7 @@ export const WorkspacePurgePurgeInput =
 // Output Schema
 export type WorkspacePurgePurgeOutput = void;
 export const WorkspacePurgePurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacePurgePurgeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacePurgePurgeOutput>;
 
 // The operation
 /**
@@ -5734,7 +5670,7 @@ export const WorkspacePurgePurgeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspacePurgePurge = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacePurgePurge = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacePurgePurgeInput,
   outputSchema: WorkspacePurgePurgeOutput,
 }));
@@ -5832,7 +5768,7 @@ export interface WorkspacesCreateOrUpdateInput {
   location: string;
 }
 export const WorkspacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5999,7 +5935,7 @@ export interface WorkspacesCreateOrUpdateOutput {
   };
 }
 export const WorkspacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6028,12 +5964,10 @@ export const WorkspacesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspacesCreateOrUpdateInput,
-    outputSchema: WorkspacesCreateOrUpdateOutput,
-  }),
-);
+export const WorkspacesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspacesCreateOrUpdateInput,
+  outputSchema: WorkspacesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface WorkspacesDeleteInput {
   subscriptionId: string;
@@ -6041,7 +5975,7 @@ export interface WorkspacesDeleteInput {
   workspaceName: string;
   force?: boolean;
 }
-export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6057,7 +5991,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WorkspacesDeleteOutput = void;
 export const WorkspacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -6069,7 +6003,7 @@ export const WorkspacesDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param force - Deletes the workspace without the recovery option. A workspace that was deleted with this flag cannot be recovered.
  */
-export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesDeleteInput,
   outputSchema: WorkspacesDeleteOutput,
 }));
@@ -6080,7 +6014,7 @@ export interface WorkspacesFailbackInput {
   workspaceName: string;
 }
 export const WorkspacesFailbackInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6095,7 +6029,7 @@ export const WorkspacesFailbackInput =
 // Output Schema
 export type WorkspacesFailbackOutput = void;
 export const WorkspacesFailbackOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesFailbackOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesFailbackOutput>;
 
 // The operation
 /**
@@ -6107,7 +6041,7 @@ export const WorkspacesFailbackOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspacesFailback = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesFailback = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesFailbackInput,
   outputSchema: WorkspacesFailbackOutput,
 }));
@@ -6119,7 +6053,7 @@ export interface WorkspacesFailoverInput {
   workspaceName: string;
 }
 export const WorkspacesFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -6135,7 +6069,7 @@ export const WorkspacesFailoverInput =
 // Output Schema
 export type WorkspacesFailoverOutput = void;
 export const WorkspacesFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesFailoverOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesFailoverOutput>;
 
 // The operation
 /**
@@ -6148,7 +6082,7 @@ export const WorkspacesFailoverOutput =
  * @param location - The name of the Azure region.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspacesFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesFailover = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesFailoverInput,
   outputSchema: WorkspacesFailoverOutput,
 }));
@@ -6158,7 +6092,7 @@ export interface WorkspacesGetInput {
   resourceGroupName: string;
   workspaceName: string;
 }
-export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6184,7 +6118,7 @@ export interface WorkspacesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6213,7 +6147,7 @@ export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesGetInput,
   outputSchema: WorkspacesGetOutput,
 }));
@@ -6224,7 +6158,7 @@ export interface WorkspacesGetNSPInput {
   workspaceName: string;
   networkSecurityPerimeterConfigurationName: string;
 }
-export const WorkspacesGetNSPInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesGetNSPInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6251,27 +6185,25 @@ export interface WorkspacesGetNSPOutput {
     lastModifiedAt?: string;
   };
 }
-export const WorkspacesGetNSPOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<WorkspacesGetNSPOutput>;
+export const WorkspacesGetNSPOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<WorkspacesGetNSPOutput>;
 
 // The operation
 /**
@@ -6283,7 +6215,7 @@ export const WorkspacesGetNSPOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param workspaceName - The name of the workspace.
  * @param networkSecurityPerimeterConfigurationName - The name for a network security perimeter configuration
  */
-export const WorkspacesGetNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesGetNSP = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesGetNSPInput,
   outputSchema: WorkspacesGetNSPOutput,
 }));
@@ -6291,7 +6223,7 @@ export const WorkspacesGetNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface WorkspacesListInput {
   subscriptionId: string;
 }
-export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -6318,7 +6250,7 @@ export interface WorkspacesListOutput {
   }[];
   nextLink?: string;
 }
-export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -6362,7 +6294,7 @@ export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesListInput,
   outputSchema: WorkspacesListOutput,
 }));
@@ -6372,7 +6304,7 @@ export interface WorkspacesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const WorkspacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6401,7 +6333,7 @@ export interface WorkspacesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const WorkspacesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6447,7 +6379,7 @@ export const WorkspacesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const WorkspacesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspacesListByResourceGroupInput,
     outputSchema: WorkspacesListByResourceGroupOutput,
   }));
@@ -6457,13 +6389,11 @@ export interface WorkspacesListNSPInput {
   resourceGroupName: string;
   workspaceName: string;
 }
-export const WorkspacesListNSPInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const WorkspacesListNSPInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations",
@@ -6489,7 +6419,7 @@ export interface WorkspacesListNSPOutput {
   nextLink?: string;
 }
 export const WorkspacesListNSPOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6535,7 +6465,7 @@ export const WorkspacesListNSPOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspacesListNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesListNSP = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesListNSPInput,
   outputSchema: WorkspacesListNSPOutput,
 }));
@@ -6547,7 +6477,7 @@ export interface WorkspacesReconcileNSPInput {
   networkSecurityPerimeterConfigurationName: string;
 }
 export const WorkspacesReconcileNSPInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6565,7 +6495,7 @@ export const WorkspacesReconcileNSPInput =
 // Output Schema
 export type WorkspacesReconcileNSPOutput = void;
 export const WorkspacesReconcileNSPOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesReconcileNSPOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesReconcileNSPOutput>;
 
 // The operation
 /**
@@ -6577,12 +6507,10 @@ export const WorkspacesReconcileNSPOutput =
  * @param workspaceName - The name of the workspace.
  * @param networkSecurityPerimeterConfigurationName - The name for a network security perimeter configuration
  */
-export const WorkspacesReconcileNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspacesReconcileNSPInput,
-    outputSchema: WorkspacesReconcileNSPOutput,
-  }),
-);
+export const WorkspacesReconcileNSP = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspacesReconcileNSPInput,
+  outputSchema: WorkspacesReconcileNSPOutput,
+}));
 // Input Schema
 export interface WorkspacesUpdateInput {
   subscriptionId: string;
@@ -6675,7 +6603,7 @@ export interface WorkspacesUpdateInput {
   tags?: Record<string, string>;
   etag?: string;
 }
-export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6840,27 +6768,25 @@ export interface WorkspacesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<WorkspacesUpdateOutput>;
+export const WorkspacesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<WorkspacesUpdateOutput>;
 
 // The operation
 /**
@@ -6871,7 +6797,7 @@ export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const WorkspacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesUpdateInput,
   outputSchema: WorkspacesUpdateOutput,
 }));

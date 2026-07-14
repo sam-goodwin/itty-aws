@@ -29,7 +29,7 @@ export interface GoogleCloudSecuritycenterV2Dataset {
 }
 
 export const GoogleCloudSecuritycenterV2Dataset: Schema.Codec<GoogleCloudSecuritycenterV2Dataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -41,7 +41,7 @@ export interface GoogleCloudSecuritycenterV2Pipeline {
 }
 
 export const GoogleCloudSecuritycenterV2Pipeline: Schema.Codec<GoogleCloudSecuritycenterV2Pipeline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Pipeline" });
@@ -52,7 +52,7 @@ export interface GoogleCloudSecuritycenterV2VertexAi {
 }
 
 export const GoogleCloudSecuritycenterV2VertexAi: Schema.Codec<GoogleCloudSecuritycenterV2VertexAi> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     datasets: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Dataset)),
     pipelines: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2Pipeline),
@@ -65,7 +65,7 @@ export interface Control {
 }
 
 export const Control: Schema.Codec<Control> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlName: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "Control" });
@@ -91,7 +91,7 @@ export interface Framework {
 }
 
 export const Framework: Schema.Codec<Framework> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     category: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface CloudControl {
 }
 
 export const CloudControl: Schema.Codec<CloudControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     cloudControlName: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface ComplianceDetails {
 }
 
 export const ComplianceDetails: Schema.Codec<ComplianceDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     frameworks: Schema.optional(Schema.Array(Framework)),
     cloudControlDeploymentNames: Schema.optional(Schema.Array(Schema.String)),
     cloudControl: Schema.optional(CloudControl),
@@ -143,7 +143,7 @@ export interface Subject {
 }
 
 export const Subject: Schema.Codec<Subject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     ns: Schema.optional(Schema.String),
@@ -161,7 +161,7 @@ export interface GoogleCloudSecuritycenterV2SecretStatus {
 }
 
 export const GoogleCloudSecuritycenterV2SecretStatus: Schema.Codec<GoogleCloudSecuritycenterV2SecretStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastUpdatedTime: Schema.optional(Schema.String),
     validity: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2SecretStatus" });
@@ -171,7 +171,7 @@ export interface GoogleCloudSecuritycenterV2SecretEnvironmentVariable {
 }
 
 export const GoogleCloudSecuritycenterV2SecretEnvironmentVariable: Schema.Codec<GoogleCloudSecuritycenterV2SecretEnvironmentVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudSecuritycenterV2SecretEnvironmentVariable",
@@ -182,7 +182,7 @@ export interface GoogleCloudSecuritycenterV2SecretFilePath {
 }
 
 export const GoogleCloudSecuritycenterV2SecretFilePath: Schema.Codec<GoogleCloudSecuritycenterV2SecretFilePath> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2SecretFilePath" });
 
@@ -194,7 +194,7 @@ export interface GoogleCloudSecuritycenterV2Secret {
 }
 
 export const GoogleCloudSecuritycenterV2Secret: Schema.Codec<GoogleCloudSecuritycenterV2Secret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(GoogleCloudSecuritycenterV2SecretStatus),
     environmentVariable: Schema.optional(
       GoogleCloudSecuritycenterV2SecretEnvironmentVariable,
@@ -217,7 +217,7 @@ export interface GoogleCloudSecuritycenterV2BackupDisasterRecovery {
 }
 
 export const GoogleCloudSecuritycenterV2BackupDisasterRecovery: Schema.Codec<GoogleCloudSecuritycenterV2BackupDisasterRecovery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appliance: Schema.optional(Schema.String),
     backupTemplate: Schema.optional(Schema.String),
     storagePool: Schema.optional(Schema.String),
@@ -241,7 +241,7 @@ export interface Attack {
 }
 
 export const Attack: Schema.Codec<Attack> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     classification: Schema.optional(Schema.String),
     volumePpsLong: Schema.optional(Schema.String),
     volumeBpsLong: Schema.optional(Schema.String),
@@ -255,7 +255,7 @@ export interface GoogleCloudSecuritycenterV2IssueSecurityContextContext {
 }
 
 export const GoogleCloudSecuritycenterV2IssueSecurityContextContext: Schema.Codec<GoogleCloudSecuritycenterV2IssueSecurityContextContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -267,7 +267,7 @@ export interface GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision {
 }
 
 export const GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision: Schema.Codec<GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision",
@@ -286,7 +286,7 @@ export interface KernelRootkit {
 }
 
 export const KernelRootkit: Schema.Codec<KernelRootkit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unexpectedCodeModification: Schema.optional(Schema.Boolean),
     unexpectedFtraceHandler: Schema.optional(Schema.Boolean),
     unexpectedKernelCodePages: Schema.optional(Schema.Boolean),
@@ -311,7 +311,7 @@ export interface DataAccessEvent {
 }
 
 export const DataAccessEvent: Schema.Codec<DataAccessEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventTime: Schema.optional(Schema.String),
     eventId: Schema.optional(Schema.String),
     principalEmail: Schema.optional(Schema.String),
@@ -324,7 +324,7 @@ export interface GoogleCloudSecuritycenterV2Label {
 }
 
 export const GoogleCloudSecuritycenterV2Label: Schema.Codec<GoogleCloudSecuritycenterV2Label> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Label" });
@@ -334,7 +334,7 @@ export interface GoogleCloudSecuritycenterV2IssueFindingCve {
 }
 
 export const GoogleCloudSecuritycenterV2IssueFindingCve: Schema.Codec<GoogleCloudSecuritycenterV2IssueFindingCve> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2IssueFindingCve" });
 
@@ -343,7 +343,7 @@ export interface Contact {
 }
 
 export const Contact: Schema.Codec<Contact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "Contact" });
 
@@ -352,7 +352,7 @@ export interface ContactDetails {
 }
 
 export const ContactDetails: Schema.Codec<ContactDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contacts: Schema.optional(Schema.Array(Contact)),
   }).annotate({ identifier: "ContactDetails" });
 
@@ -369,7 +369,7 @@ export interface GoogleCloudSecuritycenterV2DataAccessEvent {
 }
 
 export const GoogleCloudSecuritycenterV2DataAccessEvent: Schema.Codec<GoogleCloudSecuritycenterV2DataAccessEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventTime: Schema.optional(Schema.String),
     eventId: Schema.optional(Schema.String),
     principalEmail: Schema.optional(Schema.String),
@@ -390,7 +390,7 @@ export interface GoogleCloudSecuritycenterV2DataFlowEvent {
 }
 
 export const GoogleCloudSecuritycenterV2DataFlowEvent: Schema.Codec<GoogleCloudSecuritycenterV2DataFlowEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     principalEmail: Schema.optional(Schema.String),
     eventTime: Schema.optional(Schema.String),
@@ -403,7 +403,7 @@ export interface GoogleCloudSecuritycenterV2AdcSharedTemplateRevision {
 }
 
 export const GoogleCloudSecuritycenterV2AdcSharedTemplateRevision: Schema.Codec<GoogleCloudSecuritycenterV2AdcSharedTemplateRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudSecuritycenterV2AdcSharedTemplateRevision",
@@ -416,7 +416,7 @@ export interface Role {
 }
 
 export const Role: Schema.Codec<Role> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     ns: Schema.optional(Schema.String),
@@ -432,7 +432,7 @@ export interface TicketInfo {
 }
 
 export const TicketInfo: Schema.Codec<TicketInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -492,7 +492,7 @@ export interface Cvssv3 {
 }
 
 export const Cvssv3: Schema.Codec<Cvssv3> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     availabilityImpact: Schema.optional(Schema.String),
     baseScore: Schema.optional(Schema.Number),
     userInteraction: Schema.optional(Schema.String),
@@ -510,7 +510,7 @@ export interface HttpResponse {
 }
 
 export const HttpResponse: Schema.Codec<HttpResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusCode: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "HttpResponse" });
@@ -540,7 +540,7 @@ export interface ExternalExposure {
 }
 
 export const ExternalExposure: Schema.Codec<ExternalExposure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     publicIpAddress: Schema.optional(Schema.String),
     exposedEndpoint: Schema.optional(Schema.String),
     publicPort: Schema.optional(Schema.String),
@@ -570,7 +570,7 @@ export interface Label {
 }
 
 export const Label: Schema.Codec<Label> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "Label" });
@@ -584,7 +584,7 @@ export interface Container {
 }
 
 export const Container: Schema.Codec<Container> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     imageId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -601,7 +601,7 @@ export interface Securitycenter_Object {
 }
 
 export const Securitycenter_Object: Schema.Codec<Securitycenter_Object> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containers: Schema.optional(Schema.Array(Container)),
     name: Schema.optional(Schema.String),
     group: Schema.optional(Schema.String),
@@ -616,7 +616,7 @@ export interface GoogleCloudSecuritycenterV2SecurityMarks {
 }
 
 export const GoogleCloudSecuritycenterV2SecurityMarks: Schema.Codec<GoogleCloudSecuritycenterV2SecurityMarks> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canonicalName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     marks: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -628,7 +628,7 @@ export interface GoogleCloudSecuritycenterV2Detection {
 }
 
 export const GoogleCloudSecuritycenterV2Detection: Schema.Codec<GoogleCloudSecuritycenterV2Detection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     binary: Schema.optional(Schema.String),
     percentPagesMatched: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Detection" });
@@ -639,7 +639,7 @@ export interface GoogleCloudSecuritycenterV2MemoryHashSignature {
 }
 
 export const GoogleCloudSecuritycenterV2MemoryHashSignature: Schema.Codec<GoogleCloudSecuritycenterV2MemoryHashSignature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     binaryFamily: Schema.optional(Schema.String),
     detections: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2Detection),
@@ -651,7 +651,7 @@ export interface GoogleCloudSecuritycenterV2YaraRuleSignature {
 }
 
 export const GoogleCloudSecuritycenterV2YaraRuleSignature: Schema.Codec<GoogleCloudSecuritycenterV2YaraRuleSignature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     yaraRule: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2YaraRuleSignature" });
 
@@ -666,7 +666,7 @@ export interface GoogleCloudSecuritycenterV2ProcessSignature {
 }
 
 export const GoogleCloudSecuritycenterV2ProcessSignature: Schema.Codec<GoogleCloudSecuritycenterV2ProcessSignature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signatureType: Schema.optional(Schema.String),
     memoryHashSignature: Schema.optional(
       GoogleCloudSecuritycenterV2MemoryHashSignature,
@@ -684,7 +684,7 @@ export interface GoogleCloudSecuritycenterV2Indicator {
 }
 
 export const GoogleCloudSecuritycenterV2Indicator: Schema.Codec<GoogleCloudSecuritycenterV2Indicator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domains: Schema.optional(Schema.Array(Schema.String)),
     uris: Schema.optional(Schema.Array(Schema.String)),
     ipAddresses: Schema.optional(Schema.Array(Schema.String)),
@@ -699,7 +699,7 @@ export interface GoogleCloudSecuritycenterV2ToxicCombination {
 }
 
 export const GoogleCloudSecuritycenterV2ToxicCombination: Schema.Codec<GoogleCloudSecuritycenterV2ToxicCombination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attackExposureScore: Schema.optional(Schema.Number),
     relatedFindings: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2ToxicCombination" });
@@ -712,7 +712,7 @@ export interface GoogleCloudSecuritycenterV2PolicyViolationSummary {
 }
 
 export const GoogleCloudSecuritycenterV2PolicyViolationSummary: Schema.Codec<GoogleCloudSecuritycenterV2PolicyViolationSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyViolationsCount: Schema.optional(Schema.String),
     outOfScopeResourcesCount: Schema.optional(Schema.String),
     conformantResourcesCount: Schema.optional(Schema.String),
@@ -737,7 +737,7 @@ export interface GoogleCloudSecuritycenterV2Connection {
 }
 
 export const GoogleCloudSecuritycenterV2Connection: Schema.Codec<GoogleCloudSecuritycenterV2Connection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destinationIp: Schema.optional(Schema.String),
     sourcePort: Schema.optional(Schema.Number),
     destinationPort: Schema.optional(Schema.Number),
@@ -755,7 +755,7 @@ export interface GoogleCloudSecuritycenterV2TicketInfo {
 }
 
 export const GoogleCloudSecuritycenterV2TicketInfo: Schema.Codec<GoogleCloudSecuritycenterV2TicketInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -779,7 +779,7 @@ export interface GoogleCloudSecuritycenterV2ExternalSystem {
 }
 
 export const GoogleCloudSecuritycenterV2ExternalSystem: Schema.Codec<GoogleCloudSecuritycenterV2ExternalSystem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     assignees: Schema.optional(Schema.Array(Schema.String)),
     caseCreateTime: Schema.optional(Schema.String),
@@ -798,7 +798,7 @@ export interface GoogleCloudSecuritycenterV2Disk {
 }
 
 export const GoogleCloudSecuritycenterV2Disk: Schema.Codec<GoogleCloudSecuritycenterV2Disk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Disk" });
 
@@ -813,7 +813,7 @@ export interface GoogleCloudSecuritycenterV2AttackExposure {
 }
 
 export const GoogleCloudSecuritycenterV2AttackExposure: Schema.Codec<GoogleCloudSecuritycenterV2AttackExposure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attackExposureResult: Schema.optional(Schema.String),
     exposedMediumValueResourcesCount: Schema.optional(Schema.Number),
     score: Schema.optional(Schema.Number),
@@ -836,7 +836,7 @@ export interface GoogleCloudSecuritycenterV2KernelRootkit {
 }
 
 export const GoogleCloudSecuritycenterV2KernelRootkit: Schema.Codec<GoogleCloudSecuritycenterV2KernelRootkit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unexpectedSystemCallHandler: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     unexpectedCodeModification: Schema.optional(Schema.Boolean),
@@ -856,7 +856,7 @@ export interface GoogleCloudSecuritycenterV2Notebook {
 }
 
 export const GoogleCloudSecuritycenterV2Notebook: Schema.Codec<GoogleCloudSecuritycenterV2Notebook> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     lastAuthor: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -871,7 +871,7 @@ export interface GoogleCloudSecuritycenterV2CloudDlpInspection {
 }
 
 export const GoogleCloudSecuritycenterV2CloudDlpInspection: Schema.Codec<GoogleCloudSecuritycenterV2CloudDlpInspection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     infoType: Schema.optional(Schema.String),
     infoTypeCount: Schema.optional(Schema.String),
     fullScan: Schema.optional(Schema.Boolean),
@@ -892,7 +892,7 @@ export interface GoogleCloudSecuritycenterV2Job {
 }
 
 export const GoogleCloudSecuritycenterV2Job: Schema.Codec<GoogleCloudSecuritycenterV2Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     errorCode: Schema.optional(Schema.Number),
@@ -906,7 +906,7 @@ export interface GoogleCloudSecuritycenterV2PolicyDriftDetails {
 }
 
 export const GoogleCloudSecuritycenterV2PolicyDriftDetails: Schema.Codec<GoogleCloudSecuritycenterV2PolicyDriftDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detectedValue: Schema.optional(Schema.String),
     field: Schema.optional(Schema.String),
     expectedValue: Schema.optional(Schema.String),
@@ -924,7 +924,7 @@ export interface GoogleCloudSecuritycenterV2SecurityPosture {
 }
 
 export const GoogleCloudSecuritycenterV2SecurityPosture: Schema.Codec<GoogleCloudSecuritycenterV2SecurityPosture> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     postureDeployment: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     policySet: Schema.optional(Schema.String),
@@ -942,7 +942,7 @@ export interface GoogleCloudSecuritycenterV2Contact {
 }
 
 export const GoogleCloudSecuritycenterV2Contact: Schema.Codec<GoogleCloudSecuritycenterV2Contact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Contact" });
 
@@ -951,7 +951,7 @@ export interface GoogleCloudSecuritycenterV2ContactDetails {
 }
 
 export const GoogleCloudSecuritycenterV2ContactDetails: Schema.Codec<GoogleCloudSecuritycenterV2ContactDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contacts: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Contact)),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2ContactDetails" });
 
@@ -965,7 +965,7 @@ export interface GoogleCloudSecuritycenterV2ArtifactGuardPolicy {
 }
 
 export const GoogleCloudSecuritycenterV2ArtifactGuardPolicy: Schema.Codec<GoogleCloudSecuritycenterV2ArtifactGuardPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyId: Schema.optional(Schema.String),
     failureReason: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -977,7 +977,7 @@ export interface GoogleCloudSecuritycenterV2ArtifactGuardPolicies {
 }
 
 export const GoogleCloudSecuritycenterV2ArtifactGuardPolicies: Schema.Codec<GoogleCloudSecuritycenterV2ArtifactGuardPolicies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(Schema.String),
     failingPolicies: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2ArtifactGuardPolicy),
@@ -992,7 +992,7 @@ export interface GoogleCloudSecuritycenterV2DiskPath {
 }
 
 export const GoogleCloudSecuritycenterV2DiskPath: Schema.Codec<GoogleCloudSecuritycenterV2DiskPath> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partitionUuid: Schema.optional(Schema.String),
     relativePath: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2DiskPath" });
@@ -1009,7 +1009,7 @@ export interface GoogleCloudSecuritycenterV2FileOperation {
 }
 
 export const GoogleCloudSecuritycenterV2FileOperation: Schema.Codec<GoogleCloudSecuritycenterV2FileOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2FileOperation" });
 
@@ -1030,7 +1030,7 @@ export interface GoogleCloudSecuritycenterV2File {
 }
 
 export const GoogleCloudSecuritycenterV2File: Schema.Codec<GoogleCloudSecuritycenterV2File> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partiallyHashed: Schema.optional(Schema.Boolean),
     fileLoadState: Schema.optional(Schema.String),
     sha256: Schema.optional(Schema.String),
@@ -1050,7 +1050,7 @@ export interface GoogleCloudSecuritycenterV2EnvironmentVariable {
 }
 
 export const GoogleCloudSecuritycenterV2EnvironmentVariable: Schema.Codec<GoogleCloudSecuritycenterV2EnvironmentVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     val: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2EnvironmentVariable" });
@@ -1070,7 +1070,7 @@ export interface GoogleCloudSecuritycenterV2Process {
 }
 
 export const GoogleCloudSecuritycenterV2Process: Schema.Codec<GoogleCloudSecuritycenterV2Process> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     binary: Schema.optional(GoogleCloudSecuritycenterV2File),
     pid: Schema.optional(Schema.String),
     libraries: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2File)),
@@ -1094,7 +1094,7 @@ export interface GoogleCloudSecuritycenterV2Requests {
 }
 
 export const GoogleCloudSecuritycenterV2Requests: Schema.Codec<GoogleCloudSecuritycenterV2Requests> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     longTermAllowed: Schema.optional(Schema.Number),
     ratio: Schema.optional(Schema.Number),
     longTermDenied: Schema.optional(Schema.Number),
@@ -1110,7 +1110,7 @@ export interface GoogleCloudSecuritycenterV2Attack {
 }
 
 export const GoogleCloudSecuritycenterV2Attack: Schema.Codec<GoogleCloudSecuritycenterV2Attack> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     volumeBpsLong: Schema.optional(Schema.String),
     volumePps: Schema.optional(Schema.Number),
     volumeBps: Schema.optional(Schema.Number),
@@ -1125,7 +1125,7 @@ export interface GoogleCloudSecuritycenterV2SecurityPolicy {
 }
 
 export const GoogleCloudSecuritycenterV2SecurityPolicy: Schema.Codec<GoogleCloudSecuritycenterV2SecurityPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     preview: Schema.optional(Schema.Boolean),
     type: Schema.optional(Schema.String),
@@ -1136,7 +1136,7 @@ export interface GoogleCloudSecuritycenterV2AdaptiveProtection {
 }
 
 export const GoogleCloudSecuritycenterV2AdaptiveProtection: Schema.Codec<GoogleCloudSecuritycenterV2AdaptiveProtection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2AdaptiveProtection" });
 
@@ -1150,7 +1150,7 @@ export interface GoogleCloudSecuritycenterV2CloudArmor {
 }
 
 export const GoogleCloudSecuritycenterV2CloudArmor: Schema.Codec<GoogleCloudSecuritycenterV2CloudArmor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
     requests: Schema.optional(GoogleCloudSecuritycenterV2Requests),
     attack: Schema.optional(GoogleCloudSecuritycenterV2Attack),
@@ -1167,7 +1167,7 @@ export interface GoogleCloudSecuritycenterV2HttpResponse {
 }
 
 export const GoogleCloudSecuritycenterV2HttpResponse: Schema.Codec<GoogleCloudSecuritycenterV2HttpResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     statusCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2HttpResponse" });
@@ -1197,7 +1197,7 @@ export interface GoogleCloudSecuritycenterV2ExternalExposure {
 }
 
 export const GoogleCloudSecuritycenterV2ExternalExposure: Schema.Codec<GoogleCloudSecuritycenterV2ExternalExposure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hostnameUri: Schema.optional(Schema.String),
     instanceGroup: Schema.optional(Schema.String),
     networkPathInsightsGenerationTime: Schema.optional(Schema.String),
@@ -1230,7 +1230,7 @@ export interface GoogleCloudSecuritycenterV2IamBinding {
 }
 
 export const GoogleCloudSecuritycenterV2IamBinding: Schema.Codec<GoogleCloudSecuritycenterV2IamBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     member: Schema.optional(Schema.String),
     action: Schema.optional(Schema.String),
@@ -1250,7 +1250,7 @@ export interface GoogleCloudSecuritycenterV2DiscoveredWorkload {
 }
 
 export const GoogleCloudSecuritycenterV2DiscoveredWorkload: Schema.Codec<GoogleCloudSecuritycenterV2DiscoveredWorkload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workloadType: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.String),
     detectedRelevantKeywords: Schema.optional(Schema.Boolean),
@@ -1268,7 +1268,7 @@ export interface GoogleCloudSecuritycenterV2GroupMembership {
 }
 
 export const GoogleCloudSecuritycenterV2GroupMembership: Schema.Codec<GoogleCloudSecuritycenterV2GroupMembership> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupType: Schema.optional(Schema.String),
     groupId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2GroupMembership" });
@@ -1279,7 +1279,7 @@ export interface GoogleCloudSecuritycenterV2Reference {
 }
 
 export const GoogleCloudSecuritycenterV2Reference: Schema.Codec<GoogleCloudSecuritycenterV2Reference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Reference" });
@@ -1335,7 +1335,7 @@ export interface GoogleCloudSecuritycenterV2Cvssv3 {
 }
 
 export const GoogleCloudSecuritycenterV2Cvssv3: Schema.Codec<GoogleCloudSecuritycenterV2Cvssv3> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attackVector: Schema.optional(Schema.String),
     scope: Schema.optional(Schema.String),
     privilegesRequired: Schema.optional(Schema.String),
@@ -1374,7 +1374,7 @@ export interface GoogleCloudSecuritycenterV2Cve {
 }
 
 export const GoogleCloudSecuritycenterV2Cve: Schema.Codec<GoogleCloudSecuritycenterV2Cve> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     observedInTheWild: Schema.optional(Schema.Boolean),
     zeroDay: Schema.optional(Schema.Boolean),
     impact: Schema.optional(Schema.String),
@@ -1397,7 +1397,7 @@ export interface GoogleCloudSecuritycenterV2Package {
 }
 
 export const GoogleCloudSecuritycenterV2Package: Schema.Codec<GoogleCloudSecuritycenterV2Package> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     packageType: Schema.optional(Schema.String),
     packageVersion: Schema.optional(Schema.String),
@@ -1410,7 +1410,7 @@ export interface GoogleCloudSecuritycenterV2Cwe {
 }
 
 export const GoogleCloudSecuritycenterV2Cwe: Schema.Codec<GoogleCloudSecuritycenterV2Cwe> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     references: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2Reference),
     ),
@@ -1424,7 +1424,7 @@ export interface GoogleCloudSecuritycenterV2SecurityBulletin {
 }
 
 export const GoogleCloudSecuritycenterV2SecurityBulletin: Schema.Codec<GoogleCloudSecuritycenterV2SecurityBulletin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bulletinId: Schema.optional(Schema.String),
     suggestedUpgradeVersion: Schema.optional(Schema.String),
     submissionTime: Schema.optional(Schema.String),
@@ -1441,7 +1441,7 @@ export interface GoogleCloudSecuritycenterV2Vulnerability {
 }
 
 export const GoogleCloudSecuritycenterV2Vulnerability: Schema.Codec<GoogleCloudSecuritycenterV2Vulnerability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cve: Schema.optional(GoogleCloudSecuritycenterV2Cve),
     offendingPackage: Schema.optional(GoogleCloudSecuritycenterV2Package),
     cwes: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Cwe)),
@@ -1463,7 +1463,7 @@ export interface GoogleCloudSecuritycenterV2Database {
 }
 
 export const GoogleCloudSecuritycenterV2Database: Schema.Codec<GoogleCloudSecuritycenterV2Database> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     userName: Schema.optional(Schema.String),
@@ -1478,7 +1478,7 @@ export interface GoogleCloudSecuritycenterV2ExfilResource {
 }
 
 export const GoogleCloudSecuritycenterV2ExfilResource: Schema.Codec<GoogleCloudSecuritycenterV2ExfilResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     components: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2ExfilResource" });
@@ -1490,7 +1490,7 @@ export interface GoogleCloudSecuritycenterV2Exfiltration {
 }
 
 export const GoogleCloudSecuritycenterV2Exfiltration: Schema.Codec<GoogleCloudSecuritycenterV2Exfiltration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sources: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2ExfilResource),
     ),
@@ -1508,7 +1508,7 @@ export interface GoogleCloudSecuritycenterV2CloudLoggingEntry {
 }
 
 export const GoogleCloudSecuritycenterV2CloudLoggingEntry: Schema.Codec<GoogleCloudSecuritycenterV2CloudLoggingEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceContainer: Schema.optional(Schema.String),
     insertId: Schema.optional(Schema.String),
     logId: Schema.optional(Schema.String),
@@ -1520,7 +1520,7 @@ export interface GoogleCloudSecuritycenterV2LogEntry {
 }
 
 export const GoogleCloudSecuritycenterV2LogEntry: Schema.Codec<GoogleCloudSecuritycenterV2LogEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cloudLoggingEntry: Schema.optional(
       GoogleCloudSecuritycenterV2CloudLoggingEntry,
     ),
@@ -1850,7 +1850,7 @@ export interface GoogleCloudSecuritycenterV2MitreAttack {
 }
 
 export const GoogleCloudSecuritycenterV2MitreAttack: Schema.Codec<GoogleCloudSecuritycenterV2MitreAttack> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryTechniques: Schema.optional(Schema.Array(Schema.String)),
     additionalTechniques: Schema.optional(Schema.Array(Schema.String)),
     primaryTactic: Schema.optional(Schema.String),
@@ -1864,7 +1864,7 @@ export interface GoogleCloudSecuritycenterV2IamRolePermission {
 }
 
 export const GoogleCloudSecuritycenterV2IamRolePermission: Schema.Codec<GoogleCloudSecuritycenterV2IamRolePermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     role: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2IamRolePermission" });
@@ -1874,7 +1874,7 @@ export interface GoogleCloudSecuritycenterV2IamDetails {
 }
 
 export const GoogleCloudSecuritycenterV2IamDetails: Schema.Codec<GoogleCloudSecuritycenterV2IamDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iamRolePermissions: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2IamRolePermission),
     ),
@@ -1891,7 +1891,7 @@ export interface GoogleCloudSecuritycenterV2SensitivityScore {
 }
 
 export const GoogleCloudSecuritycenterV2SensitivityScore: Schema.Codec<GoogleCloudSecuritycenterV2SensitivityScore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2SensitivityScore" });
 
@@ -1902,7 +1902,7 @@ export interface GoogleCloudSecuritycenterV2InfoType {
 }
 
 export const GoogleCloudSecuritycenterV2InfoType: Schema.Codec<GoogleCloudSecuritycenterV2InfoType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
     sensitivityScore: Schema.optional(
@@ -1921,7 +1921,7 @@ export interface GoogleCloudSecuritycenterV2CloudDlpDataProfile {
 }
 
 export const GoogleCloudSecuritycenterV2CloudDlpDataProfile: Schema.Codec<GoogleCloudSecuritycenterV2CloudDlpDataProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     infoTypes: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2InfoType),
     ),
@@ -1935,7 +1935,7 @@ export interface GoogleCloudSecuritycenterV2PortRange {
 }
 
 export const GoogleCloudSecuritycenterV2PortRange: Schema.Codec<GoogleCloudSecuritycenterV2PortRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     min: Schema.optional(Schema.String),
     max: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2PortRange" });
@@ -1946,7 +1946,7 @@ export interface GoogleCloudSecuritycenterV2IpRule {
 }
 
 export const GoogleCloudSecuritycenterV2IpRule: Schema.Codec<GoogleCloudSecuritycenterV2IpRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     protocol: Schema.optional(Schema.String),
     portRanges: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2PortRange),
@@ -1958,7 +1958,7 @@ export interface GoogleCloudSecuritycenterV2Allowed {
 }
 
 export const GoogleCloudSecuritycenterV2Allowed: Schema.Codec<GoogleCloudSecuritycenterV2Allowed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ipRules: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2IpRule)),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Allowed" });
 
@@ -1967,7 +1967,7 @@ export interface GoogleCloudSecuritycenterV2Denied {
 }
 
 export const GoogleCloudSecuritycenterV2Denied: Schema.Codec<GoogleCloudSecuritycenterV2Denied> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ipRules: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2IpRule)),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Denied" });
 
@@ -1981,7 +1981,7 @@ export interface GoogleCloudSecuritycenterV2IpRules {
 }
 
 export const GoogleCloudSecuritycenterV2IpRules: Schema.Codec<GoogleCloudSecuritycenterV2IpRules> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exposedServices: Schema.optional(Schema.Array(Schema.String)),
     allowed: Schema.optional(GoogleCloudSecuritycenterV2Allowed),
     destinationIpRanges: Schema.optional(Schema.Array(Schema.String)),
@@ -1995,7 +1995,7 @@ export interface GoogleCloudSecuritycenterV2Network {
 }
 
 export const GoogleCloudSecuritycenterV2Network: Schema.Codec<GoogleCloudSecuritycenterV2Network> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Network" });
 
@@ -2004,7 +2004,7 @@ export interface GoogleCloudSecuritycenterV2LoadBalancer {
 }
 
 export const GoogleCloudSecuritycenterV2LoadBalancer: Schema.Codec<GoogleCloudSecuritycenterV2LoadBalancer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2LoadBalancer" });
 
@@ -2017,7 +2017,7 @@ export interface GoogleCloudSecuritycenterV2Container {
 }
 
 export const GoogleCloudSecuritycenterV2Container: Schema.Codec<GoogleCloudSecuritycenterV2Container> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     imageId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2033,7 +2033,7 @@ export interface GoogleCloudSecuritycenterV2Pod {
 }
 
 export const GoogleCloudSecuritycenterV2Pod: Schema.Codec<GoogleCloudSecuritycenterV2Pod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containers: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2Container),
     ),
@@ -2053,7 +2053,7 @@ export interface GoogleCloudSecuritycenterV2AccessReview {
 }
 
 export const GoogleCloudSecuritycenterV2AccessReview: Schema.Codec<GoogleCloudSecuritycenterV2AccessReview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     group: Schema.optional(Schema.String),
@@ -2072,7 +2072,7 @@ export interface GoogleCloudSecuritycenterV2Object {
 }
 
 export const GoogleCloudSecuritycenterV2Object: Schema.Codec<GoogleCloudSecuritycenterV2Object> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ns: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     group: Schema.optional(Schema.String),
@@ -2087,7 +2087,7 @@ export interface GoogleCloudSecuritycenterV2Node {
 }
 
 export const GoogleCloudSecuritycenterV2Node: Schema.Codec<GoogleCloudSecuritycenterV2Node> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Node" });
 
@@ -2098,7 +2098,7 @@ export interface GoogleCloudSecuritycenterV2Role {
 }
 
 export const GoogleCloudSecuritycenterV2Role: Schema.Codec<GoogleCloudSecuritycenterV2Role> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     ns: Schema.optional(Schema.String),
@@ -2110,7 +2110,7 @@ export interface GoogleCloudSecuritycenterV2NodePool {
 }
 
 export const GoogleCloudSecuritycenterV2NodePool: Schema.Codec<GoogleCloudSecuritycenterV2NodePool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     nodes: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Node)),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2NodePool" });
@@ -2127,7 +2127,7 @@ export interface GoogleCloudSecuritycenterV2Subject {
 }
 
 export const GoogleCloudSecuritycenterV2Subject: Schema.Codec<GoogleCloudSecuritycenterV2Subject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     ns: Schema.optional(Schema.String),
@@ -2141,7 +2141,7 @@ export interface GoogleCloudSecuritycenterV2Binding {
 }
 
 export const GoogleCloudSecuritycenterV2Binding: Schema.Codec<GoogleCloudSecuritycenterV2Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     subjects: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Subject)),
     ns: Schema.optional(Schema.String),
@@ -2159,7 +2159,7 @@ export interface GoogleCloudSecuritycenterV2Kubernetes {
 }
 
 export const GoogleCloudSecuritycenterV2Kubernetes: Schema.Codec<GoogleCloudSecuritycenterV2Kubernetes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pods: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Pod)),
     accessReviews: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2AccessReview),
@@ -2184,7 +2184,7 @@ export interface GoogleCloudSecuritycenterV2StaticMute {
 }
 
 export const GoogleCloudSecuritycenterV2StaticMute: Schema.Codec<GoogleCloudSecuritycenterV2StaticMute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     applyTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2StaticMute" });
@@ -2195,7 +2195,7 @@ export interface GoogleCloudSecuritycenterV2DynamicMuteRecord {
 }
 
 export const GoogleCloudSecuritycenterV2DynamicMuteRecord: Schema.Codec<GoogleCloudSecuritycenterV2DynamicMuteRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     muteConfig: Schema.optional(Schema.String),
     matchTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2DynamicMuteRecord" });
@@ -2206,7 +2206,7 @@ export interface GoogleCloudSecuritycenterV2MuteInfo {
 }
 
 export const GoogleCloudSecuritycenterV2MuteInfo: Schema.Codec<GoogleCloudSecuritycenterV2MuteInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     staticMute: Schema.optional(GoogleCloudSecuritycenterV2StaticMute),
     dynamicMuteRecords: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2DynamicMuteRecord),
@@ -2228,7 +2228,7 @@ export interface GoogleCloudSecuritycenterV2DataRetentionDeletionEvent {
 }
 
 export const GoogleCloudSecuritycenterV2DataRetentionDeletionEvent: Schema.Codec<GoogleCloudSecuritycenterV2DataRetentionDeletionEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataObjectCount: Schema.optional(Schema.String),
     eventDetectionTime: Schema.optional(Schema.String),
     maxRetentionAllowed: Schema.optional(Schema.String),
@@ -2256,7 +2256,7 @@ export interface GoogleCloudSecuritycenterV2AiModel {
 }
 
 export const GoogleCloudSecuritycenterV2AiModel: Schema.Codec<GoogleCloudSecuritycenterV2AiModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -2274,7 +2274,7 @@ export interface GoogleCloudSecuritycenterV2Compliance {
 }
 
 export const GoogleCloudSecuritycenterV2Compliance: Schema.Codec<GoogleCloudSecuritycenterV2Compliance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     standard: Schema.optional(Schema.String),
     ids: Schema.optional(Schema.Array(Schema.String)),
@@ -2285,7 +2285,7 @@ export interface GoogleCloudSecuritycenterV2AffectedResources {
 }
 
 export const GoogleCloudSecuritycenterV2AffectedResources: Schema.Codec<GoogleCloudSecuritycenterV2AffectedResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2AffectedResources" });
 
@@ -2294,7 +2294,7 @@ export interface GoogleCloudSecuritycenterV2Chokepoint {
 }
 
 export const GoogleCloudSecuritycenterV2Chokepoint: Schema.Codec<GoogleCloudSecuritycenterV2Chokepoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     relatedFindings: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Chokepoint" });
 
@@ -2303,7 +2303,7 @@ export interface GoogleCloudSecuritycenterV2OrgPolicy {
 }
 
 export const GoogleCloudSecuritycenterV2OrgPolicy: Schema.Codec<GoogleCloudSecuritycenterV2OrgPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2OrgPolicy" });
 
@@ -2313,7 +2313,7 @@ export interface GoogleCloudSecuritycenterV2Control {
 }
 
 export const GoogleCloudSecuritycenterV2Control: Schema.Codec<GoogleCloudSecuritycenterV2Control> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlName: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Control" });
@@ -2339,7 +2339,7 @@ export interface GoogleCloudSecuritycenterV2Framework {
 }
 
 export const GoogleCloudSecuritycenterV2Framework: Schema.Codec<GoogleCloudSecuritycenterV2Framework> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     controls: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Control)),
     name: Schema.optional(Schema.String),
@@ -2359,7 +2359,7 @@ export interface GoogleCloudSecuritycenterV2CloudControl {
 }
 
 export const GoogleCloudSecuritycenterV2CloudControl: Schema.Codec<GoogleCloudSecuritycenterV2CloudControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     policyType: Schema.optional(Schema.String),
     cloudControlName: Schema.optional(Schema.String),
@@ -2373,7 +2373,7 @@ export interface GoogleCloudSecuritycenterV2ComplianceDetails {
 }
 
 export const GoogleCloudSecuritycenterV2ComplianceDetails: Schema.Codec<GoogleCloudSecuritycenterV2ComplianceDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     frameworks: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2Framework),
     ),
@@ -2386,7 +2386,7 @@ export interface GoogleCloudSecuritycenterV2Geolocation {
 }
 
 export const GoogleCloudSecuritycenterV2Geolocation: Schema.Codec<GoogleCloudSecuritycenterV2Geolocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Geolocation" });
 
@@ -2396,7 +2396,7 @@ export interface GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo {
 }
 
 export const GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo: Schema.Codec<GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principalSubject: Schema.optional(Schema.String),
     principalEmail: Schema.optional(Schema.String),
   }).annotate({
@@ -2418,7 +2418,7 @@ export interface GoogleCloudSecuritycenterV2Access {
 }
 
 export const GoogleCloudSecuritycenterV2Access: Schema.Codec<GoogleCloudSecuritycenterV2Access> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userAgentFamily: Schema.optional(Schema.String),
     principalEmail: Schema.optional(Schema.String),
     userName: Schema.optional(Schema.String),
@@ -2447,7 +2447,7 @@ export interface GoogleCloudSecuritycenterV2AgentDataAccessEvent {
 }
 
 export const GoogleCloudSecuritycenterV2AgentDataAccessEvent: Schema.Codec<GoogleCloudSecuritycenterV2AgentDataAccessEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     principalSubject: Schema.optional(Schema.String),
     eventTime: Schema.optional(Schema.String),
@@ -2462,7 +2462,7 @@ export interface GoogleCloudSecuritycenterV2Application {
 }
 
 export const GoogleCloudSecuritycenterV2Application: Schema.Codec<GoogleCloudSecuritycenterV2Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fullUri: Schema.optional(Schema.String),
     baseUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Application" });
@@ -2560,7 +2560,7 @@ export interface GoogleCloudSecuritycenterV2Finding {
 }
 
 export const GoogleCloudSecuritycenterV2Finding: Schema.Codec<GoogleCloudSecuritycenterV2Finding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityMarks: Schema.optional(GoogleCloudSecuritycenterV2SecurityMarks),
     indicator: Schema.optional(GoogleCloudSecuritycenterV2Indicator),
     toxicCombination: Schema.optional(
@@ -2694,7 +2694,7 @@ export interface IamBinding {
 }
 
 export const IamBinding: Schema.Codec<IamBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     action: Schema.optional(Schema.String),
     member: Schema.optional(Schema.String),
@@ -2706,7 +2706,7 @@ export interface PortRange {
 }
 
 export const PortRange: Schema.Codec<PortRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     min: Schema.optional(Schema.String),
     max: Schema.optional(Schema.String),
   }).annotate({ identifier: "PortRange" });
@@ -2717,7 +2717,7 @@ export interface IpRule {
 }
 
 export const IpRule: Schema.Codec<IpRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     protocol: Schema.optional(Schema.String),
     portRanges: Schema.optional(Schema.Array(PortRange)),
   }).annotate({ identifier: "IpRule" });
@@ -2732,7 +2732,7 @@ export interface ArtifactGuardPolicy {
 }
 
 export const ArtifactGuardPolicy: Schema.Codec<ArtifactGuardPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyId: Schema.optional(Schema.String),
     failureReason: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3062,7 +3062,7 @@ export interface MitreAttack {
 }
 
 export const MitreAttack: Schema.Codec<MitreAttack> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryTechniques: Schema.optional(Schema.Array(Schema.String)),
     additionalTechniques: Schema.optional(Schema.Array(Schema.String)),
     additionalTactics: Schema.optional(Schema.Array(Schema.String)),
@@ -3076,7 +3076,7 @@ export interface AzureSubscription {
 }
 
 export const AzureSubscription: Schema.Codec<AzureSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "AzureSubscription" });
@@ -3092,7 +3092,7 @@ export interface AttackExposure {
 }
 
 export const AttackExposure: Schema.Codec<AttackExposure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     latestCalculationTime: Schema.optional(Schema.String),
     attackExposureResult: Schema.optional(Schema.String),
@@ -3113,7 +3113,7 @@ export interface Config {
 }
 
 export const Config: Schema.Codec<Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     moduleEnablementState: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "Config" });
@@ -3123,7 +3123,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCo
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -3138,7 +3138,7 @@ export interface PolicyViolationSummary {
 }
 
 export const PolicyViolationSummary: Schema.Codec<PolicyViolationSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conformantResourcesCount: Schema.optional(Schema.String),
     evaluationErrorsCount: Schema.optional(Schema.String),
     policyViolationsCount: Schema.optional(Schema.String),
@@ -3159,7 +3159,7 @@ export interface BackupDisasterRecovery {
 }
 
 export const BackupDisasterRecovery: Schema.Codec<BackupDisasterRecovery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     policyOptions: Schema.optional(Schema.Array(Schema.String)),
     profile: Schema.optional(Schema.String),
@@ -3180,7 +3180,7 @@ export interface Notebook {
 }
 
 export const Notebook: Schema.Codec<Notebook> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     notebookUpdateTime: Schema.optional(Schema.String),
     service: Schema.optional(Schema.String),
@@ -3195,7 +3195,7 @@ export interface CloudDlpInspection {
 }
 
 export const CloudDlpInspection: Schema.Codec<CloudDlpInspection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inspectJob: Schema.optional(Schema.String),
     infoType: Schema.optional(Schema.String),
     infoTypeCount: Schema.optional(Schema.String),
@@ -3208,7 +3208,7 @@ export interface ArtifactGuardPolicies {
 }
 
 export const ArtifactGuardPolicies: Schema.Codec<ArtifactGuardPolicies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(Schema.String),
     failingPolicies: Schema.optional(Schema.Array(ArtifactGuardPolicy)),
   }).annotate({ identifier: "ArtifactGuardPolicies" });
@@ -3226,14 +3226,12 @@ export interface Job {
     | (string & {});
 }
 
-export const Job: Schema.Codec<Job> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    errorCode: Schema.optional(Schema.Number),
-    name: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Job" });
+export const Job: Schema.Codec<Job> = /*@__PURE__*/ Schema.Struct({
+  errorCode: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Job" });
 
 export interface PolicyDriftDetails {
   field?: string;
@@ -3242,7 +3240,7 @@ export interface PolicyDriftDetails {
 }
 
 export const PolicyDriftDetails: Schema.Codec<PolicyDriftDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     field: Schema.optional(Schema.String),
     expectedValue: Schema.optional(Schema.String),
     detectedValue: Schema.optional(Schema.String),
@@ -3260,7 +3258,7 @@ export interface SecurityPosture {
 }
 
 export const SecurityPosture: Schema.Codec<SecurityPosture> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     revisionId: Schema.optional(Schema.String),
     postureDeploymentResource: Schema.optional(Schema.String),
     policy: Schema.optional(Schema.String),
@@ -3278,7 +3276,7 @@ export interface Dataset {
 }
 
 export const Dataset: Schema.Codec<Dataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -3290,7 +3288,7 @@ export interface Pipeline {
 }
 
 export const Pipeline: Schema.Codec<Pipeline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "Pipeline" });
@@ -3301,7 +3299,7 @@ export interface VertexAi {
 }
 
 export const VertexAi: Schema.Codec<VertexAi> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     datasets: Schema.optional(Schema.Array(Dataset)),
     pipelines: Schema.optional(Schema.Array(Pipeline)),
   }).annotate({ identifier: "VertexAi" });
@@ -3312,7 +3310,7 @@ export interface EnvironmentVariable {
 }
 
 export const EnvironmentVariable: Schema.Codec<EnvironmentVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     val: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnvironmentVariable" });
@@ -3329,7 +3327,7 @@ export interface FileOperation {
 }
 
 export const FileOperation: Schema.Codec<FileOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "FileOperation" });
 
@@ -3339,7 +3337,7 @@ export interface DiskPath {
 }
 
 export const DiskPath: Schema.Codec<DiskPath> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partitionUuid: Schema.optional(Schema.String),
     relativePath: Schema.optional(Schema.String),
   }).annotate({ identifier: "DiskPath" });
@@ -3361,7 +3359,7 @@ export interface File {
 }
 
 export const File: Schema.Codec<File> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(FileOperation)),
     diskPath: Schema.optional(DiskPath),
     sha256: Schema.optional(Schema.String),
@@ -3388,7 +3386,7 @@ export interface Process {
 }
 
 export const Process: Schema.Codec<Process> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parentPid: Schema.optional(Schema.String),
     args: Schema.optional(Schema.Array(Schema.String)),
     envVariables: Schema.optional(Schema.Array(EnvironmentVariable)),
@@ -3410,7 +3408,7 @@ export interface Requests {
 }
 
 export const Requests: Schema.Codec<Requests> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     longTermDenied: Schema.optional(Schema.Number),
     shortTermAllowed: Schema.optional(Schema.Number),
     longTermAllowed: Schema.optional(Schema.Number),
@@ -3424,7 +3422,7 @@ export interface SecurityPolicy {
 }
 
 export const SecurityPolicy: Schema.Codec<SecurityPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     preview: Schema.optional(Schema.Boolean),
@@ -3435,7 +3433,7 @@ export interface AdaptiveProtection {
 }
 
 export const AdaptiveProtection: Schema.Codec<AdaptiveProtection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
   }).annotate({ identifier: "AdaptiveProtection" });
 
@@ -3449,7 +3447,7 @@ export interface CloudArmor {
 }
 
 export const CloudArmor: Schema.Codec<CloudArmor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
     requests: Schema.optional(Requests),
     attack: Schema.optional(Attack),
@@ -3472,7 +3470,7 @@ export interface DiscoveredWorkload {
 }
 
 export const DiscoveredWorkload: Schema.Codec<DiscoveredWorkload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workloadType: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.String),
     detectedRelevantPackages: Schema.optional(Schema.Boolean),
@@ -3486,7 +3484,7 @@ export interface Detection {
 }
 
 export const Detection: Schema.Codec<Detection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     binary: Schema.optional(Schema.String),
     percentPagesMatched: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Detection" });
@@ -3497,7 +3495,7 @@ export interface MemoryHashSignature {
 }
 
 export const MemoryHashSignature: Schema.Codec<MemoryHashSignature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     binaryFamily: Schema.optional(Schema.String),
     detections: Schema.optional(Schema.Array(Detection)),
   }).annotate({ identifier: "MemoryHashSignature" });
@@ -3507,7 +3505,7 @@ export interface YaraRuleSignature {
 }
 
 export const YaraRuleSignature: Schema.Codec<YaraRuleSignature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     yaraRule: Schema.optional(Schema.String),
   }).annotate({ identifier: "YaraRuleSignature" });
 
@@ -3522,7 +3520,7 @@ export interface ProcessSignature {
 }
 
 export const ProcessSignature: Schema.Codec<ProcessSignature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signatureType: Schema.optional(Schema.String),
     memoryHashSignature: Schema.optional(MemoryHashSignature),
     yaraRuleSignature: Schema.optional(YaraRuleSignature),
@@ -3536,7 +3534,7 @@ export interface Indicator {
 }
 
 export const Indicator: Schema.Codec<Indicator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domains: Schema.optional(Schema.Array(Schema.String)),
     uris: Schema.optional(Schema.Array(Schema.String)),
     ipAddresses: Schema.optional(Schema.Array(Schema.String)),
@@ -3549,7 +3547,7 @@ export interface ToxicCombination {
 }
 
 export const ToxicCombination: Schema.Codec<ToxicCombination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attackExposureScore: Schema.optional(Schema.Number),
     relatedFindings: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ToxicCombination" });
@@ -3561,7 +3559,7 @@ export interface SecurityMarks {
 }
 
 export const SecurityMarks: Schema.Codec<SecurityMarks> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canonicalName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     marks: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -3583,7 +3581,7 @@ export interface Connection {
 }
 
 export const Connection: Schema.Codec<Connection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     protocol: Schema.optional(Schema.String),
     destinationPort: Schema.optional(Schema.Number),
     sourceIp: Schema.optional(Schema.String),
@@ -3603,7 +3601,7 @@ export interface SecretStatus {
 }
 
 export const SecretStatus: Schema.Codec<SecretStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastUpdatedTime: Schema.optional(Schema.String),
     validity: Schema.optional(Schema.String),
   }).annotate({ identifier: "SecretStatus" });
@@ -3613,7 +3611,7 @@ export interface SecretEnvironmentVariable {
 }
 
 export const SecretEnvironmentVariable: Schema.Codec<SecretEnvironmentVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "SecretEnvironmentVariable" });
 
@@ -3622,7 +3620,7 @@ export interface SecretFilePath {
 }
 
 export const SecretFilePath: Schema.Codec<SecretFilePath> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "SecretFilePath" });
 
@@ -3634,7 +3632,7 @@ export interface Secret {
 }
 
 export const Secret: Schema.Codec<Secret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     status: Schema.optional(SecretStatus),
     environmentVariable: Schema.optional(SecretEnvironmentVariable),
@@ -3646,7 +3644,7 @@ export interface Disk {
 }
 
 export const Disk: Schema.Codec<Disk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Disk" });
 
@@ -3665,7 +3663,7 @@ export interface GoogleCloudSecuritycenterV1ExternalSystem {
 }
 
 export const GoogleCloudSecuritycenterV1ExternalSystem: Schema.Codec<GoogleCloudSecuritycenterV1ExternalSystem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ticketInfo: Schema.optional(TicketInfo),
     name: Schema.optional(Schema.String),
     externalUid: Schema.optional(Schema.String),
@@ -3693,7 +3691,7 @@ export interface DataFlowEvent {
 }
 
 export const DataFlowEvent: Schema.Codec<DataFlowEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventTime: Schema.optional(Schema.String),
     eventId: Schema.optional(Schema.String),
     principalEmail: Schema.optional(Schema.String),
@@ -3716,7 +3714,7 @@ export interface DataRetentionDeletionEvent {
 }
 
 export const DataRetentionDeletionEvent: Schema.Codec<DataRetentionDeletionEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataObjectCount: Schema.optional(Schema.String),
     eventDetectionTime: Schema.optional(Schema.String),
     maxRetentionAllowed: Schema.optional(Schema.String),
@@ -3742,7 +3740,7 @@ export interface AiModel {
 }
 
 export const AiModel: Schema.Codec<AiModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     publisher: Schema.optional(Schema.String),
     library: Schema.optional(Schema.String),
     usageCategory: Schema.optional(Schema.String),
@@ -3758,7 +3756,7 @@ export interface AffectedResources {
 }
 
 export const AffectedResources: Schema.Codec<AffectedResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
   }).annotate({ identifier: "AffectedResources" });
 
@@ -3769,7 +3767,7 @@ export interface Compliance {
 }
 
 export const Compliance: Schema.Codec<Compliance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ids: Schema.optional(Schema.Array(Schema.String)),
     standard: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -3780,7 +3778,7 @@ export interface Chokepoint {
 }
 
 export const Chokepoint: Schema.Codec<Chokepoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     relatedFindings: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Chokepoint" });
 
@@ -3789,7 +3787,7 @@ export interface OrgPolicy {
 }
 
 export const OrgPolicy: Schema.Codec<OrgPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OrgPolicy" });
 
@@ -3798,7 +3796,7 @@ export interface Geolocation {
 }
 
 export const Geolocation: Schema.Codec<Geolocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "Geolocation" });
 
@@ -3808,7 +3806,7 @@ export interface ServiceAccountDelegationInfo {
 }
 
 export const ServiceAccountDelegationInfo: Schema.Codec<ServiceAccountDelegationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principalSubject: Schema.optional(Schema.String),
     principalEmail: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServiceAccountDelegationInfo" });
@@ -3828,7 +3826,7 @@ export interface Access {
 }
 
 export const Access: Schema.Codec<Access> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principalSubject: Schema.optional(Schema.String),
     userAgent: Schema.optional(Schema.String),
     callerIpGeo: Schema.optional(Geolocation),
@@ -3857,7 +3855,7 @@ export interface AgentDataAccessEvent {
 }
 
 export const AgentDataAccessEvent: Schema.Codec<AgentDataAccessEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     principalSubject: Schema.optional(Schema.String),
     eventTime: Schema.optional(Schema.String),
@@ -3870,7 +3868,7 @@ export interface Application {
 }
 
 export const Application: Schema.Codec<Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     baseUri: Schema.optional(Schema.String),
     fullUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "Application" });
@@ -3885,7 +3883,7 @@ export interface GroupMembership {
 }
 
 export const GroupMembership: Schema.Codec<GroupMembership> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupType: Schema.optional(Schema.String),
     groupId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GroupMembership" });
@@ -3898,7 +3896,7 @@ export interface Package {
 }
 
 export const Package: Schema.Codec<Package> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cpeUri: Schema.optional(Schema.String),
     packageType: Schema.optional(Schema.String),
     packageVersion: Schema.optional(Schema.String),
@@ -3912,7 +3910,7 @@ export interface SecurityBulletin {
 }
 
 export const SecurityBulletin: Schema.Codec<SecurityBulletin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bulletinId: Schema.optional(Schema.String),
     suggestedUpgradeVersion: Schema.optional(Schema.String),
     submissionTime: Schema.optional(Schema.String),
@@ -3924,7 +3922,7 @@ export interface Reference {
 }
 
 export const Reference: Schema.Codec<Reference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "Reference" });
@@ -3934,12 +3932,10 @@ export interface Cwe {
   references?: ReadonlyArray<Reference>;
 }
 
-export const Cwe: Schema.Codec<Cwe> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    references: Schema.optional(Schema.Array(Reference)),
-  },
-).annotate({ identifier: "Cwe" });
+export const Cwe: Schema.Codec<Cwe> = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  references: Schema.optional(Schema.Array(Reference)),
+}).annotate({ identifier: "Cwe" });
 
 export interface Cve {
   exploitationActivity?:
@@ -3967,20 +3963,18 @@ export interface Cve {
   observedInTheWild?: boolean;
 }
 
-export const Cve: Schema.Codec<Cve> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    exploitationActivity: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    upstreamFixAvailable: Schema.optional(Schema.Boolean),
-    references: Schema.optional(Schema.Array(Reference)),
-    firstExploitationDate: Schema.optional(Schema.String),
-    cvssv3: Schema.optional(Cvssv3),
-    impact: Schema.optional(Schema.String),
-    exploitReleaseDate: Schema.optional(Schema.String),
-    zeroDay: Schema.optional(Schema.Boolean),
-    observedInTheWild: Schema.optional(Schema.Boolean),
-  },
-).annotate({ identifier: "Cve" });
+export const Cve: Schema.Codec<Cve> = /*@__PURE__*/ Schema.Struct({
+  exploitationActivity: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  upstreamFixAvailable: Schema.optional(Schema.Boolean),
+  references: Schema.optional(Schema.Array(Reference)),
+  firstExploitationDate: Schema.optional(Schema.String),
+  cvssv3: Schema.optional(Cvssv3),
+  impact: Schema.optional(Schema.String),
+  exploitReleaseDate: Schema.optional(Schema.String),
+  zeroDay: Schema.optional(Schema.Boolean),
+  observedInTheWild: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Cve" });
 
 export interface Vulnerability {
   fixedPackage?: Package;
@@ -3993,7 +3987,7 @@ export interface Vulnerability {
 }
 
 export const Vulnerability: Schema.Codec<Vulnerability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fixedPackage: Schema.optional(Package),
     reachable: Schema.optional(Schema.Boolean),
     securityBulletin: Schema.optional(SecurityBulletin),
@@ -4009,7 +4003,7 @@ export interface ExfilResource {
 }
 
 export const ExfilResource: Schema.Codec<ExfilResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     components: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ExfilResource" });
@@ -4021,7 +4015,7 @@ export interface Exfiltration {
 }
 
 export const Exfiltration: Schema.Codec<Exfiltration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sources: Schema.optional(Schema.Array(ExfilResource)),
     targets: Schema.optional(Schema.Array(ExfilResource)),
     totalExfiltratedBytes: Schema.optional(Schema.String),
@@ -4037,7 +4031,7 @@ export interface Database {
 }
 
 export const Database: Schema.Codec<Database> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     grantees: Schema.optional(Schema.Array(Schema.String)),
     displayName: Schema.optional(Schema.String),
@@ -4054,7 +4048,7 @@ export interface CloudLoggingEntry {
 }
 
 export const CloudLoggingEntry: Schema.Codec<CloudLoggingEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceContainer: Schema.optional(Schema.String),
     logId: Schema.optional(Schema.String),
     timestamp: Schema.optional(Schema.String),
@@ -4066,7 +4060,7 @@ export interface LogEntry {
 }
 
 export const LogEntry: Schema.Codec<LogEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cloudLoggingEntry: Schema.optional(CloudLoggingEntry),
   }).annotate({ identifier: "LogEntry" });
 
@@ -4081,7 +4075,7 @@ export interface SensitivityScore {
 }
 
 export const SensitivityScore: Schema.Codec<SensitivityScore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.String),
   }).annotate({ identifier: "SensitivityScore" });
 
@@ -4092,7 +4086,7 @@ export interface InfoType {
 }
 
 export const InfoType: Schema.Codec<InfoType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
     sensitivityScore: Schema.optional(SensitivityScore),
@@ -4109,7 +4103,7 @@ export interface CloudDlpDataProfile {
 }
 
 export const CloudDlpDataProfile: Schema.Codec<CloudDlpDataProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     infoTypes: Schema.optional(Schema.Array(InfoType)),
     dataProfile: Schema.optional(Schema.String),
     parentType: Schema.optional(Schema.String),
@@ -4121,7 +4115,7 @@ export interface GoogleCloudSecuritycenterV1IamRolePermission {
 }
 
 export const GoogleCloudSecuritycenterV1IamRolePermission: Schema.Codec<GoogleCloudSecuritycenterV1IamRolePermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     role: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV1IamRolePermission" });
@@ -4131,7 +4125,7 @@ export interface GoogleCloudSecuritycenterV1IamDetails {
 }
 
 export const GoogleCloudSecuritycenterV1IamDetails: Schema.Codec<GoogleCloudSecuritycenterV1IamDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iamRolePermissions: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV1IamRolePermission),
     ),
@@ -4142,7 +4136,7 @@ export interface Allowed {
 }
 
 export const Allowed: Schema.Codec<Allowed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ipRules: Schema.optional(Schema.Array(IpRule)),
   }).annotate({ identifier: "Allowed" });
 
@@ -4151,7 +4145,7 @@ export interface Denied {
 }
 
 export const Denied: Schema.Codec<Denied> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ipRules: Schema.optional(Schema.Array(IpRule)),
   }).annotate({ identifier: "Denied" });
 
@@ -4165,7 +4159,7 @@ export interface IpRules {
 }
 
 export const IpRules: Schema.Codec<IpRules> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceIpRanges: Schema.optional(Schema.Array(Schema.String)),
     allowed: Schema.optional(Allowed),
     destinationIpRanges: Schema.optional(Schema.Array(Schema.String)),
@@ -4180,7 +4174,7 @@ export interface DynamicMuteRecord {
 }
 
 export const DynamicMuteRecord: Schema.Codec<DynamicMuteRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     muteConfig: Schema.optional(Schema.String),
     matchTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "DynamicMuteRecord" });
@@ -4196,7 +4190,7 @@ export interface StaticMute {
 }
 
 export const StaticMute: Schema.Codec<StaticMute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     applyTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "StaticMute" });
@@ -4207,7 +4201,7 @@ export interface MuteInfo {
 }
 
 export const MuteInfo: Schema.Codec<MuteInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dynamicMuteRecords: Schema.optional(Schema.Array(DynamicMuteRecord)),
     staticMute: Schema.optional(StaticMute),
   }).annotate({ identifier: "MuteInfo" });
@@ -4217,7 +4211,7 @@ export interface Node {
 }
 
 export const Node: Schema.Codec<Node> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Node" });
 
@@ -4232,7 +4226,7 @@ export interface AccessReview {
 }
 
 export const AccessReview: Schema.Codec<AccessReview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     ns: Schema.optional(Schema.String),
     subresource: Schema.optional(Schema.String),
@@ -4249,14 +4243,12 @@ export interface Pod {
   ns?: string;
 }
 
-export const Pod: Schema.Codec<Pod> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Array(Label)),
-    containers: Schema.optional(Schema.Array(Container)),
-    ns: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Pod" });
+export const Pod: Schema.Codec<Pod> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Array(Label)),
+  containers: Schema.optional(Schema.Array(Container)),
+  ns: Schema.optional(Schema.String),
+}).annotate({ identifier: "Pod" });
 
 export interface NodePool {
   nodes?: ReadonlyArray<Node>;
@@ -4264,7 +4256,7 @@ export interface NodePool {
 }
 
 export const NodePool: Schema.Codec<NodePool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodes: Schema.optional(Schema.Array(Node)),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "NodePool" });
@@ -4277,7 +4269,7 @@ export interface GoogleCloudSecuritycenterV1Binding {
 }
 
 export const GoogleCloudSecuritycenterV1Binding: Schema.Codec<GoogleCloudSecuritycenterV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subjects: Schema.optional(Schema.Array(Subject)),
     name: Schema.optional(Schema.String),
     ns: Schema.optional(Schema.String),
@@ -4295,7 +4287,7 @@ export interface Kubernetes {
 }
 
 export const Kubernetes: Schema.Codec<Kubernetes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodes: Schema.optional(Schema.Array(Node)),
     accessReviews: Schema.optional(Schema.Array(AccessReview)),
     objects: Schema.optional(Schema.Array(Securitycenter_Object)),
@@ -4310,7 +4302,7 @@ export interface LoadBalancer {
 }
 
 export const LoadBalancer: Schema.Codec<LoadBalancer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "LoadBalancer" });
 
@@ -4319,7 +4311,7 @@ export interface Network {
 }
 
 export const Network: Schema.Codec<Network> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Network" });
 
@@ -4415,7 +4407,7 @@ export interface Finding {
 }
 
 export const Finding: Schema.Codec<Finding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     backupDisasterRecovery: Schema.optional(BackupDisasterRecovery),
     notebook: Schema.optional(Notebook),
     cloudDlpInspection: Schema.optional(CloudDlpInspection),
@@ -4504,7 +4496,7 @@ export interface GoogleCloudSecuritycenterV1ResourceApplicationAttributesCritica
 }
 
 export const GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality: Schema.Codec<GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -4522,7 +4514,7 @@ export interface GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnviron
 }
 
 export const GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment: Schema.Codec<GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -4534,7 +4526,7 @@ export interface GoogleCloudSecuritycenterV1ResourceApplicationAttributesContact
 }
 
 export const GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo: Schema.Codec<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -4550,7 +4542,7 @@ export interface GoogleCloudSecuritycenterV1ResourceApplicationAttributes {
 }
 
 export const GoogleCloudSecuritycenterV1ResourceApplicationAttributes: Schema.Codec<GoogleCloudSecuritycenterV1ResourceApplicationAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     criticality: Schema.optional(
       GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality,
     ),
@@ -4582,7 +4574,7 @@ export interface GoogleCloudSecuritycenterV1ResourceApplication {
 }
 
 export const GoogleCloudSecuritycenterV1ResourceApplication: Schema.Codec<GoogleCloudSecuritycenterV1ResourceApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     attributes: Schema.optional(
       GoogleCloudSecuritycenterV1ResourceApplicationAttributes,
@@ -4594,7 +4586,7 @@ export interface AwsOrganization {
 }
 
 export const AwsOrganization: Schema.Codec<AwsOrganization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "AwsOrganization" });
 
@@ -4604,7 +4596,7 @@ export interface AwsOrganizationalUnit {
 }
 
 export const AwsOrganizationalUnit: Schema.Codec<AwsOrganizationalUnit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "AwsOrganizationalUnit" });
@@ -4615,7 +4607,7 @@ export interface AwsAccount {
 }
 
 export const AwsAccount: Schema.Codec<AwsAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "AwsAccount" });
@@ -4627,7 +4619,7 @@ export interface AwsMetadata {
 }
 
 export const AwsMetadata: Schema.Codec<AwsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.optional(AwsOrganization),
     organizationalUnits: Schema.optional(Schema.Array(AwsOrganizationalUnit)),
     account: Schema.optional(AwsAccount),
@@ -4638,7 +4630,7 @@ export interface AdcApplicationTemplateRevision {
 }
 
 export const AdcApplicationTemplateRevision: Schema.Codec<AdcApplicationTemplateRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "AdcApplicationTemplateRevision" });
 
@@ -4648,7 +4640,7 @@ export interface Folder {
 }
 
 export const Folder: Schema.Codec<Folder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceFolder: Schema.optional(Schema.String),
     resourceFolderDisplayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "Folder" });
@@ -4659,7 +4651,7 @@ export interface AzureManagementGroup {
 }
 
 export const AzureManagementGroup: Schema.Codec<AzureManagementGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "AzureManagementGroup" });
@@ -4670,7 +4662,7 @@ export interface AzureResourceGroup {
 }
 
 export const AzureResourceGroup: Schema.Codec<AzureResourceGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "AzureResourceGroup" });
@@ -4681,7 +4673,7 @@ export interface AzureTenant {
 }
 
 export const AzureTenant: Schema.Codec<AzureTenant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "AzureTenant" });
@@ -4694,7 +4686,7 @@ export interface AzureMetadata {
 }
 
 export const AzureMetadata: Schema.Codec<AzureMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.optional(AzureSubscription),
     managementGroups: Schema.optional(Schema.Array(AzureManagementGroup)),
     resourceGroup: Schema.optional(AzureResourceGroup),
@@ -4707,7 +4699,7 @@ export interface AdcApplication {
 }
 
 export const AdcApplication: Schema.Codec<AdcApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     attributes: Schema.optional(
       GoogleCloudSecuritycenterV1ResourceApplicationAttributes,
@@ -4719,7 +4711,7 @@ export interface AdcSharedTemplateRevision {
 }
 
 export const AdcSharedTemplateRevision: Schema.Codec<AdcSharedTemplateRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "AdcSharedTemplateRevision" });
 
@@ -4741,7 +4733,7 @@ export interface ResourcePathNode {
 }
 
 export const ResourcePathNode: Schema.Codec<ResourcePathNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     nodeType: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -4752,7 +4744,7 @@ export interface ResourcePath {
 }
 
 export const ResourcePath: Schema.Codec<ResourcePath> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodes: Schema.optional(Schema.Array(ResourcePathNode)),
   }).annotate({ identifier: "ResourcePath" });
 
@@ -4785,7 +4777,7 @@ export interface GoogleCloudSecuritycenterV1Resource {
 }
 
 export const GoogleCloudSecuritycenterV1Resource: Schema.Codec<GoogleCloudSecuritycenterV1Resource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectDisplayName: Schema.optional(Schema.String),
     service: Schema.optional(Schema.String),
     application: Schema.optional(
@@ -4817,7 +4809,7 @@ export interface GoogleCloudSecuritycenterV1NotificationMessage {
 }
 
 export const GoogleCloudSecuritycenterV1NotificationMessage: Schema.Codec<GoogleCloudSecuritycenterV1NotificationMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notificationConfigName: Schema.optional(Schema.String),
     finding: Schema.optional(Finding),
     resource: Schema.optional(GoogleCloudSecuritycenterV1Resource),
@@ -4828,7 +4820,7 @@ export interface GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin {
 }
 
 export const GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin: Schema.Codec<GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin",
@@ -4839,7 +4831,7 @@ export interface GoogleCloudSecuritycenterV2AwsOrganization {
 }
 
 export const GoogleCloudSecuritycenterV2AwsOrganization: Schema.Codec<GoogleCloudSecuritycenterV2AwsOrganization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2AwsOrganization" });
 
@@ -4856,7 +4848,7 @@ export interface GoogleCloudSecuritycenterV2MuteConfig {
 }
 
 export const GoogleCloudSecuritycenterV2MuteConfig: Schema.Codec<GoogleCloudSecuritycenterV2MuteConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     expiryTime: Schema.optional(Schema.String),
     mostRecentEditor: Schema.optional(Schema.String),
@@ -4873,7 +4865,7 @@ export interface BigQueryDestination {
 }
 
 export const BigQueryDestination: Schema.Codec<BigQueryDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataset: Schema.optional(Schema.String),
   }).annotate({ identifier: "BigQueryDestination" });
 
@@ -4883,7 +4875,7 @@ export interface ExportFindingsMetadata {
 }
 
 export const ExportFindingsMetadata: Schema.Codec<ExportFindingsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exportStartTime: Schema.optional(Schema.String),
     bigQueryDestination: Schema.optional(BigQueryDestination),
   }).annotate({ identifier: "ExportFindingsMetadata" });
@@ -4901,7 +4893,7 @@ export interface WebSecurityScannerSettings {
 }
 
 export const WebSecurityScannerSettings: Schema.Codec<WebSecurityScannerSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     serviceEnablementState: Schema.optional(Schema.String),
     modules: Schema.optional(Schema.Record(Schema.String, Config)),
@@ -4914,7 +4906,7 @@ export interface GoogleCloudSecuritycenterV2AzureManagementGroup {
 }
 
 export const GoogleCloudSecuritycenterV2AzureManagementGroup: Schema.Codec<GoogleCloudSecuritycenterV2AzureManagementGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({
@@ -4927,7 +4919,7 @@ export interface GoogleCloudSecuritycenterV2AzureResourceGroup {
 }
 
 export const GoogleCloudSecuritycenterV2AzureResourceGroup: Schema.Codec<GoogleCloudSecuritycenterV2AzureResourceGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2AzureResourceGroup" });
@@ -4938,7 +4930,7 @@ export interface GoogleCloudSecuritycenterV2AzureSubscription {
 }
 
 export const GoogleCloudSecuritycenterV2AzureSubscription: Schema.Codec<GoogleCloudSecuritycenterV2AzureSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2AzureSubscription" });
@@ -4949,7 +4941,7 @@ export interface GoogleCloudSecuritycenterV2AzureTenant {
 }
 
 export const GoogleCloudSecuritycenterV2AzureTenant: Schema.Codec<GoogleCloudSecuritycenterV2AzureTenant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2AzureTenant" });
@@ -4962,7 +4954,7 @@ export interface GoogleCloudSecuritycenterV2AzureMetadata {
 }
 
 export const GoogleCloudSecuritycenterV2AzureMetadata: Schema.Codec<GoogleCloudSecuritycenterV2AzureMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroups: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2AzureManagementGroup),
     ),
@@ -4978,7 +4970,7 @@ export interface GoogleCloudSecuritycenterV2ResourceApplicationAttributesContact
 }
 
 export const GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo: Schema.Codec<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -4996,7 +4988,7 @@ export interface GoogleCloudSecuritycenterV2ResourceApplicationAttributesCritica
 }
 
 export const GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality: Schema.Codec<GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -5014,7 +5006,7 @@ export interface GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnviron
 }
 
 export const GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment: Schema.Codec<GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -5030,7 +5022,7 @@ export interface GoogleCloudSecuritycenterV2ResourceApplicationAttributes {
 }
 
 export const GoogleCloudSecuritycenterV2ResourceApplicationAttributes: Schema.Codec<GoogleCloudSecuritycenterV2ResourceApplicationAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operatorOwners: Schema.optional(
       Schema.Array(
         GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo,
@@ -5062,7 +5054,7 @@ export interface GoogleCloudSecuritycenterV2ResourceApplication {
 }
 
 export const GoogleCloudSecuritycenterV2ResourceApplication: Schema.Codec<GoogleCloudSecuritycenterV2ResourceApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     attributes: Schema.optional(
       GoogleCloudSecuritycenterV2ResourceApplicationAttributes,
@@ -5075,7 +5067,7 @@ export interface GoogleCloudSecuritycenterV2Folder {
 }
 
 export const GoogleCloudSecuritycenterV2Folder: Schema.Codec<GoogleCloudSecuritycenterV2Folder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceFolder: Schema.optional(Schema.String),
     resourceFolderDisplayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Folder" });
@@ -5090,7 +5082,7 @@ export interface GcpMetadata {
 }
 
 export const GcpMetadata: Schema.Codec<GcpMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectDisplayName: Schema.optional(Schema.String),
     organization: Schema.optional(Schema.String),
     folders: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Folder)),
@@ -5105,7 +5097,7 @@ export interface GoogleCloudSecuritycenterV2AwsOrganizationalUnit {
 }
 
 export const GoogleCloudSecuritycenterV2AwsOrganizationalUnit: Schema.Codec<GoogleCloudSecuritycenterV2AwsOrganizationalUnit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -5118,7 +5110,7 @@ export interface GoogleCloudSecuritycenterV2AwsAccount {
 }
 
 export const GoogleCloudSecuritycenterV2AwsAccount: Schema.Codec<GoogleCloudSecuritycenterV2AwsAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2AwsAccount" });
@@ -5130,7 +5122,7 @@ export interface GoogleCloudSecuritycenterV2AwsMetadata {
 }
 
 export const GoogleCloudSecuritycenterV2AwsMetadata: Schema.Codec<GoogleCloudSecuritycenterV2AwsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.optional(GoogleCloudSecuritycenterV2AwsOrganization),
     organizationalUnits: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2AwsOrganizationalUnit),
@@ -5156,7 +5148,7 @@ export interface GoogleCloudSecuritycenterV2ResourcePathNode {
 }
 
 export const GoogleCloudSecuritycenterV2ResourcePathNode: Schema.Codec<GoogleCloudSecuritycenterV2ResourcePathNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     nodeType: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -5167,7 +5159,7 @@ export interface GoogleCloudSecuritycenterV2ResourcePath {
 }
 
 export const GoogleCloudSecuritycenterV2ResourcePath: Schema.Codec<GoogleCloudSecuritycenterV2ResourcePath> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodes: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2ResourcePathNode),
     ),
@@ -5179,7 +5171,7 @@ export interface GoogleCloudSecuritycenterV2AdcApplication {
 }
 
 export const GoogleCloudSecuritycenterV2AdcApplication: Schema.Codec<GoogleCloudSecuritycenterV2AdcApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     attributes: Schema.optional(
       GoogleCloudSecuritycenterV2ResourceApplicationAttributes,
@@ -5210,7 +5202,7 @@ export interface GoogleCloudSecuritycenterV2Resource {
 }
 
 export const GoogleCloudSecuritycenterV2Resource: Schema.Codec<GoogleCloudSecuritycenterV2Resource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     adcApplicationTemplate: Schema.optional(
       GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision,
@@ -5252,7 +5244,7 @@ export interface GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping {
 }
 
 export const GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping: Schema.Codec<GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     highSensitivityMapping: Schema.optional(Schema.String),
     mediumSensitivityMapping: Schema.optional(Schema.String),
   }).annotate({
@@ -5267,7 +5259,7 @@ export interface Expr {
 }
 
 export const Expr: Schema.Codec<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -5280,7 +5272,7 @@ export interface GoogleCloudSecuritycenterV1Property {
 }
 
 export const GoogleCloudSecuritycenterV1Property: Schema.Codec<GoogleCloudSecuritycenterV1Property> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     valueExpression: Schema.optional(Expr),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV1Property" });
@@ -5292,7 +5284,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
 }
 
 export const GoogleCloudSecuritycenterV1p1beta1SecurityMarks: Schema.Codec<GoogleCloudSecuritycenterV1p1beta1SecurityMarks> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canonicalName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     marks: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -5322,7 +5314,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1Finding {
 }
 
 export const GoogleCloudSecuritycenterV1p1beta1Finding: Schema.Codec<GoogleCloudSecuritycenterV1p1beta1Finding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityMarks: Schema.optional(
       GoogleCloudSecuritycenterV1p1beta1SecurityMarks,
     ),
@@ -5346,7 +5338,7 @@ export interface GoogleCloudSecuritycenterV1ResourceSelector {
 }
 
 export const GoogleCloudSecuritycenterV1ResourceSelector: Schema.Codec<GoogleCloudSecuritycenterV1ResourceSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV1ResourceSelector" });
 
@@ -5355,7 +5347,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateR
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -5369,7 +5361,7 @@ export interface GoogleCloudSecuritycenterV2IssueFinding {
 }
 
 export const GoogleCloudSecuritycenterV2IssueFinding: Schema.Codec<GoogleCloudSecuritycenterV2IssueFinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityBulletin: Schema.optional(
       GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin,
     ),
@@ -5389,7 +5381,7 @@ export interface GoogleCloudSecuritycenterV1BigQueryExport {
 }
 
 export const GoogleCloudSecuritycenterV1BigQueryExport: Schema.Codec<GoogleCloudSecuritycenterV1BigQueryExport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     dataset: Schema.optional(Schema.String),
     principal: Schema.optional(Schema.String),
@@ -5405,7 +5397,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata {
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata",
@@ -5422,7 +5414,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse {
 }
 
 export const GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse: Schema.Codec<GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
   }).annotate({
@@ -5435,7 +5427,7 @@ export interface GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount 
 }
 
 export const GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount: Schema.Codec<GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
   }).annotate({
@@ -5449,7 +5441,7 @@ export interface GoogleCloudSecuritycenterV2IssueSecurityContext {
 }
 
 export const GoogleCloudSecuritycenterV2IssueSecurityContext: Schema.Codec<GoogleCloudSecuritycenterV2IssueSecurityContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     context: Schema.optional(
       GoogleCloudSecuritycenterV2IssueSecurityContextContext,
     ),
@@ -5465,7 +5457,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevisi
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -5489,7 +5481,7 @@ export interface Details {
 }
 
 export const Details: Schema.Codec<Details> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -5508,7 +5500,7 @@ export interface Subscription {
 }
 
 export const Subscription: Schema.Codec<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(Details),
     tier: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5520,7 +5512,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubsc
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({
@@ -5533,7 +5525,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAzureMetadata {
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceAzureMetadata: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAzureMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.optional(
       GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription,
     ),
@@ -5552,7 +5544,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCr
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -5570,7 +5562,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEn
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -5586,7 +5578,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes {
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     criticality: Schema.optional(
       GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality,
     ),
@@ -5618,7 +5610,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceApplication {
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceApplication: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     attributes: Schema.optional(
       GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes,
@@ -5633,7 +5625,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAdcApplication {
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceAdcApplication: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAdcApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     attributes: Schema.optional(
       GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes,
@@ -5648,7 +5640,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount {
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -5660,7 +5652,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAwsMetadata {
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceAwsMetadata: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAwsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.optional(
       GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount,
     ),
@@ -5688,7 +5680,7 @@ export interface GoogleCloudSecuritycenterV2IssueResource {
 }
 
 export const GoogleCloudSecuritycenterV2IssueResource: Schema.Codec<GoogleCloudSecuritycenterV2IssueResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     adcApplicationTemplate: Schema.optional(
       GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision,
@@ -5719,7 +5711,7 @@ export const GoogleCloudSecuritycenterV2IssueResource: Schema.Codec<GoogleCloudS
 export interface ExportFindingsResponse {}
 
 export const ExportFindingsResponse: Schema.Codec<ExportFindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExportFindingsResponse",
   });
 
@@ -5728,7 +5720,7 @@ export interface GoogleCloudSecuritycenterV1CustomOutputSpec {
 }
 
 export const GoogleCloudSecuritycenterV1CustomOutputSpec: Schema.Codec<GoogleCloudSecuritycenterV1CustomOutputSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV1Property),
     ),
@@ -5740,7 +5732,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1Folder {
 }
 
 export const GoogleCloudSecuritycenterV1p1beta1Folder: Schema.Codec<GoogleCloudSecuritycenterV1p1beta1Folder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceFolder: Schema.optional(Schema.String),
     resourceFolderDisplayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV1p1beta1Folder" });
@@ -5755,7 +5747,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1Resource {
 }
 
 export const GoogleCloudSecuritycenterV1p1beta1Resource: Schema.Codec<GoogleCloudSecuritycenterV1p1beta1Resource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     folders: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV1p1beta1Folder),
     ),
@@ -5773,7 +5765,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1NotificationMessage {
 }
 
 export const GoogleCloudSecuritycenterV1p1beta1NotificationMessage: Schema.Codec<GoogleCloudSecuritycenterV1p1beta1NotificationMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finding: Schema.optional(GoogleCloudSecuritycenterV1p1beta1Finding),
     resource: Schema.optional(GoogleCloudSecuritycenterV1p1beta1Resource),
     notificationConfigName: Schema.optional(Schema.String),
@@ -5794,7 +5786,7 @@ export interface GoogleCloudSecuritycenterV1MuteConfig {
 }
 
 export const GoogleCloudSecuritycenterV1MuteConfig: Schema.Codec<GoogleCloudSecuritycenterV1MuteConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5811,7 +5803,7 @@ export interface VulnerabilityCountBySeverity {
 }
 
 export const VulnerabilityCountBySeverity: Schema.Codec<VulnerabilityCountBySeverity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     severityToFindingCount: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
@@ -5830,7 +5822,7 @@ export interface VulnerabilitySnapshot {
 }
 
 export const VulnerabilitySnapshot: Schema.Codec<VulnerabilitySnapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     cloudProvider: Schema.optional(Schema.String),
     findingCount: Schema.optional(VulnerabilityCountBySeverity),
@@ -5851,7 +5843,7 @@ export interface ContainerThreatDetectionSettings {
 }
 
 export const ContainerThreatDetectionSettings: Schema.Codec<ContainerThreatDetectionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     serviceAccount: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -5862,7 +5854,7 @@ export const ContainerThreatDetectionSettings: Schema.Codec<ContainerThreatDetec
 export interface GoogleCloudSecuritycenterV1BulkMuteFindingsResponse {}
 
 export const GoogleCloudSecuritycenterV1BulkMuteFindingsResponse: Schema.Codec<GoogleCloudSecuritycenterV1BulkMuteFindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudSecuritycenterV1BulkMuteFindingsResponse",
   });
 
@@ -5873,7 +5865,7 @@ export interface GoogleCloudSecuritycenterV2NotificationMessage {
 }
 
 export const GoogleCloudSecuritycenterV2NotificationMessage: Schema.Codec<GoogleCloudSecuritycenterV2NotificationMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finding: Schema.optional(GoogleCloudSecuritycenterV2Finding),
     resource: Schema.optional(GoogleCloudSecuritycenterV2Resource),
     notificationConfigName: Schema.optional(Schema.String),
@@ -5893,7 +5885,7 @@ export interface SecurityHealthAnalyticsSettings {
 }
 
 export const SecurityHealthAnalyticsSettings: Schema.Codec<SecurityHealthAnalyticsSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceEnablementState: Schema.optional(Schema.String),
     modules: Schema.optional(Schema.Record(Schema.String, Config)),
     serviceAccount: Schema.optional(Schema.String),
@@ -5917,7 +5909,7 @@ export interface GoogleCloudSecuritycenterV1CustomConfig {
 }
 
 export const GoogleCloudSecuritycenterV1CustomConfig: Schema.Codec<GoogleCloudSecuritycenterV1CustomConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     predicate: Schema.optional(Expr),
     severity: Schema.optional(Schema.String),
@@ -5946,7 +5938,7 @@ export interface GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCust
 }
 
 export const GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule: Schema.Codec<GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     cloudProvider: Schema.optional(Schema.String),
     enablementState: Schema.optional(Schema.String),
@@ -5968,7 +5960,7 @@ export interface GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
 }
 
 export const GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse: Schema.Codec<GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
   }).annotate({
@@ -5978,7 +5970,7 @@ export const GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse: Schema.Codec<
 export interface GoogleCloudSecuritycenterV2BulkMuteFindingsResponse {}
 
 export const GoogleCloudSecuritycenterV2BulkMuteFindingsResponse: Schema.Codec<GoogleCloudSecuritycenterV2BulkMuteFindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudSecuritycenterV2BulkMuteFindingsResponse",
   });
 
@@ -5990,7 +5982,7 @@ export interface GoogleCloudSecuritycenterV2IssueMute {
 }
 
 export const GoogleCloudSecuritycenterV2IssueMute: Schema.Codec<GoogleCloudSecuritycenterV2IssueMute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     muteState: Schema.optional(Schema.String),
     muteReason: Schema.optional(Schema.String),
     muteUpdateTime: Schema.optional(Schema.String),
@@ -6008,7 +6000,7 @@ export interface GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse {
 }
 
 export const GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse: Schema.Codec<GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
   }).annotate({
@@ -6029,7 +6021,7 @@ export interface VirtualMachineThreatDetectionSettings {
 }
 
 export const VirtualMachineThreatDetectionSettings: Schema.Codec<VirtualMachineThreatDetectionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceEnablementState: Schema.optional(Schema.String),
     modules: Schema.optional(Schema.Record(Schema.String, Config)),
     updateTime: Schema.optional(Schema.String),
@@ -6046,7 +6038,7 @@ export interface SecurityCenterSettings {
 }
 
 export const SecurityCenterSettings: Schema.Codec<SecurityCenterSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logSinkProject: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     onboardingTime: Schema.optional(Schema.String),
@@ -6076,7 +6068,7 @@ export interface GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule 
 }
 
 export const GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule: Schema.Codec<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enablementState: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     cloudProvider: Schema.optional(Schema.String),
@@ -6103,7 +6095,7 @@ export interface EventThreatDetectionSettings {
 }
 
 export const EventThreatDetectionSettings: Schema.Codec<EventThreatDetectionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     serviceEnablementState: Schema.optional(Schema.String),
     modules: Schema.optional(Schema.Record(Schema.String, Config)),
@@ -6128,7 +6120,7 @@ export interface GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping {
 }
 
 export const GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping: Schema.Codec<GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     highSensitivityMapping: Schema.optional(Schema.String),
     mediumSensitivityMapping: Schema.optional(Schema.String),
   }).annotate({
@@ -6148,7 +6140,7 @@ export interface GoogleCloudSecuritycenterV2BigQueryExport {
 }
 
 export const GoogleCloudSecuritycenterV2BigQueryExport: Schema.Codec<GoogleCloudSecuritycenterV2BigQueryExport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     dataset: Schema.optional(Schema.String),
     mostRecentEditor: Schema.optional(Schema.String),
@@ -6173,7 +6165,7 @@ export interface RapidVulnerabilityDetectionSettings {
 }
 
 export const RapidVulnerabilityDetectionSettings: Schema.Codec<RapidVulnerabilityDetectionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceEnablementState: Schema.optional(Schema.String),
     modules: Schema.optional(Schema.Record(Schema.String, Config)),
     updateTime: Schema.optional(Schema.String),
@@ -6194,7 +6186,7 @@ export interface GoogleCloudSecuritycenterV2IssueDomain {
 }
 
 export const GoogleCloudSecuritycenterV2IssueDomain: Schema.Codec<GoogleCloudSecuritycenterV2IssueDomain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domainCategory: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2IssueDomain" });
 
@@ -6224,7 +6216,7 @@ export interface GoogleCloudSecuritycenterV2ResourceValueConfig {
 }
 
 export const GoogleCloudSecuritycenterV2ResourceValueConfig: Schema.Codec<GoogleCloudSecuritycenterV2ResourceValueConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
     resourceValue: Schema.optional(Schema.String),
@@ -6268,7 +6260,7 @@ export interface GoogleCloudSecuritycenterV1ResourceValueConfig {
 }
 
 export const GoogleCloudSecuritycenterV1ResourceValueConfig: Schema.Codec<GoogleCloudSecuritycenterV1ResourceValueConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sensitiveDataProtectionMapping: Schema.optional(
       GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping,
     ),
@@ -6318,7 +6310,7 @@ export interface GoogleCloudSecuritycenterV2Issue {
 }
 
 export const GoogleCloudSecuritycenterV2Issue: Schema.Codec<GoogleCloudSecuritycenterV2Issue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     relatedFindings: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2IssueFinding),
     ),
@@ -6405,7 +6397,7 @@ export interface GetVirtualMachineThreatDetectionSettingsFoldersRequest {
 }
 
 export const GetVirtualMachineThreatDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -6415,7 +6407,7 @@ export const GetVirtualMachineThreatDetectionSettingsFoldersRequest =
 export type GetVirtualMachineThreatDetectionSettingsFoldersResponse =
   VirtualMachineThreatDetectionSettings;
 export const GetVirtualMachineThreatDetectionSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
+  /*@__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type GetVirtualMachineThreatDetectionSettingsFoldersError =
   | DefaultErrors
@@ -6427,7 +6419,7 @@ export const getVirtualMachineThreatDetectionSettingsFolders: API.OperationMetho
   GetVirtualMachineThreatDetectionSettingsFoldersResponse,
   GetVirtualMachineThreatDetectionSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVirtualMachineThreatDetectionSettingsFoldersRequest,
   output: GetVirtualMachineThreatDetectionSettingsFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -6441,7 +6433,7 @@ export interface UpdateSecurityHealthAnalyticsSettingsFoldersRequest {
 }
 
 export const UpdateSecurityHealthAnalyticsSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SecurityHealthAnalyticsSettings).pipe(T.HttpBody()),
@@ -6453,7 +6445,7 @@ export const UpdateSecurityHealthAnalyticsSettingsFoldersRequest =
 export type UpdateSecurityHealthAnalyticsSettingsFoldersResponse =
   SecurityHealthAnalyticsSettings;
 export const UpdateSecurityHealthAnalyticsSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
+  /*@__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type UpdateSecurityHealthAnalyticsSettingsFoldersError =
   | DefaultErrors
@@ -6467,7 +6459,7 @@ export const updateSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
   UpdateSecurityHealthAnalyticsSettingsFoldersResponse,
   UpdateSecurityHealthAnalyticsSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityHealthAnalyticsSettingsFoldersRequest,
   output: UpdateSecurityHealthAnalyticsSettingsFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6481,7 +6473,7 @@ export interface UpdateRapidVulnerabilityDetectionSettingsFoldersRequest {
 }
 
 export const UpdateRapidVulnerabilityDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(RapidVulnerabilityDetectionSettings).pipe(
@@ -6495,7 +6487,7 @@ export const UpdateRapidVulnerabilityDetectionSettingsFoldersRequest =
 export type UpdateRapidVulnerabilityDetectionSettingsFoldersResponse =
   RapidVulnerabilityDetectionSettings;
 export const UpdateRapidVulnerabilityDetectionSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
+  /*@__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type UpdateRapidVulnerabilityDetectionSettingsFoldersError =
   | DefaultErrors
@@ -6509,7 +6501,7 @@ export const updateRapidVulnerabilityDetectionSettingsFolders: API.OperationMeth
   UpdateRapidVulnerabilityDetectionSettingsFoldersResponse,
   UpdateRapidVulnerabilityDetectionSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRapidVulnerabilityDetectionSettingsFoldersRequest,
   output: UpdateRapidVulnerabilityDetectionSettingsFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6520,7 +6512,7 @@ export interface GetContainerThreatDetectionSettingsFoldersRequest {
 }
 
 export const GetContainerThreatDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -6530,7 +6522,7 @@ export const GetContainerThreatDetectionSettingsFoldersRequest =
 export type GetContainerThreatDetectionSettingsFoldersResponse =
   ContainerThreatDetectionSettings;
 export const GetContainerThreatDetectionSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
+  /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type GetContainerThreatDetectionSettingsFoldersError =
   | DefaultErrors
@@ -6542,7 +6534,7 @@ export const getContainerThreatDetectionSettingsFolders: API.OperationMethod<
   GetContainerThreatDetectionSettingsFoldersResponse,
   GetContainerThreatDetectionSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerThreatDetectionSettingsFoldersRequest,
   output: GetContainerThreatDetectionSettingsFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -6556,7 +6548,7 @@ export interface UpdateVirtualMachineThreatDetectionSettingsFoldersRequest {
 }
 
 export const UpdateVirtualMachineThreatDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(VirtualMachineThreatDetectionSettings).pipe(
@@ -6570,7 +6562,7 @@ export const UpdateVirtualMachineThreatDetectionSettingsFoldersRequest =
 export type UpdateVirtualMachineThreatDetectionSettingsFoldersResponse =
   VirtualMachineThreatDetectionSettings;
 export const UpdateVirtualMachineThreatDetectionSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
+  /*@__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type UpdateVirtualMachineThreatDetectionSettingsFoldersError =
   | DefaultErrors
@@ -6584,7 +6576,7 @@ export const updateVirtualMachineThreatDetectionSettingsFolders: API.OperationMe
   UpdateVirtualMachineThreatDetectionSettingsFoldersResponse,
   UpdateVirtualMachineThreatDetectionSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVirtualMachineThreatDetectionSettingsFoldersRequest,
   output: UpdateVirtualMachineThreatDetectionSettingsFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6598,7 +6590,7 @@ export interface UpdateEventThreatDetectionSettingsFoldersRequest {
 }
 
 export const UpdateEventThreatDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(EventThreatDetectionSettings).pipe(T.HttpBody()),
@@ -6610,7 +6602,7 @@ export const UpdateEventThreatDetectionSettingsFoldersRequest =
 export type UpdateEventThreatDetectionSettingsFoldersResponse =
   EventThreatDetectionSettings;
 export const UpdateEventThreatDetectionSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
+  /*@__PURE__*/ EventThreatDetectionSettings;
 
 export type UpdateEventThreatDetectionSettingsFoldersError =
   | DefaultErrors
@@ -6624,7 +6616,7 @@ export const updateEventThreatDetectionSettingsFolders: API.OperationMethod<
   UpdateEventThreatDetectionSettingsFoldersResponse,
   UpdateEventThreatDetectionSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventThreatDetectionSettingsFoldersRequest,
   output: UpdateEventThreatDetectionSettingsFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6635,7 +6627,7 @@ export interface GetSecurityHealthAnalyticsSettingsFoldersRequest {
 }
 
 export const GetSecurityHealthAnalyticsSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -6645,7 +6637,7 @@ export const GetSecurityHealthAnalyticsSettingsFoldersRequest =
 export type GetSecurityHealthAnalyticsSettingsFoldersResponse =
   SecurityHealthAnalyticsSettings;
 export const GetSecurityHealthAnalyticsSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
+  /*@__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type GetSecurityHealthAnalyticsSettingsFoldersError =
   | DefaultErrors
@@ -6657,7 +6649,7 @@ export const getSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
   GetSecurityHealthAnalyticsSettingsFoldersResponse,
   GetSecurityHealthAnalyticsSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSecurityHealthAnalyticsSettingsFoldersRequest,
   output: GetSecurityHealthAnalyticsSettingsFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -6671,7 +6663,7 @@ export interface UpdateContainerThreatDetectionSettingsFoldersRequest {
 }
 
 export const UpdateContainerThreatDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ContainerThreatDetectionSettings).pipe(T.HttpBody()),
@@ -6683,7 +6675,7 @@ export const UpdateContainerThreatDetectionSettingsFoldersRequest =
 export type UpdateContainerThreatDetectionSettingsFoldersResponse =
   ContainerThreatDetectionSettings;
 export const UpdateContainerThreatDetectionSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
+  /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type UpdateContainerThreatDetectionSettingsFoldersError =
   | DefaultErrors
@@ -6697,7 +6689,7 @@ export const updateContainerThreatDetectionSettingsFolders: API.OperationMethod<
   UpdateContainerThreatDetectionSettingsFoldersResponse,
   UpdateContainerThreatDetectionSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContainerThreatDetectionSettingsFoldersRequest,
   output: UpdateContainerThreatDetectionSettingsFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6711,7 +6703,7 @@ export interface UpdateWebSecurityScannerSettingsFoldersRequest {
 }
 
 export const UpdateWebSecurityScannerSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(WebSecurityScannerSettings).pipe(T.HttpBody()),
@@ -6723,7 +6715,7 @@ export const UpdateWebSecurityScannerSettingsFoldersRequest =
 export type UpdateWebSecurityScannerSettingsFoldersResponse =
   WebSecurityScannerSettings;
 export const UpdateWebSecurityScannerSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
+  /*@__PURE__*/ WebSecurityScannerSettings;
 
 export type UpdateWebSecurityScannerSettingsFoldersError =
   | DefaultErrors
@@ -6737,7 +6729,7 @@ export const updateWebSecurityScannerSettingsFolders: API.OperationMethod<
   UpdateWebSecurityScannerSettingsFoldersResponse,
   UpdateWebSecurityScannerSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWebSecurityScannerSettingsFoldersRequest,
   output: UpdateWebSecurityScannerSettingsFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6748,7 +6740,7 @@ export interface GetWebSecurityScannerSettingsFoldersRequest {
 }
 
 export const GetWebSecurityScannerSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -6758,7 +6750,7 @@ export const GetWebSecurityScannerSettingsFoldersRequest =
 export type GetWebSecurityScannerSettingsFoldersResponse =
   WebSecurityScannerSettings;
 export const GetWebSecurityScannerSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
+  /*@__PURE__*/ WebSecurityScannerSettings;
 
 export type GetWebSecurityScannerSettingsFoldersError =
   | DefaultErrors
@@ -6770,7 +6762,7 @@ export const getWebSecurityScannerSettingsFolders: API.OperationMethod<
   GetWebSecurityScannerSettingsFoldersResponse,
   GetWebSecurityScannerSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWebSecurityScannerSettingsFoldersRequest,
   output: GetWebSecurityScannerSettingsFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -6781,7 +6773,7 @@ export interface GetRapidVulnerabilityDetectionSettingsFoldersRequest {
 }
 
 export const GetRapidVulnerabilityDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -6791,7 +6783,7 @@ export const GetRapidVulnerabilityDetectionSettingsFoldersRequest =
 export type GetRapidVulnerabilityDetectionSettingsFoldersResponse =
   RapidVulnerabilityDetectionSettings;
 export const GetRapidVulnerabilityDetectionSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
+  /*@__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type GetRapidVulnerabilityDetectionSettingsFoldersError =
   | DefaultErrors
@@ -6803,7 +6795,7 @@ export const getRapidVulnerabilityDetectionSettingsFolders: API.OperationMethod<
   GetRapidVulnerabilityDetectionSettingsFoldersResponse,
   GetRapidVulnerabilityDetectionSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRapidVulnerabilityDetectionSettingsFoldersRequest,
   output: GetRapidVulnerabilityDetectionSettingsFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -6814,7 +6806,7 @@ export interface GetSecurityCenterSettingsFoldersRequest {
 }
 
 export const GetSecurityCenterSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -6823,7 +6815,7 @@ export const GetSecurityCenterSettingsFoldersRequest =
 
 export type GetSecurityCenterSettingsFoldersResponse = SecurityCenterSettings;
 export const GetSecurityCenterSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SecurityCenterSettings;
+  /*@__PURE__*/ SecurityCenterSettings;
 
 export type GetSecurityCenterSettingsFoldersError =
   | DefaultErrors
@@ -6835,7 +6827,7 @@ export const getSecurityCenterSettingsFolders: API.OperationMethod<
   GetSecurityCenterSettingsFoldersResponse,
   GetSecurityCenterSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSecurityCenterSettingsFoldersRequest,
   output: GetSecurityCenterSettingsFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -6846,7 +6838,7 @@ export interface GetEventThreatDetectionSettingsFoldersRequest {
 }
 
 export const GetEventThreatDetectionSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -6856,7 +6848,7 @@ export const GetEventThreatDetectionSettingsFoldersRequest =
 export type GetEventThreatDetectionSettingsFoldersResponse =
   EventThreatDetectionSettings;
 export const GetEventThreatDetectionSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
+  /*@__PURE__*/ EventThreatDetectionSettings;
 
 export type GetEventThreatDetectionSettingsFoldersError =
   | DefaultErrors
@@ -6868,7 +6860,7 @@ export const getEventThreatDetectionSettingsFolders: API.OperationMethod<
   GetEventThreatDetectionSettingsFoldersResponse,
   GetEventThreatDetectionSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventThreatDetectionSettingsFoldersRequest,
   output: GetEventThreatDetectionSettingsFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -6880,7 +6872,7 @@ export interface CalculateFoldersWebSecurityScannerSettingsRequest {
 }
 
 export const CalculateFoldersWebSecurityScannerSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -6893,7 +6885,7 @@ export const CalculateFoldersWebSecurityScannerSettingsRequest =
 export type CalculateFoldersWebSecurityScannerSettingsResponse =
   WebSecurityScannerSettings;
 export const CalculateFoldersWebSecurityScannerSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
+  /*@__PURE__*/ WebSecurityScannerSettings;
 
 export type CalculateFoldersWebSecurityScannerSettingsError =
   | DefaultErrors
@@ -6905,7 +6897,7 @@ export const calculateFoldersWebSecurityScannerSettings: API.OperationMethod<
   CalculateFoldersWebSecurityScannerSettingsResponse,
   CalculateFoldersWebSecurityScannerSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateFoldersWebSecurityScannerSettingsRequest,
   output: CalculateFoldersWebSecurityScannerSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -6916,7 +6908,7 @@ export interface CalculateFoldersRapidVulnerabilityDetectionSettingsRequest {
 }
 
 export const CalculateFoldersRapidVulnerabilityDetectionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
@@ -6926,7 +6918,7 @@ export const CalculateFoldersRapidVulnerabilityDetectionSettingsRequest =
 export type CalculateFoldersRapidVulnerabilityDetectionSettingsResponse =
   RapidVulnerabilityDetectionSettings;
 export const CalculateFoldersRapidVulnerabilityDetectionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
+  /*@__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type CalculateFoldersRapidVulnerabilityDetectionSettingsError =
   | DefaultErrors
@@ -6938,7 +6930,7 @@ export const calculateFoldersRapidVulnerabilityDetectionSettings: API.OperationM
   CalculateFoldersRapidVulnerabilityDetectionSettingsResponse,
   CalculateFoldersRapidVulnerabilityDetectionSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateFoldersRapidVulnerabilityDetectionSettingsRequest,
   output: CalculateFoldersRapidVulnerabilityDetectionSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -6950,7 +6942,7 @@ export interface CalculateFoldersSecurityHealthAnalyticsSettingsRequest {
 }
 
 export const CalculateFoldersSecurityHealthAnalyticsSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -6963,7 +6955,7 @@ export const CalculateFoldersSecurityHealthAnalyticsSettingsRequest =
 export type CalculateFoldersSecurityHealthAnalyticsSettingsResponse =
   SecurityHealthAnalyticsSettings;
 export const CalculateFoldersSecurityHealthAnalyticsSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
+  /*@__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type CalculateFoldersSecurityHealthAnalyticsSettingsError =
   | DefaultErrors
@@ -6975,7 +6967,7 @@ export const calculateFoldersSecurityHealthAnalyticsSettings: API.OperationMetho
   CalculateFoldersSecurityHealthAnalyticsSettingsResponse,
   CalculateFoldersSecurityHealthAnalyticsSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateFoldersSecurityHealthAnalyticsSettingsRequest,
   output: CalculateFoldersSecurityHealthAnalyticsSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -6987,7 +6979,7 @@ export interface CalculateFoldersVirtualMachineThreatDetectionSettingsRequest {
 }
 
 export const CalculateFoldersVirtualMachineThreatDetectionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -7000,7 +6992,7 @@ export const CalculateFoldersVirtualMachineThreatDetectionSettingsRequest =
 export type CalculateFoldersVirtualMachineThreatDetectionSettingsResponse =
   VirtualMachineThreatDetectionSettings;
 export const CalculateFoldersVirtualMachineThreatDetectionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
+  /*@__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type CalculateFoldersVirtualMachineThreatDetectionSettingsError =
   | DefaultErrors
@@ -7012,7 +7004,7 @@ export const calculateFoldersVirtualMachineThreatDetectionSettings: API.Operatio
   CalculateFoldersVirtualMachineThreatDetectionSettingsResponse,
   CalculateFoldersVirtualMachineThreatDetectionSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateFoldersVirtualMachineThreatDetectionSettingsRequest,
   output: CalculateFoldersVirtualMachineThreatDetectionSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -7024,7 +7016,7 @@ export interface CalculateFoldersContainerThreatDetectionSettingsRequest {
 }
 
 export const CalculateFoldersContainerThreatDetectionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -7037,7 +7029,7 @@ export const CalculateFoldersContainerThreatDetectionSettingsRequest =
 export type CalculateFoldersContainerThreatDetectionSettingsResponse =
   ContainerThreatDetectionSettings;
 export const CalculateFoldersContainerThreatDetectionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
+  /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type CalculateFoldersContainerThreatDetectionSettingsError =
   | DefaultErrors
@@ -7049,7 +7041,7 @@ export const calculateFoldersContainerThreatDetectionSettings: API.OperationMeth
   CalculateFoldersContainerThreatDetectionSettingsResponse,
   CalculateFoldersContainerThreatDetectionSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateFoldersContainerThreatDetectionSettingsRequest,
   output: CalculateFoldersContainerThreatDetectionSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -7061,7 +7053,7 @@ export interface CalculateFoldersEventThreatDetectionSettingsRequest {
 }
 
 export const CalculateFoldersEventThreatDetectionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -7074,7 +7066,7 @@ export const CalculateFoldersEventThreatDetectionSettingsRequest =
 export type CalculateFoldersEventThreatDetectionSettingsResponse =
   EventThreatDetectionSettings;
 export const CalculateFoldersEventThreatDetectionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
+  /*@__PURE__*/ EventThreatDetectionSettings;
 
 export type CalculateFoldersEventThreatDetectionSettingsError =
   | DefaultErrors
@@ -7086,7 +7078,7 @@ export const calculateFoldersEventThreatDetectionSettings: API.OperationMethod<
   CalculateFoldersEventThreatDetectionSettingsResponse,
   CalculateFoldersEventThreatDetectionSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateFoldersEventThreatDetectionSettingsRequest,
   output: CalculateFoldersEventThreatDetectionSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -7097,7 +7089,7 @@ export interface GetSecurityCenterSettingsOrganizationsRequest {
 }
 
 export const GetSecurityCenterSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -7107,7 +7099,7 @@ export const GetSecurityCenterSettingsOrganizationsRequest =
 export type GetSecurityCenterSettingsOrganizationsResponse =
   SecurityCenterSettings;
 export const GetSecurityCenterSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SecurityCenterSettings;
+  /*@__PURE__*/ SecurityCenterSettings;
 
 export type GetSecurityCenterSettingsOrganizationsError =
   | DefaultErrors
@@ -7119,7 +7111,7 @@ export const getSecurityCenterSettingsOrganizations: API.OperationMethod<
   GetSecurityCenterSettingsOrganizationsResponse,
   GetSecurityCenterSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSecurityCenterSettingsOrganizationsRequest,
   output: GetSecurityCenterSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7130,7 +7122,7 @@ export interface GetEventThreatDetectionSettingsOrganizationsRequest {
 }
 
 export const GetEventThreatDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -7140,7 +7132,7 @@ export const GetEventThreatDetectionSettingsOrganizationsRequest =
 export type GetEventThreatDetectionSettingsOrganizationsResponse =
   EventThreatDetectionSettings;
 export const GetEventThreatDetectionSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
+  /*@__PURE__*/ EventThreatDetectionSettings;
 
 export type GetEventThreatDetectionSettingsOrganizationsError =
   | DefaultErrors
@@ -7152,7 +7144,7 @@ export const getEventThreatDetectionSettingsOrganizations: API.OperationMethod<
   GetEventThreatDetectionSettingsOrganizationsResponse,
   GetEventThreatDetectionSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventThreatDetectionSettingsOrganizationsRequest,
   output: GetEventThreatDetectionSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7163,7 +7155,7 @@ export interface GetRapidVulnerabilityDetectionSettingsOrganizationsRequest {
 }
 
 export const GetRapidVulnerabilityDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -7173,7 +7165,7 @@ export const GetRapidVulnerabilityDetectionSettingsOrganizationsRequest =
 export type GetRapidVulnerabilityDetectionSettingsOrganizationsResponse =
   RapidVulnerabilityDetectionSettings;
 export const GetRapidVulnerabilityDetectionSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
+  /*@__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type GetRapidVulnerabilityDetectionSettingsOrganizationsError =
   | DefaultErrors
@@ -7185,7 +7177,7 @@ export const getRapidVulnerabilityDetectionSettingsOrganizations: API.OperationM
   GetRapidVulnerabilityDetectionSettingsOrganizationsResponse,
   GetRapidVulnerabilityDetectionSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRapidVulnerabilityDetectionSettingsOrganizationsRequest,
   output: GetRapidVulnerabilityDetectionSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7196,7 +7188,7 @@ export interface GetWebSecurityScannerSettingsOrganizationsRequest {
 }
 
 export const GetWebSecurityScannerSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -7206,7 +7198,7 @@ export const GetWebSecurityScannerSettingsOrganizationsRequest =
 export type GetWebSecurityScannerSettingsOrganizationsResponse =
   WebSecurityScannerSettings;
 export const GetWebSecurityScannerSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
+  /*@__PURE__*/ WebSecurityScannerSettings;
 
 export type GetWebSecurityScannerSettingsOrganizationsError =
   | DefaultErrors
@@ -7218,7 +7210,7 @@ export const getWebSecurityScannerSettingsOrganizations: API.OperationMethod<
   GetWebSecurityScannerSettingsOrganizationsResponse,
   GetWebSecurityScannerSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWebSecurityScannerSettingsOrganizationsRequest,
   output: GetWebSecurityScannerSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7232,7 +7224,7 @@ export interface UpdateWebSecurityScannerSettingsOrganizationsRequest {
 }
 
 export const UpdateWebSecurityScannerSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(WebSecurityScannerSettings).pipe(T.HttpBody()),
@@ -7244,7 +7236,7 @@ export const UpdateWebSecurityScannerSettingsOrganizationsRequest =
 export type UpdateWebSecurityScannerSettingsOrganizationsResponse =
   WebSecurityScannerSettings;
 export const UpdateWebSecurityScannerSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
+  /*@__PURE__*/ WebSecurityScannerSettings;
 
 export type UpdateWebSecurityScannerSettingsOrganizationsError =
   | DefaultErrors
@@ -7258,7 +7250,7 @@ export const updateWebSecurityScannerSettingsOrganizations: API.OperationMethod<
   UpdateWebSecurityScannerSettingsOrganizationsResponse,
   UpdateWebSecurityScannerSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWebSecurityScannerSettingsOrganizationsRequest,
   output: UpdateWebSecurityScannerSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7272,7 +7264,7 @@ export interface UpdateContainerThreatDetectionSettingsOrganizationsRequest {
 }
 
 export const UpdateContainerThreatDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ContainerThreatDetectionSettings).pipe(T.HttpBody()),
@@ -7284,7 +7276,7 @@ export const UpdateContainerThreatDetectionSettingsOrganizationsRequest =
 export type UpdateContainerThreatDetectionSettingsOrganizationsResponse =
   ContainerThreatDetectionSettings;
 export const UpdateContainerThreatDetectionSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
+  /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type UpdateContainerThreatDetectionSettingsOrganizationsError =
   | DefaultErrors
@@ -7298,7 +7290,7 @@ export const updateContainerThreatDetectionSettingsOrganizations: API.OperationM
   UpdateContainerThreatDetectionSettingsOrganizationsResponse,
   UpdateContainerThreatDetectionSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContainerThreatDetectionSettingsOrganizationsRequest,
   output: UpdateContainerThreatDetectionSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7309,7 +7301,7 @@ export interface GetSecurityHealthAnalyticsSettingsOrganizationsRequest {
 }
 
 export const GetSecurityHealthAnalyticsSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -7319,7 +7311,7 @@ export const GetSecurityHealthAnalyticsSettingsOrganizationsRequest =
 export type GetSecurityHealthAnalyticsSettingsOrganizationsResponse =
   SecurityHealthAnalyticsSettings;
 export const GetSecurityHealthAnalyticsSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
+  /*@__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type GetSecurityHealthAnalyticsSettingsOrganizationsError =
   | DefaultErrors
@@ -7331,7 +7323,7 @@ export const getSecurityHealthAnalyticsSettingsOrganizations: API.OperationMetho
   GetSecurityHealthAnalyticsSettingsOrganizationsResponse,
   GetSecurityHealthAnalyticsSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSecurityHealthAnalyticsSettingsOrganizationsRequest,
   output: GetSecurityHealthAnalyticsSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7345,7 +7337,7 @@ export interface UpdateEventThreatDetectionSettingsOrganizationsRequest {
 }
 
 export const UpdateEventThreatDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(EventThreatDetectionSettings).pipe(T.HttpBody()),
@@ -7357,7 +7349,7 @@ export const UpdateEventThreatDetectionSettingsOrganizationsRequest =
 export type UpdateEventThreatDetectionSettingsOrganizationsResponse =
   EventThreatDetectionSettings;
 export const UpdateEventThreatDetectionSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
+  /*@__PURE__*/ EventThreatDetectionSettings;
 
 export type UpdateEventThreatDetectionSettingsOrganizationsError =
   | DefaultErrors
@@ -7371,7 +7363,7 @@ export const updateEventThreatDetectionSettingsOrganizations: API.OperationMetho
   UpdateEventThreatDetectionSettingsOrganizationsResponse,
   UpdateEventThreatDetectionSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventThreatDetectionSettingsOrganizationsRequest,
   output: UpdateEventThreatDetectionSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7385,7 +7377,7 @@ export interface UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest
 }
 
 export const UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(VirtualMachineThreatDetectionSettings).pipe(
@@ -7399,7 +7391,7 @@ export const UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest =
 export type UpdateVirtualMachineThreatDetectionSettingsOrganizationsResponse =
   VirtualMachineThreatDetectionSettings;
 export const UpdateVirtualMachineThreatDetectionSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
+  /*@__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type UpdateVirtualMachineThreatDetectionSettingsOrganizationsError =
   | DefaultErrors
@@ -7413,7 +7405,7 @@ export const updateVirtualMachineThreatDetectionSettingsOrganizations: API.Opera
   UpdateVirtualMachineThreatDetectionSettingsOrganizationsResponse,
   UpdateVirtualMachineThreatDetectionSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest,
   output: UpdateVirtualMachineThreatDetectionSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7424,7 +7416,7 @@ export interface GetContainerThreatDetectionSettingsOrganizationsRequest {
 }
 
 export const GetContainerThreatDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -7434,7 +7426,7 @@ export const GetContainerThreatDetectionSettingsOrganizationsRequest =
 export type GetContainerThreatDetectionSettingsOrganizationsResponse =
   ContainerThreatDetectionSettings;
 export const GetContainerThreatDetectionSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
+  /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type GetContainerThreatDetectionSettingsOrganizationsError =
   | DefaultErrors
@@ -7446,7 +7438,7 @@ export const getContainerThreatDetectionSettingsOrganizations: API.OperationMeth
   GetContainerThreatDetectionSettingsOrganizationsResponse,
   GetContainerThreatDetectionSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerThreatDetectionSettingsOrganizationsRequest,
   output: GetContainerThreatDetectionSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7457,7 +7449,7 @@ export interface GetSubscriptionOrganizationsRequest {
 }
 
 export const GetSubscriptionOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -7465,8 +7457,7 @@ export const GetSubscriptionOrganizationsRequest =
   ) as unknown as Schema.Codec<GetSubscriptionOrganizationsRequest>;
 
 export type GetSubscriptionOrganizationsResponse = Subscription;
-export const GetSubscriptionOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export const GetSubscriptionOrganizationsResponse = /*@__PURE__*/ Subscription;
 
 export type GetSubscriptionOrganizationsError =
   | DefaultErrors
@@ -7478,7 +7469,7 @@ export const getSubscriptionOrganizations: API.OperationMethod<
   GetSubscriptionOrganizationsResponse,
   GetSubscriptionOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionOrganizationsRequest,
   output: GetSubscriptionOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7492,7 +7483,7 @@ export interface UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest {
 }
 
 export const UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(RapidVulnerabilityDetectionSettings).pipe(
@@ -7506,7 +7497,7 @@ export const UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest =
 export type UpdateRapidVulnerabilityDetectionSettingsOrganizationsResponse =
   RapidVulnerabilityDetectionSettings;
 export const UpdateRapidVulnerabilityDetectionSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
+  /*@__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type UpdateRapidVulnerabilityDetectionSettingsOrganizationsError =
   | DefaultErrors
@@ -7520,7 +7511,7 @@ export const updateRapidVulnerabilityDetectionSettingsOrganizations: API.Operati
   UpdateRapidVulnerabilityDetectionSettingsOrganizationsResponse,
   UpdateRapidVulnerabilityDetectionSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest,
   output: UpdateRapidVulnerabilityDetectionSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7534,7 +7525,7 @@ export interface UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest {
 }
 
 export const UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SecurityHealthAnalyticsSettings).pipe(T.HttpBody()),
@@ -7546,7 +7537,7 @@ export const UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest =
 export type UpdateSecurityHealthAnalyticsSettingsOrganizationsResponse =
   SecurityHealthAnalyticsSettings;
 export const UpdateSecurityHealthAnalyticsSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
+  /*@__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type UpdateSecurityHealthAnalyticsSettingsOrganizationsError =
   | DefaultErrors
@@ -7560,7 +7551,7 @@ export const updateSecurityHealthAnalyticsSettingsOrganizations: API.OperationMe
   UpdateSecurityHealthAnalyticsSettingsOrganizationsResponse,
   UpdateSecurityHealthAnalyticsSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest,
   output: UpdateSecurityHealthAnalyticsSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7571,7 +7562,7 @@ export interface GetVirtualMachineThreatDetectionSettingsOrganizationsRequest {
 }
 
 export const GetVirtualMachineThreatDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -7581,7 +7572,7 @@ export const GetVirtualMachineThreatDetectionSettingsOrganizationsRequest =
 export type GetVirtualMachineThreatDetectionSettingsOrganizationsResponse =
   VirtualMachineThreatDetectionSettings;
 export const GetVirtualMachineThreatDetectionSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
+  /*@__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type GetVirtualMachineThreatDetectionSettingsOrganizationsError =
   | DefaultErrors
@@ -7593,7 +7584,7 @@ export const getVirtualMachineThreatDetectionSettingsOrganizations: API.Operatio
   GetVirtualMachineThreatDetectionSettingsOrganizationsResponse,
   GetVirtualMachineThreatDetectionSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVirtualMachineThreatDetectionSettingsOrganizationsRequest,
   output: GetVirtualMachineThreatDetectionSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7605,7 +7596,7 @@ export interface CalculateOrganizationsWebSecurityScannerSettingsRequest {
 }
 
 export const CalculateOrganizationsWebSecurityScannerSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -7618,7 +7609,7 @@ export const CalculateOrganizationsWebSecurityScannerSettingsRequest =
 export type CalculateOrganizationsWebSecurityScannerSettingsResponse =
   WebSecurityScannerSettings;
 export const CalculateOrganizationsWebSecurityScannerSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
+  /*@__PURE__*/ WebSecurityScannerSettings;
 
 export type CalculateOrganizationsWebSecurityScannerSettingsError =
   | DefaultErrors
@@ -7630,7 +7621,7 @@ export const calculateOrganizationsWebSecurityScannerSettings: API.OperationMeth
   CalculateOrganizationsWebSecurityScannerSettingsResponse,
   CalculateOrganizationsWebSecurityScannerSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateOrganizationsWebSecurityScannerSettingsRequest,
   output: CalculateOrganizationsWebSecurityScannerSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -7641,7 +7632,7 @@ export interface CalculateOrganizationsRapidVulnerabilityDetectionSettingsReques
 }
 
 export const CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
@@ -7651,7 +7642,7 @@ export const CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest =
 export type CalculateOrganizationsRapidVulnerabilityDetectionSettingsResponse =
   RapidVulnerabilityDetectionSettings;
 export const CalculateOrganizationsRapidVulnerabilityDetectionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
+  /*@__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type CalculateOrganizationsRapidVulnerabilityDetectionSettingsError =
   | DefaultErrors
@@ -7663,7 +7654,7 @@ export const calculateOrganizationsRapidVulnerabilityDetectionSettings: API.Oper
   CalculateOrganizationsRapidVulnerabilityDetectionSettingsResponse,
   CalculateOrganizationsRapidVulnerabilityDetectionSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest,
   output: CalculateOrganizationsRapidVulnerabilityDetectionSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -7675,7 +7666,7 @@ export interface CalculateOrganizationsContainerThreatDetectionSettingsRequest {
 }
 
 export const CalculateOrganizationsContainerThreatDetectionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -7688,7 +7679,7 @@ export const CalculateOrganizationsContainerThreatDetectionSettingsRequest =
 export type CalculateOrganizationsContainerThreatDetectionSettingsResponse =
   ContainerThreatDetectionSettings;
 export const CalculateOrganizationsContainerThreatDetectionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
+  /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type CalculateOrganizationsContainerThreatDetectionSettingsError =
   | DefaultErrors
@@ -7700,7 +7691,7 @@ export const calculateOrganizationsContainerThreatDetectionSettings: API.Operati
   CalculateOrganizationsContainerThreatDetectionSettingsResponse,
   CalculateOrganizationsContainerThreatDetectionSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateOrganizationsContainerThreatDetectionSettingsRequest,
   output: CalculateOrganizationsContainerThreatDetectionSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -7712,7 +7703,7 @@ export interface CalculateOrganizationsEventThreatDetectionSettingsRequest {
 }
 
 export const CalculateOrganizationsEventThreatDetectionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -7725,7 +7716,7 @@ export const CalculateOrganizationsEventThreatDetectionSettingsRequest =
 export type CalculateOrganizationsEventThreatDetectionSettingsResponse =
   EventThreatDetectionSettings;
 export const CalculateOrganizationsEventThreatDetectionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
+  /*@__PURE__*/ EventThreatDetectionSettings;
 
 export type CalculateOrganizationsEventThreatDetectionSettingsError =
   | DefaultErrors
@@ -7737,7 +7728,7 @@ export const calculateOrganizationsEventThreatDetectionSettings: API.OperationMe
   CalculateOrganizationsEventThreatDetectionSettingsResponse,
   CalculateOrganizationsEventThreatDetectionSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateOrganizationsEventThreatDetectionSettingsRequest,
   output: CalculateOrganizationsEventThreatDetectionSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -7749,7 +7740,7 @@ export interface CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest {
 }
 
 export const CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -7762,7 +7753,7 @@ export const CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest =
 export type CalculateOrganizationsSecurityHealthAnalyticsSettingsResponse =
   SecurityHealthAnalyticsSettings;
 export const CalculateOrganizationsSecurityHealthAnalyticsSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
+  /*@__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type CalculateOrganizationsSecurityHealthAnalyticsSettingsError =
   | DefaultErrors
@@ -7774,7 +7765,7 @@ export const calculateOrganizationsSecurityHealthAnalyticsSettings: API.Operatio
   CalculateOrganizationsSecurityHealthAnalyticsSettingsResponse,
   CalculateOrganizationsSecurityHealthAnalyticsSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest,
   output: CalculateOrganizationsSecurityHealthAnalyticsSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -7786,7 +7777,7 @@ export interface CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequ
 }
 
 export const CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -7799,7 +7790,7 @@ export const CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest 
 export type CalculateOrganizationsVirtualMachineThreatDetectionSettingsResponse =
   VirtualMachineThreatDetectionSettings;
 export const CalculateOrganizationsVirtualMachineThreatDetectionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
+  /*@__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type CalculateOrganizationsVirtualMachineThreatDetectionSettingsError =
   | DefaultErrors
@@ -7811,7 +7802,7 @@ export const calculateOrganizationsVirtualMachineThreatDetectionSettings: API.Op
   CalculateOrganizationsVirtualMachineThreatDetectionSettingsResponse,
   CalculateOrganizationsVirtualMachineThreatDetectionSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest,
   output: CalculateOrganizationsVirtualMachineThreatDetectionSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -7825,7 +7816,7 @@ export interface UpdateVirtualMachineThreatDetectionSettingsProjectsRequest {
 }
 
 export const UpdateVirtualMachineThreatDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(VirtualMachineThreatDetectionSettings).pipe(
@@ -7839,7 +7830,7 @@ export const UpdateVirtualMachineThreatDetectionSettingsProjectsRequest =
 export type UpdateVirtualMachineThreatDetectionSettingsProjectsResponse =
   VirtualMachineThreatDetectionSettings;
 export const UpdateVirtualMachineThreatDetectionSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
+  /*@__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type UpdateVirtualMachineThreatDetectionSettingsProjectsError =
   | DefaultErrors
@@ -7853,7 +7844,7 @@ export const updateVirtualMachineThreatDetectionSettingsProjects: API.OperationM
   UpdateVirtualMachineThreatDetectionSettingsProjectsResponse,
   UpdateVirtualMachineThreatDetectionSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVirtualMachineThreatDetectionSettingsProjectsRequest,
   output: UpdateVirtualMachineThreatDetectionSettingsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7867,7 +7858,7 @@ export interface UpdateEventThreatDetectionSettingsProjectsRequest {
 }
 
 export const UpdateEventThreatDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(EventThreatDetectionSettings).pipe(T.HttpBody()),
@@ -7879,7 +7870,7 @@ export const UpdateEventThreatDetectionSettingsProjectsRequest =
 export type UpdateEventThreatDetectionSettingsProjectsResponse =
   EventThreatDetectionSettings;
 export const UpdateEventThreatDetectionSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
+  /*@__PURE__*/ EventThreatDetectionSettings;
 
 export type UpdateEventThreatDetectionSettingsProjectsError =
   | DefaultErrors
@@ -7893,7 +7884,7 @@ export const updateEventThreatDetectionSettingsProjects: API.OperationMethod<
   UpdateEventThreatDetectionSettingsProjectsResponse,
   UpdateEventThreatDetectionSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventThreatDetectionSettingsProjectsRequest,
   output: UpdateEventThreatDetectionSettingsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7904,7 +7895,7 @@ export interface GetContainerThreatDetectionSettingsProjectsRequest {
 }
 
 export const GetContainerThreatDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -7914,7 +7905,7 @@ export const GetContainerThreatDetectionSettingsProjectsRequest =
 export type GetContainerThreatDetectionSettingsProjectsResponse =
   ContainerThreatDetectionSettings;
 export const GetContainerThreatDetectionSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
+  /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type GetContainerThreatDetectionSettingsProjectsError =
   | DefaultErrors
@@ -7926,7 +7917,7 @@ export const getContainerThreatDetectionSettingsProjects: API.OperationMethod<
   GetContainerThreatDetectionSettingsProjectsResponse,
   GetContainerThreatDetectionSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerThreatDetectionSettingsProjectsRequest,
   output: GetContainerThreatDetectionSettingsProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -7940,7 +7931,7 @@ export interface UpdateRapidVulnerabilityDetectionSettingsProjectsRequest {
 }
 
 export const UpdateRapidVulnerabilityDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(RapidVulnerabilityDetectionSettings).pipe(
@@ -7954,7 +7945,7 @@ export const UpdateRapidVulnerabilityDetectionSettingsProjectsRequest =
 export type UpdateRapidVulnerabilityDetectionSettingsProjectsResponse =
   RapidVulnerabilityDetectionSettings;
 export const UpdateRapidVulnerabilityDetectionSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
+  /*@__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type UpdateRapidVulnerabilityDetectionSettingsProjectsError =
   | DefaultErrors
@@ -7968,7 +7959,7 @@ export const updateRapidVulnerabilityDetectionSettingsProjects: API.OperationMet
   UpdateRapidVulnerabilityDetectionSettingsProjectsResponse,
   UpdateRapidVulnerabilityDetectionSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRapidVulnerabilityDetectionSettingsProjectsRequest,
   output: UpdateRapidVulnerabilityDetectionSettingsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7979,7 +7970,7 @@ export interface GetVirtualMachineThreatDetectionSettingsProjectsRequest {
 }
 
 export const GetVirtualMachineThreatDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -7989,7 +7980,7 @@ export const GetVirtualMachineThreatDetectionSettingsProjectsRequest =
 export type GetVirtualMachineThreatDetectionSettingsProjectsResponse =
   VirtualMachineThreatDetectionSettings;
 export const GetVirtualMachineThreatDetectionSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
+  /*@__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type GetVirtualMachineThreatDetectionSettingsProjectsError =
   | DefaultErrors
@@ -8001,7 +7992,7 @@ export const getVirtualMachineThreatDetectionSettingsProjects: API.OperationMeth
   GetVirtualMachineThreatDetectionSettingsProjectsResponse,
   GetVirtualMachineThreatDetectionSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVirtualMachineThreatDetectionSettingsProjectsRequest,
   output: GetVirtualMachineThreatDetectionSettingsProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -8015,7 +8006,7 @@ export interface UpdateSecurityHealthAnalyticsSettingsProjectsRequest {
 }
 
 export const UpdateSecurityHealthAnalyticsSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SecurityHealthAnalyticsSettings).pipe(T.HttpBody()),
@@ -8027,7 +8018,7 @@ export const UpdateSecurityHealthAnalyticsSettingsProjectsRequest =
 export type UpdateSecurityHealthAnalyticsSettingsProjectsResponse =
   SecurityHealthAnalyticsSettings;
 export const UpdateSecurityHealthAnalyticsSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
+  /*@__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type UpdateSecurityHealthAnalyticsSettingsProjectsError =
   | DefaultErrors
@@ -8041,7 +8032,7 @@ export const updateSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
   UpdateSecurityHealthAnalyticsSettingsProjectsResponse,
   UpdateSecurityHealthAnalyticsSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityHealthAnalyticsSettingsProjectsRequest,
   output: UpdateSecurityHealthAnalyticsSettingsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8052,7 +8043,7 @@ export interface GetSecurityCenterSettingsProjectsRequest {
 }
 
 export const GetSecurityCenterSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -8061,7 +8052,7 @@ export const GetSecurityCenterSettingsProjectsRequest =
 
 export type GetSecurityCenterSettingsProjectsResponse = SecurityCenterSettings;
 export const GetSecurityCenterSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SecurityCenterSettings;
+  /*@__PURE__*/ SecurityCenterSettings;
 
 export type GetSecurityCenterSettingsProjectsError =
   | DefaultErrors
@@ -8073,7 +8064,7 @@ export const getSecurityCenterSettingsProjects: API.OperationMethod<
   GetSecurityCenterSettingsProjectsResponse,
   GetSecurityCenterSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSecurityCenterSettingsProjectsRequest,
   output: GetSecurityCenterSettingsProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -8084,7 +8075,7 @@ export interface GetEventThreatDetectionSettingsProjectsRequest {
 }
 
 export const GetEventThreatDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -8094,7 +8085,7 @@ export const GetEventThreatDetectionSettingsProjectsRequest =
 export type GetEventThreatDetectionSettingsProjectsResponse =
   EventThreatDetectionSettings;
 export const GetEventThreatDetectionSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
+  /*@__PURE__*/ EventThreatDetectionSettings;
 
 export type GetEventThreatDetectionSettingsProjectsError =
   | DefaultErrors
@@ -8106,7 +8097,7 @@ export const getEventThreatDetectionSettingsProjects: API.OperationMethod<
   GetEventThreatDetectionSettingsProjectsResponse,
   GetEventThreatDetectionSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventThreatDetectionSettingsProjectsRequest,
   output: GetEventThreatDetectionSettingsProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -8117,7 +8108,7 @@ export interface GetRapidVulnerabilityDetectionSettingsProjectsRequest {
 }
 
 export const GetRapidVulnerabilityDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -8127,7 +8118,7 @@ export const GetRapidVulnerabilityDetectionSettingsProjectsRequest =
 export type GetRapidVulnerabilityDetectionSettingsProjectsResponse =
   RapidVulnerabilityDetectionSettings;
 export const GetRapidVulnerabilityDetectionSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
+  /*@__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type GetRapidVulnerabilityDetectionSettingsProjectsError =
   | DefaultErrors
@@ -8139,7 +8130,7 @@ export const getRapidVulnerabilityDetectionSettingsProjects: API.OperationMethod
   GetRapidVulnerabilityDetectionSettingsProjectsResponse,
   GetRapidVulnerabilityDetectionSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRapidVulnerabilityDetectionSettingsProjectsRequest,
   output: GetRapidVulnerabilityDetectionSettingsProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -8150,7 +8141,7 @@ export interface GetWebSecurityScannerSettingsProjectsRequest {
 }
 
 export const GetWebSecurityScannerSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -8160,7 +8151,7 @@ export const GetWebSecurityScannerSettingsProjectsRequest =
 export type GetWebSecurityScannerSettingsProjectsResponse =
   WebSecurityScannerSettings;
 export const GetWebSecurityScannerSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
+  /*@__PURE__*/ WebSecurityScannerSettings;
 
 export type GetWebSecurityScannerSettingsProjectsError =
   | DefaultErrors
@@ -8172,7 +8163,7 @@ export const getWebSecurityScannerSettingsProjects: API.OperationMethod<
   GetWebSecurityScannerSettingsProjectsResponse,
   GetWebSecurityScannerSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWebSecurityScannerSettingsProjectsRequest,
   output: GetWebSecurityScannerSettingsProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -8186,7 +8177,7 @@ export interface UpdateContainerThreatDetectionSettingsProjectsRequest {
 }
 
 export const UpdateContainerThreatDetectionSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ContainerThreatDetectionSettings).pipe(T.HttpBody()),
@@ -8198,7 +8189,7 @@ export const UpdateContainerThreatDetectionSettingsProjectsRequest =
 export type UpdateContainerThreatDetectionSettingsProjectsResponse =
   ContainerThreatDetectionSettings;
 export const UpdateContainerThreatDetectionSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
+  /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type UpdateContainerThreatDetectionSettingsProjectsError =
   | DefaultErrors
@@ -8212,7 +8203,7 @@ export const updateContainerThreatDetectionSettingsProjects: API.OperationMethod
   UpdateContainerThreatDetectionSettingsProjectsResponse,
   UpdateContainerThreatDetectionSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContainerThreatDetectionSettingsProjectsRequest,
   output: UpdateContainerThreatDetectionSettingsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8226,7 +8217,7 @@ export interface UpdateWebSecurityScannerSettingsProjectsRequest {
 }
 
 export const UpdateWebSecurityScannerSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(WebSecurityScannerSettings).pipe(T.HttpBody()),
@@ -8238,7 +8229,7 @@ export const UpdateWebSecurityScannerSettingsProjectsRequest =
 export type UpdateWebSecurityScannerSettingsProjectsResponse =
   WebSecurityScannerSettings;
 export const UpdateWebSecurityScannerSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
+  /*@__PURE__*/ WebSecurityScannerSettings;
 
 export type UpdateWebSecurityScannerSettingsProjectsError =
   | DefaultErrors
@@ -8252,7 +8243,7 @@ export const updateWebSecurityScannerSettingsProjects: API.OperationMethod<
   UpdateWebSecurityScannerSettingsProjectsResponse,
   UpdateWebSecurityScannerSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWebSecurityScannerSettingsProjectsRequest,
   output: UpdateWebSecurityScannerSettingsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8263,7 +8254,7 @@ export interface GetSecurityHealthAnalyticsSettingsProjectsRequest {
 }
 
 export const GetSecurityHealthAnalyticsSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -8273,7 +8264,7 @@ export const GetSecurityHealthAnalyticsSettingsProjectsRequest =
 export type GetSecurityHealthAnalyticsSettingsProjectsResponse =
   SecurityHealthAnalyticsSettings;
 export const GetSecurityHealthAnalyticsSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
+  /*@__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type GetSecurityHealthAnalyticsSettingsProjectsError =
   | DefaultErrors
@@ -8285,7 +8276,7 @@ export const getSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
   GetSecurityHealthAnalyticsSettingsProjectsResponse,
   GetSecurityHealthAnalyticsSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSecurityHealthAnalyticsSettingsProjectsRequest,
   output: GetSecurityHealthAnalyticsSettingsProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -8297,7 +8288,7 @@ export interface CalculateProjectsContainerThreatDetectionSettingsRequest {
 }
 
 export const CalculateProjectsContainerThreatDetectionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -8310,7 +8301,7 @@ export const CalculateProjectsContainerThreatDetectionSettingsRequest =
 export type CalculateProjectsContainerThreatDetectionSettingsResponse =
   ContainerThreatDetectionSettings;
 export const CalculateProjectsContainerThreatDetectionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
+  /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type CalculateProjectsContainerThreatDetectionSettingsError =
   | DefaultErrors
@@ -8322,7 +8313,7 @@ export const calculateProjectsContainerThreatDetectionSettings: API.OperationMet
   CalculateProjectsContainerThreatDetectionSettingsResponse,
   CalculateProjectsContainerThreatDetectionSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateProjectsContainerThreatDetectionSettingsRequest,
   output: CalculateProjectsContainerThreatDetectionSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -8334,7 +8325,7 @@ export interface CalculateProjectsEventThreatDetectionSettingsRequest {
 }
 
 export const CalculateProjectsEventThreatDetectionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -8347,7 +8338,7 @@ export const CalculateProjectsEventThreatDetectionSettingsRequest =
 export type CalculateProjectsEventThreatDetectionSettingsResponse =
   EventThreatDetectionSettings;
 export const CalculateProjectsEventThreatDetectionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
+  /*@__PURE__*/ EventThreatDetectionSettings;
 
 export type CalculateProjectsEventThreatDetectionSettingsError =
   | DefaultErrors
@@ -8359,7 +8350,7 @@ export const calculateProjectsEventThreatDetectionSettings: API.OperationMethod<
   CalculateProjectsEventThreatDetectionSettingsResponse,
   CalculateProjectsEventThreatDetectionSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateProjectsEventThreatDetectionSettingsRequest,
   output: CalculateProjectsEventThreatDetectionSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -8370,7 +8361,7 @@ export interface GetContainerThreatDetectionSettingsProjectsLocationsClustersReq
 }
 
 export const GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
@@ -8380,7 +8371,7 @@ export const GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest
 export type GetContainerThreatDetectionSettingsProjectsLocationsClustersResponse =
   ContainerThreatDetectionSettings;
 export const GetContainerThreatDetectionSettingsProjectsLocationsClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
+  /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type GetContainerThreatDetectionSettingsProjectsLocationsClustersError =
   | DefaultErrors
@@ -8392,7 +8383,7 @@ export const getContainerThreatDetectionSettingsProjectsLocationsClusters: API.O
   GetContainerThreatDetectionSettingsProjectsLocationsClustersResponse,
   GetContainerThreatDetectionSettingsProjectsLocationsClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest,
   output: GetContainerThreatDetectionSettingsProjectsLocationsClustersResponse,
   errors: [NotFound, Forbidden],
@@ -8406,7 +8397,7 @@ export interface UpdateContainerThreatDetectionSettingsProjectsLocationsClusters
 }
 
 export const UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ContainerThreatDetectionSettings).pipe(T.HttpBody()),
@@ -8418,7 +8409,7 @@ export const UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequ
 export type UpdateContainerThreatDetectionSettingsProjectsLocationsClustersResponse =
   ContainerThreatDetectionSettings;
 export const UpdateContainerThreatDetectionSettingsProjectsLocationsClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
+  /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type UpdateContainerThreatDetectionSettingsProjectsLocationsClustersError =
   | DefaultErrors
@@ -8432,7 +8423,7 @@ export const updateContainerThreatDetectionSettingsProjectsLocationsClusters: AP
   UpdateContainerThreatDetectionSettingsProjectsLocationsClustersResponse,
   UpdateContainerThreatDetectionSettingsProjectsLocationsClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest,
   output:
     UpdateContainerThreatDetectionSettingsProjectsLocationsClustersResponse,
@@ -8445,7 +8436,7 @@ export interface CalculateProjectsLocationsClustersContainerThreatDetectionSetti
 }
 
 export const CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -8458,7 +8449,7 @@ export const CalculateProjectsLocationsClustersContainerThreatDetectionSettingsR
 export type CalculateProjectsLocationsClustersContainerThreatDetectionSettingsResponse =
   ContainerThreatDetectionSettings;
 export const CalculateProjectsLocationsClustersContainerThreatDetectionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
+  /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type CalculateProjectsLocationsClustersContainerThreatDetectionSettingsError =
   | DefaultErrors
@@ -8470,7 +8461,7 @@ export const calculateProjectsLocationsClustersContainerThreatDetectionSettings:
   CalculateProjectsLocationsClustersContainerThreatDetectionSettingsResponse,
   CalculateProjectsLocationsClustersContainerThreatDetectionSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest,
   output:
@@ -8484,7 +8475,7 @@ export interface CalculateProjectsSecurityHealthAnalyticsSettingsRequest {
 }
 
 export const CalculateProjectsSecurityHealthAnalyticsSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -8497,7 +8488,7 @@ export const CalculateProjectsSecurityHealthAnalyticsSettingsRequest =
 export type CalculateProjectsSecurityHealthAnalyticsSettingsResponse =
   SecurityHealthAnalyticsSettings;
 export const CalculateProjectsSecurityHealthAnalyticsSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
+  /*@__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type CalculateProjectsSecurityHealthAnalyticsSettingsError =
   | DefaultErrors
@@ -8509,7 +8500,7 @@ export const calculateProjectsSecurityHealthAnalyticsSettings: API.OperationMeth
   CalculateProjectsSecurityHealthAnalyticsSettingsResponse,
   CalculateProjectsSecurityHealthAnalyticsSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateProjectsSecurityHealthAnalyticsSettingsRequest,
   output: CalculateProjectsSecurityHealthAnalyticsSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -8521,7 +8512,7 @@ export interface CalculateProjectsVirtualMachineThreatDetectionSettingsRequest {
 }
 
 export const CalculateProjectsVirtualMachineThreatDetectionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -8534,7 +8525,7 @@ export const CalculateProjectsVirtualMachineThreatDetectionSettingsRequest =
 export type CalculateProjectsVirtualMachineThreatDetectionSettingsResponse =
   VirtualMachineThreatDetectionSettings;
 export const CalculateProjectsVirtualMachineThreatDetectionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
+  /*@__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type CalculateProjectsVirtualMachineThreatDetectionSettingsError =
   | DefaultErrors
@@ -8546,7 +8537,7 @@ export const calculateProjectsVirtualMachineThreatDetectionSettings: API.Operati
   CalculateProjectsVirtualMachineThreatDetectionSettingsResponse,
   CalculateProjectsVirtualMachineThreatDetectionSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateProjectsVirtualMachineThreatDetectionSettingsRequest,
   output: CalculateProjectsVirtualMachineThreatDetectionSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -8558,7 +8549,7 @@ export interface CalculateProjectsWebSecurityScannerSettingsRequest {
 }
 
 export const CalculateProjectsWebSecurityScannerSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     showEligibleModulesOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showEligibleModulesOnly"),
@@ -8571,7 +8562,7 @@ export const CalculateProjectsWebSecurityScannerSettingsRequest =
 export type CalculateProjectsWebSecurityScannerSettingsResponse =
   WebSecurityScannerSettings;
 export const CalculateProjectsWebSecurityScannerSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
+  /*@__PURE__*/ WebSecurityScannerSettings;
 
 export type CalculateProjectsWebSecurityScannerSettingsError =
   | DefaultErrors
@@ -8583,7 +8574,7 @@ export const calculateProjectsWebSecurityScannerSettings: API.OperationMethod<
   CalculateProjectsWebSecurityScannerSettingsResponse,
   CalculateProjectsWebSecurityScannerSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateProjectsWebSecurityScannerSettingsRequest,
   output: CalculateProjectsWebSecurityScannerSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -8594,7 +8585,7 @@ export interface CalculateProjectsRapidVulnerabilityDetectionSettingsRequest {
 }
 
 export const CalculateProjectsRapidVulnerabilityDetectionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
@@ -8604,7 +8595,7 @@ export const CalculateProjectsRapidVulnerabilityDetectionSettingsRequest =
 export type CalculateProjectsRapidVulnerabilityDetectionSettingsResponse =
   RapidVulnerabilityDetectionSettings;
 export const CalculateProjectsRapidVulnerabilityDetectionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
+  /*@__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type CalculateProjectsRapidVulnerabilityDetectionSettingsError =
   | DefaultErrors
@@ -8616,7 +8607,7 @@ export const calculateProjectsRapidVulnerabilityDetectionSettings: API.Operation
   CalculateProjectsRapidVulnerabilityDetectionSettingsResponse,
   CalculateProjectsRapidVulnerabilityDetectionSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateProjectsRapidVulnerabilityDetectionSettingsRequest,
   output: CalculateProjectsRapidVulnerabilityDetectionSettingsResponse,
   errors: [NotFound, Forbidden],

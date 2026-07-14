@@ -8,7 +8,7 @@ export interface GetAnnotationsInput {
   start?: string;
   end?: string;
 }
-export const GetAnnotationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAnnotationsInput = /*@__PURE__*/ Schema.Struct({
   datasets: Schema.optional(Schema.String),
   start: Schema.optional(Schema.String),
   end: Schema.optional(Schema.String),
@@ -27,7 +27,7 @@ export type GetAnnotationsOutput = ReadonlyArray<{
   type: string;
   url?: string;
 }>;
-export const GetAnnotationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetAnnotationsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     datasets: Schema.Array(Schema.String),
     description: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export const GetAnnotationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  * @param start - Optional: Filter for events after this date. Use RFC3339 time format.
  * @param end - Optional: Filter for events before this date. Use RFC3339 time format.
  */
-export const getAnnotations = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAnnotations = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAnnotationsInput,
   outputSchema: GetAnnotationsOutput,
 }));

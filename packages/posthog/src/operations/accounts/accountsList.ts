@@ -21,7 +21,7 @@ export interface AccountsListInput {
   search?: string;
   tags?: string;
 }
-export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   account_executive: Schema.optional(Schema.String),
   account_owner: Schema.optional(Schema.String),
@@ -73,7 +73,7 @@ export interface AccountsListOutput {
     updated_at: string | null;
   }[];
 }
-export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.Number,
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -142,7 +142,7 @@ export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param search - Case-insensitive substring search across account name and external ID.
  * @param tags - JSON-encoded array of tag names to filter by, e.g. `["enterprise","priority"]`. Returns accounts that have any of the listed tags. Malformed values (not a JSON-encoded list of strings) return a 400.
  */
-export const accountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const accountsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsListInput,
   outputSchema: AccountsListOutput,
 }));

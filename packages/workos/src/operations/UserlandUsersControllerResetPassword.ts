@@ -11,7 +11,7 @@ import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const UserlandUsersControllerResetPasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
     new_password: Schema.optional(SensitiveString),
   }).pipe(
@@ -22,7 +22,7 @@ export type UserlandUsersControllerResetPasswordInput =
 
 // Output Schema
 export const UserlandUsersControllerResetPasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user: Schema.optional(
       Schema.Struct({
         object: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export type UserlandUsersControllerResetPasswordOutput =
  * Sets a new password using the `token` query parameter from the link that the user received. Successfully resetting the password will verify a user's email, if it hasn't been verified yet.
  */
 export const UserlandUsersControllerResetPassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerResetPasswordInput,
     outputSchema: UserlandUsersControllerResetPasswordOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

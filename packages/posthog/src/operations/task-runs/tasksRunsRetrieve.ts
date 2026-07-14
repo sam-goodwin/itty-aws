@@ -9,13 +9,11 @@ export interface TasksRunsRetrieveInput {
   project_id: string;
   task_id: string;
 }
-export const TasksRunsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    task_id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const TasksRunsRetrieveInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  task_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/",
@@ -60,7 +58,7 @@ export interface TasksRunsRetrieveOutput {
   completed_at?: string | null;
 }
 export const TasksRunsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     task: Schema.String,
     stage: Schema.NullOr(Schema.String),
@@ -120,7 +118,7 @@ export const TasksRunsRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tasksRunsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const tasksRunsRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksRunsRetrieveInput,
   outputSchema: TasksRunsRetrieveOutput,
   errors: [Forbidden, NotFound] as const,

@@ -14,7 +14,7 @@ export interface SavedCreateInput {
   deleted?: boolean;
   block_consent_modals?: boolean;
 }
-export const SavedCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SavedCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.NullOr(Schema.String)),
   url: Schema.String,
@@ -66,7 +66,7 @@ export interface SavedCreateOutput {
   updated_at?: string;
   exception?: string | null;
 }
-export const SavedCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SavedCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   short_id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -132,7 +132,7 @@ export const SavedCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const savedCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const savedCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavedCreateInput,
   outputSchema: SavedCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

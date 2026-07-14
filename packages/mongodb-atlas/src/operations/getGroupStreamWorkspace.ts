@@ -11,7 +11,7 @@ export interface GetGroupStreamWorkspaceInput {
   includeConnections?: boolean;
 }
 export const GetGroupStreamWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GetGroupStreamWorkspaceInput =
 // Output Schema
 export type GetGroupStreamWorkspaceOutput = void;
 export const GetGroupStreamWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupStreamWorkspaceOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupStreamWorkspaceOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const GetGroupStreamWorkspaceOutput =
  * @param tenantName - Label that identifies the stream workspace to return.
  * @param includeConnections - Flag to indicate whether connections information should be included in the stream workspace.
  */
-export const getGroupStreamWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupStreamWorkspaceInput,
-    outputSchema: GetGroupStreamWorkspaceOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupStreamWorkspace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupStreamWorkspaceInput,
+  outputSchema: GetGroupStreamWorkspaceOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

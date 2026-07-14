@@ -7,12 +7,10 @@ export interface GetBalanceByAssetInput {
   accountId: string;
   asset: string;
 }
-export const GetBalanceByAssetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    accountId: Schema.String.pipe(T.PathParam()),
-    asset: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const GetBalanceByAssetInput = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.PathParam()),
+  asset: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({ method: "GET", path: "/v2/accounts/{accountId}/balances/{asset}" }),
 ) as unknown as Schema.Codec<GetBalanceByAssetInput>;
 
@@ -27,7 +25,7 @@ export interface GetBalanceByAssetOutput {
   amount: Record<string, { available: string; total: string }>;
 }
 export const GetBalanceByAssetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asset: Schema.Struct({
       symbol: Schema.String,
       type: Schema.Literals(["fiat", "crypto"]),
@@ -52,7 +50,7 @@ export const GetBalanceByAssetOutput =
  * @param accountId - The unique identifier of the account.
  * @param asset - The symbol of the asset.
  */
-export const getBalanceByAsset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getBalanceByAsset = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBalanceByAssetInput,
   outputSchema: GetBalanceByAssetOutput,
 }));

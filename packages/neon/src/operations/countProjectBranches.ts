@@ -9,7 +9,7 @@ export interface CountProjectBranchesInput {
   search?: string;
 }
 export const CountProjectBranchesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     search: Schema.optional(Schema.String),
   }).pipe(
@@ -21,7 +21,7 @@ export interface CountProjectBranchesOutput {
   count: number;
 }
 export const CountProjectBranchesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.Number,
   }) as unknown as Schema.Codec<CountProjectBranchesOutput>;
 
@@ -35,10 +35,8 @@ export const CountProjectBranchesOutput =
  * @param project_id - The Neon project ID
  * @param search - Count branches matching the `name` in search query
  */
-export const countProjectBranches = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CountProjectBranchesInput,
-    outputSchema: CountProjectBranchesOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const countProjectBranches = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CountProjectBranchesInput,
+  outputSchema: CountProjectBranchesOutput,
+  errors: [NotFound] as const,
+}));

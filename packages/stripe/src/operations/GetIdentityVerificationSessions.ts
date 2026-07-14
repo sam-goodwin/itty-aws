@@ -17,7 +17,7 @@ export interface GetIdentityVerificationSessionsInput {
   status?: "canceled" | "processing" | "requires_input" | "verified";
 }
 export const GetIdentityVerificationSessionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_reference_id: Schema.optional(Schema.String),
     created: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
@@ -243,7 +243,7 @@ export interface GetIdentityVerificationSessionsOutput {
   url: string;
 }
 export const GetIdentityVerificationSessionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         client_reference_id: Schema.NullOr(Schema.String),
@@ -411,7 +411,7 @@ export const GetIdentityVerificationSessionsOutput =
  * @param status - Only return VerificationSessions with this status. [Learn more about the lifecycle of sessions](https://docs.stripe.com/identity/how-sessions-work).
  */
 export const GetIdentityVerificationSessions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetIdentityVerificationSessionsInput,
     outputSchema: GetIdentityVerificationSessionsOutput,
   }));

@@ -15,7 +15,7 @@ export interface FeatureFlagsVersionsRetrieveInput {
   version_number: number;
 }
 export const FeatureFlagsVersionsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     version_number: Schema.Number.pipe(T.PathParam()),
@@ -51,7 +51,7 @@ export interface FeatureFlagsVersionsRetrieveOutput {
   modified_by?: number | null;
 }
 export const FeatureFlagsVersionsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     key: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -101,7 +101,7 @@ export const FeatureFlagsVersionsRetrieveOutput =
  * @param version_number - The version number to reconstruct.
  */
 export const featureFlagsVersionsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FeatureFlagsVersionsRetrieveInput,
     outputSchema: FeatureFlagsVersionsRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

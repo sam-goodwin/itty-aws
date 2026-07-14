@@ -16,7 +16,7 @@ export interface UpdateMaskingRulesInput {
   }[];
 }
 export const UpdateMaskingRulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     masking_rules: Schema.Array(
@@ -48,7 +48,7 @@ export interface UpdateMaskingRulesOutput {
   }[];
 }
 export const UpdateMaskingRulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     masking_rules: Schema.Array(
       Schema.Struct({
         database_name: Schema.String,
@@ -72,7 +72,7 @@ export const UpdateMaskingRulesOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const updateMaskingRules = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateMaskingRules = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateMaskingRulesInput,
   outputSchema: UpdateMaskingRulesOutput,
 }));

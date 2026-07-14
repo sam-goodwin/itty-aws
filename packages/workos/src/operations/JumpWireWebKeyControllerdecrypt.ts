@@ -8,7 +8,7 @@ export interface JumpWireWebKeyControllerdecryptInput {
   keys: string;
 }
 export const JumpWireWebKeyControllerdecryptInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keys: Schema.String,
   }).pipe(
     T.Http({ method: "POST", path: "/vault/v1/keys/decrypt" }),
@@ -20,7 +20,7 @@ export interface JumpWireWebKeyControllerdecryptOutput {
   id: string;
 }
 export const JumpWireWebKeyControllerdecryptOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data_key: Schema.String,
     id: Schema.String,
   }) as unknown as Schema.Codec<JumpWireWebKeyControllerdecryptOutput>;
@@ -32,7 +32,7 @@ export const JumpWireWebKeyControllerdecryptOutput =
  * Decrypt a previously encrypted data key from WorkOS Vault.
  */
 export const JumpWireWebKeyControllerdecrypt =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: JumpWireWebKeyControllerdecryptInput,
     outputSchema: JumpWireWebKeyControllerdecryptOutput,
     errors: [BadRequest] as const,

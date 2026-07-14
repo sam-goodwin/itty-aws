@@ -231,7 +231,7 @@ export interface PostInvoicesInput {
   subscription?: string;
   transfer_data?: { amount?: number; destination: string };
 }
-export const PostInvoicesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostInvoicesInput = /*@__PURE__*/ Schema.Struct({
   account_tax_ids: Schema.optional(
     Schema.Union([Schema.Array(Schema.String), Schema.Literals([""])]),
   ),
@@ -2853,7 +2853,7 @@ export interface PostInvoicesOutput {
     | null;
   webhooks_delivered_at: number | null;
 }
-export const PostInvoicesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostInvoicesOutput = /*@__PURE__*/ Schema.Struct({
   account_country: Schema.NullOr(Schema.String),
   account_name: Schema.NullOr(Schema.String),
   account_tax_ids: Schema.NullOr(
@@ -4537,7 +4537,7 @@ export const PostInvoicesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>This endpoint creates a draft invoice for a given customer. The invoice remains a draft until you <a href="/api/invoices/finalize">finalize</a> the invoice, which allows you to <a href="/api/invoices/pay">pay</a> or <a href="/api/invoices/send">send</a> the invoice to your customers.</p>
  */
-export const PostInvoices = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostInvoices = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostInvoicesInput,
   outputSchema: PostInvoicesOutput,
 }));

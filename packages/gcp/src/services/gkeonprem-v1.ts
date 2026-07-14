@@ -30,7 +30,7 @@ export interface BareMetalDrainingMachine {
 }
 
 export const BareMetalDrainingMachine: Schema.Codec<BareMetalDrainingMachine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodeIp: Schema.optional(Schema.String),
     podCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "BareMetalDrainingMachine" });
@@ -45,7 +45,7 @@ export interface VmwareHostConfig {
 }
 
 export const VmwareHostConfig: Schema.Codec<VmwareHostConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ntpServers: Schema.optional(Schema.Array(Schema.String)),
     dnsServers: Schema.optional(Schema.Array(Schema.String)),
     dnsSearchDomains: Schema.optional(Schema.Array(Schema.String)),
@@ -59,7 +59,7 @@ export interface VmwareHostIp {
 }
 
 export const VmwareHostIp: Schema.Codec<VmwareHostIp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ip: Schema.optional(Schema.String),
     hostname: Schema.optional(Schema.String),
   }).annotate({ identifier: "VmwareHostIp" });
@@ -74,7 +74,7 @@ export interface VmwareIpBlock {
 }
 
 export const VmwareIpBlock: Schema.Codec<VmwareIpBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     netmask: Schema.optional(Schema.String),
     ips: Schema.optional(Schema.Array(VmwareHostIp)),
     gateway: Schema.optional(Schema.String),
@@ -86,7 +86,7 @@ export interface VmwareControlPlaneV2Config {
 }
 
 export const VmwareControlPlaneV2Config: Schema.Codec<VmwareControlPlaneV2Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlPlaneIpBlock: Schema.optional(VmwareIpBlock),
   }).annotate({ identifier: "VmwareControlPlaneV2Config" });
 
@@ -96,7 +96,7 @@ export interface VmwareStaticIpConfig {
 }
 
 export const VmwareStaticIpConfig: Schema.Codec<VmwareStaticIpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ipBlocks: Schema.optional(Schema.Array(VmwareIpBlock)),
   }).annotate({ identifier: "VmwareStaticIpConfig" });
 
@@ -106,7 +106,7 @@ export interface VmwareDhcpIpConfig {
 }
 
 export const VmwareDhcpIpConfig: Schema.Codec<VmwareDhcpIpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "VmwareDhcpIpConfig" });
 
@@ -128,7 +128,7 @@ export interface VmwareNetworkConfig {
 }
 
 export const VmwareNetworkConfig: Schema.Codec<VmwareNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vcenterNetwork: Schema.optional(Schema.String),
     hostConfig: Schema.optional(VmwareHostConfig),
     controlPlaneV2Config: Schema.optional(VmwareControlPlaneV2Config),
@@ -148,7 +148,7 @@ export interface BareMetalKubeletConfig {
 }
 
 export const BareMetalKubeletConfig: Schema.Codec<BareMetalKubeletConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     registryPullQps: Schema.optional(Schema.Number),
     registryBurst: Schema.optional(Schema.Number),
     serializeImagePullsDisabled: Schema.optional(Schema.Boolean),
@@ -162,7 +162,7 @@ export interface BareMetalNodeConfig {
 }
 
 export const BareMetalNodeConfig: Schema.Codec<BareMetalNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodeIp: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "BareMetalNodeConfig" });
@@ -182,7 +182,7 @@ export interface NodeTaint {
 }
 
 export const NodeTaint: Schema.Codec<NodeTaint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     effect: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -202,7 +202,7 @@ export interface BareMetalNodePoolConfig {
 }
 
 export const BareMetalNodePoolConfig: Schema.Codec<BareMetalNodePoolConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     nodeConfigs: Schema.optional(Schema.Array(BareMetalNodeConfig)),
     kubeletConfig: Schema.optional(BareMetalKubeletConfig),
@@ -216,7 +216,7 @@ export interface BareMetalAdminControlPlaneNodePoolConfig {
 }
 
 export const BareMetalAdminControlPlaneNodePoolConfig: Schema.Codec<BareMetalAdminControlPlaneNodePoolConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
   }).annotate({ identifier: "BareMetalAdminControlPlaneNodePoolConfig" });
 
@@ -228,7 +228,7 @@ export interface BareMetalAdminApiServerArgument {
 }
 
 export const BareMetalAdminApiServerArgument: Schema.Codec<BareMetalAdminApiServerArgument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     argument: Schema.optional(Schema.String),
   }).annotate({ identifier: "BareMetalAdminApiServerArgument" });
@@ -241,7 +241,7 @@ export interface BareMetalAdminControlPlaneConfig {
 }
 
 export const BareMetalAdminControlPlaneConfig: Schema.Codec<BareMetalAdminControlPlaneConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlPlaneNodePoolConfig: Schema.optional(
       BareMetalAdminControlPlaneNodePoolConfig,
     ),
@@ -270,7 +270,7 @@ export interface ValidationCheckResult {
 }
 
 export const ValidationCheckResult: Schema.Codec<ValidationCheckResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -284,7 +284,7 @@ export interface ValidationCheckStatus {
 }
 
 export const ValidationCheckStatus: Schema.Codec<ValidationCheckStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.Array(ValidationCheckResult)),
   }).annotate({ identifier: "ValidationCheckStatus" });
 
@@ -302,7 +302,7 @@ export interface ValidationCheck {
 }
 
 export const ValidationCheck: Schema.Codec<ValidationCheck> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(ValidationCheckStatus),
     scenario: Schema.optional(Schema.String),
     option: Schema.optional(Schema.String),
@@ -314,7 +314,7 @@ export interface BareMetalOsEnvironmentConfig {
 }
 
 export const BareMetalOsEnvironmentConfig: Schema.Codec<BareMetalOsEnvironmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageRepoExcluded: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BareMetalOsEnvironmentConfig" });
 
@@ -326,7 +326,7 @@ export interface BareMetalApiServerArgument {
 }
 
 export const BareMetalApiServerArgument: Schema.Codec<BareMetalApiServerArgument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     argument: Schema.optional(Schema.String),
   }).annotate({ identifier: "BareMetalApiServerArgument" });
@@ -337,7 +337,7 @@ export interface BareMetalControlPlaneNodePoolConfig {
 }
 
 export const BareMetalControlPlaneNodePoolConfig: Schema.Codec<BareMetalControlPlaneNodePoolConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
   }).annotate({ identifier: "BareMetalControlPlaneNodePoolConfig" });
 
@@ -349,7 +349,7 @@ export interface BareMetalControlPlaneConfig {
 }
 
 export const BareMetalControlPlaneConfig: Schema.Codec<BareMetalControlPlaneConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiServerArgs: Schema.optional(Schema.Array(BareMetalApiServerArgument)),
     controlPlaneNodePoolConfig: Schema.optional(
       BareMetalControlPlaneNodePoolConfig,
@@ -362,7 +362,7 @@ export interface ClusterUser {
 }
 
 export const ClusterUser: Schema.Codec<ClusterUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
   }).annotate({ identifier: "ClusterUser" });
 
@@ -372,7 +372,7 @@ export interface Authorization {
 }
 
 export const Authorization: Schema.Codec<Authorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adminUsers: Schema.optional(Schema.Array(ClusterUser)),
   }).annotate({ identifier: "Authorization" });
 
@@ -382,7 +382,7 @@ export interface BareMetalSecurityConfig {
 }
 
 export const BareMetalSecurityConfig: Schema.Codec<BareMetalSecurityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization: Schema.optional(Authorization),
   }).annotate({ identifier: "BareMetalSecurityConfig" });
 
@@ -394,7 +394,7 @@ export interface BareMetalProxyConfig {
 }
 
 export const BareMetalProxyConfig: Schema.Codec<BareMetalProxyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     noProxy: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BareMetalProxyConfig" });
@@ -411,7 +411,7 @@ export interface BareMetalClusterUpgradePolicy {
 }
 
 export const BareMetalClusterUpgradePolicy: Schema.Codec<BareMetalClusterUpgradePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pause: Schema.optional(Schema.Boolean),
     policy: Schema.optional(Schema.String),
   }).annotate({ identifier: "BareMetalClusterUpgradePolicy" });
@@ -435,7 +435,7 @@ export interface ResourceCondition {
 }
 
 export const ResourceCondition: Schema.Codec<ResourceCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -451,7 +451,7 @@ export interface Version {
 }
 
 export const Version: Schema.Codec<Version> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "Version" });
@@ -462,7 +462,7 @@ export interface Versions {
 }
 
 export const Versions: Schema.Codec<Versions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versions: Schema.optional(Schema.Array(Version)),
   }).annotate({ identifier: "Versions" });
 
@@ -478,7 +478,7 @@ export interface ResourceStatus {
 }
 
 export const ResourceStatus: Schema.Codec<ResourceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conditions: Schema.optional(Schema.Array(ResourceCondition)),
     errorMessage: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -493,7 +493,7 @@ export interface BareMetalLvpConfig {
 }
 
 export const BareMetalLvpConfig: Schema.Codec<BareMetalLvpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     storageClass: Schema.optional(Schema.String),
   }).annotate({ identifier: "BareMetalLvpConfig" });
@@ -506,7 +506,7 @@ export interface BareMetalLvpShareConfig {
 }
 
 export const BareMetalLvpShareConfig: Schema.Codec<BareMetalLvpShareConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lvpConfig: Schema.optional(BareMetalLvpConfig),
     sharedPathPvCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "BareMetalLvpShareConfig" });
@@ -519,7 +519,7 @@ export interface BareMetalStorageConfig {
 }
 
 export const BareMetalStorageConfig: Schema.Codec<BareMetalStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lvpShareConfig: Schema.optional(BareMetalLvpShareConfig),
     lvpNodeMountsConfig: Schema.optional(BareMetalLvpConfig),
   }).annotate({ identifier: "BareMetalStorageConfig" });
@@ -530,7 +530,7 @@ export interface BareMetalNodeAccessConfig {
 }
 
 export const BareMetalNodeAccessConfig: Schema.Codec<BareMetalNodeAccessConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loginUser: Schema.optional(Schema.String),
   }).annotate({ identifier: "BareMetalNodeAccessConfig" });
 
@@ -540,7 +540,7 @@ export interface BareMetalDrainedMachine {
 }
 
 export const BareMetalDrainedMachine: Schema.Codec<BareMetalDrainedMachine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodeIp: Schema.optional(Schema.String),
   }).annotate({ identifier: "BareMetalDrainedMachine" });
 
@@ -552,7 +552,7 @@ export interface BareMetalMachineDrainStatus {
 }
 
 export const BareMetalMachineDrainStatus: Schema.Codec<BareMetalMachineDrainStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     drainingMachines: Schema.optional(Schema.Array(BareMetalDrainingMachine)),
     drainedMachines: Schema.optional(Schema.Array(BareMetalDrainedMachine)),
   }).annotate({ identifier: "BareMetalMachineDrainStatus" });
@@ -563,7 +563,7 @@ export interface BareMetalMaintenanceStatus {
 }
 
 export const BareMetalMaintenanceStatus: Schema.Codec<BareMetalMaintenanceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     machineDrainStatus: Schema.optional(BareMetalMachineDrainStatus),
   }).annotate({ identifier: "BareMetalMaintenanceStatus" });
 
@@ -575,7 +575,7 @@ export interface BareMetalIslandModeCidrConfig {
 }
 
 export const BareMetalIslandModeCidrConfig: Schema.Codec<BareMetalIslandModeCidrConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
     podAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BareMetalIslandModeCidrConfig" });
@@ -586,7 +586,7 @@ export interface BareMetalSrIovConfig {
 }
 
 export const BareMetalSrIovConfig: Schema.Codec<BareMetalSrIovConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BareMetalSrIovConfig" });
 
@@ -596,7 +596,7 @@ export interface BareMetalMultipleNetworkInterfacesConfig {
 }
 
 export const BareMetalMultipleNetworkInterfacesConfig: Schema.Codec<BareMetalMultipleNetworkInterfacesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BareMetalMultipleNetworkInterfacesConfig" });
 
@@ -612,7 +612,7 @@ export interface BareMetalNetworkConfig {
 }
 
 export const BareMetalNetworkConfig: Schema.Codec<BareMetalNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     islandModeCidr: Schema.optional(BareMetalIslandModeCidrConfig),
     srIovConfig: Schema.optional(BareMetalSrIovConfig),
     advancedNetworking: Schema.optional(Schema.Boolean),
@@ -627,7 +627,7 @@ export interface BareMetalMaintenanceConfig {
 }
 
 export const BareMetalMaintenanceConfig: Schema.Codec<BareMetalMaintenanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maintenanceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BareMetalMaintenanceConfig" });
 
@@ -641,7 +641,7 @@ export interface BinaryAuthorization {
 }
 
 export const BinaryAuthorization: Schema.Codec<BinaryAuthorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     evaluationMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "BinaryAuthorization" });
 
@@ -651,7 +651,7 @@ export interface Fleet {
 }
 
 export const Fleet: Schema.Codec<Fleet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     membership: Schema.optional(Schema.String),
   }).annotate({ identifier: "Fleet" });
 
@@ -666,7 +666,7 @@ export interface BareMetalWorkloadNodeConfig {
 }
 
 export const BareMetalWorkloadNodeConfig: Schema.Codec<BareMetalWorkloadNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxPodsPerNode: Schema.optional(Schema.String),
     containerRuntime: Schema.optional(Schema.String),
   }).annotate({ identifier: "BareMetalWorkloadNodeConfig" });
@@ -679,7 +679,7 @@ export interface BareMetalVipConfig {
 }
 
 export const BareMetalVipConfig: Schema.Codec<BareMetalVipConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlPlaneVip: Schema.optional(Schema.String),
     ingressVip: Schema.optional(Schema.String),
   }).annotate({ identifier: "BareMetalVipConfig" });
@@ -696,7 +696,7 @@ export interface BareMetalLoadBalancerAddressPool {
 }
 
 export const BareMetalLoadBalancerAddressPool: Schema.Codec<BareMetalLoadBalancerAddressPool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pool: Schema.optional(Schema.String),
     addresses: Schema.optional(Schema.Array(Schema.String)),
     avoidBuggyIps: Schema.optional(Schema.Boolean),
@@ -709,7 +709,7 @@ export interface BareMetalLoadBalancerNodePoolConfig {
 }
 
 export const BareMetalLoadBalancerNodePoolConfig: Schema.Codec<BareMetalLoadBalancerNodePoolConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
   }).annotate({ identifier: "BareMetalLoadBalancerNodePoolConfig" });
 
@@ -721,7 +721,7 @@ export interface BareMetalMetalLbConfig {
 }
 
 export const BareMetalMetalLbConfig: Schema.Codec<BareMetalMetalLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addressPools: Schema.optional(
       Schema.Array(BareMetalLoadBalancerAddressPool),
     ),
@@ -736,7 +736,7 @@ export interface BareMetalPortConfig {
 }
 
 export const BareMetalPortConfig: Schema.Codec<BareMetalPortConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlPlaneLoadBalancerPort: Schema.optional(Schema.Number),
   }).annotate({ identifier: "BareMetalPortConfig" });
 
@@ -746,7 +746,7 @@ export interface BareMetalManualLbConfig {
 }
 
 export const BareMetalManualLbConfig: Schema.Codec<BareMetalManualLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BareMetalManualLbConfig" });
 
@@ -760,7 +760,7 @@ export interface BareMetalBgpPeerConfig {
 }
 
 export const BareMetalBgpPeerConfig: Schema.Codec<BareMetalBgpPeerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlPlaneNodes: Schema.optional(Schema.Array(Schema.String)),
     asn: Schema.optional(Schema.String),
     ipAddress: Schema.optional(Schema.String),
@@ -778,7 +778,7 @@ export interface BareMetalBgpLbConfig {
 }
 
 export const BareMetalBgpLbConfig: Schema.Codec<BareMetalBgpLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loadBalancerNodePoolConfig: Schema.optional(
       BareMetalLoadBalancerNodePoolConfig,
     ),
@@ -803,7 +803,7 @@ export interface BareMetalLoadBalancerConfig {
 }
 
 export const BareMetalLoadBalancerConfig: Schema.Codec<BareMetalLoadBalancerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vipConfig: Schema.optional(BareMetalVipConfig),
     metalLbConfig: Schema.optional(BareMetalMetalLbConfig),
     portConfig: Schema.optional(BareMetalPortConfig),
@@ -817,7 +817,7 @@ export interface BareMetalClusterOperationsConfig {
 }
 
 export const BareMetalClusterOperationsConfig: Schema.Codec<BareMetalClusterOperationsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableApplicationLogs: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BareMetalClusterOperationsConfig" });
 
@@ -899,7 +899,7 @@ export interface BareMetalCluster {
 }
 
 export const BareMetalCluster: Schema.Codec<BareMetalCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleteTime: Schema.optional(Schema.String),
     validationCheck: Schema.optional(ValidationCheck),
     osEnvironmentConfig: Schema.optional(BareMetalOsEnvironmentConfig),
@@ -943,7 +943,7 @@ export interface VmwareVipConfig {
 }
 
 export const VmwareVipConfig: Schema.Codec<VmwareVipConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlPlaneVip: Schema.optional(Schema.String),
     ingressVip: Schema.optional(Schema.String),
   }).annotate({ identifier: "VmwareVipConfig" });
@@ -958,7 +958,7 @@ export interface VmwareF5BigIpConfig {
 }
 
 export const VmwareF5BigIpConfig: Schema.Codec<VmwareF5BigIpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partition: Schema.optional(Schema.String),
     snatPool: Schema.optional(Schema.String),
     address: Schema.optional(Schema.String),
@@ -976,7 +976,7 @@ export interface VmwareManualLbConfig {
 }
 
 export const VmwareManualLbConfig: Schema.Codec<VmwareManualLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlPlaneNodePort: Schema.optional(Schema.Number),
     ingressHttpNodePort: Schema.optional(Schema.Number),
     ingressHttpsNodePort: Schema.optional(Schema.Number),
@@ -999,7 +999,7 @@ export interface VmwareSeesawConfig {
 }
 
 export const VmwareSeesawConfig: Schema.Codec<VmwareSeesawConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableHa: Schema.optional(Schema.Boolean),
     ipBlocks: Schema.optional(Schema.Array(VmwareIpBlock)),
     vms: Schema.optional(Schema.Array(Schema.String)),
@@ -1020,7 +1020,7 @@ export interface VmwareAddressPool {
 }
 
 export const VmwareAddressPool: Schema.Codec<VmwareAddressPool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     manualAssign: Schema.optional(Schema.Boolean),
     pool: Schema.optional(Schema.String),
     addresses: Schema.optional(Schema.Array(Schema.String)),
@@ -1033,7 +1033,7 @@ export interface VmwareMetalLbConfig {
 }
 
 export const VmwareMetalLbConfig: Schema.Codec<VmwareMetalLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addressPools: Schema.optional(Schema.Array(VmwareAddressPool)),
   }).annotate({ identifier: "VmwareMetalLbConfig" });
 
@@ -1051,7 +1051,7 @@ export interface VmwareLoadBalancerConfig {
 }
 
 export const VmwareLoadBalancerConfig: Schema.Codec<VmwareLoadBalancerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vipConfig: Schema.optional(VmwareVipConfig),
     f5Config: Schema.optional(VmwareF5BigIpConfig),
     manualLbConfig: Schema.optional(VmwareManualLbConfig),
@@ -1065,7 +1065,7 @@ export interface VmwareAdminMetalLbConfig {
 }
 
 export const VmwareAdminMetalLbConfig: Schema.Codec<VmwareAdminMetalLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "VmwareAdminMetalLbConfig" });
 
@@ -1081,7 +1081,7 @@ export interface UpgradeDependency {
 }
 
 export const UpgradeDependency: Schema.Codec<UpgradeDependency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     currentVersion: Schema.optional(Schema.String),
     targetVersion: Schema.optional(Schema.String),
@@ -1096,7 +1096,7 @@ export interface BareMetalAdminDrainingMachine {
 }
 
 export const BareMetalAdminDrainingMachine: Schema.Codec<BareMetalAdminDrainingMachine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodeIp: Schema.optional(Schema.String),
     podCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "BareMetalAdminDrainingMachine" });
@@ -1107,7 +1107,7 @@ export interface BareMetalAdminDrainedMachine {
 }
 
 export const BareMetalAdminDrainedMachine: Schema.Codec<BareMetalAdminDrainedMachine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodeIp: Schema.optional(Schema.String),
   }).annotate({ identifier: "BareMetalAdminDrainedMachine" });
 
@@ -1119,7 +1119,7 @@ export interface BareMetalAdminMachineDrainStatus {
 }
 
 export const BareMetalAdminMachineDrainStatus: Schema.Codec<BareMetalAdminMachineDrainStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     drainingMachines: Schema.optional(
       Schema.Array(BareMetalAdminDrainingMachine),
     ),
@@ -1134,7 +1134,7 @@ export interface BareMetalAdminMaintenanceStatus {
 }
 
 export const BareMetalAdminMaintenanceStatus: Schema.Codec<BareMetalAdminMaintenanceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     machineDrainStatus: Schema.optional(BareMetalAdminMachineDrainStatus),
   }).annotate({ identifier: "BareMetalAdminMaintenanceStatus" });
 
@@ -1146,7 +1146,7 @@ export interface VmwareAdminVipConfig {
 }
 
 export const VmwareAdminVipConfig: Schema.Codec<VmwareAdminVipConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlPlaneVip: Schema.optional(Schema.String),
     addonsVip: Schema.optional(Schema.String),
   }).annotate({ identifier: "VmwareAdminVipConfig" });
@@ -1161,7 +1161,7 @@ export interface BareMetalVersionInfo {
 }
 
 export const BareMetalVersionInfo: Schema.Codec<BareMetalVersionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dependencies: Schema.optional(Schema.Array(UpgradeDependency)),
     version: Schema.optional(Schema.String),
     hasDependencies: Schema.optional(Schema.Boolean),
@@ -1173,7 +1173,7 @@ export interface QueryBareMetalAdminVersionConfigResponse {
 }
 
 export const QueryBareMetalAdminVersionConfigResponse: Schema.Codec<QueryBareMetalAdminVersionConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versions: Schema.optional(Schema.Array(BareMetalVersionInfo)),
   }).annotate({ identifier: "QueryBareMetalAdminVersionConfigResponse" });
 
@@ -1189,7 +1189,7 @@ export interface Expr {
 }
 
 export const Expr: Schema.Codec<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1206,7 +1206,7 @@ export interface Binding {
 }
 
 export const Binding: Schema.Codec<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(Expr),
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -1222,7 +1222,7 @@ export interface Policy {
 }
 
 export const Policy: Schema.Codec<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     etag: Schema.optional(Schema.String),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -1234,14 +1234,14 @@ export interface BareMetalAdminWorkloadNodeConfig {
 }
 
 export const BareMetalAdminWorkloadNodeConfig: Schema.Codec<BareMetalAdminWorkloadNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxPodsPerNode: Schema.optional(Schema.String),
   }).annotate({ identifier: "BareMetalAdminWorkloadNodeConfig" });
 
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -1251,7 +1251,7 @@ export interface BareMetalAdminSecurityConfig {
 }
 
 export const BareMetalAdminSecurityConfig: Schema.Codec<BareMetalAdminSecurityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization: Schema.optional(Authorization),
   }).annotate({ identifier: "BareMetalAdminSecurityConfig" });
 
@@ -1261,7 +1261,7 @@ export interface VmwareAdminHAControlPlaneConfig {
 }
 
 export const VmwareAdminHAControlPlaneConfig: Schema.Codec<VmwareAdminHAControlPlaneConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlPlaneIpBlock: Schema.optional(VmwareIpBlock),
   }).annotate({ identifier: "VmwareAdminHAControlPlaneConfig" });
 
@@ -1271,7 +1271,7 @@ export interface BareMetalAdminVipConfig {
 }
 
 export const BareMetalAdminVipConfig: Schema.Codec<BareMetalAdminVipConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlPlaneVip: Schema.optional(Schema.String),
   }).annotate({ identifier: "BareMetalAdminVipConfig" });
 
@@ -1281,7 +1281,7 @@ export interface BareMetalAdminPortConfig {
 }
 
 export const BareMetalAdminPortConfig: Schema.Codec<BareMetalAdminPortConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlPlaneLoadBalancerPort: Schema.optional(Schema.Number),
   }).annotate({ identifier: "BareMetalAdminPortConfig" });
 
@@ -1291,7 +1291,7 @@ export interface BareMetalAdminManualLbConfig {
 }
 
 export const BareMetalAdminManualLbConfig: Schema.Codec<BareMetalAdminManualLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BareMetalAdminManualLbConfig" });
 
@@ -1305,7 +1305,7 @@ export interface BareMetalAdminBgpPeerConfig {
 }
 
 export const BareMetalAdminBgpPeerConfig: Schema.Codec<BareMetalAdminBgpPeerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asn: Schema.optional(Schema.String),
     ipAddress: Schema.optional(Schema.String),
     controlPlaneNodes: Schema.optional(Schema.Array(Schema.String)),
@@ -1323,7 +1323,7 @@ export interface BareMetalAdminLoadBalancerAddressPool {
 }
 
 export const BareMetalAdminLoadBalancerAddressPool: Schema.Codec<BareMetalAdminLoadBalancerAddressPool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     manualAssign: Schema.optional(Schema.Boolean),
     pool: Schema.optional(Schema.String),
     addresses: Schema.optional(Schema.Array(Schema.String)),
@@ -1336,7 +1336,7 @@ export interface BareMetalAdminLoadBalancerNodePoolConfig {
 }
 
 export const BareMetalAdminLoadBalancerNodePoolConfig: Schema.Codec<BareMetalAdminLoadBalancerNodePoolConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
   }).annotate({ identifier: "BareMetalAdminLoadBalancerNodePoolConfig" });
 
@@ -1352,7 +1352,7 @@ export interface BareMetalAdminBgpLbConfig {
 }
 
 export const BareMetalAdminBgpLbConfig: Schema.Codec<BareMetalAdminBgpLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bgpPeerConfigs: Schema.optional(Schema.Array(BareMetalAdminBgpPeerConfig)),
     asn: Schema.optional(Schema.String),
     addressPools: Schema.optional(
@@ -1375,7 +1375,7 @@ export interface BareMetalAdminLoadBalancerConfig {
 }
 
 export const BareMetalAdminLoadBalancerConfig: Schema.Codec<BareMetalAdminLoadBalancerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vipConfig: Schema.optional(BareMetalAdminVipConfig),
     portConfig: Schema.optional(BareMetalAdminPortConfig),
     manualLbConfig: Schema.optional(BareMetalAdminManualLbConfig),
@@ -1388,7 +1388,7 @@ export interface BareMetalAdminMaintenanceConfig {
 }
 
 export const BareMetalAdminMaintenanceConfig: Schema.Codec<BareMetalAdminMaintenanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maintenanceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BareMetalAdminMaintenanceConfig" });
 
@@ -1402,7 +1402,7 @@ export interface ListBareMetalClustersResponse {
 }
 
 export const ListBareMetalClustersResponse: Schema.Codec<ListBareMetalClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     bareMetalClusters: Schema.optional(Schema.Array(BareMetalCluster)),
@@ -1416,7 +1416,7 @@ export interface BareMetalAdminStorageConfig {
 }
 
 export const BareMetalAdminStorageConfig: Schema.Codec<BareMetalAdminStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lvpShareConfig: Schema.optional(BareMetalLvpShareConfig),
     lvpNodeMountsConfig: Schema.optional(BareMetalLvpConfig),
   }).annotate({ identifier: "BareMetalAdminStorageConfig" });
@@ -1427,7 +1427,7 @@ export interface BareMetalAdminNodeAccessConfig {
 }
 
 export const BareMetalAdminNodeAccessConfig: Schema.Codec<BareMetalAdminNodeAccessConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loginUser: Schema.optional(Schema.String),
   }).annotate({ identifier: "BareMetalAdminNodeAccessConfig" });
 
@@ -1439,7 +1439,7 @@ export interface BareMetalAdminProxyConfig {
 }
 
 export const BareMetalAdminProxyConfig: Schema.Codec<BareMetalAdminProxyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     noProxy: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BareMetalAdminProxyConfig" });
@@ -1450,7 +1450,7 @@ export interface BareMetalAdminOsEnvironmentConfig {
 }
 
 export const BareMetalAdminOsEnvironmentConfig: Schema.Codec<BareMetalAdminOsEnvironmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageRepoExcluded: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BareMetalAdminOsEnvironmentConfig" });
 
@@ -1460,7 +1460,7 @@ export interface BareMetalAdminClusterOperationsConfig {
 }
 
 export const BareMetalAdminClusterOperationsConfig: Schema.Codec<BareMetalAdminClusterOperationsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableApplicationLogs: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BareMetalAdminClusterOperationsConfig" });
 
@@ -1470,7 +1470,7 @@ export interface BareMetalAdminMultipleNetworkInterfacesConfig {
 }
 
 export const BareMetalAdminMultipleNetworkInterfacesConfig: Schema.Codec<BareMetalAdminMultipleNetworkInterfacesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BareMetalAdminMultipleNetworkInterfacesConfig" });
 
@@ -1482,7 +1482,7 @@ export interface BareMetalAdminIslandModeCidrConfig {
 }
 
 export const BareMetalAdminIslandModeCidrConfig: Schema.Codec<BareMetalAdminIslandModeCidrConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
     podAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BareMetalAdminIslandModeCidrConfig" });
@@ -1497,7 +1497,7 @@ export interface BareMetalAdminNetworkConfig {
 }
 
 export const BareMetalAdminNetworkConfig: Schema.Codec<BareMetalAdminNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     advancedNetworking: Schema.optional(Schema.Boolean),
     multipleNetworkInterfacesConfig: Schema.optional(
       BareMetalAdminMultipleNetworkInterfacesConfig,
@@ -1575,7 +1575,7 @@ export interface BareMetalAdminCluster {
 }
 
 export const BareMetalAdminCluster: Schema.Codec<BareMetalAdminCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storage: Schema.optional(BareMetalAdminStorageConfig),
     nodeAccessConfig: Schema.optional(BareMetalAdminNodeAccessConfig),
     status: Schema.optional(ResourceStatus),
@@ -1617,7 +1617,7 @@ export interface ListBareMetalAdminClustersResponse {
 }
 
 export const ListBareMetalAdminClustersResponse: Schema.Codec<ListBareMetalAdminClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     bareMetalAdminClusters: Schema.optional(
       Schema.Array(BareMetalAdminCluster),
@@ -1633,7 +1633,7 @@ export interface EnrollBareMetalAdminClusterRequest {
 }
 
 export const EnrollBareMetalAdminClusterRequest: Schema.Codec<EnrollBareMetalAdminClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     membership: Schema.optional(Schema.String),
     bareMetalAdminClusterId: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnrollBareMetalAdminClusterRequest" });
@@ -1644,7 +1644,7 @@ export interface VmwareAAGConfig {
 }
 
 export const VmwareAAGConfig: Schema.Codec<VmwareAAGConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aagConfigDisabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "VmwareAAGConfig" });
 
@@ -1664,7 +1664,7 @@ export interface VmwareAdminSeesawConfig {
 }
 
 export const VmwareAdminSeesawConfig: Schema.Codec<VmwareAdminSeesawConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     group: Schema.optional(Schema.String),
     masterIp: Schema.optional(Schema.String),
     stackdriverName: Schema.optional(Schema.String),
@@ -1679,7 +1679,7 @@ export interface SetIamPolicyRequest {
 }
 
 export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
 
@@ -1691,7 +1691,7 @@ export interface VmwareAdminProxy {
 }
 
 export const VmwareAdminProxy: Schema.Codec<VmwareAdminProxy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     noProxy: Schema.optional(Schema.String),
   }).annotate({ identifier: "VmwareAdminProxy" });
@@ -1714,7 +1714,7 @@ export interface VmwareAdminNetworkConfig {
 }
 
 export const VmwareAdminNetworkConfig: Schema.Codec<VmwareAdminNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     haControlPlaneConfig: Schema.optional(VmwareAdminHAControlPlaneConfig),
     serviceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
     podAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
@@ -1732,7 +1732,7 @@ export interface VmwareAdminPrivateRegistryConfig {
 }
 
 export const VmwareAdminPrivateRegistryConfig: Schema.Codec<VmwareAdminPrivateRegistryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     caCert: Schema.optional(Schema.String),
   }).annotate({ identifier: "VmwareAdminPrivateRegistryConfig" });
@@ -1743,7 +1743,7 @@ export interface VmwareClusterUpgradePolicy {
 }
 
 export const VmwareClusterUpgradePolicy: Schema.Codec<VmwareClusterUpgradePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     controlPlaneOnly: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "VmwareClusterUpgradePolicy" });
 
@@ -1774,7 +1774,7 @@ export interface Metric {
 }
 
 export const Metric: Schema.Codec<Metric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intValue: Schema.optional(Schema.String),
     doubleValue: Schema.optional(Schema.Number),
     metric: Schema.optional(Schema.String),
@@ -1793,7 +1793,7 @@ export interface EnrollVmwareClusterRequest {
 }
 
 export const EnrollVmwareClusterRequest: Schema.Codec<EnrollVmwareClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vmwareClusterId: Schema.optional(Schema.String),
     validateOnly: Schema.optional(Schema.Boolean),
     localName: Schema.optional(Schema.String),
@@ -1803,7 +1803,7 @@ export const EnrollVmwareClusterRequest: Schema.Codec<EnrollVmwareClusterRequest
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -1819,7 +1819,7 @@ export interface VmwareDataplaneV2Config {
 }
 
 export const VmwareDataplaneV2Config: Schema.Codec<VmwareDataplaneV2Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     windowsDataplaneV2Enabled: Schema.optional(Schema.Boolean),
     dataplaneV2Enabled: Schema.optional(Schema.Boolean),
     advancedNetworking: Schema.optional(Schema.Boolean),
@@ -1832,7 +1832,7 @@ export interface EnrollVmwareNodePoolRequest {
 }
 
 export const EnrollVmwareNodePoolRequest: Schema.Codec<EnrollVmwareNodePoolRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vmwareNodePoolId: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnrollVmwareNodePoolRequest" });
 
@@ -1842,7 +1842,7 @@ export interface VmwareAdminAuthorizationConfig {
 }
 
 export const VmwareAdminAuthorizationConfig: Schema.Codec<VmwareAdminAuthorizationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     viewerUsers: Schema.optional(Schema.Array(ClusterUser)),
   }).annotate({ identifier: "VmwareAdminAuthorizationConfig" });
 
@@ -1852,7 +1852,7 @@ export interface VmwareAdminPreparedSecretsConfig {
 }
 
 export const VmwareAdminPreparedSecretsConfig: Schema.Codec<VmwareAdminPreparedSecretsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "VmwareAdminPreparedSecretsConfig" });
 
@@ -1862,7 +1862,7 @@ export interface VmwareStorageConfig {
 }
 
 export const VmwareStorageConfig: Schema.Codec<VmwareStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vsphereCsiDisabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "VmwareStorageConfig" });
 
@@ -1876,7 +1876,7 @@ export interface VmwareAdminControlPlaneNodeConfig {
 }
 
 export const VmwareAdminControlPlaneNodeConfig: Schema.Codec<VmwareAdminControlPlaneNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     memory: Schema.optional(Schema.String),
     replicas: Schema.optional(Schema.String),
     cpus: Schema.optional(Schema.String),
@@ -1888,7 +1888,7 @@ export interface VmwareAutoResizeConfig {
 }
 
 export const VmwareAutoResizeConfig: Schema.Codec<VmwareAutoResizeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "VmwareAutoResizeConfig" });
 
@@ -1898,7 +1898,7 @@ export interface VmwareAdminAddonNodeConfig {
 }
 
 export const VmwareAdminAddonNodeConfig: Schema.Codec<VmwareAdminAddonNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     autoResizeConfig: Schema.optional(VmwareAutoResizeConfig),
   }).annotate({ identifier: "VmwareAdminAddonNodeConfig" });
 
@@ -1910,7 +1910,7 @@ export interface VmwareBundleConfig {
 }
 
 export const VmwareBundleConfig: Schema.Codec<VmwareBundleConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(ResourceStatus),
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "VmwareBundleConfig" });
@@ -1927,7 +1927,7 @@ export interface VmwarePlatformConfig {
 }
 
 export const VmwarePlatformConfig: Schema.Codec<VmwarePlatformConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requiredPlatformVersion: Schema.optional(Schema.String),
     bundles: Schema.optional(Schema.Array(VmwareBundleConfig)),
     status: Schema.optional(ResourceStatus),
@@ -1940,7 +1940,7 @@ export interface VmwareAutoRepairConfig {
 }
 
 export const VmwareAutoRepairConfig: Schema.Codec<VmwareAutoRepairConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "VmwareAutoRepairConfig" });
 
@@ -1958,7 +1958,7 @@ export interface VmwareAdminManualLbConfig {
 }
 
 export const VmwareAdminManualLbConfig: Schema.Codec<VmwareAdminManualLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ingressHttpsNodePort: Schema.optional(Schema.Number),
     konnectivityServerNodePort: Schema.optional(Schema.Number),
     addonsNodePort: Schema.optional(Schema.Number),
@@ -1976,7 +1976,7 @@ export interface VmwareAdminF5BigIpConfig {
 }
 
 export const VmwareAdminF5BigIpConfig: Schema.Codec<VmwareAdminF5BigIpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     partition: Schema.optional(Schema.String),
     snatPool: Schema.optional(Schema.String),
@@ -1996,7 +1996,7 @@ export interface VmwareAdminLoadBalancerConfig {
 }
 
 export const VmwareAdminLoadBalancerConfig: Schema.Codec<VmwareAdminLoadBalancerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     manualLbConfig: Schema.optional(VmwareAdminManualLbConfig),
     metalLbConfig: Schema.optional(VmwareAdminMetalLbConfig),
     seesawConfig: Schema.optional(VmwareAdminSeesawConfig),
@@ -2026,7 +2026,7 @@ export interface VmwareAdminVCenterConfig {
 }
 
 export const VmwareAdminVCenterConfig: Schema.Codec<VmwareAdminVCenterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     folder: Schema.optional(Schema.String),
     resourcePool: Schema.optional(Schema.String),
     storagePolicyName: Schema.optional(Schema.String),
@@ -2110,7 +2110,7 @@ export interface VmwareAdminCluster {
 }
 
 export const VmwareAdminCluster: Schema.Codec<VmwareAdminCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     antiAffinityGroups: Schema.optional(VmwareAAGConfig),
     preparedSecrets: Schema.optional(VmwareAdminPreparedSecretsConfig),
     status: Schema.optional(ResourceStatus),
@@ -2153,7 +2153,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -2175,7 +2175,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
     error: Schema.optional(Status),
@@ -2193,7 +2193,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2226,7 +2226,7 @@ export interface OperationStage {
 }
 
 export const OperationStage: Schema.Codec<OperationStage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Metric)),
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -2240,7 +2240,7 @@ export interface OperationProgress {
 }
 
 export const OperationProgress: Schema.Codec<OperationProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stages: Schema.optional(Schema.Array(OperationStage)),
   }).annotate({ identifier: "OperationProgress" });
 
@@ -2256,7 +2256,7 @@ export interface VmwareVersionInfo {
 }
 
 export const VmwareVersionInfo: Schema.Codec<VmwareVersionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     hasDependencies: Schema.optional(Schema.Boolean),
     isInstalled: Schema.optional(Schema.Boolean),
@@ -2269,7 +2269,7 @@ export interface QueryVmwareVersionConfigResponse {
 }
 
 export const QueryVmwareVersionConfigResponse: Schema.Codec<QueryVmwareVersionConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versions: Schema.optional(Schema.Array(VmwareVersionInfo)),
   }).annotate({ identifier: "QueryVmwareVersionConfigResponse" });
 
@@ -2281,7 +2281,7 @@ export interface VmwareNodePoolAutoscalingConfig {
 }
 
 export const VmwareNodePoolAutoscalingConfig: Schema.Codec<VmwareNodePoolAutoscalingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minReplicas: Schema.optional(Schema.Number),
     maxReplicas: Schema.optional(Schema.Number),
   }).annotate({ identifier: "VmwareNodePoolAutoscalingConfig" });
@@ -2294,7 +2294,7 @@ export interface VmwareVsphereTag {
 }
 
 export const VmwareVsphereTag: Schema.Codec<VmwareVsphereTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
   }).annotate({ identifier: "VmwareVsphereTag" });
@@ -2309,7 +2309,7 @@ export interface VmwareVsphereConfig {
 }
 
 export const VmwareVsphereConfig: Schema.Codec<VmwareVsphereConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hostGroups: Schema.optional(Schema.Array(Schema.String)),
     datastore: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Array(VmwareVsphereTag)),
@@ -2339,7 +2339,7 @@ export interface VmwareNodeConfig {
 }
 
 export const VmwareNodeConfig: Schema.Codec<VmwareNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     replicas: Schema.optional(Schema.String),
     image: Schema.optional(Schema.String),
     enableLoadBalancer: Schema.optional(Schema.Boolean),
@@ -2392,7 +2392,7 @@ export interface VmwareNodePool {
 }
 
 export const VmwareNodePool: Schema.Codec<VmwareNodePool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     updateTime: Schema.optional(Schema.String),
     status: Schema.optional(ResourceStatus),
@@ -2419,7 +2419,7 @@ export interface ListVmwareNodePoolsResponse {
 }
 
 export const ListVmwareNodePoolsResponse: Schema.Codec<ListVmwareNodePoolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vmwareNodePools: Schema.optional(Schema.Array(VmwareNodePool)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2433,7 +2433,7 @@ export interface BareMetalParallelUpgradeConfig {
 }
 
 export const BareMetalParallelUpgradeConfig: Schema.Codec<BareMetalParallelUpgradeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minimumAvailableNodes: Schema.optional(Schema.Number),
     concurrentNodes: Schema.optional(Schema.Number),
   }).annotate({ identifier: "BareMetalParallelUpgradeConfig" });
@@ -2444,7 +2444,7 @@ export interface BareMetalNodePoolUpgradePolicy {
 }
 
 export const BareMetalNodePoolUpgradePolicy: Schema.Codec<BareMetalNodePoolUpgradePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parallelUpgradeConfig: Schema.optional(BareMetalParallelUpgradeConfig),
   }).annotate({ identifier: "BareMetalNodePoolUpgradePolicy" });
 
@@ -2486,7 +2486,7 @@ export interface BareMetalNodePool {
 }
 
 export const BareMetalNodePool: Schema.Codec<BareMetalNodePool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     updateTime: Schema.optional(Schema.String),
     status: Schema.optional(ResourceStatus),
@@ -2512,7 +2512,7 @@ export interface ListBareMetalNodePoolsResponse {
 }
 
 export const ListBareMetalNodePoolsResponse: Schema.Codec<ListBareMetalNodePoolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bareMetalNodePools: Schema.optional(Schema.Array(BareMetalNodePool)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -2549,7 +2549,7 @@ export interface OperationMetadata {
 }
 
 export const OperationMetadata: Schema.Codec<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2570,7 +2570,7 @@ export interface VmwareControlPlaneVsphereConfig {
 }
 
 export const VmwareControlPlaneVsphereConfig: Schema.Codec<VmwareControlPlaneVsphereConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     datastore: Schema.optional(Schema.String),
     storagePolicyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "VmwareControlPlaneVsphereConfig" });
@@ -2581,7 +2581,7 @@ export interface QueryBareMetalVersionConfigResponse {
 }
 
 export const QueryBareMetalVersionConfigResponse: Schema.Codec<QueryBareMetalVersionConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versions: Schema.optional(Schema.Array(BareMetalVersionInfo)),
   }).annotate({ identifier: "QueryBareMetalVersionConfigResponse" });
 
@@ -2593,7 +2593,7 @@ export interface EnrollBareMetalNodePoolRequest {
 }
 
 export const EnrollBareMetalNodePoolRequest: Schema.Codec<EnrollBareMetalNodePoolRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bareMetalNodePoolId: Schema.optional(Schema.String),
     validateOnly: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "EnrollBareMetalNodePoolRequest" });
@@ -2604,7 +2604,7 @@ export interface TestIamPermissionsRequest {
 }
 
 export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
@@ -2616,7 +2616,7 @@ export interface EnrollVmwareAdminClusterRequest {
 }
 
 export const EnrollVmwareAdminClusterRequest: Schema.Codec<EnrollVmwareAdminClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     membership: Schema.optional(Schema.String),
     vmwareAdminClusterId: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnrollVmwareAdminClusterRequest" });
@@ -2627,7 +2627,7 @@ export interface TestIamPermissionsResponse {
 }
 
 export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
@@ -2645,7 +2645,7 @@ export interface VmwareControlPlaneNodeConfig {
 }
 
 export const VmwareControlPlaneNodeConfig: Schema.Codec<VmwareControlPlaneNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     memory: Schema.optional(Schema.String),
     autoResizeConfig: Schema.optional(VmwareAutoResizeConfig),
     cpus: Schema.optional(Schema.String),
@@ -2667,7 +2667,7 @@ export interface Location {
 }
 
 export const Location: Schema.Codec<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     name: Schema.optional(Schema.String),
@@ -2683,7 +2683,7 @@ export interface ListLocationsResponse {
 }
 
 export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListLocationsResponse" });
@@ -2708,7 +2708,7 @@ export interface VmwareVCenterConfig {
 }
 
 export const VmwareVCenterConfig: Schema.Codec<VmwareVCenterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     caCertData: Schema.optional(Schema.String),
     datastore: Schema.optional(Schema.String),
     datacenter: Schema.optional(Schema.String),
@@ -2797,7 +2797,7 @@ export interface VmwareCluster {
 }
 
 export const VmwareCluster: Schema.Codec<VmwareCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     upgradePolicy: Schema.optional(VmwareClusterUpgradePolicy),
     controlPlaneNode: Schema.optional(VmwareControlPlaneNodeConfig),
     status: Schema.optional(ResourceStatus),
@@ -2843,7 +2843,7 @@ export interface ListVmwareClustersResponse {
 }
 
 export const ListVmwareClustersResponse: Schema.Codec<ListVmwareClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     vmwareClusters: Schema.optional(Schema.Array(VmwareCluster)),
@@ -2859,7 +2859,7 @@ export interface ListVmwareAdminClustersResponse {
 }
 
 export const ListVmwareAdminClustersResponse: Schema.Codec<ListVmwareAdminClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vmwareAdminClusters: Schema.optional(Schema.Array(VmwareAdminCluster)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -2877,7 +2877,7 @@ export interface EnrollBareMetalClusterRequest {
 }
 
 export const EnrollBareMetalClusterRequest: Schema.Codec<EnrollBareMetalClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bareMetalClusterId: Schema.optional(Schema.String),
     localNamespace: Schema.optional(Schema.String),
     localName: Schema.optional(Schema.String),
@@ -2952,7 +2952,7 @@ export interface ListProjectsLocationsRequest {
 }
 
 export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
@@ -2967,7 +2967,7 @@ export const ListProjectsLocationsRequest =
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+  /*@__PURE__*/ ListLocationsResponse;
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2977,7 +2977,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsResponse,
   ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -2993,7 +2993,7 @@ export interface GetProjectsLocationsRequest {
 }
 
 export const GetProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -3001,8 +3001,7 @@ export const GetProjectsLocationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
-export const GetProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Location;
+export const GetProjectsLocationsResponse = /*@__PURE__*/ Location;
 
 export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3012,7 +3011,7 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsResponse,
   GetProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -3026,7 +3025,7 @@ export interface SetIamPolicyProjectsLocationsVmwareClustersRequest {
 }
 
 export const SetIamPolicyProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3040,7 +3039,7 @@ export const SetIamPolicyProjectsLocationsVmwareClustersRequest =
 
 export type SetIamPolicyProjectsLocationsVmwareClustersResponse = Policy;
 export const SetIamPolicyProjectsLocationsVmwareClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsVmwareClustersError =
   | DefaultErrors
@@ -3055,7 +3054,7 @@ export const setIamPolicyProjectsLocationsVmwareClusters: API.OperationMethod<
   SetIamPolicyProjectsLocationsVmwareClustersResponse,
   SetIamPolicyProjectsLocationsVmwareClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsVmwareClustersRequest,
   output: SetIamPolicyProjectsLocationsVmwareClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3075,7 +3074,7 @@ export interface UnenrollProjectsLocationsVmwareClustersRequest {
 }
 
 export const UnenrollProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
     ),
@@ -3092,7 +3091,7 @@ export const UnenrollProjectsLocationsVmwareClustersRequest =
 
 export type UnenrollProjectsLocationsVmwareClustersResponse = Operation;
 export const UnenrollProjectsLocationsVmwareClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type UnenrollProjectsLocationsVmwareClustersError =
   | DefaultErrors
@@ -3107,7 +3106,7 @@ export const unenrollProjectsLocationsVmwareClusters: API.OperationMethod<
   UnenrollProjectsLocationsVmwareClustersResponse,
   UnenrollProjectsLocationsVmwareClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnenrollProjectsLocationsVmwareClustersRequest,
   output: UnenrollProjectsLocationsVmwareClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3129,7 +3128,7 @@ export interface CreateProjectsLocationsVmwareClustersRequest {
 }
 
 export const CreateProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
@@ -3155,7 +3154,7 @@ export const CreateProjectsLocationsVmwareClustersRequest =
 
 export type CreateProjectsLocationsVmwareClustersResponse = Operation;
 export const CreateProjectsLocationsVmwareClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsVmwareClustersError =
   | DefaultErrors
@@ -3170,7 +3169,7 @@ export const createProjectsLocationsVmwareClusters: API.OperationMethod<
   CreateProjectsLocationsVmwareClustersResponse,
   CreateProjectsLocationsVmwareClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsVmwareClustersRequest,
   output: CreateProjectsLocationsVmwareClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3188,7 +3187,7 @@ export interface QueryVersionConfigProjectsLocationsVmwareClustersRequest {
 }
 
 export const QueryVersionConfigProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "createConfig.adminClusterMembership": Schema.optional(Schema.String).pipe(
       T.HttpQuery("createConfig.adminClusterMembership"),
     ),
@@ -3211,7 +3210,7 @@ export const QueryVersionConfigProjectsLocationsVmwareClustersRequest =
 export type QueryVersionConfigProjectsLocationsVmwareClustersResponse =
   QueryVmwareVersionConfigResponse;
 export const QueryVersionConfigProjectsLocationsVmwareClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ QueryVmwareVersionConfigResponse;
+  /*@__PURE__*/ QueryVmwareVersionConfigResponse;
 
 export type QueryVersionConfigProjectsLocationsVmwareClustersError =
   | DefaultErrors
@@ -3226,7 +3225,7 @@ export const queryVersionConfigProjectsLocationsVmwareClusters: API.OperationMet
   QueryVersionConfigProjectsLocationsVmwareClustersResponse,
   QueryVersionConfigProjectsLocationsVmwareClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryVersionConfigProjectsLocationsVmwareClustersRequest,
   output: QueryVersionConfigProjectsLocationsVmwareClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3240,7 +3239,7 @@ export interface EnrollProjectsLocationsVmwareClustersRequest {
 }
 
 export const EnrollProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(EnrollVmwareClusterRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3254,7 +3253,7 @@ export const EnrollProjectsLocationsVmwareClustersRequest =
 
 export type EnrollProjectsLocationsVmwareClustersResponse = Operation;
 export const EnrollProjectsLocationsVmwareClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type EnrollProjectsLocationsVmwareClustersError =
   | DefaultErrors
@@ -3269,7 +3268,7 @@ export const enrollProjectsLocationsVmwareClusters: API.OperationMethod<
   EnrollProjectsLocationsVmwareClustersResponse,
   EnrollProjectsLocationsVmwareClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnrollProjectsLocationsVmwareClustersRequest,
   output: EnrollProjectsLocationsVmwareClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3291,7 +3290,7 @@ export interface DeleteProjectsLocationsVmwareClustersRequest {
 }
 
 export const DeleteProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -3311,7 +3310,7 @@ export const DeleteProjectsLocationsVmwareClustersRequest =
 
 export type DeleteProjectsLocationsVmwareClustersResponse = Operation;
 export const DeleteProjectsLocationsVmwareClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsVmwareClustersError =
   | DefaultErrors
@@ -3326,7 +3325,7 @@ export const deleteProjectsLocationsVmwareClusters: API.OperationMethod<
   DeleteProjectsLocationsVmwareClustersResponse,
   DeleteProjectsLocationsVmwareClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsVmwareClustersRequest,
   output: DeleteProjectsLocationsVmwareClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3345,7 +3344,7 @@ export interface PatchProjectsLocationsVmwareClustersRequest {
 }
 
 export const PatchProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
@@ -3362,7 +3361,7 @@ export const PatchProjectsLocationsVmwareClustersRequest =
 
 export type PatchProjectsLocationsVmwareClustersResponse = Operation;
 export const PatchProjectsLocationsVmwareClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsVmwareClustersError =
   | DefaultErrors
@@ -3377,7 +3376,7 @@ export const patchProjectsLocationsVmwareClusters: API.OperationMethod<
   PatchProjectsLocationsVmwareClustersResponse,
   PatchProjectsLocationsVmwareClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsVmwareClustersRequest,
   output: PatchProjectsLocationsVmwareClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3391,7 +3390,7 @@ export interface TestIamPermissionsProjectsLocationsVmwareClustersRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3406,7 +3405,7 @@ export const TestIamPermissionsProjectsLocationsVmwareClustersRequest =
 export type TestIamPermissionsProjectsLocationsVmwareClustersResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsVmwareClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsVmwareClustersError =
   | DefaultErrors
@@ -3421,7 +3420,7 @@ export const testIamPermissionsProjectsLocationsVmwareClusters: API.OperationMet
   TestIamPermissionsProjectsLocationsVmwareClustersResponse,
   TestIamPermissionsProjectsLocationsVmwareClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsVmwareClustersRequest,
   output: TestIamPermissionsProjectsLocationsVmwareClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3437,7 +3436,7 @@ export interface GetProjectsLocationsVmwareClustersRequest {
 }
 
 export const GetProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -3450,7 +3449,7 @@ export const GetProjectsLocationsVmwareClustersRequest =
 
 export type GetProjectsLocationsVmwareClustersResponse = VmwareCluster;
 export const GetProjectsLocationsVmwareClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VmwareCluster;
+  /*@__PURE__*/ VmwareCluster;
 
 export type GetProjectsLocationsVmwareClustersError =
   | DefaultErrors
@@ -3463,7 +3462,7 @@ export const getProjectsLocationsVmwareClusters: API.OperationMethod<
   GetProjectsLocationsVmwareClustersResponse,
   GetProjectsLocationsVmwareClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareClustersRequest,
   output: GetProjectsLocationsVmwareClustersResponse,
   errors: [NotFound, Forbidden],
@@ -3485,7 +3484,7 @@ export interface ListProjectsLocationsVmwareClustersRequest {
 }
 
 export const ListProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -3502,7 +3501,7 @@ export const ListProjectsLocationsVmwareClustersRequest =
 export type ListProjectsLocationsVmwareClustersResponse =
   ListVmwareClustersResponse;
 export const ListProjectsLocationsVmwareClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVmwareClustersResponse;
+  /*@__PURE__*/ ListVmwareClustersResponse;
 
 export type ListProjectsLocationsVmwareClustersError =
   | DefaultErrors
@@ -3515,7 +3514,7 @@ export const listProjectsLocationsVmwareClusters: API.PaginatedOperationMethod<
   ListProjectsLocationsVmwareClustersResponse,
   ListProjectsLocationsVmwareClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVmwareClustersRequest,
   output: ListProjectsLocationsVmwareClustersResponse,
   errors: [NotFound, Forbidden],
@@ -3533,7 +3532,7 @@ export interface GetIamPolicyProjectsLocationsVmwareClustersRequest {
 }
 
 export const GetIamPolicyProjectsLocationsVmwareClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -3545,7 +3544,7 @@ export const GetIamPolicyProjectsLocationsVmwareClustersRequest =
 
 export type GetIamPolicyProjectsLocationsVmwareClustersResponse = Policy;
 export const GetIamPolicyProjectsLocationsVmwareClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsVmwareClustersError =
   | DefaultErrors
@@ -3558,7 +3557,7 @@ export const getIamPolicyProjectsLocationsVmwareClusters: API.OperationMethod<
   GetIamPolicyProjectsLocationsVmwareClustersResponse,
   GetIamPolicyProjectsLocationsVmwareClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsVmwareClustersRequest,
   output: GetIamPolicyProjectsLocationsVmwareClustersResponse,
   errors: [NotFound, Forbidden],
@@ -3570,7 +3569,7 @@ export interface GetProjectsLocationsVmwareClustersOperationsRequest {
 }
 
 export const GetProjectsLocationsVmwareClustersOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -3579,7 +3578,7 @@ export const GetProjectsLocationsVmwareClustersOperationsRequest =
 
 export type GetProjectsLocationsVmwareClustersOperationsResponse = Operation;
 export const GetProjectsLocationsVmwareClustersOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsVmwareClustersOperationsError =
   | DefaultErrors
@@ -3592,7 +3591,7 @@ export const getProjectsLocationsVmwareClustersOperations: API.OperationMethod<
   GetProjectsLocationsVmwareClustersOperationsResponse,
   GetProjectsLocationsVmwareClustersOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareClustersOperationsRequest,
   output: GetProjectsLocationsVmwareClustersOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -3612,7 +3611,7 @@ export interface ListProjectsLocationsVmwareClustersOperationsRequest {
 }
 
 export const ListProjectsLocationsVmwareClustersOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -3628,7 +3627,7 @@ export const ListProjectsLocationsVmwareClustersOperationsRequest =
 export type ListProjectsLocationsVmwareClustersOperationsResponse =
   ListOperationsResponse;
 export const ListProjectsLocationsVmwareClustersOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsVmwareClustersOperationsError =
   | DefaultErrors
@@ -3641,7 +3640,7 @@ export const listProjectsLocationsVmwareClustersOperations: API.PaginatedOperati
   ListProjectsLocationsVmwareClustersOperationsResponse,
   ListProjectsLocationsVmwareClustersOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVmwareClustersOperationsRequest,
   output: ListProjectsLocationsVmwareClustersOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -3663,7 +3662,7 @@ export interface CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
 }
 
 export const CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vmwareNodePoolId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("vmwareNodePoolId"),
     ),
@@ -3684,7 +3683,7 @@ export const CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
 export type CreateProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   Operation;
 export const CreateProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsVmwareClustersVmwareNodePoolsError =
   | DefaultErrors
@@ -3699,7 +3698,7 @@ export const createProjectsLocationsVmwareClustersVmwareNodePools: API.Operation
   CreateProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   CreateProjectsLocationsVmwareClustersVmwareNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: CreateProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3717,7 +3716,7 @@ export interface UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
 }
 
 export const UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -3734,7 +3733,7 @@ export const UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
 export type UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   Operation;
 export const UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsError =
   | DefaultErrors
@@ -3749,7 +3748,7 @@ export const unenrollProjectsLocationsVmwareClustersVmwareNodePools: API.Operati
   UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3763,7 +3762,7 @@ export interface SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsReque
 }
 
 export const SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3778,7 +3777,7 @@ export const SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
 export type SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   Policy;
 export const SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsError =
   | DefaultErrors
@@ -3793,7 +3792,7 @@ export const setIamPolicyProjectsLocationsVmwareClustersVmwareNodePools: API.Ope
   SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3807,7 +3806,7 @@ export interface GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
 }
 
 export const GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -3818,7 +3817,7 @@ export const GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
 export type GetProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   VmwareNodePool;
 export const GetProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VmwareNodePool;
+  /*@__PURE__*/ VmwareNodePool;
 
 export type GetProjectsLocationsVmwareClustersVmwareNodePoolsError =
   | DefaultErrors
@@ -3831,7 +3830,7 @@ export const getProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMet
   GetProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   GetProjectsLocationsVmwareClustersVmwareNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: GetProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   errors: [NotFound, Forbidden],
@@ -3849,7 +3848,7 @@ export interface ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
 }
 
 export const ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -3862,7 +3861,7 @@ export const ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
 export type ListProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   ListVmwareNodePoolsResponse;
 export const ListProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVmwareNodePoolsResponse;
+  /*@__PURE__*/ ListVmwareNodePoolsResponse;
 
 export type ListProjectsLocationsVmwareClustersVmwareNodePoolsError =
   | DefaultErrors
@@ -3875,7 +3874,7 @@ export const listProjectsLocationsVmwareClustersVmwareNodePools: API.PaginatedOp
   ListProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   ListProjectsLocationsVmwareClustersVmwareNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: ListProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   errors: [NotFound, Forbidden],
@@ -3893,7 +3892,7 @@ export interface GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsReque
 }
 
 export const GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
@@ -3906,7 +3905,7 @@ export const GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
 export type GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   Policy;
 export const GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsError =
   | DefaultErrors
@@ -3919,7 +3918,7 @@ export const getIamPolicyProjectsLocationsVmwareClustersVmwareNodePools: API.Ope
   GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   errors: [NotFound, Forbidden],
@@ -3933,7 +3932,7 @@ export interface EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
 }
 
 export const EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(EnrollVmwareNodePoolRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3948,7 +3947,7 @@ export const EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
 export type EnrollProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   Operation;
 export const EnrollProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type EnrollProjectsLocationsVmwareClustersVmwareNodePoolsError =
   | DefaultErrors
@@ -3963,7 +3962,7 @@ export const enrollProjectsLocationsVmwareClustersVmwareNodePools: API.Operation
   EnrollProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   EnrollProjectsLocationsVmwareClustersVmwareNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: EnrollProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3983,7 +3982,7 @@ export interface DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
 }
 
 export const DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
     ),
@@ -4003,7 +4002,7 @@ export const DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
 export type DeleteProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   Operation;
 export const DeleteProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsVmwareClustersVmwareNodePoolsError =
   | DefaultErrors
@@ -4018,7 +4017,7 @@ export const deleteProjectsLocationsVmwareClustersVmwareNodePools: API.Operation
   DeleteProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   DeleteProjectsLocationsVmwareClustersVmwareNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: DeleteProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4036,7 +4035,7 @@ export interface PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
 }
 
 export const PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
@@ -4051,7 +4050,7 @@ export const PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
 export type PatchProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   Operation;
 export const PatchProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsVmwareClustersVmwareNodePoolsError =
   | DefaultErrors
@@ -4066,7 +4065,7 @@ export const patchProjectsLocationsVmwareClustersVmwareNodePools: API.OperationM
   PatchProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   PatchProjectsLocationsVmwareClustersVmwareNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: PatchProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4080,7 +4079,7 @@ export interface TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePool
 }
 
 export const TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4095,7 +4094,7 @@ export const TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsReq
 export type TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsError =
   | DefaultErrors
@@ -4110,7 +4109,7 @@ export const testIamPermissionsProjectsLocationsVmwareClustersVmwareNodePools: A
   TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
   TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output:
@@ -4132,7 +4131,7 @@ export interface ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsReq
 }
 
 export const ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -4148,7 +4147,7 @@ export const ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest
 export type ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResponse =
   ListOperationsResponse;
 export const ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsError =
   | DefaultErrors
@@ -4161,7 +4160,7 @@ export const listProjectsLocationsVmwareClustersVmwareNodePoolsOperations: API.P
   ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResponse,
   ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest,
   output: ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -4177,7 +4176,7 @@ export interface GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequ
 }
 
 export const GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4187,7 +4186,7 @@ export const GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest 
 export type GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResponse =
   Operation;
 export const GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsError =
   | DefaultErrors
@@ -4200,7 +4199,7 @@ export const getProjectsLocationsVmwareClustersVmwareNodePoolsOperations: API.Op
   GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResponse,
   GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest,
   output: GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -4220,7 +4219,7 @@ export interface CreateProjectsLocationsBareMetalClustersRequest {
 }
 
 export const CreateProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bareMetalClusterId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("bareMetalClusterId"),
     ),
@@ -4243,7 +4242,7 @@ export const CreateProjectsLocationsBareMetalClustersRequest =
 
 export type CreateProjectsLocationsBareMetalClustersResponse = Operation;
 export const CreateProjectsLocationsBareMetalClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsBareMetalClustersError =
   | DefaultErrors
@@ -4258,7 +4257,7 @@ export const createProjectsLocationsBareMetalClusters: API.OperationMethod<
   CreateProjectsLocationsBareMetalClustersResponse,
   CreateProjectsLocationsBareMetalClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBareMetalClustersRequest,
   output: CreateProjectsLocationsBareMetalClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4278,7 +4277,7 @@ export interface UnenrollProjectsLocationsBareMetalClustersRequest {
 }
 
 export const UnenrollProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
     ),
@@ -4295,7 +4294,7 @@ export const UnenrollProjectsLocationsBareMetalClustersRequest =
 
 export type UnenrollProjectsLocationsBareMetalClustersResponse = Operation;
 export const UnenrollProjectsLocationsBareMetalClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type UnenrollProjectsLocationsBareMetalClustersError =
   | DefaultErrors
@@ -4310,7 +4309,7 @@ export const unenrollProjectsLocationsBareMetalClusters: API.OperationMethod<
   UnenrollProjectsLocationsBareMetalClustersResponse,
   UnenrollProjectsLocationsBareMetalClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnenrollProjectsLocationsBareMetalClustersRequest,
   output: UnenrollProjectsLocationsBareMetalClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4324,7 +4323,7 @@ export interface SetIamPolicyProjectsLocationsBareMetalClustersRequest {
 }
 
 export const SetIamPolicyProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4338,7 +4337,7 @@ export const SetIamPolicyProjectsLocationsBareMetalClustersRequest =
 
 export type SetIamPolicyProjectsLocationsBareMetalClustersResponse = Policy;
 export const SetIamPolicyProjectsLocationsBareMetalClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsBareMetalClustersError =
   | DefaultErrors
@@ -4353,7 +4352,7 @@ export const setIamPolicyProjectsLocationsBareMetalClusters: API.OperationMethod
   SetIamPolicyProjectsLocationsBareMetalClustersResponse,
   SetIamPolicyProjectsLocationsBareMetalClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsBareMetalClustersRequest,
   output: SetIamPolicyProjectsLocationsBareMetalClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4369,7 +4368,7 @@ export interface GetProjectsLocationsBareMetalClustersRequest {
 }
 
 export const GetProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -4382,7 +4381,7 @@ export const GetProjectsLocationsBareMetalClustersRequest =
 
 export type GetProjectsLocationsBareMetalClustersResponse = BareMetalCluster;
 export const GetProjectsLocationsBareMetalClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BareMetalCluster;
+  /*@__PURE__*/ BareMetalCluster;
 
 export type GetProjectsLocationsBareMetalClustersError =
   | DefaultErrors
@@ -4395,7 +4394,7 @@ export const getProjectsLocationsBareMetalClusters: API.OperationMethod<
   GetProjectsLocationsBareMetalClustersResponse,
   GetProjectsLocationsBareMetalClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBareMetalClustersRequest,
   output: GetProjectsLocationsBareMetalClustersResponse,
   errors: [NotFound, Forbidden],
@@ -4417,7 +4416,7 @@ export interface ListProjectsLocationsBareMetalClustersRequest {
 }
 
 export const ListProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
@@ -4434,7 +4433,7 @@ export const ListProjectsLocationsBareMetalClustersRequest =
 export type ListProjectsLocationsBareMetalClustersResponse =
   ListBareMetalClustersResponse;
 export const ListProjectsLocationsBareMetalClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBareMetalClustersResponse;
+  /*@__PURE__*/ ListBareMetalClustersResponse;
 
 export type ListProjectsLocationsBareMetalClustersError =
   | DefaultErrors
@@ -4447,7 +4446,7 @@ export const listProjectsLocationsBareMetalClusters: API.PaginatedOperationMetho
   ListProjectsLocationsBareMetalClustersResponse,
   ListProjectsLocationsBareMetalClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBareMetalClustersRequest,
   output: ListProjectsLocationsBareMetalClustersResponse,
   errors: [NotFound, Forbidden],
@@ -4465,7 +4464,7 @@ export interface GetIamPolicyProjectsLocationsBareMetalClustersRequest {
 }
 
 export const GetIamPolicyProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
@@ -4477,7 +4476,7 @@ export const GetIamPolicyProjectsLocationsBareMetalClustersRequest =
 
 export type GetIamPolicyProjectsLocationsBareMetalClustersResponse = Policy;
 export const GetIamPolicyProjectsLocationsBareMetalClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsBareMetalClustersError =
   | DefaultErrors
@@ -4490,7 +4489,7 @@ export const getIamPolicyProjectsLocationsBareMetalClusters: API.OperationMethod
   GetIamPolicyProjectsLocationsBareMetalClustersResponse,
   GetIamPolicyProjectsLocationsBareMetalClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsBareMetalClustersRequest,
   output: GetIamPolicyProjectsLocationsBareMetalClustersResponse,
   errors: [NotFound, Forbidden],
@@ -4504,7 +4503,7 @@ export interface EnrollProjectsLocationsBareMetalClustersRequest {
 }
 
 export const EnrollProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(EnrollBareMetalClusterRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4518,7 +4517,7 @@ export const EnrollProjectsLocationsBareMetalClustersRequest =
 
 export type EnrollProjectsLocationsBareMetalClustersResponse = Operation;
 export const EnrollProjectsLocationsBareMetalClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type EnrollProjectsLocationsBareMetalClustersError =
   | DefaultErrors
@@ -4533,7 +4532,7 @@ export const enrollProjectsLocationsBareMetalClusters: API.OperationMethod<
   EnrollProjectsLocationsBareMetalClustersResponse,
   EnrollProjectsLocationsBareMetalClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnrollProjectsLocationsBareMetalClustersRequest,
   output: EnrollProjectsLocationsBareMetalClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4551,7 +4550,7 @@ export interface QueryVersionConfigProjectsLocationsBareMetalClustersRequest {
 }
 
 export const QueryVersionConfigProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     "createConfig.adminClusterName": Schema.optional(Schema.String).pipe(
       T.HttpQuery("createConfig.adminClusterName"),
@@ -4574,7 +4573,7 @@ export const QueryVersionConfigProjectsLocationsBareMetalClustersRequest =
 export type QueryVersionConfigProjectsLocationsBareMetalClustersResponse =
   QueryBareMetalVersionConfigResponse;
 export const QueryVersionConfigProjectsLocationsBareMetalClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ QueryBareMetalVersionConfigResponse;
+  /*@__PURE__*/ QueryBareMetalVersionConfigResponse;
 
 export type QueryVersionConfigProjectsLocationsBareMetalClustersError =
   | DefaultErrors
@@ -4589,7 +4588,7 @@ export const queryVersionConfigProjectsLocationsBareMetalClusters: API.Operation
   QueryVersionConfigProjectsLocationsBareMetalClustersResponse,
   QueryVersionConfigProjectsLocationsBareMetalClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryVersionConfigProjectsLocationsBareMetalClustersRequest,
   output: QueryVersionConfigProjectsLocationsBareMetalClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4611,7 +4610,7 @@ export interface DeleteProjectsLocationsBareMetalClustersRequest {
 }
 
 export const DeleteProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -4631,7 +4630,7 @@ export const DeleteProjectsLocationsBareMetalClustersRequest =
 
 export type DeleteProjectsLocationsBareMetalClustersResponse = Operation;
 export const DeleteProjectsLocationsBareMetalClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsBareMetalClustersError =
   | DefaultErrors
@@ -4646,7 +4645,7 @@ export const deleteProjectsLocationsBareMetalClusters: API.OperationMethod<
   DeleteProjectsLocationsBareMetalClustersResponse,
   DeleteProjectsLocationsBareMetalClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsBareMetalClustersRequest,
   output: DeleteProjectsLocationsBareMetalClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4666,7 +4665,7 @@ export interface PatchProjectsLocationsBareMetalClustersRequest {
 }
 
 export const PatchProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
@@ -4683,7 +4682,7 @@ export const PatchProjectsLocationsBareMetalClustersRequest =
 
 export type PatchProjectsLocationsBareMetalClustersResponse = Operation;
 export const PatchProjectsLocationsBareMetalClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsBareMetalClustersError =
   | DefaultErrors
@@ -4698,7 +4697,7 @@ export const patchProjectsLocationsBareMetalClusters: API.OperationMethod<
   PatchProjectsLocationsBareMetalClustersResponse,
   PatchProjectsLocationsBareMetalClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsBareMetalClustersRequest,
   output: PatchProjectsLocationsBareMetalClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4712,7 +4711,7 @@ export interface TestIamPermissionsProjectsLocationsBareMetalClustersRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsBareMetalClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4727,7 +4726,7 @@ export const TestIamPermissionsProjectsLocationsBareMetalClustersRequest =
 export type TestIamPermissionsProjectsLocationsBareMetalClustersResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsBareMetalClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsBareMetalClustersError =
   | DefaultErrors
@@ -4742,7 +4741,7 @@ export const testIamPermissionsProjectsLocationsBareMetalClusters: API.Operation
   TestIamPermissionsProjectsLocationsBareMetalClustersResponse,
   TestIamPermissionsProjectsLocationsBareMetalClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsBareMetalClustersRequest,
   output: TestIamPermissionsProjectsLocationsBareMetalClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4754,7 +4753,7 @@ export interface GetProjectsLocationsBareMetalClustersOperationsRequest {
 }
 
 export const GetProjectsLocationsBareMetalClustersOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4763,7 +4762,7 @@ export const GetProjectsLocationsBareMetalClustersOperationsRequest =
 
 export type GetProjectsLocationsBareMetalClustersOperationsResponse = Operation;
 export const GetProjectsLocationsBareMetalClustersOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsBareMetalClustersOperationsError =
   | DefaultErrors
@@ -4776,7 +4775,7 @@ export const getProjectsLocationsBareMetalClustersOperations: API.OperationMetho
   GetProjectsLocationsBareMetalClustersOperationsResponse,
   GetProjectsLocationsBareMetalClustersOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBareMetalClustersOperationsRequest,
   output: GetProjectsLocationsBareMetalClustersOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -4796,7 +4795,7 @@ export interface ListProjectsLocationsBareMetalClustersOperationsRequest {
 }
 
 export const ListProjectsLocationsBareMetalClustersOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -4812,7 +4811,7 @@ export const ListProjectsLocationsBareMetalClustersOperationsRequest =
 export type ListProjectsLocationsBareMetalClustersOperationsResponse =
   ListOperationsResponse;
 export const ListProjectsLocationsBareMetalClustersOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsBareMetalClustersOperationsError =
   | DefaultErrors
@@ -4825,7 +4824,7 @@ export const listProjectsLocationsBareMetalClustersOperations: API.PaginatedOper
   ListProjectsLocationsBareMetalClustersOperationsResponse,
   ListProjectsLocationsBareMetalClustersOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBareMetalClustersOperationsRequest,
   output: ListProjectsLocationsBareMetalClustersOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -4843,7 +4842,7 @@ export interface EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsReque
 }
 
 export const EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(EnrollBareMetalNodePoolRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4858,7 +4857,7 @@ export const EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
 export type EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
   Operation;
 export const EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
   | DefaultErrors
@@ -4873,7 +4872,7 @@ export const enrollProjectsLocationsBareMetalClustersBareMetalNodePools: API.Ope
   EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4893,7 +4892,7 @@ export interface DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsReque
 }
 
 export const DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ignoreErrors: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("ignoreErrors"),
     ),
@@ -4913,7 +4912,7 @@ export const DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
 export type DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
   Operation;
 export const DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
   | DefaultErrors
@@ -4928,7 +4927,7 @@ export const deleteProjectsLocationsBareMetalClustersBareMetalNodePools: API.Ope
   DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4948,7 +4947,7 @@ export interface PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsReques
 }
 
 export const PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
     ),
@@ -4966,7 +4965,7 @@ export const PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
 export type PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
   Operation;
 export const PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
   | DefaultErrors
@@ -4981,7 +4980,7 @@ export const patchProjectsLocationsBareMetalClustersBareMetalNodePools: API.Oper
   PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4995,7 +4994,7 @@ export interface TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNo
 }
 
 export const TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5010,7 +5009,7 @@ export const TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePo
 export type TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
   | DefaultErrors
@@ -5025,7 +5024,7 @@ export const testIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePo
   TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output:
@@ -5041,7 +5040,7 @@ export interface GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest 
 }
 
 export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -5052,7 +5051,7 @@ export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
 export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
   BareMetalNodePool;
 export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BareMetalNodePool;
+  /*@__PURE__*/ BareMetalNodePool;
 
 export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
   | DefaultErrors
@@ -5065,7 +5064,7 @@ export const getProjectsLocationsBareMetalClustersBareMetalNodePools: API.Operat
   GetProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   GetProjectsLocationsBareMetalClustersBareMetalNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: GetProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   errors: [NotFound, Forbidden],
@@ -5083,7 +5082,7 @@ export interface ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest
 }
 
 export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -5096,7 +5095,7 @@ export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
 export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
   ListBareMetalNodePoolsResponse;
 export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBareMetalNodePoolsResponse;
+  /*@__PURE__*/ ListBareMetalNodePoolsResponse;
 
 export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
   | DefaultErrors
@@ -5109,7 +5108,7 @@ export const listProjectsLocationsBareMetalClustersBareMetalNodePools: API.Pagin
   ListProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   ListProjectsLocationsBareMetalClustersBareMetalNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: ListProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   errors: [NotFound, Forbidden],
@@ -5127,7 +5126,7 @@ export interface GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePool
 }
 
 export const GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
@@ -5140,7 +5139,7 @@ export const GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsReq
 export type GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
   Policy;
 export const GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
   | DefaultErrors
@@ -5153,7 +5152,7 @@ export const getIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePools: A
   GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output:
@@ -5173,7 +5172,7 @@ export interface CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsReque
 }
 
 export const CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     bareMetalNodePoolId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("bareMetalNodePoolId"),
@@ -5194,7 +5193,7 @@ export const CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
 export type CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
   Operation;
 export const CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
   | DefaultErrors
@@ -5209,7 +5208,7 @@ export const createProjectsLocationsBareMetalClustersBareMetalNodePools: API.Ope
   CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5227,7 +5226,7 @@ export interface UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsReq
 }
 
 export const UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
     ),
@@ -5244,7 +5243,7 @@ export const UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest
 export type UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
   Operation;
 export const UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
   | DefaultErrors
@@ -5259,7 +5258,7 @@ export const unenrollProjectsLocationsBareMetalClustersBareMetalNodePools: API.O
   UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5273,7 +5272,7 @@ export interface SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePool
 }
 
 export const SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5288,7 +5287,7 @@ export const SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsReq
 export type SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
   Policy;
 export const SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
   | DefaultErrors
@@ -5303,7 +5302,7 @@ export const setIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePools: A
   SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
   SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output:
@@ -5317,7 +5316,7 @@ export interface GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperatio
 }
 
 export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -5327,7 +5326,7 @@ export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRe
 export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsResponse =
   Operation;
 export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError =
   | DefaultErrors
@@ -5340,7 +5339,7 @@ export const getProjectsLocationsBareMetalClustersBareMetalNodePoolsOperations: 
   GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsResponse,
   GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest,
   output:
@@ -5362,7 +5361,7 @@ export interface ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperati
 }
 
 export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -5378,7 +5377,7 @@ export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsR
 export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsResponse =
   ListOperationsResponse;
 export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError =
   | DefaultErrors
@@ -5391,7 +5390,7 @@ export const listProjectsLocationsBareMetalClustersBareMetalNodePoolsOperations:
   ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsResponse,
   ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest,
   output:
@@ -5419,7 +5418,7 @@ export interface CreateProjectsLocationsVmwareAdminClustersRequest {
 }
 
 export const CreateProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
@@ -5445,7 +5444,7 @@ export const CreateProjectsLocationsVmwareAdminClustersRequest =
 
 export type CreateProjectsLocationsVmwareAdminClustersResponse = Operation;
 export const CreateProjectsLocationsVmwareAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsVmwareAdminClustersError =
   | DefaultErrors
@@ -5460,7 +5459,7 @@ export const createProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   CreateProjectsLocationsVmwareAdminClustersResponse,
   CreateProjectsLocationsVmwareAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsVmwareAdminClustersRequest,
   output: CreateProjectsLocationsVmwareAdminClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5480,7 +5479,7 @@ export interface UnenrollProjectsLocationsVmwareAdminClustersRequest {
 }
 
 export const UnenrollProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -5499,7 +5498,7 @@ export const UnenrollProjectsLocationsVmwareAdminClustersRequest =
 
 export type UnenrollProjectsLocationsVmwareAdminClustersResponse = Operation;
 export const UnenrollProjectsLocationsVmwareAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type UnenrollProjectsLocationsVmwareAdminClustersError =
   | DefaultErrors
@@ -5514,7 +5513,7 @@ export const unenrollProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   UnenrollProjectsLocationsVmwareAdminClustersResponse,
   UnenrollProjectsLocationsVmwareAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnenrollProjectsLocationsVmwareAdminClustersRequest,
   output: UnenrollProjectsLocationsVmwareAdminClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5528,7 +5527,7 @@ export interface SetIamPolicyProjectsLocationsVmwareAdminClustersRequest {
 }
 
 export const SetIamPolicyProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5542,7 +5541,7 @@ export const SetIamPolicyProjectsLocationsVmwareAdminClustersRequest =
 
 export type SetIamPolicyProjectsLocationsVmwareAdminClustersResponse = Policy;
 export const SetIamPolicyProjectsLocationsVmwareAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsVmwareAdminClustersError =
   | DefaultErrors
@@ -5557,7 +5556,7 @@ export const setIamPolicyProjectsLocationsVmwareAdminClusters: API.OperationMeth
   SetIamPolicyProjectsLocationsVmwareAdminClustersResponse,
   SetIamPolicyProjectsLocationsVmwareAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsVmwareAdminClustersRequest,
   output: SetIamPolicyProjectsLocationsVmwareAdminClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5577,7 +5576,7 @@ export interface PatchProjectsLocationsVmwareAdminClustersRequest {
 }
 
 export const PatchProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     skipValidations: Schema.optional(Schema.Array(Schema.String)).pipe(
@@ -5594,7 +5593,7 @@ export const PatchProjectsLocationsVmwareAdminClustersRequest =
 
 export type PatchProjectsLocationsVmwareAdminClustersResponse = Operation;
 export const PatchProjectsLocationsVmwareAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsVmwareAdminClustersError =
   | DefaultErrors
@@ -5609,7 +5608,7 @@ export const patchProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   PatchProjectsLocationsVmwareAdminClustersResponse,
   PatchProjectsLocationsVmwareAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsVmwareAdminClustersRequest,
   output: PatchProjectsLocationsVmwareAdminClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5623,7 +5622,7 @@ export interface TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5638,7 +5637,7 @@ export const TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest =
 export type TestIamPermissionsProjectsLocationsVmwareAdminClustersResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsVmwareAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsVmwareAdminClustersError =
   | DefaultErrors
@@ -5653,7 +5652,7 @@ export const testIamPermissionsProjectsLocationsVmwareAdminClusters: API.Operati
   TestIamPermissionsProjectsLocationsVmwareAdminClustersResponse,
   TestIamPermissionsProjectsLocationsVmwareAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest,
   output: TestIamPermissionsProjectsLocationsVmwareAdminClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5667,7 +5666,7 @@ export interface EnrollProjectsLocationsVmwareAdminClustersRequest {
 }
 
 export const EnrollProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(EnrollVmwareAdminClusterRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5681,7 +5680,7 @@ export const EnrollProjectsLocationsVmwareAdminClustersRequest =
 
 export type EnrollProjectsLocationsVmwareAdminClustersResponse = Operation;
 export const EnrollProjectsLocationsVmwareAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type EnrollProjectsLocationsVmwareAdminClustersError =
   | DefaultErrors
@@ -5696,7 +5695,7 @@ export const enrollProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   EnrollProjectsLocationsVmwareAdminClustersResponse,
   EnrollProjectsLocationsVmwareAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnrollProjectsLocationsVmwareAdminClustersRequest,
   output: EnrollProjectsLocationsVmwareAdminClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5716,7 +5715,7 @@ export interface ListProjectsLocationsVmwareAdminClustersRequest {
 }
 
 export const ListProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
@@ -5732,7 +5731,7 @@ export const ListProjectsLocationsVmwareAdminClustersRequest =
 export type ListProjectsLocationsVmwareAdminClustersResponse =
   ListVmwareAdminClustersResponse;
 export const ListProjectsLocationsVmwareAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVmwareAdminClustersResponse;
+  /*@__PURE__*/ ListVmwareAdminClustersResponse;
 
 export type ListProjectsLocationsVmwareAdminClustersError =
   | DefaultErrors
@@ -5745,7 +5744,7 @@ export const listProjectsLocationsVmwareAdminClusters: API.PaginatedOperationMet
   ListProjectsLocationsVmwareAdminClustersResponse,
   ListProjectsLocationsVmwareAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVmwareAdminClustersRequest,
   output: ListProjectsLocationsVmwareAdminClustersResponse,
   errors: [NotFound, Forbidden],
@@ -5763,7 +5762,7 @@ export interface GetIamPolicyProjectsLocationsVmwareAdminClustersRequest {
 }
 
 export const GetIamPolicyProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -5775,7 +5774,7 @@ export const GetIamPolicyProjectsLocationsVmwareAdminClustersRequest =
 
 export type GetIamPolicyProjectsLocationsVmwareAdminClustersResponse = Policy;
 export const GetIamPolicyProjectsLocationsVmwareAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsVmwareAdminClustersError =
   | DefaultErrors
@@ -5788,7 +5787,7 @@ export const getIamPolicyProjectsLocationsVmwareAdminClusters: API.OperationMeth
   GetIamPolicyProjectsLocationsVmwareAdminClustersResponse,
   GetIamPolicyProjectsLocationsVmwareAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsVmwareAdminClustersRequest,
   output: GetIamPolicyProjectsLocationsVmwareAdminClustersResponse,
   errors: [NotFound, Forbidden],
@@ -5804,7 +5803,7 @@ export interface GetProjectsLocationsVmwareAdminClustersRequest {
 }
 
 export const GetProjectsLocationsVmwareAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -5818,7 +5817,7 @@ export const GetProjectsLocationsVmwareAdminClustersRequest =
 export type GetProjectsLocationsVmwareAdminClustersResponse =
   VmwareAdminCluster;
 export const GetProjectsLocationsVmwareAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VmwareAdminCluster;
+  /*@__PURE__*/ VmwareAdminCluster;
 
 export type GetProjectsLocationsVmwareAdminClustersError =
   | DefaultErrors
@@ -5831,7 +5830,7 @@ export const getProjectsLocationsVmwareAdminClusters: API.OperationMethod<
   GetProjectsLocationsVmwareAdminClustersResponse,
   GetProjectsLocationsVmwareAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareAdminClustersRequest,
   output: GetProjectsLocationsVmwareAdminClustersResponse,
   errors: [NotFound, Forbidden],
@@ -5843,7 +5842,7 @@ export interface GetProjectsLocationsVmwareAdminClustersOperationsRequest {
 }
 
 export const GetProjectsLocationsVmwareAdminClustersOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -5853,7 +5852,7 @@ export const GetProjectsLocationsVmwareAdminClustersOperationsRequest =
 export type GetProjectsLocationsVmwareAdminClustersOperationsResponse =
   Operation;
 export const GetProjectsLocationsVmwareAdminClustersOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsVmwareAdminClustersOperationsError =
   | DefaultErrors
@@ -5866,7 +5865,7 @@ export const getProjectsLocationsVmwareAdminClustersOperations: API.OperationMet
   GetProjectsLocationsVmwareAdminClustersOperationsResponse,
   GetProjectsLocationsVmwareAdminClustersOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareAdminClustersOperationsRequest,
   output: GetProjectsLocationsVmwareAdminClustersOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -5886,7 +5885,7 @@ export interface ListProjectsLocationsVmwareAdminClustersOperationsRequest {
 }
 
 export const ListProjectsLocationsVmwareAdminClustersOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -5902,7 +5901,7 @@ export const ListProjectsLocationsVmwareAdminClustersOperationsRequest =
 export type ListProjectsLocationsVmwareAdminClustersOperationsResponse =
   ListOperationsResponse;
 export const ListProjectsLocationsVmwareAdminClustersOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsVmwareAdminClustersOperationsError =
   | DefaultErrors
@@ -5915,7 +5914,7 @@ export const listProjectsLocationsVmwareAdminClustersOperations: API.PaginatedOp
   ListProjectsLocationsVmwareAdminClustersOperationsResponse,
   ListProjectsLocationsVmwareAdminClustersOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVmwareAdminClustersOperationsRequest,
   output: ListProjectsLocationsVmwareAdminClustersOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -5939,7 +5938,7 @@ export interface ListProjectsLocationsOperationsRequest {
 }
 
 export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
@@ -5954,7 +5953,7 @@ export const ListProjectsLocationsOperationsRequest =
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsOperationsError =
   | DefaultErrors
@@ -5967,7 +5966,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsResponse,
   ListProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -5983,7 +5982,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
 }
 
 export const DeleteProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -5991,8 +5990,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsOperationsError =
   | DefaultErrors
@@ -6007,7 +6005,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsResponse,
   DeleteProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6019,7 +6017,7 @@ export interface GetProjectsLocationsOperationsRequest {
 }
 
 export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -6027,8 +6025,7 @@ export const GetProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetProjectsLocationsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsOperationsError =
   | DefaultErrors
@@ -6041,7 +6038,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsResponse,
   GetProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -6055,7 +6052,7 @@ export interface CancelProjectsLocationsOperationsRequest {
 }
 
 export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6064,8 +6061,7 @@ export const CancelProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelProjectsLocationsOperationsError =
   | DefaultErrors
@@ -6080,7 +6076,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsResponse,
   CancelProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6096,7 +6092,7 @@ export interface GetProjectsLocationsBareMetalAdminClustersRequest {
 }
 
 export const GetProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -6110,7 +6106,7 @@ export const GetProjectsLocationsBareMetalAdminClustersRequest =
 export type GetProjectsLocationsBareMetalAdminClustersResponse =
   BareMetalAdminCluster;
 export const GetProjectsLocationsBareMetalAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BareMetalAdminCluster;
+  /*@__PURE__*/ BareMetalAdminCluster;
 
 export type GetProjectsLocationsBareMetalAdminClustersError =
   | DefaultErrors
@@ -6123,7 +6119,7 @@ export const getProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   GetProjectsLocationsBareMetalAdminClustersResponse,
   GetProjectsLocationsBareMetalAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBareMetalAdminClustersRequest,
   output: GetProjectsLocationsBareMetalAdminClustersResponse,
   errors: [NotFound, Forbidden],
@@ -6143,7 +6139,7 @@ export interface ListProjectsLocationsBareMetalAdminClustersRequest {
 }
 
 export const ListProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
@@ -6159,7 +6155,7 @@ export const ListProjectsLocationsBareMetalAdminClustersRequest =
 export type ListProjectsLocationsBareMetalAdminClustersResponse =
   ListBareMetalAdminClustersResponse;
 export const ListProjectsLocationsBareMetalAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBareMetalAdminClustersResponse;
+  /*@__PURE__*/ ListBareMetalAdminClustersResponse;
 
 export type ListProjectsLocationsBareMetalAdminClustersError =
   | DefaultErrors
@@ -6172,7 +6168,7 @@ export const listProjectsLocationsBareMetalAdminClusters: API.PaginatedOperation
   ListProjectsLocationsBareMetalAdminClustersResponse,
   ListProjectsLocationsBareMetalAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBareMetalAdminClustersRequest,
   output: ListProjectsLocationsBareMetalAdminClustersResponse,
   errors: [NotFound, Forbidden],
@@ -6190,7 +6186,7 @@ export interface GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest {
 }
 
 export const GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -6203,7 +6199,7 @@ export const GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest =
 export type GetIamPolicyProjectsLocationsBareMetalAdminClustersResponse =
   Policy;
 export const GetIamPolicyProjectsLocationsBareMetalAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsBareMetalAdminClustersError =
   | DefaultErrors
@@ -6216,7 +6212,7 @@ export const getIamPolicyProjectsLocationsBareMetalAdminClusters: API.OperationM
   GetIamPolicyProjectsLocationsBareMetalAdminClustersResponse,
   GetIamPolicyProjectsLocationsBareMetalAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest,
   output: GetIamPolicyProjectsLocationsBareMetalAdminClustersResponse,
   errors: [NotFound, Forbidden],
@@ -6230,7 +6226,7 @@ export interface QueryVersionConfigProjectsLocationsBareMetalAdminClustersReques
 }
 
 export const QueryVersionConfigProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     "upgradeConfig.clusterName": Schema.optional(Schema.String).pipe(
       T.HttpQuery("upgradeConfig.clusterName"),
@@ -6247,7 +6243,7 @@ export const QueryVersionConfigProjectsLocationsBareMetalAdminClustersRequest =
 export type QueryVersionConfigProjectsLocationsBareMetalAdminClustersResponse =
   QueryBareMetalAdminVersionConfigResponse;
 export const QueryVersionConfigProjectsLocationsBareMetalAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ QueryBareMetalAdminVersionConfigResponse;
+  /*@__PURE__*/ QueryBareMetalAdminVersionConfigResponse;
 
 export type QueryVersionConfigProjectsLocationsBareMetalAdminClustersError =
   | DefaultErrors
@@ -6262,7 +6258,7 @@ export const queryVersionConfigProjectsLocationsBareMetalAdminClusters: API.Oper
   QueryVersionConfigProjectsLocationsBareMetalAdminClustersResponse,
   QueryVersionConfigProjectsLocationsBareMetalAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryVersionConfigProjectsLocationsBareMetalAdminClustersRequest,
   output: QueryVersionConfigProjectsLocationsBareMetalAdminClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6276,7 +6272,7 @@ export interface EnrollProjectsLocationsBareMetalAdminClustersRequest {
 }
 
 export const EnrollProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(EnrollBareMetalAdminClusterRequest).pipe(
       T.HttpBody(),
@@ -6292,7 +6288,7 @@ export const EnrollProjectsLocationsBareMetalAdminClustersRequest =
 
 export type EnrollProjectsLocationsBareMetalAdminClustersResponse = Operation;
 export const EnrollProjectsLocationsBareMetalAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type EnrollProjectsLocationsBareMetalAdminClustersError =
   | DefaultErrors
@@ -6307,7 +6303,7 @@ export const enrollProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   EnrollProjectsLocationsBareMetalAdminClustersResponse,
   EnrollProjectsLocationsBareMetalAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnrollProjectsLocationsBareMetalAdminClustersRequest,
   output: EnrollProjectsLocationsBareMetalAdminClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6325,7 +6321,7 @@ export interface PatchProjectsLocationsBareMetalAdminClustersRequest {
 }
 
 export const PatchProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
@@ -6339,7 +6335,7 @@ export const PatchProjectsLocationsBareMetalAdminClustersRequest =
 
 export type PatchProjectsLocationsBareMetalAdminClustersResponse = Operation;
 export const PatchProjectsLocationsBareMetalAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsBareMetalAdminClustersError =
   | DefaultErrors
@@ -6354,7 +6350,7 @@ export const patchProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   PatchProjectsLocationsBareMetalAdminClustersResponse,
   PatchProjectsLocationsBareMetalAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsBareMetalAdminClustersRequest,
   output: PatchProjectsLocationsBareMetalAdminClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6368,7 +6364,7 @@ export interface TestIamPermissionsProjectsLocationsBareMetalAdminClustersReques
 }
 
 export const TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6383,7 +6379,7 @@ export const TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest =
 export type TestIamPermissionsProjectsLocationsBareMetalAdminClustersResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsBareMetalAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsBareMetalAdminClustersError =
   | DefaultErrors
@@ -6398,7 +6394,7 @@ export const testIamPermissionsProjectsLocationsBareMetalAdminClusters: API.Oper
   TestIamPermissionsProjectsLocationsBareMetalAdminClustersResponse,
   TestIamPermissionsProjectsLocationsBareMetalAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest,
   output: TestIamPermissionsProjectsLocationsBareMetalAdminClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6412,7 +6408,7 @@ export interface SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest {
 }
 
 export const SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6427,7 +6423,7 @@ export const SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest =
 export type SetIamPolicyProjectsLocationsBareMetalAdminClustersResponse =
   Policy;
 export const SetIamPolicyProjectsLocationsBareMetalAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsBareMetalAdminClustersError =
   | DefaultErrors
@@ -6442,7 +6438,7 @@ export const setIamPolicyProjectsLocationsBareMetalAdminClusters: API.OperationM
   SetIamPolicyProjectsLocationsBareMetalAdminClustersResponse,
   SetIamPolicyProjectsLocationsBareMetalAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest,
   output: SetIamPolicyProjectsLocationsBareMetalAdminClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6462,7 +6458,7 @@ export interface CreateProjectsLocationsBareMetalAdminClustersRequest {
 }
 
 export const CreateProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     bareMetalAdminClusterId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("bareMetalAdminClusterId"),
@@ -6485,7 +6481,7 @@ export const CreateProjectsLocationsBareMetalAdminClustersRequest =
 
 export type CreateProjectsLocationsBareMetalAdminClustersResponse = Operation;
 export const CreateProjectsLocationsBareMetalAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsBareMetalAdminClustersError =
   | DefaultErrors
@@ -6500,7 +6496,7 @@ export const createProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
   CreateProjectsLocationsBareMetalAdminClustersResponse,
   CreateProjectsLocationsBareMetalAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBareMetalAdminClustersRequest,
   output: CreateProjectsLocationsBareMetalAdminClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6520,7 +6516,7 @@ export interface UnenrollProjectsLocationsBareMetalAdminClustersRequest {
 }
 
 export const UnenrollProjectsLocationsBareMetalAdminClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
     ignoreErrors: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("ignoreErrors"),
@@ -6539,7 +6535,7 @@ export const UnenrollProjectsLocationsBareMetalAdminClustersRequest =
 
 export type UnenrollProjectsLocationsBareMetalAdminClustersResponse = Operation;
 export const UnenrollProjectsLocationsBareMetalAdminClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type UnenrollProjectsLocationsBareMetalAdminClustersError =
   | DefaultErrors
@@ -6554,7 +6550,7 @@ export const unenrollProjectsLocationsBareMetalAdminClusters: API.OperationMetho
   UnenrollProjectsLocationsBareMetalAdminClustersResponse,
   UnenrollProjectsLocationsBareMetalAdminClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnenrollProjectsLocationsBareMetalAdminClustersRequest,
   output: UnenrollProjectsLocationsBareMetalAdminClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6566,7 +6562,7 @@ export interface GetProjectsLocationsBareMetalAdminClustersOperationsRequest {
 }
 
 export const GetProjectsLocationsBareMetalAdminClustersOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -6576,7 +6572,7 @@ export const GetProjectsLocationsBareMetalAdminClustersOperationsRequest =
 export type GetProjectsLocationsBareMetalAdminClustersOperationsResponse =
   Operation;
 export const GetProjectsLocationsBareMetalAdminClustersOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsBareMetalAdminClustersOperationsError =
   | DefaultErrors
@@ -6589,7 +6585,7 @@ export const getProjectsLocationsBareMetalAdminClustersOperations: API.Operation
   GetProjectsLocationsBareMetalAdminClustersOperationsResponse,
   GetProjectsLocationsBareMetalAdminClustersOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBareMetalAdminClustersOperationsRequest,
   output: GetProjectsLocationsBareMetalAdminClustersOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -6609,7 +6605,7 @@ export interface ListProjectsLocationsBareMetalAdminClustersOperationsRequest {
 }
 
 export const ListProjectsLocationsBareMetalAdminClustersOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -6625,7 +6621,7 @@ export const ListProjectsLocationsBareMetalAdminClustersOperationsRequest =
 export type ListProjectsLocationsBareMetalAdminClustersOperationsResponse =
   ListOperationsResponse;
 export const ListProjectsLocationsBareMetalAdminClustersOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsBareMetalAdminClustersOperationsError =
   | DefaultErrors
@@ -6638,7 +6634,7 @@ export const listProjectsLocationsBareMetalAdminClustersOperations: API.Paginate
   ListProjectsLocationsBareMetalAdminClustersOperationsResponse,
   ListProjectsLocationsBareMetalAdminClustersOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBareMetalAdminClustersOperationsRequest,
   output: ListProjectsLocationsBareMetalAdminClustersOperationsResponse,
   errors: [NotFound, Forbidden],

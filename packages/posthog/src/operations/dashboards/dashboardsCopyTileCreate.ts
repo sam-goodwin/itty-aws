@@ -12,7 +12,7 @@ export interface DashboardsCopyTileCreateInput {
   tileId?: number;
 }
 export const DashboardsCopyTileCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["json", "txt"])),
@@ -81,7 +81,7 @@ export interface DashboardsCopyTileCreateOutput {
   _create_in_folder?: string;
 }
 export const DashboardsCopyTileCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.NullOr(Schema.String)),
     description: Schema.optional(Schema.String),
@@ -167,10 +167,8 @@ export const DashboardsCopyTileCreateOutput =
  * @param id - A unique integer value identifying this dashboard.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const dashboardsCopyTileCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DashboardsCopyTileCreateInput,
-    outputSchema: DashboardsCopyTileCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const dashboardsCopyTileCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DashboardsCopyTileCreateInput,
+  outputSchema: DashboardsCopyTileCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

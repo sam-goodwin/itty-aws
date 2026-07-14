@@ -62,66 +62,63 @@ interface ListRequestsResponseResult {
   /** Tokens for the request. */
   tokens?: number | null;
 }
-const ListRequestsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      created: Schema.String,
-      priority: Schema.Union([
-        Schema.Literals(["routine", "high", "urgent"]),
-        Schema.String,
-      ]),
-      request: Schema.String,
-      summary: Schema.String,
-      tlp: Schema.Union([
-        Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
-        Schema.String,
-      ]),
-      updated: Schema.String,
-      completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      messageTokens: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(
+const ListRequestsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    created: Schema.String,
+    priority: Schema.Union([
+      Schema.Literals(["routine", "high", "urgent"]),
+      Schema.String,
+    ]),
+    request: Schema.String,
+    summary: Schema.String,
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
+    updated: Schema.String,
+    completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "open",
-              "accepted",
-              "reported",
-              "approved",
-              "completed",
-              "declined",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "open",
+            "accepted",
+            "reported",
+            "approved",
+            "completed",
+            "declined",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      tokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        created: "created",
-        priority: "priority",
-        request: "request",
-        summary: "summary",
-        tlp: "tlp",
-        updated: "updated",
-        completed: "completed",
-        messageTokens: "message_tokens",
-        readableId: "readable_id",
-        status: "status",
-        tokens: "tokens",
-      }),
+        Schema.Null,
+      ]),
     ),
+    tokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      created: "created",
+      priority: "priority",
+      request: "request",
+      summary: "summary",
+      tlp: "tlp",
+      updated: "updated",
+      completed: "completed",
+      messageTokens: "message_tokens",
+      readableId: "readable_id",
+      status: "status",
+      tokens: "tokens",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListRequestsResponseResult>;
 
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -133,7 +130,7 @@ interface Error2 {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -164,7 +161,7 @@ interface GetRequestAssetResponseResult {
   fileType?: string | null;
 }
 const GetRequestAssetResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Number,
       name: Schema.String,
@@ -194,7 +191,7 @@ interface ListScanConfigsResponseResult {
   ports: string[];
 }
 const ListScanConfigsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -217,7 +214,7 @@ interface ScanResult {
   proto?: string | null;
   status?: string | null;
 }
-const ScanResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ScanResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     number: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     proto: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -256,41 +253,40 @@ interface ThreatEventListResponseItem {
   insight?: string | null;
   releasabilityId?: string | null;
 }
-const ThreatEventListResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      attacker: Schema.String,
-      attackerCountry: Schema.String,
-      attackerCountryAlpha3: Schema.String,
-      category: Schema.String,
-      datasetId: Schema.String,
-      date: Schema.String,
-      event: Schema.String,
-      hasChildren: Schema.Boolean,
-      indicator: Schema.String,
-      indicatorType: Schema.String,
-      indicatorTypeId: Schema.Number,
-      killChain: Schema.Number,
-      mitreAttack: Schema.Array(Schema.String),
-      mitreCapec: Schema.Array(Schema.String),
-      numReferenced: Schema.Number,
-      numReferences: Schema.Number,
-      rawId: Schema.String,
-      referenced: Schema.Array(Schema.String),
-      referencedIds: Schema.Array(Schema.Number),
-      references: Schema.Array(Schema.String),
-      referencesIds: Schema.Array(Schema.Number),
-      tags: Schema.Array(Schema.String),
-      targetCountry: Schema.String,
-      targetCountryAlpha3: Schema.String,
-      targetIndustry: Schema.String,
-      tlp: Schema.String,
-      uuid: Schema.String,
-      insight: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      releasabilityId: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    }),
+const ThreatEventListResponseItem = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    attacker: Schema.String,
+    attackerCountry: Schema.String,
+    attackerCountryAlpha3: Schema.String,
+    category: Schema.String,
+    datasetId: Schema.String,
+    date: Schema.String,
+    event: Schema.String,
+    hasChildren: Schema.Boolean,
+    indicator: Schema.String,
+    indicatorType: Schema.String,
+    indicatorTypeId: Schema.Number,
+    killChain: Schema.Number,
+    mitreAttack: Schema.Array(Schema.String),
+    mitreCapec: Schema.Array(Schema.String),
+    numReferenced: Schema.Number,
+    numReferences: Schema.Number,
+    rawId: Schema.String,
+    referenced: Schema.Array(Schema.String),
+    referencedIds: Schema.Array(Schema.Number),
+    references: Schema.Array(Schema.String),
+    referencesIds: Schema.Array(Schema.Number),
+    tags: Schema.Array(Schema.String),
+    targetCountry: Schema.String,
+    targetCountryAlpha3: Schema.String,
+    targetIndustry: Schema.String,
+    tlp: Schema.String,
+    uuid: Schema.String,
+    insight: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    releasabilityId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+  }),
 ) as unknown as Schema.Codec<ThreatEventListResponseItem>;
 
 interface Raw {
@@ -298,7 +294,7 @@ interface Raw {
   source?: string | null;
   tlp?: string | null;
 }
-const Raw = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Raw = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.Union([
       Schema.Record(Schema.String, Schema.Unknown),
@@ -315,7 +311,7 @@ interface Indicator {
   /** The indicator value (e.g., domain name, IP address, hash) */
   value: string;
 }
-const Indicator = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Indicator = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     indicatorType: Schema.String,
     value: Schema.String,
@@ -327,7 +323,7 @@ interface Raw2 {
   source?: string | null;
   tlp?: string | null;
 }
-const Raw2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Raw2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -360,7 +356,7 @@ interface Data {
   targetCountry?: string | null;
   targetIndustry?: string | null;
 }
-const Data = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     category: Schema.String,
     date: Schema.String,
@@ -395,7 +391,7 @@ interface CreatedEvent {
   /** UUID of the created event */
   uuid: string;
 }
-const CreatedEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CreatedEvent = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     eventIndex: Schema.Number,
     shardId: Schema.String,
@@ -409,7 +405,7 @@ interface Error3 {
   /** Index of the event that caused the error */
   eventIndex: number;
 }
-const Error3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     error: Schema.String,
     eventIndex: Schema.Number,
@@ -419,7 +415,7 @@ const Error3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Items {
   type: string;
 }
-const Items = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Items = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.String,
   }),
@@ -433,20 +429,19 @@ interface CategoryListResponseItem {
   mitreCapec?: string[] | null;
   shortname?: string | null;
 }
-const CategoryListResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      killChain: Schema.Number,
-      name: Schema.String,
-      uuid: Schema.String,
-      mitreAttack: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      mitreCapec: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      shortname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+const CategoryListResponseItem = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    killChain: Schema.Number,
+    name: Schema.String,
+    uuid: Schema.String,
+    mitreAttack: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    mitreCapec: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    shortname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<CategoryListResponseItem>;
 
 interface Result {
@@ -454,7 +449,7 @@ interface Result {
   alpha3: string;
   name: string;
 }
-const Result = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Result = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     alpha2: Schema.String,
     alpha3: Schema.String,
@@ -466,7 +461,7 @@ interface CountryListResponseItem {
   result: { alpha2: string; alpha3: string; name: string }[];
   success: string;
 }
-const CountryListResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CountryListResponseItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     result: Schema.Array(Result),
     success: Schema.String,
@@ -479,7 +474,7 @@ interface DatasetListResponseItem {
   uuid: string;
   deletedAt?: string | null;
 }
-const DatasetListResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DatasetListResponseItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     isPublic: Schema.Boolean,
     name: Schema.String,
@@ -493,7 +488,7 @@ interface Alias {
   confidence?: number | null;
   tlp?: "red" | "amber" | "green" | "white" | null;
 }
-const Alias = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Alias = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     value: Schema.String,
     confidence: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -520,7 +515,7 @@ export interface GetBinaryStorageRequest {
 }
 
 export const GetBinaryStorageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       hash: Schema.String.pipe(T.HttpPath("hash")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -535,7 +530,7 @@ export const GetBinaryStorageRequest =
 export type GetBinaryStorageResponse = unknown;
 
 export const GetBinaryStorageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<GetBinaryStorageResponse>;
 
@@ -546,7 +541,7 @@ export const getBinaryStorage: API.OperationMethod<
   GetBinaryStorageResponse,
   GetBinaryStorageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBinaryStorageRequest,
   output: GetBinaryStorageResponse,
   errors: [],
@@ -560,7 +555,7 @@ export interface CreateBinaryStorageRequest {
 }
 
 export const CreateBinaryStorageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       file: UploadableSchema.pipe(T.HttpFormDataFile()),
@@ -581,7 +576,7 @@ export interface CreateBinaryStorageResponse {
 }
 
 export const CreateBinaryStorageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       contentType: Schema.String,
       md5: Schema.String,
@@ -604,7 +599,7 @@ export const createBinaryStorage: API.OperationMethod<
   CreateBinaryStorageResponse,
   CreateBinaryStorageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBinaryStorageRequest,
   output: CreateBinaryStorageResponse,
   errors: [],
@@ -620,17 +615,16 @@ export interface GetRequestRequest {
   accountId: string;
 }
 
-export const GetRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      requestId: Schema.String.pipe(T.HttpPath("requestId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}",
-      }),
-    ),
+export const GetRequestRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    requestId: Schema.String.pipe(T.HttpPath("requestId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetRequestRequest>;
 
 export interface GetRequestResponse {
@@ -666,61 +660,58 @@ export interface GetRequestResponse {
   tokens?: number | null;
 }
 
-export const GetRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      content: Schema.String,
-      created: Schema.String,
-      priority: Schema.String,
-      request: Schema.String,
-      summary: Schema.String,
-      tlp: Schema.Union([
-        Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
-        Schema.String,
-      ]),
-      updated: Schema.String,
-      completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      messageTokens: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(
+export const GetRequestResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    content: Schema.String,
+    created: Schema.String,
+    priority: Schema.String,
+    request: Schema.String,
+    summary: Schema.String,
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
+    updated: Schema.String,
+    completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "open",
-              "accepted",
-              "reported",
-              "approved",
-              "completed",
-              "declined",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "open",
+            "accepted",
+            "reported",
+            "approved",
+            "completed",
+            "declined",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      tokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          content: "content",
-          created: "created",
-          priority: "priority",
-          request: "request",
-          summary: "summary",
-          tlp: "tlp",
-          updated: "updated",
-          completed: "completed",
-          messageTokens: "message_tokens",
-          readableId: "readable_id",
-          status: "status",
-          tokens: "tokens",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    tokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        content: "content",
+        created: "created",
+        priority: "priority",
+        request: "request",
+        summary: "summary",
+        tlp: "tlp",
+        updated: "updated",
+        completed: "completed",
+        messageTokens: "message_tokens",
+        readableId: "readable_id",
+        status: "status",
+        tokens: "tokens",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetRequestResponse>;
 
 export type GetRequestError = DefaultErrors;
@@ -730,7 +721,7 @@ export const getRequest: API.OperationMethod<
   GetRequestResponse,
   GetRequestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRequestRequest,
   output: GetRequestResponse,
   errors: [],
@@ -768,52 +759,51 @@ export interface ListRequestsRequest {
     | (string & {});
 }
 
-export const ListRequestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.Number,
-      perPage: Schema.Number,
-      completedAfter: Schema.optional(Schema.String),
-      completedBefore: Schema.optional(Schema.String),
-      createdAfter: Schema.optional(Schema.String),
-      createdBefore: Schema.optional(Schema.String),
-      requestType: Schema.optional(Schema.String),
-      sortBy: Schema.optional(Schema.String),
-      sortOrder: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "open",
-            "accepted",
-            "reported",
-            "approved",
-            "completed",
-            "declined",
-          ]),
-          Schema.String,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        page: "page",
-        perPage: "per_page",
-        completedAfter: "completed_after",
-        completedBefore: "completed_before",
-        createdAfter: "created_after",
-        createdBefore: "created_before",
-        requestType: "request_type",
-        sortBy: "sort_by",
-        sortOrder: "sort_order",
-        status: "status",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/cloudforce-one/requests",
-      }),
+export const ListRequestsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.Number,
+    perPage: Schema.Number,
+    completedAfter: Schema.optional(Schema.String),
+    completedBefore: Schema.optional(Schema.String),
+    createdAfter: Schema.optional(Schema.String),
+    createdBefore: Schema.optional(Schema.String),
+    requestType: Schema.optional(Schema.String),
+    sortBy: Schema.optional(Schema.String),
+    sortOrder: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
     ),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "open",
+          "accepted",
+          "reported",
+          "approved",
+          "completed",
+          "declined",
+        ]),
+        Schema.String,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      page: "page",
+      perPage: "per_page",
+      completedAfter: "completed_after",
+      completedBefore: "completed_before",
+      createdAfter: "created_after",
+      createdBefore: "created_before",
+      requestType: "request_type",
+      sortBy: "sort_by",
+      sortOrder: "sort_order",
+      status: "status",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/cloudforce-one/requests",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListRequestsRequest>;
 
 export interface ListRequestsResponse {
@@ -841,11 +831,10 @@ export interface ListRequestsResponse {
   }[];
 }
 
-export const ListRequestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListRequestsResponseResult),
-    }),
+export const ListRequestsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListRequestsResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListRequestsResponse>;
 
 export type ListRequestsError = DefaultErrors;
@@ -855,7 +844,7 @@ export const listRequests: API.PaginatedOperationMethod<
   ListRequestsResponse,
   ListRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequestsRequest,
   output: ListRequestsResponse,
   errors: [],
@@ -880,33 +869,32 @@ export interface CreateRequestRequest {
   tlp?: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
 }
 
-export const CreateRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      content: Schema.optional(Schema.String),
-      priority: Schema.optional(Schema.String),
-      requestType: Schema.optional(Schema.String),
-      summary: Schema.optional(Schema.String),
-      tlp: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
-          Schema.String,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        content: "content",
-        priority: "priority",
-        requestType: "request_type",
-        summary: "summary",
-        tlp: "tlp",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/cloudforce-one/requests/new",
-      }),
+export const CreateRequestRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    content: Schema.optional(Schema.String),
+    priority: Schema.optional(Schema.String),
+    requestType: Schema.optional(Schema.String),
+    summary: Schema.optional(Schema.String),
+    tlp: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+        Schema.String,
+      ]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      content: "content",
+      priority: "priority",
+      requestType: "request_type",
+      summary: "summary",
+      tlp: "tlp",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/cloudforce-one/requests/new",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateRequestRequest>;
 
 export interface CreateRequestResponse {
@@ -942,61 +930,58 @@ export interface CreateRequestResponse {
   tokens?: number | null;
 }
 
-export const CreateRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      content: Schema.String,
-      created: Schema.String,
-      priority: Schema.String,
-      request: Schema.String,
-      summary: Schema.String,
-      tlp: Schema.Union([
-        Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
-        Schema.String,
-      ]),
-      updated: Schema.String,
-      completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      messageTokens: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(
+export const CreateRequestResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    content: Schema.String,
+    created: Schema.String,
+    priority: Schema.String,
+    request: Schema.String,
+    summary: Schema.String,
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
+    updated: Schema.String,
+    completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "open",
-              "accepted",
-              "reported",
-              "approved",
-              "completed",
-              "declined",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "open",
+            "accepted",
+            "reported",
+            "approved",
+            "completed",
+            "declined",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      tokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          content: "content",
-          created: "created",
-          priority: "priority",
-          request: "request",
-          summary: "summary",
-          tlp: "tlp",
-          updated: "updated",
-          completed: "completed",
-          messageTokens: "message_tokens",
-          readableId: "readable_id",
-          status: "status",
-          tokens: "tokens",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    tokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        content: "content",
+        created: "created",
+        priority: "priority",
+        request: "request",
+        summary: "summary",
+        tlp: "tlp",
+        updated: "updated",
+        completed: "completed",
+        messageTokens: "message_tokens",
+        readableId: "readable_id",
+        status: "status",
+        tokens: "tokens",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateRequestResponse>;
 
 export type CreateRequestError = DefaultErrors;
@@ -1006,7 +991,7 @@ export const createRequest: API.OperationMethod<
   CreateRequestResponse,
   CreateRequestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRequestRequest,
   output: CreateRequestResponse,
   errors: [],
@@ -1028,34 +1013,33 @@ export interface UpdateRequestRequest {
   tlp?: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
 }
 
-export const UpdateRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      requestId: Schema.String.pipe(T.HttpPath("requestId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      content: Schema.optional(Schema.String),
-      priority: Schema.optional(Schema.String),
-      requestType: Schema.optional(Schema.String),
-      summary: Schema.optional(Schema.String),
-      tlp: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
-          Schema.String,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        content: "content",
-        priority: "priority",
-        requestType: "request_type",
-        summary: "summary",
-        tlp: "tlp",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}",
-      }),
+export const UpdateRequestRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    requestId: Schema.String.pipe(T.HttpPath("requestId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    content: Schema.optional(Schema.String),
+    priority: Schema.optional(Schema.String),
+    requestType: Schema.optional(Schema.String),
+    summary: Schema.optional(Schema.String),
+    tlp: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+        Schema.String,
+      ]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      content: "content",
+      priority: "priority",
+      requestType: "request_type",
+      summary: "summary",
+      tlp: "tlp",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateRequestRequest>;
 
 export interface UpdateRequestResponse {
@@ -1091,61 +1075,58 @@ export interface UpdateRequestResponse {
   tokens?: number | null;
 }
 
-export const UpdateRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      content: Schema.String,
-      created: Schema.String,
-      priority: Schema.String,
-      request: Schema.String,
-      summary: Schema.String,
-      tlp: Schema.Union([
-        Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
-        Schema.String,
-      ]),
-      updated: Schema.String,
-      completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      messageTokens: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(
+export const UpdateRequestResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    content: Schema.String,
+    created: Schema.String,
+    priority: Schema.String,
+    request: Schema.String,
+    summary: Schema.String,
+    tlp: Schema.Union([
+      Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      Schema.String,
+    ]),
+    updated: Schema.String,
+    completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    messageTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "open",
-              "accepted",
-              "reported",
-              "approved",
-              "completed",
-              "declined",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "open",
+            "accepted",
+            "reported",
+            "approved",
+            "completed",
+            "declined",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      tokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          content: "content",
-          created: "created",
-          priority: "priority",
-          request: "request",
-          summary: "summary",
-          tlp: "tlp",
-          updated: "updated",
-          completed: "completed",
-          messageTokens: "message_tokens",
-          readableId: "readable_id",
-          status: "status",
-          tokens: "tokens",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    tokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        content: "content",
+        created: "created",
+        priority: "priority",
+        request: "request",
+        summary: "summary",
+        tlp: "tlp",
+        updated: "updated",
+        completed: "completed",
+        messageTokens: "message_tokens",
+        readableId: "readable_id",
+        status: "status",
+        tokens: "tokens",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateRequestResponse>;
 
 export type UpdateRequestError = DefaultErrors;
@@ -1155,7 +1136,7 @@ export const updateRequest: API.OperationMethod<
   UpdateRequestResponse,
   UpdateRequestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequestRequest,
   output: UpdateRequestResponse,
   errors: [],
@@ -1167,17 +1148,16 @@ export interface DeleteRequestRequest {
   accountId: string;
 }
 
-export const DeleteRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      requestId: Schema.String.pipe(T.HttpPath("requestId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}",
-      }),
-    ),
+export const DeleteRequestRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    requestId: Schema.String.pipe(T.HttpPath("requestId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteRequestRequest>;
 
 export interface DeleteRequestResponse {
@@ -1197,13 +1177,12 @@ export interface DeleteRequestResponse {
   success: true;
 }
 
-export const DeleteRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      errors: Schema.Array(Error2),
-      messages: Schema.Array(Error2),
-      success: Schema.Literal(true),
-    }),
+export const DeleteRequestResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    errors: Schema.Array(Error2),
+    messages: Schema.Array(Error2),
+    success: Schema.Literal(true),
+  }),
 ) as unknown as Schema.Codec<DeleteRequestResponse>;
 
 export type DeleteRequestError = DefaultErrors;
@@ -1213,7 +1192,7 @@ export const deleteRequest: API.OperationMethod<
   DeleteRequestResponse,
   DeleteRequestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequestRequest,
   output: DeleteRequestResponse,
   errors: [],
@@ -1225,7 +1204,7 @@ export interface ConstantsRequestRequest {
 }
 
 export const ConstantsRequestRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -1255,7 +1234,7 @@ export interface ConstantsRequestResponse {
 }
 
 export const ConstantsRequestResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       priority: Schema.optional(
         Schema.Union([
@@ -1313,7 +1292,7 @@ export const constantsRequest: API.OperationMethod<
   ConstantsRequestResponse,
   ConstantsRequestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConstantsRequestRequest,
   output: ConstantsRequestResponse,
   errors: [],
@@ -1324,16 +1303,15 @@ export interface QuotaRequestRequest {
   accountId: string;
 }
 
-export const QuotaRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/cloudforce-one/requests/quota",
-      }),
-    ),
+export const QuotaRequestRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/cloudforce-one/requests/quota",
+    }),
+  ),
 ) as unknown as Schema.Codec<QuotaRequestRequest>;
 
 export interface QuotaRequestResponse {
@@ -1347,27 +1325,26 @@ export interface QuotaRequestResponse {
   remaining?: number | null;
 }
 
-export const QuotaRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      anniversaryDate: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      quarterAnniversaryDate: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      quota: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      remaining: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          anniversaryDate: "anniversary_date",
-          quarterAnniversaryDate: "quarter_anniversary_date",
-          quota: "quota",
-          remaining: "remaining",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const QuotaRequestResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    anniversaryDate: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    quarterAnniversaryDate: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    quota: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    remaining: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        anniversaryDate: "anniversary_date",
+        quarterAnniversaryDate: "quarter_anniversary_date",
+        quota: "quota",
+        remaining: "remaining",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<QuotaRequestResponse>;
 
 export type QuotaRequestError = DefaultErrors;
@@ -1377,7 +1354,7 @@ export const quotaRequest: API.OperationMethod<
   QuotaRequestResponse,
   QuotaRequestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QuotaRequestRequest,
   output: QuotaRequestResponse,
   errors: [],
@@ -1388,27 +1365,25 @@ export interface TypesRequestRequest {
   accountId: string;
 }
 
-export const TypesRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/cloudforce-one/requests/types",
-      }),
-    ),
+export const TypesRequestRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/cloudforce-one/requests/types",
+    }),
+  ),
 ) as unknown as Schema.Codec<TypesRequestRequest>;
 
 export interface TypesRequestResponse {
   result: string[];
 }
 
-export const TypesRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(Schema.String),
-    }),
+export const TypesRequestResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(Schema.String),
+  }),
 ) as unknown as Schema.Codec<TypesRequestResponse>;
 
 export type TypesRequestError = DefaultErrors;
@@ -1418,7 +1393,7 @@ export const typesRequest: API.PaginatedOperationMethod<
   TypesRequestResponse,
   TypesRequestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: TypesRequestRequest,
   output: TypesRequestResponse,
   errors: [],
@@ -1440,7 +1415,7 @@ export interface GetRequestAssetRequest {
 }
 
 export const GetRequestAssetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       requestId: Schema.String.pipe(T.HttpPath("requestId")),
       assetId: Schema.String.pipe(T.HttpPath("assetId")),
@@ -1464,7 +1439,7 @@ export interface GetRequestAssetResponse {
 }
 
 export const GetRequestAssetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(GetRequestAssetResponseResult),
     }),
@@ -1477,7 +1452,7 @@ export const getRequestAsset: API.PaginatedOperationMethod<
   GetRequestAssetResponse,
   GetRequestAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRequestAssetRequest,
   output: GetRequestAssetResponse,
   errors: [],
@@ -1498,7 +1473,7 @@ export interface CreateRequestAssetRequest {
 }
 
 export const CreateRequestAssetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       requestId: Schema.String.pipe(T.HttpPath("requestId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1524,7 +1499,7 @@ export interface CreateRequestAssetResponse {
 }
 
 export const CreateRequestAssetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(GetRequestAssetResponseResult),
     }),
@@ -1537,7 +1512,7 @@ export const createRequestAsset: API.PaginatedOperationMethod<
   CreateRequestAssetResponse,
   CreateRequestAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: CreateRequestAssetRequest,
   output: CreateRequestAssetResponse,
   errors: [],
@@ -1557,7 +1532,7 @@ export interface UpdateRequestAssetRequest {
 }
 
 export const UpdateRequestAssetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       requestId: Schema.String.pipe(T.HttpPath("requestId")),
       assetId: Schema.String.pipe(T.HttpPath("assetId")),
@@ -1585,7 +1560,7 @@ export interface UpdateRequestAssetResponse {
 }
 
 export const UpdateRequestAssetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Number,
       name: Schema.String,
@@ -1612,7 +1587,7 @@ export const updateRequestAsset: API.OperationMethod<
   UpdateRequestAssetResponse,
   UpdateRequestAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequestAssetRequest,
   output: UpdateRequestAssetResponse,
   errors: [],
@@ -1626,7 +1601,7 @@ export interface DeleteRequestAssetRequest {
 }
 
 export const DeleteRequestAssetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       requestId: Schema.String.pipe(T.HttpPath("requestId")),
       assetId: Schema.String.pipe(T.HttpPath("assetId")),
@@ -1657,7 +1632,7 @@ export interface DeleteRequestAssetResponse {
 }
 
 export const DeleteRequestAssetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -1672,7 +1647,7 @@ export const deleteRequestAsset: API.OperationMethod<
   DeleteRequestAssetResponse,
   DeleteRequestAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequestAssetRequest,
   output: DeleteRequestAssetResponse,
   errors: [],
@@ -1701,7 +1676,7 @@ export interface GetRequestMessageRequest {
 }
 
 export const GetRequestMessageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       requestId: Schema.String.pipe(T.HttpPath("requestId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1739,7 +1714,7 @@ export interface GetRequestMessageResponse {
 }
 
 export const GetRequestMessageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Error2),
     }),
@@ -1752,7 +1727,7 @@ export const getRequestMessage: API.PaginatedOperationMethod<
   GetRequestMessageResponse,
   GetRequestMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRequestMessageRequest,
   output: GetRequestMessageResponse,
   errors: [],
@@ -1771,7 +1746,7 @@ export interface CreateRequestMessageRequest {
 }
 
 export const CreateRequestMessageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       requestId: Schema.String.pipe(T.HttpPath("requestId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1792,7 +1767,7 @@ export interface CreateRequestMessageResponse {
 }
 
 export const CreateRequestMessageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       code: Schema.Number,
       message: Schema.String,
@@ -1819,7 +1794,7 @@ export const createRequestMessage: API.OperationMethod<
   CreateRequestMessageResponse,
   CreateRequestMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRequestMessageRequest,
   output: CreateRequestMessageResponse,
   errors: [],
@@ -1835,7 +1810,7 @@ export interface UpdateRequestMessageRequest {
 }
 
 export const UpdateRequestMessageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       requestId: Schema.String.pipe(T.HttpPath("requestId")),
       messageId: Schema.Number.pipe(T.HttpPath("messageId")),
@@ -1857,7 +1832,7 @@ export interface UpdateRequestMessageResponse {
 }
 
 export const UpdateRequestMessageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       code: Schema.Number,
       message: Schema.String,
@@ -1884,7 +1859,7 @@ export const updateRequestMessage: API.OperationMethod<
   UpdateRequestMessageResponse,
   UpdateRequestMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequestMessageRequest,
   output: UpdateRequestMessageResponse,
   errors: [],
@@ -1898,7 +1873,7 @@ export interface DeleteRequestMessageRequest {
 }
 
 export const DeleteRequestMessageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       requestId: Schema.String.pipe(T.HttpPath("requestId")),
       messageId: Schema.Number.pipe(T.HttpPath("messageId")),
@@ -1929,7 +1904,7 @@ export interface DeleteRequestMessageResponse {
 }
 
 export const DeleteRequestMessageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -1944,7 +1919,7 @@ export const deleteRequestMessage: API.OperationMethod<
   DeleteRequestMessageResponse,
   DeleteRequestMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequestMessageRequest,
   output: DeleteRequestMessageResponse,
   errors: [],
@@ -1961,7 +1936,7 @@ export interface GetRequestPriorityRequest {
 }
 
 export const GetRequestPriorityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       priorityId: Schema.String.pipe(T.HttpPath("priorityId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2007,7 +1982,7 @@ export interface GetRequestPriorityResponse {
 }
 
 export const GetRequestPriorityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       content: Schema.String,
@@ -2070,7 +2045,7 @@ export const getRequestPriority: API.OperationMethod<
   GetRequestPriorityResponse,
   GetRequestPriorityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRequestPriorityRequest,
   output: GetRequestPriorityResponse,
   errors: [],
@@ -2090,7 +2065,7 @@ export interface CreateRequestPriorityRequest {
 }
 
 export const CreateRequestPriorityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       labels: Schema.Array(Schema.String),
@@ -2126,7 +2101,7 @@ export interface CreateRequestPriorityResponse {
 }
 
 export const CreateRequestPriorityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       created: Schema.String,
@@ -2148,7 +2123,7 @@ export const createRequestPriority: API.OperationMethod<
   CreateRequestPriorityResponse,
   CreateRequestPriorityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRequestPriorityRequest,
   output: CreateRequestPriorityResponse,
   errors: [],
@@ -2169,7 +2144,7 @@ export interface UpdateRequestPriorityRequest {
 }
 
 export const UpdateRequestPriorityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       priorityId: Schema.String.pipe(T.HttpPath("priorityId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2222,7 +2197,7 @@ export interface UpdateRequestPriorityResponse {
 }
 
 export const UpdateRequestPriorityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       content: Schema.String,
@@ -2285,7 +2260,7 @@ export const updateRequestPriority: API.OperationMethod<
   UpdateRequestPriorityResponse,
   UpdateRequestPriorityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequestPriorityRequest,
   output: UpdateRequestPriorityResponse,
   errors: [],
@@ -2298,7 +2273,7 @@ export interface DeleteRequestPriorityRequest {
 }
 
 export const DeleteRequestPriorityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       priorityId: Schema.String.pipe(T.HttpPath("priorityId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2328,7 +2303,7 @@ export interface DeleteRequestPriorityResponse {
 }
 
 export const DeleteRequestPriorityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -2343,7 +2318,7 @@ export const deleteRequestPriority: API.OperationMethod<
   DeleteRequestPriorityResponse,
   DeleteRequestPriorityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequestPriorityRequest,
   output: DeleteRequestPriorityResponse,
   errors: [],
@@ -2355,7 +2330,7 @@ export interface QuotaRequestPriorityRequest {
 }
 
 export const QuotaRequestPriorityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -2378,7 +2353,7 @@ export interface QuotaRequestPriorityResponse {
 }
 
 export const QuotaRequestPriorityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       anniversaryDate: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -2407,7 +2382,7 @@ export const quotaRequestPriority: API.OperationMethod<
   QuotaRequestPriorityResponse,
   QuotaRequestPriorityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QuotaRequestPriorityRequest,
   output: QuotaRequestPriorityResponse,
   errors: [],
@@ -2423,7 +2398,7 @@ export interface ListScanConfigsRequest {
 }
 
 export const ListScanConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -2445,7 +2420,7 @@ export interface ListScanConfigsResponse {
 }
 
 export const ListScanConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListScanConfigsResponseResult),
     }),
@@ -2458,7 +2433,7 @@ export const listScanConfigs: API.PaginatedOperationMethod<
   ListScanConfigsResponse,
   ListScanConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScanConfigsRequest,
   output: ListScanConfigsResponse,
   errors: [],
@@ -2480,7 +2455,7 @@ export interface CreateScanConfigRequest {
 }
 
 export const CreateScanConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ips: Schema.Array(Schema.String),
@@ -2507,7 +2482,7 @@ export interface CreateScanConfigResponse {
 }
 
 export const CreateScanConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -2534,7 +2509,7 @@ export const createScanConfig: API.OperationMethod<
   CreateScanConfigResponse,
   CreateScanConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScanConfigRequest,
   output: CreateScanConfigResponse,
   errors: [],
@@ -2553,7 +2528,7 @@ export interface PatchScanConfigRequest {
 }
 
 export const PatchScanConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       configId: Schema.String.pipe(T.HttpPath("configId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2581,7 +2556,7 @@ export interface PatchScanConfigResponse {
 }
 
 export const PatchScanConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -2608,7 +2583,7 @@ export const patchScanConfig: API.OperationMethod<
   PatchScanConfigResponse,
   PatchScanConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchScanConfigRequest,
   output: PatchScanConfigResponse,
   errors: [ScanConfigNotFound],
@@ -2621,7 +2596,7 @@ export interface DeleteScanConfigRequest {
 }
 
 export const DeleteScanConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       configId: Schema.String.pipe(T.HttpPath("configId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2636,7 +2611,7 @@ export const DeleteScanConfigRequest =
 export type DeleteScanConfigResponse = unknown;
 
 export const DeleteScanConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteScanConfigResponse>;
 
@@ -2647,7 +2622,7 @@ export const deleteScanConfig: API.OperationMethod<
   DeleteScanConfigResponse,
   DeleteScanConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScanConfigRequest,
   output: DeleteScanConfigResponse,
   errors: [ScanConfigNotFound],
@@ -2663,17 +2638,16 @@ export interface GetScanResultRequest {
   accountId: string;
 }
 
-export const GetScanResultRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      configId: Schema.String.pipe(T.HttpPath("configId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/cloudforce-one/scans/results/{configId}",
-      }),
-    ),
+export const GetScanResultRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    configId: Schema.String.pipe(T.HttpPath("configId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/cloudforce-one/scans/results/{configId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetScanResultRequest>;
 
 export interface GetScanResultResponse {
@@ -2684,11 +2658,10 @@ export interface GetScanResultResponse {
   }[];
 }
 
-export const GetScanResultResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      "1.1.1.1": Schema.Array(ScanResult),
-    }).pipe(T.ResponsePath("result")),
+export const GetScanResultResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    "1.1.1.1": Schema.Array(ScanResult),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetScanResultResponse>;
 
 export type GetScanResultError = DefaultErrors;
@@ -2698,7 +2671,7 @@ export const getScanResult: API.OperationMethod<
   GetScanResultResponse,
   GetScanResultError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScanResultRequest,
   output: GetScanResultResponse,
   errors: [],
@@ -2714,17 +2687,16 @@ export interface GetThreatEventRequest {
   accountId: string;
 }
 
-export const GetThreatEventRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      eventId: Schema.String.pipe(T.HttpPath("eventId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/cloudforce-one/events/{eventId}",
-      }),
-    ),
+export const GetThreatEventRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    eventId: Schema.String.pipe(T.HttpPath("eventId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/cloudforce-one/events/{eventId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetThreatEventRequest>;
 
 export interface GetThreatEventResponse {
@@ -2760,7 +2732,7 @@ export interface GetThreatEventResponse {
 }
 
 export const GetThreatEventResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       attacker: Schema.String,
       attackerCountry: Schema.String,
@@ -2803,7 +2775,7 @@ export const getThreatEvent: API.OperationMethod<
   GetThreatEventResponse,
   GetThreatEventError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThreatEventRequest,
   output: GetThreatEventResponse,
   errors: [],
@@ -2850,7 +2822,7 @@ export interface ListThreatEventsRequest {
 }
 
 export const ListThreatEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
@@ -2946,7 +2918,7 @@ export type ListThreatEventsResponse = {
 }[];
 
 export const ListThreatEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(ThreatEventListResponseItem),
   ) as unknown as Schema.Codec<ListThreatEventsResponse>;
 
@@ -2957,7 +2929,7 @@ export const listThreatEvents: API.OperationMethod<
   ListThreatEventsResponse,
   ListThreatEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListThreatEventsRequest,
   output: ListThreatEventsResponse,
   errors: [],
@@ -2998,7 +2970,7 @@ export interface CreateThreatEventRequest {
 }
 
 export const CreateThreatEventRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       category: Schema.String,
@@ -3057,7 +3029,7 @@ export interface CreateThreatEventResponse {
 }
 
 export const CreateThreatEventResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       attacker: Schema.String,
       attackerCountry: Schema.String,
@@ -3100,7 +3072,7 @@ export const createThreatEvent: API.OperationMethod<
   CreateThreatEventResponse,
   CreateThreatEventError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateThreatEventRequest,
   output: CreateThreatEventResponse,
   errors: [],
@@ -3145,7 +3117,7 @@ export interface PatchThreatEventRequest {
 }
 
 export const PatchThreatEventRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       eventId: Schema.String.pipe(T.HttpPath("eventId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3204,7 +3176,7 @@ export interface PatchThreatEventResponse {
 }
 
 export const PatchThreatEventResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       attacker: Schema.String,
       attackerCountry: Schema.String,
@@ -3247,7 +3219,7 @@ export const patchThreatEvent: API.OperationMethod<
   PatchThreatEventResponse,
   PatchThreatEventError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchThreatEventRequest,
   output: PatchThreatEventResponse,
   errors: [],
@@ -3286,7 +3258,7 @@ export interface BulkCreateThreatEventsRequest {
 }
 
 export const BulkCreateThreatEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       data: Schema.Array(Data),
@@ -3320,7 +3292,7 @@ export interface BulkCreateThreatEventsResponse {
 }
 
 export const BulkCreateThreatEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdEventsCount: Schema.Number,
       createdTagsCount: Schema.Number,
@@ -3345,7 +3317,7 @@ export const bulkCreateThreatEvents: API.OperationMethod<
   BulkCreateThreatEventsResponse,
   BulkCreateThreatEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkCreateThreatEventsRequest,
   output: BulkCreateThreatEventsResponse,
   errors: [],
@@ -3363,7 +3335,7 @@ export interface ListThreatEventAttackersRequest {
 }
 
 export const ListThreatEventAttackersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       datasetIds: Schema.optional(Schema.Array(Schema.String)).pipe(
@@ -3383,7 +3355,7 @@ export interface ListThreatEventAttackersResponse {
 }
 
 export const ListThreatEventAttackersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       items: Items,
       type: Schema.String,
@@ -3397,7 +3369,7 @@ export const listThreatEventAttackers: API.OperationMethod<
   ListThreatEventAttackersResponse,
   ListThreatEventAttackersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListThreatEventAttackersRequest,
   output: ListThreatEventAttackersResponse,
   errors: [],
@@ -3414,7 +3386,7 @@ export interface GetThreatEventCategoryRequest {
 }
 
 export const GetThreatEventCategoryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       categoryId: Schema.String.pipe(T.HttpPath("categoryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3436,7 +3408,7 @@ export interface GetThreatEventCategoryResponse {
 }
 
 export const GetThreatEventCategoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       killChain: Schema.Number,
       name: Schema.String,
@@ -3458,7 +3430,7 @@ export const getThreatEventCategory: API.OperationMethod<
   GetThreatEventCategoryResponse,
   GetThreatEventCategoryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThreatEventCategoryRequest,
   output: GetThreatEventCategoryResponse,
   errors: [],
@@ -3472,7 +3444,7 @@ export interface ListThreatEventCategoriesRequest {
 }
 
 export const ListThreatEventCategoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       datasetIds: Schema.optional(Schema.Array(Schema.String)).pipe(
@@ -3496,7 +3468,7 @@ export type ListThreatEventCategoriesResponse = {
 }[];
 
 export const ListThreatEventCategoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(CategoryListResponseItem),
   ) as unknown as Schema.Codec<ListThreatEventCategoriesResponse>;
 
@@ -3507,7 +3479,7 @@ export const listThreatEventCategories: API.OperationMethod<
   ListThreatEventCategoriesResponse,
   ListThreatEventCategoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListThreatEventCategoriesRequest,
   output: ListThreatEventCategoriesResponse,
   errors: [],
@@ -3529,7 +3501,7 @@ export interface CreateThreatEventCategoryRequest {
 }
 
 export const CreateThreatEventCategoryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       killChain: Schema.Number,
@@ -3555,7 +3527,7 @@ export interface CreateThreatEventCategoryResponse {
 }
 
 export const CreateThreatEventCategoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       killChain: Schema.Number,
       name: Schema.String,
@@ -3577,7 +3549,7 @@ export const createThreatEventCategory: API.OperationMethod<
   CreateThreatEventCategoryResponse,
   CreateThreatEventCategoryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateThreatEventCategoryRequest,
   output: CreateThreatEventCategoryResponse,
   errors: [],
@@ -3600,7 +3572,7 @@ export interface PatchThreatEventCategoryRequest {
 }
 
 export const PatchThreatEventCategoryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       categoryId: Schema.String.pipe(T.HttpPath("categoryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3627,7 +3599,7 @@ export interface PatchThreatEventCategoryResponse {
 }
 
 export const PatchThreatEventCategoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       killChain: Schema.Number,
       name: Schema.String,
@@ -3649,7 +3621,7 @@ export const patchThreatEventCategory: API.OperationMethod<
   PatchThreatEventCategoryResponse,
   PatchThreatEventCategoryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchThreatEventCategoryRequest,
   output: PatchThreatEventCategoryResponse,
   errors: [],
@@ -3662,7 +3634,7 @@ export interface DeleteThreatEventCategoryRequest {
 }
 
 export const DeleteThreatEventCategoryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       categoryId: Schema.String.pipe(T.HttpPath("categoryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3679,7 +3651,7 @@ export interface DeleteThreatEventCategoryResponse {
 }
 
 export const DeleteThreatEventCategoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       uuid: Schema.String,
     }),
@@ -3692,7 +3664,7 @@ export const deleteThreatEventCategory: API.OperationMethod<
   DeleteThreatEventCategoryResponse,
   DeleteThreatEventCategoryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteThreatEventCategoryRequest,
   output: DeleteThreatEventCategoryResponse,
   errors: [],
@@ -3708,7 +3680,7 @@ export interface ListThreatEventCountriesRequest {
 }
 
 export const ListThreatEventCountriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -3725,7 +3697,7 @@ export type ListThreatEventCountriesResponse = {
 }[];
 
 export const ListThreatEventCountriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(CountryListResponseItem),
   ) as unknown as Schema.Codec<ListThreatEventCountriesResponse>;
 
@@ -3736,7 +3708,7 @@ export const listThreatEventCountries: API.OperationMethod<
   ListThreatEventCountriesResponse,
   ListThreatEventCountriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListThreatEventCountriesRequest,
   output: ListThreatEventCountriesResponse,
   errors: [],
@@ -3753,7 +3725,7 @@ export interface GetThreatEventDatasetRequest {
 }
 
 export const GetThreatEventDatasetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3773,7 +3745,7 @@ export interface GetThreatEventDatasetResponse {
 }
 
 export const GetThreatEventDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       isPublic: Schema.Boolean,
       name: Schema.String,
@@ -3789,7 +3761,7 @@ export const getThreatEventDataset: API.OperationMethod<
   GetThreatEventDatasetResponse,
   GetThreatEventDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThreatEventDatasetRequest,
   output: GetThreatEventDatasetResponse,
   errors: [],
@@ -3803,7 +3775,7 @@ export interface ListThreatEventDatasetsRequest {
 }
 
 export const ListThreatEventDatasetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       includeDeleted: Schema.optional(Schema.Boolean).pipe(
@@ -3825,7 +3797,7 @@ export type ListThreatEventDatasetsResponse = {
 }[];
 
 export const ListThreatEventDatasetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(DatasetListResponseItem),
   ) as unknown as Schema.Codec<ListThreatEventDatasetsResponse>;
 
@@ -3836,7 +3808,7 @@ export const listThreatEventDatasets: API.OperationMethod<
   ListThreatEventDatasetsResponse,
   ListThreatEventDatasetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListThreatEventDatasetsRequest,
   output: ListThreatEventDatasetsResponse,
   errors: [],
@@ -3852,7 +3824,7 @@ export interface CreateThreatEventDatasetRequest {
 }
 
 export const CreateThreatEventDatasetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       isPublic: Schema.Boolean,
@@ -3873,7 +3845,7 @@ export interface CreateThreatEventDatasetResponse {
 }
 
 export const CreateThreatEventDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       isPublic: Schema.Boolean,
       name: Schema.String,
@@ -3889,7 +3861,7 @@ export const createThreatEventDataset: API.OperationMethod<
   CreateThreatEventDatasetResponse,
   CreateThreatEventDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateThreatEventDatasetRequest,
   output: CreateThreatEventDatasetResponse,
   errors: [],
@@ -3906,7 +3878,7 @@ export interface PatchThreatEventDatasetRequest {
 }
 
 export const PatchThreatEventDatasetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3928,7 +3900,7 @@ export interface PatchThreatEventDatasetResponse {
 }
 
 export const PatchThreatEventDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       isPublic: Schema.Boolean,
       name: Schema.String,
@@ -3944,7 +3916,7 @@ export const patchThreatEventDataset: API.OperationMethod<
   PatchThreatEventDatasetResponse,
   PatchThreatEventDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchThreatEventDatasetRequest,
   output: PatchThreatEventDatasetResponse,
   errors: [],
@@ -3958,7 +3930,7 @@ export interface RawThreatEventDatasetRequest {
 }
 
 export const RawThreatEventDatasetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
       eventId: Schema.String.pipe(T.HttpPath("eventId")),
@@ -3981,7 +3953,7 @@ export interface RawThreatEventDatasetResponse {
 }
 
 export const RawThreatEventDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Number,
       accountId: Schema.Number,
@@ -3999,7 +3971,7 @@ export const rawThreatEventDataset: API.OperationMethod<
   RawThreatEventDatasetResponse,
   RawThreatEventDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RawThreatEventDatasetRequest,
   output: RawThreatEventDatasetResponse,
   errors: [],
@@ -4018,7 +3990,7 @@ export interface CreateThreatEventEventTagRequest {
 }
 
 export const CreateThreatEventEventTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       eventId: Schema.String.pipe(T.HttpPath("eventId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4036,7 +4008,7 @@ export interface CreateThreatEventEventTagResponse {
 }
 
 export const CreateThreatEventEventTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
     }).pipe(T.ResponsePath("result")),
@@ -4049,7 +4021,7 @@ export const createThreatEventEventTag: API.OperationMethod<
   CreateThreatEventEventTagResponse,
   CreateThreatEventEventTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateThreatEventEventTagRequest,
   output: CreateThreatEventEventTagResponse,
   errors: [],
@@ -4062,7 +4034,7 @@ export interface DeleteThreatEventEventTagRequest {
 }
 
 export const DeleteThreatEventEventTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       eventId: Schema.String.pipe(T.HttpPath("eventId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4079,7 +4051,7 @@ export interface DeleteThreatEventEventTagResponse {
 }
 
 export const DeleteThreatEventEventTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
     }).pipe(T.ResponsePath("result")),
@@ -4092,7 +4064,7 @@ export const deleteThreatEventEventTag: API.OperationMethod<
   DeleteThreatEventEventTagResponse,
   DeleteThreatEventEventTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteThreatEventEventTagRequest,
   output: DeleteThreatEventEventTagResponse,
   errors: [],
@@ -4108,7 +4080,7 @@ export interface ListThreatEventIndicatorTypesRequest {
 }
 
 export const ListThreatEventIndicatorTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -4125,7 +4097,7 @@ export interface ListThreatEventIndicatorTypesResponse {
 }
 
 export const ListThreatEventIndicatorTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       items: Items,
       type: Schema.String,
@@ -4139,7 +4111,7 @@ export const listThreatEventIndicatorTypes: API.OperationMethod<
   ListThreatEventIndicatorTypesResponse,
   ListThreatEventIndicatorTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListThreatEventIndicatorTypesRequest,
   output: ListThreatEventIndicatorTypesResponse,
   errors: [],
@@ -4157,7 +4129,7 @@ export interface GetThreatEventRawRequest {
 }
 
 export const GetThreatEventRawRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       eventId: Schema.String.pipe(T.HttpPath("eventId")),
       rawId: Schema.String.pipe(T.HttpPath("rawId")),
@@ -4180,7 +4152,7 @@ export interface GetThreatEventRawResponse {
 }
 
 export const GetThreatEventRawResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.Number,
@@ -4198,7 +4170,7 @@ export const getThreatEventRaw: API.OperationMethod<
   GetThreatEventRawResponse,
   GetThreatEventRawError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThreatEventRawRequest,
   output: GetThreatEventRawResponse,
   errors: [],
@@ -4218,7 +4190,7 @@ export interface PatchThreatEventRawRequest {
 }
 
 export const PatchThreatEventRawRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       eventId: Schema.String.pipe(T.HttpPath("eventId")),
       rawId: Schema.String.pipe(T.HttpPath("rawId")),
@@ -4240,7 +4212,7 @@ export interface PatchThreatEventRawResponse {
 }
 
 export const PatchThreatEventRawResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       data: Schema.Unknown,
@@ -4254,7 +4226,7 @@ export const patchThreatEventRaw: API.OperationMethod<
   PatchThreatEventRawResponse,
   PatchThreatEventRawError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchThreatEventRawRequest,
   output: PatchThreatEventRawResponse,
   errors: [],
@@ -4271,7 +4243,7 @@ export interface DeleteThreatEventRelateRequest {
 }
 
 export const DeleteThreatEventRelateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       eventId: Schema.String.pipe(T.HttpPath("eventId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4288,7 +4260,7 @@ export interface DeleteThreatEventRelateResponse {
 }
 
 export const DeleteThreatEventRelateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
     }).pipe(T.ResponsePath("result")),
@@ -4301,7 +4273,7 @@ export const deleteThreatEventRelate: API.OperationMethod<
   DeleteThreatEventRelateResponse,
   DeleteThreatEventRelateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteThreatEventRelateRequest,
   output: DeleteThreatEventRelateResponse,
   errors: [],
@@ -4365,7 +4337,7 @@ export interface CreateThreatEventTagRequest {
 }
 
 export const CreateThreatEventTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       value: Schema.String,
@@ -4437,7 +4409,7 @@ export interface CreateThreatEventTagResponse {
 }
 
 export const CreateThreatEventTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       uuid: Schema.String,
       value: Schema.String,
@@ -4504,7 +4476,7 @@ export const createThreatEventTag: API.OperationMethod<
   CreateThreatEventTagResponse,
   CreateThreatEventTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateThreatEventTagRequest,
   output: CreateThreatEventTagResponse,
   errors: [],
@@ -4522,7 +4494,7 @@ export interface ListThreatEventTargetIndustriesRequest {
 }
 
 export const ListThreatEventTargetIndustriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       datasetIds: Schema.optional(Schema.Array(Schema.String)).pipe(
@@ -4542,7 +4514,7 @@ export interface ListThreatEventTargetIndustriesResponse {
 }
 
 export const ListThreatEventTargetIndustriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       items: Items,
       type: Schema.String,
@@ -4556,7 +4528,7 @@ export const listThreatEventTargetIndustries: API.OperationMethod<
   ListThreatEventTargetIndustriesResponse,
   ListThreatEventTargetIndustriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListThreatEventTargetIndustriesRequest,
   output: ListThreatEventTargetIndustriesResponse,
   errors: [],

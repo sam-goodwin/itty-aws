@@ -7,7 +7,7 @@ export interface DeleteTerminalLocationsLocationInput {
   location: string;
 }
 export const DeleteTerminalLocationsLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -24,7 +24,7 @@ export interface DeleteTerminalLocationsLocationOutput {
   object: "terminal.location";
 }
 export const DeleteTerminalLocationsLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["terminal.location"]),
@@ -37,7 +37,7 @@ export const DeleteTerminalLocationsLocationOutput =
  * <p>Deletes a <code>Location</code> object.</p>
  */
 export const DeleteTerminalLocationsLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteTerminalLocationsLocationInput,
     outputSchema: DeleteTerminalLocationsLocationOutput,
   }));

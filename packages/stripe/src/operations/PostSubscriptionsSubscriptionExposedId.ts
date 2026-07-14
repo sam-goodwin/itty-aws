@@ -307,7 +307,7 @@ export interface PostSubscriptionsSubscriptionExposedIdInput {
   };
 }
 export const PostSubscriptionsSubscriptionExposedIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription_exposed_id: Schema.String.pipe(T.PathParam()),
     add_invoice_items: Schema.optional(
       Schema.Array(
@@ -1960,7 +1960,7 @@ export interface PostSubscriptionsSubscriptionExposedIdOutput {
   trial_start: number | null;
 }
 export const PostSubscriptionsSubscriptionExposedIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -2844,7 +2844,7 @@ export const PostSubscriptionsSubscriptionExposedIdOutput =
  * <p>Updating the quantity on a subscription many times in an hour may result in <a href="/docs/rate-limits">rate limiting</a>. If you need to bill for a frequently changing quantity, consider integrating <a href="/docs/billing/subscriptions/usage-based">usage-based billing</a> instead.</p>
  */
 export const PostSubscriptionsSubscriptionExposedId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostSubscriptionsSubscriptionExposedIdInput,
     outputSchema: PostSubscriptionsSubscriptionExposedIdOutput,
   }));

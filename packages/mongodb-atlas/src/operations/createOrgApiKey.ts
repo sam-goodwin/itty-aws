@@ -9,7 +9,7 @@ export interface CreateOrgApiKeyInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const CreateOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateOrgApiKeyInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export const CreateOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CreateOrgApiKeyOutput = void;
 export const CreateOrgApiKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgApiKeyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgApiKeyOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const CreateOrgApiKeyOutput =
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createOrgApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createOrgApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateOrgApiKeyInput,
   outputSchema: CreateOrgApiKeyOutput,
   errors: [Forbidden, NotFound] as const,

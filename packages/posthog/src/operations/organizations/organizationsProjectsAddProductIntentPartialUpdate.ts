@@ -1100,7 +1100,7 @@ export interface OrganizationsProjectsAddProductIntentPartialUpdateInput {
   events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsAddProductIntentPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
     organization: Schema.optional(Schema.String),
@@ -3380,7 +3380,7 @@ export interface OrganizationsProjectsAddProductIntentPartialUpdateOutput {
   events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsAddProductIntentPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     organization: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4568,7 +4568,7 @@ export const OrganizationsProjectsAddProductIntentPartialUpdateOutput =
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const organizationsProjectsAddProductIntentPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationsProjectsAddProductIntentPartialUpdateInput,
     outputSchema: OrganizationsProjectsAddProductIntentPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

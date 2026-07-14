@@ -124,7 +124,7 @@ export interface DescribeJobExecutionRequest {
   executionNumber?: number;
 }
 export const DescribeJobExecutionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       jobId: S.String.pipe(T.HttpLabel("jobId")),
       thingName: S.String.pipe(T.HttpLabel("thingName")),
@@ -157,9 +157,9 @@ export type JobExecutionStatus =
   | "REMOVED"
   | "CANCELED"
   | (string & {});
-export const JobExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const JobExecutionStatus = /*@__PURE__*/ S.String;
 export type DetailsMap = { [key: string]: string | undefined };
-export const DetailsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const DetailsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -176,7 +176,7 @@ export interface JobExecution {
   executionNumber?: number;
   jobDocument?: string;
 }
-export const JobExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const JobExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.optional(S.String),
     thingName: S.optional(S.String),
@@ -195,7 +195,7 @@ export interface DescribeJobExecutionResponse {
   execution?: JobExecution;
 }
 export const DescribeJobExecutionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ execution: S.optional(JobExecution) }),
   ).annotate({
     identifier: "DescribeJobExecutionResponse",
@@ -204,7 +204,7 @@ export interface GetPendingJobExecutionsRequest {
   thingName: string;
 }
 export const GetPendingJobExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ thingName: S.String.pipe(T.HttpLabel("thingName")) }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/things/{thingName}/jobs" }),
@@ -226,7 +226,7 @@ export interface JobExecutionSummary {
   versionNumber?: number;
   executionNumber?: number;
 }
-export const JobExecutionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const JobExecutionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.optional(S.String),
     queuedAt: S.optional(S.Number),
@@ -240,13 +240,13 @@ export const JobExecutionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobExecutionSummary>;
 export type JobExecutionSummaryList = JobExecutionSummary[];
 export const JobExecutionSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(JobExecutionSummary);
+  /*@__PURE__*/ S.Array(JobExecutionSummary);
 export interface GetPendingJobExecutionsResponse {
   inProgressJobs?: JobExecutionSummary[];
   queuedJobs?: JobExecutionSummary[];
 }
 export const GetPendingJobExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       inProgressJobs: S.optional(JobExecutionSummaryList),
       queuedJobs: S.optional(JobExecutionSummaryList),
@@ -263,7 +263,7 @@ export interface CommandParameterValue {
   BIN?: Uint8Array;
   UL?: string;
 }
-export const CommandParameterValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CommandParameterValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     S: S.optional(S.String),
     B: S.optional(S.Boolean),
@@ -280,10 +280,7 @@ export type CommandExecutionParameterMap = {
   [key: string]: CommandParameterValue | undefined;
 };
 export const CommandExecutionParameterMap =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(
-    S.String,
-    CommandParameterValue.pipe(S.optional),
-  );
+  /*@__PURE__*/ S.Record(S.String, CommandParameterValue.pipe(S.optional));
 export interface StartCommandExecutionRequest {
   targetArn: string;
   commandArn: string;
@@ -292,7 +289,7 @@ export interface StartCommandExecutionRequest {
   clientToken?: string;
 }
 export const StartCommandExecutionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetArn: S.String,
       commandArn: S.String,
@@ -316,7 +313,7 @@ export interface StartCommandExecutionResponse {
   executionId?: string;
 }
 export const StartCommandExecutionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ executionId: S.optional(S.String) }),
   ).annotate({
     identifier: "StartCommandExecutionResponse",
@@ -327,7 +324,7 @@ export interface StartNextPendingJobExecutionRequest {
   stepTimeoutInMinutes?: number;
 }
 export const StartNextPendingJobExecutionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       thingName: S.String.pipe(T.HttpLabel("thingName")),
       statusDetails: S.optional(DetailsMap),
@@ -349,7 +346,7 @@ export interface StartNextPendingJobExecutionResponse {
   execution?: JobExecution;
 }
 export const StartNextPendingJobExecutionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ execution: S.optional(JobExecution) }),
   ).annotate({
     identifier: "StartNextPendingJobExecutionResponse",
@@ -365,28 +362,27 @@ export interface UpdateJobExecutionRequest {
   includeJobDocument?: boolean;
   executionNumber?: number;
 }
-export const UpdateJobExecutionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      jobId: S.String.pipe(T.HttpLabel("jobId")),
-      thingName: S.String.pipe(T.HttpLabel("thingName")),
-      status: JobExecutionStatus,
-      statusDetails: S.optional(DetailsMap),
-      stepTimeoutInMinutes: S.optional(S.Number),
-      expectedVersion: S.optional(S.Number),
-      includeJobExecutionState: S.optional(S.Boolean),
-      includeJobDocument: S.optional(S.Boolean),
-      executionNumber: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/things/{thingName}/jobs/{jobId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateJobExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobId: S.String.pipe(T.HttpLabel("jobId")),
+    thingName: S.String.pipe(T.HttpLabel("thingName")),
+    status: JobExecutionStatus,
+    statusDetails: S.optional(DetailsMap),
+    stepTimeoutInMinutes: S.optional(S.Number),
+    expectedVersion: S.optional(S.Number),
+    includeJobExecutionState: S.optional(S.Boolean),
+    includeJobDocument: S.optional(S.Boolean),
+    executionNumber: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/things/{thingName}/jobs/{jobId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateJobExecutionRequest",
 }) as any as S.Schema<UpdateJobExecutionRequest>;
@@ -395,7 +391,7 @@ export interface JobExecutionState {
   statusDetails?: { [key: string]: string | undefined };
   versionNumber?: number;
 }
-export const JobExecutionState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const JobExecutionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(JobExecutionStatus),
     statusDetails: S.optional(DetailsMap),
@@ -408,12 +404,11 @@ export interface UpdateJobExecutionResponse {
   executionState?: JobExecutionState;
   jobDocument?: string;
 }
-export const UpdateJobExecutionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionState: S.optional(JobExecutionState),
-      jobDocument: S.optional(S.String),
-    }),
+export const UpdateJobExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionState: S.optional(JobExecutionState),
+    jobDocument: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "UpdateJobExecutionResponse",
 }) as any as S.Schema<UpdateJobExecutionResponse>;
@@ -483,7 +478,7 @@ export const describeJobExecution: API.OperationMethod<
   DescribeJobExecutionResponse,
   DescribeJobExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeJobExecutionRequest,
   output: DescribeJobExecutionResponse,
   errors: [
@@ -513,7 +508,7 @@ export const getPendingJobExecutions: API.OperationMethod<
   GetPendingJobExecutionsResponse,
   GetPendingJobExecutionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPendingJobExecutionsRequest,
   output: GetPendingJobExecutionsResponse,
   errors: [
@@ -542,7 +537,7 @@ export const startCommandExecution: API.OperationMethod<
   StartCommandExecutionResponse,
   StartCommandExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCommandExecutionRequest,
   output: StartCommandExecutionResponse,
   errors: [
@@ -573,7 +568,7 @@ export const startNextPendingJobExecution: API.OperationMethod<
   StartNextPendingJobExecutionResponse,
   StartNextPendingJobExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartNextPendingJobExecutionRequest,
   output: StartNextPendingJobExecutionResponse,
   errors: [
@@ -603,7 +598,7 @@ export const updateJobExecution: API.OperationMethod<
   UpdateJobExecutionResponse,
   UpdateJobExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateJobExecutionRequest,
   output: UpdateJobExecutionResponse,
   errors: [

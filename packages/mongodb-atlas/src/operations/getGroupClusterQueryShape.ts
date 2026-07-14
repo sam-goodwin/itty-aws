@@ -12,7 +12,7 @@ export interface GetGroupClusterQueryShapeInput {
   pretty?: boolean;
 }
 export const GetGroupClusterQueryShapeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     queryShapeHash: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const GetGroupClusterQueryShapeInput =
 // Output Schema
 export type GetGroupClusterQueryShapeOutput = void;
 export const GetGroupClusterQueryShapeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterQueryShapeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterQueryShapeOutput>;
 
 // The operation
 /**
@@ -44,10 +44,8 @@ export const GetGroupClusterQueryShapeOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  * @param queryShapeHash - A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
  */
-export const getGroupClusterQueryShape = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupClusterQueryShapeInput,
-    outputSchema: GetGroupClusterQueryShapeOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupClusterQueryShape = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupClusterQueryShapeInput,
+  outputSchema: GetGroupClusterQueryShapeOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

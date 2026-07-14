@@ -68,7 +68,7 @@ export interface Result {
 }
 
 export const Result: Schema.Codec<Result> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     snippet: Schema.optional(Schema.String),
     htmlTitle: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface Promotion {
 }
 
 export const Promotion: Schema.Codec<Promotion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     htmlTitle: Schema.optional(Schema.String),
     displayLink: Schema.optional(Schema.String),
     bodyLines: Schema.optional(
@@ -289,7 +289,7 @@ export interface Search {
 }
 
 export const Search: Schema.Codec<Search> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     searchInformation: Schema.optional(
       Schema.Struct({
         searchTime: Schema.optional(Schema.Number),
@@ -583,7 +583,7 @@ export interface ListCseRequest {
     | (string & {});
 }
 
-export const ListCseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListCseRequest = /*@__PURE__*/ Schema.Struct({
   enableAlternateSearchHandler: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("enableAlternateSearchHandler"),
   ),
@@ -637,7 +637,7 @@ export const ListCseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListCseRequest>;
 
 export type ListCseResponse = Search;
-export const ListCseResponse = /*@__PURE__*/ /*#__PURE__*/ Search;
+export const ListCseResponse = /*@__PURE__*/ Search;
 
 export type ListCseError = DefaultErrors | NotFound | Forbidden;
 
@@ -647,7 +647,7 @@ export const listCse: API.OperationMethod<
   ListCseResponse,
   ListCseError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCseRequest,
   output: ListCseResponse,
   errors: [NotFound, Forbidden],
@@ -760,7 +760,7 @@ export interface ListCseSiterestrictRequest {
 }
 
 export const ListCseSiterestrictRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateRestrict: Schema.optional(Schema.String).pipe(
       T.HttpQuery("dateRestrict"),
     ),
@@ -816,7 +816,7 @@ export const ListCseSiterestrictRequest =
   ) as unknown as Schema.Codec<ListCseSiterestrictRequest>;
 
 export type ListCseSiterestrictResponse = Search;
-export const ListCseSiterestrictResponse = /*@__PURE__*/ /*#__PURE__*/ Search;
+export const ListCseSiterestrictResponse = /*@__PURE__*/ Search;
 
 export type ListCseSiterestrictError = DefaultErrors | NotFound | Forbidden;
 
@@ -826,7 +826,7 @@ export const listCseSiterestrict: API.OperationMethod<
   ListCseSiterestrictResponse,
   ListCseSiterestrictError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCseSiterestrictRequest,
   output: ListCseSiterestrictResponse,
   errors: [NotFound, Forbidden],

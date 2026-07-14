@@ -10,7 +10,7 @@ export interface LlmAnalyticsEvaluationConfigSetActiveKeyCreateInput {
   key_id: string;
 }
 export const LlmAnalyticsEvaluationConfigSetActiveKeyCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     key_id: Schema.String,
   }).pipe(
@@ -73,7 +73,7 @@ export interface LlmAnalyticsEvaluationConfigSetActiveKeyCreateOutput {
   updated_at: string;
 }
 export const LlmAnalyticsEvaluationConfigSetActiveKeyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trial_eval_limit: Schema.Number,
     trial_evals_used: Schema.Number,
     trial_evals_remaining: Schema.Number,
@@ -151,7 +151,7 @@ export const LlmAnalyticsEvaluationConfigSetActiveKeyCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const llmAnalyticsEvaluationConfigSetActiveKeyCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsEvaluationConfigSetActiveKeyCreateInput,
     outputSchema: LlmAnalyticsEvaluationConfigSetActiveKeyCreateOutput,
   }));

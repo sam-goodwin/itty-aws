@@ -14,7 +14,7 @@ export interface GetCustomersCustomerPaymentMethodsPaymentMethodInput {
   expand?: string;
 }
 export const GetCustomersCustomerPaymentMethodsPaymentMethodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     payment_method: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -858,7 +858,7 @@ export interface GetCustomersCustomerPaymentMethodsPaymentMethodOutput {
   zip?: {};
 }
 export const GetCustomersCustomerPaymentMethodsPaymentMethodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acss_debit: Schema.optional(
       Schema.Struct({
         bank_name: Schema.NullOr(Schema.String),
@@ -1647,7 +1647,7 @@ export const GetCustomersCustomerPaymentMethodsPaymentMethodOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetCustomersCustomerPaymentMethodsPaymentMethod =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetCustomersCustomerPaymentMethodsPaymentMethodInput,
     outputSchema: GetCustomersCustomerPaymentMethodsPaymentMethodOutput,
   }));

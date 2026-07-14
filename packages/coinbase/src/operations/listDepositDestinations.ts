@@ -12,7 +12,7 @@ export interface ListDepositDestinationsInput {
   pageToken?: string;
 }
 export const ListDepositDestinationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     address: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export interface ListDepositDestinationsOutput {
   nextPageToken?: string;
 }
 export const ListDepositDestinationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     depositDestinations: Schema.Array(
       Schema.Struct({
         depositDestinationId: Schema.String,
@@ -101,9 +101,7 @@ export const ListDepositDestinationsOutput =
  * @param pageSize - The number of resources to return per page.
  * @param pageToken - The token for the next page of resources, if any.
  */
-export const listDepositDestinations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListDepositDestinationsInput,
-    outputSchema: ListDepositDestinationsOutput,
-  }),
-);
+export const listDepositDestinations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListDepositDestinationsInput,
+  outputSchema: ListDepositDestinationsOutput,
+}));

@@ -8,7 +8,7 @@ export interface ApiKeysControllerValidateApiKeyInput {
   value?: string;
 }
 export const ApiKeysControllerValidateApiKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "POST", path: "/api_keys/validations" }),
@@ -33,7 +33,7 @@ export interface ApiKeysControllerValidateApiKeyOutput {
   agent_registration_id?: string;
 }
 export const ApiKeysControllerValidateApiKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     api_key: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -72,7 +72,7 @@ export const ApiKeysControllerValidateApiKeyOutput =
  * Validate an API key value and return the API key object if valid.
  */
 export const ApiKeysControllerValidateApiKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApiKeysControllerValidateApiKeyInput,
     outputSchema: ApiKeysControllerValidateApiKeyOutput,
     errors: [UnprocessableEntity] as const,

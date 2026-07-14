@@ -92,7 +92,7 @@ export interface EventDefinitionsPartialUpdateInput {
   media_preview_urls?: string[];
 }
 export const EventDefinitionsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -309,7 +309,7 @@ export interface EventDefinitionsPartialUpdateOutput {
   media_preview_urls?: string[];
 }
 export const EventDefinitionsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     owner: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -439,7 +439,7 @@ export const EventDefinitionsPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const eventDefinitionsPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventDefinitionsPartialUpdateInput,
     outputSchema: EventDefinitionsPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

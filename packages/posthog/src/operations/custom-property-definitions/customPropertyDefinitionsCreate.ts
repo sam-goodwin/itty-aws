@@ -22,7 +22,7 @@ export interface CustomPropertyDefinitionsCreateInput {
   updated_at: string | null;
 }
 export const CustomPropertyDefinitionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String,
     name: Schema.String,
@@ -66,7 +66,7 @@ export interface CustomPropertyDefinitionsCreateOutput {
   updated_at: string | null;
 }
 export const CustomPropertyDefinitionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -91,7 +91,7 @@ export const CustomPropertyDefinitionsCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const customPropertyDefinitionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomPropertyDefinitionsCreateInput,
     outputSchema: CustomPropertyDefinitionsCreateOutput,
   }));

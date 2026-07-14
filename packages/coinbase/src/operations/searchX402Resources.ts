@@ -15,7 +15,7 @@ export interface SearchX402ResourcesInput {
   limit?: number;
 }
 export const SearchX402ResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     network: Schema.optional(Schema.String),
     asset: Schema.optional(Schema.String),
@@ -84,7 +84,7 @@ export interface SearchX402ResourcesOutput {
   x402Version: 1 | 2;
 }
 export const SearchX402ResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.Array(
       Schema.Struct({
         resource: Schema.String,
@@ -188,7 +188,7 @@ Tip: include enough of the URL to disambiguate (e.g. `api.example.com` rather th
  * @param limit - Maximum number of resources to return. Must be a positive integer no greater than 20.
 Defaults to 20.
  */
-export const searchX402Resources = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const searchX402Resources = /*@__PURE__*/ API.make(() => ({
   inputSchema: SearchX402ResourcesInput,
   outputSchema: SearchX402ResourcesOutput,
 }));

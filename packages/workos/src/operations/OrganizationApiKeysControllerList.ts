@@ -12,7 +12,7 @@ export interface OrganizationApiKeysControllerListInput {
   order?: string;
 }
 export const OrganizationApiKeysControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export interface OrganizationApiKeysControllerListOutput {
   list_metadata: { before: string | null; after: string | null };
 }
 export const OrganizationApiKeysControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     data: Schema.Array(
       Schema.Struct({
@@ -78,7 +78,7 @@ export const OrganizationApiKeysControllerListOutput =
  * @param order - Order the results by the creation time.
  */
 export const OrganizationApiKeysControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationApiKeysControllerListInput,
     outputSchema: OrganizationApiKeysControllerListOutput,
     errors: [NotFound] as const,

@@ -7,7 +7,7 @@ export interface DeleteWebhookSubscriptionInput {
   subscriptionId: string;
 }
 export const DeleteWebhookSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -19,7 +19,7 @@ export const DeleteWebhookSubscriptionInput =
 // Output Schema
 export type DeleteWebhookSubscriptionOutput = void;
 export const DeleteWebhookSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteWebhookSubscriptionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteWebhookSubscriptionOutput>;
 
 // The operation
 /**
@@ -34,9 +34,7 @@ export const DeleteWebhookSubscriptionOutput =
  *
  * @param subscriptionId - Unique identifier for the webhook subscription.
  */
-export const deleteWebhookSubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteWebhookSubscriptionInput,
-    outputSchema: DeleteWebhookSubscriptionOutput,
-  }),
-);
+export const deleteWebhookSubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteWebhookSubscriptionInput,
+  outputSchema: DeleteWebhookSubscriptionOutput,
+}));

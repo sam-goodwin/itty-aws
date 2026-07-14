@@ -22,7 +22,7 @@ export interface LlmAnalyticsTextReprCreateInput {
   };
 }
 export const LlmAnalyticsTextReprCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     event_type: Schema.optional(
       Schema.Literals([
@@ -68,7 +68,7 @@ export interface LlmAnalyticsTextReprCreateOutput {
   };
 }
 export const LlmAnalyticsTextReprCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     metadata: Schema.optional(
       Schema.Struct({
@@ -115,10 +115,8 @@ export const LlmAnalyticsTextReprCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmAnalyticsTextReprCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LlmAnalyticsTextReprCreateInput,
-    outputSchema: LlmAnalyticsTextReprCreateOutput,
-    errors: [BadRequest] as const,
-  }),
-);
+export const llmAnalyticsTextReprCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LlmAnalyticsTextReprCreateInput,
+  outputSchema: LlmAnalyticsTextReprCreateOutput,
+  errors: [BadRequest] as const,
+}));

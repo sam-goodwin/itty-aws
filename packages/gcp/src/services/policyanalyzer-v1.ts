@@ -30,7 +30,7 @@ export interface GoogleCloudPolicyanalyzerV1ObservationPeriod {
 }
 
 export const GoogleCloudPolicyanalyzerV1ObservationPeriod: Schema.Codec<GoogleCloudPolicyanalyzerV1ObservationPeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudPolicyanalyzerV1ObservationPeriod" });
@@ -47,7 +47,7 @@ export interface GoogleCloudPolicyanalyzerV1Activity {
 }
 
 export const GoogleCloudPolicyanalyzerV1Activity: Schema.Codec<GoogleCloudPolicyanalyzerV1Activity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     observationPeriod: Schema.optional(
       GoogleCloudPolicyanalyzerV1ObservationPeriod,
     ),
@@ -64,7 +64,7 @@ export interface GoogleCloudPolicyanalyzerV1QueryActivityResponse {
 }
 
 export const GoogleCloudPolicyanalyzerV1QueryActivityResponse: Schema.Codec<GoogleCloudPolicyanalyzerV1QueryActivityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activities: Schema.optional(
       Schema.Array(GoogleCloudPolicyanalyzerV1Activity),
     ),
@@ -116,7 +116,7 @@ export interface QueryProjectsLocationsActivityTypesActivitiesRequest {
 }
 
 export const QueryProjectsLocationsActivityTypesActivitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -129,7 +129,7 @@ export const QueryProjectsLocationsActivityTypesActivitiesRequest =
 export type QueryProjectsLocationsActivityTypesActivitiesResponse =
   GoogleCloudPolicyanalyzerV1QueryActivityResponse;
 export const QueryProjectsLocationsActivityTypesActivitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicyanalyzerV1QueryActivityResponse;
+  /*@__PURE__*/ GoogleCloudPolicyanalyzerV1QueryActivityResponse;
 
 export type QueryProjectsLocationsActivityTypesActivitiesError =
   | DefaultErrors
@@ -142,7 +142,7 @@ export const queryProjectsLocationsActivityTypesActivities: API.PaginatedOperati
   QueryProjectsLocationsActivityTypesActivitiesResponse,
   QueryProjectsLocationsActivityTypesActivitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryProjectsLocationsActivityTypesActivitiesRequest,
   output: QueryProjectsLocationsActivityTypesActivitiesResponse,
   errors: [NotFound, Forbidden],
@@ -164,7 +164,7 @@ export interface QueryOrganizationsLocationsActivityTypesActivitiesRequest {
 }
 
 export const QueryOrganizationsLocationsActivityTypesActivitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -177,7 +177,7 @@ export const QueryOrganizationsLocationsActivityTypesActivitiesRequest =
 export type QueryOrganizationsLocationsActivityTypesActivitiesResponse =
   GoogleCloudPolicyanalyzerV1QueryActivityResponse;
 export const QueryOrganizationsLocationsActivityTypesActivitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicyanalyzerV1QueryActivityResponse;
+  /*@__PURE__*/ GoogleCloudPolicyanalyzerV1QueryActivityResponse;
 
 export type QueryOrganizationsLocationsActivityTypesActivitiesError =
   | DefaultErrors
@@ -190,7 +190,7 @@ export const queryOrganizationsLocationsActivityTypesActivities: API.PaginatedOp
   QueryOrganizationsLocationsActivityTypesActivitiesResponse,
   QueryOrganizationsLocationsActivityTypesActivitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryOrganizationsLocationsActivityTypesActivitiesRequest,
   output: QueryOrganizationsLocationsActivityTypesActivitiesResponse,
   errors: [NotFound, Forbidden],
@@ -212,7 +212,7 @@ export interface QueryFoldersLocationsActivityTypesActivitiesRequest {
 }
 
 export const QueryFoldersLocationsActivityTypesActivitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -225,7 +225,7 @@ export const QueryFoldersLocationsActivityTypesActivitiesRequest =
 export type QueryFoldersLocationsActivityTypesActivitiesResponse =
   GoogleCloudPolicyanalyzerV1QueryActivityResponse;
 export const QueryFoldersLocationsActivityTypesActivitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicyanalyzerV1QueryActivityResponse;
+  /*@__PURE__*/ GoogleCloudPolicyanalyzerV1QueryActivityResponse;
 
 export type QueryFoldersLocationsActivityTypesActivitiesError =
   | DefaultErrors
@@ -238,7 +238,7 @@ export const queryFoldersLocationsActivityTypesActivities: API.PaginatedOperatio
   QueryFoldersLocationsActivityTypesActivitiesResponse,
   QueryFoldersLocationsActivityTypesActivitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryFoldersLocationsActivityTypesActivitiesRequest,
   output: QueryFoldersLocationsActivityTypesActivitiesResponse,
   errors: [NotFound, Forbidden],

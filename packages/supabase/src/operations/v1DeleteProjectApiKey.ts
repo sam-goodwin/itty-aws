@@ -14,7 +14,7 @@ export interface V1DeleteProjectApiKeyInput {
   reason?: string;
 }
 export const V1DeleteProjectApiKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     reveal: Schema.optional(Schema.Boolean),
@@ -38,7 +38,7 @@ export interface V1DeleteProjectApiKeyOutput {
   updated_at?: string | null;
 }
 export const V1DeleteProjectApiKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     api_key: Schema.optional(SensitiveOutputNullableString),
     id: Schema.optional(Schema.NullOr(Schema.String)),
     type: Schema.optional(
@@ -63,10 +63,8 @@ export const V1DeleteProjectApiKeyOutput =
  * @param reveal - Boolean string, true or false
  * @param was_compromised - Boolean string, true or false
  */
-export const v1DeleteProjectApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1DeleteProjectApiKeyInput,
-    outputSchema: V1DeleteProjectApiKeyOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1DeleteProjectApiKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1DeleteProjectApiKeyInput,
+  outputSchema: V1DeleteProjectApiKeyOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

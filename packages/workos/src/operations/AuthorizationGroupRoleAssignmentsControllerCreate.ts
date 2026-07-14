@@ -17,7 +17,7 @@ export interface AuthorizationGroupRoleAssignmentsControllerCreateInput {
   resource_type_slug?: string;
 }
 export const AuthorizationGroupRoleAssignmentsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     group_id: Schema.String.pipe(T.PathParam()),
     role_slug: Schema.String,
     resource_id: Schema.optional(Schema.String),
@@ -41,7 +41,7 @@ export interface AuthorizationGroupRoleAssignmentsControllerCreateOutput {
   updated_at: string;
 }
 export const AuthorizationGroupRoleAssignmentsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     group_id: Schema.String,
@@ -66,7 +66,7 @@ export const AuthorizationGroupRoleAssignmentsControllerCreateOutput =
  * @param group_id - The ID of the group.
  */
 export const AuthorizationGroupRoleAssignmentsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationGroupRoleAssignmentsControllerCreateInput,
     outputSchema: AuthorizationGroupRoleAssignmentsControllerCreateOutput,
     errors: [Forbidden, NotFound, Conflict, UnprocessableEntity] as const,

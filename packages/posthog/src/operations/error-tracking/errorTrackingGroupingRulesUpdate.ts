@@ -9,7 +9,7 @@ export interface ErrorTrackingGroupingRulesUpdateInput {
   filters?: { type?: "AND" | "OR"; values?: unknown[] } | null;
 }
 export const ErrorTrackingGroupingRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     filters: Schema.optional(
@@ -30,7 +30,7 @@ export const ErrorTrackingGroupingRulesUpdateInput =
 // Output Schema
 export type ErrorTrackingGroupingRulesUpdateOutput = void;
 export const ErrorTrackingGroupingRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingGroupingRulesUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingGroupingRulesUpdateOutput>;
 
 // The operation
 /**
@@ -38,7 +38,7 @@ export const ErrorTrackingGroupingRulesUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingGroupingRulesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingGroupingRulesUpdateInput,
     outputSchema: ErrorTrackingGroupingRulesUpdateOutput,
   }));

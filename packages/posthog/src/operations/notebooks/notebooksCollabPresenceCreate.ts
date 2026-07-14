@@ -16,7 +16,7 @@ export interface NotebooksCollabPresenceCreateInput {
   };
 }
 export const NotebooksCollabPresenceCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     short_id: Schema.String.pipe(T.PathParam()),
     client_id: Schema.String,
@@ -37,7 +37,7 @@ export const NotebooksCollabPresenceCreateInput =
 // Output Schema
 export type NotebooksCollabPresenceCreateOutput = void;
 export const NotebooksCollabPresenceCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksCollabPresenceCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksCollabPresenceCreateOutput>;
 
 // The operation
 /**
@@ -46,7 +46,7 @@ export const NotebooksCollabPresenceCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const notebooksCollabPresenceCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotebooksCollabPresenceCreateInput,
     outputSchema: NotebooksCollabPresenceCreateOutput,
   }));

@@ -11,7 +11,7 @@ export interface FeatureFlagsControllerListInput {
   order?: string;
 }
 export const FeatureFlagsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -43,7 +43,7 @@ export interface FeatureFlagsControllerListOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const FeatureFlagsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -89,10 +89,8 @@ export const FeatureFlagsControllerListOutput =
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
  * @param order - Order the results by the creation time.
  */
-export const FeatureFlagsControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FeatureFlagsControllerListInput,
-    outputSchema: FeatureFlagsControllerListOutput,
-    errors: [BadRequest, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const FeatureFlagsControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FeatureFlagsControllerListInput,
+  outputSchema: FeatureFlagsControllerListOutput,
+  errors: [BadRequest, NotFound, UnprocessableEntity] as const,
+}));

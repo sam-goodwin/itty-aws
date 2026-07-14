@@ -100,7 +100,7 @@ export interface WebhookEndpointsControllerCreateInput {
   >;
 }
 export const WebhookEndpointsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoint_url: Schema.optional(Schema.String),
     events: Schema.optional(
       Schema.Array(
@@ -212,7 +212,7 @@ export interface WebhookEndpointsControllerCreateOutput {
   updated_at?: string;
 }
 export const WebhookEndpointsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     endpoint_url: Schema.optional(Schema.String),
@@ -230,7 +230,7 @@ export const WebhookEndpointsControllerCreateOutput =
  * Create a new webhook endpoint to receive event notifications.
  */
 export const WebhookEndpointsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebhookEndpointsControllerCreateInput,
     outputSchema: WebhookEndpointsControllerCreateOutput,
     errors: [Conflict, UnprocessableEntity] as const,

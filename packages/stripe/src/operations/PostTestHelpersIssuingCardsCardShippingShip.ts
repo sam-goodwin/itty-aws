@@ -8,7 +8,7 @@ export interface PostTestHelpersIssuingCardsCardShippingShipInput {
   expand?: string[];
 }
 export const PostTestHelpersIssuingCardsCardShippingShipInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -1329,7 +1329,7 @@ export interface PostTestHelpersIssuingCardsCardShippingShipOutput {
   } | null;
 }
 export const PostTestHelpersIssuingCardsCardShippingShipOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     brand: Schema.String,
     cancellation_reason: Schema.NullOr(
       Schema.Literals([
@@ -2615,7 +2615,7 @@ export const PostTestHelpersIssuingCardsCardShippingShipOutput =
  * <p>Updates the shipping status of the specified Issuing <code>Card</code> object to <code>shipped</code>.</p>
  */
 export const PostTestHelpersIssuingCardsCardShippingShip =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersIssuingCardsCardShippingShipInput,
     outputSchema: PostTestHelpersIssuingCardsCardShippingShipOutput,
   }));

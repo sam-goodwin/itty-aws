@@ -8,7 +8,7 @@ export interface V1GetPgsodiumConfigInput {
   ref: string;
 }
 export const V1GetPgsodiumConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/pgsodium" }),
@@ -19,7 +19,7 @@ export interface V1GetPgsodiumConfigOutput {
   root_key: string;
 }
 export const V1GetPgsodiumConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     root_key: Schema.String,
   }) as unknown as Schema.Codec<V1GetPgsodiumConfigOutput>;
 
@@ -29,7 +29,7 @@ export const V1GetPgsodiumConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetPgsodiumConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetPgsodiumConfig = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetPgsodiumConfigInput,
   outputSchema: V1GetPgsodiumConfigOutput,
   errors: [BadRequest, Forbidden] as const,

@@ -61,7 +61,7 @@ export interface PostRadarPaymentEvaluationsInput {
   };
 }
 export const PostRadarPaymentEvaluationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_device_metadata_details: Schema.optional(
       Schema.Struct({
         radar_session: Schema.String,
@@ -316,7 +316,7 @@ export interface PostRadarPaymentEvaluationsOutput {
   };
 }
 export const PostRadarPaymentEvaluationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_device_metadata_details: Schema.optional(
       Schema.Struct({
         radar_session: Schema.String,
@@ -585,9 +585,7 @@ export const PostRadarPaymentEvaluationsOutput =
  *
  * <p>Request a Radar API fraud risk score from Stripe for a payment before sending it for external processor authorization.</p>
  */
-export const PostRadarPaymentEvaluations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostRadarPaymentEvaluationsInput,
-    outputSchema: PostRadarPaymentEvaluationsOutput,
-  }),
-);
+export const PostRadarPaymentEvaluations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostRadarPaymentEvaluationsInput,
+  outputSchema: PostRadarPaymentEvaluationsOutput,
+}));

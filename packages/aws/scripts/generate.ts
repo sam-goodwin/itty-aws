@@ -128,7 +128,7 @@ class UnableToTransformShapeToSchema extends Data.TaggedError(
 const annotatePureExportConst = (definition: string) =>
   definition.replace(
     /^export const ([^=]+?)\s*=\s*/m,
-    "export const $1 = /*@__PURE__*/ /*#__PURE__*/ ",
+    "export const $1 = /*@__PURE__*/ ",
   );
 
 // =============================================================================
@@ -2931,7 +2931,7 @@ const generateClient = Effect.fn(function* (
               c +
               errorTypeAlias +
               operationComment +
-              `export const ${exportedName}: ${typeAnnotation} = /*@__PURE__*/ /*#__PURE__*/ ${apiFn}(() => (${metaObject}));\n`,
+              `export const ${exportedName}: ${typeAnnotation} = /*@__PURE__*/ ${apiFn}(() => (${metaObject}));\n`,
           ),
         );
       }),

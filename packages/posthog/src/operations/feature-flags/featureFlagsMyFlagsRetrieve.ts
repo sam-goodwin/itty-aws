@@ -9,7 +9,7 @@ export interface FeatureFlagsMyFlagsRetrieveInput {
   groups?: string;
 }
 export const FeatureFlagsMyFlagsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     groups: Schema.optional(Schema.String),
   }).pipe(
@@ -38,7 +38,7 @@ export type FeatureFlagsMyFlagsRetrieveOutput = {
   value?: unknown;
 }[];
 export const FeatureFlagsMyFlagsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       feature_flag: Schema.optional(
         Schema.Struct({
@@ -86,10 +86,8 @@ export const FeatureFlagsMyFlagsRetrieveOutput =
  * @param groups - Groups for feature flag evaluation (JSON object string)
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const featureFlagsMyFlagsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FeatureFlagsMyFlagsRetrieveInput,
-    outputSchema: FeatureFlagsMyFlagsRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const featureFlagsMyFlagsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FeatureFlagsMyFlagsRetrieveInput,
+  outputSchema: FeatureFlagsMyFlagsRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

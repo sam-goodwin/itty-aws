@@ -9,7 +9,7 @@ export interface OrganizationsProjectsDestroyInput {
   organization_id: string;
 }
 export const OrganizationsProjectsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const OrganizationsProjectsDestroyInput =
 // Output Schema
 export type OrganizationsProjectsDestroyOutput = void;
 export const OrganizationsProjectsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationsProjectsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationsProjectsDestroyOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const OrganizationsProjectsDestroyOutput =
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const organizationsProjectsDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationsProjectsDestroyInput,
     outputSchema: OrganizationsProjectsDestroyOutput,
     errors: [Forbidden, NotFound] as const,

@@ -8,7 +8,7 @@ export interface DirectoryGroupsControllerFindInput {
   id: string;
 }
 export const DirectoryGroupsControllerFindInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/directory_groups/{id}" }),
@@ -27,7 +27,7 @@ export interface DirectoryGroupsControllerFindOutput {
   updated_at?: string;
 }
 export const DirectoryGroupsControllerFindOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     idp_id: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export const DirectoryGroupsControllerFindOutput =
  * @param id - Unique identifier for the Directory Group.
  */
 export const DirectoryGroupsControllerFind =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DirectoryGroupsControllerFindInput,
     outputSchema: DirectoryGroupsControllerFindOutput,
     errors: [Forbidden, NotFound] as const,

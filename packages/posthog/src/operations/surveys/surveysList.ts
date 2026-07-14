@@ -13,7 +13,7 @@ export interface SurveysListInput {
   search?: string;
   type?: "api" | "external_survey" | "popover" | "widget";
 }
-export const SurveysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SurveysListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   archived: Schema.optional(Schema.Boolean),
   ids: Schema.optional(Schema.String),
@@ -131,7 +131,7 @@ export interface SurveysListOutput {
     search_match_type?: "exact" | "similar" | null;
   }[];
 }
-export const SurveysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SurveysListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -351,7 +351,7 @@ export const SurveysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * `external_survey` - external survey
  * `api` - api
  */
-export const surveysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const surveysList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SurveysListInput,
   outputSchema: SurveysListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

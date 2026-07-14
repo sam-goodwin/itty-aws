@@ -8,7 +8,7 @@ export interface V1UpdateAProjectInput {
   ref: string;
   name: string;
 }
-export const V1UpdateAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1UpdateAProjectInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
 }).pipe(
@@ -21,13 +21,11 @@ export interface V1UpdateAProjectOutput {
   ref: string;
   name: string;
 }
-export const V1UpdateAProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.Number,
-    ref: Schema.String,
-    name: Schema.String,
-  },
-) as unknown as Schema.Codec<V1UpdateAProjectOutput>;
+export const V1UpdateAProjectOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Number,
+  ref: Schema.String,
+  name: Schema.String,
+}) as unknown as Schema.Codec<V1UpdateAProjectOutput>;
 
 // The operation
 /**
@@ -35,7 +33,7 @@ export const V1UpdateAProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  *
  * @param ref - Project ref
  */
-export const v1UpdateAProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1UpdateAProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1UpdateAProjectInput,
   outputSchema: V1UpdateAProjectOutput,
   errors: [BadRequest, Forbidden] as const,

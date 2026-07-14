@@ -16,7 +16,7 @@ export interface GetGroupProcessMeasurementsInput {
   end?: string;
 }
 export const GetGroupProcessMeasurementsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     processId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -36,7 +36,7 @@ export const GetGroupProcessMeasurementsInput =
 // Output Schema
 export type GetGroupProcessMeasurementsOutput = void;
 export const GetGroupProcessMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessMeasurementsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessMeasurementsOutput>;
 
 // The operation
 /**
@@ -61,10 +61,8 @@ export const GetGroupProcessMeasurementsOutput =
  * @param start - Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
  * @param end - Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
  */
-export const getGroupProcessMeasurements = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupProcessMeasurementsInput,
-    outputSchema: GetGroupProcessMeasurementsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupProcessMeasurements = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupProcessMeasurementsInput,
+  outputSchema: GetGroupProcessMeasurementsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

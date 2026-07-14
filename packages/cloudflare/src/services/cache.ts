@@ -67,7 +67,7 @@ interface File2 {
   headers?: Record<string, unknown> | null;
   url?: string | null;
 }
-const File2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const File2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     headers: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -87,7 +87,7 @@ interface ListOriginCloudRegionsResponseResult {
   modifiedOn?: string | null;
 }
 const ListOriginCloudRegionsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       originIp: Schema.String,
       region: Schema.String,
@@ -113,7 +113,7 @@ interface ListOriginCloudRegionsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListOriginCloudRegionsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -139,7 +139,7 @@ interface Failed {
   /** Cloud vendor identifier. Present on succeeded items (the new value for upsert, the deleted value for delete). */
   vendor?: string | null;
 }
-const Failed = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Failed = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     originIp: Schema.String,
     error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -163,7 +163,7 @@ interface Body {
   /** Cloud vendor hosting the origin. Must be one of the supported vendors. */
   vendor: "aws" | "azure" | "gcp" | "oci" | (string & {});
 }
-const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     originIp: Schema.String,
     region: Schema.String,
@@ -204,7 +204,7 @@ interface Value {
   /** List of strings with the MIME types of all the variants that should be served for webp. */
   webp?: string[] | null;
 }
-const Value = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Value = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     avif: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -261,38 +261,36 @@ export interface PurgeCacheRequest {
   files?: string[] | { headers?: Record<string, unknown>; url?: string }[];
 }
 
-export const PurgeCacheRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      hosts: Schema.optional(Schema.Array(Schema.String)),
-      prefixes: Schema.optional(Schema.Array(Schema.String)),
-      purgeEverything: Schema.optional(Schema.Boolean),
-      files: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Array(File2)]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        tags: "tags",
-        hosts: "hosts",
-        prefixes: "prefixes",
-        purgeEverything: "purge_everything",
-        files: "files",
-      }),
-      T.Http({ method: "POST", path: "/zones/{zone_id}/purge_cache" }),
+export const PurgeCacheRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    hosts: Schema.optional(Schema.Array(Schema.String)),
+    prefixes: Schema.optional(Schema.Array(Schema.String)),
+    purgeEverything: Schema.optional(Schema.Boolean),
+    files: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Array(File2)]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      tags: "tags",
+      hosts: "hosts",
+      prefixes: "prefixes",
+      purgeEverything: "purge_everything",
+      files: "files",
+    }),
+    T.Http({ method: "POST", path: "/zones/{zone_id}/purge_cache" }),
+  ),
 ) as unknown as Schema.Codec<PurgeCacheRequest>;
 
 export interface PurgeCacheResponse {
   id: string;
 }
 
-export const PurgeCacheResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-    }).pipe(T.ResponsePath("result")),
+export const PurgeCacheResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PurgeCacheResponse>;
 
 export type PurgeCacheError = DefaultErrors;
@@ -302,7 +300,7 @@ export const purgeCache: API.OperationMethod<
   PurgeCacheResponse,
   PurgeCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurgeCacheRequest,
   output: PurgeCacheResponse,
   errors: [],
@@ -318,7 +316,7 @@ export interface GetCacheReserveRequest {
 }
 
 export const GetCacheReserveRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -338,7 +336,7 @@ export interface GetCacheReserveResponse {
 }
 
 export const GetCacheReserveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("cache_reserve"),
       editable: Schema.Boolean,
@@ -366,7 +364,7 @@ export const getCacheReserve: API.OperationMethod<
   GetCacheReserveResponse,
   GetCacheReserveError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCacheReserveRequest,
   output: GetCacheReserveResponse,
   errors: [SettingUnavailableForPlan, Forbidden],
@@ -380,7 +378,7 @@ export interface PatchCacheReserveRequest {
 }
 
 export const PatchCacheReserveRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -401,7 +399,7 @@ export interface PatchCacheReserveResponse {
 }
 
 export const PatchCacheReserveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("cache_reserve"),
       editable: Schema.Boolean,
@@ -429,7 +427,7 @@ export const patchCacheReserve: API.OperationMethod<
   PatchCacheReserveResponse,
   PatchCacheReserveError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCacheReserveRequest,
   output: PatchCacheReserveResponse,
   errors: [SettingUnavailableForPlan, Forbidden],
@@ -441,7 +439,7 @@ export interface StatusCacheReserveRequest {
 }
 
 export const StatusCacheReserveRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -466,7 +464,7 @@ export interface StatusCacheReserveResponse {
 }
 
 export const StatusCacheReserveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("cache_reserve_clear"),
       startTs: Schema.String,
@@ -496,7 +494,7 @@ export const statusCacheReserve: API.OperationMethod<
   StatusCacheReserveResponse,
   StatusCacheReserveError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StatusCacheReserveRequest,
   output: StatusCacheReserveResponse,
   errors: [],
@@ -510,7 +508,7 @@ export interface ClearCacheReserveRequest {
 }
 
 export const ClearCacheReserveRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       body: Schema.Unknown.pipe(T.HttpBody()),
@@ -536,7 +534,7 @@ export interface ClearCacheReserveResponse {
 }
 
 export const ClearCacheReserveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("cache_reserve_clear"),
       startTs: Schema.String,
@@ -566,7 +564,7 @@ export const clearCacheReserve: API.OperationMethod<
   ClearCacheReserveResponse,
   ClearCacheReserveError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClearCacheReserveRequest,
   output: ClearCacheReserveResponse,
   errors: [],
@@ -593,7 +591,7 @@ export interface PurgeEnvironmentCacheRequest {
 }
 
 export const PurgeEnvironmentCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       environmentId: Schema.String.pipe(T.HttpPath("environmentId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -624,7 +622,7 @@ export interface PurgeEnvironmentCacheResponse {
 }
 
 export const PurgeEnvironmentCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -637,7 +635,7 @@ export const purgeEnvironmentCache: API.OperationMethod<
   PurgeEnvironmentCacheResponse,
   PurgeEnvironmentCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurgeEnvironmentCacheRequest,
   output: PurgeEnvironmentCacheResponse,
   errors: [],
@@ -654,7 +652,7 @@ export interface GetOriginCloudRegionRequest {
 }
 
 export const GetOriginCloudRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       originIP: Schema.String.pipe(T.HttpPath("originIP")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -678,7 +676,7 @@ export interface GetOriginCloudRegionResponse {
 }
 
 export const GetOriginCloudRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       originIp: Schema.String,
       region: Schema.String,
@@ -709,7 +707,7 @@ export const getOriginCloudRegion: API.OperationMethod<
   GetOriginCloudRegionResponse,
   GetOriginCloudRegionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOriginCloudRegionRequest,
   output: GetOriginCloudRegionResponse,
   errors: [OriginCloudRegionNotFound, Forbidden],
@@ -723,7 +721,7 @@ export interface ListOriginCloudRegionsRequest {
 }
 
 export const ListOriginCloudRegionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -749,7 +747,7 @@ export interface ListOriginCloudRegionsResponse {
 }
 
 export const ListOriginCloudRegionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListOriginCloudRegionsResponseResult),
       resultInfo: Schema.optional(
@@ -765,7 +763,7 @@ export const listOriginCloudRegions: API.PaginatedOperationMethod<
   ListOriginCloudRegionsResponse,
   ListOriginCloudRegionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOriginCloudRegionsRequest,
   output: ListOriginCloudRegionsResponse,
   errors: [Forbidden],
@@ -791,7 +789,7 @@ export interface PutOriginCloudRegionRequest {
 }
 
 export const PutOriginCloudRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       originIP: Schema.String.pipe(T.HttpPath("originIP")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -826,7 +824,7 @@ export interface PutOriginCloudRegionResponse {
 }
 
 export const PutOriginCloudRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       originIp: Schema.String,
       region: Schema.String,
@@ -854,7 +852,7 @@ export const putOriginCloudRegion: API.OperationMethod<
   PutOriginCloudRegionResponse,
   PutOriginCloudRegionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutOriginCloudRegionRequest,
   output: PutOriginCloudRegionResponse,
   errors: [Forbidden],
@@ -867,7 +865,7 @@ export interface DeleteOriginCloudRegionRequest {
 }
 
 export const DeleteOriginCloudRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       originIP: Schema.String.pipe(T.HttpPath("originIP")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -885,7 +883,7 @@ export interface DeleteOriginCloudRegionResponse {
 }
 
 export const DeleteOriginCloudRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       originIp: Schema.String,
     })
@@ -903,7 +901,7 @@ export const deleteOriginCloudRegion: API.OperationMethod<
   DeleteOriginCloudRegionResponse,
   DeleteOriginCloudRegionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOriginCloudRegionRequest,
   output: DeleteOriginCloudRegionResponse,
   errors: [OriginCloudRegionNotFound, Forbidden],
@@ -915,7 +913,7 @@ export interface BulkDeleteOriginCloudRegionsRequest {
 }
 
 export const BulkDeleteOriginCloudRegionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -944,7 +942,7 @@ export interface BulkDeleteOriginCloudRegionsResponse {
 }
 
 export const BulkDeleteOriginCloudRegionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       failed: Schema.Array(Failed),
       succeeded: Schema.Array(Failed),
@@ -958,7 +956,7 @@ export const bulkDeleteOriginCloudRegions: API.OperationMethod<
   BulkDeleteOriginCloudRegionsResponse,
   BulkDeleteOriginCloudRegionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteOriginCloudRegionsRequest,
   output: BulkDeleteOriginCloudRegionsResponse,
   errors: [],
@@ -980,7 +978,7 @@ export interface BulkPutOriginCloudRegionsRequest {
 }
 
 export const BulkPutOriginCloudRegionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       body: Schema.Array(Body).pipe(T.HttpBody()),
@@ -1010,7 +1008,7 @@ export interface BulkPutOriginCloudRegionsResponse {
 }
 
 export const BulkPutOriginCloudRegionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       failed: Schema.Array(Failed),
       succeeded: Schema.Array(Failed),
@@ -1024,7 +1022,7 @@ export const bulkPutOriginCloudRegions: API.OperationMethod<
   BulkPutOriginCloudRegionsResponse,
   BulkPutOriginCloudRegionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkPutOriginCloudRegionsRequest,
   output: BulkPutOriginCloudRegionsResponse,
   errors: [],
@@ -1040,7 +1038,7 @@ export interface GetRegionalTieredCacheRequest {
 }
 
 export const GetRegionalTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -1063,7 +1061,7 @@ export interface GetRegionalTieredCacheResponse {
 }
 
 export const GetRegionalTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("tc_regional"),
       editable: Schema.Boolean,
@@ -1092,7 +1090,7 @@ export const getRegionalTieredCache: API.OperationMethod<
   GetRegionalTieredCacheResponse,
   GetRegionalTieredCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegionalTieredCacheRequest,
   output: GetRegionalTieredCacheResponse,
   errors: [SettingUnavailableForPlan, Forbidden, Unauthorized],
@@ -1106,7 +1104,7 @@ export interface PatchRegionalTieredCacheRequest {
 }
 
 export const PatchRegionalTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1130,7 +1128,7 @@ export interface PatchRegionalTieredCacheResponse {
 }
 
 export const PatchRegionalTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("tc_regional"),
       editable: Schema.Boolean,
@@ -1158,7 +1156,7 @@ export const patchRegionalTieredCache: API.OperationMethod<
   PatchRegionalTieredCacheResponse,
   PatchRegionalTieredCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchRegionalTieredCacheRequest,
   output: PatchRegionalTieredCacheResponse,
   errors: [SettingUnavailableForPlan, Forbidden],
@@ -1174,7 +1172,7 @@ export interface SupportedRegionsOriginCloudRegionRequest {
 }
 
 export const SupportedRegionsOriginCloudRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -1193,7 +1191,7 @@ export interface SupportedRegionsOriginCloudRegionResponse {
 }
 
 export const SupportedRegionsOriginCloudRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       obtainedCodes: Schema.Boolean,
       vendors: Schema.Record(Schema.String, Schema.Unknown),
@@ -1214,7 +1212,7 @@ export const supportedRegionsOriginCloudRegion: API.OperationMethod<
   SupportedRegionsOriginCloudRegionResponse,
   SupportedRegionsOriginCloudRegionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SupportedRegionsOriginCloudRegionRequest,
   output: SupportedRegionsOriginCloudRegionResponse,
   errors: [],
@@ -1230,7 +1228,7 @@ export interface GetSmartTieredCacheRequest {
 }
 
 export const GetSmartTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -1253,7 +1251,7 @@ export interface GetSmartTieredCacheResponse {
 }
 
 export const GetSmartTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("tiered_cache_smart_topology_enable"),
       editable: Schema.Boolean,
@@ -1278,7 +1276,7 @@ export const getSmartTieredCache: API.OperationMethod<
   GetSmartTieredCacheResponse,
   GetSmartTieredCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSmartTieredCacheRequest,
   output: GetSmartTieredCacheResponse,
   errors: [Forbidden],
@@ -1292,7 +1290,7 @@ export interface CreateSmartTieredCacheRequest {
 }
 
 export const CreateSmartTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1316,7 +1314,7 @@ export interface CreateSmartTieredCacheResponse {
 }
 
 export const CreateSmartTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("tiered_cache_smart_topology_enable"),
       editable: Schema.Boolean,
@@ -1341,7 +1339,7 @@ export const createSmartTieredCache: API.OperationMethod<
   CreateSmartTieredCacheResponse,
   CreateSmartTieredCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSmartTieredCacheRequest,
   output: CreateSmartTieredCacheResponse,
   errors: [],
@@ -1355,7 +1353,7 @@ export interface PatchSmartTieredCacheRequest {
 }
 
 export const PatchSmartTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -1379,7 +1377,7 @@ export interface PatchSmartTieredCacheResponse {
 }
 
 export const PatchSmartTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("tiered_cache_smart_topology_enable"),
       editable: Schema.Boolean,
@@ -1404,7 +1402,7 @@ export const patchSmartTieredCache: API.OperationMethod<
   PatchSmartTieredCacheResponse,
   PatchSmartTieredCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSmartTieredCacheRequest,
   output: PatchSmartTieredCacheResponse,
   errors: [Forbidden],
@@ -1416,7 +1414,7 @@ export interface DeleteSmartTieredCacheRequest {
 }
 
 export const DeleteSmartTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -1437,7 +1435,7 @@ export interface DeleteSmartTieredCacheResponse {
 }
 
 export const DeleteSmartTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("tiered_cache_smart_topology_enable"),
       editable: Schema.Boolean,
@@ -1460,7 +1458,7 @@ export const deleteSmartTieredCache: API.OperationMethod<
   DeleteSmartTieredCacheResponse,
   DeleteSmartTieredCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSmartTieredCacheRequest,
   output: DeleteSmartTieredCacheResponse,
   errors: [],
@@ -1475,11 +1473,10 @@ export interface GetVariantRequest {
   zoneId: string;
 }
 
-export const GetVariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/cache/variants" })),
+export const GetVariantRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/cache/variants" })),
 ) as unknown as Schema.Codec<GetVariantRequest>;
 
 export interface GetVariantResponse {
@@ -1505,23 +1502,22 @@ export interface GetVariantResponse {
   modifiedOn?: string | null;
 }
 
-export const GetVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Literal("variants"),
-      editable: Schema.Boolean,
-      value: Value,
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          editable: "editable",
-          value: "value",
-          modifiedOn: "modified_on",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetVariantResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Literal("variants"),
+    editable: Schema.Boolean,
+    value: Value,
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        editable: "editable",
+        value: "value",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetVariantResponse>;
 
 export type GetVariantError = DefaultErrors | VariantsNotConfigured | Forbidden;
@@ -1531,7 +1527,7 @@ export const getVariant: API.OperationMethod<
   GetVariantResponse,
   GetVariantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVariantRequest,
   output: GetVariantResponse,
   errors: [VariantsNotConfigured, Forbidden],
@@ -1556,14 +1552,11 @@ export interface PatchVariantRequest {
   };
 }
 
-export const PatchVariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      value: Value,
-    }).pipe(
-      T.Http({ method: "PATCH", path: "/zones/{zone_id}/cache/variants" }),
-    ),
+export const PatchVariantRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    value: Value,
+  }).pipe(T.Http({ method: "PATCH", path: "/zones/{zone_id}/cache/variants" })),
 ) as unknown as Schema.Codec<PatchVariantRequest>;
 
 export interface PatchVariantResponse {
@@ -1589,23 +1582,22 @@ export interface PatchVariantResponse {
   modifiedOn?: string | null;
 }
 
-export const PatchVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Literal("variants"),
-      editable: Schema.Boolean,
-      value: Value,
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          editable: "editable",
-          value: "value",
-          modifiedOn: "modified_on",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PatchVariantResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Literal("variants"),
+    editable: Schema.Boolean,
+    value: Value,
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        editable: "editable",
+        value: "value",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchVariantResponse>;
 
 export type PatchVariantError = DefaultErrors | Forbidden;
@@ -1615,7 +1607,7 @@ export const patchVariant: API.OperationMethod<
   PatchVariantResponse,
   PatchVariantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchVariantRequest,
   output: PatchVariantResponse,
   errors: [Forbidden],
@@ -1626,13 +1618,12 @@ export interface DeleteVariantRequest {
   zoneId: string;
 }
 
-export const DeleteVariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({ method: "DELETE", path: "/zones/{zone_id}/cache/variants" }),
-    ),
+export const DeleteVariantRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/zones/{zone_id}/cache/variants" }),
+  ),
 ) as unknown as Schema.Codec<DeleteVariantRequest>;
 
 export interface DeleteVariantResponse {
@@ -1644,21 +1635,20 @@ export interface DeleteVariantResponse {
   modifiedOn?: string | null;
 }
 
-export const DeleteVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Literal("variants"),
-      editable: Schema.Boolean,
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          editable: "editable",
-          modifiedOn: "modified_on",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const DeleteVariantResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Literal("variants"),
+    editable: Schema.Boolean,
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteVariantResponse>;
 
 export type DeleteVariantError =
@@ -1671,7 +1661,7 @@ export const deleteVariant: API.OperationMethod<
   DeleteVariantResponse,
   DeleteVariantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVariantRequest,
   output: DeleteVariantResponse,
   errors: [VariantsNotConfigured, Forbidden],

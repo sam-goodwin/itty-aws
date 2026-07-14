@@ -21,7 +21,7 @@ export interface GetInvoicesInput {
   status?: "draft" | "open" | "paid" | "uncollectible" | "void";
   subscription?: string;
 }
-export const GetInvoicesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetInvoicesInput = /*@__PURE__*/ Schema.Struct({
   collection_method: Schema.optional(
     Schema.Literals(["charge_automatically", "send_invoice"]),
   ),
@@ -1950,7 +1950,7 @@ export interface GetInvoicesOutput {
   object: "list";
   url: string;
 }
-export const GetInvoicesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetInvoicesOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       account_country: Schema.NullOr(Schema.String),
@@ -4037,7 +4037,7 @@ export const GetInvoicesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param status - The status of the invoice, one of `draft`, `open`, `paid`, `uncollectible`, or `void`. [Learn more](https://docs.stripe.com/billing/invoices/workflow#workflow-overview)
  * @param subscription - Only return invoices for the subscription specified by this subscription ID.
  */
-export const GetInvoices = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetInvoices = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetInvoicesInput,
   outputSchema: GetInvoicesOutput,
 }));

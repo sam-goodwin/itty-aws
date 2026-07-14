@@ -5,9 +5,7 @@ import { Forbidden } from "../../errors.ts";
 
 // Input Schema
 export interface GetDatasetsInput {}
-export const GetDatasetsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetDatasetsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v2/datasets" }),
 ) as unknown as Schema.Codec<GetDatasetsInput>;
 
@@ -32,7 +30,7 @@ export type GetDatasetsOutput = ReadonlyArray<{
   useRetentionPeriod?: boolean;
   who: string;
 }>;
-export const GetDatasetsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetDatasetsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     canWrite: Schema.optional(Schema.Boolean),
     created: Schema.String,
@@ -60,7 +58,7 @@ export const GetDatasetsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
 /**
  * Get list of datasets
  */
-export const getDatasets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDatasets = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDatasetsInput,
   outputSchema: GetDatasetsOutput,
   errors: [Forbidden] as const,

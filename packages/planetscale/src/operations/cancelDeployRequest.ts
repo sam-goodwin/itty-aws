@@ -10,7 +10,7 @@ export interface CancelDeployRequestInput {
   number: number;
 }
 export const CancelDeployRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -198,7 +198,7 @@ export interface CancelDeployRequestOutput {
   deployed_at: string | null;
 }
 export const CancelDeployRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     number: Schema.Number,
     actor: Schema.Struct({
@@ -440,7 +440,7 @@ export const CancelDeployRequestOutput =
  * @param database - The name of the deploy request's database
  * @param number - The number of the deploy request
  */
-export const cancelDeployRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const cancelDeployRequest = /*@__PURE__*/ API.make(() => ({
   inputSchema: CancelDeployRequestInput,
   outputSchema: CancelDeployRequestOutput,
   errors: [Forbidden, NotFound] as const,

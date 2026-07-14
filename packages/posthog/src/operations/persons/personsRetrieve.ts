@@ -9,7 +9,7 @@ export interface PersonsRetrieveInput {
   project_id: string;
   format?: "csv" | "json";
 }
-export const PersonsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PersonsRetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
   format: Schema.optional(Schema.Literals(["csv", "json"])),
@@ -27,7 +27,7 @@ export interface PersonsRetrieveOutput {
   uuid?: string;
   last_seen_at?: string | null;
 }
-export const PersonsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PersonsRetrieveOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Number),
   name: Schema.optional(Schema.String),
   distinct_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -44,7 +44,7 @@ export const PersonsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param id - A unique value identifying this person. Accepts both numeric ID and UUID.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const personsRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: PersonsRetrieveInput,
   outputSchema: PersonsRetrieveOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

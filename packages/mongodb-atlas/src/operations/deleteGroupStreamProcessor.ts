@@ -12,7 +12,7 @@ export interface DeleteGroupStreamProcessorInput {
   pretty?: boolean;
 }
 export const DeleteGroupStreamProcessorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     processorName: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const DeleteGroupStreamProcessorInput =
 // Output Schema
 export type DeleteGroupStreamProcessorOutput = void;
 export const DeleteGroupStreamProcessorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamProcessorOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamProcessorOutput>;
 
 // The operation
 /**
@@ -44,10 +44,8 @@ export const DeleteGroupStreamProcessorOutput =
  * @param tenantName - Label that identifies the stream workspace.
  * @param processorName - Label that identifies the stream processor.
  */
-export const deleteGroupStreamProcessor = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupStreamProcessorInput,
-    outputSchema: DeleteGroupStreamProcessorOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const deleteGroupStreamProcessor = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupStreamProcessorInput,
+  outputSchema: DeleteGroupStreamProcessorOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

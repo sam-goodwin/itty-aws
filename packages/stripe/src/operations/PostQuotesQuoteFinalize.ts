@@ -14,7 +14,7 @@ export interface PostQuotesQuoteFinalizeInput {
   expires_at?: number;
 }
 export const PostQuotesQuoteFinalizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quote: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     expires_at: Schema.optional(Schema.Number),
@@ -963,7 +963,7 @@ export interface PostQuotesQuoteFinalizeOutput {
   } | null;
 }
 export const PostQuotesQuoteFinalizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount_subtotal: Schema.Number,
     amount_total: Schema.Number,
     application: Schema.NullOr(
@@ -2015,9 +2015,7 @@ export const PostQuotesQuoteFinalizeOutput =
  *
  * <p>Finalizes the quote.</p>
  */
-export const PostQuotesQuoteFinalize = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostQuotesQuoteFinalizeInput,
-    outputSchema: PostQuotesQuoteFinalizeOutput,
-  }),
-);
+export const PostQuotesQuoteFinalize = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostQuotesQuoteFinalizeInput,
+  outputSchema: PostQuotesQuoteFinalizeOutput,
+}));

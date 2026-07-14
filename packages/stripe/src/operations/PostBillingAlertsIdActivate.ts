@@ -13,7 +13,7 @@ export interface PostBillingAlertsIdActivateInput {
   expand?: string[];
 }
 export const PostBillingAlertsIdActivateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -56,7 +56,7 @@ export interface PostBillingAlertsIdActivateOutput {
   } | null;
 }
 export const PostBillingAlertsIdActivateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alert_type: Schema.Literals(["usage_threshold"]),
     id: Schema.String,
     livemode: Schema.Boolean,
@@ -112,9 +112,7 @@ export const PostBillingAlertsIdActivateOutput =
  *
  * <p>Reactivates this alert, allowing it to trigger again.</p>
  */
-export const PostBillingAlertsIdActivate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostBillingAlertsIdActivateInput,
-    outputSchema: PostBillingAlertsIdActivateOutput,
-  }),
-);
+export const PostBillingAlertsIdActivate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostBillingAlertsIdActivateInput,
+  outputSchema: PostBillingAlertsIdActivateOutput,
+}));

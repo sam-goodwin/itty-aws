@@ -8,7 +8,7 @@ import * as Redacted from "effect/Redacted";
 export interface GetCollectionsInput {
   getCollectionsParameters?: string;
 }
-export const GetCollectionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCollectionsInput = /*@__PURE__*/ Schema.Struct({
   getCollectionsParameters: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/collections" }),
@@ -63,7 +63,7 @@ export type GetCollectionsOutput = {
   num_documents: number;
   created_at: number;
 }[];
-export const GetCollectionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetCollectionsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     name: Schema.String,
     fields: Schema.Array(
@@ -128,7 +128,7 @@ export const GetCollectionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  *
  * Returns a summary of all your collections. The collections are returned sorted by creation date, with the most recent collections appearing first.
  */
-export const getCollections = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getCollections = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCollectionsInput,
   outputSchema: GetCollectionsOutput,
 }));

@@ -16,7 +16,7 @@ export interface SavedPartialUpdateInput {
   block_consent_modals?: boolean;
 }
 export const SavedPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     short_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -75,7 +75,7 @@ export interface SavedPartialUpdateOutput {
   exception?: string | null;
 }
 export const SavedPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     short_id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -143,7 +143,7 @@ export const SavedPartialUpdateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const savedPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const savedPartialUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SavedPartialUpdateInput,
   outputSchema: SavedPartialUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

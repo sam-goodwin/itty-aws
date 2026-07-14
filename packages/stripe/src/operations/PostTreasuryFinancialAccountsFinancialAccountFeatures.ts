@@ -21,7 +21,7 @@ export interface PostTreasuryFinancialAccountsFinancialAccountFeaturesInput {
   };
 }
 export const PostTreasuryFinancialAccountsFinancialAccountFeaturesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     financial_account: Schema.String.pipe(T.PathParam()),
     card_issuing: Schema.optional(
       Schema.Struct({
@@ -304,7 +304,7 @@ export interface PostTreasuryFinancialAccountsFinancialAccountFeaturesOutput {
   };
 }
 export const PostTreasuryFinancialAccountsFinancialAccountFeaturesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card_issuing: Schema.optional(
       Schema.Struct({
         requested: Schema.Boolean,
@@ -610,7 +610,7 @@ export const PostTreasuryFinancialAccountsFinancialAccountFeaturesOutput =
  * <p>Updates the Features associated with a FinancialAccount.</p>
  */
 export const PostTreasuryFinancialAccountsFinancialAccountFeatures =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTreasuryFinancialAccountsFinancialAccountFeaturesInput,
     outputSchema: PostTreasuryFinancialAccountsFinancialAccountFeaturesOutput,
   }));

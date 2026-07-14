@@ -7,12 +7,10 @@ export interface DeleteProjectJWKSInput {
   project_id: string;
   jwks_id: string;
 }
-export const DeleteProjectJWKSInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    project_id: Schema.String.pipe(T.PathParam()),
-    jwks_id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const DeleteProjectJWKSInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  jwks_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({ method: "DELETE", path: "/projects/{project_id}/jwks/{jwks_id}" }),
 ) as unknown as Schema.Codec<DeleteProjectJWKSInput>;
 
@@ -29,7 +27,7 @@ export interface DeleteProjectJWKSOutput {
   role_names?: string[];
 }
 export const DeleteProjectJWKSOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     project_id: Schema.String,
     branch_id: Schema.optional(Schema.String),
@@ -51,7 +49,7 @@ export const DeleteProjectJWKSOutput =
  * @param project_id - The Neon project ID
  * @param jwks_id - The JWKS ID
  */
-export const deleteProjectJWKS = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteProjectJWKS = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteProjectJWKSInput,
   outputSchema: DeleteProjectJWKSOutput,
 }));

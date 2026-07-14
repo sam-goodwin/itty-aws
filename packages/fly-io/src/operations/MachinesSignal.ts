@@ -23,7 +23,7 @@ export interface MachinesSignalInput {
     | "SIGUSR1"
     | "SIGUSR2";
 }
-export const MachinesSignalInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesSignalInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
   signal: Schema.optional(
@@ -54,7 +54,7 @@ export const MachinesSignalInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type MachinesSignalOutput = void;
 export const MachinesSignalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesSignalOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesSignalOutput>;
 
 // The operation
 /**
@@ -65,7 +65,7 @@ export const MachinesSignalOutput =
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesSignal = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesSignal = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesSignalInput,
   outputSchema: MachinesSignalOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

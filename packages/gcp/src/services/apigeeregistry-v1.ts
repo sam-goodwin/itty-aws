@@ -54,7 +54,7 @@ export interface ApiSpec {
 }
 
 export const ApiSpec: Schema.Codec<ApiSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     hash: Schema.optional(Schema.String),
@@ -79,7 +79,7 @@ export interface ListApiSpecRevisionsResponse {
 }
 
 export const ListApiSpecRevisionsResponse: Schema.Codec<ListApiSpecRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     apiSpecs: Schema.optional(Schema.Array(ApiSpec)),
   }).annotate({ identifier: "ListApiSpecRevisionsResponse" });
@@ -94,7 +94,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -112,7 +112,7 @@ export interface Build {
 }
 
 export const Build: Schema.Codec<Build> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repo: Schema.optional(Schema.String),
     commitId: Schema.optional(Schema.String),
     commitTime: Schema.optional(Schema.String),
@@ -126,7 +126,7 @@ export interface ListApiSpecsResponse {
 }
 
 export const ListApiSpecsResponse: Schema.Codec<ListApiSpecsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiSpecs: Schema.optional(Schema.Array(ApiSpec)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListApiSpecsResponse" });
@@ -134,7 +134,7 @@ export const ListApiSpecsResponse: Schema.Codec<ListApiSpecsResponse> =
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -152,7 +152,7 @@ export interface Location {
 }
 
 export const Location: Schema.Codec<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -168,7 +168,7 @@ export interface ListLocationsResponse {
 }
 
 export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListLocationsResponse" });
@@ -195,7 +195,7 @@ export interface Artifact {
 }
 
 export const Artifact: Schema.Codec<Artifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     sizeBytes: Schema.optional(Schema.Number),
     updateTime: Schema.optional(Schema.String),
@@ -215,7 +215,7 @@ export interface ListArtifactsResponse {
 }
 
 export const ListArtifactsResponse: Schema.Codec<ListArtifactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     artifacts: Schema.optional(Schema.Array(Artifact)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListArtifactsResponse" });
@@ -234,7 +234,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
@@ -264,7 +264,7 @@ export interface ApiVersion {
 }
 
 export const ApiVersion: Schema.Codec<ApiVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -284,7 +284,7 @@ export interface ListApiVersionsResponse {
 }
 
 export const ListApiVersionsResponse: Schema.Codec<ListApiVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersions: Schema.optional(Schema.Array(ApiVersion)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListApiVersionsResponse" });
@@ -321,7 +321,7 @@ export interface ApiDeployment {
 }
 
 export const ApiDeployment: Schema.Codec<ApiDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointUri: Schema.optional(Schema.String),
     revisionCreateTime: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -346,7 +346,7 @@ export interface Config {
 }
 
 export const Config: Schema.Codec<Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     cmekKeyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "Config" });
@@ -357,7 +357,7 @@ export interface RollbackApiSpecRequest {
 }
 
 export const RollbackApiSpecRequest: Schema.Codec<RollbackApiSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     revisionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RollbackApiSpecRequest" });
 
@@ -367,7 +367,7 @@ export interface TagApiDeploymentRevisionRequest {
 }
 
 export const TagApiDeploymentRevisionRequest: Schema.Codec<TagApiDeploymentRevisionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
   }).annotate({ identifier: "TagApiDeploymentRevisionRequest" });
 
@@ -379,7 +379,7 @@ export interface ListApiDeploymentRevisionsResponse {
 }
 
 export const ListApiDeploymentRevisionsResponse: Schema.Codec<ListApiDeploymentRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiDeployments: Schema.optional(Schema.Array(ApiDeployment)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListApiDeploymentRevisionsResponse" });
@@ -392,7 +392,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(Operation)),
   }).annotate({ identifier: "ListOperationsResponse" });
@@ -415,7 +415,7 @@ export interface OperationMetadata {
 }
 
 export const OperationMetadata: Schema.Codec<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -448,20 +448,18 @@ export interface Api {
   displayName?: string;
 }
 
-export const Api: Schema.Codec<Api> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    recommendedVersion: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    availability: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    recommendedDeployment: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    updateTime: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Api" });
+export const Api: Schema.Codec<Api> = /*@__PURE__*/ Schema.Struct({
+  recommendedVersion: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  availability: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  recommendedDeployment: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Api" });
 
 export interface ListApisResponse {
   /** The APIs from the specified publisher. */
@@ -471,7 +469,7 @@ export interface ListApisResponse {
 }
 
 export const ListApisResponse: Schema.Codec<ListApisResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apis: Schema.optional(Schema.Array(Api)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListApisResponse" });
@@ -488,7 +486,7 @@ export interface Expr {
 }
 
 export const Expr: Schema.Codec<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
@@ -505,7 +503,7 @@ export interface Binding {
 }
 
 export const Binding: Schema.Codec<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     condition: Schema.optional(Expr),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -521,7 +519,7 @@ export interface Policy {
 }
 
 export const Policy: Schema.Codec<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -533,7 +531,7 @@ export interface SetIamPolicyRequest {
 }
 
 export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
 
@@ -543,14 +541,14 @@ export interface TestIamPermissionsResponse {
 }
 
 export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -560,7 +558,7 @@ export interface TagApiSpecRevisionRequest {
 }
 
 export const TagApiSpecRevisionRequest: Schema.Codec<TagApiSpecRevisionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
   }).annotate({ identifier: "TagApiSpecRevisionRequest" });
 
@@ -570,7 +568,7 @@ export interface RollbackApiDeploymentRequest {
 }
 
 export const RollbackApiDeploymentRequest: Schema.Codec<RollbackApiDeploymentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     revisionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RollbackApiDeploymentRequest" });
 
@@ -582,7 +580,7 @@ export interface ListApiDeploymentsResponse {
 }
 
 export const ListApiDeploymentsResponse: Schema.Codec<ListApiDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiDeployments: Schema.optional(Schema.Array(ApiDeployment)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListApiDeploymentsResponse" });
@@ -597,7 +595,7 @@ export interface HttpBody {
 }
 
 export const HttpBody: Schema.Codec<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     extensions: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -631,7 +629,7 @@ export interface Instance {
 }
 
 export const Instance: Schema.Codec<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -647,7 +645,7 @@ export interface TestIamPermissionsRequest {
 }
 
 export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
@@ -717,7 +715,7 @@ export interface ListProjectsLocationsRequest {
 }
 
 export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -729,7 +727,7 @@ export const ListProjectsLocationsRequest =
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+  /*@__PURE__*/ ListLocationsResponse;
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -739,7 +737,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsResponse,
   ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -755,7 +753,7 @@ export interface GetProjectsLocationsRequest {
 }
 
 export const GetProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -763,8 +761,7 @@ export const GetProjectsLocationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
-export const GetProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Location;
+export const GetProjectsLocationsResponse = /*@__PURE__*/ Location;
 
 export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -774,7 +771,7 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsResponse,
   GetProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -788,7 +785,7 @@ export interface GetIamPolicyProjectsLocationsDocumentsRequest {
 }
 
 export const GetIamPolicyProjectsLocationsDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -800,7 +797,7 @@ export const GetIamPolicyProjectsLocationsDocumentsRequest =
 
 export type GetIamPolicyProjectsLocationsDocumentsResponse = Policy;
 export const GetIamPolicyProjectsLocationsDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsDocumentsError =
   | DefaultErrors
@@ -813,7 +810,7 @@ export const getIamPolicyProjectsLocationsDocuments: API.OperationMethod<
   GetIamPolicyProjectsLocationsDocumentsResponse,
   GetIamPolicyProjectsLocationsDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsDocumentsRequest,
   output: GetIamPolicyProjectsLocationsDocumentsResponse,
   errors: [NotFound, Forbidden],
@@ -827,7 +824,7 @@ export interface SetIamPolicyProjectsLocationsDocumentsRequest {
 }
 
 export const SetIamPolicyProjectsLocationsDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -841,7 +838,7 @@ export const SetIamPolicyProjectsLocationsDocumentsRequest =
 
 export type SetIamPolicyProjectsLocationsDocumentsResponse = Policy;
 export const SetIamPolicyProjectsLocationsDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsDocumentsError =
   | DefaultErrors
@@ -856,7 +853,7 @@ export const setIamPolicyProjectsLocationsDocuments: API.OperationMethod<
   SetIamPolicyProjectsLocationsDocumentsResponse,
   SetIamPolicyProjectsLocationsDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsDocumentsRequest,
   output: SetIamPolicyProjectsLocationsDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -870,7 +867,7 @@ export interface TestIamPermissionsProjectsLocationsDocumentsRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -885,7 +882,7 @@ export const TestIamPermissionsProjectsLocationsDocumentsRequest =
 export type TestIamPermissionsProjectsLocationsDocumentsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsDocumentsError =
   | DefaultErrors
@@ -900,7 +897,7 @@ export const testIamPermissionsProjectsLocationsDocuments: API.OperationMethod<
   TestIamPermissionsProjectsLocationsDocumentsResponse,
   TestIamPermissionsProjectsLocationsDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsDocumentsRequest,
   output: TestIamPermissionsProjectsLocationsDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -920,7 +917,7 @@ export interface ListProjectsLocationsArtifactsRequest {
 }
 
 export const ListProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -933,7 +930,7 @@ export const ListProjectsLocationsArtifactsRequest =
 
 export type ListProjectsLocationsArtifactsResponse = ListArtifactsResponse;
 export const ListProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
+  /*@__PURE__*/ ListArtifactsResponse;
 
 export type ListProjectsLocationsArtifactsError =
   | DefaultErrors
@@ -946,7 +943,7 @@ export const listProjectsLocationsArtifacts: API.PaginatedOperationMethod<
   ListProjectsLocationsArtifactsResponse,
   ListProjectsLocationsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsArtifactsRequest,
   output: ListProjectsLocationsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -962,7 +959,7 @@ export interface GetProjectsLocationsArtifactsRequest {
 }
 
 export const GetProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -970,8 +967,7 @@ export const GetProjectsLocationsArtifactsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsArtifactsRequest>;
 
 export type GetProjectsLocationsArtifactsResponse = Artifact;
-export const GetProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+export const GetProjectsLocationsArtifactsResponse = /*@__PURE__*/ Artifact;
 
 export type GetProjectsLocationsArtifactsError =
   | DefaultErrors
@@ -984,7 +980,7 @@ export const getProjectsLocationsArtifacts: API.OperationMethod<
   GetProjectsLocationsArtifactsResponse,
   GetProjectsLocationsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsArtifactsRequest,
   output: GetProjectsLocationsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -998,7 +994,7 @@ export interface TestIamPermissionsProjectsLocationsArtifactsRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1013,7 +1009,7 @@ export const TestIamPermissionsProjectsLocationsArtifactsRequest =
 export type TestIamPermissionsProjectsLocationsArtifactsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsArtifactsError =
   | DefaultErrors
@@ -1028,7 +1024,7 @@ export const testIamPermissionsProjectsLocationsArtifacts: API.OperationMethod<
   TestIamPermissionsProjectsLocationsArtifactsResponse,
   TestIamPermissionsProjectsLocationsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsArtifactsRequest,
   output: TestIamPermissionsProjectsLocationsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1040,7 +1036,7 @@ export interface GetContentsProjectsLocationsArtifactsRequest {
 }
 
 export const GetContentsProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
@@ -1049,7 +1045,7 @@ export const GetContentsProjectsLocationsArtifactsRequest =
 
 export type GetContentsProjectsLocationsArtifactsResponse = HttpBody;
 export const GetContentsProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+  /*@__PURE__*/ HttpBody;
 
 export type GetContentsProjectsLocationsArtifactsError =
   | DefaultErrors
@@ -1062,7 +1058,7 @@ export const getContentsProjectsLocationsArtifacts: API.OperationMethod<
   GetContentsProjectsLocationsArtifactsResponse,
   GetContentsProjectsLocationsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContentsProjectsLocationsArtifactsRequest,
   output: GetContentsProjectsLocationsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -1078,7 +1074,7 @@ export interface CreateProjectsLocationsArtifactsRequest {
 }
 
 export const CreateProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Artifact).pipe(T.HttpBody()),
@@ -1088,8 +1084,7 @@ export const CreateProjectsLocationsArtifactsRequest =
   ) as unknown as Schema.Codec<CreateProjectsLocationsArtifactsRequest>;
 
 export type CreateProjectsLocationsArtifactsResponse = Artifact;
-export const CreateProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+export const CreateProjectsLocationsArtifactsResponse = /*@__PURE__*/ Artifact;
 
 export type CreateProjectsLocationsArtifactsError =
   | DefaultErrors
@@ -1104,7 +1099,7 @@ export const createProjectsLocationsArtifacts: API.OperationMethod<
   CreateProjectsLocationsArtifactsResponse,
   CreateProjectsLocationsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsArtifactsRequest,
   output: CreateProjectsLocationsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1118,7 +1113,7 @@ export interface ReplaceArtifactProjectsLocationsArtifactsRequest {
 }
 
 export const ReplaceArtifactProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Artifact).pipe(T.HttpBody()),
   }).pipe(
@@ -1128,7 +1123,7 @@ export const ReplaceArtifactProjectsLocationsArtifactsRequest =
 
 export type ReplaceArtifactProjectsLocationsArtifactsResponse = Artifact;
 export const ReplaceArtifactProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+  /*@__PURE__*/ Artifact;
 
 export type ReplaceArtifactProjectsLocationsArtifactsError =
   | DefaultErrors
@@ -1143,7 +1138,7 @@ export const replaceArtifactProjectsLocationsArtifacts: API.OperationMethod<
   ReplaceArtifactProjectsLocationsArtifactsResponse,
   ReplaceArtifactProjectsLocationsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceArtifactProjectsLocationsArtifactsRequest,
   output: ReplaceArtifactProjectsLocationsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1155,7 +1150,7 @@ export interface DeleteProjectsLocationsArtifactsRequest {
 }
 
 export const DeleteProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -1163,8 +1158,7 @@ export const DeleteProjectsLocationsArtifactsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsArtifactsRequest>;
 
 export type DeleteProjectsLocationsArtifactsResponse = Empty;
-export const DeleteProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsArtifactsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsArtifactsError =
   | DefaultErrors
@@ -1179,7 +1173,7 @@ export const deleteProjectsLocationsArtifacts: API.OperationMethod<
   DeleteProjectsLocationsArtifactsResponse,
   DeleteProjectsLocationsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsArtifactsRequest,
   output: DeleteProjectsLocationsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1193,7 +1187,7 @@ export interface SetIamPolicyProjectsLocationsArtifactsRequest {
 }
 
 export const SetIamPolicyProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1207,7 +1201,7 @@ export const SetIamPolicyProjectsLocationsArtifactsRequest =
 
 export type SetIamPolicyProjectsLocationsArtifactsResponse = Policy;
 export const SetIamPolicyProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsArtifactsError =
   | DefaultErrors
@@ -1222,7 +1216,7 @@ export const setIamPolicyProjectsLocationsArtifacts: API.OperationMethod<
   SetIamPolicyProjectsLocationsArtifactsResponse,
   SetIamPolicyProjectsLocationsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsArtifactsRequest,
   output: SetIamPolicyProjectsLocationsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1236,7 +1230,7 @@ export interface GetIamPolicyProjectsLocationsArtifactsRequest {
 }
 
 export const GetIamPolicyProjectsLocationsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -1248,7 +1242,7 @@ export const GetIamPolicyProjectsLocationsArtifactsRequest =
 
 export type GetIamPolicyProjectsLocationsArtifactsResponse = Policy;
 export const GetIamPolicyProjectsLocationsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsArtifactsError =
   | DefaultErrors
@@ -1261,7 +1255,7 @@ export const getIamPolicyProjectsLocationsArtifacts: API.OperationMethod<
   GetIamPolicyProjectsLocationsArtifactsResponse,
   GetIamPolicyProjectsLocationsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsArtifactsRequest,
   output: GetIamPolicyProjectsLocationsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -1279,7 +1273,7 @@ export interface PatchProjectsLocationsApisRequest {
 }
 
 export const PatchProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -1292,8 +1286,7 @@ export const PatchProjectsLocationsApisRequest =
   ) as unknown as Schema.Codec<PatchProjectsLocationsApisRequest>;
 
 export type PatchProjectsLocationsApisResponse = Api;
-export const PatchProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Api;
+export const PatchProjectsLocationsApisResponse = /*@__PURE__*/ Api;
 
 export type PatchProjectsLocationsApisError =
   | DefaultErrors
@@ -1308,7 +1301,7 @@ export const patchProjectsLocationsApis: API.OperationMethod<
   PatchProjectsLocationsApisResponse,
   PatchProjectsLocationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApisRequest,
   output: PatchProjectsLocationsApisResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1328,7 +1321,7 @@ export interface ListProjectsLocationsApisRequest {
 }
 
 export const ListProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -1340,8 +1333,7 @@ export const ListProjectsLocationsApisRequest =
   ) as unknown as Schema.Codec<ListProjectsLocationsApisRequest>;
 
 export type ListProjectsLocationsApisResponse = ListApisResponse;
-export const ListProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApisResponse;
+export const ListProjectsLocationsApisResponse = /*@__PURE__*/ ListApisResponse;
 
 export type ListProjectsLocationsApisError =
   | DefaultErrors
@@ -1354,7 +1346,7 @@ export const listProjectsLocationsApis: API.PaginatedOperationMethod<
   ListProjectsLocationsApisResponse,
   ListProjectsLocationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisRequest,
   output: ListProjectsLocationsApisResponse,
   errors: [NotFound, Forbidden],
@@ -1370,7 +1362,7 @@ export interface GetProjectsLocationsApisRequest {
 }
 
 export const GetProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1378,7 +1370,7 @@ export const GetProjectsLocationsApisRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsApisRequest>;
 
 export type GetProjectsLocationsApisResponse = Api;
-export const GetProjectsLocationsApisResponse = /*@__PURE__*/ /*#__PURE__*/ Api;
+export const GetProjectsLocationsApisResponse = /*@__PURE__*/ Api;
 
 export type GetProjectsLocationsApisError =
   | DefaultErrors
@@ -1391,7 +1383,7 @@ export const getProjectsLocationsApis: API.OperationMethod<
   GetProjectsLocationsApisResponse,
   GetProjectsLocationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApisRequest,
   output: GetProjectsLocationsApisResponse,
   errors: [NotFound, Forbidden],
@@ -1405,7 +1397,7 @@ export interface TestIamPermissionsProjectsLocationsApisRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1420,7 +1412,7 @@ export const TestIamPermissionsProjectsLocationsApisRequest =
 export type TestIamPermissionsProjectsLocationsApisResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsApisError =
   | DefaultErrors
@@ -1435,7 +1427,7 @@ export const testIamPermissionsProjectsLocationsApis: API.OperationMethod<
   TestIamPermissionsProjectsLocationsApisResponse,
   TestIamPermissionsProjectsLocationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsApisRequest,
   output: TestIamPermissionsProjectsLocationsApisResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1451,7 +1443,7 @@ export interface CreateProjectsLocationsApisRequest {
 }
 
 export const CreateProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     apiId: Schema.optional(Schema.String).pipe(T.HttpQuery("apiId")),
     body: Schema.optional(Api).pipe(T.HttpBody()),
@@ -1461,8 +1453,7 @@ export const CreateProjectsLocationsApisRequest =
   ) as unknown as Schema.Codec<CreateProjectsLocationsApisRequest>;
 
 export type CreateProjectsLocationsApisResponse = Api;
-export const CreateProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Api;
+export const CreateProjectsLocationsApisResponse = /*@__PURE__*/ Api;
 
 export type CreateProjectsLocationsApisError =
   | DefaultErrors
@@ -1477,7 +1468,7 @@ export const createProjectsLocationsApis: API.OperationMethod<
   CreateProjectsLocationsApisResponse,
   CreateProjectsLocationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApisRequest,
   output: CreateProjectsLocationsApisResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1491,7 +1482,7 @@ export interface DeleteProjectsLocationsApisRequest {
 }
 
 export const DeleteProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -1500,8 +1491,7 @@ export const DeleteProjectsLocationsApisRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsApisRequest>;
 
 export type DeleteProjectsLocationsApisResponse = Empty;
-export const DeleteProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsApisResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsApisError =
   | DefaultErrors
@@ -1516,7 +1506,7 @@ export const deleteProjectsLocationsApis: API.OperationMethod<
   DeleteProjectsLocationsApisResponse,
   DeleteProjectsLocationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApisRequest,
   output: DeleteProjectsLocationsApisResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1530,7 +1520,7 @@ export interface SetIamPolicyProjectsLocationsApisRequest {
 }
 
 export const SetIamPolicyProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1543,8 +1533,7 @@ export const SetIamPolicyProjectsLocationsApisRequest =
   ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsApisRequest>;
 
 export type SetIamPolicyProjectsLocationsApisResponse = Policy;
-export const SetIamPolicyProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const SetIamPolicyProjectsLocationsApisResponse = /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsApisError =
   | DefaultErrors
@@ -1559,7 +1548,7 @@ export const setIamPolicyProjectsLocationsApis: API.OperationMethod<
   SetIamPolicyProjectsLocationsApisResponse,
   SetIamPolicyProjectsLocationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsApisRequest,
   output: SetIamPolicyProjectsLocationsApisResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1573,7 +1562,7 @@ export interface GetIamPolicyProjectsLocationsApisRequest {
 }
 
 export const GetIamPolicyProjectsLocationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -1584,8 +1573,7 @@ export const GetIamPolicyProjectsLocationsApisRequest =
   ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsApisRequest>;
 
 export type GetIamPolicyProjectsLocationsApisResponse = Policy;
-export const GetIamPolicyProjectsLocationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetIamPolicyProjectsLocationsApisResponse = /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsApisError =
   | DefaultErrors
@@ -1598,7 +1586,7 @@ export const getIamPolicyProjectsLocationsApis: API.OperationMethod<
   GetIamPolicyProjectsLocationsApisResponse,
   GetIamPolicyProjectsLocationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsApisRequest,
   output: GetIamPolicyProjectsLocationsApisResponse,
   errors: [NotFound, Forbidden],
@@ -1618,7 +1606,7 @@ export interface ListProjectsLocationsApisVersionsRequest {
 }
 
 export const ListProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1631,7 +1619,7 @@ export const ListProjectsLocationsApisVersionsRequest =
 
 export type ListProjectsLocationsApisVersionsResponse = ListApiVersionsResponse;
 export const ListProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApiVersionsResponse;
+  /*@__PURE__*/ ListApiVersionsResponse;
 
 export type ListProjectsLocationsApisVersionsError =
   | DefaultErrors
@@ -1644,7 +1632,7 @@ export const listProjectsLocationsApisVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsApisVersionsResponse,
   ListProjectsLocationsApisVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisVersionsRequest,
   output: ListProjectsLocationsApisVersionsResponse,
   errors: [NotFound, Forbidden],
@@ -1660,7 +1648,7 @@ export interface GetProjectsLocationsApisVersionsRequest {
 }
 
 export const GetProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1669,7 +1657,7 @@ export const GetProjectsLocationsApisVersionsRequest =
 
 export type GetProjectsLocationsApisVersionsResponse = ApiVersion;
 export const GetProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiVersion;
+  /*@__PURE__*/ ApiVersion;
 
 export type GetProjectsLocationsApisVersionsError =
   | DefaultErrors
@@ -1682,7 +1670,7 @@ export const getProjectsLocationsApisVersions: API.OperationMethod<
   GetProjectsLocationsApisVersionsResponse,
   GetProjectsLocationsApisVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApisVersionsRequest,
   output: GetProjectsLocationsApisVersionsResponse,
   errors: [NotFound, Forbidden],
@@ -1696,7 +1684,7 @@ export interface TestIamPermissionsProjectsLocationsApisVersionsRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1711,7 +1699,7 @@ export const TestIamPermissionsProjectsLocationsApisVersionsRequest =
 export type TestIamPermissionsProjectsLocationsApisVersionsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsApisVersionsError =
   | DefaultErrors
@@ -1726,7 +1714,7 @@ export const testIamPermissionsProjectsLocationsApisVersions: API.OperationMetho
   TestIamPermissionsProjectsLocationsApisVersionsResponse,
   TestIamPermissionsProjectsLocationsApisVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsApisVersionsRequest,
   output: TestIamPermissionsProjectsLocationsApisVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1744,7 +1732,7 @@ export interface PatchProjectsLocationsApisVersionsRequest {
 }
 
 export const PatchProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
@@ -1758,7 +1746,7 @@ export const PatchProjectsLocationsApisVersionsRequest =
 
 export type PatchProjectsLocationsApisVersionsResponse = ApiVersion;
 export const PatchProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiVersion;
+  /*@__PURE__*/ ApiVersion;
 
 export type PatchProjectsLocationsApisVersionsError =
   | DefaultErrors
@@ -1773,7 +1761,7 @@ export const patchProjectsLocationsApisVersions: API.OperationMethod<
   PatchProjectsLocationsApisVersionsResponse,
   PatchProjectsLocationsApisVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApisVersionsRequest,
   output: PatchProjectsLocationsApisVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1789,7 +1777,7 @@ export interface CreateProjectsLocationsApisVersionsRequest {
 }
 
 export const CreateProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersionId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("apiVersionId"),
     ),
@@ -1802,7 +1790,7 @@ export const CreateProjectsLocationsApisVersionsRequest =
 
 export type CreateProjectsLocationsApisVersionsResponse = ApiVersion;
 export const CreateProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiVersion;
+  /*@__PURE__*/ ApiVersion;
 
 export type CreateProjectsLocationsApisVersionsError =
   | DefaultErrors
@@ -1817,7 +1805,7 @@ export const createProjectsLocationsApisVersions: API.OperationMethod<
   CreateProjectsLocationsApisVersionsResponse,
   CreateProjectsLocationsApisVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApisVersionsRequest,
   output: CreateProjectsLocationsApisVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1831,7 +1819,7 @@ export interface DeleteProjectsLocationsApisVersionsRequest {
 }
 
 export const DeleteProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -1840,8 +1828,7 @@ export const DeleteProjectsLocationsApisVersionsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsApisVersionsRequest>;
 
 export type DeleteProjectsLocationsApisVersionsResponse = Empty;
-export const DeleteProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsApisVersionsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsApisVersionsError =
   | DefaultErrors
@@ -1856,7 +1843,7 @@ export const deleteProjectsLocationsApisVersions: API.OperationMethod<
   DeleteProjectsLocationsApisVersionsResponse,
   DeleteProjectsLocationsApisVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApisVersionsRequest,
   output: DeleteProjectsLocationsApisVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1870,7 +1857,7 @@ export interface SetIamPolicyProjectsLocationsApisVersionsRequest {
 }
 
 export const SetIamPolicyProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1884,7 +1871,7 @@ export const SetIamPolicyProjectsLocationsApisVersionsRequest =
 
 export type SetIamPolicyProjectsLocationsApisVersionsResponse = Policy;
 export const SetIamPolicyProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsApisVersionsError =
   | DefaultErrors
@@ -1899,7 +1886,7 @@ export const setIamPolicyProjectsLocationsApisVersions: API.OperationMethod<
   SetIamPolicyProjectsLocationsApisVersionsResponse,
   SetIamPolicyProjectsLocationsApisVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsApisVersionsRequest,
   output: SetIamPolicyProjectsLocationsApisVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1913,7 +1900,7 @@ export interface GetIamPolicyProjectsLocationsApisVersionsRequest {
 }
 
 export const GetIamPolicyProjectsLocationsApisVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -1925,7 +1912,7 @@ export const GetIamPolicyProjectsLocationsApisVersionsRequest =
 
 export type GetIamPolicyProjectsLocationsApisVersionsResponse = Policy;
 export const GetIamPolicyProjectsLocationsApisVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsApisVersionsError =
   | DefaultErrors
@@ -1938,7 +1925,7 @@ export const getIamPolicyProjectsLocationsApisVersions: API.OperationMethod<
   GetIamPolicyProjectsLocationsApisVersionsResponse,
   GetIamPolicyProjectsLocationsApisVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsApisVersionsRequest,
   output: GetIamPolicyProjectsLocationsApisVersionsResponse,
   errors: [NotFound, Forbidden],
@@ -1952,7 +1939,7 @@ export interface SetIamPolicyProjectsLocationsApisVersionsSpecsRequest {
 }
 
 export const SetIamPolicyProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1966,7 +1953,7 @@ export const SetIamPolicyProjectsLocationsApisVersionsSpecsRequest =
 
 export type SetIamPolicyProjectsLocationsApisVersionsSpecsResponse = Policy;
 export const SetIamPolicyProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsApisVersionsSpecsError =
   | DefaultErrors
@@ -1981,7 +1968,7 @@ export const setIamPolicyProjectsLocationsApisVersionsSpecs: API.OperationMethod
   SetIamPolicyProjectsLocationsApisVersionsSpecsResponse,
   SetIamPolicyProjectsLocationsApisVersionsSpecsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsApisVersionsSpecsRequest,
   output: SetIamPolicyProjectsLocationsApisVersionsSpecsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1993,7 +1980,7 @@ export interface GetContentsProjectsLocationsApisVersionsSpecsRequest {
 }
 
 export const GetContentsProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
@@ -2002,7 +1989,7 @@ export const GetContentsProjectsLocationsApisVersionsSpecsRequest =
 
 export type GetContentsProjectsLocationsApisVersionsSpecsResponse = HttpBody;
 export const GetContentsProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+  /*@__PURE__*/ HttpBody;
 
 export type GetContentsProjectsLocationsApisVersionsSpecsError =
   | DefaultErrors
@@ -2015,7 +2002,7 @@ export const getContentsProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   GetContentsProjectsLocationsApisVersionsSpecsResponse,
   GetContentsProjectsLocationsApisVersionsSpecsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContentsProjectsLocationsApisVersionsSpecsRequest,
   output: GetContentsProjectsLocationsApisVersionsSpecsResponse,
   errors: [NotFound, Forbidden],
@@ -2031,7 +2018,7 @@ export interface CreateProjectsLocationsApisVersionsSpecsRequest {
 }
 
 export const CreateProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiSpecId: Schema.optional(Schema.String).pipe(T.HttpQuery("apiSpecId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ApiSpec).pipe(T.HttpBody()),
@@ -2042,7 +2029,7 @@ export const CreateProjectsLocationsApisVersionsSpecsRequest =
 
 export type CreateProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
 export const CreateProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
+  /*@__PURE__*/ ApiSpec;
 
 export type CreateProjectsLocationsApisVersionsSpecsError =
   | DefaultErrors
@@ -2057,7 +2044,7 @@ export const createProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   CreateProjectsLocationsApisVersionsSpecsResponse,
   CreateProjectsLocationsApisVersionsSpecsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApisVersionsSpecsRequest,
   output: CreateProjectsLocationsApisVersionsSpecsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2075,7 +2062,7 @@ export interface ListRevisionsProjectsLocationsApisVersionsSpecsRequest {
 }
 
 export const ListRevisionsProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2088,7 +2075,7 @@ export const ListRevisionsProjectsLocationsApisVersionsSpecsRequest =
 export type ListRevisionsProjectsLocationsApisVersionsSpecsResponse =
   ListApiSpecRevisionsResponse;
 export const ListRevisionsProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApiSpecRevisionsResponse;
+  /*@__PURE__*/ ListApiSpecRevisionsResponse;
 
 export type ListRevisionsProjectsLocationsApisVersionsSpecsError =
   | DefaultErrors
@@ -2101,7 +2088,7 @@ export const listRevisionsProjectsLocationsApisVersionsSpecs: API.PaginatedOpera
   ListRevisionsProjectsLocationsApisVersionsSpecsResponse,
   ListRevisionsProjectsLocationsApisVersionsSpecsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsProjectsLocationsApisVersionsSpecsRequest,
   output: ListRevisionsProjectsLocationsApisVersionsSpecsResponse,
   errors: [NotFound, Forbidden],
@@ -2119,7 +2106,7 @@ export interface GetIamPolicyProjectsLocationsApisVersionsSpecsRequest {
 }
 
 export const GetIamPolicyProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -2131,7 +2118,7 @@ export const GetIamPolicyProjectsLocationsApisVersionsSpecsRequest =
 
 export type GetIamPolicyProjectsLocationsApisVersionsSpecsResponse = Policy;
 export const GetIamPolicyProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsApisVersionsSpecsError =
   | DefaultErrors
@@ -2144,7 +2131,7 @@ export const getIamPolicyProjectsLocationsApisVersionsSpecs: API.OperationMethod
   GetIamPolicyProjectsLocationsApisVersionsSpecsResponse,
   GetIamPolicyProjectsLocationsApisVersionsSpecsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsApisVersionsSpecsRequest,
   output: GetIamPolicyProjectsLocationsApisVersionsSpecsResponse,
   errors: [NotFound, Forbidden],
@@ -2156,7 +2143,7 @@ export interface DeleteRevisionProjectsLocationsApisVersionsSpecsRequest {
 }
 
 export const DeleteRevisionProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}:deleteRevision" }),
@@ -2165,7 +2152,7 @@ export const DeleteRevisionProjectsLocationsApisVersionsSpecsRequest =
 
 export type DeleteRevisionProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
 export const DeleteRevisionProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
+  /*@__PURE__*/ ApiSpec;
 
 export type DeleteRevisionProjectsLocationsApisVersionsSpecsError =
   | DefaultErrors
@@ -2180,7 +2167,7 @@ export const deleteRevisionProjectsLocationsApisVersionsSpecs: API.OperationMeth
   DeleteRevisionProjectsLocationsApisVersionsSpecsResponse,
   DeleteRevisionProjectsLocationsApisVersionsSpecsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRevisionProjectsLocationsApisVersionsSpecsRequest,
   output: DeleteRevisionProjectsLocationsApisVersionsSpecsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2200,7 +2187,7 @@ export interface ListProjectsLocationsApisVersionsSpecsRequest {
 }
 
 export const ListProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -2214,7 +2201,7 @@ export const ListProjectsLocationsApisVersionsSpecsRequest =
 export type ListProjectsLocationsApisVersionsSpecsResponse =
   ListApiSpecsResponse;
 export const ListProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApiSpecsResponse;
+  /*@__PURE__*/ ListApiSpecsResponse;
 
 export type ListProjectsLocationsApisVersionsSpecsError =
   | DefaultErrors
@@ -2227,7 +2214,7 @@ export const listProjectsLocationsApisVersionsSpecs: API.PaginatedOperationMetho
   ListProjectsLocationsApisVersionsSpecsResponse,
   ListProjectsLocationsApisVersionsSpecsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisVersionsSpecsRequest,
   output: ListProjectsLocationsApisVersionsSpecsResponse,
   errors: [NotFound, Forbidden],
@@ -2243,7 +2230,7 @@ export interface GetProjectsLocationsApisVersionsSpecsRequest {
 }
 
 export const GetProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -2252,7 +2239,7 @@ export const GetProjectsLocationsApisVersionsSpecsRequest =
 
 export type GetProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
 export const GetProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
+  /*@__PURE__*/ ApiSpec;
 
 export type GetProjectsLocationsApisVersionsSpecsError =
   | DefaultErrors
@@ -2265,7 +2252,7 @@ export const getProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   GetProjectsLocationsApisVersionsSpecsResponse,
   GetProjectsLocationsApisVersionsSpecsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApisVersionsSpecsRequest,
   output: GetProjectsLocationsApisVersionsSpecsResponse,
   errors: [NotFound, Forbidden],
@@ -2279,7 +2266,7 @@ export interface TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2294,7 +2281,7 @@ export const TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest =
 export type TestIamPermissionsProjectsLocationsApisVersionsSpecsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsApisVersionsSpecsError =
   | DefaultErrors
@@ -2309,7 +2296,7 @@ export const testIamPermissionsProjectsLocationsApisVersionsSpecs: API.Operation
   TestIamPermissionsProjectsLocationsApisVersionsSpecsResponse,
   TestIamPermissionsProjectsLocationsApisVersionsSpecsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest,
   output: TestIamPermissionsProjectsLocationsApisVersionsSpecsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2327,7 +2314,7 @@ export interface PatchProjectsLocationsApisVersionsSpecsRequest {
 }
 
 export const PatchProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
@@ -2341,7 +2328,7 @@ export const PatchProjectsLocationsApisVersionsSpecsRequest =
 
 export type PatchProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
 export const PatchProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
+  /*@__PURE__*/ ApiSpec;
 
 export type PatchProjectsLocationsApisVersionsSpecsError =
   | DefaultErrors
@@ -2356,7 +2343,7 @@ export const patchProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   PatchProjectsLocationsApisVersionsSpecsResponse,
   PatchProjectsLocationsApisVersionsSpecsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApisVersionsSpecsRequest,
   output: PatchProjectsLocationsApisVersionsSpecsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2370,7 +2357,7 @@ export interface RollbackProjectsLocationsApisVersionsSpecsRequest {
 }
 
 export const RollbackProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RollbackApiSpecRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2380,7 +2367,7 @@ export const RollbackProjectsLocationsApisVersionsSpecsRequest =
 
 export type RollbackProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
 export const RollbackProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
+  /*@__PURE__*/ ApiSpec;
 
 export type RollbackProjectsLocationsApisVersionsSpecsError =
   | DefaultErrors
@@ -2395,7 +2382,7 @@ export const rollbackProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   RollbackProjectsLocationsApisVersionsSpecsResponse,
   RollbackProjectsLocationsApisVersionsSpecsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollbackProjectsLocationsApisVersionsSpecsRequest,
   output: RollbackProjectsLocationsApisVersionsSpecsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2409,7 +2396,7 @@ export interface DeleteProjectsLocationsApisVersionsSpecsRequest {
 }
 
 export const DeleteProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -2419,7 +2406,7 @@ export const DeleteProjectsLocationsApisVersionsSpecsRequest =
 
 export type DeleteProjectsLocationsApisVersionsSpecsResponse = Empty;
 export const DeleteProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsApisVersionsSpecsError =
   | DefaultErrors
@@ -2434,7 +2421,7 @@ export const deleteProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   DeleteProjectsLocationsApisVersionsSpecsResponse,
   DeleteProjectsLocationsApisVersionsSpecsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApisVersionsSpecsRequest,
   output: DeleteProjectsLocationsApisVersionsSpecsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2448,7 +2435,7 @@ export interface TagRevisionProjectsLocationsApisVersionsSpecsRequest {
 }
 
 export const TagRevisionProjectsLocationsApisVersionsSpecsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(TagApiSpecRevisionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2458,7 +2445,7 @@ export const TagRevisionProjectsLocationsApisVersionsSpecsRequest =
 
 export type TagRevisionProjectsLocationsApisVersionsSpecsResponse = ApiSpec;
 export const TagRevisionProjectsLocationsApisVersionsSpecsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiSpec;
+  /*@__PURE__*/ ApiSpec;
 
 export type TagRevisionProjectsLocationsApisVersionsSpecsError =
   | DefaultErrors
@@ -2473,7 +2460,7 @@ export const tagRevisionProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   TagRevisionProjectsLocationsApisVersionsSpecsResponse,
   TagRevisionProjectsLocationsApisVersionsSpecsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagRevisionProjectsLocationsApisVersionsSpecsRequest,
   output: TagRevisionProjectsLocationsApisVersionsSpecsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2487,7 +2474,7 @@ export interface GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest 
 }
 
 export const GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -2500,7 +2487,7 @@ export const GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest =
 export type GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse =
   Policy;
 export const GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError =
   | DefaultErrors
@@ -2513,7 +2500,7 @@ export const getIamPolicyProjectsLocationsApisVersionsSpecsArtifacts: API.Operat
   GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse,
   GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest,
   output: GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -2527,7 +2514,7 @@ export interface SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest 
 }
 
 export const SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2542,7 +2529,7 @@ export const SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest =
 export type SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse =
   Policy;
 export const SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError =
   | DefaultErrors
@@ -2557,7 +2544,7 @@ export const setIamPolicyProjectsLocationsApisVersionsSpecsArtifacts: API.Operat
   SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse,
   SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest,
   output: SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2573,7 +2560,7 @@ export interface CreateProjectsLocationsApisVersionsSpecsArtifactsRequest {
 }
 
 export const CreateProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
     body: Schema.optional(Artifact).pipe(T.HttpBody()),
@@ -2585,7 +2572,7 @@ export const CreateProjectsLocationsApisVersionsSpecsArtifactsRequest =
 export type CreateProjectsLocationsApisVersionsSpecsArtifactsResponse =
   Artifact;
 export const CreateProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+  /*@__PURE__*/ Artifact;
 
 export type CreateProjectsLocationsApisVersionsSpecsArtifactsError =
   | DefaultErrors
@@ -2600,7 +2587,7 @@ export const createProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMet
   CreateProjectsLocationsApisVersionsSpecsArtifactsResponse,
   CreateProjectsLocationsApisVersionsSpecsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApisVersionsSpecsArtifactsRequest,
   output: CreateProjectsLocationsApisVersionsSpecsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2612,7 +2599,7 @@ export interface GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest {
 }
 
 export const GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
@@ -2622,7 +2609,7 @@ export const GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest =
 export type GetContentsProjectsLocationsApisVersionsSpecsArtifactsResponse =
   HttpBody;
 export const GetContentsProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+  /*@__PURE__*/ HttpBody;
 
 export type GetContentsProjectsLocationsApisVersionsSpecsArtifactsError =
   | DefaultErrors
@@ -2635,7 +2622,7 @@ export const getContentsProjectsLocationsApisVersionsSpecsArtifacts: API.Operati
   GetContentsProjectsLocationsApisVersionsSpecsArtifactsResponse,
   GetContentsProjectsLocationsApisVersionsSpecsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest,
   output: GetContentsProjectsLocationsApisVersionsSpecsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -2655,7 +2642,7 @@ export interface ListProjectsLocationsApisVersionsSpecsArtifactsRequest {
 }
 
 export const ListProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -2669,7 +2656,7 @@ export const ListProjectsLocationsApisVersionsSpecsArtifactsRequest =
 export type ListProjectsLocationsApisVersionsSpecsArtifactsResponse =
   ListArtifactsResponse;
 export const ListProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
+  /*@__PURE__*/ ListArtifactsResponse;
 
 export type ListProjectsLocationsApisVersionsSpecsArtifactsError =
   | DefaultErrors
@@ -2682,7 +2669,7 @@ export const listProjectsLocationsApisVersionsSpecsArtifacts: API.PaginatedOpera
   ListProjectsLocationsApisVersionsSpecsArtifactsResponse,
   ListProjectsLocationsApisVersionsSpecsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisVersionsSpecsArtifactsRequest,
   output: ListProjectsLocationsApisVersionsSpecsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -2698,7 +2685,7 @@ export interface GetProjectsLocationsApisVersionsSpecsArtifactsRequest {
 }
 
 export const GetProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -2707,7 +2694,7 @@ export const GetProjectsLocationsApisVersionsSpecsArtifactsRequest =
 
 export type GetProjectsLocationsApisVersionsSpecsArtifactsResponse = Artifact;
 export const GetProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+  /*@__PURE__*/ Artifact;
 
 export type GetProjectsLocationsApisVersionsSpecsArtifactsError =
   | DefaultErrors
@@ -2720,7 +2707,7 @@ export const getProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod
   GetProjectsLocationsApisVersionsSpecsArtifactsResponse,
   GetProjectsLocationsApisVersionsSpecsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApisVersionsSpecsArtifactsRequest,
   output: GetProjectsLocationsApisVersionsSpecsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -2734,7 +2721,7 @@ export interface TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRe
 }
 
 export const TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2749,7 +2736,7 @@ export const TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsReques
 export type TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsError =
   | DefaultErrors
@@ -2764,7 +2751,7 @@ export const testIamPermissionsProjectsLocationsApisVersionsSpecsArtifacts: API.
   TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsResponse,
   TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest,
   output: TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2778,7 +2765,7 @@ export interface ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsReque
 }
 
 export const ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Artifact).pipe(T.HttpBody()),
   }).pipe(
@@ -2789,7 +2776,7 @@ export const ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest =
 export type ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsResponse =
   Artifact;
 export const ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+  /*@__PURE__*/ Artifact;
 
 export type ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsError =
   | DefaultErrors
@@ -2804,7 +2791,7 @@ export const replaceArtifactProjectsLocationsApisVersionsSpecsArtifacts: API.Ope
   ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsResponse,
   ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest,
   output: ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2816,7 +2803,7 @@ export interface DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest {
 }
 
 export const DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -2825,7 +2812,7 @@ export const DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest =
 
 export type DeleteProjectsLocationsApisVersionsSpecsArtifactsResponse = Empty;
 export const DeleteProjectsLocationsApisVersionsSpecsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsApisVersionsSpecsArtifactsError =
   | DefaultErrors
@@ -2840,7 +2827,7 @@ export const deleteProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMet
   DeleteProjectsLocationsApisVersionsSpecsArtifactsResponse,
   DeleteProjectsLocationsApisVersionsSpecsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest,
   output: DeleteProjectsLocationsApisVersionsSpecsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2856,7 +2843,7 @@ export interface CreateProjectsLocationsApisVersionsArtifactsRequest {
 }
 
 export const CreateProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
     body: Schema.optional(Artifact).pipe(T.HttpBody()),
@@ -2867,7 +2854,7 @@ export const CreateProjectsLocationsApisVersionsArtifactsRequest =
 
 export type CreateProjectsLocationsApisVersionsArtifactsResponse = Artifact;
 export const CreateProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+  /*@__PURE__*/ Artifact;
 
 export type CreateProjectsLocationsApisVersionsArtifactsError =
   | DefaultErrors
@@ -2882,7 +2869,7 @@ export const createProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
   CreateProjectsLocationsApisVersionsArtifactsResponse,
   CreateProjectsLocationsApisVersionsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApisVersionsArtifactsRequest,
   output: CreateProjectsLocationsApisVersionsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2894,7 +2881,7 @@ export interface GetContentsProjectsLocationsApisVersionsArtifactsRequest {
 }
 
 export const GetContentsProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
@@ -2904,7 +2891,7 @@ export const GetContentsProjectsLocationsApisVersionsArtifactsRequest =
 export type GetContentsProjectsLocationsApisVersionsArtifactsResponse =
   HttpBody;
 export const GetContentsProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+  /*@__PURE__*/ HttpBody;
 
 export type GetContentsProjectsLocationsApisVersionsArtifactsError =
   | DefaultErrors
@@ -2917,7 +2904,7 @@ export const getContentsProjectsLocationsApisVersionsArtifacts: API.OperationMet
   GetContentsProjectsLocationsApisVersionsArtifactsResponse,
   GetContentsProjectsLocationsApisVersionsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContentsProjectsLocationsApisVersionsArtifactsRequest,
   output: GetContentsProjectsLocationsApisVersionsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -2937,7 +2924,7 @@ export interface ListProjectsLocationsApisVersionsArtifactsRequest {
 }
 
 export const ListProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -2951,7 +2938,7 @@ export const ListProjectsLocationsApisVersionsArtifactsRequest =
 export type ListProjectsLocationsApisVersionsArtifactsResponse =
   ListArtifactsResponse;
 export const ListProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
+  /*@__PURE__*/ ListArtifactsResponse;
 
 export type ListProjectsLocationsApisVersionsArtifactsError =
   | DefaultErrors
@@ -2964,7 +2951,7 @@ export const listProjectsLocationsApisVersionsArtifacts: API.PaginatedOperationM
   ListProjectsLocationsApisVersionsArtifactsResponse,
   ListProjectsLocationsApisVersionsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisVersionsArtifactsRequest,
   output: ListProjectsLocationsApisVersionsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -2980,7 +2967,7 @@ export interface GetProjectsLocationsApisVersionsArtifactsRequest {
 }
 
 export const GetProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -2989,7 +2976,7 @@ export const GetProjectsLocationsApisVersionsArtifactsRequest =
 
 export type GetProjectsLocationsApisVersionsArtifactsResponse = Artifact;
 export const GetProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+  /*@__PURE__*/ Artifact;
 
 export type GetProjectsLocationsApisVersionsArtifactsError =
   | DefaultErrors
@@ -3002,7 +2989,7 @@ export const getProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
   GetProjectsLocationsApisVersionsArtifactsResponse,
   GetProjectsLocationsApisVersionsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApisVersionsArtifactsRequest,
   output: GetProjectsLocationsApisVersionsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -3016,7 +3003,7 @@ export interface TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest
 }
 
 export const TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3031,7 +3018,7 @@ export const TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest =
 export type TestIamPermissionsProjectsLocationsApisVersionsArtifactsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsApisVersionsArtifactsError =
   | DefaultErrors
@@ -3046,7 +3033,7 @@ export const testIamPermissionsProjectsLocationsApisVersionsArtifacts: API.Opera
   TestIamPermissionsProjectsLocationsApisVersionsArtifactsResponse,
   TestIamPermissionsProjectsLocationsApisVersionsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest,
   output: TestIamPermissionsProjectsLocationsApisVersionsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3060,7 +3047,7 @@ export interface ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest {
 }
 
 export const ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Artifact).pipe(T.HttpBody()),
   }).pipe(
@@ -3071,7 +3058,7 @@ export const ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest =
 export type ReplaceArtifactProjectsLocationsApisVersionsArtifactsResponse =
   Artifact;
 export const ReplaceArtifactProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+  /*@__PURE__*/ Artifact;
 
 export type ReplaceArtifactProjectsLocationsApisVersionsArtifactsError =
   | DefaultErrors
@@ -3086,7 +3073,7 @@ export const replaceArtifactProjectsLocationsApisVersionsArtifacts: API.Operatio
   ReplaceArtifactProjectsLocationsApisVersionsArtifactsResponse,
   ReplaceArtifactProjectsLocationsApisVersionsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest,
   output: ReplaceArtifactProjectsLocationsApisVersionsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3098,7 +3085,7 @@ export interface DeleteProjectsLocationsApisVersionsArtifactsRequest {
 }
 
 export const DeleteProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -3107,7 +3094,7 @@ export const DeleteProjectsLocationsApisVersionsArtifactsRequest =
 
 export type DeleteProjectsLocationsApisVersionsArtifactsResponse = Empty;
 export const DeleteProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsApisVersionsArtifactsError =
   | DefaultErrors
@@ -3122,7 +3109,7 @@ export const deleteProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
   DeleteProjectsLocationsApisVersionsArtifactsResponse,
   DeleteProjectsLocationsApisVersionsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApisVersionsArtifactsRequest,
   output: DeleteProjectsLocationsApisVersionsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3136,7 +3123,7 @@ export interface GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest {
 }
 
 export const GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -3148,7 +3135,7 @@ export const GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest =
 
 export type GetIamPolicyProjectsLocationsApisVersionsArtifactsResponse = Policy;
 export const GetIamPolicyProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsApisVersionsArtifactsError =
   | DefaultErrors
@@ -3161,7 +3148,7 @@ export const getIamPolicyProjectsLocationsApisVersionsArtifacts: API.OperationMe
   GetIamPolicyProjectsLocationsApisVersionsArtifactsResponse,
   GetIamPolicyProjectsLocationsApisVersionsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest,
   output: GetIamPolicyProjectsLocationsApisVersionsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -3175,7 +3162,7 @@ export interface SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest {
 }
 
 export const SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3189,7 +3176,7 @@ export const SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest =
 
 export type SetIamPolicyProjectsLocationsApisVersionsArtifactsResponse = Policy;
 export const SetIamPolicyProjectsLocationsApisVersionsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsApisVersionsArtifactsError =
   | DefaultErrors
@@ -3204,7 +3191,7 @@ export const setIamPolicyProjectsLocationsApisVersionsArtifacts: API.OperationMe
   SetIamPolicyProjectsLocationsApisVersionsArtifactsResponse,
   SetIamPolicyProjectsLocationsApisVersionsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest,
   output: SetIamPolicyProjectsLocationsApisVersionsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3216,7 +3203,7 @@ export interface DeleteRevisionProjectsLocationsApisDeploymentsRequest {
 }
 
 export const DeleteRevisionProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}:deleteRevision" }),
@@ -3226,7 +3213,7 @@ export const DeleteRevisionProjectsLocationsApisDeploymentsRequest =
 export type DeleteRevisionProjectsLocationsApisDeploymentsResponse =
   ApiDeployment;
 export const DeleteRevisionProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
+  /*@__PURE__*/ ApiDeployment;
 
 export type DeleteRevisionProjectsLocationsApisDeploymentsError =
   | DefaultErrors
@@ -3241,7 +3228,7 @@ export const deleteRevisionProjectsLocationsApisDeployments: API.OperationMethod
   DeleteRevisionProjectsLocationsApisDeploymentsResponse,
   DeleteRevisionProjectsLocationsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRevisionProjectsLocationsApisDeploymentsRequest,
   output: DeleteRevisionProjectsLocationsApisDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3259,7 +3246,7 @@ export interface ListRevisionsProjectsLocationsApisDeploymentsRequest {
 }
 
 export const ListRevisionsProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -3272,7 +3259,7 @@ export const ListRevisionsProjectsLocationsApisDeploymentsRequest =
 export type ListRevisionsProjectsLocationsApisDeploymentsResponse =
   ListApiDeploymentRevisionsResponse;
 export const ListRevisionsProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApiDeploymentRevisionsResponse;
+  /*@__PURE__*/ ListApiDeploymentRevisionsResponse;
 
 export type ListRevisionsProjectsLocationsApisDeploymentsError =
   | DefaultErrors
@@ -3285,7 +3272,7 @@ export const listRevisionsProjectsLocationsApisDeployments: API.PaginatedOperati
   ListRevisionsProjectsLocationsApisDeploymentsResponse,
   ListRevisionsProjectsLocationsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsProjectsLocationsApisDeploymentsRequest,
   output: ListRevisionsProjectsLocationsApisDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -3303,7 +3290,7 @@ export interface GetIamPolicyProjectsLocationsApisDeploymentsRequest {
 }
 
 export const GetIamPolicyProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -3315,7 +3302,7 @@ export const GetIamPolicyProjectsLocationsApisDeploymentsRequest =
 
 export type GetIamPolicyProjectsLocationsApisDeploymentsResponse = Policy;
 export const GetIamPolicyProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsApisDeploymentsError =
   | DefaultErrors
@@ -3328,7 +3315,7 @@ export const getIamPolicyProjectsLocationsApisDeployments: API.OperationMethod<
   GetIamPolicyProjectsLocationsApisDeploymentsResponse,
   GetIamPolicyProjectsLocationsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsApisDeploymentsRequest,
   output: GetIamPolicyProjectsLocationsApisDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -3342,7 +3329,7 @@ export interface SetIamPolicyProjectsLocationsApisDeploymentsRequest {
 }
 
 export const SetIamPolicyProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3356,7 +3343,7 @@ export const SetIamPolicyProjectsLocationsApisDeploymentsRequest =
 
 export type SetIamPolicyProjectsLocationsApisDeploymentsResponse = Policy;
 export const SetIamPolicyProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsApisDeploymentsError =
   | DefaultErrors
@@ -3371,7 +3358,7 @@ export const setIamPolicyProjectsLocationsApisDeployments: API.OperationMethod<
   SetIamPolicyProjectsLocationsApisDeploymentsResponse,
   SetIamPolicyProjectsLocationsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsApisDeploymentsRequest,
   output: SetIamPolicyProjectsLocationsApisDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3387,7 +3374,7 @@ export interface CreateProjectsLocationsApisDeploymentsRequest {
 }
 
 export const CreateProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiDeploymentId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("apiDeploymentId"),
     ),
@@ -3400,7 +3387,7 @@ export const CreateProjectsLocationsApisDeploymentsRequest =
 
 export type CreateProjectsLocationsApisDeploymentsResponse = ApiDeployment;
 export const CreateProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
+  /*@__PURE__*/ ApiDeployment;
 
 export type CreateProjectsLocationsApisDeploymentsError =
   | DefaultErrors
@@ -3415,7 +3402,7 @@ export const createProjectsLocationsApisDeployments: API.OperationMethod<
   CreateProjectsLocationsApisDeploymentsResponse,
   CreateProjectsLocationsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApisDeploymentsRequest,
   output: CreateProjectsLocationsApisDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3433,7 +3420,7 @@ export interface PatchProjectsLocationsApisDeploymentsRequest {
 }
 
 export const PatchProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
@@ -3447,7 +3434,7 @@ export const PatchProjectsLocationsApisDeploymentsRequest =
 
 export type PatchProjectsLocationsApisDeploymentsResponse = ApiDeployment;
 export const PatchProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
+  /*@__PURE__*/ ApiDeployment;
 
 export type PatchProjectsLocationsApisDeploymentsError =
   | DefaultErrors
@@ -3462,7 +3449,7 @@ export const patchProjectsLocationsApisDeployments: API.OperationMethod<
   PatchProjectsLocationsApisDeploymentsResponse,
   PatchProjectsLocationsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApisDeploymentsRequest,
   output: PatchProjectsLocationsApisDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3482,7 +3469,7 @@ export interface ListProjectsLocationsApisDeploymentsRequest {
 }
 
 export const ListProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -3496,7 +3483,7 @@ export const ListProjectsLocationsApisDeploymentsRequest =
 export type ListProjectsLocationsApisDeploymentsResponse =
   ListApiDeploymentsResponse;
 export const ListProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApiDeploymentsResponse;
+  /*@__PURE__*/ ListApiDeploymentsResponse;
 
 export type ListProjectsLocationsApisDeploymentsError =
   | DefaultErrors
@@ -3509,7 +3496,7 @@ export const listProjectsLocationsApisDeployments: API.PaginatedOperationMethod<
   ListProjectsLocationsApisDeploymentsResponse,
   ListProjectsLocationsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisDeploymentsRequest,
   output: ListProjectsLocationsApisDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -3525,7 +3512,7 @@ export interface GetProjectsLocationsApisDeploymentsRequest {
 }
 
 export const GetProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -3534,7 +3521,7 @@ export const GetProjectsLocationsApisDeploymentsRequest =
 
 export type GetProjectsLocationsApisDeploymentsResponse = ApiDeployment;
 export const GetProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
+  /*@__PURE__*/ ApiDeployment;
 
 export type GetProjectsLocationsApisDeploymentsError =
   | DefaultErrors
@@ -3547,7 +3534,7 @@ export const getProjectsLocationsApisDeployments: API.OperationMethod<
   GetProjectsLocationsApisDeploymentsResponse,
   GetProjectsLocationsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApisDeploymentsRequest,
   output: GetProjectsLocationsApisDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -3561,7 +3548,7 @@ export interface TestIamPermissionsProjectsLocationsApisDeploymentsRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3576,7 +3563,7 @@ export const TestIamPermissionsProjectsLocationsApisDeploymentsRequest =
 export type TestIamPermissionsProjectsLocationsApisDeploymentsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsApisDeploymentsError =
   | DefaultErrors
@@ -3591,7 +3578,7 @@ export const testIamPermissionsProjectsLocationsApisDeployments: API.OperationMe
   TestIamPermissionsProjectsLocationsApisDeploymentsResponse,
   TestIamPermissionsProjectsLocationsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsApisDeploymentsRequest,
   output: TestIamPermissionsProjectsLocationsApisDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3605,7 +3592,7 @@ export interface RollbackProjectsLocationsApisDeploymentsRequest {
 }
 
 export const RollbackProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RollbackApiDeploymentRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3615,7 +3602,7 @@ export const RollbackProjectsLocationsApisDeploymentsRequest =
 
 export type RollbackProjectsLocationsApisDeploymentsResponse = ApiDeployment;
 export const RollbackProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
+  /*@__PURE__*/ ApiDeployment;
 
 export type RollbackProjectsLocationsApisDeploymentsError =
   | DefaultErrors
@@ -3630,7 +3617,7 @@ export const rollbackProjectsLocationsApisDeployments: API.OperationMethod<
   RollbackProjectsLocationsApisDeploymentsResponse,
   RollbackProjectsLocationsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollbackProjectsLocationsApisDeploymentsRequest,
   output: RollbackProjectsLocationsApisDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3644,7 +3631,7 @@ export interface DeleteProjectsLocationsApisDeploymentsRequest {
 }
 
 export const DeleteProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -3654,7 +3641,7 @@ export const DeleteProjectsLocationsApisDeploymentsRequest =
 
 export type DeleteProjectsLocationsApisDeploymentsResponse = Empty;
 export const DeleteProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsApisDeploymentsError =
   | DefaultErrors
@@ -3669,7 +3656,7 @@ export const deleteProjectsLocationsApisDeployments: API.OperationMethod<
   DeleteProjectsLocationsApisDeploymentsResponse,
   DeleteProjectsLocationsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApisDeploymentsRequest,
   output: DeleteProjectsLocationsApisDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3683,7 +3670,7 @@ export interface TagRevisionProjectsLocationsApisDeploymentsRequest {
 }
 
 export const TagRevisionProjectsLocationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(TagApiDeploymentRevisionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3693,7 +3680,7 @@ export const TagRevisionProjectsLocationsApisDeploymentsRequest =
 
 export type TagRevisionProjectsLocationsApisDeploymentsResponse = ApiDeployment;
 export const TagRevisionProjectsLocationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiDeployment;
+  /*@__PURE__*/ ApiDeployment;
 
 export type TagRevisionProjectsLocationsApisDeploymentsError =
   | DefaultErrors
@@ -3708,7 +3695,7 @@ export const tagRevisionProjectsLocationsApisDeployments: API.OperationMethod<
   TagRevisionProjectsLocationsApisDeploymentsResponse,
   TagRevisionProjectsLocationsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagRevisionProjectsLocationsApisDeploymentsRequest,
   output: TagRevisionProjectsLocationsApisDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3722,7 +3709,7 @@ export interface ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest
 }
 
 export const ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Artifact).pipe(T.HttpBody()),
   }).pipe(
@@ -3733,7 +3720,7 @@ export const ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest =
 export type ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsResponse =
   Artifact;
 export const ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+  /*@__PURE__*/ Artifact;
 
 export type ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsError =
   | DefaultErrors
@@ -3748,7 +3735,7 @@ export const replaceArtifactProjectsLocationsApisDeploymentsArtifacts: API.Opera
   ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsResponse,
   ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest,
   output: ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3760,7 +3747,7 @@ export interface DeleteProjectsLocationsApisDeploymentsArtifactsRequest {
 }
 
 export const DeleteProjectsLocationsApisDeploymentsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -3769,7 +3756,7 @@ export const DeleteProjectsLocationsApisDeploymentsArtifactsRequest =
 
 export type DeleteProjectsLocationsApisDeploymentsArtifactsResponse = Empty;
 export const DeleteProjectsLocationsApisDeploymentsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsApisDeploymentsArtifactsError =
   | DefaultErrors
@@ -3784,7 +3771,7 @@ export const deleteProjectsLocationsApisDeploymentsArtifacts: API.OperationMetho
   DeleteProjectsLocationsApisDeploymentsArtifactsResponse,
   DeleteProjectsLocationsApisDeploymentsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApisDeploymentsArtifactsRequest,
   output: DeleteProjectsLocationsApisDeploymentsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3800,7 +3787,7 @@ export interface CreateProjectsLocationsApisDeploymentsArtifactsRequest {
 }
 
 export const CreateProjectsLocationsApisDeploymentsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
     body: Schema.optional(Artifact).pipe(T.HttpBody()),
@@ -3811,7 +3798,7 @@ export const CreateProjectsLocationsApisDeploymentsArtifactsRequest =
 
 export type CreateProjectsLocationsApisDeploymentsArtifactsResponse = Artifact;
 export const CreateProjectsLocationsApisDeploymentsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+  /*@__PURE__*/ Artifact;
 
 export type CreateProjectsLocationsApisDeploymentsArtifactsError =
   | DefaultErrors
@@ -3826,7 +3813,7 @@ export const createProjectsLocationsApisDeploymentsArtifacts: API.OperationMetho
   CreateProjectsLocationsApisDeploymentsArtifactsResponse,
   CreateProjectsLocationsApisDeploymentsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApisDeploymentsArtifactsRequest,
   output: CreateProjectsLocationsApisDeploymentsArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3838,7 +3825,7 @@ export interface GetContentsProjectsLocationsApisDeploymentsArtifactsRequest {
 }
 
 export const GetContentsProjectsLocationsApisDeploymentsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
@@ -3848,7 +3835,7 @@ export const GetContentsProjectsLocationsApisDeploymentsArtifactsRequest =
 export type GetContentsProjectsLocationsApisDeploymentsArtifactsResponse =
   HttpBody;
 export const GetContentsProjectsLocationsApisDeploymentsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+  /*@__PURE__*/ HttpBody;
 
 export type GetContentsProjectsLocationsApisDeploymentsArtifactsError =
   | DefaultErrors
@@ -3861,7 +3848,7 @@ export const getContentsProjectsLocationsApisDeploymentsArtifacts: API.Operation
   GetContentsProjectsLocationsApisDeploymentsArtifactsResponse,
   GetContentsProjectsLocationsApisDeploymentsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContentsProjectsLocationsApisDeploymentsArtifactsRequest,
   output: GetContentsProjectsLocationsApisDeploymentsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -3881,7 +3868,7 @@ export interface ListProjectsLocationsApisDeploymentsArtifactsRequest {
 }
 
 export const ListProjectsLocationsApisDeploymentsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -3895,7 +3882,7 @@ export const ListProjectsLocationsApisDeploymentsArtifactsRequest =
 export type ListProjectsLocationsApisDeploymentsArtifactsResponse =
   ListArtifactsResponse;
 export const ListProjectsLocationsApisDeploymentsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
+  /*@__PURE__*/ ListArtifactsResponse;
 
 export type ListProjectsLocationsApisDeploymentsArtifactsError =
   | DefaultErrors
@@ -3908,7 +3895,7 @@ export const listProjectsLocationsApisDeploymentsArtifacts: API.PaginatedOperati
   ListProjectsLocationsApisDeploymentsArtifactsResponse,
   ListProjectsLocationsApisDeploymentsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisDeploymentsArtifactsRequest,
   output: ListProjectsLocationsApisDeploymentsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -3924,7 +3911,7 @@ export interface GetProjectsLocationsApisDeploymentsArtifactsRequest {
 }
 
 export const GetProjectsLocationsApisDeploymentsArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -3933,7 +3920,7 @@ export const GetProjectsLocationsApisDeploymentsArtifactsRequest =
 
 export type GetProjectsLocationsApisDeploymentsArtifactsResponse = Artifact;
 export const GetProjectsLocationsApisDeploymentsArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+  /*@__PURE__*/ Artifact;
 
 export type GetProjectsLocationsApisDeploymentsArtifactsError =
   | DefaultErrors
@@ -3946,7 +3933,7 @@ export const getProjectsLocationsApisDeploymentsArtifacts: API.OperationMethod<
   GetProjectsLocationsApisDeploymentsArtifactsResponse,
   GetProjectsLocationsApisDeploymentsArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApisDeploymentsArtifactsRequest,
   output: GetProjectsLocationsApisDeploymentsArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -3960,7 +3947,7 @@ export interface SetIamPolicyProjectsLocationsApisArtifactsRequest {
 }
 
 export const SetIamPolicyProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3974,7 +3961,7 @@ export const SetIamPolicyProjectsLocationsApisArtifactsRequest =
 
 export type SetIamPolicyProjectsLocationsApisArtifactsResponse = Policy;
 export const SetIamPolicyProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsApisArtifactsError =
   | DefaultErrors
@@ -3989,7 +3976,7 @@ export const setIamPolicyProjectsLocationsApisArtifacts: API.OperationMethod<
   SetIamPolicyProjectsLocationsApisArtifactsResponse,
   SetIamPolicyProjectsLocationsApisArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsApisArtifactsRequest,
   output: SetIamPolicyProjectsLocationsApisArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4003,7 +3990,7 @@ export interface GetIamPolicyProjectsLocationsApisArtifactsRequest {
 }
 
 export const GetIamPolicyProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -4015,7 +4002,7 @@ export const GetIamPolicyProjectsLocationsApisArtifactsRequest =
 
 export type GetIamPolicyProjectsLocationsApisArtifactsResponse = Policy;
 export const GetIamPolicyProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsApisArtifactsError =
   | DefaultErrors
@@ -4028,7 +4015,7 @@ export const getIamPolicyProjectsLocationsApisArtifacts: API.OperationMethod<
   GetIamPolicyProjectsLocationsApisArtifactsResponse,
   GetIamPolicyProjectsLocationsApisArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsApisArtifactsRequest,
   output: GetIamPolicyProjectsLocationsApisArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -4042,7 +4029,7 @@ export interface ReplaceArtifactProjectsLocationsApisArtifactsRequest {
 }
 
 export const ReplaceArtifactProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Artifact).pipe(T.HttpBody()),
   }).pipe(
@@ -4052,7 +4039,7 @@ export const ReplaceArtifactProjectsLocationsApisArtifactsRequest =
 
 export type ReplaceArtifactProjectsLocationsApisArtifactsResponse = Artifact;
 export const ReplaceArtifactProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+  /*@__PURE__*/ Artifact;
 
 export type ReplaceArtifactProjectsLocationsApisArtifactsError =
   | DefaultErrors
@@ -4067,7 +4054,7 @@ export const replaceArtifactProjectsLocationsApisArtifacts: API.OperationMethod<
   ReplaceArtifactProjectsLocationsApisArtifactsResponse,
   ReplaceArtifactProjectsLocationsApisArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceArtifactProjectsLocationsApisArtifactsRequest,
   output: ReplaceArtifactProjectsLocationsApisArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4079,7 +4066,7 @@ export interface DeleteProjectsLocationsApisArtifactsRequest {
 }
 
 export const DeleteProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -4087,8 +4074,7 @@ export const DeleteProjectsLocationsApisArtifactsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsApisArtifactsRequest>;
 
 export type DeleteProjectsLocationsApisArtifactsResponse = Empty;
-export const DeleteProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsApisArtifactsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsApisArtifactsError =
   | DefaultErrors
@@ -4103,7 +4089,7 @@ export const deleteProjectsLocationsApisArtifacts: API.OperationMethod<
   DeleteProjectsLocationsApisArtifactsResponse,
   DeleteProjectsLocationsApisArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApisArtifactsRequest,
   output: DeleteProjectsLocationsApisArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4123,7 +4109,7 @@ export interface ListProjectsLocationsApisArtifactsRequest {
 }
 
 export const ListProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -4136,7 +4122,7 @@ export const ListProjectsLocationsApisArtifactsRequest =
 
 export type ListProjectsLocationsApisArtifactsResponse = ListArtifactsResponse;
 export const ListProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListArtifactsResponse;
+  /*@__PURE__*/ ListArtifactsResponse;
 
 export type ListProjectsLocationsApisArtifactsError =
   | DefaultErrors
@@ -4149,7 +4135,7 @@ export const listProjectsLocationsApisArtifacts: API.PaginatedOperationMethod<
   ListProjectsLocationsApisArtifactsResponse,
   ListProjectsLocationsApisArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisArtifactsRequest,
   output: ListProjectsLocationsApisArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -4165,7 +4151,7 @@ export interface GetProjectsLocationsApisArtifactsRequest {
 }
 
 export const GetProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4173,8 +4159,7 @@ export const GetProjectsLocationsApisArtifactsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsApisArtifactsRequest>;
 
 export type GetProjectsLocationsApisArtifactsResponse = Artifact;
-export const GetProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+export const GetProjectsLocationsApisArtifactsResponse = /*@__PURE__*/ Artifact;
 
 export type GetProjectsLocationsApisArtifactsError =
   | DefaultErrors
@@ -4187,7 +4172,7 @@ export const getProjectsLocationsApisArtifacts: API.OperationMethod<
   GetProjectsLocationsApisArtifactsResponse,
   GetProjectsLocationsApisArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApisArtifactsRequest,
   output: GetProjectsLocationsApisArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -4201,7 +4186,7 @@ export interface TestIamPermissionsProjectsLocationsApisArtifactsRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4216,7 +4201,7 @@ export const TestIamPermissionsProjectsLocationsApisArtifactsRequest =
 export type TestIamPermissionsProjectsLocationsApisArtifactsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsApisArtifactsError =
   | DefaultErrors
@@ -4231,7 +4216,7 @@ export const testIamPermissionsProjectsLocationsApisArtifacts: API.OperationMeth
   TestIamPermissionsProjectsLocationsApisArtifactsResponse,
   TestIamPermissionsProjectsLocationsApisArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsApisArtifactsRequest,
   output: TestIamPermissionsProjectsLocationsApisArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4247,7 +4232,7 @@ export interface CreateProjectsLocationsApisArtifactsRequest {
 }
 
 export const CreateProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Artifact).pipe(T.HttpBody()),
@@ -4258,7 +4243,7 @@ export const CreateProjectsLocationsApisArtifactsRequest =
 
 export type CreateProjectsLocationsApisArtifactsResponse = Artifact;
 export const CreateProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Artifact;
+  /*@__PURE__*/ Artifact;
 
 export type CreateProjectsLocationsApisArtifactsError =
   | DefaultErrors
@@ -4273,7 +4258,7 @@ export const createProjectsLocationsApisArtifacts: API.OperationMethod<
   CreateProjectsLocationsApisArtifactsResponse,
   CreateProjectsLocationsApisArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApisArtifactsRequest,
   output: CreateProjectsLocationsApisArtifactsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4285,7 +4270,7 @@ export interface GetContentsProjectsLocationsApisArtifactsRequest {
 }
 
 export const GetContentsProjectsLocationsApisArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getContents" }),
@@ -4294,7 +4279,7 @@ export const GetContentsProjectsLocationsApisArtifactsRequest =
 
 export type GetContentsProjectsLocationsApisArtifactsResponse = HttpBody;
 export const GetContentsProjectsLocationsApisArtifactsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+  /*@__PURE__*/ HttpBody;
 
 export type GetContentsProjectsLocationsApisArtifactsError =
   | DefaultErrors
@@ -4307,7 +4292,7 @@ export const getContentsProjectsLocationsApisArtifacts: API.OperationMethod<
   GetContentsProjectsLocationsApisArtifactsResponse,
   GetContentsProjectsLocationsApisArtifactsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContentsProjectsLocationsApisArtifactsRequest,
   output: GetContentsProjectsLocationsApisArtifactsResponse,
   errors: [NotFound, Forbidden],
@@ -4321,7 +4306,7 @@ export interface GetIamPolicyProjectsLocationsInstancesRequest {
 }
 
 export const GetIamPolicyProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -4333,7 +4318,7 @@ export const GetIamPolicyProjectsLocationsInstancesRequest =
 
 export type GetIamPolicyProjectsLocationsInstancesResponse = Policy;
 export const GetIamPolicyProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsInstancesError =
   | DefaultErrors
@@ -4346,7 +4331,7 @@ export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
   GetIamPolicyProjectsLocationsInstancesResponse,
   GetIamPolicyProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsInstancesRequest,
   output: GetIamPolicyProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden],
@@ -4358,7 +4343,7 @@ export interface DeleteProjectsLocationsInstancesRequest {
 }
 
 export const DeleteProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -4366,8 +4351,7 @@ export const DeleteProjectsLocationsInstancesRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsInstancesRequest>;
 
 export type DeleteProjectsLocationsInstancesResponse = Operation;
-export const DeleteProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const DeleteProjectsLocationsInstancesResponse = /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsInstancesError =
   | DefaultErrors
@@ -4382,7 +4366,7 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesResponse,
   DeleteProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsInstancesRequest,
   output: DeleteProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4396,7 +4380,7 @@ export interface SetIamPolicyProjectsLocationsInstancesRequest {
 }
 
 export const SetIamPolicyProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4410,7 +4394,7 @@ export const SetIamPolicyProjectsLocationsInstancesRequest =
 
 export type SetIamPolicyProjectsLocationsInstancesResponse = Policy;
 export const SetIamPolicyProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsInstancesError =
   | DefaultErrors
@@ -4425,7 +4409,7 @@ export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
   SetIamPolicyProjectsLocationsInstancesResponse,
   SetIamPolicyProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsInstancesRequest,
   output: SetIamPolicyProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4441,7 +4425,7 @@ export interface CreateProjectsLocationsInstancesRequest {
 }
 
 export const CreateProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     instanceId: Schema.optional(Schema.String).pipe(T.HttpQuery("instanceId")),
     body: Schema.optional(Instance).pipe(T.HttpBody()),
@@ -4451,8 +4435,7 @@ export const CreateProjectsLocationsInstancesRequest =
   ) as unknown as Schema.Codec<CreateProjectsLocationsInstancesRequest>;
 
 export type CreateProjectsLocationsInstancesResponse = Operation;
-export const CreateProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateProjectsLocationsInstancesResponse = /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsInstancesError =
   | DefaultErrors
@@ -4467,7 +4450,7 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesResponse,
   CreateProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsInstancesRequest,
   output: CreateProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4479,7 +4462,7 @@ export interface GetProjectsLocationsInstancesRequest {
 }
 
 export const GetProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4487,8 +4470,7 @@ export const GetProjectsLocationsInstancesRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsInstancesRequest>;
 
 export type GetProjectsLocationsInstancesResponse = Instance;
-export const GetProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Instance;
+export const GetProjectsLocationsInstancesResponse = /*@__PURE__*/ Instance;
 
 export type GetProjectsLocationsInstancesError =
   | DefaultErrors
@@ -4501,7 +4483,7 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesResponse,
   GetProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInstancesRequest,
   output: GetProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden],
@@ -4515,7 +4497,7 @@ export interface TestIamPermissionsProjectsLocationsInstancesRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4530,7 +4512,7 @@ export const TestIamPermissionsProjectsLocationsInstancesRequest =
 export type TestIamPermissionsProjectsLocationsInstancesResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsInstancesError =
   | DefaultErrors
@@ -4545,7 +4527,7 @@ export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
   TestIamPermissionsProjectsLocationsInstancesResponse,
   TestIamPermissionsProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsInstancesRequest,
   output: TestIamPermissionsProjectsLocationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4557,7 +4539,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
 }
 
 export const DeleteProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -4565,8 +4547,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsOperationsError =
   | DefaultErrors
@@ -4581,7 +4562,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsResponse,
   DeleteProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4595,7 +4576,7 @@ export interface CancelProjectsLocationsOperationsRequest {
 }
 
 export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4604,8 +4585,7 @@ export const CancelProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelProjectsLocationsOperationsError =
   | DefaultErrors
@@ -4620,7 +4600,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsResponse,
   CancelProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4638,7 +4618,7 @@ export interface ListProjectsLocationsOperationsRequest {
 }
 
 export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -4650,7 +4630,7 @@ export const ListProjectsLocationsOperationsRequest =
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsOperationsError =
   | DefaultErrors
@@ -4663,7 +4643,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsResponse,
   ListProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -4679,7 +4659,7 @@ export interface GetProjectsLocationsOperationsRequest {
 }
 
 export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4687,8 +4667,7 @@ export const GetProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetProjectsLocationsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsOperationsError =
   | DefaultErrors
@@ -4701,7 +4680,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsResponse,
   GetProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -4715,7 +4694,7 @@ export interface GetIamPolicyProjectsLocationsRuntimeRequest {
 }
 
 export const GetIamPolicyProjectsLocationsRuntimeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -4727,7 +4706,7 @@ export const GetIamPolicyProjectsLocationsRuntimeRequest =
 
 export type GetIamPolicyProjectsLocationsRuntimeResponse = Policy;
 export const GetIamPolicyProjectsLocationsRuntimeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsRuntimeError =
   | DefaultErrors
@@ -4740,7 +4719,7 @@ export const getIamPolicyProjectsLocationsRuntime: API.OperationMethod<
   GetIamPolicyProjectsLocationsRuntimeResponse,
   GetIamPolicyProjectsLocationsRuntimeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsRuntimeRequest,
   output: GetIamPolicyProjectsLocationsRuntimeResponse,
   errors: [NotFound, Forbidden],
@@ -4754,7 +4733,7 @@ export interface SetIamPolicyProjectsLocationsRuntimeRequest {
 }
 
 export const SetIamPolicyProjectsLocationsRuntimeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4768,7 +4747,7 @@ export const SetIamPolicyProjectsLocationsRuntimeRequest =
 
 export type SetIamPolicyProjectsLocationsRuntimeResponse = Policy;
 export const SetIamPolicyProjectsLocationsRuntimeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsRuntimeError =
   | DefaultErrors
@@ -4783,7 +4762,7 @@ export const setIamPolicyProjectsLocationsRuntime: API.OperationMethod<
   SetIamPolicyProjectsLocationsRuntimeResponse,
   SetIamPolicyProjectsLocationsRuntimeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsRuntimeRequest,
   output: SetIamPolicyProjectsLocationsRuntimeResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4797,7 +4776,7 @@ export interface TestIamPermissionsProjectsLocationsRuntimeRequest {
 }
 
 export const TestIamPermissionsProjectsLocationsRuntimeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4812,7 +4791,7 @@ export const TestIamPermissionsProjectsLocationsRuntimeRequest =
 export type TestIamPermissionsProjectsLocationsRuntimeResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsLocationsRuntimeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsRuntimeError =
   | DefaultErrors
@@ -4827,7 +4806,7 @@ export const testIamPermissionsProjectsLocationsRuntime: API.OperationMethod<
   TestIamPermissionsProjectsLocationsRuntimeResponse,
   TestIamPermissionsProjectsLocationsRuntimeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsRuntimeRequest,
   output: TestIamPermissionsProjectsLocationsRuntimeResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

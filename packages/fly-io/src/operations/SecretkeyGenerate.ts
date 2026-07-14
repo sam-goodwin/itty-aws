@@ -10,14 +10,12 @@ export interface SecretkeyGenerateInput {
   type?: string;
   value?: number[];
 }
-export const SecretkeyGenerateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    app_name: Schema.String.pipe(T.PathParam()),
-    secret_name: Schema.String.pipe(T.PathParam()),
-    type: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.Array(Schema.Number)),
-  },
-).pipe(
+export const SecretkeyGenerateInput = /*@__PURE__*/ Schema.Struct({
+  app_name: Schema.String.pipe(T.PathParam()),
+  secret_name: Schema.String.pipe(T.PathParam()),
+  type: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Array(Schema.Number)),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/apps/{app_name}/secretkeys/{secret_name}/generate",
@@ -35,7 +33,7 @@ export interface SecretkeyGenerateOutput {
   version?: number;
 }
 export const SecretkeyGenerateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     Version: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -52,7 +50,7 @@ export const SecretkeyGenerateOutput =
  * @param app_name - Fly App Name
  * @param secret_name - Secret key name
  */
-export const SecretkeyGenerate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretkeyGenerate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretkeyGenerateInput,
   outputSchema: SecretkeyGenerateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

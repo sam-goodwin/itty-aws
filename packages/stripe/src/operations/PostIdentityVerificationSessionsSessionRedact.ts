@@ -10,7 +10,7 @@ export interface PostIdentityVerificationSessionsSessionRedactInput {
   expand?: string[];
 }
 export const PostIdentityVerificationSessionsSessionRedactInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -222,7 +222,7 @@ export interface PostIdentityVerificationSessionsSessionRedactOutput {
   } | null;
 }
 export const PostIdentityVerificationSessionsSessionRedactOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_reference_id: Schema.NullOr(Schema.String),
     client_secret: SensitiveOutputNullableString,
     created: Schema.Number,
@@ -387,7 +387,7 @@ export const PostIdentityVerificationSessionsSessionRedactOutput =
  * <p><a href="/docs/identity/verification-sessions#redact">Learn more</a>.</p>
  */
 export const PostIdentityVerificationSessionsSessionRedact =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostIdentityVerificationSessionsSessionRedactInput,
     outputSchema: PostIdentityVerificationSessionsSessionRedactOutput,
   }));

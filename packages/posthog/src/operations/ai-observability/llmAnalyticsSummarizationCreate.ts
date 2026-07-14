@@ -17,7 +17,7 @@ export interface LlmAnalyticsSummarizationCreateInput {
   date_to?: string | null;
 }
 export const LlmAnalyticsSummarizationCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     summarize_type: Schema.optional(Schema.Literals(["trace", "event"])),
     mode: Schema.optional(Schema.Literals(["minimal", "detailed"])),
@@ -47,7 +47,7 @@ export interface LlmAnalyticsSummarizationCreateOutput {
   metadata?: unknown;
 }
 export const LlmAnalyticsSummarizationCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     summary: Schema.optional(
       Schema.Struct({
         title: Schema.optional(Schema.String),
@@ -95,7 +95,7 @@ export const LlmAnalyticsSummarizationCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const llmAnalyticsSummarizationCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsSummarizationCreateInput,
     outputSchema: LlmAnalyticsSummarizationCreateOutput,
     errors: [BadRequest, Forbidden] as const,

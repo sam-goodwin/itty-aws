@@ -7,7 +7,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 export interface AppsDeleteInput {
   app_name: string;
 }
-export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsDeleteInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/apps/{app_name}" }),
@@ -16,7 +16,7 @@ export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AppsDeleteOutput = void;
 export const AppsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AppsDeleteOutput>;
 
 // The operation
 /**
@@ -26,7 +26,7 @@ export const AppsDeleteOutput =
  *
  * @param app_name - Fly App Name
  */
-export const AppsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsDeleteInput,
   outputSchema: AppsDeleteOutput,
   errors: [Forbidden, NotFound] as const,

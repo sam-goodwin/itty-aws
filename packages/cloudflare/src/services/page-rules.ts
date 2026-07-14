@@ -48,7 +48,7 @@ interface AlwaysUseHTTPS {
   /** If enabled, any ` http://`` URL is converted to  `https://` through a 301 redirect. */
   id?: "always_use_https" | null;
 }
-const AlwaysUseHTTPS = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AlwaysUseHTTPS = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("always_use_https"), Schema.Null]),
@@ -62,7 +62,7 @@ interface AutomaticHTTPSRewrites {
   /** The status of Automatic HTTPS Rewrites. */
   value?: "on" | "off" | (string & {}) | null;
 }
-const AutomaticHTTPSRewrites = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AutomaticHTTPSRewrites = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("automatic_https_rewrites"), Schema.Null]),
@@ -82,7 +82,7 @@ interface BrowserCacheTTL {
   /** The number of seconds to cache resources for. Setting this to 0 enables "Respect Existing Headers". */
   value?: number | null;
 }
-const BrowserCacheTTL = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BrowserCacheTTL = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("browser_cache_ttl"), Schema.Null]),
@@ -97,7 +97,7 @@ interface BrowserCheck {
   /** The status of Browser Integrity Check. */
   value?: "on" | "off" | (string & {}) | null;
 }
-const BrowserCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BrowserCheck = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
@@ -117,7 +117,7 @@ interface BypassCacheOnCookie {
   /** The regular expression to use for matching cookie names in the request. Refer to [Bypass Cache on Cookie setting](https://developers.cloudflare.com/rules/page-rules/reference/additional-reference/#byp */
   value?: string | null;
 }
-const BypassCacheOnCookie = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BypassCacheOnCookie = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("bypass_cache_on_cookie"), Schema.Null]),
@@ -132,7 +132,7 @@ interface CacheByDeviceType {
   /** The status of Cache By Device Type. */
   value?: "on" | "off" | (string & {}) | null;
 }
-const CacheByDeviceType = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CacheByDeviceType = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("cache_by_device_type"), Schema.Null]),
@@ -152,7 +152,7 @@ interface CacheDeceptionArmor {
   /** The status of Cache Deception Armor. */
   value?: "on" | "off" | (string & {}) | null;
 }
-const CacheDeceptionArmor = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CacheDeceptionArmor = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("cache_deception_armor"), Schema.Null]),
@@ -172,7 +172,7 @@ interface Cookie {
   /** A list of cookies to include. */
   include?: string[] | null;
 }
-const Cookie = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Cookie = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     checkPresence: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -193,7 +193,7 @@ interface Header {
   /** A list of headers to include. */
   include?: string[] | null;
 }
-const Header = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Header = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     checkPresence: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -217,7 +217,7 @@ interface Host {
   /** Whether to include the Host header in the HTTP request sent to the origin. */
   resolved?: boolean | null;
 }
-const Host = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Host = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     resolved: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   }),
@@ -229,7 +229,7 @@ interface QueryString {
   /** Include all query string parameters. */
   include?: "*" | string[] | null;
 }
-const QueryString = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const QueryString = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     exclude: Schema.optional(
       Schema.Union([
@@ -254,7 +254,7 @@ interface User {
   /** Includes the first language code contained in the `Accept-Language` header sent by the client. */
   lang?: boolean | null;
 }
-const User = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const User = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     deviceType: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     geo: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -290,7 +290,7 @@ interface Value {
     lang?: boolean | null;
   } | null;
 }
-const Value = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Value = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cookie: Schema.optional(Schema.Union([Cookie, Schema.Null])),
     header: Schema.optional(Schema.Union([Header, Schema.Null])),
@@ -333,7 +333,7 @@ interface CacheKeyFields {
     } | null;
   } | null;
 }
-const CacheKeyFields = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CacheKeyFields = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("cache_key_fields"), Schema.Null]),
@@ -355,7 +355,7 @@ interface CacheLevel {
     | (string & {})
     | null;
 }
-const CacheLevel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CacheLevel = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("cache_level"), Schema.Null]),
@@ -384,7 +384,7 @@ interface CacheOnCookie {
   /** The regular expression to use for matching cookie names in the request. */
   value?: string | null;
 }
-const CacheOnCookie = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CacheOnCookie = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("cache_on_cookie"), Schema.Null]),
@@ -399,7 +399,7 @@ interface CacheTTLByStatus {
   /** A JSON object containing status codes and their corresponding TTLs. Each key-value pair in the cache TTL by status cache rule has the following syntax  - `status_code`: An integer value such as 200 or */
   value?: Record<string, unknown> | null;
 }
-const CacheTTLByStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CacheTTLByStatus = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("cache_ttl_by_status"), Schema.Null]),
@@ -414,7 +414,7 @@ interface DisableApps {
   /** Turn off all active [Cloudflare Apps](https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-apps/) (deprecated). */
   id?: "disable_apps" | null;
 }
-const DisableApps = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DisableApps = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("disable_apps"), Schema.Null]),
@@ -426,7 +426,7 @@ interface DisablePerformance {
   /** Turn off [Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/), and [Polish](https://developers.cloudflare.com/images/polish/). */
   id?: "disable_performance" | null;
 }
-const DisablePerformance = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DisablePerformance = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("disable_performance"), Schema.Null]),
@@ -438,7 +438,7 @@ interface DisableSecurity {
   /** Turn off [Email Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/), [Rate Limiting (previous version, deprecated)](https://developers.cloudflare.com/waf */
   id?: "disable_security" | null;
 }
-const DisableSecurity = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DisableSecurity = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("disable_security"), Schema.Null]),
@@ -450,7 +450,7 @@ interface DisableZaraz {
   /** Turn off [Zaraz](https://developers.cloudflare.com/zaraz/). */
   id?: "disable_zaraz" | null;
 }
-const DisableZaraz = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DisableZaraz = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("disable_zaraz"), Schema.Null]),
@@ -463,7 +463,7 @@ interface EdgeCacheTTL {
   id?: "edge_cache_ttl" | null;
   value?: number | null;
 }
-const EdgeCacheTTL = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const EdgeCacheTTL = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("edge_cache_ttl"), Schema.Null]),
@@ -478,7 +478,7 @@ interface EmailObfuscation {
   /** The status of Email Obfuscation. */
   value?: "on" | "off" | (string & {}) | null;
 }
-const EmailObfuscation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const EmailObfuscation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
@@ -498,7 +498,7 @@ interface ExplicitCacheControl {
   /** The status of Origin Cache Control. */
   value?: "on" | "off" | (string & {}) | null;
 }
-const ExplicitCacheControl = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ExplicitCacheControl = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("explicit_cache_control"), Schema.Null]),
@@ -518,7 +518,7 @@ interface Value2 {
   /** The URL to redirect the request to. Notes: ${num} refers to the position of '\ ' in the constraint value. */
   url?: string | null;
 }
-const Value2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Value2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     statusCode: Schema.optional(
       Schema.Union([
@@ -538,7 +538,7 @@ interface ForwardingURL {
     url?: string | null;
   } | null;
 }
-const ForwardingURL = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ForwardingURL = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("forwarding_url"), Schema.Null]),
@@ -553,7 +553,7 @@ interface HostHeaderOverride {
   /** The hostname to use in the `Host` header */
   value?: string | null;
 }
-const HostHeaderOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const HostHeaderOverride = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("host_header_override"), Schema.Null]),
@@ -568,7 +568,7 @@ interface Ipgeolocation {
   /** The status of adding the IP Geolocation Header. */
   value?: "on" | "off" | (string & {}) | null;
 }
-const Ipgeolocation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ipgeolocation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
@@ -588,7 +588,7 @@ interface Mirage {
   /** The status of Mirage. */
   value?: "on" | "off" | (string & {}) | null;
 }
-const Mirage = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Mirage = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.Literal("mirage"), Schema.Null])),
     value: Schema.optional(
@@ -606,7 +606,7 @@ interface OpportunisticEncryption {
   /** The status of Opportunistic Encryption. */
   value?: "on" | "off" | (string & {}) | null;
 }
-const OpportunisticEncryption = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OpportunisticEncryption = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("opportunistic_encryption"), Schema.Null]),
@@ -626,7 +626,7 @@ interface OriginErrorPagePassThru {
   /** The status of Origin Error Page Passthru. */
   value?: "on" | "off" | (string & {}) | null;
 }
-const OriginErrorPagePassThru = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OriginErrorPagePassThru = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([
@@ -649,7 +649,7 @@ interface Polish {
   /** The level of Polish you want applied to your origin. */
   value?: "off" | "lossless" | "lossy" | (string & {}) | null;
 }
-const Polish = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Polish = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.Literal("polish"), Schema.Null])),
     value: Schema.optional(
@@ -670,7 +670,7 @@ interface ResolveOverride {
   /** The origin address you want to override with. */
   value?: string | null;
 }
-const ResolveOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResolveOverride = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("resolve_override"), Schema.Null]),
@@ -685,7 +685,7 @@ interface RespectStrongEtag {
   /** The status of Respect Strong ETags */
   value?: "on" | "off" | (string & {}) | null;
 }
-const RespectStrongEtag = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RespectStrongEtag = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("respect_strong_etag"), Schema.Null]),
@@ -705,7 +705,7 @@ interface ResponseBuffering {
   /** The status of Response Buffering */
   value?: "on" | "off" | (string & {}) | null;
 }
-const ResponseBuffering = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResponseBuffering = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
@@ -725,7 +725,7 @@ interface RocketLoader {
   /** The status of Rocket Loader */
   value?: "on" | "off" | (string & {}) | null;
 }
-const RocketLoader = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RocketLoader = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
@@ -752,7 +752,7 @@ interface SecurityLevel {
     | (string & {})
     | null;
 }
-const SecurityLevel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SecurityLevel = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("security_level"), Schema.Null]),
@@ -782,7 +782,7 @@ interface SortQueryStringForCache {
   /** The status of Query String Sort */
   value?: "on" | "off" | (string & {}) | null;
 }
-const SortQueryStringForCache = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SortQueryStringForCache = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([
@@ -812,7 +812,7 @@ interface Ssl {
     | (string & {})
     | null;
 }
-const Ssl = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ssl = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.Literal("ssl"), Schema.Null])),
     value: Schema.optional(
@@ -833,7 +833,7 @@ interface TrueClientIPHeader {
   /** The status of True Client IP Header. */
   value?: "on" | "off" | (string & {}) | null;
 }
-const TrueClientIPHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TrueClientIPHeader = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([Schema.Literal("true_client_ip_header"), Schema.Null]),
@@ -853,7 +853,7 @@ interface Waf {
   /** The status of WAF managed rules (previous version). */
   value?: "on" | "off" | (string & {}) | null;
 }
-const Waf = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Waf = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.Literal("waf"), Schema.Null])),
     value: Schema.optional(
@@ -877,7 +877,7 @@ interface Constraint {
   /** The URL pattern to match against the current request. The pattern may contain up to four asterisks ('\ ') as placeholders. */
   value: string;
 }
-const Constraint = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Constraint = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     operator: Schema.Union([
       Schema.Literals([
@@ -908,7 +908,7 @@ interface Target {
   /** A target based on the URL of the request. */
   target?: "url" | null;
 }
-const Target = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Target = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     constraint: Schema.optional(Schema.Union([Constraint, Schema.Null])),
     target: Schema.optional(Schema.Union([Schema.Literal("url"), Schema.Null])),
@@ -1086,7 +1086,7 @@ interface PageRule {
     target?: "url" | null;
   }[];
 }
-const PageRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PageRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     actions: Schema.Array(
@@ -1158,17 +1158,16 @@ export interface GetPageRuleRequest {
   zoneId: string;
 }
 
-export const GetPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/pagerules/{pageruleId}",
-      }),
-    ),
+export const GetPageRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/pagerules/{pageruleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetPageRuleRequest>;
 
 export interface GetPageRuleResponse {
@@ -1343,69 +1342,68 @@ export interface GetPageRuleResponse {
   }[];
 }
 
-export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      actions: Schema.Array(
-        Schema.Union([
-          AlwaysUseHTTPS,
-          AutomaticHTTPSRewrites,
-          BrowserCacheTTL,
-          BrowserCheck,
-          BypassCacheOnCookie,
-          CacheByDeviceType,
-          CacheDeceptionArmor,
-          CacheKeyFields,
-          CacheLevel,
-          CacheOnCookie,
-          CacheTTLByStatus,
-          DisableApps,
-          DisablePerformance,
-          DisableSecurity,
-          DisableZaraz,
-          EdgeCacheTTL,
-          EmailObfuscation,
-          ExplicitCacheControl,
-          ForwardingURL,
-          HostHeaderOverride,
-          Ipgeolocation,
-          Mirage,
-          OpportunisticEncryption,
-          OriginErrorPagePassThru,
-          Polish,
-          ResolveOverride,
-          RespectStrongEtag,
-          ResponseBuffering,
-          RocketLoader,
-          SecurityLevel,
-          SortQueryStringForCache,
-          Ssl,
-          TrueClientIPHeader,
-          Waf,
-        ]),
-      ),
-      createdOn: Schema.String,
-      modifiedOn: Schema.String,
-      priority: Schema.Number,
-      status: Schema.Union([
-        Schema.Literals(["active", "disabled"]),
-        Schema.String,
+export const GetPageRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    actions: Schema.Array(
+      Schema.Union([
+        AlwaysUseHTTPS,
+        AutomaticHTTPSRewrites,
+        BrowserCacheTTL,
+        BrowserCheck,
+        BypassCacheOnCookie,
+        CacheByDeviceType,
+        CacheDeceptionArmor,
+        CacheKeyFields,
+        CacheLevel,
+        CacheOnCookie,
+        CacheTTLByStatus,
+        DisableApps,
+        DisablePerformance,
+        DisableSecurity,
+        DisableZaraz,
+        EdgeCacheTTL,
+        EmailObfuscation,
+        ExplicitCacheControl,
+        ForwardingURL,
+        HostHeaderOverride,
+        Ipgeolocation,
+        Mirage,
+        OpportunisticEncryption,
+        OriginErrorPagePassThru,
+        Polish,
+        ResolveOverride,
+        RespectStrongEtag,
+        ResponseBuffering,
+        RocketLoader,
+        SecurityLevel,
+        SortQueryStringForCache,
+        Ssl,
+        TrueClientIPHeader,
+        Waf,
       ]),
-      targets: Schema.Array(Target),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          actions: "actions",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          priority: "priority",
-          status: "status",
-          targets: "targets",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+    ),
+    createdOn: Schema.String,
+    modifiedOn: Schema.String,
+    priority: Schema.Number,
+    status: Schema.Union([
+      Schema.Literals(["active", "disabled"]),
+      Schema.String,
+    ]),
+    targets: Schema.Array(Target),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        actions: "actions",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        priority: "priority",
+        status: "status",
+        targets: "targets",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetPageRuleResponse>;
 
 export type GetPageRuleError = DefaultErrors | PageRuleNotFound | Forbidden;
@@ -1415,7 +1413,7 @@ export const getPageRule: API.OperationMethod<
   GetPageRuleResponse,
   GetPageRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPageRuleRequest,
   output: GetPageRuleResponse,
   errors: [PageRuleNotFound, Forbidden],
@@ -1434,23 +1432,22 @@ export interface ListPageRulesRequest {
   status?: "active" | "disabled" | (string & {});
 }
 
-export const ListPageRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      direction: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ).pipe(T.HttpQuery("direction")),
-      match: Schema.optional(
-        Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
-      ).pipe(T.HttpQuery("match")),
-      order: Schema.optional(
-        Schema.Union([Schema.Literals(["status", "priority"]), Schema.String]),
-      ).pipe(T.HttpQuery("order")),
-      status: Schema.optional(
-        Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
-      ).pipe(T.HttpQuery("status")),
-    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/pagerules" })),
+export const ListPageRulesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    match: Schema.optional(
+      Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+    ).pipe(T.HttpQuery("match")),
+    order: Schema.optional(
+      Schema.Union([Schema.Literals(["status", "priority"]), Schema.String]),
+    ).pipe(T.HttpQuery("order")),
+    status: Schema.optional(
+      Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
+    ).pipe(T.HttpQuery("status")),
+  }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/pagerules" })),
 ) as unknown as Schema.Codec<ListPageRulesRequest>;
 
 export type ListPageRulesResponse = {
@@ -1618,8 +1615,8 @@ export type ListPageRulesResponse = {
   }[];
 }[];
 
-export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Array(PageRule).pipe(T.ResponsePath("result")),
+export const ListPageRulesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Array(PageRule).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ListPageRulesResponse>;
 
 export type ListPageRulesError =
@@ -1632,7 +1629,7 @@ export const listPageRules: API.OperationMethod<
   ListPageRulesResponse,
   ListPageRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPageRulesRequest,
   output: ListPageRulesResponse,
   errors: [Forbidden, InvalidZoneIdentifier],
@@ -1748,54 +1745,53 @@ export interface CreatePageRuleRequest {
   status?: "active" | "disabled" | (string & {});
 }
 
-export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      actions: Schema.Array(
-        Schema.Union([
-          AlwaysUseHTTPS,
-          AutomaticHTTPSRewrites,
-          BrowserCacheTTL,
-          BrowserCheck,
-          BypassCacheOnCookie,
-          CacheByDeviceType,
-          CacheDeceptionArmor,
-          CacheKeyFields,
-          CacheLevel,
-          CacheOnCookie,
-          CacheTTLByStatus,
-          DisableApps,
-          DisablePerformance,
-          DisableSecurity,
-          DisableZaraz,
-          EdgeCacheTTL,
-          EmailObfuscation,
-          ExplicitCacheControl,
-          ForwardingURL,
-          HostHeaderOverride,
-          Ipgeolocation,
-          Mirage,
-          OpportunisticEncryption,
-          OriginErrorPagePassThru,
-          Polish,
-          ResolveOverride,
-          RespectStrongEtag,
-          ResponseBuffering,
-          RocketLoader,
-          SecurityLevel,
-          SortQueryStringForCache,
-          Ssl,
-          TrueClientIPHeader,
-          Waf,
-        ]),
-      ),
-      targets: Schema.Array(Target),
-      priority: Schema.optional(Schema.Number),
-      status: Schema.optional(
-        Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
-      ),
-    }).pipe(T.Http({ method: "POST", path: "/zones/{zone_id}/pagerules" })),
+export const CreatePageRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    actions: Schema.Array(
+      Schema.Union([
+        AlwaysUseHTTPS,
+        AutomaticHTTPSRewrites,
+        BrowserCacheTTL,
+        BrowserCheck,
+        BypassCacheOnCookie,
+        CacheByDeviceType,
+        CacheDeceptionArmor,
+        CacheKeyFields,
+        CacheLevel,
+        CacheOnCookie,
+        CacheTTLByStatus,
+        DisableApps,
+        DisablePerformance,
+        DisableSecurity,
+        DisableZaraz,
+        EdgeCacheTTL,
+        EmailObfuscation,
+        ExplicitCacheControl,
+        ForwardingURL,
+        HostHeaderOverride,
+        Ipgeolocation,
+        Mirage,
+        OpportunisticEncryption,
+        OriginErrorPagePassThru,
+        Polish,
+        ResolveOverride,
+        RespectStrongEtag,
+        ResponseBuffering,
+        RocketLoader,
+        SecurityLevel,
+        SortQueryStringForCache,
+        Ssl,
+        TrueClientIPHeader,
+        Waf,
+      ]),
+    ),
+    targets: Schema.Array(Target),
+    priority: Schema.optional(Schema.Number),
+    status: Schema.optional(
+      Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
+    ),
+  }).pipe(T.Http({ method: "POST", path: "/zones/{zone_id}/pagerules" })),
 ) as unknown as Schema.Codec<CreatePageRuleRequest>;
 
 export interface CreatePageRuleResponse {
@@ -1971,7 +1967,7 @@ export interface CreatePageRuleResponse {
 }
 
 export const CreatePageRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       actions: Schema.Array(
@@ -2042,7 +2038,7 @@ export const createPageRule: API.OperationMethod<
   CreatePageRuleResponse,
   CreatePageRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePageRuleRequest,
   output: CreatePageRuleResponse,
   errors: [Forbidden],
@@ -2159,60 +2155,59 @@ export interface UpdatePageRuleRequest {
   status?: "active" | "disabled" | (string & {});
 }
 
-export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      actions: Schema.Array(
-        Schema.Union([
-          AlwaysUseHTTPS,
-          AutomaticHTTPSRewrites,
-          BrowserCacheTTL,
-          BrowserCheck,
-          BypassCacheOnCookie,
-          CacheByDeviceType,
-          CacheDeceptionArmor,
-          CacheKeyFields,
-          CacheLevel,
-          CacheOnCookie,
-          CacheTTLByStatus,
-          DisableApps,
-          DisablePerformance,
-          DisableSecurity,
-          DisableZaraz,
-          EdgeCacheTTL,
-          EmailObfuscation,
-          ExplicitCacheControl,
-          ForwardingURL,
-          HostHeaderOverride,
-          Ipgeolocation,
-          Mirage,
-          OpportunisticEncryption,
-          OriginErrorPagePassThru,
-          Polish,
-          ResolveOverride,
-          RespectStrongEtag,
-          ResponseBuffering,
-          RocketLoader,
-          SecurityLevel,
-          SortQueryStringForCache,
-          Ssl,
-          TrueClientIPHeader,
-          Waf,
-        ]),
-      ),
-      targets: Schema.Array(Target),
-      priority: Schema.optional(Schema.Number),
-      status: Schema.optional(
-        Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/pagerules/{pageruleId}",
-      }),
+export const UpdatePageRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    actions: Schema.Array(
+      Schema.Union([
+        AlwaysUseHTTPS,
+        AutomaticHTTPSRewrites,
+        BrowserCacheTTL,
+        BrowserCheck,
+        BypassCacheOnCookie,
+        CacheByDeviceType,
+        CacheDeceptionArmor,
+        CacheKeyFields,
+        CacheLevel,
+        CacheOnCookie,
+        CacheTTLByStatus,
+        DisableApps,
+        DisablePerformance,
+        DisableSecurity,
+        DisableZaraz,
+        EdgeCacheTTL,
+        EmailObfuscation,
+        ExplicitCacheControl,
+        ForwardingURL,
+        HostHeaderOverride,
+        Ipgeolocation,
+        Mirage,
+        OpportunisticEncryption,
+        OriginErrorPagePassThru,
+        Polish,
+        ResolveOverride,
+        RespectStrongEtag,
+        ResponseBuffering,
+        RocketLoader,
+        SecurityLevel,
+        SortQueryStringForCache,
+        Ssl,
+        TrueClientIPHeader,
+        Waf,
+      ]),
     ),
+    targets: Schema.Array(Target),
+    priority: Schema.optional(Schema.Number),
+    status: Schema.optional(
+      Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/pagerules/{pageruleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdatePageRuleRequest>;
 
 export interface UpdatePageRuleResponse {
@@ -2388,7 +2383,7 @@ export interface UpdatePageRuleResponse {
 }
 
 export const UpdatePageRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       actions: Schema.Array(
@@ -2459,7 +2454,7 @@ export const updatePageRule: API.OperationMethod<
   UpdatePageRuleResponse,
   UpdatePageRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePageRuleRequest,
   output: UpdatePageRuleResponse,
   errors: [PageRuleNotFound, Forbidden],
@@ -2576,62 +2571,61 @@ export interface PatchPageRuleRequest {
   }[];
 }
 
-export const PatchPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      actions: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            AlwaysUseHTTPS,
-            AutomaticHTTPSRewrites,
-            BrowserCacheTTL,
-            BrowserCheck,
-            BypassCacheOnCookie,
-            CacheByDeviceType,
-            CacheDeceptionArmor,
-            CacheKeyFields,
-            CacheLevel,
-            CacheOnCookie,
-            CacheTTLByStatus,
-            DisableApps,
-            DisablePerformance,
-            DisableSecurity,
-            DisableZaraz,
-            EdgeCacheTTL,
-            EmailObfuscation,
-            ExplicitCacheControl,
-            ForwardingURL,
-            HostHeaderOverride,
-            Ipgeolocation,
-            Mirage,
-            OpportunisticEncryption,
-            OriginErrorPagePassThru,
-            Polish,
-            ResolveOverride,
-            RespectStrongEtag,
-            ResponseBuffering,
-            RocketLoader,
-            SecurityLevel,
-            SortQueryStringForCache,
-            Ssl,
-            TrueClientIPHeader,
-            Waf,
-          ]),
-        ),
+export const PatchPageRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    actions: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          AlwaysUseHTTPS,
+          AutomaticHTTPSRewrites,
+          BrowserCacheTTL,
+          BrowserCheck,
+          BypassCacheOnCookie,
+          CacheByDeviceType,
+          CacheDeceptionArmor,
+          CacheKeyFields,
+          CacheLevel,
+          CacheOnCookie,
+          CacheTTLByStatus,
+          DisableApps,
+          DisablePerformance,
+          DisableSecurity,
+          DisableZaraz,
+          EdgeCacheTTL,
+          EmailObfuscation,
+          ExplicitCacheControl,
+          ForwardingURL,
+          HostHeaderOverride,
+          Ipgeolocation,
+          Mirage,
+          OpportunisticEncryption,
+          OriginErrorPagePassThru,
+          Polish,
+          ResolveOverride,
+          RespectStrongEtag,
+          ResponseBuffering,
+          RocketLoader,
+          SecurityLevel,
+          SortQueryStringForCache,
+          Ssl,
+          TrueClientIPHeader,
+          Waf,
+        ]),
       ),
-      priority: Schema.optional(Schema.Number),
-      status: Schema.optional(
-        Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
-      ),
-      targets: Schema.optional(Schema.Array(Target)),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        path: "/zones/{zone_id}/pagerules/{pageruleId}",
-      }),
     ),
+    priority: Schema.optional(Schema.Number),
+    status: Schema.optional(
+      Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
+    ),
+    targets: Schema.optional(Schema.Array(Target)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/zones/{zone_id}/pagerules/{pageruleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchPageRuleRequest>;
 
 export interface PatchPageRuleResponse {
@@ -2806,69 +2800,68 @@ export interface PatchPageRuleResponse {
   }[];
 }
 
-export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      actions: Schema.Array(
-        Schema.Union([
-          AlwaysUseHTTPS,
-          AutomaticHTTPSRewrites,
-          BrowserCacheTTL,
-          BrowserCheck,
-          BypassCacheOnCookie,
-          CacheByDeviceType,
-          CacheDeceptionArmor,
-          CacheKeyFields,
-          CacheLevel,
-          CacheOnCookie,
-          CacheTTLByStatus,
-          DisableApps,
-          DisablePerformance,
-          DisableSecurity,
-          DisableZaraz,
-          EdgeCacheTTL,
-          EmailObfuscation,
-          ExplicitCacheControl,
-          ForwardingURL,
-          HostHeaderOverride,
-          Ipgeolocation,
-          Mirage,
-          OpportunisticEncryption,
-          OriginErrorPagePassThru,
-          Polish,
-          ResolveOverride,
-          RespectStrongEtag,
-          ResponseBuffering,
-          RocketLoader,
-          SecurityLevel,
-          SortQueryStringForCache,
-          Ssl,
-          TrueClientIPHeader,
-          Waf,
-        ]),
-      ),
-      createdOn: Schema.String,
-      modifiedOn: Schema.String,
-      priority: Schema.Number,
-      status: Schema.Union([
-        Schema.Literals(["active", "disabled"]),
-        Schema.String,
+export const PatchPageRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    actions: Schema.Array(
+      Schema.Union([
+        AlwaysUseHTTPS,
+        AutomaticHTTPSRewrites,
+        BrowserCacheTTL,
+        BrowserCheck,
+        BypassCacheOnCookie,
+        CacheByDeviceType,
+        CacheDeceptionArmor,
+        CacheKeyFields,
+        CacheLevel,
+        CacheOnCookie,
+        CacheTTLByStatus,
+        DisableApps,
+        DisablePerformance,
+        DisableSecurity,
+        DisableZaraz,
+        EdgeCacheTTL,
+        EmailObfuscation,
+        ExplicitCacheControl,
+        ForwardingURL,
+        HostHeaderOverride,
+        Ipgeolocation,
+        Mirage,
+        OpportunisticEncryption,
+        OriginErrorPagePassThru,
+        Polish,
+        ResolveOverride,
+        RespectStrongEtag,
+        ResponseBuffering,
+        RocketLoader,
+        SecurityLevel,
+        SortQueryStringForCache,
+        Ssl,
+        TrueClientIPHeader,
+        Waf,
       ]),
-      targets: Schema.Array(Target),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          actions: "actions",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          priority: "priority",
-          status: "status",
-          targets: "targets",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+    ),
+    createdOn: Schema.String,
+    modifiedOn: Schema.String,
+    priority: Schema.Number,
+    status: Schema.Union([
+      Schema.Literals(["active", "disabled"]),
+      Schema.String,
+    ]),
+    targets: Schema.Array(Target),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        actions: "actions",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        priority: "priority",
+        status: "status",
+        targets: "targets",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchPageRuleResponse>;
 
 export type PatchPageRuleError = DefaultErrors | PageRuleNotFound | Forbidden;
@@ -2878,7 +2871,7 @@ export const patchPageRule: API.OperationMethod<
   PatchPageRuleResponse,
   PatchPageRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPageRuleRequest,
   output: PatchPageRuleResponse,
   errors: [PageRuleNotFound, Forbidden],
@@ -2890,17 +2883,16 @@ export interface DeletePageRuleRequest {
   zoneId: string;
 }
 
-export const DeletePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/zones/{zone_id}/pagerules/{pageruleId}",
-      }),
-    ),
+export const DeletePageRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/pagerules/{pageruleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeletePageRuleRequest>;
 
 export interface DeletePageRuleResponse {
@@ -2909,7 +2901,7 @@ export interface DeletePageRuleResponse {
 }
 
 export const DeletePageRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -2922,7 +2914,7 @@ export const deletePageRule: API.OperationMethod<
   DeletePageRuleResponse,
   DeletePageRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePageRuleRequest,
   output: DeletePageRuleResponse,
   errors: [PageRuleNotFound, Forbidden],

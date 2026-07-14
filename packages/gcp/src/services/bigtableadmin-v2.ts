@@ -34,7 +34,7 @@ export interface LogicalView {
 }
 
 export const LogicalView: Schema.Codec<LogicalView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export interface CreateLogicalViewRequest {
 }
 
 export const CreateLogicalViewRequest: Schema.Codec<CreateLogicalViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     logicalView: Schema.optional(LogicalView),
     logicalViewId: Schema.optional(Schema.String),
@@ -87,7 +87,7 @@ export interface Instance {
 }
 
 export const Instance: Schema.Codec<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     edition: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -109,7 +109,7 @@ export interface PartialUpdateInstanceRequest {
 }
 
 export const PartialUpdateInstanceRequest: Schema.Codec<PartialUpdateInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instance: Schema.optional(Instance),
     updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "PartialUpdateInstanceRequest" });
@@ -117,7 +117,7 @@ export const PartialUpdateInstanceRequest: Schema.Codec<PartialUpdateInstanceReq
 export interface GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount {}
 
 export const GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount: Schema.Codec<GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount",
   });
@@ -128,7 +128,7 @@ export interface GoogleBigtableAdminV2TypeBytesEncodingRaw {
 }
 
 export const GoogleBigtableAdminV2TypeBytesEncodingRaw: Schema.Codec<GoogleBigtableAdminV2TypeBytesEncodingRaw> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     escapeNulls: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeBytesEncodingRaw" });
 
@@ -138,7 +138,7 @@ export interface GoogleBigtableAdminV2TypeBytesEncoding {
 }
 
 export const GoogleBigtableAdminV2TypeBytesEncoding: Schema.Codec<GoogleBigtableAdminV2TypeBytesEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     raw: Schema.optional(GoogleBigtableAdminV2TypeBytesEncodingRaw),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeBytesEncoding" });
 
@@ -148,7 +148,7 @@ export interface GoogleBigtableAdminV2TypeBytes {
 }
 
 export const GoogleBigtableAdminV2TypeBytes: Schema.Codec<GoogleBigtableAdminV2TypeBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeBytesEncoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeBytes" });
 
@@ -158,7 +158,7 @@ export interface GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes {
 }
 
 export const GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes: Schema.Codec<GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bytesType: Schema.optional(GoogleBigtableAdminV2TypeBytes),
   }).annotate({
     identifier: "GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes",
@@ -167,7 +167,7 @@ export const GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes: Schema.Codec<
 export interface GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes {}
 
 export const GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes: Schema.Codec<GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes",
   });
 
@@ -179,7 +179,7 @@ export interface GoogleBigtableAdminV2TypeInt64Encoding {
 }
 
 export const GoogleBigtableAdminV2TypeInt64Encoding: Schema.Codec<GoogleBigtableAdminV2TypeInt64Encoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bigEndianBytes: Schema.optional(
       GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes,
     ),
@@ -194,7 +194,7 @@ export interface GoogleBigtableAdminV2TypeInt64 {
 }
 
 export const GoogleBigtableAdminV2TypeInt64: Schema.Codec<GoogleBigtableAdminV2TypeInt64> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeInt64Encoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeInt64" });
 
@@ -208,7 +208,7 @@ export interface ListInstancesResponse {
 }
 
 export const ListInstancesResponse: Schema.Codec<ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Instance)),
     failedLocations: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -220,7 +220,7 @@ export interface EncryptionConfig {
 }
 
 export const EncryptionConfig: Schema.Codec<EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kmsKeyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EncryptionConfig" });
 
@@ -232,7 +232,7 @@ export interface AutoscalingLimits {
 }
 
 export const AutoscalingLimits: Schema.Codec<AutoscalingLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minServeNodes: Schema.optional(Schema.Number),
     maxServeNodes: Schema.optional(Schema.Number),
   }).annotate({ identifier: "AutoscalingLimits" });
@@ -245,7 +245,7 @@ export interface AutoscalingTargets {
 }
 
 export const AutoscalingTargets: Schema.Codec<AutoscalingTargets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storageUtilizationGibPerNode: Schema.optional(Schema.Number),
     cpuUtilizationPercent: Schema.optional(Schema.Number),
   }).annotate({ identifier: "AutoscalingTargets" });
@@ -258,7 +258,7 @@ export interface ClusterAutoscalingConfig {
 }
 
 export const ClusterAutoscalingConfig: Schema.Codec<ClusterAutoscalingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     autoscalingLimits: Schema.optional(AutoscalingLimits),
     autoscalingTargets: Schema.optional(AutoscalingTargets),
   }).annotate({ identifier: "ClusterAutoscalingConfig" });
@@ -269,7 +269,7 @@ export interface ClusterConfig {
 }
 
 export const ClusterConfig: Schema.Codec<ClusterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clusterAutoscalingConfig: Schema.optional(ClusterAutoscalingConfig),
   }).annotate({ identifier: "ClusterConfig" });
 
@@ -307,7 +307,7 @@ export interface Cluster {
 }
 
 export const Cluster: Schema.Codec<Cluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     defaultStorageType: Schema.optional(Schema.String),
     encryptionConfig: Schema.optional(EncryptionConfig),
@@ -326,7 +326,7 @@ export interface PartialUpdateClusterRequest {
 }
 
 export const PartialUpdateClusterRequest: Schema.Codec<PartialUpdateClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cluster: Schema.optional(Cluster),
     updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "PartialUpdateClusterRequest" });
@@ -341,7 +341,7 @@ export interface GoogleBigtableAdminV2MaterializedViewClusterState {
 }
 
 export const GoogleBigtableAdminV2MaterializedViewClusterState: Schema.Codec<GoogleBigtableAdminV2MaterializedViewClusterState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     replicationState: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleBigtableAdminV2MaterializedViewClusterState",
@@ -364,7 +364,7 @@ export interface MaterializedView {
 }
 
 export const MaterializedView: Schema.Codec<MaterializedView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clusterStates: Schema.optional(
       Schema.Record(
         Schema.String,
@@ -387,7 +387,7 @@ export interface CreateMaterializedViewRequest {
 }
 
 export const CreateMaterializedViewRequest: Schema.Codec<CreateMaterializedViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     materializedViewId: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
     materializedView: Schema.optional(MaterializedView),
@@ -401,7 +401,7 @@ export interface UpdateLogicalViewRequest {
 }
 
 export const UpdateLogicalViewRequest: Schema.Codec<UpdateLogicalViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logicalView: Schema.optional(LogicalView),
     updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpdateLogicalViewRequest" });
@@ -409,14 +409,14 @@ export const UpdateLogicalViewRequest: Schema.Codec<UpdateLogicalViewRequest> =
 export interface RowAffinity {}
 
 export const RowAffinity: Schema.Codec<RowAffinity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RowAffinity",
   });
 
 export interface GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes {}
 
 export const GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes: Schema.Codec<GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes",
   });
 
@@ -428,7 +428,7 @@ export interface DropRowRangeRequest {
 }
 
 export const DropRowRangeRequest: Schema.Codec<DropRowRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rowKeyPrefix: Schema.optional(Schema.String),
     deleteAllDataFromTable: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DropRowRangeRequest" });
@@ -439,7 +439,7 @@ export interface GoogleBigtableAdminV2MemoryLayerMemoryConfig {
 }
 
 export const GoogleBigtableAdminV2MemoryLayerMemoryConfig: Schema.Codec<GoogleBigtableAdminV2MemoryLayerMemoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storageSizeGib: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleBigtableAdminV2MemoryLayerMemoryConfig" });
 
@@ -453,7 +453,7 @@ export interface OperationProgress {
 }
 
 export const OperationProgress: Schema.Codec<OperationProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     progressPercent: Schema.optional(Schema.Number),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -467,7 +467,7 @@ export interface GoogleBigtableAdminV2TypeEnum {
 }
 
 export const GoogleBigtableAdminV2TypeEnum: Schema.Codec<GoogleBigtableAdminV2TypeEnum> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schemaBundleId: Schema.optional(Schema.String),
     enumName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeEnum" });
@@ -478,14 +478,14 @@ export interface TestIamPermissionsResponse {
 }
 
 export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes {}
 
 export const GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes: Schema.Codec<GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes",
   });
 
@@ -503,7 +503,7 @@ export interface Location {
 }
 
 export const Location: Schema.Codec<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -514,7 +514,7 @@ export const Location: Schema.Codec<Location> =
 export interface GoogleBigtableAdminV2TypeAggregateMax {}
 
 export const GoogleBigtableAdminV2TypeAggregateMax: Schema.Codec<GoogleBigtableAdminV2TypeAggregateMax> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeAggregateMax",
   });
 
@@ -524,7 +524,7 @@ export interface ProtoSchema {
 }
 
 export const ProtoSchema: Schema.Codec<ProtoSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     protoDescriptors: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProtoSchema" });
 
@@ -536,7 +536,7 @@ export interface OptimizeRestoredTableMetadata {
 }
 
 export const OptimizeRestoredTableMetadata: Schema.Codec<OptimizeRestoredTableMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     progress: Schema.optional(OperationProgress),
   }).annotate({ identifier: "OptimizeRestoredTableMetadata" });
@@ -551,7 +551,7 @@ export interface PartialUpdateClusterMetadata {
 }
 
 export const PartialUpdateClusterMetadata: Schema.Codec<PartialUpdateClusterMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalRequest: Schema.optional(PartialUpdateClusterRequest),
     finishTime: Schema.optional(Schema.String),
     requestTime: Schema.optional(Schema.String),
@@ -571,7 +571,7 @@ export interface UpdateTableMetadata {
 }
 
 export const UpdateTableMetadata: Schema.Codec<UpdateTableMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -587,7 +587,7 @@ export interface ListLocationsResponse {
 }
 
 export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListLocationsResponse" });
@@ -595,14 +595,14 @@ export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
 export interface GoogleBigtableAdminV2TypeFloat64 {}
 
 export const GoogleBigtableAdminV2TypeFloat64: Schema.Codec<GoogleBigtableAdminV2TypeFloat64> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeFloat64",
   });
 
 export interface GoogleBigtableAdminV2TypeDate {}
 
 export const GoogleBigtableAdminV2TypeDate: Schema.Codec<GoogleBigtableAdminV2TypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeDate",
   });
 
@@ -614,7 +614,7 @@ export interface SingleClusterRouting {
 }
 
 export const SingleClusterRouting: Schema.Codec<SingleClusterRouting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clusterId: Schema.optional(Schema.String),
     allowTransactionalWrites: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "SingleClusterRouting" });
@@ -628,14 +628,14 @@ export interface DataBoostIsolationReadOnly {
 }
 
 export const DataBoostIsolationReadOnly: Schema.Codec<DataBoostIsolationReadOnly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     computeBillingOwner: Schema.optional(Schema.String),
   }).annotate({ identifier: "DataBoostIsolationReadOnly" });
 
 export interface MemoryConfig {}
 
 export const MemoryConfig: Schema.Codec<MemoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MemoryConfig",
   });
 
@@ -652,7 +652,7 @@ export interface StandardIsolation {
 }
 
 export const StandardIsolation: Schema.Codec<StandardIsolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     priority: Schema.optional(Schema.String),
     memoryConfig: Schema.optional(MemoryConfig),
   }).annotate({ identifier: "StandardIsolation" });
@@ -665,7 +665,7 @@ export interface MultiClusterRoutingUseAny {
 }
 
 export const MultiClusterRoutingUseAny: Schema.Codec<MultiClusterRoutingUseAny> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clusterIds: Schema.optional(Schema.Array(Schema.String)),
     rowAffinity: Schema.optional(RowAffinity),
   }).annotate({ identifier: "MultiClusterRoutingUseAny" });
@@ -695,7 +695,7 @@ export interface AppProfile {
 }
 
 export const AppProfile: Schema.Codec<AppProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     singleClusterRouting: Schema.optional(SingleClusterRouting),
     dataBoostIsolationReadOnly: Schema.optional(DataBoostIsolationReadOnly),
     priority: Schema.optional(Schema.String),
@@ -722,7 +722,7 @@ export interface CreateBackupMetadata {
 }
 
 export const CreateBackupMetadata: Schema.Codec<CreateBackupMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     requestTime: Schema.optional(Schema.String),
@@ -745,7 +745,7 @@ export interface CreateMaterializedViewMetadata {
 }
 
 export const CreateMaterializedViewMetadata: Schema.Codec<CreateMaterializedViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     requestTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -759,7 +759,7 @@ export interface GetPolicyOptions {
 }
 
 export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
 
@@ -769,28 +769,28 @@ export interface GetIamPolicyRequest {
 }
 
 export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface UndeleteTableRequest {}
 
 export const UndeleteTableRequest: Schema.Codec<UndeleteTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteTableRequest",
   });
 
 export interface GoogleBigtableAdminV2TypeAggregateSum {}
 
 export const GoogleBigtableAdminV2TypeAggregateSum: Schema.Codec<GoogleBigtableAdminV2TypeAggregateSum> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeAggregateSum",
   });
 
 export interface GoogleBigtableAdminV2TypeAggregateMin {}
 
 export const GoogleBigtableAdminV2TypeAggregateMin: Schema.Codec<GoogleBigtableAdminV2TypeAggregateMin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeAggregateMin",
   });
 
@@ -810,7 +810,7 @@ export interface GoogleBigtableAdminV2TypeAggregate {
 }
 
 export const GoogleBigtableAdminV2TypeAggregate: Schema.Codec<GoogleBigtableAdminV2TypeAggregate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       inputType: Schema.optional(Type),
       sum: Schema.optional(GoogleBigtableAdminV2TypeAggregateSum),
@@ -828,7 +828,7 @@ export const GoogleBigtableAdminV2TypeAggregate: Schema.Codec<GoogleBigtableAdmi
 export interface GoogleBigtableAdminV2TypeGeography {}
 
 export const GoogleBigtableAdminV2TypeGeography: Schema.Codec<GoogleBigtableAdminV2TypeGeography> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeGeography",
   });
 
@@ -838,7 +838,7 @@ export interface GoogleBigtableAdminV2TypeTimestampEncoding {
 }
 
 export const GoogleBigtableAdminV2TypeTimestampEncoding: Schema.Codec<GoogleBigtableAdminV2TypeTimestampEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unixMicrosInt64: Schema.optional(GoogleBigtableAdminV2TypeInt64Encoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeTimestampEncoding" });
 
@@ -848,21 +848,21 @@ export interface GoogleBigtableAdminV2TypeTimestamp {
 }
 
 export const GoogleBigtableAdminV2TypeTimestamp: Schema.Codec<GoogleBigtableAdminV2TypeTimestamp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeTimestampEncoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeTimestamp" });
 
 export interface GoogleBigtableAdminV2TypeFloat32 {}
 
 export const GoogleBigtableAdminV2TypeFloat32: Schema.Codec<GoogleBigtableAdminV2TypeFloat32> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeFloat32",
   });
 
 export interface GoogleBigtableAdminV2TypeStringEncodingUtf8Raw {}
 
 export const GoogleBigtableAdminV2TypeStringEncodingUtf8Raw: Schema.Codec<GoogleBigtableAdminV2TypeStringEncodingUtf8Raw> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeStringEncodingUtf8Raw",
   });
 
@@ -872,7 +872,7 @@ export interface GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes {
 }
 
 export const GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes: Schema.Codec<GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nullEscapeChar: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes",
@@ -886,7 +886,7 @@ export interface GoogleBigtableAdminV2TypeStringEncoding {
 }
 
 export const GoogleBigtableAdminV2TypeStringEncoding: Schema.Codec<GoogleBigtableAdminV2TypeStringEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     utf8Raw: Schema.optional(GoogleBigtableAdminV2TypeStringEncodingUtf8Raw),
     utf8Bytes: Schema.optional(
       GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes,
@@ -899,7 +899,7 @@ export interface GoogleBigtableAdminV2TypeString {
 }
 
 export const GoogleBigtableAdminV2TypeString: Schema.Codec<GoogleBigtableAdminV2TypeString> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeStringEncoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeString" });
 
@@ -911,7 +911,7 @@ export interface GoogleBigtableAdminV2TypeMap {
 }
 
 export const GoogleBigtableAdminV2TypeMap: Schema.Codec<GoogleBigtableAdminV2TypeMap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       valueType: Schema.optional(Type),
       keyType: Schema.optional(Type),
@@ -928,7 +928,7 @@ export interface GoogleBigtableAdminV2TypeProto {
 }
 
 export const GoogleBigtableAdminV2TypeProto: Schema.Codec<GoogleBigtableAdminV2TypeProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schemaBundleId: Schema.optional(Schema.String),
     messageName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeProto" });
@@ -941,7 +941,7 @@ export interface GoogleBigtableAdminV2TypeInt32Encoding {
 }
 
 export const GoogleBigtableAdminV2TypeInt32Encoding: Schema.Codec<GoogleBigtableAdminV2TypeInt32Encoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bigEndianBytes: Schema.optional(
       GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes,
     ),
@@ -956,7 +956,7 @@ export interface GoogleBigtableAdminV2TypeInt32 {
 }
 
 export const GoogleBigtableAdminV2TypeInt32: Schema.Codec<GoogleBigtableAdminV2TypeInt32> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeInt32Encoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeInt32" });
 
@@ -966,7 +966,7 @@ export interface GoogleBigtableAdminV2TypeArray {
 }
 
 export const GoogleBigtableAdminV2TypeArray: Schema.Codec<GoogleBigtableAdminV2TypeArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       elementType: Schema.optional(Type),
     }),
@@ -977,7 +977,7 @@ export const GoogleBigtableAdminV2TypeArray: Schema.Codec<GoogleBigtableAdminV2T
 export interface GoogleBigtableAdminV2TypeBoolEncoding {}
 
 export const GoogleBigtableAdminV2TypeBoolEncoding: Schema.Codec<GoogleBigtableAdminV2TypeBoolEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeBoolEncoding",
   });
 
@@ -987,7 +987,7 @@ export interface GoogleBigtableAdminV2TypeBool {
 }
 
 export const GoogleBigtableAdminV2TypeBool: Schema.Codec<GoogleBigtableAdminV2TypeBool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeBoolEncoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeBool" });
 
@@ -1027,7 +1027,7 @@ export interface Type {
 }
 
 export const Type: Schema.Codec<Type> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggregateType: Schema.optional(GoogleBigtableAdminV2TypeAggregate),
       geographyType: Schema.optional(GoogleBigtableAdminV2TypeGeography),
@@ -1056,7 +1056,7 @@ export interface GoogleBigtableAdminV2TypeStructField {
 }
 
 export const GoogleBigtableAdminV2TypeStructField: Schema.Codec<GoogleBigtableAdminV2TypeStructField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fieldName: Schema.optional(Schema.String),
       type: Schema.optional(Type),
@@ -1071,7 +1071,7 @@ export interface GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes {
 }
 
 export const GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes: Schema.Codec<GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delimiter: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes",
@@ -1080,14 +1080,14 @@ export const GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes: Schema.Codec
 export interface GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes {}
 
 export const GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes: Schema.Codec<GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes",
   });
 
 export interface GoogleBigtableAdminV2TypeStructEncodingSingleton {}
 
 export const GoogleBigtableAdminV2TypeStructEncodingSingleton: Schema.Codec<GoogleBigtableAdminV2TypeStructEncodingSingleton> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeStructEncodingSingleton",
   });
 
@@ -1101,7 +1101,7 @@ export interface GoogleBigtableAdminV2TypeStructEncoding {
 }
 
 export const GoogleBigtableAdminV2TypeStructEncoding: Schema.Codec<GoogleBigtableAdminV2TypeStructEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delimitedBytes: Schema.optional(
       GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes,
     ),
@@ -1121,7 +1121,7 @@ export interface GoogleBigtableAdminV2TypeStruct {
 }
 
 export const GoogleBigtableAdminV2TypeStruct: Schema.Codec<GoogleBigtableAdminV2TypeStruct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fields: Schema.optional(
         Schema.Array(GoogleBigtableAdminV2TypeStructField),
@@ -1138,7 +1138,7 @@ export interface CheckConsistencyResponse {
 }
 
 export const CheckConsistencyResponse: Schema.Codec<CheckConsistencyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consistent: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CheckConsistencyResponse" });
 
@@ -1160,7 +1160,7 @@ export interface HotTablet {
 }
 
 export const HotTablet: Schema.Codec<HotTablet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endKey: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     startKey: Schema.optional(Schema.String),
@@ -1176,7 +1176,7 @@ export interface TieredStorageRule {
 }
 
 export const TieredStorageRule: Schema.Codec<TieredStorageRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeIfOlderThan: Schema.optional(Schema.String),
   }).annotate({ identifier: "TieredStorageRule" });
 
@@ -1186,7 +1186,7 @@ export interface TieredStorageConfig {
 }
 
 export const TieredStorageConfig: Schema.Codec<TieredStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     infrequentAccess: Schema.optional(TieredStorageRule),
   }).annotate({ identifier: "TieredStorageConfig" });
 
@@ -1200,7 +1200,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -1222,7 +1222,7 @@ export interface EncryptionInfo {
 }
 
 export const EncryptionInfo: Schema.Codec<EncryptionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kmsKeyVersion: Schema.optional(Schema.String),
     encryptionStatus: Schema.optional(Status),
     encryptionType: Schema.optional(Schema.String),
@@ -1243,7 +1243,7 @@ export interface ClusterState {
 }
 
 export const ClusterState: Schema.Codec<ClusterState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     replicationState: Schema.optional(Schema.String),
     encryptionInfo: Schema.optional(Schema.Array(EncryptionInfo)),
   }).annotate({ identifier: "ClusterState" });
@@ -1260,7 +1260,7 @@ export interface TableStats {
 }
 
 export const TableStats: Schema.Codec<TableStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rowCount: Schema.optional(Schema.String),
     averageCellsPerColumn: Schema.optional(Schema.Number),
     averageColumnsPerRow: Schema.optional(Schema.Number),
@@ -1273,7 +1273,7 @@ export interface ChangeStreamConfig {
 }
 
 export const ChangeStreamConfig: Schema.Codec<ChangeStreamConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     retentionPeriod: Schema.optional(Schema.String),
   }).annotate({ identifier: "ChangeStreamConfig" });
 
@@ -1287,7 +1287,7 @@ export interface AutomatedBackupPolicy {
 }
 
 export const AutomatedBackupPolicy: Schema.Codec<AutomatedBackupPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     retentionPeriod: Schema.optional(Schema.String),
     frequency: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Schema.String)),
@@ -1307,7 +1307,7 @@ export interface BackupInfo {
 }
 
 export const BackupInfo: Schema.Codec<BackupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     sourceBackup: Schema.optional(Schema.String),
     backup: Schema.optional(Schema.String),
@@ -1323,7 +1323,7 @@ export interface RestoreInfo {
 }
 
 export const RestoreInfo: Schema.Codec<RestoreInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceType: Schema.optional(Schema.String),
     backupInfo: Schema.optional(BackupInfo),
   }).annotate({ identifier: "RestoreInfo" });
@@ -1334,7 +1334,7 @@ export interface Union {
 }
 
 export const Union: Schema.Codec<Union> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       rules: Schema.optional(Schema.Array(GcRule)),
     }),
@@ -1346,7 +1346,7 @@ export interface Intersection {
 }
 
 export const Intersection: Schema.Codec<Intersection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       rules: Schema.optional(Schema.Array(GcRule)),
     }),
@@ -1366,7 +1366,7 @@ export interface GcRule {
 }
 
 export const GcRule: Schema.Codec<GcRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       maxNumVersions: Schema.optional(Schema.Number),
       union: Schema.optional(Union),
@@ -1385,7 +1385,7 @@ export interface ColumnFamilyStats {
 }
 
 export const ColumnFamilyStats: Schema.Codec<ColumnFamilyStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     averageCellsPerColumn: Schema.optional(Schema.Number),
     averageColumnsPerRow: Schema.optional(Schema.Number),
     logicalDataBytes: Schema.optional(Schema.String),
@@ -1401,7 +1401,7 @@ export interface ColumnFamily {
 }
 
 export const ColumnFamily: Schema.Codec<ColumnFamily> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcRule: Schema.optional(GcRule),
     valueType: Schema.optional(Type),
     stats: Schema.optional(ColumnFamilyStats),
@@ -1433,7 +1433,7 @@ export interface Table {
 }
 
 export const Table: Schema.Codec<Table> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tieredStorageConfig: Schema.optional(TieredStorageConfig),
     rowKeySchema: Schema.optional(GoogleBigtableAdminV2TypeStruct),
     clusterStates: Schema.optional(Schema.Record(Schema.String, ClusterState)),
@@ -1455,7 +1455,7 @@ export interface ListTablesResponse {
 }
 
 export const ListTablesResponse: Schema.Codec<ListTablesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tables: Schema.optional(Schema.Array(Table)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListTablesResponse" });
@@ -1468,7 +1468,7 @@ export interface GoogleBigtableAdminV2AuthorizedViewFamilySubsets {
 }
 
 export const GoogleBigtableAdminV2AuthorizedViewFamilySubsets: Schema.Codec<GoogleBigtableAdminV2AuthorizedViewFamilySubsets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     qualifierPrefixes: Schema.optional(Schema.Array(Schema.String)),
     qualifiers: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -1486,7 +1486,7 @@ export interface GoogleBigtableAdminV2AuthorizedViewSubsetView {
 }
 
 export const GoogleBigtableAdminV2AuthorizedViewSubsetView: Schema.Codec<GoogleBigtableAdminV2AuthorizedViewSubsetView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     familySubsets: Schema.optional(
       Schema.Record(
         Schema.String,
@@ -1508,7 +1508,7 @@ export interface AuthorizedView {
 }
 
 export const AuthorizedView: Schema.Codec<AuthorizedView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
     deletionProtection: Schema.optional(Schema.Boolean),
@@ -1525,7 +1525,7 @@ export interface UpdateAuthorizedViewRequest {
 }
 
 export const UpdateAuthorizedViewRequest: Schema.Codec<UpdateAuthorizedViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorizedView: Schema.optional(AuthorizedView),
     updateMask: Schema.optional(Schema.String),
     ignoreWarnings: Schema.optional(Schema.Boolean),
@@ -1543,7 +1543,7 @@ export interface CreateInstanceRequest {
 }
 
 export const CreateInstanceRequest: Schema.Codec<CreateInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instance: Schema.optional(Instance),
     parent: Schema.optional(Schema.String),
     instanceId: Schema.optional(Schema.String),
@@ -1556,7 +1556,7 @@ export interface TestIamPermissionsRequest {
 }
 
 export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
@@ -1570,7 +1570,7 @@ export interface CreateSchemaBundleMetadata {
 }
 
 export const CreateSchemaBundleMetadata: Schema.Codec<CreateSchemaBundleMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finishTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     requestTime: Schema.optional(Schema.String),
@@ -1586,7 +1586,7 @@ export interface ListClustersResponse {
 }
 
 export const ListClustersResponse: Schema.Codec<ListClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     failedLocations: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
     clusters: Schema.optional(Schema.Array(Cluster)),
@@ -1595,7 +1595,7 @@ export const ListClustersResponse: Schema.Codec<ListClustersResponse> =
 export interface GenerateConsistencyTokenRequest {}
 
 export const GenerateConsistencyTokenRequest: Schema.Codec<GenerateConsistencyTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GenerateConsistencyTokenRequest",
   });
 
@@ -1609,7 +1609,7 @@ export interface CopyBackupMetadata {
 }
 
 export const CopyBackupMetadata: Schema.Codec<CopyBackupMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     progress: Schema.optional(OperationProgress),
     sourceBackupInfo: Schema.optional(BackupInfo),
     name: Schema.optional(Schema.String),
@@ -1629,7 +1629,7 @@ export interface Modification {
 }
 
 export const Modification: Schema.Codec<Modification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     create: Schema.optional(ColumnFamily),
     update: Schema.optional(ColumnFamily),
     updateMask: Schema.optional(Schema.String),
@@ -1647,7 +1647,7 @@ export interface CreateInstanceMetadata {
 }
 
 export const CreateInstanceMetadata: Schema.Codec<CreateInstanceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestTime: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
     originalRequest: Schema.optional(CreateInstanceRequest),
@@ -1668,7 +1668,7 @@ export interface TableProgress {
 }
 
 export const TableProgress: Schema.Codec<TableProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     estimatedSizeBytes: Schema.optional(Schema.String),
     estimatedCopiedBytes: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -1677,7 +1677,7 @@ export const TableProgress: Schema.Codec<TableProgress> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -1693,7 +1693,7 @@ export interface Expr {
 }
 
 export const Expr: Schema.Codec<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -1706,7 +1706,7 @@ export interface GenerateConsistencyTokenResponse {
 }
 
 export const GenerateConsistencyTokenResponse: Schema.Codec<GenerateConsistencyTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consistencyToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateConsistencyTokenResponse" });
 
@@ -1720,7 +1720,7 @@ export interface UpdateClusterMetadata {
 }
 
 export const UpdateClusterMetadata: Schema.Codec<UpdateClusterMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalRequest: Schema.optional(Cluster),
     finishTime: Schema.optional(Schema.String),
     requestTime: Schema.optional(Schema.String),
@@ -1736,7 +1736,7 @@ export interface CreateClusterRequest {
 }
 
 export const CreateClusterRequest: Schema.Codec<CreateClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     clusterId: Schema.optional(Schema.String),
     cluster: Schema.optional(Cluster),
@@ -1754,7 +1754,7 @@ export interface CreateClusterMetadata {
 }
 
 export const CreateClusterMetadata: Schema.Codec<CreateClusterMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestTime: Schema.optional(Schema.String),
     tables: Schema.optional(Schema.Record(Schema.String, TableProgress)),
     finishTime: Schema.optional(Schema.String),
@@ -1769,7 +1769,7 @@ export interface ListMaterializedViewsResponse {
 }
 
 export const ListMaterializedViewsResponse: Schema.Codec<ListMaterializedViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     materializedViews: Schema.optional(Schema.Array(MaterializedView)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListMaterializedViewsResponse" });
@@ -1782,7 +1782,7 @@ export interface RestoreTableRequest {
 }
 
 export const RestoreTableRequest: Schema.Codec<RestoreTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableId: Schema.optional(Schema.String),
     backup: Schema.optional(Schema.String),
   }).annotate({ identifier: "RestoreTableRequest" });
@@ -1795,7 +1795,7 @@ export interface ListAuthorizedViewsResponse {
 }
 
 export const ListAuthorizedViewsResponse: Schema.Codec<ListAuthorizedViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     authorizedViews: Schema.optional(Schema.Array(AuthorizedView)),
   }).annotate({ identifier: "ListAuthorizedViewsResponse" });
@@ -1808,7 +1808,7 @@ export interface ModifyColumnFamiliesRequest {
 }
 
 export const ModifyColumnFamiliesRequest: Schema.Codec<ModifyColumnFamiliesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     modifications: Schema.optional(Schema.Array(Modification)),
     ignoreWarnings: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ModifyColumnFamiliesRequest" });
@@ -1827,7 +1827,7 @@ export interface UpdateLogicalViewMetadata {
 }
 
 export const UpdateLogicalViewMetadata: Schema.Codec<UpdateLogicalViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -1848,7 +1848,7 @@ export interface RestoreTableMetadata {
 }
 
 export const RestoreTableMetadata: Schema.Codec<RestoreTableMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     progress: Schema.optional(OperationProgress),
     optimizeTableOperationName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1866,7 +1866,7 @@ export interface SchemaBundle {
 }
 
 export const SchemaBundle: Schema.Codec<SchemaBundle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     protoSchema: Schema.optional(ProtoSchema),
     etag: Schema.optional(Schema.String),
@@ -1880,7 +1880,7 @@ export interface ListSchemaBundlesResponse {
 }
 
 export const ListSchemaBundlesResponse: Schema.Codec<ListSchemaBundlesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schemaBundles: Schema.optional(Schema.Array(SchemaBundle)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListSchemaBundlesResponse" });
@@ -1898,7 +1898,7 @@ export interface AuditLogConfig {
 }
 
 export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AuditLogConfig" });
@@ -1911,7 +1911,7 @@ export interface AuditConfig {
 }
 
 export const AuditConfig: Schema.Codec<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
   }).annotate({ identifier: "AuditConfig" });
@@ -1926,7 +1926,7 @@ export interface Binding {
 }
 
 export const Binding: Schema.Codec<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
     condition: Schema.optional(Expr),
@@ -1944,7 +1944,7 @@ export interface Policy {
 }
 
 export const Policy: Schema.Codec<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     version: Schema.optional(Schema.Number),
     etag: Schema.optional(Schema.String),
@@ -1961,7 +1961,7 @@ export interface ListAppProfilesResponse {
 }
 
 export const ListAppProfilesResponse: Schema.Codec<ListAppProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appProfiles: Schema.optional(Schema.Array(AppProfile)),
     nextPageToken: Schema.optional(Schema.String),
     failedLocations: Schema.optional(Schema.Array(Schema.String)),
@@ -1981,7 +1981,7 @@ export interface UndeleteTableMetadata {
 }
 
 export const UndeleteTableMetadata: Schema.Codec<UndeleteTableMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -2015,7 +2015,7 @@ export interface Backup {
 }
 
 export const Backup: Schema.Codec<Backup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     encryptionInfo: Schema.optional(EncryptionInfo),
     hotToStandardTime: Schema.optional(Schema.String),
@@ -2035,7 +2035,7 @@ export interface Split {
 }
 
 export const Split: Schema.Codec<Split> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "Split" });
 
@@ -2047,7 +2047,7 @@ export interface ListBackupsResponse {
 }
 
 export const ListBackupsResponse: Schema.Codec<ListBackupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     backups: Schema.optional(Schema.Array(Backup)),
   }).annotate({ identifier: "ListBackupsResponse" });
@@ -2062,7 +2062,7 @@ export interface CopyBackupRequest {
 }
 
 export const CopyBackupRequest: Schema.Codec<CopyBackupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     backupId: Schema.optional(Schema.String),
     sourceBackup: Schema.optional(Schema.String),
@@ -2082,7 +2082,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -2100,7 +2100,7 @@ export interface UpdateInstanceMetadata {
 }
 
 export const UpdateInstanceMetadata: Schema.Codec<UpdateInstanceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestTime: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
     originalRequest: Schema.optional(PartialUpdateInstanceRequest),
@@ -2116,7 +2116,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(Operation)),
@@ -2125,14 +2125,14 @@ export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
 export interface StandardReadRemoteWrites {}
 
 export const StandardReadRemoteWrites: Schema.Codec<StandardReadRemoteWrites> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StandardReadRemoteWrites",
   });
 
 export interface DataBoostReadLocalWrites {}
 
 export const DataBoostReadLocalWrites: Schema.Codec<DataBoostReadLocalWrites> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DataBoostReadLocalWrites",
   });
 
@@ -2146,7 +2146,7 @@ export interface CheckConsistencyRequest {
 }
 
 export const CheckConsistencyRequest: Schema.Codec<CheckConsistencyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     standardReadRemoteWrites: Schema.optional(StandardReadRemoteWrites),
     dataBoostReadLocalWrites: Schema.optional(DataBoostReadLocalWrites),
     consistencyToken: Schema.optional(Schema.String),
@@ -2162,7 +2162,7 @@ export interface CreateTableRequest {
 }
 
 export const CreateTableRequest: Schema.Codec<CreateTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     initialSplits: Schema.optional(Schema.Array(Split)),
     table: Schema.optional(Table),
     tableId: Schema.optional(Schema.String),
@@ -2171,7 +2171,7 @@ export const CreateTableRequest: Schema.Codec<CreateTableRequest> =
 export interface UpdateAppProfileMetadata {}
 
 export const UpdateAppProfileMetadata: Schema.Codec<UpdateAppProfileMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateAppProfileMetadata",
   });
 
@@ -2193,7 +2193,7 @@ export interface MemoryLayer {
 }
 
 export const MemoryLayer: Schema.Codec<MemoryLayer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
     memoryConfig: Schema.optional(GoogleBigtableAdminV2MemoryLayerMemoryConfig),
@@ -2210,7 +2210,7 @@ export interface ListMemoryLayersResponse {
 }
 
 export const ListMemoryLayersResponse: Schema.Codec<ListMemoryLayersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     memoryLayers: Schema.optional(Schema.Array(MemoryLayer)),
     failedLocations: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2226,7 +2226,7 @@ export interface CreateAuthorizedViewRequest {
 }
 
 export const CreateAuthorizedViewRequest: Schema.Codec<CreateAuthorizedViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     authorizedView: Schema.optional(AuthorizedView),
     authorizedViewId: Schema.optional(Schema.String),
@@ -2242,7 +2242,7 @@ export interface CreateAuthorizedViewMetadata {
 }
 
 export const CreateAuthorizedViewMetadata: Schema.Codec<CreateAuthorizedViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalRequest: Schema.optional(CreateAuthorizedViewRequest),
     finishTime: Schema.optional(Schema.String),
     requestTime: Schema.optional(Schema.String),
@@ -2256,7 +2256,7 @@ export interface ListHotTabletsResponse {
 }
 
 export const ListHotTabletsResponse: Schema.Codec<ListHotTabletsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hotTablets: Schema.optional(Schema.Array(HotTablet)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListHotTabletsResponse" });
@@ -2269,7 +2269,7 @@ export interface UpdateMemoryLayerRequest {
 }
 
 export const UpdateMemoryLayerRequest: Schema.Codec<UpdateMemoryLayerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     memoryLayer: Schema.optional(MemoryLayer),
   }).annotate({ identifier: "UpdateMemoryLayerRequest" });
@@ -2284,7 +2284,7 @@ export interface UpdateMemoryLayerMetadata {
 }
 
 export const UpdateMemoryLayerMetadata: Schema.Codec<UpdateMemoryLayerMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finishTime: Schema.optional(Schema.String),
     originalRequest: Schema.optional(UpdateMemoryLayerRequest),
     requestTime: Schema.optional(Schema.String),
@@ -2298,7 +2298,7 @@ export interface SetIamPolicyRequest {
 }
 
 export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "SetIamPolicyRequest" });
@@ -2313,7 +2313,7 @@ export interface UpdateSchemaBundleMetadata {
 }
 
 export const UpdateSchemaBundleMetadata: Schema.Codec<UpdateSchemaBundleMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finishTime: Schema.optional(Schema.String),
     requestTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2329,7 +2329,7 @@ export interface UpdateAuthorizedViewMetadata {
 }
 
 export const UpdateAuthorizedViewMetadata: Schema.Codec<UpdateAuthorizedViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestTime: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
     originalRequest: Schema.optional(UpdateAuthorizedViewRequest),
@@ -2349,7 +2349,7 @@ export interface CreateLogicalViewMetadata {
 }
 
 export const CreateLogicalViewMetadata: Schema.Codec<CreateLogicalViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalRequest: Schema.optional(CreateLogicalViewRequest),
     endTime: Schema.optional(Schema.String),
     requestTime: Schema.optional(Schema.String),
@@ -2365,7 +2365,7 @@ export interface ListLogicalViewsResponse {
 }
 
 export const ListLogicalViewsResponse: Schema.Codec<ListLogicalViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logicalViews: Schema.optional(Schema.Array(LogicalView)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListLogicalViewsResponse" });
@@ -2434,7 +2434,7 @@ export interface PartialUpdateInstanceProjectsInstancesRequest {
 }
 
 export const PartialUpdateInstanceProjectsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Instance).pipe(T.HttpBody()),
@@ -2445,7 +2445,7 @@ export const PartialUpdateInstanceProjectsInstancesRequest =
 
 export type PartialUpdateInstanceProjectsInstancesResponse = Operation;
 export const PartialUpdateInstanceProjectsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PartialUpdateInstanceProjectsInstancesError =
   | DefaultErrors
@@ -2460,7 +2460,7 @@ export const partialUpdateInstanceProjectsInstances: API.OperationMethod<
   PartialUpdateInstanceProjectsInstancesResponse,
   PartialUpdateInstanceProjectsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PartialUpdateInstanceProjectsInstancesRequest,
   output: PartialUpdateInstanceProjectsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2472,7 +2472,7 @@ export interface DeleteProjectsInstancesRequest {
 }
 
 export const DeleteProjectsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
@@ -2480,8 +2480,7 @@ export const DeleteProjectsInstancesRequest =
   ) as unknown as Schema.Codec<DeleteProjectsInstancesRequest>;
 
 export type DeleteProjectsInstancesResponse = Empty;
-export const DeleteProjectsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsInstancesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsInstancesError =
   | DefaultErrors
@@ -2496,7 +2495,7 @@ export const deleteProjectsInstances: API.OperationMethod<
   DeleteProjectsInstancesResponse,
   DeleteProjectsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesRequest,
   output: DeleteProjectsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2508,7 +2507,7 @@ export interface GetProjectsInstancesRequest {
 }
 
 export const GetProjectsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -2516,8 +2515,7 @@ export const GetProjectsInstancesRequest =
   ) as unknown as Schema.Codec<GetProjectsInstancesRequest>;
 
 export type GetProjectsInstancesResponse = Instance;
-export const GetProjectsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Instance;
+export const GetProjectsInstancesResponse = /*@__PURE__*/ Instance;
 
 export type GetProjectsInstancesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2527,7 +2525,7 @@ export const getProjectsInstances: API.OperationMethod<
   GetProjectsInstancesResponse,
   GetProjectsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesRequest,
   output: GetProjectsInstancesResponse,
   errors: [NotFound, Forbidden],
@@ -2541,7 +2539,7 @@ export interface SetIamPolicyProjectsInstancesRequest {
 }
 
 export const SetIamPolicyProjectsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2554,8 +2552,7 @@ export const SetIamPolicyProjectsInstancesRequest =
   ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesRequest>;
 
 export type SetIamPolicyProjectsInstancesResponse = Policy;
-export const SetIamPolicyProjectsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const SetIamPolicyProjectsInstancesResponse = /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsInstancesError =
   | DefaultErrors
@@ -2570,7 +2567,7 @@ export const setIamPolicyProjectsInstances: API.OperationMethod<
   SetIamPolicyProjectsInstancesResponse,
   SetIamPolicyProjectsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesRequest,
   output: SetIamPolicyProjectsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2584,7 +2581,7 @@ export interface GetIamPolicyProjectsInstancesRequest {
 }
 
 export const GetIamPolicyProjectsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2597,8 +2594,7 @@ export const GetIamPolicyProjectsInstancesRequest =
   ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesRequest>;
 
 export type GetIamPolicyProjectsInstancesResponse = Policy;
-export const GetIamPolicyProjectsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetIamPolicyProjectsInstancesResponse = /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsInstancesError =
   | DefaultErrors
@@ -2613,7 +2609,7 @@ export const getIamPolicyProjectsInstances: API.OperationMethod<
   GetIamPolicyProjectsInstancesResponse,
   GetIamPolicyProjectsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesRequest,
   output: GetIamPolicyProjectsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2627,7 +2623,7 @@ export interface CreateProjectsInstancesRequest {
 }
 
 export const CreateProjectsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2636,8 +2632,7 @@ export const CreateProjectsInstancesRequest =
   ) as unknown as Schema.Codec<CreateProjectsInstancesRequest>;
 
 export type CreateProjectsInstancesResponse = Operation;
-export const CreateProjectsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateProjectsInstancesResponse = /*@__PURE__*/ Operation;
 
 export type CreateProjectsInstancesError =
   | DefaultErrors
@@ -2652,7 +2647,7 @@ export const createProjectsInstances: API.OperationMethod<
   CreateProjectsInstancesResponse,
   CreateProjectsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesRequest,
   output: CreateProjectsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2666,7 +2661,7 @@ export interface ListProjectsInstancesRequest {
 }
 
 export const ListProjectsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
@@ -2676,7 +2671,7 @@ export const ListProjectsInstancesRequest =
 
 export type ListProjectsInstancesResponse = ListInstancesResponse;
 export const ListProjectsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
+  /*@__PURE__*/ ListInstancesResponse;
 
 export type ListProjectsInstancesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2686,7 +2681,7 @@ export const listProjectsInstances: API.PaginatedOperationMethod<
   ListProjectsInstancesResponse,
   ListProjectsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesRequest,
   output: ListProjectsInstancesResponse,
   errors: [NotFound, Forbidden],
@@ -2704,7 +2699,7 @@ export interface UpdateProjectsInstancesRequest {
 }
 
 export const UpdateProjectsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Instance).pipe(T.HttpBody()),
   }).pipe(
@@ -2713,8 +2708,7 @@ export const UpdateProjectsInstancesRequest =
   ) as unknown as Schema.Codec<UpdateProjectsInstancesRequest>;
 
 export type UpdateProjectsInstancesResponse = Instance;
-export const UpdateProjectsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Instance;
+export const UpdateProjectsInstancesResponse = /*@__PURE__*/ Instance;
 
 export type UpdateProjectsInstancesError =
   | DefaultErrors
@@ -2729,7 +2723,7 @@ export const updateProjectsInstances: API.OperationMethod<
   UpdateProjectsInstancesResponse,
   UpdateProjectsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectsInstancesRequest,
   output: UpdateProjectsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2743,7 +2737,7 @@ export interface TestIamPermissionsProjectsInstancesRequest {
 }
 
 export const TestIamPermissionsProjectsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2758,7 +2752,7 @@ export const TestIamPermissionsProjectsInstancesRequest =
 export type TestIamPermissionsProjectsInstancesResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesError =
   | DefaultErrors
@@ -2773,7 +2767,7 @@ export const testIamPermissionsProjectsInstances: API.OperationMethod<
   TestIamPermissionsProjectsInstancesResponse,
   TestIamPermissionsProjectsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesRequest,
   output: TestIamPermissionsProjectsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2789,7 +2783,7 @@ export interface CreateProjectsInstancesClustersRequest {
 }
 
 export const CreateProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     clusterId: Schema.optional(Schema.String).pipe(T.HttpQuery("clusterId")),
     body: Schema.optional(Cluster).pipe(T.HttpBody()),
@@ -2799,8 +2793,7 @@ export const CreateProjectsInstancesClustersRequest =
   ) as unknown as Schema.Codec<CreateProjectsInstancesClustersRequest>;
 
 export type CreateProjectsInstancesClustersResponse = Operation;
-export const CreateProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateProjectsInstancesClustersResponse = /*@__PURE__*/ Operation;
 
 export type CreateProjectsInstancesClustersError =
   | DefaultErrors
@@ -2815,7 +2808,7 @@ export const createProjectsInstancesClusters: API.OperationMethod<
   CreateProjectsInstancesClustersResponse,
   CreateProjectsInstancesClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesClustersRequest,
   output: CreateProjectsInstancesClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2829,7 +2822,7 @@ export interface ListProjectsInstancesClustersRequest {
 }
 
 export const ListProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
@@ -2839,7 +2832,7 @@ export const ListProjectsInstancesClustersRequest =
 
 export type ListProjectsInstancesClustersResponse = ListClustersResponse;
 export const ListProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListClustersResponse;
+  /*@__PURE__*/ ListClustersResponse;
 
 export type ListProjectsInstancesClustersError =
   | DefaultErrors
@@ -2852,7 +2845,7 @@ export const listProjectsInstancesClusters: API.PaginatedOperationMethod<
   ListProjectsInstancesClustersResponse,
   ListProjectsInstancesClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesClustersRequest,
   output: ListProjectsInstancesClustersResponse,
   errors: [NotFound, Forbidden],
@@ -2870,7 +2863,7 @@ export interface UpdateProjectsInstancesClustersRequest {
 }
 
 export const UpdateProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Cluster).pipe(T.HttpBody()),
   }).pipe(
@@ -2879,8 +2872,7 @@ export const UpdateProjectsInstancesClustersRequest =
   ) as unknown as Schema.Codec<UpdateProjectsInstancesClustersRequest>;
 
 export type UpdateProjectsInstancesClustersResponse = Operation;
-export const UpdateProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const UpdateProjectsInstancesClustersResponse = /*@__PURE__*/ Operation;
 
 export type UpdateProjectsInstancesClustersError =
   | DefaultErrors
@@ -2895,7 +2887,7 @@ export const updateProjectsInstancesClusters: API.OperationMethod<
   UpdateProjectsInstancesClustersResponse,
   UpdateProjectsInstancesClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectsInstancesClustersRequest,
   output: UpdateProjectsInstancesClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2907,7 +2899,7 @@ export interface GetMemoryLayerProjectsInstancesClustersRequest {
 }
 
 export const GetMemoryLayerProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -2916,7 +2908,7 @@ export const GetMemoryLayerProjectsInstancesClustersRequest =
 
 export type GetMemoryLayerProjectsInstancesClustersResponse = MemoryLayer;
 export const GetMemoryLayerProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ MemoryLayer;
+  /*@__PURE__*/ MemoryLayer;
 
 export type GetMemoryLayerProjectsInstancesClustersError =
   | DefaultErrors
@@ -2929,7 +2921,7 @@ export const getMemoryLayerProjectsInstancesClusters: API.OperationMethod<
   GetMemoryLayerProjectsInstancesClustersResponse,
   GetMemoryLayerProjectsInstancesClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMemoryLayerProjectsInstancesClustersRequest,
   output: GetMemoryLayerProjectsInstancesClustersResponse,
   errors: [NotFound, Forbidden],
@@ -2941,7 +2933,7 @@ export interface GetProjectsInstancesClustersRequest {
 }
 
 export const GetProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -2949,8 +2941,7 @@ export const GetProjectsInstancesClustersRequest =
   ) as unknown as Schema.Codec<GetProjectsInstancesClustersRequest>;
 
 export type GetProjectsInstancesClustersResponse = Cluster;
-export const GetProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Cluster;
+export const GetProjectsInstancesClustersResponse = /*@__PURE__*/ Cluster;
 
 export type GetProjectsInstancesClustersError =
   | DefaultErrors
@@ -2963,7 +2954,7 @@ export const getProjectsInstancesClusters: API.OperationMethod<
   GetProjectsInstancesClustersResponse,
   GetProjectsInstancesClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesClustersRequest,
   output: GetProjectsInstancesClustersResponse,
   errors: [NotFound, Forbidden],
@@ -2979,7 +2970,7 @@ export interface PartialUpdateClusterProjectsInstancesClustersRequest {
 }
 
 export const PartialUpdateClusterProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Cluster).pipe(T.HttpBody()),
@@ -2990,7 +2981,7 @@ export const PartialUpdateClusterProjectsInstancesClustersRequest =
 
 export type PartialUpdateClusterProjectsInstancesClustersResponse = Operation;
 export const PartialUpdateClusterProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PartialUpdateClusterProjectsInstancesClustersError =
   | DefaultErrors
@@ -3005,7 +2996,7 @@ export const partialUpdateClusterProjectsInstancesClusters: API.OperationMethod<
   PartialUpdateClusterProjectsInstancesClustersResponse,
   PartialUpdateClusterProjectsInstancesClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PartialUpdateClusterProjectsInstancesClustersRequest,
   output: PartialUpdateClusterProjectsInstancesClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3017,7 +3008,7 @@ export interface DeleteProjectsInstancesClustersRequest {
 }
 
 export const DeleteProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
@@ -3025,8 +3016,7 @@ export const DeleteProjectsInstancesClustersRequest =
   ) as unknown as Schema.Codec<DeleteProjectsInstancesClustersRequest>;
 
 export type DeleteProjectsInstancesClustersResponse = Empty;
-export const DeleteProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsInstancesClustersResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsInstancesClustersError =
   | DefaultErrors
@@ -3041,7 +3031,7 @@ export const deleteProjectsInstancesClusters: API.OperationMethod<
   DeleteProjectsInstancesClustersResponse,
   DeleteProjectsInstancesClustersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesClustersRequest,
   output: DeleteProjectsInstancesClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3061,7 +3051,7 @@ export interface ListProjectsInstancesClustersHotTabletsRequest {
 }
 
 export const ListProjectsInstancesClustersHotTabletsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
@@ -3075,7 +3065,7 @@ export const ListProjectsInstancesClustersHotTabletsRequest =
 export type ListProjectsInstancesClustersHotTabletsResponse =
   ListHotTabletsResponse;
 export const ListProjectsInstancesClustersHotTabletsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListHotTabletsResponse;
+  /*@__PURE__*/ ListHotTabletsResponse;
 
 export type ListProjectsInstancesClustersHotTabletsError =
   | DefaultErrors
@@ -3088,7 +3078,7 @@ export const listProjectsInstancesClustersHotTablets: API.PaginatedOperationMeth
   ListProjectsInstancesClustersHotTabletsResponse,
   ListProjectsInstancesClustersHotTabletsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesClustersHotTabletsRequest,
   output: ListProjectsInstancesClustersHotTabletsResponse,
   errors: [NotFound, Forbidden],
@@ -3108,7 +3098,7 @@ export interface ListProjectsInstancesClustersMemoryLayersRequest {
 }
 
 export const ListProjectsInstancesClustersMemoryLayersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -3120,7 +3110,7 @@ export const ListProjectsInstancesClustersMemoryLayersRequest =
 export type ListProjectsInstancesClustersMemoryLayersResponse =
   ListMemoryLayersResponse;
 export const ListProjectsInstancesClustersMemoryLayersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListMemoryLayersResponse;
+  /*@__PURE__*/ ListMemoryLayersResponse;
 
 export type ListProjectsInstancesClustersMemoryLayersError =
   | DefaultErrors
@@ -3133,7 +3123,7 @@ export const listProjectsInstancesClustersMemoryLayers: API.PaginatedOperationMe
   ListProjectsInstancesClustersMemoryLayersResponse,
   ListProjectsInstancesClustersMemoryLayersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesClustersMemoryLayersRequest,
   output: ListProjectsInstancesClustersMemoryLayersResponse,
   errors: [NotFound, Forbidden],
@@ -3153,7 +3143,7 @@ export interface PatchProjectsInstancesClustersBackupsRequest {
 }
 
 export const PatchProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Backup).pipe(T.HttpBody()),
@@ -3164,7 +3154,7 @@ export const PatchProjectsInstancesClustersBackupsRequest =
 
 export type PatchProjectsInstancesClustersBackupsResponse = Backup;
 export const PatchProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Backup;
+  /*@__PURE__*/ Backup;
 
 export type PatchProjectsInstancesClustersBackupsError =
   | DefaultErrors
@@ -3179,7 +3169,7 @@ export const patchProjectsInstancesClustersBackups: API.OperationMethod<
   PatchProjectsInstancesClustersBackupsResponse,
   PatchProjectsInstancesClustersBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesClustersBackupsRequest,
   output: PatchProjectsInstancesClustersBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3191,7 +3181,7 @@ export interface GetProjectsInstancesClustersBackupsRequest {
 }
 
 export const GetProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -3199,8 +3189,7 @@ export const GetProjectsInstancesClustersBackupsRequest =
   ) as unknown as Schema.Codec<GetProjectsInstancesClustersBackupsRequest>;
 
 export type GetProjectsInstancesClustersBackupsResponse = Backup;
-export const GetProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Backup;
+export const GetProjectsInstancesClustersBackupsResponse = /*@__PURE__*/ Backup;
 
 export type GetProjectsInstancesClustersBackupsError =
   | DefaultErrors
@@ -3213,7 +3202,7 @@ export const getProjectsInstancesClustersBackups: API.OperationMethod<
   GetProjectsInstancesClustersBackupsResponse,
   GetProjectsInstancesClustersBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesClustersBackupsRequest,
   output: GetProjectsInstancesClustersBackupsResponse,
   errors: [NotFound, Forbidden],
@@ -3227,7 +3216,7 @@ export interface SetIamPolicyProjectsInstancesClustersBackupsRequest {
 }
 
 export const SetIamPolicyProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3241,7 +3230,7 @@ export const SetIamPolicyProjectsInstancesClustersBackupsRequest =
 
 export type SetIamPolicyProjectsInstancesClustersBackupsResponse = Policy;
 export const SetIamPolicyProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsInstancesClustersBackupsError =
   | DefaultErrors
@@ -3256,7 +3245,7 @@ export const setIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
   SetIamPolicyProjectsInstancesClustersBackupsResponse,
   SetIamPolicyProjectsInstancesClustersBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesClustersBackupsRequest,
   output: SetIamPolicyProjectsInstancesClustersBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3268,7 +3257,7 @@ export interface DeleteProjectsInstancesClustersBackupsRequest {
 }
 
 export const DeleteProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
@@ -3277,7 +3266,7 @@ export const DeleteProjectsInstancesClustersBackupsRequest =
 
 export type DeleteProjectsInstancesClustersBackupsResponse = Empty;
 export const DeleteProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteProjectsInstancesClustersBackupsError =
   | DefaultErrors
@@ -3292,7 +3281,7 @@ export const deleteProjectsInstancesClustersBackups: API.OperationMethod<
   DeleteProjectsInstancesClustersBackupsResponse,
   DeleteProjectsInstancesClustersBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesClustersBackupsRequest,
   output: DeleteProjectsInstancesClustersBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3306,7 +3295,7 @@ export interface GetIamPolicyProjectsInstancesClustersBackupsRequest {
 }
 
 export const GetIamPolicyProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3320,7 +3309,7 @@ export const GetIamPolicyProjectsInstancesClustersBackupsRequest =
 
 export type GetIamPolicyProjectsInstancesClustersBackupsResponse = Policy;
 export const GetIamPolicyProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsInstancesClustersBackupsError =
   | DefaultErrors
@@ -3335,7 +3324,7 @@ export const getIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
   GetIamPolicyProjectsInstancesClustersBackupsResponse,
   GetIamPolicyProjectsInstancesClustersBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesClustersBackupsRequest,
   output: GetIamPolicyProjectsInstancesClustersBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3351,7 +3340,7 @@ export interface CreateProjectsInstancesClustersBackupsRequest {
 }
 
 export const CreateProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     backupId: Schema.optional(Schema.String).pipe(T.HttpQuery("backupId")),
     body: Schema.optional(Backup).pipe(T.HttpBody()),
@@ -3362,7 +3351,7 @@ export const CreateProjectsInstancesClustersBackupsRequest =
 
 export type CreateProjectsInstancesClustersBackupsResponse = Operation;
 export const CreateProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsInstancesClustersBackupsError =
   | DefaultErrors
@@ -3377,7 +3366,7 @@ export const createProjectsInstancesClustersBackups: API.OperationMethod<
   CreateProjectsInstancesClustersBackupsResponse,
   CreateProjectsInstancesClustersBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesClustersBackupsRequest,
   output: CreateProjectsInstancesClustersBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3397,7 +3386,7 @@ export interface ListProjectsInstancesClustersBackupsRequest {
 }
 
 export const ListProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -3410,7 +3399,7 @@ export const ListProjectsInstancesClustersBackupsRequest =
 
 export type ListProjectsInstancesClustersBackupsResponse = ListBackupsResponse;
 export const ListProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
+  /*@__PURE__*/ ListBackupsResponse;
 
 export type ListProjectsInstancesClustersBackupsError =
   | DefaultErrors
@@ -3423,7 +3412,7 @@ export const listProjectsInstancesClustersBackups: API.PaginatedOperationMethod<
   ListProjectsInstancesClustersBackupsResponse,
   ListProjectsInstancesClustersBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesClustersBackupsRequest,
   output: ListProjectsInstancesClustersBackupsResponse,
   errors: [NotFound, Forbidden],
@@ -3441,7 +3430,7 @@ export interface CopyProjectsInstancesClustersBackupsRequest {
 }
 
 export const CopyProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CopyBackupRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3455,7 +3444,7 @@ export const CopyProjectsInstancesClustersBackupsRequest =
 
 export type CopyProjectsInstancesClustersBackupsResponse = Operation;
 export const CopyProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CopyProjectsInstancesClustersBackupsError =
   | DefaultErrors
@@ -3470,7 +3459,7 @@ export const copyProjectsInstancesClustersBackups: API.OperationMethod<
   CopyProjectsInstancesClustersBackupsResponse,
   CopyProjectsInstancesClustersBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyProjectsInstancesClustersBackupsRequest,
   output: CopyProjectsInstancesClustersBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3484,7 +3473,7 @@ export interface TestIamPermissionsProjectsInstancesClustersBackupsRequest {
 }
 
 export const TestIamPermissionsProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3499,7 +3488,7 @@ export const TestIamPermissionsProjectsInstancesClustersBackupsRequest =
 export type TestIamPermissionsProjectsInstancesClustersBackupsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesClustersBackupsError =
   | DefaultErrors
@@ -3514,7 +3503,7 @@ export const testIamPermissionsProjectsInstancesClustersBackups: API.OperationMe
   TestIamPermissionsProjectsInstancesClustersBackupsResponse,
   TestIamPermissionsProjectsInstancesClustersBackupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesClustersBackupsRequest,
   output: TestIamPermissionsProjectsInstancesClustersBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3530,7 +3519,7 @@ export interface PatchProjectsInstancesMaterializedViewsRequest {
 }
 
 export const PatchProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(MaterializedView).pipe(T.HttpBody()),
@@ -3541,7 +3530,7 @@ export const PatchProjectsInstancesMaterializedViewsRequest =
 
 export type PatchProjectsInstancesMaterializedViewsResponse = Operation;
 export const PatchProjectsInstancesMaterializedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsInstancesMaterializedViewsError =
   | DefaultErrors
@@ -3556,7 +3545,7 @@ export const patchProjectsInstancesMaterializedViews: API.OperationMethod<
   PatchProjectsInstancesMaterializedViewsResponse,
   PatchProjectsInstancesMaterializedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesMaterializedViewsRequest,
   output: PatchProjectsInstancesMaterializedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3570,7 +3559,7 @@ export interface SetIamPolicyProjectsInstancesMaterializedViewsRequest {
 }
 
 export const SetIamPolicyProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3584,7 +3573,7 @@ export const SetIamPolicyProjectsInstancesMaterializedViewsRequest =
 
 export type SetIamPolicyProjectsInstancesMaterializedViewsResponse = Policy;
 export const SetIamPolicyProjectsInstancesMaterializedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsInstancesMaterializedViewsError =
   | DefaultErrors
@@ -3599,7 +3588,7 @@ export const setIamPolicyProjectsInstancesMaterializedViews: API.OperationMethod
   SetIamPolicyProjectsInstancesMaterializedViewsResponse,
   SetIamPolicyProjectsInstancesMaterializedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesMaterializedViewsRequest,
   output: SetIamPolicyProjectsInstancesMaterializedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3618,7 +3607,7 @@ export interface GetProjectsInstancesMaterializedViewsRequest {
 }
 
 export const GetProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
@@ -3628,7 +3617,7 @@ export const GetProjectsInstancesMaterializedViewsRequest =
 
 export type GetProjectsInstancesMaterializedViewsResponse = MaterializedView;
 export const GetProjectsInstancesMaterializedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ MaterializedView;
+  /*@__PURE__*/ MaterializedView;
 
 export type GetProjectsInstancesMaterializedViewsError =
   | DefaultErrors
@@ -3641,7 +3630,7 @@ export const getProjectsInstancesMaterializedViews: API.OperationMethod<
   GetProjectsInstancesMaterializedViewsResponse,
   GetProjectsInstancesMaterializedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesMaterializedViewsRequest,
   output: GetProjectsInstancesMaterializedViewsResponse,
   errors: [NotFound, Forbidden],
@@ -3655,7 +3644,7 @@ export interface GetIamPolicyProjectsInstancesMaterializedViewsRequest {
 }
 
 export const GetIamPolicyProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3669,7 +3658,7 @@ export const GetIamPolicyProjectsInstancesMaterializedViewsRequest =
 
 export type GetIamPolicyProjectsInstancesMaterializedViewsResponse = Policy;
 export const GetIamPolicyProjectsInstancesMaterializedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsInstancesMaterializedViewsError =
   | DefaultErrors
@@ -3684,7 +3673,7 @@ export const getIamPolicyProjectsInstancesMaterializedViews: API.OperationMethod
   GetIamPolicyProjectsInstancesMaterializedViewsResponse,
   GetIamPolicyProjectsInstancesMaterializedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesMaterializedViewsRequest,
   output: GetIamPolicyProjectsInstancesMaterializedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3698,7 +3687,7 @@ export interface DeleteProjectsInstancesMaterializedViewsRequest {
 }
 
 export const DeleteProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
@@ -3708,7 +3697,7 @@ export const DeleteProjectsInstancesMaterializedViewsRequest =
 
 export type DeleteProjectsInstancesMaterializedViewsResponse = Empty;
 export const DeleteProjectsInstancesMaterializedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteProjectsInstancesMaterializedViewsError =
   | DefaultErrors
@@ -3723,7 +3712,7 @@ export const deleteProjectsInstancesMaterializedViews: API.OperationMethod<
   DeleteProjectsInstancesMaterializedViewsResponse,
   DeleteProjectsInstancesMaterializedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesMaterializedViewsRequest,
   output: DeleteProjectsInstancesMaterializedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3737,7 +3726,7 @@ export interface TestIamPermissionsProjectsInstancesMaterializedViewsRequest {
 }
 
 export const TestIamPermissionsProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3752,7 +3741,7 @@ export const TestIamPermissionsProjectsInstancesMaterializedViewsRequest =
 export type TestIamPermissionsProjectsInstancesMaterializedViewsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsInstancesMaterializedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesMaterializedViewsError =
   | DefaultErrors
@@ -3767,7 +3756,7 @@ export const testIamPermissionsProjectsInstancesMaterializedViews: API.Operation
   TestIamPermissionsProjectsInstancesMaterializedViewsResponse,
   TestIamPermissionsProjectsInstancesMaterializedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesMaterializedViewsRequest,
   output: TestIamPermissionsProjectsInstancesMaterializedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3783,7 +3772,7 @@ export interface CreateProjectsInstancesMaterializedViewsRequest {
 }
 
 export const CreateProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     materializedViewId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("materializedViewId"),
@@ -3800,7 +3789,7 @@ export const CreateProjectsInstancesMaterializedViewsRequest =
 
 export type CreateProjectsInstancesMaterializedViewsResponse = Operation;
 export const CreateProjectsInstancesMaterializedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsInstancesMaterializedViewsError =
   | DefaultErrors
@@ -3815,7 +3804,7 @@ export const createProjectsInstancesMaterializedViews: API.OperationMethod<
   CreateProjectsInstancesMaterializedViewsResponse,
   CreateProjectsInstancesMaterializedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesMaterializedViewsRequest,
   output: CreateProjectsInstancesMaterializedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3838,7 +3827,7 @@ export interface ListProjectsInstancesMaterializedViewsRequest {
 }
 
 export const ListProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -3851,7 +3840,7 @@ export const ListProjectsInstancesMaterializedViewsRequest =
 export type ListProjectsInstancesMaterializedViewsResponse =
   ListMaterializedViewsResponse;
 export const ListProjectsInstancesMaterializedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListMaterializedViewsResponse;
+  /*@__PURE__*/ ListMaterializedViewsResponse;
 
 export type ListProjectsInstancesMaterializedViewsError =
   | DefaultErrors
@@ -3864,7 +3853,7 @@ export const listProjectsInstancesMaterializedViews: API.PaginatedOperationMetho
   ListProjectsInstancesMaterializedViewsResponse,
   ListProjectsInstancesMaterializedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesMaterializedViewsRequest,
   output: ListProjectsInstancesMaterializedViewsResponse,
   errors: [NotFound, Forbidden],
@@ -3882,7 +3871,7 @@ export interface GetIamPolicyProjectsInstancesLogicalViewsRequest {
 }
 
 export const GetIamPolicyProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3896,7 +3885,7 @@ export const GetIamPolicyProjectsInstancesLogicalViewsRequest =
 
 export type GetIamPolicyProjectsInstancesLogicalViewsResponse = Policy;
 export const GetIamPolicyProjectsInstancesLogicalViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsInstancesLogicalViewsError =
   | DefaultErrors
@@ -3911,7 +3900,7 @@ export const getIamPolicyProjectsInstancesLogicalViews: API.OperationMethod<
   GetIamPolicyProjectsInstancesLogicalViewsResponse,
   GetIamPolicyProjectsInstancesLogicalViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesLogicalViewsRequest,
   output: GetIamPolicyProjectsInstancesLogicalViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3925,7 +3914,7 @@ export interface DeleteProjectsInstancesLogicalViewsRequest {
 }
 
 export const DeleteProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
@@ -3934,8 +3923,7 @@ export const DeleteProjectsInstancesLogicalViewsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsInstancesLogicalViewsRequest>;
 
 export type DeleteProjectsInstancesLogicalViewsResponse = Empty;
-export const DeleteProjectsInstancesLogicalViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsInstancesLogicalViewsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsInstancesLogicalViewsError =
   | DefaultErrors
@@ -3950,7 +3938,7 @@ export const deleteProjectsInstancesLogicalViews: API.OperationMethod<
   DeleteProjectsInstancesLogicalViewsResponse,
   DeleteProjectsInstancesLogicalViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesLogicalViewsRequest,
   output: DeleteProjectsInstancesLogicalViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3966,7 +3954,7 @@ export interface PatchProjectsInstancesLogicalViewsRequest {
 }
 
 export const PatchProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(LogicalView).pipe(T.HttpBody()),
@@ -3977,7 +3965,7 @@ export const PatchProjectsInstancesLogicalViewsRequest =
 
 export type PatchProjectsInstancesLogicalViewsResponse = Operation;
 export const PatchProjectsInstancesLogicalViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsInstancesLogicalViewsError =
   | DefaultErrors
@@ -3992,7 +3980,7 @@ export const patchProjectsInstancesLogicalViews: API.OperationMethod<
   PatchProjectsInstancesLogicalViewsResponse,
   PatchProjectsInstancesLogicalViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesLogicalViewsRequest,
   output: PatchProjectsInstancesLogicalViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4006,7 +3994,7 @@ export interface SetIamPolicyProjectsInstancesLogicalViewsRequest {
 }
 
 export const SetIamPolicyProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4020,7 +4008,7 @@ export const SetIamPolicyProjectsInstancesLogicalViewsRequest =
 
 export type SetIamPolicyProjectsInstancesLogicalViewsResponse = Policy;
 export const SetIamPolicyProjectsInstancesLogicalViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsInstancesLogicalViewsError =
   | DefaultErrors
@@ -4035,7 +4023,7 @@ export const setIamPolicyProjectsInstancesLogicalViews: API.OperationMethod<
   SetIamPolicyProjectsInstancesLogicalViewsResponse,
   SetIamPolicyProjectsInstancesLogicalViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesLogicalViewsRequest,
   output: SetIamPolicyProjectsInstancesLogicalViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4047,7 +4035,7 @@ export interface GetProjectsInstancesLogicalViewsRequest {
 }
 
 export const GetProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -4056,7 +4044,7 @@ export const GetProjectsInstancesLogicalViewsRequest =
 
 export type GetProjectsInstancesLogicalViewsResponse = LogicalView;
 export const GetProjectsInstancesLogicalViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LogicalView;
+  /*@__PURE__*/ LogicalView;
 
 export type GetProjectsInstancesLogicalViewsError =
   | DefaultErrors
@@ -4069,7 +4057,7 @@ export const getProjectsInstancesLogicalViews: API.OperationMethod<
   GetProjectsInstancesLogicalViewsResponse,
   GetProjectsInstancesLogicalViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesLogicalViewsRequest,
   output: GetProjectsInstancesLogicalViewsResponse,
   errors: [NotFound, Forbidden],
@@ -4083,7 +4071,7 @@ export interface TestIamPermissionsProjectsInstancesLogicalViewsRequest {
 }
 
 export const TestIamPermissionsProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4098,7 +4086,7 @@ export const TestIamPermissionsProjectsInstancesLogicalViewsRequest =
 export type TestIamPermissionsProjectsInstancesLogicalViewsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsInstancesLogicalViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesLogicalViewsError =
   | DefaultErrors
@@ -4113,7 +4101,7 @@ export const testIamPermissionsProjectsInstancesLogicalViews: API.OperationMetho
   TestIamPermissionsProjectsInstancesLogicalViewsResponse,
   TestIamPermissionsProjectsInstancesLogicalViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesLogicalViewsRequest,
   output: TestIamPermissionsProjectsInstancesLogicalViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4129,7 +4117,7 @@ export interface CreateProjectsInstancesLogicalViewsRequest {
 }
 
 export const CreateProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     logicalViewId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("logicalViewId"),
@@ -4146,7 +4134,7 @@ export const CreateProjectsInstancesLogicalViewsRequest =
 
 export type CreateProjectsInstancesLogicalViewsResponse = Operation;
 export const CreateProjectsInstancesLogicalViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsInstancesLogicalViewsError =
   | DefaultErrors
@@ -4161,7 +4149,7 @@ export const createProjectsInstancesLogicalViews: API.OperationMethod<
   CreateProjectsInstancesLogicalViewsResponse,
   CreateProjectsInstancesLogicalViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesLogicalViewsRequest,
   output: CreateProjectsInstancesLogicalViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4177,7 +4165,7 @@ export interface ListProjectsInstancesLogicalViewsRequest {
 }
 
 export const ListProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -4189,7 +4177,7 @@ export const ListProjectsInstancesLogicalViewsRequest =
 export type ListProjectsInstancesLogicalViewsResponse =
   ListLogicalViewsResponse;
 export const ListProjectsInstancesLogicalViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLogicalViewsResponse;
+  /*@__PURE__*/ ListLogicalViewsResponse;
 
 export type ListProjectsInstancesLogicalViewsError =
   | DefaultErrors
@@ -4202,7 +4190,7 @@ export const listProjectsInstancesLogicalViews: API.PaginatedOperationMethod<
   ListProjectsInstancesLogicalViewsResponse,
   ListProjectsInstancesLogicalViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesLogicalViewsRequest,
   output: ListProjectsInstancesLogicalViewsResponse,
   errors: [NotFound, Forbidden],
@@ -4224,7 +4212,7 @@ export interface CreateProjectsInstancesAppProfilesRequest {
 }
 
 export const CreateProjectsInstancesAppProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appProfileId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("appProfileId"),
     ),
@@ -4240,7 +4228,7 @@ export const CreateProjectsInstancesAppProfilesRequest =
 
 export type CreateProjectsInstancesAppProfilesResponse = AppProfile;
 export const CreateProjectsInstancesAppProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AppProfile;
+  /*@__PURE__*/ AppProfile;
 
 export type CreateProjectsInstancesAppProfilesError =
   | DefaultErrors
@@ -4255,7 +4243,7 @@ export const createProjectsInstancesAppProfiles: API.OperationMethod<
   CreateProjectsInstancesAppProfilesResponse,
   CreateProjectsInstancesAppProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesAppProfilesRequest,
   output: CreateProjectsInstancesAppProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4271,7 +4259,7 @@ export interface ListProjectsInstancesAppProfilesRequest {
 }
 
 export const ListProjectsInstancesAppProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -4282,7 +4270,7 @@ export const ListProjectsInstancesAppProfilesRequest =
 
 export type ListProjectsInstancesAppProfilesResponse = ListAppProfilesResponse;
 export const ListProjectsInstancesAppProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAppProfilesResponse;
+  /*@__PURE__*/ ListAppProfilesResponse;
 
 export type ListProjectsInstancesAppProfilesError =
   | DefaultErrors
@@ -4295,7 +4283,7 @@ export const listProjectsInstancesAppProfiles: API.PaginatedOperationMethod<
   ListProjectsInstancesAppProfilesResponse,
   ListProjectsInstancesAppProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesAppProfilesRequest,
   output: ListProjectsInstancesAppProfilesResponse,
   errors: [NotFound, Forbidden],
@@ -4311,7 +4299,7 @@ export interface GetProjectsInstancesAppProfilesRequest {
 }
 
 export const GetProjectsInstancesAppProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -4319,8 +4307,7 @@ export const GetProjectsInstancesAppProfilesRequest =
   ) as unknown as Schema.Codec<GetProjectsInstancesAppProfilesRequest>;
 
 export type GetProjectsInstancesAppProfilesResponse = AppProfile;
-export const GetProjectsInstancesAppProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AppProfile;
+export const GetProjectsInstancesAppProfilesResponse = /*@__PURE__*/ AppProfile;
 
 export type GetProjectsInstancesAppProfilesError =
   | DefaultErrors
@@ -4333,7 +4320,7 @@ export const getProjectsInstancesAppProfiles: API.OperationMethod<
   GetProjectsInstancesAppProfilesResponse,
   GetProjectsInstancesAppProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesAppProfilesRequest,
   output: GetProjectsInstancesAppProfilesResponse,
   errors: [NotFound, Forbidden],
@@ -4351,7 +4338,7 @@ export interface PatchProjectsInstancesAppProfilesRequest {
 }
 
 export const PatchProjectsInstancesAppProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
@@ -4365,7 +4352,7 @@ export const PatchProjectsInstancesAppProfilesRequest =
 
 export type PatchProjectsInstancesAppProfilesResponse = Operation;
 export const PatchProjectsInstancesAppProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsInstancesAppProfilesError =
   | DefaultErrors
@@ -4380,7 +4367,7 @@ export const patchProjectsInstancesAppProfiles: API.OperationMethod<
   PatchProjectsInstancesAppProfilesResponse,
   PatchProjectsInstancesAppProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesAppProfilesRequest,
   output: PatchProjectsInstancesAppProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4394,7 +4381,7 @@ export interface DeleteProjectsInstancesAppProfilesRequest {
 }
 
 export const DeleteProjectsInstancesAppProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("ignoreWarnings"),
@@ -4405,8 +4392,7 @@ export const DeleteProjectsInstancesAppProfilesRequest =
   ) as unknown as Schema.Codec<DeleteProjectsInstancesAppProfilesRequest>;
 
 export type DeleteProjectsInstancesAppProfilesResponse = Empty;
-export const DeleteProjectsInstancesAppProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsInstancesAppProfilesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsInstancesAppProfilesError =
   | DefaultErrors
@@ -4421,7 +4407,7 @@ export const deleteProjectsInstancesAppProfiles: API.OperationMethod<
   DeleteProjectsInstancesAppProfilesResponse,
   DeleteProjectsInstancesAppProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesAppProfilesRequest,
   output: DeleteProjectsInstancesAppProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4435,7 +4421,7 @@ export interface GenerateConsistencyTokenProjectsInstancesTablesRequest {
 }
 
 export const GenerateConsistencyTokenProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GenerateConsistencyTokenRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4450,7 +4436,7 @@ export const GenerateConsistencyTokenProjectsInstancesTablesRequest =
 export type GenerateConsistencyTokenProjectsInstancesTablesResponse =
   GenerateConsistencyTokenResponse;
 export const GenerateConsistencyTokenProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenerateConsistencyTokenResponse;
+  /*@__PURE__*/ GenerateConsistencyTokenResponse;
 
 export type GenerateConsistencyTokenProjectsInstancesTablesError =
   | DefaultErrors
@@ -4465,7 +4451,7 @@ export const generateConsistencyTokenProjectsInstancesTables: API.OperationMetho
   GenerateConsistencyTokenProjectsInstancesTablesResponse,
   GenerateConsistencyTokenProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateConsistencyTokenProjectsInstancesTablesRequest,
   output: GenerateConsistencyTokenProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4479,7 +4465,7 @@ export interface CheckConsistencyProjectsInstancesTablesRequest {
 }
 
 export const CheckConsistencyProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CheckConsistencyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4494,7 +4480,7 @@ export const CheckConsistencyProjectsInstancesTablesRequest =
 export type CheckConsistencyProjectsInstancesTablesResponse =
   CheckConsistencyResponse;
 export const CheckConsistencyProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CheckConsistencyResponse;
+  /*@__PURE__*/ CheckConsistencyResponse;
 
 export type CheckConsistencyProjectsInstancesTablesError =
   | DefaultErrors
@@ -4509,7 +4495,7 @@ export const checkConsistencyProjectsInstancesTables: API.OperationMethod<
   CheckConsistencyProjectsInstancesTablesResponse,
   CheckConsistencyProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckConsistencyProjectsInstancesTablesRequest,
   output: CheckConsistencyProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4523,7 +4509,7 @@ export interface SetIamPolicyProjectsInstancesTablesRequest {
 }
 
 export const SetIamPolicyProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4536,8 +4522,7 @@ export const SetIamPolicyProjectsInstancesTablesRequest =
   ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesTablesRequest>;
 
 export type SetIamPolicyProjectsInstancesTablesResponse = Policy;
-export const SetIamPolicyProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const SetIamPolicyProjectsInstancesTablesResponse = /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsInstancesTablesError =
   | DefaultErrors
@@ -4552,7 +4537,7 @@ export const setIamPolicyProjectsInstancesTables: API.OperationMethod<
   SetIamPolicyProjectsInstancesTablesResponse,
   SetIamPolicyProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesTablesRequest,
   output: SetIamPolicyProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4564,7 +4549,7 @@ export interface DeleteProjectsInstancesTablesRequest {
 }
 
 export const DeleteProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
@@ -4572,8 +4557,7 @@ export const DeleteProjectsInstancesTablesRequest =
   ) as unknown as Schema.Codec<DeleteProjectsInstancesTablesRequest>;
 
 export type DeleteProjectsInstancesTablesResponse = Empty;
-export const DeleteProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsInstancesTablesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsInstancesTablesError =
   | DefaultErrors
@@ -4588,7 +4572,7 @@ export const deleteProjectsInstancesTables: API.OperationMethod<
   DeleteProjectsInstancesTablesResponse,
   DeleteProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesTablesRequest,
   output: DeleteProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4602,7 +4586,7 @@ export interface TestIamPermissionsProjectsInstancesTablesRequest {
 }
 
 export const TestIamPermissionsProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4617,7 +4601,7 @@ export const TestIamPermissionsProjectsInstancesTablesRequest =
 export type TestIamPermissionsProjectsInstancesTablesResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesTablesError =
   | DefaultErrors
@@ -4632,7 +4616,7 @@ export const testIamPermissionsProjectsInstancesTables: API.OperationMethod<
   TestIamPermissionsProjectsInstancesTablesResponse,
   TestIamPermissionsProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesTablesRequest,
   output: TestIamPermissionsProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4646,7 +4630,7 @@ export interface UndeleteProjectsInstancesTablesRequest {
 }
 
 export const UndeleteProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndeleteTableRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4655,8 +4639,7 @@ export const UndeleteProjectsInstancesTablesRequest =
   ) as unknown as Schema.Codec<UndeleteProjectsInstancesTablesRequest>;
 
 export type UndeleteProjectsInstancesTablesResponse = Operation;
-export const UndeleteProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const UndeleteProjectsInstancesTablesResponse = /*@__PURE__*/ Operation;
 
 export type UndeleteProjectsInstancesTablesError =
   | DefaultErrors
@@ -4671,7 +4654,7 @@ export const undeleteProjectsInstancesTables: API.OperationMethod<
   UndeleteProjectsInstancesTablesResponse,
   UndeleteProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeleteProjectsInstancesTablesRequest,
   output: UndeleteProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4689,7 +4672,7 @@ export interface PatchProjectsInstancesTablesRequest {
 }
 
 export const PatchProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
@@ -4702,8 +4685,7 @@ export const PatchProjectsInstancesTablesRequest =
   ) as unknown as Schema.Codec<PatchProjectsInstancesTablesRequest>;
 
 export type PatchProjectsInstancesTablesResponse = Operation;
-export const PatchProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchProjectsInstancesTablesResponse = /*@__PURE__*/ Operation;
 
 export type PatchProjectsInstancesTablesError =
   | DefaultErrors
@@ -4718,7 +4700,7 @@ export const patchProjectsInstancesTables: API.OperationMethod<
   PatchProjectsInstancesTablesResponse,
   PatchProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesTablesRequest,
   output: PatchProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4740,7 +4722,7 @@ export interface GetProjectsInstancesTablesRequest {
 }
 
 export const GetProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
@@ -4749,8 +4731,7 @@ export const GetProjectsInstancesTablesRequest =
   ) as unknown as Schema.Codec<GetProjectsInstancesTablesRequest>;
 
 export type GetProjectsInstancesTablesResponse = Table;
-export const GetProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Table;
+export const GetProjectsInstancesTablesResponse = /*@__PURE__*/ Table;
 
 export type GetProjectsInstancesTablesError =
   | DefaultErrors
@@ -4763,7 +4744,7 @@ export const getProjectsInstancesTables: API.OperationMethod<
   GetProjectsInstancesTablesResponse,
   GetProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesTablesRequest,
   output: GetProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden],
@@ -4777,7 +4758,7 @@ export interface DropRowRangeProjectsInstancesTablesRequest {
 }
 
 export const DropRowRangeProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DropRowRangeRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4786,8 +4767,7 @@ export const DropRowRangeProjectsInstancesTablesRequest =
   ) as unknown as Schema.Codec<DropRowRangeProjectsInstancesTablesRequest>;
 
 export type DropRowRangeProjectsInstancesTablesResponse = Empty;
-export const DropRowRangeProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DropRowRangeProjectsInstancesTablesResponse = /*@__PURE__*/ Empty;
 
 export type DropRowRangeProjectsInstancesTablesError =
   | DefaultErrors
@@ -4802,7 +4782,7 @@ export const dropRowRangeProjectsInstancesTables: API.OperationMethod<
   DropRowRangeProjectsInstancesTablesResponse,
   DropRowRangeProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DropRowRangeProjectsInstancesTablesRequest,
   output: DropRowRangeProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4816,7 +4796,7 @@ export interface RestoreProjectsInstancesTablesRequest {
 }
 
 export const RestoreProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(RestoreTableRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4829,8 +4809,7 @@ export const RestoreProjectsInstancesTablesRequest =
   ) as unknown as Schema.Codec<RestoreProjectsInstancesTablesRequest>;
 
 export type RestoreProjectsInstancesTablesResponse = Operation;
-export const RestoreProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const RestoreProjectsInstancesTablesResponse = /*@__PURE__*/ Operation;
 
 export type RestoreProjectsInstancesTablesError =
   | DefaultErrors
@@ -4845,7 +4824,7 @@ export const restoreProjectsInstancesTables: API.OperationMethod<
   RestoreProjectsInstancesTablesResponse,
   RestoreProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreProjectsInstancesTablesRequest,
   output: RestoreProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4859,7 +4838,7 @@ export interface ModifyColumnFamiliesProjectsInstancesTablesRequest {
 }
 
 export const ModifyColumnFamiliesProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ModifyColumnFamiliesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4873,7 +4852,7 @@ export const ModifyColumnFamiliesProjectsInstancesTablesRequest =
 
 export type ModifyColumnFamiliesProjectsInstancesTablesResponse = Table;
 export const ModifyColumnFamiliesProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Table;
+  /*@__PURE__*/ Table;
 
 export type ModifyColumnFamiliesProjectsInstancesTablesError =
   | DefaultErrors
@@ -4888,7 +4867,7 @@ export const modifyColumnFamiliesProjectsInstancesTables: API.OperationMethod<
   ModifyColumnFamiliesProjectsInstancesTablesResponse,
   ModifyColumnFamiliesProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyColumnFamiliesProjectsInstancesTablesRequest,
   output: ModifyColumnFamiliesProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4902,7 +4881,7 @@ export interface GetIamPolicyProjectsInstancesTablesRequest {
 }
 
 export const GetIamPolicyProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4915,8 +4894,7 @@ export const GetIamPolicyProjectsInstancesTablesRequest =
   ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesTablesRequest>;
 
 export type GetIamPolicyProjectsInstancesTablesResponse = Policy;
-export const GetIamPolicyProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetIamPolicyProjectsInstancesTablesResponse = /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsInstancesTablesError =
   | DefaultErrors
@@ -4931,7 +4909,7 @@ export const getIamPolicyProjectsInstancesTables: API.OperationMethod<
   GetIamPolicyProjectsInstancesTablesResponse,
   GetIamPolicyProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesTablesRequest,
   output: GetIamPolicyProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4945,7 +4923,7 @@ export interface CreateProjectsInstancesTablesRequest {
 }
 
 export const CreateProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateTableRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4954,8 +4932,7 @@ export const CreateProjectsInstancesTablesRequest =
   ) as unknown as Schema.Codec<CreateProjectsInstancesTablesRequest>;
 
 export type CreateProjectsInstancesTablesResponse = Table;
-export const CreateProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Table;
+export const CreateProjectsInstancesTablesResponse = /*@__PURE__*/ Table;
 
 export type CreateProjectsInstancesTablesError =
   | DefaultErrors
@@ -4970,7 +4947,7 @@ export const createProjectsInstancesTables: API.OperationMethod<
   CreateProjectsInstancesTablesResponse,
   CreateProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesTablesRequest,
   output: CreateProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4996,7 +4973,7 @@ export interface ListProjectsInstancesTablesRequest {
 }
 
 export const ListProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -5008,7 +4985,7 @@ export const ListProjectsInstancesTablesRequest =
 
 export type ListProjectsInstancesTablesResponse = ListTablesResponse;
 export const ListProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListTablesResponse;
+  /*@__PURE__*/ ListTablesResponse;
 
 export type ListProjectsInstancesTablesError =
   | DefaultErrors
@@ -5021,7 +4998,7 @@ export const listProjectsInstancesTables: API.PaginatedOperationMethod<
   ListProjectsInstancesTablesResponse,
   ListProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesTablesRequest,
   output: ListProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden],
@@ -5039,7 +5016,7 @@ export interface GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest {
 }
 
 export const GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5053,7 +5030,7 @@ export const GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest =
 
 export type GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse = Policy;
 export const GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsInstancesTablesAuthorizedViewsError =
   | DefaultErrors
@@ -5068,7 +5045,7 @@ export const getIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMe
   GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
   GetIamPolicyProjectsInstancesTablesAuthorizedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
   output: GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5082,7 +5059,7 @@ export interface DeleteProjectsInstancesTablesAuthorizedViewsRequest {
 }
 
 export const DeleteProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
@@ -5092,7 +5069,7 @@ export const DeleteProjectsInstancesTablesAuthorizedViewsRequest =
 
 export type DeleteProjectsInstancesTablesAuthorizedViewsResponse = Empty;
 export const DeleteProjectsInstancesTablesAuthorizedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteProjectsInstancesTablesAuthorizedViewsError =
   | DefaultErrors
@@ -5107,7 +5084,7 @@ export const deleteProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   DeleteProjectsInstancesTablesAuthorizedViewsResponse,
   DeleteProjectsInstancesTablesAuthorizedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesTablesAuthorizedViewsRequest,
   output: DeleteProjectsInstancesTablesAuthorizedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5125,7 +5102,7 @@ export interface PatchProjectsInstancesTablesAuthorizedViewsRequest {
 }
 
 export const PatchProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
@@ -5139,7 +5116,7 @@ export const PatchProjectsInstancesTablesAuthorizedViewsRequest =
 
 export type PatchProjectsInstancesTablesAuthorizedViewsResponse = Operation;
 export const PatchProjectsInstancesTablesAuthorizedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsInstancesTablesAuthorizedViewsError =
   | DefaultErrors
@@ -5154,7 +5131,7 @@ export const patchProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   PatchProjectsInstancesTablesAuthorizedViewsResponse,
   PatchProjectsInstancesTablesAuthorizedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesTablesAuthorizedViewsRequest,
   output: PatchProjectsInstancesTablesAuthorizedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5173,7 +5150,7 @@ export interface GetProjectsInstancesTablesAuthorizedViewsRequest {
 }
 
 export const GetProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
@@ -5183,7 +5160,7 @@ export const GetProjectsInstancesTablesAuthorizedViewsRequest =
 
 export type GetProjectsInstancesTablesAuthorizedViewsResponse = AuthorizedView;
 export const GetProjectsInstancesTablesAuthorizedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AuthorizedView;
+  /*@__PURE__*/ AuthorizedView;
 
 export type GetProjectsInstancesTablesAuthorizedViewsError =
   | DefaultErrors
@@ -5196,7 +5173,7 @@ export const getProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   GetProjectsInstancesTablesAuthorizedViewsResponse,
   GetProjectsInstancesTablesAuthorizedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesTablesAuthorizedViewsRequest,
   output: GetProjectsInstancesTablesAuthorizedViewsResponse,
   errors: [NotFound, Forbidden],
@@ -5210,7 +5187,7 @@ export interface SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest {
 }
 
 export const SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5224,7 +5201,7 @@ export const SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest =
 
 export type SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse = Policy;
 export const SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsInstancesTablesAuthorizedViewsError =
   | DefaultErrors
@@ -5239,7 +5216,7 @@ export const setIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMe
   SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
   SetIamPolicyProjectsInstancesTablesAuthorizedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
   output: SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5255,7 +5232,7 @@ export interface CreateProjectsInstancesTablesAuthorizedViewsRequest {
 }
 
 export const CreateProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     authorizedViewId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("authorizedViewId"),
@@ -5272,7 +5249,7 @@ export const CreateProjectsInstancesTablesAuthorizedViewsRequest =
 
 export type CreateProjectsInstancesTablesAuthorizedViewsResponse = Operation;
 export const CreateProjectsInstancesTablesAuthorizedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsInstancesTablesAuthorizedViewsError =
   | DefaultErrors
@@ -5287,7 +5264,7 @@ export const createProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
   CreateProjectsInstancesTablesAuthorizedViewsResponse,
   CreateProjectsInstancesTablesAuthorizedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesTablesAuthorizedViewsRequest,
   output: CreateProjectsInstancesTablesAuthorizedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5310,7 +5287,7 @@ export interface ListProjectsInstancesTablesAuthorizedViewsRequest {
 }
 
 export const ListProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
@@ -5323,7 +5300,7 @@ export const ListProjectsInstancesTablesAuthorizedViewsRequest =
 export type ListProjectsInstancesTablesAuthorizedViewsResponse =
   ListAuthorizedViewsResponse;
 export const ListProjectsInstancesTablesAuthorizedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedViewsResponse;
+  /*@__PURE__*/ ListAuthorizedViewsResponse;
 
 export type ListProjectsInstancesTablesAuthorizedViewsError =
   | DefaultErrors
@@ -5336,7 +5313,7 @@ export const listProjectsInstancesTablesAuthorizedViews: API.PaginatedOperationM
   ListProjectsInstancesTablesAuthorizedViewsResponse,
   ListProjectsInstancesTablesAuthorizedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesTablesAuthorizedViewsRequest,
   output: ListProjectsInstancesTablesAuthorizedViewsResponse,
   errors: [NotFound, Forbidden],
@@ -5354,7 +5331,7 @@ export interface TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest
 }
 
 export const TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5369,7 +5346,7 @@ export const TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest =
 export type TestIamPermissionsProjectsInstancesTablesAuthorizedViewsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsInstancesTablesAuthorizedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesTablesAuthorizedViewsError =
   | DefaultErrors
@@ -5384,7 +5361,7 @@ export const testIamPermissionsProjectsInstancesTablesAuthorizedViews: API.Opera
   TestIamPermissionsProjectsInstancesTablesAuthorizedViewsResponse,
   TestIamPermissionsProjectsInstancesTablesAuthorizedViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest,
   output: TestIamPermissionsProjectsInstancesTablesAuthorizedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5398,7 +5375,7 @@ export interface DeleteProjectsInstancesTablesSchemaBundlesRequest {
 }
 
 export const DeleteProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
@@ -5408,7 +5385,7 @@ export const DeleteProjectsInstancesTablesSchemaBundlesRequest =
 
 export type DeleteProjectsInstancesTablesSchemaBundlesResponse = Empty;
 export const DeleteProjectsInstancesTablesSchemaBundlesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteProjectsInstancesTablesSchemaBundlesError =
   | DefaultErrors
@@ -5423,7 +5400,7 @@ export const deleteProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   DeleteProjectsInstancesTablesSchemaBundlesResponse,
   DeleteProjectsInstancesTablesSchemaBundlesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesTablesSchemaBundlesRequest,
   output: DeleteProjectsInstancesTablesSchemaBundlesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5437,7 +5414,7 @@ export interface GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest {
 }
 
 export const GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5451,7 +5428,7 @@ export const GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest =
 
 export type GetIamPolicyProjectsInstancesTablesSchemaBundlesResponse = Policy;
 export const GetIamPolicyProjectsInstancesTablesSchemaBundlesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsInstancesTablesSchemaBundlesError =
   | DefaultErrors
@@ -5466,7 +5443,7 @@ export const getIamPolicyProjectsInstancesTablesSchemaBundles: API.OperationMeth
   GetIamPolicyProjectsInstancesTablesSchemaBundlesResponse,
   GetIamPolicyProjectsInstancesTablesSchemaBundlesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest,
   output: GetIamPolicyProjectsInstancesTablesSchemaBundlesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5480,7 +5457,7 @@ export interface SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest {
 }
 
 export const SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5494,7 +5471,7 @@ export const SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest =
 
 export type SetIamPolicyProjectsInstancesTablesSchemaBundlesResponse = Policy;
 export const SetIamPolicyProjectsInstancesTablesSchemaBundlesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsInstancesTablesSchemaBundlesError =
   | DefaultErrors
@@ -5509,7 +5486,7 @@ export const setIamPolicyProjectsInstancesTablesSchemaBundles: API.OperationMeth
   SetIamPolicyProjectsInstancesTablesSchemaBundlesResponse,
   SetIamPolicyProjectsInstancesTablesSchemaBundlesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest,
   output: SetIamPolicyProjectsInstancesTablesSchemaBundlesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5521,7 +5498,7 @@ export interface GetProjectsInstancesTablesSchemaBundlesRequest {
 }
 
 export const GetProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -5530,7 +5507,7 @@ export const GetProjectsInstancesTablesSchemaBundlesRequest =
 
 export type GetProjectsInstancesTablesSchemaBundlesResponse = SchemaBundle;
 export const GetProjectsInstancesTablesSchemaBundlesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SchemaBundle;
+  /*@__PURE__*/ SchemaBundle;
 
 export type GetProjectsInstancesTablesSchemaBundlesError =
   | DefaultErrors
@@ -5543,7 +5520,7 @@ export const getProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   GetProjectsInstancesTablesSchemaBundlesResponse,
   GetProjectsInstancesTablesSchemaBundlesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesTablesSchemaBundlesRequest,
   output: GetProjectsInstancesTablesSchemaBundlesResponse,
   errors: [NotFound, Forbidden],
@@ -5561,7 +5538,7 @@ export interface PatchProjectsInstancesTablesSchemaBundlesRequest {
 }
 
 export const PatchProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
@@ -5575,7 +5552,7 @@ export const PatchProjectsInstancesTablesSchemaBundlesRequest =
 
 export type PatchProjectsInstancesTablesSchemaBundlesResponse = Operation;
 export const PatchProjectsInstancesTablesSchemaBundlesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsInstancesTablesSchemaBundlesError =
   | DefaultErrors
@@ -5590,7 +5567,7 @@ export const patchProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   PatchProjectsInstancesTablesSchemaBundlesResponse,
   PatchProjectsInstancesTablesSchemaBundlesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesTablesSchemaBundlesRequest,
   output: PatchProjectsInstancesTablesSchemaBundlesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5604,7 +5581,7 @@ export interface TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest {
 }
 
 export const TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5619,7 +5596,7 @@ export const TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest =
 export type TestIamPermissionsProjectsInstancesTablesSchemaBundlesResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsInstancesTablesSchemaBundlesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesTablesSchemaBundlesError =
   | DefaultErrors
@@ -5634,7 +5611,7 @@ export const testIamPermissionsProjectsInstancesTablesSchemaBundles: API.Operati
   TestIamPermissionsProjectsInstancesTablesSchemaBundlesResponse,
   TestIamPermissionsProjectsInstancesTablesSchemaBundlesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest,
   output: TestIamPermissionsProjectsInstancesTablesSchemaBundlesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5650,7 +5627,7 @@ export interface CreateProjectsInstancesTablesSchemaBundlesRequest {
 }
 
 export const CreateProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     schemaBundleId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("schemaBundleId"),
@@ -5667,7 +5644,7 @@ export const CreateProjectsInstancesTablesSchemaBundlesRequest =
 
 export type CreateProjectsInstancesTablesSchemaBundlesResponse = Operation;
 export const CreateProjectsInstancesTablesSchemaBundlesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsInstancesTablesSchemaBundlesError =
   | DefaultErrors
@@ -5682,7 +5659,7 @@ export const createProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   CreateProjectsInstancesTablesSchemaBundlesResponse,
   CreateProjectsInstancesTablesSchemaBundlesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesTablesSchemaBundlesRequest,
   output: CreateProjectsInstancesTablesSchemaBundlesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5705,7 +5682,7 @@ export interface ListProjectsInstancesTablesSchemaBundlesRequest {
 }
 
 export const ListProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
@@ -5718,7 +5695,7 @@ export const ListProjectsInstancesTablesSchemaBundlesRequest =
 export type ListProjectsInstancesTablesSchemaBundlesResponse =
   ListSchemaBundlesResponse;
 export const ListProjectsInstancesTablesSchemaBundlesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSchemaBundlesResponse;
+  /*@__PURE__*/ ListSchemaBundlesResponse;
 
 export type ListProjectsInstancesTablesSchemaBundlesError =
   | DefaultErrors
@@ -5731,7 +5708,7 @@ export const listProjectsInstancesTablesSchemaBundles: API.PaginatedOperationMet
   ListProjectsInstancesTablesSchemaBundlesResponse,
   ListProjectsInstancesTablesSchemaBundlesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesTablesSchemaBundlesRequest,
   output: ListProjectsInstancesTablesSchemaBundlesResponse,
   errors: [NotFound, Forbidden],
@@ -5755,7 +5732,7 @@ export interface ListProjectsLocationsRequest {
 }
 
 export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -5770,7 +5747,7 @@ export const ListProjectsLocationsRequest =
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+  /*@__PURE__*/ ListLocationsResponse;
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -5780,7 +5757,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsResponse,
   ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -5795,7 +5772,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -5803,7 +5780,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -5813,7 +5790,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -5833,7 +5810,7 @@ export interface ListOperationsProjectsOperationsRequest {
 }
 
 export const ListOperationsProjectsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -5848,7 +5825,7 @@ export const ListOperationsProjectsOperationsRequest =
 
 export type ListOperationsProjectsOperationsResponse = ListOperationsResponse;
 export const ListOperationsProjectsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListOperationsProjectsOperationsError =
   | DefaultErrors
@@ -5861,7 +5838,7 @@ export const listOperationsProjectsOperations: API.PaginatedOperationMethod<
   ListOperationsProjectsOperationsResponse,
   ListOperationsProjectsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsProjectsOperationsRequest,
   output: ListOperationsProjectsOperationsResponse,
   errors: [NotFound, Forbidden],

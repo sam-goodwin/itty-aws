@@ -5,9 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export interface GetCurrentUserInput {}
-export const GetCurrentUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetCurrentUserInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/user" }),
 ) as unknown as Schema.Codec<GetCurrentUserInput>;
 
@@ -33,7 +31,7 @@ export interface GetCurrentUserOutput {
   directory_managed?: boolean | null;
   email_verified?: boolean | null;
 }
-export const GetCurrentUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCurrentUserOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   display_name: Schema.String,
   name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -65,7 +63,7 @@ export const GetCurrentUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Get the user associated with this service token
  */
-export const getCurrentUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getCurrentUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCurrentUserInput,
   outputSchema: GetCurrentUserOutput,
   errors: [Forbidden, NotFound] as const,

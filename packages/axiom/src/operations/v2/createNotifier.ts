@@ -29,7 +29,7 @@ export interface CreateNotifierInput {
   };
   updatedAt?: string;
 }
-export const CreateNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateNotifierInput = /*@__PURE__*/ Schema.Struct({
   createdAt: Schema.optional(Schema.String),
   createdBy: Schema.optional(Schema.String),
   disabledUntil: Schema.optional(Schema.String),
@@ -119,7 +119,7 @@ export interface CreateNotifierOutput {
   updatedAt?: string;
   id?: string;
 }
-export const CreateNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateNotifierOutput = /*@__PURE__*/ Schema.Struct({
   createdAt: Schema.optional(Schema.String),
   createdBy: Schema.optional(Schema.String),
   disabledUntil: Schema.optional(Schema.String),
@@ -187,7 +187,7 @@ export const CreateNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Creates a new notifier configuration for sending alerts through various channels (Slack, Email, etc)
  */
-export const createNotifier = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createNotifier = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateNotifierInput,
   outputSchema: CreateNotifierOutput,
   errors: [UnprocessableEntity] as const,

@@ -8,7 +8,7 @@ export interface DeleteProjectVPCEndpointInput {
   vpc_endpoint_id: string;
 }
 export const DeleteProjectVPCEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     vpc_endpoint_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const DeleteProjectVPCEndpointInput =
 // Output Schema
 export type DeleteProjectVPCEndpointOutput = void;
 export const DeleteProjectVPCEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteProjectVPCEndpointOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteProjectVPCEndpointOutput>;
 
 // The operation
 /**
@@ -32,9 +32,7 @@ export const DeleteProjectVPCEndpointOutput =
  * @param project_id - The Neon project ID
  * @param vpc_endpoint_id - The VPC endpoint ID
  */
-export const deleteProjectVPCEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteProjectVPCEndpointInput,
-    outputSchema: DeleteProjectVPCEndpointOutput,
-  }),
-);
+export const deleteProjectVPCEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteProjectVPCEndpointInput,
+  outputSchema: DeleteProjectVPCEndpointOutput,
+}));

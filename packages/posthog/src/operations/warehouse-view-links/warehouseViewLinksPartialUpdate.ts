@@ -37,7 +37,7 @@ export interface WarehouseViewLinksPartialUpdateInput {
   configuration?: unknown;
 }
 export const WarehouseViewLinksPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
@@ -120,7 +120,7 @@ export interface WarehouseViewLinksPartialUpdateOutput {
   configuration?: unknown;
 }
 export const WarehouseViewLinksPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
     created_by: Schema.Struct({
@@ -169,7 +169,7 @@ export const WarehouseViewLinksPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const warehouseViewLinksPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WarehouseViewLinksPartialUpdateInput,
     outputSchema: WarehouseViewLinksPartialUpdateOutput,
   }));

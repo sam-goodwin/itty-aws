@@ -231,7 +231,7 @@ export interface PostInvoicesInvoiceInput {
   transfer_data?: { amount?: number; destination: string } | "";
 }
 export const PostInvoicesInvoiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoice: Schema.String.pipe(T.PathParam()),
     account_tax_ids: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Literals([""])]),
@@ -2865,7 +2865,7 @@ export interface PostInvoicesInvoiceOutput {
   webhooks_delivered_at: number | null;
 }
 export const PostInvoicesInvoiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_country: Schema.NullOr(Schema.String),
     account_name: Schema.NullOr(Schema.String),
     account_tax_ids: Schema.NullOr(
@@ -4578,7 +4578,7 @@ export const PostInvoicesInvoiceOutput =
  * sending reminders for, or <a href="/docs/billing/invoices/reconciliation">automatically reconciling</a> invoices, pass
  * <code>auto_advance=false</code>.</p>
  */
-export const PostInvoicesInvoice = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostInvoicesInvoice = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostInvoicesInvoiceInput,
   outputSchema: PostInvoicesInvoiceOutput,
 }));

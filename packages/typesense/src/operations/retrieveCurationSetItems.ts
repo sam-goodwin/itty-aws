@@ -8,7 +8,7 @@ export interface RetrieveCurationSetItemsInput {
   curationSetName: string;
 }
 export const RetrieveCurationSetItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     curationSetName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/curation_sets/{curationSetName}/items" }),
@@ -36,7 +36,7 @@ export type RetrieveCurationSetItemsOutput = {
   id: string;
 }[];
 export const RetrieveCurationSetItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       rule: Schema.Struct({
         tags: Schema.optional(Schema.Array(Schema.String)),
@@ -80,10 +80,8 @@ export const RetrieveCurationSetItemsOutput =
  *
  * @param curationSetName - The name of the curation set to retrieve items for
  */
-export const retrieveCurationSetItems = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetrieveCurationSetItemsInput,
-    outputSchema: RetrieveCurationSetItemsOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const retrieveCurationSetItems = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetrieveCurationSetItemsInput,
+  outputSchema: RetrieveCurationSetItemsOutput,
+  errors: [NotFound] as const,
+}));

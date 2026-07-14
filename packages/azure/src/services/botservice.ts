@@ -39,7 +39,7 @@ export interface BotConnectionCreateInput {
   zones?: string[];
 }
 export const BotConnectionCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -102,7 +102,7 @@ export interface BotConnectionCreateOutput {
   zones?: string[];
 }
 export const BotConnectionCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -131,7 +131,7 @@ export const BotConnectionCreateOutput =
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const BotConnectionCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BotConnectionCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BotConnectionCreateInput,
   outputSchema: BotConnectionCreateOutput,
 }));
@@ -143,7 +143,7 @@ export interface BotConnectionDeleteInput {
   subscriptionId: string;
 }
 export const BotConnectionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -159,7 +159,7 @@ export const BotConnectionDeleteInput =
 // Output Schema
 export type BotConnectionDeleteOutput = void;
 export const BotConnectionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BotConnectionDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BotConnectionDeleteOutput>;
 
 // The operation
 /**
@@ -171,7 +171,7 @@ export const BotConnectionDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const BotConnectionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BotConnectionDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BotConnectionDeleteInput,
   outputSchema: BotConnectionDeleteOutput,
 }));
@@ -182,7 +182,7 @@ export interface BotConnectionGetInput {
   connectionName: string;
   subscriptionId: string;
 }
-export const BotConnectionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BotConnectionGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
@@ -207,26 +207,24 @@ export interface BotConnectionGetOutput {
   etag?: string;
   zones?: string[];
 }
-export const BotConnectionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["F0", "S1"]),
-        tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-      }),
-    ),
-    kind: Schema.optional(
-      Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-    ),
-    etag: Schema.optional(Schema.String),
-    zones: Schema.optional(Schema.Array(Schema.String)),
-  },
-) as unknown as Schema.Codec<BotConnectionGetOutput>;
+export const BotConnectionGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.Literals(["F0", "S1"]),
+      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
+    }),
+  ),
+  kind: Schema.optional(
+    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
+  ),
+  etag: Schema.optional(Schema.String),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+}) as unknown as Schema.Codec<BotConnectionGetOutput>;
 
 // The operation
 /**
@@ -238,7 +236,7 @@ export const BotConnectionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const BotConnectionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BotConnectionGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BotConnectionGetInput,
   outputSchema: BotConnectionGetOutput,
 }));
@@ -249,7 +247,7 @@ export interface BotConnectionListByBotServiceInput {
   subscriptionId: string;
 }
 export const BotConnectionListByBotServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -277,7 +275,7 @@ export interface BotConnectionListByBotServiceOutput {
   }[];
 }
 export const BotConnectionListByBotServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -313,7 +311,7 @@ export const BotConnectionListByBotServiceOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const BotConnectionListByBotService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BotConnectionListByBotServiceInput,
     outputSchema: BotConnectionListByBotServiceOutput,
   }));
@@ -322,7 +320,7 @@ export interface BotConnectionListServiceProvidersInput {
   subscriptionId: string;
 }
 export const BotConnectionListServiceProvidersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -355,7 +353,7 @@ export interface BotConnectionListServiceProvidersOutput {
   }[];
 }
 export const BotConnectionListServiceProvidersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -403,7 +401,7 @@ export const BotConnectionListServiceProvidersOutput =
  * @param subscriptionId - Azure Subscription ID.
  */
 export const BotConnectionListServiceProviders =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BotConnectionListServiceProvidersInput,
     outputSchema: BotConnectionListServiceProvidersOutput,
   }));
@@ -415,7 +413,7 @@ export interface BotConnectionListWithSecretsInput {
   subscriptionId: string;
 }
 export const BotConnectionListWithSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -441,7 +439,7 @@ export interface BotConnectionListWithSecretsOutput {
   zones?: string[];
 }
 export const BotConnectionListWithSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -471,7 +469,7 @@ export const BotConnectionListWithSecretsOutput =
  * @param subscriptionId - Azure Subscription ID.
  */
 export const BotConnectionListWithSecrets =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BotConnectionListWithSecretsInput,
     outputSchema: BotConnectionListWithSecretsOutput,
   }));
@@ -504,7 +502,7 @@ export interface BotConnectionUpdateInput {
   zones?: string[];
 }
 export const BotConnectionUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -567,7 +565,7 @@ export interface BotConnectionUpdateOutput {
   zones?: string[];
 }
 export const BotConnectionUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -596,7 +594,7 @@ export const BotConnectionUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const BotConnectionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BotConnectionUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BotConnectionUpdateInput,
   outputSchema: BotConnectionUpdateOutput,
 }));
@@ -656,7 +654,7 @@ export interface BotsCreateInput {
   etag?: string;
   zones?: string[];
 }
-export const BotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BotsCreateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -749,7 +747,7 @@ export interface BotsCreateOutput {
   etag?: string;
   zones?: string[];
 }
-export const BotsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BotsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
@@ -777,7 +775,7 @@ export const BotsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const BotsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BotsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BotsCreateInput,
   outputSchema: BotsCreateOutput,
 }));
@@ -787,7 +785,7 @@ export interface BotsDeleteInput {
   resourceName: string;
   subscriptionId: string;
 }
-export const BotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BotsDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -802,7 +800,7 @@ export const BotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type BotsDeleteOutput = void;
 export const BotsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BotsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BotsDeleteOutput>;
 
 // The operation
 /**
@@ -813,7 +811,7 @@ export const BotsDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const BotsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BotsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BotsDeleteInput,
   outputSchema: BotsDeleteOutput,
 }));
@@ -823,7 +821,7 @@ export interface BotsGetInput {
   resourceName: string;
   subscriptionId: string;
 }
-export const BotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BotsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -847,7 +845,7 @@ export interface BotsGetOutput {
   etag?: string;
   zones?: string[];
 }
-export const BotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BotsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
@@ -875,7 +873,7 @@ export const BotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const BotsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BotsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BotsGetInput,
   outputSchema: BotsGetOutput,
 }));
@@ -885,7 +883,7 @@ export interface BotsGetCheckNameAvailabilityInput {
   type?: string;
 }
 export const BotsGetCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
@@ -903,7 +901,7 @@ export interface BotsGetCheckNameAvailabilityOutput {
   absCode?: string;
 }
 export const BotsGetCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     valid: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
     absCode: Schema.optional(Schema.String),
@@ -916,7 +914,7 @@ export const BotsGetCheckNameAvailabilityOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const BotsGetCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BotsGetCheckNameAvailabilityInput,
     outputSchema: BotsGetCheckNameAvailabilityOutput,
   }));
@@ -924,7 +922,7 @@ export const BotsGetCheckNameAvailability =
 export interface BotsListInput {
   subscriptionId: string;
 }
-export const BotsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BotsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -949,7 +947,7 @@ export interface BotsListOutput {
     zones?: string[];
   }[];
 }
-export const BotsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BotsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -982,7 +980,7 @@ export const BotsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const BotsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BotsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BotsListInput,
   outputSchema: BotsListOutput,
 }));
@@ -992,7 +990,7 @@ export interface BotsListByResourceGroupInput {
   subscriptionId: string;
 }
 export const BotsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1019,7 +1017,7 @@ export interface BotsListByResourceGroupOutput {
   }[];
 }
 export const BotsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1053,12 +1051,10 @@ export const BotsListByResourceGroupOutput =
  * @param subscriptionId - Azure Subscription ID.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const BotsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BotsListByResourceGroupInput,
-    outputSchema: BotsListByResourceGroupOutput,
-  }),
-);
+export const BotsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BotsListByResourceGroupInput,
+  outputSchema: BotsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface BotsUpdateInput {
   resourceGroupName: string;
@@ -1115,7 +1111,7 @@ export interface BotsUpdateInput {
   etag?: string;
   zones?: string[];
 }
-export const BotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BotsUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1208,7 +1204,7 @@ export interface BotsUpdateOutput {
   etag?: string;
   zones?: string[];
 }
-export const BotsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BotsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
@@ -1236,7 +1232,7 @@ export const BotsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const BotsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BotsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BotsUpdateInput,
   outputSchema: BotsUpdateOutput,
 }));
@@ -1281,7 +1277,7 @@ export interface ChannelsCreateInput {
   etag?: string;
   zones?: string[];
 }
-export const ChannelsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ChannelsCreateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   channelName: Schema.Literals([
@@ -1350,7 +1346,7 @@ export interface ChannelsCreateOutput {
   etag?: string;
   zones?: string[];
 }
-export const ChannelsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ChannelsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
@@ -1379,7 +1375,7 @@ export const ChannelsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const ChannelsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChannelsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ChannelsCreateInput,
   outputSchema: ChannelsCreateOutput,
 }));
@@ -1390,7 +1386,7 @@ export interface ChannelsDeleteInput {
   channelName: string;
   subscriptionId: string;
 }
-export const ChannelsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ChannelsDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   channelName: Schema.String.pipe(T.PathParam()),
@@ -1406,7 +1402,7 @@ export const ChannelsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ChannelsDeleteOutput = void;
 export const ChannelsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ChannelsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ChannelsDeleteOutput>;
 
 // The operation
 /**
@@ -1418,7 +1414,7 @@ export const ChannelsDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const ChannelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChannelsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ChannelsDeleteInput,
   outputSchema: ChannelsDeleteOutput,
 }));
@@ -1429,7 +1425,7 @@ export interface ChannelsGetInput {
   channelName: string;
   subscriptionId: string;
 }
-export const ChannelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ChannelsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   channelName: Schema.String.pipe(T.PathParam()),
@@ -1454,7 +1450,7 @@ export interface ChannelsGetOutput {
   etag?: string;
   zones?: string[];
 }
-export const ChannelsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ChannelsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
@@ -1483,7 +1479,7 @@ export const ChannelsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const ChannelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChannelsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ChannelsGetInput,
   outputSchema: ChannelsGetOutput,
 }));
@@ -1494,7 +1490,7 @@ export interface ChannelsListByResourceGroupInput {
   subscriptionId: string;
 }
 export const ChannelsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1522,7 +1518,7 @@ export interface ChannelsListByResourceGroupOutput {
   }[];
 }
 export const ChannelsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1557,12 +1553,10 @@ export const ChannelsListByResourceGroupOutput =
  * @param subscriptionId - Azure Subscription ID.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ChannelsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ChannelsListByResourceGroupInput,
-    outputSchema: ChannelsListByResourceGroupOutput,
-  }),
-);
+export const ChannelsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ChannelsListByResourceGroupInput,
+  outputSchema: ChannelsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface ChannelsListWithKeysInput {
   resourceGroupName: string;
@@ -1590,7 +1584,7 @@ export interface ChannelsListWithKeysInput {
   subscriptionId: string;
 }
 export const ChannelsListWithKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     channelName: Schema.Literals([
@@ -1636,7 +1630,7 @@ export interface ChannelsListWithKeysOutput {
   zones?: string[];
 }
 export const ChannelsListWithKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -1665,12 +1659,10 @@ export const ChannelsListWithKeysOutput =
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const ChannelsListWithKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ChannelsListWithKeysInput,
-    outputSchema: ChannelsListWithKeysOutput,
-  }),
-);
+export const ChannelsListWithKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ChannelsListWithKeysInput,
+  outputSchema: ChannelsListWithKeysOutput,
+}));
 // Input Schema
 export interface ChannelsUpdateInput {
   resourceGroupName: string;
@@ -1712,7 +1704,7 @@ export interface ChannelsUpdateInput {
   etag?: string;
   zones?: string[];
 }
-export const ChannelsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ChannelsUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   channelName: Schema.Literals([
@@ -1781,7 +1773,7 @@ export interface ChannelsUpdateOutput {
   etag?: string;
   zones?: string[];
 }
-export const ChannelsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ChannelsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
@@ -1810,7 +1802,7 @@ export const ChannelsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const ChannelsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChannelsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ChannelsUpdateInput,
   outputSchema: ChannelsUpdateOutput,
 }));
@@ -1824,7 +1816,7 @@ export interface DirectLineRegenerateKeysInput {
   key: "key1" | "key2";
 }
 export const DirectLineRegenerateKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1854,7 +1846,7 @@ export interface DirectLineRegenerateKeysOutput {
   zones?: string[];
 }
 export const DirectLineRegenerateKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -1883,12 +1875,10 @@ export const DirectLineRegenerateKeysOutput =
  * @param channelName - The name of the Channel resource for which keys are to be regenerated.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const DirectLineRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DirectLineRegenerateKeysInput,
-    outputSchema: DirectLineRegenerateKeysOutput,
-  }),
-);
+export const DirectLineRegenerateKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DirectLineRegenerateKeysInput,
+  outputSchema: DirectLineRegenerateKeysOutput,
+}));
 // Input Schema
 export interface EmailCreateSignInUrlInput {
   resourceGroupName: string;
@@ -1896,7 +1886,7 @@ export interface EmailCreateSignInUrlInput {
   subscriptionId: string;
 }
 export const EmailCreateSignInUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1915,7 +1905,7 @@ export interface EmailCreateSignInUrlOutput {
   properties?: { url?: string };
 }
 export const EmailCreateSignInUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -1934,17 +1924,15 @@ export const EmailCreateSignInUrlOutput =
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const EmailCreateSignInUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EmailCreateSignInUrlInput,
-    outputSchema: EmailCreateSignInUrlOutput,
-  }),
-);
+export const EmailCreateSignInUrl = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EmailCreateSignInUrlInput,
+  outputSchema: EmailCreateSignInUrlOutput,
+}));
 // Input Schema
 export interface HostSettingsGetInput {
   subscriptionId: string;
 }
-export const HostSettingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostSettingsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1965,7 +1953,7 @@ export interface HostSettingsGetOutput {
   ValidateAuthority?: boolean;
   BotOpenIdMetadata?: string;
 }
-export const HostSettingsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostSettingsGetOutput = /*@__PURE__*/ Schema.Struct({
   OAuthUrl: Schema.optional(Schema.String),
   ToBotFromChannelOpenIdMetadataUrl: Schema.optional(Schema.String),
   ToBotFromChannelTokenIssuer: Schema.optional(Schema.String),
@@ -1983,7 +1971,7 @@ export const HostSettingsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const HostSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HostSettingsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: HostSettingsGetInput,
   outputSchema: HostSettingsGetOutput,
 }));
@@ -1993,7 +1981,7 @@ export interface OperationResultsGetInput {
   operationResultId: string;
 }
 export const OperationResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     operationResultId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2012,7 +2000,7 @@ export interface OperationResultsGetOutput {
   startTime?: string;
 }
 export const OperationResultsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(
@@ -2035,15 +2023,13 @@ export const OperationResultsGetOutput =
  * @param subscriptionId - Azure Subscription ID.
  * @param operationResultId - The ID of the operation result to get.
  */
-export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationResultsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationResultsGetInput,
   outputSchema: OperationResultsGetOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.BotService/operations",
@@ -2066,7 +2052,7 @@ export interface OperationsListOutput {
     properties?: unknown;
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -2093,7 +2079,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - Version of the API to be used with the client request.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2118,7 +2104,7 @@ export interface PrivateEndpointConnectionsCreateInput {
   type?: string;
 }
 export const PrivateEndpointConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2161,7 +2147,7 @@ export interface PrivateEndpointConnectionsCreateOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2179,7 +2165,7 @@ export const PrivateEndpointConnectionsCreateOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateInput,
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
@@ -2191,7 +2177,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2207,7 +2193,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -2220,7 +2206,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -2232,7 +2218,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2252,7 +2238,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2269,7 +2255,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -2280,7 +2266,7 @@ export interface PrivateEndpointConnectionsListInput {
   subscriptionId: string;
 }
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2297,7 +2283,7 @@ export interface PrivateEndpointConnectionsListOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2319,7 +2305,7 @@ export const PrivateEndpointConnectionsListOutput =
  * @param subscriptionId - Azure Subscription ID.
  */
 export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListInput,
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
@@ -2330,7 +2316,7 @@ export interface PrivateLinkResourcesListByBotResourceInput {
   subscriptionId: string;
 }
 export const PrivateLinkResourcesListByBotResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2347,7 +2333,7 @@ export interface PrivateLinkResourcesListByBotResourceOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const PrivateLinkResourcesListByBotResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2369,7 +2355,7 @@ export const PrivateLinkResourcesListByBotResourceOutput =
  * @param subscriptionId - Azure Subscription ID.
  */
 export const PrivateLinkResourcesListByBotResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByBotResourceInput,
     outputSchema: PrivateLinkResourcesListByBotResourceOutput,
   }));
@@ -2380,7 +2366,7 @@ export interface QnAMakerEndpointKeysGetInput {
   authkey?: string;
 }
 export const QnAMakerEndpointKeysGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     hostname: Schema.optional(Schema.String),
     authkey: Schema.optional(Schema.String),
@@ -2400,7 +2386,7 @@ export interface QnAMakerEndpointKeysGetOutput {
   lastStableVersion?: string;
 }
 export const QnAMakerEndpointKeysGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryEndpointKey: Schema.optional(Schema.String),
     secondaryEndpointKey: Schema.optional(Schema.String),
     installedVersion: Schema.optional(Schema.String),
@@ -2414,9 +2400,7 @@ export const QnAMakerEndpointKeysGetOutput =
  * @param api-version - Version of the API to be used with the client request.
  * @param subscriptionId - Azure Subscription ID.
  */
-export const QnAMakerEndpointKeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: QnAMakerEndpointKeysGetInput,
-    outputSchema: QnAMakerEndpointKeysGetOutput,
-  }),
-);
+export const QnAMakerEndpointKeysGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QnAMakerEndpointKeysGetInput,
+  outputSchema: QnAMakerEndpointKeysGetOutput,
+}));

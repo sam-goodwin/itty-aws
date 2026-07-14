@@ -44,7 +44,7 @@ export interface AvailabilityGroupListenersCreateOrUpdateInput {
   };
 }
 export const AvailabilityGroupListenersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
@@ -137,7 +137,7 @@ export interface AvailabilityGroupListenersCreateOrUpdateOutput {
   };
 }
 export const AvailabilityGroupListenersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -168,7 +168,7 @@ export const AvailabilityGroupListenersCreateOrUpdateOutput =
  * @param availabilityGroupListenerName - Name of the availability group listener.
  */
 export const AvailabilityGroupListenersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilityGroupListenersCreateOrUpdateInput,
     outputSchema: AvailabilityGroupListenersCreateOrUpdateOutput,
   }));
@@ -180,7 +180,7 @@ export interface AvailabilityGroupListenersDeleteInput {
   availabilityGroupListenerName: string;
 }
 export const AvailabilityGroupListenersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
@@ -196,7 +196,7 @@ export const AvailabilityGroupListenersDeleteInput =
 // Output Schema
 export type AvailabilityGroupListenersDeleteOutput = void;
 export const AvailabilityGroupListenersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AvailabilityGroupListenersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AvailabilityGroupListenersDeleteOutput>;
 
 // The operation
 /**
@@ -209,7 +209,7 @@ export const AvailabilityGroupListenersDeleteOutput =
  * @param availabilityGroupListenerName - Name of the availability group listener.
  */
 export const AvailabilityGroupListenersDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilityGroupListenersDeleteInput,
     outputSchema: AvailabilityGroupListenersDeleteOutput,
   }));
@@ -222,7 +222,7 @@ export interface AvailabilityGroupListenersGetInput {
   $expand?: string;
 }
 export const AvailabilityGroupListenersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
@@ -251,7 +251,7 @@ export interface AvailabilityGroupListenersGetOutput {
   };
 }
 export const AvailabilityGroupListenersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -283,7 +283,7 @@ export const AvailabilityGroupListenersGetOutput =
  * @param $expand - The child resources to include in the response.
  */
 export const AvailabilityGroupListenersGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilityGroupListenersGetInput,
     outputSchema: AvailabilityGroupListenersGetOutput,
   }));
@@ -294,7 +294,7 @@ export interface AvailabilityGroupListenersListByGroupInput {
   sqlVirtualMachineGroupName: string;
 }
 export const AvailabilityGroupListenersListByGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
@@ -324,7 +324,7 @@ export interface AvailabilityGroupListenersListByGroupOutput {
   nextLink?: string;
 }
 export const AvailabilityGroupListenersListByGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -369,15 +369,13 @@ export const AvailabilityGroupListenersListByGroupOutput =
  * @param sqlVirtualMachineGroupName - Name of the SQL virtual machine group.
  */
 export const AvailabilityGroupListenersListByGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilityGroupListenersListByGroupInput,
     outputSchema: AvailabilityGroupListenersListByGroupOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.SqlVirtualMachine/operations",
@@ -400,7 +398,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -425,7 +423,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -458,7 +456,7 @@ export interface SqlVirtualMachineGroupsCreateOrUpdateInput {
   location: string;
 }
 export const SqlVirtualMachineGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
@@ -515,7 +513,7 @@ export interface SqlVirtualMachineGroupsCreateOrUpdateOutput {
   };
 }
 export const SqlVirtualMachineGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -545,7 +543,7 @@ export const SqlVirtualMachineGroupsCreateOrUpdateOutput =
  * @param sqlVirtualMachineGroupName - Name of the SQL virtual machine group.
  */
 export const SqlVirtualMachineGroupsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlVirtualMachineGroupsCreateOrUpdateInput,
     outputSchema: SqlVirtualMachineGroupsCreateOrUpdateOutput,
   }));
@@ -556,7 +554,7 @@ export interface SqlVirtualMachineGroupsDeleteInput {
   sqlVirtualMachineGroupName: string;
 }
 export const SqlVirtualMachineGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
@@ -571,7 +569,7 @@ export const SqlVirtualMachineGroupsDeleteInput =
 // Output Schema
 export type SqlVirtualMachineGroupsDeleteOutput = void;
 export const SqlVirtualMachineGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachineGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachineGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -583,7 +581,7 @@ export const SqlVirtualMachineGroupsDeleteOutput =
  * @param sqlVirtualMachineGroupName - Name of the SQL virtual machine group.
  */
 export const SqlVirtualMachineGroupsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlVirtualMachineGroupsDeleteInput,
     outputSchema: SqlVirtualMachineGroupsDeleteOutput,
   }));
@@ -594,7 +592,7 @@ export interface SqlVirtualMachineGroupsGetInput {
   sqlVirtualMachineGroupName: string;
 }
 export const SqlVirtualMachineGroupsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
@@ -621,7 +619,7 @@ export interface SqlVirtualMachineGroupsGetOutput {
   };
 }
 export const SqlVirtualMachineGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -650,18 +648,16 @@ export const SqlVirtualMachineGroupsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param sqlVirtualMachineGroupName - Name of the SQL virtual machine group.
  */
-export const SqlVirtualMachineGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlVirtualMachineGroupsGetInput,
-    outputSchema: SqlVirtualMachineGroupsGetOutput,
-  }),
-);
+export const SqlVirtualMachineGroupsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlVirtualMachineGroupsGetInput,
+  outputSchema: SqlVirtualMachineGroupsGetOutput,
+}));
 // Input Schema
 export interface SqlVirtualMachineGroupsListInput {
   subscriptionId: string;
 }
 export const SqlVirtualMachineGroupsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -689,7 +685,7 @@ export interface SqlVirtualMachineGroupsListOutput {
   nextLink?: string;
 }
 export const SqlVirtualMachineGroupsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -731,19 +727,17 @@ export const SqlVirtualMachineGroupsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const SqlVirtualMachineGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlVirtualMachineGroupsListInput,
-    outputSchema: SqlVirtualMachineGroupsListOutput,
-  }),
-);
+export const SqlVirtualMachineGroupsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlVirtualMachineGroupsListInput,
+  outputSchema: SqlVirtualMachineGroupsListOutput,
+}));
 // Input Schema
 export interface SqlVirtualMachineGroupsListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const SqlVirtualMachineGroupsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -772,7 +766,7 @@ export interface SqlVirtualMachineGroupsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SqlVirtualMachineGroupsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -816,7 +810,7 @@ export const SqlVirtualMachineGroupsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const SqlVirtualMachineGroupsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlVirtualMachineGroupsListByResourceGroupInput,
     outputSchema: SqlVirtualMachineGroupsListByResourceGroupOutput,
   }));
@@ -828,7 +822,7 @@ export interface SqlVirtualMachineGroupsUpdateInput {
   tags?: Record<string, string>;
 }
 export const SqlVirtualMachineGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
@@ -856,7 +850,7 @@ export interface SqlVirtualMachineGroupsUpdateOutput {
   };
 }
 export const SqlVirtualMachineGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -886,7 +880,7 @@ export const SqlVirtualMachineGroupsUpdateOutput =
  * @param sqlVirtualMachineGroupName - Name of the SQL virtual machine group.
  */
 export const SqlVirtualMachineGroupsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlVirtualMachineGroupsUpdateInput,
     outputSchema: SqlVirtualMachineGroupsUpdateOutput,
   }));
@@ -1060,7 +1054,7 @@ export interface SqlVirtualMachinesCreateOrUpdateInput {
   location: string;
 }
 export const SqlVirtualMachinesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -1353,7 +1347,7 @@ export interface SqlVirtualMachinesCreateOrUpdateOutput {
   };
 }
 export const SqlVirtualMachinesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1383,7 +1377,7 @@ export const SqlVirtualMachinesCreateOrUpdateOutput =
  * @param sqlVirtualMachineName - Name of the SQL virtual machine.
  */
 export const SqlVirtualMachinesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlVirtualMachinesCreateOrUpdateInput,
     outputSchema: SqlVirtualMachinesCreateOrUpdateOutput,
   }));
@@ -1394,7 +1388,7 @@ export interface SqlVirtualMachinesDeleteInput {
   sqlVirtualMachineName: string;
 }
 export const SqlVirtualMachinesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -1409,7 +1403,7 @@ export const SqlVirtualMachinesDeleteInput =
 // Output Schema
 export type SqlVirtualMachinesDeleteOutput = void;
 export const SqlVirtualMachinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachinesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachinesDeleteOutput>;
 
 // The operation
 /**
@@ -1420,12 +1414,10 @@ export const SqlVirtualMachinesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param sqlVirtualMachineName - Name of the SQL virtual machine.
  */
-export const SqlVirtualMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlVirtualMachinesDeleteInput,
-    outputSchema: SqlVirtualMachinesDeleteOutput,
-  }),
-);
+export const SqlVirtualMachinesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlVirtualMachinesDeleteInput,
+  outputSchema: SqlVirtualMachinesDeleteOutput,
+}));
 // Input Schema
 export interface SqlVirtualMachinesFetchDCAssessmentInput {
   subscriptionId: string;
@@ -1434,7 +1426,7 @@ export interface SqlVirtualMachinesFetchDCAssessmentInput {
   runDiskConfigRules?: boolean;
 }
 export const SqlVirtualMachinesFetchDCAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -1450,7 +1442,7 @@ export const SqlVirtualMachinesFetchDCAssessmentInput =
 // Output Schema
 export type SqlVirtualMachinesFetchDCAssessmentOutput = void;
 export const SqlVirtualMachinesFetchDCAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachinesFetchDCAssessmentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachinesFetchDCAssessmentOutput>;
 
 // The operation
 /**
@@ -1462,7 +1454,7 @@ export const SqlVirtualMachinesFetchDCAssessmentOutput =
  * @param sqlVirtualMachineName - Name of the SQL virtual machine.
  */
 export const SqlVirtualMachinesFetchDCAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlVirtualMachinesFetchDCAssessmentInput,
     outputSchema: SqlVirtualMachinesFetchDCAssessmentOutput,
   }));
@@ -1474,7 +1466,7 @@ export interface SqlVirtualMachinesGetInput {
   $expand?: string;
 }
 export const SqlVirtualMachinesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -1502,7 +1494,7 @@ export interface SqlVirtualMachinesGetOutput {
   };
 }
 export const SqlVirtualMachinesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1532,18 +1524,16 @@ export const SqlVirtualMachinesGetOutput =
  * @param sqlVirtualMachineName - Name of the SQL virtual machine.
  * @param $expand - The child resources to include in the response.
  */
-export const SqlVirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlVirtualMachinesGetInput,
-    outputSchema: SqlVirtualMachinesGetOutput,
-  }),
-);
+export const SqlVirtualMachinesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlVirtualMachinesGetInput,
+  outputSchema: SqlVirtualMachinesGetOutput,
+}));
 // Input Schema
 export interface SqlVirtualMachinesListInput {
   subscriptionId: string;
 }
 export const SqlVirtualMachinesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1571,7 +1561,7 @@ export interface SqlVirtualMachinesListOutput {
   nextLink?: string;
 }
 export const SqlVirtualMachinesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1613,19 +1603,17 @@ export const SqlVirtualMachinesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const SqlVirtualMachinesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlVirtualMachinesListInput,
-    outputSchema: SqlVirtualMachinesListOutput,
-  }),
-);
+export const SqlVirtualMachinesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlVirtualMachinesListInput,
+  outputSchema: SqlVirtualMachinesListOutput,
+}));
 // Input Schema
 export interface SqlVirtualMachinesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const SqlVirtualMachinesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1654,7 +1642,7 @@ export interface SqlVirtualMachinesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SqlVirtualMachinesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1698,7 +1686,7 @@ export const SqlVirtualMachinesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const SqlVirtualMachinesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlVirtualMachinesListByResourceGroupInput,
     outputSchema: SqlVirtualMachinesListByResourceGroupOutput,
   }));
@@ -1709,7 +1697,7 @@ export interface SqlVirtualMachinesListBySqlVmGroupInput {
   sqlVirtualMachineGroupName: string;
 }
 export const SqlVirtualMachinesListBySqlVmGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineGroupName: Schema.String.pipe(T.PathParam()),
@@ -1739,7 +1727,7 @@ export interface SqlVirtualMachinesListBySqlVmGroupOutput {
   nextLink?: string;
 }
 export const SqlVirtualMachinesListBySqlVmGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1784,7 +1772,7 @@ export const SqlVirtualMachinesListBySqlVmGroupOutput =
  * @param sqlVirtualMachineGroupName - Name of the SQL virtual machine group.
  */
 export const SqlVirtualMachinesListBySqlVmGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlVirtualMachinesListBySqlVmGroupInput,
     outputSchema: SqlVirtualMachinesListBySqlVmGroupOutput,
   }));
@@ -1795,7 +1783,7 @@ export interface SqlVirtualMachinesRedeployInput {
   sqlVirtualMachineName: string;
 }
 export const SqlVirtualMachinesRedeployInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -1810,7 +1798,7 @@ export const SqlVirtualMachinesRedeployInput =
 // Output Schema
 export type SqlVirtualMachinesRedeployOutput = void;
 export const SqlVirtualMachinesRedeployOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachinesRedeployOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachinesRedeployOutput>;
 
 // The operation
 /**
@@ -1821,12 +1809,10 @@ export const SqlVirtualMachinesRedeployOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param sqlVirtualMachineName - Name of the SQL virtual machine.
  */
-export const SqlVirtualMachinesRedeploy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlVirtualMachinesRedeployInput,
-    outputSchema: SqlVirtualMachinesRedeployOutput,
-  }),
-);
+export const SqlVirtualMachinesRedeploy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlVirtualMachinesRedeployInput,
+  outputSchema: SqlVirtualMachinesRedeployOutput,
+}));
 // Input Schema
 export interface SqlVirtualMachinesStartAssessmentInput {
   subscriptionId: string;
@@ -1834,7 +1820,7 @@ export interface SqlVirtualMachinesStartAssessmentInput {
   sqlVirtualMachineName: string;
 }
 export const SqlVirtualMachinesStartAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -1849,7 +1835,7 @@ export const SqlVirtualMachinesStartAssessmentInput =
 // Output Schema
 export type SqlVirtualMachinesStartAssessmentOutput = void;
 export const SqlVirtualMachinesStartAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachinesStartAssessmentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachinesStartAssessmentOutput>;
 
 // The operation
 /**
@@ -1861,7 +1847,7 @@ export const SqlVirtualMachinesStartAssessmentOutput =
  * @param sqlVirtualMachineName - Name of the SQL virtual machine.
  */
 export const SqlVirtualMachinesStartAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlVirtualMachinesStartAssessmentInput,
     outputSchema: SqlVirtualMachinesStartAssessmentOutput,
   }));
@@ -1873,7 +1859,7 @@ export interface SqlVirtualMachinesUpdateInput {
   tags?: Record<string, string>;
 }
 export const SqlVirtualMachinesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -1901,7 +1887,7 @@ export interface SqlVirtualMachinesUpdateOutput {
   };
 }
 export const SqlVirtualMachinesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1930,12 +1916,10 @@ export const SqlVirtualMachinesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param sqlVirtualMachineName - Name of the SQL virtual machine.
  */
-export const SqlVirtualMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlVirtualMachinesUpdateInput,
-    outputSchema: SqlVirtualMachinesUpdateOutput,
-  }),
-);
+export const SqlVirtualMachinesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlVirtualMachinesUpdateInput,
+  outputSchema: SqlVirtualMachinesUpdateOutput,
+}));
 // Input Schema
 export interface SqlVirtualMachineTroubleshootTroubleshootInput {
   subscriptionId: string;
@@ -1948,7 +1932,7 @@ export interface SqlVirtualMachineTroubleshootTroubleshootInput {
   virtualMachineResourceId?: string;
 }
 export const SqlVirtualMachineTroubleshootTroubleshootInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -1984,7 +1968,7 @@ export interface SqlVirtualMachineTroubleshootTroubleshootOutput {
   virtualMachineResourceId?: string;
 }
 export const SqlVirtualMachineTroubleshootTroubleshootOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTimeUtc: Schema.optional(Schema.String),
     endTimeUtc: Schema.optional(Schema.String),
     troubleshootingScenario: Schema.optional(
@@ -2012,7 +1996,7 @@ export const SqlVirtualMachineTroubleshootTroubleshootOutput =
  * @param sqlVirtualMachineName - Name of the SQL virtual machine.
  */
 export const SqlVirtualMachineTroubleshootTroubleshoot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlVirtualMachineTroubleshootTroubleshootInput,
     outputSchema: SqlVirtualMachineTroubleshootTroubleshootOutput,
   }));

@@ -12,7 +12,7 @@ export interface StartGroupStreamProcessorWithInput {
   pretty?: boolean;
 }
 export const StartGroupStreamProcessorWithInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     processorName: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const StartGroupStreamProcessorWithInput =
 // Output Schema
 export type StartGroupStreamProcessorWithOutput = void;
 export const StartGroupStreamProcessorWithOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StartGroupStreamProcessorWithOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StartGroupStreamProcessorWithOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const StartGroupStreamProcessorWithOutput =
  * @param processorName - Label that identifies the stream processor.
  */
 export const startGroupStreamProcessorWith =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StartGroupStreamProcessorWithInput,
     outputSchema: StartGroupStreamProcessorWithOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -9,7 +9,7 @@ export interface OrganizationDomainsControllerCreateInput {
   organization_id?: string;
 }
 export const OrganizationDomainsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
   }).pipe(
@@ -30,7 +30,7 @@ export interface OrganizationDomainsControllerCreateOutput {
   updated_at: string;
 }
 export const OrganizationDomainsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     organization_id: Schema.String,
@@ -58,7 +58,7 @@ export const OrganizationDomainsControllerCreateOutput =
  * Creates a new Organization Domain.
  */
 export const OrganizationDomainsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationDomainsControllerCreateInput,
     outputSchema: OrganizationDomainsControllerCreateOutput,
     errors: [Conflict] as const,

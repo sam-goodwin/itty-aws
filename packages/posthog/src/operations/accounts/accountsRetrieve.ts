@@ -7,7 +7,7 @@ export interface AccountsRetrieveInput {
   id: string;
   project_id: string;
 }
-export const AccountsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsRetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -37,55 +37,53 @@ export interface AccountsRetrieveOutput {
   created_by: number | null;
   updated_at: string | null;
 }
-export const AccountsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-    name: Schema.String,
-    external_id: Schema.optional(Schema.NullOr(Schema.String)),
-    properties: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          csm: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.Number,
-                email: Schema.String,
-              }),
-            ),
+export const AccountsRetrieveOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  name: Schema.String,
+  external_id: Schema.optional(Schema.NullOr(Schema.String)),
+  properties: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        csm: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.Number,
+              email: Schema.String,
+            }),
           ),
-          account_executive: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.Number,
-                email: Schema.String,
-              }),
-            ),
+        ),
+        account_executive: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.Number,
+              email: Schema.String,
+            }),
           ),
-          account_owner: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.Number,
-                email: Schema.String,
-              }),
-            ),
+        ),
+        account_owner: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.Number,
+              email: Schema.String,
+            }),
           ),
-          stripe_customer_id: Schema.optional(Schema.NullOr(Schema.String)),
-          hubspot_deal_id: Schema.optional(Schema.NullOr(Schema.String)),
-          billing_id: Schema.optional(Schema.NullOr(Schema.String)),
-          sfdc_id: Schema.optional(Schema.NullOr(Schema.String)),
-          zendesk_id: Schema.optional(Schema.NullOr(Schema.String)),
-          slack_channel_id: Schema.optional(Schema.NullOr(Schema.String)),
-          usage_dashboard_link: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+        ),
+        stripe_customer_id: Schema.optional(Schema.NullOr(Schema.String)),
+        hubspot_deal_id: Schema.optional(Schema.NullOr(Schema.String)),
+        billing_id: Schema.optional(Schema.NullOr(Schema.String)),
+        sfdc_id: Schema.optional(Schema.NullOr(Schema.String)),
+        zendesk_id: Schema.optional(Schema.NullOr(Schema.String)),
+        slack_channel_id: Schema.optional(Schema.NullOr(Schema.String)),
+        usage_dashboard_link: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
     ),
-    tags: Schema.optional(Schema.Array(Schema.String)),
-    notebooks: Schema.Array(Schema.String),
-    created_at: Schema.String,
-    created_by: Schema.NullOr(Schema.Number),
-    updated_at: Schema.NullOr(Schema.String),
-  },
-) as unknown as Schema.Codec<AccountsRetrieveOutput>;
+  ),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  notebooks: Schema.Array(Schema.String),
+  created_at: Schema.String,
+  created_by: Schema.NullOr(Schema.Number),
+  updated_at: Schema.NullOr(Schema.String),
+}) as unknown as Schema.Codec<AccountsRetrieveOutput>;
 
 // The operation
 /**
@@ -93,7 +91,7 @@ export const AccountsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param id - A UUID string identifying this account.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const accountsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const accountsRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsRetrieveInput,
   outputSchema: AccountsRetrieveOutput,
 }));

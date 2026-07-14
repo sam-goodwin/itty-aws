@@ -10,7 +10,7 @@ export interface RestoreSnapshotInput {
   target_branch_id?: string;
   finalize_restore?: boolean;
 }
-export const RestoreSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RestoreSnapshotInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   snapshot_id: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.String),
@@ -152,7 +152,7 @@ export interface RestoreSnapshotOutput {
     total_duration_ms: number;
   }[];
 }
-export const RestoreSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RestoreSnapshotOutput = /*@__PURE__*/ Schema.Struct({
   branch: Schema.Struct({
     id: Schema.String,
     project_id: Schema.String,
@@ -325,7 +325,7 @@ export const RestoreSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 A name for the newly restored branch. If omitted, a default name will be generated.
 
  */
-export const restoreSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const restoreSnapshot = /*@__PURE__*/ API.make(() => ({
   inputSchema: RestoreSnapshotInput,
   outputSchema: RestoreSnapshotOutput,
 }));

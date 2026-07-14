@@ -8,7 +8,7 @@ export interface GetV2CoreAccountsAccountIdPersonsInput {
   limit?: number;
 }
 export const GetV2CoreAccountsAccountIdPersonsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
   }).pipe(
@@ -193,7 +193,7 @@ export interface GetV2CoreAccountsAccountIdPersonsOutput {
   previous_page_url: string | null;
 }
 export const GetV2CoreAccountsAccountIdPersonsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         account: Schema.String,
@@ -460,7 +460,7 @@ export const GetV2CoreAccountsAccountIdPersonsOutput =
  * @param limit - The upper limit on the number of accounts returned by the List Account request.
  */
 export const GetV2CoreAccountsAccountIdPersons =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV2CoreAccountsAccountIdPersonsInput,
     outputSchema: GetV2CoreAccountsAccountIdPersonsOutput,
   }));

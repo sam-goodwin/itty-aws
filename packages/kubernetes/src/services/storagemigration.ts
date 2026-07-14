@@ -63,7 +63,7 @@ export interface CreateStoragemigrationV1beta1StorageVersionMigrationInput {
   };
 }
 export const CreateStoragemigrationV1beta1StorageVersionMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -196,7 +196,7 @@ export interface CreateStoragemigrationV1beta1StorageVersionMigrationOutput {
   };
 }
 export const CreateStoragemigrationV1beta1StorageVersionMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -280,7 +280,7 @@ export const CreateStoragemigrationV1beta1StorageVersionMigrationOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createStoragemigrationV1beta1StorageVersionMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateStoragemigrationV1beta1StorageVersionMigrationInput,
     outputSchema: CreateStoragemigrationV1beta1StorageVersionMigrationOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -307,7 +307,7 @@ export interface DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationI
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -365,7 +365,7 @@ export interface DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationO
   status?: string;
 }
 export const DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -467,7 +467,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteStoragemigrationV1beta1CollectionStorageVersionMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationInput,
     outputSchema:
@@ -487,7 +487,7 @@ export interface DeleteStoragemigrationV1beta1StorageVersionMigrationInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStoragemigrationV1beta1StorageVersionMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -537,7 +537,7 @@ export interface DeleteStoragemigrationV1beta1StorageVersionMigrationOutput {
   status?: string;
 }
 export const DeleteStoragemigrationV1beta1StorageVersionMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -590,7 +590,7 @@ export const DeleteStoragemigrationV1beta1StorageVersionMigrationOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteStoragemigrationV1beta1StorageVersionMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteStoragemigrationV1beta1StorageVersionMigrationInput,
     outputSchema: DeleteStoragemigrationV1beta1StorageVersionMigrationOutput,
     errors: [NotFound, Conflict] as const,
@@ -598,7 +598,7 @@ export const deleteStoragemigrationV1beta1StorageVersionMigration =
 // Input Schema
 export interface GetStoragemigrationAPIGroupInput {}
 export const GetStoragemigrationAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/storagemigration.k8s.io/" }),
   ) as unknown as Schema.Codec<GetStoragemigrationAPIGroupInput>;
 
@@ -612,7 +612,7 @@ export interface GetStoragemigrationAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetStoragemigrationAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -642,16 +642,14 @@ export const GetStoragemigrationAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getStoragemigrationAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetStoragemigrationAPIGroupInput,
-    outputSchema: GetStoragemigrationAPIGroupOutput,
-  }),
-);
+export const getStoragemigrationAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetStoragemigrationAPIGroupInput,
+  outputSchema: GetStoragemigrationAPIGroupOutput,
+}));
 // Input Schema
 export interface GetStoragemigrationV1beta1APIResourcesInput {}
 export const GetStoragemigrationV1beta1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/storagemigration.k8s.io/v1beta1/" }),
   ) as unknown as Schema.Codec<GetStoragemigrationV1beta1APIResourcesInput>;
 
@@ -674,7 +672,7 @@ export interface GetStoragemigrationV1beta1APIResourcesOutput {
   }[];
 }
 export const GetStoragemigrationV1beta1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -699,7 +697,7 @@ export const GetStoragemigrationV1beta1APIResourcesOutput =
  * get available resources
  */
 export const getStoragemigrationV1beta1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetStoragemigrationV1beta1APIResourcesInput,
     outputSchema: GetStoragemigrationV1beta1APIResourcesOutput,
   }));
@@ -719,7 +717,7 @@ export interface ListStoragemigrationV1beta1StorageVersionMigrationInput {
   watch?: boolean;
 }
 export const ListStoragemigrationV1beta1StorageVersionMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -800,7 +798,7 @@ export interface ListStoragemigrationV1beta1StorageVersionMigrationOutput {
   };
 }
 export const ListStoragemigrationV1beta1StorageVersionMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -954,7 +952,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listStoragemigrationV1beta1StorageVersionMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListStoragemigrationV1beta1StorageVersionMigrationInput,
     outputSchema: ListStoragemigrationV1beta1StorageVersionMigrationOutput,
   }));
@@ -968,7 +966,7 @@ export interface PatchStoragemigrationV1beta1StorageVersionMigrationInput {
   force?: boolean;
 }
 export const PatchStoragemigrationV1beta1StorageVersionMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1032,7 +1030,7 @@ export interface PatchStoragemigrationV1beta1StorageVersionMigrationOutput {
   };
 }
 export const PatchStoragemigrationV1beta1StorageVersionMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1118,7 +1116,7 @@ export const PatchStoragemigrationV1beta1StorageVersionMigrationOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchStoragemigrationV1beta1StorageVersionMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchStoragemigrationV1beta1StorageVersionMigrationInput,
     outputSchema: PatchStoragemigrationV1beta1StorageVersionMigrationOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -1133,7 +1131,7 @@ export interface PatchStoragemigrationV1beta1StorageVersionMigrationStatusInput 
   force?: boolean;
 }
 export const PatchStoragemigrationV1beta1StorageVersionMigrationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1197,7 +1195,7 @@ export interface PatchStoragemigrationV1beta1StorageVersionMigrationStatusOutput
   };
 }
 export const PatchStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1283,7 +1281,7 @@ export const PatchStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchStoragemigrationV1beta1StorageVersionMigrationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchStoragemigrationV1beta1StorageVersionMigrationStatusInput,
     outputSchema:
       PatchStoragemigrationV1beta1StorageVersionMigrationStatusOutput,
@@ -1295,7 +1293,7 @@ export interface ReadStoragemigrationV1beta1StorageVersionMigrationInput {
   pretty?: string;
 }
 export const ReadStoragemigrationV1beta1StorageVersionMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -1355,7 +1353,7 @@ export interface ReadStoragemigrationV1beta1StorageVersionMigrationOutput {
   };
 }
 export const ReadStoragemigrationV1beta1StorageVersionMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1437,7 +1435,7 @@ export const ReadStoragemigrationV1beta1StorageVersionMigrationOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readStoragemigrationV1beta1StorageVersionMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadStoragemigrationV1beta1StorageVersionMigrationInput,
     outputSchema: ReadStoragemigrationV1beta1StorageVersionMigrationOutput,
     errors: [NotFound] as const,
@@ -1448,7 +1446,7 @@ export interface ReadStoragemigrationV1beta1StorageVersionMigrationStatusInput {
   pretty?: string;
 }
 export const ReadStoragemigrationV1beta1StorageVersionMigrationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -1508,7 +1506,7 @@ export interface ReadStoragemigrationV1beta1StorageVersionMigrationStatusOutput 
   };
 }
 export const ReadStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1590,7 +1588,7 @@ export const ReadStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readStoragemigrationV1beta1StorageVersionMigrationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadStoragemigrationV1beta1StorageVersionMigrationStatusInput,
     outputSchema:
       ReadStoragemigrationV1beta1StorageVersionMigrationStatusOutput,
@@ -1651,7 +1649,7 @@ export interface ReplaceStoragemigrationV1beta1StorageVersionMigrationInput {
   };
 }
 export const ReplaceStoragemigrationV1beta1StorageVersionMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1785,7 +1783,7 @@ export interface ReplaceStoragemigrationV1beta1StorageVersionMigrationOutput {
   };
 }
 export const ReplaceStoragemigrationV1beta1StorageVersionMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1870,7 +1868,7 @@ export const ReplaceStoragemigrationV1beta1StorageVersionMigrationOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceStoragemigrationV1beta1StorageVersionMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceStoragemigrationV1beta1StorageVersionMigrationInput,
     outputSchema: ReplaceStoragemigrationV1beta1StorageVersionMigrationOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -1930,7 +1928,7 @@ export interface ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusInpu
   };
 }
 export const ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2064,7 +2062,7 @@ export interface ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusOutp
   };
 }
 export const ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2149,7 +2147,7 @@ export const ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceStoragemigrationV1beta1StorageVersionMigrationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusInput,
     outputSchema:
@@ -2173,7 +2171,7 @@ export interface WatchStoragemigrationV1beta1StorageVersionMigrationInput {
   watch?: boolean;
 }
 export const WatchStoragemigrationV1beta1StorageVersionMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -2200,7 +2198,7 @@ export interface WatchStoragemigrationV1beta1StorageVersionMigrationOutput {
   type: string;
 }
 export const WatchStoragemigrationV1beta1StorageVersionMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStoragemigrationV1beta1StorageVersionMigrationOutput>;
@@ -2265,7 +2263,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchStoragemigrationV1beta1StorageVersionMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchStoragemigrationV1beta1StorageVersionMigrationInput,
     outputSchema: WatchStoragemigrationV1beta1StorageVersionMigrationOutput,
   }));
@@ -2285,7 +2283,7 @@ export interface WatchStoragemigrationV1beta1StorageVersionMigrationListInput {
   watch?: boolean;
 }
 export const WatchStoragemigrationV1beta1StorageVersionMigrationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -2311,7 +2309,7 @@ export interface WatchStoragemigrationV1beta1StorageVersionMigrationListOutput {
   type: string;
 }
 export const WatchStoragemigrationV1beta1StorageVersionMigrationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStoragemigrationV1beta1StorageVersionMigrationListOutput>;
@@ -2375,7 +2373,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchStoragemigrationV1beta1StorageVersionMigrationList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchStoragemigrationV1beta1StorageVersionMigrationListInput,
     outputSchema: WatchStoragemigrationV1beta1StorageVersionMigrationListOutput,
   }));

@@ -14,7 +14,7 @@ export interface CreateOrgServiceAccountAccessListInput {
   pretty?: boolean;
 }
 export const CreateOrgServiceAccountAccessListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     clientId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const CreateOrgServiceAccountAccessListInput =
 // Output Schema
 export type CreateOrgServiceAccountAccessListOutput = void;
 export const CreateOrgServiceAccountAccessListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgServiceAccountAccessListOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgServiceAccountAccessListOutput>;
 
 // The operation
 /**
@@ -49,7 +49,7 @@ export const CreateOrgServiceAccountAccessListOutput =
  * @param clientId - The Client ID of the Service Account.
  */
 export const createOrgServiceAccountAccessList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateOrgServiceAccountAccessListInput,
     outputSchema: CreateOrgServiceAccountAccessListOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

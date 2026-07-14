@@ -10,7 +10,7 @@ export interface GroupMembershipsControllerRemoveMemberInput {
   omId: string;
 }
 export const GroupMembershipsControllerRemoveMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     omId: Schema.String.pipe(T.PathParam()),
@@ -24,7 +24,7 @@ export const GroupMembershipsControllerRemoveMemberInput =
 // Output Schema
 export type GroupMembershipsControllerRemoveMemberOutput = void;
 export const GroupMembershipsControllerRemoveMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupMembershipsControllerRemoveMemberOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupMembershipsControllerRemoveMemberOutput>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const GroupMembershipsControllerRemoveMemberOutput =
  * @param omId - Unique identifier of the Organization Membership.
  */
 export const GroupMembershipsControllerRemoveMember =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupMembershipsControllerRemoveMemberInput,
     outputSchema: GroupMembershipsControllerRemoveMemberOutput,
     errors: [Forbidden, NotFound] as const,

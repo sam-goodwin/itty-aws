@@ -8,7 +8,7 @@ export interface UsersSignalAutonomyDestroyInput {
   user_id: string;
 }
 export const UsersSignalAutonomyDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/api/users/{user_id}/signal_autonomy/" }),
@@ -17,7 +17,7 @@ export const UsersSignalAutonomyDestroyInput =
 // Output Schema
 export type UsersSignalAutonomyDestroyOutput = void;
 export const UsersSignalAutonomyDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersSignalAutonomyDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersSignalAutonomyDestroyOutput>;
 
 // The operation
 /**
@@ -26,10 +26,8 @@ export const UsersSignalAutonomyDestroyOutput =
  * POST   /api/users/<id>/signal_autonomy/ → create or update
  * DELETE /api/users/<id>/signal_autonomy/ → remove (opt out)
  */
-export const usersSignalAutonomyDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsersSignalAutonomyDestroyInput,
-    outputSchema: UsersSignalAutonomyDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const usersSignalAutonomyDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersSignalAutonomyDestroyInput,
+  outputSchema: UsersSignalAutonomyDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

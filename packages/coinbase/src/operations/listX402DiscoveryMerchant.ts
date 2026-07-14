@@ -9,7 +9,7 @@ export interface ListX402DiscoveryMerchantInput {
   offset?: number;
 }
 export const ListX402DiscoveryMerchantInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payTo: Schema.String,
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -72,7 +72,7 @@ export interface ListX402DiscoveryMerchantOutput {
   pagination: { limit?: number; offset?: number; total?: number };
 }
 export const ListX402DiscoveryMerchantOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     x402Version: Schema.Literals([1, 2]),
     payTo: Schema.String,
     resources: Schema.Array(
@@ -166,9 +166,7 @@ This is the onchain address that payment requirements route funds to.
  * @param limit - The number of resources to return per page.
  * @param offset - The offset of the first resource to return.
  */
-export const listX402DiscoveryMerchant = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListX402DiscoveryMerchantInput,
-    outputSchema: ListX402DiscoveryMerchantOutput,
-  }),
-);
+export const listX402DiscoveryMerchant = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListX402DiscoveryMerchantInput,
+  outputSchema: ListX402DiscoveryMerchantOutput,
+}));

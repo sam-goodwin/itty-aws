@@ -7,7 +7,7 @@ export interface DataWarehouseJobStatsRetrieveInput {
   project_id: string;
 }
 export const DataWarehouseJobStatsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -19,7 +19,7 @@ export const DataWarehouseJobStatsRetrieveInput =
 // Output Schema
 export type DataWarehouseJobStatsRetrieveOutput = void;
 export const DataWarehouseJobStatsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataWarehouseJobStatsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataWarehouseJobStatsRetrieveOutput>;
 
 // The operation
 /**
@@ -29,7 +29,7 @@ export const DataWarehouseJobStatsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const dataWarehouseJobStatsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataWarehouseJobStatsRetrieveInput,
     outputSchema: DataWarehouseJobStatsRetrieveOutput,
   }));

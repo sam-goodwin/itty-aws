@@ -13,7 +13,7 @@ export interface SignalsScoutScratchpadSearchInput {
   text?: string;
 }
 export const SignalsScoutScratchpadSearchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     content_max_chars: Schema.optional(Schema.Number),
     date_from: Schema.optional(Schema.String),
@@ -39,7 +39,7 @@ export type SignalsScoutScratchpadSearchOutput = {
   created_by_run_url?: string | null;
 }[];
 export const SignalsScoutScratchpadSearchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       key: Schema.String,
       content: Schema.String,
@@ -66,7 +66,7 @@ export const SignalsScoutScratchpadSearchOutput =
  * @param text - ILIKE substring match against `content`. Omit to return the most recent entries.
  */
 export const signalsScoutScratchpadSearch =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalsScoutScratchpadSearchInput,
     outputSchema: SignalsScoutScratchpadSearchOutput,
   }));

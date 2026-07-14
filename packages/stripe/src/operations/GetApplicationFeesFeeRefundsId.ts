@@ -14,7 +14,7 @@ export interface GetApplicationFeesFeeRefundsIdInput {
   expand?: string;
 }
 export const GetApplicationFeesFeeRefundsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fee: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -316,7 +316,7 @@ export interface GetApplicationFeesFeeRefundsIdOutput {
   object: "fee_refund";
 }
 export const GetApplicationFeesFeeRefundsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.NullOr(
       Schema.Union([
@@ -422,7 +422,7 @@ export const GetApplicationFeesFeeRefundsIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetApplicationFeesFeeRefundsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetApplicationFeesFeeRefundsIdInput,
     outputSchema: GetApplicationFeesFeeRefundsIdOutput,
   }));

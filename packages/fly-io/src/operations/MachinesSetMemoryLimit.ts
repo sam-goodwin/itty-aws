@@ -10,7 +10,7 @@ export interface MachinesSetMemoryLimitInput {
   limit_mb?: number;
 }
 export const MachinesSetMemoryLimitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     machine_id: Schema.String.pipe(T.PathParam()),
     limit_mb: Schema.optional(Schema.Number),
@@ -27,7 +27,7 @@ export interface MachinesSetMemoryLimitOutput {
   limit_mb?: number;
 }
 export const MachinesSetMemoryLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     available_mb: Schema.optional(Schema.Number),
     limit_mb: Schema.optional(Schema.Number),
   }) as unknown as Schema.Codec<MachinesSetMemoryLimitOutput>;
@@ -41,10 +41,8 @@ export const MachinesSetMemoryLimitOutput =
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesSetMemoryLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesSetMemoryLimitInput,
-    outputSchema: MachinesSetMemoryLimitOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const MachinesSetMemoryLimit = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesSetMemoryLimitInput,
+  outputSchema: MachinesSetMemoryLimitOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

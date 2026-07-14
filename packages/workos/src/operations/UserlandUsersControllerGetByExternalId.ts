@@ -8,7 +8,7 @@ export interface UserlandUsersControllerGetByExternalIdInput {
   external_id: string;
 }
 export const UserlandUsersControllerGetByExternalIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     external_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -35,7 +35,7 @@ export interface UserlandUsersControllerGetByExternalIdOutput {
   updated_at?: string;
 }
 export const UserlandUsersControllerGetByExternalIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -61,7 +61,7 @@ export const UserlandUsersControllerGetByExternalIdOutput =
  * @param external_id - The external ID of the user.
  */
 export const UserlandUsersControllerGetByExternalId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerGetByExternalIdInput,
     outputSchema: UserlandUsersControllerGetByExternalIdOutput,
     errors: [NotFound] as const,

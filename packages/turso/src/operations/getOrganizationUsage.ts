@@ -7,7 +7,7 @@ export interface GetOrganizationUsageInput {
   organizationSlug: string;
 }
 export const GetOrganizationUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -50,7 +50,7 @@ export interface GetOrganizationUsageOutput {
   };
 }
 export const GetOrganizationUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.optional(
       Schema.Struct({
         uuid: Schema.optional(Schema.String),
@@ -107,9 +107,7 @@ export const GetOrganizationUsageOutput =
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const getOrganizationUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetOrganizationUsageInput,
-    outputSchema: GetOrganizationUsageOutput,
-  }),
-);
+export const getOrganizationUsage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetOrganizationUsageInput,
+  outputSchema: GetOrganizationUsageOutput,
+}));

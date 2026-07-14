@@ -10,7 +10,7 @@ export interface TasksRunsLogsRetrieveInput {
   task_id: string;
 }
 export const TasksRunsLogsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     task_id: Schema.String.pipe(T.PathParam()),
@@ -24,7 +24,7 @@ export const TasksRunsLogsRetrieveInput =
 // Output Schema
 export type TasksRunsLogsRetrieveOutput = void;
 export const TasksRunsLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksRunsLogsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksRunsLogsRetrieveOutput>;
 
 // The operation
 /**
@@ -34,10 +34,8 @@ export const TasksRunsLogsRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tasksRunsLogsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TasksRunsLogsRetrieveInput,
-    outputSchema: TasksRunsLogsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const tasksRunsLogsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TasksRunsLogsRetrieveInput,
+  outputSchema: TasksRunsLogsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

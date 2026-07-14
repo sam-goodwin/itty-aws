@@ -53,7 +53,7 @@ interface Response {
   /** The status code to return. */
   statusCode: number;
 }
-const Response = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Response = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     content: Schema.String,
     contentType: Schema.String,
@@ -75,7 +75,7 @@ interface ActionParameters {
     statusCode: number;
   } | null;
 }
-const ActionParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     response: Schema.optional(Schema.Union([Response, Schema.Null])),
   }),
@@ -87,7 +87,7 @@ interface ExposedCredentialCheck {
   /** An expression that selects the user ID used in the credentials check. */
   usernameExpression: string;
 }
-const ExposedCredentialCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ExposedCredentialCheck = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     passwordExpression: SensitiveString,
     usernameExpression: Schema.String,
@@ -103,7 +103,7 @@ interface Logging {
   /** Whether to generate a log when the rule matches. */
   enabled: boolean;
 }
-const Logging = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Logging = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
   }),
@@ -127,7 +127,7 @@ interface Ratelimit {
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
   scoreResponseHeaderName?: string | null;
 }
-const Ratelimit = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ratelimit = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     characteristics: Schema.Array(Schema.String),
     period: Schema.Number,
@@ -207,7 +207,7 @@ interface BlockRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const BlockRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BlockRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -289,7 +289,7 @@ interface RulesetsChallengeRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RulesetsChallengeRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RulesetsChallengeRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -343,7 +343,7 @@ interface Algorithm {
     | (string & {})
     | null;
 }
-const Algorithm = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Algorithm = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.optional(
       Schema.Union([
@@ -378,7 +378,7 @@ interface ActionParameters2 {
       | null;
   }[];
 }
-const ActionParameters2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     algorithms: Schema.Array(Algorithm),
   }),
@@ -436,7 +436,7 @@ interface CompressResponseRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const CompressResponseRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CompressResponseRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -518,7 +518,7 @@ interface DdoSDynamicRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const DdoSDynamicRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DdoSDynamicRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -564,7 +564,7 @@ interface MatchedData {
   /** The public key to encrypt matched data logs with. */
   publicKey: string;
 }
-const MatchedData = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MatchedData = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     publicKey: Schema.String,
   }).pipe(Schema.encodeKeys({ publicKey: "public_key" })),
@@ -586,7 +586,7 @@ interface Category {
     | (string & {})
     | null;
 }
-const Category = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Category = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     category: Schema.String,
     action: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -628,7 +628,7 @@ interface Rule {
     | (string & {})
     | null;
 }
-const Rule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Rule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     action: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -699,7 +699,7 @@ interface Overrides {
     | (string & {})
     | null;
 }
-const Overrides = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Overrides = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     categories: Schema.optional(
@@ -774,7 +774,7 @@ interface ActionParameters3 {
       | null;
   } | null;
 }
-const ActionParameters3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     matchedData: Schema.optional(Schema.Union([MatchedData, Schema.Null])),
@@ -871,7 +871,7 @@ interface ExecuteRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const ExecuteRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ExecuteRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -953,47 +953,46 @@ interface ForceConnectionCloseRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const ForceConnectionCloseRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      lastUpdated: Schema.String,
-      version: Schema.String,
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(
-        Schema.Union([Schema.Literal("force_connection_close"), Schema.Null]),
-      ),
-      actionParameters: Schema.optional(
-        Schema.Union([Schema.Unknown, Schema.Null]),
-      ),
-      categories: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      exposedCredentialCheck: Schema.optional(
-        Schema.Union([ExposedCredentialCheck, Schema.Null]),
-      ),
-      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
-      ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        lastUpdated: "last_updated",
-        version: "version",
-        id: "id",
-        action: "action",
-        actionParameters: "action_parameters",
-        categories: "categories",
-        description: "description",
-        enabled: "enabled",
-        exposedCredentialCheck: "exposed_credential_check",
-        expression: "expression",
-        logging: "logging",
-        ratelimit: "ratelimit",
-        ref: "ref",
-      }),
+const ForceConnectionCloseRule = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    lastUpdated: Schema.String,
+    version: Schema.String,
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(
+      Schema.Union([Schema.Literal("force_connection_close"), Schema.Null]),
     ),
+    actionParameters: Schema.optional(
+      Schema.Union([Schema.Unknown, Schema.Null]),
+    ),
+    categories: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    exposedCredentialCheck: Schema.optional(
+      Schema.Union([ExposedCredentialCheck, Schema.Null]),
+    ),
+    expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
+    ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      lastUpdated: "last_updated",
+      version: "version",
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      categories: "categories",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+  ),
 ) as unknown as Schema.Codec<ForceConnectionCloseRule>;
 
 interface RulesetsJSChallengeRule {
@@ -1036,7 +1035,7 @@ interface RulesetsJSChallengeRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RulesetsJSChallengeRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RulesetsJSChallengeRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -1118,7 +1117,7 @@ interface LogRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const LogRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LogRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -1162,7 +1161,7 @@ interface CookieField {
   /** The name of the cookie. */
   name: string;
 }
-const CookieField = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CookieField = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
   }),
@@ -1174,7 +1173,7 @@ interface RawResponseField {
   /** Whether to log duplicate values of the same header. */
   preserveDuplicates?: boolean | null;
 }
-const RawResponseField = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RawResponseField = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     preserveDuplicates: Schema.optional(
@@ -1204,7 +1203,7 @@ interface ActionParameters4 {
   /** The transformed request fields to log. */
   transformedRequestFields?: { name: string }[] | null;
 }
-const ActionParameters4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cookieFields: Schema.optional(
       Schema.Union([Schema.Array(CookieField), Schema.Null]),
@@ -1282,7 +1281,7 @@ interface LogCustomFieldRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const LogCustomFieldRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LogCustomFieldRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -1364,7 +1363,7 @@ interface ManagedChallengeRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const ManagedChallengeRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ManagedChallengeRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -1412,7 +1411,7 @@ interface FromList {
   /** The name of the list to match against. */
   name: string;
 }
-const FromList = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FromList = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     key: Schema.String,
     name: Schema.String,
@@ -1425,7 +1424,7 @@ interface TargetURL {
   /** A URL to redirect the request to. */
   value?: string | null;
 }
-const TargetURL = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TargetURL = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1440,7 +1439,7 @@ interface FromValue {
   /** The status code to use for the redirect. */
   statusCode?: "301" | "302" | "303" | "307" | "308" | number | null;
 }
-const FromValue = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FromValue = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     targetUrl: TargetURL,
     preserveQueryString: Schema.optional(
@@ -1478,7 +1477,7 @@ interface ActionParameters5 {
     statusCode?: "301" | "302" | "303" | "307" | "308" | number | null;
   } | null;
 }
-const ActionParameters5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters5 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fromList: Schema.optional(Schema.Union([FromList, Schema.Null])),
     fromValue: Schema.optional(Schema.Union([FromValue, Schema.Null])),
@@ -1534,7 +1533,7 @@ interface RedirectRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RedirectRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RedirectRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -1582,7 +1581,7 @@ interface Uripath {
   /** Whether to propagate the rewritten URI to origin. */
   origin?: boolean | null;
 }
-const Uripath = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Uripath = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     path: TargetURL,
     origin: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -1595,7 +1594,7 @@ interface Uriquery {
   /** Whether to propagate the rewritten URI to origin. */
   origin?: boolean | null;
 }
-const Uriquery = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Uriquery = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     query: TargetURL,
     origin: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -1617,7 +1616,7 @@ interface ActionParameters6 {
       }
     | null;
 }
-const ActionParameters6 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters6 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     headers: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -1680,7 +1679,7 @@ interface RewriteRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RewriteRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RewriteRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -1728,7 +1727,7 @@ interface Origin {
   /** A destination port to route to. */
   port?: number | null;
 }
-const Origin = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Origin = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1739,7 +1738,7 @@ interface Sni {
   /** A value to override the SNI to. */
   value: string;
 }
-const Sni = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Sni = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     value: Schema.String,
   }),
@@ -1753,7 +1752,7 @@ interface ActionParameters7 {
   /** A Server Name Indication (SNI) override. */
   sni?: { value: string } | null;
 }
-const ActionParameters7 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters7 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     hostHeader: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     origin: Schema.optional(Schema.Union([Origin, Schema.Null])),
@@ -1811,7 +1810,7 @@ interface RouteRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RouteRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RouteRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -1857,7 +1856,7 @@ interface ActionParameters8 {
   /** A delta to change the score by, which can be either positive or negative. */
   increment: number;
 }
-const ActionParameters8 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters8 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     increment: Schema.Number,
   }),
@@ -1903,7 +1902,7 @@ interface ScoreRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const ScoreRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ScoreRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -1959,7 +1958,7 @@ interface ActionParametersContent {
   /** The status code to use for the error. */
   statusCode?: number | null;
 }
-const ActionParametersContent = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParametersContent = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     content: Schema.String,
     contentType: Schema.optional(
@@ -2000,7 +1999,7 @@ interface ActionParametersAsset {
   /** The status code to use for the error. */
   statusCode?: number | null;
 }
-const ActionParametersAsset = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParametersAsset = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     assetName: Schema.String,
     contentType: Schema.optional(
@@ -2090,7 +2089,7 @@ interface ServeErrorRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const ServeErrorRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ServeErrorRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -2141,7 +2140,7 @@ interface SetDirective {
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
   cloudflareOnly?: boolean | null;
 }
-const SetDirective = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SetDirective = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     operation: Schema.Union([
       Schema.Literals(["set", "remove"]),
@@ -2225,7 +2224,7 @@ interface ActionParameters9 {
     cloudflareOnly?: boolean | null;
   } | null;
 }
-const ActionParameters9 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters9 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     immutable: Schema.optional(Schema.Union([SetDirective, Schema.Null])),
     maxAge: Schema.optional(Schema.Union([SetDirective, Schema.Null])),
@@ -2354,47 +2353,46 @@ interface RulesetsSetCacheControlRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RulesetsSetCacheControlRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      lastUpdated: Schema.String,
-      version: Schema.String,
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(
-        Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
-      ),
-      actionParameters: Schema.optional(
-        Schema.Union([ActionParameters9, Schema.Null]),
-      ),
-      categories: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      exposedCredentialCheck: Schema.optional(
-        Schema.Union([ExposedCredentialCheck, Schema.Null]),
-      ),
-      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
-      ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        lastUpdated: "last_updated",
-        version: "version",
-        id: "id",
-        action: "action",
-        actionParameters: "action_parameters",
-        categories: "categories",
-        description: "description",
-        enabled: "enabled",
-        exposedCredentialCheck: "exposed_credential_check",
-        expression: "expression",
-        logging: "logging",
-        ratelimit: "ratelimit",
-        ref: "ref",
-      }),
+const RulesetsSetCacheControlRule = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    lastUpdated: Schema.String,
+    version: Schema.String,
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(
+      Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
     ),
+    actionParameters: Schema.optional(
+      Schema.Union([ActionParameters9, Schema.Null]),
+    ),
+    categories: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    exposedCredentialCheck: Schema.optional(
+      Schema.Union([ExposedCredentialCheck, Schema.Null]),
+    ),
+    expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
+    ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      lastUpdated: "last_updated",
+      version: "version",
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      categories: "categories",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+  ),
 ) as unknown as Schema.Codec<RulesetsSetCacheControlRule>;
 
 interface BrowserTTL {
@@ -2408,7 +2406,7 @@ interface BrowserTTL {
   /** The browser TTL (in seconds) if you choose the "override_origin" mode. */
   default?: number | null;
 }
-const BrowserTTL = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BrowserTTL = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     mode: Schema.Union([
       Schema.Literals([
@@ -2429,7 +2427,7 @@ interface Cookie {
   /** A list of cookies to include in the cache key. */
   include?: string[] | null;
 }
-const Cookie = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Cookie = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     checkPresence: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -2452,7 +2450,7 @@ interface Header {
   /** A list of headers to include in the cache key. */
   include?: string[] | null;
 }
-const Header = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Header = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     checkPresence: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -2478,7 +2476,7 @@ interface Host {
   /** Whether to use the resolved host in the cache key. */
   resolved?: boolean | null;
 }
-const Host = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Host = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     resolved: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   }),
@@ -2490,7 +2488,7 @@ interface Exclude2 {
   /** A list of query string parameters to exclude from the cache key. */
   list?: string[] | null;
 }
-const Exclude2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Exclude2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     all: Schema.optional(Schema.Union([Schema.Literal(true), Schema.Null])),
     list: Schema.optional(
@@ -2505,7 +2503,7 @@ interface QueryString {
   /** Which query string parameters to include in the cache key. */
   include?: { all?: true | null; list?: string[] | null } | null;
 }
-const QueryString = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const QueryString = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     exclude: Schema.optional(Schema.Union([Exclude2, Schema.Null])),
     include: Schema.optional(Schema.Union([Exclude2, Schema.Null])),
@@ -2520,7 +2518,7 @@ interface User {
   /** Whether to use the user agent's language in the cache key. */
   lang?: boolean | null;
 }
-const User = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const User = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     deviceType: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     geo: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -2557,7 +2555,7 @@ interface CustomKey {
     lang?: boolean | null;
   } | null;
 }
-const CustomKey = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CustomKey = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cookie: Schema.optional(Schema.Union([Cookie, Schema.Null])),
     header: Schema.optional(Schema.Union([Header, Schema.Null])),
@@ -2606,7 +2604,7 @@ interface CacheKey {
   /** Whether to treat requests with the same query parameters the same, regardless of the order those query parameters are in. */
   ignoreQueryStringsOrder?: boolean | null;
 }
-const CacheKey = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CacheKey = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cacheByDeviceType: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -2634,7 +2632,7 @@ interface CacheReserve {
   /** The minimum file size eligible for storage in Cache Reserve. */
   minimumFileSize?: number | null;
 }
-const CacheReserve = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CacheReserve = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     eligible: Schema.Boolean,
     minimumFileSize: Schema.optional(
@@ -2654,7 +2652,7 @@ interface StatusCodeRange {
   /** The upper bound of the range. */
   to?: number | null;
 }
-const StatusCodeRange = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StatusCodeRange = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     from: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     to: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -2669,7 +2667,7 @@ interface StatusCodeTTL {
   /** A range of status codes to apply the TTL to. */
   statusCodeRange?: { from?: number | null; to?: number | null } | null;
 }
-const StatusCodeTTL = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StatusCodeTTL = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     value: Schema.Number,
     statusCode: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -2703,7 +2701,7 @@ interface EdgeTTL {
       }[]
     | null;
 }
-const EdgeTTL = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const EdgeTTL = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     mode: Schema.Union([
       Schema.Literals([
@@ -2730,7 +2728,7 @@ interface ServeStale {
   /** Whether Cloudflare should disable serving stale content while getting the latest content from the origin. */
   disableStaleWhileUpdating?: boolean | null;
 }
-const ServeStale = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ServeStale = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     disableStaleWhileUpdating: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -2746,7 +2744,7 @@ interface SharedDictionary {
   /** URL pattern for the Use-As-Dictionary match field. This pattern specifies which URLs can use this response as a dictionary. */
   matchPattern: string;
 }
-const SharedDictionary = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SharedDictionary = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     matchPattern: Schema.String,
   }).pipe(Schema.encodeKeys({ matchPattern: "match_pattern" })),
@@ -2756,7 +2754,7 @@ interface Default {
   /** How the header value is treated when building the cache key. */
   action: "bypass" | "passthrough" | "normalize" | (string & {});
 }
-const Default = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Default = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.Union([
       Schema.Literals(["bypass", "passthrough", "normalize"]),
@@ -2773,7 +2771,7 @@ interface Vary {
   /** A mapping of lowercase request header names to their vary configuration. */
   headers?: Record<string, unknown> | null;
 }
-const Vary = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Vary = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     default: Schema.optional(Schema.Union([Default, Schema.Null])),
     headers: Schema.optional(
@@ -2869,7 +2867,7 @@ interface ActionParameters10 {
     headers?: Record<string, unknown> | null;
   } | null;
 }
-const ActionParameters10 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters10 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     additionalCacheablePorts: Schema.optional(
       Schema.Union([Schema.Array(Schema.Number), Schema.Null]),
@@ -3039,7 +3037,7 @@ interface SetCacheSettingsRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const SetCacheSettingsRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SetCacheSettingsRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -3087,7 +3085,7 @@ interface AddCacheTagsValues {
   /** A list of cache tag values. */
   values: string[];
 }
-const AddCacheTagsValues = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AddCacheTagsValues = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     operation: Schema.Union([
       Schema.Literals(["add", "remove", "set"]),
@@ -3103,7 +3101,7 @@ interface AddCacheTagsExpression {
   /** The operation to perform on the cache tags. */
   operation: "add" | "remove" | "set" | (string & {});
 }
-const AddCacheTagsExpression = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AddCacheTagsExpression = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     expression: Schema.String,
     operation: Schema.Union([
@@ -3159,50 +3157,49 @@ interface RulesetsSetCacheTagsRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RulesetsSetCacheTagsRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      lastUpdated: Schema.String,
-      version: Schema.String,
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(
-        Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
-      ),
-      actionParameters: Schema.optional(
-        Schema.Union([
-          Schema.Union([AddCacheTagsValues, AddCacheTagsExpression]),
-          Schema.Null,
-        ]),
-      ),
-      categories: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      exposedCredentialCheck: Schema.optional(
-        Schema.Union([ExposedCredentialCheck, Schema.Null]),
-      ),
-      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
-      ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        lastUpdated: "last_updated",
-        version: "version",
-        id: "id",
-        action: "action",
-        actionParameters: "action_parameters",
-        categories: "categories",
-        description: "description",
-        enabled: "enabled",
-        exposedCredentialCheck: "exposed_credential_check",
-        expression: "expression",
-        logging: "logging",
-        ratelimit: "ratelimit",
-        ref: "ref",
-      }),
+const RulesetsSetCacheTagsRule = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    lastUpdated: Schema.String,
+    version: Schema.String,
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(
+      Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
     ),
+    actionParameters: Schema.optional(
+      Schema.Union([
+        Schema.Union([AddCacheTagsValues, AddCacheTagsExpression]),
+        Schema.Null,
+      ]),
+    ),
+    categories: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    exposedCredentialCheck: Schema.optional(
+      Schema.Union([ExposedCredentialCheck, Schema.Null]),
+    ),
+    expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
+    ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      lastUpdated: "last_updated",
+      version: "version",
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      categories: "categories",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+  ),
 ) as unknown as Schema.Codec<RulesetsSetCacheTagsRule>;
 
 interface Autominify {
@@ -3213,7 +3210,7 @@ interface Autominify {
   /** Whether to minify JavaScript files. */
   js?: boolean | null;
 }
-const Autominify = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Autominify = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     css: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     html: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -3286,7 +3283,7 @@ interface ActionParameters11 {
   /** Whether to enable Signed Exchanges (SXG). */
   sxg?: boolean | null;
 }
-const ActionParameters11 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters11 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     automaticHttpsRewrites: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -3486,7 +3483,7 @@ interface SetConfigRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const SetConfigRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SetConfigRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -3581,7 +3578,7 @@ interface ActionParameters12 {
   /** A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options. */
   rulesets?: string[] | null;
 }
-const ActionParameters12 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters12 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     phase: Schema.optional(
       Schema.Union([Schema.Literal("current"), Schema.Null]),
@@ -3739,7 +3736,7 @@ interface SkipRule {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const SkipRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SkipRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -3821,7 +3818,7 @@ interface BlockRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const BlockRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BlockRuleParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(
@@ -3889,7 +3886,7 @@ interface RulesetsChallengeRule2 {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RulesetsChallengeRule2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RulesetsChallengeRule2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(
@@ -3969,39 +3966,38 @@ interface CompressResponseRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const CompressResponseRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(
-        Schema.Union([Schema.Literal("compress_response"), Schema.Null]),
-      ),
-      actionParameters: Schema.optional(
-        Schema.Union([ActionParameters2, Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      exposedCredentialCheck: Schema.optional(
-        Schema.Union([ExposedCredentialCheck, Schema.Null]),
-      ),
-      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
-      ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        action: "action",
-        actionParameters: "action_parameters",
-        description: "description",
-        enabled: "enabled",
-        exposedCredentialCheck: "exposed_credential_check",
-        expression: "expression",
-        logging: "logging",
-        ratelimit: "ratelimit",
-        ref: "ref",
-      }),
+const CompressResponseRuleParam = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(
+      Schema.Union([Schema.Literal("compress_response"), Schema.Null]),
     ),
+    actionParameters: Schema.optional(
+      Schema.Union([ActionParameters2, Schema.Null]),
+    ),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    exposedCredentialCheck: Schema.optional(
+      Schema.Union([ExposedCredentialCheck, Schema.Null]),
+    ),
+    expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
+    ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+  ),
 ) as unknown as Schema.Codec<CompressResponseRuleParam>;
 
 interface DdoSDynamicRuleParam {
@@ -4038,7 +4034,7 @@ interface DdoSDynamicRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const DdoSDynamicRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DdoSDynamicRuleParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(
@@ -4149,7 +4145,7 @@ interface ExecuteRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const ExecuteRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ExecuteRuleParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(
@@ -4218,7 +4214,7 @@ interface ForceConnectionCloseRuleParam {
   ref?: string | null;
 }
 const ForceConnectionCloseRuleParam =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       action: Schema.optional(
@@ -4286,39 +4282,38 @@ interface RulesetsJSChallengeRule2 {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RulesetsJSChallengeRule2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(
-        Schema.Union([Schema.Literal("js_challenge"), Schema.Null]),
-      ),
-      actionParameters: Schema.optional(
-        Schema.Union([Schema.Unknown, Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      exposedCredentialCheck: Schema.optional(
-        Schema.Union([ExposedCredentialCheck, Schema.Null]),
-      ),
-      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
-      ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        action: "action",
-        actionParameters: "action_parameters",
-        description: "description",
-        enabled: "enabled",
-        exposedCredentialCheck: "exposed_credential_check",
-        expression: "expression",
-        logging: "logging",
-        ratelimit: "ratelimit",
-        ref: "ref",
-      }),
+const RulesetsJSChallengeRule2 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(
+      Schema.Union([Schema.Literal("js_challenge"), Schema.Null]),
     ),
+    actionParameters: Schema.optional(
+      Schema.Union([Schema.Unknown, Schema.Null]),
+    ),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    exposedCredentialCheck: Schema.optional(
+      Schema.Union([ExposedCredentialCheck, Schema.Null]),
+    ),
+    expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
+    ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+  ),
 ) as unknown as Schema.Codec<RulesetsJSChallengeRule2>;
 
 interface LogRuleParam {
@@ -4355,7 +4350,7 @@ interface LogRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const LogRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LogRuleParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(Schema.Union([Schema.Literal("log"), Schema.Null])),
@@ -4431,7 +4426,7 @@ interface LogCustomFieldRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const LogCustomFieldRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LogCustomFieldRuleParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(
@@ -4499,39 +4494,38 @@ interface ManagedChallengeRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const ManagedChallengeRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(
-        Schema.Union([Schema.Literal("managed_challenge"), Schema.Null]),
-      ),
-      actionParameters: Schema.optional(
-        Schema.Union([Schema.Unknown, Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      exposedCredentialCheck: Schema.optional(
-        Schema.Union([ExposedCredentialCheck, Schema.Null]),
-      ),
-      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
-      ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        action: "action",
-        actionParameters: "action_parameters",
-        description: "description",
-        enabled: "enabled",
-        exposedCredentialCheck: "exposed_credential_check",
-        expression: "expression",
-        logging: "logging",
-        ratelimit: "ratelimit",
-        ref: "ref",
-      }),
+const ManagedChallengeRuleParam = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(
+      Schema.Union([Schema.Literal("managed_challenge"), Schema.Null]),
     ),
+    actionParameters: Schema.optional(
+      Schema.Union([Schema.Unknown, Schema.Null]),
+    ),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    exposedCredentialCheck: Schema.optional(
+      Schema.Union([ExposedCredentialCheck, Schema.Null]),
+    ),
+    expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
+    ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+  ),
 ) as unknown as Schema.Codec<ManagedChallengeRuleParam>;
 
 interface FromValue2 {
@@ -4542,7 +4536,7 @@ interface FromValue2 {
   /** The status code to use for the redirect. */
   statusCode?: "301" | "302" | "303" | "307" | "308" | (string & {}) | null;
 }
-const FromValue2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FromValue2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     targetUrl: TargetURL,
     preserveQueryString: Schema.optional(
@@ -4576,7 +4570,7 @@ interface ActionParameters13 {
     statusCode?: "301" | "302" | "303" | "307" | "308" | (string & {}) | null;
   } | null;
 }
-const ActionParameters13 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters13 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fromList: Schema.optional(Schema.Union([FromList, Schema.Null])),
     fromValue: Schema.optional(Schema.Union([FromValue2, Schema.Null])),
@@ -4626,7 +4620,7 @@ interface RedirectRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RedirectRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RedirectRuleParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(
@@ -4664,7 +4658,7 @@ interface Uripath2 {
   /** A URI path rewrite. */
   path: { expression?: string | null; value?: string | null };
 }
-const Uripath2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Uripath2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     path: TargetURL,
   }),
@@ -4674,7 +4668,7 @@ interface Uriquery2 {
   /** A URI query rewrite. */
   query: { expression?: string | null; value?: string | null };
 }
-const Uriquery2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Uriquery2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     query: TargetURL,
   }),
@@ -4689,7 +4683,7 @@ interface ActionParameters14 {
     | { query: { expression?: string | null; value?: string | null } }
     | null;
 }
-const ActionParameters14 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionParameters14 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     headers: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -4740,7 +4734,7 @@ interface RewriteRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RewriteRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RewriteRuleParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(
@@ -4812,7 +4806,7 @@ interface RouteRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RouteRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RouteRuleParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(
@@ -4880,7 +4874,7 @@ interface ScoreRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const ScoreRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ScoreRuleParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(
@@ -4971,7 +4965,7 @@ interface ServeErrorRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const ServeErrorRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ServeErrorRuleParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(
@@ -5095,39 +5089,38 @@ interface RulesetsSetCacheControlRule2 {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RulesetsSetCacheControlRule2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(
-        Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
-      ),
-      actionParameters: Schema.optional(
-        Schema.Union([ActionParameters9, Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      exposedCredentialCheck: Schema.optional(
-        Schema.Union([ExposedCredentialCheck, Schema.Null]),
-      ),
-      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
-      ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        action: "action",
-        actionParameters: "action_parameters",
-        description: "description",
-        enabled: "enabled",
-        exposedCredentialCheck: "exposed_credential_check",
-        expression: "expression",
-        logging: "logging",
-        ratelimit: "ratelimit",
-        ref: "ref",
-      }),
+const RulesetsSetCacheControlRule2 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(
+      Schema.Union([Schema.Literal("set_cache_control"), Schema.Null]),
     ),
+    actionParameters: Schema.optional(
+      Schema.Union([ActionParameters9, Schema.Null]),
+    ),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    exposedCredentialCheck: Schema.optional(
+      Schema.Union([ExposedCredentialCheck, Schema.Null]),
+    ),
+    expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
+    ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+  ),
 ) as unknown as Schema.Codec<RulesetsSetCacheControlRule2>;
 
 interface SetCacheSettingsRuleParam {
@@ -5240,39 +5233,38 @@ interface SetCacheSettingsRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const SetCacheSettingsRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(
-        Schema.Union([Schema.Literal("set_cache_settings"), Schema.Null]),
-      ),
-      actionParameters: Schema.optional(
-        Schema.Union([ActionParameters10, Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      exposedCredentialCheck: Schema.optional(
-        Schema.Union([ExposedCredentialCheck, Schema.Null]),
-      ),
-      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
-      ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        action: "action",
-        actionParameters: "action_parameters",
-        description: "description",
-        enabled: "enabled",
-        exposedCredentialCheck: "exposed_credential_check",
-        expression: "expression",
-        logging: "logging",
-        ratelimit: "ratelimit",
-        ref: "ref",
-      }),
+const SetCacheSettingsRuleParam = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(
+      Schema.Union([Schema.Literal("set_cache_settings"), Schema.Null]),
     ),
+    actionParameters: Schema.optional(
+      Schema.Union([ActionParameters10, Schema.Null]),
+    ),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    exposedCredentialCheck: Schema.optional(
+      Schema.Union([ExposedCredentialCheck, Schema.Null]),
+    ),
+    expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
+    ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+  ),
 ) as unknown as Schema.Codec<SetCacheSettingsRuleParam>;
 
 interface RulesetsSetCacheTagsRule2 {
@@ -5315,42 +5307,41 @@ interface RulesetsSetCacheTagsRule2 {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RulesetsSetCacheTagsRule2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(
-        Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
-      ),
-      actionParameters: Schema.optional(
-        Schema.Union([
-          Schema.Union([AddCacheTagsValues, AddCacheTagsExpression]),
-          Schema.Null,
-        ]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      exposedCredentialCheck: Schema.optional(
-        Schema.Union([ExposedCredentialCheck, Schema.Null]),
-      ),
-      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
-      ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        action: "action",
-        actionParameters: "action_parameters",
-        description: "description",
-        enabled: "enabled",
-        exposedCredentialCheck: "exposed_credential_check",
-        expression: "expression",
-        logging: "logging",
-        ratelimit: "ratelimit",
-        ref: "ref",
-      }),
+const RulesetsSetCacheTagsRule2 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(
+      Schema.Union([Schema.Literal("set_cache_tags"), Schema.Null]),
     ),
+    actionParameters: Schema.optional(
+      Schema.Union([
+        Schema.Union([AddCacheTagsValues, AddCacheTagsExpression]),
+        Schema.Null,
+      ]),
+    ),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    exposedCredentialCheck: Schema.optional(
+      Schema.Union([ExposedCredentialCheck, Schema.Null]),
+    ),
+    expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
+    ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+  ),
 ) as unknown as Schema.Codec<RulesetsSetCacheTagsRule2>;
 
 interface SetConfigRuleParam {
@@ -5429,7 +5420,7 @@ interface SetConfigRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const SetConfigRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SetConfigRuleParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(
@@ -5543,7 +5534,7 @@ interface SkipRuleParam {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const SkipRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SkipRuleParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(
@@ -5624,7 +5615,7 @@ interface RedirectRule2 {
   /** The reference of the rule (the rule's ID by default). */
   ref?: string | null;
 }
-const RedirectRule2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RedirectRule2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     version: Schema.String,
@@ -5708,7 +5699,7 @@ interface ListPhasVersionsResponseResult {
   description?: string | null;
 }
 const ListPhasVersionsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       kind: Schema.Union([
@@ -5769,7 +5760,7 @@ interface BeforePosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
   index?: number | null;
 }
-const BeforePosition = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BeforePosition = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     before: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -5783,7 +5774,7 @@ interface ListRulesetsResponseResultInfo {
   perPage?: number | null;
 }
 const ListRulesetsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -5820,7 +5811,7 @@ export interface GetPhasForZoneRequest extends GetPhasBaseRequest {
 }
 
 export const GetPhasForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetPhasBaseFields,
@@ -5832,17 +5823,16 @@ export const GetPhasForAccountRequest =
     ),
   ) as unknown as Schema.Codec<GetPhasForAccountRequest>;
 
-export const GetPhasForZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      ...GetPhasBaseFields,
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/rulesets/phases/{rulesetPhase}/entrypoint",
-      }),
-    ),
+export const GetPhasForZoneRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...GetPhasBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/rulesets/phases/{rulesetPhase}/entrypoint",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetPhasForZoneRequest>;
 
 export interface GetPhasResponse {
@@ -6815,7 +6805,7 @@ export interface GetPhasResponse {
   description?: string | null;
 }
 
-export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetPhasResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     kind: Schema.Union([
@@ -6907,7 +6897,7 @@ export const getPhasForAccount: API.OperationMethod<
   GetPhasResponse,
   GetPhasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPhasForAccountRequest,
   output: GetPhasResponse,
   errors: [RulesetNotFound, Forbidden],
@@ -6918,7 +6908,7 @@ export const getPhasForZone: API.OperationMethod<
   GetPhasResponse,
   GetPhasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPhasForZoneRequest,
   output: GetPhasResponse,
   errors: [RulesetNotFound, Forbidden],
@@ -7753,7 +7743,7 @@ export interface PutPhasForZoneRequest extends PutPhasBaseRequest {
 }
 
 export const PutPhasForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...PutPhasBaseFields,
@@ -7765,17 +7755,16 @@ export const PutPhasForAccountRequest =
     ),
   ) as unknown as Schema.Codec<PutPhasForAccountRequest>;
 
-export const PutPhasForZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      ...PutPhasBaseFields,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/rulesets/phases/{rulesetPhase}/entrypoint",
-      }),
-    ),
+export const PutPhasForZoneRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...PutPhasBaseFields,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/rulesets/phases/{rulesetPhase}/entrypoint",
+    }),
+  ),
 ) as unknown as Schema.Codec<PutPhasForZoneRequest>;
 
 export interface PutPhasResponse {
@@ -8748,7 +8737,7 @@ export interface PutPhasResponse {
   description?: string | null;
 }
 
-export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutPhasResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     kind: Schema.Union([
@@ -8844,7 +8833,7 @@ export const putPhasForAccount: API.OperationMethod<
   PutPhasResponse,
   PutPhasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPhasForAccountRequest,
   output: PutPhasResponse,
   errors: [RulesetNotFound, PhaseNotEntitled, Forbidden],
@@ -8855,7 +8844,7 @@ export const putPhasForZone: API.OperationMethod<
   PutPhasResponse,
   PutPhasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPhasForZoneRequest,
   output: PutPhasResponse,
   errors: [RulesetNotFound, PhaseNotEntitled, Forbidden],
@@ -8886,7 +8875,7 @@ export interface GetPhasVersionForZoneRequest extends GetPhasVersionBaseRequest 
 }
 
 export const GetPhasVersionForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetPhasVersionBaseFields,
@@ -8899,7 +8888,7 @@ export const GetPhasVersionForAccountRequest =
   ) as unknown as Schema.Codec<GetPhasVersionForAccountRequest>;
 
 export const GetPhasVersionForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetPhasVersionBaseFields,
@@ -9852,7 +9841,7 @@ export interface GetPhasVersionResponse {
 }
 
 export const GetPhasVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       kind: Schema.Union([
@@ -9939,7 +9928,7 @@ export const getPhasVersionForAccount: API.OperationMethod<
   GetPhasVersionResponse,
   GetPhasVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPhasVersionForAccountRequest,
   output: GetPhasVersionResponse,
   errors: [],
@@ -9950,7 +9939,7 @@ export const getPhasVersionForZone: API.OperationMethod<
   GetPhasVersionResponse,
   GetPhasVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPhasVersionForZoneRequest,
   output: GetPhasVersionResponse,
   errors: [],
@@ -9975,7 +9964,7 @@ export interface ListPhasVersionsForZoneRequest extends ListPhasVersionsBaseRequ
 }
 
 export const ListPhasVersionsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListPhasVersionsBaseFields,
@@ -9988,7 +9977,7 @@ export const ListPhasVersionsForAccountRequest =
   ) as unknown as Schema.Codec<ListPhasVersionsForAccountRequest>;
 
 export const ListPhasVersionsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListPhasVersionsBaseFields,
@@ -10038,7 +10027,7 @@ export interface ListPhasVersionsResponse {
 }
 
 export const ListPhasVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListPhasVersionsResponseResult),
     }),
@@ -10051,7 +10040,7 @@ export const listPhasVersionsForAccount: API.PaginatedOperationMethod<
   ListPhasVersionsResponse,
   ListPhasVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhasVersionsForAccountRequest,
   output: ListPhasVersionsResponse,
   errors: [],
@@ -10066,7 +10055,7 @@ export const listPhasVersionsForZone: API.PaginatedOperationMethod<
   ListPhasVersionsResponse,
   ListPhasVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhasVersionsForZoneRequest,
   output: ListPhasVersionsResponse,
   errors: [],
@@ -10510,7 +10499,7 @@ export interface CreateRuleForZoneRequest extends CreateRuleBaseRequest {
 }
 
 export const CreateRuleForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateRuleBaseFields,
@@ -10536,7 +10525,7 @@ export const CreateRuleForAccountRequest =
   ) as unknown as Schema.Codec<CreateRuleForAccountRequest>;
 
 export const CreateRuleForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateRuleBaseFields,
@@ -11501,85 +11490,84 @@ export interface CreateRuleResponse {
   description?: string | null;
 }
 
-export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      kind: Schema.Union([
-        Schema.Literals(["managed", "custom", "root", "zone"]),
-        Schema.String,
+export const CreateRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    kind: Schema.Union([
+      Schema.Literals(["managed", "custom", "root", "zone"]),
+      Schema.String,
+    ]),
+    lastUpdated: Schema.String,
+    name: Schema.String,
+    phase: Schema.Union([
+      Schema.Literals([
+        "ddos_l4",
+        "ddos_l7",
+        "http_config_settings",
+        "http_custom_errors",
+        "http_log_custom_fields",
+        "http_ratelimit",
+        "http_request_cache_settings",
+        "http_request_dynamic_redirect",
+        "http_request_firewall_custom",
+        "http_request_firewall_managed",
+        "http_request_late_transform",
+        "http_request_origin",
+        "http_request_redirect",
+        "http_request_sanitize",
+        "http_request_sbfm",
+        "http_request_transform",
+        "http_response_cache_settings",
+        "http_response_compression",
+        "http_response_firewall_managed",
+        "http_response_headers_transform",
+        "magic_transit",
+        "magic_transit_ids_managed",
+        "magic_transit_managed",
+        "magic_transit_ratelimit",
       ]),
-      lastUpdated: Schema.String,
-      name: Schema.String,
-      phase: Schema.Union([
-        Schema.Literals([
-          "ddos_l4",
-          "ddos_l7",
-          "http_config_settings",
-          "http_custom_errors",
-          "http_log_custom_fields",
-          "http_ratelimit",
-          "http_request_cache_settings",
-          "http_request_dynamic_redirect",
-          "http_request_firewall_custom",
-          "http_request_firewall_managed",
-          "http_request_late_transform",
-          "http_request_origin",
-          "http_request_redirect",
-          "http_request_sanitize",
-          "http_request_sbfm",
-          "http_request_transform",
-          "http_response_cache_settings",
-          "http_response_compression",
-          "http_response_firewall_managed",
-          "http_response_headers_transform",
-          "magic_transit",
-          "magic_transit_ids_managed",
-          "magic_transit_managed",
-          "magic_transit_ratelimit",
-        ]),
-        Schema.String,
+      Schema.String,
+    ]),
+    rules: Schema.Array(
+      Schema.Union([
+        BlockRule,
+        RulesetsChallengeRule,
+        CompressResponseRule,
+        DdoSDynamicRule,
+        ExecuteRule,
+        ForceConnectionCloseRule,
+        RulesetsJSChallengeRule,
+        LogRule,
+        LogCustomFieldRule,
+        ManagedChallengeRule,
+        RedirectRule2,
+        RewriteRule,
+        RouteRule,
+        ScoreRule,
+        ServeErrorRule,
+        RulesetsSetCacheControlRule,
+        SetCacheSettingsRule,
+        RulesetsSetCacheTagsRule,
+        SetConfigRule,
+        SkipRule,
       ]),
-      rules: Schema.Array(
-        Schema.Union([
-          BlockRule,
-          RulesetsChallengeRule,
-          CompressResponseRule,
-          DdoSDynamicRule,
-          ExecuteRule,
-          ForceConnectionCloseRule,
-          RulesetsJSChallengeRule,
-          LogRule,
-          LogCustomFieldRule,
-          ManagedChallengeRule,
-          RedirectRule2,
-          RewriteRule,
-          RouteRule,
-          ScoreRule,
-          ServeErrorRule,
-          RulesetsSetCacheControlRule,
-          SetCacheSettingsRule,
-          RulesetsSetCacheTagsRule,
-          SetConfigRule,
-          SkipRule,
-        ]),
-      ),
-      version: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          kind: "kind",
-          lastUpdated: "last_updated",
-          name: "name",
-          phase: "phase",
-          rules: "rules",
-          version: "version",
-          description: "description",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+    ),
+    version: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        kind: "kind",
+        lastUpdated: "last_updated",
+        name: "name",
+        phase: "phase",
+        rules: "rules",
+        version: "version",
+        description: "description",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateRuleResponse>;
 
 export type CreateRuleError = DefaultErrors;
@@ -11589,7 +11577,7 @@ export const createRuleForAccount: API.OperationMethod<
   CreateRuleResponse,
   CreateRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRuleForAccountRequest,
   output: CreateRuleResponse,
   errors: [],
@@ -11600,7 +11588,7 @@ export const createRuleForZone: API.OperationMethod<
   CreateRuleResponse,
   CreateRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRuleForZoneRequest,
   output: CreateRuleResponse,
   errors: [],
@@ -12038,7 +12026,7 @@ export interface PatchRuleForZoneRequest extends PatchRuleBaseRequest {
 }
 
 export const PatchRuleForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...PatchRuleBaseFields,
@@ -12064,7 +12052,7 @@ export const PatchRuleForAccountRequest =
   ) as unknown as Schema.Codec<PatchRuleForAccountRequest>;
 
 export const PatchRuleForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...PatchRuleBaseFields,
@@ -13029,85 +13017,84 @@ export interface PatchRuleResponse {
   description?: string | null;
 }
 
-export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      kind: Schema.Union([
-        Schema.Literals(["managed", "custom", "root", "zone"]),
-        Schema.String,
+export const PatchRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    kind: Schema.Union([
+      Schema.Literals(["managed", "custom", "root", "zone"]),
+      Schema.String,
+    ]),
+    lastUpdated: Schema.String,
+    name: Schema.String,
+    phase: Schema.Union([
+      Schema.Literals([
+        "ddos_l4",
+        "ddos_l7",
+        "http_config_settings",
+        "http_custom_errors",
+        "http_log_custom_fields",
+        "http_ratelimit",
+        "http_request_cache_settings",
+        "http_request_dynamic_redirect",
+        "http_request_firewall_custom",
+        "http_request_firewall_managed",
+        "http_request_late_transform",
+        "http_request_origin",
+        "http_request_redirect",
+        "http_request_sanitize",
+        "http_request_sbfm",
+        "http_request_transform",
+        "http_response_cache_settings",
+        "http_response_compression",
+        "http_response_firewall_managed",
+        "http_response_headers_transform",
+        "magic_transit",
+        "magic_transit_ids_managed",
+        "magic_transit_managed",
+        "magic_transit_ratelimit",
       ]),
-      lastUpdated: Schema.String,
-      name: Schema.String,
-      phase: Schema.Union([
-        Schema.Literals([
-          "ddos_l4",
-          "ddos_l7",
-          "http_config_settings",
-          "http_custom_errors",
-          "http_log_custom_fields",
-          "http_ratelimit",
-          "http_request_cache_settings",
-          "http_request_dynamic_redirect",
-          "http_request_firewall_custom",
-          "http_request_firewall_managed",
-          "http_request_late_transform",
-          "http_request_origin",
-          "http_request_redirect",
-          "http_request_sanitize",
-          "http_request_sbfm",
-          "http_request_transform",
-          "http_response_cache_settings",
-          "http_response_compression",
-          "http_response_firewall_managed",
-          "http_response_headers_transform",
-          "magic_transit",
-          "magic_transit_ids_managed",
-          "magic_transit_managed",
-          "magic_transit_ratelimit",
-        ]),
-        Schema.String,
+      Schema.String,
+    ]),
+    rules: Schema.Array(
+      Schema.Union([
+        BlockRule,
+        RulesetsChallengeRule,
+        CompressResponseRule,
+        DdoSDynamicRule,
+        ExecuteRule,
+        ForceConnectionCloseRule,
+        RulesetsJSChallengeRule,
+        LogRule,
+        LogCustomFieldRule,
+        ManagedChallengeRule,
+        RedirectRule2,
+        RewriteRule,
+        RouteRule,
+        ScoreRule,
+        ServeErrorRule,
+        RulesetsSetCacheControlRule,
+        SetCacheSettingsRule,
+        RulesetsSetCacheTagsRule,
+        SetConfigRule,
+        SkipRule,
       ]),
-      rules: Schema.Array(
-        Schema.Union([
-          BlockRule,
-          RulesetsChallengeRule,
-          CompressResponseRule,
-          DdoSDynamicRule,
-          ExecuteRule,
-          ForceConnectionCloseRule,
-          RulesetsJSChallengeRule,
-          LogRule,
-          LogCustomFieldRule,
-          ManagedChallengeRule,
-          RedirectRule2,
-          RewriteRule,
-          RouteRule,
-          ScoreRule,
-          ServeErrorRule,
-          RulesetsSetCacheControlRule,
-          SetCacheSettingsRule,
-          RulesetsSetCacheTagsRule,
-          SetConfigRule,
-          SkipRule,
-        ]),
-      ),
-      version: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          kind: "kind",
-          lastUpdated: "last_updated",
-          name: "name",
-          phase: "phase",
-          rules: "rules",
-          version: "version",
-          description: "description",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+    ),
+    version: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        kind: "kind",
+        lastUpdated: "last_updated",
+        name: "name",
+        phase: "phase",
+        rules: "rules",
+        version: "version",
+        description: "description",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchRuleResponse>;
 
 export type PatchRuleError = DefaultErrors;
@@ -13117,7 +13104,7 @@ export const patchRuleForAccount: API.OperationMethod<
   PatchRuleResponse,
   PatchRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchRuleForAccountRequest,
   output: PatchRuleResponse,
   errors: [],
@@ -13128,7 +13115,7 @@ export const patchRuleForZone: API.OperationMethod<
   PatchRuleResponse,
   PatchRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchRuleForZoneRequest,
   output: PatchRuleResponse,
   errors: [],
@@ -13155,7 +13142,7 @@ export interface DeleteRuleForZoneRequest extends DeleteRuleBaseRequest {
 }
 
 export const DeleteRuleForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteRuleBaseFields,
@@ -13168,7 +13155,7 @@ export const DeleteRuleForAccountRequest =
   ) as unknown as Schema.Codec<DeleteRuleForAccountRequest>;
 
 export const DeleteRuleForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteRuleBaseFields,
@@ -14120,85 +14107,84 @@ export interface DeleteRuleResponse {
   description?: string | null;
 }
 
-export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      kind: Schema.Union([
-        Schema.Literals(["managed", "custom", "root", "zone"]),
-        Schema.String,
+export const DeleteRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    kind: Schema.Union([
+      Schema.Literals(["managed", "custom", "root", "zone"]),
+      Schema.String,
+    ]),
+    lastUpdated: Schema.String,
+    name: Schema.String,
+    phase: Schema.Union([
+      Schema.Literals([
+        "ddos_l4",
+        "ddos_l7",
+        "http_config_settings",
+        "http_custom_errors",
+        "http_log_custom_fields",
+        "http_ratelimit",
+        "http_request_cache_settings",
+        "http_request_dynamic_redirect",
+        "http_request_firewall_custom",
+        "http_request_firewall_managed",
+        "http_request_late_transform",
+        "http_request_origin",
+        "http_request_redirect",
+        "http_request_sanitize",
+        "http_request_sbfm",
+        "http_request_transform",
+        "http_response_cache_settings",
+        "http_response_compression",
+        "http_response_firewall_managed",
+        "http_response_headers_transform",
+        "magic_transit",
+        "magic_transit_ids_managed",
+        "magic_transit_managed",
+        "magic_transit_ratelimit",
       ]),
-      lastUpdated: Schema.String,
-      name: Schema.String,
-      phase: Schema.Union([
-        Schema.Literals([
-          "ddos_l4",
-          "ddos_l7",
-          "http_config_settings",
-          "http_custom_errors",
-          "http_log_custom_fields",
-          "http_ratelimit",
-          "http_request_cache_settings",
-          "http_request_dynamic_redirect",
-          "http_request_firewall_custom",
-          "http_request_firewall_managed",
-          "http_request_late_transform",
-          "http_request_origin",
-          "http_request_redirect",
-          "http_request_sanitize",
-          "http_request_sbfm",
-          "http_request_transform",
-          "http_response_cache_settings",
-          "http_response_compression",
-          "http_response_firewall_managed",
-          "http_response_headers_transform",
-          "magic_transit",
-          "magic_transit_ids_managed",
-          "magic_transit_managed",
-          "magic_transit_ratelimit",
-        ]),
-        Schema.String,
+      Schema.String,
+    ]),
+    rules: Schema.Array(
+      Schema.Union([
+        BlockRule,
+        RulesetsChallengeRule,
+        CompressResponseRule,
+        DdoSDynamicRule,
+        ExecuteRule,
+        ForceConnectionCloseRule,
+        RulesetsJSChallengeRule,
+        LogRule,
+        LogCustomFieldRule,
+        ManagedChallengeRule,
+        RedirectRule2,
+        RewriteRule,
+        RouteRule,
+        ScoreRule,
+        ServeErrorRule,
+        RulesetsSetCacheControlRule,
+        SetCacheSettingsRule,
+        RulesetsSetCacheTagsRule,
+        SetConfigRule,
+        SkipRule,
       ]),
-      rules: Schema.Array(
-        Schema.Union([
-          BlockRule,
-          RulesetsChallengeRule,
-          CompressResponseRule,
-          DdoSDynamicRule,
-          ExecuteRule,
-          ForceConnectionCloseRule,
-          RulesetsJSChallengeRule,
-          LogRule,
-          LogCustomFieldRule,
-          ManagedChallengeRule,
-          RedirectRule2,
-          RewriteRule,
-          RouteRule,
-          ScoreRule,
-          ServeErrorRule,
-          RulesetsSetCacheControlRule,
-          SetCacheSettingsRule,
-          RulesetsSetCacheTagsRule,
-          SetConfigRule,
-          SkipRule,
-        ]),
-      ),
-      version: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          kind: "kind",
-          lastUpdated: "last_updated",
-          name: "name",
-          phase: "phase",
-          rules: "rules",
-          version: "version",
-          description: "description",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+    ),
+    version: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        kind: "kind",
+        lastUpdated: "last_updated",
+        name: "name",
+        phase: "phase",
+        rules: "rules",
+        version: "version",
+        description: "description",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteRuleResponse>;
 
 export type DeleteRuleError = DefaultErrors;
@@ -14208,7 +14194,7 @@ export const deleteRuleForAccount: API.OperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleForAccountRequest,
   output: DeleteRuleResponse,
   errors: [],
@@ -14219,7 +14205,7 @@ export const deleteRuleForZone: API.OperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleForZoneRequest,
   output: DeleteRuleResponse,
   errors: [],
@@ -14248,7 +14234,7 @@ export interface GetRulesetForZoneRequest extends GetRulesetBaseRequest {
 }
 
 export const GetRulesetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetRulesetBaseFields,
@@ -14261,7 +14247,7 @@ export const GetRulesetForAccountRequest =
   ) as unknown as Schema.Codec<GetRulesetForAccountRequest>;
 
 export const GetRulesetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetRulesetBaseFields,
@@ -15240,90 +15226,89 @@ export interface GetRulesetResponse {
   description?: string | null;
 }
 
-export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      kind: Schema.Union([
-        Schema.Literals(["managed", "custom", "root", "zone"]),
-        Schema.String,
+export const GetRulesetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    kind: Schema.Union([
+      Schema.Literals(["managed", "custom", "root", "zone"]),
+      Schema.String,
+    ]),
+    lastUpdated: Schema.String,
+    name: Schema.String,
+    phase: Schema.Union([
+      Schema.Literals([
+        "ddos_l4",
+        "ddos_l7",
+        "http_config_settings",
+        "http_custom_errors",
+        "http_log_custom_fields",
+        "http_ratelimit",
+        "http_request_cache_settings",
+        "http_request_dynamic_redirect",
+        "http_request_firewall_custom",
+        "http_request_firewall_managed",
+        "http_request_late_transform",
+        "http_request_origin",
+        "http_request_redirect",
+        "http_request_sanitize",
+        "http_request_sbfm",
+        "http_request_transform",
+        "http_response_cache_settings",
+        "http_response_compression",
+        "http_response_firewall_managed",
+        "http_response_headers_transform",
+        "magic_transit",
+        "magic_transit_ids_managed",
+        "magic_transit_managed",
+        "magic_transit_ratelimit",
       ]),
-      lastUpdated: Schema.String,
-      name: Schema.String,
-      phase: Schema.Union([
-        Schema.Literals([
-          "ddos_l4",
-          "ddos_l7",
-          "http_config_settings",
-          "http_custom_errors",
-          "http_log_custom_fields",
-          "http_ratelimit",
-          "http_request_cache_settings",
-          "http_request_dynamic_redirect",
-          "http_request_firewall_custom",
-          "http_request_firewall_managed",
-          "http_request_late_transform",
-          "http_request_origin",
-          "http_request_redirect",
-          "http_request_sanitize",
-          "http_request_sbfm",
-          "http_request_transform",
-          "http_response_cache_settings",
-          "http_response_compression",
-          "http_response_firewall_managed",
-          "http_response_headers_transform",
-          "magic_transit",
-          "magic_transit_ids_managed",
-          "magic_transit_managed",
-          "magic_transit_ratelimit",
-        ]),
-        Schema.String,
+      Schema.String,
+    ]),
+    rules: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            BlockRule,
+            RulesetsChallengeRule,
+            CompressResponseRule,
+            DdoSDynamicRule,
+            ExecuteRule,
+            ForceConnectionCloseRule,
+            RulesetsJSChallengeRule,
+            LogRule,
+            LogCustomFieldRule,
+            ManagedChallengeRule,
+            RedirectRule2,
+            RewriteRule,
+            RouteRule,
+            ScoreRule,
+            ServeErrorRule,
+            RulesetsSetCacheControlRule,
+            SetCacheSettingsRule,
+            RulesetsSetCacheTagsRule,
+            SetConfigRule,
+            SkipRule,
+          ]),
+        ),
+        Schema.Null,
       ]),
-      rules: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              BlockRule,
-              RulesetsChallengeRule,
-              CompressResponseRule,
-              DdoSDynamicRule,
-              ExecuteRule,
-              ForceConnectionCloseRule,
-              RulesetsJSChallengeRule,
-              LogRule,
-              LogCustomFieldRule,
-              ManagedChallengeRule,
-              RedirectRule2,
-              RewriteRule,
-              RouteRule,
-              ScoreRule,
-              ServeErrorRule,
-              RulesetsSetCacheControlRule,
-              SetCacheSettingsRule,
-              RulesetsSetCacheTagsRule,
-              SetConfigRule,
-              SkipRule,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      version: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          kind: "kind",
-          lastUpdated: "last_updated",
-          name: "name",
-          phase: "phase",
-          rules: "rules",
-          version: "version",
-          description: "description",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+    ),
+    version: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        kind: "kind",
+        lastUpdated: "last_updated",
+        name: "name",
+        phase: "phase",
+        rules: "rules",
+        version: "version",
+        description: "description",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetRulesetResponse>;
 
 export type GetRulesetError = DefaultErrors | RulesetNotFound | Forbidden;
@@ -15333,7 +15318,7 @@ export const getRulesetForAccount: API.OperationMethod<
   GetRulesetResponse,
   GetRulesetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRulesetForAccountRequest,
   output: GetRulesetResponse,
   errors: [RulesetNotFound, Forbidden],
@@ -15344,7 +15329,7 @@ export const getRulesetForZone: API.OperationMethod<
   GetRulesetResponse,
   GetRulesetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRulesetForZoneRequest,
   output: GetRulesetResponse,
   errors: [RulesetNotFound, Forbidden],
@@ -15371,7 +15356,7 @@ export interface ListRulesetsForZoneRequest extends ListRulesetsBaseRequest {
 }
 
 export const ListRulesetsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListRulesetsBaseFields,
@@ -15379,7 +15364,7 @@ export const ListRulesetsForAccountRequest =
   ) as unknown as Schema.Codec<ListRulesetsForAccountRequest>;
 
 export const ListRulesetsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListRulesetsBaseFields,
@@ -15428,14 +15413,13 @@ export interface ListRulesetsResponse {
   } | null;
 }
 
-export const ListRulesetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListPhasVersionsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListRulesetsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListRulesetsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListPhasVersionsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListRulesetsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListRulesetsResponse>;
 
 export type ListRulesetsError = DefaultErrors;
@@ -15445,7 +15429,7 @@ export const listRulesetsForAccount: API.PaginatedOperationMethod<
   ListRulesetsResponse,
   ListRulesetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesetsForAccountRequest,
   output: ListRulesetsResponse,
   errors: [],
@@ -15463,7 +15447,7 @@ export const listRulesetsForZone: API.PaginatedOperationMethod<
   ListRulesetsResponse,
   ListRulesetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesetsForZoneRequest,
   output: ListRulesetsResponse,
   errors: [],
@@ -16365,7 +16349,7 @@ export interface CreateRulesetForZoneRequest extends CreateRulesetBaseRequest {
 }
 
 export const CreateRulesetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateRulesetBaseFields,
@@ -16375,7 +16359,7 @@ export const CreateRulesetForAccountRequest =
   ) as unknown as Schema.Codec<CreateRulesetForAccountRequest>;
 
 export const CreateRulesetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateRulesetBaseFields,
@@ -17352,90 +17336,89 @@ export interface CreateRulesetResponse {
   description?: string | null;
 }
 
-export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      kind: Schema.Union([
-        Schema.Literals(["managed", "custom", "root", "zone"]),
-        Schema.String,
+export const CreateRulesetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    kind: Schema.Union([
+      Schema.Literals(["managed", "custom", "root", "zone"]),
+      Schema.String,
+    ]),
+    lastUpdated: Schema.String,
+    name: Schema.String,
+    phase: Schema.Union([
+      Schema.Literals([
+        "ddos_l4",
+        "ddos_l7",
+        "http_config_settings",
+        "http_custom_errors",
+        "http_log_custom_fields",
+        "http_ratelimit",
+        "http_request_cache_settings",
+        "http_request_dynamic_redirect",
+        "http_request_firewall_custom",
+        "http_request_firewall_managed",
+        "http_request_late_transform",
+        "http_request_origin",
+        "http_request_redirect",
+        "http_request_sanitize",
+        "http_request_sbfm",
+        "http_request_transform",
+        "http_response_cache_settings",
+        "http_response_compression",
+        "http_response_firewall_managed",
+        "http_response_headers_transform",
+        "magic_transit",
+        "magic_transit_ids_managed",
+        "magic_transit_managed",
+        "magic_transit_ratelimit",
       ]),
-      lastUpdated: Schema.String,
-      name: Schema.String,
-      phase: Schema.Union([
-        Schema.Literals([
-          "ddos_l4",
-          "ddos_l7",
-          "http_config_settings",
-          "http_custom_errors",
-          "http_log_custom_fields",
-          "http_ratelimit",
-          "http_request_cache_settings",
-          "http_request_dynamic_redirect",
-          "http_request_firewall_custom",
-          "http_request_firewall_managed",
-          "http_request_late_transform",
-          "http_request_origin",
-          "http_request_redirect",
-          "http_request_sanitize",
-          "http_request_sbfm",
-          "http_request_transform",
-          "http_response_cache_settings",
-          "http_response_compression",
-          "http_response_firewall_managed",
-          "http_response_headers_transform",
-          "magic_transit",
-          "magic_transit_ids_managed",
-          "magic_transit_managed",
-          "magic_transit_ratelimit",
-        ]),
-        Schema.String,
+      Schema.String,
+    ]),
+    rules: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            BlockRule,
+            RulesetsChallengeRule,
+            CompressResponseRule,
+            DdoSDynamicRule,
+            ExecuteRule,
+            ForceConnectionCloseRule,
+            RulesetsJSChallengeRule,
+            LogRule,
+            LogCustomFieldRule,
+            ManagedChallengeRule,
+            RedirectRule2,
+            RewriteRule,
+            RouteRule,
+            ScoreRule,
+            ServeErrorRule,
+            RulesetsSetCacheControlRule,
+            SetCacheSettingsRule,
+            RulesetsSetCacheTagsRule,
+            SetConfigRule,
+            SkipRule,
+          ]),
+        ),
+        Schema.Null,
       ]),
-      rules: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              BlockRule,
-              RulesetsChallengeRule,
-              CompressResponseRule,
-              DdoSDynamicRule,
-              ExecuteRule,
-              ForceConnectionCloseRule,
-              RulesetsJSChallengeRule,
-              LogRule,
-              LogCustomFieldRule,
-              ManagedChallengeRule,
-              RedirectRule2,
-              RewriteRule,
-              RouteRule,
-              ScoreRule,
-              ServeErrorRule,
-              RulesetsSetCacheControlRule,
-              SetCacheSettingsRule,
-              RulesetsSetCacheTagsRule,
-              SetConfigRule,
-              SkipRule,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      version: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          kind: "kind",
-          lastUpdated: "last_updated",
-          name: "name",
-          phase: "phase",
-          rules: "rules",
-          version: "version",
-          description: "description",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+    ),
+    version: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        kind: "kind",
+        lastUpdated: "last_updated",
+        name: "name",
+        phase: "phase",
+        rules: "rules",
+        version: "version",
+        description: "description",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateRulesetResponse>;
 
 export type CreateRulesetError = DefaultErrors | PhaseNotEntitled | Forbidden;
@@ -17445,7 +17428,7 @@ export const createRulesetForAccount: API.OperationMethod<
   CreateRulesetResponse,
   CreateRulesetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRulesetForAccountRequest,
   output: CreateRulesetResponse,
   errors: [PhaseNotEntitled, Forbidden],
@@ -17456,7 +17439,7 @@ export const createRulesetForZone: API.OperationMethod<
   CreateRulesetResponse,
   CreateRulesetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRulesetForZoneRequest,
   output: CreateRulesetResponse,
   errors: [PhaseNotEntitled, Forbidden],
@@ -18357,7 +18340,7 @@ export interface UpdateRulesetForZoneRequest extends UpdateRulesetBaseRequest {
 }
 
 export const UpdateRulesetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...UpdateRulesetBaseFields,
@@ -18370,7 +18353,7 @@ export const UpdateRulesetForAccountRequest =
   ) as unknown as Schema.Codec<UpdateRulesetForAccountRequest>;
 
 export const UpdateRulesetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...UpdateRulesetBaseFields,
@@ -19349,90 +19332,89 @@ export interface UpdateRulesetResponse {
   description?: string | null;
 }
 
-export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      kind: Schema.Union([
-        Schema.Literals(["managed", "custom", "root", "zone"]),
-        Schema.String,
+export const UpdateRulesetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    kind: Schema.Union([
+      Schema.Literals(["managed", "custom", "root", "zone"]),
+      Schema.String,
+    ]),
+    lastUpdated: Schema.String,
+    name: Schema.String,
+    phase: Schema.Union([
+      Schema.Literals([
+        "ddos_l4",
+        "ddos_l7",
+        "http_config_settings",
+        "http_custom_errors",
+        "http_log_custom_fields",
+        "http_ratelimit",
+        "http_request_cache_settings",
+        "http_request_dynamic_redirect",
+        "http_request_firewall_custom",
+        "http_request_firewall_managed",
+        "http_request_late_transform",
+        "http_request_origin",
+        "http_request_redirect",
+        "http_request_sanitize",
+        "http_request_sbfm",
+        "http_request_transform",
+        "http_response_cache_settings",
+        "http_response_compression",
+        "http_response_firewall_managed",
+        "http_response_headers_transform",
+        "magic_transit",
+        "magic_transit_ids_managed",
+        "magic_transit_managed",
+        "magic_transit_ratelimit",
       ]),
-      lastUpdated: Schema.String,
-      name: Schema.String,
-      phase: Schema.Union([
-        Schema.Literals([
-          "ddos_l4",
-          "ddos_l7",
-          "http_config_settings",
-          "http_custom_errors",
-          "http_log_custom_fields",
-          "http_ratelimit",
-          "http_request_cache_settings",
-          "http_request_dynamic_redirect",
-          "http_request_firewall_custom",
-          "http_request_firewall_managed",
-          "http_request_late_transform",
-          "http_request_origin",
-          "http_request_redirect",
-          "http_request_sanitize",
-          "http_request_sbfm",
-          "http_request_transform",
-          "http_response_cache_settings",
-          "http_response_compression",
-          "http_response_firewall_managed",
-          "http_response_headers_transform",
-          "magic_transit",
-          "magic_transit_ids_managed",
-          "magic_transit_managed",
-          "magic_transit_ratelimit",
-        ]),
-        Schema.String,
+      Schema.String,
+    ]),
+    rules: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            BlockRule,
+            RulesetsChallengeRule,
+            CompressResponseRule,
+            DdoSDynamicRule,
+            ExecuteRule,
+            ForceConnectionCloseRule,
+            RulesetsJSChallengeRule,
+            LogRule,
+            LogCustomFieldRule,
+            ManagedChallengeRule,
+            RedirectRule2,
+            RewriteRule,
+            RouteRule,
+            ScoreRule,
+            ServeErrorRule,
+            RulesetsSetCacheControlRule,
+            SetCacheSettingsRule,
+            RulesetsSetCacheTagsRule,
+            SetConfigRule,
+            SkipRule,
+          ]),
+        ),
+        Schema.Null,
       ]),
-      rules: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              BlockRule,
-              RulesetsChallengeRule,
-              CompressResponseRule,
-              DdoSDynamicRule,
-              ExecuteRule,
-              ForceConnectionCloseRule,
-              RulesetsJSChallengeRule,
-              LogRule,
-              LogCustomFieldRule,
-              ManagedChallengeRule,
-              RedirectRule2,
-              RewriteRule,
-              RouteRule,
-              ScoreRule,
-              ServeErrorRule,
-              RulesetsSetCacheControlRule,
-              SetCacheSettingsRule,
-              RulesetsSetCacheTagsRule,
-              SetConfigRule,
-              SkipRule,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      version: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          kind: "kind",
-          lastUpdated: "last_updated",
-          name: "name",
-          phase: "phase",
-          rules: "rules",
-          version: "version",
-          description: "description",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+    ),
+    version: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        kind: "kind",
+        lastUpdated: "last_updated",
+        name: "name",
+        phase: "phase",
+        rules: "rules",
+        version: "version",
+        description: "description",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateRulesetResponse>;
 
 export type UpdateRulesetError = DefaultErrors | RulesetNotFound | Forbidden;
@@ -19442,7 +19424,7 @@ export const updateRulesetForAccount: API.OperationMethod<
   UpdateRulesetResponse,
   UpdateRulesetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRulesetForAccountRequest,
   output: UpdateRulesetResponse,
   errors: [RulesetNotFound, Forbidden],
@@ -19453,7 +19435,7 @@ export const updateRulesetForZone: API.OperationMethod<
   UpdateRulesetResponse,
   UpdateRulesetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRulesetForZoneRequest,
   output: UpdateRulesetResponse,
   errors: [RulesetNotFound, Forbidden],
@@ -19478,7 +19460,7 @@ export interface DeleteRulesetForZoneRequest extends DeleteRulesetBaseRequest {
 }
 
 export const DeleteRulesetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteRulesetBaseFields,
@@ -19491,7 +19473,7 @@ export const DeleteRulesetForAccountRequest =
   ) as unknown as Schema.Codec<DeleteRulesetForAccountRequest>;
 
 export const DeleteRulesetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteRulesetBaseFields,
@@ -19505,7 +19487,7 @@ export const DeleteRulesetForZoneRequest =
 
 export type DeleteRulesetResponse = unknown;
 
-export const DeleteRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+export const DeleteRulesetResponse = /*@__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
 ) as unknown as Schema.Codec<DeleteRulesetResponse>;
 
@@ -19516,7 +19498,7 @@ export const deleteRulesetForAccount: API.OperationMethod<
   DeleteRulesetResponse,
   DeleteRulesetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRulesetForAccountRequest,
   output: DeleteRulesetResponse,
   errors: [RulesetNotFound, Forbidden],
@@ -19527,7 +19509,7 @@ export const deleteRulesetForZone: API.OperationMethod<
   DeleteRulesetResponse,
   DeleteRulesetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRulesetForZoneRequest,
   output: DeleteRulesetResponse,
   errors: [RulesetNotFound, Forbidden],
@@ -19558,7 +19540,7 @@ export interface GetVersionForZoneRequest extends GetVersionBaseRequest {
 }
 
 export const GetVersionForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetVersionBaseFields,
@@ -19571,7 +19553,7 @@ export const GetVersionForAccountRequest =
   ) as unknown as Schema.Codec<GetVersionForAccountRequest>;
 
 export const GetVersionForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetVersionBaseFields,
@@ -20523,85 +20505,84 @@ export interface GetVersionResponse {
   description?: string | null;
 }
 
-export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      kind: Schema.Union([
-        Schema.Literals(["managed", "custom", "root", "zone"]),
-        Schema.String,
+export const GetVersionResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    kind: Schema.Union([
+      Schema.Literals(["managed", "custom", "root", "zone"]),
+      Schema.String,
+    ]),
+    lastUpdated: Schema.String,
+    name: Schema.String,
+    phase: Schema.Union([
+      Schema.Literals([
+        "ddos_l4",
+        "ddos_l7",
+        "http_config_settings",
+        "http_custom_errors",
+        "http_log_custom_fields",
+        "http_ratelimit",
+        "http_request_cache_settings",
+        "http_request_dynamic_redirect",
+        "http_request_firewall_custom",
+        "http_request_firewall_managed",
+        "http_request_late_transform",
+        "http_request_origin",
+        "http_request_redirect",
+        "http_request_sanitize",
+        "http_request_sbfm",
+        "http_request_transform",
+        "http_response_cache_settings",
+        "http_response_compression",
+        "http_response_firewall_managed",
+        "http_response_headers_transform",
+        "magic_transit",
+        "magic_transit_ids_managed",
+        "magic_transit_managed",
+        "magic_transit_ratelimit",
       ]),
-      lastUpdated: Schema.String,
-      name: Schema.String,
-      phase: Schema.Union([
-        Schema.Literals([
-          "ddos_l4",
-          "ddos_l7",
-          "http_config_settings",
-          "http_custom_errors",
-          "http_log_custom_fields",
-          "http_ratelimit",
-          "http_request_cache_settings",
-          "http_request_dynamic_redirect",
-          "http_request_firewall_custom",
-          "http_request_firewall_managed",
-          "http_request_late_transform",
-          "http_request_origin",
-          "http_request_redirect",
-          "http_request_sanitize",
-          "http_request_sbfm",
-          "http_request_transform",
-          "http_response_cache_settings",
-          "http_response_compression",
-          "http_response_firewall_managed",
-          "http_response_headers_transform",
-          "magic_transit",
-          "magic_transit_ids_managed",
-          "magic_transit_managed",
-          "magic_transit_ratelimit",
-        ]),
-        Schema.String,
+      Schema.String,
+    ]),
+    rules: Schema.Array(
+      Schema.Union([
+        BlockRule,
+        RulesetsChallengeRule,
+        CompressResponseRule,
+        DdoSDynamicRule,
+        ExecuteRule,
+        ForceConnectionCloseRule,
+        RulesetsJSChallengeRule,
+        LogRule,
+        LogCustomFieldRule,
+        ManagedChallengeRule,
+        RedirectRule2,
+        RewriteRule,
+        RouteRule,
+        ScoreRule,
+        ServeErrorRule,
+        RulesetsSetCacheControlRule,
+        SetCacheSettingsRule,
+        RulesetsSetCacheTagsRule,
+        SetConfigRule,
+        SkipRule,
       ]),
-      rules: Schema.Array(
-        Schema.Union([
-          BlockRule,
-          RulesetsChallengeRule,
-          CompressResponseRule,
-          DdoSDynamicRule,
-          ExecuteRule,
-          ForceConnectionCloseRule,
-          RulesetsJSChallengeRule,
-          LogRule,
-          LogCustomFieldRule,
-          ManagedChallengeRule,
-          RedirectRule2,
-          RewriteRule,
-          RouteRule,
-          ScoreRule,
-          ServeErrorRule,
-          RulesetsSetCacheControlRule,
-          SetCacheSettingsRule,
-          RulesetsSetCacheTagsRule,
-          SetConfigRule,
-          SkipRule,
-        ]),
-      ),
-      version: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          kind: "kind",
-          lastUpdated: "last_updated",
-          name: "name",
-          phase: "phase",
-          rules: "rules",
-          version: "version",
-          description: "description",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+    ),
+    version: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        kind: "kind",
+        lastUpdated: "last_updated",
+        name: "name",
+        phase: "phase",
+        rules: "rules",
+        version: "version",
+        description: "description",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetVersionResponse>;
 
 export type GetVersionError = DefaultErrors;
@@ -20611,7 +20592,7 @@ export const getVersionForAccount: API.OperationMethod<
   GetVersionResponse,
   GetVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVersionForAccountRequest,
   output: GetVersionResponse,
   errors: [],
@@ -20622,7 +20603,7 @@ export const getVersionForZone: API.OperationMethod<
   GetVersionResponse,
   GetVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVersionForZoneRequest,
   output: GetVersionResponse,
   errors: [],
@@ -20647,7 +20628,7 @@ export interface ListVersionsForZoneRequest extends ListVersionsBaseRequest {
 }
 
 export const ListVersionsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListVersionsBaseFields,
@@ -20660,7 +20641,7 @@ export const ListVersionsForAccountRequest =
   ) as unknown as Schema.Codec<ListVersionsForAccountRequest>;
 
 export const ListVersionsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListVersionsBaseFields,
@@ -20709,11 +20690,10 @@ export interface ListVersionsResponse {
   }[];
 }
 
-export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListPhasVersionsResponseResult),
-    }),
+export const ListVersionsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListPhasVersionsResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListVersionsResponse>;
 
 export type ListVersionsError = DefaultErrors;
@@ -20723,7 +20703,7 @@ export const listVersionsForAccount: API.PaginatedOperationMethod<
   ListVersionsResponse,
   ListVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsForAccountRequest,
   output: ListVersionsResponse,
   errors: [],
@@ -20738,7 +20718,7 @@ export const listVersionsForZone: API.PaginatedOperationMethod<
   ListVersionsResponse,
   ListVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsForZoneRequest,
   output: ListVersionsResponse,
   errors: [],
@@ -20769,7 +20749,7 @@ export interface DeleteVersionForZoneRequest extends DeleteVersionBaseRequest {
 }
 
 export const DeleteVersionForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteVersionBaseFields,
@@ -20782,7 +20762,7 @@ export const DeleteVersionForAccountRequest =
   ) as unknown as Schema.Codec<DeleteVersionForAccountRequest>;
 
 export const DeleteVersionForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteVersionBaseFields,
@@ -20796,7 +20776,7 @@ export const DeleteVersionForZoneRequest =
 
 export type DeleteVersionResponse = unknown;
 
-export const DeleteVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+export const DeleteVersionResponse = /*@__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
 ) as unknown as Schema.Codec<DeleteVersionResponse>;
 
@@ -20807,7 +20787,7 @@ export const deleteVersionForAccount: API.OperationMethod<
   DeleteVersionResponse,
   DeleteVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVersionForAccountRequest,
   output: DeleteVersionResponse,
   errors: [],
@@ -20818,7 +20798,7 @@ export const deleteVersionForZone: API.OperationMethod<
   DeleteVersionResponse,
   DeleteVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVersionForZoneRequest,
   output: DeleteVersionResponse,
   errors: [],

@@ -16,7 +16,7 @@ export interface CopilotSettingsCreateOrUpdateInput {
   };
 }
 export const CopilotSettingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         accessControlEnabled: Schema.Boolean,
@@ -48,7 +48,7 @@ export interface CopilotSettingsCreateOrUpdateOutput {
   };
 }
 export const CopilotSettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -75,14 +75,14 @@ export const CopilotSettingsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CopilotSettingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CopilotSettingsCreateOrUpdateInput,
     outputSchema: CopilotSettingsCreateOrUpdateOutput,
   }));
 // Input Schema
 export interface CopilotSettingsDeleteInput {}
 export const CopilotSettingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.PortalServices/copilotSettings/default",
@@ -93,7 +93,7 @@ export const CopilotSettingsDeleteInput =
 // Output Schema
 export type CopilotSettingsDeleteOutput = void;
 export const CopilotSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CopilotSettingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CopilotSettingsDeleteOutput>;
 
 // The operation
 /**
@@ -101,16 +101,14 @@ export const CopilotSettingsDeleteOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const CopilotSettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CopilotSettingsDeleteInput,
-    outputSchema: CopilotSettingsDeleteOutput,
-  }),
-);
+export const CopilotSettingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CopilotSettingsDeleteInput,
+  outputSchema: CopilotSettingsDeleteOutput,
+}));
 // Input Schema
 export interface CopilotSettingsGetInput {}
 export const CopilotSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.PortalServices/copilotSettings/default",
@@ -133,7 +131,7 @@ export interface CopilotSettingsGetOutput {
   };
 }
 export const CopilotSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -159,7 +157,7 @@ export const CopilotSettingsGetOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const CopilotSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CopilotSettingsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CopilotSettingsGetInput,
   outputSchema: CopilotSettingsGetOutput,
 }));
@@ -168,7 +166,7 @@ export interface CopilotSettingsUpdateInput {
   properties?: { accessControlEnabled?: boolean };
 }
 export const CopilotSettingsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         accessControlEnabled: Schema.optional(Schema.Boolean),
@@ -197,7 +195,7 @@ export interface CopilotSettingsUpdateOutput {
   };
 }
 export const CopilotSettingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -223,17 +221,13 @@ export const CopilotSettingsUpdateOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const CopilotSettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CopilotSettingsUpdateInput,
-    outputSchema: CopilotSettingsUpdateOutput,
-  }),
-);
+export const CopilotSettingsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CopilotSettingsUpdateInput,
+  outputSchema: CopilotSettingsUpdateOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.PortalServices/operations",
@@ -257,7 +251,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -287,7 +281,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -298,7 +292,7 @@ export interface PortalTenantCompilefileInput {
   files?: Record<string, unknown>;
 }
 export const PortalTenantCompilefileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contents: Schema.Record(Schema.String, Schema.Unknown),
     stringSource: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     files: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -313,7 +307,7 @@ export const PortalTenantCompilefileInput =
 // Output Schema
 export type PortalTenantCompilefileOutput = Record<string, unknown>;
 export const PortalTenantCompilefileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  /*@__PURE__*/ Schema.Record(
     Schema.String,
     Schema.Unknown,
   ) as unknown as Schema.Codec<PortalTenantCompilefileOutput>;
@@ -324,9 +318,7 @@ export const PortalTenantCompilefileOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const PortalTenantCompilefile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PortalTenantCompilefileInput,
-    outputSchema: PortalTenantCompilefileOutput,
-  }),
-);
+export const PortalTenantCompilefile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PortalTenantCompilefileInput,
+  outputSchema: PortalTenantCompilefileOutput,
+}));

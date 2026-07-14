@@ -14,18 +14,16 @@ export interface CreateTrafficRuleInput {
   fingerprint?: string;
   tags?: string[];
 }
-export const CreateTrafficRuleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    organization: Schema.String.pipe(T.PathParam()),
-    database: Schema.String.pipe(T.PathParam()),
-    branch: Schema.String.pipe(T.PathParam()),
-    budget_id: Schema.String.pipe(T.PathParam()),
-    kind: Schema.optional(Schema.Literals(["match", "each"])),
-    keyspace: Schema.optional(Schema.String),
-    fingerprint: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Array(Schema.String)),
-  },
-).pipe(
+export const CreateTrafficRuleInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  database: Schema.String.pipe(T.PathParam()),
+  branch: Schema.String.pipe(T.PathParam()),
+  budget_id: Schema.String.pipe(T.PathParam()),
+  kind: Schema.optional(Schema.Literals(["match", "each"])),
+  keyspace: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{budget_id}/rules",
@@ -50,7 +48,7 @@ export interface CreateTrafficRuleOutput {
   updated_at: string;
 }
 export const CreateTrafficRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     kind: Schema.Literals(["match", "each"]),
     tags: Schema.Array(
@@ -86,7 +84,7 @@ export const CreateTrafficRuleOutput =
  * @param fingerprint - Query pattern fingerprint to apply rule to
  * @param tags - Optional array of tags for this rule. Each rules take exactly one tag.
  */
-export const createTrafficRule = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createTrafficRule = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateTrafficRuleInput,
   outputSchema: CreateTrafficRuleOutput,
   errors: [Forbidden, NotFound] as const,

@@ -24,7 +24,7 @@ export interface AdvancedActivityLogsListInput {
   was_impersonated?: string;
 }
 export const AdvancedActivityLogsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     activities: Schema.optional(Schema.String),
     clients: Schema.optional(Schema.String),
@@ -92,7 +92,7 @@ export interface AdvancedActivityLogsListOutput {
   }[];
 }
 export const AdvancedActivityLogsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -173,10 +173,8 @@ export const AdvancedActivityLogsListOutput =
  * @param users - Filter by users who performed the activity (user UUIDs).
  * @param was_impersonated - When set, filters rows where the actor was impersonating another user.
  */
-export const advancedActivityLogsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AdvancedActivityLogsListInput,
-    outputSchema: AdvancedActivityLogsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const advancedActivityLogsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AdvancedActivityLogsListInput,
+  outputSchema: AdvancedActivityLogsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

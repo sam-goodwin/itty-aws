@@ -21,7 +21,7 @@ export interface GetGroupIntegrationInput {
   pretty?: boolean;
 }
 export const GetGroupIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     integrationType: Schema.Literals([
       "PAGER_DUTY",
@@ -47,7 +47,7 @@ export const GetGroupIntegrationInput =
 // Output Schema
 export type GetGroupIntegrationOutput = void;
 export const GetGroupIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupIntegrationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupIntegrationOutput>;
 
 // The operation
 /**
@@ -62,7 +62,7 @@ export const GetGroupIntegrationOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param integrationType - Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
  */
-export const getGroupIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupIntegration = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupIntegrationInput,
   outputSchema: GetGroupIntegrationOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

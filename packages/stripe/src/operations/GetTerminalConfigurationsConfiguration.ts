@@ -10,7 +10,7 @@ export interface GetTerminalConfigurationsConfigurationInput {
   expand?: string;
 }
 export const GetTerminalConfigurationsConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -24,7 +24,7 @@ export const GetTerminalConfigurationsConfigurationInput =
 // Output Schema
 export type GetTerminalConfigurationsConfigurationOutput = unknown;
 export const GetTerminalConfigurationsConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetTerminalConfigurationsConfigurationOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetTerminalConfigurationsConfigurationOutput>;
 
 // The operation
 /**
@@ -35,7 +35,7 @@ export const GetTerminalConfigurationsConfigurationOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTerminalConfigurationsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTerminalConfigurationsConfigurationInput,
     outputSchema: GetTerminalConfigurationsConfigurationOutput,
   }));

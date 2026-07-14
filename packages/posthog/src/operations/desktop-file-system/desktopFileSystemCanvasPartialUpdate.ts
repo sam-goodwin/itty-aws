@@ -11,7 +11,7 @@ export interface DesktopFileSystemCanvasPartialUpdateInput {
   name?: string;
 }
 export const DesktopFileSystemCanvasPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     code: Schema.optional(Schema.String),
@@ -38,7 +38,7 @@ export interface DesktopFileSystemCanvasPartialUpdateOutput {
   last_viewed_at?: string | null;
 }
 export const DesktopFileSystemCanvasPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
     depth: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -63,7 +63,7 @@ export const DesktopFileSystemCanvasPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const desktopFileSystemCanvasPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DesktopFileSystemCanvasPartialUpdateInput,
     outputSchema: DesktopFileSystemCanvasPartialUpdateOutput,
   }));

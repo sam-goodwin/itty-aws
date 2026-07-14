@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetV1ComputeServicesByComputeServiceIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     computeServiceId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/compute-services/{computeServiceId}" }),
@@ -15,7 +15,7 @@ export type GetV1ComputeServicesByComputeServiceIdInput =
 
 // Output Schema
 export const GetV1ComputeServicesByComputeServiceIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -42,7 +42,7 @@ export type GetV1ComputeServicesByComputeServiceIdOutput =
  * Returns a compute service by ID, including its region and latest version reference.
  */
 export const getV1ComputeServicesByComputeServiceId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1ComputeServicesByComputeServiceIdInput,
     outputSchema: GetV1ComputeServicesByComputeServiceIdOutput,
     errors: [Forbidden, NotFound] as const,

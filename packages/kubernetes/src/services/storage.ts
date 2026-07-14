@@ -64,7 +64,7 @@ export interface CreateStorageV1CSIDriverInput {
   };
 }
 export const CreateStorageV1CSIDriverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -190,7 +190,7 @@ export interface CreateStorageV1CSIDriverOutput {
   };
 }
 export const CreateStorageV1CSIDriverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -268,13 +268,11 @@ export const CreateStorageV1CSIDriverOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateStorageV1CSIDriverInput,
-    outputSchema: CreateStorageV1CSIDriverOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createStorageV1CSIDriver = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateStorageV1CSIDriverInput,
+  outputSchema: CreateStorageV1CSIDriverOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface CreateStorageV1CSINodeInput {
   pretty?: string;
@@ -325,7 +323,7 @@ export interface CreateStorageV1CSINodeInput {
   };
 }
 export const CreateStorageV1CSINodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -440,7 +438,7 @@ export interface CreateStorageV1CSINodeOutput {
   };
 }
 export const CreateStorageV1CSINodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -512,13 +510,11 @@ export const CreateStorageV1CSINodeOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateStorageV1CSINodeInput,
-    outputSchema: CreateStorageV1CSINodeOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createStorageV1CSINode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateStorageV1CSINodeInput,
+  outputSchema: CreateStorageV1CSINodeOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface CreateStorageV1NamespacedCSIStorageCapacityInput {
   namespace: string;
@@ -569,7 +565,7 @@ export interface CreateStorageV1NamespacedCSIStorageCapacityInput {
   storageClassName: string;
 }
 export const CreateStorageV1NamespacedCSIStorageCapacityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -692,7 +688,7 @@ export interface CreateStorageV1NamespacedCSIStorageCapacityOutput {
   storageClassName: string;
 }
 export const CreateStorageV1NamespacedCSIStorageCapacityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     capacity: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -771,7 +767,7 @@ export const CreateStorageV1NamespacedCSIStorageCapacityOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createStorageV1NamespacedCSIStorageCapacity =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateStorageV1NamespacedCSIStorageCapacityInput,
     outputSchema: CreateStorageV1NamespacedCSIStorageCapacityOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -827,7 +823,7 @@ export interface CreateStorageV1StorageClassInput {
   volumeBindingMode?: string;
 }
 export const CreateStorageV1StorageClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -949,7 +945,7 @@ export interface CreateStorageV1StorageClassOutput {
   volumeBindingMode?: string;
 }
 export const CreateStorageV1StorageClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
     allowedTopologies: Schema.optional(
       Schema.Array(
@@ -1027,13 +1023,11 @@ export const CreateStorageV1StorageClassOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateStorageV1StorageClassInput,
-    outputSchema: CreateStorageV1StorageClassOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createStorageV1StorageClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateStorageV1StorageClassInput,
+  outputSchema: CreateStorageV1StorageClassOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface CreateStorageV1VolumeAttachmentInput {
   pretty?: string;
@@ -1269,7 +1263,7 @@ export interface CreateStorageV1VolumeAttachmentInput {
   };
 }
 export const CreateStorageV1VolumeAttachmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -1910,7 +1904,7 @@ export interface CreateStorageV1VolumeAttachmentOutput {
   };
 }
 export const CreateStorageV1VolumeAttachmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2321,7 +2315,7 @@ export const CreateStorageV1VolumeAttachmentOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createStorageV1VolumeAttachment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateStorageV1VolumeAttachmentInput,
     outputSchema: CreateStorageV1VolumeAttachmentOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -2370,7 +2364,7 @@ export interface CreateStorageV1VolumeAttributesClassInput {
   parameters?: Record<string, string>;
 }
 export const CreateStorageV1VolumeAttributesClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -2470,7 +2464,7 @@ export interface CreateStorageV1VolumeAttributesClassOutput {
   parameters?: Record<string, string>;
 }
 export const CreateStorageV1VolumeAttributesClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -2531,7 +2525,7 @@ export const CreateStorageV1VolumeAttributesClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createStorageV1VolumeAttributesClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateStorageV1VolumeAttributesClassInput,
     outputSchema: CreateStorageV1VolumeAttributesClassOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -2550,7 +2544,7 @@ export interface DeleteStorageV1CSIDriverInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStorageV1CSIDriverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2626,7 +2620,7 @@ export interface DeleteStorageV1CSIDriverOutput {
   };
 }
 export const DeleteStorageV1CSIDriverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2707,13 +2701,11 @@ export const DeleteStorageV1CSIDriverOutput =
  * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
-export const deleteStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteStorageV1CSIDriverInput,
-    outputSchema: DeleteStorageV1CSIDriverOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteStorageV1CSIDriver = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteStorageV1CSIDriverInput,
+  outputSchema: DeleteStorageV1CSIDriverOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export interface DeleteStorageV1CSINodeInput {
   name: string;
@@ -2728,7 +2720,7 @@ export interface DeleteStorageV1CSINodeInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStorageV1CSINodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2799,7 +2791,7 @@ export interface DeleteStorageV1CSINodeOutput {
   };
 }
 export const DeleteStorageV1CSINodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2874,13 +2866,11 @@ export const DeleteStorageV1CSINodeOutput =
  * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
-export const deleteStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteStorageV1CSINodeInput,
-    outputSchema: DeleteStorageV1CSINodeOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteStorageV1CSINode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteStorageV1CSINodeInput,
+  outputSchema: DeleteStorageV1CSINodeOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export interface DeleteStorageV1CollectionCSIDriverInput {
   pretty?: string;
@@ -2903,7 +2893,7 @@ export interface DeleteStorageV1CollectionCSIDriverInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStorageV1CollectionCSIDriverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2958,7 +2948,7 @@ export interface DeleteStorageV1CollectionCSIDriverOutput {
   status?: string;
 }
 export const DeleteStorageV1CollectionCSIDriverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3060,7 +3050,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteStorageV1CollectionCSIDriver =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteStorageV1CollectionCSIDriverInput,
     outputSchema: DeleteStorageV1CollectionCSIDriverOutput,
   }));
@@ -3086,7 +3076,7 @@ export interface DeleteStorageV1CollectionCSINodeInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStorageV1CollectionCSINodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -3141,7 +3131,7 @@ export interface DeleteStorageV1CollectionCSINodeOutput {
   status?: string;
 }
 export const DeleteStorageV1CollectionCSINodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3243,7 +3233,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteStorageV1CollectionCSINode =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteStorageV1CollectionCSINodeInput,
     outputSchema: DeleteStorageV1CollectionCSINodeOutput,
   }));
@@ -3270,7 +3260,7 @@ export interface DeleteStorageV1CollectionNamespacedCSIStorageCapacityInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStorageV1CollectionNamespacedCSIStorageCapacityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -3329,7 +3319,7 @@ export interface DeleteStorageV1CollectionNamespacedCSIStorageCapacityOutput {
   status?: string;
 }
 export const DeleteStorageV1CollectionNamespacedCSIStorageCapacityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3432,7 +3422,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteStorageV1CollectionNamespacedCSIStorageCapacity =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteStorageV1CollectionNamespacedCSIStorageCapacityInput,
     outputSchema: DeleteStorageV1CollectionNamespacedCSIStorageCapacityOutput,
   }));
@@ -3458,7 +3448,7 @@ export interface DeleteStorageV1CollectionStorageClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStorageV1CollectionStorageClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -3516,7 +3506,7 @@ export interface DeleteStorageV1CollectionStorageClassOutput {
   status?: string;
 }
 export const DeleteStorageV1CollectionStorageClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3618,7 +3608,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteStorageV1CollectionStorageClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteStorageV1CollectionStorageClassInput,
     outputSchema: DeleteStorageV1CollectionStorageClassOutput,
   }));
@@ -3644,7 +3634,7 @@ export interface DeleteStorageV1CollectionVolumeAttachmentInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStorageV1CollectionVolumeAttachmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -3702,7 +3692,7 @@ export interface DeleteStorageV1CollectionVolumeAttachmentOutput {
   status?: string;
 }
 export const DeleteStorageV1CollectionVolumeAttachmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3804,7 +3794,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteStorageV1CollectionVolumeAttachment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteStorageV1CollectionVolumeAttachmentInput,
     outputSchema: DeleteStorageV1CollectionVolumeAttachmentOutput,
   }));
@@ -3830,7 +3820,7 @@ export interface DeleteStorageV1CollectionVolumeAttributesClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStorageV1CollectionVolumeAttributesClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -3888,7 +3878,7 @@ export interface DeleteStorageV1CollectionVolumeAttributesClassOutput {
   status?: string;
 }
 export const DeleteStorageV1CollectionVolumeAttributesClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3990,7 +3980,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteStorageV1CollectionVolumeAttributesClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteStorageV1CollectionVolumeAttributesClassInput,
     outputSchema: DeleteStorageV1CollectionVolumeAttributesClassOutput,
   }));
@@ -4009,7 +3999,7 @@ export interface DeleteStorageV1NamespacedCSIStorageCapacityInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStorageV1NamespacedCSIStorageCapacityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -4060,7 +4050,7 @@ export interface DeleteStorageV1NamespacedCSIStorageCapacityOutput {
   status?: string;
 }
 export const DeleteStorageV1NamespacedCSIStorageCapacityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -4114,7 +4104,7 @@ export const DeleteStorageV1NamespacedCSIStorageCapacityOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteStorageV1NamespacedCSIStorageCapacity =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteStorageV1NamespacedCSIStorageCapacityInput,
     outputSchema: DeleteStorageV1NamespacedCSIStorageCapacityOutput,
     errors: [NotFound, Conflict] as const,
@@ -4133,7 +4123,7 @@ export interface DeleteStorageV1StorageClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStorageV1StorageClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -4205,7 +4195,7 @@ export interface DeleteStorageV1StorageClassOutput {
   volumeBindingMode?: string;
 }
 export const DeleteStorageV1StorageClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
     allowedTopologies: Schema.optional(
       Schema.Array(
@@ -4286,13 +4276,11 @@ export const DeleteStorageV1StorageClassOutput =
  * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
-export const deleteStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteStorageV1StorageClassInput,
-    outputSchema: DeleteStorageV1StorageClassOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteStorageV1StorageClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteStorageV1StorageClassInput,
+  outputSchema: DeleteStorageV1StorageClassOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export interface DeleteStorageV1VolumeAttachmentInput {
   name: string;
@@ -4307,7 +4295,7 @@ export interface DeleteStorageV1VolumeAttachmentInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStorageV1VolumeAttachmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -4563,7 +4551,7 @@ export interface DeleteStorageV1VolumeAttachmentOutput {
   };
 }
 export const DeleteStorageV1VolumeAttachmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4977,7 +4965,7 @@ export const DeleteStorageV1VolumeAttachmentOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteStorageV1VolumeAttachment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteStorageV1VolumeAttachmentInput,
     outputSchema: DeleteStorageV1VolumeAttachmentOutput,
     errors: [NotFound, Conflict] as const,
@@ -4996,7 +4984,7 @@ export interface DeleteStorageV1VolumeAttributesClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteStorageV1VolumeAttributesClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -5061,7 +5049,7 @@ export interface DeleteStorageV1VolumeAttributesClassOutput {
   parameters?: Record<string, string>;
 }
 export const DeleteStorageV1VolumeAttributesClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -5125,7 +5113,7 @@ export const DeleteStorageV1VolumeAttributesClassOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteStorageV1VolumeAttributesClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteStorageV1VolumeAttributesClassInput,
     outputSchema: DeleteStorageV1VolumeAttributesClassOutput,
     errors: [NotFound, Conflict] as const,
@@ -5133,7 +5121,7 @@ export const deleteStorageV1VolumeAttributesClass =
 // Input Schema
 export interface GetStorageAPIGroupInput {}
 export const GetStorageAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/storage.k8s.io/" }),
   ) as unknown as Schema.Codec<GetStorageAPIGroupInput>;
 
@@ -5147,7 +5135,7 @@ export interface GetStorageAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetStorageAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -5177,14 +5165,14 @@ export const GetStorageAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getStorageAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getStorageAPIGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetStorageAPIGroupInput,
   outputSchema: GetStorageAPIGroupOutput,
 }));
 // Input Schema
 export interface GetStorageV1APIResourcesInput {}
 export const GetStorageV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/storage.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetStorageV1APIResourcesInput>;
 
@@ -5207,7 +5195,7 @@ export interface GetStorageV1APIResourcesOutput {
   }[];
 }
 export const GetStorageV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -5231,12 +5219,10 @@ export const GetStorageV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getStorageV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetStorageV1APIResourcesInput,
-    outputSchema: GetStorageV1APIResourcesOutput,
-  }),
-);
+export const getStorageV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetStorageV1APIResourcesInput,
+  outputSchema: GetStorageV1APIResourcesOutput,
+}));
 // Input Schema
 export interface ListStorageV1CSIDriverInput {
   pretty?: string;
@@ -5253,7 +5239,7 @@ export interface ListStorageV1CSIDriverInput {
   watch?: boolean;
 }
 export const ListStorageV1CSIDriverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -5332,7 +5318,7 @@ export interface ListStorageV1CSIDriverOutput {
   };
 }
 export const ListStorageV1CSIDriverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -5480,12 +5466,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListStorageV1CSIDriverInput,
-    outputSchema: ListStorageV1CSIDriverOutput,
-  }),
-);
+export const listStorageV1CSIDriver = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListStorageV1CSIDriverInput,
+  outputSchema: ListStorageV1CSIDriverOutput,
+}));
 // Input Schema
 export interface ListStorageV1CSINodeInput {
   pretty?: string;
@@ -5502,7 +5486,7 @@ export interface ListStorageV1CSINodeInput {
   watch?: boolean;
 }
 export const ListStorageV1CSINodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -5576,7 +5560,7 @@ export interface ListStorageV1CSINodeOutput {
   };
 }
 export const ListStorageV1CSINodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -5718,12 +5702,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListStorageV1CSINodeInput,
-    outputSchema: ListStorageV1CSINodeOutput,
-  }),
-);
+export const listStorageV1CSINode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListStorageV1CSINodeInput,
+  outputSchema: ListStorageV1CSINodeOutput,
+}));
 // Input Schema
 export interface ListStorageV1CSIStorageCapacityForAllNamespacesInput {
   allowWatchBookmarks?: boolean;
@@ -5740,7 +5722,7 @@ export interface ListStorageV1CSIStorageCapacityForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListStorageV1CSIStorageCapacityForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -5816,7 +5798,7 @@ export interface ListStorageV1CSIStorageCapacityForAllNamespacesOutput {
   };
 }
 export const ListStorageV1CSIStorageCapacityForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -5964,7 +5946,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listStorageV1CSIStorageCapacityForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListStorageV1CSIStorageCapacityForAllNamespacesInput,
     outputSchema: ListStorageV1CSIStorageCapacityForAllNamespacesOutput,
   }));
@@ -5985,7 +5967,7 @@ export interface ListStorageV1NamespacedCSIStorageCapacityInput {
   watch?: boolean;
 }
 export const ListStorageV1NamespacedCSIStorageCapacityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -6062,7 +6044,7 @@ export interface ListStorageV1NamespacedCSIStorageCapacityOutput {
   };
 }
 export const ListStorageV1NamespacedCSIStorageCapacityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -6211,7 +6193,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listStorageV1NamespacedCSIStorageCapacity =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListStorageV1NamespacedCSIStorageCapacityInput,
     outputSchema: ListStorageV1NamespacedCSIStorageCapacityOutput,
   }));
@@ -6231,7 +6213,7 @@ export interface ListStorageV1StorageClassInput {
   watch?: boolean;
 }
 export const ListStorageV1StorageClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -6306,7 +6288,7 @@ export interface ListStorageV1StorageClassOutput {
   };
 }
 export const ListStorageV1StorageClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -6456,12 +6438,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListStorageV1StorageClassInput,
-    outputSchema: ListStorageV1StorageClassOutput,
-  }),
-);
+export const listStorageV1StorageClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListStorageV1StorageClassInput,
+  outputSchema: ListStorageV1StorageClassOutput,
+}));
 // Input Schema
 export interface ListStorageV1VolumeAttachmentInput {
   pretty?: string;
@@ -6478,7 +6458,7 @@ export interface ListStorageV1VolumeAttachmentInput {
   watch?: boolean;
 }
 export const ListStorageV1VolumeAttachmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -6740,7 +6720,7 @@ export interface ListStorageV1VolumeAttachmentOutput {
   };
 }
 export const ListStorageV1VolumeAttachmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -7221,7 +7201,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listStorageV1VolumeAttachment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListStorageV1VolumeAttachmentInput,
     outputSchema: ListStorageV1VolumeAttachmentOutput,
   }));
@@ -7241,7 +7221,7 @@ export interface ListStorageV1VolumeAttributesClassInput {
   watch?: boolean;
 }
 export const ListStorageV1VolumeAttributesClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -7312,7 +7292,7 @@ export interface ListStorageV1VolumeAttributesClassOutput {
   };
 }
 export const ListStorageV1VolumeAttributesClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -7445,7 +7425,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listStorageV1VolumeAttributesClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListStorageV1VolumeAttributesClassInput,
     outputSchema: ListStorageV1VolumeAttributesClassOutput,
   }));
@@ -7459,7 +7439,7 @@ export interface PatchStorageV1CSIDriverInput {
   force?: boolean;
 }
 export const PatchStorageV1CSIDriverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -7524,7 +7504,7 @@ export interface PatchStorageV1CSIDriverOutput {
   };
 }
 export const PatchStorageV1CSIDriverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7604,13 +7584,11 @@ export const PatchStorageV1CSIDriverOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchStorageV1CSIDriverInput,
-    outputSchema: PatchStorageV1CSIDriverOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchStorageV1CSIDriver = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchStorageV1CSIDriverInput,
+  outputSchema: PatchStorageV1CSIDriverOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface PatchStorageV1CSINodeInput {
   name: string;
@@ -7621,7 +7599,7 @@ export interface PatchStorageV1CSINodeInput {
   force?: boolean;
 }
 export const PatchStorageV1CSINodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -7681,7 +7659,7 @@ export interface PatchStorageV1CSINodeOutput {
   };
 }
 export const PatchStorageV1CSINodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7755,13 +7733,11 @@ export const PatchStorageV1CSINodeOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchStorageV1CSINodeInput,
-    outputSchema: PatchStorageV1CSINodeOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchStorageV1CSINode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchStorageV1CSINodeInput,
+  outputSchema: PatchStorageV1CSINodeOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface PatchStorageV1NamespacedCSIStorageCapacityInput {
   name: string;
@@ -7773,7 +7749,7 @@ export interface PatchStorageV1NamespacedCSIStorageCapacityInput {
   force?: boolean;
 }
 export const PatchStorageV1NamespacedCSIStorageCapacityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -7833,7 +7809,7 @@ export interface PatchStorageV1NamespacedCSIStorageCapacityOutput {
   storageClassName: string;
 }
 export const PatchStorageV1NamespacedCSIStorageCapacityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     capacity: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -7914,7 +7890,7 @@ export const PatchStorageV1NamespacedCSIStorageCapacityOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchStorageV1NamespacedCSIStorageCapacity =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchStorageV1NamespacedCSIStorageCapacityInput,
     outputSchema: PatchStorageV1NamespacedCSIStorageCapacityOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -7929,7 +7905,7 @@ export interface PatchStorageV1StorageClassInput {
   force?: boolean;
 }
 export const PatchStorageV1StorageClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -7990,7 +7966,7 @@ export interface PatchStorageV1StorageClassOutput {
   volumeBindingMode?: string;
 }
 export const PatchStorageV1StorageClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
     allowedTopologies: Schema.optional(
       Schema.Array(
@@ -8070,13 +8046,11 @@ export const PatchStorageV1StorageClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchStorageV1StorageClassInput,
-    outputSchema: PatchStorageV1StorageClassOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchStorageV1StorageClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchStorageV1StorageClassInput,
+  outputSchema: PatchStorageV1StorageClassOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface PatchStorageV1VolumeAttachmentInput {
   name: string;
@@ -8087,7 +8061,7 @@ export interface PatchStorageV1VolumeAttachmentInput {
   force?: boolean;
 }
 export const PatchStorageV1VolumeAttachmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -8332,7 +8306,7 @@ export interface PatchStorageV1VolumeAttachmentOutput {
   };
 }
 export const PatchStorageV1VolumeAttachmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -8745,7 +8719,7 @@ export const PatchStorageV1VolumeAttachmentOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchStorageV1VolumeAttachment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchStorageV1VolumeAttachmentInput,
     outputSchema: PatchStorageV1VolumeAttachmentOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -8760,7 +8734,7 @@ export interface PatchStorageV1VolumeAttachmentStatusInput {
   force?: boolean;
 }
 export const PatchStorageV1VolumeAttachmentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -9005,7 +8979,7 @@ export interface PatchStorageV1VolumeAttachmentStatusOutput {
   };
 }
 export const PatchStorageV1VolumeAttachmentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9418,7 +9392,7 @@ export const PatchStorageV1VolumeAttachmentStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchStorageV1VolumeAttachmentStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchStorageV1VolumeAttachmentStatusInput,
     outputSchema: PatchStorageV1VolumeAttachmentStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -9433,7 +9407,7 @@ export interface PatchStorageV1VolumeAttributesClassInput {
   force?: boolean;
 }
 export const PatchStorageV1VolumeAttributesClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -9487,7 +9461,7 @@ export interface PatchStorageV1VolumeAttributesClassOutput {
   parameters?: Record<string, string>;
 }
 export const PatchStorageV1VolumeAttributesClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -9550,7 +9524,7 @@ export const PatchStorageV1VolumeAttributesClassOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchStorageV1VolumeAttributesClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchStorageV1VolumeAttributesClassInput,
     outputSchema: PatchStorageV1VolumeAttributesClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -9561,7 +9535,7 @@ export interface ReadStorageV1CSIDriverInput {
   pretty?: string;
 }
 export const ReadStorageV1CSIDriverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -9622,7 +9596,7 @@ export interface ReadStorageV1CSIDriverOutput {
   };
 }
 export const ReadStorageV1CSIDriverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9698,20 +9672,18 @@ export const ReadStorageV1CSIDriverOutput =
  * @param name - name of the CSIDriver
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadStorageV1CSIDriverInput,
-    outputSchema: ReadStorageV1CSIDriverOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readStorageV1CSIDriver = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadStorageV1CSIDriverInput,
+  outputSchema: ReadStorageV1CSIDriverOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadStorageV1CSINodeInput {
   name: string;
   pretty?: string;
 }
 export const ReadStorageV1CSINodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -9764,7 +9736,7 @@ export interface ReadStorageV1CSINodeOutput {
   };
 }
 export const ReadStorageV1CSINodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9834,13 +9806,11 @@ export const ReadStorageV1CSINodeOutput =
  * @param name - name of the CSINode
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadStorageV1CSINodeInput,
-    outputSchema: ReadStorageV1CSINodeOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readStorageV1CSINode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadStorageV1CSINodeInput,
+  outputSchema: ReadStorageV1CSINodeOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadStorageV1NamespacedCSIStorageCapacityInput {
   name: string;
@@ -9848,7 +9818,7 @@ export interface ReadStorageV1NamespacedCSIStorageCapacityInput {
   pretty?: string;
 }
 export const ReadStorageV1NamespacedCSIStorageCapacityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -9904,7 +9874,7 @@ export interface ReadStorageV1NamespacedCSIStorageCapacityOutput {
   storageClassName: string;
 }
 export const ReadStorageV1NamespacedCSIStorageCapacityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     capacity: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -9981,7 +9951,7 @@ export const ReadStorageV1NamespacedCSIStorageCapacityOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readStorageV1NamespacedCSIStorageCapacity =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadStorageV1NamespacedCSIStorageCapacityInput,
     outputSchema: ReadStorageV1NamespacedCSIStorageCapacityOutput,
     errors: [NotFound] as const,
@@ -9992,7 +9962,7 @@ export interface ReadStorageV1StorageClassInput {
   pretty?: string;
 }
 export const ReadStorageV1StorageClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -10049,7 +10019,7 @@ export interface ReadStorageV1StorageClassOutput {
   volumeBindingMode?: string;
 }
 export const ReadStorageV1StorageClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
     allowedTopologies: Schema.optional(
       Schema.Array(
@@ -10125,20 +10095,18 @@ export const ReadStorageV1StorageClassOutput =
  * @param name - name of the StorageClass
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadStorageV1StorageClassInput,
-    outputSchema: ReadStorageV1StorageClassOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readStorageV1StorageClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadStorageV1StorageClassInput,
+  outputSchema: ReadStorageV1StorageClassOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadStorageV1VolumeAttachmentInput {
   name: string;
   pretty?: string;
 }
 export const ReadStorageV1VolumeAttachmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -10379,7 +10347,7 @@ export interface ReadStorageV1VolumeAttachmentOutput {
   };
 }
 export const ReadStorageV1VolumeAttachmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10788,7 +10756,7 @@ export const ReadStorageV1VolumeAttachmentOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readStorageV1VolumeAttachment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadStorageV1VolumeAttachmentInput,
     outputSchema: ReadStorageV1VolumeAttachmentOutput,
     errors: [NotFound] as const,
@@ -10799,7 +10767,7 @@ export interface ReadStorageV1VolumeAttachmentStatusInput {
   pretty?: string;
 }
 export const ReadStorageV1VolumeAttachmentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -11040,7 +11008,7 @@ export interface ReadStorageV1VolumeAttachmentStatusOutput {
   };
 }
 export const ReadStorageV1VolumeAttachmentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -11449,7 +11417,7 @@ export const ReadStorageV1VolumeAttachmentStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readStorageV1VolumeAttachmentStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadStorageV1VolumeAttachmentStatusInput,
     outputSchema: ReadStorageV1VolumeAttachmentStatusOutput,
     errors: [NotFound] as const,
@@ -11460,7 +11428,7 @@ export interface ReadStorageV1VolumeAttributesClassInput {
   pretty?: string;
 }
 export const ReadStorageV1VolumeAttributesClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -11510,7 +11478,7 @@ export interface ReadStorageV1VolumeAttributesClassOutput {
   parameters?: Record<string, string>;
 }
 export const ReadStorageV1VolumeAttributesClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -11569,7 +11537,7 @@ export const ReadStorageV1VolumeAttributesClassOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readStorageV1VolumeAttributesClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadStorageV1VolumeAttributesClassInput,
     outputSchema: ReadStorageV1VolumeAttributesClassOutput,
     errors: [NotFound] as const,
@@ -11630,7 +11598,7 @@ export interface ReplaceStorageV1CSIDriverInput {
   };
 }
 export const ReplaceStorageV1CSIDriverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -11760,7 +11728,7 @@ export interface ReplaceStorageV1CSIDriverOutput {
   };
 }
 export const ReplaceStorageV1CSIDriverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -11839,13 +11807,11 @@ export const ReplaceStorageV1CSIDriverOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplaceStorageV1CSIDriverInput,
-    outputSchema: ReplaceStorageV1CSIDriverOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const replaceStorageV1CSIDriver = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceStorageV1CSIDriverInput,
+  outputSchema: ReplaceStorageV1CSIDriverOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface ReplaceStorageV1CSINodeInput {
   name: string;
@@ -11897,7 +11863,7 @@ export interface ReplaceStorageV1CSINodeInput {
   };
 }
 export const ReplaceStorageV1CSINodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -12013,7 +11979,7 @@ export interface ReplaceStorageV1CSINodeOutput {
   };
 }
 export const ReplaceStorageV1CSINodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -12086,13 +12052,11 @@ export const ReplaceStorageV1CSINodeOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplaceStorageV1CSINodeInput,
-    outputSchema: ReplaceStorageV1CSINodeOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const replaceStorageV1CSINode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceStorageV1CSINodeInput,
+  outputSchema: ReplaceStorageV1CSINodeOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface ReplaceStorageV1NamespacedCSIStorageCapacityInput {
   name: string;
@@ -12144,7 +12108,7 @@ export interface ReplaceStorageV1NamespacedCSIStorageCapacityInput {
   storageClassName: string;
 }
 export const ReplaceStorageV1NamespacedCSIStorageCapacityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -12268,7 +12232,7 @@ export interface ReplaceStorageV1NamespacedCSIStorageCapacityOutput {
   storageClassName: string;
 }
 export const ReplaceStorageV1NamespacedCSIStorageCapacityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     capacity: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -12348,7 +12312,7 @@ export const ReplaceStorageV1NamespacedCSIStorageCapacityOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceStorageV1NamespacedCSIStorageCapacity =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceStorageV1NamespacedCSIStorageCapacityInput,
     outputSchema: ReplaceStorageV1NamespacedCSIStorageCapacityOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -12405,7 +12369,7 @@ export interface ReplaceStorageV1StorageClassInput {
   volumeBindingMode?: string;
 }
 export const ReplaceStorageV1StorageClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -12531,7 +12495,7 @@ export interface ReplaceStorageV1StorageClassOutput {
   volumeBindingMode?: string;
 }
 export const ReplaceStorageV1StorageClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
     allowedTopologies: Schema.optional(
       Schema.Array(
@@ -12611,7 +12575,7 @@ export const ReplaceStorageV1StorageClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceStorageV1StorageClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceStorageV1StorageClassInput,
     outputSchema: ReplaceStorageV1StorageClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -12852,7 +12816,7 @@ export interface ReplaceStorageV1VolumeAttachmentInput {
   };
 }
 export const ReplaceStorageV1VolumeAttachmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -13494,7 +13458,7 @@ export interface ReplaceStorageV1VolumeAttachmentOutput {
   };
 }
 export const ReplaceStorageV1VolumeAttachmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -13906,7 +13870,7 @@ export const ReplaceStorageV1VolumeAttachmentOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceStorageV1VolumeAttachment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceStorageV1VolumeAttachmentInput,
     outputSchema: ReplaceStorageV1VolumeAttachmentOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -14147,7 +14111,7 @@ export interface ReplaceStorageV1VolumeAttachmentStatusInput {
   };
 }
 export const ReplaceStorageV1VolumeAttachmentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -14789,7 +14753,7 @@ export interface ReplaceStorageV1VolumeAttachmentStatusOutput {
   };
 }
 export const ReplaceStorageV1VolumeAttachmentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15201,7 +15165,7 @@ export const ReplaceStorageV1VolumeAttachmentStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceStorageV1VolumeAttachmentStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceStorageV1VolumeAttachmentStatusInput,
     outputSchema: ReplaceStorageV1VolumeAttachmentStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -15251,7 +15215,7 @@ export interface ReplaceStorageV1VolumeAttributesClassInput {
   parameters?: Record<string, string>;
 }
 export const ReplaceStorageV1VolumeAttributesClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -15352,7 +15316,7 @@ export interface ReplaceStorageV1VolumeAttributesClassOutput {
   parameters?: Record<string, string>;
 }
 export const ReplaceStorageV1VolumeAttributesClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -15414,7 +15378,7 @@ export const ReplaceStorageV1VolumeAttributesClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceStorageV1VolumeAttributesClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceStorageV1VolumeAttributesClassInput,
     outputSchema: ReplaceStorageV1VolumeAttributesClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -15436,7 +15400,7 @@ export interface WatchStorageV1CSIDriverInput {
   watch?: boolean;
 }
 export const WatchStorageV1CSIDriverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -15463,7 +15427,7 @@ export interface WatchStorageV1CSIDriverOutput {
   type: string;
 }
 export const WatchStorageV1CSIDriverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStorageV1CSIDriverOutput>;
@@ -15527,12 +15491,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchStorageV1CSIDriverInput,
-    outputSchema: WatchStorageV1CSIDriverOutput,
-  }),
-);
+export const watchStorageV1CSIDriver = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchStorageV1CSIDriverInput,
+  outputSchema: WatchStorageV1CSIDriverOutput,
+}));
 // Input Schema
 export interface WatchStorageV1CSIDriverListInput {
   allowWatchBookmarks?: boolean;
@@ -15549,7 +15511,7 @@ export interface WatchStorageV1CSIDriverListInput {
   watch?: boolean;
 }
 export const WatchStorageV1CSIDriverListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -15572,7 +15534,7 @@ export interface WatchStorageV1CSIDriverListOutput {
   type: string;
 }
 export const WatchStorageV1CSIDriverListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStorageV1CSIDriverListOutput>;
@@ -15635,12 +15597,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchStorageV1CSIDriverList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchStorageV1CSIDriverListInput,
-    outputSchema: WatchStorageV1CSIDriverListOutput,
-  }),
-);
+export const watchStorageV1CSIDriverList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchStorageV1CSIDriverListInput,
+  outputSchema: WatchStorageV1CSIDriverListOutput,
+}));
 // Input Schema
 export interface WatchStorageV1CSINodeInput {
   name: string;
@@ -15658,7 +15618,7 @@ export interface WatchStorageV1CSINodeInput {
   watch?: boolean;
 }
 export const WatchStorageV1CSINodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -15685,7 +15645,7 @@ export interface WatchStorageV1CSINodeOutput {
   type: string;
 }
 export const WatchStorageV1CSINodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStorageV1CSINodeOutput>;
@@ -15749,12 +15709,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchStorageV1CSINodeInput,
-    outputSchema: WatchStorageV1CSINodeOutput,
-  }),
-);
+export const watchStorageV1CSINode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchStorageV1CSINodeInput,
+  outputSchema: WatchStorageV1CSINodeOutput,
+}));
 // Input Schema
 export interface WatchStorageV1CSINodeListInput {
   allowWatchBookmarks?: boolean;
@@ -15771,7 +15729,7 @@ export interface WatchStorageV1CSINodeListInput {
   watch?: boolean;
 }
 export const WatchStorageV1CSINodeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -15794,7 +15752,7 @@ export interface WatchStorageV1CSINodeListOutput {
   type: string;
 }
 export const WatchStorageV1CSINodeListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStorageV1CSINodeListOutput>;
@@ -15857,12 +15815,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchStorageV1CSINodeList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchStorageV1CSINodeListInput,
-    outputSchema: WatchStorageV1CSINodeListOutput,
-  }),
-);
+export const watchStorageV1CSINodeList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchStorageV1CSINodeListInput,
+  outputSchema: WatchStorageV1CSINodeListOutput,
+}));
 // Input Schema
 export interface WatchStorageV1CSIStorageCapacityListForAllNamespacesInput {
   allowWatchBookmarks?: boolean;
@@ -15879,7 +15835,7 @@ export interface WatchStorageV1CSIStorageCapacityListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchStorageV1CSIStorageCapacityListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -15905,7 +15861,7 @@ export interface WatchStorageV1CSIStorageCapacityListForAllNamespacesOutput {
   type: string;
 }
 export const WatchStorageV1CSIStorageCapacityListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStorageV1CSIStorageCapacityListForAllNamespacesOutput>;
@@ -15969,7 +15925,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchStorageV1CSIStorageCapacityListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchStorageV1CSIStorageCapacityListForAllNamespacesInput,
     outputSchema: WatchStorageV1CSIStorageCapacityListForAllNamespacesOutput,
   }));
@@ -15991,7 +15947,7 @@ export interface WatchStorageV1NamespacedCSIStorageCapacityInput {
   watch?: boolean;
 }
 export const WatchStorageV1NamespacedCSIStorageCapacityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -16019,7 +15975,7 @@ export interface WatchStorageV1NamespacedCSIStorageCapacityOutput {
   type: string;
 }
 export const WatchStorageV1NamespacedCSIStorageCapacityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStorageV1NamespacedCSIStorageCapacityOutput>;
@@ -16085,7 +16041,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchStorageV1NamespacedCSIStorageCapacity =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchStorageV1NamespacedCSIStorageCapacityInput,
     outputSchema: WatchStorageV1NamespacedCSIStorageCapacityOutput,
   }));
@@ -16106,7 +16062,7 @@ export interface WatchStorageV1NamespacedCSIStorageCapacityListInput {
   watch?: boolean;
 }
 export const WatchStorageV1NamespacedCSIStorageCapacityListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -16133,7 +16089,7 @@ export interface WatchStorageV1NamespacedCSIStorageCapacityListOutput {
   type: string;
 }
 export const WatchStorageV1NamespacedCSIStorageCapacityListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStorageV1NamespacedCSIStorageCapacityListOutput>;
@@ -16198,7 +16154,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchStorageV1NamespacedCSIStorageCapacityList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchStorageV1NamespacedCSIStorageCapacityListInput,
     outputSchema: WatchStorageV1NamespacedCSIStorageCapacityListOutput,
   }));
@@ -16219,7 +16175,7 @@ export interface WatchStorageV1StorageClassInput {
   watch?: boolean;
 }
 export const WatchStorageV1StorageClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -16246,7 +16202,7 @@ export interface WatchStorageV1StorageClassOutput {
   type: string;
 }
 export const WatchStorageV1StorageClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStorageV1StorageClassOutput>;
@@ -16310,12 +16266,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchStorageV1StorageClassInput,
-    outputSchema: WatchStorageV1StorageClassOutput,
-  }),
-);
+export const watchStorageV1StorageClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchStorageV1StorageClassInput,
+  outputSchema: WatchStorageV1StorageClassOutput,
+}));
 // Input Schema
 export interface WatchStorageV1StorageClassListInput {
   allowWatchBookmarks?: boolean;
@@ -16332,7 +16286,7 @@ export interface WatchStorageV1StorageClassListInput {
   watch?: boolean;
 }
 export const WatchStorageV1StorageClassListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -16358,7 +16312,7 @@ export interface WatchStorageV1StorageClassListOutput {
   type: string;
 }
 export const WatchStorageV1StorageClassListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStorageV1StorageClassListOutput>;
@@ -16422,7 +16376,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchStorageV1StorageClassList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchStorageV1StorageClassListInput,
     outputSchema: WatchStorageV1StorageClassListOutput,
   }));
@@ -16443,7 +16397,7 @@ export interface WatchStorageV1VolumeAttachmentInput {
   watch?: boolean;
 }
 export const WatchStorageV1VolumeAttachmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -16470,7 +16424,7 @@ export interface WatchStorageV1VolumeAttachmentOutput {
   type: string;
 }
 export const WatchStorageV1VolumeAttachmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStorageV1VolumeAttachmentOutput>;
@@ -16535,7 +16489,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchStorageV1VolumeAttachment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchStorageV1VolumeAttachmentInput,
     outputSchema: WatchStorageV1VolumeAttachmentOutput,
   }));
@@ -16555,7 +16509,7 @@ export interface WatchStorageV1VolumeAttachmentListInput {
   watch?: boolean;
 }
 export const WatchStorageV1VolumeAttachmentListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -16581,7 +16535,7 @@ export interface WatchStorageV1VolumeAttachmentListOutput {
   type: string;
 }
 export const WatchStorageV1VolumeAttachmentListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStorageV1VolumeAttachmentListOutput>;
@@ -16645,7 +16599,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchStorageV1VolumeAttachmentList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchStorageV1VolumeAttachmentListInput,
     outputSchema: WatchStorageV1VolumeAttachmentListOutput,
   }));
@@ -16666,7 +16620,7 @@ export interface WatchStorageV1VolumeAttributesClassInput {
   watch?: boolean;
 }
 export const WatchStorageV1VolumeAttributesClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -16693,7 +16647,7 @@ export interface WatchStorageV1VolumeAttributesClassOutput {
   type: string;
 }
 export const WatchStorageV1VolumeAttributesClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStorageV1VolumeAttributesClassOutput>;
@@ -16758,7 +16712,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchStorageV1VolumeAttributesClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchStorageV1VolumeAttributesClassInput,
     outputSchema: WatchStorageV1VolumeAttributesClassOutput,
   }));
@@ -16778,7 +16732,7 @@ export interface WatchStorageV1VolumeAttributesClassListInput {
   watch?: boolean;
 }
 export const WatchStorageV1VolumeAttributesClassListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -16804,7 +16758,7 @@ export interface WatchStorageV1VolumeAttributesClassListOutput {
   type: string;
 }
 export const WatchStorageV1VolumeAttributesClassListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchStorageV1VolumeAttributesClassListOutput>;
@@ -16868,7 +16822,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchStorageV1VolumeAttributesClassList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchStorageV1VolumeAttributesClassListInput,
     outputSchema: WatchStorageV1VolumeAttributesClassListOutput,
   }));

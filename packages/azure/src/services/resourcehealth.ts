@@ -15,7 +15,7 @@ export interface AvailabilityStatusesGetByResourceInput {
   $expand?: string;
 }
 export const AvailabilityStatusesGetByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
@@ -35,7 +35,7 @@ export interface AvailabilityStatusesGetByResourceOutput {
   location?: string;
 }
 export const AvailabilityStatusesGetByResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export const AvailabilityStatusesGetByResourceOutput =
  * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
 export const AvailabilityStatusesGetByResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilityStatusesGetByResourceInput,
     outputSchema: AvailabilityStatusesGetByResourceOutput,
   }));
@@ -63,7 +63,7 @@ export interface AvailabilityStatusesListInput {
   $expand?: string;
 }
 export const AvailabilityStatusesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
@@ -81,7 +81,7 @@ export interface AvailabilityStatusesListOutput {
   nextLink?: string;
 }
 export const AvailabilityStatusesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -102,12 +102,10 @@ export const AvailabilityStatusesListOutput =
  * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
-export const AvailabilityStatusesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AvailabilityStatusesListInput,
-    outputSchema: AvailabilityStatusesListOutput,
-  }),
-);
+export const AvailabilityStatusesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AvailabilityStatusesListInput,
+  outputSchema: AvailabilityStatusesListOutput,
+}));
 // Input Schema
 export interface AvailabilityStatusesListByResourceGroupInput {
   subscriptionId: string;
@@ -116,7 +114,7 @@ export interface AvailabilityStatusesListByResourceGroupInput {
   $expand?: string;
 }
 export const AvailabilityStatusesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -135,7 +133,7 @@ export interface AvailabilityStatusesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AvailabilityStatusesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -158,7 +156,7 @@ export const AvailabilityStatusesListByResourceGroupOutput =
  * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
 export const AvailabilityStatusesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilityStatusesListByResourceGroupInput,
     outputSchema: AvailabilityStatusesListByResourceGroupOutput,
   }));
@@ -169,7 +167,7 @@ export interface AvailabilityStatusesListBySubscriptionIdInput {
   $expand?: string;
 }
 export const AvailabilityStatusesListBySubscriptionIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
@@ -187,7 +185,7 @@ export interface AvailabilityStatusesListBySubscriptionIdOutput {
   nextLink?: string;
 }
 export const AvailabilityStatusesListBySubscriptionIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -209,7 +207,7 @@ export const AvailabilityStatusesListBySubscriptionIdOutput =
  * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
 export const AvailabilityStatusesListBySubscriptionId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailabilityStatusesListBySubscriptionIdInput,
     outputSchema: AvailabilityStatusesListBySubscriptionIdOutput,
   }));
@@ -220,7 +218,7 @@ export interface ChildAvailabilityStatusesGetByResourceInput {
   $expand?: string;
 }
 export const ChildAvailabilityStatusesGetByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
@@ -240,7 +238,7 @@ export interface ChildAvailabilityStatusesGetByResourceOutput {
   location?: string;
 }
 export const ChildAvailabilityStatusesGetByResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -257,7 +255,7 @@ export const ChildAvailabilityStatusesGetByResourceOutput =
  * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
 export const ChildAvailabilityStatusesGetByResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ChildAvailabilityStatusesGetByResourceInput,
     outputSchema: ChildAvailabilityStatusesGetByResourceOutput,
   }));
@@ -268,7 +266,7 @@ export interface ChildAvailabilityStatusesListInput {
   $expand?: string;
 }
 export const ChildAvailabilityStatusesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
@@ -286,7 +284,7 @@ export interface ChildAvailabilityStatusesListOutput {
   nextLink?: string;
 }
 export const ChildAvailabilityStatusesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -308,7 +306,7 @@ export const ChildAvailabilityStatusesListOutput =
  * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
 export const ChildAvailabilityStatusesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ChildAvailabilityStatusesListInput,
     outputSchema: ChildAvailabilityStatusesListOutput,
   }));
@@ -319,7 +317,7 @@ export interface ChildResourcesListInput {
   $expand?: string;
 }
 export const ChildResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
@@ -337,7 +335,7 @@ export interface ChildResourcesListOutput {
   nextLink?: string;
 }
 export const ChildResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -358,7 +356,7 @@ export const ChildResourcesListOutput =
  * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  * @param $expand - Setting $expand=recommendedactions in url query expands the recommendedactions in the response.
  */
-export const ChildResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChildResourcesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ChildResourcesListInput,
   outputSchema: ChildResourcesListOutput,
 }));
@@ -366,11 +364,9 @@ export const ChildResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface EmergingIssuesGetInput {
   issueName: "default";
 }
-export const EmergingIssuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    issueName: Schema.Literals(["default"]).pipe(T.PathParam()),
-  },
-).pipe(
+export const EmergingIssuesGetInput = /*@__PURE__*/ Schema.Struct({
+  issueName: Schema.Literals(["default"]).pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ResourceHealth/emergingIssues/{issueName}",
@@ -393,7 +389,7 @@ export interface EmergingIssuesGetOutput {
   };
 }
 export const EmergingIssuesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -420,14 +416,14 @@ export const EmergingIssuesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param issueName - The name of the emerging issue.
  */
-export const EmergingIssuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EmergingIssuesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EmergingIssuesGetInput,
   outputSchema: EmergingIssuesGetOutput,
 }));
 // Input Schema
 export interface EmergingIssuesListInput {}
 export const EmergingIssuesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ResourceHealth/emergingIssues",
@@ -453,7 +449,7 @@ export interface EmergingIssuesListOutput {
   nextLink?: string;
 }
 export const EmergingIssuesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -496,7 +492,7 @@ export const EmergingIssuesListOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const EmergingIssuesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EmergingIssuesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: EmergingIssuesListInput,
   outputSchema: EmergingIssuesListOutput,
 }));
@@ -506,7 +502,7 @@ export interface EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTracki
   eventTrackingId: string;
 }
 export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     eventTrackingId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -532,7 +528,7 @@ export interface EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTracki
   };
 }
 export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -561,7 +557,7 @@ export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId
  * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
  */
 export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdInput,
     outputSchema:
@@ -573,7 +569,7 @@ export interface EventFetchDetailsBySubscriptionIdAndTrackingIdInput {
   eventTrackingId: string;
 }
 export const EventFetchDetailsBySubscriptionIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     eventTrackingId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -599,7 +595,7 @@ export interface EventFetchDetailsBySubscriptionIdAndTrackingIdOutput {
   };
 }
 export const EventFetchDetailsBySubscriptionIdAndTrackingIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -628,7 +624,7 @@ export const EventFetchDetailsBySubscriptionIdAndTrackingIdOutput =
  * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
  */
 export const EventFetchDetailsBySubscriptionIdAndTrackingId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventFetchDetailsBySubscriptionIdAndTrackingIdInput,
     outputSchema: EventFetchDetailsBySubscriptionIdAndTrackingIdOutput,
   }));
@@ -637,7 +633,7 @@ export interface EventFetchDetailsByTenantIdAndTrackingIdInput {
   eventTrackingId: string;
 }
 export const EventFetchDetailsByTenantIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventTrackingId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -662,7 +658,7 @@ export interface EventFetchDetailsByTenantIdAndTrackingIdOutput {
   };
 }
 export const EventFetchDetailsByTenantIdAndTrackingIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -690,7 +686,7 @@ export const EventFetchDetailsByTenantIdAndTrackingIdOutput =
  * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
  */
 export const EventFetchDetailsByTenantIdAndTrackingId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventFetchDetailsByTenantIdAndTrackingIdInput,
     outputSchema: EventFetchDetailsByTenantIdAndTrackingIdOutput,
   }));
@@ -702,7 +698,7 @@ export interface EventGetBySubscriptionIdAndTrackingIdInput {
   queryStartTime?: string;
 }
 export const EventGetBySubscriptionIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     eventTrackingId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -730,7 +726,7 @@ export interface EventGetBySubscriptionIdAndTrackingIdOutput {
   };
 }
 export const EventGetBySubscriptionIdAndTrackingIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -761,7 +757,7 @@ export const EventGetBySubscriptionIdAndTrackingIdOutput =
  * @param queryStartTime - Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020
  */
 export const EventGetBySubscriptionIdAndTrackingId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventGetBySubscriptionIdAndTrackingIdInput,
     outputSchema: EventGetBySubscriptionIdAndTrackingIdOutput,
   }));
@@ -772,7 +768,7 @@ export interface EventGetByTenantIdAndTrackingIdInput {
   queryStartTime?: string;
 }
 export const EventGetByTenantIdAndTrackingIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventTrackingId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     queryStartTime: Schema.optional(Schema.String),
@@ -799,7 +795,7 @@ export interface EventGetByTenantIdAndTrackingIdOutput {
   };
 }
 export const EventGetByTenantIdAndTrackingIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -829,7 +825,7 @@ export const EventGetByTenantIdAndTrackingIdOutput =
  * @param queryStartTime - Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020
  */
 export const EventGetByTenantIdAndTrackingId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventGetByTenantIdAndTrackingIdInput,
     outputSchema: EventGetByTenantIdAndTrackingIdOutput,
   }));
@@ -839,7 +835,7 @@ export interface EventsListBySingleResourceInput {
   $filter?: string;
 }
 export const EventsListBySingleResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -868,7 +864,7 @@ export interface EventsListBySingleResourceOutput {
   nextLink?: string;
 }
 export const EventsListBySingleResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -911,12 +907,10 @@ export const EventsListBySingleResourceOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  */
-export const EventsListBySingleResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventsListBySingleResourceInput,
-    outputSchema: EventsListBySingleResourceOutput,
-  }),
-);
+export const EventsListBySingleResource = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventsListBySingleResourceInput,
+  outputSchema: EventsListBySingleResourceOutput,
+}));
 // Input Schema
 export interface EventsListBySubscriptionIdInput {
   subscriptionId: string;
@@ -924,7 +918,7 @@ export interface EventsListBySubscriptionIdInput {
   queryStartTime?: string;
 }
 export const EventsListBySubscriptionIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     queryStartTime: Schema.optional(Schema.String),
@@ -954,7 +948,7 @@ export interface EventsListBySubscriptionIdOutput {
   nextLink?: string;
 }
 export const EventsListBySubscriptionIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -998,19 +992,17 @@ export const EventsListBySubscriptionIdOutput =
  * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  * @param queryStartTime - Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020
  */
-export const EventsListBySubscriptionId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventsListBySubscriptionIdInput,
-    outputSchema: EventsListBySubscriptionIdOutput,
-  }),
-);
+export const EventsListBySubscriptionId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventsListBySubscriptionIdInput,
+  outputSchema: EventsListBySubscriptionIdOutput,
+}));
 // Input Schema
 export interface EventsListByTenantIdInput {
   $filter?: string;
   queryStartTime?: string;
 }
 export const EventsListByTenantIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
     queryStartTime: Schema.optional(Schema.String),
   }).pipe(
@@ -1039,7 +1031,7 @@ export interface EventsListByTenantIdOutput {
   nextLink?: string;
 }
 export const EventsListByTenantIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1082,12 +1074,10 @@ export const EventsListByTenantIdOutput =
  * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  * @param queryStartTime - Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020
  */
-export const EventsListByTenantId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventsListByTenantIdInput,
-    outputSchema: EventsListByTenantIdOutput,
-  }),
-);
+export const EventsListByTenantId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventsListByTenantIdInput,
+  outputSchema: EventsListByTenantIdOutput,
+}));
 // Input Schema
 export interface ImpactedResourcesGetInput {
   subscriptionId: string;
@@ -1095,7 +1085,7 @@ export interface ImpactedResourcesGetInput {
   impactedResourceName: string;
 }
 export const ImpactedResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     eventTrackingId: Schema.String.pipe(T.PathParam()),
     impactedResourceName: Schema.String.pipe(T.PathParam()),
@@ -1122,7 +1112,7 @@ export interface ImpactedResourcesGetOutput {
   };
 }
 export const ImpactedResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1151,19 +1141,17 @@ export const ImpactedResourcesGetOutput =
  * @param eventTrackingId - Event Id which uniquely identifies ServiceHealth event.
  * @param impactedResourceName - Name of the Impacted Resource.
  */
-export const ImpactedResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImpactedResourcesGetInput,
-    outputSchema: ImpactedResourcesGetOutput,
-  }),
-);
+export const ImpactedResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImpactedResourcesGetInput,
+  outputSchema: ImpactedResourcesGetOutput,
+}));
 // Input Schema
 export interface ImpactedResourcesGetByTenantIdInput {
   eventTrackingId: string;
   impactedResourceName: string;
 }
 export const ImpactedResourcesGetByTenantIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventTrackingId: Schema.String.pipe(T.PathParam()),
     impactedResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1189,7 +1177,7 @@ export interface ImpactedResourcesGetByTenantIdOutput {
   };
 }
 export const ImpactedResourcesGetByTenantIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1218,7 +1206,7 @@ export const ImpactedResourcesGetByTenantIdOutput =
  * @param impactedResourceName - Name of the Impacted Resource.
  */
 export const ImpactedResourcesGetByTenantId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImpactedResourcesGetByTenantIdInput,
     outputSchema: ImpactedResourcesGetByTenantIdOutput,
   }));
@@ -1229,7 +1217,7 @@ export interface ImpactedResourcesListBySubscriptionIdAndEventIdInput {
   $filter?: string;
 }
 export const ImpactedResourcesListBySubscriptionIdAndEventIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     eventTrackingId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -1259,7 +1247,7 @@ export interface ImpactedResourcesListBySubscriptionIdAndEventIdOutput {
   nextLink?: string;
 }
 export const ImpactedResourcesListBySubscriptionIdAndEventIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1304,7 +1292,7 @@ export const ImpactedResourcesListBySubscriptionIdAndEventIdOutput =
  * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  */
 export const ImpactedResourcesListBySubscriptionIdAndEventId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImpactedResourcesListBySubscriptionIdAndEventIdInput,
     outputSchema: ImpactedResourcesListBySubscriptionIdAndEventIdOutput,
   }));
@@ -1314,7 +1302,7 @@ export interface ImpactedResourcesListByTenantIdAndEventIdInput {
   $filter?: string;
 }
 export const ImpactedResourcesListByTenantIdAndEventIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventTrackingId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -1343,7 +1331,7 @@ export interface ImpactedResourcesListByTenantIdAndEventIdOutput {
   nextLink?: string;
 }
 export const ImpactedResourcesListByTenantIdAndEventIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1387,7 +1375,7 @@ export const ImpactedResourcesListByTenantIdAndEventIdOutput =
  * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  */
 export const ImpactedResourcesListByTenantIdAndEventId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImpactedResourcesListByTenantIdAndEventIdInput,
     outputSchema: ImpactedResourcesListByTenantIdAndEventIdOutput,
   }));
@@ -1395,11 +1383,9 @@ export const ImpactedResourcesListByTenantIdAndEventId =
 export interface MetadataGetEntityInput {
   name: string;
 }
-export const MetadataGetEntityInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const MetadataGetEntityInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ResourceHealth/metadata/{name}",
@@ -1422,7 +1408,7 @@ export interface MetadataGetEntityOutput {
   };
 }
 export const MetadataGetEntityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1449,15 +1435,13 @@ export const MetadataGetEntityOutput =
  * @param api-version - The API version to use for this operation.
  * @param name - Name of metadata entity.
  */
-export const MetadataGetEntity = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataGetEntity = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataGetEntityInput,
   outputSchema: MetadataGetEntityOutput,
 }));
 // Input Schema
 export interface MetadataListInput {}
-export const MetadataListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const MetadataListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ResourceHealth/metadata",
@@ -1482,7 +1466,7 @@ export interface MetadataListOutput {
   }[];
   nextLink?: string;
 }
-export const MetadataListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1525,15 +1509,13 @@ export const MetadataListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const MetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataListInput,
   outputSchema: MetadataListOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ResourceHealth/operations",
@@ -1553,7 +1535,7 @@ export interface OperationsListOutput {
     };
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -1575,7 +1557,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1586,7 +1568,7 @@ export interface SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId
   $filter?: string;
 }
 export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     eventTrackingId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -1616,7 +1598,7 @@ export interface SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId
   nextLink?: string;
 }
 export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1661,7 +1643,7 @@ export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutp
  * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  */
 export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput,
     outputSchema:
@@ -1673,7 +1655,7 @@ export interface SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput 
   $filter?: string;
 }
 export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventTrackingId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -1702,7 +1684,7 @@ export interface SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput
   nextLink?: string;
 }
 export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1746,7 +1728,7 @@ export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput =
  * @param $filter - The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
  */
 export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput,
     outputSchema:
       SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput,

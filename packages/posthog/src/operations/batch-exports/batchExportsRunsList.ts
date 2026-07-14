@@ -11,7 +11,7 @@ export interface BatchExportsRunsListInput {
   ordering?: string;
 }
 export const BatchExportsRunsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     batch_export_id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
@@ -57,7 +57,7 @@ export interface BatchExportsRunsListOutput {
   }[];
 }
 export const BatchExportsRunsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
@@ -104,10 +104,8 @@ export const BatchExportsRunsListOutput =
  * @param ordering - Which field to use when ordering the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const batchExportsRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BatchExportsRunsListInput,
-    outputSchema: BatchExportsRunsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const batchExportsRunsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BatchExportsRunsListInput,
+  outputSchema: BatchExportsRunsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

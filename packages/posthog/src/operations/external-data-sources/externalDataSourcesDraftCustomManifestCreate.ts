@@ -10,7 +10,7 @@ export interface ExternalDataSourcesDraftCustomManifestCreateInput {
   docs_text?: string;
 }
 export const ExternalDataSourcesDraftCustomManifestCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     source_name: Schema.optional(Schema.String),
     docs_url: Schema.optional(Schema.String),
@@ -31,7 +31,7 @@ export interface ExternalDataSourcesDraftCustomManifestCreateOutput {
   error: string | null;
 }
 export const ExternalDataSourcesDraftCustomManifestCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     draft_status: Schema.Literals(["ok", "invalid", "model_error"]),
     manifest_json: Schema.NullOr(Schema.String),
     resource_names: Schema.Array(Schema.String),
@@ -52,7 +52,7 @@ export const ExternalDataSourcesDraftCustomManifestCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const externalDataSourcesDraftCustomManifestCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesDraftCustomManifestCreateInput,
     outputSchema: ExternalDataSourcesDraftCustomManifestCreateOutput,
   }));

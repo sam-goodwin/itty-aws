@@ -723,7 +723,7 @@ export interface UsersTwoFactorDisableCreateInput {
   requires_credential_review?: boolean;
 }
 export const UsersTwoFactorDisableCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     date_joined: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1524,16 +1524,14 @@ export const UsersTwoFactorDisableCreateInput =
 // Output Schema
 export type UsersTwoFactorDisableCreateOutput = void;
 export const UsersTwoFactorDisableCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersTwoFactorDisableCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersTwoFactorDisableCreateOutput>;
 
 // The operation
 /**
  * Disable 2FA and remove all related devices
  */
-export const usersTwoFactorDisableCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsersTwoFactorDisableCreateInput,
-    outputSchema: UsersTwoFactorDisableCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const usersTwoFactorDisableCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersTwoFactorDisableCreateInput,
+  outputSchema: UsersTwoFactorDisableCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

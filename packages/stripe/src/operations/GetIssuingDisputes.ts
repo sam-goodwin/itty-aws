@@ -18,7 +18,7 @@ export interface GetIssuingDisputesInput {
   transaction?: string;
 }
 export const GetIssuingDisputesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -784,7 +784,7 @@ export interface GetIssuingDisputesOutput {
   url: string;
 }
 export const GetIssuingDisputesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amount: Schema.Number,
@@ -1732,7 +1732,7 @@ export const GetIssuingDisputesOutput =
  * @param status - Select Issuing disputes with the given status.
  * @param transaction - Select the Issuing dispute for the given transaction.
  */
-export const GetIssuingDisputes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetIssuingDisputes = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetIssuingDisputesInput,
   outputSchema: GetIssuingDisputesOutput,
 }));

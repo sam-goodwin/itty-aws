@@ -11,7 +11,7 @@ export interface GetForwardingRequestsInput {
   starting_after?: string;
 }
 export const GetForwardingRequestsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export interface GetForwardingRequestsOutput {
   url: string;
 }
 export const GetForwardingRequestsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         created: Schema.Number,
@@ -132,9 +132,7 @@ export const GetForwardingRequestsOutput =
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
  * @param starting_after - A pagination cursor to fetch the next page of the list. The value must be a ForwardingRequest ID.
  */
-export const GetForwardingRequests = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetForwardingRequestsInput,
-    outputSchema: GetForwardingRequestsOutput,
-  }),
-);
+export const GetForwardingRequests = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetForwardingRequestsInput,
+  outputSchema: GetForwardingRequestsOutput,
+}));

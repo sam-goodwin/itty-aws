@@ -11,7 +11,7 @@ export interface DeleteGroupClusterSearchDeploymentInput {
   pretty?: boolean;
 }
 export const DeleteGroupClusterSearchDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const DeleteGroupClusterSearchDeploymentInput =
 // Output Schema
 export type DeleteGroupClusterSearchDeploymentOutput = void;
 export const DeleteGroupClusterSearchDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterSearchDeploymentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterSearchDeploymentOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const DeleteGroupClusterSearchDeploymentOutput =
  * @param clusterName - Label that identifies the cluster to delete.
  */
 export const deleteGroupClusterSearchDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupClusterSearchDeploymentInput,
     outputSchema: DeleteGroupClusterSearchDeploymentOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

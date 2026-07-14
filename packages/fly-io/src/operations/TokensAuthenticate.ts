@@ -8,7 +8,7 @@ export interface TokensAuthenticateInput {
   header?: string;
 }
 export const TokensAuthenticateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     header: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "POST", path: "/tokens/authenticate" }),
@@ -22,7 +22,7 @@ export type TokensAuthenticateOutput = {
   permission_token?: number[];
 }[];
 export const TokensAuthenticateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       caveats: Schema.optional(
         Schema.Struct({
@@ -47,7 +47,7 @@ export const TokensAuthenticateOutput =
  *
  * Verify a token header without checking resource access.
  */
-export const TokensAuthenticate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TokensAuthenticate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TokensAuthenticateInput,
   outputSchema: TokensAuthenticateOutput,
   errors: [BadRequest] as const,

@@ -98,7 +98,7 @@ export interface CreateAdmissionregistrationV1MutatingAdmissionPolicyInput {
   };
 }
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -347,7 +347,7 @@ export interface CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput {
   };
 }
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -512,7 +512,7 @@ export const CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -610,7 +610,7 @@ export interface CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInpu
   };
 }
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -846,7 +846,7 @@ export interface CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutp
   };
 }
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -994,7 +994,7 @@ export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -1078,7 +1078,7 @@ export interface CreateAdmissionregistrationV1MutatingWebhookConfigurationInput 
   }[];
 }
 export const CreateAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -1285,7 +1285,7 @@ export interface CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput
   }[];
 }
 export const CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1420,7 +1420,7 @@ export const CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
       CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput,
@@ -1530,7 +1530,7 @@ export interface CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput {
   };
 }
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -1823,7 +1823,7 @@ export interface CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
   };
 }
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2017,7 +2017,7 @@ export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -2116,7 +2116,7 @@ export interface CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingIn
   };
 }
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -2352,7 +2352,7 @@ export interface CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOu
   };
 }
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2499,7 +2499,7 @@ export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -2582,7 +2582,7 @@ export interface CreateAdmissionregistrationV1ValidatingWebhookConfigurationInpu
   }[];
 }
 export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -2787,7 +2787,7 @@ export interface CreateAdmissionregistrationV1ValidatingWebhookConfigurationOutp
   }[];
 }
 export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2921,7 +2921,7 @@ export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
@@ -3017,7 +3017,7 @@ export interface CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput
   };
 }
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -3266,7 +3266,7 @@ export interface CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutpu
   };
 }
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3431,7 +3431,7 @@ export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
@@ -3531,7 +3531,7 @@ export interface CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindi
   };
 }
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -3767,7 +3767,7 @@ export interface CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindi
   };
 }
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3915,7 +3915,7 @@ export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOu
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -4011,7 +4011,7 @@ export interface CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput 
   };
 }
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -4260,7 +4260,7 @@ export interface CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput
   };
 }
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4425,7 +4425,7 @@ export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
       CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
@@ -4524,7 +4524,7 @@ export interface CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindin
   };
 }
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -4760,7 +4760,7 @@ export interface CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindin
   };
 }
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4908,7 +4908,7 @@ export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOut
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -4937,7 +4937,7 @@ export interface DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyI
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -4995,7 +4995,7 @@ export interface DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyO
   status?: string;
 }
 export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -5097,7 +5097,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAdmissionregistrationV1CollectionMutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyInput,
     outputSchema:
@@ -5125,7 +5125,7 @@ export interface DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyB
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -5183,7 +5183,7 @@ export interface DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyB
   status?: string;
 }
 export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -5285,7 +5285,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -5313,7 +5313,7 @@ export interface DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -5371,7 +5371,7 @@ export interface DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
   status?: string;
 }
 export const DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -5473,7 +5473,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationInput,
     outputSchema:
@@ -5501,7 +5501,7 @@ export interface DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolic
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -5559,7 +5559,7 @@ export interface DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolic
   status?: string;
 }
 export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -5661,7 +5661,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAdmissionregistrationV1CollectionValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyInput,
     outputSchema:
@@ -5689,7 +5689,7 @@ export interface DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolic
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -5747,7 +5747,7 @@ export interface DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolic
   status?: string;
 }
 export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -5849,7 +5849,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -5877,7 +5877,7 @@ export interface DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -5935,7 +5935,7 @@ export interface DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
   status?: string;
 }
 export const DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -6037,7 +6037,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationInput,
     outputSchema:
@@ -6057,7 +6057,7 @@ export interface DeleteAdmissionregistrationV1MutatingAdmissionPolicyInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -6107,7 +6107,7 @@ export interface DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput {
   status?: string;
 }
 export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -6160,7 +6160,7 @@ export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput,
     errors: [NotFound, Conflict] as const,
@@ -6179,7 +6179,7 @@ export interface DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInpu
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -6229,7 +6229,7 @@ export interface DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutp
   status?: string;
 }
 export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -6282,7 +6282,7 @@ export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -6303,7 +6303,7 @@ export interface DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput 
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -6353,7 +6353,7 @@ export interface DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput
   status?: string;
 }
 export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -6406,7 +6406,7 @@ export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
       DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput,
@@ -6426,7 +6426,7 @@ export interface DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -6476,7 +6476,7 @@ export interface DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
   status?: string;
 }
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -6529,7 +6529,7 @@ export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
     errors: [NotFound, Conflict] as const,
@@ -6548,7 +6548,7 @@ export interface DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingIn
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -6598,7 +6598,7 @@ export interface DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOu
   status?: string;
 }
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -6651,7 +6651,7 @@ export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -6672,7 +6672,7 @@ export interface DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInpu
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -6722,7 +6722,7 @@ export interface DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutp
   status?: string;
 }
 export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -6775,7 +6775,7 @@ export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
@@ -6804,7 +6804,7 @@ export interface DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionP
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -6862,7 +6862,7 @@ export interface DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionP
   status?: string;
 }
 export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -6964,7 +6964,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyInput,
     outputSchema:
@@ -6992,7 +6992,7 @@ export interface DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionP
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -7050,7 +7050,7 @@ export interface DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionP
   status?: string;
 }
 export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -7152,7 +7152,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -7172,7 +7172,7 @@ export interface DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -7222,7 +7222,7 @@ export interface DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutpu
   status?: string;
 }
 export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -7275,7 +7275,7 @@ export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
@@ -7296,7 +7296,7 @@ export interface DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindi
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -7346,7 +7346,7 @@ export interface DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindi
   status?: string;
 }
 export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -7399,7 +7399,7 @@ export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOu
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -7428,7 +7428,7 @@ export interface DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPo
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -7486,7 +7486,7 @@ export interface DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPo
   status?: string;
 }
 export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -7588,7 +7588,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyInput,
     outputSchema:
@@ -7616,7 +7616,7 @@ export interface DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPo
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -7674,7 +7674,7 @@ export interface DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPo
   status?: string;
 }
 export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -7776,7 +7776,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -7796,7 +7796,7 @@ export interface DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyInput 
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -7846,7 +7846,7 @@ export interface DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput
   status?: string;
 }
 export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -7899,7 +7899,7 @@ export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
       DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
@@ -7919,7 +7919,7 @@ export interface DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindin
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -7969,7 +7969,7 @@ export interface DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindin
   status?: string;
 }
 export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -8022,7 +8022,7 @@ export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOut
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -8032,7 +8032,7 @@ export const deleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
 // Input Schema
 export interface GetAdmissionregistrationAPIGroupInput {}
 export const GetAdmissionregistrationAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/admissionregistration.k8s.io/" }),
   ) as unknown as Schema.Codec<GetAdmissionregistrationAPIGroupInput>;
 
@@ -8046,7 +8046,7 @@ export interface GetAdmissionregistrationAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetAdmissionregistrationAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -8077,14 +8077,14 @@ export const GetAdmissionregistrationAPIGroupOutput =
  * get information of a group
  */
 export const getAdmissionregistrationAPIGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAdmissionregistrationAPIGroupInput,
     outputSchema: GetAdmissionregistrationAPIGroupOutput,
   }));
 // Input Schema
 export interface GetAdmissionregistrationV1APIResourcesInput {}
 export const GetAdmissionregistrationV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/admissionregistration.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetAdmissionregistrationV1APIResourcesInput>;
 
@@ -8107,7 +8107,7 @@ export interface GetAdmissionregistrationV1APIResourcesOutput {
   }[];
 }
 export const GetAdmissionregistrationV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -8132,14 +8132,14 @@ export const GetAdmissionregistrationV1APIResourcesOutput =
  * get available resources
  */
 export const getAdmissionregistrationV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAdmissionregistrationV1APIResourcesInput,
     outputSchema: GetAdmissionregistrationV1APIResourcesOutput,
   }));
 // Input Schema
 export interface GetAdmissionregistrationV1alpha1APIResourcesInput {}
 export const GetAdmissionregistrationV1alpha1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/",
@@ -8165,7 +8165,7 @@ export interface GetAdmissionregistrationV1alpha1APIResourcesOutput {
   }[];
 }
 export const GetAdmissionregistrationV1alpha1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -8190,14 +8190,14 @@ export const GetAdmissionregistrationV1alpha1APIResourcesOutput =
  * get available resources
  */
 export const getAdmissionregistrationV1alpha1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAdmissionregistrationV1alpha1APIResourcesInput,
     outputSchema: GetAdmissionregistrationV1alpha1APIResourcesOutput,
   }));
 // Input Schema
 export interface GetAdmissionregistrationV1beta1APIResourcesInput {}
 export const GetAdmissionregistrationV1beta1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/",
@@ -8223,7 +8223,7 @@ export interface GetAdmissionregistrationV1beta1APIResourcesOutput {
   }[];
 }
 export const GetAdmissionregistrationV1beta1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -8248,7 +8248,7 @@ export const GetAdmissionregistrationV1beta1APIResourcesOutput =
  * get available resources
  */
 export const getAdmissionregistrationV1beta1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAdmissionregistrationV1beta1APIResourcesInput,
     outputSchema: GetAdmissionregistrationV1beta1APIResourcesOutput,
   }));
@@ -8268,7 +8268,7 @@ export interface ListAdmissionregistrationV1MutatingAdmissionPolicyInput {
   watch?: boolean;
 }
 export const ListAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -8384,7 +8384,7 @@ export interface ListAdmissionregistrationV1MutatingAdmissionPolicyOutput {
   };
 }
 export const ListAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -8623,7 +8623,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: ListAdmissionregistrationV1MutatingAdmissionPolicyOutput,
   }));
@@ -8643,7 +8643,7 @@ export interface ListAdmissionregistrationV1MutatingAdmissionPolicyBindingInput 
   watch?: boolean;
 }
 export const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -8763,7 +8763,7 @@ export interface ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput
   };
 }
 export const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -8985,7 +8985,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput,
@@ -9006,7 +9006,7 @@ export interface ListAdmissionregistrationV1MutatingWebhookConfigurationInput {
   watch?: boolean;
 }
 export const ListAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -9118,7 +9118,7 @@ export interface ListAdmissionregistrationV1MutatingWebhookConfigurationOutput {
   };
 }
 export const ListAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -9323,7 +9323,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema: ListAdmissionregistrationV1MutatingWebhookConfigurationOutput,
   }));
@@ -9343,7 +9343,7 @@ export interface ListAdmissionregistrationV1ValidatingAdmissionPolicyInput {
   watch?: boolean;
 }
 export const ListAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -9474,7 +9474,7 @@ export interface ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
   };
 }
 export const ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -9742,7 +9742,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
   }));
@@ -9762,7 +9762,7 @@ export interface ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingInpu
   watch?: boolean;
 }
 export const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -9883,7 +9883,7 @@ export interface ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutp
   };
 }
 export const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -10100,7 +10100,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -10122,7 +10122,7 @@ export interface ListAdmissionregistrationV1ValidatingWebhookConfigurationInput 
   watch?: boolean;
 }
 export const ListAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -10233,7 +10233,7 @@ export interface ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput
   };
 }
 export const ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -10437,7 +10437,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
       ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput,
@@ -10458,7 +10458,7 @@ export interface ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput {
   watch?: boolean;
 }
 export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -10574,7 +10574,7 @@ export interface ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput 
   };
 }
 export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -10813,7 +10813,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
       ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
@@ -10834,7 +10834,7 @@ export interface ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding
   watch?: boolean;
 }
 export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -10954,7 +10954,7 @@ export interface ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding
   };
 }
 export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -11176,7 +11176,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -11198,7 +11198,7 @@ export interface ListAdmissionregistrationV1beta1MutatingAdmissionPolicyInput {
   watch?: boolean;
 }
 export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -11314,7 +11314,7 @@ export interface ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput {
   };
 }
 export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -11553,7 +11553,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema: ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
   }));
@@ -11573,7 +11573,7 @@ export interface ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingI
   watch?: boolean;
 }
 export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -11693,7 +11693,7 @@ export interface ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingO
   };
 }
 export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -11915,7 +11915,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -11931,7 +11931,7 @@ export interface PatchAdmissionregistrationV1MutatingAdmissionPolicyInput {
   force?: boolean;
 }
 export const PatchAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -12030,7 +12030,7 @@ export interface PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput {
   };
 }
 export const PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -12197,7 +12197,7 @@ export const PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -12212,7 +12212,7 @@ export interface PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput
   force?: boolean;
 }
 export const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -12315,7 +12315,7 @@ export interface PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutpu
   };
 }
 export const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -12465,7 +12465,7 @@ export const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -12482,7 +12482,7 @@ export interface PatchAdmissionregistrationV1MutatingWebhookConfigurationInput {
   force?: boolean;
 }
 export const PatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -12569,7 +12569,7 @@ export interface PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput 
   }[];
 }
 export const PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -12706,7 +12706,7 @@ export const PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
       PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput,
@@ -12722,7 +12722,7 @@ export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput {
   force?: boolean;
 }
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -12836,7 +12836,7 @@ export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
   };
 }
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -13032,7 +13032,7 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -13047,7 +13047,7 @@ export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInp
   force?: boolean;
 }
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -13151,7 +13151,7 @@ export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOut
   };
 }
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -13300,7 +13300,7 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput 
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -13317,7 +13317,7 @@ export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInpu
   force?: boolean;
 }
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -13431,7 +13431,7 @@ export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutp
   };
 }
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -13627,7 +13627,7 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput,
     outputSchema:
@@ -13644,7 +13644,7 @@ export interface PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput
   force?: boolean;
 }
 export const PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -13730,7 +13730,7 @@ export interface PatchAdmissionregistrationV1ValidatingWebhookConfigurationOutpu
   }[];
 }
 export const PatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -13866,7 +13866,7 @@ export const PatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
@@ -13883,7 +13883,7 @@ export interface PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput 
   force?: boolean;
 }
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -13982,7 +13982,7 @@ export interface PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput
   };
 }
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -14149,7 +14149,7 @@ export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
       PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
@@ -14165,7 +14165,7 @@ export interface PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindin
   force?: boolean;
 }
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -14268,7 +14268,7 @@ export interface PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindin
   };
 }
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -14418,7 +14418,7 @@ export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOut
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -14435,7 +14435,7 @@ export interface PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput {
   force?: boolean;
 }
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -14534,7 +14534,7 @@ export interface PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput 
   };
 }
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -14701,7 +14701,7 @@ export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
       PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
@@ -14717,7 +14717,7 @@ export interface PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding
   force?: boolean;
 }
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -14820,7 +14820,7 @@ export interface PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding
   };
 }
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -14970,7 +14970,7 @@ export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutp
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -14983,7 +14983,7 @@ export interface ReadAdmissionregistrationV1MutatingAdmissionPolicyInput {
   pretty?: string;
 }
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -15078,7 +15078,7 @@ export interface ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput {
   };
 }
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15241,7 +15241,7 @@ export const ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput,
     errors: [NotFound] as const,
@@ -15252,7 +15252,7 @@ export interface ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput 
   pretty?: string;
 }
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -15351,7 +15351,7 @@ export interface ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput
   };
 }
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15497,7 +15497,7 @@ export const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput,
@@ -15509,7 +15509,7 @@ export interface ReadAdmissionregistrationV1MutatingWebhookConfigurationInput {
   pretty?: string;
 }
 export const ReadAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -15592,7 +15592,7 @@ export interface ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput {
   }[];
 }
 export const ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -15725,7 +15725,7 @@ export const ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema: ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput,
     errors: [NotFound] as const,
@@ -15736,7 +15736,7 @@ export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput {
   pretty?: string;
 }
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -15846,7 +15846,7 @@ export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
   };
 }
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -16038,7 +16038,7 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
     errors: [NotFound] as const,
@@ -16049,7 +16049,7 @@ export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInpu
   pretty?: string;
 }
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -16149,7 +16149,7 @@ export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutp
   };
 }
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -16294,7 +16294,7 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -16307,7 +16307,7 @@ export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput
   pretty?: string;
 }
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -16417,7 +16417,7 @@ export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutpu
   };
 }
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -16609,7 +16609,7 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput,
     outputSchema:
@@ -16622,7 +16622,7 @@ export interface ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput 
   pretty?: string;
 }
 export const ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -16704,7 +16704,7 @@ export interface ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput
   }[];
 }
 export const ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -16836,7 +16836,7 @@ export const ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
       ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput,
@@ -16848,7 +16848,7 @@ export interface ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput {
   pretty?: string;
 }
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -16943,7 +16943,7 @@ export interface ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput 
   };
 }
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -17106,7 +17106,7 @@ export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
       ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
@@ -17118,7 +17118,7 @@ export interface ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding
   pretty?: string;
 }
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -17217,7 +17217,7 @@ export interface ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding
   };
 }
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -17363,7 +17363,7 @@ export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutp
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -17376,7 +17376,7 @@ export interface ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput {
   pretty?: string;
 }
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -17471,7 +17471,7 @@ export interface ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput {
   };
 }
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -17634,7 +17634,7 @@ export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema: ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
     errors: [NotFound] as const,
@@ -17645,7 +17645,7 @@ export interface ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingI
   pretty?: string;
 }
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -17744,7 +17744,7 @@ export interface ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingO
   };
 }
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -17890,7 +17890,7 @@ export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutpu
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -17987,7 +17987,7 @@ export interface ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput {
   };
 }
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -18237,7 +18237,7 @@ export interface ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput {
   };
 }
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -18403,7 +18403,7 @@ export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -18502,7 +18502,7 @@ export interface ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInp
   };
 }
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -18739,7 +18739,7 @@ export interface ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOut
   };
 }
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -18888,7 +18888,7 @@ export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput 
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -18973,7 +18973,7 @@ export interface ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput
   }[];
 }
 export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -19181,7 +19181,7 @@ export interface ReplaceAdmissionregistrationV1MutatingWebhookConfigurationOutpu
   }[];
 }
 export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -19317,7 +19317,7 @@ export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
@@ -19429,7 +19429,7 @@ export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput {
   };
 }
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -19723,7 +19723,7 @@ export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
   };
 }
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -19918,7 +19918,7 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -20018,7 +20018,7 @@ export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingI
   };
 }
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -20255,7 +20255,7 @@ export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingO
   };
 }
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -20403,7 +20403,7 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutpu
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -20515,7 +20515,7 @@ export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusIn
   };
 }
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -20809,7 +20809,7 @@ export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOu
   };
 }
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -21004,7 +21004,7 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput,
     outputSchema:
@@ -21088,7 +21088,7 @@ export interface ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInp
   }[];
 }
 export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -21294,7 +21294,7 @@ export interface ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationOut
   }[];
 }
 export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -21429,7 +21429,7 @@ export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationOutput 
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
@@ -21526,7 +21526,7 @@ export interface ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInpu
   };
 }
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -21776,7 +21776,7 @@ export interface ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutp
   };
 }
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -21942,7 +21942,7 @@ export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
@@ -22043,7 +22043,7 @@ export interface ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBind
   };
 }
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -22280,7 +22280,7 @@ export interface ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBind
   };
 }
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -22429,7 +22429,7 @@ export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingO
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -22526,7 +22526,7 @@ export interface ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput
   };
 }
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -22776,7 +22776,7 @@ export interface ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutpu
   };
 }
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -22942,7 +22942,7 @@ export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
@@ -23043,7 +23043,7 @@ export interface ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindi
   };
 }
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -23280,7 +23280,7 @@ export interface ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindi
   };
 }
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -23429,7 +23429,7 @@ export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOu
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -23453,7 +23453,7 @@ export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyInput {
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -23480,7 +23480,7 @@ export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput {
   type: string;
 }
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput>;
@@ -23545,7 +23545,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput,
   }));
@@ -23566,7 +23566,7 @@ export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -23593,7 +23593,7 @@ export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutpu
   type: string;
 }
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput>;
@@ -23658,7 +23658,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -23680,7 +23680,7 @@ export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListI
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -23706,7 +23706,7 @@ export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListO
   type: string;
 }
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListOutput>;
@@ -23770,7 +23770,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1MutatingAdmissionPolicyBindingList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListInput,
     outputSchema:
@@ -23792,7 +23792,7 @@ export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyListInput {
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -23818,7 +23818,7 @@ export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput {
   type: string;
 }
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput>;
@@ -23882,7 +23882,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1MutatingAdmissionPolicyList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1MutatingAdmissionPolicyListInput,
     outputSchema: WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput,
   }));
@@ -23903,7 +23903,7 @@ export interface WatchAdmissionregistrationV1MutatingWebhookConfigurationInput {
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -23930,7 +23930,7 @@ export interface WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput 
   type: string;
 }
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput>;
@@ -23995,7 +23995,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1MutatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
       WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput,
@@ -24016,7 +24016,7 @@ export interface WatchAdmissionregistrationV1MutatingWebhookConfigurationListInp
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -24042,7 +24042,7 @@ export interface WatchAdmissionregistrationV1MutatingWebhookConfigurationListOut
   type: string;
 }
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingWebhookConfigurationListOutput>;
@@ -24106,7 +24106,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1MutatingWebhookConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1MutatingWebhookConfigurationListInput,
     outputSchema:
@@ -24129,7 +24129,7 @@ export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyInput {
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -24156,7 +24156,7 @@ export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
   type: string;
 }
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput>;
@@ -24221,7 +24221,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1ValidatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
   }));
@@ -24242,7 +24242,7 @@ export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInp
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -24269,7 +24269,7 @@ export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOut
   type: string;
 }
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput>;
@@ -24334,7 +24334,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -24356,7 +24356,7 @@ export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingLis
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -24382,7 +24382,7 @@ export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingLis
   type: string;
 }
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListOutput>;
@@ -24446,7 +24446,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1ValidatingAdmissionPolicyBindingList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListInput,
     outputSchema:
@@ -24468,7 +24468,7 @@ export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyListInput 
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -24494,7 +24494,7 @@ export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput
   type: string;
 }
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput>;
@@ -24558,7 +24558,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1ValidatingAdmissionPolicyList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1ValidatingAdmissionPolicyListInput,
     outputSchema:
       WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput,
@@ -24580,7 +24580,7 @@ export interface WatchAdmissionregistrationV1ValidatingWebhookConfigurationInput
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -24607,7 +24607,7 @@ export interface WatchAdmissionregistrationV1ValidatingWebhookConfigurationOutpu
   type: string;
 }
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput>;
@@ -24672,7 +24672,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
@@ -24694,7 +24694,7 @@ export interface WatchAdmissionregistrationV1ValidatingWebhookConfigurationListI
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -24720,7 +24720,7 @@ export interface WatchAdmissionregistrationV1ValidatingWebhookConfigurationListO
   type: string;
 }
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOutput>;
@@ -24784,7 +24784,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1ValidatingWebhookConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1ValidatingWebhookConfigurationListInput,
     outputSchema:
@@ -24807,7 +24807,7 @@ export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput 
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -24834,7 +24834,7 @@ export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput
   type: string;
 }
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput>;
@@ -24899,7 +24899,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
       WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
@@ -24921,7 +24921,7 @@ export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindin
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -24948,7 +24948,7 @@ export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindin
   type: string;
 }
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput>;
@@ -25013,7 +25013,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -25035,7 +25035,7 @@ export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindin
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -25061,7 +25061,7 @@ export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindin
   type: string;
 }
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListOutput>;
@@ -25125,7 +25125,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListInput,
     outputSchema:
@@ -25147,7 +25147,7 @@ export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListIn
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -25173,7 +25173,7 @@ export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListOu
   type: string;
 }
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListOutput>;
@@ -25237,7 +25237,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListInput,
     outputSchema:
@@ -25260,7 +25260,7 @@ export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput {
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -25287,7 +25287,7 @@ export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput 
   type: string;
 }
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput>;
@@ -25352,7 +25352,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
       WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
@@ -25374,7 +25374,7 @@ export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -25401,7 +25401,7 @@ export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding
   type: string;
 }
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput>;
@@ -25466,7 +25466,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
@@ -25488,7 +25488,7 @@ export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -25514,7 +25514,7 @@ export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding
   type: string;
 }
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListOutput>;
@@ -25578,7 +25578,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListInput,
     outputSchema:
@@ -25600,7 +25600,7 @@ export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListInp
   watch?: boolean;
 }
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -25626,7 +25626,7 @@ export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListOut
   type: string;
 }
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListOutput>;
@@ -25690,7 +25690,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicyList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListInput,
     outputSchema:

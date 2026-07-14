@@ -30,7 +30,7 @@ export interface ResellernotifyGetwatchdetailsResponse {
 }
 
 export const ResellernotifyGetwatchdetailsResponse: Schema.Codec<ResellernotifyGetwatchdetailsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topicName: Schema.optional(Schema.String),
     serviceAccountEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ResellernotifyGetwatchdetailsResponse" });
@@ -59,7 +59,7 @@ export interface Address {
 }
 
 export const Address: Schema.Codec<Address> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countryCode: Schema.optional(Schema.String),
     addressLine3: Schema.optional(Schema.String),
     organizationName: Schema.optional(Schema.String),
@@ -84,7 +84,7 @@ export interface Seats {
 }
 
 export const Seats: Schema.Codec<Seats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     numberOfSeats: Schema.optional(Schema.Number),
     maximumNumberOfSeats: Schema.optional(Schema.Number),
@@ -105,7 +105,7 @@ export interface ChangePlanRequest {
 }
 
 export const ChangePlanRequest: Schema.Codec<ChangePlanRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     planName: Schema.optional(Schema.String),
     seats: Schema.optional(Seats),
     purchaseOrderId: Schema.optional(Schema.String),
@@ -119,7 +119,7 @@ export interface PrimaryAdmin {
 }
 
 export const PrimaryAdmin: Schema.Codec<PrimaryAdmin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryEmail: Schema.optional(Schema.String),
   }).annotate({ identifier: "PrimaryAdmin" });
 
@@ -131,7 +131,7 @@ export interface RenewalSettings {
 }
 
 export const RenewalSettings: Schema.Codec<RenewalSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     renewalType: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "RenewalSettings" });
@@ -184,7 +184,7 @@ export interface Subscription {
 }
 
 export const Subscription: Schema.Codec<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trialSettings: Schema.optional(
       Schema.Struct({
         isInTrial: Schema.optional(Schema.Boolean),
@@ -233,7 +233,7 @@ export interface ResellernotifyResource {
 }
 
 export const ResellernotifyResource: Schema.Codec<ResellernotifyResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topicName: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResellernotifyResource" });
 
@@ -261,7 +261,7 @@ export interface Customer {
 }
 
 export const Customer: Schema.Codec<Customer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     postalAddress: Schema.optional(Address),
     alternateEmail: Schema.optional(Schema.String),
     customerDomainVerified: Schema.optional(Schema.Boolean),
@@ -284,7 +284,7 @@ export interface Subscriptions {
 }
 
 export const Subscriptions: Schema.Codec<Subscriptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     subscriptions: Schema.optional(Schema.Array(Subscription)),
@@ -349,7 +349,7 @@ export interface GetCustomersRequest {
   customerId: string;
 }
 
-export const GetCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCustomersRequest = /*@__PURE__*/ Schema.Struct({
   customerId: Schema.String.pipe(T.HttpPath("customerId")),
 }).pipe(
   T.Http({ method: "GET", path: "apps/reseller/v1/customers/{customerId}" }),
@@ -357,7 +357,7 @@ export const GetCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetCustomersRequest>;
 
 export type GetCustomersResponse = Customer;
-export const GetCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
+export const GetCustomersResponse = /*@__PURE__*/ Customer;
 
 export type GetCustomersError = DefaultErrors | NotFound | Forbidden;
 
@@ -367,7 +367,7 @@ export const getCustomers: API.OperationMethod<
   GetCustomersResponse,
   GetCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomersRequest,
   output: GetCustomersResponse,
   errors: [NotFound, Forbidden],
@@ -380,7 +380,7 @@ export interface PatchCustomersRequest {
   body?: Customer;
 }
 
-export const PatchCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchCustomersRequest = /*@__PURE__*/ Schema.Struct({
   customerId: Schema.String.pipe(T.HttpPath("customerId")),
   body: Schema.optional(Customer).pipe(T.HttpBody()),
 }).pipe(
@@ -393,7 +393,7 @@ export const PatchCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchCustomersRequest>;
 
 export type PatchCustomersResponse = Customer;
-export const PatchCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
+export const PatchCustomersResponse = /*@__PURE__*/ Customer;
 
 export type PatchCustomersError =
   | DefaultErrors
@@ -408,7 +408,7 @@ export const patchCustomers: API.OperationMethod<
   PatchCustomersResponse,
   PatchCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCustomersRequest,
   output: PatchCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -421,20 +421,18 @@ export interface InsertCustomersRequest {
   body?: Customer;
 }
 
-export const InsertCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    customerAuthToken: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("customerAuthToken"),
-    ),
-    body: Schema.optional(Customer).pipe(T.HttpBody()),
-  },
-).pipe(
+export const InsertCustomersRequest = /*@__PURE__*/ Schema.Struct({
+  customerAuthToken: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("customerAuthToken"),
+  ),
+  body: Schema.optional(Customer).pipe(T.HttpBody()),
+}).pipe(
   T.Http({ method: "POST", path: "apps/reseller/v1/customers", hasBody: true }),
   svc,
 ) as unknown as Schema.Codec<InsertCustomersRequest>;
 
 export type InsertCustomersResponse = Customer;
-export const InsertCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
+export const InsertCustomersResponse = /*@__PURE__*/ Customer;
 
 export type InsertCustomersError =
   | DefaultErrors
@@ -449,7 +447,7 @@ export const insertCustomers: API.OperationMethod<
   InsertCustomersResponse,
   InsertCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertCustomersRequest,
   output: InsertCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -462,12 +460,10 @@ export interface UpdateCustomersRequest {
   body?: Customer;
 }
 
-export const UpdateCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    customerId: Schema.String.pipe(T.HttpPath("customerId")),
-    body: Schema.optional(Customer).pipe(T.HttpBody()),
-  },
-).pipe(
+export const UpdateCustomersRequest = /*@__PURE__*/ Schema.Struct({
+  customerId: Schema.String.pipe(T.HttpPath("customerId")),
+  body: Schema.optional(Customer).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "apps/reseller/v1/customers/{customerId}",
@@ -477,7 +473,7 @@ export const UpdateCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<UpdateCustomersRequest>;
 
 export type UpdateCustomersResponse = Customer;
-export const UpdateCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
+export const UpdateCustomersResponse = /*@__PURE__*/ Customer;
 
 export type UpdateCustomersError =
   | DefaultErrors
@@ -492,7 +488,7 @@ export const updateCustomers: API.OperationMethod<
   UpdateCustomersResponse,
   UpdateCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomersRequest,
   output: UpdateCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -501,7 +497,7 @@ export const updateCustomers: API.OperationMethod<
 export interface GetwatchdetailsResellernotifyRequest {}
 
 export const GetwatchdetailsResellernotifyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "apps/reseller/v1/resellernotify/getwatchdetails",
@@ -512,7 +508,7 @@ export const GetwatchdetailsResellernotifyRequest =
 export type GetwatchdetailsResellernotifyResponse =
   ResellernotifyGetwatchdetailsResponse;
 export const GetwatchdetailsResellernotifyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResellernotifyGetwatchdetailsResponse;
+  /*@__PURE__*/ ResellernotifyGetwatchdetailsResponse;
 
 export type GetwatchdetailsResellernotifyError =
   | DefaultErrors
@@ -525,7 +521,7 @@ export const getwatchdetailsResellernotify: API.OperationMethod<
   GetwatchdetailsResellernotifyResponse,
   GetwatchdetailsResellernotifyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetwatchdetailsResellernotifyRequest,
   output: GetwatchdetailsResellernotifyResponse,
   errors: [NotFound, Forbidden],
@@ -537,7 +533,7 @@ export interface UnregisterResellernotifyRequest {
 }
 
 export const UnregisterResellernotifyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceAccountEmailAddress: Schema.optional(Schema.String).pipe(
       T.HttpQuery("serviceAccountEmailAddress"),
     ),
@@ -552,7 +548,7 @@ export const UnregisterResellernotifyRequest =
 
 export type UnregisterResellernotifyResponse = ResellernotifyResource;
 export const UnregisterResellernotifyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResellernotifyResource;
+  /*@__PURE__*/ ResellernotifyResource;
 
 export type UnregisterResellernotifyError =
   | DefaultErrors
@@ -567,7 +563,7 @@ export const unregisterResellernotify: API.OperationMethod<
   UnregisterResellernotifyResponse,
   UnregisterResellernotifyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnregisterResellernotifyRequest,
   output: UnregisterResellernotifyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -579,7 +575,7 @@ export interface RegisterResellernotifyRequest {
 }
 
 export const RegisterResellernotifyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceAccountEmailAddress: Schema.optional(Schema.String).pipe(
       T.HttpQuery("serviceAccountEmailAddress"),
     ),
@@ -594,7 +590,7 @@ export const RegisterResellernotifyRequest =
 
 export type RegisterResellernotifyResponse = ResellernotifyResource;
 export const RegisterResellernotifyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResellernotifyResource;
+  /*@__PURE__*/ ResellernotifyResource;
 
 export type RegisterResellernotifyError =
   | DefaultErrors
@@ -609,7 +605,7 @@ export const registerResellernotify: API.OperationMethod<
   RegisterResellernotifyResponse,
   RegisterResellernotifyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterResellernotifyRequest,
   output: RegisterResellernotifyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -623,7 +619,7 @@ export interface ActivateSubscriptionsRequest {
 }
 
 export const ActivateSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
   }).pipe(
@@ -636,8 +632,7 @@ export const ActivateSubscriptionsRequest =
   ) as unknown as Schema.Codec<ActivateSubscriptionsRequest>;
 
 export type ActivateSubscriptionsResponse = Subscription;
-export const ActivateSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export const ActivateSubscriptionsResponse = /*@__PURE__*/ Subscription;
 
 export type ActivateSubscriptionsError =
   | DefaultErrors
@@ -652,7 +647,7 @@ export const activateSubscriptions: API.OperationMethod<
   ActivateSubscriptionsResponse,
   ActivateSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivateSubscriptionsRequest,
   output: ActivateSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -672,7 +667,7 @@ export interface DeleteSubscriptionsRequest {
 }
 
 export const DeleteSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deletionType: Schema.String.pipe(T.HttpQuery("deletionType")),
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
@@ -686,7 +681,7 @@ export const DeleteSubscriptionsRequest =
 
 export interface DeleteSubscriptionsResponse {}
 export const DeleteSubscriptionsResponse: Schema.Codec<DeleteSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteSubscriptionsResponse>;
 
@@ -703,7 +698,7 @@ export const deleteSubscriptions: API.OperationMethod<
   DeleteSubscriptionsResponse,
   DeleteSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionsRequest,
   output: DeleteSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -717,7 +712,7 @@ export interface GetSubscriptionsRequest {
 }
 
 export const GetSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
   }).pipe(
@@ -729,8 +724,7 @@ export const GetSubscriptionsRequest =
   ) as unknown as Schema.Codec<GetSubscriptionsRequest>;
 
 export type GetSubscriptionsResponse = Subscription;
-export const GetSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export const GetSubscriptionsResponse = /*@__PURE__*/ Subscription;
 
 export type GetSubscriptionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -740,7 +734,7 @@ export const getSubscriptions: API.OperationMethod<
   GetSubscriptionsResponse,
   GetSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionsRequest,
   output: GetSubscriptionsResponse,
   errors: [NotFound, Forbidden],
@@ -760,7 +754,7 @@ export interface InsertSubscriptionsRequest {
 }
 
 export const InsertSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceSkuId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("sourceSkuId"),
     ),
@@ -780,8 +774,7 @@ export const InsertSubscriptionsRequest =
   ) as unknown as Schema.Codec<InsertSubscriptionsRequest>;
 
 export type InsertSubscriptionsResponse = Subscription;
-export const InsertSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export const InsertSubscriptionsResponse = /*@__PURE__*/ Subscription;
 
 export type InsertSubscriptionsError =
   | DefaultErrors
@@ -796,7 +789,7 @@ export const insertSubscriptions: API.OperationMethod<
   InsertSubscriptionsResponse,
   InsertSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertSubscriptionsRequest,
   output: InsertSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -810,7 +803,7 @@ export interface StartPaidServiceSubscriptionsRequest {
 }
 
 export const StartPaidServiceSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
   }).pipe(
@@ -823,8 +816,7 @@ export const StartPaidServiceSubscriptionsRequest =
   ) as unknown as Schema.Codec<StartPaidServiceSubscriptionsRequest>;
 
 export type StartPaidServiceSubscriptionsResponse = Subscription;
-export const StartPaidServiceSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export const StartPaidServiceSubscriptionsResponse = /*@__PURE__*/ Subscription;
 
 export type StartPaidServiceSubscriptionsError =
   | DefaultErrors
@@ -839,7 +831,7 @@ export const startPaidServiceSubscriptions: API.OperationMethod<
   StartPaidServiceSubscriptionsResponse,
   StartPaidServiceSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPaidServiceSubscriptionsRequest,
   output: StartPaidServiceSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -853,7 +845,7 @@ export interface SuspendSubscriptionsRequest {
 }
 
 export const SuspendSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
   }).pipe(
@@ -866,8 +858,7 @@ export const SuspendSubscriptionsRequest =
   ) as unknown as Schema.Codec<SuspendSubscriptionsRequest>;
 
 export type SuspendSubscriptionsResponse = Subscription;
-export const SuspendSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export const SuspendSubscriptionsResponse = /*@__PURE__*/ Subscription;
 
 export type SuspendSubscriptionsError =
   | DefaultErrors
@@ -882,7 +873,7 @@ export const suspendSubscriptions: API.OperationMethod<
   SuspendSubscriptionsResponse,
   SuspendSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SuspendSubscriptionsRequest,
   output: SuspendSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -898,7 +889,7 @@ export interface ChangePlanSubscriptionsRequest {
 }
 
 export const ChangePlanSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
     body: Schema.optional(ChangePlanRequest).pipe(T.HttpBody()),
@@ -912,8 +903,7 @@ export const ChangePlanSubscriptionsRequest =
   ) as unknown as Schema.Codec<ChangePlanSubscriptionsRequest>;
 
 export type ChangePlanSubscriptionsResponse = Subscription;
-export const ChangePlanSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export const ChangePlanSubscriptionsResponse = /*@__PURE__*/ Subscription;
 
 export type ChangePlanSubscriptionsError =
   | DefaultErrors
@@ -928,7 +918,7 @@ export const changePlanSubscriptions: API.OperationMethod<
   ChangePlanSubscriptionsResponse,
   ChangePlanSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChangePlanSubscriptionsRequest,
   output: ChangePlanSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -944,7 +934,7 @@ export interface ChangeSeatsSubscriptionsRequest {
 }
 
 export const ChangeSeatsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(Seats).pipe(T.HttpBody()),
@@ -958,8 +948,7 @@ export const ChangeSeatsSubscriptionsRequest =
   ) as unknown as Schema.Codec<ChangeSeatsSubscriptionsRequest>;
 
 export type ChangeSeatsSubscriptionsResponse = Subscription;
-export const ChangeSeatsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export const ChangeSeatsSubscriptionsResponse = /*@__PURE__*/ Subscription;
 
 export type ChangeSeatsSubscriptionsError =
   | DefaultErrors
@@ -974,7 +963,7 @@ export const changeSeatsSubscriptions: API.OperationMethod<
   ChangeSeatsSubscriptionsResponse,
   ChangeSeatsSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChangeSeatsSubscriptionsRequest,
   output: ChangeSeatsSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -990,7 +979,7 @@ export interface ChangeRenewalSettingsSubscriptionsRequest {
 }
 
 export const ChangeRenewalSettingsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(RenewalSettings).pipe(T.HttpBody()),
@@ -1005,7 +994,7 @@ export const ChangeRenewalSettingsSubscriptionsRequest =
 
 export type ChangeRenewalSettingsSubscriptionsResponse = Subscription;
 export const ChangeRenewalSettingsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+  /*@__PURE__*/ Subscription;
 
 export type ChangeRenewalSettingsSubscriptionsError =
   | DefaultErrors
@@ -1020,7 +1009,7 @@ export const changeRenewalSettingsSubscriptions: API.OperationMethod<
   ChangeRenewalSettingsSubscriptionsResponse,
   ChangeRenewalSettingsSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChangeRenewalSettingsSubscriptionsRequest,
   output: ChangeRenewalSettingsSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1040,7 +1029,7 @@ export interface ListSubscriptionsRequest {
 }
 
 export const ListSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerNamePrefix: Schema.optional(Schema.String).pipe(
       T.HttpQuery("customerNamePrefix"),
     ),
@@ -1056,8 +1045,7 @@ export const ListSubscriptionsRequest =
   ) as unknown as Schema.Codec<ListSubscriptionsRequest>;
 
 export type ListSubscriptionsResponse = Subscriptions;
-export const ListSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscriptions;
+export const ListSubscriptionsResponse = /*@__PURE__*/ Subscriptions;
 
 export type ListSubscriptionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1067,7 +1055,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsResponse,
   ListSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse,
   errors: [NotFound, Forbidden],

@@ -10,7 +10,7 @@ export interface PostV1ConnectionsByIdRotateInput {
   id: string;
 }
 export const PostV1ConnectionsByIdRotateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "POST", path: "/v1/connections/{id}/rotate" }),
@@ -51,7 +51,7 @@ export interface PostV1ConnectionsByIdRotateOutput {
   };
 }
 export const PostV1ConnectionsByIdRotateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -109,10 +109,8 @@ export const PostV1ConnectionsByIdRotateOutput =
  *
  * Generates new credentials for the connection with the given ID. Revocation of the previous credentials is best-effort.
  */
-export const postV1ConnectionsByIdRotate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostV1ConnectionsByIdRotateInput,
-    outputSchema: PostV1ConnectionsByIdRotateOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const postV1ConnectionsByIdRotate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostV1ConnectionsByIdRotateInput,
+  outputSchema: PostV1ConnectionsByIdRotateOutput,
+  errors: [NotFound] as const,
+}));

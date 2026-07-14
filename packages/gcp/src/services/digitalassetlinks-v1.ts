@@ -28,7 +28,7 @@ export interface WebAsset {
 }
 
 export const WebAsset: Schema.Codec<WebAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     site: Schema.optional(Schema.String),
   }).annotate({ identifier: "WebAsset" });
 
@@ -38,7 +38,7 @@ export interface CertificateInfo {
 }
 
 export const CertificateInfo: Schema.Codec<CertificateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sha256Fingerprint: Schema.optional(Schema.String),
   }).annotate({ identifier: "CertificateInfo" });
 
@@ -50,7 +50,7 @@ export interface AndroidAppAsset {
 }
 
 export const AndroidAppAsset: Schema.Codec<AndroidAppAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     certificate: Schema.optional(CertificateInfo),
   }).annotate({ identifier: "AndroidAppAsset" });
@@ -63,7 +63,7 @@ export interface Asset {
 }
 
 export const Asset: Schema.Codec<Asset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     web: Schema.optional(WebAsset),
     androidApp: Schema.optional(AndroidAppAsset),
   }).annotate({ identifier: "Asset" });
@@ -80,7 +80,7 @@ export interface Statement {
 }
 
 export const Statement: Schema.Codec<Statement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Asset),
     target: Schema.optional(Asset),
     relation: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export interface CheckResponse {
 }
 
 export const CheckResponse: Schema.Codec<CheckResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     linked: Schema.optional(Schema.Boolean),
     maxAge: Schema.optional(Schema.String),
     errorCode: Schema.optional(Schema.Array(Schema.String)),
@@ -136,7 +136,7 @@ export interface StatementTemplate {
 }
 
 export const StatementTemplate: Schema.Codec<StatementTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     relation: Schema.optional(Schema.String),
     source: Schema.optional(Asset),
     target: Schema.optional(Asset),
@@ -156,7 +156,7 @@ export interface BulkCheckRequest {
 }
 
 export const BulkCheckRequest: Schema.Codec<BulkCheckRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultSource: Schema.optional(Asset),
     statements: Schema.optional(Schema.Array(StatementTemplate)),
     defaultTarget: Schema.optional(Asset),
@@ -189,7 +189,7 @@ export interface ListResponse {
 }
 
 export const ListResponse: Schema.Codec<ListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxAge: Schema.optional(Schema.String),
     debugString: Schema.optional(Schema.String),
     errorCode: Schema.optional(Schema.Array(Schema.String)),
@@ -216,7 +216,7 @@ export interface BulkCheckResponse {
 }
 
 export const BulkCheckResponse: Schema.Codec<BulkCheckResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bulkErrorCode: Schema.optional(Schema.String),
     checkResults: Schema.optional(Schema.Array(CheckResponse)),
   }).annotate({ identifier: "BulkCheckResponse" });
@@ -294,39 +294,36 @@ export interface CheckAssetlinksRequest {
   returnRelationExtensions?: boolean;
 }
 
-export const CheckAssetlinksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    "source.androidApp.certificate.sha256Fingerprint": Schema.optional(
-      Schema.String,
-    ).pipe(T.HttpQuery("source.androidApp.certificate.sha256Fingerprint")),
-    "target.web.site": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("target.web.site"),
-    ),
-    relation: Schema.optional(Schema.String).pipe(T.HttpQuery("relation")),
-    "target.androidApp.packageName": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("target.androidApp.packageName"),
-    ),
-    "source.web.site": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("source.web.site"),
-    ),
-    "source.androidApp.packageName": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("source.androidApp.packageName"),
-    ),
-    "target.androidApp.certificate.sha256Fingerprint": Schema.optional(
-      Schema.String,
-    ).pipe(T.HttpQuery("target.androidApp.certificate.sha256Fingerprint")),
-    returnRelationExtensions: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnRelationExtensions"),
-    ),
-  },
-).pipe(
+export const CheckAssetlinksRequest = /*@__PURE__*/ Schema.Struct({
+  "source.androidApp.certificate.sha256Fingerprint": Schema.optional(
+    Schema.String,
+  ).pipe(T.HttpQuery("source.androidApp.certificate.sha256Fingerprint")),
+  "target.web.site": Schema.optional(Schema.String).pipe(
+    T.HttpQuery("target.web.site"),
+  ),
+  relation: Schema.optional(Schema.String).pipe(T.HttpQuery("relation")),
+  "target.androidApp.packageName": Schema.optional(Schema.String).pipe(
+    T.HttpQuery("target.androidApp.packageName"),
+  ),
+  "source.web.site": Schema.optional(Schema.String).pipe(
+    T.HttpQuery("source.web.site"),
+  ),
+  "source.androidApp.packageName": Schema.optional(Schema.String).pipe(
+    T.HttpQuery("source.androidApp.packageName"),
+  ),
+  "target.androidApp.certificate.sha256Fingerprint": Schema.optional(
+    Schema.String,
+  ).pipe(T.HttpQuery("target.androidApp.certificate.sha256Fingerprint")),
+  returnRelationExtensions: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("returnRelationExtensions"),
+  ),
+}).pipe(
   T.Http({ method: "GET", path: "v1/assetlinks:check" }),
   svc,
 ) as unknown as Schema.Codec<CheckAssetlinksRequest>;
 
 export type CheckAssetlinksResponse = CheckResponse;
-export const CheckAssetlinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CheckResponse;
+export const CheckAssetlinksResponse = /*@__PURE__*/ CheckResponse;
 
 export type CheckAssetlinksError = DefaultErrors | NotFound | Forbidden;
 
@@ -336,7 +333,7 @@ export const checkAssetlinks: API.OperationMethod<
   CheckAssetlinksResponse,
   CheckAssetlinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckAssetlinksRequest,
   output: CheckAssetlinksResponse,
   errors: [NotFound, Forbidden],
@@ -348,7 +345,7 @@ export interface BulkCheckAssetlinksRequest {
 }
 
 export const BulkCheckAssetlinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(BulkCheckRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1/assetlinks:bulkCheck", hasBody: true }),
@@ -356,8 +353,7 @@ export const BulkCheckAssetlinksRequest =
   ) as unknown as Schema.Codec<BulkCheckAssetlinksRequest>;
 
 export type BulkCheckAssetlinksResponse = BulkCheckResponse;
-export const BulkCheckAssetlinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BulkCheckResponse;
+export const BulkCheckAssetlinksResponse = /*@__PURE__*/ BulkCheckResponse;
 
 export type BulkCheckAssetlinksError =
   | DefaultErrors
@@ -372,7 +368,7 @@ export const bulkCheckAssetlinks: API.OperationMethod<
   BulkCheckAssetlinksResponse,
   BulkCheckAssetlinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkCheckAssetlinksRequest,
   output: BulkCheckAssetlinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -391,7 +387,7 @@ export interface ListStatementsRequest {
   "source.androidApp.certificate.sha256Fingerprint"?: string;
 }
 
-export const ListStatementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListStatementsRequest = /*@__PURE__*/ Schema.Struct({
   "source.web.site": Schema.optional(Schema.String).pipe(
     T.HttpQuery("source.web.site"),
   ),
@@ -411,7 +407,7 @@ export const ListStatementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListStatementsRequest>;
 
 export type ListStatementsResponse = ListResponse;
-export const ListStatementsResponse = /*@__PURE__*/ /*#__PURE__*/ ListResponse;
+export const ListStatementsResponse = /*@__PURE__*/ ListResponse;
 
 export type ListStatementsError = DefaultErrors | NotFound | Forbidden;
 
@@ -421,7 +417,7 @@ export const listStatements: API.OperationMethod<
   ListStatementsResponse,
   ListStatementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListStatementsRequest,
   output: ListStatementsResponse,
   errors: [NotFound, Forbidden],

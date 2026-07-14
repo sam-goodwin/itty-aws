@@ -12,7 +12,7 @@ export interface GetTopupsTopupInput {
   topup: string;
   expand?: string;
 }
-export const GetTopupsTopupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTopupsTopupInput = /*@__PURE__*/ Schema.Struct({
   topup: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -122,7 +122,7 @@ export interface GetTopupsTopupOutput {
   status: "canceled" | "failed" | "pending" | "reversed" | "succeeded";
   transfer_group: string | null;
 }
-export const GetTopupsTopupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTopupsTopupOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   balance_transaction: Schema.NullOr(
     Schema.Union([
@@ -241,7 +241,7 @@ export const GetTopupsTopupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTopupsTopup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTopupsTopup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetTopupsTopupInput,
   outputSchema: GetTopupsTopupOutput,
 }));

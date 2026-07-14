@@ -10,7 +10,7 @@ export interface DeleteEphemeralKeysKeyInput {
   expand?: string[];
 }
 export const DeleteEphemeralKeysKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -31,7 +31,7 @@ export interface DeleteEphemeralKeysKeyOutput {
   secret?: Redacted.Redacted<string>;
 }
 export const DeleteEphemeralKeysKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     expires: Schema.Number,
     id: Schema.String,
@@ -46,9 +46,7 @@ export const DeleteEphemeralKeysKeyOutput =
  *
  * <p>Invalidates a short-lived API key for a given resource.</p>
  */
-export const DeleteEphemeralKeysKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteEphemeralKeysKeyInput,
-    outputSchema: DeleteEphemeralKeysKeyOutput,
-  }),
-);
+export const DeleteEphemeralKeysKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteEphemeralKeysKeyInput,
+  outputSchema: DeleteEphemeralKeysKeyOutput,
+}));

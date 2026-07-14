@@ -98,7 +98,7 @@ export interface DeleteReportDefinitionRequest {
   reportId: string;
 }
 export const DeleteReportDefinitionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ reportId: S.String.pipe(T.HttpLabel("reportId")) }).pipe(
       T.all(
         T.Http({ method: "DELETE", uri: "/reportDefinition/{reportId}" }),
@@ -116,7 +116,7 @@ export interface DeleteReportDefinitionResult {
   reportId?: string;
 }
 export const DeleteReportDefinitionResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ reportId: S.optional(S.String) }),
   ).annotate({
     identifier: "DeleteReportDefinitionResult",
@@ -124,30 +124,29 @@ export const DeleteReportDefinitionResult =
 export interface GetReportDefinitionRequest {
   reportId: string;
 }
-export const GetReportDefinitionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ reportId: S.String.pipe(T.HttpLabel("reportId")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/reportDefinition/{reportId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ reportId: S.String.pipe(T.HttpLabel("reportId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/reportDefinition/{reportId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetReportDefinitionRequest",
 }) as any as S.Schema<GetReportDefinitionRequest>;
 export type ReportFrequency = "MONTHLY" | "DAILY" | "ALL" | (string & {});
-export const ReportFrequency = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ReportFrequency = /*@__PURE__*/ S.String;
 export type Format = "CSV" | "PARQUET" | (string & {});
-export const Format = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Format = /*@__PURE__*/ S.String;
 export interface S3Location {
   bucket: string;
   prefix: string;
 }
-export const S3Location = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucket: S.String, prefix: S.String }),
 ).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
 export interface GetReportDefinitionResult {
@@ -159,17 +158,16 @@ export interface GetReportDefinitionResult {
   createdAt: Date;
   lastUpdated: Date;
 }
-export const GetReportDefinitionResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      reportId: S.String,
-      reportDescription: S.String,
-      reportFrequency: ReportFrequency,
-      format: Format,
-      destinationS3Location: S3Location,
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      lastUpdated: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    }),
+export const GetReportDefinitionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reportId: S.String,
+    reportDescription: S.String,
+    reportFrequency: ReportFrequency,
+    format: Format,
+    destinationS3Location: S3Location,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    lastUpdated: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
 ).annotate({
   identifier: "GetReportDefinitionResult",
 }) as any as S.Schema<GetReportDefinitionResult>;
@@ -179,13 +177,13 @@ export type S3BucketRegion =
   | "eu-south-1"
   | "af-south-1"
   | (string & {});
-export const S3BucketRegion = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const S3BucketRegion = /*@__PURE__*/ S.String;
 export interface SourceS3Location {
   bucket: string;
   key: string;
   region?: S3BucketRegion;
 }
-export const SourceS3Location = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SourceS3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String,
     key: S.String,
@@ -198,7 +196,7 @@ export interface ImportApplicationUsageRequest {
   sourceS3Location: SourceS3Location;
 }
 export const ImportApplicationUsageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ sourceS3Location: SourceS3Location }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/importApplicationUsage" }),
@@ -216,9 +214,7 @@ export interface ImportApplicationUsageResult {
   importId: string;
 }
 export const ImportApplicationUsageResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ importId: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ importId: S.String })).annotate({
     identifier: "ImportApplicationUsageResult",
   }) as any as S.Schema<ImportApplicationUsageResult>;
 export interface ListReportDefinitionsRequest {
@@ -226,7 +222,7 @@ export interface ListReportDefinitionsRequest {
   maxResults?: number;
 }
 export const ListReportDefinitionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -252,7 +248,7 @@ export interface ReportDefinition {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
-export const ReportDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReportDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportId: S.optional(S.String),
     reportDescription: S.optional(S.String),
@@ -266,14 +262,13 @@ export const ReportDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ReportDefinition",
 }) as any as S.Schema<ReportDefinition>;
 export type ReportDefinitionList = ReportDefinition[];
-export const ReportDefinitionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ReportDefinition);
+export const ReportDefinitionList = /*@__PURE__*/ S.Array(ReportDefinition);
 export interface ListReportDefinitionsResult {
   reportDefinitions?: ReportDefinition[];
   nextToken?: string;
 }
 export const ListReportDefinitionsResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reportDefinitions: S.optional(ReportDefinitionList),
       nextToken: S.optional(S.String),
@@ -288,32 +283,31 @@ export interface PutReportDefinitionRequest {
   format: Format;
   destinationS3Location: S3Location;
 }
-export const PutReportDefinitionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      reportId: S.String,
-      reportDescription: S.String,
-      reportFrequency: ReportFrequency,
-      format: Format,
-      destinationS3Location: S3Location,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/reportDefinition" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reportId: S.String,
+    reportDescription: S.String,
+    reportFrequency: ReportFrequency,
+    format: Format,
+    destinationS3Location: S3Location,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/reportDefinition" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PutReportDefinitionRequest",
 }) as any as S.Schema<PutReportDefinitionRequest>;
 export interface PutReportDefinitionResult {
   reportId?: string;
 }
-export const PutReportDefinitionResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ reportId: S.optional(S.String) }),
+export const PutReportDefinitionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ reportId: S.optional(S.String) }),
 ).annotate({
   identifier: "PutReportDefinitionResult",
 }) as any as S.Schema<PutReportDefinitionResult>;
@@ -325,7 +319,7 @@ export interface UpdateReportDefinitionRequest {
   destinationS3Location: S3Location;
 }
 export const UpdateReportDefinitionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reportId: S.String.pipe(T.HttpLabel("reportId")),
       reportDescription: S.String,
@@ -349,7 +343,7 @@ export interface UpdateReportDefinitionResult {
   reportId?: string;
 }
 export const UpdateReportDefinitionResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ reportId: S.optional(S.String) }),
   ).annotate({
     identifier: "UpdateReportDefinitionResult",
@@ -393,7 +387,7 @@ export const deleteReportDefinition: API.OperationMethod<
   DeleteReportDefinitionResult,
   DeleteReportDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReportDefinitionRequest,
   output: DeleteReportDefinitionResult,
   errors: [
@@ -418,7 +412,7 @@ export const getReportDefinition: API.OperationMethod<
   GetReportDefinitionResult,
   GetReportDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReportDefinitionRequest,
   output: GetReportDefinitionResult,
   errors: [
@@ -447,7 +441,7 @@ export const importApplicationUsage: API.OperationMethod<
   ImportApplicationUsageResult,
   ImportApplicationUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportApplicationUsageRequest,
   output: ImportApplicationUsageResult,
   errors: [
@@ -489,7 +483,7 @@ export const listReportDefinitions: API.OperationMethod<
     ListReportDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportDefinitionsRequest,
   output: ListReportDefinitionsResult,
   errors: [
@@ -521,7 +515,7 @@ export const putReportDefinition: API.OperationMethod<
   PutReportDefinitionResult,
   PutReportDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutReportDefinitionRequest,
   output: PutReportDefinitionResult,
   errors: [
@@ -547,7 +541,7 @@ export const updateReportDefinition: API.OperationMethod<
   UpdateReportDefinitionResult,
   UpdateReportDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateReportDefinitionRequest,
   output: UpdateReportDefinitionResult,
   errors: [

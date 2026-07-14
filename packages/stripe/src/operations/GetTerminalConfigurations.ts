@@ -13,7 +13,7 @@ export interface GetTerminalConfigurationsInput {
   starting_after?: string;
 }
 export const GetTerminalConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
     is_account_default: Schema.optional(Schema.Boolean),
@@ -645,7 +645,7 @@ export interface GetTerminalConfigurationsOutput {
   url: string;
 }
 export const GetTerminalConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         bbpos_wisepad3: Schema.optional(
@@ -1569,9 +1569,7 @@ export const GetTerminalConfigurationsOutput =
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetTerminalConfigurations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetTerminalConfigurationsInput,
-    outputSchema: GetTerminalConfigurationsOutput,
-  }),
-);
+export const GetTerminalConfigurations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTerminalConfigurationsInput,
+  outputSchema: GetTerminalConfigurationsOutput,
+}));

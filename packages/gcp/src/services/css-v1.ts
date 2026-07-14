@@ -30,7 +30,7 @@ export interface ProductDimension {
 }
 
 export const ProductDimension: Schema.Codec<ProductDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     unit: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProductDimension" });
@@ -43,7 +43,7 @@ export interface Price {
 }
 
 export const Price: Schema.Codec<Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     amountMicros: Schema.optional(Schema.String),
   }).annotate({ identifier: "Price" });
@@ -58,7 +58,7 @@ export interface HeadlineOfferSubscriptionCost {
 }
 
 export const HeadlineOfferSubscriptionCost: Schema.Codec<HeadlineOfferSubscriptionCost> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.optional(Price),
     period: Schema.optional(Schema.String),
     periodLength: Schema.optional(Schema.String),
@@ -76,7 +76,7 @@ export interface DestinationStatus {
 }
 
 export const DestinationStatus: Schema.Codec<DestinationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
     pendingCountries: Schema.optional(Schema.Array(Schema.String)),
     disapprovedCountries: Schema.optional(Schema.Array(Schema.String)),
@@ -105,7 +105,7 @@ export interface ItemLevelIssue {
 }
 
 export const ItemLevelIssue: Schema.Codec<ItemLevelIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
     detail: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
@@ -131,7 +131,7 @@ export interface CssProductStatus {
 }
 
 export const CssProductStatus: Schema.Codec<CssProductStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastUpdateDate: Schema.optional(Schema.String),
     destinationStatuses: Schema.optional(Schema.Array(DestinationStatus)),
     itemLevelIssues: Schema.optional(Schema.Array(ItemLevelIssue)),
@@ -149,7 +149,7 @@ export interface Certification {
 }
 
 export const Certification: Schema.Codec<Certification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
     authority: Schema.optional(Schema.String),
@@ -165,7 +165,7 @@ export interface ProductDetail {
 }
 
 export const ProductDetail: Schema.Codec<ProductDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sectionName: Schema.optional(Schema.String),
     attributeName: Schema.optional(Schema.String),
     attributeValue: Schema.optional(Schema.String),
@@ -181,7 +181,7 @@ export interface HeadlineOfferInstallment {
 }
 
 export const HeadlineOfferInstallment: Schema.Codec<HeadlineOfferInstallment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     downpayment: Schema.optional(Price),
     amount: Schema.optional(Price),
     months: Schema.optional(Schema.String),
@@ -195,7 +195,7 @@ export interface ProductWeight {
 }
 
 export const ProductWeight: Schema.Codec<ProductWeight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     unit: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProductWeight" });
@@ -312,7 +312,7 @@ export interface Attributes {
 }
 
 export const Attributes: Schema.Codec<Attributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productLength: Schema.optional(ProductDimension),
     customLabel2: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -381,7 +381,7 @@ export interface CustomAttribute {
 }
 
 export const CustomAttribute: Schema.Codec<CustomAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       groupValues: Schema.optional(Schema.Array(CustomAttribute)),
       name: Schema.optional(Schema.String),
@@ -409,7 +409,7 @@ export interface CssProduct {
 }
 
 export const CssProduct: Schema.Codec<CssProduct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rawProvidedId: Schema.optional(Schema.String),
     contentLanguage: Schema.optional(Schema.String),
     feedLabel: Schema.optional(Schema.String),
@@ -431,7 +431,7 @@ export interface MethodDetails {
 }
 
 export const MethodDetails: Schema.Codec<MethodDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     subapi: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
@@ -452,7 +452,7 @@ export interface QuotaGroup {
 }
 
 export const QuotaGroup: Schema.Codec<QuotaGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     methodDetails: Schema.optional(Schema.Array(MethodDetails)),
     quotaUsage: Schema.optional(Schema.String),
     quotaLimit: Schema.optional(Schema.String),
@@ -468,7 +468,7 @@ export interface ListQuotaGroupsResponse {
 }
 
 export const ListQuotaGroupsResponse: Schema.Codec<ListQuotaGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quotaGroups: Schema.optional(Schema.Array(QuotaGroup)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListQuotaGroupsResponse" });
@@ -503,7 +503,7 @@ export interface Account {
 }
 
 export const Account: Schema.Codec<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     homepageUri: Schema.optional(Schema.String),
     automaticLabelIds: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -530,7 +530,7 @@ export interface AccountLabel {
 }
 
 export const AccountLabel: Schema.Codec<AccountLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     labelType: Schema.optional(Schema.String),
     labelId: Schema.optional(Schema.String),
@@ -547,7 +547,7 @@ export interface ListAccountLabelsResponse {
 }
 
 export const ListAccountLabelsResponse: Schema.Codec<ListAccountLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountLabels: Schema.optional(Schema.Array(AccountLabel)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAccountLabelsResponse" });
@@ -560,7 +560,7 @@ export interface ListChildAccountsResponse {
 }
 
 export const ListChildAccountsResponse: Schema.Codec<ListChildAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accounts: Schema.optional(Schema.Array(Account)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListChildAccountsResponse" });
@@ -568,7 +568,7 @@ export const ListChildAccountsResponse: Schema.Codec<ListChildAccountsResponse> 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -592,7 +592,7 @@ export interface CssProductInput {
 }
 
 export const CssProductInput: Schema.Codec<CssProductInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finalName: Schema.optional(Schema.String),
     freshnessTime: Schema.optional(Schema.String),
     customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
@@ -611,7 +611,7 @@ export interface ListCssProductsResponse {
 }
 
 export const ListCssProductsResponse: Schema.Codec<ListCssProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cssProducts: Schema.optional(Schema.Array(CssProduct)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListCssProductsResponse" });
@@ -624,7 +624,7 @@ export interface UpdateAccountLabelsRequest {
 }
 
 export const UpdateAccountLabelsRequest: Schema.Codec<UpdateAccountLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labelIds: Schema.optional(Schema.Array(Schema.String)),
     parent: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpdateAccountLabelsRequest" });
@@ -690,7 +690,7 @@ export interface GetAccountsRequest {
   name: string;
 }
 
-export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAccountsRequest = /*@__PURE__*/ Schema.Struct({
   parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
@@ -699,7 +699,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetAccountsRequest>;
 
 export type GetAccountsResponse = Account;
-export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
+export const GetAccountsResponse = /*@__PURE__*/ Account;
 
 export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -709,7 +709,7 @@ export const getAccounts: API.OperationMethod<
   GetAccountsResponse,
   GetAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -723,7 +723,7 @@ export interface UpdateLabelsAccountsRequest {
 }
 
 export const UpdateLabelsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateAccountLabelsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -732,7 +732,7 @@ export const UpdateLabelsAccountsRequest =
   ) as unknown as Schema.Codec<UpdateLabelsAccountsRequest>;
 
 export type UpdateLabelsAccountsResponse = Account;
-export const UpdateLabelsAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
+export const UpdateLabelsAccountsResponse = /*@__PURE__*/ Account;
 
 export type UpdateLabelsAccountsError =
   | DefaultErrors
@@ -747,7 +747,7 @@ export const updateLabelsAccounts: API.OperationMethod<
   UpdateLabelsAccountsResponse,
   UpdateLabelsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLabelsAccountsRequest,
   output: UpdateLabelsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -767,7 +767,7 @@ export interface ListChildAccountsAccountsRequest {
 }
 
 export const ListChildAccountsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     labelId: Schema.optional(Schema.String).pipe(T.HttpQuery("labelId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -780,7 +780,7 @@ export const ListChildAccountsAccountsRequest =
 
 export type ListChildAccountsAccountsResponse = ListChildAccountsResponse;
 export const ListChildAccountsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListChildAccountsResponse;
+  /*@__PURE__*/ ListChildAccountsResponse;
 
 export type ListChildAccountsAccountsError =
   | DefaultErrors
@@ -793,7 +793,7 @@ export const listChildAccountsAccounts: API.PaginatedOperationMethod<
   ListChildAccountsAccountsResponse,
   ListChildAccountsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChildAccountsAccountsRequest,
   output: ListChildAccountsAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -813,7 +813,7 @@ export interface ListAccountsLabelsRequest {
 }
 
 export const ListAccountsLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -824,7 +824,7 @@ export const ListAccountsLabelsRequest =
 
 export type ListAccountsLabelsResponse = ListAccountLabelsResponse;
 export const ListAccountsLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAccountLabelsResponse;
+  /*@__PURE__*/ ListAccountLabelsResponse;
 
 export type ListAccountsLabelsError = DefaultErrors | NotFound | Forbidden;
 
@@ -834,7 +834,7 @@ export const listAccountsLabels: API.PaginatedOperationMethod<
   ListAccountsLabelsResponse,
   ListAccountsLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLabelsRequest,
   output: ListAccountsLabelsResponse,
   errors: [NotFound, Forbidden],
@@ -852,7 +852,7 @@ export interface PatchAccountsLabelsRequest {
 }
 
 export const PatchAccountsLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AccountLabel).pipe(T.HttpBody()),
   }).pipe(
@@ -861,8 +861,7 @@ export const PatchAccountsLabelsRequest =
   ) as unknown as Schema.Codec<PatchAccountsLabelsRequest>;
 
 export type PatchAccountsLabelsResponse = AccountLabel;
-export const PatchAccountsLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccountLabel;
+export const PatchAccountsLabelsResponse = /*@__PURE__*/ AccountLabel;
 
 export type PatchAccountsLabelsError =
   | DefaultErrors
@@ -877,7 +876,7 @@ export const patchAccountsLabels: API.OperationMethod<
   PatchAccountsLabelsResponse,
   PatchAccountsLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsLabelsRequest,
   output: PatchAccountsLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -891,7 +890,7 @@ export interface CreateAccountsLabelsRequest {
 }
 
 export const CreateAccountsLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AccountLabel).pipe(T.HttpBody()),
   }).pipe(
@@ -900,8 +899,7 @@ export const CreateAccountsLabelsRequest =
   ) as unknown as Schema.Codec<CreateAccountsLabelsRequest>;
 
 export type CreateAccountsLabelsResponse = AccountLabel;
-export const CreateAccountsLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccountLabel;
+export const CreateAccountsLabelsResponse = /*@__PURE__*/ AccountLabel;
 
 export type CreateAccountsLabelsError =
   | DefaultErrors
@@ -916,7 +914,7 @@ export const createAccountsLabels: API.OperationMethod<
   CreateAccountsLabelsResponse,
   CreateAccountsLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsLabelsRequest,
   output: CreateAccountsLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -928,7 +926,7 @@ export interface DeleteAccountsLabelsRequest {
 }
 
 export const DeleteAccountsLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -936,7 +934,7 @@ export const DeleteAccountsLabelsRequest =
   ) as unknown as Schema.Codec<DeleteAccountsLabelsRequest>;
 
 export type DeleteAccountsLabelsResponse = Empty;
-export const DeleteAccountsLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteAccountsLabelsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteAccountsLabelsError =
   | DefaultErrors
@@ -951,7 +949,7 @@ export const deleteAccountsLabels: API.OperationMethod<
   DeleteAccountsLabelsResponse,
   DeleteAccountsLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsLabelsRequest,
   output: DeleteAccountsLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -965,7 +963,7 @@ export interface DeleteAccountsCssProductInputsRequest {
 }
 
 export const DeleteAccountsCssProductInputsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     supplementalFeedId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("supplementalFeedId"),
@@ -976,8 +974,7 @@ export const DeleteAccountsCssProductInputsRequest =
   ) as unknown as Schema.Codec<DeleteAccountsCssProductInputsRequest>;
 
 export type DeleteAccountsCssProductInputsResponse = Empty;
-export const DeleteAccountsCssProductInputsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteAccountsCssProductInputsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteAccountsCssProductInputsError =
   | DefaultErrors
@@ -992,7 +989,7 @@ export const deleteAccountsCssProductInputs: API.OperationMethod<
   DeleteAccountsCssProductInputsResponse,
   DeleteAccountsCssProductInputsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsCssProductInputsRequest,
   output: DeleteAccountsCssProductInputsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1008,7 +1005,7 @@ export interface PatchAccountsCssProductInputsRequest {
 }
 
 export const PatchAccountsCssProductInputsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CssProductInput).pipe(T.HttpBody()),
@@ -1019,7 +1016,7 @@ export const PatchAccountsCssProductInputsRequest =
 
 export type PatchAccountsCssProductInputsResponse = CssProductInput;
 export const PatchAccountsCssProductInputsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CssProductInput;
+  /*@__PURE__*/ CssProductInput;
 
 export type PatchAccountsCssProductInputsError =
   | DefaultErrors
@@ -1034,7 +1031,7 @@ export const patchAccountsCssProductInputs: API.OperationMethod<
   PatchAccountsCssProductInputsResponse,
   PatchAccountsCssProductInputsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsCssProductInputsRequest,
   output: PatchAccountsCssProductInputsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1050,7 +1047,7 @@ export interface InsertAccountsCssProductInputsRequest {
 }
 
 export const InsertAccountsCssProductInputsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     feedId: Schema.optional(Schema.String).pipe(T.HttpQuery("feedId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CssProductInput).pipe(T.HttpBody()),
@@ -1065,7 +1062,7 @@ export const InsertAccountsCssProductInputsRequest =
 
 export type InsertAccountsCssProductInputsResponse = CssProductInput;
 export const InsertAccountsCssProductInputsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CssProductInput;
+  /*@__PURE__*/ CssProductInput;
 
 export type InsertAccountsCssProductInputsError =
   | DefaultErrors
@@ -1080,7 +1077,7 @@ export const insertAccountsCssProductInputs: API.OperationMethod<
   InsertAccountsCssProductInputsResponse,
   InsertAccountsCssProductInputsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertAccountsCssProductInputsRequest,
   output: InsertAccountsCssProductInputsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1096,7 +1093,7 @@ export interface ListAccountsQuotasRequest {
 }
 
 export const ListAccountsQuotasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1106,8 +1103,7 @@ export const ListAccountsQuotasRequest =
   ) as unknown as Schema.Codec<ListAccountsQuotasRequest>;
 
 export type ListAccountsQuotasResponse = ListQuotaGroupsResponse;
-export const ListAccountsQuotasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListQuotaGroupsResponse;
+export const ListAccountsQuotasResponse = /*@__PURE__*/ ListQuotaGroupsResponse;
 
 export type ListAccountsQuotasError = DefaultErrors | NotFound | Forbidden;
 
@@ -1117,7 +1113,7 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
   ListAccountsQuotasResponse,
   ListAccountsQuotasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsQuotasRequest,
   output: ListAccountsQuotasResponse,
   errors: [NotFound, Forbidden],
@@ -1137,7 +1133,7 @@ export interface ListAccountsCssProductsRequest {
 }
 
 export const ListAccountsCssProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1148,7 +1144,7 @@ export const ListAccountsCssProductsRequest =
 
 export type ListAccountsCssProductsResponse = ListCssProductsResponse;
 export const ListAccountsCssProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCssProductsResponse;
+  /*@__PURE__*/ ListCssProductsResponse;
 
 export type ListAccountsCssProductsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1158,7 +1154,7 @@ export const listAccountsCssProducts: API.PaginatedOperationMethod<
   ListAccountsCssProductsResponse,
   ListAccountsCssProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsCssProductsRequest,
   output: ListAccountsCssProductsResponse,
   errors: [NotFound, Forbidden],
@@ -1174,7 +1170,7 @@ export interface GetAccountsCssProductsRequest {
 }
 
 export const GetAccountsCssProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1182,8 +1178,7 @@ export const GetAccountsCssProductsRequest =
   ) as unknown as Schema.Codec<GetAccountsCssProductsRequest>;
 
 export type GetAccountsCssProductsResponse = CssProduct;
-export const GetAccountsCssProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CssProduct;
+export const GetAccountsCssProductsResponse = /*@__PURE__*/ CssProduct;
 
 export type GetAccountsCssProductsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1193,7 +1188,7 @@ export const getAccountsCssProducts: API.OperationMethod<
   GetAccountsCssProductsResponse,
   GetAccountsCssProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsCssProductsRequest,
   output: GetAccountsCssProductsResponse,
   errors: [NotFound, Forbidden],

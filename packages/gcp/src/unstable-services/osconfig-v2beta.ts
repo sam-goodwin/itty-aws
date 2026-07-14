@@ -28,7 +28,7 @@ export interface OSPolicyResourcePackageResourceYUM {
 }
 
 export const OSPolicyResourcePackageResourceYUM: Schema.Codec<OSPolicyResourcePackageResourceYUM> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceYUM" });
 
@@ -38,7 +38,7 @@ export interface OSPolicyResourcePackageResourceZypper {
 }
 
 export const OSPolicyResourcePackageResourceZypper: Schema.Codec<OSPolicyResourcePackageResourceZypper> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceZypper" });
 
@@ -50,7 +50,7 @@ export interface OSPolicyResourceFileRemote {
 }
 
 export const OSPolicyResourceFileRemote: Schema.Codec<OSPolicyResourceFileRemote> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     sha256Checksum: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourceFileRemote" });
@@ -65,7 +65,7 @@ export interface OSPolicyResourceFileGcs {
 }
 
 export const OSPolicyResourceFileGcs: Schema.Codec<OSPolicyResourceFileGcs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     object: Schema.optional(Schema.String),
     generation: Schema.optional(Schema.String),
@@ -83,7 +83,7 @@ export interface OSPolicyResourceFile {
 }
 
 export const OSPolicyResourceFile: Schema.Codec<OSPolicyResourceFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remote: Schema.optional(OSPolicyResourceFileRemote),
     gcs: Schema.optional(OSPolicyResourceFileGcs),
     localPath: Schema.optional(Schema.String),
@@ -98,7 +98,7 @@ export interface OSPolicyResourcePackageResourceRPM {
 }
 
 export const OSPolicyResourcePackageResourceRPM: Schema.Codec<OSPolicyResourcePackageResourceRPM> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(OSPolicyResourceFile),
     pullDeps: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceRPM" });
@@ -109,7 +109,7 @@ export interface OSPolicyResourcePackageResourceAPT {
 }
 
 export const OSPolicyResourcePackageResourceAPT: Schema.Codec<OSPolicyResourcePackageResourceAPT> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceAPT" });
 
@@ -119,7 +119,7 @@ export interface OSPolicyResourcePackageResourceGooGet {
 }
 
 export const OSPolicyResourcePackageResourceGooGet: Schema.Codec<OSPolicyResourcePackageResourceGooGet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceGooGet" });
 
@@ -131,7 +131,7 @@ export interface OSPolicyResourcePackageResourceMSI {
 }
 
 export const OSPolicyResourcePackageResourceMSI: Schema.Codec<OSPolicyResourcePackageResourceMSI> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(OSPolicyResourceFile),
     properties: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceMSI" });
@@ -144,7 +144,7 @@ export interface OSPolicyResourcePackageResourceDeb {
 }
 
 export const OSPolicyResourcePackageResourceDeb: Schema.Codec<OSPolicyResourcePackageResourceDeb> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(OSPolicyResourceFile),
     pullDeps: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceDeb" });
@@ -173,7 +173,7 @@ export interface OSPolicyResourcePackageResource {
 }
 
 export const OSPolicyResourcePackageResource: Schema.Codec<OSPolicyResourcePackageResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     yum: Schema.optional(OSPolicyResourcePackageResourceYUM),
     zypper: Schema.optional(OSPolicyResourcePackageResourceZypper),
     rpm: Schema.optional(OSPolicyResourcePackageResourceRPM),
@@ -196,7 +196,7 @@ export interface OSPolicyResourceRepositoryResourceYumRepository {
 }
 
 export const OSPolicyResourceRepositoryResourceYumRepository: Schema.Codec<OSPolicyResourceRepositoryResourceYumRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gpgKeys: Schema.optional(Schema.Array(Schema.String)),
     displayName: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -217,7 +217,7 @@ export interface OSPolicyResourceRepositoryResourceZypperRepository {
 }
 
 export const OSPolicyResourceRepositoryResourceZypperRepository: Schema.Codec<OSPolicyResourceRepositoryResourceZypperRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gpgKeys: Schema.optional(Schema.Array(Schema.String)),
     displayName: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -234,7 +234,7 @@ export interface OSPolicyResourceRepositoryResourceGooRepository {
 }
 
 export const OSPolicyResourceRepositoryResourceGooRepository: Schema.Codec<OSPolicyResourceRepositoryResourceGooRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
   }).annotate({
@@ -255,7 +255,7 @@ export interface OSPolicyResourceRepositoryResourceAptRepository {
 }
 
 export const OSPolicyResourceRepositoryResourceAptRepository: Schema.Codec<OSPolicyResourceRepositoryResourceAptRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     components: Schema.optional(Schema.Array(Schema.String)),
     archiveType: Schema.optional(Schema.String),
     gpgKey: Schema.optional(Schema.String),
@@ -277,7 +277,7 @@ export interface OSPolicyResourceRepositoryResource {
 }
 
 export const OSPolicyResourceRepositoryResource: Schema.Codec<OSPolicyResourceRepositoryResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     yum: Schema.optional(OSPolicyResourceRepositoryResourceYumRepository),
     zypper: Schema.optional(OSPolicyResourceRepositoryResourceZypperRepository),
     goo: Schema.optional(OSPolicyResourceRepositoryResourceGooRepository),
@@ -303,7 +303,7 @@ export interface OSPolicyResourceExecResourceExec {
 }
 
 export const OSPolicyResourceExecResourceExec: Schema.Codec<OSPolicyResourceExecResourceExec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     args: Schema.optional(Schema.Array(Schema.String)),
     interpreter: Schema.optional(Schema.String),
     outputFilePath: Schema.optional(Schema.String),
@@ -319,7 +319,7 @@ export interface OSPolicyResourceExecResource {
 }
 
 export const OSPolicyResourceExecResource: Schema.Codec<OSPolicyResourceExecResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validate: Schema.optional(OSPolicyResourceExecResourceExec),
     enforce: Schema.optional(OSPolicyResourceExecResourceExec),
   }).annotate({ identifier: "OSPolicyResourceExecResource" });
@@ -343,7 +343,7 @@ export interface OSPolicyResourceFileResource {
 }
 
 export const OSPolicyResourceFileResource: Schema.Codec<OSPolicyResourceFileResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     file: Schema.optional(OSPolicyResourceFile),
     content: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -365,7 +365,7 @@ export interface OSPolicyResource {
 }
 
 export const OSPolicyResource: Schema.Codec<OSPolicyResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     pkg: Schema.optional(OSPolicyResourcePackageResource),
     repository: Schema.optional(OSPolicyResourceRepositoryResource),
@@ -381,7 +381,7 @@ export interface GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchyS
 }
 
 export const GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector: Schema.Codec<GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includedProjects: Schema.optional(Schema.Array(Schema.String)),
     includedFolders: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -395,7 +395,7 @@ export interface OSPolicyAssignmentLabelSet {
 }
 
 export const OSPolicyAssignmentLabelSet: Schema.Codec<OSPolicyAssignmentLabelSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "OSPolicyAssignmentLabelSet" });
 
@@ -407,7 +407,7 @@ export interface OSPolicyAssignmentInstanceFilterInventory {
 }
 
 export const OSPolicyAssignmentInstanceFilterInventory: Schema.Codec<OSPolicyAssignmentInstanceFilterInventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osShortName: Schema.optional(Schema.String),
     osVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyAssignmentInstanceFilterInventory" });
@@ -424,7 +424,7 @@ export interface OSPolicyAssignmentInstanceFilter {
 }
 
 export const OSPolicyAssignmentInstanceFilter: Schema.Codec<OSPolicyAssignmentInstanceFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inclusionLabels: Schema.optional(Schema.Array(OSPolicyAssignmentLabelSet)),
     all: Schema.optional(Schema.Boolean),
     exclusionLabels: Schema.optional(Schema.Array(OSPolicyAssignmentLabelSet)),
@@ -439,7 +439,7 @@ export interface GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector {
 }
 
 export const GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector: Schema.Codec<GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includedLocations: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector",
@@ -453,7 +453,7 @@ export interface GoogleCloudOsconfigV2beta_OrchestrationScope_Selector {
 }
 
 export const GoogleCloudOsconfigV2beta_OrchestrationScope_Selector: Schema.Codec<GoogleCloudOsconfigV2beta_OrchestrationScope_Selector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceHierarchySelector: Schema.optional(
       GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector,
     ),
@@ -470,7 +470,7 @@ export interface GoogleCloudOsconfigV2beta__OrchestrationScope {
 }
 
 export const GoogleCloudOsconfigV2beta__OrchestrationScope: Schema.Codec<GoogleCloudOsconfigV2beta__OrchestrationScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selectors: Schema.optional(
       Schema.Array(GoogleCloudOsconfigV2beta_OrchestrationScope_Selector),
     ),
@@ -484,7 +484,7 @@ export interface FixedOrPercent {
 }
 
 export const FixedOrPercent: Schema.Codec<FixedOrPercent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fixed: Schema.optional(Schema.Number),
     percent: Schema.optional(Schema.Number),
   }).annotate({ identifier: "FixedOrPercent" });
@@ -497,7 +497,7 @@ export interface OSPolicyAssignmentRollout {
 }
 
 export const OSPolicyAssignmentRollout: Schema.Codec<OSPolicyAssignmentRollout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     disruptionBudget: Schema.optional(FixedOrPercent),
     minWaitDuration: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyAssignmentRollout" });
@@ -510,7 +510,7 @@ export interface OSPolicyInventoryFilter {
 }
 
 export const OSPolicyInventoryFilter: Schema.Codec<OSPolicyInventoryFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osShortName: Schema.optional(Schema.String),
     osVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyInventoryFilter" });
@@ -523,7 +523,7 @@ export interface OSPolicyResourceGroup {
 }
 
 export const OSPolicyResourceGroup: Schema.Codec<OSPolicyResourceGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inventoryFilters: Schema.optional(Schema.Array(OSPolicyInventoryFilter)),
     resources: Schema.optional(Schema.Array(OSPolicyResource)),
   }).annotate({ identifier: "OSPolicyResourceGroup" });
@@ -542,7 +542,7 @@ export interface OSPolicy {
 }
 
 export const OSPolicy: Schema.Codec<OSPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowNoResourceGroupMatch: Schema.optional(Schema.Boolean),
     description: Schema.optional(Schema.String),
     mode: Schema.optional(Schema.String),
@@ -586,7 +586,7 @@ export interface OSPolicyAssignment {
 }
 
 export const OSPolicyAssignment: Schema.Codec<OSPolicyAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     deleted: Schema.optional(Schema.Boolean),
@@ -610,7 +610,7 @@ export interface GoogleCloudOsconfigV2beta__OrchestratedResource {
 }
 
 export const GoogleCloudOsconfigV2beta__OrchestratedResource: Schema.Codec<GoogleCloudOsconfigV2beta__OrchestratedResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osPolicyAssignmentV1Payload: Schema.optional(OSPolicyAssignment),
     id: Schema.optional(Schema.String),
   }).annotate({
@@ -627,7 +627,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -662,7 +662,7 @@ export interface GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState {
 }
 
 export const GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState: Schema.Codec<GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     progress: Schema.optional(Schema.Number),
     error: Schema.optional(Status),
     startTime: Schema.optional(Schema.String),
@@ -683,7 +683,7 @@ export interface GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState
 }
 
 export const GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState: Schema.Codec<GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentIterationState: Schema.optional(
       GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState,
     ),
@@ -723,7 +723,7 @@ export interface GoogleCloudOsconfigV2beta__PolicyOrchestrator {
 }
 
 export const GoogleCloudOsconfigV2beta__PolicyOrchestrator: Schema.Codec<GoogleCloudOsconfigV2beta__PolicyOrchestrator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     orchestrationScope: Schema.optional(
       GoogleCloudOsconfigV2beta__OrchestrationScope,
@@ -747,7 +747,7 @@ export const GoogleCloudOsconfigV2beta__PolicyOrchestrator: Schema.Codec<GoogleC
 export interface MessageSet {}
 
 export const MessageSet: Schema.Codec<MessageSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MessageSet",
   });
 
@@ -765,7 +765,7 @@ export interface StatusProto {
 }
 
 export const StatusProto: Schema.Codec<StatusProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     space: Schema.optional(Schema.String),
     messageSet: Schema.optional(MessageSet),
     message: Schema.optional(Schema.String),
@@ -791,7 +791,7 @@ export interface GoogleCloudOsconfigV2__OperationMetadata {
 }
 
 export const GoogleCloudOsconfigV2__OperationMetadata: Schema.Codec<GoogleCloudOsconfigV2__OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusMessage: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
@@ -811,7 +811,7 @@ export interface GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse {
 }
 
 export const GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse: Schema.Codec<GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     policyOrchestrators: Schema.optional(
       Schema.Array(GoogleCloudOsconfigV2beta__PolicyOrchestrator),
@@ -824,7 +824,7 @@ export const GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse: Schema.
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -842,7 +842,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -860,7 +860,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -869,7 +869,7 @@ export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -898,7 +898,7 @@ export interface GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata {
 }
 
 export const GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata: Schema.Codec<GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rolloutState: Schema.optional(Schema.String),
     rolloutUpdateTime: Schema.optional(Schema.String),
     osPolicyAssignment: Schema.optional(Schema.String),
@@ -933,7 +933,7 @@ export interface OSPolicyAssignmentOperationMetadata {
 }
 
 export const OSPolicyAssignmentOperationMetadata: Schema.Codec<OSPolicyAssignmentOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiMethod: Schema.optional(Schema.String),
     rolloutStartTime: Schema.optional(Schema.String),
     osPolicyAssignment: Schema.optional(Schema.String),
@@ -959,7 +959,7 @@ export interface GoogleCloudOsconfigV2beta__OperationMetadata {
 }
 
 export const GoogleCloudOsconfigV2beta__OperationMetadata: Schema.Codec<GoogleCloudOsconfigV2beta__OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -1029,7 +1029,7 @@ export interface DeleteFoldersLocationsOperationsRequest {
 }
 
 export const DeleteFoldersLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v2beta/{+name}" }),
@@ -1037,8 +1037,7 @@ export const DeleteFoldersLocationsOperationsRequest =
   ) as unknown as Schema.Codec<DeleteFoldersLocationsOperationsRequest>;
 
 export type DeleteFoldersLocationsOperationsResponse = Empty;
-export const DeleteFoldersLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteFoldersLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteFoldersLocationsOperationsError =
   | DefaultErrors
@@ -1053,7 +1052,7 @@ export const deleteFoldersLocationsOperations: API.OperationMethod<
   DeleteFoldersLocationsOperationsResponse,
   DeleteFoldersLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFoldersLocationsOperationsRequest,
   output: DeleteFoldersLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1067,7 +1066,7 @@ export interface CancelFoldersLocationsOperationsRequest {
 }
 
 export const CancelFoldersLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1076,8 +1075,7 @@ export const CancelFoldersLocationsOperationsRequest =
   ) as unknown as Schema.Codec<CancelFoldersLocationsOperationsRequest>;
 
 export type CancelFoldersLocationsOperationsResponse = Empty;
-export const CancelFoldersLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelFoldersLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelFoldersLocationsOperationsError =
   | DefaultErrors
@@ -1092,7 +1090,7 @@ export const cancelFoldersLocationsOperations: API.OperationMethod<
   CancelFoldersLocationsOperationsResponse,
   CancelFoldersLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelFoldersLocationsOperationsRequest,
   output: CancelFoldersLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1112,7 +1110,7 @@ export interface ListFoldersLocationsOperationsRequest {
 }
 
 export const ListFoldersLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
@@ -1127,7 +1125,7 @@ export const ListFoldersLocationsOperationsRequest =
 
 export type ListFoldersLocationsOperationsResponse = ListOperationsResponse;
 export const ListFoldersLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListFoldersLocationsOperationsError =
   | DefaultErrors
@@ -1140,7 +1138,7 @@ export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
   ListFoldersLocationsOperationsResponse,
   ListFoldersLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsOperationsRequest,
   output: ListFoldersLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1156,7 +1154,7 @@ export interface GetFoldersLocationsOperationsRequest {
 }
 
 export const GetFoldersLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2beta/{+name}" }),
@@ -1164,8 +1162,7 @@ export const GetFoldersLocationsOperationsRequest =
   ) as unknown as Schema.Codec<GetFoldersLocationsOperationsRequest>;
 
 export type GetFoldersLocationsOperationsResponse = Operation;
-export const GetFoldersLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetFoldersLocationsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetFoldersLocationsOperationsError =
   | DefaultErrors
@@ -1178,7 +1175,7 @@ export const getFoldersLocationsOperations: API.OperationMethod<
   GetFoldersLocationsOperationsResponse,
   GetFoldersLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsOperationsRequest,
   output: GetFoldersLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1194,7 +1191,7 @@ export interface DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
     name: Schema.String.pipe(T.HttpPath("name")),
@@ -1205,7 +1202,7 @@ export const DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest =
 
 export type DeleteFoldersLocationsGlobalPolicyOrchestratorsResponse = Operation;
 export const DeleteFoldersLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteFoldersLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -1220,7 +1217,7 @@ export const deleteFoldersLocationsGlobalPolicyOrchestrators: API.OperationMetho
   DeleteFoldersLocationsGlobalPolicyOrchestratorsResponse,
   DeleteFoldersLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest,
   output: DeleteFoldersLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1236,7 +1233,7 @@ export interface PatchFoldersLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const PatchFoldersLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudOsconfigV2beta__PolicyOrchestrator).pipe(
@@ -1249,7 +1246,7 @@ export const PatchFoldersLocationsGlobalPolicyOrchestratorsRequest =
 
 export type PatchFoldersLocationsGlobalPolicyOrchestratorsResponse = Operation;
 export const PatchFoldersLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchFoldersLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -1264,7 +1261,7 @@ export const patchFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod
   PatchFoldersLocationsGlobalPolicyOrchestratorsResponse,
   PatchFoldersLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchFoldersLocationsGlobalPolicyOrchestratorsRequest,
   output: PatchFoldersLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1284,7 +1281,7 @@ export interface ListFoldersLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const ListFoldersLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -1298,7 +1295,7 @@ export const ListFoldersLocationsGlobalPolicyOrchestratorsRequest =
 export type ListFoldersLocationsGlobalPolicyOrchestratorsResponse =
   GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse;
 export const ListFoldersLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse;
+  /*@__PURE__*/ GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse;
 
 export type ListFoldersLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -1311,7 +1308,7 @@ export const listFoldersLocationsGlobalPolicyOrchestrators: API.PaginatedOperati
   ListFoldersLocationsGlobalPolicyOrchestratorsResponse,
   ListFoldersLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsGlobalPolicyOrchestratorsRequest,
   output: ListFoldersLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden],
@@ -1327,7 +1324,7 @@ export interface GetFoldersLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const GetFoldersLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2beta/{+name}" }),
@@ -1337,7 +1334,7 @@ export const GetFoldersLocationsGlobalPolicyOrchestratorsRequest =
 export type GetFoldersLocationsGlobalPolicyOrchestratorsResponse =
   GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 export const GetFoldersLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsconfigV2beta__PolicyOrchestrator;
+  /*@__PURE__*/ GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 
 export type GetFoldersLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -1350,7 +1347,7 @@ export const getFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   GetFoldersLocationsGlobalPolicyOrchestratorsResponse,
   GetFoldersLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsGlobalPolicyOrchestratorsRequest,
   output: GetFoldersLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden],
@@ -1368,7 +1365,7 @@ export interface CreateFoldersLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const CreateFoldersLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     policyOrchestratorId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("policyOrchestratorId"),
@@ -1388,7 +1385,7 @@ export const CreateFoldersLocationsGlobalPolicyOrchestratorsRequest =
 
 export type CreateFoldersLocationsGlobalPolicyOrchestratorsResponse = Operation;
 export const CreateFoldersLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateFoldersLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -1403,7 +1400,7 @@ export const createFoldersLocationsGlobalPolicyOrchestrators: API.OperationMetho
   CreateFoldersLocationsGlobalPolicyOrchestratorsResponse,
   CreateFoldersLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFoldersLocationsGlobalPolicyOrchestratorsRequest,
   output: CreateFoldersLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1415,7 +1412,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
 }
 
 export const DeleteProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v2beta/{+name}" }),
@@ -1423,8 +1420,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1439,7 +1435,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsResponse,
   DeleteProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1453,7 +1449,7 @@ export interface CancelProjectsLocationsOperationsRequest {
 }
 
 export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1462,8 +1458,7 @@ export const CancelProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1478,7 +1473,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsResponse,
   CancelProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1498,7 +1493,7 @@ export interface ListProjectsLocationsOperationsRequest {
 }
 
 export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1513,7 +1508,7 @@ export const ListProjectsLocationsOperationsRequest =
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1526,7 +1521,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsResponse,
   ListProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1542,7 +1537,7 @@ export interface GetProjectsLocationsOperationsRequest {
 }
 
 export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2beta/{+name}" }),
@@ -1550,8 +1545,7 @@ export const GetProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetProjectsLocationsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1564,7 +1558,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsResponse,
   GetProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1582,7 +1576,7 @@ export interface CreateProjectsLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const CreateProjectsLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     policyOrchestratorId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("policyOrchestratorId"),
@@ -1603,7 +1597,7 @@ export const CreateProjectsLocationsGlobalPolicyOrchestratorsRequest =
 export type CreateProjectsLocationsGlobalPolicyOrchestratorsResponse =
   Operation;
 export const CreateProjectsLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -1618,7 +1612,7 @@ export const createProjectsLocationsGlobalPolicyOrchestrators: API.OperationMeth
   CreateProjectsLocationsGlobalPolicyOrchestratorsResponse,
   CreateProjectsLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGlobalPolicyOrchestratorsRequest,
   output: CreateProjectsLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1638,7 +1632,7 @@ export interface ListProjectsLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const ListProjectsLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -1652,7 +1646,7 @@ export const ListProjectsLocationsGlobalPolicyOrchestratorsRequest =
 export type ListProjectsLocationsGlobalPolicyOrchestratorsResponse =
   GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse;
 export const ListProjectsLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse;
+  /*@__PURE__*/ GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse;
 
 export type ListProjectsLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -1665,7 +1659,7 @@ export const listProjectsLocationsGlobalPolicyOrchestrators: API.PaginatedOperat
   ListProjectsLocationsGlobalPolicyOrchestratorsResponse,
   ListProjectsLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalPolicyOrchestratorsRequest,
   output: ListProjectsLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden],
@@ -1681,7 +1675,7 @@ export interface GetProjectsLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const GetProjectsLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2beta/{+name}" }),
@@ -1691,7 +1685,7 @@ export const GetProjectsLocationsGlobalPolicyOrchestratorsRequest =
 export type GetProjectsLocationsGlobalPolicyOrchestratorsResponse =
   GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 export const GetProjectsLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsconfigV2beta__PolicyOrchestrator;
+  /*@__PURE__*/ GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 
 export type GetProjectsLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -1704,7 +1698,7 @@ export const getProjectsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   GetProjectsLocationsGlobalPolicyOrchestratorsResponse,
   GetProjectsLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlobalPolicyOrchestratorsRequest,
   output: GetProjectsLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden],
@@ -1720,7 +1714,7 @@ export interface PatchProjectsLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const PatchProjectsLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudOsconfigV2beta__PolicyOrchestrator).pipe(
@@ -1733,7 +1727,7 @@ export const PatchProjectsLocationsGlobalPolicyOrchestratorsRequest =
 
 export type PatchProjectsLocationsGlobalPolicyOrchestratorsResponse = Operation;
 export const PatchProjectsLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -1748,7 +1742,7 @@ export const patchProjectsLocationsGlobalPolicyOrchestrators: API.OperationMetho
   PatchProjectsLocationsGlobalPolicyOrchestratorsResponse,
   PatchProjectsLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsGlobalPolicyOrchestratorsRequest,
   output: PatchProjectsLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1764,7 +1758,7 @@ export interface DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
@@ -1776,7 +1770,7 @@ export const DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest =
 export type DeleteProjectsLocationsGlobalPolicyOrchestratorsResponse =
   Operation;
 export const DeleteProjectsLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -1791,7 +1785,7 @@ export const deleteProjectsLocationsGlobalPolicyOrchestrators: API.OperationMeth
   DeleteProjectsLocationsGlobalPolicyOrchestratorsResponse,
   DeleteProjectsLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest,
   output: DeleteProjectsLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1811,7 +1805,7 @@ export interface ListOrganizationsLocationsOperationsRequest {
 }
 
 export const ListOrganizationsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1827,7 +1821,7 @@ export const ListOrganizationsLocationsOperationsRequest =
 export type ListOrganizationsLocationsOperationsResponse =
   ListOperationsResponse;
 export const ListOrganizationsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListOrganizationsLocationsOperationsError =
   | DefaultErrors
@@ -1840,7 +1834,7 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsOperationsResponse,
   ListOrganizationsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOperationsRequest,
   output: ListOrganizationsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1856,7 +1850,7 @@ export interface GetOrganizationsLocationsOperationsRequest {
 }
 
 export const GetOrganizationsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2beta/{+name}" }),
@@ -1865,7 +1859,7 @@ export const GetOrganizationsLocationsOperationsRequest =
 
 export type GetOrganizationsLocationsOperationsResponse = Operation;
 export const GetOrganizationsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type GetOrganizationsLocationsOperationsError =
   | DefaultErrors
@@ -1878,7 +1872,7 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsResponse,
   GetOrganizationsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsOperationsRequest,
   output: GetOrganizationsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1892,7 +1886,7 @@ export interface CancelOrganizationsLocationsOperationsRequest {
 }
 
 export const CancelOrganizationsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1902,7 +1896,7 @@ export const CancelOrganizationsLocationsOperationsRequest =
 
 export type CancelOrganizationsLocationsOperationsResponse = Empty;
 export const CancelOrganizationsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type CancelOrganizationsLocationsOperationsError =
   | DefaultErrors
@@ -1917,7 +1911,7 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsResponse,
   CancelOrganizationsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelOrganizationsLocationsOperationsRequest,
   output: CancelOrganizationsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1929,7 +1923,7 @@ export interface DeleteOrganizationsLocationsOperationsRequest {
 }
 
 export const DeleteOrganizationsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v2beta/{+name}" }),
@@ -1938,7 +1932,7 @@ export const DeleteOrganizationsLocationsOperationsRequest =
 
 export type DeleteOrganizationsLocationsOperationsResponse = Empty;
 export const DeleteOrganizationsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteOrganizationsLocationsOperationsError =
   | DefaultErrors
@@ -1953,7 +1947,7 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   DeleteOrganizationsLocationsOperationsResponse,
   DeleteOrganizationsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsOperationsRequest,
   output: DeleteOrganizationsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1971,7 +1965,7 @@ export interface CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     policyOrchestratorId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("policyOrchestratorId"),
@@ -1992,7 +1986,7 @@ export const CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
 export type CreateOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
   Operation;
 export const CreateOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateOrganizationsLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -2007,7 +2001,7 @@ export const createOrganizationsLocationsGlobalPolicyOrchestrators: API.Operatio
   CreateOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
   CreateOrganizationsLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
   output: CreateOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2023,7 +2017,7 @@ export interface PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudOsconfigV2beta__PolicyOrchestrator).pipe(
@@ -2037,7 +2031,7 @@ export const PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
 export type PatchOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
   Operation;
 export const PatchOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchOrganizationsLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -2052,7 +2046,7 @@ export const patchOrganizationsLocationsGlobalPolicyOrchestrators: API.Operation
   PatchOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
   PatchOrganizationsLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
   output: PatchOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2072,7 +2066,7 @@ export interface ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -2086,7 +2080,7 @@ export const ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
 export type ListOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
   GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse;
 export const ListOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse;
+  /*@__PURE__*/ GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse;
 
 export type ListOrganizationsLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -2099,7 +2093,7 @@ export const listOrganizationsLocationsGlobalPolicyOrchestrators: API.PaginatedO
   ListOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
   ListOrganizationsLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
   output: ListOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden],
@@ -2115,7 +2109,7 @@ export interface GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2beta/{+name}" }),
@@ -2125,7 +2119,7 @@ export const GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
 export type GetOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
   GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 export const GetOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsconfigV2beta__PolicyOrchestrator;
+  /*@__PURE__*/ GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 
 export type GetOrganizationsLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -2138,7 +2132,7 @@ export const getOrganizationsLocationsGlobalPolicyOrchestrators: API.OperationMe
   GetOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
   GetOrganizationsLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
   output: GetOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden],
@@ -2154,7 +2148,7 @@ export interface DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
 }
 
 export const DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
@@ -2166,7 +2160,7 @@ export const DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
 export type DeleteOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
   Operation;
 export const DeleteOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteOrganizationsLocationsGlobalPolicyOrchestratorsError =
   | DefaultErrors
@@ -2181,7 +2175,7 @@ export const deleteOrganizationsLocationsGlobalPolicyOrchestrators: API.Operatio
   DeleteOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
   DeleteOrganizationsLocationsGlobalPolicyOrchestratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
   output: DeleteOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

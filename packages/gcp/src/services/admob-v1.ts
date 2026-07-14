@@ -28,7 +28,7 @@ export interface AppManualAppInfo {
 }
 
 export const AppManualAppInfo: Schema.Codec<AppManualAppInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "AppManualAppInfo" });
 
@@ -40,7 +40,7 @@ export interface AppLinkedAppInfo {
 }
 
 export const AppLinkedAppInfo: Schema.Codec<AppLinkedAppInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appStoreId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "AppLinkedAppInfo" });
@@ -65,16 +65,14 @@ export interface App {
   linkedAppInfo?: AppLinkedAppInfo;
 }
 
-export const App: Schema.Codec<App> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    appId: Schema.optional(Schema.String),
-    manualAppInfo: Schema.optional(AppManualAppInfo),
-    name: Schema.optional(Schema.String),
-    platform: Schema.optional(Schema.String),
-    appApprovalState: Schema.optional(Schema.String),
-    linkedAppInfo: Schema.optional(AppLinkedAppInfo),
-  },
-).annotate({ identifier: "App" });
+export const App: Schema.Codec<App> = /*@__PURE__*/ Schema.Struct({
+  appId: Schema.optional(Schema.String),
+  manualAppInfo: Schema.optional(AppManualAppInfo),
+  name: Schema.optional(Schema.String),
+  platform: Schema.optional(Schema.String),
+  appApprovalState: Schema.optional(Schema.String),
+  linkedAppInfo: Schema.optional(AppLinkedAppInfo),
+}).annotate({ identifier: "App" });
 
 export interface PublisherAccount {
   /** The unique ID by which this publisher account can be identified in the API requests (for example, pub-1234567890). */
@@ -88,7 +86,7 @@ export interface PublisherAccount {
 }
 
 export const PublisherAccount: Schema.Codec<PublisherAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     publisherId: Schema.optional(Schema.String),
     reportingTimeZone: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -103,7 +101,7 @@ export interface ListPublisherAccountsResponse {
 }
 
 export const ListPublisherAccountsResponse: Schema.Codec<ListPublisherAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     account: Schema.optional(Schema.Array(PublisherAccount)),
   }).annotate({ identifier: "ListPublisherAccountsResponse" });
@@ -116,7 +114,7 @@ export interface ReportRowDimensionValue {
 }
 
 export const ReportRowDimensionValue: Schema.Codec<ReportRowDimensionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayLabel: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReportRowDimensionValue" });
@@ -131,7 +129,7 @@ export interface ReportRowMetricValue {
 }
 
 export const ReportRowMetricValue: Schema.Codec<ReportRowMetricValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     integerValue: Schema.optional(Schema.String),
     doubleValue: Schema.optional(Schema.Number),
     microsValue: Schema.optional(Schema.String),
@@ -145,7 +143,7 @@ export interface ReportRow {
 }
 
 export const ReportRow: Schema.Codec<ReportRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionValues: Schema.optional(
       Schema.Record(Schema.String, ReportRowDimensionValue),
     ),
@@ -162,7 +160,7 @@ export interface LocalizationSettings {
 }
 
 export const LocalizationSettings: Schema.Codec<LocalizationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "LocalizationSettings" });
@@ -177,7 +175,7 @@ export interface Admob_Date {
 }
 
 export const Admob_Date: Schema.Codec<Admob_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -191,7 +189,7 @@ export interface DateRange {
 }
 
 export const DateRange: Schema.Codec<DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endDate: Schema.optional(Admob_Date),
     startDate: Schema.optional(Admob_Date),
   }).annotate({ identifier: "DateRange" });
@@ -206,7 +204,7 @@ export interface ReportHeader {
 }
 
 export const ReportHeader: Schema.Codec<ReportHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     localizationSettings: Schema.optional(LocalizationSettings),
     dateRange: Schema.optional(DateRange),
     reportingTimeZone: Schema.optional(Schema.String),
@@ -226,7 +224,7 @@ export interface ReportWarning {
 }
 
 export const ReportWarning: Schema.Codec<ReportWarning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReportWarning" });
@@ -239,7 +237,7 @@ export interface ReportFooter {
 }
 
 export const ReportFooter: Schema.Codec<ReportFooter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     warnings: Schema.optional(Schema.Array(ReportWarning)),
     matchingRowCount: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReportFooter" });
@@ -254,7 +252,7 @@ export interface GenerateNetworkReportResponse {
 }
 
 export const GenerateNetworkReportResponse: Schema.Codec<GenerateNetworkReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     row: Schema.optional(ReportRow),
     header: Schema.optional(ReportHeader),
     footer: Schema.optional(ReportFooter),
@@ -266,7 +264,7 @@ export interface StringList {
 }
 
 export const StringList: Schema.Codec<StringList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "StringList" });
 
@@ -293,7 +291,7 @@ export interface NetworkReportSpecDimensionFilter {
 }
 
 export const NetworkReportSpecDimensionFilter: Schema.Codec<NetworkReportSpecDimensionFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimension: Schema.optional(Schema.String),
     matchesAny: Schema.optional(StringList),
   }).annotate({ identifier: "NetworkReportSpecDimensionFilter" });
@@ -334,7 +332,7 @@ export interface NetworkReportSpecSortCondition {
 }
 
 export const NetworkReportSpecSortCondition: Schema.Codec<NetworkReportSpecSortCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimension: Schema.optional(Schema.String),
     metric: Schema.optional(Schema.String),
     order: Schema.optional(Schema.String),
@@ -388,7 +386,7 @@ export interface NetworkReportSpec {
 }
 
 export const NetworkReportSpec: Schema.Codec<NetworkReportSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateRange: Schema.optional(DateRange),
     dimensionFilters: Schema.optional(
       Schema.Array(NetworkReportSpecDimensionFilter),
@@ -409,7 +407,7 @@ export interface GenerateNetworkReportRequest {
 }
 
 export const GenerateNetworkReportRequest: Schema.Codec<GenerateNetworkReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportSpec: Schema.optional(NetworkReportSpec),
   }).annotate({ identifier: "GenerateNetworkReportRequest" });
 
@@ -421,7 +419,7 @@ export interface ListAppsResponse {
 }
 
 export const ListAppsResponse: Schema.Codec<ListAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apps: Schema.optional(Schema.Array(App)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAppsResponse" });
@@ -451,7 +449,7 @@ export interface MediationReportSpecDimensionFilter {
 }
 
 export const MediationReportSpecDimensionFilter: Schema.Codec<MediationReportSpecDimensionFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimension: Schema.optional(Schema.String),
     matchesAny: Schema.optional(StringList),
   }).annotate({ identifier: "MediationReportSpecDimensionFilter" });
@@ -493,7 +491,7 @@ export interface MediationReportSpecSortCondition {
 }
 
 export const MediationReportSpecSortCondition: Schema.Codec<MediationReportSpecSortCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     order: Schema.optional(Schema.String),
     metric: Schema.optional(Schema.String),
     dimension: Schema.optional(Schema.String),
@@ -548,7 +546,7 @@ export interface MediationReportSpec {
 }
 
 export const MediationReportSpec: Schema.Codec<MediationReportSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateRange: Schema.optional(DateRange),
     dimensionFilters: Schema.optional(
       Schema.Array(MediationReportSpecDimensionFilter),
@@ -579,7 +577,7 @@ export interface AdUnit {
 }
 
 export const AdUnit: Schema.Codec<AdUnit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adUnitId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -596,7 +594,7 @@ export interface ListAdUnitsResponse {
 }
 
 export const ListAdUnitsResponse: Schema.Codec<ListAdUnitsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adUnits: Schema.optional(Schema.Array(AdUnit)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAdUnitsResponse" });
@@ -607,7 +605,7 @@ export interface GenerateMediationReportRequest {
 }
 
 export const GenerateMediationReportRequest: Schema.Codec<GenerateMediationReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportSpec: Schema.optional(MediationReportSpec),
   }).annotate({ identifier: "GenerateMediationReportRequest" });
 
@@ -621,7 +619,7 @@ export interface GenerateMediationReportResponse {
 }
 
 export const GenerateMediationReportResponse: Schema.Codec<GenerateMediationReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     header: Schema.optional(ReportHeader),
     footer: Schema.optional(ReportFooter),
     row: Schema.optional(ReportRow),
@@ -686,7 +684,7 @@ export interface GetAccountsRequest {
   name: string;
 }
 
-export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAccountsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -694,7 +692,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetAccountsRequest>;
 
 export type GetAccountsResponse = PublisherAccount;
-export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ PublisherAccount;
+export const GetAccountsResponse = /*@__PURE__*/ PublisherAccount;
 
 export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -704,7 +702,7 @@ export const getAccounts: API.OperationMethod<
   GetAccountsResponse,
   GetAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -717,7 +715,7 @@ export interface ListAccountsRequest {
   pageSize?: number;
 }
 
-export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAccountsRequest = /*@__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
 }).pipe(
@@ -726,8 +724,7 @@ export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListAccountsRequest>;
 
 export type ListAccountsResponse = ListPublisherAccountsResponse;
-export const ListAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPublisherAccountsResponse;
+export const ListAccountsResponse = /*@__PURE__*/ ListPublisherAccountsResponse;
 
 export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -737,7 +734,7 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsResponse,
   ListAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -755,7 +752,7 @@ export interface GenerateAccountsNetworkReportRequest {
 }
 
 export const GenerateAccountsNetworkReportRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GenerateNetworkReportRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -770,7 +767,7 @@ export const GenerateAccountsNetworkReportRequest =
 export type GenerateAccountsNetworkReportResponse =
   GenerateNetworkReportResponse;
 export const GenerateAccountsNetworkReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenerateNetworkReportResponse;
+  /*@__PURE__*/ GenerateNetworkReportResponse;
 
 export type GenerateAccountsNetworkReportError =
   | DefaultErrors
@@ -785,7 +782,7 @@ export const generateAccountsNetworkReport: API.OperationMethod<
   GenerateAccountsNetworkReportResponse,
   GenerateAccountsNetworkReportError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateAccountsNetworkReportRequest,
   output: GenerateAccountsNetworkReportResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -801,7 +798,7 @@ export interface ListAccountsAppsRequest {
 }
 
 export const ListAccountsAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -811,8 +808,7 @@ export const ListAccountsAppsRequest =
   ) as unknown as Schema.Codec<ListAccountsAppsRequest>;
 
 export type ListAccountsAppsResponse = ListAppsResponse;
-export const ListAccountsAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAppsResponse;
+export const ListAccountsAppsResponse = /*@__PURE__*/ ListAppsResponse;
 
 export type ListAccountsAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -822,7 +818,7 @@ export const listAccountsApps: API.PaginatedOperationMethod<
   ListAccountsAppsResponse,
   ListAccountsAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAppsRequest,
   output: ListAccountsAppsResponse,
   errors: [NotFound, Forbidden],
@@ -842,7 +838,7 @@ export interface ListAccountsAdUnitsRequest {
 }
 
 export const ListAccountsAdUnitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -852,8 +848,7 @@ export const ListAccountsAdUnitsRequest =
   ) as unknown as Schema.Codec<ListAccountsAdUnitsRequest>;
 
 export type ListAccountsAdUnitsResponse = ListAdUnitsResponse;
-export const ListAccountsAdUnitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAdUnitsResponse;
+export const ListAccountsAdUnitsResponse = /*@__PURE__*/ ListAdUnitsResponse;
 
 export type ListAccountsAdUnitsError = DefaultErrors | NotFound | Forbidden;
 
@@ -863,7 +858,7 @@ export const listAccountsAdUnits: API.PaginatedOperationMethod<
   ListAccountsAdUnitsResponse,
   ListAccountsAdUnitsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdUnitsRequest,
   output: ListAccountsAdUnitsResponse,
   errors: [NotFound, Forbidden],
@@ -881,7 +876,7 @@ export interface GenerateAccountsMediationReportRequest {
 }
 
 export const GenerateAccountsMediationReportRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GenerateMediationReportRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -896,7 +891,7 @@ export const GenerateAccountsMediationReportRequest =
 export type GenerateAccountsMediationReportResponse =
   GenerateMediationReportResponse;
 export const GenerateAccountsMediationReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenerateMediationReportResponse;
+  /*@__PURE__*/ GenerateMediationReportResponse;
 
 export type GenerateAccountsMediationReportError =
   | DefaultErrors
@@ -911,7 +906,7 @@ export const generateAccountsMediationReport: API.OperationMethod<
   GenerateAccountsMediationReportResponse,
   GenerateAccountsMediationReportError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateAccountsMediationReportRequest,
   output: GenerateAccountsMediationReportResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

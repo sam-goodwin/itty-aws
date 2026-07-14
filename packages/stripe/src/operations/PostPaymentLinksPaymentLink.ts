@@ -430,7 +430,7 @@ export interface PostPaymentLinksPaymentLinkInput {
   tax_id_collection?: { enabled: boolean; required?: "if_supported" | "never" };
 }
 export const PostPaymentLinksPaymentLinkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payment_link: Schema.String.pipe(T.PathParam()),
     active: Schema.optional(Schema.Boolean),
     after_completion: Schema.optional(
@@ -1946,7 +1946,7 @@ export interface PostPaymentLinksPaymentLinkOutput {
   url: string;
 }
 export const PostPaymentLinksPaymentLinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     after_completion: Schema.Struct({
       hosted_confirmation: Schema.optional(
@@ -3002,9 +3002,7 @@ export const PostPaymentLinksPaymentLinkOutput =
  *
  * <p>Updates a payment link.</p>
  */
-export const PostPaymentLinksPaymentLink = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostPaymentLinksPaymentLinkInput,
-    outputSchema: PostPaymentLinksPaymentLinkOutput,
-  }),
-);
+export const PostPaymentLinksPaymentLink = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostPaymentLinksPaymentLinkInput,
+  outputSchema: PostPaymentLinksPaymentLinkOutput,
+}));

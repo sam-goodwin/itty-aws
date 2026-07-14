@@ -10,7 +10,7 @@ export interface LookupEndUserInput {
   phoneNumber?: string;
   siweAddress?: string;
 }
-export const LookupEndUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LookupEndUserInput = /*@__PURE__*/ Schema.Struct({
   email: Schema.optional(Schema.String),
   oauthProvider: Schema.optional(Schema.String),
   oauthSubject: Schema.optional(Schema.String),
@@ -64,7 +64,7 @@ export interface LookupEndUserOutput {
     createdAt: string;
   }[];
 }
-export const LookupEndUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LookupEndUserOutput = /*@__PURE__*/ Schema.Struct({
   endUsers: Schema.Array(
     Schema.Struct({
       userId: Schema.String,
@@ -182,7 +182,7 @@ export const LookupEndUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param phoneNumber - The E.164-formatted phone number to search for. Must be URL-encoded when passed as a query parameter (e.g. `+14155552671` → `%2B14155552671`).
  * @param siweAddress - The ERC-55 checksummed Ethereum address to search for. Looks up a user by the address they authenticated with via Sign In With Ethereum (EIP-4361).
  */
-export const lookupEndUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const lookupEndUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: LookupEndUserInput,
   outputSchema: LookupEndUserOutput,
 }));

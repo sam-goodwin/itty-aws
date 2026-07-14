@@ -8,7 +8,7 @@ export interface DeleteDocumentInput {
   collectionName: string;
   documentId: string;
 }
-export const DeleteDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDocumentInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   documentId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -21,7 +21,7 @@ export const DeleteDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteDocumentOutput = unknown;
 export const DeleteDocumentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DeleteDocumentOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DeleteDocumentOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const DeleteDocumentOutput =
  * @param collectionName - The name of the collection to search for the document under
  * @param documentId - The Document ID
  */
-export const deleteDocument = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteDocument = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteDocumentInput,
   outputSchema: DeleteDocumentOutput,
   errors: [NotFound] as const,
