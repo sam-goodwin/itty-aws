@@ -519,9 +519,7 @@ test(
             }).pipe(
               Effect.retry({
                 while: (err) => err === "not available yet",
-                schedule: Schedule.spaced("3 seconds").pipe(
-                  Schedule.both(Schedule.recurs(40)),
-                ),
+                schedule: Schedule.max([Schedule.spaced("3 seconds"), Schedule.recurs(40)]),
               }),
             );
           }),
@@ -534,9 +532,7 @@ test(
       // endpoint deletion is async, so retry with a short schedule.
       deleteVpc({ VpcId: vpcId }).pipe(
         Effect.retry({
-          schedule: Schedule.spaced("3 seconds").pipe(
-            Schedule.both(Schedule.recurs(20)),
-          ),
+          schedule: Schedule.max([Schedule.spaced("3 seconds"), Schedule.recurs(20)]),
         }),
         Effect.ignore,
       ),

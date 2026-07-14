@@ -14367,10 +14367,10 @@ export const CreateRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
 
 export type CreateRouteError =
   | DefaultErrors
+  | RouteScriptNotFound
   | InvalidRoutePattern
   | InvalidRoute
-  | Forbidden
-  | RouteScriptNotFound;
+  | Forbidden;
 
 export const createRoute: API.OperationMethod<
   CreateRouteRequest,
@@ -14380,7 +14380,7 @@ export const createRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRouteRequest,
   output: CreateRouteResponse,
-  errors: [InvalidRoutePattern, InvalidRoute, Forbidden, RouteScriptNotFound],
+  errors: [RouteScriptNotFound, InvalidRoutePattern, InvalidRoute, Forbidden],
 }));
 
 export interface UpdateRouteRequest {

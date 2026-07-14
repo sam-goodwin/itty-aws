@@ -1,6 +1,6 @@
 {
   "name": "@distilled.cloud/workos",
-  "version": "0.28.1",
+  "version": "0.29.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/alchemy-run/distilled",
@@ -62,11 +62,11 @@
     }
   },
   "scripts": {
-    "typecheck": "tsgo",
-    "build": "tsgo -b",
+    "typecheck": "tsc",
+    "build": "tsc -b",
     "fmt": "oxfmt --write src",
     "lint": "oxlint --fix src",
-    "check": "tsgo && oxlint src && oxfmt --check src",
+    "check": "tsc && oxlint src && oxfmt --check src",
     "test": "bunx vitest run test --passWithNoTests",
     "publish:npm": "bun run build && bun publish --access public",
     "generate": "bun run scripts/generate.ts && oxlint --fix src && oxfmt --write src && oxfmt --write src",

@@ -272,9 +272,7 @@ test(
         }).pipe(
           Effect.retry({
             while: (err) => err === "not found yet",
-            schedule: Schedule.spaced("1 second").pipe(
-              Schedule.both(Schedule.recurs(10)),
-            ),
+            schedule: Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(10)]),
           }),
         );
         // Test passes - subscription created, just can't test attributes without confirmation

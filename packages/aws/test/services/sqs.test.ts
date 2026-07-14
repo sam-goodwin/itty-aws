@@ -46,9 +46,7 @@ const cleanupQueueByName = (queueName: string) =>
 // Retry policy for QueueDoesNotExist (eventual consistency after create)
 const retryQueueNotExist = {
   while: (err: { _tag: string }) => err._tag === "QueueDoesNotExist",
-  schedule: Schedule.spaced("1 second").pipe(
-    Schedule.both(Schedule.recurs(10)),
-  ),
+  schedule: Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(10)]),
 };
 
 // Helper to ensure cleanup happens even on failure - cleans up before AND after
@@ -66,9 +64,7 @@ const withQueue = <A, E, R>(
     const createResult = yield* createQueue({ QueueName: resolvedName }).pipe(
       Effect.retry({
         while: (err) => err._tag === "QueueDeletedRecently",
-        schedule: Schedule.spaced("5 seconds").pipe(
-          Schedule.both(Schedule.recurs(12)), // Max 60 seconds
-        ),
+        schedule: Schedule.max([Schedule.spaced("5 seconds"), Schedule.recurs(12)]),
       }),
     );
     const queueUrl = createResult.QueueUrl!;
@@ -99,9 +95,7 @@ const withFifoQueue = <A, E, R>(
     }).pipe(
       Effect.retry({
         while: (err) => err._tag === "QueueDeletedRecently",
-        schedule: Schedule.spaced("5 seconds").pipe(
-          Schedule.both(Schedule.recurs(12)), // Max 60 seconds
-        ),
+        schedule: Schedule.max([Schedule.spaced("5 seconds"), Schedule.recurs(12)]),
       }),
     );
     const queueUrl = createResult.QueueUrl!;
@@ -182,9 +176,7 @@ test(
       }).pipe(
         Effect.retry({
           while: (err) => err === "not ready yet",
-          schedule: Schedule.spaced("1 second").pipe(
-            Schedule.both(Schedule.recurs(10)),
-          ),
+          schedule: Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(10)]),
         }),
       );
     }),

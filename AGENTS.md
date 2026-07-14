@@ -63,7 +63,7 @@ All other packages depend on core via `@distilled.cloud/sdk-core` workspace depe
 | Tool | Purpose | Command |
 |------|---------|---------|
 | **Bun** | Runtime, package manager, test runner | `bun install`, `bun run ...` |
-| **tsgo** | Type checking (native TypeScript compiler) | `tsgo` (check), `tsgo -b` (build) |
+| **tsc** | Type checking (native TypeScript compiler, `typescript@7`) | `tsc` (check), `tsc -b` (build) |
 | **oxlint** | Linter | `oxlint --fix src` |
 | **oxfmt** | Formatter | `oxfmt --write src`, `oxfmt --check src` |
 | **vitest** | Test framework | `bunx vitest run test` |
@@ -75,9 +75,9 @@ Every package has these scripts:
 
 | Script | Command | Description |
 |--------|---------|-------------|
-| `typecheck` | `tsgo` | Type check only (no emit) |
-| `build` | `tsgo -b` | Build to `lib/` (.js + .d.ts + source maps) |
-| `check` | `tsgo && oxlint src && oxfmt --check src` | Full check (types + lint + format) |
+| `typecheck` | `tsc` | Type check only (no emit) |
+| `build` | `tsc -b` | Build to `lib/` (.js + .d.ts + source maps) |
+| `check` | `tsc && oxlint src && oxfmt --check src` | Full check (types + lint + format) |
 | `fmt` | `oxfmt --write src` | Format source |
 | `lint` | `oxlint --fix src` | Lint + autofix |
 | `test` | `bunx vitest run test` | Run tests |
@@ -186,9 +186,10 @@ The `while` option on `Effect.retry` is useful for retrying only specific errors
 ```typescript
 Effect.retry({
   while: (err) => err === "not ready yet",
-  schedule: Schedule.spaced("1 second").pipe(
-    Schedule.both(Schedule.recurs(10)),
-  ),
+  schedule: Schedule.max([
+    Schedule.spaced("1 second"),
+    Schedule.recurs(10),
+  ]),
 })
 ```
 
@@ -200,12 +201,14 @@ someOperation().pipe(
   Effect.catch(() => Effect.succeed(fallback)),
 );
 
-// Retry with schedule
+// Retry with schedule (Schedule.max replaces the removed Schedule.both;
+// Schedule.min replaces Schedule.either)
 someOperation().pipe(
   Effect.retry({
-    schedule: Schedule.spaced("1 second").pipe(
-      Schedule.both(Schedule.recurs(10)),
-    ),
+    schedule: Schedule.max([
+      Schedule.spaced("1 second"),
+      Schedule.recurs(10),
+    ]),
   }),
 );
 

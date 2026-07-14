@@ -1,3 +1,31 @@
 [install]
 minimumReleaseAge = 259200
-minimumReleaseAgeExcludes = ["effect"]
+minimumReleaseAgeExcludes = [
+  "effect",
+  "fast-check",
+  "@effect/platform-bun",
+  "@effect/platform-node",
+  "@effect/vitest",
+  "@effect/platform-node-shared",
+  "typescript",
+  "@typescript/typescript-win32-x64",
+  "@typescript/typescript-win32-arm64",
+  "@typescript/typescript-linux-x64",
+  "@typescript/typescript-linux-arm",
+  "@typescript/typescript-linux-arm64",
+  "@typescript/typescript-darwin-x64",
+  "@typescript/typescript-darwin-arm64",
+  "@typescript/typescript-aix-ppc64",
+  "@typescript/typescript-freebsd-arm64",
+  "@typescript/typescript-freebsd-x64",
+  "@typescript/typescript-linux-loong64",
+  "@typescript/typescript-linux-mips64el",
+  "@typescript/typescript-linux-ppc64",
+  "@typescript/typescript-linux-riscv64",
+  "@typescript/typescript-linux-s390x",
+  "@typescript/typescript-netbsd-arm64",
+  "@typescript/typescript-netbsd-x64",
+  "@typescript/typescript-openbsd-arm64",
+  "@typescript/typescript-openbsd-x64",
+  "@typescript/typescript-sunos-x64",
+]

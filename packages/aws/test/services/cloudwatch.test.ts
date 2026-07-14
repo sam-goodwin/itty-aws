@@ -66,9 +66,7 @@ const retryEventually = <A, E, R>(
   effect.pipe(
     Effect.filterOrFail(ready, () => new Error("CloudWatch fixture not ready")),
     Effect.retry({
-      schedule: Schedule.fixed("10 seconds").pipe(
-        Schedule.both(Schedule.recurs(6)),
-      ),
+      schedule: Schedule.max([Schedule.fixed("10 seconds"), Schedule.recurs(6)]),
     }),
   );
 
