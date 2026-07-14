@@ -163,3 +163,6 @@ export * from "./getOrganizationTeamMember.ts";
 export * from "./removeOrganizationTeamMember.ts";
 export * from "./listPublicRegions.ts";
 export * from "./getCurrentUser.ts";
+export * from "./listKeyspaceResizeRequests.ts";
+export * from "./createKeyspaceResizeRequest.ts";
+export * from "./cancelKeyspaceResizeRequest.ts";
