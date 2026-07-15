@@ -15,7 +15,7 @@ export interface CreateTrafficBudgetInput {
   burst?: number;
   concurrency?: number;
   warning_threshold?: number;
-  rules?: string[];
+  rules?: ReadonlyArray<string>;
 }
 export const CreateTrafficBudgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -48,22 +48,22 @@ export interface CreateTrafficBudgetOutput {
   concurrency?: number | null;
   warning_threshold?: number | null;
   actor: { id: string; display_name: string; avatar_url: string };
-  rules: {
+  rules: ReadonlyArray<{
     id: string;
     kind: "match" | "each";
-    tags: {
+    tags: ReadonlyArray<{
       key_id: string;
       key: string;
       value: string;
       source: "sql" | "system";
-    }[];
+    }>;
     fingerprint?: string | null;
     keyspace?: string | null;
     actor: { id: string; display_name: string; avatar_url: string };
     syntax_highlighted_sql: string;
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
   created_at: string;
   updated_at: string;
 }

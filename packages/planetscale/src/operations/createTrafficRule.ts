@@ -12,7 +12,7 @@ export interface CreateTrafficRuleInput {
   kind?: "match" | "each";
   keyspace?: string;
   fingerprint?: string;
-  tags?: string[];
+  tags?: ReadonlyArray<string>;
 }
 export const CreateTrafficRuleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
@@ -36,12 +36,12 @@ export const CreateTrafficRuleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface CreateTrafficRuleOutput {
   id: string;
   kind: "match" | "each";
-  tags: {
+  tags: ReadonlyArray<{
     key_id: string;
     key: string;
     value: string;
     source: "sql" | "system";
-  }[];
+  }>;
   fingerprint?: string | null;
   keyspace?: string | null;
   actor: { id: string; display_name: string; avatar_url: string };

@@ -32,7 +32,7 @@ export interface LintBranchSchemaOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     lint_error: string;
     subject_type: "table" | "vschema" | "routing_rules";
     keyspace_name: string;
@@ -40,8 +40,8 @@ export interface LintBranchSchemaOutput {
     error_description: string;
     docs_url: string;
     column_name: string;
-    foreign_key_column_names: string[];
-    auto_increment_column_names: string[];
+    foreign_key_column_names: ReadonlyArray<string>;
+    auto_increment_column_names: ReadonlyArray<string>;
     charset_name: string;
     engine_name: string;
     vindex_name: string;
@@ -50,7 +50,7 @@ export interface LintBranchSchemaOutput {
     enum_value: string;
     partitioning_type: string;
     partition_name: string;
-  }[];
+  }>;
 }
 export const LintBranchSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {

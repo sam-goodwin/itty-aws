@@ -33,11 +33,11 @@ export interface ListOrganizationTeamsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     display_name: string;
     creator: { id: string; display_name: string; avatar_url: string };
-    members: {
+    members: ReadonlyArray<{
       id: string;
       display_name: string;
       name: string;
@@ -57,26 +57,26 @@ export interface ListOrganizationTeamsOutput {
       managed?: boolean | null;
       directory_managed?: boolean | null;
       email_verified?: boolean | null;
-    }[];
-    databases: {
+    }>;
+    databases: ReadonlyArray<{
       id: string;
       name: string;
       url: string;
       branches_url: string;
-    }[];
-    analyst_databases: {
+    }>;
+    analyst_databases: ReadonlyArray<{
       id: string;
       name: string;
       url: string;
       branches_url: string;
-    }[];
+    }>;
     name: string;
     slug: string;
     created_at: string;
     updated_at: string;
     description: string | null;
     managed: boolean;
-  }[];
+  }>;
 }
 export const ListOrganizationTeamsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

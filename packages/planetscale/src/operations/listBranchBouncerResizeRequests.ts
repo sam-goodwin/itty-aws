@@ -33,7 +33,7 @@ export interface ListBranchBouncerResizeRequestsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     state: "pending" | "resizing" | "canceled" | "completed";
     replicas_per_cell: number;
@@ -66,7 +66,7 @@ export interface ListBranchBouncerResizeRequestsOutput {
       ram: number;
       sort_order: number;
     };
-  }[];
+  }>;
 }
 export const ListBranchBouncerResizeRequestsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

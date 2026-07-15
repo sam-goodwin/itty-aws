@@ -12,7 +12,7 @@ export interface CreateRoleInput {
   branch: string;
   name?: string;
   ttl?: number;
-  inherited_roles?: (
+  inherited_roles?: ReadonlyArray<
     | "pscale_managed"
     | "pg_checkpoint"
     | "pg_create_subscription"
@@ -26,7 +26,8 @@ export interface CreateRoleInput {
     | "pg_use_reserved_connections"
     | "pg_write_all_data"
     | "postgres"
-  )[];
+  >;
+  with_replication?: boolean;
   require_where_on_delete?: string;
   require_where_on_update?: string;
 }
@@ -55,6 +56,7 @@ export const CreateRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
+  with_replication: Schema.optional(Schema.Boolean),
   require_where_on_delete: Schema.optional(Schema.String),
   require_where_on_update: Schema.optional(Schema.String),
 }).pipe(
@@ -85,7 +87,7 @@ export interface CreateRoleOutput {
   expired: boolean;
   default: boolean;
   ttl: number | null;
-  inherited_roles: (
+  inherited_roles: ReadonlyArray<
     | "pscale_managed"
     | "pg_checkpoint"
     | "pg_create_subscription"
@@ -99,7 +101,8 @@ export interface CreateRoleOutput {
     | "pg_use_reserved_connections"
     | "pg_write_all_data"
     | "postgres"
-  )[];
+  >;
+  with_replication: boolean;
   branch: {
     id: string;
     name: string;
@@ -150,6 +153,7 @@ export const CreateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "postgres",
     ]),
   ),
+  with_replication: Schema.Boolean,
   branch: Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -178,6 +182,7 @@ export const CreateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the role
  * @param ttl - Time to live in seconds
  * @param inherited_roles - Roles to inherit from
+ * @param with_replication - Whether the role should have the REPLICATION attribute
  * @param require_where_on_delete - Require WHERE clause on DELETE statements
  * @param require_where_on_update - Require WHERE clause on UPDATE statements
  */

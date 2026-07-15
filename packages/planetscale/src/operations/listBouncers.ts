@@ -32,7 +32,7 @@ export interface ListBouncersOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     sku: {
@@ -55,7 +55,7 @@ export interface ListBouncersOutput {
       updated_at: string;
       deleted_at: string | null;
     };
-    parameters: {
+    parameters: ReadonlyArray<{
       id: string;
       namespace: "pgbouncer";
       name: string;
@@ -74,10 +74,10 @@ export interface ListBouncersOutput {
       min: number;
       step: number;
       url: string;
-      options: string[];
+      options: ReadonlyArray<string>;
       actor: { id: string; display_name: string; avatar_url: string };
-    }[];
-  }[];
+    }>;
+  }>;
 }
 export const ListBouncersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.String,
