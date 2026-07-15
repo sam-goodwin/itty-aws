@@ -1084,14 +1084,14 @@ export const SignalFetchConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ timeBased: TimeBasedSignalFetchConfig }),
   S.Struct({ conditionBased: ConditionBasedSignalFetchConfig }),
 ]);
-export type EventExpressionList = string | redacted.Redacted<string>[];
+export type EventExpressionList = (string | redacted.Redacted<string>)[];
 export const EventExpressionList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface SignalFetchInformation {
   fullyQualifiedName: string;
   signalFetchConfig: SignalFetchConfig;
   conditionLanguageVersion?: number;
-  actions: string | redacted.Redacted<string>[];
+  actions: (string | redacted.Redacted<string>)[];
 }
 export const SignalFetchInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3740,6 +3740,7 @@ export const ListFleetsForVehicleResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
@@ -3747,10 +3748,12 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
     message: S.String,
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -3760,6 +3763,7 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     serviceCode: S.optional(S.String),
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -3768,14 +3772,17 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     reason: S.optional(ValidationExceptionReason),
     fieldList: S.optional(ValidationExceptionFieldList),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String, resource: S.String, resourceType: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class DecoderManifestValidationException extends S.TaggedErrorClass<DecoderManifestValidationException>()(
   "DecoderManifestValidationException",
@@ -3784,10 +3791,12 @@ export class DecoderManifestValidationException extends S.TaggedErrorClass<Decod
     invalidNetworkInterfaces: S.optional(InvalidNetworkInterfaces),
     message: S.optional(S.String),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidSignalsException extends S.TaggedErrorClass<InvalidSignalsException>()(
   "InvalidSignalsException",
   { message: S.optional(S.String), invalidSignals: S.optional(InvalidSignals) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidNodeException extends S.TaggedErrorClass<InvalidNodeException>()(
   "InvalidNodeException",
@@ -3796,6 +3805,7 @@ export class InvalidNodeException extends S.TaggedErrorClass<InvalidNodeExceptio
     reason: S.optional(S.String),
     message: S.optional(S.String),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
