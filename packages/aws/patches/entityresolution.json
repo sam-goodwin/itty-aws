@@ -1,4 +1,9 @@
 {
+  "operations": {
+    "deleteIdNamespace": {
+      "errors": ["ConflictException"]
+    }
+  },
   "structures": {
     "CreateSchemaMappingOutput": {
       "members": {

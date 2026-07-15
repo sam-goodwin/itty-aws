@@ -20,6 +20,12 @@
     "getAccessToken": {
       "errors": ["InvalidParameterValueException"]
     },
+    "getLicense": {
+      "errors": ["ResourceNotFoundException"]
+    },
+    "getGrant": {
+      "errors": ["ResourceNotFoundException"]
+    },
     "getLicenseConfiguration": {
       "syntheticErrors": [
         {

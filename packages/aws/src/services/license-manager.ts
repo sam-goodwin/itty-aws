@@ -4501,6 +4501,7 @@ export type GetGrantError =
   | ResourceLimitExceededException
   | ServerInternalException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Gets detailed information about the specified grant.
@@ -4521,6 +4522,7 @@ export const getGrant: API.OperationMethod<
     ResourceLimitExceededException,
     ServerInternalException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "GetGrant",
 }));
@@ -4531,6 +4533,7 @@ export type GetLicenseError =
   | RateLimitExceededException
   | ServerInternalException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Gets detailed information about the specified license.
@@ -4550,6 +4553,7 @@ export const getLicense: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "GetLicense",
 }));

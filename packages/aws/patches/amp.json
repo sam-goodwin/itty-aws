@@ -14,5 +14,9 @@
         }
       }
     }
+  },
+  "operations": {
+    "createLoggingConfiguration": { "errors": ["ConflictException"] },
+    "createQueryLoggingConfiguration": { "errors": ["ConflictException"] }
   }
 }

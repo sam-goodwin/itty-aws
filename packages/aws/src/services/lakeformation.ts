@@ -4462,6 +4462,7 @@ export type ListLakeFormationOptInsError =
   | InternalServiceException
   | InvalidInputException
   | OperationTimeoutException
+  | EntityNotFoundException
   | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
@@ -4495,6 +4496,7 @@ export const listLakeFormationOptIns: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
     OperationTimeoutException,
+    EntityNotFoundException,
     InvalidLakeFormationPrincipal,
   ],
   operationName: "ListLakeFormationOptIns",

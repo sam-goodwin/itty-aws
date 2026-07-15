@@ -2749,6 +2749,7 @@ export type DeleteIdNamespaceError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Deletes the `IdNamespace` with a given name.
@@ -2766,6 +2767,7 @@ export const deleteIdNamespace: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "DeleteIdNamespace",
 }));
