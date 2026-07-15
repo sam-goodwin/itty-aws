@@ -383,6 +383,20 @@ export interface TypeInfo {
    * Populated by the nested-schema hoisting pass in `generate.ts`.
    */
   ref?: string;
+  /**
+   * Set alongside `ref` when the referenced hoisted definition is *exported*.
+   * Module-private refs are inlined by the TS-type emitter so public types
+   * stay self-contained; an exported ref is safe to reference by name from
+   * public interfaces, so `typeInfoToTsType` short-circuits to it.
+   */
+  refExported?: boolean;
+  /**
+   * When set on a `union` node (via a patch's `exportAs` directive), the
+   * hoisting pass in `generate.ts` lifts the union into an exported top-level
+   * `type` alias with this name and exports each object variant as a named
+   * interface (e.g. the Workers script-upload binding union).
+   */
+  exportAs?: string;
 }
 
 export interface PropertyInfo {

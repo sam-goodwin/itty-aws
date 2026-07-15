@@ -169,6 +169,17 @@ interface PropertyPatch {
    * Only applies when the patched type is a `union` and `type` is not set.
    */
   appendUnion?: TypeInfo[];
+  /**
+   * Hoist the patched union into an exported top-level `type` alias with this
+   * name, exporting each object variant as a named interface (named after the
+   * upstream SDK interface when available, otherwise derived from the
+   * variant's `type` discriminant). Public request/response interfaces then
+   * reference the alias by name instead of inlining the union, so consumers
+   * can import e.g. `workers.Binding` instead of digging it out with
+   * `Exclude<...["bindings"], undefined>[number]`. Only applies when the
+   * patched type is a `union`.
+   */
+  exportAs?: string;
 }
 
 interface ResponsePatch {
@@ -647,6 +658,12 @@ function applyPatchToTypeInfo(typeInfo: TypeInfo, patch: PropertyPatch): void {
     }
   }
 
+  // Name and export the union as a top-level type alias (see hoistUnionAlias
+  // in the nested-schema hoisting pass).
+  if (patch.exportAs && typeInfo.kind === "union") {
+    typeInfo.exportAs = patch.exportAs;
+  }
+
   // Wrap with nullable (add null to union)
   if (patch.nullable) {
     if (typeInfo.kind === "union" && typeInfo.values) {
@@ -867,7 +884,11 @@ function resolveOperationModel(
 
   // Hoist nested object schemas out of request body params (covers the
   // account/zone and plain operation generators, which consume this model).
-  hoistBodyParams(resolvedBodyParams, `${toPascalCase(op.operationName)}Request`);
+  hoistBodyParams(
+    resolvedBodyParams,
+    `${toPascalCase(op.operationName)}Request`,
+    allParams,
+  );
 
   return {
     allParams,
@@ -1140,6 +1161,11 @@ function typeInfoToSchema(
     return "Schema.Unknown";
   }
 
+  // Reference to a hoisted top-level schema const (object or exported union).
+  if (type.ref) {
+    return type.ref;
+  }
+
   switch (type.kind) {
     case "primitive":
       switch (type.value) {
@@ -1248,10 +1274,6 @@ function typeInfoToSchema(
       return `Schema.Array(${elementSchema})`;
 
     case "object":
-      // Reference to a hoisted top-level schema const.
-      if (type.ref) {
-        return type.ref;
-      }
       // If it has a name but no resolved properties, use Unknown
       if (type.name && (!type.properties || type.properties.length === 0)) {
         return "Schema.Unknown";
@@ -1331,6 +1353,13 @@ function typeInfoToTsType(
   // Prevent infinite recursion
   if (depth > 10) {
     return "unknown";
+  }
+
+  // Reference to an *exported* hoisted definition (patch `exportAs`): safe to
+  // render by name from public types. Module-private refs are inlined below
+  // so public types stay self-contained.
+  if (type.ref && type.refExported) {
+    return type.ref;
   }
 
   switch (type.kind) {
@@ -1537,9 +1566,13 @@ const RESERVED_HOIST_NAMES: ReadonlySet<string> = new Set([
 
 interface HoistState {
   /** Hoisted definitions in emission order (dependencies before dependents). */
-  defs: { name: string; type: TypeInfo }[];
+  defs: { name: string; type: TypeInfo; exported?: boolean }[];
   /** Structural key -> canonical hoisted name (intra-file dedup). */
   byKey: Map<string, string>;
+  /** Structural key -> *exported* hoisted name (patch `exportAs` variants). */
+  exportedByKey: Map<string, string>;
+  /** Exported union alias name (patch `exportAs`) -> structural key. */
+  unionAliases: Map<string, string>;
   /** All allocated/reserved identifiers, to avoid collisions. */
   names: Set<string>;
 }
@@ -1634,6 +1667,111 @@ function hoistObject(type: TypeInfo, suggested: string): TypeInfo {
 }
 
 /**
+ * Derive a public name for a union variant from its `type` discriminant —
+ * e.g. `{ type: "durable_object_namespace" }` in a union exported as
+ * `Binding` → `DurableObjectNamespaceBinding`. Falls back to the alias name
+ * plus the variant's position when there is no literal discriminant.
+ */
+function unionVariantSuggestedName(
+  variant: TypeInfo,
+  aliasName: string,
+  index: number,
+): string {
+  const disc = variant.properties?.find(
+    (p) => p.name === "type" && p.type.kind === "literal" && p.type.value,
+  );
+  return disc
+    ? `${toPascalCase(disc.type.value!)}${aliasName}`
+    : `${aliasName}Variant${index || ""}`;
+}
+
+/**
+ * Register (or dedup) a fully-transformed object as an *exported* hoisted
+ * def; return a ref that public TS types render by name. Future
+ * module-private hoists of the same shape are redirected to the exported def
+ * so the file doesn't accumulate duplicates.
+ */
+function hoistExportedObject(type: TypeInfo, suggested: string): TypeInfo {
+  const key = structuralKey(type);
+  let name = hoist!.exportedByKey.get(key);
+  if (!name) {
+    // Promote an existing module-private def of the same shape when its name
+    // was derived from a meaningful upstream type name: earlier private refs
+    // keep working and the exported variant keeps the clean upstream name
+    // instead of minting a suffixed duplicate. Path-derived (garbage) names
+    // are not promoted — a fresh def with the suggested public name is
+    // emitted instead.
+    const existingName = hoist!.byKey.get(key);
+    const existingDef = existingName
+      ? hoist!.defs.find((d) => d.name === existingName)
+      : undefined;
+    if (existingDef && isMeaningfulSourceName(existingDef.type.name)) {
+      existingDef.exported = true;
+      name = existingDef.name;
+    } else {
+      name = allocHoistName(
+        isMeaningfulSourceName(type.name) ? type.name : suggested,
+      );
+      hoist!.defs.push({ name, type, exported: true });
+    }
+    hoist!.exportedByKey.set(key, name);
+    hoist!.byKey.set(key, name);
+  }
+  return { ...type, ref: name, refExported: true };
+}
+
+/**
+ * Lift a union marked with a patch `exportAs` directive into an exported
+ * top-level `type` alias (plus a module-private schema const of the same
+ * name). Each object variant is hoisted as an *exported* named interface so
+ * the alias — and the public request/response interfaces, which reference the
+ * alias by name instead of inlining the union — never leak a private name.
+ */
+function hoistUnionAlias(type: TypeInfo, depth: number): TypeInfo {
+  const aliasName = type.exportAs!;
+  const values = (type.values ?? []).map((v, i) => {
+    if (v.kind !== "object" || !v.properties || v.properties.length === 0) {
+      return transformForHoisting(v, aliasName, false, depth + 1);
+    }
+    const suggested = unionVariantSuggestedName(v, aliasName, i);
+    const transformed: TypeInfo = {
+      ...v,
+      properties: v.properties.map((p) => ({
+        ...p,
+        type: transformForHoisting(
+          p.type,
+          `${suggested}${toPascalCase(p.name)}`,
+          false,
+          depth + 2,
+        ),
+      })),
+    };
+    return hoistExportedObject(transformed, suggested);
+  });
+  const unionType: TypeInfo = { ...type, values };
+  delete unionType.exportAs;
+  const key = structuralKey(unionType);
+  const existingKey = hoist!.unionAliases.get(aliasName);
+  if (existingKey === undefined) {
+    if (hoist!.names.has(aliasName)) {
+      throw new Error(
+        `exportAs "${aliasName}" collides with an existing top-level identifier; ` +
+          `pick a different name in the patch file.`,
+      );
+    }
+    hoist!.names.add(aliasName);
+    hoist!.unionAliases.set(aliasName, key);
+    hoist!.defs.push({ name: aliasName, type: unionType, exported: true });
+  } else if (existingKey !== key) {
+    throw new Error(
+      `exportAs "${aliasName}" targets two structurally different unions; ` +
+        `give one of the patch directives a distinct name.`,
+    );
+  }
+  return { ...unionType, ref: aliasName, refExported: true };
+}
+
+/**
  * Recursively replace nested object schemas with references to hoisted
  * top-level definitions. The root node is kept inline (it is already its own
  * named `const`); only its descendants are hoisted.
@@ -1675,6 +1813,9 @@ function transformForHoisting(
           }
         : type;
     case "union":
+      if (type.exportAs && type.values) {
+        return hoistUnionAlias(type, depth);
+      }
       return type.values
         ? {
             ...type,
@@ -1716,6 +1857,7 @@ function hoistResponse(
 function hoistBodyParams(
   bodyParams: { name: string; type: TypeInfo }[],
   requestTypeName: string,
+  allParams?: { name: string; type: TypeInfo }[],
 ): void {
   if (!hoist) return;
   for (const param of bodyParams) {
@@ -1725,6 +1867,15 @@ function hoistBodyParams(
       false,
       0,
     );
+    // Point the interface-emission param list at the hoisted tree too:
+    // module-private refs still inline in the TS interface, but exported refs
+    // (patch `exportAs`) surface by name.
+    const interfaceParam = allParams?.find(
+      (p) => toCamelCase(p.name) === toCamelCase(param.name),
+    );
+    if (interfaceParam) {
+      interfaceParam.type = param.type;
+    }
   }
 }
 
@@ -1736,11 +1887,25 @@ function emitHoistedDefs(): string {
   out.push(`// Shared nested schemas (hoisted, module-private)`);
   out.push(`// ${"=".repeat(77)}`);
   out.push("");
-  for (const { name, type } of hoist.defs) {
-    // Module-private interface (NOT exported — nested shapes are an internal
-    // implementation detail and must not pollute the public `.d.ts`). Used only
-    // as the cast target for the matching private const below.
-    out.push(`interface ${name} {`);
+  for (const { name, type, exported } of hoist.defs) {
+    // Exported union alias (patch `exportAs`): a public `type` alias over the
+    // exported variant interfaces, plus a module-private schema const of the
+    // same name that parent schemas reference.
+    if (type.kind === "union") {
+      out.push(`export type ${name} = ${typeInfoToTsType(type, 0, true)};`);
+      const unionSchema = typeInfoToSchema(type, "", 0, true);
+      out.push(
+        `const ${name} = /*@__PURE__*/ /*#__PURE__*/ ${unionSchema} as unknown as Schema.Codec<${name}>;`,
+      );
+      out.push("");
+      continue;
+    }
+    // Interface is module-private by default (nested shapes are an internal
+    // implementation detail and must not pollute the public `.d.ts`), used
+    // only as the cast target for the matching private const below. Variants
+    // of a patch `exportAs` union are exported so the public alias (and the
+    // interfaces referencing it) never name a private type.
+    out.push(`${exported ? "export " : ""}interface ${name} {`);
     for (const prop of type.properties ?? []) {
       const propName = toCamelCase(prop.name);
       const tsType = typeInfoToTsType(prop.type, 0, true);
@@ -1889,8 +2054,9 @@ function generateOperationSchemaAst(
   }
 
   // Hoist nested object schemas out of request body params (the interface loop
-  // below still inlines via typeInfoToTsType, which ignores `ref`).
-  hoistBodyParams(resolvedBodyParams, requestTypeName);
+  // below still inlines module-private refs via typeInfoToTsType; exported
+  // refs from patch `exportAs` render by name).
+  hoistBodyParams(resolvedBodyParams, requestTypeName, allParams);
 
   // Generate request interface
   lines.push(`export interface ${requestTypeName} {`);
@@ -3604,7 +3770,13 @@ function generateServiceFile(
   for (const { tag } of mergedErrors) {
     reservedNames.add(tag);
   }
-  hoist = { defs: [], byKey: new Map(), names: reservedNames };
+  hoist = {
+    defs: [],
+    byKey: new Map(),
+    exportedByKey: new Map(),
+    unionAliases: new Map(),
+    names: reservedNames,
+  };
 
   // Placeholder for the hoisted private-schema block; filled in after all
   // operations are generated (and thus all nested schemas discovered).

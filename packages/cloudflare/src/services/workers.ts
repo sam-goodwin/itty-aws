@@ -655,7 +655,7 @@ const Assets = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<Assets>;
 
-interface WorkersBindingKindAI {
+export interface WorkersBindingKindAI {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -668,7 +668,7 @@ const WorkersBindingKindAI = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<WorkersBindingKindAI>;
 
-interface WorkersBindingKindAISearch {
+export interface WorkersBindingKindAISearch {
   /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
   instanceName: string;
   /** A JavaScript variable name for the binding. */
@@ -695,7 +695,7 @@ const WorkersBindingKindAISearch = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<WorkersBindingKindAISearch>;
 
-interface WorkersBindingKindAISearchNamespace {
+export interface WorkersBindingKindAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts */
@@ -712,7 +712,7 @@ const WorkersBindingKindAISearchNamespace =
     }),
   ) as unknown as Schema.Codec<WorkersBindingKindAISearchNamespace>;
 
-interface WorkersBindingKindAnalyticsEngine {
+export interface WorkersBindingKindAnalyticsEngine {
   /** The name of the dataset to bind to. */
   dataset: string;
   /** A JavaScript variable name for the binding. */
@@ -729,7 +729,7 @@ const WorkersBindingKindAnalyticsEngine =
     }),
   ) as unknown as Schema.Codec<WorkersBindingKindAnalyticsEngine>;
 
-interface WorkersBindingKindAssets {
+export interface WorkersBindingKindAssets {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -743,7 +743,7 @@ const WorkersBindingKindAssets = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<WorkersBindingKindAssets>;
 
-interface WorkersBindingKindBrowser {
+export interface WorkersBindingKindBrowser {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -757,7 +757,7 @@ const WorkersBindingKindBrowser = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<WorkersBindingKindBrowser>;
 
-interface WorkersBindingKindD1 {
+export interface WorkersBindingKindD1 {
   /** Identifier of the D1 database to bind to. */
   databaseId: string;
   /** A JavaScript variable name for the binding. */
@@ -783,7 +783,7 @@ const WorkersBindingKindD1 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<WorkersBindingKindD1>;
 
-interface WorkersBindingKindDataBlob {
+export interface WorkersBindingKindDataBlob {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The name of the file containing the data content. Only accepted for `service worker syntax` Workers. */
@@ -835,7 +835,7 @@ const Outbound = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<Outbound>;
 
-interface WorkersBindingKindDispatchNamespace {
+export interface WorkersBindingKindDispatchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The name of the dispatch namespace. */
@@ -862,7 +862,7 @@ const WorkersBindingKindDispatchNamespace =
     }),
   ) as unknown as Schema.Codec<WorkersBindingKindDispatchNamespace>;
 
-interface WorkersBindingKindDurableObjectNamespace {
+export interface WorkersBindingKindDurableObjectNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -903,7 +903,7 @@ const WorkersBindingKindDurableObjectNamespace =
     ),
   ) as unknown as Schema.Codec<WorkersBindingKindDurableObjectNamespace>;
 
-interface WorkersBindingKindHyperdrive {
+export interface WorkersBindingKindHyperdrive {
   /** Identifier of the Hyperdrive connection to bind to. */
   id: string;
   /** A JavaScript variable name for the binding. */
@@ -920,7 +920,7 @@ const WorkersBindingKindHyperdrive = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<WorkersBindingKindHyperdrive>;
 
-interface WorkersBindingKindInherit {
+export interface WorkersBindingKindInherit {
   /** The name of the inherited binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -947,7 +947,7 @@ const WorkersBindingKindInherit = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<WorkersBindingKindInherit>;
 
-interface WorkersBindingKindImages {
+export interface WorkersBindingKindImages {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -961,7 +961,7 @@ const WorkersBindingKindImages = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<WorkersBindingKindImages>;
 
-interface WorkersBindingKindJson {
+export interface WorkersBindingKindJson {
   /** JSON data to use. */
   json: unknown;
   /** A JavaScript variable name for the binding. */
@@ -977,7 +977,7 @@ const WorkersBindingKindJson = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<WorkersBindingKindJson>;
 
-interface WorkersBindingKindKVNamespace {
+export interface WorkersBindingKindKVNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** Namespace identifier tag. */
@@ -1000,7 +1000,7 @@ const WorkersBindingKindKVNamespace =
     ),
   ) as unknown as Schema.Codec<WorkersBindingKindKVNamespace>;
 
-interface WorkersBindingKindMedia {
+export interface WorkersBindingKindMedia {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -1013,7 +1013,7 @@ const WorkersBindingKindMedia = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<WorkersBindingKindMedia>;
 
-interface WorkersBindingKindMTLSCertificate {
+export interface WorkersBindingKindMTLSCertificate {
   /** Identifier of the certificate to bind to. */
   certificateId: string;
   /** A JavaScript variable name for the binding. */
@@ -1036,7 +1036,7 @@ const WorkersBindingKindMTLSCertificate =
     ),
   ) as unknown as Schema.Codec<WorkersBindingKindMTLSCertificate>;
 
-interface WorkersBindingKindPlainText {
+export interface WorkersBindingKindPlainText {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The text value to use. */
@@ -1053,7 +1053,7 @@ const WorkersBindingKindPlainText = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<WorkersBindingKindPlainText>;
 
-interface WorkersBindingKindPipelines {
+export interface WorkersBindingKindPipelines {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** Name of the Pipeline to bind to. */
@@ -1070,7 +1070,7 @@ const WorkersBindingKindPipelines = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<WorkersBindingKindPipelines>;
 
-interface WorkersBindingKindQueue {
+export interface WorkersBindingKindQueue {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** Name of the Queue to bind to. */
@@ -1112,7 +1112,7 @@ const Simple = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<Simple>;
 
-interface WorkersBindingKindRatelimit {
+export interface WorkersBindingKindRatelimit {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** Identifier of the rate limit namespace to bind to. */
@@ -1139,7 +1139,7 @@ const WorkersBindingKindRatelimit = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<WorkersBindingKindRatelimit>;
 
-interface WorkersBindingKindR2Bucket {
+export interface WorkersBindingKindR2Bucket {
   /** R2 bucket to bind to. */
   bucketName: string;
   /** A JavaScript variable name for the binding. */
@@ -1174,7 +1174,7 @@ const WorkersBindingKindR2Bucket = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<WorkersBindingKindR2Bucket>;
 
-interface WorkersBindingKindSecretText {
+export interface WorkersBindingKindSecretText {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -1188,7 +1188,7 @@ const WorkersBindingKindSecretText = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<WorkersBindingKindSecretText>;
 
-interface WorkersBindingKindSendEmail {
+export interface WorkersBindingKindSendEmail {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -1225,7 +1225,7 @@ const WorkersBindingKindSendEmail = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<WorkersBindingKindSendEmail>;
 
-interface WorkersBindingKindService {
+export interface WorkersBindingKindService {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** Name of Worker to bind to. */
@@ -1248,7 +1248,7 @@ const WorkersBindingKindService = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<WorkersBindingKindService>;
 
-interface WorkersBindingKindTextBlob {
+export interface WorkersBindingKindTextBlob {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The name of the file containing the text content. Only accepted for `service worker syntax` Workers. */
@@ -1265,7 +1265,7 @@ const WorkersBindingKindTextBlob = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<WorkersBindingKindTextBlob>;
 
-interface WorkersBindingKindVectorize {
+export interface WorkersBindingKindVectorize {
   /** Name of the Vectorize index to bind to. */
   indexName: string;
   /** A JavaScript variable name for the binding. */
@@ -1288,7 +1288,7 @@ const WorkersBindingKindVectorize = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<WorkersBindingKindVectorize>;
 
-interface WorkersBindingKindVersionMetadata {
+export interface WorkersBindingKindVersionMetadata {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -1302,7 +1302,7 @@ const WorkersBindingKindVersionMetadata =
     }),
   ) as unknown as Schema.Codec<WorkersBindingKindVersionMetadata>;
 
-interface WorkersBindingKindSecretsStoreSecret {
+export interface WorkersBindingKindSecretsStoreSecret {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** Name of the secret in the store. */
@@ -1329,7 +1329,7 @@ const WorkersBindingKindSecretsStoreSecret =
     ),
   ) as unknown as Schema.Codec<WorkersBindingKindSecretsStoreSecret>;
 
-interface WorkersBindingKindFlagship {
+export interface WorkersBindingKindFlagship {
   /** ID of the Flagship app to bind to for feature flag evaluation. */
   appId: string;
   /** A JavaScript variable name for the binding. */
@@ -1346,7 +1346,7 @@ const WorkersBindingKindFlagship = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(Schema.encodeKeys({ appId: "app_id", name: "name", type: "type" })),
 ) as unknown as Schema.Codec<WorkersBindingKindFlagship>;
 
-interface WorkersBindingKindSecretKey {
+export interface WorkersBindingKindSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
   /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
@@ -1396,7 +1396,7 @@ const WorkersBindingKindSecretKey = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<WorkersBindingKindSecretKey>;
 
-interface WorkersBindingKindWorkflow {
+export interface WorkersBindingKindWorkflow {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -1427,7 +1427,7 @@ const WorkersBindingKindWorkflow = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<WorkersBindingKindWorkflow>;
 
-interface WorkersBindingKindWasmModule {
+export interface WorkersBindingKindWasmModule {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers. */
@@ -1444,7 +1444,7 @@ const WorkersBindingKindWasmModule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }),
 ) as unknown as Schema.Codec<WorkersBindingKindWasmModule>;
 
-interface WorkersBindingKindVPCService {
+export interface WorkersBindingKindVPCService {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** Identifier of the VPC service to bind to. */
@@ -1467,7 +1467,7 @@ const WorkersBindingKindVPCService = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<WorkersBindingKindVPCService>;
 
-interface WorkersBindingKindVPCNetwork {
+export interface WorkersBindingKindVPCNetwork {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -2151,7 +2151,7 @@ const Annotations2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<Annotations2>;
 
-interface WorkersBindingKindDurableObjectNamespace2 {
+export interface WorkersBindingKindDurableObjectNamespace2 {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -2192,7 +2192,7 @@ const WorkersBindingKindDurableObjectNamespace2 =
     ),
   ) as unknown as Schema.Codec<WorkersBindingKindDurableObjectNamespace2>;
 
-interface WorkersBindingKindSecretText2 {
+export interface WorkersBindingKindSecretText2 {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The secret value to use. */
@@ -2209,7 +2209,7 @@ const WorkersBindingKindSecretText2 =
     }),
   ) as unknown as Schema.Codec<WorkersBindingKindSecretText2>;
 
-interface WorkersBindingKindSecretKey2 {
+export interface WorkersBindingKindSecretKey2 {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
   /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
@@ -2275,7 +2275,7 @@ const WorkersBindingKindSecretKey2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Codec<WorkersBindingKindSecretKey2>;
 
-interface WorkersBindingKindWorkflow2 {
+export interface WorkersBindingKindWorkflow2 {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
@@ -6540,40 +6540,144 @@ const Assets2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<Assets2>;
 
-interface PutScriptRequestMetadataBinding37Simple {
+export interface WorkerLoaderBinding {
+  name: string;
+  type: "worker_loader";
+}
+const WorkerLoaderBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("worker_loader"),
+  }),
+) as unknown as Schema.Codec<WorkerLoaderBinding>;
+
+export interface ArtifactsBinding {
+  name: string;
+  type: "artifacts";
+  namespace: string;
+}
+const ArtifactsBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("artifacts"),
+    namespace: Schema.String,
+  }),
+) as unknown as Schema.Codec<ArtifactsBinding>;
+
+interface RatelimitBindingSimple {
   limit: number;
   period: number;
 }
-const PutScriptRequestMetadataBinding37Simple =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      limit: Schema.Number,
-      period: Schema.Number,
-    }),
-  ) as unknown as Schema.Codec<PutScriptRequestMetadataBinding37Simple>;
+const RatelimitBindingSimple = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    limit: Schema.Number,
+    period: Schema.Number,
+  }),
+) as unknown as Schema.Codec<RatelimitBindingSimple>;
 
-interface PutScriptRequestMetadataBinding37 {
+export interface RatelimitBinding {
   name: string;
   type: "ratelimit";
   namespaceId: string;
   simple: { limit: number; period: number };
 }
-const PutScriptRequestMetadataBinding37 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("ratelimit"),
-      namespaceId: Schema.String,
-      simple: PutScriptRequestMetadataBinding37Simple,
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        type: "type",
-        namespaceId: "namespace_id",
-        simple: "simple",
-      }),
-    ),
-  ) as unknown as Schema.Codec<PutScriptRequestMetadataBinding37>;
+const RatelimitBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("ratelimit"),
+    namespaceId: Schema.String,
+    simple: RatelimitBindingSimple,
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      type: "type",
+      namespaceId: "namespace_id",
+      simple: "simple",
+    }),
+  ),
+) as unknown as Schema.Codec<RatelimitBinding>;
+
+export type Binding =
+  | WorkersBindingKindAI
+  | WorkersBindingKindAISearch
+  | WorkersBindingKindAISearchNamespace
+  | WorkersBindingKindAnalyticsEngine
+  | WorkersBindingKindAssets
+  | WorkersBindingKindBrowser
+  | WorkersBindingKindD1
+  | WorkersBindingKindDataBlob
+  | WorkersBindingKindDispatchNamespace
+  | WorkersBindingKindDurableObjectNamespace2
+  | WorkersBindingKindHyperdrive
+  | WorkersBindingKindInherit
+  | WorkersBindingKindImages
+  | WorkersBindingKindJson
+  | WorkersBindingKindKVNamespace
+  | WorkersBindingKindMedia
+  | WorkersBindingKindMTLSCertificate
+  | WorkersBindingKindPlainText
+  | WorkersBindingKindPipelines
+  | WorkersBindingKindQueue
+  | WorkersBindingKindRatelimit
+  | WorkersBindingKindR2Bucket
+  | WorkersBindingKindSecretText2
+  | WorkersBindingKindSendEmail
+  | WorkersBindingKindService
+  | WorkersBindingKindTextBlob
+  | WorkersBindingKindVectorize
+  | WorkersBindingKindVersionMetadata
+  | WorkersBindingKindSecretsStoreSecret
+  | WorkersBindingKindFlagship
+  | WorkersBindingKindSecretKey2
+  | WorkersBindingKindWorkflow2
+  | WorkersBindingKindWasmModule
+  | WorkersBindingKindVPCService
+  | WorkersBindingKindVPCNetwork
+  | WorkerLoaderBinding
+  | ArtifactsBinding
+  | RatelimitBinding;
+const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    WorkersBindingKindSecretKey2,
+    WorkersBindingKindRatelimit,
+    WorkersBindingKindSecretsStoreSecret,
+    WorkersBindingKindWorkflow2,
+    RatelimitBinding,
+    WorkersBindingKindAISearch,
+    WorkersBindingKindAISearchNamespace,
+    WorkersBindingKindAnalyticsEngine,
+    WorkersBindingKindD1,
+    WorkersBindingKindDataBlob,
+    WorkersBindingKindDispatchNamespace,
+    WorkersBindingKindDurableObjectNamespace2,
+    WorkersBindingKindHyperdrive,
+    WorkersBindingKindJson,
+    WorkersBindingKindKVNamespace,
+    WorkersBindingKindMTLSCertificate,
+    WorkersBindingKindPlainText,
+    WorkersBindingKindPipelines,
+    WorkersBindingKindQueue,
+    WorkersBindingKindR2Bucket,
+    WorkersBindingKindSecretText2,
+    WorkersBindingKindService,
+    WorkersBindingKindTextBlob,
+    WorkersBindingKindVectorize,
+    WorkersBindingKindFlagship,
+    WorkersBindingKindWasmModule,
+    WorkersBindingKindVPCService,
+    ArtifactsBinding,
+    WorkersBindingKindAI,
+    WorkersBindingKindAssets,
+    WorkersBindingKindBrowser,
+    WorkersBindingKindInherit,
+    WorkersBindingKindImages,
+    WorkersBindingKindMedia,
+    WorkersBindingKindSendEmail,
+    WorkersBindingKindVersionMetadata,
+    WorkersBindingKindVPCNetwork,
+    WorkerLoaderBinding,
+  ]),
+) as unknown as Schema.Codec<Binding>;
 
 interface PutScriptRequestMetadataCache {
   enabled?: boolean | null;
@@ -6624,148 +6728,7 @@ interface Metadata2 {
     jwt?: string | null;
   } | null;
   /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
-  bindings?:
-    | (
-        | { name: string; type: "ai" }
-        | {
-            instanceName: string;
-            name: string;
-            type: "ai_search";
-            namespace?: string | null;
-          }
-        | { name: string; namespace: string; type: "ai_search_namespace" }
-        | { dataset: string; name: string; type: "analytics_engine" }
-        | { name: string; type: "assets" }
-        | { name: string; type: "browser" }
-        | { databaseId: string; name: string; type: "d1"; id?: string | null }
-        | { name: string; part: string; type: "data_blob" }
-        | {
-            name: string;
-            namespace: string;
-            type: "dispatch_namespace";
-            outbound?: {
-              params?: { name: string }[] | null;
-              worker?: {
-                entrypoint?: string | null;
-                environment?: string | null;
-                service?: string | null;
-              } | null;
-            } | null;
-          }
-        | {
-            name: string;
-            type: "durable_object_namespace";
-            className: string;
-            dispatchNamespace?: string | null;
-            environment?: string | null;
-            namespaceId?: string | null;
-            scriptName?: string | null;
-          }
-        | { id: string; name: string; type: "hyperdrive" }
-        | {
-            name: string;
-            type: "inherit";
-            oldName?: string | null;
-            versionId?: string | null;
-          }
-        | { name: string; type: "images" }
-        | { json: unknown; name: string; type: "json" }
-        | { name: string; namespaceId: string; type: "kv_namespace" }
-        | { name: string; type: "media" }
-        | { certificateId: string; name: string; type: "mtls_certificate" }
-        | { name: string; text: string; type: "plain_text" }
-        | { name: string; pipeline: string; type: "pipelines" }
-        | { name: string; queueName: string; type: "queue" }
-        | {
-            name: string;
-            namespaceId: string;
-            simple: {
-              limit: number;
-              period: number;
-              mitigationTimeout?: number | null;
-            };
-            type: "ratelimit";
-          }
-        | {
-            bucketName: string;
-            name: string;
-            type: "r2_bucket";
-            jurisdiction?:
-              | "eu"
-              | "fedramp"
-              | "fedramp-high"
-              | (string & {})
-              | null;
-          }
-        | { name: string; text: string; type: "secret_text" }
-        | {
-            name: string;
-            type: "send_email";
-            allowedDestinationAddresses?: string[] | null;
-            allowedSenderAddresses?: string[] | null;
-            destinationAddress?: string | null;
-          }
-        | {
-            name: string;
-            service: string;
-            type: "service";
-            entrypoint?: string | null;
-            environment?: string | null;
-          }
-        | { name: string; part: string; type: "text_blob" }
-        | { indexName: string; name: string; type: "vectorize" }
-        | { name: string; type: "version_metadata" }
-        | {
-            name: string;
-            secretName: string;
-            storeId: string;
-            type: "secrets_store_secret";
-          }
-        | { appId: string; name: string; type: "flagship" }
-        | {
-            algorithm: unknown;
-            format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
-            name: string;
-            type: "secret_key";
-            usages: (
-              | "encrypt"
-              | "decrypt"
-              | "sign"
-              | "verify"
-              | "deriveKey"
-              | "deriveBits"
-              | "wrapKey"
-              | "unwrapKey"
-              | (string & {})
-            )[];
-            keyBase64?: string | null;
-            keyJwk?: unknown | null;
-          }
-        | {
-            name: string;
-            type: "workflow";
-            workflowName: string;
-            className: string;
-            scriptName?: string | null;
-          }
-        | { name: string; part: string; type: "wasm_module" }
-        | { name: string; serviceId: string; type: "vpc_service" }
-        | {
-            name: string;
-            type: "vpc_network";
-            networkId?: string | null;
-            tunnelId?: string | null;
-          }
-        | { name: string; type: "worker_loader" }
-        | { name: string; type: "artifacts"; namespace: string }
-        | {
-            name: string;
-            type: "ratelimit";
-            namespaceId: string;
-            simple: { limit: number; period: number };
-          }
-      )[]
-    | null;
+  bindings?: Binding[] | null;
   /** Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker. */
   bodyPart?: string | null;
   /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
@@ -6881,51 +6844,7 @@ const Metadata2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     annotations: Schema.optional(Schema.Union([Annotations2, Schema.Null])),
     assets: Schema.optional(Schema.Union([Assets2, Schema.Null])),
     bindings: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Union([
-            WorkersBindingKindSecretKey2,
-            WorkersBindingKindRatelimit,
-            WorkersBindingKindSecretsStoreSecret,
-            WorkersBindingKindWorkflow2,
-            PutScriptRequestMetadataBinding37,
-            WorkersBindingKindAISearch,
-            WorkersBindingKindAISearchNamespace,
-            WorkersBindingKindAnalyticsEngine,
-            WorkersBindingKindD1,
-            WorkersBindingKindDataBlob,
-            WorkersBindingKindDispatchNamespace,
-            WorkersBindingKindDurableObjectNamespace2,
-            WorkersBindingKindHyperdrive,
-            WorkersBindingKindJson,
-            WorkersBindingKindKVNamespace,
-            WorkersBindingKindMTLSCertificate,
-            WorkersBindingKindPlainText,
-            WorkersBindingKindPipelines,
-            WorkersBindingKindQueue,
-            WorkersBindingKindR2Bucket,
-            WorkersBindingKindSecretText2,
-            WorkersBindingKindService,
-            WorkersBindingKindTextBlob,
-            WorkersBindingKindVectorize,
-            WorkersBindingKindFlagship,
-            WorkersBindingKindWasmModule,
-            WorkersBindingKindVPCService,
-            GetBetaWorkerVersionResponseBinding36,
-            WorkersBindingKindAI,
-            WorkersBindingKindAssets,
-            WorkersBindingKindBrowser,
-            WorkersBindingKindInherit,
-            WorkersBindingKindImages,
-            WorkersBindingKindMedia,
-            WorkersBindingKindSendEmail,
-            WorkersBindingKindVersionMetadata,
-            WorkersBindingKindVPCNetwork,
-            GetBetaWorkerVersionResponseBinding35,
-          ]),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(Binding), Schema.Null]),
     ),
     bodyPart: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     compatibilityDate: Schema.optional(
@@ -8092,7 +8011,7 @@ const CreateScriptEdgePreviewRequestMetadata =
               CreateScriptEdgePreviewRequestMetadataBinding29,
               WorkersBindingKindAISearchNamespace,
               CreateScriptEdgePreviewRequestMetadataBinding31,
-              GetBetaWorkerVersionResponseBinding36,
+              ArtifactsBinding,
               WorkersBindingKindFlagship,
               WorkersBindingKindVPCService,
               CreateScriptEdgePreviewRequestMetadataBinding9,
@@ -8104,7 +8023,7 @@ const CreateScriptEdgePreviewRequestMetadata =
               WorkersBindingKindMedia,
               WorkersBindingKindVersionMetadata,
               WorkersBindingKindAssets,
-              GetBetaWorkerVersionResponseBinding35,
+              WorkerLoaderBinding,
               CreateScriptEdgePreviewRequestMetadataBinding34,
               WorkersBindingKindVPCNetwork,
               CreateScriptEdgePreviewRequestMetadataBinding38,
@@ -8252,6 +8171,86 @@ const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     cron: Schema.String,
   }),
 ) as unknown as Schema.Codec<Body>;
+
+export type SettingsBinding =
+  | WorkersBindingKindAI
+  | WorkersBindingKindAISearch
+  | WorkersBindingKindAISearchNamespace
+  | WorkersBindingKindAnalyticsEngine
+  | WorkersBindingKindAssets
+  | WorkersBindingKindBrowser
+  | WorkersBindingKindD1
+  | WorkersBindingKindDataBlob
+  | WorkersBindingKindDispatchNamespace
+  | WorkersBindingKindDurableObjectNamespace
+  | WorkersBindingKindHyperdrive
+  | WorkersBindingKindInherit
+  | WorkersBindingKindImages
+  | WorkersBindingKindJson
+  | WorkersBindingKindKVNamespace
+  | WorkersBindingKindMedia
+  | WorkersBindingKindMTLSCertificate
+  | WorkersBindingKindPlainText
+  | WorkersBindingKindPipelines
+  | WorkersBindingKindQueue
+  | WorkersBindingKindRatelimit
+  | WorkersBindingKindR2Bucket
+  | WorkersBindingKindSecretText
+  | WorkersBindingKindSendEmail
+  | WorkersBindingKindService
+  | WorkersBindingKindTextBlob
+  | WorkersBindingKindVectorize
+  | WorkersBindingKindVersionMetadata
+  | WorkersBindingKindSecretsStoreSecret
+  | WorkersBindingKindFlagship
+  | WorkersBindingKindSecretKey
+  | WorkersBindingKindWorkflow
+  | WorkersBindingKindWasmModule
+  | WorkersBindingKindVPCService
+  | WorkersBindingKindVPCNetwork
+  | WorkerLoaderBinding
+  | ArtifactsBinding;
+const SettingsBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    WorkersBindingKindSecretKey,
+    WorkersBindingKindRatelimit,
+    WorkersBindingKindSecretsStoreSecret,
+    WorkersBindingKindAISearch,
+    WorkersBindingKindAISearchNamespace,
+    WorkersBindingKindAnalyticsEngine,
+    WorkersBindingKindD1,
+    WorkersBindingKindDataBlob,
+    WorkersBindingKindDispatchNamespace,
+    WorkersBindingKindHyperdrive,
+    WorkersBindingKindJson,
+    WorkersBindingKindKVNamespace,
+    WorkersBindingKindMTLSCertificate,
+    WorkersBindingKindPlainText,
+    WorkersBindingKindPipelines,
+    WorkersBindingKindQueue,
+    WorkersBindingKindR2Bucket,
+    WorkersBindingKindService,
+    WorkersBindingKindTextBlob,
+    WorkersBindingKindVectorize,
+    WorkersBindingKindFlagship,
+    WorkersBindingKindWorkflow,
+    WorkersBindingKindWasmModule,
+    WorkersBindingKindVPCService,
+    ArtifactsBinding,
+    WorkersBindingKindAI,
+    WorkersBindingKindAssets,
+    WorkersBindingKindBrowser,
+    WorkersBindingKindDurableObjectNamespace,
+    WorkersBindingKindInherit,
+    WorkersBindingKindImages,
+    WorkersBindingKindMedia,
+    WorkersBindingKindSecretText,
+    WorkersBindingKindSendEmail,
+    WorkersBindingKindVersionMetadata,
+    WorkersBindingKindVPCNetwork,
+    WorkerLoaderBinding,
+  ]),
+) as unknown as Schema.Codec<SettingsBinding>;
 
 interface Settings {
   /** Annotations for the Worker version. Annotations are not inherited across settings updates; omitting this field means the new version will have no annotations. */
@@ -8526,7 +8525,7 @@ const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
             WorkersBindingKindFlagship,
             WorkersBindingKindWasmModule,
             WorkersBindingKindVPCService,
-            GetBetaWorkerVersionResponseBinding36,
+            ArtifactsBinding,
             WorkersBindingKindAI,
             WorkersBindingKindAssets,
             WorkersBindingKindBrowser,
@@ -8536,7 +8535,7 @@ const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
             WorkersBindingKindSendEmail,
             WorkersBindingKindVersionMetadata,
             WorkersBindingKindVPCNetwork,
-            GetBetaWorkerVersionResponseBinding35,
+            WorkerLoaderBinding,
           ]),
         ),
         Schema.Null,
@@ -8872,7 +8871,7 @@ const Resources = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
             WorkersBindingKindWorkflow,
             WorkersBindingKindWasmModule,
             WorkersBindingKindVPCService,
-            GetBetaWorkerVersionResponseBinding36,
+            ArtifactsBinding,
             WorkersBindingKindAI,
             WorkersBindingKindAssets,
             WorkersBindingKindBrowser,
@@ -8884,7 +8883,7 @@ const Resources = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
             WorkersBindingKindSendEmail,
             WorkersBindingKindVersionMetadata,
             WorkersBindingKindVPCNetwork,
-            GetBetaWorkerVersionResponseBinding35,
+            WorkerLoaderBinding,
           ]),
         ),
         Schema.Null,
@@ -9255,7 +9254,7 @@ const Metadata5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
             WorkersBindingKindFlagship,
             WorkersBindingKindWasmModule,
             WorkersBindingKindVPCService,
-            GetBetaWorkerVersionResponseBinding36,
+            ArtifactsBinding,
             WorkersBindingKindAI,
             WorkersBindingKindAssets,
             WorkersBindingKindBrowser,
@@ -9265,7 +9264,7 @@ const Metadata5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
             WorkersBindingKindSendEmail,
             WorkersBindingKindVersionMetadata,
             WorkersBindingKindVPCNetwork,
-            GetBetaWorkerVersionResponseBinding35,
+            WorkerLoaderBinding,
           ]),
         ),
         Schema.Null,
@@ -14743,132 +14742,7 @@ export interface PutScriptRequest {
       };
       jwt?: string;
     };
-    bindings?: (
-      | { name: string; type: "ai" }
-      | {
-          instanceName: string;
-          name: string;
-          type: "ai_search";
-          namespace?: string;
-        }
-      | { name: string; namespace: string; type: "ai_search_namespace" }
-      | { dataset: string; name: string; type: "analytics_engine" }
-      | { name: string; type: "assets" }
-      | { name: string; type: "browser" }
-      | { databaseId: string; name: string; type: "d1"; id?: string }
-      | { name: string; part: string; type: "data_blob" }
-      | {
-          name: string;
-          namespace: string;
-          type: "dispatch_namespace";
-          outbound?: {
-            params?: { name: string }[];
-            worker?: {
-              entrypoint?: string;
-              environment?: string;
-              service?: string;
-            };
-          };
-        }
-      | {
-          name: string;
-          type: "durable_object_namespace";
-          className: string;
-          dispatchNamespace?: string;
-          environment?: string;
-          namespaceId?: string;
-          scriptName?: string;
-        }
-      | { id: string; name: string; type: "hyperdrive" }
-      | { name: string; type: "inherit"; oldName?: string; versionId?: string }
-      | { name: string; type: "images" }
-      | { json: unknown; name: string; type: "json" }
-      | { name: string; namespaceId: string; type: "kv_namespace" }
-      | { name: string; type: "media" }
-      | { certificateId: string; name: string; type: "mtls_certificate" }
-      | { name: string; text: string; type: "plain_text" }
-      | { name: string; pipeline: string; type: "pipelines" }
-      | { name: string; queueName: string; type: "queue" }
-      | {
-          name: string;
-          namespaceId: string;
-          simple: { limit: number; period: number; mitigationTimeout?: number };
-          type: "ratelimit";
-        }
-      | {
-          bucketName: string;
-          name: string;
-          type: "r2_bucket";
-          jurisdiction?: "eu" | "fedramp" | "fedramp-high" | (string & {});
-        }
-      | { name: string; text: string; type: "secret_text" }
-      | {
-          name: string;
-          type: "send_email";
-          allowedDestinationAddresses?: string[];
-          allowedSenderAddresses?: string[];
-          destinationAddress?: string;
-        }
-      | {
-          name: string;
-          service: string;
-          type: "service";
-          entrypoint?: string;
-          environment?: string;
-        }
-      | { name: string; part: string; type: "text_blob" }
-      | { indexName: string; name: string; type: "vectorize" }
-      | { name: string; type: "version_metadata" }
-      | {
-          name: string;
-          secretName: string;
-          storeId: string;
-          type: "secrets_store_secret";
-        }
-      | { appId: string; name: string; type: "flagship" }
-      | {
-          algorithm: unknown;
-          format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
-          name: string;
-          type: "secret_key";
-          usages: (
-            | "encrypt"
-            | "decrypt"
-            | "sign"
-            | "verify"
-            | "deriveKey"
-            | "deriveBits"
-            | "wrapKey"
-            | "unwrapKey"
-            | (string & {})
-          )[];
-          keyBase64?: string;
-          keyJwk?: unknown;
-        }
-      | {
-          name: string;
-          type: "workflow";
-          workflowName: string;
-          className: string;
-          scriptName?: string;
-        }
-      | { name: string; part: string; type: "wasm_module" }
-      | { name: string; serviceId: string; type: "vpc_service" }
-      | {
-          name: string;
-          type: "vpc_network";
-          networkId?: string;
-          tunnelId?: string;
-        }
-      | { name: string; type: "worker_loader" }
-      | { name: string; type: "artifacts"; namespace: string }
-      | {
-          name: string;
-          type: "ratelimit";
-          namespaceId: string;
-          simple: { limit: number; period: number };
-        }
-    )[];
+    bindings?: Binding[];
     bodyPart?: string;
     compatibilityDate?: string;
     compatibilityFlags?: string[];
@@ -16524,140 +16398,7 @@ export interface GetScriptScriptAndVersionSettingResponse {
     workersTriggeredBy?: string | null;
   } | null;
   /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
-  bindings?:
-    | (
-        | { name: string; type: "ai" }
-        | {
-            instanceName: string;
-            name: string;
-            type: "ai_search";
-            namespace?: string | null;
-          }
-        | { name: string; namespace: string; type: "ai_search_namespace" }
-        | { dataset: string; name: string; type: "analytics_engine" }
-        | { name: string; type: "assets" }
-        | { name: string; type: "browser" }
-        | { databaseId: string; name: string; type: "d1"; id?: string | null }
-        | { name: string; part: string; type: "data_blob" }
-        | {
-            name: string;
-            namespace: string;
-            type: "dispatch_namespace";
-            outbound?: {
-              params?: { name: string }[] | null;
-              worker?: {
-                entrypoint?: string | null;
-                environment?: string | null;
-                service?: string | null;
-              } | null;
-            } | null;
-          }
-        | {
-            name: string;
-            type: "durable_object_namespace";
-            className?: string | null;
-            dispatchNamespace?: string | null;
-            environment?: string | null;
-            namespaceId?: string | null;
-            scriptName?: string | null;
-          }
-        | { id: string; name: string; type: "hyperdrive" }
-        | {
-            name: string;
-            type: "inherit";
-            oldName?: string | null;
-            versionId?: string | null;
-          }
-        | { name: string; type: "images" }
-        | { json: unknown; name: string; type: "json" }
-        | { name: string; namespaceId: string; type: "kv_namespace" }
-        | { name: string; type: "media" }
-        | { certificateId: string; name: string; type: "mtls_certificate" }
-        | { name: string; text: string; type: "plain_text" }
-        | { name: string; pipeline: string; type: "pipelines" }
-        | { name: string; queueName: string; type: "queue" }
-        | {
-            name: string;
-            namespaceId: string;
-            simple: {
-              limit: number;
-              period: number;
-              mitigationTimeout?: number | null;
-            };
-            type: "ratelimit";
-          }
-        | {
-            bucketName: string;
-            name: string;
-            type: "r2_bucket";
-            jurisdiction?:
-              | "eu"
-              | "fedramp"
-              | "fedramp-high"
-              | (string & {})
-              | null;
-          }
-        | { name: string; type: "secret_text" }
-        | {
-            name: string;
-            type: "send_email";
-            allowedDestinationAddresses?: string[] | null;
-            allowedSenderAddresses?: string[] | null;
-            destinationAddress?: string | null;
-          }
-        | {
-            name: string;
-            service: string;
-            type: "service";
-            entrypoint?: string | null;
-            environment?: string | null;
-          }
-        | { name: string; part: string; type: "text_blob" }
-        | { indexName: string; name: string; type: "vectorize" }
-        | { name: string; type: "version_metadata" }
-        | {
-            name: string;
-            secretName: string;
-            storeId: string;
-            type: "secrets_store_secret";
-          }
-        | { appId: string; name: string; type: "flagship" }
-        | {
-            algorithm: unknown;
-            format: "raw" | "pkcs8" | "spki" | "jwk" | (string & {});
-            name: string;
-            type: "secret_key";
-            usages: (
-              | "encrypt"
-              | "decrypt"
-              | "sign"
-              | "verify"
-              | "deriveKey"
-              | "deriveBits"
-              | "wrapKey"
-              | "unwrapKey"
-              | (string & {})
-            )[];
-          }
-        | {
-            name: string;
-            type: "workflow";
-            workflowName: string;
-            className?: string | null;
-            scriptName?: string | null;
-          }
-        | { name: string; part: string; type: "wasm_module" }
-        | { name: string; serviceId: string; type: "vpc_service" }
-        | {
-            name: string;
-            type: "vpc_network";
-            networkId?: string | null;
-            tunnelId?: string | null;
-          }
-        | { name: string; type: "worker_loader" }
-        | { name: string; type: "artifacts"; namespace: string }
-      )[]
-    | null;
+  bindings?: SettingsBinding[] | null;
   /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
   compatibilityDate?: string | null;
   /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
@@ -16706,50 +16447,7 @@ export const GetScriptScriptAndVersionSettingResponse =
     Schema.Struct({
       annotations: Schema.optional(Schema.Union([Annotations, Schema.Null])),
       bindings: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              WorkersBindingKindSecretKey,
-              WorkersBindingKindRatelimit,
-              WorkersBindingKindSecretsStoreSecret,
-              WorkersBindingKindAISearch,
-              WorkersBindingKindAISearchNamespace,
-              WorkersBindingKindAnalyticsEngine,
-              WorkersBindingKindD1,
-              WorkersBindingKindDataBlob,
-              WorkersBindingKindDispatchNamespace,
-              WorkersBindingKindHyperdrive,
-              WorkersBindingKindJson,
-              WorkersBindingKindKVNamespace,
-              WorkersBindingKindMTLSCertificate,
-              WorkersBindingKindPlainText,
-              WorkersBindingKindPipelines,
-              WorkersBindingKindQueue,
-              WorkersBindingKindR2Bucket,
-              WorkersBindingKindService,
-              WorkersBindingKindTextBlob,
-              WorkersBindingKindVectorize,
-              WorkersBindingKindFlagship,
-              WorkersBindingKindWorkflow,
-              WorkersBindingKindWasmModule,
-              WorkersBindingKindVPCService,
-              GetBetaWorkerVersionResponseBinding36,
-              WorkersBindingKindAI,
-              WorkersBindingKindAssets,
-              WorkersBindingKindBrowser,
-              WorkersBindingKindDurableObjectNamespace,
-              WorkersBindingKindInherit,
-              WorkersBindingKindImages,
-              WorkersBindingKindMedia,
-              WorkersBindingKindSecretText,
-              WorkersBindingKindSendEmail,
-              WorkersBindingKindVersionMetadata,
-              WorkersBindingKindVPCNetwork,
-              GetBetaWorkerVersionResponseBinding35,
-            ]),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(SettingsBinding), Schema.Null]),
       ),
       compatibilityDate: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -17247,7 +16945,7 @@ export const PatchScriptScriptAndVersionSettingResponse =
               WorkersBindingKindWorkflow,
               WorkersBindingKindWasmModule,
               WorkersBindingKindVPCService,
-              GetBetaWorkerVersionResponseBinding36,
+              ArtifactsBinding,
               WorkersBindingKindAI,
               WorkersBindingKindAssets,
               WorkersBindingKindBrowser,
@@ -17259,7 +16957,7 @@ export const PatchScriptScriptAndVersionSettingResponse =
               WorkersBindingKindSendEmail,
               WorkersBindingKindVersionMetadata,
               WorkersBindingKindVPCNetwork,
-              GetBetaWorkerVersionResponseBinding35,
+              WorkerLoaderBinding,
             ]),
           ),
           Schema.Null,

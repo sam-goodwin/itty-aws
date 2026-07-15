@@ -51,6 +51,7 @@
         "optional": false
       },
       "metadata.bindings[]": {
+        "exportAs": "Binding",
         "appendUnion": [
           {
             "kind": "object",

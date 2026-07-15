@@ -41,6 +41,7 @@
       },
       "bindings[].json": { "type": "unknown" },
       "bindings[]": {
+        "exportAs": "SettingsBinding",
         "appendUnion": [
           {
             "kind": "object",
