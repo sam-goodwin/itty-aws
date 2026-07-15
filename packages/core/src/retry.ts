@@ -212,25 +212,32 @@ const honorServerHint = (
  * - Honors `error.retryAfter` (server-provided hint) with precedence, capped
  *   by {@link DEFAULT_SERVER_RETRY_HINT_CAP_MS} by default; override with
  *   `DISTILLED_SERVER_RETRY_HINT_CAP_MS` or {@link ServerRetryHintCapMs}
- * - Otherwise uses exponential backoff starting at 100ms with a factor of 2
+ * - Otherwise uses exponential backoff starting at 250ms with a factor of 2,
+ *   capped at 5s per delay
  * - Ensures at least 500ms delay for throttling errors
- * - Limits to 5 retry attempts
+ * - Limits to 8 retry attempts
  * - Applies jitter to avoid thundering herd
+ *
+ * The 250ms/5s-cap/8-attempt shape (~20s of total patience) comes from
+ * alchemy's Cloudflare provider suite, where transient auth blips under
+ * high request concurrency routinely outlast a short 5-attempt/3s policy
+ * while a genuinely broken credential still fails within seconds.
  */
 export const makeDefault: Factory = (lastError) => ({
   while: (error) => isTransientError(error),
   schedule: Schedule.max([
     pipe(
-      Schedule.exponential(100, 2),
+      Schedule.exponential(250, 2),
       honorServerHint(lastError, (duration, error) => {
         if (isThrottling(error) && Duration.toMillis(duration) < 500) {
           return Duration.millis(500);
         }
         return duration;
       }),
+      capped(Duration.seconds(5)),
       jittered,
     ),
-    Schedule.recurs(5),
+    Schedule.recurs(8),
   ]),
 });
 

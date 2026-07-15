@@ -323,18 +323,34 @@ const makeDecode =
           ? text
           : (first?.message ?? `HTTP ${status}`);
 
+        // Transient auth blips must be tagged retryable on EVERY error path,
+        // including per-operation typed errors — an op-declared class with a
+        // status/code matcher (e.g. a plain Forbidden) otherwise intercepts
+        // the blip before the global map's tagging and the retry policy never
+        // sees it. Message evidence (see GLOBAL_ERROR_CODE_MAP for the field
+        // history): "Authentication error" (code 10000 family, valid tokens
+        // flake under concurrency), "Unable to authenticate request" and the
+        // code-10001 "internal error" variant (auth/edge hiccups).
+        const isTransientAuthBlip =
+          /authentication error|unable to authenticate request/i.test(
+            errorMessage,
+          ) ||
+          (errorCode === 10001 && /internal error/i.test(errorMessage));
+        const tagBlip = <E>(error: E): E =>
+          isTransientAuthBlip ? tagRetryable(error) : error;
+
         // 1. Per-operation typed error (matcher metadata on the class).
         const typed = matchTypedError(errorClasses, status, [
           { code: errorCode, message: errorMessage },
         ]);
         if (typed !== undefined) {
-          return yield* Effect.fail(typed) as Effect.Effect<never>;
+          return yield* Effect.fail(tagBlip(typed)) as Effect.Effect<never>;
         }
 
         // 2. Global/infrastructure error codes (any endpoint, any status).
         if (errorCode !== undefined && errorCode in GLOBAL_ERROR_CODE_MAP) {
           return yield* fail(
-            GLOBAL_ERROR_CODE_MAP[errorCode]!(errorMessage, headers),
+            tagBlip(GLOBAL_ERROR_CODE_MAP[errorCode]!(errorMessage, headers)),
           );
         }
 
@@ -355,10 +371,12 @@ const makeDecode =
             HTTP_STATUS_MAP[status as keyof typeof HTTP_STATUS_MAP];
           if (StatusErrorClass) {
             return yield* fail(
-              new StatusErrorClass({
-                message: errorMessage,
-                retryAfter: parseRetryAfterForStatus(status, headers),
-              } as any),
+              tagBlip(
+                new StatusErrorClass({
+                  message: errorMessage,
+                  retryAfter: parseRetryAfterForStatus(status, headers),
+                } as any),
+              ),
             );
           }
         }
