@@ -304,9 +304,20 @@ export const make = <Op extends Operation<any, any, any>>(
     );
     // Check if there's a body to sign
     const hasBody = resolvedRequest.body !== undefined;
-    // Use unsigned payload for streaming bodies OR when service provides checksum with body
+    // Operations with a streaming input payload (smithy `@streaming` blob)
+    // are signed UNSIGNED-PAYLOAD even when the caller passed a buffered
+    // body — matching botocore's `has_streaming_input` behavior. Services
+    // like Lex Runtime V2 (RecognizeUtterance) reject payload-hash
+    // signatures on these routes. Glacier is the exception: it REQUIRES a
+    // real x-amz-content-sha256 (computed below), so it keeps the hashed
+    // path for buffered bodies.
+    const hasStreamingInput =
+      resolvedRequest.hasStreamingInput === true && _serviceSdkId !== "Glacier";
+    // Use unsigned payload for streaming bodies OR streaming-input
+    // operations OR when service provides checksum with body
     const useUnsignedPayload =
-      (isStreamingBody || (hasServiceChecksum && hasBody)) && !hasContentSha256;
+      (isStreamingBody || hasStreamingInput || (hasServiceChecksum && hasBody)) &&
+      !hasContentSha256;
     let signingHeaders = useUnsignedPayload
       ? {
           ...resolvedRequest.headers,

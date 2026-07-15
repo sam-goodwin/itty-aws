@@ -149,6 +149,16 @@ export const rawPayloadParser: PayloadParser = (payload: Uint8Array) => {
   return text ? { payload: text } : {};
 };
 
+/** Encode raw event payload bytes to the base64 wire form blob schemas decode from. */
+const uint8ToBase64 = (bytes: Uint8Array): string => {
+  let binary = "";
+  const chunkSize = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+  }
+  return btoa(binary);
+};
+
 /**
  * Default JSON payload parser
  */
@@ -177,12 +187,25 @@ export const jsonPayloadParser: PayloadParser = (payload: Uint8Array) => {
 export const transformEventStreamToUnion = (
   eventStream: Stream.Stream<StreamEvent, EventStreamParseError>,
   payloadParser: PayloadParser = jsonPayloadParser,
+  eventPayloadMap?: Record<string, string>,
 ): Stream.Stream<ParsedEvent, EventStreamParseError> =>
   eventStream.pipe(
     Stream.map((streamEvent) => {
       if (streamEvent._tag === "MessageEvent") {
         // Normal message event - parse payload and wrap in tagged union
         const eventType = streamEvent.eventType;
+        // Smithy `eventPayload` member: the raw wire payload IS that single
+        // member's value (a blob), not a JSON document of the event struct.
+        // Bind the bytes to the member in wire (base64) form so the event
+        // schema decode produces the generated type (Uint8Array / Redacted).
+        const payloadMember = eventPayloadMap?.[eventType];
+        if (payloadMember !== undefined) {
+          return {
+            [eventType]: {
+              [payloadMember]: uint8ToBase64(streamEvent.payload),
+            },
+          };
+        }
         const payload = payloadParser(streamEvent.payload);
         return { [eventType]: payload };
       } else if (streamEvent._tag === "ExceptionEvent") {
@@ -251,8 +274,13 @@ export const parseEventStreamToUnion = (
   input: ReadableStream<Uint8Array>,
   payloadParser: PayloadParser = jsonPayloadParser,
   eventSchema?: Schema.Schema<unknown>,
+  eventPayloadMap?: Record<string, string>,
 ): Stream.Stream<ParsedEvent, EventStreamParseError> =>
   decodeEventStreamUnion(
-    transformEventStreamToUnion(parseEventStream(input), payloadParser),
+    transformEventStreamToUnion(
+      parseEventStream(input),
+      payloadParser,
+      eventPayloadMap,
+    ),
     eventSchema,
   );

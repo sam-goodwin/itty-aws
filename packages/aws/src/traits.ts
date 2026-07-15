@@ -874,6 +874,47 @@ export const getEventPayloadMap = (
   return ast.annotations?.eventPayloadMap as Record<string, string> | undefined;
 };
 
+/**
+ * Derive the event-type → payload-member map for an OUTPUT event stream from
+ * its event union schema (`T.EventStream(S.Union([...]))`).
+ *
+ * Smithy's `eventPayload` trait means an event's wire payload IS that single
+ * member's raw bytes (e.g. Lambda `InvokeWithResponseStream`'s
+ * `PayloadChunk.Payload`), not a JSON document of the event struct — so the
+ * parser must bind the raw payload to that member instead of JSON-parsing it
+ * into struct fields. Input streams carry this map explicitly
+ * (`T.InputEventStream(..., eventPayloadMap)`); for outputs we recover it
+ * from the `T.EventPayload()` member annotations.
+ */
+export const getOutputEventPayloadMap = (
+  eventSchema: S.Schema<unknown>,
+): Record<string, string> | undefined => {
+  const unwrap = (ast: AST.AST): AST.AST => {
+    let current = ast;
+    while (current._tag === "Suspend") current = current.thunk();
+    return current;
+  };
+  const union = unwrap(eventSchema.ast);
+  if (union._tag !== "Union") return undefined;
+  const map: Record<string, string> = {};
+  for (const member of union.types) {
+    const eventStructWrapper = unwrap(member);
+    if (eventStructWrapper._tag !== "Objects") continue;
+    const wrapperProps = eventStructWrapper.propertySignatures;
+    if (wrapperProps.length !== 1) continue;
+    const eventType = String(wrapperProps[0].name);
+    const eventStruct = unwrap(wrapperProps[0].type);
+    if (eventStruct._tag !== "Objects") continue;
+    for (const prop of eventStruct.propertySignatures) {
+      if (hasPropAnnotation(prop, eventPayloadSymbol)) {
+        map[eventType] = String(prop.name);
+        break;
+      }
+    }
+  }
+  return Object.keys(map).length > 0 ? map : undefined;
+};
+
 // =============================================================================
 // Annotation Retrieval Helpers
 // =============================================================================

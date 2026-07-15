@@ -1,4 +1,11 @@
 {
+  "structures": {
+    "StaticKeySettings": {
+      "members": {
+        "StaticKeyValue": { "sensitive": true }
+      }
+    }
+  },
   "operations": {
     "createChannel": {
       "syntheticErrors": [

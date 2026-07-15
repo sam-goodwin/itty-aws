@@ -1,4 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
 import * as API from "../client/api.ts";
@@ -7,6 +8,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
+import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "MediaLive",
   serviceShapeName: "MediaLive",
@@ -3472,12 +3474,12 @@ export type HlsIvSource = "EXPLICIT" | "FOLLOWS_SEGMENT_NUMBER" | (string & {});
 export const HlsIvSource = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface StaticKeySettings {
   KeyProviderServer?: InputLocation;
-  StaticKeyValue?: string;
+  StaticKeyValue?: string | redacted.Redacted<string>;
 }
 export const StaticKeySettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     KeyProviderServer: S.optional(InputLocation),
-    StaticKeyValue: S.optional(S.String),
+    StaticKeyValue: S.optional(SensitiveString),
   }).pipe(
     S.encodeKeys({
       KeyProviderServer: "keyProviderServer",

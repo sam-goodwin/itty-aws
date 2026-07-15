@@ -37,6 +37,7 @@ import {
   getEventPayloadMap,
   getEventSchema,
   getHttpHeader,
+  getOutputEventPayloadMap,
   getHttpPrefixHeaders,
   getHttpQuery,
   getPropAnnotations,
@@ -103,6 +104,8 @@ export const restJson1Protocol: Protocol = (
     isBlob: boolean;
     isEventStream: boolean;
     eventSchema?: Schema.Schema<unknown>;
+    /** event type → `eventPayload` member name (raw-bytes events). */
+    eventPayloadMap?: Record<string, string>;
   };
 
   const headerProps: HeaderProp[] = [];
@@ -131,24 +134,36 @@ export const restJson1Protocol: Protocol = (
       prefixHeaderProps.push({ name, prefix: prefix.toLowerCase() });
     } else if (hasHttpPayload(prop)) {
       const isEventStream = isOutputEventStream(prop.type);
+      const eventSchema = isEventStream
+        ? getEventSchema(prop.type)
+        : undefined;
       outputPayloadProp = {
         name,
         isStreaming: isStreamingType(prop.type),
         isRaw: isRawPayload(prop.type),
         isBlob: isBlobPayload(prop.type),
         isEventStream,
-        eventSchema: isEventStream ? getEventSchema(prop.type) : undefined,
+        eventSchema,
+        eventPayloadMap: eventSchema
+          ? getOutputEventPayloadMap(eventSchema)
+          : undefined,
       };
     } else if (isStreamingType(prop.type)) {
       // Streaming members (including event streams) implicitly become the payload
       const isEventStream = isOutputEventStream(prop.type);
+      const eventSchema = isEventStream
+        ? getEventSchema(prop.type)
+        : undefined;
       outputPayloadProp = {
         name,
         isStreaming: true,
         isRaw: false,
         isBlob: false,
         isEventStream,
-        eventSchema: isEventStream ? getEventSchema(prop.type) : undefined,
+        eventSchema,
+        eventPayloadMap: eventSchema
+          ? getOutputEventPayloadMap(eventSchema)
+          : undefined,
       };
     }
   }
@@ -228,6 +243,10 @@ export const restJson1Protocol: Protocol = (
           request.body = convertStreamingInput(
             payloadValue as StreamingInputBody,
           );
+          // Streaming-input operations are signed UNSIGNED-PAYLOAD (see
+          // Request.hasStreamingInput) — some services (Lex Runtime V2)
+          // reject payload-hash signatures on these routes.
+          request.hasStreamingInput = true;
           // Default to octet-stream for streaming payloads, unless user set explicitly
           if (!userSetContentType) {
             request.headers["Content-Type"] = "application/octet-stream";
@@ -319,6 +338,7 @@ export const restJson1Protocol: Protocol = (
             response.body as ReadableStream<Uint8Array>,
             undefined,
             outputPayloadProp.eventSchema,
+            outputPayloadProp.eventPayloadMap,
           );
         } else {
           // Raw streaming output (blob)
