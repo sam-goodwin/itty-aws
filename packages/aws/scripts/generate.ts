@@ -1913,14 +1913,33 @@ const convertShapeToSchema: (
                     // schema for SensitiveString so responses decode to Redacted
                     // and requests accept raw or Redacted values.
                     if (memberOverride?.sensitive) {
-                      if (schema !== "S.String") {
+                      const listMemberTarget =
+                        memberTargetShape?.type === "list"
+                          ? (memberTargetShape as { member?: { target?: string } })
+                              .member?.target
+                          : undefined;
+                      const isStringList =
+                        listMemberTarget !== undefined &&
+                        (listMemberTarget === "smithy.api#String" ||
+                          (
+                            model.shapes[listMemberTarget] as
+                              | GenericShape
+                              | undefined
+                          )?.type === "string");
+                      if (schema === "S.String") {
+                        schema = "SensitiveString";
+                        tsType = "string | redacted.Redacted<string>";
+                      } else if (isStringList) {
+                        // Sensitive list of strings (e.g. ElastiCache user
+                        // Passwords) — each element decodes to Redacted.
+                        schema = "S.Array(SensitiveString)";
+                        tsType = "Array<string | redacted.Redacted<string>>";
+                      } else {
                         return yield* Effect.die(
                           `sensitive member override on ${currentSchemaName}.${memberName} ` +
-                            `requires a plain string member (schema was ${schema})`,
+                            `requires a plain string or list-of-string member (schema was ${schema})`,
                         );
                       }
-                      schema = "SensitiveString";
-                      tsType = "string | redacted.Redacted<string>";
                     }
                     // Check if this member is "soft required" (@clientOptional + @required)
                     const hasClientOptional =

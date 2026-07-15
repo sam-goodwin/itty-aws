@@ -1297,18 +1297,18 @@ export type RepoUpgradeOnBoot = "SECURITY" | "NONE" | (string & {});
 export const RepoUpgradeOnBoot = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface KerberosAttributes {
   Realm?: string;
-  KdcAdminPassword?: string;
-  CrossRealmTrustPrincipalPassword?: string;
+  KdcAdminPassword?: string | redacted.Redacted<string>;
+  CrossRealmTrustPrincipalPassword?: string | redacted.Redacted<string>;
   ADDomainJoinUser?: string;
-  ADDomainJoinPassword?: string;
+  ADDomainJoinPassword?: string | redacted.Redacted<string>;
 }
 export const KerberosAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     Realm: S.optional(S.String),
-    KdcAdminPassword: S.optional(S.String),
-    CrossRealmTrustPrincipalPassword: S.optional(S.String),
+    KdcAdminPassword: S.optional(SensitiveString),
+    CrossRealmTrustPrincipalPassword: S.optional(SensitiveString),
     ADDomainJoinUser: S.optional(S.String),
-    ADDomainJoinPassword: S.optional(S.String),
+    ADDomainJoinPassword: S.optional(SensitiveString),
   }),
 ).annotate({
   identifier: "KerberosAttributes",
@@ -2479,10 +2479,13 @@ export const GetClusterSessionCredentialsInput =
   }) as any as S.Schema<GetClusterSessionCredentialsInput>;
 export interface UsernamePassword {
   Username?: string;
-  Password?: string;
+  Password?: string | redacted.Redacted<string>;
 }
 export const UsernamePassword = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ Username: S.optional(S.String), Password: S.optional(S.String) }),
+  S.Struct({
+    Username: S.optional(S.String),
+    Password: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "UsernamePassword",
 }) as any as S.Schema<UsernamePassword>;
@@ -5075,7 +5078,10 @@ export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestEx
 export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
   "InternalServerError",
   {},
-  T.AwsQueryError({ code: "InternalFailure", httpResponseCode: 500 }),
+  T.all(
+    T.AwsQueryError({ code: "InternalFailure", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
 ).pipe(C.withServerError) {}
 export class SecurityConfigurationAlreadyExists extends S.TaggedErrorClass<SecurityConfigurationAlreadyExists>()(
   "SecurityConfigurationAlreadyExists",
