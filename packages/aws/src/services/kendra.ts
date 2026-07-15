@@ -3612,14 +3612,14 @@ export type DataSourceGroups = DataSourceGroup[];
 export const DataSourceGroups =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(DataSourceGroup);
 export interface UserContext {
-  Token?: string;
+  Token?: string | redacted.Redacted<string>;
   UserId?: string;
   Groups?: string[];
   DataSourceGroups?: DataSourceGroup[];
 }
 export const UserContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    Token: S.optional(S.String),
+    Token: S.optional(SensitiveString),
     UserId: S.optional(S.String),
     Groups: S.optional(Groups),
     DataSourceGroups: S.optional(DataSourceGroups),
@@ -5478,34 +5478,42 @@ export const UpdateThesaurusResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceAlreadyExistException extends S.TaggedErrorClass<ResourceAlreadyExistException>()(
   "ResourceAlreadyExistException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class FeaturedResultsConflictException extends S.TaggedErrorClass<FeaturedResultsConflictException>()(
   "FeaturedResultsConflictException",
@@ -5513,18 +5521,22 @@ export class FeaturedResultsConflictException extends S.TaggedErrorClass<Feature
     Message: S.optional(S.String),
     ConflictingItems: S.optional(ConflictingItems),
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
   "InvalidRequestException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
   "ResourceUnavailableException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
   "ResourceInUseException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations

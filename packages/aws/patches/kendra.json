@@ -3,5 +3,14 @@
     "listTagsForResource": {
       "errors": ["ResourceNotFoundException"]
     }
+  },
+  "structures": {
+    "UserContext": {
+      "members": {
+        "Token": {
+          "sensitive": true
+        }
+      }
+    }
   }
 }

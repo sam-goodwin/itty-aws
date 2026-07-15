@@ -5166,7 +5166,7 @@ export interface AssetModelSummary {
   arn: string;
   name: string;
   assetModelType?: AssetModelType;
-  description: string;
+  description?: string;
   creationDate: Date;
   lastUpdateDate: Date;
   status: AssetModelStatus;
@@ -5179,7 +5179,7 @@ export const AssetModelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     arn: S.String,
     name: S.String,
     assetModelType: S.optional(AssetModelType),
-    description: S.String,
+    description: S.optional(S.String),
     creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     lastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     status: AssetModelStatus,
@@ -7140,58 +7140,72 @@ export const UpdateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class ConflictingOperationException extends S.TaggedErrorClass<ConflictingOperationException>()(
   "ConflictingOperationException",
   { message: S.String, resourceId: S.String, resourceArn: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
   "InternalFailureException",
   { message: S.String },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
   "InvalidRequestException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { message: S.String },
+  T.HttpError(410),
 ).pipe(C.withBadRequestError) {}
 export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
   "ResourceAlreadyExistsException",
   { message: S.String, resourceId: S.String, resourceArn: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.String },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
   { message: S.String },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
   "PreconditionFailedException",
   { message: S.String, resourceId: S.String, resourceArn: S.String },
+  T.HttpError(412),
 ) {}
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class QueryTimeoutException extends S.TaggedErrorClass<QueryTimeoutException>()(
   "QueryTimeoutException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { message: S.String },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { message: S.optional(S.String), resourceName: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations

@@ -982,43 +982,43 @@ export const CreateServiceProfileResponse =
 export type WirelessDeviceType = "Sidewalk" | "LoRaWAN" | (string & {});
 export const WirelessDeviceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface OtaaV1_1 {
-  AppKey?: string;
-  NwkKey?: string;
+  AppKey?: string | redacted.Redacted<string>;
+  NwkKey?: string | redacted.Redacted<string>;
   JoinEui?: string;
 }
 export const OtaaV1_1 = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    AppKey: S.optional(S.String),
-    NwkKey: S.optional(S.String),
+    AppKey: S.optional(SensitiveString),
+    NwkKey: S.optional(SensitiveString),
     JoinEui: S.optional(S.String),
   }),
 ).annotate({ identifier: "OtaaV1_1" }) as any as S.Schema<OtaaV1_1>;
 export interface OtaaV1_0_x {
-  AppKey?: string;
+  AppKey?: string | redacted.Redacted<string>;
   AppEui?: string;
   JoinEui?: string;
-  GenAppKey?: string;
+  GenAppKey?: string | redacted.Redacted<string>;
 }
 export const OtaaV1_0_x = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    AppKey: S.optional(S.String),
+    AppKey: S.optional(SensitiveString),
     AppEui: S.optional(S.String),
     JoinEui: S.optional(S.String),
-    GenAppKey: S.optional(S.String),
+    GenAppKey: S.optional(SensitiveString),
   }),
 ).annotate({ identifier: "OtaaV1_0_x" }) as any as S.Schema<OtaaV1_0_x>;
 export interface SessionKeysAbpV1_1 {
-  FNwkSIntKey?: string;
-  SNwkSIntKey?: string;
-  NwkSEncKey?: string;
-  AppSKey?: string;
+  FNwkSIntKey?: string | redacted.Redacted<string>;
+  SNwkSIntKey?: string | redacted.Redacted<string>;
+  NwkSEncKey?: string | redacted.Redacted<string>;
+  AppSKey?: string | redacted.Redacted<string>;
 }
 export const SessionKeysAbpV1_1 = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    FNwkSIntKey: S.optional(S.String),
-    SNwkSIntKey: S.optional(S.String),
-    NwkSEncKey: S.optional(S.String),
-    AppSKey: S.optional(S.String),
+    FNwkSIntKey: S.optional(SensitiveString),
+    SNwkSIntKey: S.optional(SensitiveString),
+    NwkSEncKey: S.optional(SensitiveString),
+    AppSKey: S.optional(SensitiveString),
   }),
 ).annotate({
   identifier: "SessionKeysAbpV1_1",
@@ -1036,11 +1036,14 @@ export const AbpV1_1 = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AbpV1_1" }) as any as S.Schema<AbpV1_1>;
 export interface SessionKeysAbpV1_0_x {
-  NwkSKey?: string;
-  AppSKey?: string;
+  NwkSKey?: string | redacted.Redacted<string>;
+  AppSKey?: string | redacted.Redacted<string>;
 }
 export const SessionKeysAbpV1_0_x = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ NwkSKey: S.optional(S.String), AppSKey: S.optional(S.String) }),
+  S.Struct({
+    NwkSKey: S.optional(SensitiveString),
+    AppSKey: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "SessionKeysAbpV1_0_x",
 }) as any as S.Schema<SessionKeysAbpV1_0_x>;
@@ -6449,6 +6452,7 @@ export const UpdateWirelessGatewayResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
@@ -6457,10 +6461,12 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
     ResourceId: S.optional(S.String),
     ResourceType: S.optional(S.String),
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
@@ -6469,18 +6475,22 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
     ResourceId: S.optional(S.String),
     ResourceType: S.optional(S.String),
   },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
