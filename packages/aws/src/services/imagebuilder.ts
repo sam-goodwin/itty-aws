@@ -5623,6 +5623,10 @@ export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnava
   { message: S.optional(S.String) },
   T.HttpError(503),
 ).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {},
+) {}
 export class DryRunOperationException extends S.TaggedErrorClass<DryRunOperationException>()(
   "DryRunOperationException",
   { message: S.optional(S.String) },
@@ -5657,10 +5661,6 @@ export class ResourceDependencyException extends S.TaggedErrorClass<ResourceDepe
   { message: S.optional(S.String) },
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {},
-) {}
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
@@ -5692,6 +5692,7 @@ export type CancelImageCreationError =
   | ResourceInUseException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * CancelImageCreation cancels the creation of Image. This operation can only be used on
@@ -5714,6 +5715,7 @@ export const cancelImageCreation: API.OperationMethod<
     ResourceInUseException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "CancelImageCreation",
 }));
@@ -6217,6 +6219,7 @@ export type DeleteImageError =
   | ResourceDependencyException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Deletes an Image Builder image resource. This does not delete any EC2 AMIs or ECR container
@@ -6253,6 +6256,7 @@ export const deleteImage: API.OperationMethod<
     ResourceDependencyException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "DeleteImage",
 }));
@@ -6616,6 +6620,7 @@ export type GetImageError =
   | InvalidRequestException
   | ServiceException
   | ServiceUnavailableException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Gets an image.
@@ -6635,6 +6640,7 @@ export const getImage: API.OperationMethod<
     InvalidRequestException,
     ServiceException,
     ServiceUnavailableException,
+    ResourceNotFoundException,
   ],
   operationName: "GetImage",
 }));

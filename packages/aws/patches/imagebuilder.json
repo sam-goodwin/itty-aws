@@ -1,6 +1,9 @@
 {
   "operations": {
     "getComponent": { "errors": ["ResourceNotFoundException"] },
+    "getImage": { "errors": ["ResourceNotFoundException"] },
+    "deleteImage": { "errors": ["ResourceNotFoundException"] },
+    "cancelImageCreation": { "errors": ["ResourceNotFoundException"] },
     "getImageRecipe": { "errors": ["ResourceNotFoundException"] },
     "getImagePipeline": { "errors": ["ResourceNotFoundException"] },
     "getInfrastructureConfiguration": {
