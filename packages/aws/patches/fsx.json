@@ -1,5 +1,14 @@
 {
   "operations": {
+    "copySnapshotAndUpdateVolume": {
+      "syntheticErrors": [
+        {
+          "name": "SourceSnapshotNotFound",
+          "from": "BadRequest",
+          "message": { "includes": "SourceSnapshotARN provided is not a valid ARN" }
+        }
+      ]
+    },
     "createSnapshot": {
       "syntheticErrors": [
         {
@@ -29,6 +38,7 @@
     }
   },
   "errorCategories": {
+    "SourceSnapshotNotFound": ["NotFoundError"],
     "SnapshotVolumeNotFound": ["NotFoundError"],
     "RestoreSnapshotNotFound": ["NotFoundError"],
     "UpdateSnapshotNotFound": ["NotFoundError"]

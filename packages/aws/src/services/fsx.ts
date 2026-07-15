@@ -5726,6 +5726,14 @@ export class SourceBackupUnavailable extends S.TaggedErrorClass<SourceBackupUnav
   "SourceBackupUnavailable",
   { Message: S.optional(S.String), BackupId: S.optional(S.String) },
 ) {}
+export class SourceSnapshotNotFound extends S.TaggedErrorClass<SourceSnapshotNotFound>()(
+  "SourceSnapshotNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "BadRequest",
+    message: { includes: "SourceSnapshotARN provided is not a valid ARN" },
+  }),
+).pipe(C.withNotFoundError) {}
 export class AccessPointAlreadyOwnedByYou extends S.TaggedErrorClass<AccessPointAlreadyOwnedByYou>()(
   "AccessPointAlreadyOwnedByYou",
   { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
@@ -6005,6 +6013,7 @@ export type CopySnapshotAndUpdateVolumeError =
   | IncompatibleParameterError
   | InternalServerError
   | ServiceLimitExceeded
+  | SourceSnapshotNotFound
   | CommonErrors;
 /**
  * Updates an existing volume by using a snapshot from another Amazon FSx for OpenZFS file system. For more information, see on-demand data replication in the Amazon FSx for OpenZFS User
@@ -6023,6 +6032,7 @@ export const copySnapshotAndUpdateVolume: API.OperationMethod<
     IncompatibleParameterError,
     InternalServerError,
     ServiceLimitExceeded,
+    SourceSnapshotNotFound,
   ],
   operationName: "CopySnapshotAndUpdateVolume",
 }));
