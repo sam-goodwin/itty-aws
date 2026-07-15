@@ -1,0 +1,26 @@
+{
+  "operations": {
+    "createSnapshot": {
+      "syntheticErrors": [
+        {
+          "name": "SnapshotVolumeNotFound",
+          "from": "BadRequest",
+          "message": { "includes": "volume was not found" }
+        }
+      ]
+    },
+    "restoreVolumeFromSnapshot": {
+      "syntheticErrors": [
+        {
+          "name": "RestoreSnapshotNotFound",
+          "from": "BadRequest",
+          "message": { "includes": "snapshot cannot be found" }
+        }
+      ]
+    }
+  },
+  "errorCategories": {
+    "SnapshotVolumeNotFound": ["NotFoundError"],
+    "RestoreSnapshotNotFound": ["NotFoundError"]
+  }
+}

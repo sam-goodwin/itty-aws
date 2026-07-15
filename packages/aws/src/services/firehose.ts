@@ -876,7 +876,7 @@ export const SplunkBufferingHints = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface SplunkDestinationConfiguration {
   HECEndpoint: string;
   HECEndpointType: HECEndpointType;
-  HECToken?: string;
+  HECToken?: string | redacted.Redacted<string>;
   HECAcknowledgmentTimeoutInSeconds?: number;
   RetryOptions?: SplunkRetryOptions;
   S3BackupMode?: SplunkS3BackupMode;
@@ -891,7 +891,7 @@ export const SplunkDestinationConfiguration =
     S.Struct({
       HECEndpoint: S.String,
       HECEndpointType: HECEndpointType,
-      HECToken: S.optional(S.String),
+      HECToken: S.optional(SensitiveString),
       HECAcknowledgmentTimeoutInSeconds: S.optional(S.Number),
       RetryOptions: S.optional(SplunkRetryOptions),
       S3BackupMode: S.optional(SplunkS3BackupMode),
@@ -1939,7 +1939,7 @@ export const AmazonopensearchserviceDestinationDescription =
 export interface SplunkDestinationDescription {
   HECEndpoint?: string;
   HECEndpointType?: HECEndpointType;
-  HECToken?: string;
+  HECToken?: string | redacted.Redacted<string>;
   HECAcknowledgmentTimeoutInSeconds?: number;
   RetryOptions?: SplunkRetryOptions;
   S3BackupMode?: SplunkS3BackupMode;
@@ -1954,7 +1954,7 @@ export const SplunkDestinationDescription =
     S.Struct({
       HECEndpoint: S.optional(S.String),
       HECEndpointType: S.optional(HECEndpointType),
-      HECToken: S.optional(S.String),
+      HECToken: S.optional(SensitiveString),
       HECAcknowledgmentTimeoutInSeconds: S.optional(S.Number),
       RetryOptions: S.optional(SplunkRetryOptions),
       S3BackupMode: S.optional(SplunkS3BackupMode),
@@ -2666,7 +2666,7 @@ export const AmazonopensearchserviceDestinationUpdate =
 export interface SplunkDestinationUpdate {
   HECEndpoint?: string;
   HECEndpointType?: HECEndpointType;
-  HECToken?: string;
+  HECToken?: string | redacted.Redacted<string>;
   HECAcknowledgmentTimeoutInSeconds?: number;
   RetryOptions?: SplunkRetryOptions;
   S3BackupMode?: SplunkS3BackupMode;
@@ -2681,7 +2681,7 @@ export const SplunkDestinationUpdate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       HECEndpoint: S.optional(S.String),
       HECEndpointType: S.optional(HECEndpointType),
-      HECToken: S.optional(S.String),
+      HECToken: S.optional(SensitiveString),
       HECAcknowledgmentTimeoutInSeconds: S.optional(S.Number),
       RetryOptions: S.optional(SplunkRetryOptions),
       S3BackupMode: S.optional(SplunkS3BackupMode),
@@ -2916,6 +2916,7 @@ export class InvalidSourceException extends S.TaggedErrorClass<InvalidSourceExce
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
   { message: S.optional(S.String) },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
   "ConcurrentModificationException",

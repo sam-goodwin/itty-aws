@@ -852,7 +852,7 @@ export const CreateSchemaMappingInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface CreateSchemaMappingOutput {
   schemaName: string;
   schemaArn: string;
-  description: string;
+  description?: string;
   mappedInputFields: SchemaInputAttribute[];
 }
 export const CreateSchemaMappingOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -860,7 +860,7 @@ export const CreateSchemaMappingOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       schemaName: S.String,
       schemaArn: S.String,
-      description: S.String,
+      description: S.optional(S.String),
       mappedInputFields: SchemaInputAttributes,
     }),
 ).annotate({
@@ -2507,28 +2507,32 @@ export const UpdateSchemaMappingOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ExceedsLimitException extends S.TaggedErrorClass<ExceedsLimitException>()(
   "ExceedsLimitException",
@@ -2537,6 +2541,7 @@ export class ExceedsLimitException extends S.TaggedErrorClass<ExceedsLimitExcept
     quotaName: S.optional(S.String),
     quotaValue: S.optional(S.Number),
   },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations

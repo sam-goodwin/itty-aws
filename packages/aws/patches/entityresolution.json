@@ -1,0 +1,9 @@
+{
+  "structures": {
+    "CreateSchemaMappingOutput": {
+      "members": {
+        "description": { "optional": true }
+      }
+    }
+  }
+}
