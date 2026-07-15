@@ -2631,15 +2631,8 @@ export class ServiceUpdateNotFoundFault extends S.TaggedErrorClass<ServiceUpdate
 ).pipe(C.withBadRequestError) {}
 export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
   "InvalidParameterCombinationException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidParameterCombination",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
+  {},
+) {}
 export class InvalidSnapshotStateFault extends S.TaggedErrorClass<InvalidSnapshotStateFault>()(
   "InvalidSnapshotStateFault",
   { message: S.optional(S.String) },
@@ -3158,6 +3151,7 @@ export class SubnetInUse extends S.TaggedErrorClass<SubnetInUse>()(
 export type BatchUpdateClusterError =
   | InvalidParameterValueException
   | ServiceUpdateNotFoundFault
+  | InvalidParameterCombinationException
   | CommonErrors;
 /**
  * Apply the service update to a list of clusters supplied. For more information on service updates and applying them, see Applying the service updates.
@@ -3170,7 +3164,11 @@ export const batchUpdateCluster: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateClusterRequest,
   output: BatchUpdateClusterResponse,
-  errors: [InvalidParameterValueException, ServiceUpdateNotFoundFault],
+  errors: [
+    InvalidParameterValueException,
+    ServiceUpdateNotFoundFault,
+    InvalidParameterCombinationException,
+  ],
   operationName: "BatchUpdateCluster",
 }));
 export type CopySnapshotError =

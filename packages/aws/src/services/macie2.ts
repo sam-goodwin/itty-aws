@@ -5377,7 +5377,7 @@ export class MacieNotEnabled extends S.TaggedErrorClass<MacieNotEnabled>()(
   { message: S.optional(S.String) },
   T.SyntheticError({
     from: "AccessDeniedException",
-    message: { includes: "Macie is not enabled" },
+    message: { matches: "Macie is(n[’']t| not) enabled" },
   }),
 ).pipe(C.withRetryableError) {}
 export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(

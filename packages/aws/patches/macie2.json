@@ -2,7 +2,9 @@
   "structures": {
     "DetectedDataDetails": {
       "members": {
-        "value": { "sensitive": true }
+        "value": {
+          "sensitive": true
+        }
       }
     }
   },
@@ -12,7 +14,9 @@
         {
           "name": "MacieNotEnabled",
           "from": "AccessDeniedException",
-          "message": { "includes": "Macie is not enabled" }
+          "message": {
+            "matches": "Macie is(n[’']t| not) enabled"
+          }
         }
       ]
     },
@@ -21,7 +25,9 @@
         {
           "name": "MacieNotEnabled",
           "from": "AccessDeniedException",
-          "message": { "includes": "Macie is not enabled" }
+          "message": {
+            "matches": "Macie is(n[’']t| not) enabled"
+          }
         }
       ]
     },
@@ -30,7 +36,9 @@
         {
           "name": "MacieNotEnabled",
           "from": "AccessDeniedException",
-          "message": { "includes": "Macie is not enabled" }
+          "message": {
+            "matches": "Macie is(n[’']t| not) enabled"
+          }
         }
       ]
     },
@@ -39,12 +47,16 @@
         {
           "name": "MacieNotEnabled",
           "from": "AccessDeniedException",
-          "message": { "includes": "Macie is not enabled" }
+          "message": {
+            "matches": "Macie is(n[’']t| not) enabled"
+          }
         }
       ]
     }
   },
   "errorCategories": {
-    "MacieNotEnabled": ["RetryableError"]
+    "MacieNotEnabled": [
+      "RetryableError"
+    ]
   }
 }
