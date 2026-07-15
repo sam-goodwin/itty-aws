@@ -1,4 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
 import * as API from "../client/api.ts";
@@ -7,6 +8,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region as Rgn } from "../region.ts";
+import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://ecr.amazonaws.com/doc/2015-09-21/");
 const svc = T.AwsApiService({
   sdkId: "ECR",
@@ -2420,13 +2422,13 @@ export const GetAuthorizationTokenRequest =
     identifier: "GetAuthorizationTokenRequest",
   }) as any as S.Schema<GetAuthorizationTokenRequest>;
 export interface AuthorizationData {
-  authorizationToken?: string;
+  authorizationToken?: string | redacted.Redacted<string>;
   expiresAt?: Date;
   proxyEndpoint?: string;
 }
 export const AuthorizationData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    authorizationToken: S.optional(S.String),
+    authorizationToken: S.optional(SensitiveString),
     expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     proxyEndpoint: S.optional(S.String),
   }),
@@ -3898,6 +3900,7 @@ export class UnableToGetUpstreamImageException extends S.TaggedErrorClass<Unable
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class EmptyUploadException extends S.TaggedErrorClass<EmptyUploadException>()(
   "EmptyUploadException",
