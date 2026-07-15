@@ -1302,6 +1302,7 @@ export type ListChannelsError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Returns the list of channel within a private re:Post with some information about each channel.
@@ -1334,6 +1335,7 @@ export const listChannels: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "ListChannels",
   pagination: {

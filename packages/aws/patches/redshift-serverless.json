@@ -2,7 +2,7 @@
   "structures": {
     "GetIdentityCenterAuthTokenResponse": {
       "members": {
-        "Token": { "sensitive": true }
+        "token": { "sensitive": true }
       }
     }
   }

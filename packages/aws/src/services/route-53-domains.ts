@@ -2649,6 +2649,7 @@ export type RenewDomainError =
   | OperationLimitExceeded
   | TLDRulesViolation
   | UnsupportedTLD
+  | DomainNotFound
   | CommonErrors;
 /**
  * This operation renews a domain for the specified number of years. The cost of renewing
@@ -2674,6 +2675,7 @@ export const renewDomain: API.OperationMethod<
     OperationLimitExceeded,
     TLDRulesViolation,
     UnsupportedTLD,
+    DomainNotFound,
   ],
   operationName: "RenewDomain",
 }));
@@ -2726,6 +2728,7 @@ export type RetrieveDomainAuthCodeError =
   | InvalidInput
   | TLDInMaintenance
   | UnsupportedTLD
+  | DomainNotFound
   | CommonErrors;
 /**
  * This operation returns the authorization code for the domain. To transfer a domain to
@@ -2739,7 +2742,7 @@ export const retrieveDomainAuthCode: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveDomainAuthCodeRequest,
   output: RetrieveDomainAuthCodeResponse,
-  errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
+  errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD, DomainNotFound],
   operationName: "RetrieveDomainAuthCode",
 }));
 export type TransferDomainError =
@@ -2934,6 +2937,7 @@ export type UpdateDomainNameserversError =
   | OperationLimitExceeded
   | TLDRulesViolation
   | UnsupportedTLD
+  | DomainNotFound
   | CommonErrors;
 /**
  * This operation replaces the current set of name servers for the domain with the
@@ -2958,6 +2962,7 @@ export const updateDomainNameservers: API.OperationMethod<
     OperationLimitExceeded,
     TLDRulesViolation,
     UnsupportedTLD,
+    DomainNotFound,
   ],
   operationName: "UpdateDomainNameservers",
 }));

@@ -10,6 +10,39 @@
           }
         }
       ]
+    },
+    "renewDomain": {
+      "syntheticErrors": [
+        {
+          "name": "DomainNotFound",
+          "from": "InvalidInput",
+          "message": {
+            "includes": "not found in account"
+          }
+        }
+      ]
+    },
+    "retrieveDomainAuthCode": {
+      "syntheticErrors": [
+        {
+          "name": "DomainNotFound",
+          "from": "InvalidInput",
+          "message": {
+            "includes": "not found in account"
+          }
+        }
+      ]
+    },
+    "updateDomainNameservers": {
+      "syntheticErrors": [
+        {
+          "name": "DomainNotFound",
+          "from": "InvalidInput",
+          "message": {
+            "includes": "not found in account"
+          }
+        }
+      ]
     }
   },
   "errorCategories": {

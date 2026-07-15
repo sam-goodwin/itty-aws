@@ -286,13 +286,13 @@ export const GetIdentityCenterAuthTokenRequest =
     identifier: "GetIdentityCenterAuthTokenRequest",
   }) as any as S.Schema<GetIdentityCenterAuthTokenRequest>;
 export interface GetIdentityCenterAuthTokenResponse {
-  token?: string;
+  token?: string | redacted.Redacted<string>;
   expirationTime?: Date;
 }
 export const GetIdentityCenterAuthTokenResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
-      token: S.optional(S.String),
+      token: S.optional(SensitiveString),
       expirationTime: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
