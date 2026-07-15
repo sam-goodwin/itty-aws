@@ -7738,6 +7738,7 @@ export class NoSuchConfiguration extends S.TaggedErrorClass<NoSuchConfiguration>
 export class NoSuchPublicAccessBlockConfiguration extends S.TaggedErrorClass<NoSuchPublicAccessBlockConfiguration>()(
   "NoSuchPublicAccessBlockConfiguration",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
   "InvalidNextTokenException",
@@ -7758,6 +7759,14 @@ export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsExceptio
 export class MissingBucketLevelActivityMetrics extends S.TaggedErrorClass<MissingBucketLevelActivityMetrics>()(
   "MissingBucketLevelActivityMetrics",
   {},
+).pipe(C.withBadRequestError) {}
+export class JobStatusTransitionForbidden extends S.TaggedErrorClass<JobStatusTransitionForbidden>()(
+  "JobStatusTransitionForbidden",
+  {},
+  T.SyntheticError({
+    from: "InvalidRequest",
+    message: { includes: "job status forbidden" },
+  }),
 ).pipe(C.withBadRequestError) {}
 export class JobStatusException extends S.TaggedErrorClass<JobStatusException>()(
   "JobStatusException",
@@ -8014,6 +8023,7 @@ export type CreateJobError =
   | IdempotencyException
   | InternalServiceException
   | TooManyRequestsException
+  | InvalidRequest
   | CommonErrors;
 /**
  * This operation creates an S3 Batch Operations job.
@@ -8052,6 +8062,7 @@ export const createJob: API.OperationMethod<
     IdempotencyException,
     InternalServiceException,
     TooManyRequestsException,
+    InvalidRequest,
   ],
   operationName: "CreateJob",
   endpointHostPrefix: "{AccountId}.",
@@ -11041,6 +11052,8 @@ export type UpdateJobPriorityError =
   | InternalServiceException
   | NotFoundException
   | TooManyRequestsException
+  | InvalidRequest
+  | JobStatusTransitionForbidden
   | CommonErrors;
 /**
  * Updates an existing S3 Batch Operations job's priority. For more information, see S3 Batch Operations in the *Amazon S3 User Guide*.
@@ -11074,6 +11087,8 @@ export const updateJobPriority: API.OperationMethod<
     InternalServiceException,
     NotFoundException,
     TooManyRequestsException,
+    InvalidRequest,
+    JobStatusTransitionForbidden,
   ],
   operationName: "UpdateJobPriority",
   endpointHostPrefix: "{AccountId}.",
@@ -11084,6 +11099,8 @@ export type UpdateJobStatusError =
   | JobStatusException
   | NotFoundException
   | TooManyRequestsException
+  | InvalidRequest
+  | JobStatusTransitionForbidden
   | CommonErrors;
 /**
  * Updates the status for the specified job. Use this operation to confirm that you want to
@@ -11119,6 +11136,8 @@ export const updateJobStatus: API.OperationMethod<
     JobStatusException,
     NotFoundException,
     TooManyRequestsException,
+    InvalidRequest,
+    JobStatusTransitionForbidden,
   ],
   operationName: "UpdateJobStatus",
   endpointHostPrefix: "{AccountId}.",

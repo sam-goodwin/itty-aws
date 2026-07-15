@@ -310,9 +310,16 @@ export const make = <Op extends Operation<any, any, any>>(
     // like Lex Runtime V2 (RecognizeUtterance) reject payload-hash
     // signatures on these routes. Glacier is the exception: it REQUIRES a
     // real x-amz-content-sha256 (computed below), so it keeps the hashed
-    // path for buffered bodies.
+    // path for buffered bodies. SageMaker Runtime is another exception:
+    // its event-stream route (InvokeEndpointWithResponseStream) rejects
+    // UNSIGNED-PAYLOAD with InvalidSignatureException — the service always
+    // reconstructs the canonical request from the actual body hash — so
+    // buffered bodies stay on the hashed path (plain InvokeEndpoint accepts
+    // payload-hash signatures too).
     const hasStreamingInput =
-      resolvedRequest.hasStreamingInput === true && _serviceSdkId !== "Glacier";
+      resolvedRequest.hasStreamingInput === true &&
+      _serviceSdkId !== "Glacier" &&
+      _serviceSdkId !== "SageMaker Runtime";
     // Use unsigned payload for streaming bodies OR streaming-input
     // operations OR when service provides checksum with body
     const useUnsignedPayload =

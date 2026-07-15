@@ -1577,6 +1577,7 @@ export const UpdateRotationResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
@@ -1584,10 +1585,12 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
     Message: S.String,
     RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -1597,6 +1600,7 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     ServiceCode: S.optional(S.String),
     RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -1605,30 +1609,8 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     Reason: S.optional(ValidationExceptionReason),
     Fields: S.optional(ValidationExceptionFieldList),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Message: S.String,
-    ResourceId: S.String,
-    ResourceType: S.String,
-    DependentEntities: S.optional(DependentEntityList),
-  },
-).pipe(C.withConflictError) {}
-export class DataEncryptionException extends S.TaggedErrorClass<DataEncryptionException>()(
-  "DataEncryptionException",
-  { Message: S.String },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.String,
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    QuotaCode: S.String,
-    ServiceCode: S.String,
-  },
-).pipe(C.withQuotaError) {}
 export class IncidentManagerNotOnboarded extends S.TaggedErrorClass<IncidentManagerNotOnboarded>()(
   "IncidentManagerNotOnboarded",
   {
@@ -1641,6 +1623,44 @@ export class IncidentManagerNotOnboarded extends S.TaggedErrorClass<IncidentMana
     message: { includes: "Account not found for the request" },
   }),
 ).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Message: S.String,
+    ResourceId: S.String,
+    ResourceType: S.String,
+    DependentEntities: S.optional(DependentEntityList),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class DataEncryptionException extends S.TaggedErrorClass<DataEncryptionException>()(
+  "DataEncryptionException",
+  { Message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.String,
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    QuotaCode: S.String,
+    ServiceCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class InvalidRotationArn extends S.TaggedErrorClass<InvalidRotationArn>()(
+  "InvalidRotationArn",
+  {
+    Message: S.String,
+    Reason: S.optional(ValidationExceptionReason),
+    Fields: S.optional(ValidationExceptionFieldList),
+  },
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Invalid resource Arn" },
+  }),
+).pipe(C.withBadRequestError) {}
 
 //# Operations
 export type AcceptPageError =
@@ -1649,6 +1669,7 @@ export type AcceptPageError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Used to acknowledge an engagement to a contact channel during an incident.
@@ -1667,6 +1688,7 @@ export const acceptPage: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "AcceptPage",
 }));
@@ -1676,6 +1698,7 @@ export type ActivateContactChannelError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Activates a contact's contact channel. Incident Manager can't engage a contact until the
@@ -1695,6 +1718,7 @@ export const activateContactChannel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "ActivateContactChannel",
 }));
@@ -1804,6 +1828,8 @@ export type CreateRotationOverrideError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
+  | InvalidRotationArn
   | CommonErrors;
 /**
  * Creates an override for a rotation in an on-call schedule.
@@ -1823,6 +1849,8 @@ export const createRotationOverride: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
+    InvalidRotationArn,
   ],
   operationName: "CreateRotationOverride",
 }));
@@ -1832,6 +1860,7 @@ export type DeactivateContactChannelError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * To no longer receive Incident Manager engagements to a contact channel, you can deactivate
@@ -1851,6 +1880,7 @@ export const deactivateContactChannel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "DeactivateContactChannel",
 }));
@@ -1930,6 +1960,7 @@ export type DeleteRotationError =
   | ThrottlingException
   | ValidationException
   | IncidentManagerNotOnboarded
+  | InvalidRotationArn
   | CommonErrors;
 /**
  * Deletes a rotation from the system. If a rotation belongs to more than one on-call
@@ -1951,6 +1982,7 @@ export const deleteRotation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
     IncidentManagerNotOnboarded,
+    InvalidRotationArn,
   ],
   operationName: "DeleteRotation",
 }));
@@ -1960,6 +1992,8 @@ export type DeleteRotationOverrideError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
+  | InvalidRotationArn
   | CommonErrors;
 /**
  * Deletes an existing override for an on-call rotation.
@@ -1978,6 +2012,8 @@ export const deleteRotationOverride: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
+    InvalidRotationArn,
   ],
   operationName: "DeleteRotationOverride",
 }));
@@ -1988,6 +2024,7 @@ export type DescribeEngagementError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Incident Manager uses engagements to engage contacts and escalation plans during an incident.
@@ -2008,6 +2045,7 @@ export const describeEngagement: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "DescribeEngagement",
 }));
@@ -2018,6 +2056,7 @@ export type DescribePageError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Lists details of the engagement to a contact channel.
@@ -2037,6 +2076,7 @@ export const describePage: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "DescribePage",
 }));
@@ -2108,6 +2148,7 @@ export type GetContactPolicyError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Retrieves the resource policies attached to the specified contact or escalation
@@ -2127,6 +2168,7 @@ export const getContactPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "GetContactPolicy",
 }));
@@ -2137,6 +2179,7 @@ export type GetRotationError =
   | ThrottlingException
   | ValidationException
   | IncidentManagerNotOnboarded
+  | InvalidRotationArn
   | CommonErrors;
 /**
  * Retrieves information about an on-call rotation.
@@ -2156,6 +2199,7 @@ export const getRotation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
     IncidentManagerNotOnboarded,
+    InvalidRotationArn,
   ],
   operationName: "GetRotation",
 }));
@@ -2165,6 +2209,8 @@ export type GetRotationOverrideError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
+  | InvalidRotationArn
   | CommonErrors;
 /**
  * Retrieves information about an override to an on-call rotation.
@@ -2183,6 +2229,8 @@ export const getRotationOverride: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
+    InvalidRotationArn,
   ],
   operationName: "GetRotationOverride",
 }));
@@ -2291,6 +2339,7 @@ export type ListEngagementsError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Lists all engagements that have happened in an incident.
@@ -2323,6 +2372,7 @@ export const listEngagements: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "ListEngagements",
   pagination: {
@@ -2338,6 +2388,7 @@ export type ListPageReceiptsError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Lists all of the engagements to contact channels that have been acknowledged.
@@ -2371,6 +2422,7 @@ export const listPageReceipts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "ListPageReceipts",
   pagination: {
@@ -2386,6 +2438,7 @@ export type ListPageResolutionsError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Returns the resolution path of an engagement. For example, the escalation plan engaged
@@ -2423,6 +2476,7 @@ export const listPageResolutions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "ListPageResolutions",
   pagination: {
@@ -2437,6 +2491,7 @@ export type ListPagesByContactError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Lists the engagements to a contact's contact channels.
@@ -2470,6 +2525,7 @@ export const listPagesByContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "ListPagesByContact",
   pagination: {
@@ -2485,6 +2541,7 @@ export type ListPagesByEngagementError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Lists the engagements to contact channels that occurred by engaging a contact.
@@ -2518,6 +2575,7 @@ export const listPagesByEngagement: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "ListPagesByEngagement",
   pagination: {
@@ -2532,6 +2590,7 @@ export type ListPreviewRotationShiftsError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Returns a list of shifts based on rotation configuration parameters.
@@ -2566,6 +2625,7 @@ export const listPreviewRotationShifts: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "ListPreviewRotationShifts",
   pagination: {
@@ -2581,6 +2641,8 @@ export type ListRotationOverridesError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
+  | InvalidRotationArn
   | CommonErrors;
 /**
  * Retrieves a list of overrides currently specified for an on-call rotation.
@@ -2614,6 +2676,8 @@ export const listRotationOverrides: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
+    InvalidRotationArn,
   ],
   operationName: "ListRotationOverrides",
   pagination: {
@@ -2680,6 +2744,8 @@ export type ListRotationShiftsError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
+  | InvalidRotationArn
   | CommonErrors;
 /**
  * Returns a list of shifts generated by an existing rotation in the system.
@@ -2714,6 +2780,8 @@ export const listRotationShifts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
+    InvalidRotationArn,
   ],
   operationName: "ListRotationShifts",
   pagination: {
@@ -2759,6 +2827,7 @@ export type PutContactPolicyError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Adds a resource policy to the specified contact or escalation plan. The resource policy
@@ -2780,6 +2849,7 @@ export const putContactPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "PutContactPolicy",
 }));
@@ -2791,6 +2861,7 @@ export type SendActivationCodeError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Sends an activation code to a contact channel. The contact can use this code to activate
@@ -2813,6 +2884,7 @@ export const sendActivationCode: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "SendActivationCode",
 }));
@@ -2823,6 +2895,7 @@ export type StartEngagementError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Starts an engagement to a contact or escalation plan. The engagement engages each
@@ -2843,6 +2916,7 @@ export const startEngagement: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "StartEngagement",
 }));
@@ -2852,6 +2926,7 @@ export type StopEngagementError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | IncidentManagerNotOnboarded
   | CommonErrors;
 /**
  * Stops an engagement before it finishes the final stage of the escalation plan or
@@ -2871,6 +2946,7 @@ export const stopEngagement: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    IncidentManagerNotOnboarded,
   ],
   operationName: "StopEngagement",
 }));
@@ -3009,6 +3085,7 @@ export type UpdateRotationError =
   | ThrottlingException
   | ValidationException
   | IncidentManagerNotOnboarded
+  | InvalidRotationArn
   | CommonErrors;
 /**
  * Updates the information specified for an on-call rotation.
@@ -3029,6 +3106,7 @@ export const updateRotation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
     IncidentManagerNotOnboarded,
+    InvalidRotationArn,
   ],
   operationName: "UpdateRotation",
 }));
