@@ -1,0 +1,9 @@
+{
+  "errors": {},
+  "request": {
+    "properties": {
+      "params[]": { "type": "unknown" },
+      "batch[].params[]": { "type": "unknown" }
+    }
+  }
+}

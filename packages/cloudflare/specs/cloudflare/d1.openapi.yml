@@ -865,8 +865,7 @@ paths:
                     by semicolons, which will be executed as a batch."
                 params:
                   type: array
-                  items:
-                    type: string
+                  items: {}
                   description: Body param
                 batch:
                   type: array
@@ -879,8 +878,7 @@ paths:
                           which will be executed as a batch.
                       params:
                         type: array
-                        items:
-                          type: string
+                        items: {}
                     required:
                       - sql
                   description: Body param
@@ -990,8 +988,7 @@ paths:
                     by semicolons, which will be executed as a batch."
                 params:
                   type: array
-                  items:
-                    type: string
+                  items: {}
                   description: Body param
                 batch:
                   type: array
@@ -1004,8 +1001,7 @@ paths:
                           which will be executed as a batch.
                       params:
                         type: array
-                        items:
-                          type: string
+                        items: {}
                     required:
                       - sql
                   description: Body param
