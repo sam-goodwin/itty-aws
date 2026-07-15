@@ -211,10 +211,10 @@ export const Source = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({ s3: S.optional(S3Source) }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 export interface SigningMaterial {
-  certificateArn: string;
+  certificateArn?: string;
 }
 export const SigningMaterial = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ certificateArn: S.String }),
+  S.Struct({ certificateArn: S.optional(S.String) }),
 ).annotate({
   identifier: "SigningMaterial",
 }) as any as S.Schema<SigningMaterial>;
@@ -1212,38 +1212,47 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
   "InternalServiceErrorException",
   { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceLimitExceededException extends S.TaggedErrorClass<ServiceLimitExceededException>()(
   "ServiceLimitExceededException",
   { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
   "TooManyRequestsException",
   { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class SigningProfileAlreadyExists extends S.TaggedErrorClass<SigningProfileAlreadyExists>()(
   "SigningProfileAlreadyExists",
@@ -1256,6 +1265,7 @@ export class SigningProfileAlreadyExists extends S.TaggedErrorClass<SigningProfi
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 
 //# Operations

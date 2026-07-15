@@ -5,12 +5,25 @@
         {
           "name": "SigningProfileAlreadyExists",
           "from": "ValidationException",
-          "message": { "includes": "already exists" }
+          "message": {
+            "includes": "already exists"
+          }
         }
       ]
     }
   },
   "errorCategories": {
-    "SigningProfileAlreadyExists": ["AlreadyExistsError"]
+    "SigningProfileAlreadyExists": [
+      "AlreadyExistsError"
+    ]
+  },
+  "structures": {
+    "SigningMaterial": {
+      "members": {
+        "certificateArn": {
+          "optional": true
+        }
+      }
+    }
   }
 }
