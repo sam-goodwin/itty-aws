@@ -1001,7 +1001,7 @@ export const GetSchemaInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "GetSchemaInput" }) as any as S.Schema<GetSchemaInput>;
-export type NamespaceList = string | redacted.Redacted<string>[];
+export type NamespaceList = (string | redacted.Redacted<string>)[];
 export const NamespaceList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface GetSchemaOutput {
@@ -1009,7 +1009,7 @@ export interface GetSchemaOutput {
   schema: string | redacted.Redacted<string>;
   createdDate: Date;
   lastUpdatedDate: Date;
-  namespaces?: string | redacted.Redacted<string>[];
+  namespaces?: (string | redacted.Redacted<string>)[];
 }
 export const GetSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1117,7 +1117,7 @@ export const PutSchemaInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSchemaInput" }) as any as S.Schema<PutSchemaInput>;
 export interface PutSchemaOutput {
   policyStoreId: string;
-  namespaces: string | redacted.Redacted<string>[];
+  namespaces: (string | redacted.Redacted<string>)[];
   createdDate: Date;
   lastUpdatedDate: Date;
 }
@@ -1257,7 +1257,7 @@ export const BatchGetPolicyOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetPolicyOutput",
 }) as any as S.Schema<BatchGetPolicyOutput>;
-export type ClientIds = string | redacted.Redacted<string>[];
+export type ClientIds = (string | redacted.Redacted<string>)[];
 export const ClientIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface CognitoGroupConfiguration {
   groupEntityType: string | redacted.Redacted<string>;
@@ -1269,7 +1269,7 @@ export const CognitoGroupConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<CognitoGroupConfiguration>;
 export interface CognitoUserPoolConfiguration {
   userPoolArn: string;
-  clientIds?: string | redacted.Redacted<string>[];
+  clientIds?: (string | redacted.Redacted<string>)[];
   groupConfiguration?: CognitoGroupConfiguration;
 }
 export const CognitoUserPoolConfiguration =
@@ -1309,7 +1309,7 @@ export const OpenIdConnectAccessTokenConfiguration =
   }) as any as S.Schema<OpenIdConnectAccessTokenConfiguration>;
 export interface OpenIdConnectIdentityTokenConfiguration {
   principalIdClaim?: string | redacted.Redacted<string>;
-  clientIds?: string | redacted.Redacted<string>[];
+  clientIds?: (string | redacted.Redacted<string>)[];
 }
 export const OpenIdConnectIdentityTokenConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1414,7 +1414,7 @@ export const GetIdentitySourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export type OpenIdIssuer = "COGNITO" | (string & {});
 export const OpenIdIssuer = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface IdentitySourceDetails {
-  clientIds?: string | redacted.Redacted<string>[];
+  clientIds?: (string | redacted.Redacted<string>)[];
   userPoolArn?: string;
   discoveryUrl?: string;
   openIdIssuer?: OpenIdIssuer;
@@ -1440,7 +1440,7 @@ export const CognitoGroupConfigurationDetail =
   }) as any as S.Schema<CognitoGroupConfigurationDetail>;
 export interface CognitoUserPoolConfigurationDetail {
   userPoolArn: string;
-  clientIds: string | redacted.Redacted<string>[];
+  clientIds: (string | redacted.Redacted<string>)[];
   issuer: string;
   groupConfiguration?: CognitoGroupConfigurationDetail;
 }
@@ -1480,7 +1480,7 @@ export const OpenIdConnectAccessTokenConfigurationDetail =
   }) as any as S.Schema<OpenIdConnectAccessTokenConfigurationDetail>;
 export interface OpenIdConnectIdentityTokenConfigurationDetail {
   principalIdClaim?: string | redacted.Redacted<string>;
-  clientIds?: string | redacted.Redacted<string>[];
+  clientIds?: (string | redacted.Redacted<string>)[];
 }
 export const OpenIdConnectIdentityTokenConfigurationDetail =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1573,7 +1573,7 @@ export const UpdateCognitoGroupConfiguration =
   }) as any as S.Schema<UpdateCognitoGroupConfiguration>;
 export interface UpdateCognitoUserPoolConfiguration {
   userPoolArn: string;
-  clientIds?: string | redacted.Redacted<string>[];
+  clientIds?: (string | redacted.Redacted<string>)[];
   groupConfiguration?: UpdateCognitoGroupConfiguration;
 }
 export const UpdateCognitoUserPoolConfiguration =
@@ -1611,7 +1611,7 @@ export const UpdateOpenIdConnectAccessTokenConfiguration =
   }) as any as S.Schema<UpdateOpenIdConnectAccessTokenConfiguration>;
 export interface UpdateOpenIdConnectIdentityTokenConfiguration {
   principalIdClaim?: string | redacted.Redacted<string>;
-  clientIds?: string | redacted.Redacted<string>[];
+  clientIds?: (string | redacted.Redacted<string>)[];
 }
 export const UpdateOpenIdConnectIdentityTokenConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1755,7 +1755,7 @@ export const ListIdentitySourcesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   identifier: "ListIdentitySourcesInput",
 }) as any as S.Schema<ListIdentitySourcesInput>;
 export interface IdentitySourceItemDetails {
-  clientIds?: string | redacted.Redacted<string>[];
+  clientIds?: (string | redacted.Redacted<string>)[];
   userPoolArn?: string;
   discoveryUrl?: string;
   openIdIssuer?: OpenIdIssuer;
@@ -1782,7 +1782,7 @@ export const CognitoGroupConfigurationItem =
   }) as any as S.Schema<CognitoGroupConfigurationItem>;
 export interface CognitoUserPoolConfigurationItem {
   userPoolArn: string;
-  clientIds: string | redacted.Redacted<string>[];
+  clientIds: (string | redacted.Redacted<string>)[];
   issuer: string;
   groupConfiguration?: CognitoGroupConfigurationItem;
 }
@@ -1822,7 +1822,7 @@ export const OpenIdConnectAccessTokenConfigurationItem =
   }) as any as S.Schema<OpenIdConnectAccessTokenConfigurationItem>;
 export interface OpenIdConnectIdentityTokenConfigurationItem {
   principalIdClaim?: string | redacted.Redacted<string>;
-  clientIds?: string | redacted.Redacted<string>[];
+  clientIds?: (string | redacted.Redacted<string>)[];
 }
 export const OpenIdConnectIdentityTokenConfigurationItem =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2555,15 +2555,17 @@ export const ListPolicyStoreAliasesOutput =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String, resourceId: S.String, resourceType: ResourceType },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -2572,15 +2574,17 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     serviceCode: S.optional(S.String),
     quotaCode: S.optional(S.String),
   },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { message: S.optional(S.String), resourceName: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String, resources: ResourceConflictList },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
@@ -2591,6 +2595,7 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     serviceCode: S.optional(S.String),
     quotaCode: S.optional(S.String),
   },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -2599,6 +2604,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
 export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
   "InvalidStateException",
   { message: S.String },
+  T.HttpError(406),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -2830,6 +2836,7 @@ export const batchIsAuthorized: API.OperationMethod<
 }));
 export type BatchIsAuthorizedWithTokenError =
   | ResourceNotFoundException
+  | ValidationException
   | CommonErrors;
 /**
  * Makes a series of decisions about multiple authorization requests for one token. The principal in this request comes from an external identity source in the form of an identity or access token, formatted as a JSON web token (JWT). The information in the parameters can also define additional context that Verified Permissions can include in the evaluations.
@@ -2848,7 +2855,7 @@ export const batchIsAuthorizedWithToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchIsAuthorizedWithTokenInput,
   output: BatchIsAuthorizedWithTokenOutput,
-  errors: [ResourceNotFoundException],
+  errors: [ResourceNotFoundException, ValidationException],
   operationName: "BatchIsAuthorizedWithToken",
 }));
 export type GetSchemaError =
@@ -2936,7 +2943,7 @@ export const putSchema: API.OperationMethod<
   ],
   operationName: "PutSchema",
 }));
-export type BatchGetPolicyError = CommonErrors;
+export type BatchGetPolicyError = ValidationException | CommonErrors;
 /**
  * Retrieves information about a group (batch) of policies.
  *
@@ -2950,13 +2957,14 @@ export const batchGetPolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetPolicyInput,
   output: BatchGetPolicyOutput,
-  errors: [],
+  errors: [ValidationException],
   operationName: "BatchGetPolicy",
 }));
 export type CreateIdentitySourceError =
   | ConflictException
   | ResourceNotFoundException
   | ServiceQuotaExceededException
+  | ValidationException
   | CommonErrors;
 /**
  * Adds an identity source to a policy store–an Amazon Cognito user pool or OpenID Connect (OIDC) identity provider (IdP).
@@ -2985,6 +2993,7 @@ export const createIdentitySource: API.OperationMethod<
     ConflictException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    ValidationException,
   ],
   operationName: "CreateIdentitySource",
 }));
@@ -3006,6 +3015,7 @@ export const getIdentitySource: API.OperationMethod<
 export type UpdateIdentitySourceError =
   | ConflictException
   | ResourceNotFoundException
+  | ValidationException
   | CommonErrors;
 /**
  * Updates the specified identity source to use a new identity provider (IdP), or to change the mapping of identities from the IdP to a different principal entity type.
@@ -3020,7 +3030,7 @@ export const updateIdentitySource: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIdentitySourceInput,
   output: UpdateIdentitySourceOutput,
-  errors: [ConflictException, ResourceNotFoundException],
+  errors: [ConflictException, ResourceNotFoundException, ValidationException],
   operationName: "UpdateIdentitySource",
 }));
 export type DeleteIdentitySourceError =
@@ -3235,6 +3245,7 @@ export type CreatePolicyTemplateError =
   | ConflictException
   | ResourceNotFoundException
   | ServiceQuotaExceededException
+  | ValidationException
   | CommonErrors;
 /**
  * Creates a policy template. A template can use placeholders for the principal and resource. A template must be instantiated into a policy by associating it with specific principals and resources to use for the placeholders. That instantiated policy can then be considered in authorization decisions. The instantiated policy works identically to any other policy, except that it is dynamically linked to the template. If the template changes, then any policies that are linked to that template are immediately updated as well.
@@ -3253,6 +3264,7 @@ export const createPolicyTemplate: API.OperationMethod<
     ConflictException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    ValidationException,
   ],
   operationName: "CreatePolicyTemplate",
 }));
@@ -3274,6 +3286,7 @@ export const getPolicyTemplate: API.OperationMethod<
 export type UpdatePolicyTemplateError =
   | ConflictException
   | ResourceNotFoundException
+  | ValidationException
   | CommonErrors;
 /**
  * Updates the specified policy template. You can update only the description and the some elements of the policyBody.
@@ -3290,7 +3303,7 @@ export const updatePolicyTemplate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePolicyTemplateInput,
   output: UpdatePolicyTemplateOutput,
-  errors: [ConflictException, ResourceNotFoundException],
+  errors: [ConflictException, ResourceNotFoundException, ValidationException],
   operationName: "UpdatePolicyTemplate",
 }));
 export type DeletePolicyTemplateError =
@@ -3353,6 +3366,7 @@ export type CreatePolicyStoreAliasError =
   | ConflictException
   | ResourceNotFoundException
   | ServiceQuotaExceededException
+  | ValidationException
   | CommonErrors;
 /**
  * Creates a policy store alias for the specified policy store. A policy store alias is an alternative identifier that you can use to reference a policy store in API operations.
@@ -3373,6 +3387,7 @@ export const createPolicyStoreAlias: API.OperationMethod<
     ConflictException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    ValidationException,
   ],
   operationName: "CreatePolicyStoreAlias",
 }));
@@ -3391,7 +3406,11 @@ export const getPolicyStoreAlias: API.OperationMethod<
   errors: [ResourceNotFoundException],
   operationName: "GetPolicyStoreAlias",
 }));
-export type DeletePolicyStoreAliasError = InvalidStateException | CommonErrors;
+export type DeletePolicyStoreAliasError =
+  | InvalidStateException
+  | ValidationException
+  | ResourceNotFoundException
+  | CommonErrors;
 /**
  * Deletes the specified policy store alias.
  *
@@ -3411,7 +3430,11 @@ export const deletePolicyStoreAlias: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePolicyStoreAliasInput,
   output: DeletePolicyStoreAliasOutput,
-  errors: [InvalidStateException],
+  errors: [
+    InvalidStateException,
+    ValidationException,
+    ResourceNotFoundException,
+  ],
   operationName: "DeletePolicyStoreAlias",
 }));
 export type ListPolicyStoreAliasesError = CommonErrors;
