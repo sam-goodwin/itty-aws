@@ -236,17 +236,17 @@ export const DisconnectedUniqueIdsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
 );
 export interface BatchDeleteUniqueIdOutput {
   status: DeleteUniqueIdStatus;
-  errors: DeleteUniqueIdError[];
-  deleted: DeletedUniqueId[];
-  disconnectedUniqueIds: string[];
+  errors?: DeleteUniqueIdError[];
+  deleted?: DeletedUniqueId[];
+  disconnectedUniqueIds?: string[];
 }
 export const BatchDeleteUniqueIdOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       status: DeleteUniqueIdStatus,
-      errors: DeleteUniqueIdErrorsList,
-      deleted: DeletedUniqueIdList,
-      disconnectedUniqueIds: DisconnectedUniqueIdsList,
+      errors: S.optional(DeleteUniqueIdErrorsList),
+      deleted: S.optional(DeletedUniqueIdList),
+      disconnectedUniqueIds: S.optional(DisconnectedUniqueIdsList),
     }),
 ).annotate({
   identifier: "BatchDeleteUniqueIdOutput",

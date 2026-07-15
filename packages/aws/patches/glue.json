@@ -18,6 +18,15 @@
         }
       ]
     },
+    "startJobRun": {
+      "syntheticErrors": [
+        {
+          "name": "GlueRoleNotAssumable",
+          "from": "InvalidInputException",
+          "message": { "includes": "unable to assume" }
+        }
+      ]
+    },
     "createJob": {
       "syntheticErrors": [
         {

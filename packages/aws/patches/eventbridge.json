@@ -1,28 +1,72 @@
 {
   "errorCategories": {
-    "ThrottlingException": ["ThrottlingError", "RetryableError"],
-    "InternalException": ["ServerError", "RetryableError"],
-    "ConcurrentModificationException": ["ConflictError", "RetryableError"],
-    "IllegalStatusException": ["ConflictError"],
-    "InvalidStateException": ["ConflictError"],
-    "InvalidEventPatternException": ["BadRequestError"],
-    "ManagedRuleException": ["BadRequestError"],
-    "OperationDisabledException": ["BadRequestError"],
-    "LimitExceededException": ["QuotaError"],
-    "PolicyLengthExceededException": ["QuotaError"]
+    "ThrottlingException": [
+      "ThrottlingError",
+      "RetryableError"
+    ],
+    "InternalException": [
+      "ServerError",
+      "RetryableError"
+    ],
+    "ConcurrentModificationException": [
+      "ConflictError",
+      "RetryableError"
+    ],
+    "IllegalStatusException": [
+      "ConflictError"
+    ],
+    "InvalidStateException": [
+      "ConflictError"
+    ],
+    "InvalidEventPatternException": [
+      "BadRequestError"
+    ],
+    "ManagedRuleException": [
+      "BadRequestError"
+    ],
+    "OperationDisabledException": [
+      "BadRequestError"
+    ],
+    "LimitExceededException": [
+      "QuotaError"
+    ],
+    "PolicyLengthExceededException": [
+      "QuotaError"
+    ],
+    "EventBusHasRules": [
+      "ConflictError",
+      "RetryableError"
+    ]
   },
   "operations": {
     "deleteEventBus": {
-      "errors": ["ResourceNotFoundException"]
+      "errors": [
+        "ResourceNotFoundException"
+      ],
+      "syntheticErrors": [
+        {
+          "name": "EventBusHasRules",
+          "from": "ValidationException",
+          "message": {
+            "includes": "has rules"
+          }
+        }
+      ]
     },
     "tagResource": {
-      "errors": ["ThrottlingException"]
+      "errors": [
+        "ThrottlingException"
+      ]
     },
     "untagResource": {
-      "errors": ["ThrottlingException"]
+      "errors": [
+        "ThrottlingException"
+      ]
     },
     "listTagsForResource": {
-      "errors": ["ThrottlingException"]
+      "errors": [
+        "ThrottlingException"
+      ]
     }
   }
 }

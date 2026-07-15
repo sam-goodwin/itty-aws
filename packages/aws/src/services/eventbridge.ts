@@ -2727,7 +2727,7 @@ export const HttpParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     QueryStringParameters: S.optional(QueryStringParametersMap),
   }),
 ).annotate({ identifier: "HttpParameters" }) as any as S.Schema<HttpParameters>;
-export type Sqls = string | redacted.Redacted<string>[];
+export type Sqls = (string | redacted.Redacted<string>)[];
 export const Sqls = /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface RedshiftDataParameters {
   SecretManagerArn?: string;
@@ -2736,7 +2736,7 @@ export interface RedshiftDataParameters {
   Sql?: string | redacted.Redacted<string>;
   StatementName?: string;
   WithEvent?: boolean;
-  Sqls?: string | redacted.Redacted<string>[];
+  Sqls?: (string | redacted.Redacted<string>)[];
 }
 export const RedshiftDataParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3738,6 +3738,14 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
   "ThrottlingException",
   { message: S.optional(S.String) },
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class EventBusHasRules extends S.TaggedErrorClass<EventBusHasRules>()(
+  "EventBusHasRules",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "has rules" },
+  }),
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class ManagedRuleException extends S.TaggedErrorClass<ManagedRuleException>()(
   "ManagedRuleException",
   { message: S.optional(S.String) },
@@ -4182,6 +4190,7 @@ export type DeleteEventBusError =
   | ConcurrentModificationException
   | InternalException
   | ResourceNotFoundException
+  | EventBusHasRules
   | CommonErrors;
 /**
  * Deletes the specified custom event bus or partner event bus. All rules associated with
@@ -4199,6 +4208,7 @@ export const deleteEventBus: API.OperationMethod<
     ConcurrentModificationException,
     InternalException,
     ResourceNotFoundException,
+    EventBusHasRules,
   ],
   operationName: "DeleteEventBus",
 }));

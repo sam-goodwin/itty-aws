@@ -224,7 +224,7 @@ export const PolylineCorridor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PolylineCorridor",
 }) as any as S.Schema<PolylineCorridor>;
-export type PolylineRingList = string | redacted.Redacted<string>[];
+export type PolylineRingList = (string | redacted.Redacted<string>)[];
 export const PolylineRingList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface IsolineAvoidanceAreaGeometry {
@@ -232,7 +232,7 @@ export interface IsolineAvoidanceAreaGeometry {
   Corridor?: Corridor;
   Polygon?: number[][][];
   PolylineCorridor?: PolylineCorridor;
-  PolylinePolygon?: string | redacted.Redacted<string>[];
+  PolylinePolygon?: (string | redacted.Redacted<string>)[];
 }
 export const IsolineAvoidanceAreaGeometry =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -264,7 +264,7 @@ export const IsolineAvoidanceArea = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type IsolineAvoidanceAreaList = IsolineAvoidanceArea[];
 export const IsolineAvoidanceAreaList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(IsolineAvoidanceArea);
-export type TruckRoadTypeList = string | redacted.Redacted<string>[];
+export type TruckRoadTypeList = (string | redacted.Redacted<string>)[];
 export const TruckRoadTypeList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export type IsolineZoneCategory =
@@ -294,7 +294,7 @@ export interface IsolineAvoidanceOptions {
   SeasonalClosure?: boolean;
   TollRoads?: boolean;
   TollTransponders?: boolean;
-  TruckRoadTypes?: string | redacted.Redacted<string>[];
+  TruckRoadTypes?: (string | redacted.Redacted<string>)[];
   Tunnels?: boolean;
   UTurns?: boolean;
   ZoneCategories?: IsolineAvoidanceZoneCategory[];
@@ -704,7 +704,7 @@ export const IsolineConnectionList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(IsolineConnection);
 export interface IsolineShapeGeometry {
   Polygon?: number[][][];
-  PolylinePolygon?: string | redacted.Redacted<string>[];
+  PolylinePolygon?: (string | redacted.Redacted<string>)[];
 }
 export const IsolineShapeGeometry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -793,7 +793,7 @@ export const RouteMatrixAllowOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface RouteMatrixAvoidanceAreaGeometry {
   BoundingBox?: number[];
   Polygon?: number[][][];
-  PolylinePolygon?: string | redacted.Redacted<string>[];
+  PolylinePolygon?: (string | redacted.Redacted<string>)[];
 }
 export const RouteMatrixAvoidanceAreaGeometry =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -844,7 +844,7 @@ export interface RouteMatrixAvoidanceOptions {
   Ferries?: boolean;
   TollRoads?: boolean;
   TollTransponders?: boolean;
-  TruckRoadTypes?: string | redacted.Redacted<string>[];
+  TruckRoadTypes?: (string | redacted.Redacted<string>)[];
   Tunnels?: boolean;
   UTurns?: boolean;
   ZoneCategories?: RouteMatrixAvoidanceZoneCategory[];
@@ -931,11 +931,11 @@ export type RouteMatrixDestinationList = RouteMatrixDestination[];
 export const RouteMatrixDestinationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   RouteMatrixDestination,
 );
-export type CountryCodeList = string | redacted.Redacted<string>[];
+export type CountryCodeList = (string | redacted.Redacted<string>)[];
 export const CountryCodeList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface RouteMatrixExclusionOptions {
-  Countries: string | redacted.Redacted<string>[];
+  Countries: (string | redacted.Redacted<string>)[];
 }
 export const RouteMatrixExclusionOptions =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1272,7 +1272,7 @@ export interface RouteAvoidanceAreaGeometry {
   BoundingBox?: number[];
   Polygon?: number[][][];
   PolylineCorridor?: PolylineCorridor;
-  PolylinePolygon?: string | redacted.Redacted<string>[];
+  PolylinePolygon?: (string | redacted.Redacted<string>)[];
 }
 export const RouteAvoidanceAreaGeometry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1330,7 +1330,7 @@ export interface RouteAvoidanceOptions {
   SeasonalClosure?: boolean;
   TollRoads?: boolean;
   TollTransponders?: boolean;
-  TruckRoadTypes?: string | redacted.Redacted<string>[];
+  TruckRoadTypes?: (string | redacted.Redacted<string>)[];
   Tunnels?: boolean;
   UTurns?: boolean;
   ZoneCategories?: RouteAvoidanceZoneCategory[];
@@ -1425,7 +1425,7 @@ export const RouteDriverOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RouteDriverOptions",
 }) as any as S.Schema<RouteDriverOptions>;
 export interface RouteExclusionOptions {
-  Countries: string | redacted.Redacted<string>[];
+  Countries: (string | redacted.Redacted<string>)[];
 }
 export const RouteExclusionOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({ Countries: CountryCodeList }),
@@ -3571,7 +3571,7 @@ export interface RouteVehicleLegDetails {
   Tolls?: RouteToll[];
   TollSystems?: RouteTollSystem[];
   TravelSteps?: RouteVehicleTravelStep[];
-  TruckRoadTypes?: string | redacted.Redacted<string>[];
+  TruckRoadTypes?: (string | redacted.Redacted<string>)[];
   Zones?: RouteZone[];
 }
 export const RouteVehicleLegDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -4817,7 +4817,7 @@ export const WaypointOptimizationDriverOptions =
     identifier: "WaypointOptimizationDriverOptions",
   }) as any as S.Schema<WaypointOptimizationDriverOptions>;
 export interface WaypointOptimizationExclusionOptions {
-  Countries: string | redacted.Redacted<string>[];
+  Countries: (string | redacted.Redacted<string>)[];
 }
 export const WaypointOptimizationExclusionOptions =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -5096,7 +5096,7 @@ export const WaypointOptimizationImpedingWaypointList =
 export interface WaypointOptimizationOptimizedWaypoint {
   ArrivalTime?: string | redacted.Redacted<string>;
   ClusterIndex?: number;
-  DepartureTime: string | redacted.Redacted<string>;
+  DepartureTime?: string | redacted.Redacted<string>;
   Id: string;
   Position: number[];
 }
@@ -5105,7 +5105,7 @@ export const WaypointOptimizationOptimizedWaypoint =
     S.Struct({
       ArrivalTime: S.optional(SensitiveString),
       ClusterIndex: S.optional(S.Number),
-      DepartureTime: SensitiveString,
+      DepartureTime: S.optional(SensitiveString),
       Id: S.String,
       Position: Position,
     }),
@@ -5349,16 +5349,17 @@ export const SnapToRoadsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(429), T.Retryable()),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -5367,6 +5368,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     Reason: ValidationExceptionReason,
     FieldList: ValidationExceptionFieldList,
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations

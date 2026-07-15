@@ -1,5 +1,12 @@
 {
   "structures": {
+    "WaypointOptimizationOptimizedWaypoint": {
+      "members": {
+        "DepartureTime": {
+          "optional": true
+        }
+      }
+    },
     "RouteFerryLegDetails": {
       "members": {
         "AfterTravelSteps": {

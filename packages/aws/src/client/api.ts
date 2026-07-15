@@ -319,8 +319,13 @@ export const make = <Op extends Operation<any, any, any>>(
     // unsigned"`). aws4fetch injects UNSIGNED-PAYLOAD for any service signing
     // as "s3" when the header is absent, so pre-compute the real payload
     // SHA-256 here (matching the official SDK's applyChecksum behavior).
+    // Glacier likewise REQUIRES the x-amz-content-sha256 header on
+    // payload-bearing requests (UploadArchive / UploadMultipartPart) — the
+    // service reconstructs the canonical request from that header, so
+    // omitting it fails with InvalidSignatureException (the official SDK's
+    // addChecksumHeaders middleware always sets it).
     if (
-      _serviceSdkId === "S3 Control" &&
+      (_serviceSdkId === "S3 Control" || _serviceSdkId === "Glacier") &&
       !useUnsignedPayload &&
       !hasContentSha256 &&
       !isStreamingBody

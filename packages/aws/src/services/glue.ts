@@ -18768,22 +18768,27 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
 export class IntegrationConflictOperationFault extends S.TaggedErrorClass<IntegrationConflictOperationFault>()(
   "IntegrationConflictOperationFault",
   { Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class IntegrationQuotaExceededFault extends S.TaggedErrorClass<IntegrationQuotaExceededFault>()(
   "IntegrationQuotaExceededFault",
   { Message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class KMSKeyNotAccessibleFault extends S.TaggedErrorClass<KMSKeyNotAccessibleFault>()(
   "KMSKeyNotAccessibleFault",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class OperationNotSupportedException extends S.TaggedErrorClass<OperationNotSupportedException>()(
   "OperationNotSupportedException",
@@ -18800,10 +18805,12 @@ export class SchedulerTransitioningException extends S.TaggedErrorClass<Schedule
 export class IntegrationNotFoundFault extends S.TaggedErrorClass<IntegrationNotFoundFault>()(
   "IntegrationNotFoundFault",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class InvalidIntegrationStateFault extends S.TaggedErrorClass<InvalidIntegrationStateFault>()(
   "InvalidIntegrationStateFault",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConditionCheckFailureException extends S.TaggedErrorClass<ConditionCheckFailureException>()(
   "ConditionCheckFailureException",
@@ -18812,6 +18819,7 @@ export class ConditionCheckFailureException extends S.TaggedErrorClass<Condition
 export class TargetResourceNotFound extends S.TaggedErrorClass<TargetResourceNotFound>()(
   "TargetResourceNotFound",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class PermissionTypeMismatchException extends S.TaggedErrorClass<PermissionTypeMismatchException>()(
   "PermissionTypeMismatchException",
@@ -26793,6 +26801,7 @@ export type StartJobRunError =
   | InvalidInputException
   | OperationTimeoutException
   | ResourceNumberLimitExceededException
+  | GlueRoleNotAssumable
   | CommonErrors;
 /**
  * Starts a job run using a job definition.
@@ -26812,6 +26821,7 @@ export const startJobRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
+    GlueRoleNotAssumable,
   ],
   operationName: "StartJobRun",
 }));
