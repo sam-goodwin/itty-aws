@@ -1,4 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
 import * as API from "../client/api.ts";
@@ -7,6 +8,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
+import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "DataExchange",
   serviceShapeName: "DataExchange",
@@ -631,7 +633,7 @@ export const ImportAssetsFromRedshiftDataSharesRequestDetails =
 export interface ImportAssetFromApiGatewayApiRequestDetails {
   ApiDescription?: string;
   ApiId: string;
-  ApiKey?: string;
+  ApiKey?: string | redacted.Redacted<string>;
   ApiName: string;
   ApiSpecificationMd5Hash: string;
   DataSetId: string;
@@ -644,7 +646,7 @@ export const ImportAssetFromApiGatewayApiRequestDetails =
     S.Struct({
       ApiDescription: S.optional(S.String),
       ApiId: S.String,
-      ApiKey: S.optional(S.String),
+      ApiKey: S.optional(SensitiveString),
       ApiName: S.String,
       ApiSpecificationMd5Hash: S.String,
       DataSetId: S.String,
@@ -930,7 +932,7 @@ export const ImportAssetsFromRedshiftDataSharesResponseDetails =
 export interface ImportAssetFromApiGatewayApiResponseDetails {
   ApiDescription?: string;
   ApiId: string;
-  ApiKey?: string;
+  ApiKey?: string | redacted.Redacted<string>;
   ApiName: string;
   ApiSpecificationMd5Hash: string;
   ApiSpecificationUploadUrl: string;
@@ -945,7 +947,7 @@ export const ImportAssetFromApiGatewayApiResponseDetails =
     S.Struct({
       ApiDescription: S.optional(S.String),
       ApiId: S.String,
-      ApiKey: S.optional(S.String),
+      ApiKey: S.optional(SensitiveString),
       ApiName: S.String,
       ApiSpecificationMd5Hash: S.String,
       ApiSpecificationUploadUrl: S.String,
@@ -1348,7 +1350,7 @@ export interface ApiGatewayApiAsset {
   ApiDescription?: string;
   ApiEndpoint?: string;
   ApiId?: string;
-  ApiKey?: string;
+  ApiKey?: string | redacted.Redacted<string>;
   ApiName?: string;
   ApiSpecificationDownloadUrl?: string;
   ApiSpecificationDownloadUrlExpiresAt?: Date;
@@ -1360,7 +1362,7 @@ export const ApiGatewayApiAsset = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ApiDescription: S.optional(S.String),
     ApiEndpoint: S.optional(S.String),
     ApiId: S.optional(S.String),
-    ApiKey: S.optional(S.String),
+    ApiKey: S.optional(SensitiveString),
     ApiName: S.optional(S.String),
     ApiSpecificationDownloadUrl: S.optional(S.String),
     ApiSpecificationDownloadUrlExpiresAt: S.optional(
@@ -2926,6 +2928,7 @@ export const UpdateRevisionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
@@ -2934,10 +2937,12 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
     ResourceId: S.optional(S.String),
     ResourceType: S.optional(S.String),
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.String },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
@@ -2946,14 +2951,17 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
     ResourceId: S.optional(S.String),
     ResourceType: S.optional(S.String),
   },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.String },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { Message: S.String, ExceptionCause: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ServiceLimitExceededException extends S.TaggedErrorClass<ServiceLimitExceededException>()(
   "ServiceLimitExceededException",
@@ -2962,6 +2970,7 @@ export class ServiceLimitExceededException extends S.TaggedErrorClass<ServiceLim
     LimitValue: S.optional(S.Number),
     Message: S.String,
   },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations
@@ -3874,6 +3883,7 @@ export const sendApiAsset: API.OperationMethod<
     ValidationException,
   ],
   operationName: "SendApiAsset",
+  endpointHostPrefix: "api-fulfill.",
 }));
 export type SendDataSetNotificationError =
   | AccessDeniedException

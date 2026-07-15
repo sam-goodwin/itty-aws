@@ -5738,15 +5738,15 @@ export const GetConnectionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConnectionInput>;
 export interface ConnectionCredentials {
   accessKeyId?: string;
-  secretAccessKey?: string;
-  sessionToken?: string;
+  secretAccessKey?: string | redacted.Redacted<string>;
+  sessionToken?: string | redacted.Redacted<string>;
   expiration?: Date;
 }
 export const ConnectionCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     accessKeyId: S.optional(S.String),
-    secretAccessKey: S.optional(S.String),
-    sessionToken: S.optional(S.String),
+    secretAccessKey: S.optional(SensitiveString),
+    sessionToken: S.optional(SensitiveString),
     expiration: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -6068,16 +6068,16 @@ export const GetEnvironmentCredentialsInput =
   }) as any as S.Schema<GetEnvironmentCredentialsInput>;
 export interface GetEnvironmentCredentialsOutput {
   accessKeyId?: string;
-  secretAccessKey?: string;
-  sessionToken?: string;
+  secretAccessKey?: string | redacted.Redacted<string>;
+  sessionToken?: string | redacted.Redacted<string>;
   expiration?: Date;
 }
 export const GetEnvironmentCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       accessKeyId: S.optional(S.String),
-      secretAccessKey: S.optional(S.String),
-      sessionToken: S.optional(S.String),
+      secretAccessKey: S.optional(SensitiveString),
+      sessionToken: S.optional(SensitiveString),
       expiration: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
@@ -17223,32 +17223,37 @@ export const ListRulesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(429), T.Retryable()),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.String },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations

@@ -1648,14 +1648,14 @@ export const TransitionState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransitionState>;
 export interface ActionRevision {
   revisionId: string;
-  revisionChangeId: string;
-  created: Date;
+  revisionChangeId?: string;
+  created?: Date;
 }
 export const ActionRevision = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     revisionId: S.String,
-    revisionChangeId: S.String,
-    created: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    revisionChangeId: S.optional(S.String),
+    created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "ActionRevision" }) as any as S.Schema<ActionRevision>;
 export type ActionExecutionStatus =
@@ -1763,14 +1763,14 @@ export const ConditionExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConditionExecution>;
 export interface RuleRevision {
   revisionId: string;
-  revisionChangeId: string;
-  created: Date;
+  revisionChangeId?: string;
+  created?: Date;
 }
 export const RuleRevision = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     revisionId: S.String,
-    revisionChangeId: S.String,
-    created: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    revisionChangeId: S.optional(S.String),
+    created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "RuleRevision" }) as any as S.Schema<RuleRevision>;
 export type RuleExecutionStatus =
