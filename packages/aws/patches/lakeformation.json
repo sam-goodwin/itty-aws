@@ -80,6 +80,39 @@
           }
         }
       ]
+    },
+    "createLakeFormationOptIn": {
+      "syntheticErrors": [
+        {
+          "name": "InvalidLakeFormationPrincipal",
+          "from": "InvalidInputException",
+          "message": {
+            "includes": "Invalid principal"
+          }
+        }
+      ]
+    },
+    "deleteLakeFormationOptIn": {
+      "syntheticErrors": [
+        {
+          "name": "InvalidLakeFormationPrincipal",
+          "from": "InvalidInputException",
+          "message": {
+            "includes": "Invalid principal"
+          }
+        }
+      ]
+    },
+    "listLakeFormationOptIns": {
+      "syntheticErrors": [
+        {
+          "name": "InvalidLakeFormationPrincipal",
+          "from": "InvalidInputException",
+          "message": {
+            "includes": "Invalid principal"
+          }
+        }
+      ]
     }
   },
   "errorCategories": {

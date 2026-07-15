@@ -3184,6 +3184,14 @@ export class ResourceNumberLimitExceededException extends S.TaggedErrorClass<Res
   "ResourceNumberLimitExceededException",
   { Message: S.optional(S.String) },
 ) {}
+export class InvalidLakeFormationPrincipal extends S.TaggedErrorClass<InvalidLakeFormationPrincipal>()(
+  "InvalidLakeFormationPrincipal",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidInputException",
+    message: { includes: "Invalid principal" },
+  }),
+).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
   "ResourceNotReadyException",
   { Message: S.optional(S.String) },
@@ -3229,14 +3237,6 @@ export class WorkUnitsNotReadyYetException extends S.TaggedErrorClass<WorkUnitsN
   { Message: S.optional(S.String) },
   T.HttpError(420),
 ) {}
-export class InvalidLakeFormationPrincipal extends S.TaggedErrorClass<InvalidLakeFormationPrincipal>()(
-  "InvalidLakeFormationPrincipal",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidInputException",
-    message: { includes: "Invalid principal" },
-  }),
-).pipe(C.withBadRequestError, C.withRetryableError) {}
 
 //# Operations
 export type AddLFTagsToResourceError =
@@ -3474,6 +3474,7 @@ export type CreateLakeFormationOptInError =
   | InvalidInputException
   | OperationTimeoutException
   | ResourceNumberLimitExceededException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Enforce Lake Formation permissions for the given databases, tables, and principals.
@@ -3494,6 +3495,7 @@ export const createLakeFormationOptIn: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
+    InvalidLakeFormationPrincipal,
   ],
   operationName: "CreateLakeFormationOptIn",
 }));
@@ -3626,6 +3628,7 @@ export type DeleteLakeFormationOptInError =
   | InternalServiceException
   | InvalidInputException
   | OperationTimeoutException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Remove the Lake Formation permissions enforcement of the given databases, tables, and principals.
@@ -3645,6 +3648,7 @@ export const deleteLakeFormationOptIn: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
     OperationTimeoutException,
+    InvalidLakeFormationPrincipal,
   ],
   operationName: "DeleteLakeFormationOptIn",
 }));
@@ -4458,6 +4462,7 @@ export type ListLakeFormationOptInsError =
   | InternalServiceException
   | InvalidInputException
   | OperationTimeoutException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Retrieve the current list of resources and principals that are opt in to enforce Lake Formation permissions.
@@ -4490,6 +4495,7 @@ export const listLakeFormationOptIns: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
     OperationTimeoutException,
+    InvalidLakeFormationPrincipal,
   ],
   operationName: "ListLakeFormationOptIns",
   pagination: {
