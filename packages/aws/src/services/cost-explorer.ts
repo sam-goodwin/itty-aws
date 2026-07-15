@@ -4033,6 +4033,7 @@ export class AnomalyMonitorAlreadyExists extends S.TaggedErrorClass<AnomalyMonit
 export class UnknownMonitorException extends S.TaggedErrorClass<UnknownMonitorException>()(
   "UnknownMonitorException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class AnomalySubscriptionAlreadyExists extends S.TaggedErrorClass<AnomalySubscriptionAlreadyExists>()(
   "AnomalySubscriptionAlreadyExists",
@@ -4045,14 +4046,17 @@ export class AnomalySubscriptionAlreadyExists extends S.TaggedErrorClass<Anomaly
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class UnknownSubscriptionException extends S.TaggedErrorClass<UnknownSubscriptionException>()(
   "UnknownSubscriptionException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
   "InvalidNextTokenException",
@@ -4065,6 +4069,7 @@ export class DataUnavailableException extends S.TaggedErrorClass<DataUnavailable
 export class AnalysisNotFoundException extends S.TaggedErrorClass<AnalysisNotFoundException>()(
   "AnalysisNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class BillExpirationException extends S.TaggedErrorClass<BillExpirationException>()(
   "BillExpirationException",
@@ -4078,6 +4083,14 @@ export class RequestChangedException extends S.TaggedErrorClass<RequestChangedEx
   "RequestChangedException",
   { Message: S.optional(S.String) },
 ) {}
+export class RightsizingRecommendationNotEnabled extends S.TaggedErrorClass<RightsizingRecommendationNotEnabled>()(
+  "RightsizingRecommendationNotEnabled",
+  {},
+  T.SyntheticError({
+    from: "AccessDeniedException",
+    message: { includes: "opt-in only feature" },
+  }),
+) {}
 export class UnresolvableUsageUnitException extends S.TaggedErrorClass<UnresolvableUsageUnitException>()(
   "UnresolvableUsageUnitException",
   { Message: S.optional(S.String) },
@@ -4085,14 +4098,17 @@ export class UnresolvableUsageUnitException extends S.TaggedErrorClass<Unresolva
 export class GenerationExistsException extends S.TaggedErrorClass<GenerationExistsException>()(
   "GenerationExistsException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class BackfillLimitExceededException extends S.TaggedErrorClass<BackfillLimitExceededException>()(
   "BackfillLimitExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -4830,6 +4846,7 @@ export const getReservationUtilization: API.OperationMethod<
 export type GetRightsizingRecommendationError =
   | InvalidNextTokenException
   | LimitExceededException
+  | RightsizingRecommendationNotEnabled
   | CommonErrors;
 /**
  * Creates recommendations that help you save cost by identifying idle and underutilized
@@ -4862,7 +4879,11 @@ export const getRightsizingRecommendation: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetRightsizingRecommendationRequest,
   output: GetRightsizingRecommendationResponse,
-  errors: [InvalidNextTokenException, LimitExceededException],
+  errors: [
+    InvalidNextTokenException,
+    LimitExceededException,
+    RightsizingRecommendationNotEnabled,
+  ],
   operationName: "GetRightsizingRecommendation",
   pagination: {
     inputToken: "NextPageToken",

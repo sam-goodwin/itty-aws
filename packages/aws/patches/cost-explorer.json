@@ -21,6 +21,17 @@
           }
         }
       ]
+    },
+    "getRightsizingRecommendation": {
+      "syntheticErrors": [
+        {
+          "name": "RightsizingRecommendationNotEnabled",
+          "from": "AccessDeniedException",
+          "message": {
+            "includes": "opt-in only feature"
+          }
+        }
+      ]
     }
   },
   "errorCategories": {
