@@ -1,0 +1,9 @@
+{
+  "structures": {
+    "WhatsAppSignupCallback": {
+      "members": {
+        "accessToken": { "sensitive": true }
+      }
+    }
+  }
+}

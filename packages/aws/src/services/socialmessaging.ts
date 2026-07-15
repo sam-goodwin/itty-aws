@@ -252,11 +252,15 @@ export const UntagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceOutput",
 }) as any as S.Schema<UntagResourceOutput>;
 export interface WhatsAppSignupCallback {
-  accessToken: string;
+  accessToken: string | redacted.Redacted<string>;
   callbackUrl?: string;
 }
 export const WhatsAppSignupCallback = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ accessToken: S.String, callbackUrl: S.optional(S.String) }),
+  () =>
+    S.Struct({
+      accessToken: SensitiveString,
+      callbackUrl: S.optional(S.String),
+    }),
 ).annotate({
   identifier: "WhatsAppSignupCallback",
 }) as any as S.Schema<WhatsAppSignupCallback>;
@@ -1732,33 +1736,37 @@ export const SendWhatsAppMessageOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
   "InternalServiceException",
   { message: S.optional(S.String) },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidParametersException extends S.TaggedErrorClass<InvalidParametersException>()(
   "InvalidParametersException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ThrottledRequestException extends S.TaggedErrorClass<ThrottledRequestException>()(
   "ThrottledRequestException",
   { message: S.optional(S.String) },
-  T.Retryable(),
+  T.all(T.HttpError(429), T.Retryable()),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class DependencyException extends S.TaggedErrorClass<DependencyException>()(
   "DependencyException",
   { message: S.optional(S.String) },
-  T.Retryable(),
+  T.all(T.HttpError(502), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class AccessDeniedByMetaException extends S.TaggedErrorClass<AccessDeniedByMetaException>()(
   "AccessDeniedByMetaException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 
 //# Operations
