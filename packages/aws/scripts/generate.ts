@@ -1039,8 +1039,7 @@ function collectOperationInputTraits(model: SmithyModel): {
     // schema (so no derived name can collide with the base); otherwise the
     // first op in model order owns it. Every other op with different traits
     // gets a per-operation override.
-    const owner =
-      ops.find((o) => `${o.opName}Request` === inputName) ?? ops[0];
+    const owner = ops.find((o) => `${o.opName}Request` === inputName) ?? ops[0];
     inputTraits.set(inputName, owner.traits);
     const ownerKey = JSON.stringify(owner.traits);
     for (const op of ops) {
@@ -1915,8 +1914,11 @@ const convertShapeToSchema: (
                     if (memberOverride?.sensitive) {
                       const listMemberTarget =
                         memberTargetShape?.type === "list"
-                          ? (memberTargetShape as { member?: { target?: string } })
-                              .member?.target
+                          ? (
+                              memberTargetShape as {
+                                member?: { target?: string };
+                              }
+                            ).member?.target
                           : undefined;
                       const isStringList =
                         listMemberTarget !== undefined &&
@@ -3509,7 +3511,10 @@ const generateClient = Effect.fn(function* (
           new UnableToTransformShapeToSchema({
             message: `patches/${serviceTraits.sdkId
               .toLowerCase()
-              .replaceAll(" ", "-")}.json patches union "${unionName}" which does not exist in the model`,
+              .replaceAll(
+                " ",
+                "-",
+              )}.json patches union "${unionName}" which does not exist in the model`,
           }),
         );
       }
