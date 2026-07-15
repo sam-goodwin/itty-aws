@@ -1,4 +1,30 @@
 {
+  "structures": {
+    "TemporaryCredentials": {
+      "members": {
+        "SecretAccessKey": { "sensitive": true },
+        "SessionToken": { "sensitive": true }
+      }
+    },
+    "GetTemporaryGluePartitionCredentialsResponse": {
+      "members": {
+        "SecretAccessKey": { "sensitive": true },
+        "SessionToken": { "sensitive": true }
+      }
+    },
+    "GetTemporaryGlueTableCredentialsResponse": {
+      "members": {
+        "SecretAccessKey": { "sensitive": true },
+        "SessionToken": { "sensitive": true }
+      }
+    },
+    "AssumeDecoratedRoleWithSAMLResponse": {
+      "members": {
+        "SecretAccessKey": { "sensitive": true },
+        "SessionToken": { "sensitive": true }
+      }
+    }
+  },
   "operations": {
     "deregisterResource": {
       "syntheticErrors": [

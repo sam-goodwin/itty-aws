@@ -416,16 +416,16 @@ export const AssumeDecoratedRoleWithSAMLRequest =
   }) as any as S.Schema<AssumeDecoratedRoleWithSAMLRequest>;
 export interface AssumeDecoratedRoleWithSAMLResponse {
   AccessKeyId?: string;
-  SecretAccessKey?: string;
-  SessionToken?: string;
+  SecretAccessKey?: string | redacted.Redacted<string>;
+  SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
 export const AssumeDecoratedRoleWithSAMLResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       AccessKeyId: S.optional(S.String),
-      SecretAccessKey: S.optional(S.String),
-      SessionToken: S.optional(S.String),
+      SecretAccessKey: S.optional(SensitiveString),
+      SessionToken: S.optional(SensitiveString),
       Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     }),
   ).annotate({
@@ -1783,15 +1783,15 @@ export const GetTemporaryDataLocationCredentialsRequest =
   }) as any as S.Schema<GetTemporaryDataLocationCredentialsRequest>;
 export interface TemporaryCredentials {
   AccessKeyId?: string;
-  SecretAccessKey?: string;
-  SessionToken?: string;
+  SecretAccessKey?: string | redacted.Redacted<string>;
+  SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
 export const TemporaryCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     AccessKeyId: S.optional(S.String),
-    SecretAccessKey: S.optional(S.String),
-    SessionToken: S.optional(S.String),
+    SecretAccessKey: S.optional(SensitiveString),
+    SessionToken: S.optional(SensitiveString),
     Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({
@@ -1867,16 +1867,16 @@ export const GetTemporaryGluePartitionCredentialsRequest =
   }) as any as S.Schema<GetTemporaryGluePartitionCredentialsRequest>;
 export interface GetTemporaryGluePartitionCredentialsResponse {
   AccessKeyId?: string;
-  SecretAccessKey?: string;
-  SessionToken?: string;
+  SecretAccessKey?: string | redacted.Redacted<string>;
+  SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
 export const GetTemporaryGluePartitionCredentialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       AccessKeyId: S.optional(S.String),
-      SecretAccessKey: S.optional(S.String),
-      SessionToken: S.optional(S.String),
+      SecretAccessKey: S.optional(SensitiveString),
+      SessionToken: S.optional(SensitiveString),
       Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     }),
   ).annotate({
@@ -1939,8 +1939,8 @@ export const GetTemporaryGlueTableCredentialsRequest =
   }) as any as S.Schema<GetTemporaryGlueTableCredentialsRequest>;
 export interface GetTemporaryGlueTableCredentialsResponse {
   AccessKeyId?: string;
-  SecretAccessKey?: string;
-  SessionToken?: string;
+  SecretAccessKey?: string | redacted.Redacted<string>;
+  SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
   VendedS3Path?: string[];
 }
@@ -1948,8 +1948,8 @@ export const GetTemporaryGlueTableCredentialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       AccessKeyId: S.optional(S.String),
-      SecretAccessKey: S.optional(S.String),
-      SessionToken: S.optional(S.String),
+      SecretAccessKey: S.optional(SensitiveString),
+      SessionToken: S.optional(SensitiveString),
       Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       VendedS3Path: S.optional(PathStringList),
     }),
@@ -3137,6 +3137,7 @@ export const UpdateTableStorageOptimizerResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
   "ConcurrentModificationException",
@@ -3149,10 +3150,12 @@ export class EntityNotFoundException extends S.TaggedErrorClass<EntityNotFoundEx
 export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
   "InternalServiceException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
   "InvalidInputException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class OperationTimeoutException extends S.TaggedErrorClass<OperationTimeoutException>()(
   "OperationTimeoutException",
@@ -3161,14 +3164,17 @@ export class OperationTimeoutException extends S.TaggedErrorClass<OperationTimeo
 export class TransactionCommitInProgressException extends S.TaggedErrorClass<TransactionCommitInProgressException>()(
   "TransactionCommitInProgressException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TransactionCommittedException extends S.TaggedErrorClass<TransactionCommittedException>()(
   "TransactionCommittedException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TransactionCanceledException extends S.TaggedErrorClass<TransactionCanceledException>()(
   "TransactionCanceledException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
   "AlreadyExistsException",
@@ -3181,6 +3187,7 @@ export class ResourceNumberLimitExceededException extends S.TaggedErrorClass<Res
 export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
   "ResourceNotReadyException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class LastServiceLinkedRoleRegistration extends S.TaggedErrorClass<LastServiceLinkedRoleRegistration>()(
   "LastServiceLinkedRoleRegistration",
@@ -3193,15 +3200,17 @@ export class LastServiceLinkedRoleRegistration extends S.TaggedErrorClass<LastSe
 export class ExpiredException extends S.TaggedErrorClass<ExpiredException>()(
   "ExpiredException",
   { Message: S.optional(S.String) },
+  T.HttpError(410),
 ).pipe(C.withBadRequestError) {}
 export class StatisticsNotReadyYetException extends S.TaggedErrorClass<StatisticsNotReadyYetException>()(
   "StatisticsNotReadyYetException",
   { Message: S.optional(S.String) },
+  T.HttpError(420),
 ) {}
 export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
   "ThrottledException",
   { Message: S.optional(S.String) },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class GlueEncryptionException extends S.TaggedErrorClass<GlueEncryptionException>()(
   "GlueEncryptionException",
@@ -3218,6 +3227,7 @@ export class PermissionTypeMismatchException extends S.TaggedErrorClass<Permissi
 export class WorkUnitsNotReadyYetException extends S.TaggedErrorClass<WorkUnitsNotReadyYetException>()(
   "WorkUnitsNotReadyYetException",
   { Message: S.optional(S.String) },
+  T.HttpError(420),
 ) {}
 export class InvalidLakeFormationPrincipal extends S.TaggedErrorClass<InvalidLakeFormationPrincipal>()(
   "InvalidLakeFormationPrincipal",

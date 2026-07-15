@@ -1,4 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -6,6 +7,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
+import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace(
   "https://license-manager.amazonaws.com/doc/2018_08_01",
 );
@@ -1220,13 +1222,13 @@ export const TokenType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateTokenResponse {
   TokenId?: string;
   TokenType?: TokenType;
-  Token?: string;
+  Token?: string | redacted.Redacted<string>;
 }
 export const CreateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     TokenId: S.optional(S.String),
     TokenType: S.optional(TokenType),
-    Token: S.optional(S.String),
+    Token: S.optional(SensitiveString),
   }).pipe(ns),
 ).annotate({
   identifier: "CreateTokenResponse",
@@ -1472,12 +1474,12 @@ export const ExtendLicenseConsumptionResponse =
     identifier: "ExtendLicenseConsumptionResponse",
   }) as any as S.Schema<ExtendLicenseConsumptionResponse>;
 export interface GetAccessTokenRequest {
-  Token: string;
+  Token: string | redacted.Redacted<string>;
   TokenProperties?: string[];
 }
 export const GetAccessTokenRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    Token: S.String,
+    Token: SensitiveString,
     TokenProperties: S.optional(MaxSize3StringList),
   }).pipe(
     T.all(
@@ -1494,10 +1496,10 @@ export const GetAccessTokenRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetAccessTokenRequest",
 }) as any as S.Schema<GetAccessTokenRequest>;
 export interface GetAccessTokenResponse {
-  AccessToken?: string;
+  AccessToken?: string | redacted.Redacted<string>;
 }
 export const GetAccessTokenResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ AccessToken: S.optional(S.String) }).pipe(ns),
+  () => S.Struct({ AccessToken: S.optional(SensitiveString) }).pipe(ns),
 ).annotate({
   identifier: "GetAccessTokenResponse",
 }) as any as S.Schema<GetAccessTokenResponse>;
@@ -3609,57 +3611,87 @@ export const UpdateServiceSettingsResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ServiceAccessDenied", httpResponseCode: 401 }),
+  T.all(
+    T.AwsQueryError({ code: "ServiceAccessDenied", httpResponseCode: 401 }),
+    T.HttpError(401),
+  ),
 ).pipe(C.withAuthError) {}
 export class AuthorizationException extends S.TaggedErrorClass<AuthorizationException>()(
   "AuthorizationException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AuthorizationFailure", httpResponseCode: 403 }),
+  T.all(
+    T.AwsQueryError({ code: "AuthorizationFailure", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
 ).pipe(C.withAuthError) {}
 export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
   "InvalidParameterValueException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidParameterValueProvided",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidParameterValueProvided",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class RateLimitExceededException extends S.TaggedErrorClass<RateLimitExceededException>()(
   "RateLimitExceededException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "RateLimitExceeded", httpResponseCode: 429 }),
+  T.all(
+    T.AwsQueryError({ code: "RateLimitExceeded", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
 ).pipe(C.withThrottlingError) {}
 export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
   "ResourceLimitExceededException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceLimitExceeded", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "ResourceLimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ServerInternalException extends S.TaggedErrorClass<ServerInternalException>()(
   "ServerInternalException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
+  T.all(
+    T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
 ).pipe(C.withServerError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+  T.all(
+    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
 ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidResource.NotFound", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidResource.NotFound",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class EntitlementNotAllowedException extends S.TaggedErrorClass<EntitlementNotAllowedException>()(
   "EntitlementNotAllowedException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class NoEntitlementsAllowedException extends S.TaggedErrorClass<NoEntitlementsAllowedException>()(
   "NoEntitlementsAllowedException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class RedirectException extends S.TaggedErrorClass<RedirectException>()(
   "RedirectException",
@@ -3667,10 +3699,12 @@ export class RedirectException extends S.TaggedErrorClass<RedirectException>()(
     Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
     Message: S.optional(S.String),
   },
+  T.HttpError(308),
 ) {}
 export class UnsupportedDigitalSignatureMethodException extends S.TaggedErrorClass<UnsupportedDigitalSignatureMethodException>()(
   "UnsupportedDigitalSignatureMethodException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class LicenseConfigurationNotFound extends S.TaggedErrorClass<LicenseConfigurationNotFound>()(
   "LicenseConfigurationNotFound",
@@ -3683,22 +3717,34 @@ export class LicenseConfigurationNotFound extends S.TaggedErrorClass<LicenseConf
 export class FilterLimitExceededException extends S.TaggedErrorClass<FilterLimitExceededException>()(
   "FilterLimitExceededException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "FilterLimitExceeded", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "FilterLimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class FailedDependencyException extends S.TaggedErrorClass<FailedDependencyException>()(
   "FailedDependencyException",
   { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
-  T.AwsQueryError({ code: "FailedDependency", httpResponseCode: 424 }),
+  T.all(
+    T.AwsQueryError({ code: "FailedDependency", httpResponseCode: 424 }),
+    T.HttpError(424),
+  ),
 ) {}
 export class InvalidResourceStateException extends S.TaggedErrorClass<InvalidResourceStateException>()(
   "InvalidResourceStateException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidResourceState", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidResourceState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class LicenseUsageException extends S.TaggedErrorClass<LicenseUsageException>()(
   "LicenseUsageException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "LicenseUsageFailure", httpResponseCode: 412 }),
+  T.all(
+    T.AwsQueryError({ code: "LicenseUsageFailure", httpResponseCode: 412 }),
+    T.HttpError(412),
+  ),
 ) {}
 
 //# Operations

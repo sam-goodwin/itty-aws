@@ -635,50 +635,62 @@ export const UpdateThingShadowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
   "ForbiddenException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
   "InternalFailureException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
   "InvalidRequestException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
   "MethodNotAllowedException",
   { message: S.optional(S.String) },
+  T.HttpError(405),
 ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
   { message: S.optional(S.String) },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class UnsupportedDocumentEncodingException extends S.TaggedErrorClass<UnsupportedDocumentEncodingException>()(
   "UnsupportedDocumentEncodingException",
   { message: S.optional(S.String) },
+  T.HttpError(415),
 ).pipe(C.withBadRequestError) {}
 export class GatewayTimeoutException extends S.TaggedErrorClass<GatewayTimeoutException>()(
   "GatewayTimeoutException",
   { message: S.optional(S.String) },
+  T.HttpError(504),
 ).pipe(C.withTimeoutError) {}
 export class RequestEntityTooLargeException extends S.TaggedErrorClass<RequestEntityTooLargeException>()(
   "RequestEntityTooLargeException",
   { message: S.optional(S.String) },
+  T.HttpError(413),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 
 //# Operations
@@ -720,6 +732,7 @@ export type DeleteThingShadowError =
   | ThrottlingException
   | UnauthorizedException
   | UnsupportedDocumentEncodingException
+  | ForbiddenException
   | CommonErrors;
 /**
  * Deletes the shadow for the specified thing.
@@ -745,6 +758,7 @@ export const deleteThingShadow: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
     UnsupportedDocumentEncodingException,
+    ForbiddenException,
   ],
   operationName: "DeleteThingShadow",
 }));
@@ -785,6 +799,7 @@ export type GetRetainedMessageError =
   | ServiceUnavailableException
   | ThrottlingException
   | UnauthorizedException
+  | ForbiddenException
   | CommonErrors;
 /**
  * Gets the details of a single retained message for the specified topic.
@@ -814,6 +829,7 @@ export const getRetainedMessage: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
     UnauthorizedException,
+    ForbiddenException,
   ],
   operationName: "GetRetainedMessage",
 }));
@@ -826,6 +842,7 @@ export type GetThingShadowError =
   | ThrottlingException
   | UnauthorizedException
   | UnsupportedDocumentEncodingException
+  | ForbiddenException
   | CommonErrors;
 /**
  * Gets the shadow for the specified thing.
@@ -852,6 +869,7 @@ export const getThingShadow: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
     UnsupportedDocumentEncodingException,
+    ForbiddenException,
   ],
   operationName: "GetThingShadow",
 }));
@@ -863,6 +881,7 @@ export type ListNamedShadowsForThingError =
   | ServiceUnavailableException
   | ThrottlingException
   | UnauthorizedException
+  | ForbiddenException
   | CommonErrors;
 /**
  * Lists the shadows for the specified thing.
@@ -885,6 +904,7 @@ export const listNamedShadowsForThing: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
     UnauthorizedException,
+    ForbiddenException,
   ],
   operationName: "ListNamedShadowsForThing",
 }));
@@ -895,6 +915,7 @@ export type ListRetainedMessagesError =
   | ServiceUnavailableException
   | ThrottlingException
   | UnauthorizedException
+  | ForbiddenException
   | CommonErrors;
 /**
  * Lists summary information about the retained messages stored for the account.
@@ -942,6 +963,7 @@ export const listRetainedMessages: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
     UnauthorizedException,
+    ForbiddenException,
   ],
   operationName: "ListRetainedMessages",
   pagination: {
@@ -1007,6 +1029,7 @@ export type PublishError =
   | MethodNotAllowedException
   | ThrottlingException
   | UnauthorizedException
+  | ForbiddenException
   | CommonErrors;
 /**
  * Publishes an MQTT message.
@@ -1034,6 +1057,7 @@ export const publish: API.OperationMethod<
     MethodNotAllowedException,
     ThrottlingException,
     UnauthorizedException,
+    ForbiddenException,
   ],
   operationName: "Publish",
 }));
@@ -1088,6 +1112,7 @@ export type UpdateThingShadowError =
   | ThrottlingException
   | UnauthorizedException
   | UnsupportedDocumentEncodingException
+  | ForbiddenException
   | CommonErrors;
 /**
  * Updates the shadow for the specified thing.
@@ -1115,6 +1140,7 @@ export const updateThingShadow: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
     UnsupportedDocumentEncodingException,
+    ForbiddenException,
   ],
   operationName: "UpdateThingShadow",
 }));

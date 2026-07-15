@@ -231,7 +231,11 @@ export const TimestampFormat = (format: TimestampFormatType) => {
               S.Date,
               SchemaTransformation.transform({
                 decode: (n) => new Date(n * 1000),
-                encode: (d) => d.getTime() / 1000,
+                // Truncate to whole seconds: some services parse
+                // epoch-seconds strictly and reject fractional values —
+                // e.g. IoT SiteWise's GetAssetPropertyAggregates fails
+                // with "The date can only be in seconds."
+                encode: (d) => Math.floor(d.getTime() / 1000),
               }),
             ),
           )

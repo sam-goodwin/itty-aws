@@ -1,4 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
 import * as API from "../client/api.ts";
@@ -7,6 +8,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
+import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({ sdkId: "mq", serviceShapeName: "mq" });
 const auth = T.AwsAuthSigv4({ name: "mq" });
 const ver = T.ServiceVersion("2017-11-27");
@@ -133,7 +135,7 @@ export interface LdapServerMetadataInput {
   RoleName?: string;
   RoleSearchMatching?: string;
   RoleSearchSubtree?: boolean;
-  ServiceAccountPassword?: string;
+  ServiceAccountPassword?: string | redacted.Redacted<string>;
   ServiceAccountUsername?: string;
   UserBase?: string;
   UserRoleName?: string;
@@ -148,7 +150,7 @@ export const LdapServerMetadataInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       RoleName: S.optional(S.String),
       RoleSearchMatching: S.optional(S.String),
       RoleSearchSubtree: S.optional(S.Boolean),
-      ServiceAccountPassword: S.optional(S.String),
+      ServiceAccountPassword: S.optional(SensitiveString),
       ServiceAccountUsername: S.optional(S.String),
       UserBase: S.optional(S.String),
       UserRoleName: S.optional(S.String),
@@ -222,7 +224,7 @@ export const __mapOf__string = /*@__PURE__*/ /*#__PURE__*/ S.Record(
 export interface User {
   ConsoleAccess?: boolean;
   Groups?: string[];
-  Password?: string;
+  Password?: string | redacted.Redacted<string>;
   Username?: string;
   ReplicationUser?: boolean;
 }
@@ -230,7 +232,7 @@ export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     ConsoleAccess: S.optional(S.Boolean),
     Groups: S.optional(__listOf__string),
-    Password: S.optional(S.String),
+    Password: S.optional(SensitiveString),
     Username: S.optional(S.String),
     ReplicationUser: S.optional(S.Boolean),
   }).pipe(
@@ -493,7 +495,7 @@ export interface CreateUserRequest {
   BrokerId: string;
   ConsoleAccess?: boolean;
   Groups?: string[];
-  Password?: string;
+  Password?: string | redacted.Redacted<string>;
   Username: string;
   ReplicationUser?: boolean;
 }
@@ -502,7 +504,7 @@ export const CreateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     BrokerId: S.String.pipe(T.HttpLabel("BrokerId")),
     ConsoleAccess: S.optional(S.Boolean),
     Groups: S.optional(__listOf__string),
-    Password: S.optional(S.String),
+    Password: S.optional(SensitiveString),
     Username: S.String.pipe(T.HttpLabel("Username")),
     ReplicationUser: S.optional(S.Boolean),
   })
@@ -2081,7 +2083,7 @@ export interface UpdateUserRequest {
   BrokerId: string;
   ConsoleAccess?: boolean;
   Groups?: string[];
-  Password?: string;
+  Password?: string | redacted.Redacted<string>;
   Username: string;
   ReplicationUser?: boolean;
 }
@@ -2090,7 +2092,7 @@ export const UpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     BrokerId: S.String.pipe(T.HttpLabel("BrokerId")),
     ConsoleAccess: S.optional(S.Boolean),
     Groups: S.optional(__listOf__string),
-    Password: S.optional(S.String),
+    Password: S.optional(SensitiveString),
     Username: S.String.pipe(T.HttpLabel("Username")),
     ReplicationUser: S.optional(S.Boolean),
   })
@@ -2133,6 +2135,7 @@ export class BadRequestException extends S.TaggedErrorClass<BadRequestException>
     Message: S.optional(S.String),
     ResourceShareErrors: S.optional(__listOfResourceShareError),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
@@ -2141,6 +2144,7 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
     Message: S.optional(S.String),
     ResourceShareErrors: S.optional(__listOfResourceShareError),
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
   "ForbiddenException",
@@ -2149,6 +2153,7 @@ export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()
     Message: S.optional(S.String),
     ResourceShareErrors: S.optional(__listOfResourceShareError),
   },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
   "InternalServerErrorException",
@@ -2157,6 +2162,7 @@ export class InternalServerErrorException extends S.TaggedErrorClass<InternalSer
     Message: S.optional(S.String),
     ResourceShareErrors: S.optional(__listOfResourceShareError),
   },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
@@ -2165,6 +2171,7 @@ export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedExcept
     Message: S.optional(S.String),
     ResourceShareErrors: S.optional(__listOfResourceShareError),
   },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
@@ -2173,6 +2180,7 @@ export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
     Message: S.optional(S.String),
     ResourceShareErrors: S.optional(__listOfResourceShareError),
   },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
