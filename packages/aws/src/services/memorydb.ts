@@ -1,4 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
 import * as API from "../client/api.ts";
@@ -7,6 +8,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
+import { SensitiveString } from "../sensitive.ts";
 const ns = T.XmlNamespace("http://memorydb.amazonaws.com/doc/2021-01-01/");
 const svc = T.AwsApiService({
   sdkId: "MemoryDB",
@@ -945,12 +947,12 @@ export type PasswordListInput = string[];
 export const PasswordListInput = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface AuthenticationMode {
   Type?: InputAuthenticationType;
-  Passwords?: string[];
+  Passwords?: Array<string | redacted.Redacted<string>>;
 }
 export const AuthenticationMode = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(InputAuthenticationType),
-    Passwords: S.optional(PasswordListInput),
+    Passwords: S.optional(S.Array(SensitiveString)),
   }),
 ).annotate({
   identifier: "AuthenticationMode",
@@ -2611,356 +2613,545 @@ export const UpdateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
   "InvalidParameterValueException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidParameterValue", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidParameterValue", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ServiceUpdateNotFoundFault extends S.TaggedErrorClass<ServiceUpdateNotFoundFault>()(
   "ServiceUpdateNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ServiceUpdateNotFoundFault",
-    httpResponseCode: 404,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "ServiceUpdateNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
   "InvalidParameterCombinationException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidParameterCombination",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidParameterCombination",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidSnapshotStateFault extends S.TaggedErrorClass<InvalidSnapshotStateFault>()(
   "InvalidSnapshotStateFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidSnapshotState", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidSnapshotState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ServiceLinkedRoleNotFoundFault extends S.TaggedErrorClass<ServiceLinkedRoleNotFoundFault>()(
   "ServiceLinkedRoleNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ServiceLinkedRoleNotFoundFault",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "ServiceLinkedRoleNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class SnapshotAlreadyExistsFault extends S.TaggedErrorClass<SnapshotAlreadyExistsFault>()(
   "SnapshotAlreadyExistsFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SnapshotAlreadyExistsFault",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class SnapshotNotFoundFault extends S.TaggedErrorClass<SnapshotNotFoundFault>()(
   "SnapshotNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SnapshotNotFoundFault", httpResponseCode: 404 }),
+  T.all(
+    T.AwsQueryError({ code: "SnapshotNotFoundFault", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class SnapshotQuotaExceededFault extends S.TaggedErrorClass<SnapshotQuotaExceededFault>()(
   "SnapshotQuotaExceededFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SnapshotQuotaExceededFault",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class TagQuotaPerResourceExceeded extends S.TaggedErrorClass<TagQuotaPerResourceExceeded>()(
   "TagQuotaPerResourceExceeded",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "TagQuotaPerResourceExceeded",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "TagQuotaPerResourceExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ACLAlreadyExistsFault extends S.TaggedErrorClass<ACLAlreadyExistsFault>()(
   "ACLAlreadyExistsFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ACLAlreadyExists", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "ACLAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ACLQuotaExceededFault extends S.TaggedErrorClass<ACLQuotaExceededFault>()(
   "ACLQuotaExceededFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ACLQuotaExceeded", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "ACLQuotaExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class DefaultUserRequired extends S.TaggedErrorClass<DefaultUserRequired>()(
   "DefaultUserRequired",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "DefaultUserRequired", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "DefaultUserRequired", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class DuplicateUserNameFault extends S.TaggedErrorClass<DuplicateUserNameFault>()(
   "DuplicateUserNameFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "DuplicateUserName", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "DuplicateUserName", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class UserNotFoundFault extends S.TaggedErrorClass<UserNotFoundFault>()(
   "UserNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "UserNotFound", httpResponseCode: 404 }),
+  T.all(
+    T.AwsQueryError({ code: "UserNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ACLNotFoundFault extends S.TaggedErrorClass<ACLNotFoundFault>()(
   "ACLNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ACLNotFound", httpResponseCode: 404 }),
+  T.all(
+    T.AwsQueryError({ code: "ACLNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ClusterAlreadyExistsFault extends S.TaggedErrorClass<ClusterAlreadyExistsFault>()(
   "ClusterAlreadyExistsFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ClusterAlreadyExists", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "ClusterAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ClusterQuotaForCustomerExceededFault extends S.TaggedErrorClass<ClusterQuotaForCustomerExceededFault>()(
   "ClusterQuotaForCustomerExceededFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClusterQuotaForCustomerExceeded",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterQuotaForCustomerExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InsufficientClusterCapacityFault extends S.TaggedErrorClass<InsufficientClusterCapacityFault>()(
   "InsufficientClusterCapacityFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InsufficientClusterCapacity",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientClusterCapacity",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidACLStateFault extends S.TaggedErrorClass<InvalidACLStateFault>()(
   "InvalidACLStateFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidACLState", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidACLState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidCredentialsException extends S.TaggedErrorClass<InvalidCredentialsException>()(
   "InvalidCredentialsException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidCredentialsException",
-    httpResponseCode: 408,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidCredentialsException",
+      httpResponseCode: 408,
+    }),
+    T.HttpError(408),
+  ),
 ).pipe(C.withTimeoutError) {}
 export class InvalidMultiRegionClusterStateFault extends S.TaggedErrorClass<InvalidMultiRegionClusterStateFault>()(
   "InvalidMultiRegionClusterStateFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidMultiRegionClusterState",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidMultiRegionClusterState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidVPCNetworkStateFault extends S.TaggedErrorClass<InvalidVPCNetworkStateFault>()(
   "InvalidVPCNetworkStateFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidVPCNetworkStateFault",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidVPCNetworkStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class MultiRegionClusterNotFoundFault extends S.TaggedErrorClass<MultiRegionClusterNotFoundFault>()(
   "MultiRegionClusterNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "MultiRegionClusterNotFound",
-    httpResponseCode: 404,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "MultiRegionClusterNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class NodeQuotaForClusterExceededFault extends S.TaggedErrorClass<NodeQuotaForClusterExceededFault>()(
   "NodeQuotaForClusterExceededFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "NodeQuotaForClusterExceeded",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "NodeQuotaForClusterExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class NodeQuotaForCustomerExceededFault extends S.TaggedErrorClass<NodeQuotaForCustomerExceededFault>()(
   "NodeQuotaForCustomerExceededFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "NodeQuotaForCustomerExceeded",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "NodeQuotaForCustomerExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ParameterGroupNotFoundFault extends S.TaggedErrorClass<ParameterGroupNotFoundFault>()(
   "ParameterGroupNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ParameterGroupNotFound", httpResponseCode: 404 }),
+  T.all(
+    T.AwsQueryError({ code: "ParameterGroupNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ShardsPerClusterQuotaExceededFault extends S.TaggedErrorClass<ShardsPerClusterQuotaExceededFault>()(
   "ShardsPerClusterQuotaExceededFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ShardsPerClusterQuotaExceeded",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "ShardsPerClusterQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class SubnetGroupNotFoundFault extends S.TaggedErrorClass<SubnetGroupNotFoundFault>()(
   "SubnetGroupNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetGroupNotFoundFault", httpResponseCode: 404 }),
+  T.all(
+    T.AwsQueryError({
+      code: "SubnetGroupNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class MultiRegionClusterAlreadyExistsFault extends S.TaggedErrorClass<MultiRegionClusterAlreadyExistsFault>()(
   "MultiRegionClusterAlreadyExistsFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "MultiRegionClusterAlreadyExistsFault",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "MultiRegionClusterAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class MultiRegionParameterGroupNotFoundFault extends S.TaggedErrorClass<MultiRegionParameterGroupNotFoundFault>()(
   "MultiRegionParameterGroupNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "MultiRegionParameterGroupNotFoundFault",
-    httpResponseCode: 404,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "MultiRegionParameterGroupNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidParameterGroupStateFault extends S.TaggedErrorClass<InvalidParameterGroupStateFault>()(
   "InvalidParameterGroupStateFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidParameterGroupState",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidParameterGroupState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ParameterGroupAlreadyExistsFault extends S.TaggedErrorClass<ParameterGroupAlreadyExistsFault>()(
   "ParameterGroupAlreadyExistsFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ParameterGroupAlreadyExists",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "ParameterGroupAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ParameterGroupQuotaExceededFault extends S.TaggedErrorClass<ParameterGroupQuotaExceededFault>()(
   "ParameterGroupQuotaExceededFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ParameterGroupQuotaExceeded",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "ParameterGroupQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ClusterNotFoundFault extends S.TaggedErrorClass<ClusterNotFoundFault>()(
   "ClusterNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ClusterNotFound", httpResponseCode: 404 }),
+  T.all(
+    T.AwsQueryError({ code: "ClusterNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidClusterStateFault extends S.TaggedErrorClass<InvalidClusterStateFault>()(
   "InvalidClusterStateFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidClusterState", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidClusterState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
   "InvalidSubnet",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class SubnetGroupAlreadyExistsFault extends S.TaggedErrorClass<SubnetGroupAlreadyExistsFault>()(
   "SubnetGroupAlreadyExistsFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetGroupAlreadyExists", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({
+      code: "SubnetGroupAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class SubnetGroupQuotaExceededFault extends S.TaggedErrorClass<SubnetGroupQuotaExceededFault>()(
   "SubnetGroupQuotaExceededFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetGroupQuotaExceeded", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({
+      code: "SubnetGroupQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class SubnetNotAllowedFault extends S.TaggedErrorClass<SubnetNotAllowedFault>()(
   "SubnetNotAllowedFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetNotAllowedFault", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "SubnetNotAllowedFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class SubnetQuotaExceededFault extends S.TaggedErrorClass<SubnetQuotaExceededFault>()(
   "SubnetQuotaExceededFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetQuotaExceededFault", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({
+      code: "SubnetQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class UserAlreadyExistsFault extends S.TaggedErrorClass<UserAlreadyExistsFault>()(
   "UserAlreadyExistsFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "UserAlreadyExists", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "UserAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class UserQuotaExceededFault extends S.TaggedErrorClass<UserQuotaExceededFault>()(
   "UserQuotaExceededFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "UserQuotaExceeded", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "UserQuotaExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class SubnetGroupInUseFault extends S.TaggedErrorClass<SubnetGroupInUseFault>()(
   "SubnetGroupInUseFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetGroupInUse", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "SubnetGroupInUse", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidUserStateFault extends S.TaggedErrorClass<InvalidUserStateFault>()(
   "InvalidUserStateFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidUserState", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidUserState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ReservedNodeNotFoundFault extends S.TaggedErrorClass<ReservedNodeNotFoundFault>()(
   "ReservedNodeNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ReservedNodeNotFound", httpResponseCode: 404 }),
+  T.all(
+    T.AwsQueryError({ code: "ReservedNodeNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ReservedNodesOfferingNotFoundFault extends S.TaggedErrorClass<ReservedNodesOfferingNotFoundFault>()(
   "ReservedNodesOfferingNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ReservedNodesOfferingNotFound",
-    httpResponseCode: 404,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "ReservedNodesOfferingNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class APICallRateForCustomerExceededFault extends S.TaggedErrorClass<APICallRateForCustomerExceededFault>()(
   "APICallRateForCustomerExceededFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "APICallRateForCustomerExceeded",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "APICallRateForCustomerExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidKMSKeyFault extends S.TaggedErrorClass<InvalidKMSKeyFault>()(
   "InvalidKMSKeyFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidKMSKeyFault", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidKMSKeyFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ShardNotFoundFault extends S.TaggedErrorClass<ShardNotFoundFault>()(
   "ShardNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ShardNotFoundFault", httpResponseCode: 404 }),
+  T.all(
+    T.AwsQueryError({ code: "ShardNotFoundFault", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class TestFailoverNotAvailableFault extends S.TaggedErrorClass<TestFailoverNotAvailableFault>()(
   "TestFailoverNotAvailableFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "TestFailoverNotAvailableFault",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "TestFailoverNotAvailableFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidARNFault extends S.TaggedErrorClass<InvalidARNFault>()(
   "InvalidARNFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidARN", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidARN", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ReservedNodeAlreadyExistsFault extends S.TaggedErrorClass<ReservedNodeAlreadyExistsFault>()(
   "ReservedNodeAlreadyExistsFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ReservedNodeAlreadyExists", httpResponseCode: 404 }),
+  T.all(
+    T.AwsQueryError({
+      code: "ReservedNodeAlreadyExists",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class ReservedNodeQuotaExceededFault extends S.TaggedErrorClass<ReservedNodeQuotaExceededFault>()(
   "ReservedNodeQuotaExceededFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ReservedNodeQuotaExceeded", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({
+      code: "ReservedNodeQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class TagNotFoundFault extends S.TaggedErrorClass<TagNotFoundFault>()(
   "TagNotFoundFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TagNotFound", httpResponseCode: 404 }),
+  T.all(
+    T.AwsQueryError({ code: "TagNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidNodeStateFault extends S.TaggedErrorClass<InvalidNodeStateFault>()(
   "InvalidNodeStateFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidNodeState", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidNodeState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class NoOperationFault extends S.TaggedErrorClass<NoOperationFault>()(
   "NoOperationFault",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "NoOperationFault", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "NoOperationFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class SubnetInUse extends S.TaggedErrorClass<SubnetInUse>()(
   "SubnetInUse",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetInUse", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "SubnetInUse", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
 
 //# Operations

@@ -890,11 +890,11 @@ export type BatchEvaluateGeofencesErrorList = BatchEvaluateGeofencesError_[];
 export const BatchEvaluateGeofencesErrorList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchEvaluateGeofencesError_);
 export interface BatchEvaluateGeofencesResponse {
-  Errors: BatchEvaluateGeofencesError_[];
+  Errors?: BatchEvaluateGeofencesError_[];
 }
 export const BatchEvaluateGeofencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Errors: BatchEvaluateGeofencesErrorList }),
+    S.Struct({ Errors: S.optional(BatchEvaluateGeofencesErrorList) }),
   ).annotate({
     identifier: "BatchEvaluateGeofencesResponse",
   }) as any as S.Schema<BatchEvaluateGeofencesResponse>;
@@ -4689,6 +4689,7 @@ export type CancelJobError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * `CancelJob` cancels a job that is currently running or pending. If the job is already in a terminal state (`Completed`, `Failed`, or `Cancelled`), the operation returns successfully with the current status.
@@ -4708,6 +4709,7 @@ export const cancelJob: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "CancelJob",
   endpointHostPrefix: "metadata.",

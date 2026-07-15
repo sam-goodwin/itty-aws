@@ -1,0 +1,9 @@
+{
+  "structures": {
+    "AuthenticationMode": {
+      "members": {
+        "Passwords": { "sensitive": true }
+      }
+    }
+  }
+}
