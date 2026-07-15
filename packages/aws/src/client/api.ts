@@ -323,7 +323,9 @@ export const make = <Op extends Operation<any, any, any>>(
     // Use unsigned payload for streaming bodies OR streaming-input
     // operations OR when service provides checksum with body
     const useUnsignedPayload =
-      (isStreamingBody || hasStreamingInput || (hasServiceChecksum && hasBody)) &&
+      (isStreamingBody ||
+        hasStreamingInput ||
+        (hasServiceChecksum && hasBody)) &&
       !hasContentSha256;
     let signingHeaders = useUnsignedPayload
       ? {
