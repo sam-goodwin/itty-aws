@@ -3,6 +3,15 @@
     "getMicrosoftTeamsChannelConfiguration": {
       "errors": ["ResourceNotFoundException"]
     },
+    "listAssociations": {
+      "errors": ["InvalidRequestException"]
+    },
+    "associateToConfiguration": {
+      "errors": ["ResourceNotFoundException"]
+    },
+    "disassociateFromConfiguration": {
+      "errors": ["ResourceNotFoundException"]
+    },
     "createSlackChannelConfiguration": {
       "syntheticErrors": [
         {

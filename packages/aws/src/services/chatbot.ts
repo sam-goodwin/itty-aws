@@ -1599,34 +1599,46 @@ export const ListCustomActionsResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
   "InternalServiceError",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
   "InvalidRequestException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {},
+) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class CreateChimeWebhookConfigurationException extends S.TaggedErrorClass<CreateChimeWebhookConfigurationException>()(
   "CreateChimeWebhookConfigurationException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
   "InvalidParameterException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class CreateTeamsChannelConfigurationException extends S.TaggedErrorClass<CreateTeamsChannelConfigurationException>()(
   "CreateTeamsChannelConfigurationException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class MicrosoftTeamsTeamNotConfigured extends S.TaggedErrorClass<MicrosoftTeamsTeamNotConfigured>()(
   "MicrosoftTeamsTeamNotConfigured",
@@ -1639,6 +1651,7 @@ export class MicrosoftTeamsTeamNotConfigured extends S.TaggedErrorClass<Microsof
 export class CreateSlackChannelConfigurationException extends S.TaggedErrorClass<CreateSlackChannelConfigurationException>()(
   "CreateSlackChannelConfigurationException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class SlackWorkspaceNotAuthorized extends S.TaggedErrorClass<SlackWorkspaceNotAuthorized>()(
   "SlackWorkspaceNotAuthorized",
@@ -1651,94 +1664,112 @@ export class SlackWorkspaceNotAuthorized extends S.TaggedErrorClass<SlackWorkspa
 export class DeleteChimeWebhookConfigurationException extends S.TaggedErrorClass<DeleteChimeWebhookConfigurationException>()(
   "DeleteChimeWebhookConfigurationException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
 export class DeleteTeamsChannelConfigurationException extends S.TaggedErrorClass<DeleteTeamsChannelConfigurationException>()(
   "DeleteTeamsChannelConfigurationException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class DeleteTeamsConfiguredTeamException extends S.TaggedErrorClass<DeleteTeamsConfiguredTeamException>()(
   "DeleteTeamsConfiguredTeamException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class DeleteMicrosoftTeamsUserIdentityException extends S.TaggedErrorClass<DeleteMicrosoftTeamsUserIdentityException>()(
   "DeleteMicrosoftTeamsUserIdentityException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class DeleteSlackChannelConfigurationException extends S.TaggedErrorClass<DeleteSlackChannelConfigurationException>()(
   "DeleteSlackChannelConfigurationException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class DeleteSlackUserIdentityException extends S.TaggedErrorClass<DeleteSlackUserIdentityException>()(
   "DeleteSlackUserIdentityException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class DeleteSlackWorkspaceAuthorizationFault extends S.TaggedErrorClass<DeleteSlackWorkspaceAuthorizationFault>()(
   "DeleteSlackWorkspaceAuthorizationFault",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class DescribeChimeWebhookConfigurationsException extends S.TaggedErrorClass<DescribeChimeWebhookConfigurationsException>()(
   "DescribeChimeWebhookConfigurationsException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class DescribeSlackChannelConfigurationsException extends S.TaggedErrorClass<DescribeSlackChannelConfigurationsException>()(
   "DescribeSlackChannelConfigurationsException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class DescribeSlackUserIdentitiesException extends S.TaggedErrorClass<DescribeSlackUserIdentitiesException>()(
   "DescribeSlackUserIdentitiesException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class DescribeSlackWorkspacesException extends S.TaggedErrorClass<DescribeSlackWorkspacesException>()(
   "DescribeSlackWorkspacesException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class GetAccountPreferencesException extends S.TaggedErrorClass<GetAccountPreferencesException>()(
   "GetAccountPreferencesException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class GetTeamsChannelConfigurationException extends S.TaggedErrorClass<GetTeamsChannelConfigurationException>()(
   "GetTeamsChannelConfigurationException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ListTeamsChannelConfigurationsException extends S.TaggedErrorClass<ListTeamsChannelConfigurationsException>()(
   "ListTeamsChannelConfigurationsException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ListMicrosoftTeamsConfiguredTeamsException extends S.TaggedErrorClass<ListMicrosoftTeamsConfiguredTeamsException>()(
   "ListMicrosoftTeamsConfiguredTeamsException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ListMicrosoftTeamsUserIdentitiesException extends S.TaggedErrorClass<ListMicrosoftTeamsUserIdentitiesException>()(
   "ListMicrosoftTeamsUserIdentitiesException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError, C.withServerError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class UpdateAccountPreferencesException extends S.TaggedErrorClass<UpdateAccountPreferencesException>()(
   "UpdateAccountPreferencesException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class UpdateChimeWebhookConfigurationException extends S.TaggedErrorClass<UpdateChimeWebhookConfigurationException>()(
   "UpdateChimeWebhookConfigurationException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class UpdateTeamsChannelConfigurationException extends S.TaggedErrorClass<UpdateTeamsChannelConfigurationException>()(
   "UpdateTeamsChannelConfigurationException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class UpdateSlackChannelConfigurationException extends S.TaggedErrorClass<UpdateSlackChannelConfigurationException>()(
   "UpdateSlackChannelConfigurationException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 
 //# Operations
@@ -1746,6 +1777,7 @@ export type AssociateToConfigurationError =
   | InternalServiceError
   | InvalidRequestException
   | UnauthorizedException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Links a resource (for example, a custom action) to a channel configuration.
@@ -1762,6 +1794,7 @@ export const associateToConfiguration: API.OperationMethod<
     InternalServiceError,
     InvalidRequestException,
     UnauthorizedException,
+    ResourceNotFoundException,
   ],
   operationName: "AssociateToConfiguration",
 }));
@@ -2187,6 +2220,7 @@ export type DisassociateFromConfigurationError =
   | InternalServiceError
   | InvalidRequestException
   | UnauthorizedException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Unlink a resource, for example a custom action, from a channel configuration.
@@ -2203,6 +2237,7 @@ export const disassociateFromConfiguration: API.OperationMethod<
     InternalServiceError,
     InvalidRequestException,
     UnauthorizedException,
+    ResourceNotFoundException,
   ],
   operationName: "DisassociateFromConfiguration",
 }));
@@ -2249,7 +2284,7 @@ export const getMicrosoftTeamsChannelConfiguration: API.OperationMethod<
   ],
   operationName: "GetMicrosoftTeamsChannelConfiguration",
 }));
-export type ListAssociationsError = CommonErrors;
+export type ListAssociationsError = InvalidRequestException | CommonErrors;
 /**
  * Lists resources associated with a channel configuration.
  */
@@ -2276,7 +2311,7 @@ export const listAssociations: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAssociationsRequest,
   output: ListAssociationsResult,
-  errors: [],
+  errors: [InvalidRequestException],
   operationName: "ListAssociations",
   pagination: {
     inputToken: "NextToken",
