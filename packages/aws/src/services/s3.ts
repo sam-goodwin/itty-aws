@@ -19659,6 +19659,7 @@ export type PutObjectLegalHoldError =
   | RequestLimitExceeded
   | SlowDown
   | MalformedXML
+  | InvalidRequest
   | CommonErrors;
 /**
  * This operation is not supported for directory buckets.
@@ -19677,7 +19678,7 @@ export const putObjectLegalHold: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutObjectLegalHoldRequest,
   output: PutObjectLegalHoldOutput,
-  errors: [RequestLimitExceeded, SlowDown, MalformedXML],
+  errors: [RequestLimitExceeded, SlowDown, MalformedXML, InvalidRequest],
   operationName: "PutObjectLegalHold",
 }));
 export type PutObjectLockConfigurationError =
@@ -19918,6 +19919,7 @@ export type RestoreObjectError =
   | SlowDown
   | NoSuchKey
   | PermanentRedirect
+  | InvalidObjectState
   | CommonErrors;
 /**
  * This operation is not supported for directory buckets.
@@ -20073,6 +20075,7 @@ export const restoreObject: API.OperationMethod<
     SlowDown,
     NoSuchKey,
     PermanentRedirect,
+    InvalidObjectState,
   ],
   operationName: "RestoreObject",
 }));

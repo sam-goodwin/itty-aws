@@ -356,7 +356,7 @@
       "errors": ["RequestLimitExceeded", "SlowDown", "InvalidRequest"]
     },
     "putObjectLegalHold": {
-      "errors": ["RequestLimitExceeded", "SlowDown", "MalformedXML"]
+      "errors": ["RequestLimitExceeded", "SlowDown", "MalformedXML", "InvalidRequest"]
     },
     "listMultipartUploads": {
       "errors": ["RequestLimitExceeded", "SlowDown", "NoSuchBucket", "PermanentRedirect"]
@@ -383,7 +383,13 @@
       "errors": ["RequestLimitExceeded", "SlowDown", "NoSuchBucket", "PermanentRedirect"]
     },
     "restoreObject": {
-      "errors": ["RequestLimitExceeded", "SlowDown", "NoSuchKey", "PermanentRedirect"]
+      "errors": [
+        "RequestLimitExceeded",
+        "SlowDown",
+        "NoSuchKey",
+        "PermanentRedirect",
+        "InvalidObjectState"
+      ]
     },
     "uploadPartCopy": {
       "errors": ["RequestLimitExceeded", "SlowDown", "NoSuchBucket"]

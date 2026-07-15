@@ -325,7 +325,14 @@ export interface GetAccountSettingsRequest {}
 export const GetAccountSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+      T.all(
+        T.Http({ method: "POST", uri: "/get-account-settings" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
 ).annotate({
   identifier: "GetAccountSettingsRequest",
@@ -1266,26 +1273,32 @@ export const UpdateGroupQueryOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
   "ForbiddenException",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
   "InternalServerErrorException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
   "MethodNotAllowedException",
   { Message: S.optional(S.String) },
+  T.HttpError(405),
 ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
   "TooManyRequestsException",
   { Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { Message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class GroupAlreadyExists extends S.TaggedErrorClass<GroupAlreadyExists>()(
   "GroupAlreadyExists",
@@ -1298,6 +1311,7 @@ export class GroupAlreadyExists extends S.TaggedErrorClass<GroupAlreadyExists>()
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -1673,6 +1687,7 @@ export type ListGroupingStatusesError =
   | InternalServerErrorException
   | MethodNotAllowedException
   | TooManyRequestsException
+  | NotFoundException
   | CommonErrors;
 /**
  * Returns the status of the last grouping or ungrouping action for
@@ -1707,6 +1722,7 @@ export const listGroupingStatuses: API.OperationMethod<
     InternalServerErrorException,
     MethodNotAllowedException,
     TooManyRequestsException,
+    NotFoundException,
   ],
   operationName: "ListGroupingStatuses",
   pagination: {
