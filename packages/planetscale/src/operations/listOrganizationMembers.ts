@@ -28,7 +28,7 @@ export interface ListOrganizationMembersOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     user: {
       id: string;
@@ -54,7 +54,7 @@ export interface ListOrganizationMembersOutput {
     role: "member" | "admin";
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
 }
 export const ListOrganizationMembersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

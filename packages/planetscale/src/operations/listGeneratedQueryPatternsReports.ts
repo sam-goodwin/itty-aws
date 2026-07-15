@@ -34,7 +34,7 @@ export interface ListGeneratedQueryPatternsReportsOutput {
   has_prev: boolean;
   cursor_start: string | null;
   cursor_end: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     state: "pending" | "completed" | "failed";
     created_at: string;
@@ -42,7 +42,7 @@ export interface ListGeneratedQueryPatternsReportsOutput {
     url: string;
     download_url: string;
     actor: { id: string; display_name: string; avatar_url: string };
-  }[];
+  }>;
 }
 export const ListGeneratedQueryPatternsReportsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

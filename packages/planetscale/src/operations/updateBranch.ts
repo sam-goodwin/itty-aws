@@ -66,7 +66,7 @@ export interface UpdateBranchOutput {
     id: string;
     provider: string;
     enabled: boolean;
-    public_ip_addresses: string[];
+    public_ip_addresses: ReadonlyArray<string>;
     display_name: string;
     location: string;
     slug: string;

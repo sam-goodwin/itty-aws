@@ -31,16 +31,16 @@ export interface ListDatabasePostgresCidrsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     schema: string;
     role: string;
-    cidrs: string[];
+    cidrs: ReadonlyArray<string>;
     created_at: string;
     updated_at: string;
     deleted_at: string | null;
     actor: { id: string; display_name: string; avatar_url: string };
-  }[];
+  }>;
 }
 export const ListDatabasePostgresCidrsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

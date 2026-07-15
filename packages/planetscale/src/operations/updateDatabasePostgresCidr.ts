@@ -10,7 +10,7 @@ export interface UpdateDatabasePostgresCidrInput {
   id: string;
   schema?: string;
   role?: string;
-  cidrs?: string[];
+  cidrs?: ReadonlyArray<string>;
 }
 export const UpdateDatabasePostgresCidrInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -32,7 +32,7 @@ export interface UpdateDatabasePostgresCidrOutput {
   id: string;
   schema: string;
   role: string;
-  cidrs: string[];
+  cidrs: ReadonlyArray<string>;
   created_at: string;
   updated_at: string;
   deleted_at: string | null;

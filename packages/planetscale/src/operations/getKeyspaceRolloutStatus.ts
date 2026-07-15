@@ -27,12 +27,12 @@ export const GetKeyspaceRolloutStatusInput =
 export interface GetKeyspaceRolloutStatusOutput {
   name: string;
   state: string;
-  shards: {
+  shards: ReadonlyArray<{
     name: string;
     last_rollout_started_at: string;
     last_rollout_finished_at: string;
     state: string;
-  }[];
+  }>;
 }
 export const GetKeyspaceRolloutStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

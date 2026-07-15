@@ -32,7 +32,7 @@ export interface ListKeyspacesOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     shards: number;
@@ -65,7 +65,7 @@ export interface ListKeyspacesOutput {
     };
     mysqld_options: Record<string, unknown>;
     vttablet_options: Record<string, unknown>;
-  }[];
+  }>;
 }
 export const ListKeyspacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.String,

@@ -13,7 +13,7 @@ export interface CreateWorkflowInput {
   global_keyspace?: string;
   defer_secondary_keys?: boolean;
   on_ddl?: "IGNORE" | "STOP" | "EXEC" | "EXEC_IGNORE";
-  tables: string[];
+  tables: ReadonlyArray<string>;
 }
 export const CreateWorkflowInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
