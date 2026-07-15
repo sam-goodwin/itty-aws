@@ -2566,6 +2566,7 @@ export type CreateRecordingConfigurationError =
   | PendingVerification
   | ServiceQuotaExceededException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Creates a new recording configuration, used to enable recording to Amazon S3.
@@ -2589,6 +2590,7 @@ export const createRecordingConfiguration: API.OperationMethod<
     PendingVerification,
     ServiceQuotaExceededException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "CreateRecordingConfiguration",
 }));
@@ -2629,6 +2631,7 @@ export type DeleteAdConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Deletes the specified ad configuration.
@@ -2647,6 +2650,7 @@ export const deleteAdConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "DeleteAdConfiguration",
 }));
@@ -2714,6 +2718,7 @@ export type DeletePlaybackRestrictionPolicyError =
   | PendingVerification
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Deletes the specified playback restriction policy.
@@ -2732,6 +2737,7 @@ export const deletePlaybackRestrictionPolicy: API.OperationMethod<
     PendingVerification,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "DeletePlaybackRestrictionPolicy",
 }));
@@ -2741,6 +2747,7 @@ export type DeleteRecordingConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Deletes the recording configuration for the specified ARN.
@@ -2761,6 +2768,7 @@ export const deleteRecordingConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "DeleteRecordingConfiguration",
 }));
@@ -2796,6 +2804,7 @@ export type GetAdConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets the ad configuration represented by the specified ARN.
@@ -2813,6 +2822,7 @@ export const getAdConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetAdConfiguration",
 }));
@@ -2871,6 +2881,7 @@ export type GetPlaybackRestrictionPolicyError =
   | PendingVerification
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets the specified playback restriction policy.
@@ -2888,6 +2899,7 @@ export const getPlaybackRestrictionPolicy: API.OperationMethod<
     PendingVerification,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetPlaybackRestrictionPolicy",
 }));
@@ -2896,6 +2908,7 @@ export type GetRecordingConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets the recording configuration for the specified ARN.
@@ -2913,6 +2926,7 @@ export const getRecordingConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetRecordingConfiguration",
 }));
@@ -2921,6 +2935,7 @@ export type GetStreamError =
   | ChannelNotBroadcasting
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets information about the active (live) stream on a specified channel.
@@ -2938,6 +2953,7 @@ export const getStream: API.OperationMethod<
     ChannelNotBroadcasting,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetStream",
 }));
@@ -2970,6 +2986,7 @@ export type GetStreamSessionError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets metadata on a specified stream.
@@ -2986,6 +3003,7 @@ export const getStreamSession: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetStreamSession",
 }));
@@ -3055,6 +3073,7 @@ export type ListAdConfigurationsError =
   | AccessDeniedException
   | InternalServerException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about all ad configurations in your account, in the AWS region where the API request is processed.
@@ -3082,7 +3101,12 @@ export const listAdConfigurations: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdConfigurationsRequest,
   output: ListAdConfigurationsResponse,
-  errors: [AccessDeniedException, InternalServerException, ValidationException],
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ValidationException,
+    ThrottlingException,
+  ],
   operationName: "ListAdConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -3180,6 +3204,7 @@ export type ListPlaybackRestrictionPoliciesError =
   | ConflictException
   | PendingVerification
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about playback restriction policies.
@@ -3212,6 +3237,7 @@ export const listPlaybackRestrictionPolicies: API.OperationMethod<
     ConflictException,
     PendingVerification,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "ListPlaybackRestrictionPolicies",
   pagination: {
@@ -3224,6 +3250,7 @@ export type ListRecordingConfigurationsError =
   | AccessDeniedException
   | InternalServerException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about all recording configurations in your account, in the Amazon Web Services region where the API request is processed.
@@ -3251,7 +3278,12 @@ export const listRecordingConfigurations: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecordingConfigurationsRequest,
   output: ListRecordingConfigurationsResponse,
-  errors: [AccessDeniedException, InternalServerException, ValidationException],
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ValidationException,
+    ThrottlingException,
+  ],
   operationName: "ListRecordingConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -3307,6 +3339,7 @@ export const listStreamKeys: API.OperationMethod<
 export type ListStreamsError =
   | AccessDeniedException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about live streams in your account, in the Amazon Web Services region where the API request is processed.
@@ -3334,7 +3367,7 @@ export const listStreams: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsRequest,
   output: ListStreamsResponse,
-  errors: [AccessDeniedException, ValidationException],
+  errors: [AccessDeniedException, ValidationException, ThrottlingException],
   operationName: "ListStreams",
   pagination: {
     inputToken: "nextToken",
@@ -3346,6 +3379,7 @@ export type ListStreamSessionsError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets a summary of current and previous streams for a specified channel in your account, in the AWS region where the API request is processed.
@@ -3377,6 +3411,7 @@ export const listStreamSessions: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "ListStreamSessions",
   pagination: {
@@ -3472,6 +3507,7 @@ export type StopStreamError =
   | ResourceNotFoundException
   | StreamUnavailable
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Disconnects the incoming RTMPS stream for the specified channel. Can be used in conjunction with DeleteStreamKey to prevent further streaming to a channel.
@@ -3492,6 +3528,7 @@ export const stopStream: API.OperationMethod<
     ResourceNotFoundException,
     StreamUnavailable,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "StopStream",
 }));
