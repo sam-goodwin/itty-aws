@@ -4469,6 +4469,7 @@ export type GetAccessTokenError =
   | RateLimitExceededException
   | ServerInternalException
   | ValidationException
+  | InvalidParameterValueException
   | CommonErrors;
 /**
  * Gets a temporary access token to use with AssumeRoleWithWebIdentity. Access tokens
@@ -4488,6 +4489,7 @@ export const getAccessToken: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
     ValidationException,
+    InvalidParameterValueException,
   ],
   operationName: "GetAccessToken",
 }));

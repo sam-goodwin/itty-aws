@@ -257,6 +257,17 @@ export const ServiceSpec = S.Struct({
    * Categories are applied globally to the error class, not per-operation.
    */
   errorCategories: S.optional(S.Record(S.String, S.Array(CategorySchema))),
+  /**
+   * Map of error names to the HTTP status code they arrive with on the wire.
+   * Use this when a service returns REST errors that carry NO error code
+   * (no X-Amzn-Errortype header, no __type/code body field) AND the Smithy
+   * model lacks the `smithy.api#httpError` trait on the error shape — the
+   * response parser's status-based fallback then has nothing to match (e.g.
+   * MWAA's InvokeRestApi webserver proxy returns a bare 404
+   * `{"message":"Environment not found"}` for ResourceNotFoundException).
+   * The status is emitted as a `T.HttpError(n)` annotation on the error class.
+   */
+  errorHttpStatus: S.optional(S.Record(S.String, S.Number)),
 });
 export type ServiceSpec = typeof ServiceSpec.Type;
 

@@ -1,4 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
 import * as API from "../client/api.ts";
@@ -7,6 +8,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
+import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({ sdkId: "Macie2", serviceShapeName: "Macie2" });
 const auth = T.AwsAuthSigv4({ name: "macie2" });
 const ver = T.ServiceVersion("2020-01-01");
@@ -3358,10 +3360,10 @@ export const GetSensitiveDataOccurrencesRequest =
     identifier: "GetSensitiveDataOccurrencesRequest",
   }) as any as S.Schema<GetSensitiveDataOccurrencesRequest>;
 export interface DetectedDataDetails {
-  value?: string;
+  value?: string | redacted.Redacted<string>;
 }
 export const DetectedDataDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ value: S.optional(S.String) }),
+  S.Struct({ value: S.optional(SensitiveString) }),
 ).annotate({
   identifier: "DetectedDataDetails",
 }) as any as S.Schema<DetectedDataDetails>;
@@ -5338,30 +5340,37 @@ export const UpdateSensitivityInspectionTemplateResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class MacieNotEnabled extends S.TaggedErrorClass<MacieNotEnabled>()(
   "MacieNotEnabled",
@@ -5374,6 +5383,7 @@ export class MacieNotEnabled extends S.TaggedErrorClass<MacieNotEnabled>()(
 export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
   "UnprocessableEntityException",
   { message: S.optional(S.String) },
+  T.HttpError(422),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -5474,6 +5484,7 @@ export type CreateAllowListError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | MacieNotEnabled
   | CommonErrors;
 /**
  * Creates and defines the settings for an allow list.
@@ -5494,6 +5505,7 @@ export const createAllowList: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    MacieNotEnabled,
   ],
   operationName: "CreateAllowList",
 }));
@@ -5538,6 +5550,7 @@ export type CreateCustomDataIdentifierError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | MacieNotEnabled
   | CommonErrors;
 /**
  * Creates and defines the criteria and other settings for a custom data identifier.
@@ -5558,6 +5571,7 @@ export const createCustomDataIdentifier: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    MacieNotEnabled,
   ],
   operationName: "CreateCustomDataIdentifier",
 }));
@@ -5569,6 +5583,7 @@ export type CreateFindingsFilterError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | MacieNotEnabled
   | CommonErrors;
 /**
  * Creates and defines the criteria and other settings for a findings filter.
@@ -5589,6 +5604,7 @@ export const createFindingsFilter: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    MacieNotEnabled,
   ],
   operationName: "CreateFindingsFilter",
 }));

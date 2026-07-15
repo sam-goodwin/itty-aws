@@ -17,6 +17,9 @@
     }
   },
   "operations": {
+    "getAccessToken": {
+      "errors": ["InvalidParameterValueException"]
+    },
     "getLicenseConfiguration": {
       "syntheticErrors": [
         {

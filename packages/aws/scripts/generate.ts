@@ -3496,6 +3496,37 @@ const generateClient = Effect.fn(function* (
   // Load spec patches for this service
   const serviceSpec = loadServiceSpecPatch(serviceTraits.sdkId);
 
+  // Apply error httpError-status patches — some services return REST errors
+  // with no error code (no X-Amzn-Errortype header, no __type/code body
+  // field) AND no smithy.api#httpError trait on the declared error shape, so
+  // the response parser's status-based fallback has nothing to match (e.g.
+  // MWAA's InvokeRestApi webserver proxy answers a bare 404
+  // `{"message":"Environment not found"}` for ResourceNotFoundException).
+  // The patch declares the wire status, emitted as a T.HttpError(n)
+  // annotation on the error class.
+  if (serviceSpec.errorHttpStatus) {
+    for (const [errorName, status] of Object.entries(
+      serviceSpec.errorHttpStatus,
+    )) {
+      const entry = [...errorShapeIds.entries()].find(
+        ([shapeId]) => shapeId.split("#")[1] === errorName,
+      );
+      if (entry === undefined) {
+        return yield* Effect.fail(
+          new UnableToTransformShapeToSchema({
+            message: `patches/${serviceTraits.sdkId
+              .toLowerCase()
+              .replaceAll(
+                " ",
+                "-",
+              )}.json errorHttpStatus patches error "${errorName}" which is not declared by any operation in the model`,
+          }),
+        );
+      }
+      entry[1].httpError ??= status;
+    }
+  }
+
   // Apply union member patches to the loaded model — the live API can return
   // union variants the published Smithy model is missing (e.g. DataZone's
   // ProvisioningProperties `{ "manual": {} }` for CustomAwsService

@@ -1,6 +1,40 @@
 {
+  "structures": {
+    "DetectedDataDetails": {
+      "members": {
+        "value": { "sensitive": true }
+      }
+    }
+  },
   "operations": {
     "createClassificationJob": {
+      "syntheticErrors": [
+        {
+          "name": "MacieNotEnabled",
+          "from": "AccessDeniedException",
+          "message": { "includes": "Macie is not enabled" }
+        }
+      ]
+    },
+    "createAllowList": {
+      "syntheticErrors": [
+        {
+          "name": "MacieNotEnabled",
+          "from": "AccessDeniedException",
+          "message": { "includes": "Macie is not enabled" }
+        }
+      ]
+    },
+    "createCustomDataIdentifier": {
+      "syntheticErrors": [
+        {
+          "name": "MacieNotEnabled",
+          "from": "AccessDeniedException",
+          "message": { "includes": "Macie is not enabled" }
+        }
+      ]
+    },
+    "createFindingsFilter": {
       "syntheticErrors": [
         {
           "name": "MacieNotEnabled",

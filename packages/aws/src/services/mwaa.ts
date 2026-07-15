@@ -834,22 +834,27 @@ export const UpdateEnvironmentOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
   { message: S.optional(S.String) },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class RestApiClientException extends S.TaggedErrorClass<RestApiClientException>()(
   "RestApiClientException",
@@ -857,6 +862,7 @@ export class RestApiClientException extends S.TaggedErrorClass<RestApiClientExce
     RestApiStatusCode: S.optional(S.Number),
     RestApiResponse: S.optional(S.Any),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class RestApiServerException extends S.TaggedErrorClass<RestApiServerException>()(
   "RestApiServerException",
@@ -864,6 +870,7 @@ export class RestApiServerException extends S.TaggedErrorClass<RestApiServerExce
     RestApiStatusCode: S.optional(S.Number),
     RestApiResponse: S.optional(S.Any),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations

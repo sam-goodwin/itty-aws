@@ -156,7 +156,7 @@ export type ApiKeyActionList = string[];
 export const ApiKeyActionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export type GeoArnList = string[];
 export const GeoArnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
-export type RefererPatternList = string | redacted.Redacted<string>[];
+export type RefererPatternList = (string | redacted.Redacted<string>)[];
 export const RefererPatternList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface AndroidApp {
@@ -179,7 +179,7 @@ export const AppleAppList = /*@__PURE__*/ /*#__PURE__*/ S.Array(AppleApp);
 export interface ApiKeyRestrictions {
   AllowActions: string[];
   AllowResources: string[];
-  AllowReferers?: string | redacted.Redacted<string>[];
+  AllowReferers?: (string | redacted.Redacted<string>)[];
   AllowAndroidApps?: AndroidApp[];
   AllowAppleApps?: AppleApp[];
 }
@@ -2174,12 +2174,13 @@ export interface TimeZone {
 export const TimeZone = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({ Name: SensitiveString, Offset: S.optional(S.Number) }),
 ).annotate({ identifier: "TimeZone" }) as any as S.Schema<TimeZone>;
-export type PlaceCategoryList = string | redacted.Redacted<string>[];
+export type PlaceCategoryList = (string | redacted.Redacted<string>)[];
 export const PlaceCategoryList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
-export type PlaceSupplementalCategoryList =
+export type PlaceSupplementalCategoryList = (
   | string
-  | redacted.Redacted<string>[];
+  | redacted.Redacted<string>
+)[];
 export const PlaceSupplementalCategoryList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface Place {
@@ -2197,8 +2198,8 @@ export interface Place {
   TimeZone?: TimeZone;
   UnitType?: string | redacted.Redacted<string>;
   UnitNumber?: string | redacted.Redacted<string>;
-  Categories?: string | redacted.Redacted<string>[];
-  SupplementalCategories?: string | redacted.Redacted<string>[];
+  Categories?: (string | redacted.Redacted<string>)[];
+  SupplementalCategories?: (string | redacted.Redacted<string>)[];
   SubMunicipality?: string | redacted.Redacted<string>;
 }
 export const Place = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2312,10 +2313,10 @@ export const SearchPlaceIndexForPositionResponse =
   }) as any as S.Schema<SearchPlaceIndexForPositionResponse>;
 export type BoundingBox = number[];
 export const BoundingBox = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
-export type CountryCodeList = string | redacted.Redacted<string>[];
+export type CountryCodeList = (string | redacted.Redacted<string>)[];
 export const CountryCodeList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
-export type FilterPlaceCategoryList = string | redacted.Redacted<string>[];
+export type FilterPlaceCategoryList = (string | redacted.Redacted<string>)[];
 export const FilterPlaceCategoryList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface SearchPlaceIndexForSuggestionsRequest {
@@ -2323,10 +2324,10 @@ export interface SearchPlaceIndexForSuggestionsRequest {
   Text: string | redacted.Redacted<string>;
   BiasPosition?: number[];
   FilterBBox?: number[];
-  FilterCountries?: string | redacted.Redacted<string>[];
+  FilterCountries?: (string | redacted.Redacted<string>)[];
   MaxResults?: number;
   Language?: string;
-  FilterCategories?: string | redacted.Redacted<string>[];
+  FilterCategories?: (string | redacted.Redacted<string>)[];
   Key?: string | redacted.Redacted<string>;
 }
 export const SearchPlaceIndexForSuggestionsRequest =
@@ -2361,11 +2362,11 @@ export interface SearchPlaceIndexForSuggestionsSummary {
   Text: string | redacted.Redacted<string>;
   BiasPosition?: number[];
   FilterBBox?: number[];
-  FilterCountries?: string | redacted.Redacted<string>[];
+  FilterCountries?: (string | redacted.Redacted<string>)[];
   MaxResults?: number;
   DataSource: string;
   Language?: string;
-  FilterCategories?: string | redacted.Redacted<string>[];
+  FilterCategories?: (string | redacted.Redacted<string>)[];
 }
 export const SearchPlaceIndexForSuggestionsSummary =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2385,8 +2386,8 @@ export const SearchPlaceIndexForSuggestionsSummary =
 export interface SearchForSuggestionsResult {
   Text: string | redacted.Redacted<string>;
   PlaceId?: string | redacted.Redacted<string>;
-  Categories?: string | redacted.Redacted<string>[];
-  SupplementalCategories?: string | redacted.Redacted<string>[];
+  Categories?: (string | redacted.Redacted<string>)[];
+  SupplementalCategories?: (string | redacted.Redacted<string>)[];
 }
 export const SearchForSuggestionsResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2420,10 +2421,10 @@ export interface SearchPlaceIndexForTextRequest {
   Text: string | redacted.Redacted<string>;
   BiasPosition?: number[];
   FilterBBox?: number[];
-  FilterCountries?: string | redacted.Redacted<string>[];
+  FilterCountries?: (string | redacted.Redacted<string>)[];
   MaxResults?: number;
   Language?: string;
-  FilterCategories?: string | redacted.Redacted<string>[];
+  FilterCategories?: (string | redacted.Redacted<string>)[];
   Key?: string | redacted.Redacted<string>;
 }
 export const SearchPlaceIndexForTextRequest =
@@ -2458,12 +2459,12 @@ export interface SearchPlaceIndexForTextSummary {
   Text: string | redacted.Redacted<string>;
   BiasPosition?: number[];
   FilterBBox?: number[];
-  FilterCountries?: string | redacted.Redacted<string>[];
+  FilterCountries?: (string | redacted.Redacted<string>)[];
   MaxResults?: number;
   ResultBBox?: number[];
   DataSource: string;
   Language?: string;
-  FilterCategories?: string | redacted.Redacted<string>[];
+  FilterCategories?: (string | redacted.Redacted<string>)[];
 }
 export const SearchPlaceIndexForTextSummary =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3852,24 +3853,27 @@ export const VerifyDevicePositionResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { Message: S.String },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(429), T.Retryable()),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -3878,10 +3882,12 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     Reason: S.String,
     FieldList: ValidationExceptionFieldList,
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
