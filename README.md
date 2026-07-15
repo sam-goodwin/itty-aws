@@ -39,6 +39,7 @@ For larger SDKs its very likely you hit 5hr limits on claude, you can just run t
 |---------|-------------|
 | [`@distilled.cloud/core`](./packages/core) | Shared client, traits, errors, and categories |
 | [`@distilled.cloud/aws`](./packages/aws) | AWS SDK from Smithy models (S3, Lambda, DynamoDB, 200+ services) |
+| [`@distilled.cloud/better-auth`](./packages/better-auth) | better-auth SDK — Effect-native client for a self-hosted better-auth HTTP API |
 | [`@distilled.cloud/cloudflare`](./packages/cloudflare) | Cloudflare SDK (Workers, R2, KV, D1, Queues, DNS) |
 | [`@distilled.cloud/coinbase`](./packages/coinbase) | Coinbase CDP SDK (EVM/Solana wallets, swaps, faucets, onramp) |
 | [`@distilled.cloud/fly-io`](./packages/fly-io) | Fly.io SDK from OpenAPI spec |
