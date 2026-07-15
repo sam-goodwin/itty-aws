@@ -47,6 +47,12 @@
               "message": {
                 "includes": "already exists"
               }
+            },
+            {
+              "status": 500,
+              "message": {
+                "includes": "UNIQUE constraint failed: routes.name"
+              }
             }
           ]
         }
