@@ -135,6 +135,13 @@ export const MemberOverride = S.Struct({
    * If specified, overrides the Smithy model's required trait.
    */
   optional: S.optional(S.Boolean),
+  /**
+   * Marks a string member as sensitive even though the Smithy model lacks
+   * the `@sensitive` trait (e.g. API Gateway's `ApiKey.value`). The member
+   * is generated as `SensitiveString`: responses decode to
+   * `Redacted<string>` and requests accept either a raw or Redacted value.
+   */
+  sensitive: S.optional(S.Boolean),
 });
 export type MemberOverride = typeof MemberOverride.Type;
 

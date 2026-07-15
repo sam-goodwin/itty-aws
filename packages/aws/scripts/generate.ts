@@ -1907,6 +1907,21 @@ const convertShapeToSchema: (
                       sdkFile.serviceSpec.structures?.[currentSchemaName];
                     const memberOverride =
                       structureOverride?.members?.[memberName];
+                    // Member-level sensitive override from spec patches — the
+                    // Smithy model lacks @sensitive but the field carries secret
+                    // material (e.g. API Gateway ApiKey.value). Swap the wire
+                    // schema for SensitiveString so responses decode to Redacted
+                    // and requests accept raw or Redacted values.
+                    if (memberOverride?.sensitive) {
+                      if (schema !== "S.String") {
+                        return yield* Effect.die(
+                          `sensitive member override on ${currentSchemaName}.${memberName} ` +
+                            `requires a plain string member (schema was ${schema})`,
+                        );
+                      }
+                      schema = "SensitiveString";
+                      tsType = "string | redacted.Redacted<string>";
+                    }
                     // Check if this member is "soft required" (@clientOptional + @required)
                     const hasClientOptional =
                       member.traits?.["smithy.api#clientOptional"] != null;

@@ -579,20 +579,20 @@ export const AmplitudeConnectorProfileCredentials =
   }) as any as S.Schema<AmplitudeConnectorProfileCredentials>;
 export interface DatadogConnectorProfileCredentials {
   apiKey: string | redacted.Redacted<string>;
-  applicationKey: string;
+  applicationKey: string | redacted.Redacted<string>;
 }
 export const DatadogConnectorProfileCredentials =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ apiKey: SensitiveString, applicationKey: S.String }),
+    S.Struct({ apiKey: SensitiveString, applicationKey: SensitiveString }),
   ).annotate({
     identifier: "DatadogConnectorProfileCredentials",
   }) as any as S.Schema<DatadogConnectorProfileCredentials>;
 export interface DynatraceConnectorProfileCredentials {
-  apiToken: string;
+  apiToken: string | redacted.Redacted<string>;
 }
 export const DynatraceConnectorProfileCredentials =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ apiToken: S.String }),
+    S.Struct({ apiToken: SensitiveString }),
   ).annotate({
     identifier: "DynatraceConnectorProfileCredentials",
   }) as any as S.Schema<DynatraceConnectorProfileCredentials>;
@@ -612,7 +612,7 @@ export interface GoogleAnalyticsConnectorProfileCredentials {
   clientId: string;
   clientSecret: string | redacted.Redacted<string>;
   accessToken?: string | redacted.Redacted<string>;
-  refreshToken?: string;
+  refreshToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
 }
 export const GoogleAnalyticsConnectorProfileCredentials =
@@ -621,7 +621,7 @@ export const GoogleAnalyticsConnectorProfileCredentials =
       clientId: S.String,
       clientSecret: SensitiveString,
       accessToken: S.optional(SensitiveString),
-      refreshToken: S.optional(S.String),
+      refreshToken: S.optional(SensitiveString),
       oAuthRequest: S.optional(ConnectorOAuthRequest),
     }),
   ).annotate({
@@ -629,14 +629,14 @@ export const GoogleAnalyticsConnectorProfileCredentials =
   }) as any as S.Schema<GoogleAnalyticsConnectorProfileCredentials>;
 export interface HoneycodeConnectorProfileCredentials {
   accessToken?: string | redacted.Redacted<string>;
-  refreshToken?: string;
+  refreshToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
 }
 export const HoneycodeConnectorProfileCredentials =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       accessToken: S.optional(SensitiveString),
-      refreshToken: S.optional(S.String),
+      refreshToken: S.optional(SensitiveString),
       oAuthRequest: S.optional(ConnectorOAuthRequest),
     }),
   ).annotate({
@@ -645,16 +645,16 @@ export const HoneycodeConnectorProfileCredentials =
 export interface InforNexusConnectorProfileCredentials {
   accessKeyId: string | redacted.Redacted<string>;
   userId: string;
-  secretAccessKey: string;
-  datakey: string;
+  secretAccessKey: string | redacted.Redacted<string>;
+  datakey: string | redacted.Redacted<string>;
 }
 export const InforNexusConnectorProfileCredentials =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       accessKeyId: SensitiveString,
       userId: S.String,
-      secretAccessKey: S.String,
-      datakey: S.String,
+      secretAccessKey: SensitiveString,
+      datakey: SensitiveString,
     }),
   ).annotate({
     identifier: "InforNexusConnectorProfileCredentials",
@@ -691,7 +691,7 @@ export const RedshiftConnectorProfileCredentials =
   }) as any as S.Schema<RedshiftConnectorProfileCredentials>;
 export interface SalesforceConnectorProfileCredentials {
   accessToken?: string | redacted.Redacted<string>;
-  refreshToken?: string;
+  refreshToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
   clientCredentialsArn?: string | redacted.Redacted<string>;
   oAuth2GrantType?: OAuth2GrantType;
@@ -701,7 +701,7 @@ export const SalesforceConnectorProfileCredentials =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       accessToken: S.optional(SensitiveString),
-      refreshToken: S.optional(S.String),
+      refreshToken: S.optional(SensitiveString),
       oAuthRequest: S.optional(ConnectorOAuthRequest),
       clientCredentialsArn: S.optional(SensitiveString),
       oAuth2GrantType: S.optional(OAuth2GrantType),
@@ -714,7 +714,7 @@ export interface OAuth2Credentials {
   clientId?: string;
   clientSecret?: string | redacted.Redacted<string>;
   accessToken?: string | redacted.Redacted<string>;
-  refreshToken?: string;
+  refreshToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
 }
 export const OAuth2Credentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -722,7 +722,7 @@ export const OAuth2Credentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     clientId: S.optional(S.String),
     clientSecret: S.optional(SensitiveString),
     accessToken: S.optional(SensitiveString),
-    refreshToken: S.optional(S.String),
+    refreshToken: S.optional(SensitiveString),
     oAuthRequest: S.optional(ConnectorOAuthRequest),
   }),
 ).annotate({
@@ -828,7 +828,7 @@ export interface OAuthCredentials {
   clientId: string;
   clientSecret: string | redacted.Redacted<string>;
   accessToken?: string | redacted.Redacted<string>;
-  refreshToken?: string;
+  refreshToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
 }
 export const OAuthCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -836,7 +836,7 @@ export const OAuthCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     clientId: S.String,
     clientSecret: SensitiveString,
     accessToken: S.optional(SensitiveString),
-    refreshToken: S.optional(S.String),
+    refreshToken: S.optional(SensitiveString),
     oAuthRequest: S.optional(ConnectorOAuthRequest),
   }),
 ).annotate({
@@ -916,7 +916,7 @@ export const CustomConnectorProfileCredentials =
   }) as any as S.Schema<CustomConnectorProfileCredentials>;
 export interface PardotConnectorProfileCredentials {
   accessToken?: string | redacted.Redacted<string>;
-  refreshToken?: string;
+  refreshToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
   clientCredentialsArn?: string | redacted.Redacted<string>;
 }
@@ -924,7 +924,7 @@ export const PardotConnectorProfileCredentials =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       accessToken: S.optional(SensitiveString),
-      refreshToken: S.optional(S.String),
+      refreshToken: S.optional(SensitiveString),
       oAuthRequest: S.optional(ConnectorOAuthRequest),
       clientCredentialsArn: S.optional(SensitiveString),
     }),
@@ -3901,34 +3901,42 @@ export const UpdateFlowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ConnectorAuthenticationException extends S.TaggedErrorClass<ConnectorAuthenticationException>()(
   "ConnectorAuthenticationException",
   { message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ConnectorServerException extends S.TaggedErrorClass<ConnectorServerException>()(
   "ConnectorServerException",
@@ -3937,6 +3945,7 @@ export class ConnectorServerException extends S.TaggedErrorClass<ConnectorServer
 export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
   "UnsupportedOperationException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations

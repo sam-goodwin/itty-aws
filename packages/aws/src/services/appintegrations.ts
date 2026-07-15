@@ -1350,34 +1350,46 @@ export const UpdateEventIntegrationResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class DuplicateResourceException extends S.TaggedErrorClass<DuplicateResourceException>()(
   "DuplicateResourceException",
   { Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
   "InternalServiceError",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
   "InvalidRequestException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceQuotaExceededException extends S.TaggedErrorClass<ResourceQuotaExceededException>()(
   "ResourceQuotaExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
   "UnsupportedOperationException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {},
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -1389,6 +1401,7 @@ export type CreateApplicationError =
   | ResourceQuotaExceededException
   | ThrottlingException
   | UnsupportedOperationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates and persists an Application resource.
@@ -1409,6 +1422,7 @@ export const createApplication: API.OperationMethod<
     ResourceQuotaExceededException,
     ThrottlingException,
     UnsupportedOperationException,
+    TooManyRequestsException,
   ],
   operationName: "CreateApplication",
 }));
@@ -1419,6 +1433,7 @@ export type CreateDataIntegrationError =
   | InvalidRequestException
   | ResourceQuotaExceededException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates and persists a DataIntegration resource.
@@ -1442,6 +1457,7 @@ export const createDataIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceQuotaExceededException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "CreateDataIntegration",
 }));
@@ -1452,6 +1468,7 @@ export type CreateDataIntegrationAssociationError =
   | ResourceNotFoundException
   | ResourceQuotaExceededException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates and persists a DataIntegrationAssociation resource.
@@ -1471,6 +1488,7 @@ export const createDataIntegrationAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ResourceQuotaExceededException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "CreateDataIntegrationAssociation",
 }));
@@ -1481,6 +1499,7 @@ export type CreateEventIntegrationError =
   | InvalidRequestException
   | ResourceQuotaExceededException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates an EventIntegration, given a specified name, description, and a reference to an
@@ -1503,6 +1522,7 @@ export const createEventIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceQuotaExceededException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "CreateEventIntegration",
 }));
@@ -1512,6 +1532,7 @@ export type DeleteApplicationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes the Application. Only Applications that don't have any Application Associations
@@ -1531,6 +1552,7 @@ export const deleteApplication: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "DeleteApplication",
 }));
@@ -1540,6 +1562,7 @@ export type DeleteDataIntegrationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes the DataIntegration. Only DataIntegrations that don't have any
@@ -1564,6 +1587,7 @@ export const deleteDataIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "DeleteDataIntegration",
 }));
@@ -1573,6 +1597,7 @@ export type DeleteEventIntegrationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes the specified existing event integration. If the event integration is associated
@@ -1592,6 +1617,7 @@ export const deleteEventIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "DeleteEventIntegration",
 }));
@@ -1601,6 +1627,7 @@ export type GetApplicationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Get an Application resource.
@@ -1619,6 +1646,7 @@ export const getApplication: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "GetApplication",
 }));
@@ -1628,6 +1656,7 @@ export type GetDataIntegrationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns information about the DataIntegration.
@@ -1650,6 +1679,7 @@ export const getDataIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "GetDataIntegration",
 }));
@@ -1659,6 +1689,7 @@ export type GetEventIntegrationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns information about the event integration.
@@ -1677,6 +1708,7 @@ export const getEventIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "GetEventIntegration",
 }));
@@ -1686,6 +1718,7 @@ export type ListApplicationAssociationsError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns a paginated list of application associations for an application.
@@ -1719,6 +1752,7 @@ export const listApplicationAssociations: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "ListApplicationAssociations",
   pagination: {
@@ -1733,6 +1767,7 @@ export type ListApplicationsError =
   | InternalServiceError
   | InvalidRequestException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Lists applications in the account.
@@ -1765,6 +1800,7 @@ export const listApplications: API.OperationMethod<
     InternalServiceError,
     InvalidRequestException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "ListApplications",
   pagination: {
@@ -1780,6 +1816,7 @@ export type ListDataIntegrationAssociationsError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns a paginated list of DataIntegration associations in the account.
@@ -1817,6 +1854,7 @@ export const listDataIntegrationAssociations: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "ListDataIntegrationAssociations",
   pagination: {
@@ -1831,6 +1869,7 @@ export type ListDataIntegrationsError =
   | InternalServiceError
   | InvalidRequestException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns a paginated list of DataIntegrations in the account.
@@ -1867,6 +1906,7 @@ export const listDataIntegrations: API.OperationMethod<
     InternalServiceError,
     InvalidRequestException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "ListDataIntegrations",
   pagination: {
@@ -1882,6 +1922,7 @@ export type ListEventIntegrationAssociationsError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns a paginated list of event integration associations in the account.
@@ -1915,6 +1956,7 @@ export const listEventIntegrationAssociations: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "ListEventIntegrationAssociations",
   pagination: {
@@ -1929,6 +1971,7 @@ export type ListEventIntegrationsError =
   | InternalServiceError
   | InvalidRequestException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns a paginated list of event integrations in the account.
@@ -1961,6 +2004,7 @@ export const listEventIntegrations: API.OperationMethod<
     InternalServiceError,
     InvalidRequestException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "ListEventIntegrations",
   pagination: {
@@ -1975,6 +2019,7 @@ export type ListTagsForResourceError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Lists the tags for the specified resource.
@@ -1992,6 +2037,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "ListTagsForResource",
 }));
@@ -2000,6 +2046,7 @@ export type TagResourceError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Adds the specified tags to the specified resource.
@@ -2017,6 +2064,7 @@ export const tagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "TagResource",
 }));
@@ -2025,6 +2073,7 @@ export type UntagResourceError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Removes the specified tags from the specified resource.
@@ -2042,6 +2091,7 @@ export const untagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "UntagResource",
 }));
@@ -2052,6 +2102,7 @@ export type UpdateApplicationError =
   | ResourceNotFoundException
   | ThrottlingException
   | UnsupportedOperationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Updates and persists an Application resource.
@@ -2071,6 +2122,7 @@ export const updateApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     UnsupportedOperationException,
+    TooManyRequestsException,
   ],
   operationName: "UpdateApplication",
 }));
@@ -2080,6 +2132,7 @@ export type UpdateDataIntegrationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Updates the description of a DataIntegration.
@@ -2102,6 +2155,7 @@ export const updateDataIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "UpdateDataIntegration",
 }));
@@ -2111,6 +2165,7 @@ export type UpdateDataIntegrationAssociationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Updates and persists a DataIntegrationAssociation resource.
@@ -2131,6 +2186,7 @@ export const updateDataIntegrationAssociation: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "UpdateDataIntegrationAssociation",
 }));
@@ -2140,6 +2196,7 @@ export type UpdateEventIntegrationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Updates the description of an event integration.
@@ -2158,6 +2215,7 @@ export const updateEventIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   operationName: "UpdateEventIntegration",
 }));

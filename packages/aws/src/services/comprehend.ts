@@ -128,11 +128,11 @@ export type MaxResultsInteger = number;
 export type NumberOfTopicsInteger = number;
 
 //# Schemas
-export type CustomerInputStringList = string | redacted.Redacted<string>[];
+export type CustomerInputStringList = (string | redacted.Redacted<string>)[];
 export const CustomerInputStringList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface BatchDetectDominantLanguageRequest {
-  TextList: string | redacted.Redacted<string>[];
+  TextList: (string | redacted.Redacted<string>)[];
 }
 export const BatchDetectDominantLanguageRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -232,7 +232,7 @@ export type LanguageCode =
   | (string & {});
 export const LanguageCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface BatchDetectEntitiesRequest {
-  TextList: string | redacted.Redacted<string>[];
+  TextList: (string | redacted.Redacted<string>)[];
   LanguageCode: LanguageCode;
 }
 export const BatchDetectEntitiesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -341,7 +341,7 @@ export const BatchDetectEntitiesResponse =
     identifier: "BatchDetectEntitiesResponse",
   }) as any as S.Schema<BatchDetectEntitiesResponse>;
 export interface BatchDetectKeyPhrasesRequest {
-  TextList: string | redacted.Redacted<string>[];
+  TextList: (string | redacted.Redacted<string>)[];
   LanguageCode: LanguageCode;
 }
 export const BatchDetectKeyPhrasesRequest =
@@ -402,7 +402,7 @@ export const BatchDetectKeyPhrasesResponse =
     identifier: "BatchDetectKeyPhrasesResponse",
   }) as any as S.Schema<BatchDetectKeyPhrasesResponse>;
 export interface BatchDetectSentimentRequest {
-  TextList: string | redacted.Redacted<string>[];
+  TextList: (string | redacted.Redacted<string>)[];
   LanguageCode: LanguageCode;
 }
 export const BatchDetectSentimentRequest =
@@ -479,7 +479,7 @@ export type SyntaxLanguageCode =
   | (string & {});
 export const SyntaxLanguageCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface BatchDetectSyntaxRequest {
-  TextList: string | redacted.Redacted<string>[];
+  TextList: (string | redacted.Redacted<string>)[];
   LanguageCode: SyntaxLanguageCode;
 }
 export const BatchDetectSyntaxRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -576,7 +576,7 @@ export const BatchDetectSyntaxResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   identifier: "BatchDetectSyntaxResponse",
 }) as any as S.Schema<BatchDetectSyntaxResponse>;
 export interface BatchDetectTargetedSentimentRequest {
-  TextList: string | redacted.Redacted<string>[];
+  TextList: (string | redacted.Redacted<string>)[];
   LanguageCode: LanguageCode;
 }
 export const BatchDetectTargetedSentimentRequest =
@@ -4821,10 +4821,12 @@ export const UpdateFlywheelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class BatchSizeLimitExceededException extends S.TaggedErrorClass<BatchSizeLimitExceededException>()(
   "BatchSizeLimitExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
   "InvalidRequestException",
@@ -4833,58 +4835,76 @@ export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestEx
     Reason: S.optional(InvalidRequestReason),
     Detail: S.optional(InvalidRequestDetail),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TextSizeLimitExceededException extends S.TaggedErrorClass<TextSizeLimitExceededException>()(
   "TextSizeLimitExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class UnsupportedLanguageException extends S.TaggedErrorClass<UnsupportedLanguageException>()(
   "UnsupportedLanguageException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
   "ResourceUnavailableException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
+export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
+  "NotAuthorizedException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
 export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
   "ResourceInUseException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
   "ResourceLimitExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
   "TooManyRequestsException",
   { Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class KmsKeyValidationException extends S.TaggedErrorClass<KmsKeyValidationException>()(
   "KmsKeyValidationException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class JobNotFoundException extends S.TaggedErrorClass<JobNotFoundException>()(
   "JobNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class InvalidFilterException extends S.TaggedErrorClass<InvalidFilterException>()(
   "InvalidFilterException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
   "ConcurrentModificationException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TooManyTagKeysException extends S.TaggedErrorClass<TooManyTagKeysException>()(
   "TooManyTagKeysException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -5063,6 +5083,7 @@ export type ClassifyDocumentError =
   | InvalidRequestException
   | ResourceUnavailableException
   | TextSizeLimitExceededException
+  | NotAuthorizedException
   | CommonErrors;
 /**
  * Creates a classification request to analyze a single document in real-time. `ClassifyDocument`
@@ -5100,6 +5121,7 @@ export const classifyDocument: API.OperationMethod<
     InvalidRequestException,
     ResourceUnavailableException,
     TextSizeLimitExceededException,
+    NotAuthorizedException,
   ],
   operationName: "ClassifyDocument",
 }));
@@ -5668,6 +5690,7 @@ export type DescribeEventsDetectionJobError =
   | InvalidRequestException
   | JobNotFoundException
   | TooManyRequestsException
+  | NotAuthorizedException
   | CommonErrors;
 /**
  * Gets the status and details of an events detection job.
@@ -5685,6 +5708,7 @@ export const describeEventsDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
     TooManyRequestsException,
+    NotAuthorizedException,
   ],
   operationName: "DescribeEventsDetectionJob",
 }));
@@ -6578,6 +6602,7 @@ export type ListEventsDetectionJobsError =
   | InvalidFilterException
   | InvalidRequestException
   | TooManyRequestsException
+  | NotAuthorizedException
   | CommonErrors;
 /**
  * Gets a list of the events detection jobs that you have submitted.
@@ -6610,6 +6635,7 @@ export const listEventsDetectionJobs: API.OperationMethod<
     InvalidFilterException,
     InvalidRequestException,
     TooManyRequestsException,
+    NotAuthorizedException,
   ],
   operationName: "ListEventsDetectionJobs",
   pagination: {
@@ -7097,6 +7123,7 @@ export type StartEventsDetectionJobError =
   | ResourceInUseException
   | TooManyRequestsException
   | TooManyTagsException
+  | NotAuthorizedException
   | CommonErrors;
 /**
  * Starts an asynchronous event detection job for a collection of documents.
@@ -7116,6 +7143,7 @@ export const startEventsDetectionJob: API.OperationMethod<
     ResourceInUseException,
     TooManyRequestsException,
     TooManyTagsException,
+    NotAuthorizedException,
   ],
   operationName: "StartEventsDetectionJob",
 }));
@@ -7374,6 +7402,7 @@ export type StopEventsDetectionJobError =
   | InternalServerException
   | InvalidRequestException
   | JobNotFoundException
+  | NotAuthorizedException
   | CommonErrors;
 /**
  * Stops an events detection job in progress.
@@ -7390,6 +7419,7 @@ export const stopEventsDetectionJob: API.OperationMethod<
     InternalServerException,
     InvalidRequestException,
     JobNotFoundException,
+    NotAuthorizedException,
   ],
   operationName: "StopEventsDetectionJob",
 }));

@@ -579,28 +579,28 @@ export const AssociatedResources = /*@__PURE__*/ /*#__PURE__*/ S.Array(
 export interface Branch {
   branchArn: string;
   branchName: string;
-  description: string;
+  description?: string;
   tags?: { [key: string]: string | undefined };
-  stage: Stage;
-  displayName: string;
-  enableNotification: boolean;
+  stage?: Stage;
+  displayName?: string;
+  enableNotification?: boolean;
   createTime: Date;
   updateTime: Date;
-  environmentVariables: { [key: string]: string | undefined };
-  enableAutoBuild: boolean;
+  environmentVariables?: { [key: string]: string | undefined };
+  enableAutoBuild?: boolean;
   enableSkewProtection?: boolean;
-  customDomains: string[];
-  framework: string;
-  activeJobId: string;
-  totalNumberOfJobs: string;
-  enableBasicAuth: boolean;
+  customDomains?: string[];
+  framework?: string;
+  activeJobId?: string;
+  totalNumberOfJobs?: string;
+  enableBasicAuth?: boolean;
   enablePerformanceMode?: boolean;
   thumbnailUrl?: string;
   basicAuthCredentials?: string | redacted.Redacted<string>;
   buildSpec?: string | redacted.Redacted<string>;
-  ttl: string;
+  ttl?: string;
   associatedResources?: string[];
-  enablePullRequestPreview: boolean;
+  enablePullRequestPreview?: boolean;
   pullRequestEnvironmentName?: string;
   destinationBranch?: string;
   sourceBranch?: string;
@@ -612,28 +612,28 @@ export const Branch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     branchArn: S.String,
     branchName: S.String,
-    description: S.String,
+    description: S.optional(S.String),
     tags: S.optional(TagMap),
-    stage: Stage,
-    displayName: S.String,
-    enableNotification: S.Boolean,
+    stage: S.optional(Stage),
+    displayName: S.optional(S.String),
+    enableNotification: S.optional(S.Boolean),
     createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    environmentVariables: EnvironmentVariables,
-    enableAutoBuild: S.Boolean,
+    environmentVariables: S.optional(EnvironmentVariables),
+    enableAutoBuild: S.optional(S.Boolean),
     enableSkewProtection: S.optional(S.Boolean),
-    customDomains: CustomDomains,
-    framework: S.String,
-    activeJobId: S.String,
-    totalNumberOfJobs: S.String,
-    enableBasicAuth: S.Boolean,
+    customDomains: S.optional(CustomDomains),
+    framework: S.optional(S.String),
+    activeJobId: S.optional(S.String),
+    totalNumberOfJobs: S.optional(S.String),
+    enableBasicAuth: S.optional(S.Boolean),
     enablePerformanceMode: S.optional(S.Boolean),
     thumbnailUrl: S.optional(S.String),
     basicAuthCredentials: S.optional(SensitiveString),
     buildSpec: S.optional(SensitiveString),
-    ttl: S.String,
+    ttl: S.optional(S.String),
     associatedResources: S.optional(AssociatedResources),
-    enablePullRequestPreview: S.Boolean,
+    enablePullRequestPreview: S.optional(S.Boolean),
     pullRequestEnvironmentName: S.optional(S.String),
     destinationBranch: S.optional(S.String),
     sourceBranch: S.optional(S.String),
@@ -690,14 +690,14 @@ export const FileUploadUrls = /*@__PURE__*/ /*#__PURE__*/ S.Record(
 );
 export interface CreateDeploymentResult {
   jobId?: string;
-  fileUploadUrls: { [key: string]: string | undefined };
+  fileUploadUrls?: { [key: string]: string | undefined };
   zipUploadUrl: string;
 }
 export const CreateDeploymentResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       jobId: S.optional(S.String),
-      fileUploadUrls: FileUploadUrls,
+      fileUploadUrls: S.optional(FileUploadUrls),
       zipUploadUrl: S.String,
     }).pipe(ns),
 ).annotate({
@@ -1080,13 +1080,13 @@ export const SourceUrlType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface JobSummary {
   jobArn: string;
   jobId: string;
-  commitId: string;
-  commitMessage: string;
-  commitTime: Date;
+  commitId?: string;
+  commitMessage?: string;
+  commitTime?: Date;
   startTime: Date;
   status: JobStatus;
   endTime?: Date;
-  jobType: JobType;
+  jobType?: JobType;
   sourceUrl?: string;
   sourceUrlType?: SourceUrlType;
 }
@@ -1094,13 +1094,13 @@ export const JobSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     jobArn: S.String,
     jobId: S.String,
-    commitId: S.String,
-    commitMessage: S.String,
-    commitTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    commitId: S.optional(S.String),
+    commitMessage: S.optional(S.String),
+    commitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     status: JobStatus,
     endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    jobType: JobType,
+    jobType: S.optional(JobType),
     sourceUrl: S.optional(S.String),
     sourceUrlType: S.optional(SourceUrlType),
   }),
@@ -2110,30 +2110,37 @@ export const UpdateWebhookResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class DependentServiceFailureException extends S.TaggedErrorClass<DependentServiceFailureException>()(
   "DependentServiceFailureException",
   { message: S.optional(S.String) },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
   "InternalFailureException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { code: S.String, message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations

@@ -602,7 +602,7 @@ export type ServiceLevelObjectiveBudgetReports =
 export const ServiceLevelObjectiveBudgetReports =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(ServiceLevelObjectiveBudgetReport);
 export interface ServiceLevelObjectiveBudgetReportError {
-  Name: string;
+  Name?: string;
   Arn: string;
   ErrorCode: string;
   ErrorMessage: string;
@@ -610,7 +610,7 @@ export interface ServiceLevelObjectiveBudgetReportError {
 export const ServiceLevelObjectiveBudgetReportError =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
-      Name: S.String,
+      Name: S.optional(S.String),
       Arn: S.String,
       ErrorCode: S.String,
       ErrorMessage: S.String,
@@ -645,10 +645,10 @@ export const Window = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({ DurationUnit: DurationUnit, Duration: S.Number }),
 ).annotate({ identifier: "Window" }) as any as S.Schema<Window>;
 export interface RecurrenceRule {
-  Expression: string;
+  Expression?: string;
 }
 export const RecurrenceRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ Expression: S.String }),
+  S.Struct({ Expression: S.optional(S.String) }),
 ).annotate({ identifier: "RecurrenceRule" }) as any as S.Schema<RecurrenceRule>;
 export interface ExclusionWindow {
   Window: Window;
@@ -900,7 +900,14 @@ export interface DeleteGroupingConfigurationRequest {}
 export const DeleteGroupingConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+      T.all(
+        T.Http({ method: "DELETE", uri: "/grouping-configuration" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
   ).annotate({
     identifier: "DeleteGroupingConfigurationRequest",
@@ -1202,18 +1209,18 @@ export type LogGroupReferences = { [key: string]: string | undefined }[];
 export const LogGroupReferences =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(Attributes);
 export interface Service {
-  KeyAttributes: { [key: string]: string | undefined };
+  KeyAttributes?: { [key: string]: string | undefined };
   AttributeMaps?: { [key: string]: string | undefined }[];
   ServiceGroups?: ServiceGroup[];
-  MetricReferences: MetricReference[];
+  MetricReferences?: MetricReference[];
   LogGroupReferences?: { [key: string]: string | undefined }[];
 }
 export const Service = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    KeyAttributes: Attributes,
+    KeyAttributes: S.optional(Attributes),
     AttributeMaps: S.optional(AttributeMaps),
     ServiceGroups: S.optional(ServiceGroups),
-    MetricReferences: MetricReferences,
+    MetricReferences: S.optional(MetricReferences),
     LogGroupReferences: S.optional(LogGroupReferences),
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
@@ -2710,28 +2717,38 @@ export const ListServiceLevelObjectivesOutput =
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.String },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { ResourceType: S.String, ResourceId: S.String, Message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { Message: S.String },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
+  T.all(
+    T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
 ).pipe(C.withAuthError) {}
 
 //# Operations

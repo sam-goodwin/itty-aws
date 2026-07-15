@@ -1,4 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
 import * as API from "../client/api.ts";
@@ -7,6 +8,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
+import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "API Gateway",
   serviceShapeName: "BackplaneControlService",
@@ -111,7 +113,7 @@ export interface CreateApiKeyRequest {
   description?: string;
   enabled?: boolean;
   generateDistinctId?: boolean;
-  value?: string;
+  value?: string | redacted.Redacted<string>;
   stageKeys?: StageKey[];
   customerId?: string;
   tags?: { [key: string]: string | undefined };
@@ -122,7 +124,7 @@ export const CreateApiKeyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     generateDistinctId: S.optional(S.Boolean),
-    value: S.optional(S.String),
+    value: S.optional(SensitiveString),
     stageKeys: S.optional(ListOfStageKeys),
     customerId: S.optional(S.String),
     tags: S.optional(MapOfStringToString),
@@ -143,7 +145,7 @@ export type ListOfString = string[];
 export const ListOfString = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface ApiKey {
   id?: string;
-  value?: string;
+  value?: string | redacted.Redacted<string>;
   name?: string;
   customerId?: string;
   description?: string;
@@ -156,7 +158,7 @@ export interface ApiKey {
 export const ApiKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    value: S.optional(S.String),
+    value: S.optional(SensitiveString),
     name: S.optional(S.String),
     customerId: S.optional(S.String),
     description: S.optional(S.String),
@@ -4885,10 +4887,12 @@ export const UpdateVpcLinkRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
@@ -4896,10 +4900,12 @@ export class LimitExceededException extends S.TaggedErrorClass<LimitExceededExce
     retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
     message: S.optional(S.String),
   },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
   "TooManyRequestsException",
@@ -4907,10 +4913,12 @@ export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequests
     retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
     message: S.optional(S.String),
   },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
@@ -4918,6 +4926,7 @@ export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnava
     retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
     message: S.optional(S.String),
   },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 
 //# Operations

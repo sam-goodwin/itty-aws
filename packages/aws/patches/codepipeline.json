@@ -1,0 +1,9 @@
+{
+  "structures": {
+    "WebhookAuthConfiguration": {
+      "members": {
+        "SecretToken": { "sensitive": true }
+      }
+    }
+  }
+}

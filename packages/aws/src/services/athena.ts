@@ -3301,10 +3301,6 @@ export class NamedQueryNotFound extends S.TaggedErrorClass<NamedQueryNotFound>()
     message: { matches: "NamedQuery.*does not exist" },
   }),
 ).pipe(C.withNotFoundError) {}
-export class MetadataException extends S.TaggedErrorClass<MetadataException>()(
-  "MetadataException",
-  { Message: S.optional(S.String) },
-) {}
 export class WorkGroupNotFound extends S.TaggedErrorClass<WorkGroupNotFound>()(
   "WorkGroupNotFound",
   { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
@@ -3313,6 +3309,10 @@ export class WorkGroupNotFound extends S.TaggedErrorClass<WorkGroupNotFound>()(
     message: { matches: "WorkGroup.*not found" },
   }),
 ).pipe(C.withNotFoundError) {}
+export class MetadataException extends S.TaggedErrorClass<MetadataException>()(
+  "MetadataException",
+  { Message: S.optional(S.String) },
+) {}
 export class SessionAlreadyExistsException extends S.TaggedErrorClass<SessionAlreadyExistsException>()(
   "SessionAlreadyExistsException",
   { Message: S.optional(S.String) },
@@ -3668,6 +3668,7 @@ export type DeletePreparedStatementError =
   | InternalServerException
   | InvalidRequestException
   | ResourceNotFoundException
+  | WorkGroupNotFound
   | CommonErrors;
 /**
  * Deletes the prepared statement with the specified name from the specified
@@ -3685,6 +3686,7 @@ export const deletePreparedStatement: API.OperationMethod<
     InternalServerException,
     InvalidRequestException,
     ResourceNotFoundException,
+    WorkGroupNotFound,
   ],
   operationName: "DeletePreparedStatement",
 }));
@@ -3929,6 +3931,7 @@ export type GetPreparedStatementError =
   | InternalServerException
   | InvalidRequestException
   | ResourceNotFoundException
+  | WorkGroupNotFound
   | CommonErrors;
 /**
  * Retrieves the prepared statement with the specified name from the specified
@@ -3946,6 +3949,7 @@ export const getPreparedStatement: API.OperationMethod<
     InternalServerException,
     InvalidRequestException,
     ResourceNotFoundException,
+    WorkGroupNotFound,
   ],
   operationName: "GetPreparedStatement",
 }));

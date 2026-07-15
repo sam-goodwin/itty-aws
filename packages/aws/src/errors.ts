@@ -4,7 +4,11 @@ import * as Category from "./category.ts";
 //==== Common AWS Errors ====
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
-  {},
+  {
+    // AWS explains WHICH action/resource was denied in the message — keep it
+    // so callers (and test logs) can see the actual authorization failure.
+    Message: S.optional(S.String),
+  },
 ).pipe(Category.withAuthError) {}
 
 export class ExpiredTokenException extends S.TaggedErrorClass<ExpiredTokenException>()(

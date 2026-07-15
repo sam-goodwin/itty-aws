@@ -10,6 +10,36 @@
         "defaultDomain": { "optional": true },
         "platform": { "optional": true }
       }
+    },
+    "JobSummary": {
+      "members": {
+        "commitId": { "optional": true },
+        "commitMessage": { "optional": true },
+        "commitTime": { "optional": true },
+        "jobType": { "optional": true }
+      }
+    },
+    "CreateDeploymentResult": {
+      "members": {
+        "fileUploadUrls": { "optional": true }
+      }
+    },
+    "Branch": {
+      "members": {
+        "description": { "optional": true },
+        "displayName": { "optional": true },
+        "stage": { "optional": true },
+        "enableNotification": { "optional": true },
+        "environmentVariables": { "optional": true },
+        "enableAutoBuild": { "optional": true },
+        "customDomains": { "optional": true },
+        "framework": { "optional": true },
+        "activeJobId": { "optional": true },
+        "totalNumberOfJobs": { "optional": true },
+        "enableBasicAuth": { "optional": true },
+        "ttl": { "optional": true },
+        "enablePullRequestPreview": { "optional": true }
+      }
     }
   }
 }

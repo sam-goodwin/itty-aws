@@ -4,6 +4,16 @@
       "members": {
         "payload": { "optional": true }
       }
+    },
+    "MemoryRecord": {
+      "members": {
+        "memoryStrategyId": { "optional": true }
+      }
+    },
+    "MemoryRecordSummary": {
+      "members": {
+        "memoryStrategyId": { "optional": true }
+      }
     }
   }
 }

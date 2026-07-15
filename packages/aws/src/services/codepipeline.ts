@@ -2802,13 +2802,13 @@ export type WebhookAuthenticationType =
 export const WebhookAuthenticationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface WebhookAuthConfiguration {
   AllowedIPRange?: string;
-  SecretToken?: string;
+  SecretToken?: string | redacted.Redacted<string>;
 }
 export const WebhookAuthConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       AllowedIPRange: S.optional(S.String),
-      SecretToken: S.optional(S.String),
+      SecretToken: S.optional(SensitiveString),
     }),
 ).annotate({
   identifier: "WebhookAuthConfiguration",
@@ -3700,6 +3700,7 @@ export class ConditionNotOverridableException extends S.TaggedErrorClass<Conditi
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class NotLatestPipelineExecutionException extends S.TaggedErrorClass<NotLatestPipelineExecutionException>()(
   "NotLatestPipelineExecutionException",

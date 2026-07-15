@@ -1,4 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
 import * as API from "../client/api.ts";
@@ -7,6 +8,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
+import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "codeartifact",
   serviceShapeName: "CodeArtifactControlPlaneService",
@@ -1317,13 +1319,13 @@ export const GetAuthorizationTokenRequest =
     identifier: "GetAuthorizationTokenRequest",
   }) as any as S.Schema<GetAuthorizationTokenRequest>;
 export interface GetAuthorizationTokenResult {
-  authorizationToken?: string;
+  authorizationToken?: string | redacted.Redacted<string>;
   expiration?: Date;
 }
 export const GetAuthorizationTokenResult =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
-      authorizationToken: S.optional(S.String),
+      authorizationToken: S.optional(SensitiveString),
       expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     }),
   ).annotate({
@@ -2718,6 +2720,7 @@ export const UpdateRepositoryResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
@@ -2726,10 +2729,12 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
     resourceId: S.optional(S.String),
     resourceType: S.optional(ResourceType),
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.String },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
@@ -2738,6 +2743,7 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
     resourceId: S.optional(S.String),
     resourceType: S.optional(ResourceType),
   },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
@@ -2746,6 +2752,7 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     resourceId: S.optional(S.String),
     resourceType: S.optional(ResourceType),
   },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -2753,10 +2760,12 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     message: S.String,
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.String, reason: S.optional(ValidationExceptionReason) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations

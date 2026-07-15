@@ -5800,7 +5800,7 @@ export const GetMemoryRecordInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface MemoryRecord {
   memoryRecordId: string;
   content: MemoryContent;
-  memoryStrategyId: string;
+  memoryStrategyId?: string;
   namespaces: string[];
   createdAt: Date;
   metadata?: { [key: string]: MemoryRecordMetadataValue | undefined };
@@ -5809,7 +5809,7 @@ export const MemoryRecord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryRecordId: S.String,
     content: MemoryContent,
-    memoryStrategyId: S.String,
+    memoryStrategyId: S.optional(S.String),
     namespaces: NamespacesList,
     createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     metadata: S.optional(MemoryRecordMetadataMap),
@@ -6139,7 +6139,7 @@ export const ListMemoryRecordsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface MemoryRecordSummary {
   memoryRecordId: string;
   content: MemoryContent;
-  memoryStrategyId: string;
+  memoryStrategyId?: string;
   namespaces: string[];
   createdAt: Date;
   score?: number;
@@ -6149,7 +6149,7 @@ export const MemoryRecordSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryRecordId: S.String,
     content: MemoryContent,
-    memoryStrategyId: S.String,
+    memoryStrategyId: S.optional(S.String),
     namespaces: NamespacesList,
     createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     score: S.optional(S.Number),

@@ -45,6 +45,24 @@
         }
       ]
     },
+    "getPreparedStatement": {
+      "syntheticErrors": [
+        {
+          "name": "WorkGroupNotFound",
+          "from": "InvalidRequestException",
+          "message": { "matches": "WorkGroup.*not found" }
+        }
+      ]
+    },
+    "deletePreparedStatement": {
+      "syntheticErrors": [
+        {
+          "name": "WorkGroupNotFound",
+          "from": "InvalidRequestException",
+          "message": { "matches": "WorkGroup.*not found" }
+        }
+      ]
+    },
     "getDataCatalog": {
       "syntheticErrors": [
         {
