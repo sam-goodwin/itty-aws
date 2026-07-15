@@ -16,6 +16,13 @@
     "PreconditionFailed": ["ConflictError"],
     "ConditionalRequestConflict": ["ConflictError", "RetryableError"]
   },
+  "structures": {
+    "GetObjectTaggingOutput": {
+      "members": {
+        "TagSet": { "optional": true }
+      }
+    }
+  },
   "operations": {
     "createBucket": {
       "errors": [

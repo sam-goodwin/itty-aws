@@ -8333,13 +8333,13 @@ export const GetObjectTaggingRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<GetObjectTaggingRequest>;
 export interface GetObjectTaggingOutput {
   VersionId?: string;
-  TagSet: Tag[];
+  TagSet?: Tag[];
 }
 export const GetObjectTaggingOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")),
-      TagSet: TagSet,
+      TagSet: S.optional(TagSet),
     }).pipe(T.all(T.XmlName("Tagging"), ns)),
 ).annotate({
   identifier: "GetObjectTaggingOutput",
