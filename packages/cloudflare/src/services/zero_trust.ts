@@ -976,305 +976,6 @@ export class VirtualNetworkNotFound extends T.applyErrorMatchers(
   [{ code: 1046 }],
 ) {}
 
-export interface AccessAiControlsMcpPortalsListRequest {
-  accountId: string;
-  page?: number;
-  perPage?: number;
-  /** Search by id, name, hostname */
-  search?: string;
-}
-export const AccessAiControlsMcpPortalsListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      page: S.optional(S.Number.pipe(T.Query())),
-      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-      search: S.optional(S.String.pipe(T.Query())),
-    })
-      .pipe(
-        T.Http({
-          method: "GET",
-          uri: "/accounts/{account_id}/access/ai-controls/mcp/portals",
-          code: 200,
-        }),
-      )
-      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "AccessAiControlsMcpPortalsListRequest",
-}) as any as S.Schema<AccessAiControlsMcpPortalsListRequest>;
-
-export type AccessAiControlsMcpPortalsListResultItemServersItemAuthType =
-  | "oauth"
-  | "bearer"
-  | "unauthenticated"
-  | (string & {});
-export const AccessAiControlsMcpPortalsListResultItemServersItemAuthType =
-  /*@__PURE__*/ S.String;
-
-export type AccessAiControlsMcpPortalsListResultItemServersItemPromptsItemMap =
-  { [key: string]: unknown | undefined };
-export const AccessAiControlsMcpPortalsListResultItemServersItemPromptsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemPromptsItemMap>;
-
-export type AccessAiControlsMcpPortalsListResultItemServersItemPromptsList =
-  AccessAiControlsMcpPortalsListResultItemServersItemPromptsItemMap[];
-export const AccessAiControlsMcpPortalsListResultItemServersItemPromptsList =
-  /*@__PURE__*/ S.Array(
-    AccessAiControlsMcpPortalsListResultItemServersItemPromptsItemMap,
-  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemPromptsList>;
-
-export type AccessAiControlsMcpPortalsListResultItemServersItemToolsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const AccessAiControlsMcpPortalsListResultItemServersItemToolsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemToolsItemMap>;
-
-export type AccessAiControlsMcpPortalsListResultItemServersItemToolsList =
-  AccessAiControlsMcpPortalsListResultItemServersItemToolsItemMap[];
-export const AccessAiControlsMcpPortalsListResultItemServersItemToolsList =
-  /*@__PURE__*/ S.Array(
-    AccessAiControlsMcpPortalsListResultItemServersItemToolsItemMap,
-  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemToolsList>;
-
-export interface AccessAiControlsMcpPortalsListResultItemServersItemErrorDetails {
-  /** Underlying error message */
-  cause?: string;
-  /** True = MCP server returned an error. False = couldn't reach the server */
-  isUpstream?: boolean;
-  /** MCP protocol error code */
-  mcpCode?: number;
-  /** Whether the error is transient and worth retrying */
-  retryable?: boolean;
-  /** HTTP status code from the server */
-  statusCode?: number;
-}
-export const AccessAiControlsMcpPortalsListResultItemServersItemErrorDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cause: S.optional(S.String),
-      isUpstream: S.optional(S.Boolean.pipe(T.Body("is_upstream"))),
-      mcpCode: S.optional(S.Number.pipe(T.Body("mcp_code"))),
-      retryable: S.optional(S.Boolean),
-      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier:
-      "AccessAiControlsMcpPortalsListResultItemServersItemErrorDetails",
-  }) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemErrorDetails>;
-
-export interface AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsItem {
-  name: string;
-  enabled?: boolean;
-  portalAlias?: string;
-  portalDescription?: string;
-  serverAlias?: string;
-  serverDescription?: string;
-}
-export const AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      enabled: S.optional(S.Boolean),
-      portalAlias: S.optional(S.String.pipe(T.Body("portal_alias"))),
-      portalDescription: S.optional(
-        S.String.pipe(T.Body("portal_description")),
-      ),
-      serverAlias: S.optional(S.String.pipe(T.Body("server_alias"))),
-      serverDescription: S.optional(
-        S.String.pipe(T.Body("server_description")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsItem",
-  }) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsItem>;
-
-export type AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsList =
-  AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsItem[];
-export const AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsList =
-  /*@__PURE__*/ S.Array(
-    AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsItem,
-  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsList>;
-
-export interface AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsItem {
-  name: string;
-  enabled?: boolean;
-  portalAlias?: string;
-  portalDescription?: string;
-  serverAlias?: string;
-  serverDescription?: string;
-}
-export const AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      enabled: S.optional(S.Boolean),
-      portalAlias: S.optional(S.String.pipe(T.Body("portal_alias"))),
-      portalDescription: S.optional(
-        S.String.pipe(T.Body("portal_description")),
-      ),
-      serverAlias: S.optional(S.String.pipe(T.Body("server_alias"))),
-      serverDescription: S.optional(
-        S.String.pipe(T.Body("server_description")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsItem",
-  }) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsItem>;
-
-export type AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsList =
-  AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsItem[];
-export const AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsList =
-  /*@__PURE__*/ S.Array(
-    AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsItem,
-  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsList>;
-
-export interface AccessAiControlsMcpPortalsListResultItemServersItem {
-  /** server id */
-  id: string;
-  authType: AccessAiControlsMcpPortalsListResultItemServersItemAuthType;
-  hostname: string;
-  name: string;
-  prompts: AccessAiControlsMcpPortalsListResultItemServersItemPromptsList;
-  /** server id */
-  serverId: string;
-  tools: AccessAiControlsMcpPortalsListResultItemServersItemToolsList;
-  createdAt?: string;
-  createdBy?: string;
-  defaultDisabled?: boolean;
-  description?: string;
-  error?: string;
-  errorDetails?: AccessAiControlsMcpPortalsListResultItemServersItemErrorDetails;
-  /** When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key. */
-  isSharedOauthCallbackEnabled?: boolean;
-  lastSuccessfulSync?: string;
-  lastSynced?: string;
-  modifiedAt?: string;
-  modifiedBy?: string;
-  onBehalf?: boolean;
-  /** Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway */
-  secureWebGateway?: boolean;
-  status?: string;
-  updatedPrompts?: AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsList;
-  updatedTools?: AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsList;
-}
-export const AccessAiControlsMcpPortalsListResultItemServersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      authType:
-        AccessAiControlsMcpPortalsListResultItemServersItemAuthType.pipe(
-          T.Body("auth_type"),
-        ),
-      hostname: S.String,
-      name: S.String,
-      prompts: AccessAiControlsMcpPortalsListResultItemServersItemPromptsList,
-      serverId: S.String.pipe(T.Body("server_id")),
-      tools: AccessAiControlsMcpPortalsListResultItemServersItemToolsList,
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
-      defaultDisabled: S.optional(S.Boolean.pipe(T.Body("default_disabled"))),
-      description: S.optional(S.String),
-      error: S.optional(S.String),
-      errorDetails: S.optional(
-        AccessAiControlsMcpPortalsListResultItemServersItemErrorDetails.pipe(
-          T.Body("error_details"),
-        ),
-      ),
-      isSharedOauthCallbackEnabled: S.optional(
-        S.Boolean.pipe(T.Body("is_shared_oauth_callback_enabled")),
-      ),
-      lastSuccessfulSync: S.optional(
-        S.String.pipe(T.Body("last_successful_sync")),
-      ),
-      lastSynced: S.optional(S.String.pipe(T.Body("last_synced"))),
-      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-      modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-      onBehalf: S.optional(S.Boolean.pipe(T.Body("on_behalf"))),
-      secureWebGateway: S.optional(
-        S.Boolean.pipe(T.Body("secure_web_gateway")),
-      ),
-      status: S.optional(S.String),
-      updatedPrompts: S.optional(
-        AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsList.pipe(
-          T.Body("updated_prompts"),
-        ),
-      ),
-      updatedTools: S.optional(
-        AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsList.pipe(
-          T.Body("updated_tools"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "AccessAiControlsMcpPortalsListResultItemServersItem",
-  }) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItem>;
-
-export type AccessAiControlsMcpPortalsListResultItemServersList =
-  AccessAiControlsMcpPortalsListResultItemServersItem[];
-export const AccessAiControlsMcpPortalsListResultItemServersList =
-  /*@__PURE__*/ S.Array(
-    AccessAiControlsMcpPortalsListResultItemServersItem,
-  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersList>;
-
-export interface AccessAiControlsMcpPortalsListResultItem {
-  /** portal id */
-  id: string;
-  hostname: string;
-  name: string;
-  servers: AccessAiControlsMcpPortalsListResultItemServersList;
-  /** Allow remote code execution in Dynamic Workers (beta) */
-  allowCodeMode?: boolean;
-  createdAt?: string;
-  createdBy?: string;
-  description?: string;
-  modifiedAt?: string;
-  modifiedBy?: string;
-  /** Route outbound MCP traffic through Zero Trust Secure Web Gateway */
-  secureWebGateway?: boolean;
-}
-export const AccessAiControlsMcpPortalsListResultItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      hostname: S.String,
-      name: S.String,
-      servers: AccessAiControlsMcpPortalsListResultItemServersList,
-      allowCodeMode: S.optional(S.Boolean.pipe(T.Body("allow_code_mode"))),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
-      description: S.optional(S.String),
-      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-      modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
-      secureWebGateway: S.optional(
-        S.Boolean.pipe(T.Body("secure_web_gateway")),
-      ),
-    }),
-).annotate({
-  identifier: "AccessAiControlsMcpPortalsListResultItem",
-}) as any as S.Schema<AccessAiControlsMcpPortalsListResultItem>;
-
-export type AccessAiControlsMcpPortalsListResultList =
-  AccessAiControlsMcpPortalsListResultItem[];
-export const AccessAiControlsMcpPortalsListResultList = /*@__PURE__*/ S.Array(
-  AccessAiControlsMcpPortalsListResultItem,
-) as any as S.Schema<AccessAiControlsMcpPortalsListResultList>;
-
-export type AccessAiControlsMcpPortalsListResponse =
-  AccessAiControlsMcpPortalsListResultList;
-export const AccessAiControlsMcpPortalsListResponse = /*@__PURE__*/ S.suspend(
-  () => AccessAiControlsMcpPortalsListResultList.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "AccessAiControlsMcpPortalsListResponse",
-}) as any as S.Schema<AccessAiControlsMcpPortalsListResponse>;
-
 export interface ActivateGatewayCertificateRequest {
   accountId: string;
   /** Identify the certificate with a UUID. */
@@ -71453,6 +71154,315 @@ export const GetTunnelWarpConnectorTokenResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTunnelWarpConnectorTokenResponse",
 }) as any as S.Schema<GetTunnelWarpConnectorTokenResponse>;
 
+export interface ListAccessAiControlMcpPortalsRequest {
+  accountId: string;
+  page?: number;
+  perPage?: number;
+  /** Search by id, name, hostname */
+  search?: string;
+}
+export const ListAccessAiControlMcpPortalsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      page: S.optional(S.Number.pipe(T.Query())),
+      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+      search: S.optional(S.String.pipe(T.Query())),
+    })
+      .pipe(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{account_id}/access/ai-controls/mcp/portals",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "ListAccessAiControlMcpPortalsRequest",
+}) as any as S.Schema<ListAccessAiControlMcpPortalsRequest>;
+
+export type AccessAiControlsMcpPortalsListResultItemServersItemAuthType =
+  | "oauth"
+  | "bearer"
+  | "unauthenticated"
+  | (string & {});
+export const AccessAiControlsMcpPortalsListResultItemServersItemAuthType =
+  /*@__PURE__*/ S.String;
+
+export type AccessAiControlsMcpPortalsListResultItemServersItemPromptsItemMap =
+  { [key: string]: unknown | undefined };
+export const AccessAiControlsMcpPortalsListResultItemServersItemPromptsItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemPromptsItemMap>;
+
+export type AccessAiControlsMcpPortalsListResultItemServersItemPromptsList =
+  AccessAiControlsMcpPortalsListResultItemServersItemPromptsItemMap[];
+export const AccessAiControlsMcpPortalsListResultItemServersItemPromptsList =
+  /*@__PURE__*/ S.Array(
+    AccessAiControlsMcpPortalsListResultItemServersItemPromptsItemMap,
+  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemPromptsList>;
+
+export type AccessAiControlsMcpPortalsListResultItemServersItemToolsItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const AccessAiControlsMcpPortalsListResultItemServersItemToolsItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemToolsItemMap>;
+
+export type AccessAiControlsMcpPortalsListResultItemServersItemToolsList =
+  AccessAiControlsMcpPortalsListResultItemServersItemToolsItemMap[];
+export const AccessAiControlsMcpPortalsListResultItemServersItemToolsList =
+  /*@__PURE__*/ S.Array(
+    AccessAiControlsMcpPortalsListResultItemServersItemToolsItemMap,
+  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemToolsList>;
+
+export interface AccessAiControlsMcpPortalsListResultItemServersItemErrorDetails {
+  /** Underlying error message */
+  cause?: string;
+  /** True = MCP server returned an error. False = couldn't reach the server */
+  isUpstream?: boolean;
+  /** MCP protocol error code */
+  mcpCode?: number;
+  /** Whether the error is transient and worth retrying */
+  retryable?: boolean;
+  /** HTTP status code from the server */
+  statusCode?: number;
+}
+export const AccessAiControlsMcpPortalsListResultItemServersItemErrorDetails =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cause: S.optional(S.String),
+      isUpstream: S.optional(S.Boolean.pipe(T.Body("is_upstream"))),
+      mcpCode: S.optional(S.Number.pipe(T.Body("mcp_code"))),
+      retryable: S.optional(S.Boolean),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+    }),
+  ).annotate({
+    identifier:
+      "AccessAiControlsMcpPortalsListResultItemServersItemErrorDetails",
+  }) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemErrorDetails>;
+
+export interface AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsItem {
+  name: string;
+  enabled?: boolean;
+  portalAlias?: string;
+  portalDescription?: string;
+  serverAlias?: string;
+  serverDescription?: string;
+}
+export const AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      enabled: S.optional(S.Boolean),
+      portalAlias: S.optional(S.String.pipe(T.Body("portal_alias"))),
+      portalDescription: S.optional(
+        S.String.pipe(T.Body("portal_description")),
+      ),
+      serverAlias: S.optional(S.String.pipe(T.Body("server_alias"))),
+      serverDescription: S.optional(
+        S.String.pipe(T.Body("server_description")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsItem",
+  }) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsItem>;
+
+export type AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsList =
+  AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsItem[];
+export const AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsList =
+  /*@__PURE__*/ S.Array(
+    AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsItem,
+  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsList>;
+
+export interface AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsItem {
+  name: string;
+  enabled?: boolean;
+  portalAlias?: string;
+  portalDescription?: string;
+  serverAlias?: string;
+  serverDescription?: string;
+}
+export const AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      enabled: S.optional(S.Boolean),
+      portalAlias: S.optional(S.String.pipe(T.Body("portal_alias"))),
+      portalDescription: S.optional(
+        S.String.pipe(T.Body("portal_description")),
+      ),
+      serverAlias: S.optional(S.String.pipe(T.Body("server_alias"))),
+      serverDescription: S.optional(
+        S.String.pipe(T.Body("server_description")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsItem",
+  }) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsItem>;
+
+export type AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsList =
+  AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsItem[];
+export const AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsList =
+  /*@__PURE__*/ S.Array(
+    AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsItem,
+  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsList>;
+
+export interface AccessAiControlsMcpPortalsListResultItemServersItem {
+  /** server id */
+  id: string;
+  authType: AccessAiControlsMcpPortalsListResultItemServersItemAuthType;
+  hostname: string;
+  name: string;
+  prompts: AccessAiControlsMcpPortalsListResultItemServersItemPromptsList;
+  /** server id */
+  serverId: string;
+  tools: AccessAiControlsMcpPortalsListResultItemServersItemToolsList;
+  createdAt?: string;
+  createdBy?: string;
+  defaultDisabled?: boolean;
+  description?: string;
+  error?: string;
+  errorDetails?: AccessAiControlsMcpPortalsListResultItemServersItemErrorDetails;
+  /** When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key. */
+  isSharedOauthCallbackEnabled?: boolean;
+  lastSuccessfulSync?: string;
+  lastSynced?: string;
+  modifiedAt?: string;
+  modifiedBy?: string;
+  onBehalf?: boolean;
+  /** Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway */
+  secureWebGateway?: boolean;
+  status?: string;
+  updatedPrompts?: AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsList;
+  updatedTools?: AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsList;
+}
+export const AccessAiControlsMcpPortalsListResultItemServersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      authType:
+        AccessAiControlsMcpPortalsListResultItemServersItemAuthType.pipe(
+          T.Body("auth_type"),
+        ),
+      hostname: S.String,
+      name: S.String,
+      prompts: AccessAiControlsMcpPortalsListResultItemServersItemPromptsList,
+      serverId: S.String.pipe(T.Body("server_id")),
+      tools: AccessAiControlsMcpPortalsListResultItemServersItemToolsList,
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+      defaultDisabled: S.optional(S.Boolean.pipe(T.Body("default_disabled"))),
+      description: S.optional(S.String),
+      error: S.optional(S.String),
+      errorDetails: S.optional(
+        AccessAiControlsMcpPortalsListResultItemServersItemErrorDetails.pipe(
+          T.Body("error_details"),
+        ),
+      ),
+      isSharedOauthCallbackEnabled: S.optional(
+        S.Boolean.pipe(T.Body("is_shared_oauth_callback_enabled")),
+      ),
+      lastSuccessfulSync: S.optional(
+        S.String.pipe(T.Body("last_successful_sync")),
+      ),
+      lastSynced: S.optional(S.String.pipe(T.Body("last_synced"))),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+      modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
+      onBehalf: S.optional(S.Boolean.pipe(T.Body("on_behalf"))),
+      secureWebGateway: S.optional(
+        S.Boolean.pipe(T.Body("secure_web_gateway")),
+      ),
+      status: S.optional(S.String),
+      updatedPrompts: S.optional(
+        AccessAiControlsMcpPortalsListResultItemServersItemUpdatedPromptsList.pipe(
+          T.Body("updated_prompts"),
+        ),
+      ),
+      updatedTools: S.optional(
+        AccessAiControlsMcpPortalsListResultItemServersItemUpdatedToolsList.pipe(
+          T.Body("updated_tools"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AccessAiControlsMcpPortalsListResultItemServersItem",
+  }) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersItem>;
+
+export type AccessAiControlsMcpPortalsListResultItemServersList =
+  AccessAiControlsMcpPortalsListResultItemServersItem[];
+export const AccessAiControlsMcpPortalsListResultItemServersList =
+  /*@__PURE__*/ S.Array(
+    AccessAiControlsMcpPortalsListResultItemServersItem,
+  ) as any as S.Schema<AccessAiControlsMcpPortalsListResultItemServersList>;
+
+export interface AccessAiControlsMcpPortalsListResultItem {
+  /** portal id */
+  id: string;
+  hostname: string;
+  name: string;
+  servers: AccessAiControlsMcpPortalsListResultItemServersList;
+  /** Allow remote code execution in Dynamic Workers (beta) */
+  allowCodeMode?: boolean;
+  createdAt?: string;
+  createdBy?: string;
+  description?: string;
+  modifiedAt?: string;
+  modifiedBy?: string;
+  /** Route outbound MCP traffic through Zero Trust Secure Web Gateway */
+  secureWebGateway?: boolean;
+}
+export const AccessAiControlsMcpPortalsListResultItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      hostname: S.String,
+      name: S.String,
+      servers: AccessAiControlsMcpPortalsListResultItemServersList,
+      allowCodeMode: S.optional(S.Boolean.pipe(T.Body("allow_code_mode"))),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+      description: S.optional(S.String),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+      modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
+      secureWebGateway: S.optional(
+        S.Boolean.pipe(T.Body("secure_web_gateway")),
+      ),
+    }),
+).annotate({
+  identifier: "AccessAiControlsMcpPortalsListResultItem",
+}) as any as S.Schema<AccessAiControlsMcpPortalsListResultItem>;
+
+export type AccessAiControlsMcpPortalsListResultList =
+  AccessAiControlsMcpPortalsListResultItem[];
+export const AccessAiControlsMcpPortalsListResultList = /*@__PURE__*/ S.Array(
+  AccessAiControlsMcpPortalsListResultItem,
+) as any as S.Schema<AccessAiControlsMcpPortalsListResultList>;
+
+export interface ListAccessAiControlMcpPortalsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result: AccessAiControlsMcpPortalsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
+}
+export const ListAccessAiControlMcpPortalsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      result: AccessAiControlsMcpPortalsListResultList.pipe(
+        T.EnvelopePayload(),
+      ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "ListAccessAiControlMcpPortalsResponse",
+}) as any as S.Schema<ListAccessAiControlMcpPortalsResponse>;
+
 export interface ListAccessAiControlMcpServersRequest {
   accountId: string;
   page?: number;
@@ -141388,21 +141398,6 @@ export const ValidateDlpPatternResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidateDlpPatternResponse",
 }) as any as S.Schema<ValidateDlpPatternResponse>;
 
-export type AccessAiControlsMcpPortalsListError = CloudflareOpError;
-/** Lists all MCP portals configured for the account. */
-export const accessAiControlsMcpPortalsList: API.OperationMethod<
-  AccessAiControlsMcpPortalsListRequest,
-  AccessAiControlsMcpPortalsListResponse,
-  AccessAiControlsMcpPortalsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccessAiControlsMcpPortalsListRequest,
-  output: AccessAiControlsMcpPortalsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ActivateGatewayCertificateError =
   | GatewayCertificateNotFound
   | CloudflareOpError;
@@ -145920,6 +145915,31 @@ export const getTunnelWarpConnectorToken: API.OperationMethod<
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
+
+export type ListAccessAiControlMcpPortalsError = Forbidden | CloudflareOpError;
+/** Lists all MCP portals configured for the account. */
+export const listAccessAiControlMcpPortals: API.PaginatedOperationMethod<
+  ListAccessAiControlMcpPortalsRequest,
+  ListAccessAiControlMcpPortalsResponse,
+  ListAccessAiControlMcpPortalsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAccessAiControlMcpPortalsRequest,
+    output: ListAccessAiControlMcpPortalsResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
 
 export type ListAccessAiControlMcpServersError = CloudflareOpError;
 /** Lists all MCP portals configured for the account. */
