@@ -3745,7 +3745,7 @@ export class EventBusHasRules extends S.TaggedErrorClass<EventBusHasRules>()(
     from: "ValidationException",
     message: { includes: "has rules" },
   }),
-).pipe(C.withConflictError, C.withRetryableError) {}
+).pipe(C.withConflictError) {}
 export class ManagedRuleException extends S.TaggedErrorClass<ManagedRuleException>()(
   "ManagedRuleException",
   { message: S.optional(S.String) },

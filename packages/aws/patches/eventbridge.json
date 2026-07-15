@@ -34,8 +34,7 @@
       "QuotaError"
     ],
     "EventBusHasRules": [
-      "ConflictError",
-      "RetryableError"
+      "ConflictError"
     ]
   },
   "operations": {
