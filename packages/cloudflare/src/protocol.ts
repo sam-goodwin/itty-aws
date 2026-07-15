@@ -426,11 +426,25 @@ const makeDecode =
         } else if (hasPropAnn(prop, responseCodeSymbol)) {
           result[key] = response.status;
         } else {
+          // The schema's own wire name first; fall back to the service key
+          // dictionary (mined from the distilled SDK) — the docs sometimes
+          // document a field under a name the live wire doesn't use (e.g. R2
+          // event notifications document `queueId` but the wire sends
+          // `queue`), and the dictionary carries the real mapping.
           const wire = nameOf(prop, bodySymbol);
-          if (payload && typeof payload === "object" && wire in payload) {
+          const dictWire = rootDict?.[key];
+          const src =
+            payload && typeof payload === "object"
+              ? wire in payload
+                ? wire
+                : dictWire !== undefined && dictWire in payload
+                  ? dictWire
+                  : undefined
+              : undefined;
+          if (src !== undefined) {
             result[key] = mapKeys(
               prop.type,
-              (payload as Record<string, unknown>)[wire],
+              (payload as Record<string, unknown>)[src],
               "decode",
               rootDict,
             );
