@@ -280,6 +280,11 @@ const makeDecode =
       // Read as text and parse tolerantly — Cloudflare answers some errors
       // (HTML 5xx pages, bare plain-text 4xx) with non-JSON bodies.
       const text = (yield* response.text.pipe(Effect.orDie)) ?? "";
+      if (process.env.DISTILLED_DEBUG_HTTP) {
+        console.error(
+          `[distilled] <- ${response.status} ${text.slice(0, 400)}`,
+        );
+      }
       let json: Record<string, unknown> = {};
       let nonJson = false;
       if (text.trim().length > 0) {

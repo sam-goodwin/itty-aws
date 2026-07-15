@@ -2130,6 +2130,8 @@ export interface CreateVersionDynamicRoutingResponse {
   gatewayId: string;
   modifiedAt: string;
   name: string;
+  /** Identifier of the newly created version (top-level on the live wire; the docs' nested shape is stale). */
+  versionId: string;
 }
 export const CreateVersionDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2139,6 +2141,7 @@ export const CreateVersionDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
     gatewayId: S.String.pipe(T.Body("gateway_id")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
+    versionId: S.String.pipe(T.Body("version_id")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateVersionDynamicRoutingResponse",
