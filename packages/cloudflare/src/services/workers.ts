@@ -16842,18 +16842,22 @@ export interface PatchScriptScriptAndVersionSettingRequest {
   accountId: string;
   /** Name of the script, used in URLs and route configuration. */
   scriptName: string;
+  /** Worker settings to patch (bindings, tags, tail consumers, ...), JSON-encoded as the multipart `settings` part. */
+  settings?: unknown;
 }
 export const PatchScriptScriptAndVersionSettingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       scriptName: S.String.pipe(T.Label("script_name")),
+      settings: S.optional(S.Unknown),
     })
       .pipe(
         T.Http({
           method: "PATCH",
           uri: "/accounts/{account_id}/workers/scripts/{script_name}/settings",
           code: 200,
+          contentType: "multipart",
         }),
       )
       .pipe(T.KeyDictionary(KEY_DICTIONARY)),
