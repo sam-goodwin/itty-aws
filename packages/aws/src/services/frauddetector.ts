@@ -525,12 +525,12 @@ export const CreateDetectorVersionResult =
   ).annotate({
     identifier: "CreateDetectorVersionResult",
   }) as any as S.Schema<CreateDetectorVersionResult>;
-export type ElementsList = string | redacted.Redacted<string>[];
+export type ElementsList = (string | redacted.Redacted<string>)[];
 export const ElementsList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface CreateListRequest {
   name: string;
-  elements?: string | redacted.Redacted<string>[];
+  elements?: (string | redacted.Redacted<string>)[];
   variableType?: string;
   description?: string;
   tags?: Tag[];
@@ -2775,7 +2775,7 @@ export const GetListElementsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   identifier: "GetListElementsRequest",
 }) as any as S.Schema<GetListElementsRequest>;
 export interface GetListElementsResult {
-  elements?: string | redacted.Redacted<string>[];
+  elements?: (string | redacted.Redacted<string>)[];
   nextToken?: string;
 }
 export const GetListElementsResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3688,7 +3688,7 @@ export type ListUpdateMode = "REPLACE" | "APPEND" | "REMOVE" | (string & {});
 export const ListUpdateMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface UpdateListRequest {
   name: string;
-  elements?: string | redacted.Redacted<string>[];
+  elements?: (string | redacted.Redacted<string>)[];
   description?: string;
   updateMode?: ListUpdateMode;
   variableType?: string;
@@ -3938,30 +3938,37 @@ export const UpdateVariableResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.String },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.String },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
   "ResourceUnavailableException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 
 //# Operations

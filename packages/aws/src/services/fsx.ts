@@ -5859,6 +5859,14 @@ export class RestoreSnapshotNotFound extends S.TaggedErrorClass<RestoreSnapshotN
     message: { includes: "snapshot cannot be found" },
   }),
 ).pipe(C.withNotFoundError) {}
+export class UpdateSnapshotNotFound extends S.TaggedErrorClass<UpdateSnapshotNotFound>()(
+  "UpdateSnapshotNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "BadRequest",
+    message: { includes: "the snapshot is not found" },
+  }),
+).pipe(C.withNotFoundError) {}
 
 //# Operations
 export type AssociateFileSystemAliasesError =
@@ -7912,6 +7920,7 @@ export type UpdateSnapshotError =
   | BadRequest
   | InternalServerError
   | SnapshotNotFound
+  | UpdateSnapshotNotFound
   | CommonErrors;
 /**
  * Updates the name of an Amazon FSx for OpenZFS snapshot.
@@ -7924,7 +7933,12 @@ export const updateSnapshot: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSnapshotRequest,
   output: UpdateSnapshotResponse,
-  errors: [BadRequest, InternalServerError, SnapshotNotFound],
+  errors: [
+    BadRequest,
+    InternalServerError,
+    SnapshotNotFound,
+    UpdateSnapshotNotFound,
+  ],
   operationName: "UpdateSnapshot",
 }));
 export type UpdateStorageVirtualMachineError =

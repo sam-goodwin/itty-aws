@@ -17,10 +17,20 @@
           "message": { "includes": "snapshot cannot be found" }
         }
       ]
+    },
+    "updateSnapshot": {
+      "syntheticErrors": [
+        {
+          "name": "UpdateSnapshotNotFound",
+          "from": "BadRequest",
+          "message": { "includes": "the snapshot is not found" }
+        }
+      ]
     }
   },
   "errorCategories": {
     "SnapshotVolumeNotFound": ["NotFoundError"],
-    "RestoreSnapshotNotFound": ["NotFoundError"]
+    "RestoreSnapshotNotFound": ["NotFoundError"],
+    "UpdateSnapshotNotFound": ["NotFoundError"]
   }
 }
