@@ -82,7 +82,7 @@ export const jittered = Schedule.addDelay(() =>
  * Cap delay at a maximum duration.
  */
 export const capped = (max: Duration.Duration) =>
-  Schedule.modifyDelay((duration: Duration.Duration) =>
+  Schedule.modifyDelay(({ duration }) =>
     Effect.succeed(
       Duration.isGreaterThan(duration, max) ? Duration.millis(5000) : duration,
     ),
@@ -190,7 +190,7 @@ const honorServerHint = (
   baseline?: (duration: Duration.Duration, error: unknown) => Duration.Duration,
 ) =>
   Schedule.modifyDelay(
-    Effect.fnUntraced(function* (duration: Duration.Duration) {
+    Effect.fnUntraced(function* ({ duration }) {
       const capMs = yield* resolveServerRetryHintCapMs();
       const error = yield* Ref.get(lastError);
       const hint = serverHintMillis(error, capMs);
@@ -219,17 +219,19 @@ const honorServerHint = (
  */
 export const makeDefault: Factory = (lastError) => ({
   while: (error) => isTransientError(error),
-  schedule: pipe(
-    Schedule.exponential(100, 2),
-    honorServerHint(lastError, (duration, error) => {
-      if (isThrottling(error) && Duration.toMillis(duration) < 500) {
-        return Duration.millis(500);
-      }
-      return duration;
-    }),
-    Schedule.both(Schedule.recurs(5)),
-    jittered,
-  ),
+  schedule: Schedule.max([
+    pipe(
+      Schedule.exponential(100, 2),
+      honorServerHint(lastError, (duration, error) => {
+        if (isThrottling(error) && Duration.toMillis(duration) < 500) {
+          return Duration.millis(500);
+        }
+        return duration;
+      }),
+      jittered,
+    ),
+    Schedule.recurs(5),
+  ]),
 });
 
 /**
