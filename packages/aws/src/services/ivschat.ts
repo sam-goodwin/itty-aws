@@ -967,7 +967,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   "ValidationException",
   {
     message: S.String,
-    reason: S.String,
+    reason: S.optional(S.String),
     fieldList: S.optional(ValidationExceptionFieldList),
   },
   T.HttpError(400),
