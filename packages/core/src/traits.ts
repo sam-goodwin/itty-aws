@@ -128,6 +128,14 @@ export interface HttpTrait {
    */
   contentType?: string;
   /**
+   * Explicit `Content-Type` for a `contentType: "binary"` request body when the
+   * API requires a specific media type rather than the generic
+   * `application/octet-stream` (e.g. `application/x-ndjson` for Vectorize
+   * insert/upsert). Ignored unless `contentType === "binary"`; a caller-supplied
+   * `content-type` header still wins.
+   */
+  bodyMediaType?: string;
+  /**
    * Response body content type. Recognized values:
    *   - `"binary"`  — `application/octet-stream` download. The runtime
    *                   bypasses JSON decoding and returns the body as an
