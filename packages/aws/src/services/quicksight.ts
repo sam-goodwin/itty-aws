@@ -1842,12 +1842,12 @@ export const CreateAgentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAgentResponse",
 }) as any as S.Schema<CreateAgentResponse>;
-export type SensitiveStringList = string | redacted.Redacted<string>[];
+export type SensitiveStringList = (string | redacted.Redacted<string>)[];
 export const SensitiveStringList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface StringParameter {
   Name: string;
-  Values: string | redacted.Redacted<string>[];
+  Values: (string | redacted.Redacted<string>)[];
 }
 export const StringParameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Values: SensitiveStringList }),
@@ -4230,7 +4230,7 @@ export const CustomActionURLOperation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CustomActionURLOperation",
 }) as any as S.Schema<CustomActionURLOperation>;
-export type StringDefaultValueList = string | redacted.Redacted<string>[];
+export type StringDefaultValueList = (string | redacted.Redacted<string>)[];
 export const StringDefaultValueList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export type IntegerDefaultValueList = number[];
@@ -4246,7 +4246,7 @@ export const DateTimeDefaultValueList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.Date.pipe(T.TimestampFormat("epoch-seconds")),
 );
 export interface CustomParameterValues {
-  StringValues?: string | redacted.Redacted<string>[];
+  StringValues?: (string | redacted.Redacted<string>)[];
   IntegerValues?: number[];
   DecimalValues?: number[];
   DateTimeValues?: Date[];
@@ -10263,7 +10263,7 @@ export const DynamicDefaultValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicDefaultValue>;
 export interface StringDefaultValues {
   DynamicValue?: DynamicDefaultValue;
-  StaticValues?: string | redacted.Redacted<string>[];
+  StaticValues?: (string | redacted.Redacted<string>)[];
 }
 export const StringDefaultValues = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12778,13 +12778,14 @@ export type DataSetStringListFilterOperator =
   | (string & {});
 export const DataSetStringListFilterOperator =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type DataSetStringFilterStaticValueList =
+export type DataSetStringFilterStaticValueList = (
   | string
-  | redacted.Redacted<string>[];
+  | redacted.Redacted<string>
+)[];
 export const DataSetStringFilterStaticValueList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface DataSetStringListFilterValue {
-  StaticValues?: string | redacted.Redacted<string>[];
+  StaticValues?: (string | redacted.Redacted<string>)[];
 }
 export const DataSetStringListFilterValue =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -15958,13 +15959,13 @@ export const DataSourceParametersList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(DataSourceParameters);
 export interface CredentialPair {
   Username: string;
-  Password: string;
+  Password: string | redacted.Redacted<string>;
   AlternateDataSourceParameters?: DataSourceParameters[];
 }
 export const CredentialPair = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     Username: S.String,
-    Password: S.String,
+    Password: SensitiveString,
     AlternateDataSourceParameters: S.optional(DataSourceParametersList),
   }),
 ).annotate({ identifier: "CredentialPair" }) as any as S.Schema<CredentialPair>;
@@ -15984,10 +15985,10 @@ export const KeyPairCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyPairCredentials>;
 export interface WebProxyCredentials {
   WebProxyUsername: string;
-  WebProxyPassword: string;
+  WebProxyPassword: string | redacted.Redacted<string>;
 }
 export const WebProxyCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ WebProxyUsername: S.String, WebProxyPassword: S.String }),
+  S.Struct({ WebProxyUsername: S.String, WebProxyPassword: SensitiveString }),
 ).annotate({
   identifier: "WebProxyCredentials",
 }) as any as S.Schema<WebProxyCredentials>;
@@ -17693,9 +17694,9 @@ export interface SemanticType {
   SubTypeName?: string;
   TypeParameters?: { [key: string]: string | undefined };
   TruthyCellValue?: string | redacted.Redacted<string>;
-  TruthyCellValueSynonyms?: string | redacted.Redacted<string>[];
+  TruthyCellValueSynonyms?: (string | redacted.Redacted<string>)[];
   FalseyCellValue?: string | redacted.Redacted<string>;
-  FalseyCellValueSynonyms?: string | redacted.Redacted<string>[];
+  FalseyCellValueSynonyms?: (string | redacted.Redacted<string>)[];
 }
 export const SemanticType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21165,11 +21166,11 @@ export const AssetBundleImportJobRefreshScheduleOverrideParametersList =
   );
 export interface AssetBundleImportJobDataSourceCredentialPair {
   Username: string;
-  Password: string;
+  Password: string | redacted.Redacted<string>;
 }
 export const AssetBundleImportJobDataSourceCredentialPair =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Username: S.String, Password: S.String }),
+    S.Struct({ Username: S.String, Password: SensitiveString }),
   ).annotate({
     identifier: "AssetBundleImportJobDataSourceCredentialPair",
   }) as any as S.Schema<AssetBundleImportJobDataSourceCredentialPair>;
@@ -33187,14 +33188,17 @@ export const UpdateVPCConnectionResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
   "InternalFailureException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
   "InvalidParameterValueException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
@@ -33203,14 +33207,17 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
     ResourceType: S.optional(ExceptionResourceType),
     RequestId: S.optional(S.String),
   },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
   "InvalidRequestException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
@@ -33219,14 +33226,17 @@ export class LimitExceededException extends S.TaggedErrorClass<LimitExceededExce
     ResourceType: S.optional(ExceptionResourceType),
     RequestId: S.optional(S.String),
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class PreconditionNotMetException extends S.TaggedErrorClass<PreconditionNotMetException>()(
   "PreconditionNotMetException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ResourceExistsException extends S.TaggedErrorClass<ResourceExistsException>()(
   "ResourceExistsException",
@@ -33235,6 +33245,7 @@ export class ResourceExistsException extends S.TaggedErrorClass<ResourceExistsEx
     ResourceType: S.optional(ExceptionResourceType),
     RequestId: S.optional(S.String),
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
   "ResourceUnavailableException",
@@ -33243,10 +33254,12 @@ export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUna
     ResourceType: S.optional(ExceptionResourceType),
     RequestId: S.optional(S.String),
   },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class UnsupportedUserEditionException extends S.TaggedErrorClass<UnsupportedUserEditionException>()(
   "UnsupportedUserEditionException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class QuickSightSubscriptionRequired extends S.TaggedErrorClass<QuickSightSubscriptionRequired>()(
   "QuickSightSubscriptionRequired",
@@ -33263,46 +33276,57 @@ export class QuickSightSubscriptionRequired extends S.TaggedErrorClass<QuickSigh
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.String },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidDataSetParameterValueException extends S.TaggedErrorClass<InvalidDataSetParameterValueException>()(
   "InvalidDataSetParameterValueException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class CustomerManagedKeyUnavailableException extends S.TaggedErrorClass<CustomerManagedKeyUnavailableException>()(
   "CustomerManagedKeyUnavailableException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConcurrentUpdatingException extends S.TaggedErrorClass<ConcurrentUpdatingException>()(
   "ConcurrentUpdatingException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
   "InvalidNextTokenException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
   "InvalidParameterException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class SessionLifetimeInMinutesInvalidException extends S.TaggedErrorClass<SessionLifetimeInMinutesInvalidException>()(
   "SessionLifetimeInMinutesInvalidException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class UnsupportedPricingPlanException extends S.TaggedErrorClass<UnsupportedPricingPlanException>()(
   "UnsupportedPricingPlanException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class QuickSightUserNotFoundException extends S.TaggedErrorClass<QuickSightUserNotFoundException>()(
   "QuickSightUserNotFoundException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class DomainNotWhitelistedException extends S.TaggedErrorClass<DomainNotWhitelistedException>()(
   "DomainNotWhitelistedException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class IdentityTypeNotSupportedException extends S.TaggedErrorClass<IdentityTypeNotSupportedException>()(
   "IdentityTypeNotSupportedException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 
 //# Operations

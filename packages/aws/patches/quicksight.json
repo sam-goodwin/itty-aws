@@ -1,4 +1,21 @@
 {
+  "structures": {
+    "CredentialPair": {
+      "members": {
+        "Password": { "sensitive": true }
+      }
+    },
+    "WebProxyCredentials": {
+      "members": {
+        "WebProxyPassword": { "sensitive": true }
+      }
+    },
+    "AssetBundleImportJobDataSourceCredentialPair": {
+      "members": {
+        "Password": { "sensitive": true }
+      }
+    }
+  },
   "operations": {
     "createDataSource": {
       "syntheticErrors": [
