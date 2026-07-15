@@ -1,0 +1,118 @@
+{
+  "description": "workers/scripts/{script_name}/edge-preview is absent from the API docs (docs-absent endpoint): multipart preview-worker upload authorized by the cf-preview-upload-config-token header (from createSubdomainEdgePreviewSession), answering a preview_token to send as cf-workers-preview-token against the preview host. Shapes transcribed from the distilled SDK; metadata reuses PutScriptMetadata (same worker upload metadata). Needed by alchemy's EdgeSession (state-store login / preview uploads).",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            { "code": 7003 },
+            { "code": 7003, "message": { "includes": "Could not route" } }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptEdgePreviewRequest",
+      "value": {
+        "type": "structure",
+        "members": {
+          "account_id": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#documentation": "Identifier.",
+              "smithy.api#httpLabel": {},
+              "smithy.api#required": {}
+            }
+          },
+          "script_name": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#documentation": "Name of the script, used in URLs and route configuration.",
+              "smithy.api#httpLabel": {},
+              "smithy.api#required": {}
+            }
+          },
+          "cfPreviewUploadConfigToken": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#documentation": "The session token returned by createSubdomainEdgePreviewSession.",
+              "smithy.api#httpHeader": "cf-preview-upload-config-token",
+              "smithy.api#required": {}
+            }
+          },
+          "metadata": {
+            "target": "com.cloudflare.workers#PutScriptMetadata",
+            "traits": {
+              "smithy.api#documentation": "JSON-encoded metadata about the uploaded parts and Worker configuration."
+            }
+          },
+          "files": {
+            "target": "smithy.api#Document",
+            "traits": {
+              "com.cloudflare.protocols#formDataFile": {},
+              "smithy.api#documentation": "Module files comprising the worker script, appended under their own filenames."
+            }
+          }
+        },
+        "traits": {
+          "smithy.api#input": {}
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptEdgePreviewResponse",
+      "value": {
+        "type": "structure",
+        "members": {
+          "preview_token": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#documentation": "Token to send as cf-workers-preview-token header when making requests to the preview host.",
+              "smithy.api#required": {}
+            }
+          }
+        },
+        "traits": {
+          "smithy.api#output": {}
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptEdgePreview",
+      "value": {
+        "type": "operation",
+        "input": {
+          "target": "com.cloudflare.workers#CreateScriptEdgePreviewRequest"
+        },
+        "output": {
+          "target": "com.cloudflare.workers#CreateScriptEdgePreviewResponse"
+        },
+        "errors": [{ "target": "com.cloudflare.workers#InvalidRoute" }],
+        "traits": {
+          "smithy.api#http": {
+            "method": "POST",
+            "uri": "/accounts/{account_id}/workers/scripts/{script_name}/edge-preview",
+            "code": 200,
+            "contentType": "multipart"
+          },
+          "smithy.api#documentation": "Upload a preview worker under an edge-preview session (undocumented endpoint)."
+        }
+      }
+    }
+  ]
+}
