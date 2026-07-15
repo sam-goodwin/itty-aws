@@ -4540,7 +4540,7 @@ interface FromValue2 {
   /** Whether to keep the query string of the original request. */
   preserveQueryString?: boolean | null;
   /** The status code to use for the redirect. */
-  statusCode?: "301" | "302" | "303" | "307" | "308" | (string & {}) | null;
+  statusCode?: number | null;
 }
 const FromValue2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -4548,15 +4548,7 @@ const FromValue2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     preserveQueryString: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
-    statusCode: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["301", "302", "303", "307", "308"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
+    statusCode: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   }).pipe(
     Schema.encodeKeys({
       targetUrl: "target_url",
@@ -4573,7 +4565,7 @@ interface ActionParameters13 {
   fromValue?: {
     targetUrl: { expression?: string | null; value?: string | null };
     preserveQueryString?: boolean | null;
-    statusCode?: "301" | "302" | "303" | "307" | "308" | (string & {}) | null;
+    statusCode?: number | null;
   } | null;
 }
 const ActionParameters13 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -4596,7 +4588,7 @@ interface RedirectRuleParam {
     fromValue?: {
       targetUrl: { expression?: string | null; value?: string | null };
       preserveQueryString?: boolean | null;
-      statusCode?: "301" | "302" | "303" | "307" | "308" | (string & {}) | null;
+      statusCode?: number | null;
     } | null;
   } | null;
   /** An informative description of the rule. */
@@ -5577,6 +5569,57 @@ const SkipRuleParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<SkipRuleParam>;
 
+interface FromValue3 {
+  /** A URL to redirect the request to. */
+  targetUrl: { expression?: string | null; value?: string | null };
+  /** Whether to keep the query string of the original request. */
+  preserveQueryString?: boolean | null;
+  /** The status code to use for the redirect. */
+  statusCode?: "301" | "302" | "303" | "307" | "308" | (string & {}) | null;
+}
+const FromValue3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    targetUrl: TargetURL,
+    preserveQueryString: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    statusCode: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["301", "302", "303", "307", "308"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      targetUrl: "target_url",
+      preserveQueryString: "preserve_query_string",
+      statusCode: "status_code",
+    }),
+  ),
+) as unknown as Schema.Codec<FromValue3>;
+
+interface ActionParameters15 {
+  /** A redirect based on a bulk list lookup. */
+  fromList?: { key: string; name: string } | null;
+  /** A redirect based on the request properties. */
+  fromValue?: {
+    targetUrl: { expression?: string | null; value?: string | null };
+    preserveQueryString?: boolean | null;
+    statusCode?: "301" | "302" | "303" | "307" | "308" | (string & {}) | null;
+  } | null;
+}
+const ActionParameters15 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    fromList: Schema.optional(Schema.Union([FromList, Schema.Null])),
+    fromValue: Schema.optional(Schema.Union([FromValue3, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({ fromList: "from_list", fromValue: "from_value" }),
+  ),
+) as unknown as Schema.Codec<ActionParameters15>;
+
 interface RedirectRule2 {
   /** The timestamp of when the rule was last modified. */
   lastUpdated: string;
@@ -5633,7 +5676,7 @@ const RedirectRule2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       Schema.Union([Schema.Literal("redirect"), Schema.Null]),
     ),
     actionParameters: Schema.optional(
-      Schema.Union([ActionParameters13, Schema.Null]),
+      Schema.Union([ActionParameters15, Schema.Null]),
     ),
     categories: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -5796,6 +5839,81 @@ const ListRulesetsResponseResultInfo =
       }),
     ),
   ) as unknown as Schema.Codec<ListRulesetsResponseResultInfo>;
+
+interface RedirectRuleParam2 {
+  /** The unique ID of the rule. */
+  id?: string | null;
+  /** The action to perform when the rule matches. */
+  action?: "redirect" | null;
+  /** The parameters configuring the rule's action. */
+  actionParameters?: {
+    fromList?: { key: string; name: string } | null;
+    fromValue?: {
+      targetUrl: { expression?: string | null; value?: string | null };
+      preserveQueryString?: boolean | null;
+      statusCode?: "301" | "302" | "303" | "307" | "308" | (string & {}) | null;
+    } | null;
+  } | null;
+  /** An informative description of the rule. */
+  description?: string | null;
+  /** Whether the rule should be executed. */
+  enabled?: boolean | null;
+  /** Configuration for exposed credential checking. */
+  exposedCredentialCheck?: {
+    passwordExpression: string;
+    usernameExpression: string;
+  } | null;
+  /** The expression defining which traffic will match the rule. */
+  expression?: string | null;
+  /** An object configuring the rule's logging behavior. */
+  logging?: { enabled: boolean } | null;
+  /** An object configuring the rule's rate limit behavior. */
+  ratelimit?: {
+    characteristics: string[];
+    period: number;
+    countingExpression?: string | null;
+    mitigationTimeout?: number | null;
+    requestsPerPeriod?: number | null;
+    requestsToOrigin?: boolean | null;
+    scorePerPeriod?: number | null;
+    scoreResponseHeaderName?: string | null;
+  } | null;
+  /** The reference of the rule (the rule's ID by default). */
+  ref?: string | null;
+}
+const RedirectRuleParam2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(
+      Schema.Union([Schema.Literal("redirect"), Schema.Null]),
+    ),
+    actionParameters: Schema.optional(
+      Schema.Union([ActionParameters15, Schema.Null]),
+    ),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    exposedCredentialCheck: Schema.optional(
+      Schema.Union([ExposedCredentialCheck, Schema.Null]),
+    ),
+    expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logging: Schema.optional(Schema.Union([Logging, Schema.Null])),
+    ratelimit: Schema.optional(Schema.Union([Ratelimit, Schema.Null])),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+  ),
+) as unknown as Schema.Codec<RedirectRuleParam2>;
 
 // =============================================================================
 // Pha
@@ -7271,7 +7389,7 @@ interface PutPhasBaseRequest {
           fromValue?: {
             targetUrl: { expression?: string; value?: string };
             preserveQueryString?: boolean;
-            statusCode?: "301" | "302" | "303" | "307" | "308" | (string & {});
+            statusCode?: number;
           };
         };
         description?: string;
@@ -8177,7 +8295,7 @@ export interface PutPhasResponse {
                   | "303"
                   | "307"
                   | "308"
-                  | (string & {})
+                  | number
                   | null;
               } | null;
             } | null;
@@ -8800,7 +8918,7 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
             LogRule,
             LogCustomFieldRule,
             ManagedChallengeRule,
-            RedirectRule2,
+            RedirectRule,
             RewriteRule,
             RouteRule,
             ScoreRule,
@@ -10121,7 +10239,7 @@ const CreateRuleBaseFields = {
       ActionParametersAsset,
       ActionParameters,
       ActionParameters4,
-      ActionParameters13,
+      ActionParameters15,
       ActionParameters14,
       ActionParameters7,
       ActionParameters9,
@@ -11648,7 +11766,7 @@ const PatchRuleBaseFields = {
       ActionParametersAsset,
       ActionParameters,
       ActionParameters4,
-      ActionParameters13,
+      ActionParameters15,
       ActionParameters14,
       ActionParameters7,
       ActionParameters9,
@@ -15525,7 +15643,7 @@ const CreateRulesetBaseFields = {
         LogRuleParam,
         LogCustomFieldRuleParam,
         ManagedChallengeRuleParam,
-        RedirectRuleParam,
+        RedirectRuleParam2,
         RewriteRuleParam,
         RouteRuleParam,
         ScoreRuleParam,
@@ -17516,7 +17634,7 @@ const UpdateRulesetBaseFields = {
         LogRuleParam,
         LogCustomFieldRuleParam,
         ManagedChallengeRuleParam,
-        RedirectRuleParam,
+        RedirectRuleParam2,
         RewriteRuleParam,
         RouteRuleParam,
         ScoreRuleParam,
