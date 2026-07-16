@@ -14,13 +14,6 @@ export type { CloudflareOpError, CloudflareOpContext };
 
 /** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
 const KEY_DICTIONARY: Record<string, string> = {
-  _10GBPSTO_100GBPS: "_10_GBPS_TO_100_GBPS",
-  _10MINSTO_20MINS: "_10_MINS_TO_20_MINS",
-  _1GBPSTO_10GBPS: "_1_GBPS_TO_10_GBPS",
-  _1HOURTO_3HOURS: "_1_HOUR_TO_3_HOURS",
-  _20MINSTO_40MINS: "_20_MINS_TO_40_MINS",
-  _40MINSTO_1HOUR: "_40_MINS_TO_1_HOUR",
-  _500MBPSTO_1GBPS: "_500_MBPS_TO_1_GBPS",
   android: "ANDROID",
   asMembersCount: "as_members_count",
   asName: "as_name",

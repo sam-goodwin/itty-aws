@@ -18,17 +18,9 @@ const KEY_DICTIONARY: Record<string, string> = {
   aiTrain: "ai-train",
   countryName: "country_name",
   dnssecValid: "dnssec_valid",
-  id: "_id",
-  initialPriority: "_initialPriority",
-  initiatorType: "_initiator_type",
   ipv6Percentage: "IPv6Percentage",
   phishingV2: "phishing_v2",
-  priority: "_priority",
-  requestId: "_requestId",
-  requestTime: "_requestTime",
-  resourceType: "_resourceType",
   superCategoryId: "super_category_id",
-  transferSize: "_transferSize",
 };
 
 export type ScansBulkCreateRequestBodyItemCustomHeadersMap = {
