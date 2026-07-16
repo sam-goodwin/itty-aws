@@ -165,6 +165,8 @@ export interface CreateOriginCaCertificateResponse {
   certificate?: string;
   /** When the certificate will expire. */
   expiresOn?: string;
+  /** When the certificate was revoked; absent while the certificate is live. */
+  revokedAt?: string;
 }
 export const CreateOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -177,6 +179,7 @@ export const CreateOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     certificate: S.optional(S.String),
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    revokedAt: S.optional(S.String.pipe(T.Body("revoked_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOriginCaCertificateResponse",
@@ -282,6 +285,8 @@ export interface GetOriginCaCertificateResponse {
   certificate?: string;
   /** When the certificate will expire. */
   expiresOn?: string;
+  /** When the certificate was revoked; absent while the certificate is live. */
+  revokedAt?: string;
 }
 export const GetOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -294,6 +299,7 @@ export const GetOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     certificate: S.optional(S.String),
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    revokedAt: S.optional(S.String.pipe(T.Body("revoked_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginCaCertificateResponse",
@@ -368,6 +374,8 @@ export interface ListResultItem {
   certificate?: string;
   /** When the certificate will expire. */
   expiresOn?: string;
+  /** When the certificate was revoked; absent while the certificate is live. */
+  revokedAt?: string;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -380,6 +388,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     certificate: S.optional(S.String),
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    revokedAt: S.optional(S.String.pipe(T.Body("revoked_at"))),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
