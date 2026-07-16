@@ -1842,6 +1842,53 @@ export const ListAddressesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAddressesResponse",
 }) as any as S.Schema<ListAddressesResponse>;
 
+export interface ListRulesRequest {
+  /** Identifier. */
+  zoneId: string;
+  page?: number;
+  perPage?: number;
+  /** Filter by enabled routing rules. */
+  enabled?: boolean;
+}
+export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    enabled: S.optional(S.Boolean.pipe(T.Query())),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/email/routing/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "ListRulesRequest",
+}) as any as S.Schema<ListRulesRequest>;
+
+export type ListRulesResponseResultList = GetRuleResponse[];
+export const ListRulesResponseResultList = /*@__PURE__*/ S.Array(
+  GetRuleResponse,
+) as any as S.Schema<ListRulesResponseResultList>;
+
+export interface ListRulesResponse {
+  /** Routing rules for the zone. */
+  result: ListRulesResponseResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
+}
+export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: ListRulesResponseResultList.pipe(T.EnvelopePayload()),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "ListRulesResponse",
+}) as any as S.Schema<ListRulesResponse>;
+
 export interface PatchDnsRequest {
   /** Identifier. */
   zoneId: string;
@@ -2744,6 +2791,31 @@ export const listAddresses: API.PaginatedOperationMethod<
   () => ({
     input: ListAddressesRequest,
     output: ListAddressesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
+
+export type ListRulesError = CloudflareOpError;
+/** List routing rules (docs-absent endpoint). */
+export const listRules: API.PaginatedOperationMethod<
+  ListRulesRequest,
+  ListRulesResponse,
+  ListRulesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListRulesRequest,
+    output: ListRulesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,

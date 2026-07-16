@@ -267,6 +267,11 @@ export interface CreateOriginTlsClientAuthResponse {
   enabled?: boolean;
   /** The zone's private key. */
   privateKey?: string;
+  expiresOn?: string;
+  issuer?: string;
+  signature?: string;
+  status?: string;
+  uploadedOn?: string;
 }
 export const CreateOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -274,6 +279,11 @@ export const CreateOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
     certificate: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.String),
+    signature: S.optional(S.String),
+    status: S.optional(S.String),
+    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateOriginTlsClientAuthResponse",
@@ -576,6 +586,11 @@ export interface GetOriginTlsClientAuthResponse {
   enabled?: boolean;
   /** The zone's private key. */
   privateKey?: string;
+  expiresOn?: string;
+  issuer?: string;
+  signature?: string;
+  status?: string;
+  uploadedOn?: string;
 }
 export const GetOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -583,6 +598,11 @@ export const GetOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
     certificate: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.String),
+    signature: S.optional(S.String),
+    status: S.optional(S.String),
+    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetOriginTlsClientAuthResponse",
@@ -731,6 +751,11 @@ export interface ListResultItem {
   enabled?: boolean;
   /** The zone's private key. */
   privateKey?: string;
+  expiresOn?: string;
+  issuer?: string;
+  signature?: string;
+  status?: string;
+  uploadedOn?: string;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -738,6 +763,11 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     certificate: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    issuer: S.optional(S.String),
+    signature: S.optional(S.String),
+    status: S.optional(S.String),
+    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 

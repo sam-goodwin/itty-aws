@@ -381,6 +381,8 @@ export interface CreateSiteInfoResponse {
   siteToken?: string;
   /** Encoded JavaScript snippet. */
   snippet?: string;
+  /** The hostname the site measures (gray-clouded sites). */
+  host?: string;
 }
 export const CreateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -391,6 +393,7 @@ export const CreateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
     siteTag: S.optional(S.String.pipe(T.Body("site_tag"))),
     siteToken: S.optional(S.String.pipe(T.Body("site_token"))),
     snippet: S.optional(S.String),
+    host: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSiteInfoResponse",
@@ -566,6 +569,8 @@ export interface GetSiteInfoResponse {
   siteToken?: string;
   /** Encoded JavaScript snippet. */
   snippet?: string;
+  /** The hostname the site measures (gray-clouded sites). */
+  host?: string;
 }
 export const GetSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -576,6 +581,7 @@ export const GetSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
     siteTag: S.optional(S.String.pipe(T.Body("site_tag"))),
     siteToken: S.optional(S.String.pipe(T.Body("site_token"))),
     snippet: S.optional(S.String),
+    host: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSiteInfoResponse",
@@ -780,6 +786,8 @@ export interface SiteInfoListResultItem {
   siteToken?: string;
   /** Encoded JavaScript snippet. */
   snippet?: string;
+  /** The hostname the site measures (gray-clouded sites). */
+  host?: string;
 }
 export const SiteInfoListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -790,6 +798,7 @@ export const SiteInfoListResultItem = /*@__PURE__*/ S.suspend(() =>
     siteTag: S.optional(S.String.pipe(T.Body("site_tag"))),
     siteToken: S.optional(S.String.pipe(T.Body("site_token"))),
     snippet: S.optional(S.String),
+    host: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SiteInfoListResultItem",
@@ -1000,6 +1009,8 @@ export interface UpdateSiteInfoResponse {
   siteToken?: string;
   /** Encoded JavaScript snippet. */
   snippet?: string;
+  /** The hostname the site measures (gray-clouded sites). */
+  host?: string;
 }
 export const UpdateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1010,6 +1021,7 @@ export const UpdateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
     siteTag: S.optional(S.String.pipe(T.Body("site_tag"))),
     siteToken: S.optional(S.String.pipe(T.Body("site_token"))),
     snippet: S.optional(S.String),
+    host: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteInfoResponse",

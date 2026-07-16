@@ -402,17 +402,17 @@ export const CreateSmartTieredCacheResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteOriginCloudRegionRequest {
   /** Identifier. */
   zoneId: string;
-  originIp: string;
+  originIP: string;
 }
 export const DeleteOriginCloudRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    originIp: S.String.pipe(T.Label("origin_ip")),
+    originIP: S.String.pipe(T.Label()),
   })
     .pipe(
       T.Http({
         method: "DELETE",
-        uri: "/zones/{zone_id}/origin/cloud_regions/{origin_ip}",
+        uri: "/zones/{zone_id}/origin/cloud_regions/{originIP}",
         code: 200,
       }),
     )
@@ -568,17 +568,17 @@ export const GetCacheReserveResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetOriginCloudRegionRequest {
   /** Identifier. */
   zoneId: string;
-  originIp: string;
+  originIP: string;
 }
 export const GetOriginCloudRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    originIp: S.String.pipe(T.Label("origin_ip")),
+    originIP: S.String.pipe(T.Label()),
   })
     .pipe(
       T.Http({
         method: "GET",
-        uri: "/zones/{zone_id}/origin/cloud_regions/{origin_ip}",
+        uri: "/zones/{zone_id}/origin/cloud_regions/{originIP}",
         code: 200,
       }),
     )
@@ -2492,26 +2492,26 @@ export const OriginCloudRegionsUpdateRequestVendor = /*@__PURE__*/ S.String;
 export interface PutOriginCloudRegionRequest {
   /** Identifier. */
   zoneId: string;
-  originIp: string;
-  /** Origin IP address (IPv4 or IPv6). For the single PUT endpoint (`PUT /origin/cloud_regions/{origin_ip}`), this field must match the path parameter or the request will be rejected with a 400 error. For the batch PUT endpoint, this field identifies which mapping to upsert. */
-  originIp2: string;
   /** Cloud vendor region identifier. Must be a valid region for the specified vendor as returned by the supported_regions endpoint. */
   region: string;
   /** Cloud vendor hosting the origin. Must be one of the supported vendors. */
   vendor: OriginCloudRegionsUpdateRequestVendor;
+  originIP: string;
+  /** Origin IP address (IPv4 or IPv6). For the single PUT endpoint (`PUT /origin/cloud_regions/{origin_ip}`), this field must match the path parameter or the request will be rejected with a 400 error. For the batch PUT endpoint, this field identifies which mapping to upsert. */
+  originIp: string;
 }
 export const PutOriginCloudRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    originIp: S.String.pipe(T.Label("origin_ip")),
-    originIp2: S.String.pipe(T.Body("origin_ip")),
     region: S.String,
     vendor: OriginCloudRegionsUpdateRequestVendor,
+    originIP: S.String.pipe(T.Label()),
+    originIp: S.String.pipe(T.Body("origin_ip")),
   })
     .pipe(
       T.Http({
         method: "PUT",
-        uri: "/zones/{zone_id}/origin/cloud_regions/{origin_ip}",
+        uri: "/zones/{zone_id}/origin/cloud_regions/{originIP}",
         code: 200,
       }),
     )

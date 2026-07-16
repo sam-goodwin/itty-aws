@@ -340,17 +340,24 @@ export interface PutSnippetRequest {
   zoneId: string;
   /** Identify the snippet. */
   snippetName: string;
+  /** Snippet metadata ({ mainModule }), JSON-encoded as the multipart `metadata` part. */
+  metadata: unknown;
+  /** Snippet module file(s), appended under their own filenames. */
+  files?: (File | Blob)[];
 }
 export const PutSnippetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     snippetName: S.String.pipe(T.Label("snippet_name")),
+    metadata: S.Unknown,
+    files: S.optional(S.Unknown.pipe(T.FormDataFile())),
   })
     .pipe(
       T.Http({
         method: "PUT",
         uri: "/zones/{zone_id}/snippets/{snippet_name}",
         code: 200,
+        contentType: "multipart",
       }),
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -465,7 +472,7 @@ export const getContent: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetRuleError = CloudflareOpError;
+export type GetRuleError = SnippetRulesNotFound | Forbidden | CloudflareOpError;
 /** Fetches all snippet rules belonging to the zone. */
 export const getRule: API.OperationMethod<
   GetRuleRequest,
@@ -475,7 +482,12 @@ export const getRule: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRuleRequest,
   output: GetRuleResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    SnippetRulesNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

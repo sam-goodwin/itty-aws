@@ -1001,7 +1001,7 @@ export const CreateUserGroupMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     userGroupId: S.String.pipe(T.Label("user_group_id")),
-    members: UserGroupsMembersCreateRequestMembersList,
+    members: UserGroupsMembersCreateRequestMembersList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -3853,7 +3853,7 @@ export const UpdateUserGroupMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     userGroupId: S.String.pipe(T.Label("user_group_id")),
-    members: UserGroupsMembersUpdateRequestMembersList,
+    members: UserGroupsMembersUpdateRequestMembersList.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

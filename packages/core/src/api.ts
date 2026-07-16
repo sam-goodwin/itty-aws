@@ -75,15 +75,14 @@ export type OperationMethod<I, O, E, R> = Effect.Effect<
 > &
   ((input: I) => Effect.Effect<O, E, R>);
 
-/**
- * Generated SDKs may wrap each request/response schema in
- * `Schema.suspend(() => ...)`, whose `.ast` is a `Suspend` node rather than the
- * real node — force it here. `Suspend.thunk` memoizes, so this only pays once,
- * and the ast is returned untouched when it isn't a Suspend (the common case
- * for non-suspended schemas).
- */
-const resolveAst = (ast: AST.AST): AST.AST =>
-  ast._tag === "Suspend" ? resolveAst(ast.thunk()) : ast;
+// NOTE: request/response ASTs are handed to the protocol RAW (Suspend nodes
+// included). Pre-resolving Suspends here would drop annotations that sit on
+// intermediate nodes — e.g. a bare-payload response whose payload type is
+// itself a suspended schema carries its EnvelopePayloadRoot marker on the
+// inner Suspend, and unwrapping it silently degrades decode to the struct
+// path. The protocol helpers (core/protocol-http getAnn/getProps) descend
+// Suspends themselves, and `Suspend.thunk` memoizes, so raw ASTs cost
+// nothing extra.
 
 /**
  * Protocol layers are built once per process and shared by every operation
@@ -204,8 +203,8 @@ export function make<
     const cfg = configFn();
     prepared = {
       cfg,
-      inputAst: resolveAst(cfg.input!.ast),
-      outputAst: resolveAst(cfg.output!.ast),
+      inputAst: cfg.input!.ast,
+      outputAst: cfg.output!.ast,
     };
     return prepared;
   };

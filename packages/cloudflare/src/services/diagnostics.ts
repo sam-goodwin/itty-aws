@@ -471,7 +471,7 @@ export type EndpointHealthchecksListResponseCheckType = "icmp" | (string & {});
 export const EndpointHealthchecksListResponseCheckType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ListEndpointHealthchecksResponse {
+export interface ListEndpointHealthchecksItem {
   /** type of check to perform */
   checkType: EndpointHealthchecksListResponseCheckType;
   /** the IP address of the host to perform checks against */
@@ -481,7 +481,7 @@ export interface ListEndpointHealthchecksResponse {
   /** Optional name associated with this check */
   name?: string;
 }
-export const ListEndpointHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListEndpointHealthchecksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkType: EndpointHealthchecksListResponseCheckType.pipe(
       T.Body("check_type"),
@@ -489,7 +489,20 @@ export const ListEndpointHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
     endpoint: S.String,
     id: S.optional(S.String),
     name: S.optional(S.String),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  }),
+).annotate({
+  identifier: "ListEndpointHealthchecksItem",
+}) as any as S.Schema<ListEndpointHealthchecksItem>;
+
+export type ListEndpointHealthchecksItemsList = ListEndpointHealthchecksItem[];
+export const ListEndpointHealthchecksItemsList = /*@__PURE__*/ S.Array(
+  ListEndpointHealthchecksItem,
+) as any as S.Schema<ListEndpointHealthchecksItemsList>;
+
+export type ListEndpointHealthchecksResponse =
+  ListEndpointHealthchecksItemsList;
+export const ListEndpointHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
+  ListEndpointHealthchecksItemsList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListEndpointHealthchecksResponse",
 }) as any as S.Schema<ListEndpointHealthchecksResponse>;

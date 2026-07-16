@@ -112,7 +112,7 @@ export const GetResponsePolicyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetResponsePolicyList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetSecurityTxtResponse {
+export interface SecurityTxtFile {
   acknowledgments?: GetResponseAcknowledgmentsList;
   canonical?: GetResponseCanonicalList;
   contact?: GetResponseContactList;
@@ -123,7 +123,7 @@ export interface GetSecurityTxtResponse {
   policy?: GetResponsePolicyList;
   preferredLanguages?: string;
 }
-export const GetSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
+export const SecurityTxtFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acknowledgments: S.optional(GetResponseAcknowledgmentsList),
     canonical: S.optional(GetResponseCanonicalList),
@@ -136,7 +136,14 @@ export const GetSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
     preferredLanguages: S.optional(
       S.String.pipe(T.Body("preferred_languages")),
     ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  }),
+).annotate({
+  identifier: "SecurityTxtFile",
+}) as any as S.Schema<SecurityTxtFile>;
+
+export type GetSecurityTxtResponse = SecurityTxtFile;
+export const GetSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
+  SecurityTxtFile.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetSecurityTxtResponse",
 }) as any as S.Schema<GetSecurityTxtResponse>;

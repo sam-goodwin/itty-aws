@@ -2051,16 +2051,29 @@ export const CreateOperationLabelResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateUserSchemaRequest {
   /** Identifier. */
   zoneId: string;
+  /** Schema file bytes (File/Blob), sent as the multipart `file` part. */
+  file: unknown;
+  /** Kind of schema (openapi_v3). */
+  kind: string;
+  /** Name of the schema. */
+  name?: string;
+  /** Flag whether schema is enabled for validation. */
+  validationEnabled?: boolean;
 }
 export const CreateUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
+    file: S.Unknown,
+    kind: S.String,
+    name: S.optional(S.String),
+    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
   })
     .pipe(
       T.Http({
         method: "POST",
         uri: "/zones/{zone_id}/api_gateway/user_schemas",
         code: 200,
+        contentType: "multipart",
       }),
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),

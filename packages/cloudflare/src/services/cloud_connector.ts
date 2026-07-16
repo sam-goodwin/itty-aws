@@ -171,7 +171,7 @@ export interface PutRuleRequest {
 export const PutRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    rules: S.optional(RulesUpdateRequestRulesList),
+    rules: S.optional(RulesUpdateRequestRulesList.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "PUT",

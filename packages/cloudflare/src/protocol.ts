@@ -396,10 +396,13 @@ const makeDecode =
       if (nonJson) json = {};
 
       // Unwrap the envelope: the payload is `result` (fall back to the whole
-      // body for the handful of endpoints that don't use the envelope).
-      const payload = ("result" in json ? json.result : json) as
-        | Record<string, unknown>
-        | unknown;
+      // body for the handful of endpoints that don't use the envelope). A
+      // successful non-JSON body is the payload verbatim — e.g. the
+      // security.txt GET answers an unconfigured zone with a bare non-JSON
+      // sentinel that callers detect by `typeof === "string"`.
+      const payload = (
+        nonJson ? text : "result" in json ? json.result : json
+      ) as Record<string, unknown> | unknown;
       const rootDict = getAnn(outputAst, keyDictionarySymbol) as
         | Record<string, string>
         | undefined;
