@@ -31,7 +31,7 @@ export interface ListMaintenanceSchedulesOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     created_at: string;
@@ -52,7 +52,7 @@ export interface ListMaintenanceSchedulesOutput {
     pending_vitess_version: string | null;
     pending_mysql_version_update: boolean;
     pending_mysql_version: string | null;
-  }[];
+  }>;
 }
 export const ListMaintenanceSchedulesOutput =
   /*@__PURE__*/ Schema.Struct({

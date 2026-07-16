@@ -12,7 +12,7 @@ export interface UpdateWebhookInput {
   id: string;
   url?: string;
   enabled?: boolean;
-  events?: string[];
+  events?: ReadonlyArray<string>;
 }
 export const UpdateWebhookInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
@@ -39,7 +39,7 @@ export interface UpdateWebhookOutput {
   last_sent_at: string | null;
   created_at: string;
   updated_at: string;
-  events: (
+  events: ReadonlyArray<
     | "branch.ready"
     | "branch.anomaly"
     | "branch.out_of_memory"
@@ -59,7 +59,7 @@ export interface UpdateWebhookOutput {
     | "deploy_request.schema_applied"
     | "keyspace.storage"
     | "webhook.test"
-  )[];
+  >;
 }
 export const UpdateWebhookOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,

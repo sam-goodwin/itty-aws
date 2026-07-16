@@ -38,7 +38,7 @@ export interface ListRolesOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     access_host_url: string;
@@ -58,7 +58,7 @@ export interface ListRolesOutput {
     expired: boolean;
     default: boolean;
     ttl: number | null;
-    inherited_roles: (
+    inherited_roles: ReadonlyArray<
       | "pscale_managed"
       | "pg_checkpoint"
       | "pg_create_subscription"
@@ -72,7 +72,8 @@ export interface ListRolesOutput {
       | "pg_use_reserved_connections"
       | "pg_write_all_data"
       | "postgres"
-    )[];
+    >;
+    with_replication: boolean;
     branch: {
       id: string;
       name: string;
@@ -85,7 +86,7 @@ export interface ListRolesOutput {
       require_where_on_delete: "off" | "warn" | "on";
       require_where_on_update: "off" | "warn" | "on";
     };
-  }[];
+  }>;
 }
 export const ListRolesOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
@@ -132,6 +133,7 @@ export const ListRolesOutput = /*@__PURE__*/ Schema.Struct({
           "postgres",
         ]),
       ),
+      with_replication: Schema.Boolean,
       branch: Schema.Struct({
         id: Schema.String,
         name: Schema.String,

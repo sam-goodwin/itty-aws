@@ -45,7 +45,7 @@ export interface GetRoleOutput {
   expired: boolean;
   default: boolean;
   ttl: number | null;
-  inherited_roles: (
+  inherited_roles: ReadonlyArray<
     | "pscale_managed"
     | "pg_checkpoint"
     | "pg_create_subscription"
@@ -59,7 +59,8 @@ export interface GetRoleOutput {
     | "pg_use_reserved_connections"
     | "pg_write_all_data"
     | "postgres"
-  )[];
+  >;
+  with_replication: boolean;
   branch: {
     id: string;
     name: string;
@@ -110,6 +111,7 @@ export const GetRoleOutput = /*@__PURE__*/ Schema.Struct({
       "postgres",
     ]),
   ),
+  with_replication: Schema.Boolean,
   branch: Schema.Struct({
     id: Schema.String,
     name: Schema.String,

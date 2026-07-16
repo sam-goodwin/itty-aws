@@ -26,7 +26,7 @@ export interface GetDatabasePostgresCidrOutput {
   id: string;
   schema: string;
   role: string;
-  cidrs: string[];
+  cidrs: ReadonlyArray<string>;
   created_at: string;
   updated_at: string;
   deleted_at: string | null;

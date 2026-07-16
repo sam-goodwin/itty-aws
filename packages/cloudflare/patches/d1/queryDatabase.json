@@ -1,0 +1,21 @@
+{
+  "errors": {},
+  "request": {
+    "properties": {
+      "params[]": {
+        "appendUnion": [
+          { "kind": "primitive", "value": "number" },
+          { "kind": "null" },
+          { "kind": "array", "elementType": { "kind": "primitive", "value": "number" } }
+        ]
+      },
+      "batch[].params[]": {
+        "appendUnion": [
+          { "kind": "primitive", "value": "number" },
+          { "kind": "null" },
+          { "kind": "array", "elementType": { "kind": "primitive", "value": "number" } }
+        ]
+      }
+    }
+  }
+}

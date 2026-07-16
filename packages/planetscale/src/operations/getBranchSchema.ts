@@ -26,7 +26,7 @@ export const GetBranchSchemaInput = /*@__PURE__*/ Schema.Struct({
 
 // Output Schema
 export interface GetBranchSchemaOutput {
-  data: { name: string; html: string; raw: string }[];
+  data: ReadonlyArray<{ name: string; html: string; raw: string }>;
 }
 export const GetBranchSchemaOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(

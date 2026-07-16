@@ -28,7 +28,7 @@ export interface CreateOrganizationTeamOutput {
   id: string;
   display_name: string;
   creator: { id: string; display_name: string; avatar_url: string };
-  members: {
+  members: ReadonlyArray<{
     id: string;
     display_name: string;
     name: string;
@@ -48,14 +48,19 @@ export interface CreateOrganizationTeamOutput {
     managed?: boolean | null;
     directory_managed?: boolean | null;
     email_verified?: boolean | null;
-  }[];
-  databases: { id: string; name: string; url: string; branches_url: string }[];
-  analyst_databases: {
+  }>;
+  databases: ReadonlyArray<{
     id: string;
     name: string;
     url: string;
     branches_url: string;
-  }[];
+  }>;
+  analyst_databases: ReadonlyArray<{
+    id: string;
+    name: string;
+    url: string;
+    branches_url: string;
+  }>;
   name: string;
   slug: string;
   created_at: string;

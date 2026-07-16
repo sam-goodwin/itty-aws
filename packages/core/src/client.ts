@@ -437,17 +437,23 @@ function buildFormData(body: Record<string, unknown>): FormData {
 function setBinaryBody(
   request: HttpClientRequest.HttpClientRequest,
   body: unknown,
+  contentType?: string,
 ): Effect.Effect<HttpClientRequest.HttpClientRequest, HttpBody.HttpBodyError> {
+  // The body's own content-type is what the request ultimately sends — pass the
+  // resolved media type (e.g. application/x-ndjson) into the HttpBody so it is
+  // not clobbered back to the octet-stream default.
   if (body instanceof Uint8Array) {
     return Effect.succeed(
-      HttpClientRequest.setBody(HttpBody.uint8Array(body))(request),
+      HttpClientRequest.setBody(HttpBody.uint8Array(body, contentType))(
+        request,
+      ),
     );
   }
   if (typeof ArrayBuffer !== "undefined" && body instanceof ArrayBuffer) {
     return Effect.succeed(
-      HttpClientRequest.setBody(HttpBody.uint8Array(new Uint8Array(body)))(
-        request,
-      ),
+      HttpClientRequest.setBody(
+        HttpBody.uint8Array(new Uint8Array(body), contentType),
+      )(request),
     );
   }
   if (typeof Blob !== "undefined" && body instanceof Blob) {
@@ -460,7 +466,9 @@ function setBinaryBody(
         new HttpBody.HttpBodyError({ reason: { _tag: "JsonError" }, cause }),
     });
     return Effect.succeed(
-      HttpClientRequest.setBody(HttpBody.stream(blobStream))(request),
+      HttpClientRequest.setBody(HttpBody.stream(blobStream, contentType))(
+        request,
+      ),
     );
   }
   if (typeof ReadableStream !== "undefined" && body instanceof ReadableStream) {
@@ -471,20 +479,25 @@ function setBinaryBody(
         new HttpBody.HttpBodyError({ reason: { _tag: "JsonError" }, cause }),
     });
     return Effect.succeed(
-      HttpClientRequest.setBody(HttpBody.stream(rsStream))(request),
+      HttpClientRequest.setBody(HttpBody.stream(rsStream, contentType))(
+        request,
+      ),
     );
   }
   if (Stream.isStream(body as Stream.Stream<unknown, unknown, unknown>)) {
     // Effect Stream — pass straight through to `HttpBody.stream`.
     return Effect.succeed(
       HttpClientRequest.setBody(
-        HttpBody.stream(body as Stream.Stream<Uint8Array, unknown>),
+        HttpBody.stream(
+          body as Stream.Stream<Uint8Array, unknown>,
+          contentType,
+        ),
       )(request),
     );
   }
   if (typeof body === "string") {
     return Effect.succeed(
-      HttpClientRequest.setBody(HttpBody.text(body))(request),
+      HttpClientRequest.setBody(HttpBody.text(body, contentType))(request),
     );
   }
   return Effect.fail(
@@ -708,18 +721,8 @@ export const makeAPI = <Creds, RequestOptions = never>(
           if (parts.isMultipart) {
             // browser/runtime sets Content-Type with boundary
           } else if (isBinaryBody) {
-            // Caller's `content-type` header (already applied via
-            // `setHeaders(parts.headers)`) wins. If they didn't set one, fall
-            // back to a generic octet-stream so the request is still well-formed.
-            if (
-              !("content-type" in parts.headers) &&
-              !("Content-Type" in parts.headers)
-            ) {
-              request = HttpClientRequest.setHeader(
-                "Content-Type",
-                "application/octet-stream",
-              )(request);
-            }
+            // Content-Type is applied via the body below (setBinaryBody), so it
+            // is not clobbered back to octet-stream by `setBody`.
           } else if (isFormUrlEncoded) {
             request = HttpClientRequest.setHeader(
               "Content-Type",
@@ -747,8 +750,18 @@ export const makeAPI = <Creds, RequestOptions = never>(
             } else if (isBinaryBody) {
               // Raw binary HTTP body — `parts.body` is the value of the lone
               // `T.HttpBody()` field (e.g. a `Blob`, `Uint8Array`, or string),
-              // not a record of body fields.
-              request = yield* setBinaryBody(request, parts.body);
+              // not a record of body fields. Caller's `content-type` header
+              // wins, then the op's `bodyMediaType`, else octet-stream.
+              const binaryContentType =
+                (parts.headers["content-type"] as string | undefined) ??
+                (parts.headers["Content-Type"] as string | undefined) ??
+                httpTrait.bodyMediaType ??
+                "application/octet-stream";
+              request = yield* setBinaryBody(
+                request,
+                parts.body,
+                binaryContentType,
+              );
             } else if (isFormUrlEncoded) {
               // Encode body as form-urlencoded with deepObject bracket notation
               const encoded = buildFormUrlEncoded(

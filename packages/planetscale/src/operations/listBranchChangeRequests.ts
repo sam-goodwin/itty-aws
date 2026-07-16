@@ -33,9 +33,9 @@ export interface ListBranchChangeRequestsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
-    restart: number[];
+    restart: ReadonlyArray<number>;
     state: "queued" | "pending" | "resizing" | "canceled" | "completed";
     started_at: string | null;
     completed_at?: string | null;
@@ -66,7 +66,7 @@ export interface ListBranchChangeRequestsOutput {
     previous_storage_type: string;
     previous_storage_iops: number;
     previous_storage_throughput_mibs: number;
-  }[];
+  }>;
 }
 export const ListBranchChangeRequestsOutput =
   /*@__PURE__*/ Schema.Struct({

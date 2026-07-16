@@ -21,7 +21,7 @@ export const ListExtensionsInput = /*@__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListExtensionsInput>;
 
 // Output Schema
-export type ListExtensionsOutput = {
+export type ListExtensionsOutput = ReadonlyArray<{
   id: string;
   name: string;
   description: string;
@@ -33,7 +33,7 @@ export type ListExtensionsOutput = {
   url: string;
   available: boolean;
   unavailable_reason: string;
-  parameters: {
+  parameters: ReadonlyArray<{
     id: string;
     name: string;
     display_name: string;
@@ -62,10 +62,10 @@ export type ListExtensionsOutput = {
     min: number;
     step: number;
     url: string;
-    options: string[];
+    options: ReadonlyArray<string>;
     actor: { id: string; display_name: string; avatar_url: string };
-  }[];
-}[];
+  }>;
+}>;
 export const ListExtensionsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,

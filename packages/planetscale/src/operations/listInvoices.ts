@@ -25,14 +25,14 @@ export interface ListInvoicesOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     total: string;
     billing_period_start: string;
     billing_period_end: string;
     paid: boolean;
     overdue: boolean;
-  }[];
+  }>;
 }
 export const ListInvoicesOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,

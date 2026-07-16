@@ -21,7 +21,7 @@ export const GetDatabaseThrottlerInput =
 
 // Output Schema
 export interface GetDatabaseThrottlerOutput {
-  keyspaces: string[];
+  keyspaces: ReadonlyArray<string>;
   configurable: {
     id: string;
     name: string;
@@ -29,7 +29,7 @@ export interface GetDatabaseThrottlerOutput {
     updated_at: string;
     deleted_at: string | null;
   };
-  configurations: { keyspace_name: string; ratio: number }[];
+  configurations: ReadonlyArray<{ keyspace_name: string; ratio: number }>;
 }
 export const GetDatabaseThrottlerOutput =
   /*@__PURE__*/ Schema.Struct({

@@ -29,7 +29,7 @@ export interface ListOauthApplicationsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     redirect_uri: string;
@@ -45,7 +45,7 @@ export interface ListOauthApplicationsOutput {
     requires_org_scope: boolean;
     scopes_by_resource: Record<string, unknown>;
     all_scopes_by_resource: Record<string, unknown>;
-  }[];
+  }>;
 }
 export const ListOauthApplicationsOutput =
   /*@__PURE__*/ Schema.Struct({

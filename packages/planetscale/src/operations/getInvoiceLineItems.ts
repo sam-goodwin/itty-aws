@@ -31,7 +31,7 @@ export interface GetInvoiceLineItemsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     subtotal: number;
     description: string;
@@ -46,7 +46,7 @@ export interface GetInvoiceLineItemsOutput {
       updated_at: string;
       deleted_at: string | null;
     };
-  }[];
+  }>;
 }
 export const GetInvoiceLineItemsOutput =
   /*@__PURE__*/ Schema.Struct({

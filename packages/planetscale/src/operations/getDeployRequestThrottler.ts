@@ -23,7 +23,7 @@ export const GetDeployRequestThrottlerInput =
 
 // Output Schema
 export interface GetDeployRequestThrottlerOutput {
-  keyspaces: string[];
+  keyspaces: ReadonlyArray<string>;
   configurable: {
     id: string;
     name: string;
@@ -31,7 +31,7 @@ export interface GetDeployRequestThrottlerOutput {
     updated_at: string;
     deleted_at: string | null;
   };
-  configurations: { keyspace_name: string; ratio: number }[];
+  configurations: ReadonlyArray<{ keyspace_name: string; ratio: number }>;
 }
 export const GetDeployRequestThrottlerOutput =
   /*@__PURE__*/ Schema.Struct({

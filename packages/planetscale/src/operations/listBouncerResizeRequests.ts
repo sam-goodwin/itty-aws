@@ -35,7 +35,7 @@ export interface ListBouncerResizeRequestsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     state: "pending" | "resizing" | "canceled" | "completed";
     replicas_per_cell: number;
@@ -68,7 +68,7 @@ export interface ListBouncerResizeRequestsOutput {
       ram: number;
       sort_order: number;
     };
-  }[];
+  }>;
 }
 export const ListBouncerResizeRequestsOutput =
   /*@__PURE__*/ Schema.Struct({

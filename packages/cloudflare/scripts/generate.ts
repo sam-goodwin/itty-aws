@@ -287,7 +287,9 @@ const loadServicePatches = (
       return yield* Effect.die(
         `Orphaned patch file(s) in ${patchDir}: ${orphans
           .map((o) => `${o}.json`)
-          .join(", ")} — no matching operation in the regenerated '${serviceName}' service. ` +
+          .join(
+            ", ",
+          )} — no matching operation in the regenerated '${serviceName}' service. ` +
           `The upstream spec likely renamed or removed the operation; ` +
           `re-key the patch to the new operation name (available: ${[...opNames].sort().join(", ")}) ` +
           `or delete it, and migrate consumers in packages/alchemy.`,
@@ -634,16 +636,25 @@ function applyPatchToTypeInfo(typeInfo: TypeInfo, patch: PropertyPatch): void {
     }
   }
 
-  // Append variants to an object union (e.g. new binding type in metadata.bindings)
-  if (
-    !patch.type &&
-    patch.appendUnion &&
-    patch.appendUnion.length > 0 &&
-    typeInfo.kind === "union" &&
-    typeInfo.values
-  ) {
-    for (const variant of patch.appendUnion) {
-      typeInfo.values.push(JSON.parse(JSON.stringify(variant)) as TypeInfo);
+  // Append variants to a union (e.g. new binding type in metadata.bindings, or
+  // widen a scalar field to a value union). When the target is not already a
+  // union, wrap the current type in one with the appended variants — mirrors
+  // the "$"-root behavior in applyResponsePatch.
+  if (!patch.type && patch.appendUnion && patch.appendUnion.length > 0) {
+    if (typeInfo.kind === "union" && typeInfo.values) {
+      for (const variant of patch.appendUnion) {
+        typeInfo.values.push(JSON.parse(JSON.stringify(variant)) as TypeInfo);
+      }
+    } else {
+      const currentCopy = JSON.parse(JSON.stringify(typeInfo)) as TypeInfo;
+      for (const key of Object.keys(typeInfo)) {
+        delete (typeInfo as unknown as Record<string, unknown>)[key];
+      }
+      typeInfo.kind = "union";
+      typeInfo.values = [
+        currentCopy,
+        ...(JSON.parse(JSON.stringify(patch.appendUnion)) as TypeInfo[]),
+      ];
     }
   }
 
@@ -867,7 +878,10 @@ function resolveOperationModel(
 
   // Hoist nested object schemas out of request body params (covers the
   // account/zone and plain operation generators, which consume this model).
-  hoistBodyParams(resolvedBodyParams, `${toPascalCase(op.operationName)}Request`);
+  hoistBodyParams(
+    resolvedBodyParams,
+    `${toPascalCase(op.operationName)}Request`,
+  );
 
   return {
     allParams,
@@ -1570,10 +1584,7 @@ function structuralKey(t: TypeInfo): string {
     case "array":
       return `arr(${t.elementType ? structuralKey(t.elementType) : "?"})`;
     case "union":
-      return `u(${(t.values ?? [])
-        .map(structuralKey)
-        .sort()
-        .join("|")})`;
+      return `u(${(t.values ?? []).map(structuralKey).sort().join("|")})`;
     case "object":
       if (!t.properties || t.properties.length === 0) return "rec";
       return `o{${t.properties
@@ -2010,6 +2021,8 @@ function generateOperationSchemaAst(
   ];
   if (isMultipart) httpTraitParts.push(`contentType: "multipart"`);
   else if (isBinary) httpTraitParts.push(`contentType: "binary"`);
+  if (isBinary && op.requestMediaType)
+    httpTraitParts.push(`bodyMediaType: "${op.requestMediaType}"`);
   if (op.responseContentType === "binary") {
     httpTraitParts.push(`responseContentType: "binary"`);
   }
@@ -2381,6 +2394,8 @@ function generateAccountOrZoneOperationSchema(
     const parts: string[] = [`method: "${op.httpMethod}"`, `path: "${path}"`];
     if (isMultipart) parts.push(`contentType: "multipart"`);
     else if (isBinary) parts.push(`contentType: "binary"`);
+    if (isBinary && op.requestMediaType)
+      parts.push(`bodyMediaType: "${op.requestMediaType}"`);
     if (op.responseContentType === "binary") {
       parts.push(`responseContentType: "binary"`);
     }
@@ -2800,6 +2815,8 @@ function generateOperationSchema(
   ];
   if (isMultipart) httpTraitParts2.push(`contentType: "multipart"`);
   else if (isBinary) httpTraitParts2.push(`contentType: "binary"`);
+  if (isBinary && op.requestMediaType)
+    httpTraitParts2.push(`bodyMediaType: "${op.requestMediaType}"`);
   if (op.responseContentType === "binary") {
     httpTraitParts2.push(`responseContentType: "binary"`);
   }

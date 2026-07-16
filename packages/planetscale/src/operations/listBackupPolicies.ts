@@ -31,7 +31,7 @@ export interface ListBackupPoliciesOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     display_name: string;
     name: string;
@@ -48,7 +48,7 @@ export interface ListBackupPoliciesOutput {
     last_ran_at: string | null;
     next_run_at: string | null;
     required: boolean;
-  }[];
+  }>;
 }
 export const ListBackupPoliciesOutput =
   /*@__PURE__*/ Schema.Struct({

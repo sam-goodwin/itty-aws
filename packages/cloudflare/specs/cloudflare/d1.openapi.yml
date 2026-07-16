@@ -866,7 +866,13 @@ paths:
                 params:
                   type: array
                   items:
-                    type: string
+                    oneOf:
+                      - type: string
+                      - type: number
+                      - type: array
+                        items:
+                          type: number
+                    nullable: true
                   description: Body param
                 batch:
                   type: array
@@ -880,7 +886,13 @@ paths:
                       params:
                         type: array
                         items:
-                          type: string
+                          oneOf:
+                            - type: string
+                            - type: number
+                            - type: array
+                              items:
+                                type: number
+                          nullable: true
                     required:
                       - sql
                   description: Body param
@@ -991,7 +1003,13 @@ paths:
                 params:
                   type: array
                   items:
-                    type: string
+                    oneOf:
+                      - type: string
+                      - type: number
+                      - type: array
+                        items:
+                          type: number
+                    nullable: true
                   description: Body param
                 batch:
                   type: array
@@ -1005,7 +1023,13 @@ paths:
                       params:
                         type: array
                         items:
-                          type: string
+                          oneOf:
+                            - type: string
+                            - type: number
+                            - type: array
+                              items:
+                                type: number
+                          nullable: true
                     required:
                       - sql
                   description: Body param

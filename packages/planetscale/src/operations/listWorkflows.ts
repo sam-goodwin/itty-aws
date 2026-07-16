@@ -32,7 +32,7 @@ export interface ListWorkflowsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     number: number;
@@ -129,7 +129,7 @@ export interface ListWorkflowsOutput {
       updated_at: string;
       deleted_at: string | null;
     };
-  }[];
+  }>;
 }
 export const ListWorkflowsOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,

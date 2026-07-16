@@ -40,28 +40,28 @@ export interface ListPasswordsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     role: "reader" | "writer" | "admin" | "readwriter";
-    cidrs: string[] | null;
+    cidrs: ReadonlyArray<string> | null;
     created_at: string;
     deleted_at: string | null;
     expires_at: string | null;
     last_used_at: string | null;
     expired: boolean;
     direct_vtgate: boolean;
-    direct_vtgate_addresses: string[];
+    direct_vtgate_addresses: ReadonlyArray<string>;
     ttl_seconds: number | null;
     access_host_url: string;
     access_host_regional_url: string;
-    access_host_regional_urls: string[];
+    access_host_regional_urls: ReadonlyArray<string>;
     actor: { id: string; display_name: string; avatar_url: string } | null;
     region: {
       id: string;
       provider: string;
       enabled: boolean;
-      public_ip_addresses: string[];
+      public_ip_addresses: ReadonlyArray<string>;
       display_name: string;
       location: string;
       slug: string;
@@ -80,7 +80,7 @@ export interface ListPasswordsOutput {
       mysql_edge_address: string;
       private_edge_connectivity: boolean;
     };
-  }[];
+  }>;
 }
 export const ListPasswordsOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,

@@ -38,50 +38,48 @@ export interface CreateServiceTokenOutput {
   actor_id: string | null;
   actor_display_name: string | null;
   actor_type: string | null;
-  service_token_accesses?:
-    | {
-        id: string;
-        access: string;
-        description: string;
-        resource_name: string;
-        resource_id: string;
-        resource_type: string;
-        resource: {
-          id: string;
-          name: string;
-          created_at: string;
-          updated_at: string;
-          deleted_at: string | null;
-        };
-      }[]
-    | null;
+  service_token_accesses?: ReadonlyArray<{
+    id: string;
+    access: string;
+    description: string;
+    resource_name: string;
+    resource_id: string;
+    resource_type: string;
+    resource: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    };
+  }> | null;
   oauth_accesses_by_resource?: {
     database: {
-      databases: {
+      databases: ReadonlyArray<{
         name: string;
         id: string;
         organization: string;
         url: string;
-      }[];
-      accesses: { name: string; description: string }[];
+      }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
     organization: {
-      organizations: { name: string; id: string; url: string }[];
-      accesses: { name: string; description: string }[];
+      organizations: ReadonlyArray<{ name: string; id: string; url: string }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
     branch: {
-      branches: {
+      branches: ReadonlyArray<{
         name: string;
         id: string;
         database: string;
         organization: string;
         url: string;
-      }[];
-      accesses: { name: string; description: string }[];
+      }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
     user: {
-      users: { name: string; id: string }[];
-      accesses: { name: string; description: string }[];
+      users: ReadonlyArray<{ name: string; id: string }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
   } | null;
 }

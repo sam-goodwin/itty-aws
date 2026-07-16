@@ -8,7 +8,7 @@ export interface UpdateDatabaseThrottlerInput {
   organization: string;
   database: string;
   ratio?: number;
-  configurations?: string[];
+  configurations?: ReadonlyArray<string>;
 }
 export const UpdateDatabaseThrottlerInput =
   /*@__PURE__*/ Schema.Struct({
@@ -25,7 +25,7 @@ export const UpdateDatabaseThrottlerInput =
 
 // Output Schema
 export interface UpdateDatabaseThrottlerOutput {
-  keyspaces: string[];
+  keyspaces: ReadonlyArray<string>;
   configurable: {
     id: string;
     name: string;
@@ -33,7 +33,7 @@ export interface UpdateDatabaseThrottlerOutput {
     updated_at: string;
     deleted_at: string | null;
   };
-  configurations: { keyspace_name: string; ratio: number }[];
+  configurations: ReadonlyArray<{ keyspace_name: string; ratio: number }>;
 }
 export const UpdateDatabaseThrottlerOutput =
   /*@__PURE__*/ Schema.Struct({

@@ -4959,6 +4959,9 @@ paths:
           - code: 7005
             message:
               includes: already exists
+          - status: 500
+            message:
+              includes: "UNIQUE constraint failed: routes.name"
     delete:
       operationId: deleteDynamicRouting
       description: "Delete an AI Gateway Dynamic Route.  @example ```ts const
@@ -6016,6 +6019,9 @@ paths:
           - code: 7005
             message:
               includes: already exists
+          - status: 500
+            message:
+              includes: "UNIQUE constraint failed: routes.name"
         GatewayNotFound:
           - code: 7002
   /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/evaluations/{id}:

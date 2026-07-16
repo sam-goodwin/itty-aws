@@ -33,7 +33,7 @@ export interface GetWebhookOutput {
   last_sent_at: string | null;
   created_at: string;
   updated_at: string;
-  events: (
+  events: ReadonlyArray<
     | "branch.ready"
     | "branch.anomaly"
     | "branch.out_of_memory"
@@ -53,7 +53,7 @@ export interface GetWebhookOutput {
     | "deploy_request.schema_applied"
     | "keyspace.storage"
     | "webhook.test"
-  )[];
+  >;
 }
 export const GetWebhookOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
