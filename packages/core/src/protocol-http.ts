@@ -237,6 +237,36 @@ export const mapKeys = (
 
 const BODYLESS = new Set(["GET", "HEAD"]);
 
+/**
+ * Serialize one query member. Scalars go as `k=v`, arrays as repeated `k=v`
+ * pairs, and nested plain objects recurse as DOTTED params — several list
+ * endpoints model their filters as structs (e.g. Cloudflare DNS listRecords
+ * takes `name: { exact, contains, ... }`) that must go over the wire as
+ * `name.exact=value`. Without this they fell through to `String(value)` and
+ * were sent as `name=[object Object]`, which servers happily treat as a
+ * filter matching nothing — the call "succeeds" with zero results and the
+ * bug is invisible to the caller.
+ */
+const appendQuery = (
+  query: URLSearchParams,
+  name: string,
+  value: unknown,
+): void => {
+  if (Array.isArray(value)) {
+    for (const v of value) appendQuery(query, name, v);
+  } else if (
+    value !== null &&
+    typeof value === "object" &&
+    !(value instanceof Date)
+  ) {
+    for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+      if (v !== undefined) appendQuery(query, `${name}.${k}`, v);
+    }
+  } else {
+    query.append(name, String(value));
+  }
+};
+
 export interface BuildRequestOptions {
   readonly input: unknown;
   readonly inputAst: AST.AST;
@@ -315,12 +345,7 @@ export const buildRequest = ({
       const hVal = String(value);
       headers[hName] = mapMemberHeader ? mapMemberHeader(hName, hVal) : hVal;
     } else if (hasPropAnn(prop, querySymbol)) {
-      const name = nameOf(prop, querySymbol);
-      if (Array.isArray(value)) {
-        for (const v of value) query.append(name, String(v));
-      } else {
-        query.append(name, String(value));
-      }
+      appendQuery(query, nameOf(prop, querySymbol), value);
     } else if (hasPropAnn(prop, formDataFileSymbol)) {
       for (const f of Array.isArray(value) ? value : [value]) {
         files.push(f as Blob | File);
