@@ -26,7 +26,7 @@ export interface ListAuditLogsOutput {
   has_prev: boolean;
   cursor_start: string | null;
   cursor_end: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     actor_id: string | null;
     actor_type: string | null;
@@ -44,7 +44,7 @@ export interface ListAuditLogsOutput {
     created_at: string;
     updated_at: string;
     metadata: Record<string, unknown> | null;
-  }[];
+  }>;
 }
 export const ListAuditLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.String,

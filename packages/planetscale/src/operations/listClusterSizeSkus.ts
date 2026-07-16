@@ -26,7 +26,7 @@ export const ListClusterSizeSkusInput =
   ) as unknown as Schema.Codec<ListClusterSizeSkusInput>;
 
 // Output Schema
-export type ListClusterSizeSkusOutput = {
+export type ListClusterSizeSkusOutput = ReadonlyArray<{
   name: string;
   display_name: string;
   cpu: string;
@@ -43,7 +43,7 @@ export type ListClusterSizeSkusOutput = {
   architecture?: string | null;
   development: boolean;
   production: boolean;
-}[];
+}>;
 export const ListClusterSizeSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({

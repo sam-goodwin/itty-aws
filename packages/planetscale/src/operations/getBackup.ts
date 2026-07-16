@@ -39,13 +39,13 @@ export interface GetBackupOutput {
   uncompressed_size: number;
   protected: boolean;
   required: boolean;
-  restored_branches: {
+  restored_branches: ReadonlyArray<{
     id: string;
     name: string;
     created_at: string;
     updated_at: string;
     deleted_at: string | null;
-  }[];
+  }>;
   actor: { id: string; display_name: string; avatar_url: string } | null;
   backup_policy?: {
     id: string;

@@ -25,7 +25,7 @@ export interface ListOrganizationsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     billing_email: string;
@@ -46,7 +46,7 @@ export interface ListOrganizationsOutput {
     keyspace_shard_limit: number;
     has_card: boolean;
     payment_info_required: boolean;
-  }[];
+  }>;
 }
 export const ListOrganizationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

@@ -9,7 +9,7 @@ export interface UpdateDeployRequestThrottlerInput {
   database: string;
   number: number;
   ratio?: number;
-  configurations?: string[];
+  configurations?: ReadonlyArray<string>;
 }
 export const UpdateDeployRequestThrottlerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27,7 +27,7 @@ export const UpdateDeployRequestThrottlerInput =
 
 // Output Schema
 export interface UpdateDeployRequestThrottlerOutput {
-  keyspaces: string[];
+  keyspaces: ReadonlyArray<string>;
   configurable: {
     id: string;
     name: string;
@@ -35,7 +35,7 @@ export interface UpdateDeployRequestThrottlerOutput {
     updated_at: string;
     deleted_at: string | null;
   };
-  configurations: { keyspace_name: string; ratio: number }[];
+  configurations: ReadonlyArray<{ keyspace_name: string; ratio: number }>;
 }
 export const UpdateDeployRequestThrottlerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

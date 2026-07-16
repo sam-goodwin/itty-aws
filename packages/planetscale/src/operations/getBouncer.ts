@@ -46,7 +46,7 @@ export interface GetBouncerOutput {
     updated_at: string;
     deleted_at: string | null;
   };
-  parameters: {
+  parameters: ReadonlyArray<{
     id: string;
     namespace: "pgbouncer";
     name: string;
@@ -65,9 +65,9 @@ export interface GetBouncerOutput {
     min: number;
     step: number;
     url: string;
-    options: string[];
+    options: ReadonlyArray<string>;
     actor: { id: string; display_name: string; avatar_url: string };
-  }[];
+  }>;
 }
 export const GetBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,

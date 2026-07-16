@@ -32,7 +32,7 @@ export interface ListWebhooksOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     url: string;
     secret: Redacted.Redacted<string>;
@@ -42,7 +42,7 @@ export interface ListWebhooksOutput {
     last_sent_at: string | null;
     created_at: string;
     updated_at: string;
-    events: (
+    events: ReadonlyArray<
       | "branch.ready"
       | "branch.anomaly"
       | "branch.out_of_memory"
@@ -62,8 +62,8 @@ export interface ListWebhooksOutput {
       | "deploy_request.schema_applied"
       | "keyspace.storage"
       | "webhook.test"
-    )[];
-  }[];
+    >;
+  }>;
 }
 export const ListWebhooksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.String,

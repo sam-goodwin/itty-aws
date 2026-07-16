@@ -26,7 +26,7 @@ export const GetBranchChangeRequestInput =
 // Output Schema
 export interface GetBranchChangeRequestOutput {
   id: string;
-  restart: number[];
+  restart: ReadonlyArray<number>;
   state: "queued" | "pending" | "resizing" | "canceled" | "completed";
   started_at: string | null;
   completed_at?: string | null;

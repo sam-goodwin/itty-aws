@@ -33,7 +33,7 @@ export interface ListDeployOperationsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     state:
       | "pending"
@@ -57,9 +57,9 @@ export interface ListDeployOperationsOutput {
     table_locked: boolean;
     table_recently_used: boolean;
     table_recently_used_at: string | null;
-    removed_foreign_key_names: string[] | null;
+    removed_foreign_key_names: ReadonlyArray<string> | null;
     deploy_errors: string | null;
-  }[];
+  }>;
 }
 export const ListDeployOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

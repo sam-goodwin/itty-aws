@@ -33,7 +33,7 @@ export interface ListDeployRequestReviewsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     body: string;
     html_body: string;
@@ -41,7 +41,7 @@ export interface ListDeployRequestReviewsOutput {
     created_at: string;
     updated_at: string;
     actor: { id: string; display_name: string; avatar_url: string };
-  }[];
+  }>;
 }
 export const ListDeployRequestReviewsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

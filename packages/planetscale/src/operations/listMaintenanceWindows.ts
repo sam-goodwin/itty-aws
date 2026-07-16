@@ -33,13 +33,13 @@ export interface ListMaintenanceWindowsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     created_at: string;
     updated_at: string;
     started_at: string | null;
     finished_at: string | null;
-  }[];
+  }>;
 }
 export const ListMaintenanceWindowsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

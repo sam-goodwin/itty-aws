@@ -31,7 +31,7 @@ export interface ListReadOnlyRegionsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     display_name: string;
     created_at: string;
@@ -43,7 +43,7 @@ export interface ListReadOnlyRegionsOutput {
       id: string;
       provider: string;
       enabled: boolean;
-      public_ip_addresses: string[];
+      public_ip_addresses: ReadonlyArray<string>;
       display_name: string;
       location: string;
       slug: string;
@@ -51,7 +51,7 @@ export interface ListReadOnlyRegionsOutput {
       mysql_supported: boolean;
       postgresql_supported: boolean;
     };
-  }[];
+  }>;
 }
 export const ListReadOnlyRegionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

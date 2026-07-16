@@ -38,7 +38,7 @@ export interface ListBranchesOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     created_at: string;
@@ -81,7 +81,7 @@ export interface ListBranchesOutput {
       id: string;
       provider: string;
       enabled: boolean;
-      public_ip_addresses: string[];
+      public_ip_addresses: ReadonlyArray<string>;
       display_name: string;
       location: string;
       slug: string;
@@ -92,7 +92,7 @@ export interface ListBranchesOutput {
     parent_branch: string | null;
     vtgate_options?: Record<string, unknown>;
     cluster_architecture?: string;
-  }[];
+  }>;
 }
 export const ListBranchesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.String,

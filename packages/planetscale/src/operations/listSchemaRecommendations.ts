@@ -33,7 +33,7 @@ export interface ListSchemaRecommendationsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     html_url: string;
     title: string;
@@ -66,7 +66,7 @@ export interface ListSchemaRecommendationsOutput {
       display_name: string;
       avatar_url: string;
     } | null;
-  }[];
+  }>;
 }
 export const ListSchemaRecommendationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
