@@ -315,11 +315,15 @@ export const make = <Op extends Operation<any, any, any>>(
     // UNSIGNED-PAYLOAD with InvalidSignatureException — the service always
     // reconstructs the canonical request from the actual body hash — so
     // buffered bodies stay on the hashed path (plain InvokeEndpoint accepts
-    // payload-hash signatures too).
+    // payload-hash signatures too). AppConfig behaves the same way: its
+    // CreateHostedConfigurationVersion route rejects UNSIGNED-PAYLOAD with
+    // SignatureDoesNotMatch (the service's expected canonical request hashes
+    // the actual body), so it also stays on the hashed path.
     const hasStreamingInput =
       resolvedRequest.hasStreamingInput === true &&
       _serviceSdkId !== "Glacier" &&
-      _serviceSdkId !== "SageMaker Runtime";
+      _serviceSdkId !== "SageMaker Runtime" &&
+      _serviceSdkId !== "AppConfig";
     // Use unsigned payload for streaming bodies OR streaming-input
     // operations OR when service provides checksum with body
     const useUnsignedPayload =
